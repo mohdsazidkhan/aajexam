@@ -1,0 +1,42 @@
+.exams {
+    width: 100%;
+    height: 100%;
+}
+.examcarousel .col-sm-12 h1 {
+    text-shadow: -1px 1px rgb(0 0 0);
+    font-size: 32px;
+    line-height: 40px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    margin-top: 30px;
+}
+.exams .swiper-slide {
+  text-align: center;
+  background: #ffffff;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  padding: 0;
+}
+.exams .swiper-slide .exam_bg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 50px 15px;
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 24px;
+  color: #000000;
+  border-radius: 10px;
+  font-family: 'Roboto Slab', serif;
+  margin-top: 40px;
+  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 30%);
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+}
+  
+  

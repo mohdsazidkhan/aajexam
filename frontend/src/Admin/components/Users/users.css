@@ -1,0 +1,26 @@
+.users{
+    margin: 20px 0;
+}
+.users h1{
+    text-shadow: -1px 1px rgb(0 0 0);
+    font-size: 32px;
+    line-height: 40px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 25px 10px;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 30%);
+    background: linear-gradient(115deg, #d8e9ff, #e2fff3);
+    font-size: 20px;
+    color: #000000;
+    border-radius: 10px;
+    font-family: 'Roboto Slab', serif;
+    text-decoration: none;
+    margin: 0 0 20px 0;
+}

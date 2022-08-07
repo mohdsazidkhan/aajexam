@@ -1,0 +1,78 @@
+.uiquestions{
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px !important;
+  margin: 20px auto !important;
+  justify-content: center;
+  box-shadow: 0 0 3px 0 rgb(0 0 0 / 20%);
+  border-radius: 10px;
+  padding: 40px;
+}
+.uiquestions h1{
+  font-size: 1.6rem;
+  text-align: center;
+  font-family: 'Poppins', serif;
+}
+.uiquestions h3{
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 20px;
+  background-image: linear-gradient(45deg, #00d275, #0063da);
+  font-family: 'Poppins', serif;
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+  color: #fff;
+}
+.uiquestions .quest{
+  font-size: 18px;
+  font-family: 'Poppins', serif;
+  font-weight: 500;
+}
+.uiquestions label {
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 10px;
+}
+.finishbutton {
+  background-image: linear-gradient(45deg, #00d275, #0063da);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.3rem 3rem;
+  margin: 0.5rem 0.5rem;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  width: auto;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+.quizTime {
+  top: 100px;
+  width: 100px;
+  height: 100px;
+  font-weight: 600;
+  font-size: 30px;
+  display: flex;
+  text-align: center;
+  background-image: linear-gradient(45deg, #0079ff, #00ff8e);
+  padding: 15px;
+  position: fixed;
+  right: 10px;
+  box-shadow: 0 3px 10px 0 rgb(0 0 0 / 20%);
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width:768px){
+  .quizTime {
+    top: 180px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+}

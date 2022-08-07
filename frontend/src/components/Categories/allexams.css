@@ -1,0 +1,29 @@
+.allExams {
+    width: 100%;
+    height: 100%;
+}
+.allExams .col-sm-12 h1 {
+    text-shadow: -1px 1px rgb(0 0 0);
+    font-size: 32px;
+    line-height: 40px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    margin-top: 30px;
+}
+.allExams .exam_bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 25px 10px;
+    background-image: linear-gradient(45deg, #e8fff5, #e1efff);
+    font-size: 20px;
+    color: #000;
+    border-radius: 10px;
+    font-family: 'Roboto Slab', serif;
+    margin: 20px 0;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 30%);
+    min-height: 100px;
+}

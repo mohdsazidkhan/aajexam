@@ -1,0 +1,13 @@
+.uiprofile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: aliceblue;
+}
+.react-share__ShareButton{
+    margin: 0 5px;
+}
+.table-responsive table{
+    min-width: 800px;
+}

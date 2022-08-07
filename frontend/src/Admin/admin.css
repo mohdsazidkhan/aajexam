@@ -1,0 +1,78 @@
+.admin > .button{
+  background-image: linear-gradient(90deg, #4a94ed, #0bb66a);
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  width: 200px;
+}
+.card-widget {
+  display: flex;
+  padding: 15px 10px;
+  border-radius: 1rem;
+  text-decoration: none;
+  background: #fff;
+  box-shadow: 0 0.1rem 1rem rgb(0 0 0 / 15%);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-widget-body {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+.card-widget-body h6{
+  color: #000;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.bg-blue {
+  background-color: #2b81e7;
+}
+.bg-indigo {
+  background-color: #6610f2;
+}
+.bg-green {
+  background-color: #35b653;
+}
+.bg-red {
+  background-color: #dc3545;
+}
+.bg-yellow {
+  background-color: #d3cf00;
+}
+.bg-pink {
+  background-color: #c62be7;
+}
+.text-gray-500 {
+  color: #adb5bd;
+}
+.icon {
+  display: flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.text-white {
+  color: #fff;
+}
+.col-sm-2.adminSidebar{
+  padding-left: 0;
+  padding-right: 0;
+}
+.adminContent .row{
+  margin: 20px 0;
+}

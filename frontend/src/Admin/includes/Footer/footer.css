@@ -1,0 +1,9 @@
+footer{
+    background: aliceblue;
+}
+footer .list-inline-item img{
+    width: 32px;
+}
+footer ul.nav .nav-item .nav-link{
+    color: #787878;
+}

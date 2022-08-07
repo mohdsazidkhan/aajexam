@@ -1,0 +1,27 @@
+.categories {
+    width: 100%;
+    height: 100%;
+}
+.categories .col-sm-12 h1 {
+    text-shadow: -1px 1px rgb(0 0 0);
+    font-size: 32px;
+    line-height: 40px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    margin-top: 30px;
+}
+.categories .category_bg {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 25px 10px;
+    background-image: linear-gradient(45deg, #e8fff5, #e1efff);
+    font-size: 24px;
+    color: #000;
+    border-radius: 10px;
+    font-family: 'Roboto Slab', serif;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 30%);
+}

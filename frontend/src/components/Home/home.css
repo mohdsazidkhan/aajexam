@@ -1,0 +1,12 @@
+.home > .button{
+  background-image: linear-gradient(90deg, #4a94ed, #0bb66a);
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  width: 200px;
+}

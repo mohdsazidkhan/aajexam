@@ -1,0 +1,12 @@
+footer .list-inline-item img{
+    width: 32px;
+}
+footer ul.nav .nav-item .nav-link{
+    color: #787878;
+    padding-left: 0;
+}
+@media screen and (max-width:768px){
+    footer {
+        text-align: center;
+    }
+}

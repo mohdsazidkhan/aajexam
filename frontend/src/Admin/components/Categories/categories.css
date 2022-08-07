@@ -1,0 +1,28 @@
+.categories{
+    margin: 20px 0;
+}
+.categories h1{
+    text-shadow: -1px 1px rgb(0 0 0);
+    font-size: 32px;
+    line-height: 40px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.adminTable{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.adminTable tr,
+.adminTable th,
+.adminTable td{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.adminTable th,
+.adminTable td{
+    padding: 8px;
+}
+

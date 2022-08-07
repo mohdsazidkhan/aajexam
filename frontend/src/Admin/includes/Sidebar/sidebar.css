@@ -1,0 +1,53 @@
+.sidebar{
+    background: #fff;
+    height: 100vh;
+    padding: 10px 0 100px 0;
+    box-shadow: 5px 0px 10px 0px rgb(0 0 0 / 15%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.sidebar .nav .nav-item .nav-link{
+    color: #000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+}
+.sidebar .nav .nav-item .nav-link svg{
+    margin: 5px;
+}
+.sidebar .nav .nav-item .nav-link.dropdown-toggle.active{
+    background: transparent;
+    color: #000;
+}
+.sidebar .nav .dropdown-item.active, 
+.sidebar .nav .dropdown-item:active {
+    background-image: linear-gradient(45deg, #005ac7, #00a55b);
+    color: #fff;
+}
+.sidebar .nav .nav-item .nav-link.active{
+    background-image: linear-gradient(45deg, #005ac7, #00a55b);
+    color: #fff;
+}
+.sidebar .dropdown-item {
+    padding: 0.5rem 2.6rem;
+    color: #000000;
+    font-family: 'Roboto Slab', serif;
+}
+.sidebar .dropdown-menu {
+    position: initial;
+    padding: 0;
+}
+.sidebar .nav-link.dropdown-toggle{
+    cursor: pointer;
+}
+.sidebar .dropdown-menu.show {
+    width: 100%;
+    background: aliceblue;
+    border: 0;
+    border-radius: 0;
+}
+
