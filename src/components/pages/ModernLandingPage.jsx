@@ -141,11 +141,11 @@ const ModernLandingPage = ({ educationalContent }) => {
             title: "Performance Analytics",
             description: "Track your progress with detailed insights and recommendations"
         },
-        {
+        /* {
             icon: FaMobileAlt,
             title: "Mobile App",
             description: "Learn on-the-go with our Android and iOS applications"
-        },
+        }, */
         {
             icon: FaShieldAlt,
             title: "Expert Content",
@@ -170,10 +170,10 @@ const ModernLandingPage = ({ educationalContent }) => {
             question: "Can I practice for specific government exams?",
             answer: "Absolutely! We have dedicated sections for SSC, UPSC, Banking, Railway, and other government exams with real exam patterns and previous year questions."
         },
-        {
+        /* {
             question: "Is there a mobile app?",
             answer: "Yes! Download our app from Google Play Store for Android. iOS version coming soon."
-        },
+        }, */
         {
             question: "How does the referral program work?",
             answer: "Invite friends using your unique referral code. Earn rewards when they purchase subscriptions."
@@ -458,7 +458,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     </div>
                 </section>
 
-                {/* Mobile App Section */}
+                {/* Mobile App Section - HIDDEN FOR NOW
                 <section className="py-16 md:py-24 bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-indigo-900/20 dark:to-red-900/20">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -531,6 +531,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                         </div>
                     </div>
                 </section>
+                */}
 
                 {/* Referral Program */}
                 <section className="py-16 md:py-24 bg-white dark:bg-gray-900">

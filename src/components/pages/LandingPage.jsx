@@ -776,12 +776,10 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Mobile App Section */}
+        {/* Mobile App Section - HIDDEN FOR NOW
         <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
-          {/* Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-secondary-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-secondary-900/20 dark:from-red-900/20"></div>
 
-          {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-secondary-400/20 from-red-400/20 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-primary-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -790,13 +788,10 @@ const LandingPage = () => {
 
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
-              {/* Inner Gradient Border Effect */}
               <div className="relative p-1 bg-gradient-to-r from-secondary-500 via-purple-500 to-pink-500 rounded-3xl">
                 <div className="bg-white dark:bg-gray-800 rounded-3xl p-2 md:p-4 lg:p-8 xl:p-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 xl:gap-12 items-center">
-                    {/* Left Side - Content */}
                     <div className="text-center lg:text-left">
-                      {/* Badge */}
                       <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-600 text-white rounded-full text-sm font-semibold mb-6 animate-bounce">
                         <FaMobileAlt className="w-4 h-4" />
                         <span>Now Available on Play Store!</span>
@@ -810,7 +805,6 @@ const LandingPage = () => {
                         Take your learning on the go! Play quizzes anytime, anywhere with our beautiful mobile app. Compete with friends, track your progress, and win rewards.
                       </p>
 
-                      {/* Features List */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                         {[
                           { icon: FaBrain, text: "Level-based Quizzes" },
@@ -827,7 +821,6 @@ const LandingPage = () => {
                         ))}
                       </div>
 
-                      {/* Play Store Button */}
                       <a
                         href="https://play.google.com/store/apps/details?id=com.subgapp"
                         target="_blank"
@@ -842,7 +835,6 @@ const LandingPage = () => {
                         <FaDownload className="w-5 h-5 ml-2" />
                       </a>
 
-                      {/* Additional Info */}
                       <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
                         <span className="font-semibold text-primary-600 dark:text-primary-400">Free Download</span> •
                         <span className="mx-2">5+ Rating</span> •
@@ -850,24 +842,18 @@ const LandingPage = () => {
                       </p>
                     </div>
 
-                    {/* Right Side - Phone Mockup/Illustration */}
                     <div className="relative flex justify-center lg:justify-end">
                       <div className="relative w-64 h-96 md:w-72 md:h-[28rem] lg:w-80 lg:h-[32rem]">
-                        {/* Phone Frame */}
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-500">
                           <div className="w-full h-full bg-gray-900 rounded-[2.5rem] overflow-hidden relative">
-                            {/* Phone Screen Content */}
                             <div className="absolute inset-0 bg-gradient-to-br from-secondary-600 via-secondary-500 to-pink-600 p-6 flex flex-col items-center justify-center text-white">
-                              {/* App Logo/Icon */}
                               <div className="w-24 h-24 bg-white dark:bg-gray-800 rounded-3xl flex items-center justify-center mb-6 shadow-xl animate-bounce">
                                 <FaBrain className="w-12 h-12 text-secondary-600 dark:text-primary-500" />
                               </div>
 
-                              {/* App Name */}
                               <h3 className="text-2xl font-bold mb-2">AajExam</h3>
                               <p className="text-sm opacity-90 mb-8 text-center">Learn & Play Quiz</p>
 
-                              {/* Features Icons */}
                               <div className="grid grid-cols-2 gap-4 w-full">
                                 {[FaBrain, FaTrophy, FaChartLine, FaUsers].map((Icon, idx) => (
                                   <div key={idx} className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex items-center justify-center">
@@ -879,7 +865,6 @@ const LandingPage = () => {
                           </div>
                         </div>
 
-                        {/* Floating Icons Around Phone */}
                         <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
                           <FaStar className="w-8 h-8" />
                         </div>
@@ -897,6 +882,7 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+        */}
 
         {/* Prize & Rewards Section */}
         <section id="prizes" className="py-5 md:py-10 lg:py-20 relative overflow-hidden">

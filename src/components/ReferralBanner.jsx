@@ -15,8 +15,6 @@ const ReferralBanner = ({ user }) => {
     "Here's what you earn:\n\n" +
     `💰 ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the Pro ₹${config.SUBSCRIPTION_PLANS.PRO.price} subscription (first-time)\n\n` +
     `🎁 Your Referral Code: ${referralCode}\n\n` +
-    "📲 Download the App:\n\n" +
-    "https://play.google.com/store/apps/details?id=com.subgapp\n\n" +
     "🔗 Login / Register on Website:\n\n" +
     "https://aajexam.com/register";
 

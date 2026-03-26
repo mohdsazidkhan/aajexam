@@ -68,7 +68,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               </div>
               <div>
                 <h2 className="text-md lg:text-2xl font-bold">New Rewards System</h2>
-                <p className="text-secondary-100">Live on Web & Mobile App</p>
+                <p className="text-secondary-100">Live on Web</p>
               </div>
             </div>
             <button
@@ -176,7 +176,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </p>
           </div>
 
-          {/* Mobile App Section */}
+          {/* Mobile App Section - HIDDEN
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-700 rounded-xl p-4">
             <h3 className="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-2 flex items-center">
               <span className="text-xl mr-2">📱</span>
@@ -195,6 +195,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               Download from Play Store
             </a>
           </div>
+          */}
         </div>
 
         <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-b-2xl">

@@ -32,7 +32,6 @@ import {
   FaCheckCircle,
   FaShieldAlt,
   FaHeadset,
-  FaMobileAlt,
   FaDesktop,
   FaTabletAlt,
   FaFacebook,

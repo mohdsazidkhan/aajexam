@@ -30,27 +30,10 @@ const PayuSuccess = () => {
   const router = useRouter();
   const [verifying, setVerifying] = useState(true);
   const [verificationResult, setVerificationResult] = useState(null);
-  const [isFromMobileApp, setIsFromMobileApp] = useState(false);
+  // Removed mobile app source check for web-first experience
+  const [isFromMobileApp] = useState(false);
 
   useEffect(() => {
-    // Check if user came from mobile app
-    const checkMobileAppSource = () => {
-      if (typeof window !== 'undefined') {
-        const referrer = document.referrer;
-        const userAgent = navigator.userAgent;
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // Check if came from mobile app (various indicators)
-        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-        const hasAppReferrer = referrer.includes('subgapp://') || urlParams.get('source') === 'mobile';
-        const isInAppBrowser = /wv|WebView/i.test(userAgent);
-
-        setIsFromMobileApp(isMobile && (hasAppReferrer || isInAppBrowser));
-      }
-    };
-
-    checkMobileAppSource();
-
     const verifyPayment = async () => {
       try {
         // Get transaction ID from URL query params (sent by backend callback)
@@ -293,14 +276,7 @@ const PayuSuccess = () => {
                     View Subscription Details
                   </button>
 
-                  {isFromMobileApp && (
-                    <button
-                      onClick={() => window.location.href = 'subgapp://subscription/success'}
-                      className="w-full bg-secondary-600 hover:bg-secondary-700 text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
-                    >
-                      Return to Mobile App
-                    </button>
-                  )}
+                  {/* Mobile app return button removed */}
                 </div>
               </div>
             ) : (

@@ -31,27 +31,10 @@ const PayuFailure = () => {
   const [loading, setLoading] = useState(true);
   const [paymentData, setPaymentData] = useState(null);
   const [error, setError] = useState(null);
-  const [isFromMobileApp, setIsFromMobileApp] = useState(false);
+  // Removed mobile app source check for web-first experience
+  const [isFromMobileApp] = useState(false);
 
   useEffect(() => {
-    // Check if user came from mobile app
-    const checkMobileAppSource = () => {
-      if (typeof window !== 'undefined') {
-        const referrer = document.referrer;
-        const userAgent = navigator.userAgent;
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // Check if came from mobile app (various indicators)
-        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-        const hasAppReferrer = referrer.includes('subgapp://') || urlParams.get('source') === 'mobile';
-        const isInAppBrowser = /wv|WebView/i.test(userAgent);
-
-        setIsFromMobileApp(isMobile && (hasAppReferrer || isInAppBrowser));
-      }
-    };
-
-    checkMobileAppSource();
-
     const fetchPaymentData = async () => {
       try {
         // Get transaction ID from URL query params (sent by backend callback)
@@ -294,14 +277,7 @@ const PayuFailure = () => {
                   <span>Go to Home</span>
                 </button>
 
-                {isFromMobileApp && (
-                  <button
-                    onClick={() => window.location.href = 'subgapp://subscription/failure'}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
-                  >
-                    Return to Mobile App
-                  </button>
-                )}
+                {/* Mobile app return button removed */}
               </div>
 
               <div className="mt-8 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-200 dark:border-primary-700">

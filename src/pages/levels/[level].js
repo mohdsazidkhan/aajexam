@@ -39,7 +39,7 @@ export default function LevelPage({ level }) {
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content={`Level ${level.number}: ${level.name} - AajExam`} />
                 <meta property="og:description" content={level.metaDescription} />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}

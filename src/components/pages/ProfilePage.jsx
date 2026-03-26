@@ -647,9 +647,6 @@ const ProfilePage = () => {
     "Invite your friends to AajExam and earn real wallet rewards you can withdraw anytime! 🚀\n\n" +
     "Here's what you earn:\n\n" +
     `1️⃣ ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the Pro Plan (first-time)\n\n` +
-    `🎁 Your Referral Code: ${student?.referralCode}\n\n` +
-    "📲 Download the App:\n\n" +
-    "https://play.google.com/store/apps/details?id=com.subgapp\n\n" +
     "🔗 Login / Register on Website:\n\n" +
     "https://aajexam.com/register";
 

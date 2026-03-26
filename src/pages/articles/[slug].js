@@ -78,7 +78,7 @@ export async function getStaticProps({ params }) {
       return { notFound: true, revalidate: 60 };
     }
 
-    const fallbackSiteUrl = 'https://subgquiz.com';
+    const fallbackSiteUrl = 'https://aajexam.com';
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || fallbackSiteUrl;
     const titleBase = 'AajExam Platform';
     const title = `${article?.metaTitle || article?.title || 'Article'} - ${titleBase}`;
