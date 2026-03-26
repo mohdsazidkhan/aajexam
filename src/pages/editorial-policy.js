@@ -36,10 +36,10 @@ export default function EditorialPolicy() {
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaShieldAlt className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Editorial Policy
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ export default function EditorialPolicy() {
                         </div>
                         <div className="space-y-6">
                             <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
+                                <div className="w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Expert Content Development</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
@@ -101,7 +101,7 @@ export default function EditorialPolicy() {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">4</div>
+                                <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">4</div>
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Regular Updates</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
@@ -115,15 +115,15 @@ export default function EditorialPolicy() {
                     {/* Quality Standards */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
                                 <FaAward className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Quality Standards</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-blue-600 text-xl" />
+                                    <FaCheckCircle className="text-secondary-600 text-xl" />
                                     <h3 className="font-semibold text-gray-800 dark:text-white">Accuracy</h3>
                                 </div>
                                 <p className="text-gray-700 dark:text-gray-300">
@@ -151,9 +151,9 @@ export default function EditorialPolicy() {
                                 </p>
                             </div>
 
-                            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-yellow-600 text-xl" />
+                                    <FaCheckCircle className="text-secondary-600 text-xl" />
                                     <h3 className="font-semibold text-gray-800 dark:text-white">Difficulty Calibration</h3>
                                 </div>
                                 <p className="text-gray-700 dark:text-gray-300">
@@ -166,7 +166,7 @@ export default function EditorialPolicy() {
                     {/* User Feedback */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-secondary-500 rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>
@@ -201,7 +201,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Ethical Standards */}
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
+                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -230,7 +230,7 @@ export default function EditorialPolicy() {
 
                     {/* Contact */}
                     <div className="text-center">
-                        <div className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-800 dark:to-purple-800 rounded-3xl p-8">
+                        <div className="bg-gradient-to-r from-secondary-100 to-purple-100 dark:from-secondary-800 dark:to-purple-800 rounded-3xl p-8">
                             <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Questions About Our Editorial Policy?
                             </h2>

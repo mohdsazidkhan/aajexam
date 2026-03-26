@@ -171,9 +171,9 @@ const StudentNavbar = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search Quizzes, Categories, Subcategories, Exams, Users, Blogs, etc..."
                   className={`w-full px-4 py-2 pl-10 rounded-lg border transition-all duration-300 ${darkMode
-                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-red-500'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-red-500'
-                    } focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50`}
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-primary-500'
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-primary-500'
+                    } focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50`}
                 />
                 <FaSearch className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${darkMode ? 'text-gray-400' : 'text-gray-500'
                   }`} />
@@ -201,7 +201,7 @@ const StudentNavbar = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-300 ${darkMode
-                ? 'text-yellow-400 hover:bg-gray-700'
+                ? 'text-primary-400 hover:bg-gray-700'
                 : 'text-gray-700 hover:bg-gray-100'
                 }`}
               title={darkMode ? "Light Mode" : "Dark Mode"}
@@ -220,7 +220,7 @@ const StudentNavbar = () => {
                     }`}
                   title="Profile Menu"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
                     {user.profilePicture ? (
                       <img
                         src={user.profilePicture}
@@ -286,7 +286,7 @@ const StudentNavbar = () => {
                         <Link
                           href="/pro/wallet"
                           onClick={() => setShowProfileMenu(false)}
-                          className="text-[10px] text-blue-500 hover:underline"
+                          className="text-[10px] text-secondary-500 hover:underline"
                         >
                           Withdraw
                         </Link>
@@ -300,17 +300,17 @@ const StudentNavbar = () => {
                     <div className="px-4 py-2 space-y-2">
                       <div className="flex items-center justify-between text-xs font-semibold text-gray-500 uppercase tracking-wider">
                         <span>Comp. Rewards</span>
-                        <FaTrophy className="w-3 h-3 text-yellow-500" />
+                        <FaTrophy className="w-3 h-3 text-primary-500" />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className={`text-sm font-bold ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>
+                        <span className={`text-sm font-bold ${darkMode ? 'text-primary-400' : 'text-secondary-600'}`}>
                           ₹{walletInfo.claimableRewards.toLocaleString()}
                         </span>
                         <button
                           onClick={handleClaimRewards}
                           disabled={isClaiming || walletInfo.claimableRewards <= 0}
                           className={`text-[10px] px-2 py-1 rounded transition-colors ${isTopPerformer && walletInfo.claimableRewards > 0
-                            ? 'bg-yellow-500 hover:bg-yellow-600 text-white shadow-sm'
+                            ? 'bg-primary-500 hover:bg-primary-600 text-white shadow-sm'
                             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                             }`}
                         >
@@ -328,7 +328,7 @@ const StudentNavbar = () => {
                       }}
                       className={`w-full text-left px-4 py-2 text-sm transition-colors ${darkMode
                         ? 'text-red-400 hover:bg-gray-700'
-                        : 'text-red-600 hover:bg-gray-100'
+                        : 'text-primary-600 hover:bg-gray-100'
                         }`}
                     >
                       <div className="flex items-center space-x-2">
@@ -345,8 +345,8 @@ const StudentNavbar = () => {
                 <Link
                   href="/login"
                   className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${darkMode
-                    ? 'bg-red-600 hover:bg-red-700 text-white'
-                    : 'bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white'
+                    ? 'bg-primary-600 hover:bg-primary-700 text-white'
+                    : 'bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white'
                     }`}
                 >
                   Login

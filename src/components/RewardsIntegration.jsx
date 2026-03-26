@@ -64,19 +64,19 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
 
       {/* Quiz Progress */}
       {quizProgress && (
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">📚 Quiz Progress</h4>
+        <div className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-lg p-4">
+          <h4 className="font-semibold text-secondary-800 dark:text-secondary-300 mb-2">📚 Quiz Progress</h4>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-blue-700 dark:text-blue-300">
+            <span className="text-sm text-secondary-700 dark:text-secondary-300">
               {quizProgress.current} / {quizProgress.required} quizzes
             </span>
-            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+            <span className="text-sm font-medium text-secondary-700 dark:text-secondary-300">
               {Math.round(quizProgress.percentage)}%
             </span>
           </div>
-          <div className="w-full bg-blue-200 dark:bg-blue-800/40 rounded-full h-2">
+          <div className="w-full bg-secondary-200 dark:bg-secondary-800/40 rounded-full h-2">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-secondary-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${quizProgress.percentage}%` }}
             ></div>
           </div>
@@ -92,19 +92,19 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
 
       {/* Leaderboard Position */}
       {leaderboardPosition && leaderboardPosition <= 3 && (
-        <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-          <h4 className="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">
+        <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-lg p-4">
+          <h4 className="font-semibold text-primary-800 dark:text-primary-300 mb-2">
             🏆 Top {leaderboardPosition} Position!
           </h4>
 
           {rewardStatus === 'monthly' && (
-            <p className="text-sm text-yellow-700 dark:text-yellow-300">
+            <p className="text-sm text-primary-700 dark:text-primary-300">
               🏆 You're in Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS}! Maintain this position until month end to win from a dynamic prize pool (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO}).
             </p>
           )}
 
           {rewardStatus === 'unlocked' && (
-            <p className="text-sm text-yellow-700 dark:text-yellow-300">
+            <p className="text-sm text-primary-700 dark:text-primary-300">
               Your reward is unlocked and ready to claim!
             </p>
           )}
@@ -115,7 +115,7 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
       <div className="flex space-x-3">
         <button
           onClick={fetchRewards}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="bg-secondary-600 text-white px-4 py-2 rounded-lg hover:bg-secondary-700 transition-colors"
         >
           Refresh Rewards
         </button>

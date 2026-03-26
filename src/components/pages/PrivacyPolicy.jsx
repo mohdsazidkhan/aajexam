@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
             {/* Introduction */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center">
                   <FaInfoCircle className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -72,9 +72,9 @@ const PrivacyPolicy = () => {
                 </h2>
               </div>
               <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-blue-600 dark:text-blue-400" />
+                    <FaCheckCircle className="text-secondary-600 dark:text-secondary-400" />
                     Account Information
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Name, email, phone number, password (hashed), referral code.</p>
@@ -88,21 +88,21 @@ const PrivacyPolicy = () => {
                 </div>
                 <div className="bg-gradient-to-r from-purple-50 from-red-100 dark:from-purple-900/30 dark:from-red-800/30 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-orange-700 dark:text-yellow-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
                     Quiz Activity
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Quiz attempts, scores, timings, and related analytics used to calculate levels, leaderboard ranks, and rewards eligibility.</p>
                 </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-100 dark:from-yellow-900/30 dark:to-orange-800/30 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaGift className="text-orange-700 dark:text-yellow-400" />
+                    <FaGift className="text-primary-600 dark:text-primary-400" />
                     Rewards & Wallet
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Locked/unlocked/claimed rewards history, claimable balance, and monthly rewards processing status.</p>
                 </div>
                 <div className="bg-gradient-to-r from-red-50 to-pink-100 dark:from-red-900/30 dark:to-pink-800/30 rounded-xl p-4 border border-red-200 dark:border-red-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-red-600 dark:text-red-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-red-400" />
                     Bank/Withdrawal Details (Optional)
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">If you provide bank information for rewards withdrawal, we store it securely and use it only for payout verification and processing.</p>
@@ -114,9 +114,9 @@ const PrivacyPolicy = () => {
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Plan details and payment status handled via secure third‑party processors (e.g., PAYU). We do not store full card/UPI details.</p>
                 </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-indigo-100 dark:from-yellow-900/30 dark:to-indigo-800/30 rounded-xl p-4 border border-indigo-200 dark:border-indigo-700">
+                <div className="bg-gradient-to-r from-primary-50 to-indigo-100 dark:from-primary-900/30 dark:to-indigo-800/30 rounded-xl p-4 border border-indigo-200 dark:border-indigo-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-red-600 dark:text-red-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-red-400" />
                     Device/Log Data
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">IP, browser type, device information, timestamps, and limited logs for security and troubleshooting.</p>
@@ -127,7 +127,7 @@ const PrivacyPolicy = () => {
             {/* How We Use Your Information */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-2xl flex items-center justify-center">
                   <FaEye className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
                     To process rewards, including <strong>Daily, Weekly & Monthly Reward Systems</strong>:
                   </p>
                 </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700 ml-8">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700 ml-8">
                   <div className="space-y-2">
                     <p className="text-sm text-gray-700 dark:text-gray-300">
                       <strong>Daily & Weekly:</strong> Handled dynamically based on short-term leaderboard rankings.
@@ -176,7 +176,7 @@ const PrivacyPolicy = () => {
             {/* Sharing & Third-Party Services */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaUserShield className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -185,13 +185,13 @@ const PrivacyPolicy = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     <strong>Payments:</strong> We use trusted payment processors (e.g., PAYU) to handle subscription payments securely. Necessary transaction data is shared with them to complete payment processing.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     <strong>Email/SMS:</strong> We may use reputable communication providers to deliver OTPs, receipts, or important notifications.
                   </p>
@@ -238,15 +238,15 @@ const PrivacyPolicy = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Account, quiz, and rewards records are retained for service continuity, audits, and legal compliance.</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Bank details (if provided) are retained only as long as necessary for payouts and compliance, or until you request deletion (subject to legal requirements).</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Transaction logs are retained as required by applicable laws and platform security needs.</p>
                 </div>
               </div>
@@ -255,7 +255,7 @@ const PrivacyPolicy = () => {
             {/* Your Rights & Choices */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaCheckCircle className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -264,19 +264,19 @@ const PrivacyPolicy = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Access, update, or correct your profile information.</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Request deletion of optional data (e.g., bank details) where not legally required to retain.</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Export your data upon reasonable request.</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">Opt out of non‑essential communications.</p>
                 </div>
               </div>
@@ -285,7 +285,7 @@ const PrivacyPolicy = () => {
             {/* Cookies & Authentication */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaCookie className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -301,9 +301,9 @@ const PrivacyPolicy = () => {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                   <h3 className="font-semibold text-lg text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-orange-700 dark:text-yellow-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
                     Google AdSense & Advertising Cookies
                   </h3>
                   <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
@@ -329,7 +329,7 @@ const PrivacyPolicy = () => {
                           href="https://www.google.com/settings/ads"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-orange-700 dark:text-yellow-400 hover:underline font-semibold"
+                          className="text-primary-600 dark:text-primary-400 hover:underline font-semibold"
                         >
                           Google Ads Settings
                         </a>
@@ -340,7 +340,7 @@ const PrivacyPolicy = () => {
                           href="http://www.aboutads.info/choices/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-orange-700 dark:text-yellow-400 hover:underline font-semibold"
+                          className="text-primary-600 dark:text-primary-400 hover:underline font-semibold"
                         >
                           Digital Advertising Alliance
                         </a>
@@ -350,7 +350,7 @@ const PrivacyPolicy = () => {
                           href="http://www.youronlinechoices.eu/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-orange-700 dark:text-yellow-400 hover:underline font-semibold"
+                          className="text-primary-600 dark:text-primary-400 hover:underline font-semibold"
                         >
                           Your Online Choices
                         </a>
@@ -398,7 +398,7 @@ const PrivacyPolicy = () => {
             {/* Contact Us */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-2xl flex items-center justify-center">
                   <FaInfoCircle className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -424,7 +424,7 @@ const PrivacyPolicy = () => {
             </div>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaUserShield className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">No Data Sale</h3>
@@ -434,7 +434,7 @@ const PrivacyPolicy = () => {
             </div>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaCheckCircle className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Your Control</h3>

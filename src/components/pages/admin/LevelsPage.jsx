@@ -245,7 +245,7 @@ const LevelsPage = () => {
                 placeholder="Search levels..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
               />
             </div>
 
@@ -256,7 +256,7 @@ const LevelsPage = () => {
                 setFilterActive(e.target.value);
                 fetchLevels();
               }}
-              className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+              className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
             >
               <option value="all">All Levels</option>
               <option value="active">Active</option>
@@ -269,7 +269,7 @@ const LevelsPage = () => {
                 <button
                   onClick={() => setViewMode('table')}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 flex-1 sm:flex-none justify-center ${viewMode === 'table'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                   title="Table View"
@@ -280,7 +280,7 @@ const LevelsPage = () => {
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 flex-1 sm:flex-none justify-center ${viewMode === 'grid'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                   title="Grid View"
@@ -291,7 +291,7 @@ const LevelsPage = () => {
                 <button
                   onClick={() => setViewMode('list')}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 flex-1 sm:flex-none justify-center ${viewMode === 'list'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                   title="List View"
@@ -389,7 +389,7 @@ const LevelsPage = () => {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
                               ${level.requiredSubscription === 'free' ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200' : ''}
-                              ${level.requiredSubscription === 'pro' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : ''}
+                              ${level.requiredSubscription === 'pro' ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200' : ''}
                             `}>
                               {level.requiredSubscription}
                             </span>
@@ -406,13 +406,13 @@ const LevelsPage = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <button
                               onClick={() => openEditModal(level)}
-                              className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 mr-4"
+                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 mr-4"
                             >
                               <MdEdit className="inline text-xl" />
                             </button>
                             <button
                               onClick={() => setShowDeleteConfirm(level)}
-                              className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                             >
                               <MdDelete className="inline text-xl" />
                             </button>
@@ -473,7 +473,7 @@ const LevelsPage = () => {
                             <div className="text-xs text-gray-500 dark:text-gray-400">Subscription</div>
                             <span className={`px-2 py-1 inline-flex text-xs font-semibold rounded-full 
                               ${level.requiredSubscription === 'free' ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200' : ''}
-                              ${level.requiredSubscription === 'pro' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : ''}
+                              ${level.requiredSubscription === 'pro' ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200' : ''}
                             `}>
                               {level.requiredSubscription}
                             </span>
@@ -484,7 +484,7 @@ const LevelsPage = () => {
                         <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-gray-700">
                           <button
                             onClick={() => openEditModal(level)}
-                            className="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                            className="flex-1 px-3 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors text-sm font-medium flex items-center justify-center gap-2"
                           >
                             <MdEdit className="text-lg" />
                             <span>Edit</span>
@@ -544,7 +544,7 @@ const LevelsPage = () => {
                                   <span className="text-gray-500 dark:text-gray-400">Subscription:</span>
                                   <span className={`px-2 py-1 inline-flex text-xs font-semibold rounded-full 
                                     ${level.requiredSubscription === 'free' ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200' : ''}
-                                    ${level.requiredSubscription === 'pro' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : ''}
+                                    ${level.requiredSubscription === 'pro' ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200' : ''}
                                   `}>
                                     {level.requiredSubscription}
                                   </span>
@@ -557,7 +557,7 @@ const LevelsPage = () => {
                           <div className="flex items-center gap-2 flex-shrink-0 w-full lg:w-auto justify-end lg:justify-start">
                             <button
                               onClick={() => openEditModal(level)}
-                              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium flex items-center gap-2"
+                              className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors text-sm font-medium flex items-center gap-2"
                             >
                               <MdEdit className="text-lg" />
                               <span className="hidden sm:inline">Edit</span>
@@ -613,7 +613,7 @@ const LevelsPage = () => {
                           required
                           min="0"
                           max="100"
-                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                         />
                       </div>
 
@@ -627,7 +627,7 @@ const LevelsPage = () => {
                           value={formData.emoji}
                           onChange={handleInputChange}
                           placeholder="🎯"
-                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                         />
                       </div>
                     </div>
@@ -643,7 +643,7 @@ const LevelsPage = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="e.g., Starter, Rookie, Legend"
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                       />
                     </div>
 
@@ -658,7 +658,7 @@ const LevelsPage = () => {
                         required
                         rows="3"
                         placeholder="Describe this level..."
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                       />
                     </div>
 
@@ -674,7 +674,7 @@ const LevelsPage = () => {
                           onChange={handleInputChange}
                           required
                           min="0"
-                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                         />
                       </div>
 
@@ -686,7 +686,7 @@ const LevelsPage = () => {
                           name="requiredSubscription"
                           value={formData.requiredSubscription}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500"
                         >
                           <option value="free">Free</option>
                           <option value="basic">Basic</option>
@@ -706,7 +706,7 @@ const LevelsPage = () => {
                           name="color"
                           value={formData.color}
                           onChange={handleInputChange}
-                          className="w-full h-10 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-secondary-500"
                         />
                       </div>
 
@@ -717,7 +717,7 @@ const LevelsPage = () => {
                             name="isActive"
                             checked={formData.isActive}
                             onChange={handleInputChange}
-                            className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                            className="w-5 h-5 text-secondary-600 border-gray-300 rounded focus:ring-secondary-500"
                           />
                           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Active

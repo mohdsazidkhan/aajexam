@@ -308,7 +308,7 @@ const SettingsPage = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Profile Section */}
               <form onSubmit={saveProfile} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="bg-gradient-to-r from-yellow-500 to-orange-500 px-6 py-4">
+                <div className="bg-gradient-to-r from-primary-500 to-secondary-500 px-6 py-4">
                   <h2 className="text-md lg:text-xl font-semibold text-white flex items-center gap-2">
                     <span>👤</span> Profile Information
                   </h2>
@@ -317,15 +317,15 @@ const SettingsPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                      <input value={profile.name} onChange={(e) => setProfile(p => ({ ...p, name: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="Enter your name" />
+                      <input value={profile.name} onChange={(e) => setProfile(p => ({ ...p, name: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Enter your name" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                      <input type="email" value={profile.email} onChange={(e) => setProfile(p => ({ ...p, email: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="Enter your email" />
+                      <input type="email" value={profile.email} onChange={(e) => setProfile(p => ({ ...p, email: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Enter your email" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone</label>
-                      <input value={profile.phone} onChange={(e) => setProfile(p => ({ ...p, phone: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="Enter your phone" />
+                      <input value={profile.phone} onChange={(e) => setProfile(p => ({ ...p, phone: e.target.value }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Enter your phone" />
                     </div>
                   </div>
 
@@ -334,25 +334,25 @@ const SettingsPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Facebook</label>
-                        <input value={profile.socialLinks.facebook} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, facebook: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="https://facebook.com/yourusername" />
+                        <input value={profile.socialLinks.facebook} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, facebook: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="https://facebook.com/yourusername" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">X (Twitter)</label>
-                        <input value={profile.socialLinks.x} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, x: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="https://x.com/yourusername" />
+                        <input value={profile.socialLinks.x} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, x: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="https://x.com/yourusername" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Instagram</label>
-                        <input value={profile.socialLinks.instagram} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, instagram: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="https://instagram.com/yourusername" />
+                        <input value={profile.socialLinks.instagram} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, instagram: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="https://instagram.com/yourusername" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">YouTube</label>
-                        <input value={profile.socialLinks.youtube} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, youtube: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all" placeholder="https://youtube.com/yourusername" />
+                        <input value={profile.socialLinks.youtube} onChange={(e) => setProfile(p => ({ ...p, socialLinks: { ...p.socialLinks, youtube: e.target.value } }))} className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="https://youtube.com/yourusername" />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end">
-                  <button disabled={savingProfile} type="submit" className="w-full lg:w-auto px-6 py-3 rounded-lg bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                  <button disabled={savingProfile} type="submit" className="w-full lg:w-auto px-6 py-3 rounded-lg bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                     {savingProfile ? 'Updating...' : 'Update Profile'}
                   </button>
                 </div>
@@ -360,7 +360,7 @@ const SettingsPage = () => {
 
               {/* Change Password Section */}
               <form onSubmit={changePassword} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-4">
+                <div className="bg-gradient-to-r from-secondary-500 to-indigo-500 px-6 py-4">
                   <h2 className="text-md lg:text-xl font-semibold text-white flex items-center gap-2">
                     <FaLock className="text-white" />
                     Change Password
@@ -375,7 +375,7 @@ const SettingsPage = () => {
                           type={showPasswords.oldPassword ? 'text' : 'password'}
                           value={passwordData.oldPassword}
                           onChange={(e) => setPasswordData(p => ({ ...p, oldPassword: e.target.value }))}
-                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all"
                           placeholder="Enter your current password"
                         />
                         <button
@@ -394,7 +394,7 @@ const SettingsPage = () => {
                           type={showPasswords.newPassword ? 'text' : 'password'}
                           value={passwordData.newPassword}
                           onChange={(e) => setPasswordData(p => ({ ...p, newPassword: e.target.value }))}
-                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all"
                           placeholder="Enter new password (min 6 characters)"
                         />
                         <button
@@ -413,7 +413,7 @@ const SettingsPage = () => {
                           type={showPasswords.confirmPassword ? 'text' : 'password'}
                           value={passwordData.confirmPassword}
                           onChange={(e) => setPasswordData(p => ({ ...p, confirmPassword: e.target.value }))}
-                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                          className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 pr-10 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all"
                           placeholder="Confirm new password"
                         />
                         <button
@@ -428,7 +428,7 @@ const SettingsPage = () => {
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end">
-                  <button disabled={changingPassword} type="submit" className="w-full lg:w-auto px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                  <button disabled={changingPassword} type="submit" className="w-full lg:w-auto px-6 py-3 rounded-lg bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                     {changingPassword ? 'Changing...' : 'Change Password'}
                   </button>
                 </div>

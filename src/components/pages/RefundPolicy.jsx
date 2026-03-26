@@ -17,10 +17,10 @@ const RefundPolicy = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-4 lg:mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <FaMoneyBillWave className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 bg-clip-text text-transparent mb-4">
+            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-red-600 to-primary-700 bg-clip-text text-transparent mb-4">
               Refund & Subscription Policy
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -33,7 +33,7 @@ const RefundPolicy = () => {
             {/* Introduction */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center">
                   <FaInfoCircle className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -63,7 +63,7 @@ const RefundPolicy = () => {
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     Subscriptions provide access to content and features for a fixed duration. Access is not contingent on performance, leaderboard position, or rewards outcomes.
                   </p>
@@ -80,7 +80,7 @@ const RefundPolicy = () => {
             {/* Subscriptions */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaCreditCard className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -88,9 +88,9 @@ const RefundPolicy = () => {
                 </h2>
               </div>
               <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-blue-600 dark:text-blue-400" />
+                    <FaCheckCircle className="text-secondary-600 dark:text-secondary-400" />
                     Plan Access
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Each plan grants access to specific levels/features as shown on the subscription page.</p>
@@ -104,21 +104,21 @@ const RefundPolicy = () => {
                 </div>
                 <div className="bg-gradient-to-r from-purple-50 from-red-100 dark:from-purple-900/30 dark:from-red-800/30 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-orange-700 dark:text-yellow-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
                     Renewals
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">If auto‑renewal is enabled on your account or payment method, the plan may renew automatically at the then‑current price. You can disable renewal any time before the next billing date from your account or payment provider.</p>
                 </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-100 dark:from-yellow-900/30 dark:to-orange-800/30 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaCheckCircle className="text-orange-700 dark:text-yellow-400" />
+                    <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
                     Upgrades
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">If supported, upgrades may take effect immediately; the new plan price applies. No pro‑rated refunds for the remaining period of the previous plan.</p>
                 </div>
                 <div className="bg-gradient-to-r from-red-50 to-pink-100 dark:from-red-900/30 dark:to-pink-800/30 rounded-xl p-4 border border-red-200 dark:border-red-700">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                    <FaExclamationTriangle className="text-red-600 dark:text-red-400" />
+                    <FaExclamationTriangle className="text-primary-600 dark:text-red-400" />
                     Downgrades/Cancellations
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">Downgrades or cancellations apply from the next cycle. We do not provide partial/remaining‑period refunds.</p>
@@ -129,7 +129,7 @@ const RefundPolicy = () => {
             {/* Payments & Invoicing */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 from-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 from-red-500 rounded-2xl flex items-center justify-center">
                   <FaCreditCard className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -144,13 +144,13 @@ const RefundPolicy = () => {
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaExclamationTriangle className="text-orange-500 mt-1 flex-shrink-0" />
+                  <FaExclamationTriangle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     <strong>Failed/Declined Payments:</strong> If a payment fails or is declined, access to premium features may be paused until the payment is completed successfully.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaInfoCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaInfoCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     <strong>Taxes/Fees:</strong> Prices may be subject to applicable taxes/charges as per law.
                   </p>
@@ -185,7 +185,7 @@ const RefundPolicy = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+              <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                 <p className="text-sm text-gray-700 dark:text-gray-300">
                   To request a review, contact us within <strong>7 days</strong> of the transaction with order ID, payment proof, and account details. Approved cases (if any) are refunded to the original payment method within standard banking timelines.
                 </p>
@@ -195,7 +195,7 @@ const RefundPolicy = () => {
             {/* Challenge Rewards & Refunds */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaGift className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -209,19 +209,19 @@ const RefundPolicy = () => {
                     Daily, Weekly, and Monthly challenge rewards are <strong>not purchases</strong> and are <strong>not refundable</strong>. They are prizes based on performance, leaderboard position, and eligibility.
                   </p>
                 </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
                     <strong>Rewards System:</strong> Eligible users win from diverse dynamic prize pools. Eligibility is strictly based on performance during the specific challenge timeframe you are participating in.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     Challenge rewards are processed at the end of each respective period and stats reset. Previous period achievements do not carry forward.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaInfoCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                  <FaInfoCircle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     Withdrawals (if enabled) may require bank details/KYC verification to comply with regulations.
                   </p>
@@ -247,7 +247,7 @@ const RefundPolicy = () => {
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaExclamationTriangle className="text-orange-500 mt-1 flex-shrink-0" />
+                  <FaExclamationTriangle className="text-primary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     Filing a chargeback after successfully receiving plan access may result in account restrictions and recovery actions as per our Terms.
                   </p>
@@ -258,7 +258,7 @@ const RefundPolicy = () => {
             {/* Responsible Play & Eligibility */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-2xl flex items-center justify-center">
                   <FaShieldAlt className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -267,7 +267,7 @@ const RefundPolicy = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
+                  <FaCheckCircle className="text-secondary-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
                     AajExam is a <strong>skill‑based</strong> platform. There is no gambling or chance involved.
                   </p>
@@ -298,9 +298,9 @@ const RefundPolicy = () => {
           </div>
 
           {/* Important Notice */}
-          <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-orange-200 dark:border-orange-700 mb-8 lg:mb-12">
+          <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-primary-200 dark:border-primary-700 mb-8 lg:mb-12">
             <div className="flex items-start gap-4">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center flex-shrink-0">
                 <FaExclamationTriangle className="text-white text-xl" />
               </div>
               <div>
@@ -317,7 +317,7 @@ const RefundPolicy = () => {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8 lg:mb-12">
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaShieldAlt className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Secure Payments</h3>
@@ -327,7 +327,7 @@ const RefundPolicy = () => {
             </div>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaInfoCircle className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Clear Terms</h3>
@@ -349,7 +349,7 @@ const RefundPolicy = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-800 dark:to-red-800 rounded-3xl p-4 md:p-6 lg:p-8">
+            <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-800 dark:to-red-800 rounded-3xl p-4 md:p-6 lg:p-8">
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                 Need Help with Payments?
               </h2>
@@ -358,7 +358,7 @@ const RefundPolicy = () => {
               </p>
               <button
                 onClick={() => router.push('/')}
-                className="bg-white text-gray-700 dark:text-orange-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-gray-700 dark:text-primary-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 Contact Support
               </button>

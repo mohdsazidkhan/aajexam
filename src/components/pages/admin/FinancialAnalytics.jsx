@@ -414,7 +414,7 @@ const FinancialAnalytics = () => {
                     name="period"
                     value={filters.period}
                     onChange={handleFilterChange}
-                    className="border rounded-lg px-4 py-2 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="border rounded-lg px-4 py-2 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   >
                     <option value="today">Today</option>
                     <option value="yesterday">Yesterday</option>
@@ -455,15 +455,15 @@ const FinancialAnalytics = () => {
               },
               {
                 icon: (
-                  <FaChartLine className="w-6 h-6 text-orange-700 dark:text-white" />
+                  <FaChartLine className="w-6 h-6 text-primary-600 dark:text-white" />
                 ),
                 label: "Period Revenue",
                 value: `₹${(data.overview?.periodRevenue || 0).toLocaleString('en-IN')}`,
-                iconBg: "bg-yellow-100 dark:bg-yellow-600",
+                iconBg: "bg-primary-100 dark:bg-primary-600",
               },
               {
                 icon: (
-                  <FaChartPie className="w-6 h-6 text-red-600 dark:text-white" />
+                  <FaChartPie className="w-6 h-6 text-primary-600 dark:text-white" />
                 ),
                 label: "Active Plans",
                 value: data.subscriptionStats?.length || 0,
@@ -471,12 +471,12 @@ const FinancialAnalytics = () => {
               },
               {
                 icon: (
-                  <FaCreditCard className="w-6 h-6 text-orange-700 dark:text-white" />
+                  <FaCreditCard className="w-6 h-6 text-primary-600 dark:text-white" />
                 ),
                 label: "Total Payments",
                 value:
                   data.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0,
-                iconBg: "bg-yellow-100 dark:bg-yellow-600",
+                iconBg: "bg-primary-100 dark:bg-primary-600",
               },
             ].map((card, i) => (
               <div
@@ -581,12 +581,12 @@ const FinancialAnalytics = () => {
                       <td className="py-3 px-4 text-gray-900 dark:text-white">
                         <span
                           className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium ${i === 0
-                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+                            ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300"
                             : i === 1
                               ? "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300"
                               : i === 2
-                                ? "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300"
-                                : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+                                ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300"
+                                : "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300"
                             }`}
                         >
                           {i + 1}

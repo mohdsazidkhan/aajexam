@@ -292,13 +292,13 @@ const QuestionPage = () => {
                   <div className="flex items-center justify-end space-x-2">
                     <button
                       onClick={() => handleEdit(question)}
-                      className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                     >
                       <FaEdit className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDelete(question._id)}
-                      className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                      className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                     >
                       <FaTrash className="w-4 h-4" />
                     </button>
@@ -325,13 +325,13 @@ const QuestionPage = () => {
               <div className="flex space-x-2">
                 <button
                   onClick={() => handleEdit(question)}
-                  className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                 >
                   <FaEdit className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => handleDelete(question._id)}
-                  className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                 >
                   <FaTrash className="w-4 h-4" />
                 </button>
@@ -433,13 +433,13 @@ const QuestionPage = () => {
               <div className="flex items-center space-x-2 ml-0 md:ml-4">
                 <button
                   onClick={() => handleEdit(question)}
-                  className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-2 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-2 rounded-md hover:bg-secondary-50 dark:hover:bg-secondary-900/20"
                 >
                   <FaEdit className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => handleDelete(question._id)}
-                  className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
+                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
                 >
                   <FaTrash className="w-4 h-4" />
                 </button>
@@ -531,7 +531,7 @@ const QuestionPage = () => {
                           value={quiz}
                           onChange={(e) => setQuiz(e.target.value)}
                           required
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         >
                           <option value="">Select Quiz</option>
                           {quizzes.map((q) => (
@@ -551,7 +551,7 @@ const QuestionPage = () => {
                           onChange={(e) => setQuestionText(e.target.value)}
                           required
                           rows="3"
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                           placeholder="Enter your question..."
                         />
                       </div>
@@ -564,7 +564,7 @@ const QuestionPage = () => {
                           type="number"
                           value={timeLimit}
                           onChange={(e) => setTimeLimit(e.target.value)}
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                           placeholder="Optional time limit"
                         />
                       </div>
@@ -583,14 +583,14 @@ const QuestionPage = () => {
                               value={index}
                               checked={correctAnswerIndex === index}
                               onChange={(e) => setCorrectAnswerIndex(parseInt(e.target.value))}
-                              className="text-blue-600 focus:ring-blue-500"
+                              className="text-secondary-600 focus:ring-secondary-500"
                             />
                             <input
                               type="text"
                               value={option}
                               onChange={(e) => handleOptionChange(index, e.target.value)}
                               required
-                              className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                               placeholder={`Option ${String.fromCharCode(65 + index)}`}
                             />
                           </div>

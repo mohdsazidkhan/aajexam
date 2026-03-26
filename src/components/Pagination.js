@@ -73,7 +73,7 @@ const Pagination = ({
             onClick={() => typeof page === 'number' && onPageChange(page)}
             disabled={page === '...'}
             className={`px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 text-xs sm:text-lg md:text-base font-medium rounded-md transition-all duration-200 hover:scale-105 ${page === currentPage
-                ? 'bg-yellow-600 text-white border border-yellow-600 shadow-md'
+                ? 'bg-primary-600 text-white border border-primary-600 shadow-md'
                 : page === '...'
                   ? 'text-gray-400 cursor-default hover:scale-100'
                   : 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600'

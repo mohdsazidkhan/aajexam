@@ -144,10 +144,10 @@ const AdminWithdrawRequests = () => {
 
 	const getStatusColor = (status) => {
 		switch (status) {
-			case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900 dark:text-yellow-200';
+			case 'pending': return 'bg-primary-100 text-primary-800 border-primary-200 dark:bg-primary-900 dark:text-primary-200';
 			case 'approved': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-200';
 			case 'rejected': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900 dark:text-red-200';
-			case 'paid': return 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900 dark:text-blue-200';
+			case 'paid': return 'bg-secondary-100 text-secondary-800 border-secondary-200 dark:bg-secondary-900 dark:text-secondary-200';
 			default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900 dark:text-gray-200';
 		}
 	};
@@ -221,8 +221,8 @@ const AdminWithdrawRequests = () => {
 					</div>
 					<div className="flex items-center gap-2">
 						<span className={`px-2 py-0.5 rounded text-xs font-medium ${req.requestType === 'referral'
-							? 'bg-purple-100 text-yellow-800 border border-purple-200 dark:bg-purple-900 dark:text-yellow-200 dark:border-purple-800'
-							: 'bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-800'
+							? 'bg-purple-100 text-primary-800 border border-purple-200 dark:bg-purple-900 dark:text-primary-200 dark:border-purple-800'
+							: 'bg-secondary-100 text-secondary-800 border border-secondary-200 dark:bg-secondary-900 dark:text-secondary-200 dark:border-secondary-800'
 							}`}>
 							{req.requestType === 'referral' ? '🎁 Referral' : '👤 Pro User'}
 						</span>
@@ -275,7 +275,7 @@ const AdminWithdrawRequests = () => {
 						{formatCurrency(req.amount)}
 					</div>
 					{req.upi && (
-						<div className="text-xs text-orange-700 dark:text-yellow-400">
+						<div className="text-xs text-primary-600 dark:text-primary-400">
 							<div className="font-semibold">UPI ID</div>
 							<div className="font-mono">{req.upi}</div>
 						</div>
@@ -380,7 +380,7 @@ const AdminWithdrawRequests = () => {
 							<select
 								value={status}
 								onChange={(e) => { setPage(1); setStatus(e.target.value); }}
-								className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+								className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
 							>
 								<option value="all">All Requests</option>
 								<option value="pending">⏳ Pending</option>
@@ -450,8 +450,8 @@ const AdminWithdrawRequests = () => {
 											<div className="text-lg font-bold text-green-600 dark:text-green-400">₹{req.amount}</div>
 											<div className="flex items-center gap-2">
 												<span className={`px-2 py-0.5 rounded text-xs font-medium ${req.requestType === 'referral'
-													? 'bg-purple-100 text-yellow-800 border border-purple-200 dark:bg-purple-900 dark:text-yellow-200 dark:border-purple-800'
-													: 'bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-800'
+													? 'bg-purple-100 text-primary-800 border border-purple-200 dark:bg-purple-900 dark:text-primary-200 dark:border-purple-800'
+													: 'bg-secondary-100 text-secondary-800 border border-secondary-200 dark:bg-secondary-900 dark:text-secondary-200 dark:border-secondary-800'
 													}`}>
 													{req.requestType === 'referral' ? '🎁 Referral' : '👤 Pro User'}
 												</span>
@@ -471,9 +471,9 @@ const AdminWithdrawRequests = () => {
 										</div>
 
 										{req.bankDetail && (
-											<div className="mb-3 text-xs bg-blue-50 dark:bg-blue-900/30 p-2 rounded border border-blue-200 dark:border-blue-800">
-												<div className="font-semibold text-blue-700 dark:text-blue-300 mb-1">Bank Details</div>
-												<div className="text-blue-600 dark:text-blue-400 space-y-1">
+											<div className="mb-3 text-xs bg-secondary-50 dark:bg-secondary-900/30 p-2 rounded border border-secondary-200 dark:border-secondary-800">
+												<div className="font-semibold text-secondary-700 dark:text-secondary-300 mb-1">Bank Details</div>
+												<div className="text-secondary-600 dark:text-secondary-400 space-y-1">
 													<div>{req.bankDetail.accountHolderName}</div>
 													<div>{req.bankDetail.bankName}</div>
 													<div className="font-mono">{req.bankDetail.accountNumber}</div>
@@ -484,8 +484,8 @@ const AdminWithdrawRequests = () => {
 
 										{req.upi && (
 											<div className="mb-3 text-xs bg-purple-50 dark:bg-purple-900/30 p-2 rounded border border-purple-200 dark:border-purple-800">
-												<div className="font-semibold text-yellow-700 dark:text-yellow-300 mb-1">UPI ID</div>
-												<div className="text-orange-700 dark:text-yellow-400 font-mono">{req.upi}</div>
+												<div className="font-semibold text-primary-700 dark:text-primary-300 mb-1">UPI ID</div>
+												<div className="text-primary-600 dark:text-primary-400 font-mono">{req.upi}</div>
 											</div>
 										)}
 
@@ -496,7 +496,7 @@ const AdminWithdrawRequests = () => {
 											</div>
 										)}
 										{req.status === 'approved' && (
-											<button onClick={() => updateStatus(req._id, 'paid')} className="w-full px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs">💳 Mark as Paid</button>
+											<button onClick={() => updateStatus(req._id, 'paid')} className="w-full px-2 py-1 bg-secondary-600 hover:bg-secondary-700 text-white rounded text-xs">💳 Mark as Paid</button>
 										)}
 									</div>
 								))}
@@ -512,8 +512,8 @@ const AdminWithdrawRequests = () => {
 											<div className="text-lg font-bold text-green-600 dark:text-green-400">{formatCurrency(req.amount)}</div>
 											<div className="flex items-center gap-2">
 												<span className={`px-2 py-0.5 rounded text-xs font-medium ${req.requestType === 'referral'
-													? 'bg-purple-100 text-yellow-800 border border-purple-200 dark:bg-purple-900 dark:text-yellow-200 dark:border-purple-800'
-													: 'bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-800'
+													? 'bg-purple-100 text-primary-800 border border-purple-200 dark:bg-purple-900 dark:text-primary-200 dark:border-purple-800'
+													: 'bg-secondary-100 text-secondary-800 border border-secondary-200 dark:bg-secondary-900 dark:text-secondary-200 dark:border-secondary-800'
 													}`}>
 													{req.requestType === 'referral' ? '🎁 Referral' : '👤 Pro User'}
 												</span>
@@ -533,9 +533,9 @@ const AdminWithdrawRequests = () => {
 										</div>
 
 										{req.bankDetail && (
-											<div className="mb-3 text-xs bg-blue-50 dark:bg-blue-900/30 p-2 rounded border border-blue-200 dark:border-blue-800">
-												<div className="font-semibold text-blue-700 dark:text-blue-300 mb-1">Bank Details</div>
-												<div className="text-blue-600 dark:text-blue-400 space-y-1">
+											<div className="mb-3 text-xs bg-secondary-50 dark:bg-secondary-900/30 p-2 rounded border border-secondary-200 dark:border-secondary-800">
+												<div className="font-semibold text-secondary-700 dark:text-secondary-300 mb-1">Bank Details</div>
+												<div className="text-secondary-600 dark:text-secondary-400 space-y-1">
 													<div>{req.bankDetail.accountHolderName}</div>
 													<div>{req.bankDetail.bankName}</div>
 													<div className="font-mono">{req.bankDetail.accountNumber}</div>
@@ -546,8 +546,8 @@ const AdminWithdrawRequests = () => {
 
 										{req.upi && (
 											<div className="mb-3 text-xs bg-purple-50 dark:bg-purple-900/30 p-2 rounded border border-purple-200 dark:border-purple-800">
-												<div className="font-semibold text-yellow-700 dark:text-yellow-300 mb-1">UPI ID</div>
-												<div className="text-orange-700 dark:text-yellow-400 font-mono">{req.upi}</div>
+												<div className="font-semibold text-primary-700 dark:text-primary-300 mb-1">UPI ID</div>
+												<div className="text-primary-600 dark:text-primary-400 font-mono">{req.upi}</div>
 											</div>
 										)}
 
@@ -558,7 +558,7 @@ const AdminWithdrawRequests = () => {
 											</div>
 										)}
 										{req.status === 'approved' && (
-											<button onClick={() => updateStatus(req._id, 'paid')} className="w-full px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs">💳 Mark as Paid</button>
+											<button onClick={() => updateStatus(req._id, 'paid')} className="w-full px-2 py-1 bg-secondary-600 hover:bg-secondary-700 text-white rounded text-xs">💳 Mark as Paid</button>
 										)}
 									</div>
 								))}

@@ -58,7 +58,7 @@ const PublicQuestionsList = ({ items = [], onAnswer, onLike, onShare, onView, st
                 {user.profilePicture ? (
                   <img src={user.profilePicture} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-500 to-red-500 text-white flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white flex items-center justify-center font-bold">
                     {getInitials(user.name)}
                   </div>
                 )}
@@ -72,7 +72,7 @@ const PublicQuestionsList = ({ items = [], onAnswer, onLike, onShare, onView, st
                   {user.username && (
                     <button
 
-                      className="text-xs font-semibold text-orange-700 dark:text-yellow-400 hover:underline cursor-pointer"
+                      className="text-xs font-semibold text-primary-600 dark:text-primary-400 hover:underline cursor-pointer"
                     >
                       @{user.username}
                     </button>
@@ -84,7 +84,7 @@ const PublicQuestionsList = ({ items = [], onAnswer, onLike, onShare, onView, st
             </div>
 
             <div className="mt-3 text-base font-medium text-gray-900 dark:text-white">
-              <span className="text-orange-700 dark:text-yellow-500 font-bold mr-2">#{serialNumber}.</span>
+              <span className="text-primary-600 dark:text-primary-500 font-bold mr-2">#{serialNumber}.</span>
               {row.questionText}
             </div>
 
@@ -118,15 +118,15 @@ const PublicQuestionsList = ({ items = [], onAnswer, onLike, onShare, onView, st
                   borderColor = 'border-green-600';
                   textColor = 'text-white';
                 } else if (isSelected) {
-                  backgroundColor = 'bg-blue-50 dark:bg-blue-900/20';
-                  borderColor = 'border-blue-500';
-                  textColor = 'text-blue-700 dark:text-blue-300';
+                  backgroundColor = 'bg-secondary-50 dark:bg-secondary-900/20';
+                  borderColor = 'border-secondary-500';
+                  textColor = 'text-secondary-700 dark:text-secondary-300';
                 }
 
                 if (answered && !isSelected && !isCorrect) {
                   buttonClasses += ' opacity-60 cursor-not-allowed';
                 } else if (!answered) {
-                  buttonClasses += ' hover:bg-blue-50 dark:hover:bg-gray-700';
+                  buttonClasses += ' hover:bg-secondary-50 dark:hover:bg-gray-700';
                 }
 
                 return (
@@ -152,10 +152,10 @@ const PublicQuestionsList = ({ items = [], onAnswer, onLike, onShare, onView, st
             </div>
 
             <div className="mt-3 flex justify-between items-center gap-4">
-              <button onClick={() => onLike(row)} className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-red-600">
+              <button onClick={() => onLike(row)} className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary-600">
                 <FaHeart /> <span className="text-sm">{row.likesCount || 0}</span>
               </button>
-              <button onClick={() => onShare(row)} className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-blue-600">
+              <button onClick={() => onShare(row)} className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-secondary-600">
                 <FaShareAlt /> <span className="text-sm">{row.sharesCount || 0}</span>
               </button>
               <div className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300">

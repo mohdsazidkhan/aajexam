@@ -211,7 +211,7 @@ const AdminGovtExams = () => {
                 onChange={(e) => {
                   handleCategoryChange(e.target.value);
                 }}
-                className="w-full md:w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full md:w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
               >
                 <option value="all">All Categories</option>
                 {categories.map(cat => (
@@ -296,19 +296,19 @@ const AdminGovtExams = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <Link
                               href={`/admin/govt-exams/patterns?examId=${exam._id}`}
-                              className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                              className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                             >
                               Patterns
                             </Link>
                             <button
                               onClick={() => handleEdit(exam)}
-                              className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDelete(exam._id)}
-                              className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                             >
                               Delete
                             </button>
@@ -356,20 +356,20 @@ const AdminGovtExams = () => {
                         <div className="flex items-center gap-2 ml-4 flex-col sm:flex-row">
                           <Link
                             href={`/admin/govt-exams/patterns?examId=${exam._id}`}
-                            className="px-3 py-2 text-sm text-orange-700 dark:text-yellow-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
+                            className="px-3 py-2 text-sm text-primary-600 dark:text-primary-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
                           >
                             Patterns
                           </Link>
                           <button
                             onClick={() => handleEdit(exam)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FaEdit />
                           </button>
                           <button
                             onClick={() => handleDelete(exam._id)}
-                            className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             title="Delete"
                           >
                             <FaTrash />
@@ -414,19 +414,19 @@ const AdminGovtExams = () => {
                       <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <Link
                           href={`/admin/govt-exams/patterns?examId=${exam._id}`}
-                          className="flex-1 px-3 py-2 text-sm bg-purple-50 dark:bg-purple-900/20 text-orange-700 dark:text-yellow-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-center"
+                          className="flex-1 px-3 py-2 text-sm bg-purple-50 dark:bg-purple-900/20 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-center"
                         >
                           Patterns
                         </Link>
                         <button
                           onClick={() => handleEdit(exam)}
-                          className="px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                          className="px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
                         >
                           <FaEdit />
                         </button>
                         <button
                           onClick={() => handleDelete(exam._id)}
-                          className="px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+                          className="px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
                         >
                           <FaTrash />
                         </button>
@@ -455,7 +455,7 @@ const AdminGovtExams = () => {
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   required
                 >
                   <option value="">Select Category</option>
@@ -475,7 +475,7 @@ const AdminGovtExams = () => {
                   type="text"
                   value={formData.code}
                   onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   placeholder="e.g., SSC, UPSC, IBPS"
                   required
                 />
@@ -489,7 +489,7 @@ const AdminGovtExams = () => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   placeholder="e.g., Staff Selection Commission"
                   required
                 />
@@ -503,7 +503,7 @@ const AdminGovtExams = () => {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows="3"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   placeholder="Brief description of the exam"
                 />
               </div>
@@ -516,7 +516,7 @@ const AdminGovtExams = () => {
                   type="text"
                   value={formData.logo}
                   onChange={(e) => setFormData({ ...formData, logo: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   placeholder="https://example.com/logo.png"
                 />
               </div>
@@ -527,7 +527,7 @@ const AdminGovtExams = () => {
                     type="checkbox"
                     checked={formData.isActive}
                     onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className="w-4 h-4 text-secondary-600 border-gray-300 rounded focus:ring-secondary-500"
                   />
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Active

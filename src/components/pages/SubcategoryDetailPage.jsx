@@ -117,19 +117,19 @@ const SubcategoryDetailPage = () => {
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
         {/* Hero Section with Subcategory Name and Description */}
         {subcategory && (
-          <div className="bg-gradient-to-r from-yellow-800 via-orange-800 to-red-800 text-white py-6 lg:py-12 px-4 lg:px-6 shadow-2xl">
+          <div className="bg-gradient-to-r from-primary-800 via-primary-800 to-red-800 text-white py-6 lg:py-12 px-4 lg:px-6 shadow-2xl">
             <div className="max-w-5xl mx-auto text-center">
               <div className="mb-4">
                 <h1 className="text-2xl sm:text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">
                   {subcategory.name}
                 </h1>
                 {subcategory.category && (
-                  <p className="text-md lg:text-xl text-yellow-100 mb-3 max-w-2xl mx-auto">
+                  <p className="text-md lg:text-xl text-primary-100 mb-3 max-w-2xl mx-auto">
                     Category: <span className="font-semibold">{subcategory.category.name}</span>
                   </p>
                 )}
                 {subcategory.description && (
-                  <p className="text-sm lg:text-xl text-yellow-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
+                  <p className="text-sm lg:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
                     {subcategory.description}
                   </p>
                 )}
@@ -152,7 +152,7 @@ const SubcategoryDetailPage = () => {
               <Loading size="lg" color="gray" message="Loading quizzes..." />
             </div>
           ) : error ? (
-            <div className="text-center text-red-600 font-semibold py-10">{error}</div>
+            <div className="text-center text-primary-600 font-semibold py-10">{error}</div>
           ) : quizzes.length === 0 ? (
             <div className="text-center text-gray-500 font-medium py-10">No quizzes found for this subcategory.</div>
           ) : (
@@ -164,7 +164,7 @@ const SubcategoryDetailPage = () => {
                 </h2>
                 <button
                   onClick={() => router.back()}
-                  className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-2xl hover:from-yellow-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                  className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
                 >
                   <FaArrowLeft />
                   <span>Go Back</span>
@@ -172,22 +172,22 @@ const SubcategoryDetailPage = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-8 mb-2 md:mb-4 lg:mb-6 xl:mb-8">
                 {quizzes.map((quiz) => (
-                  <div key={quiz._id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 lg:p-6 border-2 border-yellow-400 hover:border-red-500 cursor-pointer flex flex-col justify-between">
+                  <div key={quiz._id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 lg:p-6 border-2 border-primary-400 hover:border-red-500 cursor-pointer flex flex-col justify-between">
                     <div>
                       <h2 className="tex-md lg:text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                        {quiz.title} {quiz.isRecommended && <FaStar className="text-yellow-400" />}
+                        {quiz.title} {quiz.isRecommended && <FaStar className="text-primary-400" />}
                       </h2>
                       {quiz.description && <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">{quiz.description}</p>}
                       <div className="flex flex-wrap gap-3 text-xs text-gray-600 dark:text-gray-400 mb-2">
                         <span className="flex items-center gap-1"><FaClock /> {quiz.timeLimit || 30} min</span>
                         <span className="flex items-center gap-1"><FaQuestionCircle /> {quiz.totalMarks || 'Variable'} Qs</span>
                         <span className="flex items-center gap-1"><FaLayerGroup /> Level {quiz.requiredLevel}</span>
-                        {quiz.difficulty && <span className="px-2 py-1 rounded-full bg-yellow-100 text-yellow-700 font-semibold">{quiz.difficulty}</span>}
+                        {quiz.difficulty && <span className="px-2 py-1 rounded-full bg-primary-100 text-primary-700 font-semibold">{quiz.difficulty}</span>}
                       </div>
                     </div>
                     <button
                       onClick={() => handleQuizClick(quiz._id)}
-                      className="mt-4 w-full bg-gradient-to-r from-yellow-500 to-red-500 hover:from-red-500 hover:to-yellow-500 text-white font-semibold py-2 rounded-xl transition-all duration-300 shadow-md text-center"
+                      className="mt-4 w-full bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-red-500 hover:to-primary-500 text-white font-semibold py-2 rounded-xl transition-all duration-300 shadow-md text-center"
                     >
                       Start Quiz
                     </button>
@@ -199,7 +199,7 @@ const SubcategoryDetailPage = () => {
               <div className="flex justify-center gap-2 mt-4">
                 <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold disabled:opacity-50">Prev</button>
                 {[...Array(totalPages)].map((_, idx) => (
-                  <button key={idx} onClick={() => setPage(idx + 1)} className={`px-4 py-2 rounded-lg font-semibold ${page === idx + 1 ? 'bg-yellow-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'}`}>{idx + 1}</button>
+                  <button key={idx} onClick={() => setPage(idx + 1)} className={`px-4 py-2 rounded-lg font-semibold ${page === idx + 1 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'}`}>{idx + 1}</button>
                 ))}
                 <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold disabled:opacity-50">Next</button>
               </div>

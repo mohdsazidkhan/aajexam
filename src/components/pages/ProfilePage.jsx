@@ -657,8 +657,8 @@ const ProfilePage = () => {
     return (
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-4xl mb-4">⚠️</div>
-          <p className="text-red-600 text-xl">{error}</p>
+          <div className="text-primary-600 text-4xl mb-4">⚠️</div>
+          <p className="text-primary-600 text-xl">{error}</p>
         </div>
       </div>
     );
@@ -683,7 +683,7 @@ const ProfilePage = () => {
             {/* Profile Header */}
             <div className="bg-white dark:bg-gray-800 rounded-t-none rounded-b-2xl">
               {/* Cover Photo Area */}
-              <div className="h-20 lg:h-32 bg-gradient-to-r from-red-800 to-yellow-800 relative">
+              <div className="h-20 lg:h-32 bg-gradient-to-r from-red-800 to-primary-800 relative">
                 <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-gray-800 to-transparent"></div>
               </div>
 
@@ -697,16 +697,16 @@ const ProfilePage = () => {
                   <div className="ml-4 flex-1">
                     <h1 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white">{student?.name || 'User'}</h1>
                     {student?.username && (
-                      <p className="text-sm font-semibold text-orange-700 dark:text-yellow-400">@{student.username}</p>
+                      <p className="text-sm font-semibold text-primary-600 dark:text-primary-400">@{student.username}</p>
                     )}
                     <p className="text-s">
                       <strong className="text-green-600 dark:text-green-400">{"Level "}{student?.level?.currentLevel || ''}{" - "}</strong>
-                      <strong className="text-blue-600 dark:text-blue-400">{student?.levelInfo?.currentLevel?.name || 'Level 0'}</strong>
+                      <strong className="text-secondary-600 dark:text-secondary-400">{student?.levelInfo?.currentLevel?.name || 'Level 0'}</strong>
                     </p>
                   </div>
                   <button
                     onClick={handleEditProfile}
-                    className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                    className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
                     <div className='flex justify-between items-center gap-2'><span><FaPencilAlt /></span> <span>Edit</span></div>
                   </button>
@@ -725,7 +725,7 @@ const ProfilePage = () => {
                         <FaUserGraduate className="text-green-600 dark:text-green-400" />
                         Profile Completion
                       </h3>
-                      <span className={`text-md lg:text-2xl font-bold ${profileCompletion.percentage === 100 ? 'text-green-600 dark:text-green-400' : 'text-orange-700 dark:text-orange-400'}`}>
+                      <span className={`text-md lg:text-2xl font-bold ${profileCompletion.percentage === 100 ? 'text-green-600 dark:text-green-400' : 'text-primary-600 dark:text-primary-600'}`}>
                         {profileCompletion.percentage === 100 ? 'Completed ✅' : `${profileCompletion.percentage}%`}
                       </span>
                     </div>
@@ -735,7 +735,7 @@ const ProfilePage = () => {
                       <div
                         className={`h-3 rounded-full transition-all duration-500 ease-in-out ${profileCompletion.percentage === 100
                           ? 'bg-gradient-to-r from-green-500 to-emerald-600'
-                          : 'bg-gradient-to-r from-orange-500 to-yellow-500'
+                          : 'bg-gradient-to-r from-primary-500 to-primary-500'
                           }`}
                         style={{ width: `${profileCompletion.percentage}%` }}
                       ></div>
@@ -794,13 +794,13 @@ const ProfilePage = () => {
                     <div className="flex items-center gap-4">
                       <button
                         onClick={() => router.push(`/profile/${student.username}/followers`)}
-                        className="text-sm text-gray-700 dark:text-gray-300 hover:text-orange-700 dark:hover:text-yellow-400 transition-colors"
+                        className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
                         <span className="font-bold">{student?.followersCount || 0}</span> Followers
                       </button>
                       <button
                         onClick={() => router.push(`/profile/${student.username}/following`)}
-                        className="text-sm text-gray-700 dark:text-gray-300 hover:text-orange-700 dark:hover:text-yellow-400 transition-colors"
+                        className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
                         <span className="font-bold">{student?.followingCount || 0}</span> Following
                       </button>
@@ -900,7 +900,7 @@ const ProfilePage = () => {
                     {/* Subscription Status */}
                     <div className="flex items-center justify-between space-x-4">
                       <div className="flex items-center space-x-3">
-                        <FaCrown className="text-yellow-500 text-lg" />
+                        <FaCrown className="text-primary-500 text-lg" />
                         <div>
                           <p className="text-sm text-gray-600 dark:text-gray-400">Subscription</p>
                           {(() => {
@@ -961,7 +961,7 @@ const ProfilePage = () => {
                             rel="noopener noreferrer"
                             className="flex items-center space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                           >
-                            <FaFacebookF className="text-blue-600 text-lg" />
+                            <FaFacebookF className="text-secondary-600 text-lg" />
                             <div className="flex-1">
                               <p className="text-sm font-medium text-gray-900 dark:text-white">Facebook</p>
                               <p className="text-xs text-gray-500 dark:text-gray-400 truncate">@{extractUsername(student.socialLinks.facebook, 'facebook')}</p>
@@ -991,7 +991,7 @@ const ProfilePage = () => {
                             rel="noopener noreferrer"
                             className="flex items-center space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                           >
-                            <FaYoutube className="text-red-600 text-lg" />
+                            <FaYoutube className="text-primary-600 text-lg" />
                             <div className="flex-1">
                               <p className="text-sm font-medium text-gray-900 dark:text-white">YouTube</p>
                               <p className="text-xs text-gray-500 dark:text-gray-400 truncate">@{extractUsername(student.socialLinks.youtube, 'youtube')}</p>
@@ -1007,9 +1007,9 @@ const ProfilePage = () => {
               {/* Subscription Details */}
               {student.subscription?.isActive && (
                 <>
-                  <div className="bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 rounded-2xl p-3 lg:p-6 border border-yellow-200 dark:border-yellow-700">
+                  <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                         <FaStar className="text-white text-xl" />
                       </div>
                       <div>
@@ -1054,7 +1054,7 @@ const ProfilePage = () => {
                         name="name"
                         value={editProfileData.name}
                         onChange={handleEditProfileChange}
-                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.name
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.name
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600'
                           }`}
@@ -1075,7 +1075,7 @@ const ProfilePage = () => {
                         name="email"
                         value={editProfileData.email}
                         onChange={handleEditProfileChange}
-                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.email
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.email
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600'
                           }`}
@@ -1096,7 +1096,7 @@ const ProfilePage = () => {
                         name="phone"
                         value={editProfileData.phone}
                         onChange={handleEditProfileChange}
-                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.phone
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.phone
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600'
                           }`}
@@ -1117,7 +1117,7 @@ const ProfilePage = () => {
                         name="username"
                         value={editProfileData.username}
                         onChange={handleEditProfileChange}
-                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.username
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors.username
                           ? 'border-red-500 focus:ring-red-500'
                           : usernameValidation.isAvailable === true
                             ? 'border-green-500 focus:ring-green-500'
@@ -1130,7 +1130,7 @@ const ProfilePage = () => {
 
                       {/* Username validation messages */}
                       {usernameValidation.isChecking && (
-                        <p className="text-blue-500 text-xs mt-1">Checking username availability...</p>
+                        <p className="text-secondary-500 text-xs mt-1">Checking username availability...</p>
                       )}
 
                       {!usernameValidation.isChecking && usernameValidation.message && (
@@ -1154,7 +1154,7 @@ const ProfilePage = () => {
                                 key={index}
                                 type="button"
                                 onClick={() => setEditProfileData({ ...editProfileData, username: suggestion })}
-                                className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                                className="text-xs bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 px-2 py-1 rounded hover:bg-secondary-200 dark:hover:bg-secondary-800 transition-colors"
                               >
                                 {suggestion}
                               </button>
@@ -1185,7 +1185,7 @@ const ProfilePage = () => {
                             name="socialLinks.instagram"
                             value={editProfileData.socialLinks.instagram}
                             onChange={handleEditProfileChange}
-                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.instagram']
+                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.instagram']
                               ? 'border-red-500 focus:ring-red-500'
                               : 'border-gray-300 dark:border-gray-600'
                               }`}
@@ -1200,7 +1200,7 @@ const ProfilePage = () => {
                         <div>
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             <span className="flex items-center space-x-2">
-                              <FaFacebookF className="text-blue-600" />
+                              <FaFacebookF className="text-secondary-600" />
                               <span>Facebook</span>
                             </span>
                           </label>
@@ -1209,7 +1209,7 @@ const ProfilePage = () => {
                             name="socialLinks.facebook"
                             value={editProfileData.socialLinks.facebook}
                             onChange={handleEditProfileChange}
-                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.facebook']
+                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.facebook']
                               ? 'border-red-500 focus:ring-red-500'
                               : 'border-gray-300 dark:border-gray-600'
                               }`}
@@ -1233,7 +1233,7 @@ const ProfilePage = () => {
                             name="socialLinks.x"
                             value={editProfileData.socialLinks.x}
                             onChange={handleEditProfileChange}
-                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.x']
+                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.x']
                               ? 'border-red-500 focus:ring-red-500'
                               : 'border-gray-300 dark:border-gray-600'
                               }`}
@@ -1248,7 +1248,7 @@ const ProfilePage = () => {
                         <div>
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             <span className="flex items-center space-x-2">
-                              <FaYoutube className="text-red-600" />
+                              <FaYoutube className="text-primary-600" />
                               <span>YouTube</span>
                             </span>
                           </label>
@@ -1257,7 +1257,7 @@ const ProfilePage = () => {
                             name="socialLinks.youtube"
                             value={editProfileData.socialLinks.youtube}
                             onChange={handleEditProfileChange}
-                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.youtube']
+                            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 ${editProfileErrors['socialLinks.youtube']
                               ? 'border-red-500 focus:ring-red-500'
                               : 'border-gray-300 dark:border-gray-600'
                               }`}
@@ -1275,7 +1275,7 @@ const ProfilePage = () => {
                       <button
                         type="submit"
                         disabled={isUpdatingProfile}
-                        className="flex-1 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white py-2 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                        className="flex-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white py-2 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                       >
                         {isUpdatingProfile ? (
                           <>
@@ -1337,8 +1337,8 @@ const ProfilePage = () => {
                   <div className="text-xl lg:text-2xl font-bold text-purple-600 dark:text-purple-400">{weeklyWins} / {weeklyAttempts}</div>
                   <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">Weekly Wins</div>
                 </div>
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-xl border border-yellow-100 dark:border-yellow-800">
-                  <div className="text-xl lg:text-2xl font-bold text-yellow-600 dark:text-yellow-400">{highScoreQuizzes} / {monthlyAttempts}</div>
+                <div className="bg-primary-50 dark:bg-primary-900/20 p-3 rounded-xl border border-primary-100 dark:border-primary-800">
+                  <div className="text-xl lg:text-2xl font-bold text-secondary-600 dark:text-primary-400">{highScoreQuizzes} / {monthlyAttempts}</div>
                   <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">Monthly Wins</div>
                 </div>
               </div>
@@ -1363,7 +1363,7 @@ const ProfilePage = () => {
 
           <div className="features-section bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-2 lg:p-8 border border-white/30 hover-lift mt-4 mx-3 lg:mx-0">
             <div className="flex items-center space-x-4 mb-8">
-              <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-green-500 via-blue-500 from-red-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+              <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-green-500 via-secondary-500 from-red-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                 <FaPlus className="text-white text-3xl" />
               </div>
               <div>
@@ -1380,10 +1380,10 @@ const ProfilePage = () => {
               {/* Create Question */}
               <div
                 onClick={() => handleCreateAction('/pro/questions/new', 'create questions')}
-                className="group cursor-pointer bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-4 lg:p-6 border border-green-200 dark:border-green-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                className="group cursor-pointer bg-gradient-to-br from-green-50 to-secondary-50 dark:from-green-900/20 dark:to-secondary-900/20 rounded-2xl p-4 lg:p-6 border border-green-200 dark:border-green-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-green-500 to-secondary-500 rounded-xl flex items-center justify-center">
                     <FaStickyNote className="text-white text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -1394,7 +1394,7 @@ const ProfilePage = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                   Create and submit quality questions to help the community
                 </p>
-                <p className="text-blue-600 dark:text-blue-400 text-xs font-medium mb-4">
+                <p className="text-secondary-600 dark:text-secondary-400 text-xs font-medium mb-4">
                   📅 You Can Add Max 100 Questions Per Month
                 </p>
                 <div className="flex items-center text-green-600 dark:text-green-400 text-sm font-medium">
@@ -1406,10 +1406,10 @@ const ProfilePage = () => {
               {/* My Questions */}
               <div
                 onClick={() => router.push('/pro/questions/mine')}
-                className="group cursor-pointer bg-gradient-to-br from-blue-50 from-red-50 dark:from-blue-900/20 dark:from-red-900/20 rounded-2xl p-4 lg:p-6 border border-blue-200 dark:border-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                className="group cursor-pointer bg-gradient-to-br from-secondary-50 from-red-50 dark:from-secondary-900/20 dark:from-red-900/20 rounded-2xl p-4 lg:p-6 border border-secondary-200 dark:border-secondary-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                     <FaSearch className="text-white text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -1420,7 +1420,7 @@ const ProfilePage = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
                   Track your submitted questions and their status
                 </p>
-                <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
+                <div className="flex items-center text-secondary-600 dark:text-secondary-400 text-sm font-medium">
                   <span>View Questions</span>
                   <FaArrowRight className="ml-2 text-xs" />
                 </div>
@@ -1429,10 +1429,10 @@ const ProfilePage = () => {
               {/* Wallet */}
               <div
                 onClick={() => router.push('/pro/wallet')}
-                className="group cursor-pointer bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-4 lg:p-6 border border-yellow-200 dark:border-yellow-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                className="group cursor-pointer bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-2xl p-4 lg:p-6 border border-primary-200 dark:border-primary-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
                     <FaMoneyBill className="text-white text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -1443,7 +1443,7 @@ const ProfilePage = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
                   Check your earnings and withdraw funds
                 </p>
-                <div className="flex items-center text-orange-700 dark:text-yellow-400 text-sm font-medium">
+                <div className="flex items-center text-primary-600 dark:text-primary-400 text-sm font-medium">
                   <span>View Wallet</span>
                   <FaArrowRight className="ml-2 text-xs" />
                 </div>
@@ -1452,10 +1452,10 @@ const ProfilePage = () => {
               {/* Create Quiz */}
               <div
                 onClick={() => handleCreateAction('/pro/quiz/create', 'create quizzes')}
-                className="group cursor-pointer bg-gradient-to-br from-yellow-50 from-red-50 dark:from-yellow-900/20 dark:from-red-900/20 rounded-2xl p-4 lg:p-6 border border-indigo-200 dark:border-indigo-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                className="group cursor-pointer bg-gradient-to-br from-primary-50 from-red-50 dark:from-primary-900/20 dark:from-red-900/20 rounded-2xl p-4 lg:p-6 border border-indigo-200 dark:border-indigo-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 from-red-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 from-red-500 rounded-xl flex items-center justify-center">
                     <FaStickyNote className="text-white text-lg lg:text-xl" />
                   </div>
                   <div>
@@ -1466,7 +1466,7 @@ const ProfilePage = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                   Create your own quizzes and share your knowledge
                 </p>
-                <div className="flex items-center text-red-600 dark:text-red-400 text-sm font-medium">
+                <div className="flex items-center text-primary-600 dark:text-red-400 text-sm font-medium">
                   <span>Create Now</span>
                   <FaArrowRight className="ml-2 text-xs" />
                 </div>
@@ -1540,7 +1540,7 @@ const ProfilePage = () => {
                       <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                         Share your knowledge by writing educational blogs
                       </p>
-                      <div className="flex items-center text-orange-700 dark:text-yellow-400 text-sm font-medium">
+                      <div className="flex items-center text-primary-600 dark:text-primary-400 text-sm font-medium">
                         <span>Create Now</span>
                         <FaArrowRight className="ml-2 text-xs" />
                       </div>
@@ -1582,13 +1582,13 @@ const ProfilePage = () => {
               <div className="lg:col-span-2">
                 <div className="rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4   xl:p-12 border-2 border-purple-300/30">
                   <div className="text-center mb-6 sm:mb-8 md:mb-10">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-yellow-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-primary-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
                       <FaStar className="text-white text-2xl sm:text-3xl md:text-4xl drop-shadow-lg" />
                     </div>
                     <h2 className="text-md sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-800 dark:text-white mb-3 sm:mb-4 md:mb-6 drop-shadow-lg">
                       🎉 Invite Friends & Earn Rewards! 🎉
                     </h2>
-                    <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
+                    <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-primary-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
                       Invite your friends to AajExam and earn wallet rewards.
                     </p>
                   </div>
@@ -1613,17 +1613,17 @@ const ProfilePage = () => {
                     </h3>
                     <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                       {/* Dynamic Prize Pool - New Card */}
-                      <div className="bg-gradient-to-br from-orange-600 to-red-600 dark:from-orange-700 dark:to-red-800 rounded-xl sm:rounded-2xl p-4 lg:p-6 text-center hover:scale-105 transition-transform duration-300 shadow-xl border border-orange-400/30">
+                      <div className="bg-gradient-to-br from-primary-600 to-secondary-600 dark:from-primary-700 dark:to-red-800 rounded-xl sm:rounded-2xl p-4 lg:p-6 text-center hover:scale-105 transition-transform duration-300 shadow-xl border border-primary-400/30">
                         <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 animate-pulse">
                           🔥
                         </div>
                         <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1 sm:mb-2">
                           Monthly Prize Pool
                         </h3>
-                        <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-black text-yellow-300 mb-1 sm:mb-2 drop-shadow-md">
+                        <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-black text-primary-300 mb-1 sm:mb-2 drop-shadow-md">
                           ₹{((landingStats.activeProUsers || 0) * config.QUIZ_CONFIG.PRIZE_PER_PRO).toLocaleString('en-IN')}
                         </div>
-                        <p className="text-orange-100 text-[10px] sm:text-xs font-medium uppercase tracking-wider">
+                        <p className="text-primary-100 text-[10px] sm:text-xs font-medium uppercase tracking-wider">
                           Dynamic Pool
                         </p>
                       </div>
@@ -1636,10 +1636,10 @@ const ProfilePage = () => {
                         <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1 sm:mb-2">
                           Friend Buys ₹{config.SUBSCRIPTION_PLANS.PRO.price} Plan
                         </h3>
-                        <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-yellow-300 mb-1 sm:mb-2">
+                        <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-primary-300 mb-1 sm:mb-2">
                           ₹{config.QUIZ_CONFIG.REFERRAL_REWARD_PRO}
                         </div>
-                        <p className="text-yellow-100 text-xs sm:text-lg">
+                        <p className="text-primary-100 text-xs sm:text-lg">
                           First-time purchase
                         </p>
                       </div>
@@ -1647,7 +1647,7 @@ const ProfilePage = () => {
                   </div>
 
                   {/* Withdrawal Rules */}
-                  <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-yellow-200 dark:border-yellow-700">
+                  <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-primary-200 dark:border-primary-700">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4 text-center">
                       Withdrawal Rules:
                     </h3>
@@ -1668,12 +1668,12 @@ const ProfilePage = () => {
                     </h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                       <div className="text-center">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                           <span className="text-white dark:text-black font-bold text-sm sm:text-base md:text-lg">
                             1
                           </span>
                         </div>
-                        <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                        <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                           Sign up and get your unique referral code
                         </p>
                       </div>
@@ -1683,7 +1683,7 @@ const ProfilePage = () => {
                             2
                           </span>
                         </div>
-                        <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                        <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                           Share your code with friends
                         </p>
                       </div>
@@ -1693,7 +1693,7 @@ const ProfilePage = () => {
                             3
                           </span>
                         </div>
-                        <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                        <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                           Friends join using your code
                         </p>
                       </div>
@@ -1703,7 +1703,7 @@ const ProfilePage = () => {
                             4
                           </span>
                         </div>
-                        <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                        <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                           Earn wallet rewards instantly!
                         </p>
                       </div>
@@ -1711,7 +1711,7 @@ const ProfilePage = () => {
                   </div>
 
                   {/* Referral Code Section */}
-                  <div className="bg-gradient-to-r from-yellow-100 via-orange-100 to-red-100 dark:from-yellow-500/25 dark:via-orange-500/25 dark:to-red-500/25 rounded-2xl p-2 md:p-4 lg:p-6 border border-yellow-300/40 dark:border-yellow-400/30 mb-6">
+                  <div className="bg-gradient-to-r from-primary-100 via-primary-100 to-red-100 dark:from-primary-500/25 dark:text-secondary-500/25 dark:to-secondary-500/25 rounded-2xl p-2 md:p-4 lg:p-6 border border-primary-300/40 dark:border-primary-400/30 mb-6">
                     <div className="text-center">
                       <h4 className="text-gray-800 dark:text-white font-bold text-lg lg:text-xl mb-4 flex items-center justify-center gap-2">
                         <span className="text-2xl">🔑</span>
@@ -1719,11 +1719,11 @@ const ProfilePage = () => {
                       </h4>
 
                       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-                        <div className="bg-gradient-to-r from-yellow-300 to-orange-400 text-gray-900 dark:text-gray-900 font-mono font-bold px-6 py-3 rounded-xl tracking-widest border-2 border-yellow-200 dark:border-yellow-300 shadow-lg text-lg lg:text-xl select-all">
+                        <div className="bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 dark:text-gray-900 font-mono font-bold px-6 py-3 rounded-xl tracking-widest border-2 border-primary-200 dark:border-primary-300 shadow-lg text-lg lg:text-xl select-all">
                           {student.referralCode}
                         </div>
                         <button
-                          className="px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
+                          className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-600 hover:from-primary-600 hover:to-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
                           onClick={() => {
                             navigator.clipboard.writeText(student.referralCode);
                           }}
@@ -1734,7 +1734,7 @@ const ProfilePage = () => {
                         </button>
                       </div>
 
-                      <p className="text-gray-700 dark:text-yellow-200 text-sm">
+                      <p className="text-gray-700 dark:text-primary-200 text-sm">
                         💡 Share this code with friends to start earning rewards!
                       </p>
                     </div>
@@ -1754,7 +1754,7 @@ const ProfilePage = () => {
                     <p className="text-gray-800 dark:text-white/90 text-sm leading-relaxed">
                       🚀 <strong>Pro Tip:</strong> Share your referral code on social media, WhatsApp groups, and with classmates to earn more wallet rewards!
                       <br />
-                      <span className="text-yellow-700 dark:text-yellow-300 font-medium">
+                      <span className="text-primary-700 dark:text-primary-300 font-medium">
                         Every referral earns you instant wallet rewards!
                       </span>
                     </p>
@@ -1770,7 +1770,7 @@ const ProfilePage = () => {
           {isEligibleForBankDetails(student) && (
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-2 lg:p-8 border border-white/30 my-4 mx-3 lg:mx-0 mx-3 lg:mx-0 hover-lift">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-teal-500 via-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-teal-500 via-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                   <FaUniversity className="text-white text-3xl" />
                 </div>
                 <div>
@@ -1794,9 +1794,9 @@ const ProfilePage = () => {
               {bankDetails && !showBankForm ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-4">
 
-                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-3 lg:p-6 border border-blue-200 dark:border-blue-700 hover-scale">
+                  <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-2xl p-3 lg:p-6 border border-secondary-200 dark:border-secondary-700 hover-scale">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                         <FaUser className="text-white text-xl" />
                       </div>
                       <div>
@@ -1833,7 +1833,7 @@ const ProfilePage = () => {
                       <button
                         type="button"
                         onClick={() => setShowBankDetails((prev) => !prev)}
-                        className="p-1.5 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/40 text-orange-700 dark:text-yellow-300 transition-colors"
+                        className="p-1.5 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/40 text-primary-600 dark:text-primary-300 transition-colors"
                         aria-label={showBankDetails ? 'Hide bank details' : 'Show bank details'}
                       >
                         {showBankDetails ? <FaEyeSlash /> : <FaEye />}
@@ -1853,9 +1853,9 @@ const ProfilePage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-2xl p-3 lg:p-6 border border-yellow-200 dark:border-yellow-700 hover-scale">
+                  <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/30 rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700 hover-scale">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
                         <FaBuilding className="text-white text-xl" />
                       </div>
                       <div>
@@ -1901,7 +1901,7 @@ const ProfilePage = () => {
                         className={`w-full px-4 lg:px-6 py-3 lg:py-6 rounded-xl border ${bankFormErrors.accountHolderName
                           ? 'border-red-500 dark:border-red-700'
                           : 'border-gray-300 dark:border-gray-600'
-                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500`}
                         placeholder="Enter account holder name"
                       />
                       {bankFormErrors.accountHolderName && (
@@ -1921,7 +1921,7 @@ const ProfilePage = () => {
                         className={`w-full px-4 lg:px-6 py-3 lg:py-6 rounded-xl border ${bankFormErrors.accountNumber
                           ? 'border-red-500 dark:border-red-700'
                           : 'border-gray-300 dark:border-gray-600'
-                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500`}
                         placeholder="Enter account number"
                       />
                       {bankFormErrors.accountNumber && (
@@ -1941,7 +1941,7 @@ const ProfilePage = () => {
                         className={`w-full px-4 lg:px-6 py-3 lg:py-6 rounded-xl border ${bankFormErrors.bankName
                           ? 'border-red-500 dark:border-red-700'
                           : 'border-gray-300 dark:border-gray-600'
-                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500`}
                         placeholder="Enter bank name"
                       />
                       {bankFormErrors.bankName && (
@@ -1961,7 +1961,7 @@ const ProfilePage = () => {
                         className={`w-full px-4 lg:px-6 py-3 lg:py-6 rounded-xl border ${bankFormErrors.ifscCode
                           ? 'border-red-500 dark:border-red-700'
                           : 'border-gray-300 dark:border-gray-600'
-                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500`}
                         placeholder="Enter IFSC code"
                       />
                       {bankFormErrors.ifscCode && (
@@ -1981,7 +1981,7 @@ const ProfilePage = () => {
                         className={`w-full px-4 lg:px-6 py-3 lg:py-6 rounded-xl border ${bankFormErrors.branchName
                           ? 'border-red-500 dark:border-red-700'
                           : 'border-gray-300 dark:border-gray-600'
-                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                          } bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500`}
                         placeholder="Enter branch name"
                       />
                       {bankFormErrors.branchName && (
@@ -2001,7 +2001,7 @@ const ProfilePage = () => {
                     <button
                       type="submit"
                       disabled={isSaving}
-                      className="px-6 py-3 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2"
+                      className="px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2"
                     >
                       {isSaving ? (
                         <>
@@ -2021,7 +2021,7 @@ const ProfilePage = () => {
                 <div className="text-center">
                   <button
                     onClick={() => setShowBankForm(true)}
-                    className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 mx-auto"
+                    className="px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 mx-auto"
                   >
                     {bankDetails ? (
                       <>
@@ -2043,7 +2043,7 @@ const ProfilePage = () => {
           {/* Enhanced Level Progression Card */}
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-2 lg:p-8 border border-white/30 my-4 mx-3 lg:mx-0 hover-lift">
             <div className="flex items-center space-x-4 mb-8">
-              <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+              <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-green-500 via-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                 <FaTrophy className="text-white text-3xl" />
               </div>
               <div>
@@ -2059,11 +2059,11 @@ const ProfilePage = () => {
             {/* Current Level Display */}
             <div className="text-center mb-8">
               <div className="flex items-center justify-center space-x-6 mb-6">
-                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-xl">
+                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-xl">
                   {(() => {
                     const BadgeIcon = levelBadgeIcons[userLevel.name] || levelBadgeIcons.Default;
                     return (
-                      <BadgeIcon className="text-yellow-500 dark:text-yellow-200 text-xl lg:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
+                      <BadgeIcon className="text-primary-500 dark:text-primary-200 text-xl lg:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
                     );
                   })()}
                 </div>
@@ -2081,12 +2081,12 @@ const ProfilePage = () => {
             {/* Enhanced Stats Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
               {/* High-Score Quizzes */}
-              <div className="text-center p-2 lg:p-8 bg-gradient-to-br from-yellow-50 to-red-100 dark:from-yellow-900/30 dark:to-red-900/30 rounded-3xl border border-yellow-200 dark:border-yellow-700 hover-scale">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="text-center p-2 lg:p-8 bg-gradient-to-br from-primary-50 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl border border-primary-200 dark:border-primary-700 hover-scale">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <FaFire className="text-white text-2xl" />
                 </div>
-                <div className="text-2xl lg:text-4xl font-bold text-orange-700 dark:text-yellow-400 mb-2">{highScoreQuizzes}</div>
-                <div className="bg-gradient-to-r from-red-50 to-yellow-100 dark:from-red-900/30 dark:to-yellow-900/30 rounded-3xl border border-red-200 dark:border-red-700 hover-scale">
+                <div className="text-2xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{highScoreQuizzes}</div>
+                <div className="bg-gradient-to-r from-red-50 to-primary-100 dark:from-red-900/30 dark:to-primary-900/30 rounded-3xl border border-red-200 dark:border-red-700 hover-scale">
                   <div className="text-gray-600 dark:text-gray-300 tex-sm lg:text-lg font-semibold">High-Score Quizzes</div>
                   <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% + Score</div>
                 </div>
@@ -2101,11 +2101,11 @@ const ProfilePage = () => {
                 <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">Attempted</div>
               </div>
               {/* Success Rate */}
-              <div className="text-center p-2 lg:p-8 bg-gradient-to-br from-red-50 to-yellow-100 dark:from-red-900/30 dark:to-yellow-900/30 rounded-3xl border border-red-200 dark:border-red-700 hover-scale">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="text-center p-2 lg:p-8 bg-gradient-to-br from-red-50 to-primary-100 dark:from-red-900/30 dark:to-primary-900/30 rounded-3xl border border-red-200 dark:border-red-700 hover-scale">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <FaChartLine className="text-white text-2xl" />
                 </div>
-                <div className="text-2xl lg:text-4xl font-bold text-red-600 dark:text-red-400 mb-2">{highScoreRate}%</div>
+                <div className="text-2xl lg:text-4xl font-bold text-primary-600 dark:text-red-400 mb-2">{highScoreRate}%</div>
                 <div className="text-gray-600 dark:text-gray-300 tex-sm lg:text-lg font-semibold">Success Rate</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">High Scores</div>
               </div>
@@ -2134,27 +2134,27 @@ const ProfilePage = () => {
                   <div className="text-xs text-green-600 dark:text-green-400 font-medium">Completed</div>
                 </div>
 
-                <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-200 dark:border-blue-700">
-                  <div className="text-md lg:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                <div className="text-center p-4 bg-secondary-50 dark:bg-secondary-900/30 rounded-xl border border-secondary-200 dark:border-secondary-700">
+                  <div className="text-md lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-1">
                     {nextLevel.quizzesRequired}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Total Required</div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">For Next Level</div>
+                  <div className="text-xs text-secondary-600 dark:text-secondary-400 font-medium">For Next Level</div>
                 </div>
 
-                <div className="text-center p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-xl border border-yellow-200 dark:border-yellow-700">
-                  <div className="text-md lg:text-2xl font-bold text-orange-700 dark:text-yellow-400 mb-1">
+                <div className="text-center p-4 bg-primary-50 dark:bg-primary-900/30 rounded-xl border border-primary-200 dark:border-primary-700">
+                  <div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">
                     {Math.max(0, nextLevel.quizzesRequired - highScoreQuizzes)}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Quizzes Left</div>
-                  <div className="text-xs text-orange-700 dark:text-yellow-400 font-medium">To Complete</div>
+                  <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">To Complete</div>
                 </div>
               </div>
             )}
 
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-6 overflow-hidden shadow-inner">
               <div
-                className="bg-gradient-to-r from-yellow-500 via-purple-500 to-red-500 h-6 rounded-full transition-all duration-1000 ease-out shadow-lg"
+                className="bg-gradient-to-r from-primary-500 via-purple-500 to-secondary-500 h-6 rounded-full transition-all duration-1000 ease-out shadow-lg"
                 style={{
                   width: `${nextLevel ? Math.min((highScoreQuizzes / nextLevel.quizzesRequired) * 100, 100) : 100}%`
                 }}
@@ -2165,7 +2165,7 @@ const ProfilePage = () => {
               <div className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-semibold">{highScoreQuizzes}</span> / <span className="font-semibold">{nextLevel.quizzesRequired}</span> high-score quizzes completed
                 <br />
-                <span className="text-orange-700 dark:text-yellow-400 font-medium">
+                <span className="text-primary-600 dark:text-primary-400 font-medium">
                   {Math.max(0, nextLevel.quizzesRequired - highScoreQuizzes)} more needed for Level {nextLevel.number}
                 </span>
               </div>
@@ -2174,13 +2174,13 @@ const ProfilePage = () => {
 
           {/* Enhanced Next Level Info */}
           {nextLevel ? (
-            <div className="my-4 mx-3 lg:mx-0 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-3xl p-2 lg:p-8 border border-yellow-200 dark:border-yellow-700">
+            <div className="my-4 mx-3 lg:mx-0 bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/30 rounded-3xl p-2 lg:p-8 border border-primary-200 dark:border-primary-700">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   {(() => {
                     const BadgeIcon = levelBadgeIcons[nextLevel.name] || levelBadgeIcons.Default;
                     return (
-                      <BadgeIcon className="text-yellow-500 dark:text-yellow-200 text-3xl lg:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
+                      <BadgeIcon className="text-primary-500 dark:text-primary-200 text-3xl lg:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
                     );
                   })()}
                 </div>
@@ -2193,7 +2193,7 @@ const ProfilePage = () => {
                 Need <span className="font-bold text-green-600 text-lg lg:text-xl">{Math.max(0, nextLevel.quizzesRequired - highScoreQuizzes)}</span> more high-score quizzes ({config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}%+) to unlock Level {nextLevel.number}.
               </p>
               <div className="text-gray-600 dark:text-gray-400 text-sm">
-                Progress: <span className="font-semibold text-blue-600">{highScoreQuizzes}</span> / <span className="font-semibold text-blue-600">{nextLevel.quizzesRequired}</span> high-score quizzes completed
+                Progress: <span className="font-semibold text-secondary-600">{highScoreQuizzes}</span> / <span className="font-semibold text-secondary-600">{nextLevel.quizzesRequired}</span> high-score quizzes completed
               </div>
               <div className="text-gray-600 dark:text-gray-400 text-sm mt-1">
                 Required: {nextLevel.quizzesRequired} total high-score quizzes ({config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}%+ score)
@@ -2217,7 +2217,7 @@ const ProfilePage = () => {
 
           <div className="text-center mt-8">
             <button
-              className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40 flex items-center justify-center space-x-3 mx-auto"
+              className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40 flex items-center justify-center space-x-3 mx-auto"
               onClick={() => { router.push('/levels'); }}
             >
               <FaArrowRight className="text-sm" />
@@ -2234,7 +2234,7 @@ const ProfilePage = () => {
                   <span className="text-xl sm:text-2xl">📊</span>
                   Monthly Quiz Progress
                 </h4>
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-4 sm:p-6 border border-blue-200 dark:border-blue-700">
+                <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-2xl p-4 sm:p-6 border border-secondary-200 dark:border-secondary-700">
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300">
@@ -2246,7 +2246,7 @@ const ProfilePage = () => {
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5">
                       <div
-                        className="bg-blue-600 h-2 sm:h-2.5 rounded-full transition-all duration-300"
+                        className="bg-secondary-600 h-2 sm:h-2.5 rounded-full transition-all duration-300"
                         style={{ width: `${rewardsData.quizProgress?.percentage || 0}%` }}
                       ></div>
                     </div>
@@ -2258,14 +2258,14 @@ const ProfilePage = () => {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div className="text-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl border border-blue-200 dark:border-blue-600">
-                      <div className="text-lg sm:text-lg lg:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                    <div className="text-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl border border-secondary-200 dark:border-secondary-600">
+                      <div className="text-lg sm:text-lg lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-1">
                         {rewardsData.quizProgress?.current || 0}
                       </div>
                       <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Completed</div>
                     </div>
-                    <div className="text-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl border border-blue-200 dark:border-blue-600">
-                      <div className="text-lg sm:text-lg lg:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                    <div className="text-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl border border-secondary-200 dark:border-secondary-600">
+                      <div className="text-lg sm:text-lg lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-1">
                         {rewardsData.quizProgress?.current > rewardsData.quizProgress?.required ? 0 : rewardsData.quizProgress?.required - (rewardsData.quizProgress?.current || 0)}
                       </div>
                       <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Remaining</div>
@@ -2280,17 +2280,17 @@ const ProfilePage = () => {
                 <span className="text-xl sm:text-2xl">🏆</span>
                 Monthly Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Rewards
               </h4>
-              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4">
+              <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4">
                 <div className="text-center">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                     Every month, the top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} PRO users with Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} and {config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes win prizes from a dynamic prize pool (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO})!
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
                     {[
-                      { rank: '1st', pct: '25%', medal: '🥇', bg: 'bg-yellow-100 dark:bg-yellow-800/30', text: 'text-yellow-800 dark:text-yellow-200', bold: 'text-yellow-700 dark:text-yellow-300' },
+                      { rank: '1st', pct: '25%', medal: '🥇', bg: 'bg-primary-100 dark:bg-primary-800/30', text: 'text-primary-800 dark:text-primary-200', bold: 'text-primary-700 dark:text-primary-300' },
                       { rank: '2nd', pct: '20%', medal: '🥈', bg: 'bg-gray-100 dark:bg-gray-800/30', text: 'text-gray-800 dark:text-gray-200', bold: 'text-gray-700 dark:text-gray-300' },
-                      { rank: '3rd', pct: '15%', medal: '🥉', bg: 'bg-orange-100 dark:bg-orange-800/30', text: 'text-orange-800 dark:text-orange-200', bold: 'text-orange-700 dark:text-orange-300' },
-                      { rank: '4th', pct: '12%', medal: '🏅', bg: 'bg-blue-100 dark:bg-blue-800/30', text: 'text-blue-800 dark:text-blue-200', bold: 'text-blue-700 dark:text-blue-300' },
+                      { rank: '3rd', pct: '15%', medal: '🥉', bg: 'bg-primary-100 dark:bg-primary-800/30', text: 'text-primary-800 dark:text-primary-200', bold: 'text-primary-600 dark:text-primary-300' },
+                      { rank: '4th', pct: '12%', medal: '🏅', bg: 'bg-secondary-100 dark:bg-secondary-800/30', text: 'text-secondary-800 dark:text-secondary-200', bold: 'text-secondary-700 dark:text-secondary-300' },
                       { rank: '5th', pct: '8%', medal: '🏅', bg: 'bg-green-100 dark:bg-green-800/30', text: 'text-green-800 dark:text-green-200', bold: 'text-green-700 dark:text-green-300' },
                       { rank: '6th', pct: '6%', medal: '🏅', bg: 'bg-purple-100 dark:bg-purple-800/30', text: 'text-purple-800 dark:text-purple-200', bold: 'text-purple-700 dark:text-purple-300' },
                       { rank: '7th', pct: '5%', medal: '🏅', bg: 'bg-pink-100 dark:bg-pink-800/30', text: 'text-pink-800 dark:text-pink-200', bold: 'text-pink-700 dark:text-pink-300' },
@@ -2308,10 +2308,10 @@ const ProfilePage = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 rounded-3xl p-2 md:p-6 border border-purple-200 dark:border-purple-700">
+            <div className="bg-gradient-to-r from-purple-50 to-secondary-50 dark:from-purple-900/30 dark:to-secondary-900/30 rounded-3xl p-2 md:p-6 border border-purple-200 dark:border-purple-700">
               <div className="flex flex-col md:flex-row items-center justify-between mb-4">
                 <div className="flex flex-col md:flex-row items-center space-x-3 mb-4 md:mb-0 mt-4 md:mt-0">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                     <span className="text-2xl">🏆</span>
                   </div>
                   <div className="mt-4 md:mt-0">
@@ -2321,7 +2321,7 @@ const ProfilePage = () => {
                 </div>
                 <Link
                   href="/rewards"
-                  className="px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 shadow-lg"
+                  className="px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-purple-500 to-secondary-600 hover:from-purple-600 hover:to-secondary-700 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 shadow-lg"
                 >
                   View Rewards
                 </Link>
@@ -2345,24 +2345,24 @@ const ProfilePage = () => {
                 </h4>
                 <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                   {rewardsData.unlocked.map((reward, index) => (
-                    <div key={reward?._id || `unlocked-${reward?.level}-${index}`} className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 sm:p-4">
+                    <div key={reward?._id || `unlocked-${reward?.level}-${index}`} className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-lg p-3 sm:p-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs sm:text-lg font-medium text-blue-800 dark:text-blue-300">
+                        <span className="text-xs sm:text-lg font-medium text-secondary-800 dark:text-secondary-300">
                           Level {reward?.level || 'N/A'}
                         </span>
-                        <span className="text-xs text-blue-600 dark:text-blue-400">
+                        <span className="text-xs text-secondary-600 dark:text-secondary-400">
                           {reward?.dateUnlocked ? new Date(reward.dateUnlocked).toLocaleDateString() : 'N/A'}
                         </span>
                       </div>
-                      <p className="text-lg sm:text-lg lg:text-2xl font-bold text-blue-700 dark:text-blue-300 mb-3">
+                      <p className="text-lg sm:text-lg lg:text-2xl font-bold text-secondary-700 dark:text-secondary-300 mb-3">
                         ₹{(reward?.amount || 0).toLocaleString()}
                       </p>
-                      <p className="text-xs text-blue-600 dark:text-blue-400 mb-3">
+                      <p className="text-xs text-secondary-600 dark:text-secondary-400 mb-3">
                         Ready to claim! Click the button below to claim your reward.
                       </p>
                       <button
                         onClick={() => router.push('/rewards')}
-                        className="w-full bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
+                        className="w-full bg-secondary-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-secondary-700 transition-colors text-sm sm:text-base"
                       >
                         Claim on Rewards Page
                       </button>
@@ -2413,7 +2413,7 @@ const ProfilePage = () => {
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-2 lg:p-8 border border-white/30 my-4 mx-3 lg:mx-0">
             <div className="flex flex-col lg:flex-row items-center justify-between mb-8">
               <div className="flex items-center space-x-4 mb-4 lg:mb-0">
-                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-red-500 via-yellow-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-red-500 via-primary-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                   <FaBrain className="text-white text-3xl" />
                 </div>
                 <div>
@@ -2426,7 +2426,7 @@ const ProfilePage = () => {
                 </div>
               </div>
               {playedQuizzes.length > 0 && (
-                <Link href="/quiz-history" className="w-full lg:w-auto bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40 flex items-center justify-center space-x-3">
+                <Link href="/quiz-history" className="w-full lg:w-auto bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40 flex items-center justify-center space-x-3">
                   View All
                 </Link>
               )}
@@ -2449,7 +2449,7 @@ const ProfilePage = () => {
                     className="group cursor-pointer bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 rounded-3xl p-2 lg:p-8 border border-gray-200 dark:border-gray-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-4 hover:scale-105 hover-lift"
                   >
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg">
                         <FaMedal className="text-white text-2xl" />
                       </div>
                       <div className={`px-4 py-2 rounded-full text-sm font-bold ${item.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
@@ -2475,7 +2475,7 @@ const ProfilePage = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600 dark:text-gray-400">Category:</span>
-                        <span className="font-bold text-orange-700 dark:text-yellow-400">{item.categoryName}</span>
+                        <span className="font-bold text-primary-600 dark:text-primary-400">{item.categoryName}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600 dark:text-gray-400">Date:</span>
@@ -2485,7 +2485,7 @@ const ProfilePage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40 flex items-center justify-center space-x-3 mx-auto">
+                    <div className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40 flex items-center justify-center space-x-3 mx-auto">
                       <span className="text-base">View Result</span>
                       <FaArrowRight className="ml-2 text-sm" />
                     </div>
@@ -2499,7 +2499,7 @@ const ProfilePage = () => {
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-2 lg:p-8 border border-white/30 my-4 mx-3 lg:mx-0">
             <div className="flex flex-col lg:flex-row items-center justify-between mb-8">
               <div className="flex items-center space-x-4 mb-4 lg:mb-0">
-                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+                <div className="w-12 lg:w-20 h-12 lg:h-20 bg-gradient-to-r from-secondary-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                   <FaUniversity className="text-white text-3xl" />
                 </div>
                 <div>
@@ -2512,7 +2512,7 @@ const ProfilePage = () => {
                 </div>
               </div>
               {examAttempts.length > 0 && (
-                <Link href="/exam-history" className="w-full lg:w-auto bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40 flex items-center justify-center space-x-3">
+                <Link href="/exam-history" className="w-full lg:w-auto bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40 flex items-center justify-center space-x-3">
                   View All
                 </Link>
               )}
@@ -2539,13 +2539,13 @@ const ProfilePage = () => {
                     className="group cursor-pointer bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 rounded-3xl p-2 lg:p-8 border border-gray-200 dark:border-gray-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-4 hover:scale-105 hover-lift"
                   >
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg">
                         <FaGraduationCap className="text-white text-2xl" />
                       </div>
                       <div className={`px-4 py-2 rounded-full text-sm font-bold ${item.accuracy >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
                         ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                         : item.accuracy >= 50
-                          ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                          ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
                           : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
                         }`}>
                         {item.accuracy >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE ? '✅ High Score' : item.accuracy >= 50 ? '📝 Good' : '📝 Attempted'}
@@ -2577,12 +2577,12 @@ const ProfilePage = () => {
                       {item.rank && (
                         <div className="flex justify-between items-center">
                           <span className="text-gray-600 dark:text-gray-400">Rank:</span>
-                          <span className="font-bold text-orange-700 dark:text-yellow-400">#{item.rank}</span>
+                          <span className="font-bold text-primary-600 dark:text-primary-400">#{item.rank}</span>
                         </div>
                       )}
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600 dark:text-gray-400">Category:</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{item.categoryName || 'Unknown'}</span>
+                        <span className="font-bold text-secondary-600 dark:text-secondary-400">{item.categoryName || 'Unknown'}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600 dark:text-gray-400">Date:</span>
@@ -2592,7 +2592,7 @@ const ProfilePage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-blue-500/25 hover:dark:shadow-yellow-500/40 flex items-center justify-center space-x-3 mx-auto">
+                    <div className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-4 lg:px-8 py-2 lg:py-4 rounded-2xl transition-all duration-300 font-bold text-lg transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-secondary-500/25 hover:dark:shadow-primary-500/40 flex items-center justify-center space-x-3 mx-auto">
                       <span className="text-base">View Result</span>
                       <FaArrowRight className="ml-2 text-sm" />
                     </div>

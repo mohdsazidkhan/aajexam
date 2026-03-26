@@ -167,7 +167,7 @@ const LevelDetailPage = () => {
             <h1 className="text-md lg:text-2xl font-bold text-gray-800 dark:text-white mb-4">Level Not Found</h1>
             <button
               onClick={() => router.push('/')}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-secondary-600 text-white px-6 py-2 rounded-lg hover:bg-secondary-700 transition-colors"
             >
               Go Home
             </button>
@@ -184,9 +184,9 @@ const LevelDetailPage = () => {
           {/* Header */}
           <div className="mb-6 sm:mb-8">
 
-            <div className="border-2 border-gray-200 dark:border-gray-600 hover:border-yellow-500 bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg">
+            <div className="border-2 border-gray-200 dark:border-gray-600 hover:border-primary-500 bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg">
               <div className="flex items-center justify-start mb-4 gap-2 sm:gap-0">
-                <div className={`p-2 sm:p-3 rounded-full bg-gradient-to-r ${levelInfo?.color || 'from-yellow-400 to-red-500'} mr-0 sm:mr-4`}>
+                <div className={`p-2 sm:p-3 rounded-full bg-gradient-to-r ${levelInfo?.color || 'from-primary-400 to-secondary-500'} mr-0 sm:mr-4`}>
                   {(() => {
                     const IconComponent = getIconForLevel(levelInfo?.emoji);
                     return <IconComponent className="text-white text-xl sm:text-2xl" />;
@@ -200,7 +200,7 @@ const LevelDetailPage = () => {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-4">
-                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-orange-700">{levelInfo?.quizzesRequired}</div>
+                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-primary-600">{levelInfo?.quizzesRequired}</div>
                   <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Quizzes</div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-4">
@@ -208,11 +208,11 @@ const LevelDetailPage = () => {
                   <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Plan</div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-4">
-                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-red-600">₹{levelInfo?.requiredSubscription === 'Pro' ? '99' : levelInfo?.requiredSubscription === 'Premium' ? '49' : levelInfo?.requiredSubscription === 'Basic' ? '9' : '0'}</div>
+                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-primary-600">₹{levelInfo?.requiredSubscription === 'Pro' ? '99' : levelInfo?.requiredSubscription === 'Premium' ? '49' : levelInfo?.requiredSubscription === 'Basic' ? '9' : '0'}</div>
                   <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Amount</div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-2 sm:p-4">
-                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-orange-700">₹0</div>
+                  <div className="text-lg sm:text-lg lg:text-2xl font-bold text-primary-600">₹0</div>
                   <div className="text-xs sm:text-lg text-gray-600 dark:text-gray-300">Prize</div>
                 </div>
               </div>
@@ -225,7 +225,7 @@ const LevelDetailPage = () => {
               <h2 className="text-xl sm:text-lg lg:text-2xl font-bold text-gray-800 dark:text-white">Level {levelNumber} Quizzes</h2>
               <button
                 onClick={() => router.push("/home")}
-                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-2xl hover:from-yellow-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
               >
                 <FaArrowLeft />
                 <span>Go Back</span>
@@ -238,7 +238,7 @@ const LevelDetailPage = () => {
               </div>
             ) : error ? (
               <div className="text-center py-6 sm:py-8">
-                <p className="text-red-600 dark:text-red-400 text-sm sm:text-base">{error}</p>
+                <p className="text-primary-600 dark:text-red-400 text-sm sm:text-base">{error}</p>
               </div>
             ) : quizzes.length === 0 ? (
               <div className="text-center py-6 sm:py-8">
@@ -248,11 +248,11 @@ const LevelDetailPage = () => {
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-8 mb-2 md:mb-4 lg:mb-6 xl:mb-8">
                   {quizzes.map((quiz, index) => (
-                    <div key={quiz._id} className="border-2 border-red-600 hover:border-yellow-500 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div key={quiz._id} className="border-2 border-red-600 hover:border-primary-500 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                       <div className="p-2 md:p-6 ">
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center space-x-2">
-                            <span className="bg-gradient-to-r from-yellow-500 to-red-600 text-white text-sm font-bold px-2 py-1 rounded-full min-w-[24px] text-center">
+                            <span className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white text-sm font-bold px-2 py-1 rounded-full min-w-[24px] text-center">
                               {index + 1}
                             </span>
                             <h3 className="text-lg font-bold text-gray-800 dark:text-white">{quiz.title}</h3>
@@ -284,7 +284,7 @@ const LevelDetailPage = () => {
                         </div>
                         <button
                           onClick={() => handleQuizClick(quiz._id)}
-                          className="w-full bg-gradient-to-r from-yellow-500 to-red-600 hover:from-red-600 hover:to-yellow-500 text-white font-semibold py-2 rounded-xl transition-all duration-300 shadow-md text-center"
+                          className="w-full bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-red-600 hover:to-primary-500 text-white font-semibold py-2 rounded-xl transition-all duration-300 shadow-md text-center"
                         >
                           Start Quiz
                         </button>
@@ -299,7 +299,7 @@ const LevelDetailPage = () => {
                     <button
                       onClick={loadMoreQuizzes}
                       disabled={loading}
-                      className="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loading ? 'Loading...' : 'Load More (10 quizzes)'}
                     </button>

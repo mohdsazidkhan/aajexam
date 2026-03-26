@@ -57,7 +57,7 @@ export default function LevelPage({ level }) {
                         <div className={`w-20 h-20 bg-gradient-to-r ${level.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
                             <IconComponent className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Level {level.number}: {level.name}
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -97,7 +97,7 @@ export default function LevelPage({ level }) {
                         <div className="space-y-3">
                             {level.outcomes.map((outcome, idx) => (
                                 <div key={idx} className="flex items-start gap-3">
-                                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+                                    <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
                                         {idx + 1}
                                     </div>
                                     <p className="text-gray-700 dark:text-gray-300 text-lg">{outcome}</p>
@@ -107,7 +107,7 @@ export default function LevelPage({ level }) {
                     </div>
 
                     {/* Exam Relevance */}
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
+                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Exam Relevance</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             {level.examRelevance.map((para, idx) => (
@@ -121,7 +121,7 @@ export default function LevelPage({ level }) {
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Study Tips for This Level</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {level.studyTips.map((tip, idx) => (
-                                <div key={idx} className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                                <div key={idx} className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                                     <h3 className="font-semibold text-gray-800 dark:text-white mb-2">{tip.title}</h3>
                                     <p className="text-gray-700 dark:text-gray-300">{tip.description}</p>
                                 </div>
@@ -142,7 +142,7 @@ export default function LevelPage({ level }) {
                         {level.number < 10 && (
                             <button
                                 onClick={() => router.push(`/levels/${level.number + 1}`)}
-                                className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all ml-auto"
+                                className="bg-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-700 transition-all ml-auto"
                             >
                                 Next Level →
                             </button>
@@ -206,7 +206,7 @@ export async function getStaticProps({ params }) {
                         levelFromDb.emoji === 'trending-up' ? 'FaChartLine' :
                             levelFromDb.emoji === 'emoji-events' ? 'FaTrophy' : 'FaRocket',
                 color: levelFromDb.color === 'from-gray-300 to-gray-400' ? 'from-green-400 to-emerald-500' :
-                    (levelFromDb.color || '')?.replace('from-yellow-400 to-red-500', 'from-indigo-400 to-purple-500'),
+                    (levelFromDb.color || '')?.replace('from-primary-400 to-red-500', 'from-indigo-400 to-purple-500'),
                 quizzesRequired: levelFromDb.quizzesRequired ?? 0,
                 // Provide default content for fields not in the DB model yet
                 overview: [

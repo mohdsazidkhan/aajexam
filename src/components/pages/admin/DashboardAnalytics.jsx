@@ -89,11 +89,11 @@ const DashboardAnalytics = () => {
   // Helper function to convert Tailwind gradient classes to CSS colors
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
-      'from-blue-500 to-indigo-600': '#3b82f6, #4f46e5',
+      'from-secondary-500 to-indigo-600': '#3b82f6, #4f46e5',
       'from-green-500 to-emerald-600': '#10b981, #059669',
-      'from-yellow-500 to-orange-600': '#eab308, #ea580c',
+      'from-primary-500 to-primary-600': '#eab308, #ea580c',
       'from-purple-500 to-pink-600': '#8b5cf6, #db2777',
-      'from-yellow-500 to-blue-600': '#6366f1, #2563eb',
+      'from-primary-500 to-secondary-600': '#6366f1, #2563eb',
       'from-pink-500 to-rose-600': '#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
@@ -176,28 +176,28 @@ const DashboardAnalytics = () => {
     <div className="overflow-x-auto">
       <table className="w-[1200px] md:w-full">
         <thead>
-          <tr className="border-b-2 border-blue-200 dark:border-blue-700">
-            <th className="text-left py-4 px-4 font-bold text-blue-800 dark:text-blue-200 text-lg">
+          <tr className="border-b-2 border-secondary-200 dark:border-secondary-700">
+            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
               <div className="flex items-center gap-2">
-                <FaUser className="text-blue-600 dark:text-blue-400" />
+                <FaUser className="text-secondary-600 dark:text-secondary-400" />
                 User
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-blue-800 dark:text-blue-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
               <div className="flex items-center gap-2">
-                <FaBook className="text-blue-600 dark:text-blue-400" />
+                <FaBook className="text-secondary-600 dark:text-secondary-400" />
                 Quiz
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-blue-800 dark:text-blue-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
               <div className="flex items-center gap-2">
-                <FaTrophy className="text-blue-600 dark:text-blue-400" />
+                <FaTrophy className="text-secondary-600 dark:text-secondary-400" />
                 Score
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-blue-800 dark:text-blue-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
               <div className="flex items-center gap-2">
-                <FaCalendarAlt className="text-blue-600 dark:text-blue-400" />
+                <FaCalendarAlt className="text-secondary-600 dark:text-secondary-400" />
                 Attempted At
               </div>
             </th>
@@ -208,7 +208,7 @@ const DashboardAnalytics = () => {
             recentActivities.map((a, i) => (
               <tr
                 key={i}
-                className="border-b border-gray-200 dark:border-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/10 dark:hover:to-indigo-900/10 transition-all duration-200 group"
+                className="border-b border-gray-200 dark:border-gray-700 hover:bg-gradient-to-r hover:from-secondary-50 hover:to-indigo-50 dark:hover:from-secondary-900/10 dark:hover:to-indigo-900/10 transition-all duration-200 group"
               >
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-3">
@@ -228,8 +228,8 @@ const DashboardAnalytics = () => {
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-2">
                     <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                      a.score >= 60 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300' :
-                        a.score >= 40 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300' :
+                      a.score >= 60 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
+                        a.score >= 40 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                           'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
                       }`}>
                       {a.score || 0}
@@ -237,7 +237,7 @@ const DashboardAnalytics = () => {
                     <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
                       ({a.scorePercentage || 0}%)
                     </span>
-                    {a.score >= 80 && <FaTrophy className="text-yellow-500 text-sm" />}
+                    {a.score >= 80 && <FaTrophy className="text-primary-500 text-sm" />}
                   </div>
                 </td>
                 <td className="py-4 px-4">
@@ -279,10 +279,10 @@ const DashboardAnalytics = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 hover:shadow-lg transition-all duration-200">
+          <div key={i} className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border border-secondary-200 dark:border-secondary-700 rounded-lg p-4 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                <FaUser className="text-blue-600 dark:text-blue-400" />
+              <div className="w-10 h-10 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
+                <FaUser className="text-secondary-600 dark:text-secondary-400" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -303,13 +303,13 @@ const DashboardAnalytics = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-md flex items-center justify-center">
-                  <FaTrophy className="text-orange-700 dark:text-yellow-400 text-xs" />
+                <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
+                  <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
                 </div>
                 <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-green-600 dark:text-green-400' :
-                  a.score >= 60 ? 'text-orange-700 dark:text-yellow-400' :
-                    a.score >= 40 ? 'text-orange-700 dark:text-orange-400' :
-                      'text-red-600 dark:text-red-400'
+                  a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
+                    a.score >= 40 ? 'text-primary-600 dark:text-secondary-400' :
+                      'text-primary-600 dark:text-red-400'
                   }`}>
                   {a.score || 0}
                 </span>
@@ -317,7 +317,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                  <FaCalendarAlt className="text-orange-700 dark:text-yellow-400 text-xs" />
+                  <FaCalendarAlt className="text-primary-600 dark:text-primary-400 text-xs" />
                 </div>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Attempted: {(() => {
@@ -349,11 +349,11 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
+          <div key={i} className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border border-secondary-200 dark:border-secondary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                  <FaUser className="text-blue-600 dark:text-blue-400" />
+                <div className="w-10 h-10 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
+                  <FaUser className="text-secondary-600 dark:text-secondary-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -374,13 +374,13 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-md flex items-center justify-center">
-                    <FaTrophy className="text-orange-700 dark:text-yellow-400 text-xs" />
+                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
+                    <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
                   </div>
                   <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-green-600 dark:text-green-400' :
-                    a.score >= 60 ? 'text-orange-700 dark:text-yellow-400' :
-                      a.score >= 40 ? 'text-orange-700 dark:text-orange-400' :
-                        'text-red-600 dark:text-red-400'
+                    a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
+                      a.score >= 40 ? 'text-primary-600 dark:text-secondary-400' :
+                        'text-primary-600 dark:text-red-400'
                     }`}>
                     {a.score || 0}
                   </span>
@@ -388,7 +388,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <FaCalendarAlt className="text-orange-700 dark:text-yellow-400 text-xs" />
+                    <FaCalendarAlt className="text-primary-600 dark:text-primary-400 text-xs" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attempted: {(() => {
@@ -422,40 +422,40 @@ const DashboardAnalytics = () => {
     <div className="overflow-x-auto relative">
       <table className="w-full min-w-full table-auto text-sm md:text-base">
         <thead>
-          <tr className={`border-b-2 ${activeTab === 'daily' ? 'border-blue-200 dark:border-blue-700' : activeTab === 'weekly' ? 'border-purple-200 dark:border-purple-700' : 'border-yellow-200 dark:border-yellow-700'}`}>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+          <tr className={`border-b-2 ${activeTab === 'daily' ? 'border-secondary-200 dark:border-secondary-700' : activeTab === 'weekly' ? 'border-purple-200 dark:border-purple-700' : 'border-primary-200 dark:border-primary-700'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaMedal className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaMedal className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 Rank
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaUser className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaUser className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 Name
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaTrophy className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaTrophy className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 Level
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaChartBar className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaChartBar className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} Quizzes
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaAward className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaAward className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 High Scores
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-blue-800 dark:text-blue-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-yellow-800 dark:text-yellow-200'}`}>
+            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
               <div className="flex items-center gap-1">
-                <FaStar className={`text-sm ${activeTab === 'daily' ? 'text-blue-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-orange-700 dark:text-yellow-400'}`} />
+                <FaStar className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
                 Accuracy
               </div>
             </th>
@@ -466,17 +466,17 @@ const DashboardAnalytics = () => {
             topPerformers.map((u, i) => (
               <tr
                 key={i}
-                className={`border-b transition-all duration-200 border-gray-200 group ${i === 0 ? "bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20" :
+                className={`border-b transition-all duration-200 border-gray-200 group ${i === 0 ? "bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20" :
                   i === 1 ? "bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20" :
-                    i === 2 ? "bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20" : ""
+                    i === 2 ? "bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20" : ""
                   }`}
               >
                 <td className="py-3 px-2">
                   <div className="flex items-center gap-2">
-                    <span className={`w-8 h-8 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg" :
+                    <span className={`w-8 h-8 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
                       i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                        i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500 text-white shadow-md" :
-                          "bg-gradient-to-r from-blue-400 to-indigo-500 text-white"
+                        i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
+                          "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
                       }`}>
                       {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                     </span>
@@ -498,9 +498,9 @@ const DashboardAnalytics = () => {
                   </div>
                 </td>
                 <td className="py-3 px-2">
-                  <div className="bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-lg">
+                  <div className="bg-primary-100 dark:bg-primary-900/30 px-2 py-1 rounded-lg">
                     <div className="text-center">
-                      <div className="text-sm font-bold text-orange-800 dark:text-orange-200">
+                      <div className="text-sm font-bold text-primary-800 dark:text-primary-200">
                         {u.progress?.totalQuizAttempts || 0}
                       </div>
                     </div>
@@ -516,9 +516,9 @@ const DashboardAnalytics = () => {
                   </div>
                 </td>
                 <td className="py-3 px-2">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-lg">
+                  <div className="bg-secondary-100 dark:bg-secondary-900/30 px-2 py-1 rounded-lg">
                     <div className="text-center">
-                      <div className="text-sm font-bold text-blue-800 dark:text-blue-200">
+                      <div className="text-sm font-bold text-secondary-800 dark:text-secondary-200">
                         {u.progress?.accuracy || 0}%
                       </div>
                     </div>
@@ -542,17 +542,17 @@ const DashboardAnalytics = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {topPerformers?.length > 0 ? (
         topPerformers.map((u, i) => (
-          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-lg transition-all duration-200 ${i === 0 ? "from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-700" :
+          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-lg transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
             i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
-              i === 2 ? "from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-orange-200 dark:border-orange-700" :
-                "from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-700"
+              i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
+                "from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border-secondary-200 dark:border-secondary-700"
             }`}>
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
-                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg" :
+                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
                   i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                    i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-blue-400 to-indigo-500 text-white"
+                    i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
+                      "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
                   }`}>
                   {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                 </span>
@@ -568,7 +568,7 @@ const DashboardAnalytics = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                  <FaTrophy className="text-orange-700 dark:text-yellow-400 text-xs" />
+                  <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
@@ -576,8 +576,8 @@ const DashboardAnalytics = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                  <FaChartBar className="text-orange-700 dark:text-orange-400 text-xs" />
+                <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
+                  <FaChartBar className="text-primary-600 dark:text-secondary-400 text-xs" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.progress?.totalQuizAttempts || 0} Total Quizzes
@@ -619,17 +619,17 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {topPerformers?.length > 0 ? (
         topPerformers.map((u, i) => (
-          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-md transition-all duration-200 ${i === 0 ? "from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-700" :
+          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-md transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
             i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
-              i === 2 ? "from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-orange-200 dark:border-orange-700" :
-                "from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-700"
+              i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
+                "from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border-secondary-200 dark:border-secondary-700"
             }`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg" :
+                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
                   i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                    i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-blue-400 to-indigo-500 text-white"
+                    i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
+                      "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
                   }`}>
                   {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                 </span>
@@ -644,7 +644,7 @@ const DashboardAnalytics = () => {
               <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <FaTrophy className="text-orange-700 dark:text-yellow-400 text-xs" />
+                    <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
@@ -652,8 +652,8 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                    <FaChartBar className="text-orange-700 dark:text-orange-400 text-xs" />
+                  <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
+                    <FaChartBar className="text-primary-600 dark:text-secondary-400 text-xs" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.progress?.totalQuizAttempts || 0} Total Quizzes
@@ -729,7 +729,7 @@ const DashboardAnalytics = () => {
                 label: 'Total Users',
                 icon: <FaUsers />,
                 value: data.overview?.totalUsers,
-                gradient: 'from-blue-500 to-indigo-600'
+                gradient: 'from-secondary-500 to-indigo-600'
               },
               {
                 label: 'Total Quizzes',
@@ -741,7 +741,7 @@ const DashboardAnalytics = () => {
                 label: 'Total Revenue',
                 icon: <FaMoneyBillWave />,
                 value: `₹${data.overview?.totalRevenue}`,
-                gradient: 'from-yellow-500 to-orange-600'
+                gradient: 'from-primary-500 to-primary-600'
               },
               {
                 label: 'Active Users',
@@ -754,9 +754,9 @@ const DashboardAnalytics = () => {
                 icon: <FaClock />,
                 value: data.overview?.totalAttempts,
                 color: 'indigo',
-                gradient: 'from-yellow-500 to-blue-600',
-                bgGradient: 'from-yellow-50 to-blue-50',
-                darkBgGradient: 'from-yellow-900/20 to-blue-900/20'
+                gradient: 'from-primary-500 to-secondary-600',
+                bgGradient: 'from-primary-50 to-secondary-50',
+                darkBgGradient: 'from-primary-900/20 to-secondary-900/20'
               },
               {
                 label: 'Subscriptions',
@@ -810,7 +810,7 @@ const DashboardAnalytics = () => {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-xl flex items-center justify-center">
                     <span className="text-2xl">📊</span>
                   </div>
                   <div>
@@ -835,12 +835,12 @@ const DashboardAnalytics = () => {
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-3 lg:p-6 mb-4 lg:mb-6 relative overflow-hidden">
               {topPerformersLoading && (
                 <div className="absolute inset-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm z-10 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-600"></div>
                 </div>
               )}
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6 gap-4">
                 <div className="flex items-center space-x-3">
-                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r rounded-xl flex items-center justify-center ${activeTab === 'daily' ? 'from-blue-400 to-indigo-500' : activeTab === 'weekly' ? 'from-purple-400 to-pink-500' : 'from-yellow-400 to-orange-500'}`}>
+                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r rounded-xl flex items-center justify-center ${activeTab === 'daily' ? 'from-secondary-400 to-indigo-500' : activeTab === 'weekly' ? 'from-purple-400 to-pink-500' : 'from-primary-400 to-primary-500'}`}>
                     <FaCrown className="text-white text-xl" />
                   </div>
                   <div>
@@ -858,8 +858,8 @@ const DashboardAnalytics = () => {
                   <button
                     onClick={() => setActiveTab('daily')}
                     className={`px-4 py-2 rounded-lg font-bold text-xs transition-all duration-300 flex items-center gap-1.5 ${activeTab === 'daily'
-                      ? "bg-blue-600 text-white shadow-lg"
-                      : "text-gray-500 hover:text-blue-600 hover:bg-white dark:hover:bg-gray-800"
+                      ? "bg-secondary-600 text-white shadow-lg"
+                      : "text-gray-500 hover:text-secondary-600 hover:bg-white dark:hover:bg-gray-800"
                       }`}
                   >
                     <span>📅</span> Daily

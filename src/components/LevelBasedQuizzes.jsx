@@ -213,15 +213,15 @@ const LevelBasedQuizzes = () => {
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case 'beginner': return 'bg-green-100 text-green-800';
-      case 'intermediate': return 'bg-yellow-100 text-yellow-800';
-      case 'advanced': return 'bg-orange-100 text-orange-800';
+      case 'intermediate': return 'bg-primary-100 text-primary-800';
+      case 'advanced': return 'bg-primary-100 text-primary-800';
       case 'expert': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getLevelMatchColor = (levelMatch) => {
-    if (levelMatch.exact) return 'bg-yellow-100 text-yellow-800';
+    if (levelMatch.exact) return 'bg-primary-100 text-primary-800';
     if (levelMatch.withinRange) return 'bg-red-100 text-red-800';
     return 'bg-gray-100 text-gray-800';
   };
@@ -245,8 +245,8 @@ const LevelBasedQuizzes = () => {
 
   const getLevelColor = (level) => {
     const colors = [
-      'bg-yellow-500', 'bg-green-500', 'bg-orange-500', 'bg-red-500',
-      'bg-pink-500', 'bg-indigo-500', 'bg-teal-500', 'bg-cyan-500', 'bg-yellow-600', 'bg-red-600'
+      'bg-primary-500', 'bg-green-500', 'bg-primary-500', 'bg-red-500',
+      'bg-pink-500', 'bg-indigo-500', 'bg-teal-500', 'bg-cyan-500', 'bg-primary-600', 'bg-red-600'
     ];
     return colors[(level - 1) % colors.length];
   };
@@ -266,12 +266,12 @@ const LevelBasedQuizzes = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20 flex flex-col items-center justify-center">
             <div className="text-center mb-6">
-              <div className="text-red-600 text-3xl mb-2">⚠️</div>
-              <p className="text-red-600 text-lg font-semibold mb-4">{error}</p>
+              <div className="text-primary-600 text-3xl mb-2">⚠️</div>
+              <p className="text-primary-600 text-lg font-semibold mb-4">{error}</p>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Subscribe now to unlock all quizzes and levels!</p>
               <Link
                 href="/subscription"
-                className="inline-block bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
+                className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
               >
                 Subscribe Now
               </Link>
@@ -282,23 +282,23 @@ const LevelBasedQuizzes = () => {
         <div className="container mx-auto px-4 py-8">
           {/* User Level Info */}
           {userLevel && (
-            <div className="bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-lg p-2 md:p-6 mb-4 md:mb-8">
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-lg p-2 md:p-6 mb-4 md:mb-8">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl md:text-md lg:text-2xl font-bold mb-2">
                     Level {userLevel.currentLevel} - {userLevel.levelName}
                   </h2>
-                  <p className="text-yellow-100">
+                  <p className="text-primary-100">
                     Progress to next level: {userLevel.progress}%
                   </p>
                 </div>
                 <div className="text-right">
-                  <FaLevelUpAlt className="text-4xl text-yellow-300" />
+                  <FaLevelUpAlt className="text-4xl text-primary-300" />
                 </div>
               </div>
-              <div className="mt-4 w-full bg-yellow-400 rounded-full h-2">
+              <div className="mt-4 w-full bg-primary-400 rounded-full h-2">
                 <div
-                  className="bg-yellow-300 h-2 rounded-full transition-all duration-300"
+                  className="bg-primary-300 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${userLevel.progress}%` }}
                 ></div>
               </div>
@@ -319,12 +319,12 @@ const LevelBasedQuizzes = () => {
                     placeholder="Search quizzes, categories, subcategories..."
                     value={searchInput}
                     onChange={(e) => handleSearchChange(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm w-64 pr-0 md:pr-8"
+                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 text-sm w-64 pr-0 md:pr-8"
                     disabled={searchLoading}
                   />
                   {searchLoading && (
                     <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-                      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
+                      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-600"></div>
                     </div>
                   )}
                 </div>
@@ -339,7 +339,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.category}
                   onChange={(e) => handleFilterChange('category', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
                 >
                   <option value="">All Categories</option>
                   {categories.map(cat => (
@@ -355,7 +355,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.subcategory}
                   onChange={(e) => handleFilterChange('subcategory', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
                   disabled={!filters.category}
                 >
                   <option value="">All Subcategories</option>
@@ -372,7 +372,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.difficulty}
                   onChange={(e) => handleFilterChange('difficulty', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
                 >
                   <option value="">All Difficulties</option>
                   <option value="beginner">Beginner</option>
@@ -389,7 +389,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.level}
                   onChange={(e) => handleFilterChange('level', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
                 >
                   <option value="">All Levels</option>
                   <option value="1">Level 1 - Rookie</option>
@@ -404,7 +404,7 @@ const LevelBasedQuizzes = () => {
                   <option value="10">Level 10 - Legend</option>
                 </select>
                 {filters.level && (
-                  <div className="mt-1 text-xs text-blue-600 dark:text-blue-400">
+                  <div className="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
                     Showing Level {filters.level} - {getLevelName(parseInt(filters.level))}
                   </div>
                 )}
@@ -417,7 +417,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.attempted}
                   onChange={(e) => handleFilterChange('attempted', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
                 >
                   <option value="">All Quizzes</option>
                   <option value="not_attempted">Not Attempted</option>
@@ -441,39 +441,39 @@ const LevelBasedQuizzes = () => {
 
           {/* Filter Summary */}
           {(filters.category || filters.subcategory || filters.difficulty || filters.level || filters.attempted || filters.search) && (
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-6">
+            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-lg p-4 mb-6">
               <div className="flex items-center gap-2 mb-2">
-                <FaFilter className="text-blue-600" />
-                <span className="text-sm font-medium text-blue-800 dark:text-blue-200">Active Filters:</span>
+                <FaFilter className="text-secondary-600" />
+                <span className="text-sm font-medium text-secondary-800 dark:text-secondary-200">Active Filters:</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {filters.category && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Category: {categories.find(c => c._id === filters.category)?.name}
                   </span>
                 )}
                 {filters.subcategory && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Subcategory: {subcategories.find(s => s._id === filters.subcategory)?.name}
                   </span>
                 )}
                 {filters.difficulty && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Difficulty: {filters.difficulty.charAt(0).toUpperCase() + filters.difficulty.slice(1)}
                   </span>
                 )}
                 {filters.level && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Level: {filters.level} - {getLevelName(parseInt(filters.level))}
                   </span>
                 )}
                 {filters.attempted && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Status: {filters.attempted === 'attempted' ? 'Attempted' : 'Not Attempted'}
                   </span>
                 )}
                 {filters.search && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
                     Search: "{filters.search}"
                   </span>
                 )}
@@ -495,7 +495,7 @@ const LevelBasedQuizzes = () => {
 
               <button
                 onClick={() => isRouterReady && router && router.push("/home")}
-                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-2xl hover:from-blue-600 hover:from-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-secondary-600 hover:from-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
               >
                 <FaArrowLeft />
                 <span>Go Back</span>
@@ -513,8 +513,8 @@ const LevelBasedQuizzes = () => {
                 {quizzes.map((quiz) => (
                   <div
                     key={quiz._id}
-                    className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-2 md:p-6 border-2 transition-all duration-300 hover:shadow-lg ${quiz.isRecommended ? 'border-blue-500' :
-                        quiz.hasAttempted ? 'border-gray-300' : 'border-green-500'
+                    className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-2 md:p-6 border-2 transition-all duration-300 hover:shadow-lg ${quiz.isRecommended ? 'border-secondary-500' :
+                      quiz.hasAttempted ? 'border-gray-300' : 'border-green-500'
                       }`}
                   >
                     {/* Quiz Header */}
@@ -523,7 +523,7 @@ const LevelBasedQuizzes = () => {
                         {quiz.title}
                       </h3>
                       {quiz.isRecommended && (
-                        <FaStar className="text-yellow-500 text-xl" />
+                        <FaStar className="text-primary-500 text-xl" />
                       )}
                     </div>
 
@@ -586,13 +586,13 @@ const LevelBasedQuizzes = () => {
                       {/* Attempt Status */}
                       {quiz.attemptStatus.hasAttempted && (
                         <div className="flex flex-wrap gap-2">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${quiz.attemptStatus.isHighScore ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${quiz.attemptStatus.isHighScore ? 'bg-green-100 text-green-800' : 'bg-primary-100 text-primary-800'
                             }`}>
                             {quiz.attemptStatus.isHighScore ? 'High Score!' : 'Attempted'}
                           </span>
 
                           {quiz.attemptStatus.bestScore && (
-                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800">
                               Score: {quiz.attemptStatus.bestScore}%
                             </span>
                           )}
@@ -608,14 +608,14 @@ const LevelBasedQuizzes = () => {
                     {quiz.attemptStatus.hasAttempted ? (
                       <button
                         onClick={() => isRouterReady && router && router.push(`/quiz-result/${quiz.attemptStatus.attemptId}`)}
-                        className="w-full py-2 px-4 rounded-md font-medium bg-orange-600 text-white hover:bg-orange-700 transition"
+                        className="w-full py-2 px-4 rounded-md font-medium bg-primary-600 text-white hover:bg-primary-700 transition"
                       >
                         View Result
                       </button>
                     ) : quiz.requiredLevel === userLevel?.currentLevel ? (
                       <button
                         onClick={() => handleQuizClick(quiz)}
-                        className="w-full py-2 px-4 rounded-md font-medium bg-orange-600 text-white hover:bg-orange-700 transition text-center"
+                        className="w-full py-2 px-4 rounded-md font-medium bg-primary-600 text-white hover:bg-primary-700 transition text-center"
                       >
                         Start Quiz
                       </button>

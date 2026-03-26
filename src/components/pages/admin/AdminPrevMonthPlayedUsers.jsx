@@ -219,7 +219,7 @@ const AdminPrevMonthPlayedUsers = () => {
     if (sortBy !== field) {
       return <FaSort className="text-gray-400" />;
     }
-    return sortOrder === 'asc' ? <FaSortUp className="text-blue-600" /> : <FaSortDown className="text-blue-600" />;
+    return sortOrder === 'asc' ? <FaSortUp className="text-secondary-600" /> : <FaSortDown className="text-secondary-600" />;
   };
 
   return (
@@ -231,9 +231,9 @@ const AdminPrevMonthPlayedUsers = () => {
             {/* Header & Filters */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
               <div>
-                <h2 className={`text-md lg:text-3xl font-black italic tracking-tighter uppercase ${activeTab === 'daily' ? 'text-blue-600 dark:text-blue-400' :
+                <h2 className={`text-md lg:text-3xl font-black italic tracking-tighter uppercase ${activeTab === 'daily' ? 'text-secondary-600 dark:text-secondary-400' :
                   activeTab === 'weekly' ? 'text-purple-600 dark:text-purple-400' :
-                    'text-yellow-600 dark:text-yellow-500'
+                    'text-secondary-600 dark:text-primary-500'
                   }`}>
                   {activeTab} Played Users
                 </h2>
@@ -249,9 +249,9 @@ const AdminPrevMonthPlayedUsers = () => {
                     key={type}
                     onClick={() => setActiveTab(type)}
                     className={`px-4 py-1.5 rounded-lg text-xs font-black transition-all duration-200 capitalize ${activeTab === type
-                      ? activeTab === 'daily' ? 'bg-blue-600 text-white shadow-lg' :
+                      ? activeTab === 'daily' ? 'bg-secondary-600 text-white shadow-lg' :
                         activeTab === 'weekly' ? 'bg-purple-600 text-white shadow-lg' :
-                          'bg-yellow-600 text-white shadow-lg'
+                          'bg-primary-600 text-white shadow-lg'
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                       }`}
                   >
@@ -270,7 +270,7 @@ const AdminPrevMonthPlayedUsers = () => {
                       onChange={(date) => setPreciseDate(dayjs(date).format('YYYY-MM-DD'))}
                       dateFormat="yyyy-MM-dd"
                       maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
+                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-secondary-500"
                     />
                   </div>
                 )}
@@ -331,7 +331,7 @@ const AdminPrevMonthPlayedUsers = () => {
                       dateFormat="MMMM yyyy"
                       showMonthYearPicker
                       maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-yellow-500"
+                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-primary-500"
                     />
                   </div>
                 )}
@@ -340,19 +340,19 @@ const AdminPrevMonthPlayedUsers = () => {
                 <div className="flex items-center gap-1 ml-auto">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
                   >
                     <FaTh size={14} />
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
                   >
                     <FaList size={14} />
                   </button>
                   <button
                     onClick={() => setViewMode('table')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
                   >
                     <FaTable size={14} />
                   </button>
@@ -362,12 +362,12 @@ const AdminPrevMonthPlayedUsers = () => {
 
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-600">
+              <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-secondary-200 dark:border-secondary-600">
                 <div className="flex items-center gap-3">
-                  <FaUsers className="text-2xl text-blue-600" />
+                  <FaUsers className="text-2xl text-secondary-600" />
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">Total Users</div>
-                    <div className="text-md lg:text-2xl font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Users</div>
+                    <div className="text-md lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
                       {pagination.total}
                     </div>
                   </div>
@@ -379,7 +379,7 @@ const AdminPrevMonthPlayedUsers = () => {
                   <FaCalendarAlt className="text-2xl text-green-600" />
                   <div>
                     <div className="text-sm text-green-700 dark:text-green-400">Selected {activeTab === 'daily' ? 'Date' : activeTab === 'weekly' ? 'Week' : 'Month'}</div>
-                    <div className="text-md lg:text-2xl font-bold text-green-800 dark:text-blue-200">
+                    <div className="text-md lg:text-2xl font-bold text-green-800 dark:text-secondary-200">
                       {selectedMonth || 'All'}
                     </div>
                   </div>
@@ -388,10 +388,10 @@ const AdminPrevMonthPlayedUsers = () => {
 
               <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-600">
                 <div className="flex items-center gap-3">
-                  <FaUsers className="text-2xl text-orange-700" />
+                  <FaUsers className="text-2xl text-primary-600" />
                   <div>
-                    <div className="text-sm text-yellow-700 dark:text-yellow-400">Current Page</div>
-                    <div className="text-md lg:text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+                    <div className="text-sm text-primary-700 dark:text-primary-400">Current Page</div>
+                    <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
                       {pagination.page} / {pagination.totalPages}
                     </div>
                   </div>
@@ -426,7 +426,7 @@ const AdminPrevMonthPlayedUsers = () => {
                       const serialNumber = (pagination.page - 1) * pagination.limit + index + 1;
                       return (
                         <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
+                          <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 p-4 text-white">
                             <div className="flex items-center justify-between">
                               <div>
                                 <div className="text-sm opacity-90">#{serialNumber}</div>
@@ -526,7 +526,7 @@ const AdminPrevMonthPlayedUsers = () => {
                           <div className="p-2 md:p-4 lg:p-6">
                             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                               <div className="flex items-center gap-4 flex-1">
-                                <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                                <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r from-secondary-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
                                   {serialNumber}
                                 </div>
                                 <div className="flex-1">

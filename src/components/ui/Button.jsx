@@ -25,12 +25,12 @@ const Button = ({
     };
 
     const variantClasses = {
-      primary: 'bg-blue-500 hover:bg-blue-600 text-white focus:ring-blue-500',
+      primary: 'bg-secondary-500 hover:bg-secondary-600 text-white focus:ring-secondary-500',
       secondary: 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-500',
-      outline: 'border-2 border-blue-500 text-blue-500 hover:bg-blue-50 focus:ring-blue-500',
-      ghost: 'text-blue-500 hover:bg-blue-50 focus:ring-blue-500',
-      gradient: 'text-white focus:ring-blue-500',
-      admin: 'bg-gradient-to-r from-yellow-500 to-red-500 text-white dark:from-yellow-600 dark:to-red-700 hover:opacity-90 transition-all duration-200 focus:ring-yellow-500 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed',
+      outline: 'border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-50 focus:ring-secondary-500',
+      ghost: 'text-secondary-500 hover:bg-secondary-50 focus:ring-secondary-500',
+      gradient: 'text-white focus:ring-secondary-500',
+      admin: 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white dark:from-primary-600 dark:to-secondary-700 hover:opacity-90 transition-all duration-200 focus:ring-primary-500 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed',
     };
 
     const widthClasses = fullWidth ? 'w-full' : '';

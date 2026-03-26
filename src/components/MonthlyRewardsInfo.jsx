@@ -41,19 +41,19 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
 
   if (compact) {
     return (
-      <div className={`bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 border border-blue-200/50 dark:border-blue-800/50 rounded-xl p-4 ${className} backdrop-blur-sm`}>
-        <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-3 text-sm flex items-center gap-2">
-          <span className="p-1 bg-blue-100 dark:bg-blue-800 rounded">📋</span>
+      <div className={`bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/10 dark:to-indigo-900/10 border border-secondary-200/50 dark:border-secondary-800/50 rounded-xl p-4 ${className} backdrop-blur-sm`}>
+        <h4 className="font-bold text-secondary-800 dark:text-secondary-300 mb-3 text-sm flex items-center gap-2">
+          <span className="p-1 bg-secondary-100 dark:bg-secondary-800 rounded">📋</span>
           Rewards System
         </h4>
         <div className="space-y-2">
-          <div className="text-[10px] text-blue-700 dark:text-blue-300">
+          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
             <strong>Daily:</strong> ₹{(stats.prizepools.daily?.total ?? stats.prizepools.daily ?? 0).toLocaleString()} total pool
           </div>
-          <div className="text-[10px] text-blue-700 dark:text-blue-300">
+          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
             <strong>Weekly:</strong> ₹{(stats.prizepools.weekly?.total ?? stats.prizepools.weekly ?? 0).toLocaleString()} total pool
           </div>
-          <div className="text-[10px] text-blue-700 dark:text-blue-300">
+          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
             <strong>Monthly:</strong> ₹{(stats.prizepools.monthly?.total ?? stats.prizepools.monthly ?? 0).toLocaleString()} total pool
           </div>
         </div>
@@ -96,10 +96,10 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
   ];
 
   return (
-    <div className={`relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-blue-900/10 dark:to-gray-800 border-2 border-blue-100 dark:border-blue-800/50 rounded-3xl p-6 lg:p-10 ${className} shadow-xl`}>
+    <div className={`relative overflow-hidden bg-gradient-to-br from-secondary-50 via-white to-indigo-50 dark:from-gray-900 dark:via-secondary-900/10 dark:to-gray-800 border-2 border-secondary-100 dark:border-secondary-800/50 rounded-3xl p-6 lg:p-10 ${className} shadow-xl`}>
       <div className="relative z-10">
         <h3 className="text-2xl lg:text-3xl font-black text-gray-800 dark:text-white mb-8 tracking-tight">
-          Rewards & <span className="text-blue-600 dark:text-blue-400">Challenges System</span>
+          Rewards & <span className="text-secondary-600 dark:text-secondary-400">Challenges System</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -115,19 +115,19 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
               </div>
               <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-2">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
                   <strong>{item.levelReq}</strong>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
                   <strong>{item.req}</strong>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
                   <span>{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% Min Accuracy</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
                   <span>{item.reset}</span>
                 </li>
               </ul>
@@ -135,8 +135,8 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800">
-          <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
+        <div className="mt-8 p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-xl border border-secondary-100 dark:border-secondary-800">
+          <p className="text-sm text-secondary-800 dark:text-secondary-200 text-center">
             Prizes are calculated based on <strong>{activePro} Active PRO Users</strong>. More PRO users = Higher Prize Pools!
           </p>
         </div>
@@ -146,12 +146,12 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
       <div className="mt-12 pt-10 border-t border-gray-200 dark:border-gray-700">
         <div className="relative group overflow-hidden rounded-3xl p-1">
           {/* Animated border/glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-gradient-shift"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-secondary-500 opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-gradient-shift"></div>
 
-          <div className="relative z-10 bg-gradient-to-br from-indigo-600 to-blue-700 dark:from-indigo-900 dark:to-blue-900 rounded-[calc(1.5rem-1px)] p-6 lg:p-10 text-white shadow-2xl overflow-hidden">
+          <div className="relative z-10 bg-gradient-to-br from-indigo-600 to-secondary-700 dark:from-indigo-900 dark:to-secondary-900 rounded-[calc(1.5rem-1px)] p-6 lg:p-10 text-white shadow-2xl overflow-hidden">
             {/* Complex Background Decor */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-[100px] rounded-full -mr-40 -mt-40 animate-blob"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/10 blur-[100px] rounded-full -ml-40 -mb-40 animate-blob animation-delay-2000"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary-400/10 blur-[100px] rounded-full -ml-40 -mb-40 animate-blob animation-delay-2000"></div>
             <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-purple-400/10 blur-[80px] rounded-full -ml-20 -mt-20 animate-blob animation-delay-4000"></div>
 
             <div className="relative z-10">
@@ -178,7 +178,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
                     <span className="flex h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
                     {exampleType.charAt(0).toUpperCase() + exampleType.slice(1)} Earning Example
                   </div>
-                  <h2 className="text-xl md:text-3xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-yellow-500 uppercase">
+                  <h2 className="text-xl md:text-3xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-secondary-600 to-primary-500 uppercase">
                     REWARD SYSTEM
                   </h2>
                   <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-bold tracking-widest uppercase mt-1">
@@ -244,7 +244,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
                         <div className="text-[10px] font-black text-white/70 uppercase tracking-wider">{reward.label}</div>
                         <span className="text-xl opacity-50 group-hover/card:opacity-100 transition-opacity">{reward.icon}</span>
                       </div>
-                      <div className="text-xl lg:text-2xl font-black text-white group-hover/card:text-yellow-300 transition-colors">
+                      <div className="text-xl lg:text-2xl font-black text-white group-hover/card:text-primary-300 transition-colors">
                         ₹{(() => {
                           const base = 100;
                           let pool = 0;
@@ -256,7 +256,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
                       </div>
                       <div className="mt-1 flex items-center gap-1.5">
                         <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-yellow-400 to-orange-500" style={{ width: `${reward.percentage * 100}%` }}></div>
+                          <div className="h-full bg-gradient-to-r from-primary-400 to-primary-500" style={{ width: `${reward.percentage * 100}%` }}></div>
                         </div>
                         <span className="text-[9px] font-bold text-indigo-200">{(reward.percentage * 100).toFixed(0)}%</span>
                       </div>

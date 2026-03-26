@@ -256,13 +256,13 @@ const AdminArticleForm = () => {
                     value={formData.title}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="Enter article title"
                   />
                   {formData.title && (
                     <div className="mt-2 p-2 bg-gray-50 dark:bg-gray-700 rounded-md">
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <strong>URL Slug:</strong> <code className="text-blue-600 dark:text-blue-400">
+                        <strong>URL Slug:</strong> <code className="text-secondary-600 dark:text-secondary-400">
                           /articles/{formData.title
                             .toLowerCase()
                             .replace(/[^a-z0-9\s-]/g, '')
@@ -302,7 +302,7 @@ const AdminArticleForm = () => {
                     value={formData.excerpt}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="Brief description of the article"
                   />
                 </div>
@@ -318,7 +318,7 @@ const AdminArticleForm = () => {
                       value={formData.category}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     >
                       <option value="">Select a category</option>
                       {categories.map(category => (
@@ -340,7 +340,7 @@ const AdminArticleForm = () => {
                     name="tags"
                     value={formData.tags}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="Enter tags separated by commas"
                   />
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -374,7 +374,7 @@ const AdminArticleForm = () => {
                     name="featuredImage"
                     value={formData.featuredImage}
                     onChange={handleChange}
-                    className="mt-2 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="mt-2 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="https://example.com/image.jpg"
                   />
                 </div>
@@ -389,7 +389,7 @@ const AdminArticleForm = () => {
                     name="featuredImageAlt"
                     value={formData.featuredImageAlt}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="Describe the image for accessibility"
                   />
                 </div>
@@ -405,7 +405,7 @@ const AdminArticleForm = () => {
                     value={formData.metaTitle}
                     onChange={handleChange}
                     maxLength={60}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="SEO title (max 60 characters)"
                   />
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -424,7 +424,7 @@ const AdminArticleForm = () => {
                     onChange={handleChange}
                     maxLength={160}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder="SEO description (max 160 characters)"
                   />
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -450,7 +450,7 @@ const AdminArticleForm = () => {
                     name="status"
                     value={formData.status}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                   >
                     <option value="draft">Draft</option>
                     <option value="pending">Pending</option>
@@ -468,7 +468,7 @@ const AdminArticleForm = () => {
                     name="isFeatured"
                     checked={formData.isFeatured}
                     onChange={handleChange}
-                    className="h-4 w-4 text-orange-700 focus:ring-yellow-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <label className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
                     Featured Article
@@ -482,7 +482,7 @@ const AdminArticleForm = () => {
                     name="isPinned"
                     checked={formData.isPinned}
                     onChange={handleChange}
-                    className="h-4 w-4 text-orange-700 focus:ring-yellow-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <label className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
                     Pinned Article
@@ -517,7 +517,7 @@ const AdminArticleForm = () => {
                     </label>
 
                     <label className={`relative flex flex-col p-4 border-2 rounded-lg cursor-pointer transition-all ${formData.rewardTier === 'good'
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                      ? 'border-secondary-500 bg-secondary-50 dark:bg-secondary-900/20'
                       : 'border-gray-300 dark:border-gray-600 hover:border-gray-400'
                       }`}>
                       <input
@@ -530,7 +530,7 @@ const AdminArticleForm = () => {
                       />
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-lg font-semibold text-gray-900 dark:text-white">Good Blog</span>
-                        <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">₹10</span>
+                        <span className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">₹10</span>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Well-written and informative</p>
                     </label>
@@ -549,13 +549,13 @@ const AdminArticleForm = () => {
                       />
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-lg font-semibold text-gray-900 dark:text-white">High Quality</span>
-                        <span className="text-2xl font-bold text-orange-700 dark:text-yellow-400">₹15</span>
+                        <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">₹15</span>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Exceptional quality content</p>
                     </label>
                   </div>
                   {formData.status === 'approved' && !formData.rewardTier && (
-                    <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    <p className="mt-2 text-sm text-primary-600 dark:text-red-400">
                       ⚠️ Please select a reward tier before approving. Wallet will be credited automatically.
                     </p>
                   )}

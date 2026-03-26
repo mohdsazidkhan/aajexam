@@ -329,7 +329,7 @@ const LandingPage = () => {
               setError(null);
               fetchData();
             }}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-6 py-3 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors"
           >
             Try Again
           </button>
@@ -346,16 +346,16 @@ const LandingPage = () => {
 
         {/* Hero Section */}
         <section id="hero" className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-600/10 via-red-600/10 to-yellow-600/10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-secondary-600/10 to-primary-600/10 pointer-events-none" />
 
           {/* Floating Background Icons */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Books */}
             <div className="absolute top-20 left-10 animate-float-slow hero-float-icon">
-              <FaBook className="w-8 h-8 text-yellow-500/30 animate-pulse" />
+              <FaBook className="w-8 h-8 text-primary-500/30 animate-pulse" />
             </div>
             <div className="absolute top-32 right-20 animate-float-medium hero-float-icon">
-              <FaBook className="w-6 h-6 text-orange-500/25 animate-pulse" />
+              <FaBook className="w-6 h-6 text-primary-500/25 animate-pulse" />
             </div>
             <div className="absolute top-40 left-1/4 animate-float-fast hero-float-icon">
               <FaBook className="w-5 h-5 text-red-500/20 animate-pulse" />
@@ -363,10 +363,10 @@ const LandingPage = () => {
 
             {/* Question Marks */}
             <div className="absolute top-16 right-1/3 animate-float-medium hero-float-icon">
-              <FaQuestionCircle className="w-7 h-7 text-yellow-400/30 animate-bounce" />
+              <FaQuestionCircle className="w-7 h-7 text-primary-400/30 animate-bounce" />
             </div>
             <div className="absolute top-24 left-1/3 animate-float-slow hero-float-icon">
-              <FaQuestionCircle className="w-5 h-5 text-orange-400/25 animate-bounce" />
+              <FaQuestionCircle className="w-5 h-5 text-secondary-400/25 animate-bounce" />
             </div>
             <div className="absolute top-36 right-16 animate-float-fast hero-float-icon">
               <FaQuestionCircle className="w-6 h-6 text-red-400/20 animate-bounce" />
@@ -374,18 +374,18 @@ const LandingPage = () => {
 
             {/* Quiz Icons */}
             <div className="absolute top-28 left-16 animate-float-medium hero-float-icon">
-              <FaBrain className="w-6 h-6 text-yellow-500/25 animate-pulse" />
+              <FaBrain className="w-6 h-6 text-primary-500/25 animate-pulse" />
             </div>
             <div className="absolute top-44 right-1/4 animate-float-slow hero-float-icon">
-              <FaBrain className="w-7 h-7 text-orange-500/30 animate-pulse" />
+              <FaBrain className="w-7 h-7 text-primary-500/30 animate-pulse" />
             </div>
 
             {/* Categories */}
             <div className="absolute top-20 right-10 animate-float-fast hero-float-icon">
-              <FaFlask className="w-5 h-5 text-yellow-400/20 animate-pulse" />
+              <FaFlask className="w-5 h-5 text-primary-400/20 animate-pulse" />
             </div>
             <div className="absolute top-48 left-20 animate-float-medium hero-float-icon">
-              <FaCalculator className="w-6 h-6 text-orange-400/25 animate-pulse" />
+              <FaCalculator className="w-6 h-6 text-secondary-400/25 animate-pulse" />
             </div>
             <div className="absolute top-32 left-1/2 animate-float-slow hero-float-icon">
               <FaPalette className="w-5 h-5 text-red-400/20 animate-pulse" />
@@ -393,10 +393,10 @@ const LandingPage = () => {
 
             {/* Students */}
             <div className="absolute top-16 left-1/2 animate-float-medium hero-float-icon">
-              <FaUserGraduate className="w-6 h-6 text-yellow-500/25 animate-pulse" />
+              <FaUserGraduate className="w-6 h-6 text-primary-500/25 animate-pulse" />
             </div>
             <div className="absolute top-40 right-32 animate-float-slow hero-float-icon">
-              <FaUsers className="w-5 h-5 text-orange-500/20 animate-pulse" />
+              <FaUsers className="w-5 h-5 text-primary-500/20 animate-pulse" />
             </div>
             <div className="absolute top-52 left-1/3 animate-float-fast hero-float-icon">
               <FaUserGraduate className="w-7 h-7 text-red-500/30 animate-pulse" />
@@ -404,10 +404,10 @@ const LandingPage = () => {
 
             {/* Additional floating elements */}
             <div className="absolute top-24 right-40 animate-float-slow hero-float-icon">
-              <FaTrophy className="w-4 h-4 text-yellow-400/15 animate-pulse" />
+              <FaTrophy className="w-4 h-4 text-primary-400/15 animate-pulse" />
             </div>
             <div className="absolute top-36 left-40 animate-float-medium hero-float-icon">
-              <FaStar className="w-5 h-5 text-orange-400/20 animate-pulse" />
+              <FaStar className="w-5 h-5 text-secondary-400/20 animate-pulse" />
             </div>
             <div className="absolute top-48 right-1/2 animate-float-fast hero-float-icon">
               <FaMedal className="w-6 h-6 text-red-400/25 animate-pulse" />
@@ -417,24 +417,24 @@ const LandingPage = () => {
           <div className="relative container mx-auto px-4 lg:px-8 py-10 lg:py-20 mt-0 md:mt-8">
             <div className="text-center">
               <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 text-secondary-500 to-secondary-500 dark:text-white">
                   Battle of Brains. <br /> <i>Only Legends Can Survive!</i>
                 </span>
               </h1>
               <p className="text-sm md:text-xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-300 font-semibold">
-                Ready to prove your knowledge? Play level based quizzes across categories, compete on the leaderboard, and win monthly rewards. <br /> <strong className="text-orange-500">A new challenge begins every month!</strong>
+                Ready to prove your knowledge? Play level based quizzes across categories, compete on the leaderboard, and win monthly rewards. <br /> <strong className="text-primary-500">A new challenge begins every month!</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/register"
-                  className="group px-4 md:px-8 py-1 md:py-4 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold text-md lg:text-lg hover:from-yellow-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                  className="group px-4 md:px-8 py-1 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold text-md lg:text-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
                 >
                   <span>Start Learning Now</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 {/* <button
                 onClick={() => scrollToSection("levels")}
-                className="px-4 md:px-8 py-2 md:py-4 border-2 border-yellow-600 text-orange-700 dark:text-yellow-400 rounded-xl font-semibold text-lg hover:bg-yellow-600 hover:text-white dark:hover:bg-yellow-600 dark:hover:text-white transition-all duration-300 flex items-center space-x-2"
+                className="px-4 md:px-8 py-2 md:py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 rounded-xl font-semibold text-lg hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 dark:hover:text-white transition-all duration-300 flex items-center space-x-2"
               >
                 <FaPlay className="w-4 h-4" />
                 <span>Explore Levels</span>
@@ -449,17 +449,17 @@ const LandingPage = () => {
                   icon: FaUsers,
                   number: stats?.activeStudents || "N/A",
                   label: "Active Students",
-                  gradient: "from-blue-500/20 to-cyan-500/20",
-                  iconBg: "from-blue-500 to-cyan-500",
-                  textColor: "text-blue-600",
+                  gradient: "from-secondary-500/20 to-cyan-500/20",
+                  iconBg: "from-secondary-500 to-cyan-500",
+                  textColor: "text-secondary-600",
                 },
                 {
                   icon: FaLevelUpAlt,
                   number: levels.length || "N/A",
                   label: "Levels",
-                  gradient: "from-blue-500/20 to-cyan-500/20",
-                  iconBg: "from-blue-500 to-cyan-500",
-                  textColor: "text-blue-600",
+                  gradient: "from-secondary-500/20 to-cyan-500/20",
+                  iconBg: "from-secondary-500 to-cyan-500",
+                  textColor: "text-secondary-600",
                 },
                 {
                   icon: FaBook,
@@ -475,38 +475,38 @@ const LandingPage = () => {
                   label: "Subcategories",
                   gradient: "from-purple-500/20 to-pink-500/20",
                   iconBg: "from-purple-500 to-pink-500",
-                  textColor: "text-orange-700",
+                  textColor: "text-primary-600",
                 },
                 {
                   icon: FaQuestionCircle,
                   number: stats.totalQuestions || "N/A",
                   label: "Questions",
-                  gradient: "from-orange-500/20 to-red-500/20",
-                  iconBg: "from-orange-500 to-red-500",
-                  textColor: "text-orange-700",
+                  gradient: "from-primary-500/20 to-secondary-500/20",
+                  iconBg: "from-primary-500 to-secondary-500",
+                  textColor: "text-primary-600",
                 },
                 {
                   icon: FaLaptopCode,
                   number: stats.totalQuizzes || "N/A",
                   label: "Quizzes",
-                  gradient: "from-yellow-500/20 to-blue-500/20",
-                  iconBg: "from-yellow-500 to-blue-500",
-                  textColor: "text-red-600",
+                  gradient: "from-primary-500/20 to-secondary-500/20",
+                  iconBg: "from-primary-500 to-secondary-500",
+                  textColor: "text-primary-600",
                 },
                 {
                   icon: FaTrophy,
                   number: stats?.quizzesTaken || "N/A",
                   label: "Quizzes Taken",
-                  gradient: "from-yellow-500/20 to-orange-500/20",
-                  iconBg: "from-yellow-500 to-orange-500",
-                  textColor: "text-orange-700",
+                  gradient: "from-primary-500/20 to-primary-500/20",
+                  iconBg: "from-primary-500 to-primary-500",
+                  textColor: "text-primary-600",
                 },
                 {
                   icon: FaGraduationCap,
                   number: stats?.totalExams || "N/A",
                   label: "Govt. Exams",
-                  gradient: "from-cyan-500/20 to-blue-500/20",
-                  iconBg: "from-cyan-500 to-blue-500",
+                  gradient: "from-cyan-500/20 to-secondary-500/20",
+                  iconBg: "from-cyan-500 to-secondary-500",
                   textColor: "text-cyan-600",
                 },
                 {
@@ -537,8 +537,8 @@ const LandingPage = () => {
 
           {/* Background decoration */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-yellow-400/20 to-red-400/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-400/20 to-yellow-400/20 rounded-full blur-3xl"></div>
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-400/20 to-red-400/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-primary-400/20 to-primary-400/20 rounded-full blur-3xl"></div>
           </div>
         </section>
 
@@ -547,7 +547,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-purple-600 to-pink-600 dark:from-yellow-400 dark:via-purple-400 dark:to-pink-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-secondary-500 to-pink-600 dark:from-primary-400 dark:via-purple-400 dark:to-pink-400">
                   Explore Our Content
                 </span>
               </h2>
@@ -560,16 +560,16 @@ const LandingPage = () => {
               {/* Categories Card */}
               <Link href="/categories">
                 <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-indigo-500 cursor-pointer">
-                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 from-red-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 from-secondary-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     <FaBook className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-primary-600 dark:group-hover:text-red-400 transition-colors">
                     Categories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
                     Browse by subject and topic
                   </p>
-                  <div className="flex items-center justify-center text-red-600 dark:text-red-400 font-semibold group-hover:gap-2 transition-all">
+                  <div className="flex items-center justify-center text-primary-600 dark:text-red-400 font-semibold group-hover:gap-2 transition-all">
                     <span>Explore</span>
                     <FaArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform" />
                   </div>
@@ -578,17 +578,17 @@ const LandingPage = () => {
 
               {/* Levels Card */}
               <Link href="/levels">
-                <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-yellow-500 cursor-pointer">
-                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary-500 cursor-pointer">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     <FaTrophy className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                     Levels
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
                     10-level progression system
                   </p>
-                  <div className="flex items-center justify-center text-orange-700 dark:text-yellow-400 font-semibold group-hover:gap-2 transition-all">
+                  <div className="flex items-center justify-center text-primary-600 dark:text-primary-400 font-semibold group-hover:gap-2 transition-all">
                     <span>Explore</span>
                     <FaArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform" />
                   </div>
@@ -596,17 +596,17 @@ const LandingPage = () => {
               </Link>
 
               {/* Quizzes Card - Coming Soon */}
-              <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-blue-500 cursor-not-allowed opacity-75">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary-500 cursor-not-allowed opacity-75">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                   <FaQuestionCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors">
                   Quizzes
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
                   Browse all quizzes directly
                 </p>
-                <div className="flex items-center justify-center text-blue-600 dark:text-blue-400 font-semibold">
+                <div className="flex items-center justify-center text-secondary-600 dark:text-secondary-400 font-semibold">
                   <span className="text-sm">Coming Soon</span>
                 </div>
               </div>
@@ -657,13 +657,13 @@ const LandingPage = () => {
           <div className="container mx-auto px-4 md:px-6 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12 z-10">
             <div className="rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4   xl:p-12 border-2 border-purple-300/30">
               <div className="text-center mb-6 sm:mb-8 md:mb-10">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-yellow-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-primary-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
                   <FaStar className="text-white text-2xl sm:text-3xl md:text-4xl drop-shadow-lg" />
                 </div>
                 <h2 className="text-md sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-800 dark:text-white mb-3 sm:mb-4 md:mb-6 drop-shadow-lg">
                   🎉 Invite Friends & Earn Rewards! 🎉
                 </h2>
-                <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
+                <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-primary-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
                   Invite your friends to AajExam and earn wallet rewards.
                 </p>
               </div>
@@ -682,10 +682,10 @@ const LandingPage = () => {
                     <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1 sm:mb-2">
                       Friend Buys ₹{config.SUBSCRIPTION_PLANS.PRO.price} Plan
                     </h3>
-                    <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-yellow-300 mb-1 sm:mb-2">
+                    <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-primary-300 mb-1 sm:mb-2">
                       ₹{config.QUIZ_CONFIG.REFERRAL_REWARD_PRO}
                     </div>
-                    <p className="text-yellow-100 text-xs sm:text-lg">
+                    <p className="text-primary-100 text-xs sm:text-lg">
                       First-time purchase
                     </p>
                   </div>
@@ -693,7 +693,7 @@ const LandingPage = () => {
               </div>
 
               {/* Withdrawal Rules */}
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-yellow-200 dark:border-yellow-700">
+              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-primary-200 dark:border-primary-700">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4 text-center">
                   Withdrawal Rules:
                 </h3>
@@ -714,12 +714,12 @@ const LandingPage = () => {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                   <div className="text-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                       <span className="text-white dark:text-black font-bold text-sm sm:text-base md:text-lg">
                         1
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Get your unique referral code
                     </p>
                   </div>
@@ -729,7 +729,7 @@ const LandingPage = () => {
                         2
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Share it with friends & family
                     </p>
                   </div>
@@ -739,7 +739,7 @@ const LandingPage = () => {
                         3
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Friends join and buy a plan
                     </p>
                   </div>
@@ -749,7 +749,7 @@ const LandingPage = () => {
                         4
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Earn instant wallet money!
                     </p>
                   </div>
@@ -759,13 +759,13 @@ const LandingPage = () => {
               {/* Call to Action */}
               <div className="text-center">
                 <div className="space-y-3 sm:space-y-4">
-                  <p className="text-gray-700 dark:text-yellow-200 text-sm sm:text-base md:text-lg font-medium">
+                  <p className="text-gray-700 dark:text-primary-200 text-sm sm:text-base md:text-lg font-medium">
                     Ready to start earning rewards?
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                     <Link
                       href="/register"
-                      className="inline-block bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
+                      className="inline-block bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
                     >
                       🚀 Join Now & Get Referral Code
                     </Link>
@@ -779,25 +779,25 @@ const LandingPage = () => {
         {/* Mobile App Section */}
         <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
           {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-blue-900/20 dark:from-red-900/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-secondary-900/20 dark:from-red-900/20"></div>
 
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 from-red-400/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-yellow-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-secondary-400/20 from-red-400/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-primary-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-secondary-400/10 rounded-full blur-3xl"></div>
           </div>
 
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
               {/* Inner Gradient Border Effect */}
-              <div className="relative p-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl">
+              <div className="relative p-1 bg-gradient-to-r from-secondary-500 via-purple-500 to-pink-500 rounded-3xl">
                 <div className="bg-white dark:bg-gray-800 rounded-3xl p-2 md:p-4 lg:p-8 xl:p-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 xl:gap-12 items-center">
                     {/* Left Side - Content */}
                     <div className="text-center lg:text-left">
                       {/* Badge */}
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-yellow-600 text-white rounded-full text-sm font-semibold mb-6 animate-bounce">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-600 text-white rounded-full text-sm font-semibold mb-6 animate-bounce">
                         <FaMobileAlt className="w-4 h-4" />
                         <span>Now Available on Play Store!</span>
                       </div>
@@ -819,7 +819,7 @@ const LandingPage = () => {
                           { icon: FaUsers, text: "Compete Globally" },
                         ].map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                            <div className="flex-shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-r from-yellow-500 to-red-500 flex items-center justify-center text-white">
+                            <div className="flex-shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white">
                               <feature.icon className="w-5 h-5" />
                             </div>
                             <span className="font-medium">{feature.text}</span>
@@ -844,7 +844,7 @@ const LandingPage = () => {
 
                       {/* Additional Info */}
                       <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-                        <span className="font-semibold text-orange-700 dark:text-yellow-400">Free Download</span> •
+                        <span className="font-semibold text-primary-600 dark:text-primary-400">Free Download</span> •
                         <span className="mx-2">5+ Rating</span> •
                         <span className="mx-2">100+ Downloads</span>
                       </p>
@@ -857,10 +857,10 @@ const LandingPage = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-500">
                           <div className="w-full h-full bg-gray-900 rounded-[2.5rem] overflow-hidden relative">
                             {/* Phone Screen Content */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-6 flex flex-col items-center justify-center text-white">
+                            <div className="absolute inset-0 bg-gradient-to-br from-secondary-600 via-secondary-500 to-pink-600 p-6 flex flex-col items-center justify-center text-white">
                               {/* App Logo/Icon */}
                               <div className="w-24 h-24 bg-white dark:bg-gray-800 rounded-3xl flex items-center justify-center mb-6 shadow-xl animate-bounce">
-                                <FaBrain className="w-12 h-12 text-blue-600 dark:text-yellow-500" />
+                                <FaBrain className="w-12 h-12 text-secondary-600 dark:text-primary-500" />
                               </div>
 
                               {/* App Name */}
@@ -880,10 +880,10 @@ const LandingPage = () => {
                         </div>
 
                         {/* Floating Icons Around Phone */}
-                        <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
+                        <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
                           <FaStar className="w-8 h-8" />
                         </div>
-                        <div className="absolute -bottom-4 -left-4 w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
+                        <div className="absolute -bottom-4 -left-4 w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-400 to-primary-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
                           <FaTrophy className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
                         <div className="absolute top-1/2 -left-8 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse delay-500">
@@ -900,11 +900,11 @@ const LandingPage = () => {
 
         {/* Prize & Rewards Section */}
         <section id="prizes" className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tl from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-900 dark:via-amber-900/20 dark:to-orange-900/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-amber-50 via-primary-50 to-primary-50 dark:from-gray-900 dark:via-amber-900/20 dark:to-primary-900/20 pointer-events-none" />
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Live Prize Pool
                 </span>
               </h2>
@@ -916,15 +916,15 @@ const LandingPage = () => {
 
             {/* Full Width Prize Pool Display */}
             <div className="container mx-auto">
-              <div className="rounded-3xl p-2 md:p-4 lg:p-8 xl:p-12 bg-gradient-to-br from-white via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-200 dark:border-yellow-700 shadow-2xl">
+              <div className="rounded-3xl p-2 md:p-4 lg:p-8 xl:p-12 bg-gradient-to-br from-white via-primary-50 to-primary-50 dark:from-gray-800 dark:via-primary-900/20 dark:to-primary-900/20 border-2 border-primary-200 dark:border-primary-700 shadow-2xl">
                 {/* Header Section */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl lg:text-4xl font-bold mb-4">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-600">
                       Monthly Prize Pool
                     </span>
                   </h3>
-                  <div className="text-3xl md:text-3xl lg:text-5xl font-bold text-yellow-500 mb-4">
+                  <div className="text-3xl md:text-3xl lg:text-5xl font-bold text-primary-500 mb-4">
                     {stats.monthlyPrizePool > 0 ? `₹${stats.monthlyPrizePool.toLocaleString('en-IN')}` : `₹${config.QUIZ_CONFIG.PRIZE_PER_PRO}+`}
                   </div>
                   <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -937,16 +937,16 @@ const LandingPage = () => {
                   <div className="grid grid-cols-2 lg:grid-cols-5 xl:grid-cols-10 gap-4">
                     {/* Prize distribution — percentages of dynamic pool */}
                     {[
-                      { rank: 1, pct: '25%', color: 'from-yellow-400 to-yellow-600', badge: 'bg-yellow-300', text: 'text-yellow-800' },
+                      { rank: 1, pct: '25%', color: 'from-primary-400 to-primary-600', badge: 'bg-primary-300', text: 'text-primary-800' },
                       { rank: 2, pct: '20%', color: 'from-gray-300 to-gray-500', badge: 'bg-gray-200', text: 'text-gray-700' },
-                      { rank: 3, pct: '15%', color: 'from-orange-400 to-orange-600', badge: 'bg-orange-300', text: 'text-orange-800' },
-                      { rank: 4, pct: '12%', color: 'from-blue-400 to-blue-600', badge: 'bg-blue-300', text: 'text-blue-800' },
+                      { rank: 3, pct: '15%', color: 'from-primary-400 to-primary-600', badge: 'bg-primary-300', text: 'text-primary-800' },
+                      { rank: 4, pct: '12%', color: 'from-secondary-400 to-secondary-600', badge: 'bg-secondary-300', text: 'text-secondary-800' },
                       { rank: 5, pct: '8%', color: 'from-green-400 to-green-600', badge: 'bg-green-300', text: 'text-green-800' },
                       { rank: 6, pct: '6%', color: 'from-purple-400 to-violet-600', badge: 'bg-purple-300', text: 'text-purple-800' },
                       { rank: 7, pct: '5%', color: 'from-pink-400 to-pink-600', badge: 'bg-pink-300', text: 'text-pink-800' },
                       { rank: 8, pct: '4%', color: 'from-indigo-400 to-indigo-600', badge: 'bg-indigo-300', text: 'text-indigo-800' },
                       { rank: 9, pct: '3.5%', color: 'from-teal-400 to-teal-600', badge: 'bg-teal-300', text: 'text-teal-800' },
-                      { rank: 10, pct: '1.5%', color: 'from-red-400 to-red-600', badge: 'bg-red-300', text: 'text-red-800' },
+                      { rank: 10, pct: '1.5%', color: 'from-red-400 to-secondary-600', badge: 'bg-red-300', text: 'text-red-800' },
                     ].map(({ rank, pct, color, badge, text }) => (
                       <div key={rank} className={`group relative text-center p-4 rounded-xl bg-gradient-to-br ${color} text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}>
                         <div className={`absolute -top-2 -right-2 w-6 h-6 ${badge} rounded-full flex items-center justify-center`}>
@@ -959,12 +959,12 @@ const LandingPage = () => {
                   </div>
 
                   {/* Eligibility Info */}
-                  <div className="text-center p-2 lg:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border-2 border-blue-200 dark:border-blue-700">
+                  <div className="text-center p-2 lg:p-6 bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 rounded-xl border-2 border-secondary-200 dark:border-secondary-700">
                     <div className="flex items-center justify-center space-x-2 mb-2">
-                      <FaTrophy className="text-yellow-500 text-xl" />
-                      <h4 className="text-md lg:text-lg font-bold text-blue-800 dark:text-blue-300">Eligibility Requirements</h4>
+                      <FaTrophy className="text-primary-500 text-xl" />
+                      <h4 className="text-md lg:text-lg font-bold text-secondary-800 dark:text-secondary-300">Eligibility Requirements</h4>
                     </div>
-                    <p className="text-sm lg:text-base text-blue-700 dark:text-blue-300">
+                    <p className="text-sm lg:text-base text-secondary-700 dark:text-secondary-300">
                       <strong>Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD}</strong> + <strong>{config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes</strong> (≥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy)
                     </p>
                   </div>
@@ -974,7 +974,7 @@ const LandingPage = () => {
                 <div className="mt-10 text-center">
                   <Link
                     href="/register"
-                    className="inline-flex items-center space-x-3 px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white rounded-2xl font-bold text-lg hover:from-yellow-600 hover:via-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center space-x-3 px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-primary-500 text-secondary-500 to-secondary-500 text-white rounded-2xl font-bold text-lg hover:from-primary-600 hover:via-primary-500 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
                     <FaRocket className="w-5 h-5" />
                     <span>Start Winning Today</span>
@@ -1004,7 +1004,7 @@ const LandingPage = () => {
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Performers{" "}
                   {new Date().toLocaleDateString("en-US", {
                     month: "short",
@@ -1018,14 +1018,14 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-xl border-2 border-blue-300 dark:border-indigo-500">
+            <div className="rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-xl border-2 border-secondary-300 dark:border-indigo-500">
               <PublicTopPerformers />
             </div>
 
             <div className="text-center mt-12">
               <Link
                 href="/register"
-                className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold hover:from-yellow-700 hover:to-red-700 transition-all duration-300"
+                className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold hover:from-primary-700 hover:to-secondary-700 transition-all duration-300"
               >
                 <span>Join the Competition</span>
                 <FaArrowRight className="w-4 h-4" />
@@ -1035,12 +1035,12 @@ const LandingPage = () => {
         </section>
 
         {/* Govt. Exam Section - Premium Redesign */}
-        <section className="py-12 md:py-16 lg:py-24 relative overflow-hidden bg-gradient-to-br from-yellow-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-indigo-950 dark:from-red-950">
+        <section className="py-12 md:py-16 lg:py-24 relative overflow-hidden bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-indigo-950 dark:from-red-950">
           {/* Animated Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 via-purple-100 to-pink-100 dark:from-yellow-900 dark:via-purple-900 dark:to-pink-900">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-100 via-purple-100 to-pink-100 dark:from-primary-900 dark:via-purple-900 dark:to-pink-900">
             {/* Animated Blob Background */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-              <div className="absolute top-20 left-10 w-96 h-96 bg-blue-400 dark:bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob"></div>
+              <div className="absolute top-20 left-10 w-96 h-96 bg-secondary-400 dark:bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob"></div>
               <div className="absolute top-40 right-10 w-96 h-96 bg-purple-400 dark:bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob" style={{ animationDelay: '2s' }}></div>
               <div className="absolute -bottom-20 left-1/2 w-96 h-96 bg-pink-400 dark:bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob" style={{ animationDelay: '4s' }}></div>
             </div>
@@ -1056,12 +1056,12 @@ const LandingPage = () => {
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10 z-10">
             {/* Header Section */}
             <div className="text-center mb-12 lg:mb-16">
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white rounded-full text-sm font-bold mb-6 shadow-2xl animate-pulse hover:animate-none transition-all">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-400 text-secondary-500 to-secondary-500 text-white rounded-full text-sm font-bold mb-6 shadow-2xl animate-pulse hover:animate-none transition-all">
                 <FaGraduationCap className="w-5 h-5" />
                 <span>🚀 Your Dream Job Awaits</span>
               </div>
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold mb-6">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-pink-600 to-cyan-600 dark:from-yellow-300 dark:via-pink-300 dark:to-cyan-300 bg-[length:200%_auto] animate-gradient-shift">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-pink-600 to-cyan-600 dark:from-primary-300 dark:via-pink-300 dark:to-cyan-300 bg-[length:200%_auto] animate-gradient-shift">
                   Master Government Exams
                 </span>
               </h2>
@@ -1073,13 +1073,13 @@ const LandingPage = () => {
             {/* Feature Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 mb-4">
               {/* Feature Card 1 */}
-              <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-blue-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-500/50">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-secondary-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary-500/20 dark:hover:shadow-secondary-500/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/10 to-cyan-500/10 dark:from-secondary-500/20 dark:to-cyan-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                     <FaBook className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
-                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-yellow-300 transition-colors">Real Exam Patterns</h3>
+                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-secondary-600 dark:group-hover:text-primary-300 transition-colors">Real Exam Patterns</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     Practice with actual exam patterns and question formats from previous years to boost your confidence.
                   </p>
@@ -1093,7 +1093,7 @@ const LandingPage = () => {
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                     <FaChartLine className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
-                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-700 dark:group-hover:text-yellow-300 transition-colors">Track Progress</h3>
+                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">Track Progress</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     Monitor your performance with detailed analytics and identify areas for improvement with real-time insights.
                   </p>
@@ -1101,13 +1101,13 @@ const LandingPage = () => {
               </div>
 
               {/* Feature Card 3 */}
-              <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-yellow-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 dark:hover:shadow-yellow-500/50 md:col-span-2 lg:col-span-1">
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 dark:from-yellow-500/20 dark:to-orange-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-primary-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20 dark:hover:shadow-primary-500/50 md:col-span-2 lg:col-span-1">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:to-primary-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                     <FaAward className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
-                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-700 dark:group-hover:text-yellow-300 transition-colors">Detailed Solutions</h3>
+                  <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">Detailed Solutions</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     Get step-by-step solutions and explanations for every question to understand concepts better and learn effectively.
                   </p>
@@ -1118,9 +1118,9 @@ const LandingPage = () => {
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-4 mb-4">
               {[
-                { icon: FaGraduationCap, label: "Exam Categories", value: "100+", color: "from-blue-500 to-cyan-500", hoverColor: "hover:shadow-blue-500/50" },
+                { icon: FaGraduationCap, label: "Exam Categories", value: "100+", color: "from-secondary-500 to-cyan-500", hoverColor: "hover:shadow-secondary-500/50" },
                 { icon: FaBook, label: "Practice Tests", value: "100+", color: "from-purple-500 to-pink-500", hoverColor: "hover:shadow-purple-500/50" },
-                { icon: FaUsers, label: "Active Learners", value: "1000+", color: "from-green-600 to-blue-600", hoverColor: "hover:shadow-green-600/50" },
+                { icon: FaUsers, label: "Active Learners", value: "1000+", color: "from-green-600 to-secondary-600", hoverColor: "hover:shadow-green-600/50" },
                 { icon: FaTrophy, label: "Success Rate", value: "85%", color: "from-green-500 to-emerald-500", hoverColor: "hover:shadow-green-500/50" },
               ].map((stat, idx) => (
                 <div key={idx} className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-3 lg:p-6 border border-gray-200 dark:border-white/20 text-center transform hover:scale-110 transition-all duration-300 ${stat.hoverColor} hover:shadow-2xl`}>
@@ -1137,14 +1137,14 @@ const LandingPage = () => {
             <div className="text-center mt-8">
               <Link
                 href="/login"
-                className="group inline-flex items-center gap-2 lg:gap-4 px-5 lg:px-10 py-2 lg:py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 hover:from-yellow-500 hover:via-orange-600 hover:to-pink-600 text-white rounded-2xl font-bold text-md lg:text-xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-yellow-500/50"
+                className="group inline-flex items-center gap-2 lg:gap-4 px-5 lg:px-10 py-2 lg:py-4 bg-gradient-to-r from-primary-400 text-secondary-500 to-pink-500 hover:from-primary-500 hover:via-primary-500 hover:to-pink-600 text-white rounded-2xl font-bold text-md lg:text-xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-primary-500/50"
               >
                 <FaGraduationCap className="w-4 lg:w-7 h-4 lg:h-7 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Login to Access Exams</span>
                 <FaArrowRight className="w-4 lg:w-7 h-4 lg:h-7 group-hover:translate-x-2 transition-transform duration-300" />
               </Link>
               <p className="mt-6 text-gray-600 dark:text-gray-300 text-sm md:text-base">
-                <span className="font-semibold text-orange-700 dark:text-yellow-400">100% Free</span> •
+                <span className="font-semibold text-primary-600 dark:text-primary-400">100% Free</span> •
                 <span className="mx-2">Login Required</span> •
                 <span className="mx-2">Access After Login</span>
               </p>
@@ -1152,7 +1152,7 @@ const LandingPage = () => {
           </div>
 
           {/* Floating Decorative Elements */}
-          <div className="absolute top-20 left-5 w-24 h-24 bg-yellow-400/20 dark:bg-yellow-400/30 rounded-full blur-2xl animate-bounce pointer-events-none"></div>
+          <div className="absolute top-20 left-5 w-24 h-24 bg-primary-400/20 dark:bg-primary-400/30 rounded-full blur-2xl animate-bounce pointer-events-none"></div>
           <div className="absolute bottom-20 right-5 w-40 h-40 bg-pink-400/20 dark:bg-pink-400/30 rounded-full blur-2xl animate-pulse pointer-events-none"></div>
           <div className="absolute top-1/2 right-10 w-12 h-12 lg:w-16 lg:h-16 bg-cyan-400/20 dark:bg-cyan-400/30 rounded-full blur-xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
         </section>
@@ -1327,7 +1327,7 @@ const LandingPage = () => {
 
                     </div>
 
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-2 lg:p-6 border border-blue-200 dark:border-blue-700">
+                    <div className="bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-2xl p-2 lg:p-6 border border-secondary-200 dark:border-secondary-700">
                       <h4 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">
                         Extra Benefits
                       </h4>
@@ -1369,11 +1369,11 @@ const LandingPage = () => {
 
         {/* Levels Section */}
         <section id="levels" className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-yellow-900/20 dark:to-red-900/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-primary-50 to-red-50 dark:from-gray-900 dark:via-primary-900/20 dark:to-red-900/20 pointer-events-none" />
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl -md:text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Progressive Learning Levels
                 </span>
               </h2>
@@ -1392,7 +1392,7 @@ const LandingPage = () => {
                 return (
                   <div
                     key={level?._id || `level-${index}`}
-                    className={`group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl ${levelColors?.background} ${levelColors?.border} hover:border-yellow-500`}
+                    className={`group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl ${levelColors?.background} ${levelColors?.border} hover:border-primary-500`}
                   >
                     <div className={`absolute top-0 right-0 w-32 h-32 ${levelColors?.accent} rounded-full -translate-y-16 translate-x-16`}></div>
 
@@ -1416,7 +1416,7 @@ const LandingPage = () => {
 
                       <div className="grid grid-cols-2 gap-2 mb-3">
                         <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                          <div className="text-lg font-bold text-orange-700">
+                          <div className="text-lg font-bold text-primary-600">
                             {level?.quizCount || "N/A"}
                           </div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -1432,7 +1432,7 @@ const LandingPage = () => {
                           </div>
                         </div>
                         <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                          <div className="text-lg font-bold text-red-600">
+                          <div className="text-lg font-bold text-primary-600">
                             ₹{levelInfo?.amount || 0}
                           </div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -1440,7 +1440,7 @@ const LandingPage = () => {
                           </div>
                         </div>
                         <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                          <div className="text-lg font-bold text-orange-700">
+                          <div className="text-lg font-bold text-primary-600">
                             ₹{levelInfo?.prize || 0}
                           </div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -1470,7 +1470,7 @@ const LandingPage = () => {
               <div className="text-center mt-12">
                 <Link
                   href="/register"
-                  className="inline-flex items-center space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold hover:from-yellow-700 hover:to-red-700 transition-all duration-300"
+                  className="inline-flex items-center space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold hover:from-primary-700 hover:to-secondary-700 transition-all duration-300"
                 >
                   <span>Start Your Journey</span>
                   <FaArrowRight className="w-4 h-4" />
@@ -1482,11 +1482,11 @@ const LandingPage = () => {
 
         {/* Categories Section */}
         <section id="categories" className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-bl from-blue-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-blue-900/20 dark:from-red-900/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-bl from-secondary-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-secondary-900/20 dark:from-red-900/20 pointer-events-none" />
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Explore Diverse Categories
                 </span>
               </h2>
@@ -1502,7 +1502,7 @@ const LandingPage = () => {
                 return (
                   <div
                     key={category?._id || `category-${Math.random()}`}
-                    className={`group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm ${categoryColors?.border} hover:border-yellow-500`}
+                    className={`group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm ${categoryColors?.border} hover:border-primary-500`}
                   >
                     <div className={`absolute top-0 right-0 w-32 h-32 ${categoryColors?.accent} rounded-full -translate-y-16 translate-x-16 opacity-60`}></div>
 
@@ -1553,7 +1553,7 @@ const LandingPage = () => {
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Choose Your Perfect Plan
                 </span>
               </h2>
@@ -1569,7 +1569,7 @@ const LandingPage = () => {
               <div className="relative rounded-md lg:rounded-2xl p-2 lg:p-4 xl:p-6 xxl:p-8 transition-all duration-300 transform hover:scale-105 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
                 <div className="text-center mb-8">
                   <h3 className="text-md lg:text-2xl font-bold mb-2">Free</h3>
-                  <div className="text-4xl font-bold text-orange-700 mb-2">
+                  <div className="text-4xl font-bold text-primary-600 mb-2">
                     ₹0
                   </div>
                   <p className="text-gray-600 dark:text-gray-400">Forever</p>
@@ -1603,15 +1603,15 @@ const LandingPage = () => {
 
 
               {/* Pro Plan */}
-              <div className="relative rounded-2xl p-2 lg:p-4 xl:p-6 xxl:p-8 transition-all duration-300 transform hover:scale-105 bg-white dark:bg-gray-800 border-2 border-yellow-500 shadow-xl">
+              <div className="relative rounded-2xl p-2 lg:p-4 xl:p-6 xxl:p-8 transition-all duration-300 transform hover:scale-105 bg-white dark:bg-gray-800 border-2 border-primary-500 shadow-xl">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-yellow-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Popular
                   </span>
                 </div>
                 <div className="text-center mb-8">
                   <h3 className="text-md lg:text-2xl font-bold mb-2">Pro</h3>
-                  <div className="text-4xl font-bold text-orange-700 mb-2">
+                  <div className="text-4xl font-bold text-primary-600 mb-2">
                     ₹{config.SUBSCRIPTION_PLANS.PRO.price}
                   </div>
                   <p className="text-gray-600 dark:text-gray-400">per month</p>
@@ -1641,7 +1641,7 @@ const LandingPage = () => {
 
                 <Link
                   href="/register"
-                  className="block w-full text-center py-3 px-6 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold hover:from-yellow-700 hover:to-red-700 transition-all duration-300"
+                  className="block w-full text-center py-3 px-6 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold hover:from-primary-700 hover:to-secondary-700 transition-all duration-300"
                 >
                   Start Pro Plan
                 </Link>
@@ -1720,11 +1720,11 @@ const LandingPage = () => {
 
         {/* Features Section */}
         <section className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tl from-cyan-50 via-blue-50 to-sky-50 dark:from-gray-900 dark:via-cyan-900/20 dark:to-sky-900/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-cyan-50 via-secondary-50 to-sky-50 dark:from-gray-900 dark:via-cyan-900/20 dark:to-sky-900/20 pointer-events-none" />
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Why Choose AajExam?
                 </span>
               </h2>
@@ -1771,10 +1771,10 @@ const LandingPage = () => {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="text-center p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-yellow-500 shadow-lg hover:shadow-xl"
+                  className="text-center p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary-500 shadow-lg hover:shadow-xl"
                 >
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-yellow-100 dark:bg-gray-700">
-                    <feature.icon className="w-8 h-8 text-orange-700" />
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-primary-100 dark:bg-gray-700">
+                    <feature.icon className="w-8 h-8 text-primary-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -1788,10 +1788,10 @@ const LandingPage = () => {
 
         {/* CTA Section */}
         <section className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 via-orange-100 to-red-100 dark:from-gray-800 dark:via-yellow-800/30 dark:to-red-800/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-100 via-primary-100 to-red-100 dark:from-gray-800 dark:via-primary-800/30 dark:to-red-800/30 pointer-events-none" />
           <div className="relative p-4 px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                 Ready to Start Your Learning Journey?
               </span>
             </h2>
@@ -1802,19 +1802,19 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/register"
-                className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold text-lg hover:from-yellow-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
+                className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold text-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105"
               >
                 Get Started Free
               </Link>
               <Link
                 href="/how-it-works"
-                className="px-4 md:px-8 py-2 md:py-4 border-2 border-yellow-600 text-orange-700 dark:text-yellow-400 rounded-xl font-semibold text-lg hover:bg-yellow-600 hover:text-white dark:hover:bg-yellow-600 dark:hover:text-white transition-all duration-300"
+                className="px-4 md:px-8 py-2 md:py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 rounded-xl font-semibold text-lg hover:bg-primary-600 hover:text-white dark:hover:bg-primary-600 dark:hover:text-white transition-all duration-300"
               >
                 Learn More
               </Link>
               <Link
                 href="/articles"
-                className="px-4 md:px-8 py-2 md:py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300"
+                className="px-4 md:px-8 py-2 md:py-4 border-2 border-secondary-600 text-secondary-600 dark:text-secondary-400 rounded-xl font-semibold text-lg hover:bg-secondary-600 hover:text-white dark:hover:bg-secondary-600 dark:hover:text-white transition-all duration-300"
               >
                 📝 Articles
               </Link>
@@ -1833,15 +1833,15 @@ const LandingPage = () => {
 const getLevelColors = (levelName) => {
   const colors = {
     Starter: {
-      background: 'bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20',
-      border: 'border-blue-200 dark:border-blue-700',
-      accent: 'bg-gradient-to-br from-blue-500/20 to-indigo-500/20',
-      iconBg: 'bg-blue-100 dark:bg-blue-800',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      titleColor: 'text-blue-800 dark:text-blue-200',
-      descriptionColor: 'text-blue-700 dark:text-blue-300',
-      labelColor: 'text-blue-600 dark:text-blue-400',
-      valueColor: 'text-blue-800 dark:text-blue-200'
+      background: 'bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20',
+      border: 'border-secondary-200 dark:border-secondary-700',
+      accent: 'bg-gradient-to-br from-secondary-500/20 to-indigo-500/20',
+      iconBg: 'bg-secondary-100 dark:bg-secondary-800',
+      iconColor: 'text-secondary-600 dark:text-secondary-400',
+      titleColor: 'text-secondary-800 dark:text-secondary-200',
+      descriptionColor: 'text-secondary-700 dark:text-secondary-300',
+      labelColor: 'text-secondary-600 dark:text-secondary-400',
+      valueColor: 'text-secondary-800 dark:text-secondary-200'
     },
     Rookie: {
       background: 'bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
@@ -1859,22 +1859,22 @@ const getLevelColors = (levelName) => {
       border: 'border-purple-200 dark:border-purple-700',
       accent: 'bg-gradient-to-br from-purple-500/20 to-pink-500/20',
       iconBg: 'bg-purple-100 dark:bg-purple-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200'
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     Thinker: {
-      background: 'bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20',
-      border: 'border-orange-200 dark:border-orange-700',
-      accent: 'bg-gradient-to-br from-orange-500/20 to-amber-500/20',
-      iconBg: 'bg-orange-100 dark:bg-orange-800',
-      iconColor: 'text-orange-700 dark:text-orange-400',
-      titleColor: 'text-orange-800 dark:text-orange-200',
-      descriptionColor: 'text-orange-700 dark:text-orange-300',
-      labelColor: 'text-orange-700 dark:text-orange-400',
-      valueColor: 'text-orange-800 dark:text-orange-200'
+      background: 'bg-gradient-to-br from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-amber-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-secondary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-600 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-secondary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     Strategist: {
       background: 'bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20',
@@ -1892,33 +1892,33 @@ const getLevelColors = (levelName) => {
       border: 'border-red-200 dark:border-red-700',
       accent: 'bg-gradient-to-br from-red-500/20 to-pink-500/20',
       iconBg: 'bg-red-100 dark:bg-red-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200'
     },
     Mastermind: {
-      background: 'bg-gradient-to-br from-yellow-50 to-blue-50 dark:from-yellow-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20',
       border: 'border-indigo-200 dark:border-indigo-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-secondary-500/20',
       iconBg: 'bg-indigo-100 dark:bg-indigo-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200'
     },
     Champion: {
-      background: 'bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20',
-      border: 'border-yellow-200 dark:border-yellow-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20',
-      iconBg: 'bg-yellow-100 dark:bg-yellow-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200'
+      background: 'bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-primary-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     Prodigy: {
       background: 'bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20',
@@ -1943,9 +1943,9 @@ const getLevelColors = (levelName) => {
       valueColor: 'text-violet-800 dark:text-violet-200'
     },
     Legend: {
-      background: 'bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20',
+      background: 'bg-gradient-to-br from-amber-50 to-primary-50 dark:from-amber-900/20 dark:to-primary-900/20',
       border: 'border-amber-200 dark:border-amber-700',
-      accent: 'bg-gradient-to-br from-amber-500/20 to-yellow-500/20',
+      accent: 'bg-gradient-to-br from-amber-500/20 to-primary-500/20',
       iconBg: 'bg-amber-100 dark:bg-amber-800',
       iconColor: 'text-amber-600 dark:text-amber-400',
       titleColor: 'text-amber-800 dark:text-amber-200',
@@ -1977,38 +1977,38 @@ const getCategoryColors = (categoryName) => {
       border: 'border-red-200 dark:border-red-700',
       accent: 'bg-gradient-to-br from-red-500/20 to-pink-500/20',
       iconBg: 'bg-red-100 dark:bg-red-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200'
     },
     "Science": {
-      background: 'bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
-      border: 'border-blue-200 dark:border-blue-700',
-      accent: 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20',
-      iconBg: 'bg-blue-100 dark:bg-blue-800',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      titleColor: 'text-blue-800 dark:text-blue-200',
-      descriptionColor: 'text-blue-700 dark:text-blue-300',
-      labelColor: 'text-blue-600 dark:text-blue-400',
-      valueColor: 'text-blue-800 dark:text-blue-200'
+      background: 'bg-gradient-to-br from-secondary-50 to-cyan-50 dark:from-secondary-900/20 dark:to-cyan-900/20',
+      border: 'border-secondary-200 dark:border-secondary-700',
+      accent: 'bg-gradient-to-br from-secondary-500/20 to-cyan-500/20',
+      iconBg: 'bg-secondary-100 dark:bg-secondary-800',
+      iconColor: 'text-secondary-600 dark:text-secondary-400',
+      titleColor: 'text-secondary-800 dark:text-secondary-200',
+      descriptionColor: 'text-secondary-700 dark:text-secondary-300',
+      labelColor: 'text-secondary-600 dark:text-secondary-400',
+      valueColor: 'text-secondary-800 dark:text-secondary-200'
     },
     "Mathematics": {
-      background: 'bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
-      border: 'border-orange-200 dark:border-orange-700',
-      accent: 'bg-gradient-to-br from-orange-500/20 to-red-500/20',
-      iconBg: 'bg-orange-100 dark:bg-orange-800',
-      iconColor: 'text-orange-700 dark:text-orange-400',
-      titleColor: 'text-orange-800 dark:text-orange-200',
-      descriptionColor: 'text-orange-700 dark:text-orange-300',
-      labelColor: 'text-orange-700 dark:text-orange-400',
-      valueColor: 'text-orange-800 dark:text-orange-200'
+      background: 'bg-gradient-to-br from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-secondary-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-secondary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-600 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-secondary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     "History": {
-      background: 'bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20',
+      background: 'bg-gradient-to-br from-amber-50 to-primary-50 dark:from-amber-900/20 dark:to-primary-900/20',
       border: 'border-amber-200 dark:border-amber-700',
-      accent: 'bg-gradient-to-br from-amber-500/20 to-yellow-500/20',
+      accent: 'bg-gradient-to-br from-amber-500/20 to-primary-500/20',
       iconBg: 'bg-amber-100 dark:bg-amber-800',
       iconColor: 'text-amber-600 dark:text-amber-400',
       titleColor: 'text-amber-800 dark:text-amber-200',
@@ -2050,14 +2050,14 @@ const getCategoryColors = (categoryName) => {
       valueColor: 'text-pink-800 dark:text-pink-200'
     },
     "Technology": {
-      background: 'bg-gradient-to-br from-yellow-50 from-red-50 dark:from-yellow-900/20 dark:from-red-900/20',
+      background: 'bg-gradient-to-br from-primary-50 from-red-50 dark:from-primary-900/20 dark:from-red-900/20',
       border: 'border-indigo-200 dark:border-indigo-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 from-red-500/20',
+      accent: 'bg-gradient-to-br from-primary-500/20 from-red-500/20',
       iconBg: 'bg-indigo-100 dark:bg-indigo-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200'
     },
     "Literature & Language": {
@@ -2072,9 +2072,9 @@ const getCategoryColors = (categoryName) => {
       valueColor: 'text-violet-800 dark:text-violet-200'
     },
     "Competitive Exams": {
-      background: 'bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-sky-50 to-secondary-50 dark:from-sky-900/20 dark:to-secondary-900/20',
       border: 'border-sky-200 dark:border-sky-700',
-      accent: 'bg-gradient-to-br from-sky-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-sky-500/20 to-secondary-500/20',
       iconBg: 'bg-sky-100 dark:bg-sky-800',
       iconColor: 'text-sky-600 dark:text-sky-400',
       titleColor: 'text-sky-800 dark:text-sky-200',
@@ -2083,20 +2083,20 @@ const getCategoryColors = (categoryName) => {
       valueColor: 'text-sky-800 dark:text-sky-200'
     },
     "Economics": {
-      background: 'bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20',
-      border: 'border-yellow-200 dark:border-yellow-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 to-amber-500/20',
-      iconBg: 'bg-yellow-100 dark:bg-yellow-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200'
+      background: 'bg-gradient-to-br from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-amber-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     "Travel": {
-      background: 'bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-cyan-50 to-secondary-50 dark:from-cyan-900/20 dark:to-secondary-900/20',
       border: 'border-cyan-200 dark:border-cyan-700',
-      accent: 'bg-gradient-to-br from-cyan-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-cyan-500/20 to-secondary-500/20',
       iconBg: 'bg-cyan-100 dark:bg-cyan-800',
       iconColor: 'text-cyan-600 dark:text-cyan-400',
       titleColor: 'text-cyan-800 dark:text-cyan-200',
@@ -2109,21 +2109,21 @@ const getCategoryColors = (categoryName) => {
       border: 'border-purple-200 dark:border-purple-700',
       accent: 'bg-gradient-to-br from-purple-500/20 to-indigo-500/20',
       iconBg: 'bg-purple-100 dark:bg-purple-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200'
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200'
     },
     "News": {
-      background: 'bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20',
+      background: 'bg-gradient-to-br from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20',
       border: 'border-red-200 dark:border-red-700',
-      accent: 'bg-gradient-to-br from-red-500/20 to-orange-500/20',
+      accent: 'bg-gradient-to-br from-red-500/20 to-primary-500/20',
       iconBg: 'bg-red-100 dark:bg-red-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200'
     },
     "Miscellaneous": {

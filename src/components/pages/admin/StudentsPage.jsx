@@ -168,7 +168,7 @@ const StudentsPage = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       free: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
-      pro: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+      pro: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
     };
     return statusConfig[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
   };
@@ -205,7 +205,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div className="flex items-center">
           <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
-            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 flex items-center justify-center">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-r from-red-500 to-primary-500 flex items-center justify-center">
               <span className="text-white font-medium text-sm sm:text-base">
                 {student.name?.charAt(0)?.toUpperCase() || 'U'}
               </span>
@@ -291,7 +291,7 @@ const StudentsPage = () => {
         }
         else if (student.status === 'inactive') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
               {student.status || 'N/A'}
             </div>
           )
@@ -355,7 +355,7 @@ const StudentsPage = () => {
           // Handle edit functionality
           console.log('Edit student:', student);
         }}
-        className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1.5 sm:p-2 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+        className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-1.5 sm:p-2 rounded-md hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-colors"
         title="Edit Student"
       >
         <FaEdit className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -367,7 +367,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handleDelete(student._id);
         }}
-        className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+        className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
         title="Delete Student"
       >
         <FaTrash className="w-3 h-3 sm:w-4 sm:h-4" />

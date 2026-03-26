@@ -410,9 +410,9 @@ const QuizPage = () => {
       case "beginner":
         return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
       case "intermediate":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+        return "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200";
       case "advanced":
-        return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200";
+        return "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200";
       case "expert":
         return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
       default:
@@ -559,7 +559,7 @@ const QuizPage = () => {
                   <div className="flex items-center justify-end space-x-2">
                     <button
                       onClick={() => handleViewQuiz(quiz)}
-                      className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                       title="View Quiz Details"
                     >
                       👁️
@@ -573,7 +573,7 @@ const QuizPage = () => {
                     </button>
                     <button
                       onClick={() => handleDelete(quiz._id)}
-                      className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                      className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                       title="Delete Quiz"
                     >
                       <FaTrash className="w-4 h-4" />
@@ -650,7 +650,7 @@ const QuizPage = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => handleViewQuiz(quiz)}
-                  className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                   title="View Quiz Details"
                 >
                   👁️
@@ -664,7 +664,7 @@ const QuizPage = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(quiz._id)}
-                  className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                   title="Delete Quiz"
                 >
                   <FaTrash className="w-4 h-4" />
@@ -732,7 +732,7 @@ const QuizPage = () => {
               <div className="flex items-center space-x-2 ml-4">
                 <button
                   onClick={() => handleViewQuiz(quiz)}
-                  className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-2 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-2 rounded-md hover:bg-secondary-50 dark:hover:bg-secondary-900/20"
                   title="View Quiz Details"
                 >
                   👁️
@@ -746,7 +746,7 @@ const QuizPage = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(quiz._id)}
-                  className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
+                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
                   title="Delete Quiz"
                 >
                   <FaTrash className="w-4 h-4" />
@@ -853,7 +853,7 @@ const QuizPage = () => {
                         Quiz Title *
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Enter quiz title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -866,7 +866,7 @@ const QuizPage = () => {
                         Description
                       </label>
                       <textarea
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
                         placeholder="Enter quiz description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -879,7 +879,7 @@ const QuizPage = () => {
                         Tags
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Tags (comma separated)"
                         value={tags}
                         onChange={(e) => setTags(e.target.value)}
@@ -901,7 +901,7 @@ const QuizPage = () => {
                         Category *
                       </label>
                       <select
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         value={category}
                         onChange={(e) => handleCategoryChange(e.target.value)}
                         required
@@ -920,7 +920,7 @@ const QuizPage = () => {
                         Subcategory *
                       </label>
                       <select
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         value={subcategory}
                         onChange={(e) => setSubcategory(e.target.value)}
                         required
@@ -941,7 +941,7 @@ const QuizPage = () => {
                       </select>
 
                       {loadingSubcategories && (
-                        <div className="flex items-center text-sm text-orange-700 dark:text-yellow-400 mt-1">
+                        <div className="flex items-center text-sm text-primary-600 dark:text-primary-400 mt-1">
                           <FaSpinner className="animate-spin mr-2" />
                           Loading subcategories...
                         </div>
@@ -950,7 +950,7 @@ const QuizPage = () => {
                       {category &&
                         !loadingSubcategories &&
                         filteredSubcategories.length === 0 && (
-                          <div className="text-sm text-orange-700 dark:text-orange-400 mt-1">
+                          <div className="text-sm text-primary-600 dark:text-secondary-400 mt-1">
                             No subcategories found for this category
                           </div>
                         )}
@@ -961,7 +961,7 @@ const QuizPage = () => {
                         Total Marks *
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Enter total marks"
                         type="number"
                         min="1"
@@ -976,7 +976,7 @@ const QuizPage = () => {
                         Time Limit (minutes) *
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Enter time limit"
                         type="number"
                         min="1"
@@ -998,7 +998,7 @@ const QuizPage = () => {
                         Difficulty *
                       </label>
                       <select
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         value={difficulty}
                         onChange={(e) => setDifficulty(e.target.value)}
                         required
@@ -1015,7 +1015,7 @@ const QuizPage = () => {
                         Required Level *
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Required level"
                         type="number"
                         min="1"
@@ -1031,7 +1031,7 @@ const QuizPage = () => {
                         Recommended Level *
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                         placeholder="Recommended level"
                         type="number"
                         min="1"
@@ -1048,7 +1048,7 @@ const QuizPage = () => {
                       </label>
                       <div className="grid grid-cols-2 gap-2">
                         <input
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                           placeholder="Min Level"
                           type="number"
                           min="1"
@@ -1058,7 +1058,7 @@ const QuizPage = () => {
                           required
                         />
                         <input
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                           placeholder="Max Level"
                           type="number"
                           min="1"
@@ -1069,7 +1069,7 @@ const QuizPage = () => {
                         />
                       </div>
                       {parseInt(levelRangeMin) > parseInt(levelRangeMax) && (
-                        <p className="text-xs text-red-600 dark:text-red-400 mt-1">
+                        <p className="text-xs text-primary-600 dark:text-red-400 mt-1">
                           Min level cannot be greater than max level
                         </p>
                       )}
@@ -1208,7 +1208,7 @@ const QuizPage = () => {
                     {selectedQuiz.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-xs"
+                        className="px-2 py-1 bg-secondary-100 dark:bg-secondary-900/30 text-secondary-800 dark:text-secondary-200 rounded-full text-xs"
                       >
                         {tag}
                       </span>
@@ -1314,8 +1314,8 @@ const QuizPage = () => {
             </div>
 
             {/* Question Form */}
-            <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <h3 className="text-lg font-semibold mb-4 text-blue-800 dark:text-blue-200">
+            <div className="mb-6 p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg border border-secondary-200 dark:border-secondary-800">
+              <h3 className="text-lg font-semibold mb-4 text-secondary-800 dark:text-secondary-200">
                 {editingQuestion ? `Edit Question ${editingQuestionIndex + 1}` : 'Add New Question'}
               </h3>
 
@@ -1329,7 +1329,7 @@ const QuizPage = () => {
                       value={editQuestionText}
                       onChange={(e) => setEditQuestionText(e.target.value)}
                       rows="3"
-                      className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                       placeholder="Enter your question..."
                     />
                   </div>
@@ -1344,7 +1344,7 @@ const QuizPage = () => {
                       onChange={(e) => setEditTimeLimit(e.target.value)}
                       min="5"
                       max="300"
-                      className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                     />
                   </div>
                 </div>
@@ -1362,7 +1362,7 @@ const QuizPage = () => {
                           value={index}
                           checked={editCorrectAnswerIndex === index}
                           onChange={(e) => setEditCorrectAnswerIndex(parseInt(e.target.value))}
-                          className="text-blue-600 focus:ring-blue-500 w-4 h-4"
+                          className="text-secondary-600 focus:ring-secondary-500 w-4 h-4"
                         />
                         <span className="text-sm font-medium text-gray-700 dark:text-gray-300 w-6">
                           {String.fromCharCode(65 + index)}.
@@ -1371,7 +1371,7 @@ const QuizPage = () => {
                           type="text"
                           value={option}
                           onChange={(e) => handleOptionChange(index, e.target.value)}
-                          className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
                           placeholder={`Option ${String.fromCharCode(65 + index)}`}
                         />
                       </div>
@@ -1416,7 +1416,7 @@ const QuizPage = () => {
                     <div
                       key={q._id || i}
                       className={`p-4 rounded-lg border-2 ${editingQuestionIndex === i
-                        ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700'
+                        ? 'bg-secondary-50 dark:bg-secondary-900/30 border-secondary-300 dark:border-secondary-700'
                         : 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
                         }`}
                     >
@@ -1427,14 +1427,14 @@ const QuizPage = () => {
                         <div className="flex items-center space-x-2 ml-4">
                           <button
                             onClick={() => handleEditQuestion(q, i)}
-                            className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded"
+                            className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-1 rounded"
                             title="Edit Question"
                           >
                             <FaEdit className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteQuestion(q._id)}
-                            className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded"
+                            className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded"
                             title="Delete Question"
                           >
                             <FaTrash className="w-4 h-4" />

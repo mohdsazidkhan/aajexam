@@ -110,9 +110,9 @@ const NotificationsPage = () => {
       case 'quiz_completed':
         return 'bg-green-50 dark:bg-green-900/20 border-l-green-500';
       case 'level_up':
-        return 'bg-blue-50 dark:bg-blue-900/20 border-l-blue-500';
+        return 'bg-secondary-50 dark:bg-secondary-900/20 border-l-secondary-500';
       case 'reward_earned':
-        return 'bg-yellow-50 dark:bg-yellow-900/20 border-l-yellow-500';
+        return 'bg-primary-50 dark:bg-primary-900/20 border-l-primary-500';
       case 'subscription_expired':
         return 'bg-red-50 dark:bg-red-900/20 border-l-red-500';
       case 'system_update':
@@ -132,7 +132,7 @@ const NotificationsPage = () => {
         />
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-600 mx-auto"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-400">Loading notifications...</p>
           </div>
         </div>
@@ -154,7 +154,7 @@ const NotificationsPage = () => {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                <FaBell className="mr-3 text-blue-500" />
+                <FaBell className="mr-3 text-secondary-500" />
                 Notifications
                 {unreadCount > 0 && (
                   <span className="ml-3 px-2 py-1 bg-red-500 text-white text-sm rounded-full">
@@ -215,7 +215,7 @@ const NotificationsPage = () => {
                               {notification.title}
                             </h3>
                             {!notification.isRead && (
-                              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                              <span className="w-2 h-2 bg-secondary-500 rounded-full"></span>
                             )}
                           </div>
 
@@ -247,7 +247,7 @@ const NotificationsPage = () => {
 
                         <button
                           onClick={(e) => { e.stopPropagation(); deleteNotification(notification.id); }}
-                          className="p-1 text-red-600 hover:text-red-800 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors"
+                          className="p-1 text-primary-600 hover:text-red-800 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors"
                           title="Delete notification"
                         >
                           <FaTrash className="h-4 w-4" />

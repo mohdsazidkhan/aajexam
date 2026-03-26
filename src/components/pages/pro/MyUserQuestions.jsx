@@ -68,7 +68,7 @@ const MyUserQuestions = () => {
 
 	const getStatusColor = (status) => {
 		switch (status) {
-			case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-200 dark:border-yellow-800';
+			case 'pending': return 'bg-primary-50 text-primary-700 border-primary-200 dark:bg-primary-900/20 dark:text-primary-200 dark:border-primary-800';
 			case 'approved': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800';
 			case 'rejected': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-200 dark:border-red-800';
 			default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-200 dark:border-gray-800';
@@ -99,7 +99,7 @@ const MyUserQuestions = () => {
 				<div className="container mx-auto py-4 px-0 lg:px-10">
 					{/* Header Section */}
 					<div className="text-center mb-8">
-						<div className="inline-flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r from-yellow-600 to-red-600 rounded-full mb-4">
+						<div className="inline-flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full mb-4">
 							<span className="text-md lg:text-2xl">📚</span>
 						</div>
 						<h1 className="text-xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -108,12 +108,12 @@ const MyUserQuestions = () => {
 						<p className="text-sm lg:text-lg text-gray-600 dark:text-gray-300 mb-2">
 							Track your submitted questions and their performance
 						</p>
-						<p className="text-blue-600 dark:text-blue-400 text-sm font-medium mb-4">
+						<p className="text-secondary-600 dark:text-secondary-400 text-sm font-medium mb-4">
 							📅 You Can Add Max 100 Questions Per Month
 						</p>
 						<Link
 							href="/pro/questions/new"
-							className="inline-flex items-center px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+							className="inline-flex items-center px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
 						>
 							<span className="mr-2">🚀</span>
 							Create New Question
@@ -138,9 +138,9 @@ const MyUserQuestions = () => {
 							<div className="flex items-center justify-between">
 								<div>
 									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Under Review</p>
-									<p className="text-xl lg:text-3xl font-bold text-orange-700 dark:text-yellow-400">{stats.pending}</p>
+									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400">{stats.pending}</p>
 								</div>
-								<div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
+								<div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
 									<span className="text-md lg:text-2xl">🟡</span>
 								</div>
 							</div>
@@ -150,9 +150,9 @@ const MyUserQuestions = () => {
 							<div className="flex items-center justify-between">
 								<div>
 									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Approved</p>
-									<p className="text-xl lg:text-3xl font-bold text-orange-700 dark:text-yellow-400">{stats.approved}</p>
+									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400">{stats.approved}</p>
 								</div>
-								<div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
+								<div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
 									<span className="text-md lg:text-2xl">✅</span>
 								</div>
 							</div>
@@ -162,7 +162,7 @@ const MyUserQuestions = () => {
 							<div className="flex items-center justify-between">
 								<div>
 									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Rejected</p>
-									<p className="text-xl lg:text-3xl font-bold text-red-600 dark:text-red-400">{stats.rejected}</p>
+									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-red-400">{stats.rejected}</p>
 								</div>
 								<div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
 									<span className="text-md lg:text-2xl">❌</span>
@@ -179,7 +179,7 @@ const MyUserQuestions = () => {
 								<select
 									value={status}
 									onChange={e => { setPage(1); setStatus(e.target.value); }}
-									className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
+									className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
 								>
 									<option value="">📝 All Questions</option>
 									<option value="pending">🟡 Under Review</option>
@@ -208,7 +208,7 @@ const MyUserQuestions = () => {
 								</p>
 								<Link
 									href="/pro/questions/new"
-									className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-medium rounded-lg transition-colors"
+									className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg transition-colors"
 								>
 									<span className="mr-2">🚀</span>
 									Create Your First Question
@@ -311,7 +311,7 @@ const MyUserQuestions = () => {
 												key={pageNum}
 												onClick={() => setPage(pageNum)}
 												className={`px-3 py-2 text-sm font-medium rounded-md ${page === pageNum
-													? 'bg-red-600 text-white'
+													? 'bg-primary-600 text-white'
 													: 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700'
 													}`}
 											>

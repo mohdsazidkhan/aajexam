@@ -55,7 +55,7 @@ const MyAnalyticsPage = () => {
             <p className="text-gray-600 dark:text-gray-300 mb-6">{error}</p>
             <button
               onClick={fetchEarnings}
-              className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-8 py-3 rounded-xl hover:from-red-600 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
+              className="bg-gradient-to-r from-red-500 to-primary-500 text-white px-8 py-3 rounded-xl hover:from-secondary-600 hover:to-primary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
             >
               Try Again
             </button>
@@ -84,7 +84,7 @@ const MyAnalyticsPage = () => {
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         {/* Enhanced Header */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 dark:from-red-600 dark:via-yellow-600 dark:to-red-600 shadow-xl">
+        <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-primary-500 to-secondary-500 dark:from-secondary-600 dark:via-primary-600 dark:to-secondary-600 shadow-xl">
           <div className="absolute inset-0 bg-black opacity-10"></div>
           <div className="relative container mx-auto px-4 xl:px-10 py-4 sm:py-6 xl:py-8">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -156,7 +156,7 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Total Expenses Card */}
-              <div className="group relative bg-gradient-to-br from-red-400 via-rose-400 to-red-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-red-400 via-rose-400 to-secondary-500 dark:from-secondary-600 dark:via-rose-600 dark:to-red-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
@@ -183,27 +183,27 @@ const MyAnalyticsPage = () => {
 
               {/* Net Earnings Card */}
               <div className={`group relative bg-gradient-to-br rounded-2xl shadow-xl p-3 xl:p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden ${netEarnings >= 0
-                ? 'from-blue-400 via-cyan-400 to-blue-500 dark:from-blue-600 dark:via-cyan-600 dark:to-blue-700 text-gray-900 dark:text-white'
-                : 'from-red-400 via-rose-400 to-red-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700 text-gray-900 dark:text-white'
+                ? 'from-secondary-400 via-cyan-400 to-secondary-500 dark:from-secondary-600 dark:via-cyan-600 dark:to-secondary-700 text-gray-900 dark:text-white'
+                : 'from-red-400 via-rose-400 to-secondary-500 dark:from-secondary-600 dark:via-rose-600 dark:to-red-700 text-gray-900 dark:text-white'
                 }`}>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div className="bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm rounded-xl p-3 shadow-lg">
-                      <FaWallet className={`text-2xl ${netEarnings >= 0 ? 'text-blue-700 dark:text-white' : 'text-red-700 dark:text-white'}`} />
+                      <FaWallet className={`text-2xl ${netEarnings >= 0 ? 'text-secondary-700 dark:text-white' : 'text-red-700 dark:text-white'}`} />
                     </div>
-                    <span className={`text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full ${netEarnings >= 0 ? 'text-blue-800 dark:text-white' : 'text-red-800 dark:text-white'}`}>
+                    <span className={`text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full ${netEarnings >= 0 ? 'text-secondary-800 dark:text-white' : 'text-red-800 dark:text-white'}`}>
                       {netEarnings >= 0 ? 'Net Profit' : 'Net Loss'}
                     </span>
                   </div>
                   <div className="mt-4">
                     <div className="flex items-baseline gap-2">
-                      <FaRupeeSign className={`text-xl opacity-90 ${netEarnings >= 0 ? 'text-blue-800 dark:text-white' : 'text-red-800 dark:text-white'}`} />
-                      <span className={`text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg ${netEarnings >= 0 ? 'text-blue-900 dark:text-white' : 'text-red-900 dark:text-white'}`}>
+                      <FaRupeeSign className={`text-xl opacity-90 ${netEarnings >= 0 ? 'text-secondary-800 dark:text-white' : 'text-red-800 dark:text-white'}`} />
+                      <span className={`text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg ${netEarnings >= 0 ? 'text-secondary-900 dark:text-white' : 'text-red-900 dark:text-white'}`}>
                         {Math.abs(netEarnings).toLocaleString('en-IN')}
                       </span>
                     </div>
-                    <p className={`text-sm mt-3 font-medium ${netEarnings >= 0 ? 'text-blue-800 dark:text-blue-100' : 'text-red-800 dark:text-red-100'}`}>
+                    <p className={`text-sm mt-3 font-medium ${netEarnings >= 0 ? 'text-secondary-800 dark:text-secondary-100' : 'text-red-800 dark:text-red-100'}`}>
                       {netEarnings >= 0 ? 'Total profit' : 'Total loss'}
                     </p>
                   </div>
@@ -211,25 +211,25 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Blog Earnings Card */}
-              <div className="group relative bg-gradient-to-br from-orange-400 via-amber-400 to-orange-500 dark:from-orange-600 dark:via-amber-600 dark:to-orange-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-primary-400 via-amber-400 to-primary-500 dark:from-primary-600 dark:via-amber-600 dark:to-primary-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div className="bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm rounded-xl p-3 shadow-lg">
-                      <FaBook className="text-2xl text-orange-700 dark:text-white" />
+                      <FaBook className="text-2xl text-primary-600 dark:text-white" />
                     </div>
-                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-orange-800 dark:text-white">
+                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-primary-800 dark:text-white">
                       Blog Earnings
                     </span>
                   </div>
                   <div className="mt-4">
                     <div className="flex items-baseline gap-2">
-                      <FaRupeeSign className="text-xl text-orange-800 dark:text-white opacity-90" />
-                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-orange-900 dark:text-white">
+                      <FaRupeeSign className="text-xl text-primary-800 dark:text-white opacity-90" />
+                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-primary-900 dark:text-white">
                         {blogEarnings.toLocaleString('en-IN')}
                       </span>
                     </div>
-                    <p className="text-orange-800 dark:text-orange-100 text-sm mt-3 font-medium">
+                    <p className="text-primary-800 dark:text-primary-100 text-sm mt-3 font-medium">
                       From approved blogs
                     </p>
                   </div>
@@ -237,25 +237,25 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Quiz Earnings Card */}
-              <div className="group relative bg-gradient-to-br from-blue-400 via-cyan-400 to-blue-500 dark:from-blue-600 dark:via-cyan-600 dark:to-blue-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-secondary-400 via-cyan-400 to-secondary-500 dark:from-secondary-600 dark:via-cyan-600 dark:to-secondary-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div className="bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm rounded-xl p-3 shadow-lg">
-                      <FaQuestionCircle className="text-2xl text-blue-700 dark:text-white" />
+                      <FaQuestionCircle className="text-2xl text-secondary-700 dark:text-white" />
                     </div>
-                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-blue-800 dark:text-white">
+                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-secondary-800 dark:text-white">
                       Quiz Earnings
                     </span>
                   </div>
                   <div className="mt-4">
                     <div className="flex items-baseline gap-2">
-                      <FaRupeeSign className="text-xl text-blue-800 dark:text-white opacity-90" />
-                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-blue-900 dark:text-white">
+                      <FaRupeeSign className="text-xl text-secondary-800 dark:text-white opacity-90" />
+                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-secondary-900 dark:text-white">
                         {quizEarnings.toLocaleString('en-IN')}
                       </span>
                     </div>
-                    <p className="text-blue-800 dark:text-blue-100 text-sm mt-3 font-medium">
+                    <p className="text-secondary-800 dark:text-secondary-100 text-sm mt-3 font-medium">
                       From approved quizzes
                     </p>
                   </div>
@@ -279,19 +279,19 @@ const MyAnalyticsPage = () => {
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div className="bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm rounded-xl p-3 shadow-lg">
-                      <FaTrophy className="text-2xl text-yellow-700 dark:text-white" />
+                      <FaTrophy className="text-2xl text-primary-700 dark:text-white" />
                     </div>
-                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-yellow-800 dark:text-white">
+                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-primary-800 dark:text-white">
                       High Score Wins
                     </span>
                   </div>
                   <div className="mt-4">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-yellow-900 dark:text-white">
+                      <span className="text-2xl lg:text-3xl xl:text-4xl font-bold drop-shadow-lg text-primary-900 dark:text-white">
                         {totalHighScoreWins.toLocaleString('en-IN')}
                       </span>
                     </div>
-                    <p className="text-yellow-800 dark:text-yellow-100 text-sm mt-3 font-medium">
+                    <p className="text-primary-800 dark:text-primary-100 text-sm mt-3 font-medium">
                       Total high score wins from monthly competitions
                     </p>
                   </div>
@@ -299,7 +299,7 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Average Accuracy Card */}
-              <div className="group relative bg-gradient-to-br from-yellow-400 via-blue-400 to-indigo-500 dark:from-yellow-600 dark:via-blue-600 dark:to-indigo-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-primary-400 via-secondary-400 to-indigo-500 dark:from-primary-600 dark:via-secondary-600 dark:to-indigo-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
@@ -410,7 +410,7 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Referral Count Card */}
-              <div className="group relative bg-gradient-to-br from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-600 dark:via-yellow-600 dark:to-amber-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-amber-400 via-primary-400 to-amber-500 dark:from-amber-600 dark:via-primary-600 dark:to-amber-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
@@ -446,7 +446,7 @@ const MyAnalyticsPage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 sm:gap-4 xl:gap-6">
               {/* Questions Posted Count Card */}
-              <div className="group relative bg-gradient-to-br from-violet-400 via-purple-400 to-violet-500 dark:from-violet-600 dark:via-purple-600 dark:to-violet-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-violet-400 via-purple-400 to-violet-500 dark:from-violet-600 dark:via-secondary-500 dark:to-violet-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-12 -mt-12"></div>
                 <div className="relative z-10 flex justify-between items-center gap-2">
                   <div className="flex flex-col items-start mb-4">
@@ -521,7 +521,7 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Quizzes Created Count Card */}
-              <div className="group relative bg-gradient-to-br from-sky-400 via-blue-400 to-sky-500 dark:from-sky-600 dark:via-blue-600 dark:to-sky-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-sky-400 via-secondary-400 to-sky-500 dark:from-sky-600 dark:via-secondary-600 dark:to-sky-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-12 -mt-12"></div>
                 <div className="relative z-10 flex justify-between items-center gap-2">
                   <div className="flex flex-col items-start mb-4">
@@ -546,24 +546,24 @@ const MyAnalyticsPage = () => {
               </div>
 
               {/* Blogs Created Count Card */}
-              <div className="group relative bg-gradient-to-br from-orange-400 via-amber-400 to-orange-500 dark:from-orange-600 dark:via-amber-600 dark:to-orange-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-primary-400 via-amber-400 to-primary-500 dark:from-primary-600 dark:via-amber-600 dark:to-primary-700 rounded-2xl shadow-xl p-3 xl:p-6 text-gray-900 dark:text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white dark:bg-gray-800 opacity-20 dark:opacity-10 rounded-full -mr-12 -mt-12"></div>
                 <div className="relative z-10 flex justify-between items-center gap-2">
                   <div className="flex flex-col items-start mb-4">
                     <div className="bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm rounded-xl p-3 shadow-lg mb-3">
-                      <FaBook className="text-xl text-orange-700 dark:text-white" />
+                      <FaBook className="text-xl text-primary-600 dark:text-white" />
                     </div>
-                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-orange-800 dark:text-white">
+                    <span className="text-xs font-semibold bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-30 backdrop-blur-sm px-3 py-1.5 rounded-full text-primary-800 dark:text-white">
                       Blogs
                     </span>
                   </div>
                   <div className="mt-4">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl md:text-3xl font-bold drop-shadow-lg text-orange-900 dark:text-white">
+                      <span className="text-2xl md:text-3xl font-bold drop-shadow-lg text-primary-900 dark:text-white">
                         {blogsCreatedCount.toLocaleString('en-IN')}
                       </span>
                     </div>
-                    <p className="text-orange-800 dark:text-orange-100 text-xs mt-2 font-medium">
+                    <p className="text-primary-800 dark:text-primary-100 text-xs mt-2 font-medium">
                       Created
                     </p>
                   </div>
@@ -575,7 +575,7 @@ const MyAnalyticsPage = () => {
           {/* Info Section - Enhanced */}
           <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-3 xl:p-6 md:p-8 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg p-2">
+              <div className="bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-lg p-2">
                 <FaChartBar className="text-white text-xl" />
               </div>
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900 dark:text-white">
@@ -596,7 +596,7 @@ const MyAnalyticsPage = () => {
               </div>
               <div className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="bg-red-100 dark:bg-red-900 rounded-full p-2 mt-1 flex-shrink-0">
-                  <FaArrowDown className="text-red-600 dark:text-red-300" />
+                  <FaArrowDown className="text-primary-600 dark:text-red-300" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white mb-1">Total Expenses</p>
@@ -607,7 +607,7 @@ const MyAnalyticsPage = () => {
               </div>
               <div className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="bg-purple-100 dark:bg-purple-900 rounded-full p-2 mt-1 flex-shrink-0">
-                  <FaTrophy className="text-orange-700 dark:text-yellow-300" />
+                  <FaTrophy className="text-primary-600 dark:text-primary-300" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white mb-1">High Score Wins</p>
@@ -618,7 +618,7 @@ const MyAnalyticsPage = () => {
               </div>
               <div className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="bg-indigo-100 dark:bg-indigo-900 rounded-full p-2 mt-1 flex-shrink-0">
-                  <FaChartLine className="text-red-600 dark:text-red-300" />
+                  <FaChartLine className="text-primary-600 dark:text-red-300" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white mb-1">Average Accuracy</p>

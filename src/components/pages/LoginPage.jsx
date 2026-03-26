@@ -136,7 +136,7 @@ const LoginPage = () => {
             {/* Feature Cards */}
             <div className="space-y-2 lg:space-y-6">
               <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-yellow-500 to-red-500 rounded-lg">
+                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
                   <FaBrain className="text-white text-2xl" />
                 </div>
                 <div>
@@ -156,7 +156,7 @@ const LoginPage = () => {
               </div>
 
               <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
+                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
                   <FaRocket className="text-white text-2xl" />
                 </div>
                 <div>
@@ -186,7 +186,7 @@ const LoginPage = () => {
                     type="text"
                     value={referralCode}
                     onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
-                    className="w-full pl-10 pr-4 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 tracking-widest uppercase"
+                    className="w-full pl-10 pr-4 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300 tracking-widest uppercase"
                     placeholder="Enter referral code"
                     maxLength={8}
                   />
@@ -227,7 +227,7 @@ const LoginPage = () => {
                       type="text"
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300"
+                      className="w-full pl-10 pr-4 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300"
                       placeholder="Enter your email or phone"
                       required
                     />
@@ -244,7 +244,7 @@ const LoginPage = () => {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-10 pr-12 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300"
+                      className="w-full pl-10 pr-12 py-2 lg:py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-secondary-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-300"
                       placeholder="Enter your password"
                       required
                     />
@@ -261,7 +261,7 @@ const LoginPage = () => {
                 <div className="flex items-center justify-between">
                   <Link
                     href="/forgot-password"
-                    className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                    className="text-sm font-semibold text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 transition-colors"
                   >
                     Forgot password?
                   </Link>
@@ -270,7 +270,7 @@ const LoginPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-red-600 to-yellow-600 text-white py-2 lg:py-3 px-4 lg:px-6 rounded-xl font-semibold hover:from-red-700 hover:to-yellow-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-red-600 to-primary-600 text-white py-2 lg:py-3 px-4 lg:px-6 rounded-xl font-semibold hover:from-red-700 hover:to-primary-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
                 >
                   {isLoading ? (
                     <>
@@ -291,7 +291,7 @@ const LoginPage = () => {
                   Don't have an account?{' '}
                   <Link
                     href="/register"
-                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors"
+                    className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 font-semibold transition-colors"
                   >
                     REGISTER
                   </Link>

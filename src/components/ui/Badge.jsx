@@ -19,10 +19,10 @@ const Badge = ({
 
     const variantClasses = {
       default: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600',
-      primary: 'bg-blue-500 text-white',
+      primary: 'bg-secondary-500 text-white',
       secondary: 'bg-purple-500 text-white',
       success: 'bg-green-500 text-white',
-      warning: 'bg-yellow-500 text-white',
+      warning: 'bg-primary-500 text-white',
       error: 'bg-red-500 text-white',
       info: 'bg-cyan-500 text-white',
     };

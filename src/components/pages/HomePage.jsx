@@ -89,44 +89,44 @@ const getCategoryColors = (categoryName) => {
       border: 'border-red-200 dark:border-red-700',
       accent: 'bg-gradient-to-br from-red-500/20 to-pink-500/20',
       iconBg: 'bg-red-100 dark:bg-red-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200',
-      iconGradient: 'from-red-400 to-red-500',
+      iconGradient: 'from-red-400 to-secondary-500',
       buttonGradient: 'from-red-600 to-red-700'
     },
     "Science": {
-      background: 'bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
-      border: 'border-blue-200 dark:border-blue-700',
-      accent: 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20',
-      iconBg: 'bg-blue-100 dark:bg-blue-800',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      titleColor: 'text-blue-800 dark:text-blue-200',
-      descriptionColor: 'text-blue-700 dark:text-blue-300',
-      labelColor: 'text-blue-600 dark:text-blue-400',
-      valueColor: 'text-blue-800 dark:text-blue-200',
-      iconGradient: 'from-blue-400 to-blue-500',
-      buttonGradient: 'from-blue-600 to-blue-700'
+      background: 'bg-gradient-to-br from-secondary-50 to-cyan-50 dark:from-secondary-900/20 dark:to-cyan-900/20',
+      border: 'border-secondary-200 dark:border-secondary-700',
+      accent: 'bg-gradient-to-br from-secondary-500/20 to-cyan-500/20',
+      iconBg: 'bg-secondary-100 dark:bg-secondary-800',
+      iconColor: 'text-secondary-600 dark:text-secondary-400',
+      titleColor: 'text-secondary-800 dark:text-secondary-200',
+      descriptionColor: 'text-secondary-700 dark:text-secondary-300',
+      labelColor: 'text-secondary-600 dark:text-secondary-400',
+      valueColor: 'text-secondary-800 dark:text-secondary-200',
+      iconGradient: 'from-secondary-400 to-secondary-500',
+      buttonGradient: 'from-secondary-600 to-secondary-700'
     },
     "Mathematics": {
-      background: 'bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
-      border: 'border-orange-200 dark:border-orange-700',
-      accent: 'bg-gradient-to-br from-orange-500/20 to-red-500/20',
-      iconBg: 'bg-orange-100 dark:bg-orange-800',
-      iconColor: 'text-orange-700 dark:text-orange-400',
-      titleColor: 'text-orange-800 dark:text-orange-200',
-      descriptionColor: 'text-orange-700 dark:text-orange-300',
-      labelColor: 'text-orange-700 dark:text-orange-400',
-      valueColor: 'text-orange-800 dark:text-orange-200',
-      iconGradient: 'from-orange-400 to-orange-500',
-      buttonGradient: 'from-orange-600 to-orange-700'
+      background: 'bg-gradient-to-br from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-secondary-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-secondary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-600 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-secondary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200',
+      iconGradient: 'from-primary-400 to-primary-500',
+      buttonGradient: 'from-primary-600 to-primary-700'
     },
     "History": {
-      background: 'bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20',
+      background: 'bg-gradient-to-br from-amber-50 to-primary-50 dark:from-amber-900/20 dark:to-primary-900/20',
       border: 'border-amber-200 dark:border-amber-700',
-      accent: 'bg-gradient-to-br from-amber-500/20 to-yellow-500/20',
+      accent: 'bg-gradient-to-br from-amber-500/20 to-primary-500/20',
       iconBg: 'bg-amber-100 dark:bg-amber-800',
       iconColor: 'text-amber-600 dark:text-amber-400',
       titleColor: 'text-amber-800 dark:text-amber-200',
@@ -176,17 +176,17 @@ const getCategoryColors = (categoryName) => {
       buttonGradient: 'from-pink-600 to-pink-700'
     },
     "Technology": {
-      background: 'bg-gradient-to-br from-yellow-50 from-red-50 dark:from-yellow-900/20 dark:from-red-900/20',
+      background: 'bg-gradient-to-br from-primary-50 from-red-50 dark:from-primary-900/20 dark:from-red-900/20',
       border: 'border-indigo-200 dark:border-indigo-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 from-red-500/20',
+      accent: 'bg-gradient-to-br from-primary-500/20 from-red-500/20',
       iconBg: 'bg-indigo-100 dark:bg-indigo-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200',
-      iconGradient: 'from-yellow-400 to-indigo-500',
-      buttonGradient: 'from-yellow-600 to-indigo-700'
+      iconGradient: 'from-primary-400 to-indigo-500',
+      buttonGradient: 'from-primary-600 to-indigo-700'
     },
     "Literature & Language": {
       background: 'bg-gradient-to-br from-violet-50 from-red-50 dark:from-violet-900/20 dark:from-red-900/20',
@@ -202,9 +202,9 @@ const getCategoryColors = (categoryName) => {
       buttonGradient: 'from-violet-600 to-violet-700'
     },
     "Competitive Exams": {
-      background: 'bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-sky-50 to-secondary-50 dark:from-sky-900/20 dark:to-secondary-900/20',
       border: 'border-sky-200 dark:border-sky-700',
-      accent: 'bg-gradient-to-br from-sky-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-sky-500/20 to-secondary-500/20',
       iconBg: 'bg-sky-100 dark:bg-sky-800',
       iconColor: 'text-sky-600 dark:text-sky-400',
       titleColor: 'text-sky-800 dark:text-sky-200',
@@ -215,22 +215,22 @@ const getCategoryColors = (categoryName) => {
       buttonGradient: 'from-sky-600 to-sky-700'
     },
     "Economics": {
-      background: 'bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20',
-      border: 'border-yellow-200 dark:border-yellow-700',
-      accent: 'bg-gradient-to-br from-yellow-500/20 to-amber-500/20',
-      iconBg: 'bg-yellow-100 dark:bg-yellow-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200',
-      iconGradient: 'from-yellow-400 to-yellow-500',
-      buttonGradient: 'from-yellow-600 to-yellow-700'
+      background: 'bg-gradient-to-br from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-amber-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200',
+      iconGradient: 'from-primary-400 to-primary-500',
+      buttonGradient: 'from-primary-600 to-primary-700'
     },
     "Travel": {
-      background: 'bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-cyan-50 to-secondary-50 dark:from-cyan-900/20 dark:to-secondary-900/20',
       border: 'border-cyan-200 dark:border-cyan-700',
-      accent: 'bg-gradient-to-br from-cyan-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-cyan-500/20 to-secondary-500/20',
       iconBg: 'bg-cyan-100 dark:bg-cyan-800',
       iconColor: 'text-cyan-600 dark:text-cyan-400',
       titleColor: 'text-cyan-800 dark:text-cyan-200',
@@ -245,25 +245,25 @@ const getCategoryColors = (categoryName) => {
       border: 'border-purple-200 dark:border-purple-700',
       accent: 'bg-gradient-to-br from-purple-500/20 to-indigo-500/20',
       iconBg: 'bg-purple-100 dark:bg-purple-800',
-      iconColor: 'text-orange-700 dark:text-yellow-400',
-      titleColor: 'text-yellow-800 dark:text-yellow-200',
-      descriptionColor: 'text-yellow-700 dark:text-yellow-300',
-      labelColor: 'text-orange-700 dark:text-yellow-400',
-      valueColor: 'text-yellow-800 dark:text-yellow-200',
+      iconColor: 'text-primary-600 dark:text-primary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-700 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-primary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200',
       iconGradient: 'from-purple-400 from-red-500',
       buttonGradient: 'from-purple-600 from-red-700'
     },
     "News": {
-      background: 'bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20',
+      background: 'bg-gradient-to-br from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20',
       border: 'border-red-200 dark:border-red-700',
-      accent: 'bg-gradient-to-br from-red-500/20 to-orange-500/20',
+      accent: 'bg-gradient-to-br from-red-500/20 to-primary-500/20',
       iconBg: 'bg-red-100 dark:bg-red-800',
-      iconColor: 'text-red-600 dark:text-red-400',
+      iconColor: 'text-primary-600 dark:text-red-400',
       titleColor: 'text-red-800 dark:text-red-200',
       descriptionColor: 'text-red-700 dark:text-red-300',
-      labelColor: 'text-red-600 dark:text-red-400',
+      labelColor: 'text-primary-600 dark:text-red-400',
       valueColor: 'text-red-800 dark:text-red-200',
-      iconGradient: 'from-red-400 to-red-500',
+      iconGradient: 'from-red-400 to-secondary-500',
       buttonGradient: 'from-red-600 to-red-700'
     },
     "Miscellaneous": {
@@ -294,30 +294,30 @@ const getCategoryColors = (categoryName) => {
     },
     // Legacy category names for backward compatibility
     "Math": {
-      background: 'bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
-      border: 'border-orange-200 dark:border-orange-700',
-      accent: 'bg-gradient-to-br from-orange-500/20 to-red-500/20',
-      iconBg: 'bg-orange-100 dark:bg-orange-800',
-      iconColor: 'text-orange-700 dark:text-orange-400',
-      titleColor: 'text-orange-800 dark:text-orange-200',
-      descriptionColor: 'text-orange-700 dark:text-orange-300',
-      labelColor: 'text-orange-700 dark:text-orange-400',
-      valueColor: 'text-orange-800 dark:text-orange-200',
-      iconGradient: 'from-orange-400 to-orange-500',
-      buttonGradient: 'from-orange-600 to-orange-700'
+      background: 'bg-gradient-to-br from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
+      accent: 'bg-gradient-to-br from-primary-500/20 to-secondary-500/20',
+      iconBg: 'bg-primary-100 dark:bg-primary-800',
+      iconColor: 'text-primary-600 dark:text-secondary-400',
+      titleColor: 'text-primary-800 dark:text-primary-200',
+      descriptionColor: 'text-primary-600 dark:text-primary-300',
+      labelColor: 'text-primary-600 dark:text-secondary-400',
+      valueColor: 'text-primary-800 dark:text-primary-200',
+      iconGradient: 'from-primary-400 to-primary-500',
+      buttonGradient: 'from-primary-600 to-primary-700'
     },
     "IQ": {
-      background: 'bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
-      border: 'border-blue-200 dark:border-blue-700',
-      accent: 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20',
-      iconBg: 'bg-blue-100 dark:bg-blue-800',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      titleColor: 'text-blue-800 dark:text-blue-200',
-      descriptionColor: 'text-blue-700 dark:text-blue-300',
-      labelColor: 'text-blue-600 dark:text-blue-400',
-      valueColor: 'text-blue-800 dark:text-blue-200',
-      iconGradient: 'from-blue-400 to-blue-500',
-      buttonGradient: 'from-blue-600 to-blue-700'
+      background: 'bg-gradient-to-br from-secondary-50 to-cyan-50 dark:from-secondary-900/20 dark:to-cyan-900/20',
+      border: 'border-secondary-200 dark:border-secondary-700',
+      accent: 'bg-gradient-to-br from-secondary-500/20 to-cyan-500/20',
+      iconBg: 'bg-secondary-100 dark:bg-secondary-800',
+      iconColor: 'text-secondary-600 dark:text-secondary-400',
+      titleColor: 'text-secondary-800 dark:text-secondary-200',
+      descriptionColor: 'text-secondary-700 dark:text-secondary-300',
+      labelColor: 'text-secondary-600 dark:text-secondary-400',
+      valueColor: 'text-secondary-800 dark:text-secondary-200',
+      iconGradient: 'from-secondary-400 to-secondary-500',
+      buttonGradient: 'from-secondary-600 to-secondary-700'
     },
     "Art": {
       background: 'bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20',
@@ -346,9 +346,9 @@ const getCategoryColors = (categoryName) => {
       buttonGradient: 'from-green-600 to-green-700'
     },
     "Education": {
-      background: 'bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900/20 dark:to-blue-900/20',
+      background: 'bg-gradient-to-br from-sky-50 to-secondary-50 dark:from-sky-900/20 dark:to-secondary-900/20',
       border: 'border-sky-200 dark:border-sky-700',
-      accent: 'bg-gradient-to-br from-sky-500/20 to-blue-500/20',
+      accent: 'bg-gradient-to-br from-sky-500/20 to-secondary-500/20',
       iconBg: 'bg-sky-100 dark:bg-sky-800',
       iconColor: 'text-sky-600 dark:text-sky-400',
       titleColor: 'text-sky-800 dark:text-sky-200',
@@ -449,15 +449,15 @@ const getLevelColors = (levelName) => {
   const colors = {
     Starter: {
       background:
-        "bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20",
-      border: "border-blue-200 dark:border-blue-700",
-      accent: "bg-gradient-to-br from-blue-500/20 to-indigo-500/20",
-      iconBg: "bg-blue-100 dark:bg-blue-800",
-      iconColor: "text-blue-600 dark:text-blue-400",
-      titleColor: "text-blue-800 dark:text-blue-200",
-      descriptionColor: "text-blue-700 dark:text-blue-300",
-      labelColor: "text-blue-600 dark:text-blue-400",
-      valueColor: "text-blue-800 dark:text-blue-200",
+        "bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20",
+      border: "border-secondary-200 dark:border-secondary-700",
+      accent: "bg-gradient-to-br from-secondary-500/20 to-indigo-500/20",
+      iconBg: "bg-secondary-100 dark:bg-secondary-800",
+      iconColor: "text-secondary-600 dark:text-secondary-400",
+      titleColor: "text-secondary-800 dark:text-secondary-200",
+      descriptionColor: "text-secondary-700 dark:text-secondary-300",
+      labelColor: "text-secondary-600 dark:text-secondary-400",
+      valueColor: "text-secondary-800 dark:text-secondary-200",
     },
     Rookie: {
       background:
@@ -477,23 +477,23 @@ const getLevelColors = (levelName) => {
       border: "border-purple-200 dark:border-purple-700",
       accent: "bg-gradient-to-br from-purple-500/20 to-pink-500/20",
       iconBg: "bg-purple-100 dark:bg-purple-800",
-      iconColor: "text-orange-700 dark:text-yellow-400",
-      titleColor: "text-yellow-800 dark:text-yellow-200",
-      descriptionColor: "text-yellow-700 dark:text-yellow-300",
-      labelColor: "text-orange-700 dark:text-yellow-400",
-      valueColor: "text-yellow-800 dark:text-yellow-200",
+      iconColor: "text-primary-600 dark:text-primary-400",
+      titleColor: "text-primary-800 dark:text-primary-200",
+      descriptionColor: "text-primary-700 dark:text-primary-300",
+      labelColor: "text-primary-600 dark:text-primary-400",
+      valueColor: "text-primary-800 dark:text-primary-200",
     },
     Thinker: {
       background:
-        "bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20",
-      border: "border-orange-200 dark:border-orange-700",
-      accent: "bg-gradient-to-br from-orange-500/20 to-amber-500/20",
-      iconBg: "bg-orange-100 dark:bg-orange-800",
-      iconColor: "text-orange-700 dark:text-orange-400",
-      titleColor: "text-orange-800 dark:text-orange-200",
-      descriptionColor: "text-orange-700 dark:text-orange-300",
-      labelColor: "text-orange-700 dark:text-orange-400",
-      valueColor: "text-orange-800 dark:text-orange-200",
+        "bg-gradient-to-br from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20",
+      border: "border-primary-200 dark:border-primary-700",
+      accent: "bg-gradient-to-br from-primary-500/20 to-amber-500/20",
+      iconBg: "bg-primary-100 dark:bg-primary-800",
+      iconColor: "text-primary-600 dark:text-secondary-400",
+      titleColor: "text-primary-800 dark:text-primary-200",
+      descriptionColor: "text-primary-600 dark:text-primary-300",
+      labelColor: "text-primary-600 dark:text-secondary-400",
+      valueColor: "text-primary-800 dark:text-primary-200",
     },
     Strategist: {
       background:
@@ -513,35 +513,35 @@ const getLevelColors = (levelName) => {
       border: "border-red-200 dark:border-red-700",
       accent: "bg-gradient-to-br from-red-500/20 to-pink-500/20",
       iconBg: "bg-red-100 dark:bg-red-800",
-      iconColor: "text-red-600 dark:text-red-400",
+      iconColor: "text-primary-600 dark:text-red-400",
       titleColor: "text-red-800 dark:text-red-200",
       descriptionColor: "text-red-700 dark:text-red-300",
-      labelColor: "text-red-600 dark:text-red-400",
+      labelColor: "text-primary-600 dark:text-red-400",
       valueColor: "text-red-800 dark:text-red-200",
     },
     Mastermind: {
       background:
-        "bg-gradient-to-br from-yellow-50 to-blue-50 dark:from-yellow-900/20 dark:to-blue-900/20",
+        "bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20",
       border: "border-indigo-200 dark:border-indigo-700",
-      accent: "bg-gradient-to-br from-yellow-500/20 to-blue-500/20",
+      accent: "bg-gradient-to-br from-primary-500/20 to-secondary-500/20",
       iconBg: "bg-indigo-100 dark:bg-indigo-800",
-      iconColor: "text-red-600 dark:text-red-400",
+      iconColor: "text-primary-600 dark:text-red-400",
       titleColor: "text-red-800 dark:text-red-200",
       descriptionColor: "text-red-700 dark:text-red-300",
-      labelColor: "text-red-600 dark:text-red-400",
+      labelColor: "text-primary-600 dark:text-red-400",
       valueColor: "text-red-800 dark:text-red-200",
     },
     Champion: {
       background:
-        "bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20",
-      border: "border-yellow-200 dark:border-yellow-700",
-      accent: "bg-gradient-to-br from-yellow-500/20 to-orange-500/20",
-      iconBg: "bg-yellow-100 dark:bg-yellow-800",
-      iconColor: "text-orange-700 dark:text-yellow-400",
-      titleColor: "text-yellow-800 dark:text-yellow-200",
-      descriptionColor: "text-yellow-700 dark:text-yellow-300",
-      labelColor: "text-orange-700 dark:text-yellow-400",
-      valueColor: "text-yellow-800 dark:text-yellow-200",
+        "bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20",
+      border: "border-primary-200 dark:border-primary-700",
+      accent: "bg-gradient-to-br from-primary-500/20 to-primary-500/20",
+      iconBg: "bg-primary-100 dark:bg-primary-800",
+      iconColor: "text-primary-600 dark:text-primary-400",
+      titleColor: "text-primary-800 dark:text-primary-200",
+      descriptionColor: "text-primary-700 dark:text-primary-300",
+      labelColor: "text-primary-600 dark:text-primary-400",
+      valueColor: "text-primary-800 dark:text-primary-200",
     },
     Prodigy: {
       background:
@@ -569,9 +569,9 @@ const getLevelColors = (levelName) => {
     },
     Legend: {
       background:
-        "bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20",
+        "bg-gradient-to-br from-amber-50 to-primary-50 dark:from-amber-900/20 dark:to-primary-900/20",
       border: "border-amber-200 dark:border-amber-700",
-      accent: "bg-gradient-to-br from-amber-500/20 to-yellow-500/20",
+      accent: "bg-gradient-to-br from-amber-500/20 to-primary-500/20",
       iconBg: "bg-amber-100 dark:bg-amber-800",
       iconColor: "text-amber-600 dark:text-amber-400",
       titleColor: "text-amber-800 dark:text-amber-200",
@@ -873,9 +873,9 @@ const HomePage = () => {
       case "easy":
         return "text-green-600 bg-green-100";
       case "medium":
-        return "text-orange-700 bg-yellow-100";
+        return "text-primary-600 bg-primary-100";
       case "hard":
-        return "text-red-600 bg-red-100";
+        return "text-primary-600 bg-red-100";
       default:
         return "text-gray-600 bg-gray-100";
     }
@@ -903,10 +903,10 @@ const HomePage = () => {
       <MobileAppWrapper title="Home">
         <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-subg-light dark:bg-subg-dark min-h-screen`}>
           {userInfo && userInfo.role === 'admin' && <Sidebar />}
-          <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-red-50 to-yellow-100 dark:from-gray-900 dark:via-red-900 dark:to-yellow-900 flex items-center justify-center w-full">
+          <div className="min-h-screen bg-gradient-to-br from-primary-50 via-red-50 to-primary-100 dark:from-gray-900 dark:via-red-900 dark:to-primary-900 flex items-center justify-center w-full">
             <div className="text-center">
-              <div className="text-red-600 text-xl mb-4">⚠️</div>
-              <p className="text-red-600 text-lg">{error}</p>
+              <div className="text-primary-600 text-xl mb-4">⚠️</div>
+              <p className="text-primary-600 text-lg">{error}</p>
             </div>
           </div>
         </div>
@@ -950,25 +950,25 @@ const HomePage = () => {
         {userInfo && userInfo.role === 'admin' && <Sidebar />}
         <div className="relative min-h-screen bg-subg-light dark:bg-subg-dark overflow-x-hidden w-full">
           {/* Hero Section - Enhanced Modern Design */}
-          <section className="relative overflow-hidden z-10 bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-yellow-900/20 dark:to-red-900/20">
+          <section className="relative overflow-hidden z-10 bg-gradient-to-br from-primary-50 via-primary-50 to-red-50 dark:from-gray-900 dark:via-primary-900/20 dark:to-red-900/20">
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 rounded-full blur-3xl animate-blob"></div>
+              <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary-400/30 to-primary-400/30 rounded-full blur-3xl animate-blob"></div>
               <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-red-400/30 to-pink-400/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute -bottom-20 left-1/2 w-80 h-80 bg-gradient-to-r from-yellow-400/20 from-red-400/20 rounded-full blur-3xl animate-blob" style={{ animationDelay: '4s' }}></div>
+              <div className="absolute -bottom-20 left-1/2 w-80 h-80 bg-gradient-to-r from-primary-400/20 from-red-400/20 rounded-full blur-3xl animate-blob" style={{ animationDelay: '4s' }}></div>
             </div>
 
             <div className="relative container mx-auto px-0 lg:px-6 xl:px-8 py-12 md:py-16 lg:py-24">
               <div className="text-center max-w-5xl mx-auto">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full text-sm font-semibold mb-6 animate-bounce shadow-lg">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-500 text-white rounded-full text-sm font-semibold mb-6 animate-bounce shadow-lg">
                   <FaRocket className="w-4 h-4" />
                   <span>Welcome to AajExam Platform</span>
                 </div>
 
                 {/* Main Heading */}
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-6 animate-fade-in">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 dark:from-yellow-300 dark:via-orange-400 dark:to-red-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 text-secondary-500 to-secondary-500 dark:from-primary-300 dark:via-primary-400 dark:to-red-400">
                     Welcome Back{userInfo?.name ? `, ${userInfo.name}` : ''}
                   </span>
                   <span className="inline-block ml-3 animate-bounce">🎯</span>
@@ -982,11 +982,11 @@ const HomePage = () => {
                 {/* Description */}
                 <p className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   Explore quizzes by{" "}
-                  <span className="font-bold text-orange-700 dark:text-yellow-400">level</span>
+                  <span className="font-bold text-primary-600 dark:text-primary-400">level</span>
                   ,{" "}
-                  <span className="font-bold text-red-600 dark:text-red-400">category</span>
+                  <span className="font-bold text-primary-600 dark:text-red-400">category</span>
                   , or{" "}
-                  <span className="font-bold text-red-600 dark:text-red-400">subcategory</span>
+                  <span className="font-bold text-primary-600 dark:text-red-400">subcategory</span>
                   . <br className="hidden sm:block" />
                   Only{" "}
                   <span className="font-semibold text-green-600 dark:text-green-400">new quizzes</span>{" "}
@@ -997,7 +997,7 @@ const HomePage = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
                   <Link
                     href="/search"
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 hover:from-yellow-600 hover:via-orange-600 hover:to-red-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 text-secondary-500 to-secondary-500 hover:from-primary-600 hover:via-primary-500 hover:to-secondary-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                   >
                     <FaRocket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                     <span>Start Quizzing</span>
@@ -1005,7 +1005,7 @@ const HomePage = () => {
                   </Link>
                   <Link
                     href="/levels"
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-xl border-2 border-gray-300 dark:border-gray-600 hover:border-yellow-500 transition-all duration-300 transform hover:scale-105"
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-xl border-2 border-gray-300 dark:border-gray-600 hover:border-primary-500 transition-all duration-300 transform hover:scale-105"
                   >
                     <FaLevelUpAlt className="w-5 h-5" />
                     <span>View Levels</span>
@@ -1030,13 +1030,13 @@ const HomePage = () => {
           <div className="container mx-auto px-4 md:px-6 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12 z-10">
             <div className="rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4   xl:p-12 border-2 border-purple-300/30">
               <div className="text-center mb-6 sm:mb-8 md:mb-10">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-yellow-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 md:w-24 md:h-24 bg-gradient-to-tr from-primary-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
                   <FaStar className="text-white text-2xl sm:text-3xl md:text-4xl drop-shadow-lg" />
                 </div>
                 <h2 className="text-md sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-800 dark:text-white mb-3 sm:mb-4 md:mb-6 drop-shadow-lg">
                   🎉 Invite Friends & Earn Rewards! 🎉
                 </h2>
-                <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
+                <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-primary-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
                   Invite your friends to AajExam and earn wallet rewards.
                 </p>
               </div>
@@ -1057,10 +1057,10 @@ const HomePage = () => {
                     <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1 sm:mb-2">
                       Friend Buys ₹{config.SUBSCRIPTION_PLANS.PRO.price} Plan
                     </h3>
-                    <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-yellow-300 mb-1 sm:mb-2">
+                    <div className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-primary-300 mb-1 sm:mb-2">
                       ₹{config.QUIZ_CONFIG.REFERRAL_REWARD_PRO}
                     </div>
-                    <p className="text-yellow-100 text-xs sm:text-lg">
+                    <p className="text-primary-100 text-xs sm:text-lg">
                       First-time purchase
                     </p>
                   </div>
@@ -1068,7 +1068,7 @@ const HomePage = () => {
               </div>
 
               {/* Withdrawal Rules */}
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-yellow-200 dark:border-yellow-700">
+              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl sm:rounded-2xl p-4 lg:p-6 mb-6 sm:mb-8 border-2 border-primary-200 dark:border-primary-700">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4 text-center">
                   Withdrawal Rules:
                 </h3>
@@ -1089,12 +1089,12 @@ const HomePage = () => {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                   <div className="text-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                       <span className="text-white dark:text-black font-bold text-sm sm:text-base md:text-lg">
                         1
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Get your unique referral code
                     </p>
                   </div>
@@ -1104,7 +1104,7 @@ const HomePage = () => {
                         2
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Share it with friends & family
                     </p>
                   </div>
@@ -1114,7 +1114,7 @@ const HomePage = () => {
                         3
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Friends join and buy a plan
                     </p>
                   </div>
@@ -1124,7 +1124,7 @@ const HomePage = () => {
                         4
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-yellow-200 text-xs sm:text-lg">
+                    <p className="text-gray-700 dark:text-primary-200 text-xs sm:text-lg">
                       Earn instant wallet money!
                     </p>
                   </div>
@@ -1135,13 +1135,13 @@ const HomePage = () => {
               <div className="text-center">
                 {!isLoggedIn ? (
                   <div className="space-y-3 sm:space-y-4">
-                    <p className="text-gray-700 dark:text-yellow-200 text-sm sm:text-base md:text-lg font-medium">
+                    <p className="text-gray-700 dark:text-primary-200 text-sm sm:text-base md:text-lg font-medium">
                       Ready to start earning rewards?
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                       <Link
                         href="/register"
-                        className="inline-block bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
+                        className="inline-block bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
                       >
                         🚀 Join Now & Get Referral Code
                       </Link>
@@ -1155,12 +1155,12 @@ const HomePage = () => {
                   </div>
                 ) : (
                   <div className="space-y-3 sm:space-y-4">
-                    <p className="text-gray-700 dark:text-yellow-200 text-sm sm:text-base md:text-lg font-medium">
+                    <p className="text-gray-700 dark:text-primary-200 text-sm sm:text-base md:text-lg font-medium">
                       You're already part of the referral system!
                     </p>
                     <Link
                       href="/profile"
-                      className="inline-block bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
+                      className="inline-block bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
                     >
                       📱 View Your Referral Code
                     </Link>
@@ -1184,18 +1184,18 @@ const HomePage = () => {
                     What Your Referral Code Will Look Like:
                   </h4>
                   <div className="flex items-center justify-center space-x-3 mb-3">
-                    <div className="bg-gradient-to-r from-yellow-400 to-red-500 text-yellow-900 font-mono font-bold px-4 py-2 rounded-lg tracking-widest border-2 border-yellow-300 shadow-lg">
+                    <div className="bg-gradient-to-r from-primary-400 to-secondary-500 text-primary-900 font-mono font-bold px-4 py-2 rounded-lg tracking-widest border-2 border-primary-300 shadow-lg">
                       ABC123XY
                     </div>
                     <button
-                      className="px-3 py-2 bg-yellow-400 text-yellow-900 font-bold rounded-lg shadow hover:bg-yellow-500 transition"
+                      className="px-3 py-2 bg-primary-400 text-primary-900 font-bold rounded-lg shadow hover:bg-primary-500 transition"
                       onClick={() => navigator.clipboard.writeText("ABC123XY")}
                       title="Copy Example Code"
                     >
                       Copy
                     </button>
                   </div>
-                  <p className="text-gray-700 dark:text-yellow-200 text-sm">
+                  <p className="text-gray-700 dark:text-primary-200 text-sm">
                     📱 <strong>Example:</strong> When friends join using your
                     code, you both get benefits!
                   </p>
@@ -1207,25 +1207,25 @@ const HomePage = () => {
           {/* Mobile App Section */}
           <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden z-10">
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-blue-900/20 dark:from-red-900/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary-50 via-indigo-50 from-red-50 dark:from-gray-900 dark:via-secondary-900/20 dark:from-red-900/20"></div>
 
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 from-red-400/20 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-yellow-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
+              <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-secondary-400/20 from-red-400/20 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-primary-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-secondary-400/10 rounded-full blur-3xl"></div>
             </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
               <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
                 {/* Inner Gradient Border Effect */}
-                <div className="relative p-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl">
+                <div className="relative p-1 bg-gradient-to-r from-secondary-500 via-purple-500 to-pink-500 rounded-3xl">
                   <div className="bg-white dark:bg-gray-800 rounded-3xl p-2 md:p-4 lg:p-8 xl:p-12">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 xl:gap-12 items-center">
                       {/* Left Side - Content */}
                       <div className="text-center lg:text-left">
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-yellow-600 text-white rounded-full text-sm font-semibold mb-6 animate-bounce">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-600 text-white rounded-full text-sm font-semibold mb-6 animate-bounce">
                           <FaMobileAlt className="w-4 h-4" />
                           <span>Now Available on Play Store!</span>
                         </div>
@@ -1247,7 +1247,7 @@ const HomePage = () => {
                             { icon: FaUsers, text: "Compete Globally" },
                           ].map((feature, idx) => (
                             <div key={idx} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                              <div className="flex-shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-r from-yellow-500 to-red-500 flex items-center justify-center text-white">
+                              <div className="flex-shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white">
                                 <feature.icon className="w-5 h-5" />
                               </div>
                               <span className="font-medium">{feature.text}</span>
@@ -1272,7 +1272,7 @@ const HomePage = () => {
 
                         {/* Additional Info */}
                         <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold text-orange-700 dark:text-yellow-400">Free Download</span> •
+                          <span className="font-semibold text-primary-600 dark:text-primary-400">Free Download</span> •
                           <span className="mx-2">5+ Rating</span> •
                           <span className="mx-2">100+ Downloads</span>
                         </p>
@@ -1285,10 +1285,10 @@ const HomePage = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-500">
                             <div className="w-full h-full bg-gray-900 rounded-[2.5rem] overflow-hidden relative">
                               {/* Phone Screen Content */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-6 flex flex-col items-center justify-center text-white">
+                              <div className="absolute inset-0 bg-gradient-to-br from-secondary-600 via-secondary-500 to-pink-600 p-6 flex flex-col items-center justify-center text-white">
                                 {/* App Logo/Icon */}
                                 <div className="w-24 h-24 bg-white dark:bg-gray-800 rounded-3xl flex items-center justify-center mb-6 shadow-xl animate-bounce">
-                                  <FaBrain className="w-12 h-12 text-blue-600 dark:text-yellow-500" />
+                                  <FaBrain className="w-12 h-12 text-secondary-600 dark:text-primary-500" />
                                 </div>
 
                                 {/* App Name */}
@@ -1308,10 +1308,10 @@ const HomePage = () => {
                           </div>
 
                           {/* Floating Icons Around Phone */}
-                          <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
+                          <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
                             <FaStar className="w-8 h-8" />
                           </div>
-                          <div className="absolute -bottom-4 -left-4 w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
+                          <div className="absolute -bottom-4 -left-4 w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-400 to-primary-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
                             <FaTrophy className="w-8 h-8 lg:w-10 lg:h-10" />
                           </div>
                           <div className="absolute top-1/2 -left-8 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white shadow-lg animate-pulse delay-500">
@@ -1328,11 +1328,11 @@ const HomePage = () => {
 
           {/* Prize & Rewards Section */}
           <section id="prizes" className="py-5 md:py-10 lg:py-20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-tl from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-900 dark:via-amber-900/20 dark:to-orange-900/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-amber-50 via-primary-50 to-primary-50 dark:from-gray-900 dark:via-amber-900/20 dark:to-primary-900/20 pointer-events-none" />
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
               <div className="text-center mb-4 lg:mb-16">
                 <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                     Live Prize Pool
                   </span>
                 </h2>
@@ -1352,7 +1352,7 @@ const HomePage = () => {
           <div className="container mx-auto mb-8 sm:mb-12">
             <div className="text-center my-8">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-red-500 to-yellow-600 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-primary-600 dark:text-white">
                   Winners
                 </span>
               </h2>
@@ -1367,7 +1367,7 @@ const HomePage = () => {
           <div id="top-performers" className="container mx-auto px-4 sm:px-4 md:px-6 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12 z-10">
             <div className="text-center mb-8">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 text-secondary-500 to-secondary-500 dark:text-white">
                   Live Leaderboard
                 </span>
               </h2>
@@ -1379,12 +1379,12 @@ const HomePage = () => {
           </div>
 
           {/* Govt. Exam Section - Premium Redesign */}
-          <section className="py-12 md:py-16 lg:py-24 relative overflow-hidden bg-gradient-to-br from-yellow-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-indigo-950 dark:from-red-950">
+          <section className="py-12 md:py-16 lg:py-24 relative overflow-hidden bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-indigo-950 dark:from-red-950">
             {/* Animated Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 via-purple-100 to-pink-100 dark:from-yellow-900 dark:via-purple-900 dark:to-pink-900">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-100 via-purple-100 to-pink-100 dark:from-primary-900 dark:via-purple-900 dark:to-pink-900">
               {/* Animated Blob Background */}
               <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                <div className="absolute top-20 left-10 w-96 h-96 bg-blue-400 dark:bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob"></div>
+                <div className="absolute top-20 left-10 w-96 h-96 bg-secondary-400 dark:bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob"></div>
                 <div className="absolute top-40 right-10 w-96 h-96 bg-purple-400 dark:bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob" style={{ animationDelay: '2s' }}></div>
                 <div className="absolute -bottom-20 left-1/2 w-96 h-96 bg-pink-400 dark:bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-30 animate-blob" style={{ animationDelay: '4s' }}></div>
               </div>
@@ -1400,12 +1400,12 @@ const HomePage = () => {
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-10 z-10">
               {/* Header Section */}
               <div className="text-center mb-12 lg:mb-16">
-                <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white rounded-full text-sm font-bold mb-6 shadow-2xl animate-pulse hover:animate-none transition-all">
+                <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-400 text-secondary-500 to-secondary-500 text-white rounded-full text-sm font-bold mb-6 shadow-2xl animate-pulse hover:animate-none transition-all">
                   <FaGraduationCap className="w-5 h-5" />
                   <span>🚀 Your Dream Job Awaits</span>
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold mb-6">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-pink-600 to-cyan-600 dark:from-yellow-300 dark:via-pink-300 dark:to-cyan-300 bg-[length:200%_auto] animate-gradient-shift">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-pink-600 to-cyan-600 dark:from-primary-300 dark:via-pink-300 dark:to-cyan-300 bg-[length:200%_auto] animate-gradient-shift">
                     Master Government Exams
                   </span>
                 </h2>
@@ -1417,13 +1417,13 @@ const HomePage = () => {
               {/* Feature Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 mb-4">
                 {/* Feature Card 1 */}
-                <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-blue-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-500/50">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-secondary-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary-500/20 dark:hover:shadow-secondary-500/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/10 to-cyan-500/10 dark:from-secondary-500/20 dark:to-cyan-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
-                    <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                    <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                       <FaBook className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
-                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-yellow-300 transition-colors">Real Exam Patterns</h3>
+                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-secondary-600 dark:group-hover:text-primary-300 transition-colors">Real Exam Patterns</h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                       Practice with actual exam patterns and question formats from previous years to boost your confidence.
                     </p>
@@ -1437,7 +1437,7 @@ const HomePage = () => {
                     <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                       <FaChartLine className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
-                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-700 dark:group-hover:text-yellow-300 transition-colors">Track Progress</h3>
+                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">Track Progress</h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                       Monitor your performance with detailed analytics and identify areas for improvement with real-time insights.
                     </p>
@@ -1445,13 +1445,13 @@ const HomePage = () => {
                 </div>
 
                 {/* Feature Card 3 */}
-                <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-yellow-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 dark:hover:shadow-yellow-500/50 md:col-span-2 lg:col-span-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 dark:from-yellow-500/20 dark:to-orange-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-4 lg:p-8 border border-gray-200 dark:border-white/20 hover:border-primary-500 dark:hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20 dark:hover:shadow-primary-500/50 md:col-span-2 lg:col-span-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-500/10 dark:from-primary-500/20 dark:to-primary-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
-                    <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                    <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                       <FaAward className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
-                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-700 dark:group-hover:text-yellow-300 transition-colors">Detailed Solutions</h3>
+                    <h3 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">Detailed Solutions</h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                       Get step-by-step solutions and explanations for every question to understand concepts better and learn effectively.
                     </p>
@@ -1462,9 +1462,9 @@ const HomePage = () => {
               {/* Stats Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-4 mb-4">
                 {[
-                  { icon: FaGraduationCap, label: "Exam Categories", value: "100+", color: "from-blue-500 to-cyan-500", hoverColor: "hover:shadow-blue-500/50" },
+                  { icon: FaGraduationCap, label: "Exam Categories", value: "100+", color: "from-secondary-500 to-cyan-500", hoverColor: "hover:shadow-secondary-500/50" },
                   { icon: FaBook, label: "Practice Tests", value: "100+", color: "from-purple-500 to-pink-500", hoverColor: "hover:shadow-purple-500/50" },
-                  { icon: FaUsers, label: "Active Learners", value: "1000+", color: "from-green-600 to-blue-600", hoverColor: "hover:shadow-green-600/50" },
+                  { icon: FaUsers, label: "Active Learners", value: "1000+", color: "from-green-600 to-secondary-600", hoverColor: "hover:shadow-green-600/50" },
                   { icon: FaTrophy, label: "Success Rate", value: "85%", color: "from-green-500 to-emerald-500", hoverColor: "hover:shadow-green-500/50" },
                 ].map((stat, idx) => (
                   <div key={idx} className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-3 lg:p-6 border border-gray-200 dark:border-white/20 text-center transform hover:scale-110 transition-all duration-300 ${stat.hoverColor} hover:shadow-2xl`}>
@@ -1481,14 +1481,14 @@ const HomePage = () => {
               <div className="text-center mt-8">
                 <Link
                   href="/govt-exams"
-                  className="group inline-flex items-center gap-2 lg:gap-4 px-5 lg:px-10 py-2 lg:py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 hover:from-yellow-500 hover:via-orange-600 hover:to-pink-600 text-white rounded-2xl font-bold text-md lg:text-xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-yellow-500/50"
+                  className="group inline-flex items-center gap-2 lg:gap-4 px-5 lg:px-10 py-2 lg:py-4 bg-gradient-to-r from-primary-400 text-secondary-500 to-pink-500 hover:from-primary-500 hover:via-primary-500 hover:to-pink-600 text-white rounded-2xl font-bold text-md lg:text-xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-primary-500/50"
                 >
                   <FaGraduationCap className="w-4 lg:w-7 h-4 lg:h-7 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Start Exam Prep</span>
                   <FaArrowRight className="w-4 lg:w-7 h-4 lg:h-7 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <p className="mt-6 text-gray-600 dark:text-gray-300 text-sm md:text-base">
-                  <span className="font-semibold text-orange-700 dark:text-yellow-400">100% Free</span> •
+                  <span className="font-semibold text-primary-600 dark:text-primary-400">100% Free</span> •
                   <span className="mx-2">No Subscription Required</span> •
                   <span className="mx-2">Instant Access</span>
                 </p>
@@ -1496,7 +1496,7 @@ const HomePage = () => {
             </div>
 
             {/* Floating Decorative Elements */}
-            <div className="absolute top-20 left-5 w-24 h-24 bg-yellow-400/20 dark:bg-yellow-400/30 rounded-full blur-2xl animate-bounce pointer-events-none"></div>
+            <div className="absolute top-20 left-5 w-24 h-24 bg-primary-400/20 dark:bg-primary-400/30 rounded-full blur-2xl animate-bounce pointer-events-none"></div>
             <div className="absolute bottom-20 right-5 w-40 h-40 bg-pink-400/20 dark:bg-pink-400/30 rounded-full blur-2xl animate-pulse pointer-events-none"></div>
             <div className="absolute top-1/2 right-10 w-12 h-12 lg:w-16 lg:h-16 bg-cyan-400/20 dark:bg-cyan-400/30 rounded-full blur-xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
           </section>
@@ -1523,7 +1523,7 @@ const HomePage = () => {
                     {/* Left Side - Earning Process */}
                     <div className="space-y-6">
                       <div className="text-center lg:text-left">
-                        <div className="w-12 lg:w-20 h-12 lg:h-20 mx-auto lg:mx-0 mb-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                        <div className="w-12 lg:w-20 h-12 lg:h-20 mx-auto lg:mx-0 mb-4 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-2xl flex items-center justify-center">
                           <span className="text-3xl">🧩</span>
                         </div>
                         <h3 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 dark:text-white mb-2 lg:mb-4">
@@ -1606,7 +1606,7 @@ const HomePage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-2 lg:p-6 border border-blue-200 dark:border-blue-700">
+                      <div className="bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-2xl p-2 lg:p-6 border border-secondary-200 dark:border-secondary-700">
                         <h4 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">
                           Extra Benefits
                         </h4>
@@ -1685,7 +1685,7 @@ const HomePage = () => {
                                     Profile Completed ✅
                                   </span>
                                 ) : (
-                                  <span className="text-orange-700 dark:text-orange-400">
+                                  <span className="text-primary-600 dark:text-secondary-400">
                                     Profile Completion:{" "}
                                     {profileCompletion.percentage}%
                                   </span>
@@ -1707,7 +1707,7 @@ const HomePage = () => {
                               <div
                                 className={`h-4 rounded-full transition-all duration-500 ease-in-out ${profileCompletion.percentage === 100
                                   ? "bg-gradient-to-r from-green-500 to-emerald-600"
-                                  : "bg-gradient-to-r from-orange-500 to-yellow-500"
+                                  : "bg-gradient-to-r from-primary-500 to-primary-500"
                                   }`}
                                 style={{
                                   width: `${profileCompletion.percentage}%`,
@@ -1838,8 +1838,8 @@ const HomePage = () => {
                       </div>
 
                       <div className="text-center">
-                        <div className="bg-yellow-100 dark:bg-yellow-900/30 rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 border border-yellow-300 dark:border-yellow-700">
-                          <p className="text-yellow-800 dark:text-yellow-200 text-xs sm:text-lg font-medium">
+                        <div className="bg-primary-100 dark:bg-primary-900/30 rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 border border-primary-300 dark:border-primary-700">
+                          <p className="text-primary-800 dark:text-primary-200 text-xs sm:text-lg font-medium">
                             💡 <strong>Pro Tip:</strong> Complete your profile to
                             get the reward immediately!
                           </p>
@@ -1861,19 +1861,19 @@ const HomePage = () => {
 
           {/* Level Progression System Section */}
           <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-10 text-center mb-4 md:mb-8 mt-8 sm:mt-10 md:mt-12 z-10">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-tr from-yellow-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-tr from-primary-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl sm:shadow-2xl animate-float">
               <FaTrophy className="text-white text-2xl sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-4xl drop-shadow-lg" />
             </div>
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-indigo-600 dark:text-white mb-2 sm:mb-3 md:mb-4 drop-shadow-lg">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-indigo-600 dark:text-white mb-2 sm:mb-3 md:mb-4 drop-shadow-lg">
               Level Progression System
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 font-medium">
               Journey from{" "}
-              <span className="font-bold text-orange-700 dark:text-yellow-300">
+              <span className="font-bold text-primary-600 dark:text-primary-300">
                 Starter
               </span>{" "}
               to{" "}
-              <span className="font-bold text-red-600 dark:text-red-300">
+              <span className="font-bold text-primary-600 dark:text-red-300">
                 Legend
               </span>{" "}
               through{" "}
@@ -1888,9 +1888,9 @@ const HomePage = () => {
             {/* Info Cards */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
               {/* Scholarship Info */}
-              <div className="bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 border border-yellow-200 dark:border-yellow-700 hover:scale-[1.02] sm:hover:scale-[1.03] hover:shadow-yellow-200/40 transition-all duration-300">
+              <div className="bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 border border-primary-200 dark:border-primary-700 hover:scale-[1.02] sm:hover:scale-[1.03] hover:shadow-primary-200/40 transition-all duration-300">
                 <div className="flex items-center justify-start gap-4 mb-4 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl sm:rounded-2xl flex items-center justify-center">
                     <FaAward className="text-white text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl" />
                   </div>
                   <h3 className="text-lg sm:text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -1901,12 +1901,12 @@ const HomePage = () => {
                   <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
                     Only the Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} ranked
                     users in Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} (
-                    <span className="font-bold text-orange-700">Legend</span>) win
+                    <span className="font-bold text-primary-600">Legend</span>) win
                     scholarships and prizes!
                   </p>
                   <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg sm:rounded-xl p-3 sm:p-4">
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-orange-700 mb-1 sm:mb-2">
+                      <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2">
                         ₹
                         Dynamic Pool
                       </div>
@@ -1932,9 +1932,9 @@ const HomePage = () => {
               </div>
 
               {/* Progression Rules */}
-              <div className="bg-gradient-to-br from-yellow-50 to-red-100 dark:from-yellow-900/30 dark:to-red-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 border border-yellow-200 dark:border-yellow-700 hover:scale-[1.02] sm:hover:scale-[1.03] hover:shadow-yellow-200/40 transition-all duration-300">
+              <div className="bg-gradient-to-br from-primary-50 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 border border-primary-200 dark:border-primary-700 hover:scale-[1.02] sm:hover:scale-[1.03] hover:shadow-primary-200/40 transition-all duration-300">
                 <div className="flex items-center justify-start gap-4 mb-4 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl sm:rounded-2xl flex items-center justify-center">
                     <FaGem className="text-white text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl" />
                   </div>
                   <h3 className="text-lg sm:text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -1956,7 +1956,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-yellow-500 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
                       <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
                     </div>
                     <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
@@ -1973,7 +1973,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-2 sm:space-x-3">
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-yellow-500 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
                       <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
                     </div>
                     <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
@@ -1996,7 +1996,7 @@ const HomePage = () => {
 
             <div className="flex items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-4">
               <h2 className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
-                <FaStar className="text-yellow-500 text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl" />
+                <FaStar className="text-primary-500 text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl" />
                 Your Quizzes
               </h2>
             </div>
@@ -2009,13 +2009,13 @@ const HomePage = () => {
             {!isLoggedIn ? (
               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-0 md:p-8 border border-white/20 flex flex-col items-center justify-center animate-fade-in">
                 <div className="text-center mb-6">
-                  <div className="text-orange-700 text-3xl mb-2">🔒</div>
-                  <p className="text-orange-700 text-lg font-semibold mb-4">
+                  <div className="text-primary-600 text-3xl mb-2">🔒</div>
+                  <p className="text-primary-600 text-lg font-semibold mb-4">
                     Login to view your quizzes
                   </p>
                   <Link
                     href="/login"
-                    className="inline-block bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
+                    className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
                   >
                     Login
                   </Link>
@@ -2027,8 +2027,8 @@ const HomePage = () => {
                 {/* Subscription Warning */}
                 <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-0 md:p-8 border border-white/20 flex flex-col items-center justify-center mb-6">
                   <div className="text-center mb-6">
-                    <div className="text-red-600 text-3xl mb-2">⚠️</div>
-                    <p className="text-red-600 text-lg font-semibold mb-4">
+                    <div className="text-primary-600 text-3xl mb-2">⚠️</div>
+                    <p className="text-primary-600 text-lg font-semibold mb-4">
                       {error && error.toLowerCase().includes("subscription")
                         ? error
                         : "Access to quizzes requires an active subscription."}
@@ -2038,7 +2038,7 @@ const HomePage = () => {
                     </p>
                     <Link
                       href="/subscription"
-                      className="inline-block bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
+                      className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
                     >
                       Subscribe Now
                     </Link>
@@ -2051,7 +2051,7 @@ const HomePage = () => {
             ) : (
               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-0 border border-white/20 animate-fade-in">
                 {loading ? (
-                  <div className="bg-gradient-to-r from-gray-50 to-yellow-50 dark:from-gray-700 dark:to-yellow-900/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-lg">
+                  <div className="bg-gradient-to-r from-gray-50 to-primary-50 dark:from-gray-700 dark:to-primary-900/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-lg">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                       {[1, 2, 3].map(i => <Skeleton key={i} height="200px" borderRadius="1rem" className="shadow-lg" />)}
                     </div>
@@ -2071,19 +2071,19 @@ const HomePage = () => {
                     }
                     if (!currentLevelData) return null;
                     return (
-                      <div className="bg-gradient-to-r from-gray-50 to-yellow-50 dark:from-gray-700 dark:to-yellow-900/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-lg">
+                      <div className="bg-gradient-to-r from-gray-50 to-primary-50 dark:from-gray-700 dark:to-primary-900/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-lg">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                           {currentLevelData.quizzes.slice(0, 6).map((quiz) => (
                             <div
                               key={quiz._id}
-                              className="bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-md hover:shadow-lg transition-all duration-300 border-2 border-gray-200 dark:border-yellow-400"
+                              className="bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-md hover:shadow-lg transition-all duration-300 border-2 border-gray-200 dark:border-primary-400"
                             >
                               <div className="flex justify-between items-start mb-2 sm:mb-3">
                                 <h4 className="font-semibold text-gray-800 dark:text-white text-xs sm:text-lg">
                                   {quiz.title}
                                 </h4>
                                 {quiz.isRecommended && (
-                                  <FaStar className="text-yellow-500 text-xs sm:text-lg" />
+                                  <FaStar className="text-primary-500 text-xs sm:text-lg" />
                                 )}
                               </div>
                               {quiz.description && (
@@ -2114,7 +2114,7 @@ const HomePage = () => {
                               </div>
                               <button
                                 onClick={() => handleQuizAttempt(quiz)}
-                                className="w-full bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-1.5 sm:py-2 px-4 sm:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xs sm:text-lg md:text-base text-center"
+                                className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-1.5 sm:py-2 px-4 sm:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xs sm:text-lg md:text-base text-center"
                               >
                                 Start Quiz
                               </button>
@@ -2145,12 +2145,12 @@ const HomePage = () => {
             {/* Categories Section - Enhanced Design */}
             <section className="container mx-auto px-0 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16">
               <div className="text-center mb-8 sm:mb-10 md:mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full text-sm font-semibold mb-4">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-500 text-white rounded-full text-sm font-semibold mb-4">
                   <FaBook className="w-4 h-4" />
                   <span>Explore</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:from-yellow-400 dark:via-orange-400 dark:to-red-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 text-secondary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-400 dark:to-red-400">
                     Categories
                   </span>
                 </h2>
@@ -2207,21 +2207,21 @@ const HomePage = () => {
             </section>
 
             {/* Progressive Learning Levels Section - Enhanced Design */}
-            <section className="py-10 lg:py-20 relative overflow-hidden bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-yellow-900/20 dark:to-red-900/20">
+            <section className="py-10 lg:py-20 relative overflow-hidden bg-gradient-to-br from-primary-50 via-primary-50 to-red-50 dark:from-gray-900 dark:via-primary-900/20 dark:to-red-900/20">
               {/* Animated Background Elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-3xl animate-blob"></div>
+                <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary-400/20 to-primary-400/20 rounded-full blur-3xl animate-blob"></div>
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-red-400/20 to-pink-400/20 rounded-full blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
               </div>
 
               <div className="relative container mx-auto px-0 sm:px-6 lg:px-10">
                 <div className="text-center mb-8 lg:mb-16">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-red-500 text-white rounded-full text-sm font-semibold mb-4">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full text-sm font-semibold mb-4">
                     <FaLevelUpAlt className="w-4 h-4" />
                     <span>Level Up</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:from-yellow-400 dark:via-orange-400 dark:to-red-400">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 text-secondary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-400 dark:to-red-400">
                       Progressive Learning Levels
                     </span>
                   </h2>
@@ -2251,7 +2251,7 @@ const HomePage = () => {
                       return (
                         <div
                           key={level._id}
-                          className={`group cursor-pointer relative overflow-hidden rounded-2xl p-2 md:p-4 lg:p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl ${levelColors.background} ${levelColors.border} hover:border-yellow-500`}
+                          className={`group cursor-pointer relative overflow-hidden rounded-2xl p-2 md:p-4 lg:p-8 transition-all duration-300 transform hover:scale-105 border shadow-lg hover:shadow-xl ${levelColors.background} ${levelColors.border} hover:border-primary-500`}
                         >
                           <div
                             className={`absolute top-0 right-0 w-32 h-32 ${levelColors.accent} rounded-full -translate-y-16 translate-x-16`}
@@ -2284,7 +2284,7 @@ const HomePage = () => {
 
                             <div className="grid grid-cols-2 gap-2 mb-3">
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                                <div className="text-lg font-bold text-orange-700">
+                                <div className="text-lg font-bold text-primary-600">
                                   {level.quizCount || "N/A"}
                                 </div>
                                 <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -2300,7 +2300,7 @@ const HomePage = () => {
                                 </div>
                               </div>
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                                <div className="text-lg font-bold text-red-600">
+                                <div className="text-lg font-bold text-primary-600">
                                   ₹{levelInfo ? levelInfo.amount : 0}
                                 </div>
                                 <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -2308,7 +2308,7 @@ const HomePage = () => {
                                 </div>
                               </div>
                               <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 text-center shadow-lg">
-                                <div className="text-lg font-bold text-orange-700">
+                                <div className="text-lg font-bold text-primary-600">
                                   ₹{levelInfo ? levelInfo.prize : 0}
                                 </div>
                                 <div className="text-xs text-gray-600 dark:text-gray-300">
@@ -2346,7 +2346,7 @@ const HomePage = () => {
                                     onClick={() =>
                                       router.push(`/level/${level.level}`)
                                     }
-                                    className="inline-block bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-2 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
+                                    className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-2 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg"
                                   >
                                     View Quizzes
                                   </button>
@@ -2372,7 +2372,7 @@ const HomePage = () => {
                 <div className="text-center mt-12">
                   <Link
                     href="/register"
-                    className="inline-flex items-center space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-xl font-semibold hover:from-yellow-700 hover:to-red-700 transition-all duration-300"
+                    className="inline-flex items-center space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold hover:from-primary-700 hover:to-secondary-700 transition-all duration-300"
                   >
                     <span>Start Your Journey</span>
                     <FaArrowRight className="w-4 h-4" />
@@ -2383,15 +2383,15 @@ const HomePage = () => {
 
             {/* Platform Stats Section */}
             <div className="container mx-auto px-0 md:px-6 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12 z-10">
-              <div className="bg-gradient-to-r from-yellow-100 to-red-100 dark:from-gray-800 dark:to-yellow-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 border border-yellow-200 dark:border-yellow-700 flex flex-col items-center relative overflow-hidden">
-                <h2 className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-indigo-600 dark:text-white mb-4 sm:mb-6 flex items-center gap-2 drop-shadow-lg">
+              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-gray-800 dark:to-primary-900/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 border border-primary-200 dark:border-primary-700 flex flex-col items-center relative overflow-hidden">
+                <h2 className="text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-red-500 to-indigo-600 dark:text-white mb-4 sm:mb-6 flex items-center gap-2 drop-shadow-lg">
                   Platform Stats
                 </h2>
-                <div className="absolute -top-10 right-10 w-32 h-32 bg-gradient-to-br from-yellow-300/30 to-red-300/20 rounded-full blur-2xl z-0 animate-pulse-slow" />
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tl from-yellow-300/20 to-blue-200/10 rounded-full blur-2xl z-0 animate-pulse-slow" />
+                <div className="absolute -top-10 right-10 w-32 h-32 bg-gradient-to-br from-primary-300/30 to-red-300/20 rounded-full blur-2xl z-0 animate-pulse-slow" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tl from-primary-300/20 to-secondary-200/10 rounded-full blur-2xl z-0 animate-pulse-slow" />
                 <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-7 gap-4 sm:gap-6 w-full max-w-4xl z-10">
                   <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <FaLevelUpAlt className="text-white text-xl sm:text-2xl md:text-3xl animate-float" />
                     </div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white animate-count">
@@ -2402,7 +2402,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <FaBook className="text-white text-xl sm:text-2xl md:text-3xl animate-float" />
                     </div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white animate-count">
@@ -2413,7 +2413,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-green-500 to-secondary-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <FaLayerGroup className="text-white text-xl sm:text-2xl md:text-3xl animate-float" />
                     </div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white animate-count">
@@ -2435,7 +2435,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <FaQuestionCircle className="text-white text-xl sm:text-2xl md:text-3xl animate-float" />
                     </div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white animate-count">
@@ -2446,7 +2446,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <FaGraduationCap className="text-white text-xl sm:text-2xl md:text-3xl animate-float" />
                     </div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white animate-count">

@@ -66,19 +66,19 @@ const MonthlyRewardDashboard = () => {
 
   const getRankIcon = (rank) => {
     switch (rank) {
-      case 1: return <FaCrown className="text-yellow-500" />;
+      case 1: return <FaCrown className="text-primary-500" />;
       case 2: return <FaMedal className="text-gray-400" />;
-      case 3: return <FaMedal className="text-orange-500" />;
-      default: return <FaStar className="text-blue-500" />;
+      case 3: return <FaMedal className="text-primary-500" />;
+      default: return <FaStar className="text-secondary-500" />;
     }
   };
 
   const getRankColor = (rank) => {
     switch (rank) {
-      case 1: return 'bg-yellow-100 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-700';
+      case 1: return 'bg-primary-100 dark:bg-primary-900/30 border-primary-300 dark:border-primary-700';
       case 2: return 'bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600';
-      case 3: return 'bg-orange-100 dark:bg-orange-900/30 border-orange-300 dark:border-orange-700';
-      default: return 'bg-blue-100 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700';
+      case 3: return 'bg-primary-100 dark:bg-primary-900/30 border-primary-300 dark:border-primary-700';
+      default: return 'bg-secondary-100 dark:bg-secondary-900/30 border-secondary-300 dark:border-secondary-700';
     }
   };
 
@@ -112,7 +112,7 @@ const MonthlyRewardDashboard = () => {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 capitalize ${activeTab === tab
-              ? 'bg-gradient-to-r from-red-600 to-yellow-500 text-white shadow-lg'
+              ? 'bg-gradient-to-r from-secondary-600 to-primary-500 text-white shadow-lg'
               : 'bg-white dark:bg-gray-800 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
               }`}
           >
@@ -131,10 +131,10 @@ const MonthlyRewardDashboard = () => {
       {data.userProgress && (
         <div className={`rounded-xl p-6 border-2 transition-all ${data.userProgress.rewardEligible
           ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700'
-          : 'bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800'
+          : 'bg-secondary-50 dark:bg-secondary-900/10 border-secondary-200 dark:border-secondary-800'
           }`}>
           <div className="flex items-center gap-3 mb-4">
-            <FaTrophy className={`text-2xl ${data.userProgress.rewardEligible ? 'text-green-600' : 'text-blue-600'}`} />
+            <FaTrophy className={`text-2xl ${data.userProgress.rewardEligible ? 'text-green-600' : 'text-secondary-600'}`} />
             <h2 className="text-xl font-bold">
               {data.userProgress.rewardEligible ? `You are eligible for ${activeTab} rewards!` : `Track your ${activeTab} progress`}
             </h2>
@@ -155,7 +155,7 @@ const MonthlyRewardDashboard = () => {
             </div>
             <div className="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
               <p className="text-xs text-gray-500 mb-1 caps">Rank</p>
-              <p className="text-lg font-bold text-blue-600">#{data.userProgress.rewardRank || '?'}</p>
+              <p className="text-lg font-bold text-secondary-600">#{data.userProgress.rewardRank || '?'}</p>
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@ const MonthlyRewardDashboard = () => {
       <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
-            <FaUsers className="text-2xl text-blue-600" />
+            <FaUsers className="text-2xl text-secondary-600" />
             <h2 className="text-xl font-bold">
               Top {
                 activeTab === 'daily' ? (config.QUIZ_CONFIG.DAILY_WINNER_COUNT || 1) :
@@ -232,25 +232,25 @@ const MonthlyRewardDashboard = () => {
       </div>
 
       {/* Ranking Criteria */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white shadow-lg">
+      <div className="bg-gradient-to-r from-secondary-600 to-secondary-700 rounded-xl p-6 text-white shadow-lg">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
           <FaChartLine /> Ranking Priority
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
           <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-            <span className="block font-black text-blue-200 mb-1">1ST</span>
+            <span className="block font-black text-secondary-200 mb-1">1ST</span>
             Highest High-Score Wins
           </div>
           <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-            <span className="block font-black text-blue-200 mb-1">2ND</span>
+            <span className="block font-black text-secondary-200 mb-1">2ND</span>
             Accuracy Percentage
           </div>
           <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-            <span className="block font-black text-blue-200 mb-1">3RD</span>
+            <span className="block font-black text-secondary-200 mb-1">3RD</span>
             Total Score
           </div>
           <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-            <span className="block font-black text-blue-200 mb-1">4TH</span>
+            <span className="block font-black text-secondary-200 mb-1">4TH</span>
             Total Quizzes Played
           </div>
         </div>

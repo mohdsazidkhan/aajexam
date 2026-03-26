@@ -112,7 +112,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
             {/* Back Button */}
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-red-600 transition-colors"
+              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors"
             >
               <FaArrowLeft /> Back to Categories
             </button>
@@ -141,7 +141,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 overflow-hidden"
                 >
                   {/* Exam Header */}
-                  <div className="flex flex-col justify-between items-center bg-gradient-to-r from-blue-500 to-indigo-600 p-2 lg:p-4 text-white">
+                  <div className="flex flex-col justify-between items-center bg-gradient-to-r from-secondary-500 to-indigo-600 p-2 lg:p-4 text-white">
                     <h3 className="text lg:text-xl font-bold mb-2">{exam.name}</h3>
                     {exam.code && (
                       <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
@@ -174,12 +174,12 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                     </div>
                     <div className="flex items-center justify-between gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
                       {exam.patternCount !== undefined && (
-                        <p className="text-sm font-semibold text-red-600">
+                        <p className="text-sm font-semibold text-primary-600">
                           {exam.patternCount} {exam.patternCount === 1 ? 'Pattern' : 'Patterns'}
                         </p>
                       )}
                       {exam.testCount !== undefined && (
-                        <p className="text-sm text-red-600 font-semibold">
+                        <p className="text-sm text-primary-600 font-semibold">
                           {exam.testCount} {exam.testCount === 1 ? 'Test' : 'Tests'}
                         </p>
                       )}
@@ -232,7 +232,7 @@ export async function getServerSideProps({ params }) {
       .lean();
 
     const examIds = examsDocs.map(e => e._id);
-    
+
     let exams = [];
     let category = null;
 

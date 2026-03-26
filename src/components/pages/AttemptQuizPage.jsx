@@ -32,8 +32,8 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard?.length === 0) {
     return (
       <div className="text-center py-0 md:py-2 lg:py-4 xl:py-6 mb-4">
-        <div className="bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/20 dark:to-red-900/20 rounded-2xl p-2 md:p-8 border border-yellow-200 dark:border-red-700">
-          <FaTrophy className="text-4xl text-yellow-500 mx-auto mb-4" />
+        <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20 rounded-2xl p-2 md:p-8 border border-primary-200 dark:border-red-700">
+          <FaTrophy className="text-4xl text-primary-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No Leaderboard Yet</h3>
           <p className="text-gray-500 dark:text-gray-400">Be the first to complete this quiz and claim the top spot!</p>
         </div>
@@ -44,7 +44,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-8">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
+        <div className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 rounded-xl flex items-center justify-center">
           <FaTrophy className="text-white text-xl" />
         </div>
         <h3 className="text-md lg:text-2xl font-bold text-gray-800 dark:text-white">Leaderboard</h3>
@@ -53,7 +53,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
       <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[30rem]">
-            <thead className="bg-gradient-to-r from-yellow-500 to-red-500">
+            <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
               <tr>
                 <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">Rank</th>
                 <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-left">Student</th>
@@ -69,15 +69,15 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                 return (
                   <tr
                     key={rank}
-                    className={`transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 ${isCurrentUser ? 'bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 border-l-4 border-yellow-500' : ''
+                    className={`transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 ${isCurrentUser ? 'bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 border-l-4 border-primary-500' : ''
                       }`}
                   >
                     <td className="py-2 md:py-4 px-2 md:px-6 text-center">
                       <div className="flex items-center justify-center">
                         {isTopThree ? (
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${rank === 1 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' :
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${rank === 1 ? 'bg-gradient-to-r from-primary-400 to-primary-500' :
                             rank === 2 ? 'bg-gradient-to-r from-gray-400 to-gray-500' :
-                              'bg-gradient-to-r from-amber-600 to-yellow-600'
+                              'bg-gradient-to-r from-amber-600 to-primary-600'
                             }`}>
                             {rank === 1 ? <FaCrown className="text-sm" /> : rank}
                           </div>
@@ -88,7 +88,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                     </td>
                     <td className="py-2 md:py-4 px-2 md:px-6">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-red-600 rounded-full flex items-center justify-center text-white font-semibold">
+                        <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
                           {studentName?.charAt(0)?.toUpperCase() || 'A'}
                         </div>
                         <div>
@@ -96,7 +96,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                             {studentName || 'Anonymous'}
                           </div>
                           {isCurrentUser && (
-                            <div className="text-xs text-orange-700 dark:text-yellow-400 font-medium">
+                            <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
                               You
                             </div>
                           )}
@@ -558,7 +558,7 @@ const AttemptQuizPage = () => {
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-3 lg:p-6 md:p-8 max-w-md w-full shadow-2xl border border-red-200 dark:border-red-700">
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaExclamationTriangle className="text-white text-2xl" />
             </div>
 
@@ -571,8 +571,8 @@ const AttemptQuizPage = () => {
               Exiting fullscreen will submit your quiz with current answers.
             </p>
 
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800 dark:text-yellow-200">
+            <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 mb-6">
+              <p className="text-sm text-primary-800 dark:text-primary-200">
                 ⚠️ This action cannot be undone. Your quiz will be automatically submitted.
               </p>
             </div>
@@ -586,7 +586,7 @@ const AttemptQuizPage = () => {
               </button>
               <button
                 onClick={() => handleExitConfirm(true)}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-xl transition-colors duration-300 font-medium"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-red-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-xl transition-colors duration-300 font-medium"
               >
                 Exit & Submit
               </button>
@@ -599,7 +599,7 @@ const AttemptQuizPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-yellow-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-primary-900 flex items-center justify-center">
         <Loading size="lg" color="gray" message="Loading your quiz..." />
       </div>
     );
@@ -610,10 +610,10 @@ const AttemptQuizPage = () => {
 
   return (
     <>
-      <div className={`${styles.minHScreen} bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-yellow-900 overflow-x-hidden overflow-y-auto`} style={{ height: 'auto', minHeight: '100vh' }}>
+      <div className={`${styles.minHScreen} bg-gradient-to-br from-secondary-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-primary-900 overflow-x-hidden overflow-y-auto`} style={{ height: 'auto', minHeight: '100vh' }}>
         {/* Fullscreen Active Banner */}
         {isFullscreen && !submitted && (
-          <div className={`${styles.quizFullscreenBanner} fixed top-0 left-0 right-0 bg-gradient-to-r from-green-500 to-blue-500 text-white text-center py-2 z-[100] shadow-lg`}>
+          <div className={`${styles.quizFullscreenBanner} fixed top-0 left-0 right-0 bg-gradient-to-r from-green-500 to-secondary-500 text-white text-center py-2 z-[100] shadow-lg`}>
             <div className="flex items-center justify-center space-x-2 px-2">
               <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
               <span className="text-xs md:text-sm font-medium">
@@ -636,7 +636,7 @@ const AttemptQuizPage = () => {
           <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-1 md:p-2 mb-2 md:mb-4 ${isFullscreen ? 'mt-4 md:mt-8' : 'mt-0'}`}>
             <div className="flex items-center justify-between flex-col md:flex-row mb-0">
               <div className="flex items-center space-x-2 md:space-x-4">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl flex items-center justify-center">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaBookOpen className="text-white text-lg md:text-2xl" />
                 </div>
                 <div>
@@ -679,7 +679,7 @@ const AttemptQuizPage = () => {
                         animationDuration: `${1 + Math.random() * 2}s`
                       }}
                     >
-                      <div className={`w-2 h-2 rounded-full ${['bg-yellow-400', 'bg-red-400', 'bg-blue-400', 'bg-green-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]
+                      <div className={`w-2 h-2 rounded-full ${['bg-primary-400', 'bg-red-400', 'bg-secondary-400', 'bg-green-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]
                         }`}></div>
                     </div>
                   ))}
@@ -688,9 +688,9 @@ const AttemptQuizPage = () => {
 
               {/* Results Section */}
               <div className="text-center mb-8">
-                <div className="bg-gradient-to-r from-green-50 via-blue-50 from-red-50 dark:from-green-900/30 dark:via-blue-900/30 dark:from-red-900/30 rounded-3xl p-2 md:p-8 border border-green-200 dark:border-green-700 shadow-2xl">
+                <div className="bg-gradient-to-r from-green-50 via-secondary-50 from-red-50 dark:from-green-900/30 dark:via-secondary-900/30 dark:from-red-900/30 rounded-3xl p-2 md:p-8 border border-green-200 dark:border-green-700 shadow-2xl">
                   <div className="flex justify-center mb-6">
-                    <div className="w-24 h-24 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center animate-pulse">
+                    <div className="w-24 h-24 bg-gradient-to-r from-green-400 to-secondary-500 rounded-full flex items-center justify-center animate-pulse">
                       <FaTrophy className="text-white text-4xl" />
                     </div>
                   </div>
@@ -708,14 +708,14 @@ const AttemptQuizPage = () => {
                     </div>
 
                     <div className="bg-white/60 dark:bg-gray-700/60 rounded-2xl p-2 md:p-6 border border-white/20">
-                      <div className="text-md lg:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                      <div className="text-md lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-2">
                         {result?.scorePercentage}%
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
                     </div>
 
                     <div className="bg-white/60 dark:bg-gray-700/60 rounded-2xl p-2 md:p-6 border border-white/20">
-                      <div className="text-md lg:text-2xl font-bold text-orange-700 dark:text-yellow-400 mb-2">
+                      <div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">
                         {result?.total}
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">Total Questions</div>
@@ -723,21 +723,21 @@ const AttemptQuizPage = () => {
                   </div>
 
                   {result?.isNewBestScore && (
-                    <div className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 text-yellow-800 dark:text-yellow-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
+                    <div className="bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 text-primary-800 dark:text-primary-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
                       <FaCrown className="text-xl" />
                       <span className="font-semibold">🏆 New Best Score!</span>
                     </div>
                   )}
 
                   {result?.isHighScore && (
-                    <div className="bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 text-green-800 dark:text-green-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
+                    <div className="bg-gradient-to-r from-green-100 to-secondary-100 dark:from-green-900/30 dark:to-secondary-900/30 text-green-800 dark:text-green-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
                       <FaStar className="text-xl" />
                       <span className="font-semibold">⭐ High Score Achievement!</span>
                     </div>
                   )}
 
                   {result?.levelUpdate && result.levelUpdate.levelIncreased && (
-                    <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-yellow-800 dark:text-yellow-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
+                    <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-primary-800 dark:text-primary-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
                       <FaRocket className="text-xl" />
                       <span className="font-semibold">🚀 Level Up! You are now Level {result.levelUpdate.newLevel}</span>
                     </div>
@@ -766,7 +766,7 @@ const AttemptQuizPage = () => {
                       <div key={index} className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl p-2 md:p-6 border border-gray-200 dark:border-gray-600 shadow-lg">
                         <div className="flex items-start space-x-0 md:space-x-4 mb-6">
                           <div className={`hidden md:flex w-12 h-12 rounded-2xl items-center justify-center text-white text-lg font-bold shadow-lg ${isSkipped ? 'bg-gradient-to-r from-gray-400 to-gray-500' :
-                            isCorrect ? 'bg-gradient-to-r from-green-400 to-green-500' : 'bg-gradient-to-r from-red-400 to-red-500'
+                            isCorrect ? 'bg-gradient-to-r from-green-400 to-green-500' : 'bg-gradient-to-r from-red-400 to-secondary-500'
                             }`}>
                             {isSkipped ? <FaQuestionCircle /> : isCorrect ? <FaCheck /> : <FaTimes />}
                           </div>
@@ -787,7 +787,7 @@ const AttemptQuizPage = () => {
                                     className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${isCorrectOption
                                       ? 'bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/30 border-green-300 dark:border-green-600 shadow-lg'
                                       : isUserChoice && !isCorrectOption
-                                        ? 'bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-red-600 shadow-lg'
+                                        ? 'bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-secondary-600 shadow-lg'
                                         : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 hover:border-purple-300 dark:hover:border-purple-500'
                                       }`}
                                   >
@@ -795,7 +795,7 @@ const AttemptQuizPage = () => {
                                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${isCorrectOption
                                         ? 'bg-gradient-to-r from-green-500 to-green-600'
                                         : isUserChoice && !isCorrectOption
-                                          ? 'bg-gradient-to-r from-red-500 to-red-600'
+                                          ? 'bg-gradient-to-r from-red-500 to-secondary-600'
                                           : 'bg-gradient-to-r from-gray-400 to-gray-500'
                                         }`}>
                                         {optionLetter}
@@ -809,7 +809,7 @@ const AttemptQuizPage = () => {
                                         {option}
                                       </span>
                                       {isCorrectOption && <FaCheckCircle className="text-green-600 text-xl" />}
-                                      {isUserChoice && !isCorrectOption && <FaTimesCircle className="text-red-600 text-xl" />}
+                                      {isUserChoice && !isCorrectOption && <FaTimesCircle className="text-primary-600 text-xl" />}
                                     </div>
                                   </div>
                                 );
@@ -817,12 +817,12 @@ const AttemptQuizPage = () => {
                             </div>
 
                             {/* Answer Summary */}
-                            <div className="bg-gradient-to-r from-blue-50 from-red-50 dark:from-blue-900/20 dark:from-red-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-600">
+                            <div className="bg-gradient-to-r from-secondary-50 from-red-50 dark:from-secondary-900/20 dark:from-red-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-600">
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                                 <div className="flex items-center space-x-2">
                                   <span className="font-semibold text-gray-600 dark:text-gray-400">Your Answer:</span>
                                   <span className={`font-medium ${isSkipped ? 'text-gray-500' :
-                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-primary-600 dark:text-red-400'
                                     }`}>
                                     {isSkipped ? 'Skipped' : userAnswer || 'Not answered'}
                                   </span>
@@ -836,7 +836,7 @@ const AttemptQuizPage = () => {
                                 <div className="flex items-center space-x-2">
                                   <span className="font-semibold text-gray-600 dark:text-gray-400">Status:</span>
                                   <span className={`font-medium ${isSkipped ? 'text-gray-500' :
-                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-primary-600 dark:text-red-400'
                                     }`}>
                                     {isSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Incorrect'}
                                   </span>
@@ -855,7 +855,7 @@ const AttemptQuizPage = () => {
               <div className="flex justify-center space-x-2 md:space-x-6 mb-4 md:mb-8">
                 <button
                   onClick={() => router.push("/home")}
-                  className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-2xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                  className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-secondary-500 to-indigo-600 text-white rounded-2xl hover:from-secondary-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
                 >
                   <FaHome />
                   <span>Home</span>
@@ -869,7 +869,7 @@ const AttemptQuizPage = () => {
                 </button>
                 <button
                   onClick={handleBack}
-                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-2xl hover:from-yellow-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                  className="px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
                 >
                   <FaArrowLeft />
                   <span>Back</span>
@@ -884,7 +884,7 @@ const AttemptQuizPage = () => {
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 border border-white/20 shadow-xl">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-yellow-600 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-r from-secondary-600 to-primary-600 rounded-xl flex items-center justify-center">
                       <FaChartLine className="text-white" />
                     </div>
                     <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">Progress</span>
@@ -895,7 +895,7 @@ const AttemptQuizPage = () => {
                 </div>
                 <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-red-600 to-yellow-600 h-3 rounded-full transition-all duration-500 ease-out shadow-lg"
+                    className="bg-gradient-to-r from-secondary-600 to-primary-600 h-3 rounded-full transition-all duration-500 ease-out shadow-lg"
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>
@@ -906,7 +906,7 @@ const AttemptQuizPage = () => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-4">
                     <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                      <FaQuestionCircle className="text-yellow-500" />
+                      <FaQuestionCircle className="text-primary-500" />
                       <span className="text-gray-700 dark:text-gray-300 font-medium">
                         Question {currentQuestionIndex + 1} of {quiz.questions.length}
                       </span>
@@ -914,8 +914,8 @@ const AttemptQuizPage = () => {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <div className={`flex items-center space-x-2 px-4 py-2 rounded-xl shadow-lg ${timeLeft <= 10 ? 'bg-gradient-to-r from-red-500 to-red-600 text-white' :
-                      timeLeft <= 20 ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white' :
+                    <div className={`flex items-center space-x-2 px-4 py-2 rounded-xl shadow-lg ${timeLeft <= 10 ? 'bg-gradient-to-r from-red-500 to-secondary-600 text-white' :
+                      timeLeft <= 20 ? 'bg-gradient-to-r from-primary-500 to-primary-500 text-white' :
                         'bg-gradient-to-r from-green-500 to-teal-500 text-white'
                       }`}>
                       <FaClock className="text-sm" />
@@ -928,7 +928,7 @@ const AttemptQuizPage = () => {
               {/* Current Question */}
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl py-2 md:py-4 px-1 md:px-2 border border-white/20 shadow-2xl mb-2 md:mb-4">
                 <div className="flex items-start space-x-2 md:space-x-4 mb-1 md:mb-2">
-                  <div className="hidden md:flex w-8 h-8 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl items-center justify-center">
+                  <div className="hidden md:flex w-8 h-8 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl items-center justify-center">
                     <span className="text-white font-bold text-lg">{currentQuestionIndex + 1}</span>
                   </div>
                   <div className="flex-1">
@@ -952,13 +952,13 @@ const AttemptQuizPage = () => {
                           >
                             <div className="flex items-center space-x-2 md:space-x-4">
                               <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center font-bold text-sm md:text-lg transition-all duration-300 flex-shrink-0 ${isSelected
-                                ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-lg'
+                                ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-lg'
                                 : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-400'
                                 }`}>
                                 {optionLetter}
                               </div>
                               <span className={`text-sm md:text-base lg:text-lg font-medium transition-colors duration-300 break-words flex-1 ${isSelected
-                                ? 'text-red-800 dark:text-yellow-200'
+                                ? 'text-red-800 dark:text-primary-200'
                                 : 'text-gray-700 dark:text-gray-300'
                                 }`}>
                                 {opt}
@@ -985,7 +985,7 @@ const AttemptQuizPage = () => {
                   <button
                     onClick={handleNextQuestion}
                     disabled={!answers[currentQuestionIndex]}
-                    className={`flex items-center space-x-1 md:space-x-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-red-600 to-yellow-600 text-white rounded-2xl hover:from-red-800 hover:to-yellow-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg ${styles.touchManipulation} min-h-[40px] md:min-h-[48px]`}
+                    className={`flex items-center space-x-1 md:space-x-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-secondary-600 to-primary-600 text-white rounded-2xl hover:from-red-800 hover:to-primary-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg ${styles.touchManipulation} min-h-[40px] md:min-h-[48px]`}
                   >
                     <span className="font-medium text-xs md:text-sm lg:text-base">
                       {currentQuestionIndex === quiz.questions.length - 1 ? 'Submit Quiz' : 'Next'}

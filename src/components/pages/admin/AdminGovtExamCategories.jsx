@@ -202,7 +202,7 @@ const AdminGovtExamCategories = () => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${category.type === "Central"
-                              ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                              ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
                               : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                               }`}>
                               {category.type}
@@ -217,13 +217,13 @@ const AdminGovtExamCategories = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <button
                               onClick={() => handleEdit(category)}
-                              className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDelete(category._id)}
-                              className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                             >
                               Delete
                             </button>
@@ -250,7 +250,7 @@ const AdminGovtExamCategories = () => {
                               {category.name}
                             </h3>
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${category.type === "Central"
-                              ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                              ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
                               : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                               }`}>
                               {category.type}
@@ -268,14 +268,14 @@ const AdminGovtExamCategories = () => {
                         <div className="flex items-center gap-2 ml-4">
                           <button
                             onClick={() => handleEdit(category)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FaEdit />
                           </button>
                           <button
                             onClick={() => handleDelete(category._id)}
-                            className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             title="Delete"
                           >
                             <FaTrash />
@@ -300,7 +300,7 @@ const AdminGovtExamCategories = () => {
                           {category.name}
                         </h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-semibold flex-shrink-0 ml-2 ${category.type === "Central"
-                          ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                          ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
                           : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                           }`}>
                           {category.type}
@@ -317,13 +317,13 @@ const AdminGovtExamCategories = () => {
                       <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <button
                           onClick={() => handleEdit(category)}
-                          className="flex-1 px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                          className="flex-1 px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(category._id)}
-                          className="flex-1 px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+                          className="flex-1 px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
                         >
                           Delete
                         </button>
@@ -353,7 +353,7 @@ const AdminGovtExamCategories = () => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   required
                 />
               </div>
@@ -365,7 +365,7 @@ const AdminGovtExamCategories = () => {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   required
                 >
                   <option value="Central">Central Government</option>
@@ -381,7 +381,7 @@ const AdminGovtExamCategories = () => {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows="3"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 />
               </div>
 

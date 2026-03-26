@@ -86,10 +86,10 @@ const MyBlogsPage = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      pending: { color: 'bg-orange-100 text-orange-800', text: 'Pending' },
+      pending: { color: 'bg-primary-100 text-primary-800', text: 'Pending' },
       approved: { color: 'bg-green-100 text-green-800', text: 'Approved' },
       rejected: { color: 'bg-red-100 text-red-800', text: 'Rejected' },
-      published: { color: 'bg-blue-100 text-blue-800', text: 'Published' },
+      published: { color: 'bg-secondary-100 text-secondary-800', text: 'Published' },
       draft: { color: 'bg-gray-100 text-gray-800', text: 'Draft' }
     };
     const config = statusConfig[status] || statusConfig.draft;
@@ -104,8 +104,8 @@ const MyBlogsPage = () => {
     if (!rewardTier) return null;
     const tierConfig = {
       normal: { color: 'bg-green-100 text-green-800', text: 'Normal ₹5' },
-      good: { color: 'bg-blue-100 text-blue-800', text: 'Good ₹10' },
-      high: { color: 'bg-purple-100 text-yellow-800', text: 'High ₹15' }
+      good: { color: 'bg-secondary-100 text-secondary-800', text: 'Good ₹10' },
+      high: { color: 'bg-purple-100 text-primary-800', text: 'High ₹15' }
     };
     const config = tierConfig[rewardTier];
     if (!config) return null;
@@ -136,14 +136,14 @@ const MyBlogsPage = () => {
             <div className="flex gap-3">
               <Link
                 href="/pro/blog-rewards-history"
-                className="flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-orange-600 hover:to-red-600"
+                className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
               >
                 <FaHistory className="mr-2" />
                 Rewards History
               </Link>
               <Link
                 href="/pro/create-blog"
-                className="flex items-center justify-center bg-gradient-to-r from-yellow-500 to-red-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-yellow-600 hover:to-red-600"
+                className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
               >
                 <FaPlus className="mr-2" />
                 Create Blog
@@ -164,26 +164,26 @@ const MyBlogsPage = () => {
           {/* Monthly Blog Limit Info */}
           <div className={`mb-4 lg:mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border ${!blogCount.canAddMore
             ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-            : 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20'
+            : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
             }`}>
             <div className="flex items-center justify-between">
               <div>
                 <p className={`text-sm font-medium ${!blogCount.canAddMore
                   ? 'text-red-800 dark:text-red-300'
-                  : 'text-yellow-800 dark:text-yellow-300'
+                  : 'text-primary-800 dark:text-primary-300'
                   }`}>
                   Monthly Blog Limit
                 </p>
                 <p className={`text-xs mt-1 ${!blogCount.canAddMore
-                  ? 'text-red-600 dark:text-red-400'
-                  : 'text-yellow-700 dark:text-yellow-400'
+                  ? 'text-primary-600 dark:text-red-400'
+                  : 'text-primary-700 dark:text-primary-400'
                   }`}>
                   {blogCount.currentCount} / {blogCount.limit} blogs this month
                   {blogCount.canAddMore && ` (${blogCount.remaining} remaining)`}
                 </p>
               </div>
               {!blogCount.canAddMore && (
-                <span className="text-red-600 dark:text-red-400 font-semibold text-sm">
+                <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
                   Limit Reached
                 </span>
               )}
@@ -199,7 +199,7 @@ const MyBlogsPage = () => {
                     key={status}
                     onClick={() => setStatusFilter(status)}
                     className={`px-2 lg:px-4 py-1 lg:py-2 rounded-lg text-sm font-medium transition-colors ${statusFilter === status
-                      ? 'bg-yellow-500 text-white'
+                      ? 'bg-primary-500 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                       }`}
                   >
@@ -224,7 +224,7 @@ const MyBlogsPage = () => {
               </p>
               <Link
                 href="/pro/create-blog"
-                className="inline-flex items-center bg-gradient-to-r from-yellow-500 to-red-500 text-white px-6 py-2 rounded-lg font-medium hover:from-yellow-600 hover:to-red-600"
+                className="inline-flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
               >
                 <FaPlus className="mr-2" />
                 Create Blog
@@ -237,7 +237,7 @@ const MyBlogsPage = () => {
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-12 lg:mb-2">
                   <div className="overflow-x-auto">
                     <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                      <thead className="bg-gradient-to-r from-yellow-500 to-red-500">
+                      <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
                         <tr>
                           <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Blog
@@ -331,7 +331,7 @@ const MyBlogsPage = () => {
                                 <div className="flex gap-2">
                                   <button
                                     onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                                    className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                                    className="bg-secondary-500 text-white px-3 py-1 rounded hover:bg-secondary-600"
                                     title="Edit"
                                   >
                                     <FaEdit />
@@ -431,7 +431,7 @@ const MyBlogsPage = () => {
                               <div className="flex gap-2 flex-shrink-0">
                                 <button
                                   onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                                  className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                                  className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
                                   title="Edit Blog"
                                 >
                                   <FaEdit className="mr-2" />
@@ -439,7 +439,7 @@ const MyBlogsPage = () => {
                                 </button>
                                 <button
                                   onClick={() => handleDeleteBlog(blog._id, blog.title)}
-                                  className="flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                                  className="flex items-center justify-center bg-gradient-to-r from-red-500 to-secondary-600 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-red-600 hover:to-secondary-700 transition-all duration-200 shadow-md hover:shadow-lg"
                                   title="Delete Blog"
                                 >
                                   <FaTrash className="mr-2" />
@@ -527,7 +527,7 @@ const MyBlogsPage = () => {
                           <div className="flex gap-2 pt-2">
                             <button
                               onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                              className="flex-1 flex items-center justify-center bg-blue-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-600"
+                              className="flex-1 flex items-center justify-center bg-secondary-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary-600"
                             >
                               <FaEdit className="mr-1" />
                               Edit

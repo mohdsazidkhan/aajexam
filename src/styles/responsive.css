@@ -442,12 +442,12 @@
 
 /* Responsive warning states */
 .warning-responsive {
-  @apply border-yellow-500 focus:ring-yellow-500 focus:border-yellow-500;
+  @apply border-primary-500 focus:ring-primary-500 focus:border-primary-500;
 }
 
 /* Responsive info states */
 .info-responsive {
-  @apply border-blue-500 focus:ring-blue-500 focus:border-blue-500;
+  @apply border-secondary-500 focus:ring-secondary-500 focus:border-secondary-500;
 }
 
 /* Responsive dark mode support */
@@ -472,7 +472,7 @@
 }
 
 .focus-visible-responsive {
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @apply focus:outline-none focus:ring-2 focus:ring-secondary-500;
 }
 
 /* Responsive animations */
@@ -497,7 +497,7 @@
 
 /* Responsive gradients */
 .gradient-responsive {
-  @apply bg-gradient-to-r from-blue-500 from-red-600 sm:from-blue-600 sm:from-red-700 md:from-blue-700 md:from-red-800;
+  @apply bg-gradient-to-r from-primary-500 to-secondary-500;
 }
 
 /* Responsive borders */
@@ -512,7 +512,7 @@
 
 /* Responsive ring */
 .ring-responsive {
-  @apply ring-0 focus:ring-2 focus:ring-blue-500;
+  @apply ring-0 focus:ring-2 focus:ring-secondary-500;
 }
 
 /* Responsive divide */
@@ -522,12 +522,12 @@
 
 /* Responsive accent */
 .accent-responsive {
-  @apply text-blue-500;
+  @apply text-secondary-500;
 }
 
 /* Responsive caret */
 .caret-responsive {
-  @apply text-blue-500;
+  @apply text-secondary-500;
 }
 
 /* Responsive scrollbar */
@@ -537,7 +537,7 @@
 
 /* Responsive selection */
 .selection-responsive {
-  @apply text-blue-500;
+  @apply text-secondary-500;
 }
 
 /* Responsive placeholder */
@@ -547,12 +547,12 @@
 
 /* Responsive file input */
 .file-responsive {
-  @apply mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-blue-50 text-blue-700 hover:bg-blue-100;
+  @apply mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-secondary-50 text-primary-600 hover:bg-secondary-100;
 }
 
 /* Responsive marker */
 .marker-responsive {
-  @apply text-blue-500;
+  @apply text-secondary-500;
 }
 
 /* Responsive list */
@@ -567,7 +567,7 @@
 
 /* Responsive form elements */
 .form-input-responsive {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent;
 }
 
 /* Responsive button groups */
@@ -677,7 +677,7 @@
 
 /* Responsive focus system */
 .focus-system-responsive {
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
 }
 
 /* Responsive active system */
@@ -697,7 +697,7 @@
 
 /* Responsive error system */
 .error-system-responsive {
-  @apply text-red-600 bg-red-50 border-red-200;
+  @apply text-primary-600 bg-red-50 border-red-200;
 }
 
 /* Responsive success system */
@@ -707,10 +707,10 @@
 
 /* Responsive warning system */
 .warning-system-responsive {
-  @apply text-orange-700 bg-yellow-50 border-yellow-200;
+  @apply text-primary-600 bg-primary-50 border-primary-200;
 }
 
 /* Responsive info system */
 .info-system-responsive {
-  @apply text-blue-600 bg-blue-50 border-blue-200;
+  @apply text-secondary-600 bg-secondary-50 border-secondary-200;
 }

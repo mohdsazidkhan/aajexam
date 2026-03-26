@@ -102,10 +102,10 @@ export default function ReferralHistory() {
 
   const getRewardTypeColor = (type) => {
     const colors = {
-      'registration': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+      'registration': 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200',
       'plan9': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'plan49': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'plan99': 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200',
+      'plan49': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+      'plan99': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
     };
     return colors[type] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   };
@@ -160,7 +160,7 @@ export default function ReferralHistory() {
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">Registration</div>
-                  <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                     ₹{summary.registrationRewards?.toLocaleString() || 0}
                   </div>
                 </div>
@@ -172,13 +172,13 @@ export default function ReferralHistory() {
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">₹49 Plan</div>
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                     ₹{summary.plan49Rewards?.toLocaleString() || 0}
                   </div>
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">₹99 Plan</div>
-                  <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                     ₹{summary.plan99Rewards?.toLocaleString() || 0}
                   </div>
                 </div>
@@ -245,7 +245,7 @@ export default function ReferralHistory() {
                               className="hover:underline"
                             >
                               <div>
-                                <div className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                                <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300">
                                   {tx.inviter?.name || 'N/A'}
                                 </div>
                                 <div className="text-sm text-gray-500 dark:text-gray-400">

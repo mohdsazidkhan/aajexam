@@ -57,7 +57,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
   const getColorForType = (type) => {
     switch (type?.toLowerCase()) {
       case 'central':
-        return 'from-blue-500 to-indigo-600';
+        return 'from-secondary-500 to-indigo-600';
       case 'state':
         return 'from-green-500 to-emerald-600';
       default:
@@ -122,7 +122,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
             {/* Header */}
             <div className="text-center mb-6 lg:mb-12">
               <h1 className="text-xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 flex items-center justify-center gap-3">
-                <FaGraduationCap className="text-red-600" />
+                <FaGraduationCap className="text-primary-600" />
                 Government Exams
               </h1>
               <p className="text-md lg:text-lg text-gray-600 dark:text-gray-400">
@@ -180,12 +180,12 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
                               )}
                               <div className="flex items-center justify-between gap-2">
                                 {category.examCount !== undefined && (
-                                  <p className="text-sm text-red-600 font-semibold mt-2">
+                                  <p className="text-sm text-primary-600 font-semibold mt-2">
                                     {category.examCount} {category.examCount === 1 ? 'Exam' : 'Exams'}
                                   </p>
                                 )}
                                 {category.testCount !== undefined && (
-                                  <p className="text-sm text-red-600 font-semibold mt-2">
+                                  <p className="text-sm text-primary-600 font-semibold mt-2">
                                     {category.testCount} {category.testCount === 1 ? 'Test' : 'Tests'}
                                   </p>
                                 )}
@@ -229,7 +229,7 @@ export async function getServerSideProps() {
 
   try {
     await dbConnect();
-    
+
     const [categoriesDocs, examCounts, testCounts] = await Promise.all([
       ExamCategory.find().sort({ type: 1, name: 1 }).lean(),
       Exam.aggregate([

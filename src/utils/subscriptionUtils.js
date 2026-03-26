@@ -83,7 +83,7 @@ export const getSubscriptionStatusTextWithTheme = () => {
   if (!hasActiveSubscription()) {
     return {
       text: 'Expired',
-      color: 'text-red-600 dark:text-red-400',
+      color: 'text-primary-600 dark:text-red-400',
       bgColor: 'bg-red-100 dark:bg-red-900/20'
     };
   }
@@ -93,7 +93,7 @@ export const getSubscriptionStatusTextWithTheme = () => {
 
   return {
     text: `${planInfo.name} Plan`,
-    color: plan === SUBSCRIPTION_PLANS.PRO ? 'text-orange-700 dark:text-yellow-400' : 'text-gray-600 dark:text-gray-400',
+    color: plan === SUBSCRIPTION_PLANS.PRO ? 'text-primary-600 dark:text-primary-400' : 'text-gray-600 dark:text-gray-400',
     bgColor: plan === SUBSCRIPTION_PLANS.PRO ? 'bg-purple-100 dark:bg-purple-900/20' : 'bg-gray-100 dark:bg-gray-700'
   };
 };

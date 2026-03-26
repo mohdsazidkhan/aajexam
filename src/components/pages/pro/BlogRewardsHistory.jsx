@@ -120,9 +120,9 @@ export default function BlogRewardsHistory() {
 
   const getRewardTierColor = (tier) => {
     const colors = {
-      'normal': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'normal': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
       'good': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'high': 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200',
+      'high': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
     };
     return colors[tier] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   };
@@ -161,26 +161,26 @@ export default function BlogRewardsHistory() {
           {/* Monthly Blog Limit Info */}
           <div className={`mb-4 lg:mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border ${!blogCount.canAddMore
             ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-            : 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20'
+            : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
             }`}>
             <div className="flex items-center justify-between">
               <div>
                 <p className={`text-sm font-medium ${!blogCount.canAddMore
                   ? 'text-red-800 dark:text-red-300'
-                  : 'text-yellow-800 dark:text-yellow-300'
+                  : 'text-primary-800 dark:text-primary-300'
                   }`}>
                   Monthly Blog Limit
                 </p>
                 <p className={`text-xs mt-1 ${!blogCount.canAddMore
-                  ? 'text-red-600 dark:text-red-400'
-                  : 'text-yellow-700 dark:text-yellow-400'
+                  ? 'text-primary-600 dark:text-red-400'
+                  : 'text-primary-700 dark:text-primary-400'
                   }`}>
                   {blogCount.currentCount} / {blogCount.limit} blogs this month
                   {blogCount.canAddMore && ` (${blogCount.remaining} remaining)`}
                 </p>
               </div>
               {!blogCount.canAddMore && (
-                <span className="text-red-600 dark:text-red-400 font-semibold text-sm">
+                <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
                   Limit Reached
                 </span>
               )}
@@ -207,12 +207,12 @@ export default function BlogRewardsHistory() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Blogs Rewarded</div>
-                    <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    <div className="text-2xl md:text-3xl font-bold text-secondary-600 dark:text-secondary-400">
                       {summary.totalBlogs || 0}
                     </div>
                   </div>
-                  <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full p-4">
-                    <FaBook className="text-2xl text-blue-600 dark:text-blue-400" />
+                  <div className="bg-secondary-100 dark:bg-secondary-900/30 rounded-full p-4">
+                    <FaBook className="text-2xl text-secondary-600 dark:text-secondary-400" />
                   </div>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function BlogRewardsHistory() {
               </p>
               <button
                 onClick={() => router.push('/pro/create-blog')}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all"
+                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-lg hover:from-primary-600 hover:to-secondary-600 transition-all"
               >
                 Create Your First Blog
               </button>
@@ -259,7 +259,7 @@ export default function BlogRewardsHistory() {
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
                   <div className="overflow-x-auto">
                     <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                      <thead className="bg-gradient-to-r from-orange-500 to-red-500">
+                      <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
                         <tr>
                           <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Blog

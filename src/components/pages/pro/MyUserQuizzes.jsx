@@ -76,7 +76,7 @@ const MyUserQuizzes = () => {
 		switch (status) {
 			case 'approved': return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
 			case 'rejected': return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400';
-			default: return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400';
+			default: return 'bg-primary-100 text-primary-800 dark:bg-primary-900/20 dark:text-primary-400';
 		}
 	};
 
@@ -142,7 +142,7 @@ const MyUserQuizzes = () => {
 						</div>
 
 						{quiz.adminNotes && (
-							<div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+							<div className="mt-4 p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
 								<div className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
 									Admin Notes:
 								</div>
@@ -163,7 +163,7 @@ const MyUserQuizzes = () => {
 						)}
 						<button
 							onClick={() => router.push(`/pro/quiz/${quiz._id}`)}
-							className="flex-1 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-semibold transition-colors"
+							className="flex-1 py-2 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 text-sm font-semibold transition-colors"
 						>
 							View Details
 						</button>
@@ -214,7 +214,7 @@ const MyUserQuizzes = () => {
 							)}
 						</div>
 						{quiz.adminNotes && (
-							<div className="mt-3 p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded text-sm">
+							<div className="mt-3 p-2 bg-primary-50 dark:bg-primary-900/20 rounded text-sm">
 								<span className="font-semibold text-gray-700 dark:text-gray-300">Admin Notes: </span>
 								<span className="text-gray-600 dark:text-gray-400">{quiz.adminNotes}</span>
 							</div>
@@ -231,7 +231,7 @@ const MyUserQuizzes = () => {
 						)}
 						<button
 							onClick={() => router.push(`/pro/quiz/${quiz._id}`)}
-							className="flex-1 py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-semibold transition-colors"
+							className="flex-1 py-2 px-4 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 text-sm font-semibold transition-colors"
 						>
 							View Details
 						</button>
@@ -265,7 +265,7 @@ const MyUserQuizzes = () => {
 										{quiz.description || 'No description'}
 									</div>
 									{quiz.adminNotes && (
-										<div className="mt-1 text-xs text-orange-700 dark:text-yellow-400">
+										<div className="mt-1 text-xs text-primary-600 dark:text-primary-400">
 											Note: {quiz.adminNotes}
 										</div>
 									)}
@@ -293,14 +293,14 @@ const MyUserQuizzes = () => {
 									<div className="flex flex-col gap-2 items-end">
 										<button
 											onClick={() => router.push(`/pro/quiz/${quiz._id}`)}
-											className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
+											className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 font-medium"
 										>
 											View
 										</button>
 										{quiz.status === 'pending' && (
 											<button
 												onClick={() => handleDelete(quiz._id)}
-												className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 font-medium"
+												className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 font-medium"
 											>
 												Delete
 											</button>
@@ -317,7 +317,7 @@ const MyUserQuizzes = () => {
 
 	return (
 		<>
-			<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-2">
+			<div className="min-h-screen bg-gradient-to-br from-secondary-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-2">
 				<div className="container mx-auto py-4 px-2 lg:px-10">
 					{/* Header */}
 					<div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 lg:p-4 mb-1 lg:mb-6">
@@ -330,11 +330,11 @@ const MyUserQuizzes = () => {
 									href="/pro/user-quiz-rewards"
 									className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 bg-white dark:bg-gray-700 text-gray-700 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 font-semibold shadow-sm transition-colors"
 								>
-									<FaTrophy className="text-yellow-500" /> Quiz Rewards
+									<FaTrophy className="text-primary-500" /> Quiz Rewards
 								</Link>
 								<Link
 									href="/pro/quiz/create"
-									className="flex-1 lg:flex-none text-center px-4 lg:px-6 py-2 lg:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold shadow-md transition-colors"
+									className="flex-1 lg:flex-none text-center px-4 lg:px-6 py-2 lg:py-3 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 font-semibold shadow-md transition-colors"
 								>
 									+ Create New Quiz
 								</Link>
@@ -350,9 +350,9 @@ const MyUserQuizzes = () => {
 										{stats.totalApproved || 0}
 									</div>
 								</div>
-								<div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+								<div className="bg-secondary-50 dark:bg-secondary-900/20 p-4 rounded-lg">
 									<div className="text-sm text-gray-600 dark:text-gray-400">This Month</div>
-									<div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+									<div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
 										{stats.monthlyCount || 0} / {stats.monthlyLimit || 99}
 									</div>
 								</div>
@@ -360,16 +360,16 @@ const MyUserQuizzes = () => {
 									<>
 										<div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
 											<div className="text-sm text-gray-600 dark:text-gray-400">Next Milestone</div>
-											<div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+											<div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
 												{stats.nextMilestone.count}
 											</div>
 											<div className="text-xs text-gray-500 mt-1">
 												{stats.nextMilestone.tier}
 											</div>
 										</div>
-										<div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
+										<div className="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-lg">
 											<div className="text-sm text-gray-600 dark:text-gray-400">Progress</div>
-											<div className="text-md lg:text-2xl font-bold text-orange-700 dark:text-orange-400">
+											<div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-secondary-400">
 												{stats.progressToNextMilestone}%
 											</div>
 										</div>
@@ -386,7 +386,7 @@ const MyUserQuizzes = () => {
 										key={f}
 										onClick={() => setFilter(f)}
 										className={`px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg font-medium capitalize text-sm whitespace-nowrap transition-colors ${filter === f
-											? 'bg-blue-600 text-white'
+											? 'bg-secondary-600 text-white'
 											: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
 											}`}
 									>
@@ -415,7 +415,7 @@ const MyUserQuizzes = () => {
 							</p>
 							<Link
 								href="/pro/quiz/create"
-								className="inline-block px-4 lg:px-6 py-2 lg:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold"
+								className="inline-block px-4 lg:px-6 py-2 lg:py-3 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 font-semibold"
 							>
 								Create Your First Quiz
 							</Link>

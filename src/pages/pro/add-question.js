@@ -220,7 +220,7 @@ const AddQuestionPage = () => {
                 {dailyCount.remaining} questions remaining today
               </p>
               {!dailyCount.canAddMore && (
-                <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
+                <p className="text-xs text-primary-600 dark:text-red-400 font-semibold mt-1">
                   ⚠️ Daily limit reached
                 </p>
               )}
@@ -237,7 +237,7 @@ const AddQuestionPage = () => {
                 {questionCount.remaining} questions remaining this month
               </p>
               {!questionCount.canAddMore && (
-                <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
+                <p className="text-xs text-primary-600 dark:text-red-400 font-semibold mt-1">
                   ⚠️ Monthly limit reached
                 </p>
               )}
@@ -254,7 +254,7 @@ const AddQuestionPage = () => {
               <textarea
                 value={formData.question}
                 onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 rows="4"
                 placeholder="Enter your question here..."
                 required
@@ -276,7 +276,7 @@ const AddQuestionPage = () => {
                     type="button"
                     onClick={() => setFormData({ ...formData, correctAnswer: index })}
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${formData.correctAnswer === index
-                      ? 'bg-yellow-600 border-yellow-600 text-white'
+                      ? 'bg-primary-600 border-primary-600 text-white'
                       : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400'
                       }`}
                   >
@@ -286,7 +286,7 @@ const AddQuestionPage = () => {
                     type="text"
                     value={option}
                     onChange={(e) => handleOptionChange(index, e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                     placeholder={`Enter option ${String.fromCharCode(65 + index)}`}
                     required
                   />
@@ -302,7 +302,7 @@ const AddQuestionPage = () => {
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 required
               >
                 <option value="">Select Category</option>
@@ -326,7 +326,7 @@ const AddQuestionPage = () => {
                     type="button"
                     onClick={() => setFormData({ ...formData, difficulty: level })}
                     className={`px-4 py-2 rounded-lg border ${formData.difficulty === level
-                      ? 'bg-yellow-600 border-yellow-600 text-white'
+                      ? 'bg-primary-600 border-primary-600 text-white'
                       : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300'
                       }`}
                   >
@@ -347,7 +347,7 @@ const AddQuestionPage = () => {
               <textarea
                 value={formData.explanation}
                 onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 rows="4"
                 placeholder="Explain why this is the correct answer..."
                 required
@@ -355,11 +355,11 @@ const AddQuestionPage = () => {
             </div>
 
             {/* Guidelines */}
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border border-yellow-200 dark:border-yellow-800">
-              <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 border border-primary-200 dark:border-primary-800">
+              <h3 className="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-2">
                 📋 Guidelines
               </h3>
-              <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+              <ul className="text-sm text-primary-700 dark:text-primary-300 space-y-1">
                 <li>• Questions should be clear and unambiguous</li>
                 <li>• All options should be plausible</li>
                 <li>• Provide detailed explanations</li>
@@ -374,7 +374,7 @@ const AddQuestionPage = () => {
               disabled={submitting || !questionCount.canAddMore || !dailyCount.canAddMore}
               className={`w-full py-3 px-4 rounded-lg font-semibold ${!questionCount.canAddMore || !dailyCount.canAddMore || submitting
                 ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                : 'bg-gradient-to-r from-yellow-600 to-red-600 text-white hover:from-yellow-700 hover:to-red-700'
+                : 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:from-primary-700 hover:to-secondary-700'
                 }`}
             >
               {!dailyCount.canAddMore

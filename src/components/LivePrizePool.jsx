@@ -51,19 +51,19 @@ const LivePrizePool = ({ isLandingPage = false }) => {
     }
 
     const types = [
-        { id: 'daily', label: 'Daily', icon: FaCalendarDay, color: 'from-blue-500 to-cyan-500', glow: 'shadow-blue-500/20', accent: 'blue' },
-        { id: 'weekly', label: 'Weekly', icon: FaCalendarAlt, color: 'from-purple-500 to-indigo-500', glow: 'shadow-purple-500/20', accent: 'purple' },
-        { id: 'monthly', label: 'Monthly', icon: FaCalendarCheck, color: 'from-yellow-400 via-orange-500 to-red-500', glow: 'shadow-orange-500/20', accent: 'orange' }
+        { id: 'daily', label: 'Daily', icon: FaCalendarDay, color: 'from-secondary-400 to-secondary-600', glow: 'shadow-secondary-500/20', accent: 'secondary' },
+        { id: 'weekly', label: 'Weekly', icon: FaCalendarAlt, color: 'from-purple-500 to-indigo-600', glow: 'shadow-purple-500/20', accent: 'purple' },
+        { id: 'monthly', label: 'Monthly', icon: FaCalendarCheck, color: 'from-primary-400 to-primary-600', glow: 'shadow-primary-500/20', accent: 'primary' }
     ];
 
     const activeConfig = types.find(t => t.id === activeType);
 
     const getRankStyles = (rank) => {
         if (rank === 1) return {
-            bg: 'bg-yellow-50/80 dark:bg-yellow-500/10',
-            border: 'border-yellow-200 dark:border-yellow-500/30',
-            accent: 'bg-yellow-500',
-            text: 'text-yellow-700 dark:text-yellow-400',
+            bg: 'bg-primary-50/80 dark:bg-primary-500/10',
+            border: 'border-primary-200 dark:border-primary-500/30',
+            accent: 'bg-primary-500',
+            text: 'text-primary-700 dark:text-primary-400',
             badge: '🥇'
         };
         if (rank === 2) return {
@@ -74,10 +74,10 @@ const LivePrizePool = ({ isLandingPage = false }) => {
             badge: '🥈'
         };
         if (rank === 3) return {
-            bg: 'bg-orange-50/80 dark:bg-orange-500/10',
-            border: 'border-orange-200 dark:border-orange-500/30',
-            accent: 'bg-orange-500',
-            text: 'text-orange-700 dark:text-orange-400',
+            bg: 'bg-primary-50/80 dark:bg-primary-500/10',
+            border: 'border-primary-200 dark:border-primary-500/30',
+            accent: 'bg-primary-500',
+            text: 'text-primary-600 dark:text-secondary-400',
             badge: '🥉'
         };
         return {
@@ -128,8 +128,8 @@ const LivePrizePool = ({ isLandingPage = false }) => {
                         <div className="flex flex-col items-center xl:items-start">
                             <div className="relative inline-block mb-2">
                                 {/* Radar Pulse Effect */}
-                                <span className={`absolute inset-0 rounded-full animate-ping opacity-25 ${activeType === 'daily' ? 'bg-blue-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-orange-500'}`}></span>
-                                <span className={`relative flex items-center gap-2 px-4 py-1.5 text-white rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${activeType === 'daily' ? 'bg-blue-600' : activeType === 'weekly' ? 'bg-purple-600' : 'bg-red-600'}`}>
+                                <span className={`absolute inset-0 rounded-full animate-ping opacity-25 ${activeType === 'daily' ? 'bg-secondary-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-primary-500'}`}></span>
+                                <span className={`relative flex items-center gap-2 px-4 py-1.5 text-white rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${activeType === 'daily' ? 'bg-secondary-600' : activeType === 'weekly' ? 'bg-purple-600' : 'bg-primary-600'}`}>
                                     <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
                                     Live Pool
                                 </span>
@@ -138,11 +138,11 @@ const LivePrizePool = ({ isLandingPage = false }) => {
                             <div className="relative py-2 pb-4">
                                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-3 max-w-sm mx-auto xl:mx-0 leading-relaxed">
                                     {activeType === 'daily' ? (
-                                        <>Compete daily for amazing rewards! Top <span className="font-bold text-blue-500 dark:text-blue-400">{config.QUIZ_CONFIG.DAILY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-blue-500 dark:text-blue-400">{config.QUIZ_CONFIG.DAILY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every day.</>
+                                        <>Compete daily for amazing rewards! Top <span className="font-bold text-secondary-500 dark:text-secondary-400">{config.QUIZ_CONFIG.DAILY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-secondary-500 dark:text-secondary-400">{config.QUIZ_CONFIG.DAILY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every day.</>
                                     ) : activeType === 'weekly' ? (
                                         <>Compete weekly for amazing rewards! Top <span className="font-bold text-purple-600 dark:text-purple-400">{config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-purple-600 dark:text-purple-400">{config.QUIZ_CONFIG.WEEKLY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every week.</>
                                     ) : (
-                                        <>Compete monthly for amazing rewards! Top <span className="font-bold text-orange-600 dark:text-orange-400">{config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-orange-600 dark:text-orange-400">{config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every month.</>
+                                        <>Compete monthly for amazing rewards! Top <span className="font-bold text-primary-600 dark:text-primary-400">{config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-primary-600 dark:text-primary-400">{config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every month.</>
                                     )}
                                 </p>
                                 <h3 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter flex items-center justify-center xl:justify-start">
@@ -225,10 +225,10 @@ const LivePrizePool = ({ isLandingPage = false }) => {
                 {/* Bottom Footnote */}
                 <div className="mt-10 pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                        <FaFire className="text-orange-500" />
+                        <FaFire className="text-primary-500" />
                         Live calculation based on {activeType} pro users
                     </div>
-                    <div className="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-widest animate-pulse">
+                    <div className="text-[10px] font-bold text-secondary-500 dark:text-secondary-400 uppercase tracking-widest animate-pulse">
                         Next reset: {activeType === 'daily' ? 'Tonight' : activeType === 'weekly' ? 'Sunday' : 'End of Month'}
                     </div>
                 </div>

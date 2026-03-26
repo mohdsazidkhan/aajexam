@@ -286,7 +286,7 @@ const AdminGovtExamPatterns = () => {
                 </label>
                 <select
                   onChange={(e) => handleCategoryChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">All Categories</option>
                   {categories.map((cat) => (
@@ -304,7 +304,7 @@ const AdminGovtExamPatterns = () => {
                 <select
                   value={selectedExam}
                   onChange={(e) => handleExamChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="all">All Exams</option>
                   {exams.map((exam) => (
@@ -393,19 +393,19 @@ const AdminGovtExamPatterns = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <Link
                               href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                              className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                              className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                             >
                               Tests
                             </Link>
                             <button
                               onClick={() => handleEdit(pattern)}
-                              className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDelete(pattern._id)}
-                              className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                             >
                               Delete
                             </button>
@@ -468,20 +468,20 @@ const AdminGovtExamPatterns = () => {
                         <div className="flex items-center gap-2 ml-4 flex-col sm:flex-row">
                           <Link
                             href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                            className="px-3 py-2 text-sm text-orange-700 dark:text-yellow-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
+                            className="px-3 py-2 text-sm text-primary-600 dark:text-primary-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
                           >
                             Tests
                           </Link>
                           <button
                             onClick={() => handleEdit(pattern)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FaEdit />
                           </button>
                           <button
                             onClick={() => handleDelete(pattern._id)}
-                            className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             title="Delete"
                           >
                             <FaTrash />
@@ -541,19 +541,19 @@ const AdminGovtExamPatterns = () => {
                       <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <Link
                           href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                          className="flex-1 px-3 py-2 text-sm bg-purple-50 dark:bg-purple-900/20 text-orange-700 dark:text-yellow-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-center"
+                          className="flex-1 px-3 py-2 text-sm bg-purple-50 dark:bg-purple-900/20 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-center"
                         >
                           Tests
                         </Link>
                         <button
                           onClick={() => handleEdit(pattern)}
-                          className="px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                          className="px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
                         >
                           <FaEdit />
                         </button>
                         <button
                           onClick={() => handleDelete(pattern._id)}
-                          className="px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+                          className="px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
                         >
                           <FaTrash />
                         </button>
@@ -585,7 +585,7 @@ const AdminGovtExamPatterns = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
                   }
-                  className="w-full lg:max-w-sm px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full lg:max-w-sm px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                   placeholder="e.g., SSC CGL Tier 1"
                   required
                 />
@@ -605,7 +605,7 @@ const AdminGovtExamPatterns = () => {
                         duration: parseInt(e.target.value) || 0,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                     min="1"
                     required
                   />
@@ -625,7 +625,7 @@ const AdminGovtExamPatterns = () => {
                         negativeMarking: parseFloat(e.target.value) || 0,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                     min="0"
                   />
                 </div>
@@ -660,7 +660,7 @@ const AdminGovtExamPatterns = () => {
                         <button
                           type="button"
                           onClick={() => handleRemoveSection(index)}
-                          className="text-red-600 hover:text-red-800"
+                          className="text-primary-600 hover:text-red-800"
                         >
                           Remove
                         </button>
@@ -685,7 +685,7 @@ const AdminGovtExamPatterns = () => {
                         onChange={(e) =>
                           setNewSection({ ...newSection, name: e.target.value })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         placeholder="e.g., General Awareness"
                       />
                     </div>
@@ -702,7 +702,7 @@ const AdminGovtExamPatterns = () => {
                             totalQuestions: parseInt(e.target.value) || 1,
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         min="1"
                       />
                     </div>
@@ -719,7 +719,7 @@ const AdminGovtExamPatterns = () => {
                             marksPerQuestion: parseFloat(e.target.value) || 1,
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         min="0"
                         step="0.01"
                       />
@@ -738,7 +738,7 @@ const AdminGovtExamPatterns = () => {
                               parseFloat(e.target.value) || 0,
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         min="0"
                         step="0.01"
                       />

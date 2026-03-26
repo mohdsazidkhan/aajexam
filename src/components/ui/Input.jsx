@@ -37,8 +37,8 @@ const Input = ({
     const stateClasses = error
       ? 'border-red-500 focus-within:border-red-500'
       : isFocused
-        ? 'border-blue-500 focus-within:border-blue-500'
-        : 'border-gray-300 dark:border-gray-600 focus-within:border-blue-500';
+        ? 'border-secondary-500 focus-within:border-secondary-500'
+        : 'border-gray-300 dark:border-gray-600 focus-within:border-secondary-500';
 
     const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
 

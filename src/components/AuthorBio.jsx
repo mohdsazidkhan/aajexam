@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const AuthorBio = () => {
     return (
-        <div className="mt-12 p-6 bg-gradient-to-r from-yellow-50 to-red-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-yellow-200 dark:border-gray-700">
+        <div className="mt-12 p-6 bg-gradient-to-r from-primary-50 to-red-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-primary-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
                 About the Author
             </h3>
@@ -13,7 +13,7 @@ const AuthorBio = () => {
             </p>
             <Link
                 href="/about-founder"
-                className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 font-semibold"
+                className="text-secondary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold"
             >
                 Learn more about our team →
             </Link>

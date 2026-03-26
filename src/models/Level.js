@@ -63,7 +63,7 @@ const levelSchema = new mongoose.Schema({
   // Visual customization
   color: {
     type: String,
-    default: '#3B82F6' // Tailwind blue-500
+    default: '#3B82F6' // Tailwind secondary-500
   },
   icon: {
     type: String,

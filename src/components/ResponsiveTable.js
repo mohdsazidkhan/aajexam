@@ -105,10 +105,10 @@ const ResponsiveTable = ({
                           action.onClick(row);
                         }}
                         className={`p-2 sm:p-2.5 rounded-lg transition-all duration-200 hover:scale-110 shadow-sm hover:shadow-md ${action.variant === 'danger'
-                          ? 'text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-red-200 dark:border-red-700'
+                          ? 'text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-red-200 dark:border-red-700'
                           : action.variant === 'success'
                             ? 'text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 border border-green-200 dark:border-green-700'
-                            : 'text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 border border-blue-200 dark:border-blue-700'
+                            : 'text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-700'
                           }`}
                         title={action.label}
                       >
@@ -147,7 +147,7 @@ const ResponsiveTable = ({
                       <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                         Student
                       </span>
-                      <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </div>
                     <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-bold">
                       {columns.find(col => col.key === 'name')?.render?.(null, row) || row.name || 'Unknown'}
@@ -160,7 +160,7 @@ const ResponsiveTable = ({
                       <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                         Joined
                       </span>
-                      <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </div>
                     <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
                       {columns.find(col => col.key === 'joined')?.render?.(null, row) || row.joined || 'N/A'}
@@ -175,7 +175,7 @@ const ResponsiveTable = ({
                       <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                         Contact
                       </span>
-                      <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </div>
                     <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
                       {columns.find(col => col.key === 'contact')?.render?.(null, row) || row.email || 'No email'}
@@ -191,7 +191,7 @@ const ResponsiveTable = ({
                       <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                         Level
                       </span>
-                      <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </div>
                     <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
                       {columns.find(col => col.key === 'level')?.render?.(null, row) || row.level?.currentLevel || '1'}
@@ -272,9 +272,9 @@ const ResponsiveTable = ({
         >
           {/* Card Header with gradient background */}
           <div className="relative mb-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 rounded-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20 rounded-xl"></div>
             <div className="relative p-4 text-center">
-              <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-white text-xl font-bold">
                   {row.name?.charAt(0)?.toUpperCase() || 'U'}
                 </span>
@@ -293,7 +293,7 @@ const ResponsiveTable = ({
                 <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   Joined
                 </span>
-                <div className="w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                <div className="w-2 h-2 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
               </div>
               <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
                 {columns.find(col => col.key === 'joined')?.render?.(null, row) || row.joined || 'N/A'}
@@ -426,7 +426,7 @@ const ResponsiveTable = ({
                 <select
                   value={itemsPerPageState}
                   onChange={handleItemsPerPageChange}
-                  className="px-3 py-2 sm:px-4 sm:py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="px-3 py-2 sm:px-4 sm:py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200"
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>

@@ -24,7 +24,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Quiz Not Found</h1>
                     <Link href="/categories">
-                        <span className="text-red-600 hover:text-red-700">← Browse Categories</span>
+                        <span className="text-primary-600 hover:text-red-700">← Browse Categories</span>
                     </Link>
                 </div>
             </div>
@@ -45,18 +45,18 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                 <meta name="robots-reason" content={robotsReason || ''} />
             </Head>
 
-            <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-blue-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-5 lg: py-20 px-4">
+            <div className="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-5 lg: py-20 px-4">
                 <div className="max-w-4xl mx-auto">
                     {/* Breadcrumb */}
                     <div className="mb-8">
                         <Link href="/categories">
-                            <span className="text-red-600 dark:text-red-400 hover:underline">Categories</span>
+                            <span className="text-primary-600 dark:text-red-400 hover:underline">Categories</span>
                         </Link>
                         {quiz.category && (
                             <>
                                 <span className="mx-2 text-gray-400">→</span>
                                 <Link href={`/categories/${quiz.category._id}`}>
-                                    <span className="text-red-600 dark:text-red-400 hover:underline">{quiz.category.name}</span>
+                                    <span className="text-primary-600 dark:text-red-400 hover:underline">{quiz.category.name}</span>
                                 </Link>
                             </>
                         )}
@@ -67,7 +67,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                     {/* Quiz Header */}
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl mb-8 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
-                            <FaQuestionCircle className="text-4xl text-red-600 dark:text-red-400 mr-4" />
+                            <FaQuestionCircle className="text-4xl text-primary-600 dark:text-red-400 mr-4" />
                             <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
                                 {quiz.title}
                             </h1>
@@ -80,26 +80,26 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                             {quiz.totalQuestions && (
                                 <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-4 text-center">
-                                    <FaQuestionCircle className="text-2xl text-red-600 dark:text-red-400 mx-auto mb-2" />
+                                    <FaQuestionCircle className="text-2xl text-primary-600 dark:text-red-400 mx-auto mb-2" />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white">{quiz.totalQuestions}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Questions</div>
                                 </div>
                             )}
                             {quiz.timeLimit && (
-                                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 text-center">
-                                    <FaClock className="text-2xl text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                                <div className="bg-secondary-50 dark:bg-secondary-900/30 rounded-lg p-4 text-center">
+                                    <FaClock className="text-2xl text-secondary-600 dark:text-secondary-400 mx-auto mb-2" />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white">{quiz.timeLimit}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Minutes</div>
                                 </div>
                             )}
                             {quiz.difficulty && (
                                 <div className={`rounded-lg p-4 text-center ${quiz.difficulty === 'easy' ? 'bg-green-50 dark:bg-green-900/30' :
-                                    quiz.difficulty === 'medium' ? 'bg-yellow-50 dark:bg-yellow-900/30' :
+                                    quiz.difficulty === 'medium' ? 'bg-primary-50 dark:bg-primary-900/30' :
                                         'bg-red-50 dark:bg-red-900/30'
                                     }`}>
                                     <FaChartBar className={`text-2xl mx-auto mb-2 ${quiz.difficulty === 'easy' ? 'text-green-600 dark:text-green-400' :
-                                        quiz.difficulty === 'medium' ? 'text-orange-700 dark:text-yellow-400' :
-                                            'text-red-600 dark:text-red-400'
+                                        quiz.difficulty === 'medium' ? 'text-primary-700 dark:text-primary-400' :
+                                            'text-primary-600 dark:text-red-400'
                                         }`} />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white capitalize">{quiz.difficulty}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Difficulty</div>
@@ -107,7 +107,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                             )}
                             {quiz.level && (
                                 <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 text-center">
-                                    <FaTrophy className="text-2xl text-orange-700 dark:text-yellow-400 mx-auto mb-2" />
+                                    <FaTrophy className="text-2xl text-primary-700 dark:text-primary-400 mx-auto mb-2" />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white">Level {quiz.level.levelNumber}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">{quiz.level.name}</div>
                                 </div>
@@ -117,7 +117,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                         {/* Start Quiz Button */}
                         <button
                             onClick={handleStartQuiz}
-                            className="w-full bg-gradient-to-r from-yellow-600 to-red-600 text-white px-8 py-4 rounded-xl hover:from-yellow-700 hover:to-red-700 transition-all font-bold text-lg flex items-center justify-center shadow-lg"
+                            className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl hover:from-primary-700 hover:to-secondary-700 transition-all font-bold text-lg flex items-center justify-center shadow-lg"
                         >
                             <FaPlay className="mr-3" /> Start Quiz Now
                         </button>
@@ -173,11 +173,11 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                     {quiz.stats && quiz.stats.totalAttempts > 0 && (
                         <div className="bg-white dark:bg-gray-800 rounded-xl p-3 lg:p-6 shadow-lg mb-6 border border-gray-100 dark:border-gray-700">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                                <FaUsers className="text-red-600 dark:text-red-400 mr-2" /> Quiz Statistics
+                                <FaUsers className="text-primary-600 dark:text-red-400 mr-2" /> Quiz Statistics
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-red-600 dark:text-red-400">{quiz.stats.totalAttempts}</div>
+                                    <div className="text-3xl font-bold text-primary-600 dark:text-red-400">{quiz.stats.totalAttempts}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Total Attempts</div>
                                 </div>
                                 <div className="text-center">
@@ -185,7 +185,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Average Score</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-orange-700 dark:text-yellow-400">{quiz.stats.highestScore}%</div>
+                                    <div className="text-3xl font-bold text-primary-700 dark:text-primary-400">{quiz.stats.highestScore}%</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Highest Score</div>
                                 </div>
                             </div>

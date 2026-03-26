@@ -33,9 +33,9 @@ const LevelsShowcase = () => {
   const getSubscriptionBadgeColor = (subscription) => {
     const colors = {
       'free': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
-      'basic': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'premium': 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200',
-      'pro': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+      'basic': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+      'premium': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
+      'pro': 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
     };
     return colors[subscription] || colors.free;
   };
@@ -51,7 +51,7 @@ const LevelsShowcase = () => {
   if (error) {
     return (
       <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 text-center">
-        <p className="text-red-600 dark:text-red-400">{error}</p>
+        <p className="text-primary-600 dark:text-red-400">{error}</p>
         <button
           onClick={fetchLevels}
           className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
@@ -129,7 +129,7 @@ const LevelsShowcase = () => {
             <div className="bg-gray-50 dark:bg-gray-900 px-6 py-3">
               <Link
                 href={`/levels/${level.levelNumber}`}
-                className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center justify-center gap-2"
+                className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 flex items-center justify-center gap-2"
               >
                 View Details →
               </Link>

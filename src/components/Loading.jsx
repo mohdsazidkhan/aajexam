@@ -25,8 +25,8 @@ const Loading = ({
   };
 
   const colorClasses = {
-    yellow: 'border-yellow-500 dark:border-yellow-400',
-    blue: 'border-blue-500 dark:border-blue-400',
+    yellow: 'border-primary-500 dark:border-primary-400',
+    blue: 'border-secondary-500 dark:border-secondary-400',
     gray: 'border-gray-500 dark:border-gray-400',
   };
 

@@ -96,7 +96,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         Choose a unique username that others can use to find and follow you.
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-gray-300 dark:border-gray-600 rounded-lg p-2.5 px-4 bg-white dark:bg-gray-700 transition-all relative focus-within:border-blue-500 focus-within:shadow-[0_0_0_3px_rgba(0,123,255,0.1)]">
+      <div className="username-input-group flex items-center border-2 border-gray-300 dark:border-gray-600 rounded-lg p-2.5 px-4 bg-white dark:bg-gray-700 transition-all relative focus-within:border-secondary-500 focus-within:shadow-[0_0_0_3px_rgba(0,123,255,0.1)]">
         <div className="username-prefix text-lg font-semibold text-gray-600 dark:text-gray-400 mr-1.5">@</div>
         <input
           type="text"
@@ -104,20 +104,19 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           onChange={handleUsernameChange}
           placeholder="username"
           maxLength={20}
-          className={`username-input flex-1 border-none outline-none text-base p-1.5 font-medium bg-transparent text-gray-900 dark:text-white ${
-            username && username !== currentUsername 
-              ? (available === true ? 'text-green-600' : available === false ? 'text-red-600' : '') 
-              : ''
-          }`}
+          className={`username-input flex-1 border-none outline-none text-base p-1.5 font-medium bg-transparent text-gray-900 dark:text-white ${username && username !== currentUsername
+            ? (available === true ? 'text-green-600' : available === false ? 'text-primary-600' : '')
+            : ''
+            }`}
         />
         {checking && (
-          <span className="checking-spinner w-5 h-5 border-2 border-gray-200 dark:border-gray-600 border-t-blue-500 rounded-full animate-spin ml-2.5"></span>
+          <span className="checking-spinner w-5 h-5 border-2 border-gray-200 dark:border-gray-600 border-t-secondary-500 rounded-full animate-spin ml-2.5"></span>
         )}
         {available === true && username !== currentUsername && (
           <span className="status-icon success ml-2.5 text-xl font-bold text-green-600">✓</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-2.5 text-xl font-bold text-red-600">✗</span>
+          <span className="status-icon error ml-2.5 text-xl font-bold text-primary-600">✗</span>
         )}
       </div>
 
@@ -130,13 +129,12 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       </div>
 
       {message && (
-        <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${
-          available === true 
-            ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400 border border-green-300 dark:border-green-700' 
-            : available === false 
-            ? 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-400 border border-red-300 dark:border-red-700' 
-            : 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-400 border border-blue-300 dark:border-blue-700'
-        }`}>
+        <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
+          ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400 border border-green-300 dark:border-green-700'
+          : available === false
+            ? 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-400 border border-red-300 dark:border-red-700'
+            : 'bg-secondary-100 dark:bg-secondary-900/20 text-secondary-800 dark:text-secondary-400 border border-secondary-300 dark:border-secondary-700'
+          }`}>
           {message}
         </div>
       )}
@@ -144,7 +142,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-3 bg-blue-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer transition-all hover:bg-blue-700 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,123,255,0.3)] disabled:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-60"
+        className="save-username-btn w-full p-3 bg-secondary-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer transition-all hover:bg-secondary-700 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,123,255,0.3)] disabled:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {saving ? 'Saving...' : 'Save Username'}
       </button>

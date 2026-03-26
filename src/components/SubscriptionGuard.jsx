@@ -42,7 +42,7 @@ const SubscriptionGuard = ({
         {showUpgradeButton && (
           <Link
             href="/subscription"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-secondary-600 text-white font-medium rounded-lg hover:bg-secondary-700 transition-colors"
           >
             <span className="mr-2">💳</span>
             Upgrade to Premium
@@ -50,7 +50,7 @@ const SubscriptionGuard = ({
         )}
 
         <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          <p>Already have a subscription? <Link href="/subscription" className="text-blue-600 hover:underline">Check your status</Link></p>
+          <p>Already have a subscription? <Link href="/subscription" className="text-secondary-600 hover:underline">Check your status</Link></p>
         </div>
       </div>
     </div>

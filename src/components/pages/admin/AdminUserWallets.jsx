@@ -126,7 +126,7 @@ const AdminUserWallets = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
               placeholder="Search by name, email, phone"
-              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent text-sm"
             />
             <Button
               variant="admin"
@@ -153,9 +153,9 @@ const AdminUserWallets = () => {
                 <option value={1000}>1000</option>
               </select>
             </div>
-            <button onClick={() => setViewMode('list')} className={`px-3 py-1 rounded ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>List</button>
-            <button onClick={() => setViewMode('grid')} className={`px-3 py-1 rounded ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>Grid</button>
-            <button onClick={() => setViewMode('table')} className={`px-3 py-1 rounded ${viewMode === 'table' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>Table</button>
+            <button onClick={() => setViewMode('list')} className={`px-3 py-1 rounded ${viewMode === 'list' ? 'bg-secondary-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>List</button>
+            <button onClick={() => setViewMode('grid')} className={`px-3 py-1 rounded ${viewMode === 'grid' ? 'bg-secondary-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>Grid</button>
+            <button onClick={() => setViewMode('table')} className={`px-3 py-1 rounded ${viewMode === 'table' ? 'bg-secondary-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'}`}>Table</button>
           </div>
         </div>
 
@@ -189,10 +189,10 @@ const AdminUserWallets = () => {
                         <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
                           <div className="font-medium">{row.user?.name || row.name || 'Unknown'}</div>
                           <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mr-2">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200 mr-2">
                               {row.user?.level?.levelName || row.level?.levelName || 'Starter'}
                             </span>
-                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200' :
+                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200' :
 
 
                               'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
@@ -211,9 +211,9 @@ const AdminUserWallets = () => {
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">{row.user?.phone || row.phone || '-'}</td>
                         <td className="px-4 py-3 text-sm font-semibold text-green-700 dark:text-green-400">{formatAmount(row.amount || row.walletBalance)}</td>
-                        <td className="px-4 py-3 text-sm font-semibold text-orange-700 dark:text-orange-400">
+                        <td className="px-4 py-3 text-sm font-semibold text-primary-600 dark:text-secondary-400">
                           {row.claimableRewards > 0 ? (
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
                               {row.claimableRewards}
                             </span>
                           ) : (
@@ -233,7 +233,7 @@ const AdminUserWallets = () => {
                         <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
                           <div className="flex flex-col space-y-1">
                             <div className="flex items-center space-x-2">
-                              <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                              <span className="text-xs bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 px-2 py-1 rounded">
                                 Total: {row.questionCounts?.total || 0}
                               </span>
                             </div>
@@ -241,7 +241,7 @@ const AdminUserWallets = () => {
                               <span className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-1 py-0.5 rounded">
                                 ✓ {row.questionCounts?.approved || 0}
                               </span>
-                              <span className="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-1 py-0.5 rounded">
+                              <span className="text-xs bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-1 py-0.5 rounded">
                                 ⏳ {row.questionCounts?.pending || 0}
                               </span>
                               <span className="text-xs bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-1 py-0.5 rounded">
@@ -270,7 +270,7 @@ const AdminUserWallets = () => {
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                           Claimable Rewards: {row.claimableRewards > 0 ? (
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 ml-1">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 ml-1">
                               {row.claimableRewards}
                             </span>
                           ) : (
@@ -278,10 +278,10 @@ const AdminUserWallets = () => {
                           )}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-2">
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
                             {row.user?.level?.levelName || row.level?.levelName || 'Starter'}
                           </span>
-                          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200' :
+                          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200' :
 
                             'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
                             }`}>
@@ -297,13 +297,13 @@ const AdminUserWallets = () => {
                       <div className="text-base font-bold text-green-700 dark:text-green-400">{formatAmount(row.amount || row.walletBalance)}</div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      <span className="text-xs bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 px-2 py-1 rounded">
                         Total Questions: {row.questionCounts?.total || 0}
                       </span>
                       <span className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded">
                         ✓ Approved: {row.questionCounts?.approved || 0}
                       </span>
-                      <span className="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">
+                      <span className="text-xs bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-2 py-1 rounded">
                         ⏳ Pending: {row.questionCounts?.pending || 0}
                       </span>
                       <span className="text-xs bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
@@ -326,7 +326,7 @@ const AdminUserWallets = () => {
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
                       Claimable Rewards: {row.claimableRewards > 0 ? (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 ml-1">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 ml-1">
                           {row.claimableRewards}
                         </span>
                       ) : (
@@ -334,10 +334,10 @@ const AdminUserWallets = () => {
                       )}
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex items-center gap-2">
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
                         {row.user?.level?.levelName || row.level?.levelName || 'Starter'}
                       </span>
-                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200' :
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200' :
 
                         'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
                         }`}>
@@ -351,14 +351,14 @@ const AdminUserWallets = () => {
                     </div>
                     <div className="text-xl font-extrabold text-green-700 dark:text-green-400 mb-3">{formatAmount(row.amount || row.walletBalance)}</div>
                     <div className="space-y-2">
-                      <div className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-center">
+                      <div className="text-xs bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 px-2 py-1 rounded text-center">
                         Total Questions: {row.questionCounts?.total || 0}
                       </div>
                       <div className="grid grid-cols-3 gap-1">
                         <span className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-1 py-1 rounded text-center">
                           ✓ {row.questionCounts?.approved || 0}
                         </span>
-                        <span className="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-1 py-1 rounded text-center">
+                        <span className="text-xs bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-1 py-1 rounded text-center">
                           ⏳ {row.questionCounts?.pending || 0}
                         </span>
                         <span className="text-xs bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-1 py-1 rounded text-center">

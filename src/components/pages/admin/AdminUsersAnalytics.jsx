@@ -104,15 +104,15 @@ const AdminUsersAnalytics = () => {
     const subBadge = (status) => {
         const map = {
             free: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
-            basic: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+            basic: 'bg-secondary-100 text-secondary-700 dark:bg-secondary-900/40 dark:text-secondary-300',
             premium: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
-            pro: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300'
+            pro: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
         };
         return map[status] || map.free;
     };
 
     const avatar = (name) => (
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-yellow-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
             {(name || 'U').charAt(0).toUpperCase()}
         </div>
     );
@@ -123,8 +123,8 @@ const AdminUsersAnalytics = () => {
             onClick={() => setViewMode(mode)}
             className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition border
                 ${viewMode === mode
-                    ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white border-transparent shadow-md'
-                    : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-yellow-400'
+                    ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white border-transparent shadow-md'
+                    : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-primary-400'
                 }`}
         >
             <Icon className="text-sm" /> <span className="hidden sm:inline">{label}</span>
@@ -151,7 +151,7 @@ const AdminUsersAnalytics = () => {
                     else p = page - 3 + i;
                     return (
                         <button key={p} onClick={() => fetchStudents(p)}
-                            className={`w-9 h-9 rounded-lg text-sm font-medium transition ${p === page ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-md' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'}`}>
+                            className={`w-9 h-9 rounded-lg text-sm font-medium transition ${p === page ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-md' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'}`}>
                             {p}
                         </button>
                     );
@@ -171,7 +171,7 @@ const AdminUsersAnalytics = () => {
 
                 <div className="adminContent p-3 md:p-6 w-full">
                     {/* Page Header */}
-                    <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 dark:from-red-600 dark:via-yellow-600 dark:to-red-600 rounded-2xl shadow-xl mb-6">
+                    <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-primary-500 to-secondary-500 dark:from-red-600 dark:via-primary-600 dark:to-secondary-600 rounded-2xl shadow-xl mb-6">
                         <div className="absolute inset-0 bg-black opacity-10" />
                         <div className="relative px-6 py-5 flex flex-col gap-5">
                             {/* Title row */}
@@ -229,7 +229,7 @@ const AdminUsersAnalytics = () => {
                                         <div className="text-[10px] opacity-70">Paid to users</div>
                                     </div>
                                 </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-orange-400">
+                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-primary-400">
                                     <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaTag className="text-xl" /></div>
                                     <div className="min-w-0">
                                         <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Other Expenses</div>
@@ -240,7 +240,7 @@ const AdminUsersAnalytics = () => {
                                         <div className="text-[10px] opacity-70">Manual entries</div>
                                     </div>
                                 </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-blue-400">
+                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-secondary-400">
                                     <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaChartBar className="text-xl" /></div>
                                     <div className="min-w-0">
                                         <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Net Balance</div>
@@ -270,14 +270,14 @@ const AdminUsersAnalytics = () => {
                                     value={search}
                                     onChange={e => setSearch(e.target.value)}
                                     placeholder="Search by name or email..."
-                                    className="w-full pl-9 pr-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                    className="w-full pl-9 pr-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-400"
                                 />
                             </div>
 
                             <select
                                 value={subscription}
                                 onChange={e => setSubscription(e.target.value)}
-                                className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-400"
                             >
                                 <option value="">All Plans</option>
                                 <option value="free">Free</option>
@@ -287,7 +287,7 @@ const AdminUsersAnalytics = () => {
                             </select>
 
                             <button type="submit"
-                                className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white px-5 py-2 rounded-lg font-medium transition shadow-md text-sm">
+                                className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-5 py-2 rounded-lg font-medium transition shadow-md text-sm">
                                 <FaSearch /> Search
                             </button>
 
@@ -312,7 +312,7 @@ const AdminUsersAnalytics = () => {
                         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-8 text-center">
                             <div className="text-5xl mb-3">❌</div>
                             <p className="text-red-500 font-semibold mb-4">{error}</p>
-                            <button onClick={() => fetchStudents(1)} className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-6 py-2 rounded-xl font-medium hover:from-red-600 hover:to-yellow-600 transition">
+                            <button onClick={() => fetchStudents(1)} className="bg-gradient-to-r from-red-500 to-primary-500 text-white px-6 py-2 rounded-xl font-medium hover:from-red-600 hover:to-primary-600 transition">
                                 Try Again
                             </button>
                         </div>
@@ -329,7 +329,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-sm">
                                             <thead>
-                                                <tr className="bg-gradient-to-r from-red-500 to-yellow-500 text-white">
+                                                <tr className="bg-gradient-to-r from-red-500 to-primary-500 text-white">
                                                     <th className="px-4 py-3 text-left font-semibold">#</th>
                                                     <th className="px-4 py-3 text-left font-semibold">Name</th>
                                                     <th className="px-4 py-3 text-left font-semibold">Email</th>
@@ -373,10 +373,10 @@ const AdminUsersAnalytics = () => {
                                                                 <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-0.5 rounded-full font-bold" title="Daily Wins">
                                                                     D: {s.dailyProgress?.highScoreWins || 0}
                                                                 </span>
-                                                                <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-2 py-0.5 rounded-full font-bold" title="Weekly Wins">
+                                                                <span className="text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-2 py-0.5 rounded-full font-bold" title="Weekly Wins">
                                                                     W: {s.weeklyProgress?.highScoreWins || 0}
                                                                 </span>
-                                                                <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full font-bold" title="Monthly Wins">
+                                                                <span className="text-xs bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 px-2 py-0.5 rounded-full font-bold" title="Monthly Wins">
                                                                     M: {s.monthlyProgress?.highScoreWins || 0}
                                                                 </span>
                                                             </div>
@@ -386,7 +386,7 @@ const AdminUsersAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 py-3 text-center">
                                                             <button onClick={() => goToUser(s._id)}
-                                                                className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-md hover:shadow-lg transform hover:scale-105">
+                                                                className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-md hover:shadow-lg transform hover:scale-105">
                                                                 <FaEye className="text-xs" /> View
                                                             </button>
                                                         </td>
@@ -406,7 +406,7 @@ const AdminUsersAnalytics = () => {
                                             className="bg-white dark:bg-gray-800 rounded-2xl shadow border border-gray-200 dark:border-gray-700 p-5 flex flex-col gap-4 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
                                             {/* Header */}
                                             <div className="flex items-center gap-3">
-                                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-400 to-yellow-400 flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md">
+                                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md">
                                                     {(s.name || 'U').charAt(0).toUpperCase()}
                                                 </div>
                                                 <div className="min-w-0">
@@ -437,14 +437,14 @@ const AdminUsersAnalytics = () => {
                                             {/* Breakdown pills */}
                                             {s.earningsBreakdown && (
                                                 <div className="grid grid-cols-3 gap-1 text-center text-xs">
-                                                    <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg py-1.5 px-1">
-                                                        <div className="font-bold text-yellow-700 dark:text-yellow-400">
+                                                    <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg py-1.5 px-1">
+                                                        <div className="font-bold text-primary-700 dark:text-primary-400">
                                                             ₹{(s.earningsBreakdown.monthlyPrizes || 0).toLocaleString('en-IN')}
                                                         </div>
                                                         <div className="text-gray-500 dark:text-gray-400 text-[10px]">Monthly</div>
                                                     </div>
-                                                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg py-1.5 px-1">
-                                                        <div className="font-bold text-blue-700 dark:text-blue-400">
+                                                    <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-lg py-1.5 px-1">
+                                                        <div className="font-bold text-secondary-700 dark:text-secondary-400">
                                                             ₹{(s.earningsBreakdown.referralEarnings || 0).toLocaleString('en-IN')}
                                                         </div>
                                                         <div className="text-gray-500 dark:text-gray-400 text-[10px]">Referral</div>
@@ -452,15 +452,15 @@ const AdminUsersAnalytics = () => {
                                                     <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg py-1.5 px-1 col-span-3 mt-2">
                                                         <div className="flex items-center justify-around">
                                                             <div>
-                                                                <div className="font-bold text-red-600 dark:text-red-400">{s.dailyProgress?.highScoreWins || 0}</div>
+                                                                <div className="font-bold text-primary-600 dark:text-red-400">{s.dailyProgress?.highScoreWins || 0}</div>
                                                                 <div className="text-[10px] text-gray-500 lowercase">Daily</div>
                                                             </div>
                                                             <div>
-                                                                <div className="font-bold text-yellow-600 dark:text-yellow-400">{s.weeklyProgress?.highScoreWins || 0}</div>
+                                                                <div className="font-bold text-secondary-600 dark:text-primary-400">{s.weeklyProgress?.highScoreWins || 0}</div>
                                                                 <div className="text-[10px] text-gray-500 lowercase">Weekly</div>
                                                             </div>
                                                             <div>
-                                                                <div className="font-bold text-blue-600 dark:text-blue-400">{s.monthlyProgress?.highScoreWins || 0}</div>
+                                                                <div className="font-bold text-secondary-600 dark:text-secondary-400">{s.monthlyProgress?.highScoreWins || 0}</div>
                                                                 <div className="text-[10px] text-gray-500 lowercase">Monthly</div>
                                                             </div>
                                                         </div>
@@ -475,7 +475,7 @@ const AdminUsersAnalytics = () => {
                                                     {s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
                                                 </span>
                                                 <button onClick={() => goToUser(s._id)}
-                                                    className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm hover:shadow-md">
+                                                    className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm hover:shadow-md">
                                                     <FaEye className="text-xs" /> View
                                                 </button>
                                             </div>
@@ -489,14 +489,14 @@ const AdminUsersAnalytics = () => {
                                 <div className="flex flex-col gap-2">
                                     {students.map((s, idx) => (
                                         <div key={s._id}
-                                            className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center gap-4 hover:shadow-md hover:border-yellow-300 dark:hover:border-yellow-600 transition-all duration-150">
+                                            className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center gap-4 hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-150">
                                             {/* Rank */}
                                             <div className="text-gray-400 font-mono text-sm w-7 text-center flex-shrink-0">
                                                 {(page - 1) * LIMIT + idx + 1}
                                             </div>
 
                                             {/* Avatar */}
-                                            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-red-400 to-yellow-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                                            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                                                 {(s.name || 'U').charAt(0).toUpperCase()}
                                             </div>
 
@@ -532,7 +532,7 @@ const AdminUsersAnalytics = () => {
 
                                             {/* View */}
                                             <button onClick={() => goToUser(s._id)}
-                                                className="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm flex-shrink-0">
+                                                className="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm flex-shrink-0">
                                                 <FaEye className="text-xs" /> View
                                             </button>
                                         </div>

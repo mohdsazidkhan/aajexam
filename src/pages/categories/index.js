@@ -23,14 +23,14 @@ export default function CategoriesPage({ categories }) {
 
             <UnifiedNavbar isLandingPage={true} />
 
-            <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-blue-50 from-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
+            <div className="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
                 <div className="container mx-auto px-0 lg:px-6 xl:px-8">
                     {/* Header */}
                     <div className="text-center mb-8 lg:mb-16">
                         <div className="inline-block mb-0 lg:mb-4">
-                            <FaBook className="text-3xl lg:text-6xl text-orange-700 dark:text-yellow-400 mx-auto" />
+                            <FaBook className="text-3xl lg:text-6xl text-primary-600 dark:text-primary-400 mx-auto" />
                         </div>
-                        <h1 className="text-xl lg:text-3xl xl:text-4xl font-extrabold text-orange-700 dark:text-yellow-400 mb-4">
+                        <h1 className="text-xl lg:text-3xl xl:text-4xl font-extrabold text-primary-600 dark:text-primary-400 mb-4">
                             Quiz Categories
                         </h1>
                         <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 font-medium">
@@ -45,14 +45,14 @@ export default function CategoriesPage({ categories }) {
                                 <div className="group bg-white dark:bg-gray-800 rounded-2xl p-3 lg:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 cursor-pointer">
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="flex-1">
-                                            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors">
+                                            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                                                 {category.name}
                                             </h2>
                                             <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                                                 {category.description}
                                             </p>
                                         </div>
-                                        <FaChevronRight className="text-gray-400 group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors mt-1" />
+                                        <FaChevronRight className="text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mt-1" />
                                     </div>
 
                                     {/* Educational Value */}
@@ -64,11 +64,11 @@ export default function CategoriesPage({ categories }) {
 
                                     {/* Quiz Count */}
                                     <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                                        <div className="flex items-center text-orange-700 dark:text-yellow-400">
+                                        <div className="flex items-center text-primary-600 dark:text-primary-400">
                                             <FaQuestionCircle className="mr-2" />
                                             <span className="font-semibold">{category.totalQuizzes || 0} Quizzes</span>
                                         </div>
-                                        <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors">
+                                        <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                                             Explore →
                                         </span>
                                     </div>

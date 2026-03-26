@@ -107,7 +107,7 @@ const PayuPayment = ({ plan, userInfo, onSuccess, onError }) => {
         className={`w-full py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-3xl ${
           loading 
             ? 'bg-gray-400 cursor-not-allowed' 
-            : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700'
+            : 'bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700'
         }`}
       >
         <span className="flex items-center justify-center space-x-2">
@@ -126,12 +126,12 @@ const PayuPayment = ({ plan, userInfo, onSuccess, onError }) => {
       </button>
       
       {paymentData && (
-        <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
-          <div className="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+        <div className="mt-4 p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg border border-secondary-200 dark:border-secondary-700">
+          <div className="flex items-center space-x-2 text-secondary-600 dark:text-secondary-400">
             <FaCheckCircle className="text-sm" />
             <span className="text-sm font-medium">Payment initiated successfully</span>
           </div>
-          <p className="text-xs text-blue-500 dark:text-blue-300 mt-1">
+          <p className="text-xs text-secondary-500 dark:text-secondary-300 mt-1">
             Transaction ID: {paymentData.txnid}
           </p>
         </div>

@@ -117,7 +117,7 @@ const RewardsDashboard = () => {
         </p>
         <button
           onClick={fetchRewards}
-          className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
+          className="bg-secondary-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-secondary-700 transition-colors text-sm sm:text-base"
         >
           Try Again
         </button>
@@ -158,7 +158,7 @@ const RewardsDashboard = () => {
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5">
         <div
-          className={`${progress?.percentage >= 100 ? 'bg-green-500' : 'bg-blue-600'} h-2 sm:h-2.5 rounded-full transition-all duration-300`}
+          className={`${progress?.percentage >= 100 ? 'bg-green-500' : 'bg-secondary-600'} h-2 sm:h-2.5 rounded-full transition-all duration-300`}
           style={{
             width: `${Math.min(progress?.percentage || 0, 100)}%`,
           }}
@@ -173,15 +173,15 @@ const RewardsDashboard = () => {
   return (
     <div className="container mx-auto py-4 px-4 lg:px-10">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-2 md:p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
-        <h2 className="text-lg sm:text-lg lg:text-2xl font-bold text-gray-800 dark:text-white mb-6 underline decoration-blue-500 decoration-4 underline-offset-8">
+        <h2 className="text-lg sm:text-lg lg:text-2xl font-bold text-gray-800 dark:text-white mb-6 underline decoration-secondary-500 decoration-4 underline-offset-8">
           🏆 Rewards & Challenges
         </h2>
 
         {/* Progress Grids */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="p-4 rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/30">
-            <h3 className="font-bold mb-4 text-blue-600 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+            <h3 className="font-bold mb-4 text-secondary-600 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-secondary-600"></span>
               Daily Challenge
             </h3>
             <ProgressSection
@@ -204,8 +204,8 @@ const RewardsDashboard = () => {
           </div>
 
           <div className="p-4 rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/30 relative">
-            <h3 className="font-bold mb-4 text-orange-600 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-600"></span>
+            <h3 className="font-bold mb-4 text-secondary-600 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary-600"></span>
               Monthly Challenge
             </h3>
             <ProgressSection
@@ -255,25 +255,25 @@ const RewardsDashboard = () => {
               {unlocked.map((reward, index) => (
                 <div
                   key={reward?._id || `unlocked-${reward?.level}-${index}`}
-                  className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 sm:p-4"
+                  className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-lg p-3 sm:p-4"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs sm:text-lg font-medium text-blue-800 dark:text-blue-300">
+                    <span className="text-xs sm:text-lg font-medium text-secondary-800 dark:text-secondary-300">
                       Level {reward?.level || "N/A"}
                     </span>
-                    <span className="text-xs text-blue-600 dark:text-blue-400">
+                    <span className="text-xs text-secondary-600 dark:text-secondary-400">
                       {reward?.dateUnlocked
                         ? new Date(reward.dateUnlocked).toLocaleDateString()
                         : "N/A"}
                     </span>
                   </div>
-                  <p className="text-lg sm:text-lg lg:text-2xl font-bold text-blue-700 dark:text-blue-300 mb-3">
+                  <p className="text-lg sm:text-lg lg:text-2xl font-bold text-secondary-700 dark:text-secondary-300 mb-3">
                     ₹{(reward?.amount || 0).toLocaleString()}
                   </p>
                   <button
                     onClick={() => claimReward(reward?._id)}
                     disabled={claiming || !reward?._id}
-                    className="w-full bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
+                    className="w-full bg-secondary-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-secondary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
                   >
                     {claiming ? "Claiming..." : "Claim Reward"}
                   </button>
@@ -341,7 +341,7 @@ const RewardsDashboard = () => {
             <div className="text-sm sm:text-base lg:text-lg font-semibold text-red-800 dark:text-red-100 space-y-3">
               <p>
                 🏆 <strong>Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} winners</strong> receive{" "}
-                <span className="text-red-600 dark:text-red-300">
+                <span className="text-primary-600 dark:text-red-300">
                   cash prizes
                 </span>{" "}
                 within <strong>7 days</strong> of result declaration.

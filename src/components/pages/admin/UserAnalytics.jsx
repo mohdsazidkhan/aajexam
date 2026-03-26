@@ -191,7 +191,7 @@ const UserAnalytics = () => {
   const mode = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 
   if (loading) return <Loading fullScreen={true} size="lg" color="yellow" message="Loading..." />;
-  if (error) return <div className="min-h-screen p-3 lg:p-6 bg-gray-50 dark:bg-gray-900 text-red-600 dark:text-red-400">{error}</div>;
+  if (error) return <div className="min-h-screen p-3 lg:p-6 bg-gray-50 dark:bg-gray-900 text-primary-600 dark:text-red-400">{error}</div>;
   if (!data) return <div className="min-h-screen p-3 lg:p-6 text-center text-gray-400 dark:text-gray-500">No data available</div>;
 
   return (
@@ -221,7 +221,7 @@ const UserAnalytics = () => {
               <input name="subscription" value={filters.subscription} onChange={handleFilterChange} placeholder="Subscription"
                 className="px-4 py-2 rounded-lg border bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600" />
               <button onClick={handleExport}
-                className="ml-auto flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                className="ml-auto flex items-center gap-2 px-6 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition">
                 <FaDownload /> Export CSV
               </button>
             </div>
@@ -231,7 +231,7 @@ const UserAnalytics = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaChartBar className="mr-2 text-blue-600 dark:text-blue-400" />
+                <FaChartBar className="mr-2 text-secondary-600 dark:text-secondary-400" />
                 <h3 className="font-semibold text-lg">Level Distribution</h3>
               </div>
               {levelLabels.length > 0 ? <Bar data={levelBarData} options={baseOptions(mode)} /> : <p className="text-center text-gray-500">No data</p>}
@@ -239,7 +239,7 @@ const UserAnalytics = () => {
 
             <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaChartPie className="mr-2 text-orange-700 dark:text-yellow-400" />
+                <FaChartPie className="mr-2 text-primary-600 dark:text-primary-400" />
                 <h3 className="font-semibold text-lg">Subscription Stats</h3>
               </div>
               {subscriptionLabels.length > 0 ? <Pie data={subscriptionPieData} options={pieOptions(mode)} /> : <p className="text-center text-gray-500">No data</p>}

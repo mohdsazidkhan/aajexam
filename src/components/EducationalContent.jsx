@@ -17,12 +17,12 @@ const EducationalContent = ({ content }) => {
 
     const features = [
         {
-            icon: <FaRocket className="text-4xl text-orange-700 dark:text-yellow-400" />,
+            icon: <FaRocket className="text-4xl text-primary-600 dark:text-primary-400" />,
             title: "Level-Based Progression",
             description: "Advance through 10 carefully designed levels from beginner to expert"
         },
         {
-            icon: <FaBook className="text-4xl text-blue-600 dark:text-blue-400" />,
+            icon: <FaBook className="text-4xl text-secondary-600 dark:text-secondary-400" />,
             title: "Comprehensive Coverage",
             description: "Complete syllabus coverage for SSC, UPSC, Banking, and Railway exams"
         },
@@ -32,21 +32,21 @@ const EducationalContent = ({ content }) => {
             description: "Track your progress with detailed insights and performance metrics"
         },
         {
-            icon: <FaTrophy className="text-4xl text-orange-700 dark:text-yellow-400" />,
+            icon: <FaTrophy className="text-4xl text-primary-600 dark:text-primary-400" />,
             title: "Monthly Rewards",
             description: "Compete on leaderboards and win exciting rewards every month"
         }
     ];
 
     return (
-        <section className="educational-content bg-gradient-to-br from-yellow-50 via-blue-50 to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-5 lg: py-20 px-4">
+        <section className="educational-content bg-gradient-to-br from-primary-50 via-secondary-50 to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-5 lg: py-20 px-4">
             <div className="container mx-auto px-0 lg:px-6 xl:px-8">
                 {/* Main Heading with Gradient */}
                 <div className="text-center mb-8 lg:mb-16 animate-fade-in">
                     <div className="inline-block mb-0 lg:mb-4">
-                        <FaGraduationCap className="text-3xl lg:text-6xl text-orange-700 dark:text-yellow-400 mx-auto mb-4" />
+                        <FaGraduationCap className="text-3xl lg:text-6xl text-primary-600 dark:text-primary-400 mx-auto mb-4" />
                     </div>
-                    <h1 className="text-2xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-r from-yellow-600 to-red-600 dark:from-yellow-400 dark:to-red-400 bg-clip-text text-transparent mb-4">
+                    <h1 className="text-2xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-red-400 bg-clip-text text-transparent mb-4">
                         Exam Preparation & Quiz Platform
                     </h1>
                     <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 font-medium">
@@ -60,7 +60,7 @@ const EducationalContent = ({ content }) => {
                     <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
                             <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-lg mr-4">
-                                <FaBullseye className="text-3xl text-orange-700 dark:text-yellow-400" />
+                                <FaBullseye className="text-3xl text-primary-600 dark:text-primary-400" />
                             </div>
                             <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
                                 About AajExam Platform
@@ -74,8 +74,8 @@ const EducationalContent = ({ content }) => {
                     {/* Target Audience Card */}
                     <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
-                            <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg mr-4">
-                                <FaUsers className="text-3xl text-blue-600 dark:text-blue-400" />
+                            <div className="bg-secondary-100 dark:bg-secondary-900 p-3 rounded-lg mr-4">
+                                <FaUsers className="text-3xl text-secondary-600 dark:text-secondary-400" />
                             </div>
                             <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
                                 Who Should Use This Platform?
@@ -105,7 +105,7 @@ const EducationalContent = ({ content }) => {
                     <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
                             <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg mr-4">
-                                <FaChartLine className="text-3xl text-red-600 dark:text-red-400" />
+                                <FaChartLine className="text-3xl text-primary-600 dark:text-red-400" />
                             </div>
                             <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
                                 Our Learning Methodology
@@ -143,7 +143,7 @@ const EducationalContent = ({ content }) => {
                 </div>
 
                 {/* Call to Action */}
-                <div className="mt-8 lg:mt-16 text-center bg-gradient-to-r from-yellow-600 to-red-600 dark:from-yellow-500 dark:to-red-500 rounded-2xl p-5 lg:p-10 shadow-2xl">
+                <div className="mt-8 lg:mt-16 text-center bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 dark:to-secondary-500 rounded-2xl p-5 lg:p-10 shadow-2xl">
                     <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-white font-medium leading-relaxed">
                         Join thousands of successful candidates who have achieved their government job dreams through AajExam.
                         Start your preparation journey today and experience the difference that structured, data-driven practice can make.

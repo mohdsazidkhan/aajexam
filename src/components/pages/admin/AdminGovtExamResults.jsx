@@ -559,7 +559,7 @@ const AdminGovtExamResults = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => handleCategoryChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 disabled={loading}
               >
                 <option value="">Select Category</option>
@@ -578,7 +578,7 @@ const AdminGovtExamResults = () => {
               <select
                 value={selectedExam}
                 onChange={(e) => handleExamChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 disabled={!selectedCategory || loading}
               >
                 <option value="">Select Exam</option>
@@ -597,7 +597,7 @@ const AdminGovtExamResults = () => {
               <select
                 value={selectedPattern}
                 onChange={(e) => handlePatternChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 disabled={!selectedExam || loading}
               >
                 <option value="">Select Pattern</option>
@@ -618,7 +618,7 @@ const AdminGovtExamResults = () => {
                 onChange={(e) => {
                   setSelectedTest(e.target.value);
                 }}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                 disabled={!selectedPattern || loading}
               >
                 <option value="all">All Tests</option>
@@ -690,7 +690,7 @@ const AdminGovtExamResults = () => {
                             #{attempt.rank || "-"}
                           </td>
                           <td className="px-6 py-4 text-sm">
-                            <div className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-300 mb-1">
+                            <div className="text-xs font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300 mb-1">
                               {getTestTitle(attempt)}
                             </div>
                             <div className="font-medium text-gray-900 dark:text-white">
@@ -707,7 +707,7 @@ const AdminGovtExamResults = () => {
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${attempt.accuracy >= 80
                               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                               : attempt.accuracy >= 60
-                                ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                                ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                                 : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                               }`}>
                               {attempt.accuracy?.toFixed(1) || 0}%
@@ -750,7 +750,7 @@ const AdminGovtExamResults = () => {
                               #{attempt.rank || "-"}
                             </span>
                             <div>
-                              <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-300">
+                              <p className="text-xs font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300">
                                 {getTestTitle(attempt)}
                               </p>
                               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-1">
@@ -773,7 +773,7 @@ const AdminGovtExamResults = () => {
                               <span className={`ml-2 px-2 py-1 rounded-full text-xs font-semibold ${attempt.accuracy >= 80
                                 ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                                 : attempt.accuracy >= 60
-                                  ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                                  ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                                   : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                                 }`}>
                                 {attempt.accuracy?.toFixed(1) || 0}%
@@ -823,13 +823,13 @@ const AdminGovtExamResults = () => {
                         <span className={`px-2 py-1 rounded-full text-xs font-semibold ${attempt.accuracy >= 80
                           ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                           : attempt.accuracy >= 60
-                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                            ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                           }`}>
                           {attempt.accuracy?.toFixed(1) || 0}%
                         </span>
                       </div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-300 mb-1 truncate">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300 mb-1 truncate">
                         {getTestTitle(attempt)}
                       </p>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 truncate">
@@ -860,7 +860,7 @@ const AdminGovtExamResults = () => {
                       </div>
                       <button
                         onClick={() => handleViewDetails(attempt._id)}
-                        className="w-full px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                        className="w-full px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
                       >
                         View Details
                       </button>
@@ -894,7 +894,7 @@ const AdminGovtExamResults = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
                   <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">User</h3>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-300 mb-1">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300 mb-1">
                     {getTestTitle(selectedAttempt)}
                   </p>
                   <p className="text-gray-900 dark:text-white">{selectedAttempt.user?.name}</p>
@@ -911,7 +911,7 @@ const AdminGovtExamResults = () => {
               <div className="grid grid-cols-4 gap-4">
                 <div>
                   <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Score</h3>
-                  <p className="text-md lg:text-2xl font-bold text-blue-600">{selectedAttempt.score}</p>
+                  <p className="text-md lg:text-2xl font-bold text-secondary-600">{selectedAttempt.score}</p>
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Accuracy</h3>
@@ -919,11 +919,11 @@ const AdminGovtExamResults = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Rank</h3>
-                  <p className="text-md lg:text-2xl font-bold text-orange-700">#{selectedAttempt.rank}</p>
+                  <p className="text-md lg:text-2xl font-bold text-primary-600">#{selectedAttempt.rank}</p>
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Percentile</h3>
-                  <p className="text-md lg:text-2xl font-bold text-orange-700">{selectedAttempt.percentile?.toFixed(1)}%</p>
+                  <p className="text-md lg:text-2xl font-bold text-primary-600">{selectedAttempt.percentile?.toFixed(1)}%</p>
                 </div>
               </div>
 
@@ -935,11 +935,11 @@ const AdminGovtExamResults = () => {
                     <div className="text-sm text-gray-600 dark:text-gray-400">Correct</div>
                   </div>
                   <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded">
-                    <div className="text-md lg:text-2xl font-bold text-red-600">{selectedAttempt.wrongCount}</div>
+                    <div className="text-md lg:text-2xl font-bold text-primary-600">{selectedAttempt.wrongCount}</div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Wrong</div>
                   </div>
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                    <div className="text-md lg:text-2xl font-bold text-blue-600">{formatTime(selectedAttempt.totalTime)}</div>
+                  <div className="p-3 bg-secondary-50 dark:bg-secondary-900/20 rounded">
+                    <div className="text-md lg:text-2xl font-bold text-secondary-600">{formatTime(selectedAttempt.totalTime)}</div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Time Taken</div>
                   </div>
                 </div>

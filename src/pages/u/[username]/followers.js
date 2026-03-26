@@ -101,7 +101,7 @@ export default function FollowersListPage() {
                       className="w-12 h-12 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-yellow-600 flex items-center justify-center text-white text-xl font-bold">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-primary-600 flex items-center justify-center text-white text-xl font-bold">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -109,7 +109,7 @@ export default function FollowersListPage() {
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900 dark:text-white">{user.name}</h3>
                     {user.username && (
-                      <p className="text-sm text-orange-700 dark:text-yellow-400">@{user.username}</p>
+                      <p className="text-sm text-primary-700 dark:text-primary-400">@{user.username}</p>
                     )}
                     {user.monthlyProgress && (
                       <p className="text-xs text-gray-500 dark:text-gray-400">{user.monthlyProgress?.levelName}</p>

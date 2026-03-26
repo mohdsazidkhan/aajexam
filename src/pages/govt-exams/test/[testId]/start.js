@@ -627,13 +627,13 @@ const TestStart = () => {
 
         <div className="max-100 lg:container mx-auto px-0 lg:px-6 xl:px-8 px-2 lg:px-4">
           {showFullscreenPrompt && !isFullscreenActive && (
-            <div className="mb-3 bg-yellow-50 dark:bg-yellow-900/40 border border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-100 rounded-lg px-3 py-2 flex items-center justify-between gap-3">
+            <div className="mb-3 bg-primary-50 dark:bg-primary-900/40 border border-primary-200 dark:border-primary-700 text-primary-800 dark:text-primary-100 rounded-lg px-3 py-2 flex items-center justify-between gap-3">
               <span className="text-sm">
                 For the best experience, enable fullscreen mode.
               </span>
               <button
                 onClick={attemptFullscreen}
-                className="px-3 py-1 text-sm font-semibold bg-yellow-500 hover:bg-yellow-600 text-white rounded-md transition-all"
+                className="px-3 py-1 text-sm font-semibold bg-primary-500 hover:bg-primary-600 text-white rounded-md transition-all"
               >
                 Go Fullscreen
               </button>
@@ -664,7 +664,7 @@ const TestStart = () => {
                         : status === "answered"
                           ? "bg-green-500 text-white"
                           : status === "marked"
-                            ? "bg-yellow-400 text-white"
+                            ? "bg-primary-400 text-white"
                             : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                         }`}
                     >
@@ -682,11 +682,11 @@ const TestStart = () => {
               <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-2 lg:p-6">
                 {/* Question Header */}
                 <div className="flex items-center justify-between mb-2 lg:mb-6">
-                  <span className="text-sm font-semibold text-gray-700 dark:text-yellow-400">
+                  <span className="text-sm font-semibold text-gray-700 dark:text-primary-400">
                     Question {currentQIndex + 1} of {questions.length}
                   </span>
                   {marked.has(currentQ._id) && (
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-semibold flex items-center gap-1">
                       <FaFlag /> Marked
                     </span>
                   )}
@@ -725,7 +725,7 @@ const TestStart = () => {
                         </span>
 
                         {answers[currentQ._id] === idx && (
-                          <FaCheckCircle className="text-red-600 text-xl flex-shrink-0" />
+                          <FaCheckCircle className="text-primary-600 text-xl flex-shrink-0" />
                         )}
                       </div>
                     </button>
@@ -743,7 +743,7 @@ const TestStart = () => {
                   </button>
                   <button
                     onClick={toggleMark}
-                    className="flex-1 px-2 lg:px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-lg hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 px-2 lg:px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-lg hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-all flex items-center justify-center gap-2"
                   >
                     <FaBookmark />{" "}
                     {marked.has(currentQ._id) ? "Unmark" : "Mark"}
@@ -777,7 +777,7 @@ const TestStart = () => {
                     <button
                       onClick={handleSubmit}
                       disabled={submitting}
-                      className="px-3 lg:px-6 py-2 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg hover:from-green-700 hover:to-blue-700 transition-all flex items-center gap-2 disabled:opacity-50"
+                      className="px-3 lg:px-6 py-2 bg-gradient-to-r from-green-600 to-secondary-600 text-white rounded-lg hover:from-green-700 hover:to-secondary-700 transition-all flex items-center gap-2 disabled:opacity-50"
                     >
                       {submitting ? "Submitting..." : "Submit Test"}
                     </button>
@@ -803,11 +803,11 @@ const TestStart = () => {
                       Answered
                     </div>
                   </div>
-                  <div className="bg-yellow-50 dark:bg-yellow-900/30 p-3 rounded-lg">
-                    <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                  <div className="bg-primary-50 dark:bg-primary-900/30 p-3 rounded-lg">
+                    <div className="text-2xl font-bold text-primary-700 dark:text-primary-400">
                       {markedCount}
                     </div>
-                    <div className="text-xs text-yellow-700 dark:text-yellow-300">
+                    <div className="text-xs text-primary-700 dark:text-primary-300">
                       Marked
                     </div>
                   </div>
@@ -826,7 +826,7 @@ const TestStart = () => {
                           : status === "answered"
                             ? "bg-green-500 text-white"
                             : status === "marked"
-                              ? "bg-yellow-400 text-white"
+                              ? "bg-primary-400 text-white"
                               : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                           }`}
                       >
@@ -845,7 +845,7 @@ const TestStart = () => {
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-4 h-4 bg-yellow-400 rounded"></div>
+                    <div className="w-4 h-4 bg-primary-400 rounded"></div>
                     <span className="text-gray-700 dark:text-gray-300">
                       Marked
                     </span>
@@ -889,11 +889,11 @@ const TestStart = () => {
                     Answered
                   </div>
                 </div>
-                <div className="bg-yellow-50 dark:bg-yellow-900/30 rounded-xl p-4">
-                  <div className="text-2xl font-bold text-orange-700 dark:text-yellow-300">
+                <div className="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4">
+                  <div className="text-2xl font-bold text-primary-700 dark:text-primary-300">
                     {markedCount}
                   </div>
-                  <div className="text-xs font-semibold text-yellow-700 dark:text-yellow-200 uppercase tracking-wide">
+                  <div className="text-xs font-semibold text-primary-700 dark:text-primary-200 uppercase tracking-wide">
                     Marked
                   </div>
                 </div>
@@ -953,7 +953,7 @@ const TestStart = () => {
               </div>
 
               {markedCount > 0 && (
-                <div className="text-sm text-yellow-700 dark:text-yellow-200 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-xl px-4 py-3">
+                <div className="text-sm text-primary-700 dark:text-primary-200 bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-xl px-4 py-3">
                   You still have some questions marked for review. Make sure
                   you've finalized your answers before submitting.
                 </div>
@@ -973,7 +973,7 @@ const TestStart = () => {
                   handleAutoSubmit();
                 }}
                 disabled={submitting}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold hover:from-green-700 hover:to-blue-700 transition-all disabled:opacity-50"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-green-600 to-secondary-600 text-white font-semibold hover:from-green-700 hover:to-secondary-700 transition-all disabled:opacity-50"
               >
                 {submitting ? "Submitting..." : "Submit Test"}
               </button>

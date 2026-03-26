@@ -110,7 +110,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         </Head>
 
         <div className="bg-white dark:bg-gray-800 shadow-md mb-5">
-          <div className="h-32 lg:h-40 bg-gradient-to-r from-red-500 to-yellow-600"></div>
+          <div className="h-32 lg:h-40 bg-gradient-to-r from-red-500 to-primary-600"></div>
 
           <div className="px-6 pb-6">
             {/* Avatar Section */}
@@ -122,7 +122,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   className="w-28 h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg object-cover"
                 />
               ) : (
-                <div className="w-28 h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center bg-gradient-to-br from-red-500 to-yellow-600 text-white text-5xl lg:text-6xl font-bold">
+                <div className="w-28 h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center bg-gradient-to-br from-red-500 to-primary-600 text-white text-5xl lg:text-6xl font-bold">
                   {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                 </div>
               )}
@@ -133,7 +133,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <h1 className="text-2xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{profile.name}</h1>
                 {profile.username && (
-                  <p className="text-base lg:text-lg font-semibold text-orange-700 dark:text-yellow-400 mt-1">
+                  <p className="text-base lg:text-lg font-semibold text-primary-700 dark:text-primary-400 mt-1">
                     @{profile.username}
                   </p>
                 )}
@@ -194,7 +194,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
             <h2 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-5">Level & Badges</h2>
             <div className="flex flex-wrap items-center gap-5">
-              <div className="flex flex-col items-center px-6 py-5 bg-gradient-to-br from-red-500 to-yellow-600 rounded-xl text-white min-w-[120px]">
+              <div className="flex flex-col items-center px-6 py-5 bg-gradient-to-br from-red-500 to-primary-600 rounded-xl text-white min-w-[120px]">
                 <span className="text-4xl font-bold">{profile.level?.currentLevel?.number || 0}</span>
                 <span className="text-base mt-2">{profile.level?.currentLevel?.name || 'Starter'}</span>
               </div>
@@ -219,19 +219,19 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <h2 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-5">Quiz Statistics</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-red-600 dark:text-red-400">
+                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
                     {profile.level?.progress?.quizzesPlayed || 0}
                   </span>
                   <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">Total Quizzes</span>
                 </div>
                 <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-red-600 dark:text-red-400">
+                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
                     {profile.level?.stats?.highScoreRate || 0}%
                   </span>
                   <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">High Score Rate</span>
                 </div>
                 <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-red-600 dark:text-red-400">
+                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
                     {profile.level?.stats?.averageScore || 0}%
                   </span>
                   <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">Average Score</span>
@@ -251,8 +251,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* Contribution Counts Summary */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 {contributions.categories.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg text-center border border-blue-200 dark:border-blue-700">
-                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="p-4 bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/20 dark:to-secondary-800/20 rounded-lg text-center border border-secondary-200 dark:border-secondary-700">
+                    <div className="text-3xl font-bold text-secondary-600 dark:text-secondary-400">
                       {contributions.categories.total}
                     </div>
                     <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
@@ -262,7 +262,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 )}
                 {contributions.subcategories.total > 0 && (
                   <div className="p-4 bg-gradient-to-br from-purple-50 from-red-100 dark:from-purple-900/20 dark:from-red-800/20 rounded-lg text-center border border-purple-200 dark:border-purple-700">
-                    <div className="text-3xl font-bold text-orange-700 dark:text-yellow-400">
+                    <div className="text-3xl font-bold text-primary-700 dark:text-primary-400">
                       {contributions.subcategories.total}
                     </div>
                     <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
@@ -281,8 +281,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   </div>
                 )}
                 {contributions.userQuestions?.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-lg text-center border border-yellow-200 dark:border-yellow-700">
-                    <div className="text-3xl font-bold text-orange-700 dark:text-yellow-400">
+                  <div className="p-4 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center border border-primary-200 dark:border-primary-700">
+                    <div className="text-3xl font-bold text-primary-700 dark:text-primary-400">
                       {contributions.userQuestions.total}
                     </div>
                     <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
@@ -325,7 +325,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                       <div key={subcat._id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
                         <h4 className="font-semibold text-gray-900 dark:text-white">{subcat.name}</h4>
                         {subcat.category && (
-                          <p className="text-xs text-orange-700 dark:text-yellow-400 mt-1">
+                          <p className="text-xs text-primary-700 dark:text-primary-400 mt-1">
                             Category: {subcat.category.name}
                           </p>
                         )}
@@ -358,7 +358,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                             )}
                             <div className="flex items-center gap-3 mt-2 flex-wrap">
                               {quiz.difficulty && (
-                                <span className="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full">
+                                <span className="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full">
                                   {quiz.difficulty}
                                 </span>
                               )}

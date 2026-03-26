@@ -82,9 +82,9 @@ const MonthlyWinnersDisplay = () => {
   };
 
   const types = [
-    { id: 'daily', label: 'Daily', icon: FaCalendarDay, color: 'from-blue-500 to-cyan-500' },
+    { id: 'daily', label: 'Daily', icon: FaCalendarDay, color: 'from-secondary-500 to-cyan-500' },
     { id: 'weekly', label: 'Weekly', icon: FaCalendarAlt, color: 'from-purple-500 to-indigo-500' },
-    { id: 'monthly', label: 'Monthly', icon: FaCalendarCheck, color: 'from-yellow-500 to-orange-500' }
+    { id: 'monthly', label: 'Monthly', icon: FaCalendarCheck, color: 'from-primary-500 to-primary-500' }
   ];
 
   if (loading) {
@@ -99,19 +99,19 @@ const MonthlyWinnersDisplay = () => {
 
   const getRankIcon = (rank) => {
     switch (rank) {
-      case 1: return <FaCrown className="text-yellow-500 text-xl" />;
+      case 1: return <FaCrown className="text-primary-500 text-xl" />;
       case 2: return <FaMedal className="text-gray-400 text-xl" />;
-      case 3: return <FaAward className="text-orange-600 text-xl" />;
-      default: return <FaTrophy className="text-blue-500 text-xl" />;
+      case 3: return <FaAward className="text-secondary-600 text-xl" />;
+      default: return <FaTrophy className="text-secondary-500 text-xl" />;
     }
   };
 
   const getRankColor = (rank) => {
     switch (rank) {
-      case 1: return 'from-yellow-600 to-yellow-500';
+      case 1: return 'from-primary-600 to-primary-500';
       case 2: return 'from-gray-500 to-gray-400';
-      case 3: return 'from-orange-600 to-orange-500';
-      default: return 'from-blue-600 to-blue-500';
+      case 3: return 'from-primary-600 to-primary-500';
+      default: return 'from-secondary-600 to-secondary-500';
     }
   };
 
@@ -155,7 +155,7 @@ const MonthlyWinnersDisplay = () => {
                     {winner.highScoreQuizzes || winner.highScoreWins} Quizzes
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <div className="font-black text-orange-600 dark:text-yellow-500">₹{winner.rewardAmount?.toLocaleString()}</div>
+                    <div className="font-black text-secondary-600 dark:text-primary-500">₹{winner.rewardAmount?.toLocaleString()}</div>
                   </td>
                 </tr>
               ))}
@@ -221,7 +221,7 @@ const MonthlyWinnersDisplay = () => {
                 onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
                 dateFormat="yyyy-MM-dd"
                 maxDate={new Date()}
-                className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-blue-500 dark:focus:border-blue-500 outline-none shadow-inner transition-all group-hover:border-gray-200 dark:group-hover:border-gray-700 w-full"
+                className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-secondary-500 dark:focus:border-secondary-500 outline-none shadow-inner transition-all group-hover:border-gray-200 dark:group-hover:border-gray-700 w-full"
               />
             </div>
           </div>
@@ -295,7 +295,7 @@ const MonthlyWinnersDisplay = () => {
                 dateFormat="MMMM yyyy"
                 showMonthYearPicker
                 maxDate={new Date()}
-                className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-yellow-500 dark:focus:border-yellow-500 outline-none shadow-inner transition-all group-hover:border-gray-200 dark:group-hover:border-gray-700 w-full"
+                className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-primary-500 dark:focus:border-primary-500 outline-none shadow-inner transition-all group-hover:border-gray-200 dark:group-hover:border-gray-700 w-full"
               />
             </div>
           </div>
@@ -315,7 +315,7 @@ const MonthlyWinnersDisplay = () => {
                 setSelectedWeek(`${d.format('YYYY')}-W${weekNum}`);
               }
             }}
-            className="text-xs font-black text-blue-500 hover:text-blue-600 uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
+            className="text-xs font-black text-secondary-500 hover:text-secondary-600 uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-all"
           >
             <span className="text-sm">↺</span> Reset
           </button>
@@ -331,13 +331,13 @@ const MonthlyWinnersDisplay = () => {
           <div className="flex gap-2 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
             <button
               onClick={() => setViewMode('table')}
-              className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-white dark:bg-gray-700 shadow-sm text-orange-600' : 'text-gray-400'}`}
+              className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-white dark:bg-gray-700 shadow-sm text-secondary-600' : 'text-gray-400'}`}
             >
               <FaTable size={14} />
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow-sm text-orange-600' : 'text-gray-400'}`}
+              className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 shadow-sm text-secondary-600' : 'text-gray-400'}`}
             >
               <FaList size={14} />
             </button>

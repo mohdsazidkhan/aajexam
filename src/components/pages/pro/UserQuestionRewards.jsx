@@ -132,7 +132,7 @@ export default function UserQuestionRewards() {
             cleaned = cleaned.replace('amount credit in user wallet for ', '');
             cleaned = cleaned.replace('amount credit in user waller for question ', '');
             cleaned = cleaned.replace('amount credit in user waller for ', '');
-            
+
             // If it's still generic or empty after cleaning
             if (cleaned.toLowerCase().includes('amount credit in user') || !cleaned || cleaned.length < 3) {
                 return 'Verified Practice Question';
@@ -155,7 +155,7 @@ export default function UserQuestionRewards() {
                         {/* Header */}
                         <div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                                <FaQuestionCircle className="text-yellow-500" /> Question Rewards History
+                                <FaQuestionCircle className="text-primary-500" /> Question Rewards History
                             </h2>
                             <p className="text-gray-600 dark:text-gray-400">
                                 View your earnings from approved practice questions
@@ -167,7 +167,7 @@ export default function UserQuestionRewards() {
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={() => router.push('/pro/questions/new')}
-                                    className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white px-5 py-2.5 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all w-fit shadow-md whitespace-nowrap"
+                                    className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-primary-500 text-white px-5 py-2.5 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all w-fit shadow-md whitespace-nowrap"
                                 >
                                     <FaPlusCircle /> Post New Question
                                 </button>
@@ -185,18 +185,18 @@ export default function UserQuestionRewards() {
                     {/* Monthly Question Limit Info */}
                     <div className={`mb-6 bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm border ${!questionCount.canAddMore
                         ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-                        : 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/10'
+                        : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/10'
                         }`}>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${!questionCount.canAddMore ? 'bg-red-100 dark:bg-red-900' : 'bg-yellow-100 dark:bg-yellow-900'}`}>
-                                    <FaQuestionCircle className={!questionCount.canAddMore ? 'text-red-600' : 'text-yellow-600'} />
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${!questionCount.canAddMore ? 'bg-red-100 dark:bg-red-900' : 'bg-primary-100 dark:bg-primary-900'}`}>
+                                    <FaQuestionCircle className={!questionCount.canAddMore ? 'text-primary-600' : 'text-secondary-600'} />
                                 </div>
                                 <div>
                                     <p className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
                                         Monthly Question Limit
                                     </p>
-                                    <p className={`text-sm mt-1 ${!questionCount.canAddMore ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'}`}>
+                                    <p className={`text-sm mt-1 ${!questionCount.canAddMore ? 'text-primary-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'}`}>
                                         {questionCount.currentCount} / {questionCount.limit} questions posted this month
                                         {questionCount.canAddMore && ` (${questionCount.remaining} remaining)`}
                                     </p>
@@ -210,8 +210,8 @@ export default function UserQuestionRewards() {
                         </div>
                         {/* Progress Bar */}
                         <div className="mt-4 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                            <div 
-                                className={`h-2 rounded-full transition-all duration-500 ${!questionCount.canAddMore ? 'bg-red-500' : 'bg-yellow-500'}`}
+                            <div
+                                className={`h-2 rounded-full transition-all duration-500 ${!questionCount.canAddMore ? 'bg-red-500' : 'bg-primary-500'}`}
                                 style={{ width: `${Math.min(100, (questionCount.currentCount / questionCount.limit) * 100)}%` }}
                             ></div>
                         </div>
@@ -237,12 +237,12 @@ export default function UserQuestionRewards() {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Items Approved</div>
-                                        <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                                        <div className="text-3xl font-bold text-secondary-600 dark:text-secondary-400">
                                             {summary.totalTransactions || 0}
                                         </div>
                                     </div>
-                                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-2xl p-4">
-                                        <FaCheckCircle className="text-2xl text-blue-600 dark:text-blue-400" />
+                                    <div className="bg-secondary-100 dark:bg-secondary-900/30 rounded-2xl p-4">
+                                        <FaCheckCircle className="text-2xl text-secondary-600 dark:text-secondary-400" />
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +262,7 @@ export default function UserQuestionRewards() {
                                 Error loading history
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
-                            <button 
+                            <button
                                 onClick={() => fetchQuestionRewardsHistory(page, limit)}
                                 className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-xl font-bold hover:opacity-90 transition-opacity"
                             >
@@ -282,7 +282,7 @@ export default function UserQuestionRewards() {
                             </p>
                             <button
                                 onClick={() => router.push('/pro/questions/new')}
-                                className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-8 py-3 rounded-2xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                                className="bg-gradient-to-r from-red-500 to-primary-500 text-white px-8 py-3 rounded-2xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                             >
                                 Post Your First Question
                             </button>
@@ -315,7 +315,7 @@ export default function UserQuestionRewards() {
                                                     <tr key={tx._id || index} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
                                                         <td className="px-6 py-5">
                                                             <div className="flex items-center gap-4">
-                                                                <div className="flex-shrink-0 h-10 w-10 bg-yellow-100 dark:bg-yellow-900/40 rounded-xl flex items-center justify-center text-lg">
+                                                                <div className="flex-shrink-0 h-10 w-10 bg-primary-100 dark:bg-primary-900/40 rounded-xl flex items-center justify-center text-lg">
                                                                     ❓
                                                                 </div>
                                                                 <div className="flex-1 min-w-0">
@@ -373,7 +373,7 @@ export default function UserQuestionRewards() {
                                             <div className="flex flex-col sm:flex-row gap-5">
                                                 {/* Icon */}
                                                 <div className="flex-shrink-0">
-                                                    <div className="w-14 h-14 rounded-2xl bg-yellow-100 dark:bg-yellow-900/40 flex items-center justify-center text-2xl shadow-sm">
+                                                    <div className="w-14 h-14 rounded-2xl bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center text-2xl shadow-sm">
                                                         ❓
                                                     </div>
                                                 </div>
@@ -426,7 +426,7 @@ export default function UserQuestionRewards() {
                                             className="bg-white dark:bg-gray-800 rounded-3xl p-6 border border-gray-100 dark:border-gray-700 hover:shadow-xl shadow-sm transition-all hover:-translate-y-1"
                                         >
                                             <div className="flex items-start gap-4 mb-5">
-                                                <div className="w-12 h-12 rounded-2xl bg-yellow-100 dark:bg-yellow-900/40 flex items-center justify-center text-xl shadow-inner">
+                                                <div className="w-12 h-12 rounded-2xl bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center text-xl shadow-inner">
                                                     ❓
                                                 </div>
                                                 <h3 className="text-sm font-bold text-gray-900 dark:text-white line-clamp-2 mt-1">

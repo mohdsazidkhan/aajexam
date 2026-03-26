@@ -29,9 +29,9 @@ export default function GovtExamsPreparation({ initialData }) {
             </Head>
 
             <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-12 px-4 lg:px-10">
-                <div className="container bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12 border-t-8 border-yellow-600">
+                <div className="container bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12 border-t-8 border-primary-600">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-full text-yellow-700 dark:text-yellow-400 text-sm font-bold mb-4">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-sm font-bold mb-4">
                             <FaQuestionCircle className="w-4 h-4" />
                             <span>{pagination.totalExams || 0} Exams Available</span>
                         </div>
@@ -41,7 +41,7 @@ export default function GovtExamsPreparation({ initialData }) {
 
                     {loading ? (
                         <div className="flex justify-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
                         </div>
                     ) : (
                         <>
@@ -97,7 +97,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                                     key={pageNum}
                                                     onClick={() => handlePageChange(pageNum)}
                                                     className={`px-4 py-2 rounded-lg font-semibold transition-all ${pageNum === pagination.currentPage
-                                                        ? 'bg-yellow-600 text-white shadow-lg'
+                                                        ? 'bg-primary-600 text-white shadow-lg'
                                                         : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50'
                                                         }`}
                                                 >

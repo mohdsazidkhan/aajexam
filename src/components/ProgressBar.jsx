@@ -10,11 +10,11 @@
  */
 
 const COLOR_MAP = {
-    orange: 'bg-gradient-to-r from-orange-500 to-yellow-400',
-    blue:   'bg-gradient-to-r from-blue-500 to-cyan-400',
+    orange: 'bg-gradient-to-r from-primary-500 to-primary-400',
+    blue:   'bg-gradient-to-r from-secondary-500 to-cyan-400',
     purple: 'bg-gradient-to-r from-purple-600 to-indigo-400',
     green:  'bg-gradient-to-r from-green-500 to-emerald-400',
-    red:    'bg-gradient-to-r from-red-500 to-orange-400',
+    red:    'bg-gradient-to-r from-red-500 to-primary-400',
 };
 
 const HEIGHT_MAP = {

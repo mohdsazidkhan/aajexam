@@ -7,17 +7,17 @@ const RewardBadge = ({ level, status, className = '' }) => {
       case 'locked':
         return {
           text: 'Reward Locked',
-          bgColor: 'bg-yellow-100 dark:bg-yellow-900/20',
-          textColor: 'text-yellow-800 dark:text-yellow-300',
-          borderColor: 'border-yellow-200 dark:border-yellow-800',
+          bgColor: 'bg-primary-100 dark:bg-primary-900/20',
+          textColor: 'text-primary-800 dark:text-primary-300',
+          borderColor: 'border-primary-200 dark:border-primary-800',
           icon: '🔒'
         };
       case 'unlocked':
         return {
           text: 'Reward Unlocked',
-          bgColor: 'bg-blue-100 dark:bg-blue-900/20',
-          textColor: 'text-blue-800 dark:text-blue-300',
-          borderColor: 'border-blue-200 dark:border-blue-800',
+          bgColor: 'bg-secondary-100 dark:bg-secondary-900/20',
+          textColor: 'text-secondary-800 dark:text-secondary-300',
+          borderColor: 'border-secondary-200 dark:border-secondary-800',
           icon: '✅'
         };
       case 'claimed':

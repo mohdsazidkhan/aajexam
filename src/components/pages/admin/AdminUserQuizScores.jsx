@@ -70,13 +70,13 @@ const AdminUserQuizScores = ({ userId }) => {
 
   const getScoreColor = (percentage) => {
     if (percentage >= 75) return 'text-green-600 dark:text-green-400';
-    if (percentage >= 50) return 'text-orange-700 dark:text-yellow-400';
-    return 'text-red-600 dark:text-red-400';
+    if (percentage >= 50) return 'text-primary-600 dark:text-primary-400';
+    return 'text-primary-600 dark:text-red-400';
   };
 
   const getScoreBadge = (percentage) => {
     if (percentage >= 75) return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
-    if (percentage >= 50) return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300';
+    if (percentage >= 50) return 'bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300';
     return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
   };
 
@@ -158,7 +158,7 @@ const AdminUserQuizScores = ({ userId }) => {
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'grid'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                 >
@@ -168,7 +168,7 @@ const AdminUserQuizScores = ({ userId }) => {
                 <button
                   onClick={() => setViewMode('list')}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'list'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                 >
@@ -178,7 +178,7 @@ const AdminUserQuizScores = ({ userId }) => {
                 <button
                   onClick={() => setViewMode('table')}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'table'
-                    ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                    ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                     }`}
                 >
@@ -190,35 +190,35 @@ const AdminUserQuizScores = ({ userId }) => {
 
             {/* User Info Card */}
             {user && (
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-600 mb-6">
+              <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-secondary-200 dark:border-secondary-600 mb-6">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">Total Quizzes</div>
-                    <div className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Quizzes</div>
+                    <div className="text-lg font-bold text-secondary-800 dark:text-secondary-200">
                       {pagination.total}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">High Score Quizzes</div>
-                    <div className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">High Score Quizzes</div>
+                    <div className="text-lg font-bold text-secondary-800 dark:text-secondary-200">
                       {user?.monthlyProgress?.highScoreWins || 0}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">Total Score</div>
-                    <div className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Score</div>
+                    <div className="text-lg font-bold text-secondary-800 dark:text-secondary-200">
                       {user?.getScore} / {user?.totalScore}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">Accuracy</div>
-                    <div className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Accuracy</div>
+                    <div className="text-lg font-bold text-secondary-800 dark:text-secondary-200">
                       {user?.monthlyProgress?.accuracy || 0}%
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-blue-700 dark:text-blue-400">Page</div>
-                    <div className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Page</div>
+                    <div className="text-lg font-bold text-secondary-800 dark:text-secondary-200">
                       {pagination.page} / {pagination.totalPages}
                     </div>
                   </div>
@@ -263,7 +263,7 @@ const AdminUserQuizScores = ({ userId }) => {
                       return (
                         <div key={score.quizId || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
                           <div className={`p-4 text-white ${percentage >= 75 ? 'bg-gradient-to-r from-green-500 to-emerald-600' :
-                            percentage >= 50 ? 'bg-gradient-to-r from-yellow-500 to-orange-600' :
+                            percentage >= 50 ? 'bg-gradient-to-r from-primary-500 to-primary-600' :
                               'bg-gradient-to-r from-red-500 to-pink-600'
                             }`}>
                             <div className="flex items-center justify-between">
@@ -346,7 +346,7 @@ const AdminUserQuizScores = ({ userId }) => {
                             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                               <div className="flex items-center gap-4 flex-1">
                                 <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${percentage >= 75 ? 'bg-gradient-to-r from-green-500 to-emerald-600' :
-                                  percentage >= 50 ? 'bg-gradient-to-r from-yellow-500 to-orange-600' :
+                                  percentage >= 50 ? 'bg-gradient-to-r from-primary-500 to-primary-600' :
                                     'bg-gradient-to-r from-red-500 to-pink-600'
                                   }`}>
                                   {serialNumber}

@@ -321,26 +321,26 @@ const AdminSubscriptions = () => {
   const getPlanIcon = (planName) => {
     switch (planName?.toLowerCase()) {
       case 'basic':
-        return <FaStar className="text-yellow-500" />;
+        return <FaStar className="text-primary-500" />;
       case 'premium':
-        return <FaGem className="text-yellow-500" />;
+        return <FaGem className="text-primary-500" />;
       case 'pro':
-        return <FaCrown className="text-orange-700" />;
+        return <FaCrown className="text-primary-600" />;
       default:
-        return <FaRocket className="text-blue-500" />;
+        return <FaRocket className="text-secondary-500" />;
     }
   };
 
   const getPlanColor = (planName) => {
     switch (planName?.toLowerCase()) {
       case 'basic':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       case 'premium':
-        return 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200';
+        return 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200';
       case 'pro':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       default:
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+        return 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200';
     }
   };
 
@@ -351,7 +351,7 @@ const AdminSubscriptions = () => {
       case 'inactive':
         return <FaTimesCircle className="text-red-500" />;
       case 'expired':
-        return <FaClock className="text-orange-500" />;
+        return <FaClock className="text-primary-500" />;
       case 'cancelled':
         return <FaExclamationTriangle className="text-gray-500" />;
       default:
@@ -366,7 +366,7 @@ const AdminSubscriptions = () => {
       case 'inactive':
         return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
       case 'expired':
-        return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       case 'cancelled':
         return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
       default:
@@ -407,7 +407,7 @@ const AdminSubscriptions = () => {
 
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <FaSort className="text-gray-400" />;
-    return sortOrder === 'asc' ? <FaSortUp className="text-blue-500" /> : <FaSortDown className="text-blue-500" />;
+    return sortOrder === 'asc' ? <FaSortUp className="text-secondary-500" /> : <FaSortDown className="text-secondary-500" />;
   };
 
   if (loading) {
@@ -447,26 +447,26 @@ const AdminSubscriptions = () => {
                 placeholder="Search subscriptions..."
                 value={filters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
               />
             </div>
             {/* View Mode Toggle - Hidden on mobile, shown on desktop */}
             <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
               <button
                 onClick={() => setViewMode('table')}
-                className={`p-2 rounded ${viewMode === 'table' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'table' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaTable />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaTh />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded ${viewMode === 'list' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'list' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaList />
               </button>
@@ -501,13 +501,13 @@ const AdminSubscriptions = () => {
 
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl p-3 text-white">
+            <div className="bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-100 text-sm font-medium">Total Subscriptions</p>
+                  <p className="text-secondary-100 text-sm font-medium">Total Subscriptions</p>
                   <p className="text-2xl font-bold">{summary.totalSubscriptions || 0}</p>
                 </div>
-                <FaUsers className="text-3xl text-blue-200" />
+                <FaUsers className="text-3xl text-secondary-200" />
               </div>
             </div>
 
@@ -524,20 +524,20 @@ const AdminSubscriptions = () => {
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-yellow-100 text-sm font-medium">Total Revenue</p>
+                  <p className="text-primary-100 text-sm font-medium">Total Revenue</p>
                   <p className="text-2xl font-bold">{formatCurrency(summary.totalRevenue || 0)}</p>
                 </div>
-                <FaChartLine className="text-3xl text-yellow-200" />
+                <FaChartLine className="text-3xl text-primary-200" />
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl p-3 text-white">
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-100 text-sm font-medium">This Period</p>
+                  <p className="text-primary-100 text-sm font-medium">This Period</p>
                   <p className="text-2xl font-bold">{formatCurrency(summary.periodRevenue || 0)}</p>
                 </div>
-                <FaCalendar className="text-3xl text-orange-200" />
+                <FaCalendar className="text-3xl text-primary-200" />
               </div>
             </div>
 
@@ -551,7 +551,7 @@ const AdminSubscriptions = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-yellow-500 from-red-600 rounded-xl p-3 text-white">
+            <div className="bg-gradient-to-r from-primary-500 from-red-600 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-red-100 text-sm font-medium">Paid Subscriptions</p>
@@ -581,7 +581,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={filters.plan}
                         onChange={(e) => handleFilterChange('plan', e.target.value)}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="all">All Plans</option>
                         {filterOptions.plans.map(plan => (
@@ -592,7 +592,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={filters.status}
                         onChange={(e) => handleFilterChange('status', e.target.value)}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="all">All Status</option>
                         {filterOptions.statuses.slice(1).map(status => (
@@ -603,7 +603,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={filters.year}
                         onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="">All Years</option>
                         {filterOptions.years.map(year => (
@@ -614,7 +614,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={filters.month}
                         onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value={0}>All Months</option>
                         {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -635,7 +635,7 @@ const AdminSubscriptions = () => {
           {/* Subscriptions Display */}
           {error ? (
             <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-6 text-center">
-              <div className="text-red-600 dark:text-red-400 text-lg mb-2">⚠️ Error</div>
+              <div className="text-primary-600 dark:text-red-400 text-lg mb-2">⚠️ Error</div>
               <div className="text-red-700 dark:text-red-300">{error}</div>
             </div>
           ) : subscriptions.length === 0 ? (
@@ -736,7 +736,7 @@ const AdminSubscriptions = () => {
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
-                                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-yellow-500 to-red-500 flex items-center justify-center">
+                                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
                                     <span className="text-white font-medium text-sm">
                                       {subscription.user?.name?.charAt(0) || 'U'}
                                     </span>
@@ -779,7 +779,7 @@ const AdminSubscriptions = () => {
                               <div className="flex items-center gap-2">
                                 <button
                                   onClick={() => toggleSubscriptionDetails(subscription._id)}
-                                  className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                                  className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                                   title="View Details"
                                 >
                                   {expandedSubscription === subscription._id ? <FaEyeSlash /> : <FaEye />}
@@ -947,7 +947,7 @@ const AdminSubscriptions = () => {
                             key={page}
                             onClick={() => handlePageChange(page)}
                             className={`px-3 py-2 rounded-lg text-sm ${pagination.currentPage === page
-                              ? 'bg-yellow-600 text-white'
+                              ? 'bg-primary-600 text-white'
                               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                               }`}
                           >
@@ -1014,7 +1014,7 @@ const AdminSubscriptions = () => {
                     <select
                       value={extendForm.plan}
                       onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
                     >
                       <option value="free">Free</option>
                       <option value="basic">Basic</option>
@@ -1030,7 +1030,7 @@ const AdminSubscriptions = () => {
                     <select
                       value={extendForm.duration}
                       onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
                     >
                       <option value="1 month">1 Month</option>
                       <option value="2 months">2 Months</option>
@@ -1043,7 +1043,7 @@ const AdminSubscriptions = () => {
 
                   {error && (
                     <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-3">
-                      <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                      <p className="text-sm text-primary-600 dark:text-red-400">{error}</p>
                     </div>
                   )}
 
@@ -1058,7 +1058,7 @@ const AdminSubscriptions = () => {
                     <button
                       onClick={handleExtendSubscription}
                       disabled={extending}
-                      className="flex-1 px-4 py-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white rounded-lg hover:from-red-600 hover:to-yellow-600 disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2 bg-gradient-to-r from-red-500 to-primary-500 text-white rounded-lg hover:from-red-600 hover:to-primary-600 disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {extending ? (
                         <>

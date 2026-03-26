@@ -76,7 +76,7 @@ export default function UserWithdrawalHistory() {
                 );
             case 'pending':
                 return (
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
                         <FaHourglassHalf className="mr-1" /> Pending
                     </span>
                 );
@@ -88,7 +88,7 @@ export default function UserWithdrawalHistory() {
                 );
             case 'approved':
                 return (
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300">
                         <FaCheckCircle className="mr-1" /> Approved
                     </span>
                 );

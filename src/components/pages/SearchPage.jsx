@@ -259,7 +259,7 @@ const SearchPage = () => {
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-yellow-500 to-red-600 text-white px-4 py-2 rounded shadow hover:opacity-90"
+              className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white px-4 py-2 rounded shadow hover:opacity-90"
             >
               Search
             </button>
@@ -290,7 +290,7 @@ const SearchPage = () => {
                       key={tab.key}
                       onClick={() => setActiveTab(tab.key)}
                       className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === tab.key
-                        ? 'bg-gradient-to-r from-yellow-500 to-red-600 text-white border-b-2 border-yellow-500'
+                        ? 'bg-gradient-to-r from-primary-500 to-secondary-600 text-white border-b-2 border-primary-500'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                         }`}
                     >
@@ -356,7 +356,7 @@ const SearchPage = () => {
                           return (
                             <div
                               key={item._id}
-                              className="border-2 border-gray-200 dark:border-yellow-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
+                              className="border-2 border-gray-200 dark:border-primary-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
                             >
                               <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
                                 {item.title}
@@ -377,7 +377,7 @@ const SearchPage = () => {
                               </p>
                               <button
                                 onClick={() => handleQuizAttempt(item)}
-                                className="mt-3 w-full bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-2 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-base text-center"
+                                className="mt-3 w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-2 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-base text-center"
                               >
                                 Start Quiz
                               </button>
@@ -422,13 +422,13 @@ const SearchPage = () => {
                             <div
                               key={item._id}
                               onClick={() => router.push(`/govt-exams/category/${item._id}`)}
-                              className="border cursor-pointer border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
+                              className="border cursor-pointer border-secondary-200 dark:border-secondary-700 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
                             >
                               <div className="flex items-center justify-between mb-2">
                                 <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
                                   {item.name}
                                 </h3>
-                                <span className="text-xs px-2 py-1 bg-blue-500 text-white rounded">
+                                <span className="text-xs px-2 py-1 bg-secondary-500 text-white rounded">
                                   {item.type === 'Central' || item.type === 'State' ? item.type : 'Central'}
                                 </span>
                               </div>
@@ -519,7 +519,7 @@ const SearchPage = () => {
                           return (
                             <div
                               key={item._id}
-                              className="border-2 border-orange-200 dark:border-orange-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
+                              className="border-2 border-primary-200 dark:border-primary-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
                             >
                               <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
                                 {item.title}
@@ -543,13 +543,13 @@ const SearchPage = () => {
                               <div className="mt-3 flex items-center justify-between">
                                 <span className={`text-xs px-2 py-1 rounded ${item.isFree
                                   ? 'bg-green-500 text-white'
-                                  : 'bg-yellow-500 text-white'
+                                  : 'bg-primary-500 text-white'
                                   }`}>
                                   {item.isFree ? 'Free' : 'Premium'}
                                 </span>
                                 <button
                                   onClick={() => handleTestAttempt(item)}
-                                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-1 px-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-sm"
+                                  className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-1 px-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-sm"
                                 >
                                   Start Test
                                 </button>
@@ -634,7 +634,7 @@ const SearchPage = () => {
                       fetchData(query, newPage);
                     }}
                     className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${currentPage === i + 1
-                      ? "bg-gradient-to-r from-yellow-600 to-red-600 text-white border-yellow-600 shadow-lg"
+                      ? "bg-gradient-to-r from-primary-600 to-secondary-600 text-white border-primary-600 shadow-lg"
                       : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >

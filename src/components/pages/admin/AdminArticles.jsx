@@ -169,9 +169,9 @@ const AdminArticles = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       published: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Published' },
-      draft: { color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300', text: 'Draft' },
-      pending: { color: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300', text: 'Pending' },
-      approved: { color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300', text: 'Approved' },
+      draft: { color: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300', text: 'Draft' },
+      pending: { color: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300', text: 'Pending' },
+      approved: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Approved' },
       rejected: { color: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300', text: 'Rejected' },
       archived: { color: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300', text: 'Archived' }
     };
@@ -187,8 +187,8 @@ const AdminArticles = () => {
     if (!rewardTier) return null;
     const tierConfig = {
       normal: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Normal ₹5' },
-      good: { color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300', text: 'Good ₹10' },
-      high: { color: 'bg-purple-100 text-yellow-800 dark:bg-purple-900/30 dark:text-yellow-300', text: 'High ₹15' }
+      good: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Good ₹10' },
+      high: { color: 'bg-purple-100 text-primary-800 dark:bg-purple-900/30 dark:text-primary-300', text: 'High ₹15' }
     };
     const config = tierConfig[rewardTier];
     if (!config) return null;
@@ -250,14 +250,14 @@ const AdminArticles = () => {
                       <div className="text-sm font-medium text-gray-900 dark:text-white" title={article.title}>
                         {article.title?.length > 40 ? article.title?.substring(0, 40) + '...' : article.title}
                         {article.isFeatured && (
-                          <span className="ml-2 text-yellow-500">⭐</span>
+                          <span className="ml-2 text-primary-500">⭐</span>
                         )}
                         {article.isPinned && (
-                          <span className="ml-2 text-blue-500">📌</span>
+                          <span className="ml-2 text-secondary-500">📌</span>
                         )}
                       </div>
                       {article.slug && (
-                        <div className="text-xs text-blue-600 dark:text-blue-400 mt-1" title={article.slug}>
+                        <div className="text-xs text-secondary-600 dark:text-secondary-400 mt-1" title={article.slug}>
                           <code>/articles/{article.slug?.length > 40 ? article.slug?.substring(0, 40) + '...' : article.slug}</code>
                         </div>
                       )}
@@ -298,14 +298,14 @@ const AdminArticles = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <div className="flex space-x-2">
                     <Link href={`/admin/articles/${article._id}/edit`}
-                      className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                      className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                     >
                       Edit
                     </Link>
                     {article.status === 'published' ? (
                       <button
                         onClick={() => handleUnpublish(article._id)}
-                        className="text-orange-700 hover:text-orange-900 dark:text-orange-400 dark:hover:text-orange-300"
+                        className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300"
                       >
                         Unpublish
                       </button>
@@ -319,19 +319,19 @@ const AdminArticles = () => {
                     )}
                     <button
                       onClick={() => handleToggleFeatured(article._id)}
-                      className={`${article.isFeatured ? 'text-orange-700' : 'text-gray-400'} hover:text-yellow-900 dark:hover:text-yellow-300`}
+                      className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}
                     >
                       ⭐
                     </button>
                     <button
                       onClick={() => handleTogglePinned(article._id)}
-                      className={`${article.isPinned ? 'text-blue-600' : 'text-gray-400'} hover:text-blue-900 dark:hover:text-blue-300`}
+                      className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}
                     >
                       📌
                     </button>
                     <button
                       onClick={() => handleDelete(article._id)}
-                      className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                      className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                     >
                       Delete
                     </button>
@@ -361,8 +361,8 @@ const AdminArticles = () => {
                 {getStatusBadge(article.status)}
                 {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
                 {article.rewardCredited && <span className="text-green-500" title="Reward credited">💰</span>}
-                {article.isFeatured && <span className="text-yellow-500">⭐</span>}
-                {article.isPinned && <span className="text-blue-500">📌</span>}
+                {article.isFeatured && <span className="text-primary-500">⭐</span>}
+                {article.isPinned && <span className="text-secondary-500">📌</span>}
               </div>
               <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-4">
                 <span>By {article.author?.name || 'Unknown'}</span>
@@ -374,24 +374,24 @@ const AdminArticles = () => {
                 Created: {formatDate(article.createdAt)} at {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
               </div>
               {article.slug && (
-                <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                <div className="text-xs text-secondary-600 dark:text-secondary-400 mt-1">
                   <code>/articles/{article.slug}</code>
                 </div>
               )}
               <div className="mt-3 flex items-center gap-3">
                 <Link href={`/admin/articles/${article._id}/edit`}
-                  className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                  className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                 >
                   Edit
                 </Link>
                 {article.status === 'published' ? (
-                  <button onClick={() => handleUnpublish(article._id)} className="text-orange-700 hover:text-orange-900 dark:text-orange-400 dark:hover:text-orange-300">Unpublish</button>
+                  <button onClick={() => handleUnpublish(article._id)} className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300">Unpublish</button>
                 ) : (
                   <button onClick={() => handlePublish(article._id)} className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300">Publish</button>
                 )}
-                <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-orange-700' : 'text-gray-400'} hover:text-yellow-900 dark:hover:text-yellow-300`}>⭐</button>
-                <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-blue-600' : 'text-gray-400'} hover:text-blue-900 dark:hover:text-blue-300`}>📌</button>
-                <button onClick={() => handleDelete(article._id)} className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
+                <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}>⭐</button>
+                <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}>📌</button>
+                <button onClick={() => handleDelete(article._id)} className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
               </div>
             </div>
           </div>
@@ -431,15 +431,15 @@ const AdminArticles = () => {
             Created: {new Date(article.createdAt).toLocaleDateString('en-US')} at {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
           </div>
           <div className="mt-3 flex items-center gap-3">
-            <Link href={`/admin/articles/${article._id}/edit`} className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300">Edit</Link>
+            <Link href={`/admin/articles/${article._id}/edit`} className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300">Edit</Link>
             {article.status === 'published' ? (
-              <button onClick={() => handleUnpublish(article._id)} className="text-orange-700 hover:text-orange-900 dark:text-orange-400 dark:hover:text-orange-300">Unpublish</button>
+              <button onClick={() => handleUnpublish(article._id)} className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300">Unpublish</button>
             ) : (
               <button onClick={() => handlePublish(article._id)} className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300">Publish</button>
             )}
-            <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-orange-700' : 'text-gray-400'} hover:text-yellow-900 dark:hover:text-yellow-300`}>⭐</button>
-            <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-blue-600' : 'text-gray-400'} hover:text-blue-900 dark:hover:text-blue-300`}>📌</button>
-            <button onClick={() => handleDelete(article._id)} className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
+            <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}>⭐</button>
+            <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}>📌</button>
+            <button onClick={() => handleDelete(article._id)} className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
           </div>
         </div>
       ))}
@@ -507,7 +507,7 @@ const AdminArticles = () => {
                   value={filters.search}
                   onChange={handleFilterChange}
                   placeholder="Search articles..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 />
               </div>
               <div>
@@ -518,7 +518,7 @@ const AdminArticles = () => {
                   name="status"
                   value={filters.status}
                   onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">All Status</option>
                   <option value="published">Published</option>
@@ -534,7 +534,7 @@ const AdminArticles = () => {
                   name="category"
                   value={filters.category}
                   onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">All Categories</option>
                   {categories.map(category => (
@@ -552,7 +552,7 @@ const AdminArticles = () => {
                   name="isFeatured"
                   value={filters.isFeatured}
                   onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">All</option>
                   <option value="true">Featured</option>
@@ -567,7 +567,7 @@ const AdminArticles = () => {
                   name="isPinned"
                   value={filters.isPinned}
                   onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">All</option>
                   <option value="true">Pinned</option>
@@ -585,7 +585,7 @@ const AdminArticles = () => {
                     setItemsPerPage(newItemsPerPage);
                     setCurrentPage(1);
                   }}
-                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>

@@ -34,10 +34,10 @@ const TermsAndConditions = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-4 lg:mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <FaFileContract className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-yellow-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
               Terms & Conditions
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -53,7 +53,7 @@ const TermsAndConditions = () => {
             {/* Introduction */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center">
                   <FaInfoCircle className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -102,7 +102,7 @@ const TermsAndConditions = () => {
             {/* Subscription Plans */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaUsers className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -114,11 +114,11 @@ const TermsAndConditions = () => {
                   AajExam offers two subscription tiers, each providing access to different levels of our progression system:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
-                  <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                  <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
                     <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Free Plan</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Access to Levels 0-9</p>
                   </div>
-                  <div className="bg-gradient-to-r from-yellow-50 to-orange-100 dark:from-yellow-900/30 dark:to-orange-800/30 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                  <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                     <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Pro Plan</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Full access to all Levels 0-10 (including Legend) and all premium features</p>
                   </div>
@@ -138,7 +138,7 @@ const TermsAndConditions = () => {
             {/* Performance Recognition System */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaGift className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -172,7 +172,7 @@ const TermsAndConditions = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700 mt-4">
+                <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700 mt-4">
                   <h3 className="font-semibold text-lg text-gray-800 dark:text-white mb-2">Prize Pools</h3>
                   <p className="text-sm">
                     Top eligible users share dynamic total recognition pools depending on the challenge timeframe (e.g., active PRO player counts for Monthly). Distribution is processed within 7 business days after the challenge ends.
@@ -275,7 +275,7 @@ const TermsAndConditions = () => {
             {/* Limitation of Liability */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaGavel className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -296,9 +296,9 @@ const TermsAndConditions = () => {
             </div>
 
             {/* Modifications */}
-            <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-orange-200 dark:border-orange-700">
+            <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-primary-200 dark:border-primary-700">
               <div className="flex items-start gap-4">
-                <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center flex-shrink-0">
                   <FaExclamationTriangle className="text-white text-xl" />
                 </div>
                 <div>
@@ -315,7 +315,7 @@ const TermsAndConditions = () => {
             {/* Governing Law */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-2xl flex items-center justify-center">
                   <FaGavel className="text-white text-md lg:text-2xl" />
                 </div>
                 <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -351,7 +351,7 @@ const TermsAndConditions = () => {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mb-8 lg:mb-12">
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-xl flex items-center justify-center mb-4">
                 <FaShieldAlt className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Fair Play Guaranteed</h3>
@@ -371,7 +371,7 @@ const TermsAndConditions = () => {
             </div>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaUsers className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">User Protection</h3>
@@ -383,7 +383,7 @@ const TermsAndConditions = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-yellow-100 to-purple-100 dark:from-yellow-800 dark:to-purple-800 rounded-3xl p-4 md:p-6 lg:p-8">
+            <div className="bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-800 dark:to-purple-800 rounded-3xl p-4 md:p-6 lg:p-8">
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                 Questions About Our Terms?
               </h2>

@@ -163,7 +163,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                 </td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-2">
-                                        <FaQuestionCircle className="text-blue-500" />
+                                        <FaQuestionCircle className="text-secondary-500" />
                                         <span className="text-sm text-gray-900 dark:text-white">
                                             {tx.description || 'Quiz Reward'}
                                         </span>
@@ -188,8 +188,8 @@ export default function UserQuizRewardsHistory({ userId }) {
             {transactions.map((tx) => (
                 <div key={tx._id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
                     <div className="flex items-start gap-4">
-                        <div className="h-12 w-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                            <FaQuestionCircle className="text-xl text-blue-600 dark:text-blue-400" />
+                        <div className="h-12 w-12 bg-secondary-100 dark:bg-secondary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                            <FaQuestionCircle className="text-xl text-secondary-600 dark:text-secondary-400" />
                         </div>
                         <div className="flex-1">
                             <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -223,8 +223,8 @@ export default function UserQuizRewardsHistory({ userId }) {
             {transactions.map((tx) => (
                 <div key={tx._id} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
                     <div className="flex items-center gap-3 mb-3">
-                        <div className="h-10 w-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                            <FaQuestionCircle className="text-blue-600 dark:text-blue-400" />
+                        <div className="h-10 w-10 bg-secondary-100 dark:bg-secondary-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                            <FaQuestionCircle className="text-secondary-600 dark:text-secondary-400" />
                         </div>
                         <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2">
                             {tx.description || 'Quiz Reward'}
@@ -262,7 +262,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                 <div className="flex items-center gap-2 mb-2">
                                     <Link
                                         href="/admin/quiz-rewards-history"
-                                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm"
+                                        className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 text-sm"
                                     >
                                         ← Back to All Rewards
                                     </Link>

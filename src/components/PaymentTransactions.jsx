@@ -117,9 +117,9 @@ const PaymentTransactions = () => {
         return <FaTimesCircle className="text-red-500" />;
       case 'created':
       case 'authorized':
-        return <FaClock className="text-yellow-500" />;
+        return <FaClock className="text-primary-500" />;
       case 'refunded':
-        return <FaExclamationTriangle className="text-orange-500" />;
+        return <FaExclamationTriangle className="text-primary-500" />;
       default:
         return <FaExclamationTriangle className="text-gray-500" />;
     }
@@ -135,9 +135,9 @@ const PaymentTransactions = () => {
         return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
       case 'created':
       case 'authorized':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
       case 'refunded':
-        return 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
       default:
         return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
     }
@@ -146,9 +146,9 @@ const PaymentTransactions = () => {
   const getSourceIcon = (source) => {
     switch (source) {
       case 'payment_order':
-        return <FaCreditCard className="text-blue-500" />;
+        return <FaCreditCard className="text-secondary-500" />;
       default:
-        return <FaCreditCard className="text-blue-500" />;
+        return <FaCreditCard className="text-secondary-500" />;
     }
   };
 
@@ -163,8 +163,8 @@ const PaymentTransactions = () => {
 
   const getTypeColor = (type, source) => {
     if (type === 'credit') return 'text-green-600 dark:text-green-400';
-    if (type === 'debit') return 'text-red-600 dark:text-red-400';
-    if (source === 'payment_order') return 'text-blue-600 dark:text-blue-400';
+    if (type === 'debit') return 'text-primary-600 dark:text-red-400';
+    if (source === 'payment_order') return 'text-secondary-600 dark:text-secondary-400';
     return 'text-gray-600 dark:text-gray-400';
   };
 
@@ -208,11 +208,11 @@ const PaymentTransactions = () => {
   return (
     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-yellow-500 to-red-500 p-3 lg:p-6 text-white">
+      <div className="bg-gradient-to-r from-primary-500 to-secondary-500 p-3 lg:p-6 text-white">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
             <h2 className="text-md lg:text-2xl font-bold mb-2">Payment Transactions</h2>
-            <p className="text-yellow-100">View and manage your payment history</p>
+            <p className="text-primary-100">View and manage your payment history</p>
           </div>
           <div className="flex items-center space-x-2 mt-4 sm:mt-0">
             <button
@@ -255,8 +255,8 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                  <FaReceipt className="text-blue-600 dark:text-blue-400 text-xl" />
+                <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/30 rounded-full flex items-center justify-center">
+                  <FaReceipt className="text-secondary-600 dark:text-secondary-400 text-xl" />
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@ const PaymentTransactions = () => {
                 placeholder="Search transactions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
             </div>
 
@@ -297,7 +297,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value={1}>January</option>
               <option value={2}>February</option>
@@ -317,7 +317,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -328,7 +328,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">All Status</option>
               <option value="paid">Paid</option>
@@ -357,7 +357,7 @@ const PaymentTransactions = () => {
         {error ? (
           <div className="text-center py-12">
             <FaExclamationTriangle className="text-red-500 text-4xl mx-auto mb-4" />
-            <p className="text-red-600 dark:text-red-400 text-lg">{error}</p>
+            <p className="text-primary-600 dark:text-red-400 text-lg">{error}</p>
           </div>
         ) : filteredTransactions.length === 0 ? (
           <div className="text-center py-12">
@@ -429,7 +429,7 @@ const PaymentTransactions = () => {
                       {/* Payment Details */}
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
-                          <FaCreditCard className="text-blue-500" />
+                          <FaCreditCard className="text-secondary-500" />
                           <span>Payment Details</span>
                         </h4>
                         <div className="space-y-3">
@@ -473,7 +473,7 @@ const PaymentTransactions = () => {
                       {/* Additional Info */}
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
-                          <FaReceipt className="text-yellow-500" />
+                          <FaReceipt className="text-primary-500" />
                           <span>Additional Information</span>
                         </h4>
                         <div className="space-y-3">
@@ -533,8 +533,8 @@ const PaymentTransactions = () => {
                     key={page}
                     onClick={() => handlePageChange(page)}
                     className={`px-3 py-2 rounded-lg transition-colors ${page === pagination.currentPage
-                        ? 'bg-yellow-500 text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                      ? 'bg-primary-500 text-white'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                       }`}
                   >
                     {page}

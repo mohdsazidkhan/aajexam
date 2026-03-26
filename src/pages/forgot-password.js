@@ -50,7 +50,7 @@ const ForgotPasswordPage = () => {
           <div className="flex items-center justify-center p-2 md:p-4">
             <div className="w-full max-w-md bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
               <div className="mb-6 flex items-center gap-2">
-                <Link href="/login" className="text-orange-700 hover:underline flex items-center gap-1">
+                <Link href="/login" className="text-primary-600 hover:underline flex items-center gap-1">
                   <FaArrowLeft /> Back to Login
                 </Link>
               </div>
@@ -71,7 +71,7 @@ const ForgotPasswordPage = () => {
                       <input
                         id="email"
                         type="email"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
                         placeholder="Enter your email"
                         value={email}
                         onChange={e => setEmail(e.target.value?.toLowerCase())}
@@ -82,7 +82,7 @@ const ForgotPasswordPage = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-600 hover:to-red-600 shadow-lg hover:shadow-xl"
+                    className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 shadow-lg hover:shadow-xl"
                     disabled={isLoading}
                   >
                     {isLoading ? (

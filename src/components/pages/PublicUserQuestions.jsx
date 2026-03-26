@@ -191,7 +191,7 @@ const PublicUserQuestions = () => {
                 }
               }}
               placeholder="Search by question, name, username, email..."
-              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent text-sm"
             />
             <button
               onClick={() => {
@@ -203,7 +203,7 @@ const PublicUserQuestions = () => {
               }}
               className={`px-4 py-2 ${isSearchActive
                 ? 'bg-gray-500 hover:bg-gray-600'
-                : 'bg-blue-600 hover:bg-blue-700'
+                : 'bg-secondary-600 hover:bg-secondary-700'
                 } text-white rounded-lg text-sm whitespace-nowrap`}
             >
               {isSearchActive ? 'Clear' : 'Search'}
@@ -213,7 +213,7 @@ const PublicUserQuestions = () => {
 
         {loading && (
           <div className="mb-3">
-            <div className="h-2 w-24 bg-blue-200 dark:bg-blue-900 rounded animate-pulse"></div>
+            <div className="h-2 w-24 bg-secondary-200 dark:bg-secondary-900 rounded animate-pulse"></div>
           </div>
         )}
 
@@ -230,9 +230,9 @@ const PublicUserQuestions = () => {
         {loadingMore && (
           <div className="flex justify-center items-center py-8">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
             </div>
           </div>
         )}

@@ -10,8 +10,8 @@ import NearWinBanner from './NearWinBanner';
 import ProgressBar from './ProgressBar';
 
 const TYPE_CONFIG = {
-    daily:   { label: 'Today',      icon: '☀️', color: 'from-orange-500 to-yellow-400',  ring: 'ring-orange-400' },
-    weekly:  { label: 'This Week',  icon: '📅', color: 'from-blue-500 to-cyan-400',      ring: 'ring-blue-400'   },
+    daily:   { label: 'Today',      icon: '☀️', color: 'from-primary-500 to-primary-400',  ring: 'ring-primary-400' },
+    weekly:  { label: 'This Week',  icon: '📅', color: 'from-secondary-500 to-cyan-400',      ring: 'ring-secondary-400'   },
     monthly: { label: 'This Month', icon: '🏆', color: 'from-purple-600 to-indigo-400',  ring: 'ring-purple-400' },
 };
 

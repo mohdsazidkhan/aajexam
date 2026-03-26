@@ -154,9 +154,9 @@ const AdminMonthlyWinners = () => {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
               <div className="flex items-center gap-3">
                 <div>
-                  <h2 className={`text-md lg:text-3xl font-black italic tracking-tighter uppercase ${activeType === 'daily' ? 'text-blue-600 dark:text-blue-400' :
-                    activeType === 'weekly' ? 'text-purple-600 dark:text-purple-400' :
-                      'text-yellow-600 dark:text-yellow-500'
+                  <h2 className={`text-md lg:text-3xl font-black italic tracking-tighter uppercase ${activeType === 'daily' ? 'text-secondary-600 dark:text-secondary-400' :
+                    activeType === 'weekly' ? 'text-primary-600 dark:text-primary-400' :
+                      'text-primary-600 dark:text-primary-500'
                     }`}>
                     {activeType} Champions
                   </h2>
@@ -175,9 +175,9 @@ const AdminMonthlyWinners = () => {
                     key={type}
                     onClick={() => setActiveType(type)}
                     className={`px-4 py-1.5 rounded-lg text-xs font-black transition-all duration-200 capitalize ${activeType === type
-                      ? activeType === 'daily' ? 'bg-blue-600 text-white shadow-lg' :
+                      ? activeType === 'daily' ? 'bg-secondary-600 text-white shadow-lg' :
                         activeType === 'weekly' ? 'bg-purple-600 text-white shadow-lg' :
-                          'bg-yellow-600 text-white shadow-lg'
+                          'bg-primary-600 text-white shadow-lg'
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                       }`}
                   >
@@ -196,7 +196,7 @@ const AdminMonthlyWinners = () => {
                       onChange={(date) => setPreciseDate(dayjs(date).format('YYYY-MM-DD'))}
                       dateFormat="yyyy-MM-dd"
                       maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
+                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-secondary-500"
                     />
                   </div>
                 )}
@@ -257,7 +257,7 @@ const AdminMonthlyWinners = () => {
                       dateFormat="MMMM yyyy"
                       showMonthYearPicker
                       maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-yellow-500"
+                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-primary-500"
                     />
                   </div>
                 )}
@@ -276,7 +276,7 @@ const AdminMonthlyWinners = () => {
                     <button
                       onClick={() => setViewMode('grid')}
                       className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'grid'
-                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                         }`}
                     >
@@ -286,7 +286,7 @@ const AdminMonthlyWinners = () => {
                     <button
                       onClick={() => setViewMode('list')}
                       className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'list'
-                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                         }`}
                     >
@@ -296,7 +296,7 @@ const AdminMonthlyWinners = () => {
                     <button
                       onClick={() => setViewMode('table')}
                       className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'table'
-                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                         }`}
                     >
@@ -349,9 +349,9 @@ const AdminMonthlyWinners = () => {
               <>
                 {/* Dynamic Summary Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
-                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-blue-500 shadow-blue-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-yellow-500 shadow-yellow-50'}`}>
+                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-secondary-500 shadow-secondary-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-primary-500 shadow-primary-50'}`}>
                     <div className="flex items-center gap-5">
-                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-blue-50 text-blue-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-yellow-50 text-yellow-600'}`}>
+                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-secondary-50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-primary-50 text-secondary-600'}`}>
                         <FaCalendarAlt className="text-2xl" />
                       </div>
                       <div>
@@ -363,9 +363,9 @@ const AdminMonthlyWinners = () => {
                     </div>
                   </div>
 
-                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-blue-500 shadow-blue-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-yellow-500 shadow-yellow-50'}`}>
+                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-secondary-500 shadow-secondary-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-primary-500 shadow-primary-50'}`}>
                     <div className="flex items-center gap-5">
-                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-blue-50 text-blue-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-yellow-50 text-yellow-600'}`}>
+                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-secondary-50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-primary-50 text-secondary-600'}`}>
                         <FaUsers className="text-2xl" />
                       </div>
                       <div>
@@ -377,9 +377,9 @@ const AdminMonthlyWinners = () => {
                     </div>
                   </div>
 
-                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-blue-500 shadow-blue-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-yellow-500 shadow-yellow-50'}`}>
+                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-secondary-500 shadow-secondary-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-primary-500 shadow-primary-50'}`}>
                     <div className="flex items-center gap-5">
-                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-blue-50 text-blue-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-yellow-50 text-yellow-600'}`}>
+                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-secondary-50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-primary-50 text-secondary-600'}`}>
                         <FaRupeeSign className="text-2xl" />
                       </div>
                       <div>
@@ -391,9 +391,9 @@ const AdminMonthlyWinners = () => {
                     </div>
                   </div>
 
-                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-blue-400 shadow-blue-50/50' : activeType === 'weekly' ? 'border-purple-400 shadow-purple-50/50' : 'border-yellow-400 shadow-yellow-50/50'}`}>
+                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-secondary-400 shadow-secondary-50/50' : activeType === 'weekly' ? 'border-purple-400 shadow-purple-50/50' : 'border-primary-400 shadow-primary-50/50'}`}>
                     <div className="flex items-center gap-5">
-                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-blue-50/50 text-blue-500' : activeType === 'weekly' ? 'bg-purple-50/50 text-purple-500' : 'bg-yellow-50/50 text-yellow-500'}`}>
+                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-secondary-50/50 text-secondary-500' : activeType === 'weekly' ? 'bg-purple-50/50 text-purple-500' : 'bg-primary-50/50 text-primary-500'}`}>
                         <FaHistory className="text-2xl" />
                       </div>
                       <div>
@@ -407,9 +407,9 @@ const AdminMonthlyWinners = () => {
                     </div>
                   </div>
 
-                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-blue-500 shadow-blue-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-yellow-500 shadow-yellow-50'}`}>
+                  <div className={`bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border-b-8 transition-all hover:scale-[1.02] ${activeType === 'daily' ? 'border-secondary-500 shadow-secondary-50' : activeType === 'weekly' ? 'border-purple-500 shadow-purple-50' : 'border-primary-500 shadow-primary-50'}`}>
                     <div className="flex items-center gap-5">
-                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-blue-50 text-blue-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-yellow-50 text-yellow-600'}`}>
+                      <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-secondary-50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-50 text-purple-600' : 'bg-primary-50 text-secondary-600'}`}>
                         <FaTrophy className="text-2xl" />
                       </div>
                       <div>
@@ -424,14 +424,14 @@ const AdminMonthlyWinners = () => {
 
 
                 {/* Rules Badge Info Section - Moved to Bottom */}
-                <div className={`mt-8 p-4 rounded-2xl border flex flex-col md:flex-row gap-6 items-center justify-between transition-all duration-300 ${activeType === 'daily' ? 'bg-blue-50/50 border-blue-100 dark:bg-blue-900/10 dark:border-blue-900/30' :
+                <div className={`mt-8 p-4 rounded-2xl border flex flex-col md:flex-row gap-6 items-center justify-between transition-all duration-300 ${activeType === 'daily' ? 'bg-secondary-50/50 border-secondary-100 dark:bg-secondary-900/10 dark:border-secondary-900/30' :
                   activeType === 'weekly' ? 'bg-purple-50/50 border-purple-100 dark:bg-purple-900/10 dark:border-purple-900/30' :
-                    'bg-yellow-50/50 border-yellow-100 dark:bg-yellow-900/10 dark:border-yellow-900/30'
+                    'bg-primary-50/50 border-primary-100 dark:bg-primary-900/10 dark:border-primary-900/30'
                   }`}>
                   <div className="flex items-center gap-4 text-center md:text-left">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 ${activeType === 'daily' ? 'bg-blue-600 text-white' :
-                      activeType === 'weekly' ? 'bg-purple-600 text-white' :
-                        'bg-yellow-600 text-white'
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 ${activeType === 'daily' ? 'bg-secondary-600 text-white' :
+                      activeType === 'weekly' ? 'bg-primary-600 text-white' :
+                        'bg-primary-600 text-white'
                       }`}>
                       <FaInfoCircle className="text-xl" />
                     </div>
@@ -439,24 +439,24 @@ const AdminMonthlyWinners = () => {
                       <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-1">Participation Criteria</h4>
                       <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
                         <div className="text-sm font-black text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-blue-500 animate-pulse' : activeType === 'weekly' ? 'bg-purple-500 animate-pulse' : 'bg-yellow-500 animate-pulse'}`}></div>
+                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-secondary-500 animate-pulse' : activeType === 'weekly' ? 'bg-purple-500 animate-pulse' : 'bg-primary-500 animate-pulse'}`}></div>
                           {activeType === 'daily' ? `${config.QUIZ_CONFIG.DAILY_REWARD_QUIZ_REQUIREMENT} Quizzes` : activeType === 'weekly' ? `${config.QUIZ_CONFIG.WEEKLY_REWARD_QUIZ_REQUIREMENT} Quizzes` : `${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} Quizzes`} Minimum
                         </div>
                         <div className="text-sm font-black text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-blue-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-yellow-500'}`}></div>
+                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-secondary-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-primary-500'}`}></div>
                           Level {activeType === 'daily' ? `${config.QUIZ_CONFIG.DAILY_USER_LEVEL_REQUIRED}+` : activeType === 'weekly' ? `${config.QUIZ_CONFIG.WEEKLY_USER_LEVEL_REQUIRED}+` : `${config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD}+`} Required
                         </div>
                         <div className="text-sm font-black text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-blue-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-yellow-500'}`}></div>
+                          <div className={`w-2 h-2 rounded-full ${activeType === 'daily' ? 'bg-secondary-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-primary-500'}`}></div>
                           {config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% Min. Accuracy
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="shrink-0">
-                    <span className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase italic tracking-wider shadow-xl transform skew-x-[-10deg] ${activeType === 'daily' ? 'bg-blue-600 text-white' :
-                      activeType === 'weekly' ? 'bg-purple-600 text-white' :
-                        'bg-yellow-600 text-white'
+                    <span className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase italic tracking-wider shadow-xl transform skew-x-[-10deg] ${activeType === 'daily' ? 'bg-secondary-600 text-white' :
+                      activeType === 'weekly' ? 'bg-primary-600 text-white' :
+                        'bg-primary-600 text-white'
                       }`}>
                       PRO Member Only
                     </span>
@@ -467,7 +467,7 @@ const AdminMonthlyWinners = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {monthlyWinners.map((monthData, index) => (
                       <div key={monthData._id || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-4 text-white">
+                        <div className="bg-gradient-to-r from-primary-400 to-primary-500 p-4 text-white">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                               <FaCalendarAlt className="text-xl" />
@@ -487,8 +487,8 @@ const AdminMonthlyWinners = () => {
                             {monthData.winners?.map((winner, winnerIndex) => (
                               <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
                                 <div className="flex items-center gap-3">
-                                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-yellow-500' :
-                                    winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-primary-500' :
+                                    winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                     }`}>
                                     {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
                                   </div>
@@ -547,8 +547,8 @@ const AdminMonthlyWinners = () => {
                             {monthData.winners?.map((winner, winnerIndex) => (
                               <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-2 lg:p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                                 <div className="flex items-center gap-4">
-                                  <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${winner.rank === 1 ? 'bg-yellow-500' :
-                                    winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                  <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${winner.rank === 1 ? 'bg-primary-500' :
+                                    winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                     }`}>
                                     {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
                                   </div>
@@ -587,7 +587,7 @@ const AdminMonthlyWinners = () => {
                 {/* Monthly Winners Table View */}
                 {viewMode === 'table' && (
                   <div className="bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
-                    <div className={`p-8 text-white ${activeType === 'daily' ? 'bg-gradient-to-br from-blue-600 to-indigo-700 shadow-blue-200' : activeType === 'weekly' ? 'bg-gradient-to-br from-purple-600 to-indigo-700 shadow-purple-200' : 'bg-gradient-to-br from-yellow-500 to-orange-600 shadow-yellow-200'}`}>
+                    <div className={`p-8 text-white ${activeType === 'daily' ? 'bg-gradient-to-br from-secondary-600 to-indigo-700 shadow-secondary-200' : activeType === 'weekly' ? 'bg-gradient-to-br from-purple-600 to-indigo-700 shadow-purple-200' : 'bg-gradient-to-br from-primary-500 to-primary-600 shadow-primary-200'}`}>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
@@ -660,8 +660,8 @@ const AdminMonthlyWinners = () => {
                                 </td>
                                 <td className="px-6 py-5 whitespace-nowrap">
                                   <div className="flex items-center gap-3">
-                                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm transition-transform group-hover:scale-110 ${winner.rank === 1 ? 'bg-yellow-500' :
-                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm transition-transform group-hover:scale-110 ${winner.rank === 1 ? 'bg-primary-500' :
+                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                       }`}>
                                       {winner.rank === 1 ? <FaCrown className="text-lg" /> : <span className="text-sm">#{winner.rank}</span>}
                                     </div>
@@ -669,7 +669,7 @@ const AdminMonthlyWinners = () => {
                                 </td>
                                 <td className="px-6 py-5 whitespace-nowrap">
                                   <div className="flex flex-col">
-                                    <span className="text-sm font-black text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                    <span className="text-sm font-black text-gray-900 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors">
                                       {winner?.userId?.name || winner?.userName || 'Anonymous'}
                                     </span>
                                     <span className="text-[10px] font-bold text-gray-400 lowercase tracking-tight italic">
@@ -678,7 +678,7 @@ const AdminMonthlyWinners = () => {
                                   </div>
                                 </td>
                                 <td className="px-6 py-5 whitespace-nowrap">
-                                  <span className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider ${activeType === 'daily' ? 'bg-blue-100 text-blue-700' : activeType === 'weekly' ? 'bg-purple-100 text-purple-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                  <span className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider ${activeType === 'daily' ? 'bg-secondary-100 text-secondary-700' : activeType === 'weekly' ? 'bg-purple-100 text-purple-700' : 'bg-primary-100 text-primary-700'}`}>
                                     Lvl {winner.userLevel || winner?.userId?.level || '0'}
                                   </span>
                                 </td>
@@ -692,14 +692,14 @@ const AdminMonthlyWinners = () => {
                                     <div className="flex flex-col">
                                       <span className="text-xs font-black text-gray-900 dark:text-white tabular-nums">{winner.highScoreWins} Wins</span>
                                       <div className="w-16 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full mt-1 overflow-hidden">
-                                        <div className={`h-full rounded-full ${activeType === 'daily' ? 'bg-blue-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-yellow-500'}`} style={{ width: `${winner.accuracy}%` }}></div>
+                                        <div className={`h-full rounded-full ${activeType === 'daily' ? 'bg-secondary-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-primary-500'}`} style={{ width: `${winner.accuracy}%` }}></div>
                                       </div>
                                       <span className="text-[9px] font-bold text-gray-400 mt-1 uppercase">{winner.accuracy}% Accuracy</span>
                                     </div>
                                   </div>
                                 </td>
                                 <td className="px-6 py-5 whitespace-nowrap">
-                                  <div className={`text-lg font-black tabular-nums transition-all group-hover:scale-110 ${activeType === 'daily' ? 'text-blue-600' : activeType === 'weekly' ? 'text-purple-600' : 'text-yellow-600'}`}>
+                                  <div className={`text-lg font-black tabular-nums transition-all group-hover:scale-110 ${activeType === 'daily' ? 'text-secondary-600' : activeType === 'weekly' ? 'text-purple-600' : 'text-secondary-600'}`}>
                                     ₹{winner.rewardAmount?.toLocaleString()}
                                   </div>
                                 </td>

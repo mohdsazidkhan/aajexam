@@ -15,7 +15,7 @@ import Exam from '../../../../models/Exam';
 import ExamCategory from '../../../../models/ExamCategory';
 
 const PatternTests = ({ patternId, initialPattern = null, initialTests = [], initialPagination = null, initialError = '', seo }) => {
-// ... (rest of the component remains same)
+  // ... (rest of the component remains same)
   const router = useRouter();
   const [pattern, setPattern] = useState(initialPattern);
   const [tests, setTests] = useState(initialTests);
@@ -231,7 +231,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             {/* Back Button */}
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-red-600 transition-colors"
+              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors"
             >
               <FaArrowLeft /> Back
             </button>
@@ -331,7 +331,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                         {test?.userAttempt?.status === 'Completed' && (
                           <button
                             onClick={() => handleViewResult(test)}
-                            className="px-3 lg:px-6 py-1 lg:py-2 rounded-lg font-semibold bg-white dark:bg-gray-900 border border-red-500 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-800 transition-all flex items-center gap-2"
+                            className="px-3 lg:px-6 py-1 lg:py-2 rounded-lg font-semibold bg-white dark:bg-gray-900 border border-red-500 text-primary-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-800 transition-all flex items-center gap-2"
                           >
                             <FaEye /> View Result
                           </button>
@@ -451,7 +451,7 @@ export async function getServerSideProps({ params, query }) {
     ].filter(Boolean));
 
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-    
+
     const seo = {
       title: `${patternTitle} - Practice Tests | AajExam`,
       description,

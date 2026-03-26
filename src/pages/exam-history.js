@@ -95,7 +95,7 @@ const ExamHistoryPage = () => {
       case 'Abandoned':
         return <FaTimesCircle className="text-red-500" />;
       case 'InProgress':
-        return <FaClock className="text-yellow-500" />;
+        return <FaClock className="text-primary-500" />;
       default:
         return <FaClock className="text-gray-500" />;
     }
@@ -106,9 +106,9 @@ const ExamHistoryPage = () => {
       case 'Completed':
         return 'text-green-600 dark:text-green-400';
       case 'Abandoned':
-        return 'text-red-600 dark:text-red-400';
+        return 'text-primary-600 dark:text-red-400';
       case 'InProgress':
-        return 'text-orange-700 dark:text-yellow-400';
+        return 'text-primary-600 dark:text-primary-400';
       default:
         return 'text-gray-600 dark:text-gray-400';
     }
@@ -216,7 +216,7 @@ const ExamHistoryPage = () => {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-center">
-                  <div className="font-semibold text-blue-600 dark:text-blue-400">
+                  <div className="font-semibold text-secondary-600 dark:text-secondary-400">
                     {attempt.score}/{attempt.totalMarks}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -231,7 +231,7 @@ const ExamHistoryPage = () => {
                 <div className="text-center">
                   {attempt.rank ? (
                     <>
-                      <div className="font-semibold text-orange-700 dark:text-yellow-400">
+                      <div className="font-semibold text-primary-600 dark:text-primary-400">
                         #{attempt.rank}
                       </div>
                       {attempt.percentile && (
@@ -268,7 +268,7 @@ const ExamHistoryPage = () => {
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   onClick={() => handleViewDetails(attempt)}
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center space-x-1"
+                  className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 flex items-center space-x-1"
                 >
                   <FaEye />
                   <span>View Result</span>
@@ -311,7 +311,7 @@ const ExamHistoryPage = () => {
                   <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">
                     Score
                   </div>
-                  <div className="font-semibold text-blue-600 dark:text-blue-400 text-lg">
+                  <div className="font-semibold text-secondary-600 dark:text-secondary-400 text-lg">
                     {attempt.score}/{attempt.totalMarks}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -328,7 +328,7 @@ const ExamHistoryPage = () => {
                   </div>
                   {attempt.rank ? (
                     <div>
-                      <div className="font-semibold text-orange-700 dark:text-yellow-400">
+                      <div className="font-semibold text-primary-600 dark:text-primary-400">
                         Rank #{attempt.rank}
                       </div>
                       {attempt.percentile && (
@@ -381,7 +381,7 @@ const ExamHistoryPage = () => {
             <div className="flex items-center justify-end">
               <button
                 onClick={() => handleViewDetails(attempt)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors flex items-center space-x-2"
               >
                 <FaEye />
                 <span>View Result</span>
@@ -405,13 +405,13 @@ const ExamHistoryPage = () => {
           {/* Card Header */}
           <div className="mb-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
                 <FaGraduationCap className="text-white text-xl" />
               </div>
               <div className={`px-3 py-1 rounded-full text-xs font-semibold ${attempt.accuracy >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
                 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                 : attempt.accuracy >= 50
-                  ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                  ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
                   : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
                 }`}>
                 {attempt.accuracy >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE ? 'High Score' : attempt.accuracy >= 50 ? 'Good' : 'Attempted'}
@@ -432,7 +432,7 @@ const ExamHistoryPage = () => {
           <div className="space-y-3 mb-4">
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600 dark:text-gray-400">Score:</span>
-              <span className="font-bold text-blue-600 dark:text-blue-400">
+              <span className="font-bold text-secondary-600 dark:text-secondary-400">
                 {attempt.score}/{attempt.totalMarks}
               </span>
             </div>
@@ -451,7 +451,7 @@ const ExamHistoryPage = () => {
             {attempt.rank && (
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600 dark:text-gray-400">Rank:</span>
-                <span className="font-semibold text-orange-700 dark:text-yellow-400">
+                <span className="font-semibold text-primary-600 dark:text-primary-400">
                   #{attempt.rank}
                 </span>
               </div>
@@ -491,7 +491,7 @@ const ExamHistoryPage = () => {
                   e.stopPropagation();
                   handleViewDetails(attempt);
                 }}
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center space-x-1 text-sm font-semibold"
+                className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 flex items-center space-x-1 text-sm font-semibold"
               >
                 <FaEye />
                 <span>View Result</span>
@@ -534,7 +534,7 @@ const ExamHistoryPage = () => {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
               <h1 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                <FaGraduationCap className="mr-3 text-blue-500" />
+                <FaGraduationCap className="mr-3 text-secondary-500" />
                 Exam History
               </h1>
 
@@ -547,13 +547,13 @@ const ExamHistoryPage = () => {
                     placeholder="Search by test name, exam, or category..."
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                   />
                 </div>
                 <select
                   value={filters.status}
                   onChange={(e) => handleFilterChange('status', e.target.value)}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                 >
                   <option value="">All Status</option>
                   <option value="Completed">Completed</option>
@@ -575,7 +575,7 @@ const ExamHistoryPage = () => {
                 <button
                   onClick={() => setCurrentView('table')}
                   className={`p-2 rounded-lg transition-colors ${currentView === 'table'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-secondary-600 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                   title="Table View"
@@ -585,7 +585,7 @@ const ExamHistoryPage = () => {
                 <button
                   onClick={() => setCurrentView('list')}
                   className={`p-2 rounded-lg transition-colors ${currentView === 'list'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-secondary-600 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                   title="List View"
@@ -595,7 +595,7 @@ const ExamHistoryPage = () => {
                 <button
                   onClick={() => setCurrentView('grid')}
                   className={`p-2 rounded-lg transition-colors ${currentView === 'grid'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-secondary-600 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                   title="Grid View"

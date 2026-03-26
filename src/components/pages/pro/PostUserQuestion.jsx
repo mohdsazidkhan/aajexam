@@ -146,7 +146,7 @@ const PostUserQuestion = () => {
 				<div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
 					{/* Header Section */}
 					<div className="text-center mb-6 md:mb-8">
-						<div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-yellow-600 to-red-600 rounded-full mb-3 md:mb-4">
+						<div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full mb-3 md:mb-4">
 							<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">💭</span>
 						</div>
 						<h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -157,10 +157,10 @@ const PostUserQuestion = () => {
 						</p>
 						<div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-3 md:mb-4">
 
-							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-blue-100 from-red-100 dark:from-blue-800 dark:from-red-800 rounded-full">
-								<span className="text-xs md:text-sm text-blue-700 dark:text-blue-200 font-medium">📅 Max 5 Questions Per Day</span>
+							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-secondary-800 dark:from-red-800 rounded-full">
+								<span className="text-xs md:text-sm text-secondary-700 dark:text-secondary-200 font-medium">📅 Max 5 Questions Per Day</span>
 							</div>
-							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-800 dark:to-blue-800 rounded-full">
+							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-800 dark:to-secondary-800 rounded-full">
 								<span className="text-xs md:text-sm text-green-700 dark:text-green-200 font-medium">📊 Max 100 Questions Per Month</span>
 							</div>
 						</div>
@@ -168,25 +168,25 @@ const PostUserQuestion = () => {
 
 					{/* Daily Count Display */}
 					{dailyCount && (
-						<div className="mb-4 md:mb-6 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4 md:p-6">
+						<div className="mb-4 md:mb-6 bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-xl p-4 md:p-6">
 							<div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3">
 								<div className="flex-shrink-0">
 									<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">📅</span>
 								</div>
 								<div className="flex-1">
-									<h3 className="text-base md:text-lg font-medium text-orange-800 dark:text-orange-200">
+									<h3 className="text-base md:text-lg font-medium text-primary-800 dark:text-primary-200">
 										Daily Question Count
 									</h3>
-									<p className="text-sm md:text-base text-orange-700 dark:text-orange-300 mt-1">
+									<p className="text-sm md:text-base text-primary-700 dark:text-primary-300 mt-1">
 										You have created <span className="font-bold">{dailyCount.currentCount}</span> out of <span className="font-bold">{dailyCount.limit}</span> questions today
 									</p>
-									<div className="mt-2 w-full bg-orange-200 dark:bg-orange-800 rounded-full h-2">
+									<div className="mt-2 w-full bg-primary-200 dark:bg-primary-800 rounded-full h-2">
 										<div
-											className="bg-orange-600 dark:bg-orange-400 h-2 rounded-full transition-all duration-300"
+											className="bg-primary-600 dark:bg-primary-400 h-2 rounded-full transition-all duration-300"
 											style={{ width: `${(dailyCount.currentCount / dailyCount.limit) * 100}%` }}
 										></div>
 									</div>
-									<p className="text-xs md:text-sm text-orange-700 dark:text-orange-400 mt-1">
+									<p className="text-xs md:text-sm text-primary-700 dark:text-primary-400 mt-1">
 										{dailyCount.remaining} questions remaining today
 									</p>
 								</div>
@@ -196,25 +196,25 @@ const PostUserQuestion = () => {
 
 					{/* Monthly Count Display */}
 					{monthlyCount && (
-						<div className="mb-6 md:mb-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 md:p-6">
+						<div className="mb-6 md:mb-8 bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-xl p-4 md:p-6">
 							<div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3">
 								<div className="flex-shrink-0">
 									<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">📊</span>
 								</div>
 								<div className="flex-1">
-									<h3 className="text-base md:text-lg font-medium text-blue-800 dark:text-blue-200">
+									<h3 className="text-base md:text-lg font-medium text-secondary-800 dark:text-secondary-200">
 										Monthly Question Count
 									</h3>
-									<p className="text-sm md:text-base text-blue-600 dark:text-blue-300 mt-1">
+									<p className="text-sm md:text-base text-secondary-600 dark:text-secondary-300 mt-1">
 										You have created <span className="font-bold">{monthlyCount.currentCount}</span> out of <span className="font-bold">{monthlyCount.limit}</span> questions this month
 									</p>
-									<div className="mt-2 w-full bg-blue-200 dark:bg-blue-800 rounded-full h-2">
+									<div className="mt-2 w-full bg-secondary-200 dark:bg-secondary-800 rounded-full h-2">
 										<div
-											className="bg-blue-600 dark:bg-blue-400 h-2 rounded-full transition-all duration-300"
+											className="bg-secondary-600 dark:bg-secondary-400 h-2 rounded-full transition-all duration-300"
 											style={{ width: `${(monthlyCount.currentCount / monthlyCount.limit) * 100}%` }}
 										></div>
 									</div>
-									<p className="text-xs md:text-sm text-blue-600 dark:text-blue-400 mt-1">
+									<p className="text-xs md:text-sm text-secondary-600 dark:text-secondary-400 mt-1">
 										{monthlyCount.remaining} questions remaining this month
 									</p>
 								</div>
@@ -227,11 +227,11 @@ const PostUserQuestion = () => {
 					{/* Main Form */}
 					<div className="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
 						{/* Form Header */}
-						<div className="bg-gradient-to-r from-yellow-600 to-red-600 px-4 md:px-8 py-4 md:py-6">
+						<div className="bg-gradient-to-r from-primary-600 to-secondary-600 px-4 md:px-8 py-4 md:py-6">
 							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
 								<div>
 									<h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-white mb-1 md:mb-2">Question Details</h2>
-									<p className="text-yellow-100 text-sm md:text-base">Fill in your question and options below</p>
+									<p className="text-primary-100 text-sm md:text-base">Fill in your question and options below</p>
 								</div>
 								<div className="text-left sm:text-right">
 									<div className="text-white font-semibold mb-1 text-sm md:text-base">{Math.round(formProgress())}% Complete</div>
@@ -254,8 +254,8 @@ const PostUserQuestion = () => {
 								<div className="relative">
 									<textarea
 										className={`w-full border-2 rounded-lg md:rounded-xl p-3 md:p-4 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 transition-all duration-200 resize-none text-sm md:text-base ${focusedField === 'question'
-											? 'border-red-500 ring-2 md:ring-4 ring-red-200 dark:ring-red-800'
-											: 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-600'
+											? 'border-primary-500 ring-2 md:ring-4 ring-primary-200 dark:ring-primary-800'
+											: 'border-gray-300 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600'
 											}`}
 										rows={3}
 										placeholder="Enter your question here... (e.g., What is the capital of France?)"
@@ -265,7 +265,7 @@ const PostUserQuestion = () => {
 										onBlur={() => setFocusedField(null)}
 									/>
 									<div className={`absolute bottom-2 md:bottom-3 right-2 md:right-3 text-xs md:text-sm ${questionText.length > 450 ? 'text-red-500' :
-										questionText.length > 400 ? 'text-yellow-500' :
+										questionText.length > 400 ? 'text-primary-500' :
 											'text-gray-400 dark:text-gray-500'
 										}`}>
 										{questionText.length}/500
@@ -282,18 +282,18 @@ const PostUserQuestion = () => {
 									{[0, 1, 2, 3].map(i => (
 										<div key={i} className="relative">
 											<div className={`flex items-center space-x-2 md:space-x-4 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-all duration-200 ${correctOptionIndex === i
-												? 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20'
+												? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
 												: focusedField === `option-${i}`
-													? 'border-red-500 bg-red-50 dark:bg-red-900/20'
-													: 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-600'
+													? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
+													: 'border-gray-300 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600'
 												}`}>
 												{/* Custom Radio Button */}
 												<div className="flex-shrink-0">
 													<div
 														onClick={() => setCorrectOptionIndex(i)}
 														className={`relative w-6 h-6 rounded-full border-2 cursor-pointer transition-all duration-200 ${correctOptionIndex === i
-															? 'border-yellow-500 bg-yellow-500'
-															: 'border-gray-300 dark:border-gray-600 hover:border-yellow-400'
+															? 'border-primary-500 bg-primary-500'
+															: 'border-gray-300 dark:border-gray-600 hover:border-primary-400'
 															}`}
 													>
 														{correctOptionIndex === i && (
@@ -302,14 +302,14 @@ const PostUserQuestion = () => {
 															</div>
 														)}
 														{correctOptionIndex === i && (
-															<div className="absolute -inset-1 rounded-full border-2 border-yellow-400 animate-ping opacity-30"></div>
+															<div className="absolute -inset-1 rounded-full border-2 border-primary-400 animate-ping opacity-30"></div>
 														)}
 													</div>
 												</div>
 
 												{/* Option Letter */}
 												<div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm transition-all duration-200 ${correctOptionIndex === i
-													? 'bg-yellow-600 text-white shadow-lg transform scale-110'
+													? 'bg-primary-600 text-white shadow-lg transform scale-110'
 													: 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500'
 													}`}>
 													<span className={`transition-all duration-200 ${correctOptionIndex === i ? 'animate-pulse' : ''
@@ -334,7 +334,7 @@ const PostUserQuestion = () => {
 												{/* Correct Answer Indicator */}
 												{correctOptionIndex === i && (
 													<div className="flex-shrink-0">
-														<div className="w-6 h-6 md:w-8 md:h-8 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+														<div className="w-6 h-6 md:w-8 md:h-8 bg-primary-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
 															<span className="text-white text-sm md:text-lg font-bold">✓</span>
 														</div>
 													</div>
@@ -344,8 +344,8 @@ const PostUserQuestion = () => {
 											{/* Option Helper Text */}
 											{correctOptionIndex === i && (
 												<div className="ml-12 md:ml-16 mt-2 flex items-center space-x-2 animate-fade-in">
-													<div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
-													<p className="text-xs md:text-sm text-orange-700 dark:text-yellow-400 font-medium">
+													<div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
+													<p className="text-primary-700 dark:text-primary-400 font-medium">
 														This is the correct answer ✨
 													</p>
 												</div>
@@ -357,24 +357,24 @@ const PostUserQuestion = () => {
 
 							{/* Instructions */}
 							<div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg md:rounded-xl p-4 md:p-6">
-								<h3 className="text-base md:text-lg font-semibold text-red-900 dark:text-red-200 mb-3">
+								<h3 className="text-base md:text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3">
 									💡 Tips for creating great questions:
 								</h3>
-								<ul className="space-y-2 text-sm md:text-base text-red-800 dark:text-red-300">
+								<ul className="space-y-2 text-sm md:text-base text-primary-800 dark:text-primary-300">
 									<li className="flex items-start space-x-2">
-										<span className="text-red-600 dark:text-red-400 mt-1">•</span>
+										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
 										<span>Make your question clear and specific</span>
 									</li>
 									<li className="flex items-start space-x-2">
-										<span className="text-red-600 dark:text-red-400 mt-1">•</span>
+										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
 										<span>Ensure all options are plausible</span>
 									</li>
 									<li className="flex items-start space-x-2">
-										<span className="text-red-600 dark:text-red-400 mt-1">•</span>
+										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
 										<span>Mark the correct answer clearly</span>
 									</li>
 									<li className="flex items-start space-x-2">
-										<span className="text-red-600 dark:text-red-400 mt-1">•</span>
+										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
 										<span>Your question will be reviewed before going live</span>
 									</li>
 								</ul>
@@ -384,7 +384,7 @@ const PostUserQuestion = () => {
 							<div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
 								<button
 									disabled={!isFormValid || loading}
-									className="flex-1 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-sm md:text-base"
+									className="flex-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-sm md:text-base"
 								>
 									{loading ? (
 										<div className="flex items-center justify-center space-x-2">

@@ -143,12 +143,12 @@ const ArticlesPage = () => {
           <div className="p-4">
             <div className="flex items-center mb-2">
               {article.isFeatured && (
-                <span className="text-yellow-500 text-sm font-medium mr-2">
+                <span className="text-primary-500 text-sm font-medium mr-2">
                   ⭐
                 </span>
               )}
               {article.isPinned && (
-                <span className="text-blue-500 text-sm font-medium mr-2">
+                <span className="text-secondary-500 text-sm font-medium mr-2">
                   📌
                 </span>
               )}
@@ -156,7 +156,7 @@ const ArticlesPage = () => {
                 {formatDate(article.publishedAt || article.createdAt)}
               </span>
             </div>
-            <h3 className="text-md lg:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors mb-2">
+            <h3 className="text-md lg:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
               {article.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
@@ -168,7 +168,7 @@ const ArticlesPage = () => {
                 <span>❤️ {article.likes || 0}</span>
                 <span>⏱️ {article.readingTime || 5} min</span>
               </div>
-              <span className="text-orange-700 dark:text-yellow-400 text-sm font-medium">
+              <span className="text-primary-600 dark:text-primary-400 text-sm font-medium">
                 Read More →
               </span>
             </div>
@@ -218,12 +218,12 @@ const ArticlesPage = () => {
           <div className="p-6 flex-1">
             <div className="flex items-center mb-2">
               {article.isFeatured && (
-                <span className="text-yellow-500 text-sm font-medium mr-2">
+                <span className="text-primary-500 text-sm font-medium mr-2">
                   ⭐
                 </span>
               )}
               {article.isPinned && (
-                <span className="text-blue-500 text-sm font-medium mr-2">
+                <span className="text-secondary-500 text-sm font-medium mr-2">
                   📌
                 </span>
               )}
@@ -236,7 +236,7 @@ const ArticlesPage = () => {
                 </span>
               )}
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
               {article.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
@@ -248,7 +248,7 @@ const ArticlesPage = () => {
                 <span>❤️ {article.likes || 0}</span>
                 <span>⏱️ {article.readingTime || 5} min read</span>
               </div>
-              <span className="text-orange-700 dark:text-yellow-400 text-sm font-medium">
+              <span className="text-primary-600 dark:text-primary-400 text-sm font-medium">
                 Read More →
               </span>
             </div>
@@ -304,7 +304,7 @@ const ArticlesPage = () => {
                     <button
                       onClick={() => handleViewModeChange("grid")}
                       className={`px-2 sm:px-3 py-1 rounded-md text-sm font-medium transition-colors ${viewMode === "grid"
-                        ? "bg-gradient-to-r from-yellow-500 to-red-500 text-white dark:from-yellow-600 dark:to-red-700 shadow-sm"
+                        ? "bg-gradient-to-r from-primary-500 to-secondary-500 text-white dark:from-primary-600 dark:to-red-700 shadow-sm"
                         : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                         }`}
                       title="Grid View"
@@ -316,7 +316,7 @@ const ArticlesPage = () => {
                     <button
                       onClick={() => handleViewModeChange("list")}
                       className={`px-2 sm:px-3 py-1 rounded-md text-sm font-medium transition-colors ${viewMode === "list"
-                        ? "bg-gradient-to-r from-yellow-500 to-red-500 text-white dark:from-yellow-600 dark:to-red-700 shadow-sm"
+                        ? "bg-gradient-to-r from-primary-500 to-secondary-500 text-white dark:from-primary-600 dark:to-red-700 shadow-sm"
                         : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                         }`}
                       title="List View"
@@ -331,7 +331,7 @@ const ArticlesPage = () => {
                       name="category"
                       value={filters.category}
                       onChange={handleFilterChange}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-800 dark:text-gray-100"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-gray-100"
                     >
                       <option value="">All Categories</option>
                       {categories.map((category) => (
@@ -348,7 +348,7 @@ const ArticlesPage = () => {
                         name="featured"
                         checked={filters.featured}
                         onChange={handleFilterChange}
-                        className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                        className="h-4 w-4 text-primary-600 focus:ring-red-500 border-gray-300 rounded"
                       />
                       <span className="ml-2 text-sm text-gray-700 dark:text-gray-200">
                         Featured
@@ -363,12 +363,12 @@ const ArticlesPage = () => {
                         value={filters.search}
                         onChange={handleFilterChange}
                         placeholder="Search articles..."
-                        className="min-w-72 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-800 dark:text-gray-100"
+                        className="min-w-72 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-gray-100"
                       />
                       <button
                         type="submit"
-                        className="absolute right-0 top-0 w-12 h-10 bg-gradient-to-r from-yellow-500 to-red-500 text-white 
-                dark:from-yellow-600 dark:to-red-700 mx-auto rounded-md font-medium transition-colors"
+                        className="absolute right-0 top-0 w-12 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 text-white 
+                dark:from-primary-600 dark:to-red-700 mx-auto rounded-md font-medium transition-colors"
                       >
                         <span className="flex items-center justify-center">
                           <FaSearch className="w-4 h-4" />

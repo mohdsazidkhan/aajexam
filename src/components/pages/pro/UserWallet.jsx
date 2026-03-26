@@ -160,7 +160,7 @@ const UserWallet = () => {
 				<div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
 					{/* Header Section */}
 					<div className="text-center mb-6 md:mb-8">
-						<div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-yellow-600 to-red-600 rounded-full mb-3 md:mb-4">
+						<div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full mb-3 md:mb-4">
 							<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">💰</span>
 						</div>
 						<h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -212,11 +212,11 @@ const UserWallet = () => {
 							{/* Competition Rewards Card */}
 							<div className="bg-white dark:bg-gray-800 rounded-xl p-4 md:p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-200">
 								<div className="flex items-center justify-between mb-4">
-									<div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
+									<div className="w-10 h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
 										<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">🏆</span>
 									</div>
 									<div className="text-right">
-										<p className="text-xs md:text-sm font-medium text-yellow-600 dark:text-yellow-400">Competition Rewards (Claimable)</p>
+										<p className="text-xs md:text-sm font-medium text-primary-600 dark:text-secondary-400">Competition Rewards (Claimable)</p>
 									</div>
 								</div>
 								<div className="space-y-2">
@@ -231,7 +231,7 @@ const UserWallet = () => {
 											onClick={handleClaimRewards}
 											disabled={isClaiming || walletInfo.claimableRewards <= 0}
 											className={`text-xs px-4 py-1.5 rounded-lg font-semibold transition-all duration-200 ${walletInfo.isTopPerformer && walletInfo.claimableRewards > 0
-												? 'bg-yellow-500 hover:bg-yellow-600 text-white shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
+												? 'bg-primary-500 hover:bg-primary-600 text-white shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
 												: 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
 												}`}
 										>
@@ -259,9 +259,9 @@ const UserWallet = () => {
 							</div>
 						</div>
 						{/* Blog Rewards Card */}
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border-l-4 border-blue-500">
+						<div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border-l-4 border-secondary-500">
 							<div className="flex items-center gap-3">
-								<div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600">📝</div>
+								<div className="p-2 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg text-secondary-600">📝</div>
 								<div>
 									<p className="text-xs text-gray-500 uppercase tracking-wider">Blog Earnings</p>
 									<p className="text-lg font-bold text-gray-900 dark:text-white">{formatCurrency(walletInfo.rewardBreakdown?.blog_reward || 0)}</p>
@@ -269,9 +269,9 @@ const UserWallet = () => {
 							</div>
 						</div>
 						{/* Question Rewards Card */}
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border-l-4 border-yellow-500">
+						<div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border-l-4 border-primary-500">
 							<div className="flex items-center gap-3">
-								<div className="p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg text-yellow-600">❓</div>
+								<div className="p-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-primary-600">❓</div>
 								<div>
 									<p className="text-xs text-gray-500 uppercase tracking-wider">Question Earnings</p>
 									<p className="text-lg font-bold text-gray-900 dark:text-white">{formatCurrency(walletInfo.rewardBreakdown?.question_reward || 0)}</p>
@@ -310,21 +310,21 @@ const UserWallet = () => {
 						</button>
 						<button
 							onClick={() => router.push('/pro/question-rewards-history')}
-							className="flex-1 lg:flex-none bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[170px]"
+							className="flex-1 lg:flex-none bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[170px]"
 						>
 							<span>❓</span>
 							<span>Question Rewards</span>
 						</button>
 						<button
 							onClick={() => router.push('/pro/blog-rewards-history')}
-							className="flex-1 lg:flex-none bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[160px]"
+							className="flex-1 lg:flex-none bg-gradient-to-r from-secondary-500 to-cyan-500 hover:from-secondary-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[160px]"
 						>
 							<span>📝</span>
 							<span>Blog Rewards</span>
 						</button>
 						<button
 							onClick={() => router.push('/pro/withdrawal-history')}
-							className="flex-1 lg:flex-none bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[160px]"
+							className="flex-1 lg:flex-none bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-red-600 hover:to-rose-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-xs md:text-sm flex items-center justify-center space-x-2 min-w-[160px]"
 						>
 							<span>💸</span>
 							<span>Withdraw Records</span>
@@ -356,7 +356,7 @@ const UserWallet = () => {
 								</div>
 							</div>
 							<div>
-								<h3 className="text-sm font-bold text-yellow-600 dark:text-yellow-400 uppercase tracking-wider mb-2">Competition Rewards</h3>
+								<h3 className="text-sm font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-2">Competition Rewards</h3>
 								<ul className="space-y-1 text-xs md:text-sm text-gray-700 dark:text-gray-300">
 									<li className="flex items-start">
 										<span className="mr-2">•</span>
@@ -367,8 +367,8 @@ const UserWallet = () => {
 										<span>Rewards from Daily, Weekly, and Monthly competitions.</span>
 									</li>
 								</ul>
-								<div className={`mt-3 p-2 rounded-lg ${walletInfo.isTopPerformer ? 'bg-yellow-50 dark:bg-yellow-900/20' : 'bg-gray-100 dark:bg-gray-700/50'}`}>
-									<p className={`text-[10px] md:text-xs font-medium ${walletInfo.isTopPerformer ? 'text-yellow-800 dark:text-yellow-200' : 'text-gray-500'}`}>
+								<div className={`mt-3 p-2 rounded-lg ${walletInfo.isTopPerformer ? 'bg-primary-50 dark:bg-primary-900/20' : 'bg-gray-100 dark:bg-gray-700/50'}`}>
+									<p className={`text-[10px] md:text-xs font-medium ${walletInfo.isTopPerformer ? 'text-primary-800 dark:text-primary-200' : 'text-gray-500'}`}>
 										{walletInfo.isTopPerformer
 											? '✅ You are a Top Performer! You can claim rewards.'
 											: '🔒 Only Monthly Top Performers are eligible to claim.'}
@@ -381,7 +381,7 @@ const UserWallet = () => {
 					{/* Withdrawal Section */}
 					<div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
 						{/* Section Header */}
-						<div className="bg-gradient-to-r from-yellow-600 to-red-600 px-4 md:px-8 py-4 md:py-6">
+						<div className="bg-gradient-to-r from-primary-600 to-secondary-600 px-4 md:px-8 py-4 md:py-6">
 							<div className="flex items-center space-x-3">
 								<div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
 									<span className="text-lg md:text-xl">💸</span>
@@ -394,16 +394,16 @@ const UserWallet = () => {
 
 						{/* Withdrawal Info */}
 						{!canWithdraw && (
-							<div className="p-4 md:p-6 bg-yellow-50 dark:bg-yellow-900/20 border-b border-yellow-200 dark:border-yellow-800">
+							<div className="p-4 md:p-6 bg-primary-50 dark:bg-primary-900/20 border-b border-primary-200 dark:border-primary-800">
 								<div className="flex items-start space-x-3">
 									<div className="flex-shrink-0">
 										<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">⏳</span>
 									</div>
 									<div>
-										<h3 className="text-sm md:text-base font-medium text-yellow-800 dark:text-yellow-200 mb-1">
+										<h3 className="text-sm md:text-base font-medium text-primary-800 dark:text-primary-200 mb-1">
 											Withdrawal Not Yet Available
 										</h3>
-										<p className="text-xs text-orange-700 dark:text-yellow-400 mt-1">
+										<p className="text-xs text-secondary-700 dark:text-secondary-400 mt-1">
 											{walletInfo.walletBalance < MIN_WITHDRAW_AMOUNT
 												? `You need ₹${MIN_WITHDRAW_AMOUNT - walletInfo.walletBalance} more to withdraw`
 												: 'You must be a Top Performer in the previous month to withdraw'}
@@ -446,8 +446,8 @@ const UserWallet = () => {
 									<input
 										type="text"
 										className={`w-full border-2 rounded-lg md:rounded-xl p-3 md:p-4 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 transition-all duration-200 text-sm md:text-base ${focusedField === 'upi'
-											? 'border-red-500 ring-2 md:ring-4 ring-red-200 dark:ring-red-800'
-											: 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-600'
+											? 'border-primary-500 ring-2 md:ring-4 ring-primary-200 dark:ring-primary-800'
+											: 'border-gray-300 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600'
 											}`}
 										placeholder="Enter UPI ID (e.g., username@paytm) or bank details"
 										value={upi}
@@ -464,7 +464,7 @@ const UserWallet = () => {
 								<button
 									disabled={loading || !upi || walletInfo.walletBalance < MIN_WITHDRAW_AMOUNT}
 									type="submit"
-									className="w-full bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl disabled:shadow-none text-sm md:text-base"
+									className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl disabled:shadow-none text-sm md:text-base"
 								>
 									{loading ? (
 										<div className="flex items-center justify-center space-x-2">
@@ -493,7 +493,7 @@ const UserWallet = () => {
 									</h3>
 									<ul className="space-y-1 text-xs md:text-sm text-gray-600 dark:text-gray-400">
 										<li className="flex items-start space-x-2">
-											<span className="text-orange-700 dark:text-yellow-400 mt-1">•</span>
+											<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
 											<span>You earn rewards when your friend purchases a Pro plan.</span>
 										</li>
 									</ul>

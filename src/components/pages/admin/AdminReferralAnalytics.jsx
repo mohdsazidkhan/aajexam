@@ -158,7 +158,7 @@ const AdminReferralAnalytics = () => {
                         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
                             <div>
                                 <h1 className="text-md lg:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-                                    <FaUserFriends className="text-blue-600" />
+                                    <FaUserFriends className="text-secondary-600" />
                                     Referral Analytics
                                 </h1>
                                 <p className="text-gray-600 dark:text-gray-400">
@@ -171,7 +171,7 @@ const AdminReferralAnalytics = () => {
                                 <button
                                     onClick={() => setViewMode('grid')}
                                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'grid'
-                                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                                         }`}
                                 >
@@ -181,7 +181,7 @@ const AdminReferralAnalytics = () => {
                                 <button
                                     onClick={() => setViewMode('list')}
                                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'list'
-                                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                                         }`}
                                 >
@@ -191,7 +191,7 @@ const AdminReferralAnalytics = () => {
                                 <button
                                     onClick={() => setViewMode('table')}
                                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'table'
-                                        ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-300 shadow-sm'
+                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
                                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
                                         }`}
                                 >
@@ -203,13 +203,13 @@ const AdminReferralAnalytics = () => {
 
                         {/* Summary Cards */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 mb-4 lg:mb-8">
-                            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+                            <div className="bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-xl shadow-lg p-6 text-white">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-blue-100 text-sm font-medium mb-1">Total Users</p>
+                                        <p className="text-secondary-100 text-sm font-medium mb-1">Total Users</p>
                                         <p className="text-3xl font-bold">{pagination.total}</p>
                                     </div>
-                                    <FaUsers className="text-4xl text-blue-200" />
+                                    <FaUsers className="text-4xl text-secondary-200" />
                                 </div>
                             </div>
 
@@ -226,22 +226,22 @@ const AdminReferralAnalytics = () => {
                             <div className="bg-gradient-to-br from-purple-500 from-red-600 rounded-xl shadow-lg p-6 text-white">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-yellow-100 text-sm font-medium mb-1">Total Referrals (All Time)</p>
+                                        <p className="text-primary-100 text-sm font-medium mb-1">Total Referrals (All Time)</p>
                                         <p className="text-3xl font-bold">{totalReferralsSum}</p>
                                     </div>
-                                    <FaUserFriends className="text-4xl text-yellow-200" />
+                                    <FaUserFriends className="text-4xl text-primary-200" />
                                 </div>
                             </div>
 
-                            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
+                            <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl shadow-lg p-6 text-white">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-orange-100 text-sm font-medium mb-1">
+                                        <p className="text-primary-100 text-sm font-medium mb-1">
                                             Monthly Referrals ({selectedMonth === 'all' ? 'All' : months[parseInt(selectedMonth) - 1]})
                                         </p>
                                         <p className="text-3xl font-bold">{monthlyReferralsSum}</p>
                                     </div>
-                                    <FaCalendarAlt className="text-4xl text-orange-200" />
+                                    <FaCalendarAlt className="text-4xl text-primary-200" />
                                 </div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@ const AdminReferralAnalytics = () => {
                                         placeholder="Search by name or email..."
                                         value={searchTerm}
                                         onChange={handleSearch}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                                     />
                                 </div>
 
@@ -267,7 +267,7 @@ const AdminReferralAnalytics = () => {
                                     <select
                                         value={selectedYear}
                                         onChange={handleYearChange}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white appearance-none"
+                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white appearance-none"
                                     >
                                         <option value="all">All Years</option>
                                         {availableYears.map(year => (
@@ -284,7 +284,7 @@ const AdminReferralAnalytics = () => {
                                     <select
                                         value={selectedMonth}
                                         onChange={handleMonthChange}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white appearance-none"
+                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white appearance-none"
                                     >
                                         <option value="all">All Months</option>
                                         {months.map((month, index) => (
@@ -328,7 +328,7 @@ const AdminReferralAnalytics = () => {
                                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
                                         {analytics.map((user, index) => (
                                             <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                                                <div className="bg-gradient-to-r from-blue-500 from-red-600 p-4 text-white">
+                                                <div className="bg-gradient-to-r from-secondary-500 from-red-600 p-4 text-white">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                                                             <FaUser className="text-2xl" />
@@ -343,21 +343,21 @@ const AdminReferralAnalytics = () => {
                                                 <div className="p-4 space-y-3">
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-sm text-gray-600 dark:text-gray-400">Referral Code</span>
-                                                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
                                                             {user.referralCode}
                                                         </span>
                                                     </div>
 
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-sm text-gray-600 dark:text-gray-400">Total Referrals</span>
-                                                        <span className="text-xl font-bold text-orange-700 dark:text-yellow-400">
+                                                        <span className="text-xl font-bold text-primary-600 dark:text-primary-400">
                                                             {user.totalReferrals}
                                                         </span>
                                                     </div>
 
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-sm text-gray-600 dark:text-gray-400">Monthly Referrals</span>
-                                                        <span className="text-xl font-bold text-orange-700 dark:text-orange-400">
+                                                        <span className="text-xl font-bold text-primary-600 dark:text-secondary-400">
                                                             {user.monthlyReferrals}
                                                         </span>
                                                     </div>
@@ -381,14 +381,14 @@ const AdminReferralAnalytics = () => {
                                                 <div className="p-4 lg:p-6">
                                                     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                                                         <div className="flex items-center gap-4 flex-1">
-                                                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 from-red-600 flex items-center justify-center text-white font-bold text-xl">
+                                                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-secondary-500 from-red-600 flex items-center justify-center text-white font-bold text-xl">
                                                                 {user.name.charAt(0).toUpperCase()}
                                                             </div>
                                                             <div className="flex-1">
                                                                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{user.name}</h3>
                                                                 <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
                                                                 <div className="flex items-center gap-2 mt-1">
-                                                                    <span className="px-2 py-1 text-xs font-semibold rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                                                    <span className="px-2 py-1 text-xs font-semibold rounded bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
                                                                         {user.referralCode}
                                                                     </span>
                                                                     <span className="text-xs text-gray-400 dark:text-gray-500">
@@ -401,11 +401,11 @@ const AdminReferralAnalytics = () => {
                                                         <div className="flex items-center gap-6">
                                                             <div className="text-center">
                                                                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Referrals</div>
-                                                                <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">{user.totalReferrals}</div>
+                                                                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{user.totalReferrals}</div>
                                                             </div>
                                                             <div className="text-center">
                                                                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Monthly</div>
-                                                                <div className="text-2xl font-bold text-orange-700 dark:text-orange-400">{user.monthlyReferrals}</div>
+                                                                <div className="text-2xl font-bold text-primary-600 dark:text-secondary-400">{user.monthlyReferrals}</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -457,12 +457,12 @@ const AdminReferralAnalytics = () => {
                                                                 </div>
                                                             </td>
                                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                                <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                                                <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
                                                                     {user.referralCode}
                                                                 </span>
                                                             </td>
                                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm font-bold text-orange-700 dark:text-yellow-400">
+                                                                <div className="text-sm font-bold text-primary-600 dark:text-primary-400">
                                                                     {user.totalReferrals}
                                                                 </div>
                                                                 <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -470,7 +470,7 @@ const AdminReferralAnalytics = () => {
                                                                 </div>
                                                             </td>
                                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm font-bold text-orange-700 dark:text-orange-400">
+                                                                <div className="text-sm font-bold text-primary-600 dark:text-secondary-400">
                                                                     {user.monthlyReferrals}
                                                                 </div>
                                                                 <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -502,7 +502,7 @@ const AdminReferralAnalytics = () => {
                                             >
                                                 Previous
                                             </button>
-                                            <span className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+                                            <span className="px-4 py-2 bg-secondary-600 text-white rounded-lg">
                                                 {pagination.page} / {pagination.totalPages}
                                             </span>
                                             <button

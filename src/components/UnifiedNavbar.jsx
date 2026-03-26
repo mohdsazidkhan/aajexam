@@ -62,7 +62,7 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
             }`}
           title="Profile Menu"
         >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-primary-500 flex items-center justify-center">
             {user && user.profilePicture ? (
               <img
                 src={user.profilePicture}
@@ -120,7 +120,7 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
               }}
               className={`w-full text-left px-4 py-2 text-sm transition-colors ${darkMode
                 ? 'text-red-400 hover:bg-gray-700'
-                : 'text-red-600 hover:bg-gray-100'
+                : 'text-primary-600 hover:bg-gray-100'
                 }`}
             >
               <div className="flex items-center space-x-2">
@@ -157,7 +157,7 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
     <>
       <Link
         href="/login"
-        className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-red-600 text-white rounded-lg font-medium hover:from-yellow-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
+        className="px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg font-medium hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105"
       >
         Get Started
       </Link>
@@ -169,37 +169,37 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
     <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
       <Link
         href="/"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Home
       </Link>
       <Link
         href="/categories"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Categories
       </Link>
       <Link
         href="/levels"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Levels
       </Link>
       <Link
         href="/quizzes"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Quizzes
       </Link>
       <Link
         href="/govt-exams-preparation"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Govt. Exams
       </Link>
       <Link
         href="/articles"
-        className="hover:text-orange-700 dark:hover:text-yellow-400 transition-colors font-medium text-sm lg:text-base"
+        className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium text-sm lg:text-base"
       >
         Articles
       </Link>
@@ -256,7 +256,7 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
               <button
                 aria-label="Toggle Dark Mode"
                 onClick={toggleTheme}
-                className="w-8 h-8 rounded-full bg-gradient-to-r from-yellow-500 to-blue-600 p-2 shadow-lg hover:scale-105 transition-transform flex items-center justify-center"
+                className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-secondary-600 p-2 shadow-lg hover:scale-105 transition-transform flex items-center justify-center"
               >
                 {isClient && darkMode ? <FaSun className="w-5 h-5 text-white" /> : <FaMoon className="w-5 h-5 text-white" />}
               </button>
@@ -265,7 +265,7 @@ const UnifiedNavbar = ({ isLandingPage = false, scrollToSection }) => {
               {isClient && user && (
                 <button
                   onClick={handleLogout}
-                  className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-orange-600 p-2 shadow-lg hover:scale-105 transition-transform flex items-center justify-center"
+                  className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-primary-600 p-2 shadow-lg hover:scale-105 transition-transform flex items-center justify-center"
                   title="Logout"
                 >
                   <FaSignOutAlt className="w-5 h-5 text-white" />

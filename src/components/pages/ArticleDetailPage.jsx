@@ -131,7 +131,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
               </p>
               <Link
                 href="/articles"
-                className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 lg:px-6 py-1 lg:py-3 rounded-lg font-medium transition-colors"
+                className="bg-primary-500 hover:bg-primary-600 text-white px-3 lg:px-6 py-1 lg:py-3 rounded-lg font-medium transition-colors"
               >
                 Browse All Articles
               </Link>
@@ -150,9 +150,9 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
           {/* Breadcrumb */}
           <nav className="mb-6">
             <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-              <li><Link href="/" className="hover:text-orange-700 dark:hover:text-yellow-400">Home</Link></li>
+              <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">Home</Link></li>
               <li>•</li>
-              <li><Link href="/articles" className="hover:text-orange-700 dark:hover:text-yellow-400">Articles</Link></li>
+              <li><Link href="/articles" className="hover:text-primary-600 dark:hover:text-primary-400">Articles</Link></li>
               <li>•</li>
               <li className="text-gray-900 dark:text-white">
                 <span className="hidden sm:inline">{article.title}</span>
@@ -165,10 +165,10 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
           <header className="mb-8">
             <div className="flex items-center mb-4">
               {article.isFeatured && (
-                <span className="text-yellow-500 text-sm font-medium mr-3">⭐ Featured</span>
+                <span className="text-primary-500 text-sm font-medium mr-3">⭐ Featured</span>
               )}
               {article.isPinned && (
-                <span className="text-blue-500 text-sm font-medium mr-3">📌 Pinned</span>
+                <span className="text-secondary-500 text-sm font-medium mr-3">📌 Pinned</span>
               )}
               <span className="text-gray-500 dark:text-gray-400 text-sm">
                 {formatDate(article.publishedAt || article.createdAt)}
@@ -188,7 +188,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
-                  <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center">
                     <span className="text-white font-medium text-sm">
                       {article.author?.name?.charAt(0) || 'A'}
                     </span>
@@ -246,7 +246,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
                 <span>{liked ? 'Liked' : 'Like'}</span>
               </button>
               {canNativeShare ? (
-                <button onClick={handleNativeShare} className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg font-medium shadow hover:from-blue-600 hover:to-indigo-700 transition-colors">
+                <button onClick={handleNativeShare} className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-secondary-500 to-indigo-600 text-white rounded-lg font-medium shadow hover:from-secondary-600 hover:to-indigo-700 transition-colors">
                   <FaShare />
                   <span>Share</span>
                 </button>
@@ -258,13 +258,13 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
                   <a href={`https://t.me/share/url?text=${telegramText}`} target="_blank" rel="noopener noreferrer" title="Telegram" className="text-sky-500 text-xl">
                     <FaTelegramPlane />
                   </a>
-                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Facebook" className="text-blue-600 text-xl">
+                  <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Facebook" className="text-secondary-600 text-xl">
                     <FaFacebook />
                   </a>
                   <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Twitter/X" className="text-sky-400 text-xl">
                     <FaTwitter />
                   </a>
-                  <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" className="text-blue-700 text-xl">
+                  <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" className="text-secondary-700 text-xl">
                     <FaLinkedin />
                   </a>
                 </div>
@@ -275,7 +275,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-500 dark:text-gray-400">Category:</span>
                 <Link href={`/articles/category/${article.category._id}`}
-                  className="bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400 text-sm px-3 py-1 rounded-full hover:bg-yellow-200 dark:hover:bg-yellow-800/30"
+                  className="bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 text-sm px-3 py-1 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800/30"
                 >
                   {article.category.name}
                 </Link>
@@ -323,7 +323,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
                         />
                       </div>
                       <div className="p-4">
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-orange-700 dark:group-hover:text-yellow-400 transition-colors mb-2">
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
                           {relatedArticle.title}
                         </h4>
                         <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
@@ -344,8 +344,8 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
           <div className="text-center">
             <Link
               href="/articles"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-500 to-red-500 text-white 
-              dark:from-yellow-600 dark:to-red-700 px-3 lg:px-6 py-2 lg:py-3 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white 
+              dark:from-primary-600 dark:to-red-700 px-3 lg:px-6 py-2 lg:py-3 rounded-lg font-medium transition-colors"
             >
               <span>←</span>
               <span>Go Back</span>

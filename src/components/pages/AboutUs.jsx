@@ -32,10 +32,10 @@ const AboutUs = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-4 lg:mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <FaTrophy className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-yellow-600 via-red-600 to-yellow-700 bg-clip-text text-transparent mb-4">
+            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-red-600 to-primary-700 bg-clip-text text-transparent mb-4">
               About AajExam
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -76,7 +76,7 @@ const AboutUs = () => {
           {/* Educational Approach */}
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-3 md:p-6 lg:p-8 border border-white/20 mb-12">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center">
+              <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-2xl flex items-center justify-center">
                 <FaBook className="text-white text-2xl" />
               </div>
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 dark:text-white">
@@ -114,7 +114,7 @@ const AboutUs = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                   <FaBrain className="text-white text-xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Adaptive Learning</h3>
@@ -134,7 +134,7 @@ const AboutUs = () => {
               </div>
 
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                   <FaCertificate className="text-white text-xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Expert-Curated Content</h3>
@@ -144,7 +144,7 @@ const AboutUs = () => {
               </div>
 
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                   <FaGraduationCap className="text-white text-xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Multi-Exam Preparation</h3>
@@ -154,7 +154,7 @@ const AboutUs = () => {
               </div>
 
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center mb-4">
                   <FaStar className="text-white text-xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Premium Features</h3>
@@ -164,7 +164,7 @@ const AboutUs = () => {
               </div>
 
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                   <FaTrophy className="text-white text-xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Performance Recognition</h3>
@@ -178,7 +178,7 @@ const AboutUs = () => {
           {/* Company Info */}
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-3 md:p-6 lg:p-8 border border-white/20 mb-12">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center">
+              <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                 <FaShieldAlt className="text-white text-md lg:text-2xl" />
               </div>
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -246,7 +246,7 @@ const AboutUs = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-yellow-100 to-red-100 dark:from-yellow-800 dark:to-red-800 rounded-3xl p-3 md:p-6 lg:p-8 text-white">
+            <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-800 dark:to-red-800 rounded-3xl p-3 md:p-6 lg:p-8 text-white">
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                 Ready to Start Your Exam Preparation Journey?
               </h2>
@@ -255,7 +255,7 @@ const AboutUs = () => {
               </p>
               <button
                 onClick={() => router.push('/')}
-                className="bg-white text-gray-700 dark:text-red-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-gray-700 dark:text-primary-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 Begin Your Preparation Today
               </button>

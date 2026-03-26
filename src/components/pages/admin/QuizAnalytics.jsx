@@ -291,7 +291,7 @@ const QuizAnalytics = () => {
                 name="period"
                 value={filters.period}
                 onChange={handleFilterChange}
-                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
               >
                 <option value="week">Last 7 days</option>
                 <option value="month">Last 30 days</option>
@@ -303,14 +303,14 @@ const QuizAnalytics = () => {
                 value={filters.category}
                 onChange={handleFilterChange}
                 placeholder="Category"
-                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
               />
               <input
                 name="difficulty"
                 value={filters.difficulty}
                 onChange={handleFilterChange}
                 placeholder="Difficulty"
-                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                className="px-4 py-2 rounded-lg border bg-white text-gray-900 border-gray-300 placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
               />
               <div className="ml-auto flex gap-2">
                 <Button
@@ -338,8 +338,8 @@ const QuizAnalytics = () => {
             {/* Total Quizzes */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center">
-                <div className="p-3 rounded-full bg-yellow-100 dark:bg-yellow-600">
-                  <FaQuestionCircle className="w-6 h-6 text-orange-700 dark:text-white" />
+                <div className="p-3 rounded-full bg-primary-100 dark:bg-primary-600">
+                  <FaQuestionCircle className="w-6 h-6 text-primary-600 dark:text-white" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -372,8 +372,8 @@ const QuizAnalytics = () => {
             {/* Average Score */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center">
-                <div className="p-3 rounded-full bg-yellow-100 dark:bg-yellow-600">
-                  <FaStar className="w-6 h-6 text-orange-700 dark:text-white" />
+                <div className="p-3 rounded-full bg-primary-100 dark:bg-primary-600">
+                  <FaStar className="w-6 h-6 text-primary-600 dark:text-white" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -392,7 +392,7 @@ const QuizAnalytics = () => {
             {/* Category Bar Chart */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaChartBar className="w-5 h-5 mr-2 text-orange-700 dark:text-yellow-400" />
+                <FaChartBar className="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Category Stats
                 </h3>
@@ -409,7 +409,7 @@ const QuizAnalytics = () => {
             {/* Level Bar Chart */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaChartBar className="w-5 h-5 mr-2 text-orange-700 dark:text-yellow-400" />
+                <FaChartBar className="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Level Stats
                 </h3>
@@ -426,7 +426,7 @@ const QuizAnalytics = () => {
             {/* Difficulty Pie Chart */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaChartPie className="w-5 h-5 mr-2 text-red-600 dark:text-red-400" />
+                <FaChartPie className="w-5 h-5 mr-2 text-primary-600 dark:text-red-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Difficulty Stats
                 </h3>
@@ -450,7 +450,7 @@ const QuizAnalytics = () => {
             {/* Top Quizzes Table */}
             <div className="rounded-xl border p-3 lg:p-6 shadow-lg bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex items-center mb-4">
-                <FaTrophy className="w-5 h-5 mr-2 text-orange-700 dark:text-yellow-400" />
+                <FaTrophy className="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Top Quizzes
                 </h3>
@@ -559,9 +559,9 @@ const QuizAnalytics = () => {
                               className={`px-2 py-1 rounded-full text-xs font-medium ${q.difficulty === "expert"
                                 ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
                                 : q.difficulty === "advanced"
-                                  ? "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300"
+                                  ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300"
                                   : q.difficulty === "intermediate"
-                                    ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+                                    ? "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300"
                                     : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
                                 }`}
                             >

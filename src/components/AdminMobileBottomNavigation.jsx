@@ -28,7 +28,7 @@ const AdminMobileBottomNavigation = () => {
       path: '/admin/dashboard',
       icon: MdDashboard,
       label: 'Dashboard',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-secondary-500 to-secondary-600'
     },
     {
       path: '/admin/analytics/dashboard',
@@ -46,19 +46,19 @@ const AdminMobileBottomNavigation = () => {
       path: '/admin/questions',
       icon: MdQuestionAnswer,
       label: 'Questions',
-      color: 'from-yellow-500 to-yellow-600'
+      color: 'from-primary-500 to-primary-600'
     },
     {
       path: '/admin/subscriptions',
       icon: FaCalendarAlt,
       label: 'Plans',
-      color: 'from-yellow-500 to-yellow-600'
+      color: 'from-primary-500 to-primary-600'
     },
     {
       path: '/admin/payment-transactions',
       icon: FaMoneyBill,
       label: 'Payments',
-      color: 'from-red-500 to-red-600'
+      color: 'from-red-500 to-secondary-600'
     }
   ];
 
@@ -76,7 +76,7 @@ const AdminMobileBottomNavigation = () => {
                 key={item.path}
                 href={item.path}
                 className={`flex flex-col items-center justify-center w-20 h-12 transition-all duration-300 ${isActive
-                    ? 'bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white transition-all duration-300 font-semibold shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40'
+                    ? 'bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white transition-all duration-300 font-semibold shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40'
                     : 'text-gray-400 hover:text-white hover:bg-gray-700'
                   }`}
               >

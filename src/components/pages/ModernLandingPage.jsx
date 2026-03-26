@@ -82,7 +82,7 @@ const ModernLandingPage = ({ educationalContent }) => {
             title: "Categories",
             description: "Browse by subject",
             icon: FaBook,
-            gradient: "from-yellow-500 to-red-600",
+            gradient: "from-primary-500 to-secondary-600",
             hoverColor: "indigo",
             link: "/categories",
             count: stats.quizCategories
@@ -91,7 +91,7 @@ const ModernLandingPage = ({ educationalContent }) => {
             title: "Levels",
             description: "10-level system",
             icon: FaTrophy,
-            gradient: "from-yellow-500 to-orange-600",
+            gradient: "from-primary-500 to-primary-600",
             hoverColor: "yellow",
             link: "/levels",
             count: "10"
@@ -100,7 +100,7 @@ const ModernLandingPage = ({ educationalContent }) => {
             title: "Quizzes",
             description: "Practice tests",
             icon: FaQuestionCircle,
-            gradient: "from-blue-500 to-cyan-600",
+            gradient: "from-secondary-500 to-cyan-600",
             hoverColor: "blue",
             link: "/quizzes",
             count: stats.totalQuizzes
@@ -186,23 +186,23 @@ const ModernLandingPage = ({ educationalContent }) => {
                 <UnifiedNavbar isLandingPage={true} />
 
                 {/* Hero Section - Modern Split Layout */}
-                <section className="relative overflow-hidden bg-gradient-to-br from-yellow-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-indigo-900/20 dark:to-red-900/20 pt-5 pb-5 lg:pt-10 lg:pb-10">
+                <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-indigo-900/20 dark:to-red-900/20 pt-5 pb-5 lg:pt-10 lg:pb-10">
                     {/* Animated Background */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse"></div>
-                        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-primary-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
                     </div>
 
                     <div className="relative container mx-auto px-4 sm:px-6 lg:px-10">
 
                         <div className="text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-white rounded-full text-sm font-bold mb-3 shadow-lg animate-bounce">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 via-red-500 to-primary-500 text-white rounded-full text-sm font-bold mb-3 shadow-lg animate-bounce">
                                 <FaFire className="w-4 h-4" />
                                 <span>Join {stats.activeStudents} Active Learners!</span>
                             </div>
 
                             <h1 className="text-2xl lg:text-3xl xl:text-4xl lg:text-6xl font-extrabold mb-3 leading-tight">
-                                <span className="text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:to-red-400">
+                                <span className="text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:to-red-400">
                                     Daily, Weekly & Monthly Challenges
                                 </span>{" "}
                                 <span className="text-gray-900 dark:text-white">
@@ -227,10 +227,10 @@ const ModernLandingPage = ({ educationalContent }) => {
              inline-flex items-center justify-center
              min-h-[48px] min-w-[48px]
              px-8 py-4
-             bg-gradient-to-r from-yellow-600 to-red-600
+             bg-gradient-to-r from-primary-600 to-secondary-600
              text-white rounded-xl
              font-bold text-lg
-             hover:from-yellow-700 hover:to-red-700
+             hover:from-primary-700 hover:to-secondary-700
              transition-all duration-300
              transform hover:scale-105
              shadow-xl
@@ -243,7 +243,7 @@ const ModernLandingPage = ({ educationalContent }) => {
 
                                 <button
                                     onClick={() => document.getElementById('content-explorer')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="px-8 py-4 border-2 border-indigo-600 text-red-600 dark:text-red-400 dark:border-indigo-400 rounded-xl font-bold text-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-300 flex items-center justify-center"
+                                    className="px-8 py-4 border-2 border-indigo-600 text-primary-600 dark:text-red-400 dark:border-indigo-400 rounded-xl font-bold text-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all duration-300 flex items-center justify-center"
                                 >
                                     <FaPlay className="mr-2" />
                                     <span>Explore Content</span>
@@ -287,7 +287,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                     Explore Our Content
                                 </span>
                             </h2>
@@ -345,7 +345,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                     How It Works
                                 </span>
                             </h2>
@@ -362,10 +362,10 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 { num: "4", icon: FaTrophy, title: "Win Rewards", desc: "Win prizes daily, weekly & monthly" }
                             ].map((step, idx) => (
                                 <div key={idx} className="relative bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl text-center transform hover:scale-105 transition-all duration-300">
-                                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                                         {step.num}
                                     </div>
-                                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                                         <step.icon className="w-8 h-8 text-white" />
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{step.title}</h3>
@@ -381,7 +381,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                     Why Choose AajExam?
                                 </span>
                             </h2>
@@ -390,7 +390,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {features.map((feature, idx) => (
                                 <div key={idx} className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
-                                    <div className="w-14 h-14 bg-gradient-to-br from-yellow-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
+                                    <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center mb-4">
                                         <feature.icon className="w-7 h-7 text-white" />
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
@@ -406,7 +406,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                     Success Stories
                                 </span>
                             </h2>
@@ -439,12 +439,12 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 <div key={idx} className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
                                     <div className="flex items-center gap-1 mb-4">
                                         {[...Array(testimonial.rating)].map((_, i) => (
-                                            <FaStar key={i} className="text-yellow-400" />
+                                            <FaStar key={i} className="text-primary-400" />
                                         ))}
                                     </div>
                                     <p className="text-gray-700 dark:text-gray-300 mb-6 italic">"{testimonial.quote}"</p>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                                             {testimonial.name.charAt(0)}
                                         </div>
                                         <div>
@@ -459,16 +459,16 @@ const ModernLandingPage = ({ educationalContent }) => {
                 </section>
 
                 {/* Mobile App Section */}
-                <section className="py-16 md:py-24 bg-gradient-to-br from-yellow-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-indigo-900/20 dark:to-red-900/20">
+                <section className="py-16 md:py-24 bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-indigo-900/20 dark:to-red-900/20">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-400 to-red-500 text-white rounded-full text-sm font-bold mb-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-400 to-secondary-500 text-white rounded-full text-sm font-bold mb-6">
                                     <FaMobileAlt className="w-4 h-4" />
                                     <span>Now on Play Store!</span>
                                 </div>
                                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6">
-                                    <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                    <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                         Learn Anywhere, Anytime
                                     </span>
                                 </h2>
@@ -484,7 +484,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                         { icon: FaUsers, text: "Social Features" }
                                     ].map((feature, idx) => (
                                         <div key={idx} className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-red-600 rounded-lg flex items-center justify-center">
+                                            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-lg flex items-center justify-center">
                                                 <feature.icon className="w-5 h-5 text-white" />
                                             </div>
                                             <span className="font-medium text-gray-900 dark:text-white">{feature.text}</span>
@@ -508,16 +508,16 @@ const ModernLandingPage = ({ educationalContent }) => {
                             </div>
 
                             <div className="relative">
-                                <div className="bg-gradient-to-br from-yellow-500 to-red-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                                <div className="bg-gradient-to-br from-primary-500 to-secondary-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
                                     <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-4">
                                         <div className="flex items-center justify-between">
                                             <div className="font-bold text-xl text-gray-900 dark:text-white">AajExam</div>
-                                            <FaMobileAlt className="text-red-600 text-2xl" />
+                                            <FaMobileAlt className="text-primary-600 text-2xl" />
                                         </div>
                                         <div className="space-y-3">
                                             {[1, 2, 3].map((i) => (
                                                 <div key={i} className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex items-center gap-3">
-                                                    <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-red-600 rounded-lg"></div>
+                                                    <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-lg"></div>
                                                     <div className="flex-1">
                                                         <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
                                                         <div className="h-2 bg-gray-200 dark:bg-gray-600 rounded w-1/2"></div>
@@ -535,10 +535,10 @@ const ModernLandingPage = ({ educationalContent }) => {
                 {/* Referral Program */}
                 <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-                        <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 dark:from-yellow-600 dark:via-orange-600 dark:to-red-600 rounded-3xl p-8 md:p-12 shadow-2xl">
+                        <div className="bg-gradient-to-r from-primary-400 text-secondary-500 to-secondary-500 dark:from-primary-600 dark:via-primary-500 dark:to-secondary-600 rounded-3xl p-8 md:p-12 shadow-2xl">
                             <div className="text-center mb-12">
                                 <div className="w-20 h-20 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                                    <FaGem className="text-4xl text-orange-500 dark:text-orange-400" />
+                                    <FaGem className="text-4xl text-primary-500 dark:text-secondary-400" />
                                 </div>
                                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
                                     Refer & Earn!
@@ -562,7 +562,7 @@ const ModernLandingPage = ({ educationalContent }) => {
 
                             <div className="text-center">
                                 <Link href="/register">
-                                    <button className="px-8 py-4 bg-white dark:bg-gray-900 text-orange-700 dark:text-orange-400 rounded-xl font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                                    <button className="px-8 py-4 bg-white dark:bg-gray-900 text-primary-600 dark:text-secondary-400 rounded-xl font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl">
                                         Get Your Referral Code
                                     </button>
                                 </Link>
@@ -577,7 +577,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-600 to-red-600 dark:from-yellow-400 dark:via-orange-400 dark:to-red-400">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-700 via-primary-500 to-secondary-600 dark:from-primary-400 dark:via-primary-400 dark:to-red-400">
                                     Contribute & Grow
                                 </span>
                             </h2>
@@ -588,8 +588,8 @@ const ModernLandingPage = ({ educationalContent }) => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {/* Create Blog/Articles */}
-                            <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-yellow-500 group">
-                                <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary-500 group">
+                                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                                     <FaNewspaper className="w-8 h-8 text-white" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center">
@@ -600,7 +600,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 </p>
 
                                 {/* Share Knowledge Badge */}
-                                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold text-center mb-6 flex items-center justify-center gap-2">
+                                <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold text-center mb-6 flex items-center justify-center gap-2">
                                     <FaLightbulb className="w-4 h-4" />
                                     <span>Share Your Expertise</span>
                                 </div>
@@ -621,7 +621,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 </ul>
 
                                 <Link href="/register">
-                                    <button className="w-full px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 text-white rounded-xl font-bold hover:from-yellow-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                                    <button className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-600 text-white rounded-xl font-bold hover:from-primary-700 hover:to-primary-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
                                         <span>Start Writing</span>
                                         <FaArrowRight className="w-4 h-4" />
                                     </button>
@@ -629,8 +629,8 @@ const ModernLandingPage = ({ educationalContent }) => {
                             </div>
 
                             {/* Create Quizzes - With Earning */}
-                            <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-500 group">
-                                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-secondary-500 group">
+                                <div className="w-16 h-16 bg-gradient-to-br from-secondary-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                                     <FaQuestionCircle className="w-8 h-8 text-white" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center">
@@ -641,7 +641,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 </p>
 
                                 {/* Share Knowledge Badge */}
-                                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold text-center mb-6 flex items-center justify-center gap-2">
+                                <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold text-center mb-6 flex items-center justify-center gap-2">
                                     <FaLightbulb className="w-4 h-4" />
                                     <span>Share Your Knowledge</span>
                                 </div>
@@ -662,7 +662,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 </ul>
 
                                 <Link href="/register">
-                                    <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-bold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                                    <button className="w-full px-6 py-3 bg-gradient-to-r from-secondary-600 to-cyan-600 text-white rounded-xl font-bold hover:from-secondary-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
                                         <span>Create Quiz</span>
                                         <FaArrowRight className="w-4 h-4" />
                                     </button>
@@ -689,15 +689,15 @@ const ModernLandingPage = ({ educationalContent }) => {
 
                                 <ul className="space-y-3 mb-6">
                                     <li className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                        <FaCheckCircle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                                        <FaCheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                                         <span>Build your profile</span>
                                     </li>
                                     <li className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                        <FaCheckCircle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                                        <FaCheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                                         <span>Help fellow students</span>
                                     </li>
                                     <li className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                        <FaCheckCircle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                                        <FaCheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                                         <span>Earn community badges</span>
                                     </li>
                                 </ul>
@@ -725,7 +725,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-10 max-w-4xl">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-                                <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
+                                <span className="text-transparent text-primary-600 via-primary-500 text-primary-600 dark:text-primary-400 dark:via-primary-400 dark:text-red-400">
                                     Frequently Asked Questions
                                 </span>
                             </h2>
@@ -740,7 +740,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                     >
                                         <span className="font-semibold text-lg text-gray-900 dark:text-white">{faq.question}</span>
                                         {openFaq === idx ? (
-                                            <FaChevronUp className="text-red-600 dark:text-red-400" />
+                                            <FaChevronUp className="text-primary-600 dark:text-red-400" />
                                         ) : (
                                             <FaChevronDown className="text-gray-400" />
                                         )}
@@ -757,7 +757,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                 </section>
 
                 {/* Final CTA */}
-                <section className="py-20 bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 relative overflow-hidden">
+                <section className="py-20 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-600 relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/10"></div>
                     <div className="relative container mx-auto px-4 sm:px-6 lg:px-10 text-center">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6">
@@ -767,7 +767,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                             Join thousands of students preparing for government exams. Start learning today!
                         </p>
                         <Link href="/register">
-                            <button className="px-10 py-5 bg-white text-red-600 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                            <button className="px-10 py-5 bg-white text-primary-600 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
                                 Get Started - It's Free!
                             </button>
                         </Link>

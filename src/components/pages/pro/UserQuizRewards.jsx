@@ -135,8 +135,7 @@ export default function UserQuizRewards() {
                         {!loading && !error && transactions.length > 0 && (
                             <div className="mb-4 flex items-center gap-4 justify-end">
                                 <button
-                                    onClick={() => router.push('/pro/quiz/create')}
-                                    className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white px-5 py-2.5 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all w-fit shadow-md"
+                                    className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-5 py-2.5 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all w-fit shadow-md"
                                 >
                                     <FaPlusCircle /> Create New Quiz
                                 </button>
@@ -163,7 +162,7 @@ export default function UserQuizRewards() {
                                     Monthly Quiz Limit
                                 </p>
                                 <p className={`text-xs mt-1 ${!quizCount.canAddMore
-                                    ? 'text-red-600 dark:text-red-400'
+                                    ? 'text-primary-600 dark:text-red-400'
                                     : 'text-red-700 dark:text-red-400'
                                     }`}>
                                     {quizCount.currentCount} / {quizCount.limit} quizzes this month
@@ -171,7 +170,7 @@ export default function UserQuizRewards() {
                                 </p>
                             </div>
                             {!quizCount.canAddMore && (
-                                <span className="text-red-600 dark:text-red-400 font-semibold text-sm">
+                                <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
                                     Limit Reached
                                 </span>
                             )}
@@ -198,12 +197,12 @@ export default function UserQuizRewards() {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Quizzes Rewarded</div>
-                                        <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">
+                                        <div className="text-2xl md:text-3xl font-bold text-secondary-600 dark:text-secondary-400">
                                             {summary.totalTransactions || 0}
                                         </div>
                                     </div>
-                                    <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full p-4">
-                                        <FaTrophy className="text-2xl text-blue-600 dark:text-blue-400" />
+                                    <div className="bg-secondary-100 dark:bg-secondary-900/30 rounded-full p-4">
+                                        <FaTrophy className="text-2xl text-secondary-600 dark:text-secondary-400" />
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +235,7 @@ export default function UserQuizRewards() {
                             </p>
                             <button
                                 onClick={() => router.push('/pro/quiz/create')}
-                                className="bg-gradient-to-r from-yellow-500 from-red-500 text-white px-6 py-2 rounded-lg hover:from-yellow-600 hover:from-red-600 transition-all"
+                                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-lg hover:from-primary-600 hover:to-secondary-600 transition-all"
                             >
                                 Create Your First Quiz
                             </button>
@@ -248,7 +247,7 @@ export default function UserQuizRewards() {
                                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                            <thead className="bg-gradient-to-r from-yellow-500 from-red-500">
+                                            <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
                                                 <tr>
                                                     <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                                         Quiz

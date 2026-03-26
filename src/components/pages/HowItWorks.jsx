@@ -17,10 +17,10 @@ const HowItWorks = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-4 lg:mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <FaRocket className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent mb-4">
+            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-secondary-700 bg-clip-text text-transparent mb-4">
               How It Works
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -53,12 +53,12 @@ const HowItWorks = () => {
             {/* Step 2 */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <FaCreditCard className="text-white text-2xl lg:text-3xl" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-orange-700 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 px-3 py-1 rounded-full">Step 2</span>
+                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full">Step 2</span>
                     <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
                       Choose Subscription & Access Levels
                     </h2>
@@ -67,16 +67,16 @@ const HowItWorks = () => {
                     Access quizzes based on your subscription plan:
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
-                    <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-3 lg:p-4 border border-blue-200 dark:border-blue-700">
+                    <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-xl p-3 lg:p-4 border border-secondary-200 dark:border-secondary-700">
                       <div className="flex items-center gap-2 mb-2">
-                        <FaCheckCircle className="text-blue-600 dark:text-blue-400" />
+                        <FaCheckCircle className="text-secondary-600 dark:text-secondary-400" />
                         <h3 className="font-semibold text-gray-800 dark:text-white">Free Plan</h3>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-300">Levels 0 to 9</p>
                     </div>
-                    <div className="bg-gradient-to-r from-yellow-50 to-orange-100 dark:from-yellow-900/30 dark:to-orange-800/30 rounded-xl p-3 lg:p-4 border border-yellow-200 dark:border-yellow-700">
+                    <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-3 lg:p-4 border border-primary-200 dark:border-primary-700">
                       <div className="flex items-center gap-2 mb-2">
-                        <FaCheckCircle className="text-orange-700 dark:text-yellow-400" />
+                        <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
                         <h3 className="font-semibold text-gray-800 dark:text-white">Pro Plan</h3>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-300">All Levels (0 to 10)</p>
@@ -94,7 +94,7 @@ const HowItWorks = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-orange-700 dark:text-yellow-400 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full">Step 3</span>
+                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full">Step 3</span>
                     <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
                       Play Daily, Weekly & Monthly Quizzes
                     </h2>
@@ -109,12 +109,12 @@ const HowItWorks = () => {
             {/* Step 4 */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <FaChartLine className="text-white text-2xl lg:text-3xl" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Step 4</span>
+                    <span className="text-sm lg:text-base font-semibold text-secondary-600 dark:text-secondary-400 bg-secondary-100 dark:bg-secondary-900/30 px-3 py-1 rounded-full">Step 4</span>
                     <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
                       Track Progress
                     </h2>
@@ -129,12 +129,12 @@ const HowItWorks = () => {
             {/* Step 5 */}
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <FaGift className="text-white text-2xl lg:text-3xl" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-orange-700 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 px-3 py-1 rounded-full">Step 5</span>
+                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full">Step 5</span>
                     <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
                       Daily, Weekly & Monthly Reward System
                     </h2>
@@ -156,7 +156,7 @@ const HowItWorks = () => {
                       <p className="text-gray-700 dark:text-gray-300"><strong>Monthly Rewards:</strong> Reached <strong>Level 10</strong>? Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} PRO users share the massive dynamic prize pool.</p>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                  <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                     <p className="text-sm text-gray-700 dark:text-gray-300">
                       <strong>Ranking is based on:</strong> 1) High-scoring quizzes, 2) Accuracy, 3) Total score.
                     </p>
@@ -211,9 +211,9 @@ const HowItWorks = () => {
           </div>
 
           {/* Important Note */}
-          <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-orange-200 dark:border-orange-700 mb-8 lg:mb-12">
+          <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-primary-200 dark:border-primary-700 mb-8 lg:mb-12">
             <div className="flex items-start gap-4">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center flex-shrink-0">
                 <FaLightbulb className="text-white text-xl" />
               </div>
               <div>
@@ -230,7 +230,7 @@ const HowItWorks = () => {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8 lg:mb-12">
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaShieldAlt className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Skill-Based</h3>
@@ -250,7 +250,7 @@ const HowItWorks = () => {
             </div>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center mb-4">
                 <FaChartLine className="text-white text-xl" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Track Progress</h3>
@@ -262,7 +262,7 @@ const HowItWorks = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-blue-100 from-red-100 dark:from-blue-800 dark:from-red-800 rounded-3xl p-4 md:p-6 lg:p-8">
+            <div className="bg-gradient-to-r from-secondary-100 from-red-100 dark:from-secondary-800 dark:from-red-800 rounded-3xl p-4 md:p-6 lg:p-8">
               <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                 Ready to Start Your Quiz Journey?
               </h2>
@@ -271,7 +271,7 @@ const HowItWorks = () => {
               </p>
               <button
                 onClick={() => router.push('/')}
-                className="bg-white text-gray-700 dark:text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-gray-700 dark:text-secondary-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 Get Started Today
               </button>

@@ -83,7 +83,7 @@ const AdminUserAnalyticsDetail = () => {
 
                 <div className="adminContent p-3 md:p-6 w-full">
                     {/* Page Header */}
-                    <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 dark:from-red-600 dark:via-yellow-600 dark:to-red-600 rounded-2xl shadow-xl mb-6">
+                    <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-primary-500 to-secondary-500 dark:from-red-600 dark:via-primary-600 dark:to-secondary-600 rounded-2xl shadow-xl mb-6">
                         <div className="absolute inset-0 bg-black opacity-10" />
                         <div className="relative px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                             <div className="flex items-center gap-4">
@@ -127,7 +127,7 @@ const AdminUserAnalyticsDetail = () => {
                             <p className="text-red-500 font-semibold mb-4">{error}</p>
                             <button
                                 onClick={() => router.push('/admin/analytics/users-overview')}
-                                className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-6 py-2 rounded-xl font-medium hover:from-red-600 hover:to-yellow-600 transition"
+                                className="bg-gradient-to-r from-red-500 to-primary-500 text-white px-6 py-2 rounded-xl font-medium hover:from-red-600 hover:to-primary-600 transition"
                             >
                                 ← Back to Users
                             </button>
@@ -147,10 +147,10 @@ const AdminUserAnalyticsDetail = () => {
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
                                     <StatCard gradient="from-green-400 via-emerald-400 to-green-500 dark:from-green-600 dark:via-emerald-600 dark:to-green-700" icon={FaArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="Monthly + Referral + Blog + Quiz" />
-                                    <StatCard gradient="from-red-400 via-rose-400 to-red-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700" icon={FaArrowDown} label="Total Expenses" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Subscription payments" />
-                                    <StatCard gradient={netEarnings >= 0 ? 'from-blue-400 via-cyan-400 to-blue-500 dark:from-blue-600 dark:via-cyan-600 dark:to-blue-700' : 'from-red-400 via-rose-400 to-red-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700'} icon={FaWallet} label={netEarnings >= 0 ? 'Net Profit' : 'Net Loss'} value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub="Earnings minus expenses" />
-                                    <StatCard gradient="from-orange-400 via-amber-400 to-orange-500 dark:from-orange-600 dark:via-amber-600 dark:to-orange-700" icon={FaBook} label="Blog Earnings" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From approved blogs" />
-                                    <StatCard gradient="from-blue-400 via-cyan-400 to-blue-500 dark:from-blue-600 dark:via-cyan-600 dark:to-blue-700" icon={FaQuestionCircle} label="Quiz Earnings" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From approved quizzes" />
+                                    <StatCard gradient="from-red-400 via-rose-400 to-secondary-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700" icon={FaArrowDown} label="Total Expenses" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Subscription payments" />
+                                    <StatCard gradient={netEarnings >= 0 ? 'from-secondary-400 via-cyan-400 to-secondary-500 dark:from-secondary-600 dark:via-cyan-600 dark:to-secondary-700' : 'from-red-400 via-rose-400 to-secondary-500 dark:from-red-600 dark:via-rose-600 dark:to-red-700'} icon={FaWallet} label={netEarnings >= 0 ? 'Net Profit' : 'Net Loss'} value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub="Earnings minus expenses" />
+                                    <StatCard gradient="from-primary-400 via-amber-400 to-primary-500 dark:from-primary-600 dark:via-amber-600 dark:to-primary-700" icon={FaBook} label="Blog Earnings" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From approved blogs" />
+                                    <StatCard gradient="from-secondary-400 via-cyan-400 to-secondary-500 dark:from-secondary-600 dark:via-cyan-600 dark:to-secondary-700" icon={FaQuestionCircle} label="Quiz Earnings" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From approved quizzes" />
                                 </div>
                             </section>
 
@@ -164,7 +164,7 @@ const AdminUserAnalyticsDetail = () => {
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                     <StatCard gradient="from-purple-400 via-violet-400 to-purple-500 dark:from-purple-600 dark:via-violet-600 dark:to-purple-700" icon={FaTrophy} label="High Score Wins" value={totalHighScoreWins.toLocaleString('en-IN')} sub="Combined challenge wins" />
-                                    <StatCard gradient="from-yellow-400 via-blue-400 to-indigo-500 dark:from-yellow-600 dark:via-blue-600 dark:to-indigo-700" icon={FaChartLine} label="Avg Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Overall performance" />
+                                    <StatCard gradient="from-primary-400 via-secondary-400 to-indigo-500 dark:from-primary-600 dark:via-secondary-600 dark:to-indigo-700" icon={FaChartLine} label="Avg Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Overall performance" />
                                     <StatCard gradient="from-cyan-400 via-teal-400 to-cyan-500 dark:from-cyan-600 dark:via-teal-600 dark:to-cyan-700" icon={FaGraduationCap} label="Test Attempts" value={testAttemptsCount.toLocaleString('en-IN')} sub="Govt exam tests" />
                                 </div>
                             </section>
@@ -172,28 +172,28 @@ const AdminUserAnalyticsDetail = () => {
                             {/* Challenge Performance */}
                             <section>
                                 <div className="flex items-center gap-2 mb-4">
-                                    <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-lg p-1.5">
+                                    <div className="bg-gradient-to-r from-primary-500 to-primary-500 rounded-lg p-1.5">
                                         <FaTrophy className="text-white" />
                                     </div>
                                     <h3 className="font-bold text-gray-800 dark:text-white text-lg">Challenge Performance</h3>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                     <StatCard
-                                        gradient="from-red-400 to-orange-500 dark:from-red-600 dark:to-orange-700"
+                                        gradient="from-red-400 to-primary-500 dark:from-red-600 dark:to-primary-700"
                                         icon={FaTrophy}
                                         label="Daily Challenge"
                                         value={`${userData.dailyProgress?.highScoreWins || 0} Wins`}
                                         sub={`${userData.dailyProgress?.totalQuizAttempts || 0} Attempts (${userData.dailyProgress?.accuracy || 0}% Acc)`}
                                     />
                                     <StatCard
-                                        gradient="from-yellow-400 to-orange-500 dark:from-yellow-600 dark:to-orange-700"
+                                        gradient="from-primary-400 to-primary-500 dark:from-primary-600 dark:to-primary-700"
                                         icon={FaTrophy}
                                         label="Weekly Challenge"
                                         value={`${userData.weeklyProgress?.highScoreWins || 0} Wins`}
                                         sub={`${userData.weeklyProgress?.totalQuizAttempts || 0} Attempts (${userData.weeklyProgress?.accuracy || 0}% Acc)`}
                                     />
                                     <StatCard
-                                        gradient="from-blue-400 to-indigo-500 dark:from-blue-600 dark:to-indigo-700"
+                                        gradient="from-secondary-400 to-indigo-500 dark:from-secondary-600 dark:to-indigo-700"
                                         icon={FaTrophy}
                                         label="Monthly Challenge"
                                         value={`${userData.monthlyProgress?.highScoreWins || 0} Wins`}
@@ -213,7 +213,7 @@ const AdminUserAnalyticsDetail = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                     <StatCard gradient="from-pink-400 via-rose-400 to-pink-500 dark:from-pink-600 dark:via-rose-600 dark:to-pink-700" icon={FaUsers} label="Followers" value={followersCount.toLocaleString('en-IN')} sub="Total followers" />
                                     <StatCard gradient="from-teal-400 via-cyan-400 to-teal-500 dark:from-teal-600 dark:via-cyan-600 dark:to-teal-700" icon={FaUserFriends} label="Following" value={followingCount.toLocaleString('en-IN')} sub="Users followed" />
-                                    <StatCard gradient="from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-600 dark:via-yellow-600 dark:to-amber-700" icon={FaUserPlus} label="Referrals" value={referralCount.toLocaleString('en-IN')} sub="Users referred" />
+                                    <StatCard gradient="from-amber-400 via-primary-400 to-amber-500 dark:from-amber-600 dark:via-primary-600 dark:to-amber-700" icon={FaUserPlus} label="Referrals" value={referralCount.toLocaleString('en-IN')} sub="Users referred" />
                                 </div>
                             </section>
 
@@ -226,11 +226,11 @@ const AdminUserAnalyticsDetail = () => {
                                     <h3 className="font-bold text-gray-800 dark:text-white text-lg">Content Creation</h3>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                                    <StatCard small gradient="from-violet-400 via-purple-400 to-violet-500 dark:from-violet-600 dark:via-purple-600 dark:to-violet-700" icon={FaQuestionCircle} label="Questions" value={questionsPostedCount.toLocaleString('en-IN')} sub="Posted" />
+                                    <StatCard small gradient="from-violet-400 via-purple-400 to-violet-500 dark:from-violet-600 dark:via-secondary-500 dark:to-violet-700" icon={FaQuestionCircle} label="Questions" value={questionsPostedCount.toLocaleString('en-IN')} sub="Posted" />
                                     <StatCard small gradient="from-rose-400 via-pink-400 to-rose-500 dark:from-rose-600 dark:via-pink-600 dark:to-rose-700" icon={FaFolder} label="Categories" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Created" />
                                     <StatCard small gradient="from-emerald-400 via-green-400 to-emerald-500 dark:from-emerald-600 dark:via-green-600 dark:to-emerald-700" icon={FaLayerGroup} label="Subcategories" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Created" />
-                                    <StatCard small gradient="from-sky-400 via-blue-400 to-sky-500 dark:from-sky-600 dark:via-blue-600 dark:to-sky-700" icon={FaBook} label="Quizzes" value={quizzesCreatedCount.toLocaleString('en-IN')} sub="Created" />
-                                    <StatCard small gradient="from-orange-400 via-amber-400 to-orange-500 dark:from-orange-600 dark:via-amber-600 dark:to-orange-700" icon={FaBook} label="Blogs" value={blogsCreatedCount.toLocaleString('en-IN')} sub="Created" />
+                                    <StatCard small gradient="from-sky-400 via-secondary-400 to-sky-500 dark:from-sky-600 dark:via-secondary-600 dark:to-sky-700" icon={FaBook} label="Quizzes" value={quizzesCreatedCount.toLocaleString('en-IN')} sub="Created" />
+                                    <StatCard small gradient="from-primary-400 via-amber-400 to-primary-500 dark:from-primary-600 dark:via-amber-600 dark:to-primary-700" icon={FaBook} label="Blogs" value={blogsCreatedCount.toLocaleString('en-IN')} sub="Created" />
                                 </div>
                             </section>
                         </div>

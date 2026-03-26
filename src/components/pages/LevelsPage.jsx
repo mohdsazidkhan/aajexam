@@ -133,11 +133,11 @@ const LevelsPage = ({ showNavbar = true }) => {
     return (
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-4xl mb-4">⚠️</div>
-          <p className="text-red-600 text-xl">{error}</p>
+          <div className="text-primary-600 text-4xl mb-4">⚠️</div>
+          <p className="text-primary-600 text-xl">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="mt-4 bg-gradient-to-r from-yellow-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-yellow-600 hover:to-red-600 transition-all duration-300"
+            className="mt-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300"
           >
             Try Again
           </button>
@@ -154,19 +154,19 @@ const LevelsPage = ({ showNavbar = true }) => {
 
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <FaTrophy className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-red-600 to-yellow-600 dark:text-white mb-2 sm:mb-4 drop-shadow-lg">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 dark:text-white mb-2 sm:mb-4 drop-shadow-lg">
               Level Progression System
             </h1>
             <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
               Journey from{" "}
-              <span className="font-bold text-orange-700 dark:text-yellow-300">
+              <span className="font-bold text-primary-600 dark:text-primary-300">
                 Starter
               </span>{" "}
               to{" "}
-              <span className="font-bold text-red-600 dark:text-red-300">
+              <span className="font-bold text-primary-600 dark:text-red-300">
                 Legend
               </span>{" "}
               through{" "}
@@ -180,9 +180,9 @@ const LevelsPage = ({ showNavbar = true }) => {
           {/* Info Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Scholarship Info */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-3xl shadow-2xl p-2 md:p-4 lg:p-6 xl:p-8 border border-yellow-200 dark:border-yellow-700">
+            <div className="bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/30 rounded-3xl shadow-2xl p-2 md:p-4 lg:p-6 xl:p-8 border border-primary-200 dark:border-primary-700">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaAward className="text-white text-2xl" />
                 </div>
                 <h3 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -191,18 +191,18 @@ const LevelsPage = ({ showNavbar = true }) => {
               </div>
               <div className="space-y-4">
                 <p className="text-gray-700 dark:text-gray-300">
-                  Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} ranked users in Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} (<span className="font-bold text-orange-700">Legend</span>) win scholarships and prizes!
+                  Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} ranked users in Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} (<span className="font-bold text-primary-600">Legend</span>) win scholarships and prizes!
                 </p>
                 <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-orange-700 mb-2">
+                    <div className="text-3xl font-bold text-primary-600 mb-2">
                       {activeProUsers > 0 ? `₹${(activeProUsers * config.QUIZ_CONFIG.PRIZE_PER_PRO).toLocaleString('en-IN')}` : `₹${config.QUIZ_CONFIG.PRIZE_PER_PRO}+`}
                     </div>
                     <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Monthly Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} PRO users at Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} with ≥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy win prizes (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO})</div>
                   </div>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold text-orange-700 dark:text-yellow-400">
+                  <span className="font-semibold text-primary-600 dark:text-primary-400">
                     Reach Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} with high accuracy to qualify for monthly prizes!
                   </span>
                 </p>
@@ -210,9 +210,9 @@ const LevelsPage = ({ showNavbar = true }) => {
             </div>
 
             {/* Progression Rules */}
-            <div className="bg-gradient-to-br from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 rounded-3xl shadow-2xl p-2 xl:p-4 lg:p-6 xl:p-8 border border-yellow-200 dark:border-yellow-700">
+            <div className="bg-gradient-to-br from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-2xl p-2 xl:p-4 lg:p-6 xl:p-8 border border-primary-200 dark:border-primary-700">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
                   <FaGem className="text-white text-2xl" />
                 </div>
                 <h3 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -229,7 +229,7 @@ const LevelsPage = ({ showNavbar = true }) => {
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -245,7 +245,7 @@ const LevelsPage = ({ showNavbar = true }) => {
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -277,11 +277,11 @@ const LevelsPage = ({ showNavbar = true }) => {
                 🎯 Your Current Level
               </h2>
               <div className="flex items-center justify-center space-x-6 mb-6">
-                <div className={`w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-yellow-100 to-red-100 dark:from-yellow-500 dark:to-red-500 rounded-2xl flex items-center justify-center`}>
+                <div className={`w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-500 dark:to-secondary-500 rounded-2xl flex items-center justify-center`}>
                   {(() => {
                     const BadgeIcon = levelBadgeIcons[userLevel.name] || levelBadgeIcons.Default;
                     return (
-                      <BadgeIcon className="text-red-600 dark:text-white text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
+                      <BadgeIcon className="text-primary-600 dark:text-white text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
                     );
                   })()}
                 </div>
@@ -298,7 +298,7 @@ const LevelsPage = ({ showNavbar = true }) => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-md lg:text-2xl font-bold text-orange-700 dark:text-yellow-400 mb-2">
+                <div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">
                   {highScoreQuizzes} / {totalQuizAttempts || 0} Quizzes
                 </div>
                 <div className="text-gray-600 dark:text-gray-300">
@@ -314,13 +314,13 @@ const LevelsPage = ({ showNavbar = true }) => {
               const isCurrentLevel = lvl.level === userLevel.number;
               const isUnlocked = highScoreQuizzes >= lvl.quizzesRequired;
               const cardBg = `bg-gradient-to-br 
-  from-yellow-50 to-red-50
+  from-primary-50 to-red-50
   dark:from-gray-800 dark:via-gray-900 dark:to-black`;
               return (
                 <div
                   key={lvl.level}
                   className={`group relative rounded-2xl shadow-xl border-2 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 ${isCurrentLevel
-                    ? 'border-yellow-500 shadow-yellow-500/25'
+                    ? 'border-primary-500 shadow-primary-500/25'
                     : isUnlocked
                       ? 'border-green-500 shadow-green-500/25'
                       : 'border-gray-300 dark:border-gray-600'
@@ -329,7 +329,7 @@ const LevelsPage = ({ showNavbar = true }) => {
                   {/* Level Badge */}
                   <div className="absolute -top-3 -right-3">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${isCurrentLevel
-                      ? 'bg-yellow-500'
+                      ? 'bg-primary-500'
                       : isUnlocked
                         ? 'bg-green-500'
                         : 'bg-gray-400'
@@ -339,11 +339,11 @@ const LevelsPage = ({ showNavbar = true }) => {
                   </div>
 
                   {/* Icon */}
-                  <div className="w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-yellow-100 to-red-100 dark:from-yellow-500 dark:to-red-500 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-4">
+                  <div className="w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-500 dark:to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-4">
                     {(() => {
                       const BadgeIcon = levelBadgeIcons[lvl.name] || levelBadgeIcons.Default;
                       return (
-                        <BadgeIcon className="text-orange-700 dark:text-yellow-200 text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
+                        <BadgeIcon className="text-primary-600 dark:text-primary-200 text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
                       );
                     })()}
                   </div>
@@ -366,13 +366,13 @@ const LevelsPage = ({ showNavbar = true }) => {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-500 dark:text-gray-200 text-sm">Available:</span>
-                        <span className="font-semibold text-black dark:text-orange-200">{lvl.quizCount} quizzes</span>
+                        <span className="font-semibold text-black dark:text-primary-200">{lvl.quizCount} quizzes</span>
                       </div>
                     </div>
 
                     {/* Status */}
                     <div className={`text-center py-2 rounded-lg text-sm font-semibold shadow-md ${isCurrentLevel
-                      ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                      ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
                       : isUnlocked
                         ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                         : 'bg-red-100 text-gray-600 dark:bg-red-700 dark:text-red-300'
@@ -389,7 +389,7 @@ const LevelsPage = ({ showNavbar = true }) => {
           {/* Back Button */}
           <div className="text-center">
             <button
-              className="bg-gradient-to-r from-yellow-600 to-red-600 text-white px-8 py-3 rounded-xl hover:from-yellow-700 hover:to-red-700 transition-all duration-300 font-semibold transform hover:scale-105 flex items-center space-x-2 mx-auto"
+              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-3 rounded-xl hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:scale-105 flex items-center space-x-2 mx-auto"
               onClick={() => {
                 router.back();
               }}

@@ -116,7 +116,7 @@ const SubscriptionPage = () => {
   const getPlanGradient = (planName) => {
     switch (planName.toLowerCase()) {
       case "pro":
-        return "from-orange-500 via-red-500 to-pink-600";
+        return "from-primary-500 via-red-500 to-pink-600";
       default:
         return "from-green-500 via-green-600 to-teal-600";
     }
@@ -170,19 +170,19 @@ const SubscriptionPage = () => {
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-br from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-tr from-yellow-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-r from-green-400/10 to-yellow-400/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute -top-40 -right-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-br from-primary-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-tr from-primary-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-r from-green-400/10 to-primary-400/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
 
         <div className="container mx-auto px-2 lg:px-10 py-6 sm:py-8 mt-0 relative z-10">
           {/* Hero Section */}
           <div className="text-center mb-4 lg:mb-6 subscription-hero">
             <div className="relative inline-block mb-6 sm:mb-8">
-              <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto shadow-2xl floating-animation">
+              <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto shadow-2xl floating-animation">
                 <FaWallet className="text-white text-2xl sm:text-4xl" />
               </div>
-              <div className="absolute -top-2 -right-2 w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-r from-green-400 to-yellow-500 rounded-full flex items-center justify-center animate-bounce">
+              <div className="absolute -top-2 -right-2 w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-r from-green-400 to-primary-500 rounded-full flex items-center justify-center animate-bounce">
                 <FaCrown className="text-white text-xs sm:text-lg" />
               </div>
             </div>
@@ -200,7 +200,7 @@ const SubscriptionPage = () => {
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl p-2 py-4 md:p-8 border border-white/30 mb-16 hover-lift">
               <div className="flex items-center justify-between mb-8 flex-col md:flex-row">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12  lg:w-16 lg:h-16 xl:w-20 xl:h-20 bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
+                  <div className="w-12 h-12  lg:w-16 lg:h-16 xl:w-20 xl:h-20 bg-gradient-to-r from-green-500 via-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg glow-animation">
                     <FaShieldAlt className="text-white text-3xl" />
                   </div>
                   <div>
@@ -219,7 +219,7 @@ const SubscriptionPage = () => {
                   onClick={() => {
                     router.push("/levels");
                   }}
-                  className="mt-4 lg:mt-0 w-full lg:w-auto bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-6 py-3 rounded-2xl transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40"
+                  className="mt-4 lg:mt-0 w-full lg:w-auto bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-6 py-3 rounded-2xl transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40"
                 >
                   <span className="flex justify-center items-center space-x-2">
                     <FaTrophy className="text-sm" />
@@ -229,9 +229,9 @@ const SubscriptionPage = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-4 gap-4 md:gap-8">
-                <div className="bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 rounded-2xl p-3 md:p-6 border border-yellow-200 dark:border-yellow-700 hover-scale">
+                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-2xl p-3 md:p-6 border border-primary-200 dark:border-primary-700 hover-scale">
                   <div className="flex items-center space-x-4 mb-0">
-                    <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                       <FaCrown className="text-white text-xl" />
                     </div>
                     <div>
@@ -257,7 +257,7 @@ const SubscriptionPage = () => {
                       <p
                         className={`text-md lg:text-2xl font-bold ${subscription.status === "active"
                           ? "text-green-600"
-                          : "text-red-600"
+                          : "text-primary-600"
                           }`}
                       >
                         {subscription.status === "active"
@@ -269,9 +269,9 @@ const SubscriptionPage = () => {
 
                 </div>
 
-                <div className="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900/30 dark:to-yellow-900/30 rounded-2xl p-3 md:p-6 border border-red-200 dark:border-red-700 hover-scale">
+                <div className="bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/30 dark:to-primary-900/30 rounded-2xl p-3 md:p-6 border border-red-200 dark:border-red-700 hover-scale">
                   <div className="flex items-center space-x-4 mb-0">
-                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-yellow-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-xl flex items-center justify-center">
                       <FaBookOpen className="text-white text-xl" />
                     </div>
                     <div>
@@ -297,9 +297,9 @@ const SubscriptionPage = () => {
 
                 </div>
 
-                <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 rounded-2xl p-3 md:p-6 border border-orange-200 dark:border-orange-700 hover-scale">
+                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-2xl p-3 md:p-6 border border-primary-200 dark:border-primary-700 hover-scale">
                   <div className="flex items-center space-x-4 mb-0">
-                    <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                       <FaCalendarAlt className="text-white text-xl" />
                     </div>
                     <div>
@@ -320,9 +320,9 @@ const SubscriptionPage = () => {
 
               {/* Expired Subscription Notice */}
               {subscription && subscription.status !== "active" && (
-                <div className="mt-6 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-orange-200 dark:border-orange-700">
+                <div className="mt-6 bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
                       <FaBolt className="text-white text-xl" />
                     </div>
                     <div className="flex-grow">
@@ -342,7 +342,7 @@ const SubscriptionPage = () => {
                           .getElementById("plans-section")
                           ?.scrollIntoView({ behavior: "smooth" })
                       }
-                      className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
                     >
                       Reactivate Now
                     </button>
@@ -410,7 +410,7 @@ const SubscriptionPage = () => {
                       subscription.status !== "active" &&
                       !isCurrentPlan && (
                         <div className="absolute -top-4 -left-4">
-                          <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg pulse-glow">
+                          <div className="bg-gradient-to-r from-red-500 to-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg pulse-glow">
                             <FaBolt className="inline mr-1" />
                             EXPIRED
                           </div>
@@ -442,7 +442,7 @@ const SubscriptionPage = () => {
                             plan.name.toLowerCase() &&
                             subscription.status !== "active" &&
                             !isCurrentPlan
-                            ? "text-red-600 dark:text-red-400"
+                            ? "text-primary-600 dark:text-red-400"
                             : "text-gray-800 dark:text-white"
                           }`}
                       >
@@ -470,7 +470,7 @@ const SubscriptionPage = () => {
                       {/* Price Display */}
                       <div className="mb-2">
                         <div className="flex items-baseline justify-center gap-2">
-                          <span className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 via-yellow-600 to-red-600 bg-clip-text text-transparent">
+                          <span className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 via-primary-600 to-secondary-600 bg-clip-text text-transparent">
                             ₹{plan.price}
                           </span>
                           <span className="text-gray-600 dark:text-gray-300 tex-sm lg:text-lg">
@@ -552,7 +552,7 @@ const SubscriptionPage = () => {
                         ) : (
                           <button
                             onClick={() => handleSubscribe(plan.key)}
-                            className={`w-full py-4 px-6 rounded-2xl font-bold text-white dark:text-white transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-3xl bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600`}
+                            className={`w-full py-4 px-6 rounded-2xl font-bold text-white dark:text-white transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-3xl bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600`}
                           >
                             <span className="flex items-center justify-center space-x-2">
                               <FaBolt className="text-sm" />
@@ -581,7 +581,7 @@ const SubscriptionPage = () => {
                       ) : (
                         <button
                           onClick={() => handleSubscribe(plan.key)}
-                          className={`w-full py-4 px-6 rounded-2xl font-bold text-white dark:text-white transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-3xl bg-gradient-to-r ${gradient} hover:shadow-2xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40`}
+                          className={`w-full py-4 px-6 rounded-2xl font-bold text-white dark:text-white transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-3xl bg-gradient-to-r ${gradient} hover:shadow-2xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40`}
                         >
                           <span className="flex items-center justify-center space-x-2">
                             <FaRocket className="text-sm" />
@@ -614,14 +614,14 @@ const SubscriptionPage = () => {
                   title: "Unlimited Access",
                   description:
                     "Access all premium quizzes and features without any restrictions",
-                  gradient: "from-yellow-500 to-red-500",
+                  gradient: "from-primary-500 to-secondary-500",
                 },
                 {
                   icon: FaTrophy,
                   title: "Challenge Rewards",
                   description:
                     "Win from Daily, Weekly & Monthly dynamic prize pools. Multi-tier reward system for consistent top performers.",
-                  gradient: "from-yellow-500 to-orange-500",
+                  gradient: "from-primary-500 to-primary-500",
                 },
                 {
                   icon: FaHeadset,
@@ -635,7 +635,7 @@ const SubscriptionPage = () => {
                   title: "Advanced Analytics",
                   description:
                     "Track your progress with detailed performance insights",
-                  gradient: "from-red-500 to-yellow-500",
+                  gradient: "from-red-500 to-primary-500",
                 },
               ].map((benefit, index) => (
                 <div
@@ -664,7 +664,7 @@ const SubscriptionPage = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center bg-gradient-to-r from-yellow-200 via-red-200 to-pink-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 rounded-3xl p-6 sm:p-12 text-white shadow-2xl hover-lift">
+          <div className="text-center bg-gradient-to-r from-primary-200 via-red-200 to-pink-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 rounded-3xl p-6 sm:p-12 text-white shadow-2xl hover-lift">
             <h2 className="text-md md:text-md lg:text-2xl xl:text-4xl font-bold mb-2 sm:mb-4 text-gray-800 dark:text-white">
               Ready to Start Your Journey?
             </h2>
@@ -678,7 +678,7 @@ const SubscriptionPage = () => {
                   .getElementById("plans-section")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 dark:from-yellow-500 dark:to-red-500 dark:hover:from-yellow-600 dark:hover:to-red-600 text-white dark:text-white px-6 py-3 rounded-2xl transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-yellow-500/25 hover:dark:shadow-yellow-500/40"
+              className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-primary-600 dark:hover:to-secondary-600 text-white dark:text-white px-6 py-3 rounded-2xl transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg hover:shadow-xl dark:shadow-primary-500/25 hover:dark:shadow-primary-500/40"
             >
               Choose Your Plan Now
             </button>

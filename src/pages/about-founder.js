@@ -36,10 +36,10 @@ export default function AboutAuthor() {
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-24 h-24 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaUserGraduate className="text-white text-5xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Mohd Sazid Khan
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
@@ -69,13 +69,13 @@ export default function AboutAuthor() {
                     {/* Expertise */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-xl flex items-center justify-center">
                                 <FaCode className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Technical Expertise</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
                                 <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Full-Stack Development</h3>
                                 <p className="text-gray-700 dark:text-gray-300">
                                     Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.
@@ -96,7 +96,7 @@ export default function AboutAuthor() {
                                 </p>
                             </div>
 
-                            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-700">
+                            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
                                 <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Data Analytics</h3>
                                 <p className="text-gray-700 dark:text-gray-300">
                                     Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize educational outcomes.
@@ -108,7 +108,7 @@ export default function AboutAuthor() {
                     {/* Vision & Mission */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Vision & Mission</h2>
@@ -139,7 +139,7 @@ export default function AboutAuthor() {
                         </div>
                         <div className="space-y-4">
                             <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
+                                <div className="w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">UDYAM Registration</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
@@ -169,7 +169,7 @@ export default function AboutAuthor() {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
+                                <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">User Growth</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
@@ -181,7 +181,7 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Philosophy */}
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
+                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Educational Philosophy</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -211,7 +211,7 @@ export default function AboutAuthor() {
                                 href="https://www.linkedin.com/in/mohd-sazid-khan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800 transition-all"
+                                className="flex items-center gap-3 bg-secondary-700 text-white px-6 py-3 rounded-xl hover:bg-secondary-800 transition-all"
                             >
                                 <FaLinkedin className="text-xl" />
                                 <span>LinkedIn</span>
@@ -230,7 +230,7 @@ export default function AboutAuthor() {
 
                     {/* CTA */}
                     <div className="text-center">
-                        <div className="bg-gradient-to-r from-yellow-100 to-purple-100 dark:from-yellow-800 dark:to-purple-800 rounded-3xl p-8">
+                        <div className="bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-800 dark:to-purple-800 rounded-3xl p-8">
                             <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Join Thousands of Successful Students
                             </h2>

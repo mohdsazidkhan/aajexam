@@ -146,7 +146,7 @@ export default function UserDetailsPage() {
   const getSubscriptionBadge = (status) => {
     const colors = {
       free: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
-      pro: "bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200",
+      pro: "bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200",
     };
 
     return (
@@ -211,7 +211,7 @@ export default function UserDetailsPage() {
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center mr-3">
+                      <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
                         <span className="text-white font-semibold text-sm">
                           {detail.name?.charAt(0)?.toUpperCase() || 'U'}
                         </span>
@@ -254,7 +254,7 @@ export default function UserDetailsPage() {
                                 href={detail.socialLinks.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline truncate max-w-[150px]"
+                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
                               >
                                 Instagram
                               </a>
@@ -262,12 +262,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.facebook && (
                             <div className="flex items-center">
-                              <FaFacebook className="w-4 h-4 mr-2 text-blue-600" />
+                              <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
                               <a
                                 href={detail.socialLinks.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline truncate max-w-[150px]"
+                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
                               >
                                 Facebook
                               </a>
@@ -275,12 +275,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.x && (
                             <div className="flex items-center">
-                              <FaTwitter className="w-4 h-4 mr-2 text-blue-400" />
+                              <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
                               <a
                                 href={detail.socialLinks.x}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline truncate max-w-[150px]"
+                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
                               >
                                 Twitter/X
                               </a>
@@ -288,12 +288,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.youtube && (
                             <div className="flex items-center">
-                              <FaYoutube className="w-4 h-4 mr-2 text-red-600" />
+                              <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
                               <a
                                 href={detail.socialLinks.youtube}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline truncate max-w-[150px]"
+                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
                               >
                                 YouTube
                               </a>
@@ -308,15 +308,15 @@ export default function UserDetailsPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex flex-col space-y-1 text-sm text-gray-900 dark:text-white">
                       <div className="flex items-center">
-                        <span className="font-bold text-red-600 dark:text-red-400 mr-1">{detail.dailyProgress?.highScoreWins || 0}</span>
+                        <span className="font-bold text-primary-600 dark:text-red-400 mr-1">{detail.dailyProgress?.highScoreWins || 0}</span>
                         <span className="text-gray-500">D</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="font-bold text-yellow-600 dark:text-yellow-400 mr-1">{detail.weeklyProgress?.highScoreWins || 0}</span>
+                        <span className="font-bold text-secondary-600 dark:text-primary-400 mr-1">{detail.weeklyProgress?.highScoreWins || 0}</span>
                         <span className="text-gray-500">W</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="font-bold text-blue-600 dark:text-blue-400 mr-1">{detail.monthlyProgress?.highScoreWins || 0}</span>
+                        <span className="font-bold text-secondary-600 dark:text-secondary-400 mr-1">{detail.monthlyProgress?.highScoreWins || 0}</span>
                         <span className="text-gray-500">M</span>
                       </div>
                     </div>
@@ -325,13 +325,13 @@ export default function UserDetailsPage() {
                     <div className="flex flex-col space-y-2">
                       {detail.subscriptionStatus && (
                         <div className="flex items-center">
-                          <FaCrown className="w-4 h-4 mr-2 text-yellow-500" />
+                          <FaCrown className="w-4 h-4 mr-2 text-primary-500" />
                           {getSubscriptionBadge(detail.subscriptionStatus)}
                         </div>
                       )}
                       {detail.level?.currentLevel !== undefined && (
                         <div className="flex items-center">
-                          <FaUserTag className="w-4 h-4 mr-2 text-yellow-500" />
+                          <FaUserTag className="w-4 h-4 mr-2 text-primary-500" />
                           {getLevelBadge(detail.level.currentLevel)}
                         </div>
                       )}
@@ -369,7 +369,7 @@ export default function UserDetailsPage() {
             <div className="p-3 lg:p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-base">
                       {detail.name?.charAt(0)?.toUpperCase() || 'U'}
                     </span>
@@ -400,15 +400,15 @@ export default function UserDetailsPage() {
                 </h4>
                 <div className="flex items-center justify-between">
                   <div className="text-center">
-                    <div className="text-sm font-bold text-red-600 dark:text-red-400">{detail.dailyProgress?.highScoreWins || 0}</div>
+                    <div className="text-sm font-bold text-primary-600 dark:text-red-400">{detail.dailyProgress?.highScoreWins || 0}</div>
                     <div className="text-[10px] text-gray-500">Daily</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-sm font-bold text-yellow-600 dark:text-yellow-400">{detail.weeklyProgress?.highScoreWins || 0}</div>
+                    <div className="text-sm font-bold text-secondary-600 dark:text-primary-400">{detail.weeklyProgress?.highScoreWins || 0}</div>
                     <div className="text-[10px] text-gray-500">Weekly</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-sm font-bold text-blue-600 dark:text-blue-400">{detail.monthlyProgress?.highScoreWins || 0}</div>
+                    <div className="text-sm font-bold text-secondary-600 dark:text-secondary-400">{detail.monthlyProgress?.highScoreWins || 0}</div>
                     <div className="text-[10px] text-gray-500">Monthly</div>
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export default function UserDetailsPage() {
                             href={detail.socialLinks.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:underline truncate"
+                            className="text-sm text-secondary-600 hover:underline truncate"
                           >
                             Instagram
                           </a>
@@ -458,12 +458,12 @@ export default function UserDetailsPage() {
                       )}
                       {detail.socialLinks.facebook && (
                         <div className="flex items-center">
-                          <FaFacebook className="w-4 h-4 mr-2 text-blue-600" />
+                          <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
                           <a
                             href={detail.socialLinks.facebook}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:underline truncate"
+                            className="text-sm text-secondary-600 hover:underline truncate"
                           >
                             Facebook
                           </a>
@@ -471,12 +471,12 @@ export default function UserDetailsPage() {
                       )}
                       {detail.socialLinks.x && (
                         <div className="flex items-center">
-                          <FaTwitter className="w-4 h-4 mr-2 text-blue-400" />
+                          <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
                           <a
                             href={detail.socialLinks.x}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:underline truncate"
+                            className="text-sm text-secondary-600 hover:underline truncate"
                           >
                             Twitter/X
                           </a>
@@ -484,12 +484,12 @@ export default function UserDetailsPage() {
                       )}
                       {detail.socialLinks.youtube && (
                         <div className="flex items-center">
-                          <FaYoutube className="w-4 h-4 mr-2 text-red-600" />
+                          <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
                           <a
                             href={detail.socialLinks.youtube}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:underline truncate"
+                            className="text-sm text-secondary-600 hover:underline truncate"
                           >
                             YouTube
                           </a>
@@ -537,7 +537,7 @@ export default function UserDetailsPage() {
             >
               <div className="flex flex-col md:flex-row md:items-start">
                 <div className="flex items-center mb-4 md:mb-0 md:mr-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-base">
                       {detail.name?.charAt(0)?.toUpperCase() || 'U'}
                     </span>
@@ -559,9 +559,9 @@ export default function UserDetailsPage() {
                         getLevelBadge(detail.level.currentLevel)}
                     </div>
                     <div className="flex items-center mt-2 space-x-2">
-                      <span className="text-[10px] font-bold text-red-600 dark:text-red-400">Daily: {detail.dailyProgress?.highScoreWins || 0}</span>
-                      <span className="text-[10px] font-bold text-yellow-600 dark:text-yellow-400">Weekly: {detail.weeklyProgress?.highScoreWins || 0}</span>
-                      <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400">Monthly: {detail.monthlyProgress?.highScoreWins || 0}</span>
+                      <span className="text-[10px] font-bold text-primary-600 dark:text-red-400">Daily: {detail.dailyProgress?.highScoreWins || 0}</span>
+                      <span className="text-[10px] font-bold text-secondary-600 dark:text-primary-400">Weekly: {detail.weeklyProgress?.highScoreWins || 0}</span>
+                      <span className="text-[10px] font-bold text-secondary-600 dark:text-secondary-400">Monthly: {detail.monthlyProgress?.highScoreWins || 0}</span>
                     </div>
                   </div>
                 </div>
@@ -603,7 +603,7 @@ export default function UserDetailsPage() {
                                 href={detail.socialLinks.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 hover:underline truncate"
+                                className="text-sm text-secondary-600 hover:underline truncate"
                               >
                                 Instagram
                               </a>
@@ -611,12 +611,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.facebook && (
                             <div className="flex items-center">
-                              <FaFacebook className="w-4 h-4 mr-2 text-blue-600" />
+                              <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
                               <a
                                 href={detail.socialLinks.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 hover:underline truncate"
+                                className="text-sm text-secondary-600 hover:underline truncate"
                               >
                                 Facebook
                               </a>
@@ -624,12 +624,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.x && (
                             <div className="flex items-center">
-                              <FaTwitter className="w-4 h-4 mr-2 text-blue-400" />
+                              <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
                               <a
                                 href={detail.socialLinks.x}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 hover:underline truncate"
+                                className="text-sm text-secondary-600 hover:underline truncate"
                               >
                                 Twitter/X
                               </a>
@@ -637,12 +637,12 @@ export default function UserDetailsPage() {
                           )}
                           {detail.socialLinks.youtube && (
                             <div className="flex items-center">
-                              <FaYoutube className="w-4 h-4 mr-2 text-red-600" />
+                              <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
                               <a
                                 href={detail.socialLinks.youtube}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 hover:underline truncate"
+                                className="text-sm text-secondary-600 hover:underline truncate"
                               >
                                 YouTube
                               </a>

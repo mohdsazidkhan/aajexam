@@ -54,7 +54,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
         {isMobile && navigator.share ? (
           <button
             onClick={handleNativeShare}
-            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl transition-all duration-300 ease-in-out flex items-center gap-2"
+            className="px-4 py-2 bg-gradient-to-r from-secondary-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:from-secondary-600 hover:to-indigo-700 hover:shadow-xl transition-all duration-300 ease-in-out flex items-center gap-2"
           >
             <FaShare />
             Share

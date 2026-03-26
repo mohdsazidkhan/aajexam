@@ -53,10 +53,10 @@ const UserSearch = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search users by name or username..."
-          className="search-input w-full p-4 pr-12 text-base border-2 border-gray-300 dark:border-gray-600 rounded-xl outline-none transition-all bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(0,123,255,0.1)]"
+          className="search-input w-full p-4 pr-12 text-base border-2 border-gray-300 dark:border-gray-600 rounded-xl outline-none transition-all bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-secondary-500 focus:shadow-[0_0_0_3px_rgba(0,123,255,0.1)]"
         />
         {loading && (
-          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-gray-200 dark:border-gray-700 border-t-blue-500 rounded-full animate-spin"></span>
+          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-gray-200 dark:border-gray-700 border-t-secondary-500 rounded-full animate-spin"></span>
         )}
       </div>
 
@@ -83,7 +83,7 @@ const UserSearch = () => {
                 <h4 className="m-0 mb-1 text-base font-semibold text-gray-900 dark:text-white overflow-hidden text-ellipsis whitespace-nowrap">
                   {user.name}
                 </h4>
-                <p className="user-result-username m-0 mb-1 text-sm text-orange-700 dark:text-yellow-400">
+                <p className="user-result-username m-0 mb-1 text-sm text-primary-600 dark:text-primary-400">
                   @{user.username}
                 </p>
                 {user.bio && (

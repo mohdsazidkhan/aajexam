@@ -376,7 +376,7 @@ const TopPerformers = () => {
           <p className="text-gray-700 dark:text-gray-300 text-lg mb-4">Login to View Your Rank</p>
           <Link
             href="/login"
-            className="inline-flex bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-1.5 sm:py-2 px-4 sm:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xs sm:text-lg md:text-base"
+            className="inline-flex bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-1.5 sm:py-2 px-4 sm:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xs sm:text-lg md:text-base"
           >
             Login
           </Link>
@@ -393,7 +393,7 @@ const TopPerformers = () => {
           <div className="text-red-500 dark:text-red-400 text-lg mb-4">
             ⚠️ {error}
           </div>
-          <div className="text-sm text-red-600 dark:text-red-300 mb-4">
+          <div className="text-sm text-primary-600 dark:text-red-300 mb-4">
             This could be due to:
             <ul className="list-disc list-inside mt-2 text-left">
               <li>Backend server not running</li>
@@ -420,9 +420,9 @@ const TopPerformers = () => {
       {/* Type Selector Tabs */}
       <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
         {[
-          { id: 'daily', label: 'Daily', color: 'from-blue-600 to-cyan-500' },
+          { id: 'daily', label: 'Daily', color: 'from-secondary-600 to-cyan-500' },
           { id: 'weekly', label: 'Weekly', color: 'from-purple-600 to-indigo-500' },
-          { id: 'monthly', label: 'Monthly', color: 'from-yellow-600 to-orange-500' }
+          { id: 'monthly', label: 'Monthly', color: 'from-primary-600 to-primary-500' }
         ].map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -457,7 +457,7 @@ const TopPerformers = () => {
                 onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
                 dateFormat="yyyy-MM-dd"
                 maxDate={new Date()}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none w-full"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary-500 outline-none w-full"
               />
             </div>
           )}
@@ -530,7 +530,7 @@ const TopPerformers = () => {
                 dateFormat="MMMM yyyy"
                 showMonthYearPicker
                 maxDate={new Date()}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-yellow-500 outline-none w-full"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none w-full"
               />
             </div>
           )}
@@ -547,7 +547,7 @@ const TopPerformers = () => {
                   setSelectedWeek(`${d.format('YYYY')}-W${weekNum}`);
                 }
               }}
-              className="text-blue-600 dark:text-blue-400 text-sm font-bold hover:underline"
+              className="text-secondary-600 dark:text-secondary-400 text-sm font-bold hover:underline"
             >
               Reset
             </button>
@@ -603,7 +603,7 @@ const TopPerformers = () => {
                 <button
                   onClick={() => setViewMode("table")}
                   className={`p-2 rounded-lg transition-all duration-200 ${viewMode === "table"
-                    ? "bg-blue-600 text-white shadow-lg"
+                    ? "bg-secondary-600 text-white shadow-lg"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
                     }`}
                   title="Table View"
@@ -613,7 +613,7 @@ const TopPerformers = () => {
                 <button
                   onClick={() => setViewMode("list")}
                   className={`p-2 rounded-lg transition-all duration-200 ${viewMode === "list"
-                    ? "bg-blue-600 text-white shadow-lg"
+                    ? "bg-secondary-600 text-white shadow-lg"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
                     }`}
                   title="List View"
@@ -627,7 +627,7 @@ const TopPerformers = () => {
             {/* Current User Position Section */}
             {
               data?.currentUser && (
-                <div className="my-4 lg:my-8 p-3 lg:p-6 bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 rounded-xl border-2 border-red-200 dark:border-yellow-600">
+                <div className="my-4 lg:my-8 p-3 lg:p-6 bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20 rounded-xl border-2 border-red-200 dark:border-primary-600">
                   <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
                     <div>
                       <h4 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -639,9 +639,9 @@ const TopPerformers = () => {
                     {/* Triple Rank Display */}
                     <div className="flex flex-wrap gap-2 lg:gap-4 w-full lg:w-auto">
                       {[
-                        { label: 'Daily', rank: allPeriodRanks.daily, color: 'from-blue-500 to-cyan-500' },
+                        { label: 'Daily', rank: allPeriodRanks.daily, color: 'from-secondary-500 to-cyan-500' },
                         { label: 'Weekly', rank: allPeriodRanks.weekly, color: 'from-purple-500 to-indigo-500' },
-                        { label: 'Monthly', rank: allPeriodRanks.monthly, color: 'from-yellow-500 to-orange-500' }
+                        { label: 'Monthly', rank: allPeriodRanks.monthly, color: 'from-primary-500 to-primary-500' }
                       ].map((item) => (
                         <div key={item.label} className="flex-1 lg:flex-none min-w-[80px] bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-3 border border-gray-100 dark:border-gray-700 shadow-sm text-center">
                           <div className="text-[10px] lg:text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">{item.label}</div>
@@ -656,7 +656,7 @@ const TopPerformers = () => {
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-3 lg:p-4 shadow-lg border border-gray-100 dark:border-gray-700">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                       <div className="flex items-center gap-4 w-full lg:w-auto">
-                        <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg lg:text-2xl shadow-lg shrink-0">
+                        <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg lg:text-2xl shadow-lg shrink-0">
                           {data.currentUser.rank || data.currentUser.position}
                         </div>
                         <div className="flex-1">
@@ -665,7 +665,7 @@ const TopPerformers = () => {
                               {data.currentUser.name}
                             </h5>
                             <div className={`subscription-name-badge ${data.currentUser.subscriptionName === "PRO"
-                              ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                              ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                               : "bg-gradient-to-r from-green-400 to-teal-500"
                               } scale-90`}>
                               {data.currentUser.subscriptionName || "FREE"}
@@ -685,13 +685,13 @@ const TopPerformers = () => {
                           <div className="text-[10px] lg:text-xs font-bold text-gray-500 uppercase">High Scores</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg lg:text-2xl font-bold text-blue-600 dark:text-blue-400">
+                          <div className="text-lg lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                             {data.currentUser.level.quizzesPlayed}
                           </div>
                           <div className="text-[10px] lg:text-xs font-bold text-gray-500 uppercase">Played</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg lg:text-2xl font-bold text-orange-600 dark:text-orange-400">
+                          <div className="text-lg lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                             {data.currentUser.level.accuracy}%
                           </div>
                           <div className="text-[10px] lg:text-xs font-bold text-gray-500 uppercase">Accuracy</div>
@@ -706,9 +706,9 @@ const TopPerformers = () => {
             {/* Refreshing Indicator */}
             {
               refreshing && (
-                <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg flex items-center justify-center gap-2">
-                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
-                  <span className="text-blue-600 dark:text-blue-400 text-sm">Refreshing {getCurrentMonthDisplay()} data...</span>
+                <div className="mb-4 p-3 bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-700 rounded-lg flex items-center justify-center gap-2">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-500"></div>
+                  <span className="text-secondary-600 dark:text-secondary-400 text-sm">Refreshing {getCurrentMonthDisplay()} data...</span>
                 </div>
               )
             }
@@ -716,44 +716,44 @@ const TopPerformers = () => {
             {/* Table View */}
             {
               viewMode === "table" && (
-                <div className="overflow-x-auto border-2 border-blue-300 dark:border-indigo-500 rounded-2xl p-3 lg:p-6 bg-gradient-to-r from-blue-900/10 to-indigo-900/10">
+                <div className="overflow-x-auto border-2 border-secondary-300 dark:border-indigo-500 rounded-2xl p-3 lg:p-6 bg-gradient-to-r from-secondary-900/10 to-indigo-900/10">
                   <h4 className="text-md lg:text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                     🎯 Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Performers - Table View
                   </h4>
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b-2 border-blue-200 dark:border-blue-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
-                        <th className="py-4 px-4 text-left text-blue-800 dark:text-blue-200 font-bold text-lg">
+                      <tr className="border-b-2 border-secondary-200 dark:border-secondary-700 bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20">
+                        <th className="py-4 px-4 text-left text-secondary-800 dark:text-secondary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">🏆</span>
                             Rank
                           </div>
                         </th>
-                        <th className="py-4 px-4 text-left text-blue-800 dark:text-blue-200 font-bold text-lg">
+                        <th className="py-4 px-4 text-left text-secondary-800 dark:text-secondary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">👤</span>
                             Student
                           </div>
                         </th>
-                        <th className="py-4 px-4 text-left text-blue-800 dark:text-blue-200 font-bold text-lg">
+                        <th className="py-4 px-4 text-left text-secondary-800 dark:text-secondary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">📈</span>
                             Level
                           </div>
                         </th>
-                        <th className="py-4 px-4 text-left text-blue-800 dark:text-blue-200 font-bold text-lg">
+                        <th className="py-4 px-4 text-left text-secondary-800 dark:text-secondary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">📚</span>
                             Quizzes
                           </div>
                         </th>
-                        <th className="py-4 px-4 text-left text-blue-800 dark:text-blue-200 font-bold text-lg">
+                        <th className="py-4 px-4 text-left text-secondary-800 dark:text-secondary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">⭐</span>
                             High Scores
                           </div>
                         </th>
-                        <th className="py-4 px-4 text-left text-yellow-800 dark:text-yellow-200 font-bold text-lg">
+                        <th className="py-4 px-4 text-left text-primary-800 dark:text-primary-200 font-bold text-lg">
                           <div className="flex items-center gap-2">
                             <span className="text-xl">🎯</span>
                             Accuracy
@@ -779,25 +779,25 @@ const TopPerformers = () => {
                         <tr
                           key={i}
                           className={`border-b transition-all duration-200 border-gray-200 hover:shadow-lg group ${p.userId === currentUserId
-                            ? "bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 border-red-400 dark:border-yellow-600 shadow-lg" :
-                            i === 0 ? "bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/10 dark:to-orange-900/10" :
+                            ? "bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 border-red-400 dark:border-primary-600 shadow-lg" :
+                            i === 0 ? "bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/10 dark:to-primary-900/10" :
                               i === 1 ? "bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-900/10 dark:to-slate-900/10" :
-                                i === 2 ? "bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/10 dark:to-amber-900/10" :
-                                  "hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/10 dark:hover:to-indigo-900/10"
+                                i === 2 ? "bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/10 dark:to-amber-900/10" :
+                                  "hover:bg-gradient-to-r hover:from-secondary-50 hover:to-indigo-50 dark:hover:from-secondary-900/10 dark:hover:to-indigo-900/10"
                             }`}
                         >
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-3">
-                              <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-yellow-500 ring-4 ring-red-300 dark:ring-yellow-400" :
-                                i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500" :
+                              <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-primary-500 ring-4 ring-red-300 dark:ring-primary-400" :
+                                i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500" :
                                   i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500" :
-                                    i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500" :
-                                      "bg-gradient-to-r from-blue-400 to-indigo-500"
+                                    i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500" :
+                                      "bg-gradient-to-r from-secondary-400 to-indigo-500"
                                 }`}>
                                 {p.userId === currentUserId ? "👤" : i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                               </div>
                               {p.userId === currentUserId ? (
-                                <div className="text-xs font-medium text-red-800 dark:text-yellow-200">
+                                <div className="text-xs font-medium text-red-800 dark:text-primary-200">
                                   You
                                 </div>
                               ) : i < 3 && (
@@ -809,8 +809,8 @@ const TopPerformers = () => {
                           </td>
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-full flex items-center justify-center">
-                                <span className="text-xl text-blue-600 dark:text-blue-400">
+                              <div className="w-12 h-12 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-full flex items-center justify-center">
+                                <span className="text-xl text-secondary-600 dark:text-secondary-400">
                                   {p.name?.charAt(0)?.toUpperCase() || "?"}
                                 </span>
                               </div>
@@ -820,7 +820,7 @@ const TopPerformers = () => {
                                   {p.name || "Unknown"}
                                 </div>
                                 <div className={`subscription-name-badge ${p.subscriptionName === "PRO"
-                                  ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                                  ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                                   : "bg-gradient-to-r from-green-400 to-teal-500"
                                   }`}>
                                   {p.subscriptionName || "FREE"}
@@ -845,15 +845,15 @@ const TopPerformers = () => {
                           </td>
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-2">
-                              <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                                <span className="text-blue-600 dark:text-blue-400 text-sm">📚</span>
+                              <div className="w-10 h-10 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
+                                <span className="text-secondary-600 dark:text-secondary-400 text-sm">📚</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-gray-900 dark:text-white text-lg">
                                   {p.level?.quizzesPlayed || 0}
                                 </span>
                                 {(p.level?.quizzesPlayed || 0) > 0 && (
-                                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200">
+                                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-200">
                                     📚
                                   </span>
                                 )}
@@ -862,8 +862,8 @@ const TopPerformers = () => {
                           </td>
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-2">
-                              <div className="w-10 h-10 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-yellow-900/30 rounded-lg flex items-center justify-center">
-                                <span className="text-orange-700 dark:text-yellow-400 text-sm">⭐</span>
+                              <div className="w-10 h-10 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-lg flex items-center justify-center">
+                                <span className="text-primary-600 dark:text-primary-400 text-sm">⭐</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-gray-900 dark:text-white text-lg">
@@ -880,18 +880,18 @@ const TopPerformers = () => {
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-2">
                               <div className="w-10 h-10 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg flex items-center justify-center">
-                                <span className="text-orange-700 dark:text-yellow-400 text-sm">🎯</span>
+                                <span className="text-primary-600 dark:text-primary-400 text-sm">🎯</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <span className={`font-bold text-lg ${(p.level?.accuracy || 0) >= 80 ? 'text-green-600 dark:text-green-400' :
-                                  (p.level?.accuracy || 0) >= 70 ? 'text-blue-600 dark:text-blue-400' :
-                                    (p.level?.accuracy || 0) >= 60 ? 'text-orange-700 dark:text-yellow-400' :
-                                      'text-red-600 dark:text-red-400'
+                                  (p.level?.accuracy || 0) >= 70 ? 'text-secondary-600 dark:text-secondary-400' :
+                                    (p.level?.accuracy || 0) >= 60 ? 'text-primary-600 dark:text-primary-400' :
+                                      'text-primary-600 dark:text-red-400'
                                   }`}>
                                   {p.level?.accuracy || 0}%
                                 </span>
                                 {(p.level?.accuracy || 0) > 0 && (
-                                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-yellow-800 dark:bg-purple-900/30 dark:text-yellow-200">
+                                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-primary-800 dark:bg-purple-900/30 dark:text-primary-200">
                                     🎯
                                   </span>
                                 )}
@@ -944,7 +944,7 @@ const TopPerformers = () => {
             {/* List View */}
             {
               viewMode === "list" && (
-                <div className="space-y-4 p-0 lg:p-6 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10">
+                <div className="space-y-4 p-0 lg:p-6 bg-gradient-to-r from-secondary-50/50 to-indigo-50/50 dark:from-secondary-900/10 dark:to-indigo-900/10">
                   <h4 className="text-md lg:text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                     🎯 Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Performers - List View
                   </h4>
@@ -952,22 +952,22 @@ const TopPerformers = () => {
                     <div
                       key={i}
                       className={`p-2 lg:p-4 rounded-lg border dark:border-gray-600 transition-all duration-200 ${p.userId === currentUserId
-                        ? "bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 border-red-400 dark:border-yellow-600 shadow-lg" :
+                        ? "bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 border-red-400 dark:border-primary-600 shadow-lg" :
                         i === 0
-                          ? "bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-600 shadow-lg"
+                          ? "bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-600 shadow-lg"
                           : i === 1
                             ? "bg-gradient-to-r from-gray-50 to-slate-50 dark:from-green-900/20 dark:to-green-900/20 border-green-200 dark:border-green-600 shadow-md"
                             : i === 2
-                              ? "bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-orange-200 dark:border-orange-600 shadow-md"
+                              ? "bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-600 shadow-md"
                               : "bg-gray-50 dark:bg-gray-700"
                         }`}
                     >
                       <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-yellow-500 ring-4 ring-red-300 dark:ring-yellow-400" :
-                          i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500" :
+                        <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-primary-500 ring-4 ring-red-300 dark:ring-primary-400" :
+                          i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500" :
                             i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500" :
-                              i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500" :
-                                "bg-gradient-to-r from-blue-400 to-indigo-500"
+                              i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500" :
+                                "bg-gradient-to-r from-secondary-400 to-indigo-500"
                           }`}>
                           {p.userId === currentUserId ? "👤" : i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                         </div>
@@ -982,7 +982,7 @@ const TopPerformers = () => {
                             )}
                           </p>
                           <div className={`subscription-name-badge ${p.subscriptionName === "PRO"
-                            ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                            ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                             : "bg-gradient-to-r from-green-400 to-teal-500"
                             }`}>
                             {p.subscriptionName || "FREE"}
@@ -1009,12 +1009,12 @@ const TopPerformers = () => {
                         </div>
 
                         {/* Total Quizzes Badge */}
-                        <div className="bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-1 lg:p-3 rounded-lg border border-blue-200 dark:border-blue-700">
+                        <div className="bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 p-1 lg:p-3 rounded-lg border border-secondary-200 dark:border-secondary-700">
                           <div className="text-center">
-                            <div className="text-md lg:text-2xl font-bold text-blue-800 dark:text-blue-200">
+                            <div className="text-md lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
                               {p.level?.quizzesPlayed || 0}
                             </div>
-                            <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                            <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
                               📚 Total Quizzes
                             </div>
                           </div>
@@ -1024,13 +1024,13 @@ const TopPerformers = () => {
                         <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-1 lg:p-3 rounded-lg border border-purple-200 dark:border-purple-700">
                           <div className="text-center">
                             <div className={`text-md lg:text-2xl font-bold ${(p.level?.accuracy || 0) >= 80 ? 'text-green-800 dark:text-green-200' :
-                              (p.level?.accuracy || 0) >= 70 ? 'text-blue-800 dark:text-blue-200' :
-                                (p.level?.accuracy || 0) >= 60 ? 'text-yellow-800 dark:text-yellow-200' :
+                              (p.level?.accuracy || 0) >= 70 ? 'text-secondary-800 dark:text-secondary-200' :
+                                (p.level?.accuracy || 0) >= 60 ? 'text-primary-800 dark:text-primary-200' :
                                   'text-red-800 dark:text-red-200'
                               }`}>
                               {p.level?.accuracy || 0}%
                             </div>
-                            <div className="text-sm font-medium text-orange-700 dark:text-yellow-400">
+                            <div className="text-sm font-medium text-primary-600 dark:text-primary-400">
                               🎯 Accuracy
                             </div>
                           </div>
@@ -1039,10 +1039,10 @@ const TopPerformers = () => {
                         {/* Level Badge */}
                         <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-1 lg:p-3 rounded-lg border border-purple-200 dark:border-pink-700">
                           <div className="text-center">
-                            <div className="text-md lg:text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+                            <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
                               {p.level?.currentLevel || 0}
                             </div>
-                            <div className="text-sm font-medium text-orange-700 dark:text-yellow-400">
+                            <div className="text-sm font-medium text-primary-600 dark:text-primary-400">
                               📈 Level
                             </div>
                           </div>
@@ -1080,7 +1080,7 @@ const TopPerformers = () => {
             {/* Grid View */}
             {
               viewMode === "grid" && (
-                <div className='space-y-4 border-2 border-blue-300 dark:border-indigo-500 rounded-2xl p-3 lg:p-6 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10'>
+                <div className='space-y-4 border-2 border-secondary-300 dark:border-indigo-500 rounded-2xl p-3 lg:p-6 bg-gradient-to-r from-secondary-50/50 to-indigo-50/50 dark:from-secondary-900/10 dark:to-indigo-900/10'>
                   <h4 className="text-md lg:text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                     🎯 Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Performers - Grid View
                   </h4>
@@ -1090,22 +1090,22 @@ const TopPerformers = () => {
                       <div
                         key={i}
                         className={`p-2 lg:p-4 rounded-lg border dark:border-gray-600 hover:shadow-lg transition-all duration-200 ${p.userId === currentUserId
-                          ? "bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 border-red-400 dark:border-yellow-600 shadow-lg" :
+                          ? "bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 border-red-400 dark:border-primary-600 shadow-lg" :
                           i === 0
-                            ? "bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-600 shadow-lg"
+                            ? "bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-600 shadow-lg"
                             : i === 1
                               ? "bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-600 shadow-md"
                               : i === 2
-                                ? "bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-orange-200 dark:border-orange-600 shadow-md"
+                                ? "bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-600 shadow-md"
                                 : "bg-gray-50 dark:bg-gray-700"
                           }`}
                       >
                         <div className="flex items-center gap-4 mb-3">
-                          <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-yellow-500 ring-4 ring-red-300 dark:ring-yellow-400" :
-                            i === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500" :
+                          <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg shadow-lg ${p.userId === currentUserId ? "bg-gradient-to-r from-red-500 to-primary-500 ring-4 ring-red-300 dark:ring-primary-400" :
+                            i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500" :
                               i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500" :
-                                i === 2 ? "bg-gradient-to-r from-orange-400 to-amber-500" :
-                                  "bg-gradient-to-r from-blue-400 to-indigo-500"
+                                i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500" :
+                                  "bg-gradient-to-r from-secondary-400 to-indigo-500"
                             }`}>
                             {p.userId === currentUserId ? "👤" : i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
                           </div>
@@ -1119,7 +1119,7 @@ const TopPerformers = () => {
                               )}
                             </p>
                             <div className={`subscription-name-badge ${p.subscriptionName === "PRO"
-                              ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                              ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                               : "bg-gradient-to-r from-green-400 to-teal-500"
                               }`}>
                               {p.subscriptionName || "FREE"}
@@ -1143,12 +1143,12 @@ const TopPerformers = () => {
                         </div>
 
                         {/* Total Quizzes Badge */}
-                        <div className="bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-3 rounded-lg mb-3 border border-blue-200 dark:border-blue-700">
+                        <div className="bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 p-3 rounded-lg mb-3 border border-secondary-200 dark:border-secondary-700">
                           <div className="text-center">
-                            <div className="textxl lg:text-2xl font-bold text-blue-800 dark:text-blue-200">
+                            <div className="textxl lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
                               {p.level?.quizzesPlayed || 0}
                             </div>
-                            <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                            <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
                               📚 Total Quizzes
                             </div>
                           </div>
@@ -1157,26 +1157,26 @@ const TopPerformers = () => {
                         {/* Level Badge */}
                         <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-3 rounded-lg mb-3 border border-purple-200 dark:border-pink-700">
                           <div className="text-center">
-                            <div className="text-md lg:text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+                            <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
                               {p.level?.currentLevel || 0}
                             </div>
-                            <div className="text-sm font-medium text-orange-700 dark:text-yellow-400">
+                            <div className="text-sm font-medium text-primary-600 dark:text-primary-400">
                               📈 Level
                             </div>
                           </div>
                         </div>
 
                         {/* Accuracy Badge */}
-                        <div className="bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 p-3 rounded-lg mb-3 border border-orange-200 dark:border-amber-700">
+                        <div className="bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 p-3 rounded-lg mb-3 border border-primary-200 dark:border-amber-700">
                           <div className="text-center">
                             <div className={`text-md lg:text-2xl font-bold ${(p.level?.accuracy || 0) >= 80 ? 'text-green-800 dark:text-green-200' :
-                              (p.level?.accuracy || 0) >= 70 ? 'text-blue-800 dark:text-blue-200' :
-                                (p.level?.accuracy || 0) >= 60 ? 'text-yellow-800 dark:text-yellow-200' :
+                              (p.level?.accuracy || 0) >= 70 ? 'text-secondary-800 dark:text-secondary-200' :
+                                (p.level?.accuracy || 0) >= 60 ? 'text-primary-800 dark:text-primary-200' :
                                   'text-red-800 dark:text-red-200'
                               }`}>
                               {p.level?.accuracy || 0}%
                             </div>
-                            <div className="text-sm font-medium text-orange-700 dark:text-orange-400">
+                            <div className="text-sm font-medium text-primary-600 dark:text-secondary-400">
                               🎯 Accuracy
                             </div>
                           </div>
@@ -1213,14 +1213,14 @@ const TopPerformers = () => {
                       <div
                         key={user.userId}
                         className={`p-2 lg:p-4 rounded-lg border transition-all duration-200 ${user.isCurrentUser
-                          ? "bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 border-red-400 dark:border-yellow-600 shadow-lg"
+                          ? "bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 border-red-400 dark:border-primary-600 shadow-lg"
                           : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 hover:shadow-md"
                           }`}
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${user.isCurrentUser
-                            ? "bg-gradient-to-r from-red-500 to-yellow-500"
-                            : "bg-gradient-to-r from-blue-500 to-indigo-500"
+                            ? "bg-gradient-to-r from-red-500 to-primary-500"
+                            : "bg-gradient-to-r from-secondary-500 to-indigo-500"
                             }`}>
                             {user.isCurrentUser ? "👤" : user.position}
                           </div>
@@ -1234,7 +1234,7 @@ const TopPerformers = () => {
                               )}
                             </h6>
                             <div className={`subscription-name-badge ${user.subscriptionName === "PRO"
-                              ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                              ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                               : "bg-gradient-to-r from-green-400 to-teal-500"
                               }`}>
                               {user.subscriptionName || "FREE"}
@@ -1252,7 +1252,7 @@ const TopPerformers = () => {
                             <div className="text-xs text-gray-500 dark:text-gray-400">High Scores</div>
                           </div>
                           <div className="text-center bg-gray-50 dark:bg-gray-700 rounded p-2">
-                            <div className="font-bold text-blue-600 dark:text-blue-400">
+                            <div className="font-bold text-secondary-600 dark:text-secondary-400">
                               {user.monthlyProgress?.totalQuizAttempts}
                             </div>
                             <div className="text-xs text-gray-500 dark:text-gray-400">Quizzes</div>
@@ -1281,9 +1281,9 @@ const TopPerformers = () => {
 
                   {/* Current User Highlight */}
                   {data.currentUser && (
-                    <div className="mb-8 p-6 bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 rounded-xl border-2 border-red-300 dark:border-yellow-500 shadow-lg">
+                    <div className="mb-8 p-6 bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 rounded-xl border-2 border-red-300 dark:border-primary-500 shadow-lg">
                       <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                        <div className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl shadow-lg">
+                        <div className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl shadow-lg">
                           #{data.currentUser.position}
                         </div>
                         <div className="text-center md:text-left">
@@ -1291,7 +1291,7 @@ const TopPerformers = () => {
                             {data.currentUser.name}
                           </h5>
                           <div className={`subscription-name-badge ${data.currentUser.subscriptionName === "PRO"
-                            ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                            ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                             : "bg-gradient-to-r from-green-400 to-teal-500"
                             }`}>
                             {data.currentUser.subscriptionName || "FREE"}
@@ -1307,7 +1307,7 @@ const TopPerformers = () => {
                               <div className="text-sm text-gray-600 dark:text-gray-300">High Scores</div>
                             </div>
                             <div className="text-center">
-                              <div className="text-md lg:text-2xl font-bold text-blue-600 dark:text-blue-400">
+                              <div className="text-md lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                                 {data.currentUser.level.quizzesPlayed}
                               </div>
                               <div className="text-sm text-gray-600 dark:text-gray-300">Total Quizzes</div>
@@ -1328,13 +1328,13 @@ const TopPerformers = () => {
                         <div
                           key={user.userId}
                           className={`p-5 rounded-xl border-2 transition-all duration-200 ${user.isCurrentUser
-                            ? "bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-800 dark:to-yellow-900 border-red-400 dark:border-yellow-600 shadow-lg transform scale-105"
+                            ? "bg-gradient-to-r from-red-100 to-primary-100 dark:from-red-800 dark:to-primary-900 border-red-400 dark:border-primary-600 shadow-lg transform scale-105"
                             : "bg-white dark:bg-gray-800 border-purple-200 dark:border-purple-600 hover:shadow-lg hover:scale-105"
                             }`}
                         >
                           <div className="flex items-center gap-4 mb-4">
                             <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-xl ${user.isCurrentUser
-                              ? "bg-gradient-to-r from-red-500 to-yellow-500"
+                              ? "bg-gradient-to-r from-red-500 to-primary-500"
                               : "bg-gradient-to-r from-purple-500 to-pink-500"
                               }`}>
                               {user.isCurrentUser ? "👤" : user.position}
@@ -1349,7 +1349,7 @@ const TopPerformers = () => {
                                 )}
                               </h6>
                               <div className={`subscription-name-badge ${data.currentUser.subscriptionName === "PRO"
-                                ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                                ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                                 : "bg-gradient-to-r from-green-400 to-teal-500"
                                 }`}>
                                 {data.currentUser.subscriptionName || "FREE"}
@@ -1367,7 +1367,7 @@ const TopPerformers = () => {
                               <div className="text-xs text-gray-500 dark:text-gray-400">High Scores</div>
                             </div>
                             <div className="text-center bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
-                              <div className="font-bold text-blue-600 dark:text-blue-400 text-lg">
+                              <div className="font-bold text-secondary-600 dark:text-secondary-400 text-lg">
                                 {user.monthlyProgress?.totalQuizAttempts}
                               </div>
                               <div className="text-xs text-gray-500 dark:text-gray-400">Quizzes</div>

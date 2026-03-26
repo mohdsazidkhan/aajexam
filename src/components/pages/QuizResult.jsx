@@ -24,7 +24,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard?.length === 0) {
     return (
       <div className="text-center py-0 md:py-2 lg:py-4 xl:py-6 mb-4">
-        <div className="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900/20 dark:to-yellow-900/20 rounded-2xl p-2 md:p-8 border border-red-200 dark:border-red-700">
+        <div className="bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20 rounded-2xl p-2 md:p-8 border border-red-200 dark:border-red-700">
           <FaTrophy className="text-4xl text-red-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
             No Leaderboard Yet
@@ -40,7 +40,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-8 mb-8">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
+        <div className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 rounded-xl flex items-center justify-center">
           <FaTrophy className="text-white text-xl" />
         </div>
         <h3 className="text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -58,7 +58,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
             <div
               key={rank}
               className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg border p-4 transition-all duration-200 ${isCurrentUser
-                ? "border-yellow-500 bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30"
+                ? "border-primary-500 bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30"
                 : "border-white/20"
                 }`}
             >
@@ -68,10 +68,10 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                   {isTopThree ? (
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${rank === 1
-                        ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                        ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                         : rank === 2
                           ? "bg-gradient-to-r from-gray-400 to-gray-500"
-                          : "bg-gradient-to-r from-orange-600 to-yellow-600"
+                          : "bg-gradient-to-r from-primary-600 to-primary-600"
                         }`}
                     >
                       {rank === 1 ? <FaCrown className="text-xl" /> : rank}
@@ -84,7 +84,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
 
                   {/* Student Info */}
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-red-600 rounded-full flex items-center justify-center text-white font-semibold">
+                    <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
                       {studentName?.charAt(0)?.toUpperCase() || "A"}
                     </div>
                     <div>
@@ -92,7 +92,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                         {studentName || "Anonymous"}
                       </div>
                       {isCurrentUser && (
-                        <div className="text-xs text-orange-700 dark:text-yellow-400 font-medium">
+                        <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
                           You
                         </div>
                       )}
@@ -140,7 +140,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
       <div className="hidden md:block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[30rem]">
-            <thead className="bg-gradient-to-r from-red-500 to-yellow-500">
+            <thead className="bg-gradient-to-r from-red-500 to-primary-500">
               <tr>
                 <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">
                   Rank
@@ -169,7 +169,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                     <tr
                       key={rank}
                       className={`transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 ${isCurrentUser
-                        ? "bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 border-l-4 border-yellow-500"
+                        ? "bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 border-l-4 border-primary-500"
                         : ""
                         }`}
                     >
@@ -178,10 +178,10 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                           {isTopThree ? (
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${rank === 1
-                                ? "bg-gradient-to-r from-yellow-400 to-red-500"
+                                ? "bg-gradient-to-r from-primary-400 to-secondary-500"
                                 : rank === 2
                                   ? "bg-gradient-to-r from-gray-400 to-gray-500"
-                                  : "bg-gradient-to-r from-orange-600 to-yellow-600"
+                                  : "bg-gradient-to-r from-primary-600 to-primary-600"
                                 }`}
                             >
                               {rank === 1 ? (
@@ -199,7 +199,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                       </td>
                       <td className="py-2 md:py-4 px-2 md:px-6">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-red-600 rounded-full flex items-center justify-center text-white font-semibold">
+                          <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
                             {studentName?.charAt(0)?.toUpperCase() || "A"}
                           </div>
                           <div>
@@ -207,7 +207,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
                               {studentName || "Anonymous"}
                             </div>
                             {isCurrentUser && (
-                              <div className="text-xs text-orange-700 dark:text-yellow-400 font-medium">
+                              <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
                                 You
                               </div>
                             )}
@@ -321,7 +321,7 @@ const QuizResult = () => {
   }, []);
 
   const getScoreColor = (percentage) => {
-    if (percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "text-yellow-500";
+    if (percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "text-primary-500";
     if (percentage >= 50) return "text-red-500";
     return "text-red-500";
   };
@@ -346,11 +346,11 @@ const QuizResult = () => {
     return (
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-4xl mb-4">⚠️</div>
-          <p className="text-red-600 text-xl">{error}</p>
+          <div className="text-primary-600 text-4xl mb-4">⚠️</div>
+          <p className="text-primary-600 text-xl">{error}</p>
           <button
             onClick={() => router.push("/profile")}
-            className="mt-4 bg-gradient-to-r from-yellow-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-yellow-600 hover:to-red-600 transition-all duration-300"
+            className="mt-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300"
           >
             Back to Profile
           </button>
@@ -430,8 +430,8 @@ const QuizResult = () => {
 
               {/* Stats Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6 mb-8">
-                <div className="bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-yellow-200 dark:border-yellow-700 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <FaCheckCircle className="text-white text-xl" />
                   </div>
                   <div className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -454,8 +454,8 @@ const QuizResult = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-orange-200 dark:border-orange-700 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <FaAward className="text-white text-xl" />
                   </div>
                   <div className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -468,39 +468,39 @@ const QuizResult = () => {
               </div>
 
               {/* High Score Status */}
+              <div
+                className={`text-center p-2 md:p-4 rounded-lg ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                  ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                  : "bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800"
+                  }`}
+              >
                 <div
-                  className={`text-center p-2 md:p-4 rounded-lg ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                    ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
-                    : "bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800"
+                  className={`text-xl md:text-md lg:text-2xl font-bold ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                    ? "text-green-800 dark:text-green-200"
+                    : "text-primary-800 dark:text-primary-200"
                     }`}
                 >
-                  <div
-                    className={`text-xl md:text-md lg:text-2xl font-bold ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                      ? "text-green-800 dark:text-green-200"
-                      : "text-yellow-800 dark:text-yellow-200"
-                      }`}
-                  >
-                    {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                      ? "🎉 High Score Achievement!"
-                      : "💪 Good Effort!"}
-                  </div>
-                  <div
-                    className={`text-sm ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                      ? "text-green-700 dark:text-green-300"
-                      : "text-yellow-700 dark:text-yellow-300"
-                      }`}
-                  >
-                    {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                      ? "This score counts towards your level progression!"
-                      : `Need ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% or higher to count towards level progression. Keep practicing!`}
-                  </div>
+                  {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                    ? "🎉 High Score Achievement!"
+                    : "💪 Good Effort!"}
                 </div>
+                <div
+                  className={`text-sm ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                    ? "text-green-700 dark:text-green-300"
+                    : "text-primary-700 dark:text-primary-300"
+                    }`}
+                >
+                  {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                    ? "This score counts towards your level progression!"
+                    : `Need ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% or higher to count towards level progression. Keep practicing!`}
+                </div>
+              </div>
             </div>
 
             {/* Quiz Review Section */}
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl p-2 md:p-8 border border-white/20 mb-8">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl flex items-center justify-center">
                   <FaBrain className="text-white text-2xl" />
                 </div>
                 <h2 className="text-xl md:text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
@@ -529,7 +529,7 @@ const QuizResult = () => {
                                 ? "bg-gradient-to-r from-gray-400 to-gray-500"
                                 : isCorrect
                                   ? "bg-gradient-to-r from-green-400 to-green-500"
-                                  : "bg-gradient-to-r from-red-400 to-red-500"
+                                  : "bg-gradient-to-r from-red-400 to-secondary-500"
                                 }`}
                             >
                               {isSkipped ? (
@@ -560,7 +560,7 @@ const QuizResult = () => {
                                       className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${isCorrectOption
                                         ? "bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/30 border-green-300 dark:border-green-600 shadow-lg"
                                         : isUserChoice && !isCorrectOption
-                                          ? "bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-red-600 shadow-lg"
+                                          ? "bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-secondary-600 shadow-lg"
                                           : "bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 hover:border-red-300 dark:hover:border-red-500"
                                         }`}
                                     >
@@ -569,7 +569,7 @@ const QuizResult = () => {
                                           className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${isCorrectOption
                                             ? "bg-gradient-to-r from-green-500 to-green-600"
                                             : isUserChoice && !isCorrectOption
-                                              ? "bg-gradient-to-r from-red-500 to-red-600"
+                                              ? "bg-gradient-to-r from-red-500 to-secondary-600"
                                               : "bg-gradient-to-r from-gray-400 to-gray-500"
                                             }`}
                                         >
@@ -589,7 +589,7 @@ const QuizResult = () => {
                                           <FaCheckCircle className="text-green-600 text-xl" />
                                         )}
                                         {isUserChoice && !isCorrectOption && (
-                                          <FaTimesCircle className="text-red-600 text-xl" />
+                                          <FaTimesCircle className="text-primary-600 text-xl" />
                                         )}
                                       </div>
                                     </div>
@@ -597,7 +597,7 @@ const QuizResult = () => {
                                 })}
                               </div>
 
-                              <div className="bg-gradient-to-r from-yellow-50 to-red-50 dark:from-yellow-900/20 dark:to-red-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-600">
+                              <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-600">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                                   <div className="flex items-center space-x-2">
                                     <span className="font-semibold text-gray-600 dark:text-gray-400">
@@ -608,7 +608,7 @@ const QuizResult = () => {
                                         ? "text-gray-500"
                                         : isCorrect
                                           ? "text-green-600 dark:text-green-400"
-                                          : "text-red-600 dark:text-red-400"
+                                          : "text-primary-600 dark:text-red-400"
                                         }`}
                                     >
                                       {isSkipped
@@ -633,7 +633,7 @@ const QuizResult = () => {
                                         ? "text-gray-500"
                                         : isCorrect
                                           ? "text-green-600 dark:text-green-400"
-                                          : "text-red-600 dark:text-red-400"
+                                          : "text-primary-600 dark:text-red-400"
                                         }`}
                                     >
                                       {isSkipped
@@ -666,7 +666,7 @@ const QuizResult = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => router.push("/home", { state: { refreshHomeData: true } })}
-                  className="bg-gradient-to-r from-yellow-500 to-red-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-yellow-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105"
                 >
                   Take Another Quiz
                 </button>

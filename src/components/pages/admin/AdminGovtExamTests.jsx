@@ -354,7 +354,7 @@ const AdminGovtExamTests = () => {
               </label>
               <select
                 onChange={(e) => handleCategoryChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
               >
                 <option value="">All Categories</option>
                 {categories.map(cat => (
@@ -371,7 +371,7 @@ const AdminGovtExamTests = () => {
               </label>
               <select
                 onChange={(e) => handleExamChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
               >
                 <option value="">All Exams</option>
                 {exams.map(exam => (
@@ -389,7 +389,7 @@ const AdminGovtExamTests = () => {
               <select
                 value={selectedPattern}
                 onChange={(e) => handlePatternChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
               >
                 <option value="all">All Patterns</option>
                 {patterns.map(pattern => (
@@ -450,7 +450,7 @@ const AdminGovtExamTests = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${test.isFree
                               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                              : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                              : "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                               }`}>
                               {test.isFree ? "Free" : "Paid"}
                             </span>
@@ -458,13 +458,13 @@ const AdminGovtExamTests = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <button
                               onClick={() => handleEdit(test)}
-                              className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDelete(test._id)}
-                              className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                             >
                               Delete
                             </button>
@@ -492,7 +492,7 @@ const AdminGovtExamTests = () => {
                             </h3>
                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${test.isFree
                               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                              : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                              : "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                               }`}>
                               {test.isFree ? "Free" : "Paid"}
                             </span>
@@ -515,14 +515,14 @@ const AdminGovtExamTests = () => {
                         <div className="flex items-center gap-2 ml-4">
                           <button
                             onClick={() => handleEdit(test)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FaEdit />
                           </button>
                           <button
                             onClick={() => handleDelete(test._id)}
-                            className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             title="Delete"
                           >
                             <FaTrash />
@@ -548,7 +548,7 @@ const AdminGovtExamTests = () => {
                         </h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-semibold flex-shrink-0 ml-2 ${test.isFree
                           ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                          : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                          : "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200"
                           }`}>
                           {test.isFree ? "Free" : "Paid"}
                         </span>
@@ -570,13 +570,13 @@ const AdminGovtExamTests = () => {
                       <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <button
                           onClick={() => handleEdit(test)}
-                          className="flex-1 px-3 py-2 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                          className="flex-1 px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(test._id)}
-                          className="flex-1 px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+                          className="flex-1 px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
                         >
                           Delete
                         </button>
@@ -607,7 +607,7 @@ const AdminGovtExamTests = () => {
                     type="text"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                     required
                   />
                 </div>
@@ -620,7 +620,7 @@ const AdminGovtExamTests = () => {
                     type="number"
                     value={formData.duration}
                     onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                     min="1"
                     required
                   />
@@ -634,7 +634,7 @@ const AdminGovtExamTests = () => {
                     type="number"
                     value={formData.totalMarks}
                     onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                     min="1"
                     required
                   />
@@ -646,7 +646,7 @@ const AdminGovtExamTests = () => {
                       type="checkbox"
                       checked={formData.isFree}
                       onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })}
-                      className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      className="w-4 h-4 text-secondary-600 border-gray-300 rounded focus:ring-secondary-500"
                     />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Free Test
@@ -660,14 +660,14 @@ const AdminGovtExamTests = () => {
                 <button
                   type="button"
                   onClick={() => setUploadMode(false)}
-                  className={`px-4 py-2 font-medium ${!uploadMode ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-500'}`}
+                  className={`px-4 py-2 font-medium ${!uploadMode ? 'border-b-2 border-secondary-600 text-secondary-600' : 'text-gray-500'}`}
                 >
                   Manual Entry
                 </button>
                 <button
                   type="button"
                   onClick={() => setUploadMode(true)}
-                  className={`px-4 py-2 font-medium ${uploadMode ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-500'}`}
+                  className={`px-4 py-2 font-medium ${uploadMode ? 'border-b-2 border-secondary-600 text-secondary-600' : 'text-gray-500'}`}
                 >
                   Bulk Upload (JSON)
                 </button>
@@ -692,7 +692,7 @@ const AdminGovtExamTests = () => {
                         value={currentQuestion.questionText}
                         onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })}
                         rows="2"
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         required
                       />
                     </div>
@@ -711,12 +711,12 @@ const AdminGovtExamTests = () => {
                               newOptions[idx] = e.target.value;
                               setCurrentQuestion({ ...currentQuestion, options: newOptions });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                           />
                           <button
                             type="button"
                             onClick={() => setCurrentQuestion({ ...currentQuestion, correctAnswerIndex: idx })}
-                            className="mt-1 text-xs text-blue-600 hover:underline"
+                            className="mt-1 text-xs text-secondary-600 hover:underline"
                           >
                             Mark as Correct
                           </button>
@@ -733,7 +733,7 @@ const AdminGovtExamTests = () => {
                           type="text"
                           value={currentQuestion.section}
                           onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         />
                       </div>
                       <div>
@@ -743,7 +743,7 @@ const AdminGovtExamTests = () => {
                         <select
                           value={currentQuestion.difficulty}
                           onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                         >
                           <option value="easy">Easy</option>
                           <option value="medium">Medium</option>
@@ -758,7 +758,7 @@ const AdminGovtExamTests = () => {
                           type="text"
                           value={currentQuestion.explanation}
                           onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
                           placeholder="Optional"
                         />
                       </div>
@@ -787,7 +787,7 @@ const AdminGovtExamTests = () => {
                           <button
                             type="button"
                             onClick={() => handleRemoveQuestion(idx)}
-                            className="text-red-600 hover:text-red-800 text-sm"
+                            className="text-primary-600 hover:text-red-800 text-sm"
                           >
                             Remove
                           </button>
@@ -811,7 +811,7 @@ const AdminGovtExamTests = () => {
                     value={jsonText}
                     onChange={(e) => setJsonText(e.target.value)}
                     rows="10"
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white font-mono text-xs"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white font-mono text-xs"
                     placeholder='{"questions": [{"questionText": "...", "options": ["A", "B", "C", "D"], "correctAnswerIndex": 0, ...}]}'
                   />
                   <Button
@@ -829,7 +829,7 @@ const AdminGovtExamTests = () => {
                       <button
                         type="button"
                         onClick={() => setFormData({ ...formData, questions: [] })}
-                        className="text-red-600 hover:text-red-800 text-sm"
+                        className="text-primary-600 hover:text-red-800 text-sm"
                       >
                         Clear All
                       </button>

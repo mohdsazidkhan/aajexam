@@ -63,7 +63,7 @@ const UnifiedFooter = ({ isLandingPage = false }) => {
                     title={item.url !== "#" ? new URL(item.url).hostname : "Social Media"}
                     className="w-11 h-11 rounded-full text-white flex items-center justify-center text-xl 
                       shadow-lg transition-all duration-300 transform hover:scale-110 hover:rotate-3
-                      bg-gradient-to-bl from-yellow-500 to-red-500 
+                      bg-gradient-to-bl from-primary-500 to-secondary-500 
                       dark:from-gray-700 dark:to-gray-900 hover:shadow-2xl"
                   >
                     {item.icon}
@@ -160,7 +160,7 @@ const UnifiedFooter = ({ isLandingPage = false }) => {
             title={item.url !== "#" ? new URL(item.url).hostname : "Social Media"}
             className="w-9 h-9 rounded-full text-white flex items-center justify-center text-lg 
               shadow-lg transition-all duration-300 transform hover:scale-110 hover:rotate-3
-              bg-gradient-to-bl from-yellow-500 to-red-500 
+              bg-gradient-to-bl from-primary-500 to-secondary-500 
               hover:shadow-xl"
           >
             {item.icon}

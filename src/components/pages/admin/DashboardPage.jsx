@@ -95,9 +95,9 @@ const DashboardPage = () => {
       bgColor: 'bg-indigo-100',
       darkBgColor: 'dark:bg-indigo-900/20',
       gradientFrom: 'from-indigo-200',
-      gradientTo: 'to-blue-200',
+      gradientTo: 'to-secondary-200',
       darkGradientFrom: 'dark:from-indigo-700',
-      darkGradientTo: 'dark:to-blue-800',
+      darkGradientTo: 'dark:to-secondary-800',
       subtitle: 'PRO users with valid subscription',
       link: '#'
     },
@@ -105,13 +105,13 @@ const DashboardPage = () => {
       title: 'Dynamic Prize Pool',
       count: `₹${(stats.dynamicPrizePool || 0).toLocaleString()}`,
       icon: '💰',
-      color: 'bg-yellow-500',
-      textColor: 'text-yellow-900',
-      bgColor: 'bg-yellow-100',
-      darkBgColor: 'dark:bg-yellow-900/20',
-      gradientFrom: 'from-yellow-200',
+      color: 'bg-primary-500',
+      textColor: 'text-primary-900',
+      bgColor: 'bg-primary-100',
+      darkBgColor: 'dark:bg-primary-900/20',
+      gradientFrom: 'from-primary-200',
       gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-yellow-700',
+      darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-amber-800',
       subtitle: `Active PRO users × ${stats.prizePerPro || 95}`,
       link: '#'
@@ -151,13 +151,13 @@ const DashboardPage = () => {
       count: stats.categories,
       link: '/admin/categories',
       icon: '📚',
-      color: 'bg-yellow-500',
-      textColor: 'text-yellow-900',
-      bgColor: 'bg-yellow-100',
-      darkBgColor: 'dark:bg-yellow-900/20',
-      gradientFrom: 'from-yellow-200',
+      color: 'bg-primary-500',
+      textColor: 'text-primary-900',
+      bgColor: 'bg-primary-100',
+      darkBgColor: 'dark:bg-primary-900/20',
+      gradientFrom: 'from-primary-200',
       gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-yellow-700',
+      darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-amber-800'
     },
     {
@@ -224,13 +224,13 @@ const DashboardPage = () => {
       count: stats.questions,
       link: '/admin/questions',
       icon: '❓',
-      color: 'bg-orange-500',
-      textColor: 'text-orange-900',
-      bgColor: 'bg-orange-100',
-      darkBgColor: 'dark:bg-orange-900/20',
-      gradientFrom: 'from-orange-200',
+      color: 'bg-primary-500',
+      textColor: 'text-primary-900',
+      bgColor: 'bg-primary-100',
+      darkBgColor: 'dark:bg-primary-900/20',
+      gradientFrom: 'from-primary-200',
       gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-orange-700',
+      darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-amber-800'
     },
     {
@@ -239,7 +239,7 @@ const DashboardPage = () => {
       link: '/admin/user-questions',
       icon: '💭',
       color: 'bg-purple-500',
-      textColor: 'text-yellow-900',
+      textColor: 'text-primary-900',
       bgColor: 'bg-purple-100',
       darkBgColor: 'dark:bg-purple-900/20',
       gradientFrom: 'from-purple-200',
@@ -253,13 +253,13 @@ const DashboardPage = () => {
       count: stats.userBlogs || 0,
       link: '/admin/user-blogs',
       icon: '📝',
-      color: 'bg-blue-500',
-      textColor: 'text-blue-900',
-      bgColor: 'bg-blue-100',
-      darkBgColor: 'dark:bg-blue-900/20',
-      gradientFrom: 'from-blue-200',
+      color: 'bg-secondary-500',
+      textColor: 'text-secondary-900',
+      bgColor: 'bg-secondary-100',
+      darkBgColor: 'dark:bg-secondary-900/20',
+      gradientFrom: 'from-secondary-200',
       gradientTo: 'to-cyan-200',
-      darkGradientFrom: 'dark:from-blue-700',
+      darkGradientFrom: 'dark:from-secondary-700',
       darkGradientTo: 'dark:to-cyan-800',
       subtitle: 'User submitted blogs'
     },
@@ -313,13 +313,13 @@ const DashboardPage = () => {
       count: stats.bankDetails,
       link: '/admin/bank-details',
       icon: '🏦',
-      color: 'bg-yellow-500',
-      textColor: 'text-yellow-900',
-      bgColor: 'bg-yellow-100',
-      darkBgColor: 'dark:bg-yellow-900/20',
-      gradientFrom: 'from-yellow-200',
+      color: 'bg-primary-500',
+      textColor: 'text-primary-900',
+      bgColor: 'bg-primary-100',
+      darkBgColor: 'dark:bg-primary-900/20',
+      gradientFrom: 'from-primary-200',
       gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-yellow-600',
+      darkGradientFrom: 'dark:from-primary-600',
       darkGradientTo: 'dark:to-amber-700'
     },
     {
@@ -343,7 +343,7 @@ const DashboardPage = () => {
       link: '/admin/subscriptions',
       icon: '👑',
       color: 'bg-purple-500',
-      textColor: 'text-yellow-900',
+      textColor: 'text-primary-900',
       bgColor: 'bg-purple-100',
       darkBgColor: 'dark:bg-purple-900/20',
       gradientFrom: 'from-purple-200',
@@ -391,10 +391,10 @@ const DashboardPage = () => {
       textColor: 'text-red-900',
       bgColor: 'bg-indigo-100',
       darkBgColor: 'dark:bg-indigo-900/20',
-      gradientFrom: 'from-yellow-200',
-      gradientTo: 'to-blue-200',
-      darkGradientFrom: 'dark:from-yellow-700',
-      darkGradientTo: 'dark:to-blue-800',
+      gradientFrom: 'from-primary-200',
+      gradientTo: 'to-secondary-200',
+      darkGradientFrom: 'dark:from-primary-700',
+      darkGradientTo: 'dark:to-secondary-800',
       subtitle: 'Basic/Premium/Pro plans'
     },
     {
@@ -418,13 +418,13 @@ const DashboardPage = () => {
       count: stats.totalArticles || 0,
       link: '/admin/articles',
       icon: '📝',
-      color: 'bg-blue-500',
-      textColor: 'text-blue-900',
-      bgColor: 'bg-blue-50',
-      darkBgColor: 'dark:bg-blue-900/20',
-      gradientFrom: 'from-blue-200',
+      color: 'bg-secondary-500',
+      textColor: 'text-secondary-900',
+      bgColor: 'bg-secondary-50',
+      darkBgColor: 'dark:bg-secondary-900/20',
+      gradientFrom: 'from-secondary-200',
       gradientTo: 'to-sky-200',
-      darkGradientFrom: 'dark:from-blue-700',
+      darkGradientFrom: 'dark:from-secondary-700',
       darkGradientTo: 'dark:to-sky-800',
       subtitle: `${stats.publishedArticles || 0} published`
     },
@@ -473,7 +473,7 @@ const DashboardPage = () => {
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
                 <div className="text-6xl mb-4">⚠️</div>
-                <div className="text-lg text-red-600 dark:text-red-400">{error}</div>
+                <div className="text-lg text-primary-600 dark:text-red-400">{error}</div>
               </div>
             </div>
           </div>
@@ -559,44 +559,44 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-200 to-indigo-200 dark:from-blue-700 dark:to-indigo-800 rounded-xl p-3 lg:p-6 text-blue-900 dark:text-white shadow-lg">
+            <div className="bg-gradient-to-r from-secondary-200 to-indigo-200 dark:from-secondary-700 dark:to-indigo-800 rounded-xl p-3 lg:p-6 text-secondary-900 dark:text-white shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-700 dark:text-blue-200 text-sm font-medium">Payment Success Rate</p>
-                  <p className="text-2xl font-bold text-blue-900 dark:text-white">
+                  <p className="text-secondary-700 dark:text-secondary-200 text-sm font-medium">Payment Success Rate</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-white">
                     {stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%
                   </p>
-                  <p className="text-blue-600 dark:text-blue-300 text-xs mt-1">
+                  <p className="text-secondary-600 dark:text-secondary-300 text-xs mt-1">
                     {stats.completedPaymentOrders || 0} of {stats.paymentOrders || 0} orders
                   </p>
                 </div>
-                <div className="text-4xl text-blue-600 dark:text-blue-300">📊</div>
+                <div className="text-4xl text-secondary-600 dark:text-secondary-300">📊</div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-purple-200 to-pink-200 dark:from-purple-700 dark:to-pink-800 rounded-xl p-3 lg:p-6 text-yellow-900 dark:text-white shadow-lg">
+            <div className="bg-gradient-to-r from-purple-200 to-pink-200 dark:from-purple-700 dark:to-pink-800 rounded-xl p-3 lg:p-6 text-primary-900 dark:text-white shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-yellow-700 dark:text-yellow-200 text-sm font-medium">Active Subscriptions</p>
-                  <p className="text-2xl font-bold text-yellow-900 dark:text-white">{stats.activeSubscriptions || 0}</p>
-                  <p className="text-orange-700 dark:text-yellow-300 text-xs mt-1">
+                  <p className="text-primary-700 dark:text-primary-200 text-sm font-medium">Active Subscriptions</p>
+                  <p className="text-2xl font-bold text-primary-900 dark:text-white">{stats.activeSubscriptions || 0}</p>
+                  <p className="text-primary-600 dark:text-primary-300 text-xs mt-1">
                     {stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of total
                   </p>
                 </div>
-                <div className="text-4xl text-orange-700 dark:text-yellow-300">👑</div>
+                <div className="text-4xl text-primary-600 dark:text-primary-300">👑</div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-200 to-red-200 dark:from-orange-700 dark:to-red-800 rounded-xl p-3 lg:p-6 text-orange-900 dark:text-white shadow-lg">
+            <div className="bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-700 dark:to-red-800 rounded-xl p-3 lg:p-6 text-primary-900 dark:text-white shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-700 dark:text-orange-200 text-sm font-medium">Free vs Paid</p>
-                  <p className="text-2xl font-bold text-orange-900 dark:text-white">{stats.freeSubscriptions || 0} / {stats.paidSubscriptions || 0}</p>
-                  <p className="text-orange-700 dark:text-orange-300 text-xs mt-1">
+                  <p className="text-primary-600 dark:text-primary-200 text-sm font-medium">Free vs Paid</p>
+                  <p className="text-2xl font-bold text-primary-900 dark:text-white">{stats.freeSubscriptions || 0} / {stats.paidSubscriptions || 0}</p>
+                  <p className="text-primary-600 dark:text-primary-300 text-xs mt-1">
                     Free plan / Paid plans
                   </p>
                 </div>
-                <div className="text-4xl text-orange-700 dark:text-orange-300">📊</div>
+                <div className="text-4xl text-primary-600 dark:text-primary-300">📊</div>
               </div>
             </div>
           </div>
@@ -639,8 +639,8 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/quizzes" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 hover:from-yellow-100 hover:to-yellow-200 dark:hover:from-yellow-800/30 dark:hover:to-yellow-700/30 transition-all duration-300">
-                <div className="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center mr-3">
+              <Link href="/admin/quizzes" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 hover:from-primary-100 hover:to-primary-200 dark:hover:from-primary-800/30 dark:hover:to-primary-700/30 transition-all duration-300">
+                <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">🎯</span>
                 </div>
                 <div>
@@ -649,8 +649,8 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/questions" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 hover:from-orange-100 hover:to-orange-200 dark:hover:from-orange-800/30 dark:hover:to-orange-700/30 transition-all duration-300">
-                <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center mr-3">
+              <Link href="/admin/questions" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 hover:from-primary-100 hover:to-primary-200 dark:hover:from-primary-800/30 dark:hover:to-primary-700/30 transition-all duration-300">
+                <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">❓</span>
                 </div>
                 <div>
@@ -659,8 +659,8 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/articles" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/30 dark:hover:to-blue-700/30 transition-all duration-300">
-                <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+              <Link href="/admin/articles" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/20 dark:to-secondary-800/20 hover:from-secondary-100 hover:to-secondary-200 dark:hover:from-secondary-800/30 dark:hover:to-secondary-700/30 transition-all duration-300">
+                <div className="w-10 h-10 bg-secondary-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">📝</span>
                 </div>
                 <div>
@@ -679,8 +679,8 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/user-questions?status=pending" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 hover:from-yellow-100 hover:to-yellow-200 dark:hover:from-yellow-800/30 dark:hover:to-yellow-700/30 transition-all duration-300">
-                <div className="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center mr-3">
+              <Link href="/admin/user-questions?status=pending" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 hover:from-primary-100 hover:to-primary-200 dark:hover:from-primary-800/30 dark:hover:to-primary-700/30 transition-all duration-300">
+                <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">⏳</span>
                 </div>
                 <div>
@@ -699,7 +699,7 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/user-questions?status=rejected" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-800/30 dark:hover:to-red-700/30 transition-all duration-300">
+              <Link href="/admin/user-questions?status=rejected" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-800/30 dark:hover:to-secondary-700/30 transition-all duration-300">
                 <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">❌</span>
                 </div>
@@ -719,7 +719,7 @@ const DashboardPage = () => {
                 </div>
               </Link>
 
-              <Link href="/admin/students" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-800/30 dark:hover:to-red-700/30 transition-all duration-300">
+              <Link href="/admin/students" className="flex items-center p-4 rounded-lg bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 hover:from-red-100 hover:to-red-200 dark:hover:from-red-800/30 dark:hover:to-secondary-700/30 transition-all duration-300">
                 <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white text-lg">👥</span>
                 </div>

@@ -154,7 +154,7 @@ const AdminExpenses = () => {
                         </div>
                         <button
                             onClick={() => handleOpenModal()}
-                            className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-yellow-500 text-white px-6 py-2.5 rounded-xl font-bold shadow-lg hover:shadow-xl transition transform hover:scale-105"
+                            className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-primary-500 text-white px-6 py-2.5 rounded-xl font-bold shadow-lg hover:shadow-xl transition transform hover:scale-105"
                         >
                             <FaPlus /> Add Expense
                         </button>
@@ -176,7 +176,7 @@ const AdminExpenses = () => {
                         {summary?.categories?.map(cat => (
                             <div key={cat._id} className="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow border border-gray-100 dark:border-gray-700">
                                 <div className="flex items-center gap-4">
-                                    <div className="bg-yellow-100 dark:bg-yellow-900/30 p-3 rounded-xl text-yellow-600 capitalize text-sm font-bold">
+                                    <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-xl text-secondary-600 capitalize text-sm font-bold">
                                         {cat._id.substring(0, 2)}
                                     </div>
                                     <div>
@@ -197,13 +197,13 @@ const AdminExpenses = () => {
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
                                 placeholder="Search by title..."
-                                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
                             />
                         </form>
                         <select
                             value={category}
                             onChange={e => setCategory(e.target.value)}
-                            className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition capitalize"
+                            className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition capitalize"
                         >
                             <option value="">All Categories</option>
                             <option value="ads">Ads</option>
@@ -246,7 +246,7 @@ const AdminExpenses = () => {
                                                     <div className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{expense.description || 'No description'}</div>
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold capitalize">
+                                                    <span className="px-3 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400 text-xs font-bold capitalize">
                                                         {expense.category}
                                                     </span>
                                                 </td>
@@ -308,7 +308,7 @@ const AdminExpenses = () => {
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(false)} />
                     <div className="relative bg-white dark:bg-gray-800 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
-                        <div className="bg-gradient-to-r from-red-500 to-yellow-500 p-6 text-white">
+                        <div className="bg-gradient-to-r from-red-500 to-primary-500 p-6 text-white">
                             <h2 className="text-xl font-bold">{isEditing ? 'Edit Expense' : 'Add New Expense'}</h2>
                             <p className="text-white/80 text-sm">Fill in the details below</p>
                         </div>
@@ -323,7 +323,7 @@ const AdminExpenses = () => {
                                         value={formData.title}
                                         onChange={e => setFormData({ ...formData, title: e.target.value })}
                                         placeholder="e.g. Meta Ads - Aug 2024"
-                                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
                                     />
                                 </div>
                             </div>
@@ -338,7 +338,7 @@ const AdminExpenses = () => {
                                             value={formData.amount}
                                             onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                             placeholder="0.00"
-                                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
                                         />
                                     </div>
                                 </div>
@@ -351,7 +351,7 @@ const AdminExpenses = () => {
                                             type="date"
                                             value={formData.date}
                                             onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
                                         />
                                     </div>
                                 </div>
@@ -361,7 +361,7 @@ const AdminExpenses = () => {
                                 <select
                                     value={formData.category}
                                     onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition capitalize"
+                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition capitalize"
                                 >
                                     <option value="ads">Ads</option>
                                     <option value="server">Server</option>
@@ -376,7 +376,7 @@ const AdminExpenses = () => {
                                     value={formData.description}
                                     onChange={e => setFormData({ ...formData, description: e.target.value })}
                                     rows="2"
-                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
                                     placeholder="Add notes..."
                                 />
                             </div>
@@ -391,7 +391,7 @@ const AdminExpenses = () => {
                                 <button
                                     type="submit"
                                     disabled={formLoading}
-                                    className="flex-1 py-3 rounded-xl bg-gradient-to-r from-red-500 to-yellow-500 text-white font-bold shadow-lg hover:shadow-xl transition disabled:opacity-50"
+                                    className="flex-1 py-3 rounded-xl bg-gradient-to-r from-red-500 to-primary-500 text-white font-bold shadow-lg hover:shadow-xl transition disabled:opacity-50"
                                 >
                                     {formLoading ? 'Saving...' : 'Save Expense'}
                                 </button>

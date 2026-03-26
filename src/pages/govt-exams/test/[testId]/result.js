@@ -245,11 +245,11 @@ const TestResult = () => {
         <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
           {/* Summary Header */}
           <div className="rounded-2xl p-4 lg:p-8 mb-4 lg:mb-8 text-center text-white 
-  bg-gradient-to-r from-red-100 via-orange-100 to-yellow-100 
+  bg-gradient-to-r from-red-100 via-primary-100 to-primary-100 
   dark:from-gray-800 dark:via-gray-900 dark:to-black 
   transition-all duration-500 shadow-lg hover:shadow-2xl">
-            <FaTrophy className="text-3xl lg:text-5xl mx-auto mb-2 lg:mb-4 text-yellow-500" />
-            <h2 className="text-md lg:text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-yellow-500 mb-2">
+            <FaTrophy className="text-3xl lg:text-5xl mx-auto mb-2 lg:mb-4 text-primary-500" />
+            <h2 className="text-md lg:text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-primary-500 mb-2">
               {testTitle}
             </h2>
             <h1 className="text-xl lg:text-3xl font-bold mb-2 text-gray-800 dark:text-green-500">Test Completed! 🎉</h1>
@@ -264,17 +264,17 @@ const TestResult = () => {
               <div className="text-sm text-gray-600 dark:text-gray-400">Score</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg text-center">
-              <FaChartLine className="text-blue-500 text-3xl mx-auto mb-2" />
+              <FaChartLine className="text-secondary-500 text-3xl mx-auto mb-2" />
               <div className="text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{accuracyValue.toFixed(1)}%</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Accuracy</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg text-center">
-              <FaTrophy className="text-yellow-500 text-3xl mx-auto mb-2" />
+              <FaTrophy className="text-primary-500 text-3xl mx-auto mb-2" />
               <div className="text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{rankValue}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Rank</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg text-center">
-              <FaUsers className="text-yellow-500 text-3xl mx-auto mb-2" />
+              <FaUsers className="text-primary-500 text-3xl mx-auto mb-2" />
               <div className="text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{percentileValue.toFixed(1)}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Percentile</div>
             </div>
@@ -290,10 +290,10 @@ const TestResult = () => {
                     See how you stack up against other students in real time.
                   </p>
                 </div>
-                <div className="flex items-center gap-3 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-xl px-4 py-3">
-                  <FaTrophy className="text-blue-500 text-2xl" />
+                <div className="flex items-center gap-3 bg-secondary-50 dark:bg-secondary-900/30 border border-secondary-200 dark:border-secondary-700 rounded-xl px-4 py-3">
+                  <FaTrophy className="text-secondary-500 text-2xl" />
                   <div>
-                    <div className="text-xs text-blue-500 uppercase font-semibold">Top Performer</div>
+                    <div className="text-xs text-secondary-500 uppercase font-semibold">Top Performer</div>
                     <div className="text-sm font-semibold text-gray-900 dark:text-white">
                       {topPerformer?.user?.name || 'Anonymous'}
                     </div>
@@ -309,7 +309,7 @@ const TestResult = () => {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-gradient-to-r from-blue-600 from-red-600 text-white">
+                  <thead className="bg-gradient-to-r from-secondary-600 from-red-600 text-white">
                     <tr>
                       <th className="py-1 px-2 lg:py-3 lg:px-4 text-left font-semibold">Rank</th>
                       <th className="py-1 px-2 lg:py-3 lg:px-4 text-left font-semibold">Student</th>
@@ -324,7 +324,7 @@ const TestResult = () => {
                       return (
                         <tr
                           key={entry._id || idx}
-                          className={`border-b border-gray-200 dark:border-gray-700 ${isCurrentUser ? 'bg-yellow-50 dark:bg-yellow-900/30' : ''
+                          className={`border-b border-gray-200 dark:border-gray-700 ${isCurrentUser ? 'bg-primary-50 dark:bg-primary-900/30' : ''
                             }`}
                         >
                           <td className="py-1 px-2 lg:py-3 lg:px-4 font-semibold text-gray-900 dark:text-white">
@@ -373,7 +373,7 @@ const TestResult = () => {
                 <div className="text-sm text-green-700 dark:text-green-300">Correct Answers</div>
               </div>
               <div className="text-center p-4 bg-red-50 dark:bg-red-900/30 rounded-lg">
-                <div className="text-xl lg:text-4xl font-bold text-red-600 dark:text-red-400 mb-2">
+                <div className="text-xl lg:text-4xl font-bold text-primary-600 dark:text-red-400 mb-2">
                   {wrongCount}
                 </div>
                 <div className="text-sm text-red-700 dark:text-red-300">Wrong Answers</div>
@@ -396,13 +396,13 @@ const TestResult = () => {
                   <div key={section} className="border border-gray-200 dark:border-gray-700 rounded-lg p-2 lg:p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm lg:text-md font-semibold text-gray-900 dark:text-white">{section}</span>
-                      <span className="text-sm lg:text-lg font-bold text-blue-600 dark:text-blue-400">
+                      <span className="text-sm lg:text-lg font-bold text-secondary-600 dark:text-secondary-400">
                         {data.score} marks
                       </span>
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div className="text-green-600 dark:text-green-400">✓ {data.correct} Correct</div>
-                      <div className="text-red-600 dark:text-red-400">✗ {data.wrong} Wrong</div>
+                      <div className="text-primary-600 dark:text-red-400">✗ {data.wrong} Wrong</div>
                     </div>
                   </div>
                 ))}
@@ -443,7 +443,7 @@ const TestResult = () => {
                     {sectionStats.map((section) => (
                       <span
                         key={section.name}
-                        className="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-yellow-700 dark:text-yellow-300 text-xs font-semibold"
+                        className="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-primary-700 dark:text-primary-300 text-xs font-semibold"
                       >
                         {section.name} • {section.questionCount} Qs
                       </span>
@@ -501,7 +501,7 @@ const TestResult = () => {
                       ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
                       : 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
                     : skipped
-                      ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300'
+                      ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
                       : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300';
                   const correctOption = question.options?.[question.correctAnswerIndex] ?? '—';
                   const selectedOptionText =
@@ -569,7 +569,7 @@ const TestResult = () => {
                                 </span>
                                 <div className="flex-1 text-gray-900 dark:text-gray-100">{option}</div>
                                 {isSelected && (
-                                  <span className="text-xs font-semibold text-red-600 dark:text-red-300">
+                                  <span className="text-xs font-semibold text-primary-600 dark:text-red-300">
                                     Your choice
                                   </span>
                                 )}
@@ -612,7 +612,7 @@ const TestResult = () => {
                         ) : null}
 
                         {question.explanation && (
-                          <div className="rounded-xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 px-4 py-3 text-sm text-yellow-800 dark:text-yellow-200">
+                          <div className="rounded-xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 px-4 py-3 text-sm text-primary-800 dark:text-primary-200">
                             <div className="font-semibold mb-2">Explanation</div>
                             <p className="whitespace-pre-wrap">{question.explanation}</p>
                           </div>

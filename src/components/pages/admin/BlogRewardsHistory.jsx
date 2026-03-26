@@ -111,9 +111,9 @@ export default function BlogRewardsHistory() {
 
   const getRewardTierColor = (tier) => {
     const colors = {
-      'normal': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'normal': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
       'good': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'high': 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200',
+      'high': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
     };
     return colors[tier] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   };
@@ -193,7 +193,7 @@ export default function BlogRewardsHistory() {
                       href={`/admin/blog-rewards-history/user/${tx.user._id}`}
                       className="hover:underline"
                     >
-                      <div className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 cursor-pointer">
+                      <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 cursor-pointer">
                         {tx.user?.name || 'N/A'}
                       </div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -217,7 +217,7 @@ export default function BlogRewardsHistory() {
                       href={`/admin/articles/${tx.article._id}/edit`}
                       className="hover:underline"
                     >
-                      <div className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                      <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300">
                         {tx.article.title || 'N/A'}
                       </div>
                       <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -273,7 +273,7 @@ export default function BlogRewardsHistory() {
                 {tx.article ? (
                   <Link
                     href={`/admin/articles/${tx.article._id}/edit`}
-                    className="text-lg font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                    className="text-lg font-semibold text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300"
                   >
                     {tx.article.title || 'N/A'}
                   </Link>
@@ -288,7 +288,7 @@ export default function BlogRewardsHistory() {
                 {tx.user?._id ? (
                   <Link
                     href={`/admin/blog-rewards-history/user/${tx.user._id}`}
-                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline"
+                    className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 hover:underline"
                   >
                     User: {tx.user?.name || 'N/A'} ({tx.user?.email || 'N/A'})
                   </Link>
@@ -343,7 +343,7 @@ export default function BlogRewardsHistory() {
             {tx.article ? (
               <Link
                 href={`/admin/articles/${tx.article._id}/edit`}
-                className="text-base font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 line-clamp-2 flex-1"
+                className="text-base font-semibold text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 line-clamp-2 flex-1"
               >
                 {tx.article.title || 'N/A'}
               </Link>
@@ -358,7 +358,7 @@ export default function BlogRewardsHistory() {
             {tx.user?._id ? (
               <Link
                 href={`/admin/blog-rewards-history/user/${tx.user._id}`}
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline"
+                className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 hover:underline"
               >
                 <div>User: {tx.user?.name || 'N/A'}</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400">{tx.user?.email || 'N/A'}</div>
@@ -432,7 +432,7 @@ export default function BlogRewardsHistory() {
               <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-5 gap-4 mb-6">
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">Total Blogs</div>
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                     {summary.totalBlogs?.toLocaleString() || 0}
                   </div>
                   <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
@@ -450,7 +450,7 @@ export default function BlogRewardsHistory() {
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">Normal Blog</div>
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                     ₹{summary.normalRewards?.toLocaleString() || 0}
                   </div>
                 </div>
@@ -462,7 +462,7 @@ export default function BlogRewardsHistory() {
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                   <div className="text-sm text-gray-600 dark:text-gray-400">High Blog</div>
-                  <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                     ₹{summary.highRewards?.toLocaleString() || 0}
                   </div>
                 </div>
@@ -472,7 +472,7 @@ export default function BlogRewardsHistory() {
             {/* Content */}
             {loading ? (
               <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="yellow" message="" />
+                <Loading size="lg" color="primary" message="" />
               </div>
             ) : error ? (
               <div className="text-center py-12">

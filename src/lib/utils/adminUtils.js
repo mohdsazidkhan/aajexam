@@ -21,7 +21,7 @@ export const ADMIN_PERMISSIONS = {
 
 // Check if user is admin
 export const isAdmin = () => {
-    const user = getCurrentUser();
+  const user = getCurrentUser();
   return user && user.role && [ADMIN_ROLES.SUPER_ADMIN, ADMIN_ROLES.ADMIN].includes(user.role);
 };
 
@@ -30,19 +30,19 @@ export const hasAdminPrivileges = () => {
   const user = getCurrentUser();
   return user && user.role && Object.values(ADMIN_ROLES).includes(user.role);
 };
-    
+
 // Check if user has specific admin permission
 export const hasAdminPermission = (permission) => {
-    const user = getCurrentUser();
-  
+  const user = getCurrentUser();
+
   if (!user || !user.role) return false;
-  
+
   // Super admin has all permissions
   if (user.role === ADMIN_ROLES.SUPER_ADMIN) return true;
-  
+
   // Check user's specific permissions
   if (user.permissions && user.permissions.includes(permission)) return true;
-  
+
   // Default permissions based on role
   switch (user.role) {
     case ADMIN_ROLES.ADMIN:
@@ -55,16 +55,16 @@ export const hasAdminPermission = (permission) => {
         ADMIN_PERMISSIONS.MANAGE_REWARDS,
         ADMIN_PERMISSIONS.MANAGE_PAYMENTS
       ].includes(permission);
-    
+
     case ADMIN_ROLES.MODERATOR:
       return [
         ADMIN_PERMISSIONS.MANAGE_QUIZZES,
         ADMIN_PERMISSIONS.MANAGE_CATEGORIES,
         ADMIN_PERMISSIONS.VIEW_ANALYTICS
       ].includes(permission);
-    
+
     default:
-    return false;
+      return false;
   }
 };
 
@@ -86,9 +86,9 @@ export const getAdminRoleDisplayName = (role) => {
 export const getAdminRoleColor = (role) => {
   switch (role) {
     case ADMIN_ROLES.SUPER_ADMIN:
-      return 'text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20';
+      return 'text-primary-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20';
     case ADMIN_ROLES.ADMIN:
-      return 'text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/20';
+      return 'text-secondary-600 bg-secondary-100 dark:text-secondary-400 dark:bg-secondary-900/20';
     case ADMIN_ROLES.MODERATOR:
       return 'text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20';
     default:
@@ -98,8 +98,8 @@ export const getAdminRoleColor = (role) => {
 
 // Log admin action
 export const logAdminAction = (action, details = {}) => {
-    const user = getCurrentUser();
-  
+  const user = getCurrentUser();
+
   if (!user || !hasAdminPrivileges()) {
     console.warn('Attempted to log admin action without admin privileges');
     return;
@@ -108,16 +108,16 @@ export const logAdminAction = (action, details = {}) => {
   const logData = {
     adminId: user.id,
     adminUsername: user.username,
-      action,
-      details,
+    action,
+    details,
     timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
+    userAgent: navigator.userAgent,
     ip: null // This would be set by the backend
   };
 
   // In a real application, you would send this to your logging service
   console.log('Admin Action:', logData);
-  
+
   // You could also send this to your backend for persistent logging
   // API.post('/api/admin/logs', logData).catch(console.error);
 };
@@ -158,11 +158,11 @@ export const formatAdminAction = (action, details = {}) => {
   };
 
   let formatted = actionMap[action] || action.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  
+
   if (details.username) {
     formatted += ` (${details.username})`;
   }
-  
+
   if (details.resourceId) {
     formatted += ` [ID: ${details.resourceId}]`;
   }

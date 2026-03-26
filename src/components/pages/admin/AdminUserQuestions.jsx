@@ -123,7 +123,7 @@ const AdminUserQuestions = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case "pending":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900 dark:text-yellow-200";
+        return "bg-primary-100 text-primary-800 border-primary-200 dark:bg-primary-900 dark:text-primary-200";
       case "approved":
         return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-200";
       case "rejected":
@@ -224,7 +224,7 @@ const AdminUserQuestions = () => {
               <button
                 onClick={() => setViewMode("list")}
                 className={`px-3 py-1 rounded ${viewMode === "list"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-secondary-600 text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                   }`}
               >
@@ -233,7 +233,7 @@ const AdminUserQuestions = () => {
               <button
                 onClick={() => setViewMode("grid")}
                 className={`px-3 py-1 rounded ${viewMode === "grid"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-secondary-600 text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                   }`}
               >
@@ -242,7 +242,7 @@ const AdminUserQuestions = () => {
               <button
                 onClick={() => setViewMode("table")}
                 className={`px-3 py-1 rounded ${viewMode === "table"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-secondary-600 text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                   }`}
               >
@@ -356,13 +356,13 @@ const AdminUserQuestions = () => {
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
                           <div className="flex items-center gap-3">
-                            <span className="text-blue-600 dark:text-blue-400">
+                            <span className="text-secondary-600 dark:text-secondary-400">
                               👁️ {q.viewsCount || 0}
                             </span>
-                            <span className="text-red-600 dark:text-red-400">
+                            <span className="text-primary-600 dark:text-red-400">
                               ❤️ {q.likesCount || 0}
                             </span>
-                            <span className="text-orange-700 dark:text-yellow-400">
+                            <span className="text-primary-600 dark:text-primary-400">
                               💬 {(q.answers || []).length}
                             </span>
                           </div>
@@ -532,13 +532,13 @@ const AdminUserQuestions = () => {
                       Created: {formatDate(q.createdAt)} at {new Date(q.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
                     </div>
                     <div className="flex items-center justify-between mb-3 text-sm">
-                      <span className="text-blue-600 dark:text-blue-400">
+                      <span className="text-secondary-600 dark:text-secondary-400">
                         👁️ {q.viewsCount || 0}
                       </span>
-                      <span className="text-red-600 dark:text-red-400">
+                      <span className="text-primary-600 dark:text-red-400">
                         ❤️ {q.likesCount || 0}
                       </span>
-                      <span className="text-orange-700 dark:text-yellow-400">
+                      <span className="text-primary-600 dark:text-primary-400">
                         💬 {(q.answers || []).length}
                       </span>
                     </div>

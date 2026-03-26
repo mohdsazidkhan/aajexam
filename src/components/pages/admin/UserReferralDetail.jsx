@@ -105,10 +105,10 @@ export default function UserReferralDetail() {
 
   const getRewardTypeColor = (type) => {
     const colors = {
-      'registration': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+      'registration': 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200',
       'plan9': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'plan49': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'plan99': 'bg-purple-100 text-yellow-800 dark:bg-purple-900 dark:text-yellow-200',
+      'plan49': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+      'plan99': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
     };
     return colors[type] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   };
@@ -124,7 +124,7 @@ export default function UserReferralDetail() {
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                 User ID not provided
               </h3>
-              <Link href="/admin/referral-history" className="text-blue-600 dark:text-blue-400 hover:underline">
+              <Link href="/admin/referral-history" className="text-secondary-600 dark:text-secondary-400 hover:underline">
                 ← Back to Referral History
               </Link>
             </div>
@@ -143,7 +143,7 @@ export default function UserReferralDetail() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
               <div>
-                <Link href="/admin/referral-history" className="text-blue-600 dark:text-blue-400 hover:underline mb-2 inline-block">
+                <Link href="/admin/referral-history" className="text-secondary-600 dark:text-secondary-400 hover:underline mb-2 inline-block">
                   ← Back to Referral History
                 </Link>
                 <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white">
@@ -182,7 +182,7 @@ export default function UserReferralDetail() {
                   </div>
                   <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
                     <div className="text-sm text-gray-600 dark:text-gray-400">Referral Count</div>
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                    <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                       {user.referralCount || 0}
                     </div>
                   </div>
@@ -226,9 +226,9 @@ export default function UserReferralDetail() {
                         {user.referralRewards?.length || 0} rewards
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/30 dark:to-yellow-800/30 rounded-lg p-4 border border-yellow-200 dark:border-yellow-700">
+                    <div className="bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-lg p-4 border border-primary-200 dark:border-primary-700">
                       <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">From Registrations</div>
-                      <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                      <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                         ₹{totalFromRegistrations.toLocaleString()}
                       </div>
                       <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
@@ -244,9 +244,9 @@ export default function UserReferralDetail() {
                         {user.referralRewards?.filter(r => r.type === 'plan9').length || 0} purchases
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
+                    <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-lg p-4 border border-secondary-200 dark:border-secondary-700">
                       <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">From ₹49 Plans</div>
-                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
                         ₹{totalFromPlan49.toLocaleString()}
                       </div>
                       <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
@@ -255,7 +255,7 @@ export default function UserReferralDetail() {
                     </div>
                     <div className="bg-gradient-to-br from-purple-50 from-red-100 dark:from-purple-900/30 dark:from-red-800/30 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
                       <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">From ₹99 Plans</div>
-                      <div className="text-2xl font-bold text-orange-700 dark:text-yellow-400">
+                      <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                         ₹{totalFromPlan99.toLocaleString()}
                       </div>
                       <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">

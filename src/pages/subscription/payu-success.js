@@ -173,7 +173,7 @@ const PayuSuccess = () => {
       <MobileAppWrapper title="Payment Verification">
         <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-600 mx-auto mb-4"></div>
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
               Verifying Payment...
             </h2>
@@ -183,7 +183,7 @@ const PayuSuccess = () => {
             <div className="mt-4">
               <button
                 onClick={() => router.push('/subscription')}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700"
               >
                 Go to Subscription
               </button>
@@ -296,7 +296,7 @@ const PayuSuccess = () => {
                   {isFromMobileApp && (
                     <button
                       onClick={() => window.location.href = 'subgapp://subscription/success'}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
+                      className="w-full bg-secondary-600 hover:bg-secondary-700 text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
                     >
                       Return to Mobile App
                     </button>
@@ -306,7 +306,7 @@ const PayuSuccess = () => {
             ) : (
               <div className="text-center">
                 <div className="w-24 h-24 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaTimesCircle className="text-4xl text-red-600 dark:text-red-400" />
+                  <FaTimesCircle className="text-4xl text-primary-600 dark:text-red-400" />
                 </div>
 
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
@@ -320,7 +320,7 @@ const PayuSuccess = () => {
                 <div className="space-y-4">
                   <button
                     onClick={handleGoToSubscription}
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="w-full bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
                   >
                     Try Again
                   </button>

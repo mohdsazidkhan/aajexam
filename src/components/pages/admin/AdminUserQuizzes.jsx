@@ -252,7 +252,7 @@ const AdminUserQuizzes = () => {
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       className={`px-3 lg:px-6 py-1 lg:py-3 rounded-lg font-medium capitalize ${activeTab === tab
-                        ? "bg-blue-600 text-white"
+                        ? "bg-secondary-600 text-white"
                         : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
                         }`}
                     >
@@ -313,7 +313,7 @@ const AdminUserQuizzes = () => {
                               ? "bg-green-100 dark:bg-green-900/30"
                               : quiz.status === "rejected"
                                 ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-yellow-100 dark:bg-yellow-900/30"
+                                : "bg-primary-100 dark:bg-primary-900/30"
                               }`}
                           >
                             <div className="flex justify-between items-start">
@@ -335,7 +335,7 @@ const AdminUserQuizzes = () => {
                                         ? "bg-green-600 text-white"
                                         : quiz.status === "rejected"
                                           ? "bg-red-600 text-white"
-                                          : "bg-yellow-600 text-white"
+                                          : "bg-primary-600 text-white"
                                         }`}
                                     >
                                       {quiz.status}
@@ -437,7 +437,7 @@ const AdminUserQuizzes = () => {
                               ? "bg-green-100 dark:bg-green-900/30"
                               : cat.status === "rejected"
                                 ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-yellow-100 dark:bg-yellow-900/30"
+                                : "bg-primary-100 dark:bg-primary-900/30"
                               }`}
                           >
                             <div className="flex justify-between items-start">
@@ -517,7 +517,7 @@ const AdminUserQuizzes = () => {
                               ? "bg-green-100 dark:bg-green-900/30"
                               : sub.status === "rejected"
                                 ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-yellow-100 dark:bg-yellow-900/30"
+                                : "bg-primary-100 dark:bg-primary-900/30"
                               }`}
                           >
                             <div className="flex justify-between items-start">

@@ -265,7 +265,7 @@ const CreateUserQuiz = () => {
 
 	return (
 		<>
-			<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+			<div className="min-h-screen bg-gradient-to-br from-secondary-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
 				<div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
 					{/* Header */}
 					<div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 lg:p-4 mb-1 lg:mb-6">
@@ -279,9 +279,9 @@ const CreateUserQuiz = () => {
 						{/* Stats */}
 						{monthlyStats && (
 							<div className="mt-4 grid grid-cols-1 md:grid-cols-1 gap-4">
-								<div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+								<div className="bg-secondary-50 dark:bg-secondary-900/20 p-4 rounded-lg">
 									<div className="text-sm text-gray-600 dark:text-gray-400">Monthly Usage</div>
-									<div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+									<div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
 										{monthlyStats.currentCount} / {monthlyStats.limit}
 									</div>
 									<div className="text-xs text-gray-500 mt-1">Quizzes created this month</div>
@@ -293,12 +293,12 @@ const CreateUserQuiz = () => {
 						<div className="mt-3 lg:mt-6 flex items-center justify-center">
 							{[1, 2, 3].map((s) => (
 								<React.Fragment key={s}>
-									<div className={`flex items-center justify-center w-6 lg:w-10 h-6 lg:h-10 rounded-full ${step >= s ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
+									<div className={`flex items-center justify-center w-6 lg:w-10 h-6 lg:h-10 rounded-full ${step >= s ? 'bg-secondary-500 text-white' : 'bg-gray-300 text-gray-600'
 										}`}>
 										{s}
 									</div>
 									{s < 3 && (
-										<div className={`w-[45%] h-1 ${step > s ? 'bg-blue-500' : 'bg-gray-300'}`} />
+										<div className={`w-[45%] h-1 ${step > s ? 'bg-secondary-500' : 'bg-gray-300'}`} />
 									)}
 								</React.Fragment>
 							))}
@@ -332,7 +332,7 @@ const CreateUserQuiz = () => {
 								</select>
 								<button
 									onClick={() => setShowCategoryForm(!showCategoryForm)}
-									className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+									className="mt-2 text-sm text-secondary-600 dark:text-secondary-400 hover:underline"
 								>
 									{showCategoryForm ? '- Cancel' : '+ Create New Category'}
 								</button>
@@ -340,7 +340,7 @@ const CreateUserQuiz = () => {
 
 							{/* Create Category Form */}
 							{showCategoryForm && (
-								<div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg space-y-3">
+								<div className="p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg space-y-3">
 									<input
 										type="text"
 										placeholder="Category Name (3-100 chars)"
@@ -359,7 +359,7 @@ const CreateUserQuiz = () => {
 									<button
 										onClick={handleCreateCategory}
 										disabled={loading}
-										className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+										className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 disabled:opacity-50"
 									>
 										{loading ? 'Creating...' : 'Create Category'}
 									</button>
@@ -384,7 +384,7 @@ const CreateUserQuiz = () => {
 									</select>
 									<button
 										onClick={() => setShowSubcategoryForm(!showSubcategoryForm)}
-										className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+										className="mt-2 text-sm text-secondary-600 dark:text-secondary-400 hover:underline"
 									>
 										{showSubcategoryForm ? '- Cancel' : '+ Create New Subcategory'}
 									</button>
@@ -421,7 +421,7 @@ const CreateUserQuiz = () => {
 
 							<button
 								onClick={nextStep}
-								className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold"
+								className="w-full py-3 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 font-semibold"
 							>
 								Next: Quiz Details →
 							</button>
@@ -435,18 +435,18 @@ const CreateUserQuiz = () => {
 
 							{/* Summary from Step 1 */}
 							{quizData.categoryId && quizData.subcategoryId && (
-								<div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3 md:p-4">
-									<h3 className="text-base md:text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2 md:mb-3">📋 Selected Options</h3>
+								<div className="bg-secondary-50 dark:bg-secondary-900/20 border-2 border-secondary-200 dark:border-secondary-800 rounded-lg p-3 md:p-4">
+									<h3 className="text-base md:text-lg font-semibold text-secondary-800 dark:text-secondary-200 mb-2 md:mb-3">📋 Selected Options</h3>
 									<div className="space-y-2 md:space-y-3">
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-24">Category:</span>
-											<span className="text-xs sm:text-lg text-blue-600 dark:text-blue-400 font-medium break-words sm:break-normal">
+											<span className="text-xs sm:text-lg text-secondary-600 dark:text-secondary-400 font-medium break-words sm:break-normal">
 												{categories.find(c => c._id === quizData.categoryId)?.name || 'Unknown'}
 											</span>
 										</div>
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-24">Subcategory:</span>
-											<span className="text-xs sm:text-lg text-blue-600 dark:text-blue-400 font-medium break-words sm:break-normal">
+											<span className="text-xs sm:text-lg text-secondary-600 dark:text-secondary-400 font-medium break-words sm:break-normal">
 												{subcategories.find(s => s._id === quizData.subcategoryId)?.name || 'Unknown'}
 											</span>
 										</div>
@@ -539,7 +539,7 @@ const CreateUserQuiz = () => {
 								</button>
 								<button
 									onClick={nextStep}
-									className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold"
+									className="flex-1 py-3 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 font-semibold"
 								>
 									Add Questions →
 								</button>
@@ -556,30 +556,30 @@ const CreateUserQuiz = () => {
 								</h2>
 							</div>
 
-							<div className="text-sm text-gray-600 dark:text-gray-400 bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg">
+							<div className="text-sm text-gray-600 dark:text-gray-400 bg-primary-50 dark:bg-primary-900/20 p-3 rounded-lg">
 								📝 Minimum 5 questions, Maximum 10 questions required
 							</div>
 
 							{/* Summary of Step 1 & 2 */}
-							<div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-200 dark:border-purple-800 rounded-lg p-3 md:p-4">
-								<h3 className="text-base md:text-lg font-semibold text-yellow-800 dark:text-yellow-200 mb-2 md:mb-3">📋 Quiz Summary</h3>
+							<div className="bg-gradient-to-r from-purple-50 to-secondary-50 dark:from-purple-900/20 dark:to-secondary-900/20 border-2 border-purple-200 dark:border-purple-800 rounded-lg p-3 md:p-4">
+								<h3 className="text-base md:text-lg font-semibold text-primary-800 dark:text-primary-200 mb-2 md:mb-3">📋 Quiz Summary</h3>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
 									<div className="space-y-2 md:space-y-3">
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Category:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400 break-words sm:break-normal">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400 break-words sm:break-normal">
 												{categories.find(c => c._id === quizData.categoryId)?.name || 'Unknown'}
 											</span>
 										</div>
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Subcategory:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400 break-words sm:break-normal">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400 break-words sm:break-normal">
 												{subcategories.find(s => s._id === quizData.subcategoryId)?.name || 'Unknown'}
 											</span>
 										</div>
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Title:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400 break-words sm:break-normal sm:truncate">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400 break-words sm:break-normal sm:truncate">
 												{quizData.title || 'Not set'}
 											</span>
 										</div>
@@ -587,19 +587,19 @@ const CreateUserQuiz = () => {
 									<div className="space-y-2 md:space-y-3">
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Difficulty:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400 capitalize">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400 capitalize">
 												{quizData.difficulty}
 											</span>
 										</div>
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Required Level:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400">
 												{quizData.requiredLevel}
 											</span>
 										</div>
 										<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
 											<span className="text-xs sm:text-lg font-medium text-gray-700 dark:text-gray-300 sm:w-28">Time Limit:</span>
-											<span className="text-xs sm:text-lg text-orange-700 dark:text-yellow-400">
+											<span className="text-xs sm:text-lg text-primary-600 dark:text-primary-400">
 												{quizData.timeLimit} mins
 											</span>
 										</div>

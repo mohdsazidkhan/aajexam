@@ -51,7 +51,7 @@ const Card = ({
 
   const getGradientClasses = () => {
     if (variant === 'gradient' && !gradientColors) {
-      return 'bg-gradient-to-br from-blue-500 from-red-600';
+      return 'bg-gradient-to-br from-secondary-500 from-red-600';
     }
     return '';
   };

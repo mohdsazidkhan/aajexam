@@ -120,7 +120,7 @@ const StudentSidebar = () => {
   const getActiveClass = (path) => {
     const baseClass = "flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200";
     if (isActiveRoute(path)) {
-      return `${baseClass} bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-md`;
+      return `${baseClass} bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-md`;
     }
     return `${baseClass} text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800`;
   };
@@ -273,7 +273,7 @@ const StudentSidebar = () => {
                         <button
                           onClick={() => toggleMenu(item.label.toLowerCase().replace(/\s+/g, ''))}
                           className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200 ${isActiveRoute(item.path)
-                            ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white shadow-md'
+                            ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-md'
                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                             }`}
                         >
@@ -295,7 +295,7 @@ const StudentSidebar = () => {
                                 href={child.path}
                                 onClick={handleNavClick}
                                 className={`block px-3 py-2 rounded-lg transition-all duration-200 ${isActiveRoute(child.path)
-                                  ? 'bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 font-medium'
+                                  ? 'bg-primary-500 dark:bg-red-900 text-primary-600 dark:text-primary-600 font-medium'
                                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                                   }`}
                               >
@@ -328,12 +328,12 @@ const StudentSidebar = () => {
                           </span>
                         )}
                         {item.path === '/rewards' && claimableRewards > 0 && (
-                          <span className="ml-2 text-[10px] bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-600 px-2 py-0.5 rounded-full font-bold">
+                          <span className="ml-2 text-[10px] bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-secondary-600 px-2 py-0.5 rounded-full font-bold">
                             ₹{claimableRewards.toLocaleString()}
                           </span>
                         )}
                         {item.requiresPro99 && (
-                          <span className="ml-2 text-xs bg-yellow-300 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-300 px-2 py-0.5 rounded-full">
+                          <span className="ml-2 text-xs bg-primary-300 dark:bg-primary-900 text-primary-900 dark:text-primary-300 px-2 py-0.5 rounded-full">
                             Pro
                           </span>
                         )}
@@ -350,7 +350,7 @@ const StudentSidebar = () => {
         {user && (
           <div className="mt-4 p-4 border-t border-gray-200 dark:border-gray-700 md:hidden">
             <div className="flex items-center space-x-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
                 <FaUser className="text-white" />
               </div>
               <div className="flex-1 min-w-0">

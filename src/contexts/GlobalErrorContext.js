@@ -131,7 +131,7 @@ const ErrorModal = ({ isOpen, onClose, errors, clearError }) => {
                       <p className="text-red-800 dark:text-red-200 font-medium">
                         {error.message}
                       </p>
-                      <div className="mt-2 text-sm text-red-600 dark:text-red-400 space-y-1">
+                      <div className="mt-2 text-sm text-primary-600 dark:text-red-400 space-y-1">
                         {error.timestamp && (
                           <p>Time: {new Date(error.timestamp).toLocaleString()}</p>
                         )}
@@ -144,10 +144,10 @@ const ErrorModal = ({ isOpen, onClose, errors, clearError }) => {
                       </div>
                       {error.stack && (
                         <details className="mt-2">
-                          <summary className="text-sm text-red-600 dark:text-red-400 cursor-pointer">
+                          <summary className="text-sm text-primary-600 dark:text-red-400 cursor-pointer">
                             Stack Trace
                           </summary>
-                          <pre className="mt-2 text-xs text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 p-2 rounded overflow-x-auto">
+                          <pre className="mt-2 text-xs text-primary-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 p-2 rounded overflow-x-auto">
                             {error.stack}
                           </pre>
                         </details>
@@ -155,7 +155,7 @@ const ErrorModal = ({ isOpen, onClose, errors, clearError }) => {
                     </div>
                     <button
                       onClick={() => clearError(error.id)}
-                      className="ml-4 text-red-400 hover:text-red-600 dark:hover:text-red-300"
+                      className="ml-4 text-red-400 hover:text-primary-600 dark:hover:text-red-300"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

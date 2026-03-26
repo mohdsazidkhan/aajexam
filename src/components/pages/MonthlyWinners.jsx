@@ -124,9 +124,9 @@ const MonthlyWinners = () => {
           {/* Competition Type Selector (Tabs Outside) */}
           <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
             {[
-              { id: 'daily', label: 'Daily', color: 'from-blue-600 to-cyan-500' },
+              { id: 'daily', label: 'Daily', color: 'from-secondary-600 to-cyan-500' },
               { id: 'weekly', label: 'Weekly', color: 'from-purple-600 to-indigo-500' },
-              { id: 'monthly', label: 'Monthly', color: 'from-yellow-600 to-orange-500' }
+              { id: 'monthly', label: 'Monthly', color: 'from-primary-600 to-primary-500' }
             ].map((tab) => {
               const isActive = activeType === tab.id;
               return (
@@ -146,10 +146,10 @@ const MonthlyWinners = () => {
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             {/* Header Content */}
-            <div className={`p-4 lg:p-6 border-b border-gray-100 dark:border-gray-700 bg-gradient-to-r ${activeType === 'daily' ? 'from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20' : activeType === 'weekly' ? 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20' : 'from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20'}`}>
+            <div className={`p-4 lg:p-6 border-b border-gray-100 dark:border-gray-700 bg-gradient-to-r ${activeType === 'daily' ? 'from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20' : activeType === 'weekly' ? 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20' : 'from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20'}`}>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-2xl shadow-inner ${activeType === 'daily' ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600' : activeType === 'weekly' ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-600' : 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-600'}`}>
+                  <div className={`p-3 rounded-2xl shadow-inner ${activeType === 'daily' ? 'bg-secondary-100 dark:bg-secondary-900/50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-600' : 'bg-primary-500 dark:bg-primary-900/50 text-secondary-600'}`}>
                     <FaTrophy className="text-2xl lg:text-3xl" />
                   </div>
                   <div>
@@ -164,9 +164,9 @@ const MonthlyWinners = () => {
 
                 {/* View Toggles Integrated into Header */}
                 <div className="flex items-center gap-1 bg-gray-200/50 dark:bg-gray-900/50 rounded-xl p-1 w-fit border border-gray-200 dark:border-gray-700">
-                  <button onClick={() => setViewMode('grid')} className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Grid View"><FaTh /></button>
-                  <button onClick={() => setViewMode('list')} className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="List View"><FaList /></button>
-                  <button onClick={() => setViewMode('table')} className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Table View"><FaTable /></button>
+                  <button onClick={() => setViewMode('grid')} className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Grid View"><FaTh /></button>
+                  <button onClick={() => setViewMode('list')} className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="List View"><FaList /></button>
+                  <button onClick={() => setViewMode('table')} className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Table View"><FaTable /></button>
                 </div>
               </div>
 
@@ -181,7 +181,7 @@ const MonthlyWinners = () => {
                         onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
                         dateFormat="yyyy-MM-dd"
                         maxDate={new Date()}
-                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-blue-500 dark:focus:border-blue-500 outline-none shadow-sm transition-all w-full"
+                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-secondary-500 dark:focus:border-secondary-500 outline-none shadow-sm transition-all w-full"
                       />
                     </div>
                   </div>
@@ -254,7 +254,7 @@ const MonthlyWinners = () => {
                         dateFormat="MMMM yyyy"
                         showMonthYearPicker
                         maxDate={new Date()}
-                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-yellow-500 dark:focus:border-yellow-500 outline-none shadow-sm transition-all w-full"
+                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-primary-500 dark:focus:border-primary-500 outline-none shadow-sm transition-all w-full"
                       />
                     </div>
                   </div>
@@ -273,7 +273,7 @@ const MonthlyWinners = () => {
                         setSelectedWeek(`${d.format('YYYY')}-W${weekNum}`);
                       }
                     }}
-                    className="text-xs font-black text-blue-500 hover:text-blue-600 uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
+                    className="text-xs font-black text-secondary-500 hover:text-secondary-600 uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-all"
                   >
                     <span className="text-sm">↺</span> Reset
                   </button>
@@ -302,22 +302,22 @@ const MonthlyWinners = () => {
                 <>
                   {/* Monthly Winners Summary Cards */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 p-4 rounded-xl border border-yellow-200 dark:border-yellow-600">
+                    <div className="bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 p-4 rounded-xl border border-primary-200 dark:border-primary-600">
                       <div className="flex items-center gap-3">
-                        <FaTrophy className="text-2xl text-orange-700" />
+                        <FaTrophy className="text-2xl text-primary-600" />
                         <div>
-                          <div className="text-sm text-yellow-700 dark:text-yellow-400 capitalize">Total {activeType === 'monthly' ? 'Months' : activeType === 'weekly' ? 'Weeks' : 'Days'}</div>
-                          <div className="text-md lg:text-2xl font-bold text-yellow-800 dark:text-yellow-200">{monthlyWinners.length}</div>
+                          <div className="text-sm text-primary-700 dark:text-primary-400 capitalize">Total {activeType === 'monthly' ? 'Months' : activeType === 'weekly' ? 'Weeks' : 'Days'}</div>
+                          <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">{monthlyWinners.length}</div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-600">
+                    <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-secondary-200 dark:border-secondary-600">
                       <div className="flex items-center gap-3">
-                        <FaUsers className="text-2xl text-blue-600" />
+                        <FaUsers className="text-2xl text-secondary-600" />
                         <div>
-                          <div className="text-sm text-blue-700 dark:text-blue-400">Total Winners</div>
-                          <div className="text-md lg:text-2xl font-bold text-blue-800 dark:text-blue-200">
+                          <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Winners</div>
+                          <div className="text-md lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
                             {monthlyWinners.reduce((total, month) => total + (month.totalWinners || 0), 0)}
                           </div>
                         </div>
@@ -338,10 +338,10 @@ const MonthlyWinners = () => {
 
                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-600">
                       <div className="flex items-center gap-3">
-                        <FaMedal className="text-2xl text-orange-700" />
+                        <FaMedal className="text-2xl text-primary-600" />
                         <div>
-                          <div className="text-sm text-yellow-700 dark:text-yellow-400 capitalize">Avg Winners/{activeType === 'monthly' ? 'Month' : activeType === 'weekly' ? 'Week' : 'Day'}</div>
-                          <div className="text-md lg:text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+                          <div className="text-sm text-primary-700 dark:text-primary-400 capitalize">Avg Winners/{activeType === 'monthly' ? 'Month' : activeType === 'weekly' ? 'Week' : 'Day'}</div>
+                          <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
                             {monthlyWinners.length > 0 ? (monthlyWinners.reduce((total, month) => total + (month.totalWinners || 0), 0) / monthlyWinners.length).toFixed(1) : 0}
                           </div>
                         </div>
@@ -354,7 +354,7 @@ const MonthlyWinners = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                       {monthlyWinners.map((monthData, index) => (
                         <div key={monthData._id || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-4 text-white">
+                          <div className="bg-gradient-to-r from-primary-400 to-primary-500 p-4 text-white">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <FaCalendarAlt className="text-xl" />
@@ -374,8 +374,8 @@ const MonthlyWinners = () => {
                               {monthData.winners?.map((winner, winnerIndex) => (
                                 <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
                                   <div className="flex items-center gap-3">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-yellow-500' :
-                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-primary-500' :
+                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                       }`}>
                                       {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
                                     </div>
@@ -436,8 +436,8 @@ const MonthlyWinners = () => {
                               {monthData.winners?.map((winner, winnerIndex) => (
                                 <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-2 lg:p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                                   <div className="flex items-center gap-4">
-                                    <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${winner.rank === 1 ? 'bg-yellow-500' :
-                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                    <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${winner.rank === 1 ? 'bg-primary-500' :
+                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                       }`}>
                                       {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
                                     </div>
@@ -477,7 +477,7 @@ const MonthlyWinners = () => {
                   {/* Monthly Winners Table View */}
                   {viewMode === 'table' && (
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
+                      <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 p-4 text-white">
                         <div className="flex items-center gap-3">
                           <FaTrophy className="text-2xl" />
                           <h3 className="text-xl font-bold">All Winners Table</h3>
@@ -527,8 +527,8 @@ const MonthlyWinners = () => {
                                   </td>
                                   <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center gap-2">
-                                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-yellow-500' :
-                                        winner.rank === 2 ? 'bg-gray-400' : 'bg-orange-600'
+                                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-primary-500' :
+                                        winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
                                         }`}>
                                         {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
                                       </div>

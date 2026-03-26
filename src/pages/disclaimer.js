@@ -25,8 +25,8 @@ export default function Disclaimer() {
             <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-12 px-4 lg:px-10">
                 <div className="container  bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12">
                     <div className="text-center mb-10">
-                        <div className="w-20 h-20 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FaExclamationTriangle className="text-yellow-600 dark:text-yellow-400 text-4xl" />
+                        <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <FaExclamationTriangle className="text-secondary-600 dark:text-primary-400 text-4xl" />
                         </div>
                         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Disclaimer</h1>
                         <p className="text-gray-500 dark:text-gray-400">Last Updated: February 27, 2026</p>
@@ -35,7 +35,7 @@ export default function Disclaimer() {
                     <div className="space-y-8 text-gray-700 dark:text-gray-300">
                         <section>
                             <div className="flex items-center gap-3 mb-4">
-                                <FaInfoCircle className="text-blue-500 text-xl" />
+                                <FaInfoCircle className="text-secondary-500 text-xl" />
                                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">General Information</h2>
                             </div>
                             <p className="leading-relaxed">

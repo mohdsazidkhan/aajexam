@@ -71,9 +71,9 @@ const MyUserQuestions = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-200 dark:border-yellow-800';
+      case 'pending': return 'bg-primary-100 text-primary-800 border-primary-200 dark:bg-primary-900/20 dark:text-primary-200 dark:border-primary-800';
       case 'approved': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800';
-      case 'rejected': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-200 dark:border-red-800';
+      case 'rejected': return 'bg-secondary-100 text-secondary-800 border-secondary-200 dark:bg-secondary-900/20 dark:text-secondary-200 dark:border-secondary-800';
       default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-200 dark:border-gray-800';
     }
   };
@@ -128,7 +128,7 @@ const MyUserQuestions = () => {
             </div>
             <button
               onClick={() => router.push('/pro/add-question')}
-              className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+              className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
             >
               <FaPlus />
               <span>Add Question</span>
@@ -136,8 +136,8 @@ const MyUserQuestions = () => {
           </div>
 
           {/* Monthly Limit Info */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6">
-            <p className="text-blue-800 dark:text-blue-200 text-sm font-medium text-center">
+          <div className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-xl p-4 mb-6">
+            <p className="text-secondary-800 dark:text-secondary-200 text-sm font-medium text-center">
               📅 You Can Add Max 100 Questions Per Month
             </p>
           </div>
@@ -160,9 +160,9 @@ const MyUserQuestions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Pending</p>
-                  <p className="text-2xl font-bold text-orange-700 dark:text-yellow-400">{stats.pending}</p>
+                  <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stats.pending}</p>
                 </div>
-                <div className="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
                   <span className="text-lg">🟡</span>
                 </div>
               </div>
@@ -184,7 +184,7 @@ const MyUserQuestions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Rejected</p>
-                  <p className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.rejected}</p>
+                  <p className="text-2xl font-bold text-primary-600 dark:text-red-400">{stats.rejected}</p>
                 </div>
                 <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
                   <span className="text-lg">❌</span>
@@ -201,7 +201,7 @@ const MyUserQuestions = () => {
                 <select
                   value={status}
                   onChange={e => { setPage(1); setStatus(e.target.value); }}
-                  className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 >
                   <option value="">📝 All Questions</option>
                   <option value="pending">🟡 Under Review</option>
@@ -230,7 +230,7 @@ const MyUserQuestions = () => {
                 </p>
                 <button
                   onClick={() => router.push('/pro/add-question')}
-                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-medium rounded-lg transition-colors"
+                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg transition-colors"
                 >
                   <FaPlus className="mr-2" />
                   Create Your First Question
@@ -332,7 +332,7 @@ const MyUserQuestions = () => {
                         key={pageNum}
                         onClick={() => setPage(pageNum)}
                         className={`px-3 py-2 text-sm font-medium rounded-md ${page === pageNum
-                          ? 'bg-yellow-600 text-white'
+                          ? 'bg-primary-600 text-white'
                           : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700'
                           }`}
                       >

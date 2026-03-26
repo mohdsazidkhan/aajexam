@@ -41,8 +41,8 @@ const RegisterPage = () => {
 
   const getPasswordStrengthColor = () => {
     if (passwordStrength <= 2) return 'text-red-500';
-    if (passwordStrength <= 3) return 'text-yellow-500';
-    if (passwordStrength <= 4) return 'text-yellow-500';
+    if (passwordStrength <= 3) return 'text-primary-500';
+    if (passwordStrength <= 4) return 'text-primary-500';
     return 'text-green-500';
   };
 
@@ -121,7 +121,7 @@ const RegisterPage = () => {
             {/* Feature Cards */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-yellow-500 to-red-500 rounded-lg">
+                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
                   <FaBrain className="text-white text-2xl" />
                 </div>
                 <div>
@@ -141,7 +141,7 @@ const RegisterPage = () => {
               </div>
 
               <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
+                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
                   <FaRocket className="text-white text-2xl" />
                 </div>
                 <div>
@@ -157,7 +157,7 @@ const RegisterPage = () => {
           <div className="w-full max-w-md mx-auto">
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl px-2 py-4 md:p-8 border border-white/20">
               <div className="text-center mb-8">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaUser className="text-white text-2xl" />
                 </div>
                 <h2 className="text-xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-2">
@@ -180,7 +180,7 @@ const RegisterPage = () => {
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ const RegisterPage = () => {
                     value={email}
                     onChange={e => setEmail(e.target.value?.toLowerCase())}
                     required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                   />
                 </div>
 
@@ -216,7 +216,7 @@ const RegisterPage = () => {
                     }}
                     required
                     pattern="[0-9]{10}"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ const RegisterPage = () => {
                     value={password}
                     onChange={handlePasswordChange}
                     required
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                   />
                   <button
                     type="button"
@@ -243,7 +243,7 @@ const RegisterPage = () => {
                 </div>
 
                 {/* Password Requirements */}
-                <div className="p-4 bg-gradient-to-r from-yellow-50 to-red-50 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-yellow-200 dark:border-gray-600">
+                <div className="p-4 bg-gradient-to-r from-primary-50 to-red-50 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-primary-200 dark:border-gray-600">
                   <p className="font-medium mb-3 text-gray-800 dark:text-white">Password Requirements:</p>
                   <div className="grid grid-cols-1 gap-2 text-sm">
                     <div className={`flex items-center ${password.length >= 8 ? "text-green-600" : "text-gray-500"}`}>
@@ -286,7 +286,7 @@ const RegisterPage = () => {
                     placeholder="Referral Code (optional)"
                     value={referralCode}
                     onChange={e => setReferralCode(e.target.value.toUpperCase())}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 tracking-widest uppercase"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 tracking-widest uppercase"
                     maxLength={8}
                   />
                 </div>
@@ -297,7 +297,7 @@ const RegisterPage = () => {
                   disabled={passwordStrength < 5 || isLoading}
                   className={`w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 ${passwordStrength < 5 || isLoading
                     ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-600 hover:to-red-600 shadow-lg hover:shadow-xl'
+                    : 'bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 shadow-lg hover:shadow-xl'
                     }`}
                 >
                   {isLoading ? (
@@ -316,7 +316,7 @@ const RegisterPage = () => {
                     Already have an account?{' '}
                     <Link
                       href="/login"
-                      className="text-orange-700 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 font-semibold transition-colors"
+                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors"
                     >
                       LOGIN
                     </Link>

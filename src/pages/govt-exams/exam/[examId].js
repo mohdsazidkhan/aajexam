@@ -110,7 +110,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
               {/* Back Button */}
               <button
                 onClick={() => router.back()}
-                className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-red-600 transition-colors"
+                className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors"
               >
                 <FaArrowLeft /> Back
               </button>
@@ -121,10 +121,10 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
             </div>
 
             {/* Exam Header */}
-            <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl px-4 py-2 text-white gap-4">
+            <div className="flex justify-between items-center bg-gradient-to-r from-secondary-500 to-indigo-600 rounded-xl px-4 py-2 text-white gap-4">
               <h1 className="text-xl lg:text-2xl font-bold">{exam?.name || 'Exam Patterns'}</h1>
               {exam?.description && (
-                <p className="text-blue-100 text-lg">{exam.description}</p>
+                <p className="text-secondary-100 text-lg">{exam.description}</p>
               )}
               {exam?.code && (
                 <span className="inline-block px-4 py-1 bg-white/20 rounded-full text-sm font-semibold">
@@ -150,7 +150,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
                       <div className="flex-1">
                         <h3 className="text-md lg:text-xl font-bold">{pattern.title}</h3>
                         {pattern.description && (
-                          <p className="text-yellow-100">{pattern.description}</p>
+                          <p className="text-primary-100">{pattern.description}</p>
                         )}
                       </div>
                       {pattern.testCount > 0 && (
@@ -166,7 +166,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-4 mb-2 lg:mb-6">
                       {pattern.duration && (
                         <div className="flex items-center gap-3">
-                          <FaClock className="text-red-600 text-xl" />
+                          <FaClock className="text-primary-600 text-xl" />
                           <div>
                             <p className="text-sm text-gray-500 dark:text-gray-400">Duration</p>
                             <p className="font-semibold text-gray-900 dark:text-white">
@@ -178,7 +178,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
 
                       {pattern.totalMarks && (
                         <div className="flex items-center gap-3">
-                          <FaTrophy className="text-orange-700 text-xl" />
+                          <FaTrophy className="text-primary-700 text-xl" />
                           <div>
                             <p className="text-sm text-gray-500 dark:text-gray-400">Total Marks</p>
                             <p className="font-semibold text-gray-900 dark:text-white">
@@ -190,7 +190,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
 
                       {pattern.sections && pattern.sections.length > 0 && (
                         <div className="flex items-center gap-3">
-                          <FaList className="text-blue-600 text-xl" />
+                          <FaList className="text-secondary-600 text-xl" />
                           <div>
                             <p className="text-sm text-gray-500 dark:text-gray-400">Sections</p>
                             <p className="font-semibold text-gray-900 dark:text-white">
@@ -284,7 +284,7 @@ export async function getServerSideProps({ params }) {
       .lean();
 
     const patternIds = patternsDocs.map(p => p._id);
-    
+
     let patterns = [];
     let exam = null;
 

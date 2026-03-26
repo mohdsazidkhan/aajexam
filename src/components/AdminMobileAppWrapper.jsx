@@ -112,7 +112,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               {/* Sidebar toggle button */}
               <button
                 onClick={handleSidebarToggle}
-                className="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-all duration-200 hover:scale-105 shadow-md"
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-secondary-500 hover:bg-secondary-600 text-white transition-all duration-200 hover:scale-105 shadow-md"
                 title={isOpen ? "Hide Sidebar" : "Show Sidebar"}
               >
                 {!isOpen ? <FaBars className="w-4 h-4" /> : <FaTimes className="w-4 h-4" />}

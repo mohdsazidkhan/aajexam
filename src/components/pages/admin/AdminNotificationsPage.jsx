@@ -145,7 +145,7 @@ const AdminNotificationsPage = () => {
                         }
                         router.push(href);
                       }}
-                      className={`block rounded-lg shadow-md border overflow-hidden cursor-pointer hover:shadow-lg transition-shadow ${n.isRead ? 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800' : 'border-blue-300 dark:border-blue-700 ring-1 ring-blue-200 dark:ring-blue-900/40 bg-blue-50 dark:bg-blue-900/20'}`}
+                      className={`block rounded-lg shadow-md border overflow-hidden cursor-pointer hover:shadow-lg transition-shadow ${n.isRead ? 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800' : 'border-secondary-300 dark:border-secondary-700 ring-1 ring-secondary-200 dark:ring-secondary-900/40 bg-secondary-50 dark:bg-secondary-900/20'}`}
                     >
                       <div className="p-4">
                         <div className="flex items-start justify-between mb-2">

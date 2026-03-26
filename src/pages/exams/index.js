@@ -30,14 +30,14 @@ export default function ExamsPage({ exams, pagination }) {
 
             <UnifiedNavbar isLandingPage={true} />
 
-            <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-blue-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
+            <div className="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-10">
                     {/* Header */}
                     <div className="text-center mb-8 lg:mb-16">
                         <div className="inline-block mb-0 lg:mb-4">
-                            <FaGraduationCap className="text-3xl lg:text-6xl text-red-600 dark:text-red-400 mx-auto" />
+                            <FaGraduationCap className="text-3xl lg:text-6xl text-primary-600 dark:text-red-400 mx-auto" />
                         </div>
-                        <h1 className="text-xl lg:text-3xl xl:text-4xl font-extrabold text-orange-700 text-red-600 dark:text-yellow-400 dark:text-red-400 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-xl lg:text-3xl xl:text-4xl font-extrabold text-primary-600 text-primary-600 dark:text-primary-400 dark:text-red-400 bg-clip-text text-transparent mb-4">
                             Government Exams
                         </h1>
                         <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 font-medium">
@@ -53,8 +53,8 @@ export default function ExamsPage({ exams, pagination }) {
                                     <div className="flex items-start justify-between">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-3 mb-3">
-                                                <FaGraduationCap className="text-3xl text-red-600 dark:text-red-400" />
-                                                <h2 className="text-2xl md:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                                                <FaGraduationCap className="text-3xl text-primary-600 dark:text-red-400" />
+                                                <h2 className="text-2xl md:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-red-400 transition-colors">
                                                     {exam.name || exam.title || exam.description || 'Untitled Exam'}
                                                 </h2>
                                             </div>
@@ -66,7 +66,7 @@ export default function ExamsPage({ exams, pagination }) {
                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                                 {exam.examDate && (
                                                     <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaCalendar className="text-blue-500 mr-2" />
+                                                        <FaCalendar className="text-secondary-500 mr-2" />
                                                         <div>
                                                             <div className="text-xs text-gray-500 dark:text-gray-400">Exam Date</div>
                                                             <div className="font-semibold">{formatDate(exam.examDate)}</div>
@@ -84,7 +84,7 @@ export default function ExamsPage({ exams, pagination }) {
                                                 )}
                                                 {exam.totalMarks && (
                                                     <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaTrophy className="text-yellow-500 mr-2" />
+                                                        <FaTrophy className="text-primary-500 mr-2" />
                                                         <div>
                                                             <div className="text-xs text-gray-500 dark:text-gray-400">Total Marks</div>
                                                             <div className="font-semibold">{exam.totalMarks}</div>
@@ -93,7 +93,7 @@ export default function ExamsPage({ exams, pagination }) {
                                                 )}
                                                 {exam.passingMarks && (
                                                     <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaTrophy className="text-yellow-500 mr-2" />
+                                                        <FaTrophy className="text-primary-500 mr-2" />
                                                         <div>
                                                             <div className="text-xs text-gray-500 dark:text-gray-400">Passing Marks</div>
                                                             <div className="font-semibold">{exam.passingMarks}</div>
@@ -111,7 +111,7 @@ export default function ExamsPage({ exams, pagination }) {
                                             )}
                                         </div>
 
-                                        <FaChevronRight className="text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors text-xl mt-2" />
+                                        <FaChevronRight className="text-gray-400 group-hover:text-primary-600 dark:group-hover:text-red-400 transition-colors text-xl mt-2" />
                                     </div>
                                 </div>
                             </Link>
@@ -137,7 +137,7 @@ export default function ExamsPage({ exams, pagination }) {
                                     </button>
                                 </Link>
                             )}
-                            <span className="px-6 py-3 bg-gradient-to-r from-yellow-600 to-red-600 dark:from-yellow-500 dark:to-red-500 text-white rounded-lg font-semibold">
+                            <span className="px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 dark:to-secondary-500 text-white rounded-lg font-semibold">
                                 Page {pagination.page} of {pagination.totalPages}
                             </span>
                             {pagination.hasNext && (
@@ -159,7 +159,7 @@ export default function ExamsPage({ exams, pagination }) {
 export async function getServerSideProps({ query }) {
     try {
         await dbConnect();
-        
+
         const page = parseInt(query.page) || 1;
         const limit = 20;
         const skip = (page - 1) * limit;

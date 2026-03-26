@@ -12,8 +12,8 @@
 import { useState } from 'react';
 
 const TYPE_STYLES = {
-    daily:   'from-orange-600/20 to-yellow-500/10 border-orange-500/40 text-orange-300',
-    weekly:  'from-blue-600/20 to-cyan-500/10 border-blue-500/40 text-blue-300',
+    daily:   'from-primary-600/20 tobg-primary-500/10 border-primary-500/40 text-primary-600',
+    weekly:  'from-secondary-600/20 to-cyan-500/10 border-secondary-500/40 text-secondary-300',
     monthly: 'from-purple-600/20 to-indigo-500/10 border-purple-500/40 text-purple-300',
 };
 

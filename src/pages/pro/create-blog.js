@@ -493,26 +493,26 @@ const CreateBlogPage = () => {
           {!isEditMode && (
             <div className={`mb-4 lg:mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border ${!blogCount.canAddMore
               ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-              : 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20'
+              : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
               }`}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className={`text-sm font-medium ${!blogCount.canAddMore
                     ? 'text-red-800 dark:text-red-300'
-                    : 'text-yellow-800 dark:text-yellow-300'
+                    : 'text-primary-800 dark:text-primary-300'
                     }`}>
                     Monthly Blog Limit
                   </p>
                   <p className={`text-xs mt-1 ${!blogCount.canAddMore
-                    ? 'text-red-600 dark:text-red-400'
-                    : 'text-yellow-700 dark:text-yellow-400'
+                    ? 'text-primary-600 dark:text-red-400'
+                    : 'text-primary-700 dark:text-primary-400'
                     }`}>
                     {blogCount.currentCount} / {blogCount.limit} blogs this month
                     {blogCount.canAddMore && ` (${blogCount.remaining} remaining)`}
                   </p>
                 </div>
                 {!blogCount.canAddMore && (
-                  <span className="text-red-600 dark:text-red-400 font-semibold text-sm">
+                  <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
                     Limit Reached
                   </span>
                 )}
@@ -524,7 +524,7 @@ const CreateBlogPage = () => {
             {/* Featured Image */}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-3 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                <FaImage className="inline mr-2 text-yellow-500" />
+                <FaImage className="inline mr-2 text-primary-500" />
                 Featured Image <span className="text-gray-500 font-normal">(Optional)</span>
               </label>
               {previewImage ? (
@@ -548,7 +548,7 @@ const CreateBlogPage = () => {
                   <button
                     type="button"
                     onClick={removeImage}
-                    className="mt-3 w-full py-2 px-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors duration-200 font-medium text-sm flex items-center justify-center gap-2"
+                    className="mt-3 w-full py-2 px-4 bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors duration-200 font-medium text-sm flex items-center justify-center gap-2"
                   >
                     <FaTimes className="w-4 h-4" />
                     Remove Image
@@ -560,8 +560,8 @@ const CreateBlogPage = () => {
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   className={`relative border-2 border-dashed rounded-xl p-8 md:p-12 transition-all duration-300 ${isDragging
-                    ? 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 scale-105'
-                    : 'border-gray-300 dark:border-gray-600 hover:border-yellow-400 dark:hover:border-yellow-600 bg-gray-50 dark:bg-gray-900/50'
+                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 scale-105'
+                    : 'border-gray-300 dark:border-gray-600 hover:border-primary-400 dark:hover:border-primary-600 bg-gray-50 dark:bg-gray-900/50'
                     }`}
                 >
                   <input
@@ -572,7 +572,7 @@ const CreateBlogPage = () => {
                     id="featured-image-input"
                   />
                   <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-400 to-red-500 rounded-full mb-4 shadow-lg">
+                    <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full mb-4 shadow-lg">
                       <FaUpload className="w-8 h-8 md:w-10 md:h-10 text-white" />
                     </div>
                     <h3 className="text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
@@ -600,7 +600,7 @@ const CreateBlogPage = () => {
                 value={formData.title}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 placeholder="Enter blog title..."
               />
             </div>
@@ -618,7 +618,7 @@ const CreateBlogPage = () => {
                   value={formData.category}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">Select a category</option>
                   {categories.map(category => (
@@ -654,7 +654,7 @@ const CreateBlogPage = () => {
                 value={formData.excerpt}
                 onChange={handleChange}
                 rows={3}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 placeholder="Brief summary of your blog..."
               />
             </div>
@@ -669,7 +669,7 @@ const CreateBlogPage = () => {
                 name="tags"
                 value={formData.tags}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
                 placeholder="Enter tags separated by commas (e.g., education, learning, tips)"
               />
             </div>
@@ -690,7 +690,7 @@ const CreateBlogPage = () => {
                 maxLength={60}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white ${formData.metaTitle.length > 60
                   ? 'border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-yellow-500'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
                   }`}
                 placeholder="SEO meta title (auto-generated from title if not provided)"
               />
@@ -715,7 +715,7 @@ const CreateBlogPage = () => {
                 rows={3}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white ${formData.metaDescription.length > 160
                   ? 'border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-yellow-500'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
                   }`}
                 placeholder="SEO meta description (auto-generated from content if not provided)"
               />
@@ -736,7 +736,7 @@ const CreateBlogPage = () => {
               <button
                 type="submit"
                 disabled={submitting || (!isEditMode && !blogCount.canAddMore)}
-                className="px-6 py-2 bg-gradient-to-r from-yellow-500 to-red-500 text-white rounded-lg font-medium hover:from-yellow-600 hover:to-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {!isEditMode && !blogCount.canAddMore
                   ? 'Monthly Limit Reached'

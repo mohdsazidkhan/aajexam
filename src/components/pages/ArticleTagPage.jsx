@@ -80,7 +80,7 @@ const ArticleTagPage = () => {
               <Loading size="md" color="yellow" message="" />
             </div>
           ) : error ? (
-            <div className="text-center text-red-600">{error}</div>
+            <div className="text-center text-primary-600">{error}</div>
           ) : articles.length === 0 ? (
             <div className="text-center text-gray-600 dark:text-gray-300">No articles found.</div>
           ) : (
@@ -99,7 +99,7 @@ const ArticleTagPage = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-lg group-hover:text-orange-700 dark:group-hover:text-yellow-400">{a.title}</h3>
+                    <h3 className="font-semibold text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400">{a.title}</h3>
                     {a.excerpt && <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">{a.excerpt}</p>}
                     <div className="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-3">
                       <span>👁️ {a.views || 0}</span>
@@ -115,7 +115,7 @@ const ArticleTagPage = () => {
             <div className="flex justify-center gap-2 mt-6">
               <button disabled={page === 1} onClick={() => setPage(p => Math.max(1, p - 1))} className="px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 disabled:opacity-50">Prev</button>
               {[...Array(totalPages)].map((_, i) => (
-                <button key={i} onClick={() => setPage(i + 1)} className={`px-3 py-1 rounded ${page === i + 1 ? 'bg-yellow-600 text-white' : 'bg-gray-100 dark:bg-gray-700'}`}>{i + 1}</button>
+                <button key={i} onClick={() => setPage(i + 1)} className={`px-3 py-1 rounded ${page === i + 1 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700'}`}>{i + 1}</button>
               ))}
               <button disabled={page === totalPages} onClick={() => setPage(p => Math.min(totalPages, p + 1))} className="px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 disabled:opacity-50">Next</button>
             </div>

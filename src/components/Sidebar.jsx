@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   const getActiveClass = (path) => {
     return isActiveRoute(path)
-      ? "flex items-center space-x-2 p-2 bg-gradient-to-r from-red-600 to-yellow-600 text-white transition-colors rounded-lg shadow-sm my-1"
+      ? "flex items-center space-x-2 p-2 bg-gradient-to-r from-red-600 to-primary-600 text-white transition-colors rounded-lg shadow-sm my-1"
       : "flex items-center space-x-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-700 dark:text-gray-300 rounded-lg my-1";
   };
 

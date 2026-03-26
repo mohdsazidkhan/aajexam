@@ -35,7 +35,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Exam Not Found</h1>
                     <Link href="/exams">
-                        <span className="text-red-600 hover:text-red-700">← Back to Exams</span>
+                        <span className="text-primary-600 hover:text-red-700">← Back to Exams</span>
                     </Link>
                 </div>
             </div>
@@ -59,12 +59,12 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
 
             <UnifiedNavbar isLandingPage={true} />
 
-            <div className="py-20 sm:py-10 min-h-screen bg-gradient-to-br from-yellow-50 via-blue-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4">
+            <div className="py-20 sm:py-10 min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4">
                 <div className="container mx-auto px-0 lg:px-6 xl:px-8">
                     {/* Breadcrumb */}
                     <div className="mb-8">
                         <Link href="/exams">
-                            <span className="text-red-600 dark:text-red-400 hover:underline">Exams</span>
+                            <span className="text-primary-600 dark:text-red-400 hover:underline">Exams</span>
                         </Link>
                         <span className="mx-2 text-gray-400">→</span>
                         <span className="text-gray-700 dark:text-gray-300">{examTitle}</span>
@@ -73,7 +73,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                     {/* Exam Header */}
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl mb-8 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
-                            <FaGraduationCap className="text-5xl text-red-600 dark:text-red-400 mr-4" />
+                            <FaGraduationCap className="text-5xl text-primary-600 dark:text-red-400 mr-4" />
                             <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
                                 {examTitle}
                             </h1>
@@ -85,8 +85,8 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                         {/* Exam Details Grid */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                             {exam.examDate && (
-                                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 text-center">
-                                    <FaCalendar className="text-2xl text-blue-600 dark:text-blue-400 mx-auto mb-2" />
+                                <div className="bg-secondary-50 dark:bg-secondary-900/30 rounded-lg p-4 text-center">
+                                    <FaCalendar className="text-2xl text-secondary-600 dark:text-secondary-400 mx-auto mb-2" />
                                     <div className="text-sm font-semibold text-gray-900 dark:text-white">{formatDate(exam.examDate)}</div>
                                     <div className="text-xs text-gray-600 dark:text-gray-400">Exam Date</div>
                                 </div>
@@ -99,15 +99,15 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                                 </div>
                             )}
                             {exam.totalMarks && (
-                                <div className="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg p-4 text-center">
-                                    <FaTrophy className="text-2xl text-orange-700 dark:text-yellow-400 mx-auto mb-2" />
+                                <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg p-4 text-center">
+                                    <FaTrophy className="text-2xl text-primary-700 dark:text-primary-400 mx-auto mb-2" />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white">{exam.totalMarks}</div>
                                     <div className="text-xs text-gray-600 dark:text-gray-400">Total Marks</div>
                                 </div>
                             )}
                             {exam.passingMarks && (
                                 <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 text-center">
-                                    <FaCheckCircle className="text-2xl text-orange-700 dark:text-yellow-400 mx-auto mb-2" />
+                                    <FaCheckCircle className="text-2xl text-primary-700 dark:text-primary-400 mx-auto mb-2" />
                                     <div className="text-2xl font-bold text-gray-900 dark:text-white">{exam.passingMarks}</div>
                                     <div className="text-xs text-gray-600 dark:text-gray-400">Passing Marks</div>
                                 </div>
@@ -117,7 +117,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                         {/* Start Exam Button */}
                         <button
                             onClick={handleStartExam}
-                            className="w-full bg-gradient-to-r from-yellow-600 to-red-600 text-white px-8 py-4 rounded-xl hover:from-yellow-700 hover:to-red-700 transition-all font-bold text-lg flex items-center justify-center shadow-lg"
+                            className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl hover:from-primary-700 hover:to-secondary-700 transition-all font-bold text-lg flex items-center justify-center shadow-lg"
                         >
                             <FaPlay className="mr-3" /> Start Exam Now
                         </button>
@@ -127,7 +127,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                     {exam.instructions && (
                         <div className="bg-white dark:bg-gray-800 rounded-xl p-3 lg:p-6 shadow-lg mb-6 border border-gray-100 dark:border-gray-700">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                                <FaCheckCircle className="text-red-600 dark:text-red-400 mr-2" /> Instructions
+                                <FaCheckCircle className="text-primary-600 dark:text-red-400 mr-2" /> Instructions
                             </h2>
                             <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                                 {exam.instructions}
@@ -149,11 +149,11 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                     {exam.stats && exam.stats.totalAttempts > 0 && (
                         <div className="bg-white dark:bg-gray-800 rounded-xl p-3 lg:p-6 shadow-lg mb-6 border border-gray-100 dark:border-gray-700">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                                <FaChartLine className="text-red-600 dark:text-red-400 mr-2" /> Exam Statistics
+                                <FaChartLine className="text-primary-600 dark:text-red-400 mr-2" /> Exam Statistics
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                                 <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-4 text-center">
-                                    <FaUsers className="text-2xl text-red-600 dark:text-red-400 mx-auto mb-2" />
+                                    <FaUsers className="text-2xl text-primary-600 dark:text-red-400 mx-auto mb-2" />
                                     <div className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{exam.stats.totalAttempts}</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Total Attempts</div>
                                 </div>
@@ -162,13 +162,13 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                                     <div className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{exam.stats.averageScore}%</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Average Score</div>
                                 </div>
-                                <div className="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg p-4 text-center">
-                                    <FaTrophy className="text-2xl text-orange-700 dark:text-yellow-400 mx-auto mb-2" />
+                                <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg p-4 text-center">
+                                    <FaTrophy className="text-2xl text-primary-700 dark:text-primary-400 mx-auto mb-2" />
                                     <div className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{exam.stats.highestScore}%</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Highest Score</div>
                                 </div>
                                 <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 text-center">
-                                    <FaCheckCircle className="text-2xl text-orange-700 dark:text-yellow-400 mx-auto mb-2" />
+                                    <FaCheckCircle className="text-2xl text-primary-700 dark:text-primary-400 mx-auto mb-2" />
                                     <div className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{exam.stats.passRate}%</div>
                                     <div className="text-sm text-gray-600 dark:text-gray-400">Pass Rate</div>
                                 </div>

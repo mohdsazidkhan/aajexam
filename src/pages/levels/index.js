@@ -94,10 +94,10 @@ export default function LevelsOverview({ initialLevels = [] }) {
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero Section */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaTrophy className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-600 via-red-600 to-yellow-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 via-secondary-500 to-primary-700 bg-clip-text text-transparent mb-4">
                             10-Level Progression System
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -143,7 +143,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                                         onClick={() => router.push(`/levels/${level.levelNumber}`)}
                                         className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                                     >
-                                        <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-xl flex items-center justify-center mb-4" style={{ background: level.color ? `linear-gradient(to right, ${level.color}, ${level.color}CC)` : undefined }}>
+                                        <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-xl flex items-center justify-center mb-4" style={{ background: level.color ? `linear-gradient(to right, ${level.color}, ${level.color}CC)` : undefined }}>
                                             <Icon className="text-white text-2xl" />
                                         </div>
                                         <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
@@ -152,7 +152,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                                         <p className="text-gray-600 dark:text-gray-400 mb-4">
                                             {level.quizzesRequired === 0 ? 'Starting point' : `${level.quizzesRequired} total quizzes required`}
                                         </p>
-                                        <button className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+                                        <button className="text-secondary-600 dark:text-secondary-400 font-semibold hover:underline">
                                             Learn More →
                                         </button>
                                     </div>
@@ -168,7 +168,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                         </h2>
                         <div className="space-y-6">
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-xl">
+                                <div className="w-12 h-12 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-xl">
                                     1
                                 </div>
                                 <div>
@@ -204,7 +204,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-xl">
+                                <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-xl">
                                     4
                                 </div>
                                 <div>
@@ -218,7 +218,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                     </div>
 
                     {/* Benefits */}
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-12">
+                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-12">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">
                             Benefits of Structured Progression
                         </h2>
@@ -267,7 +267,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
 
                     {/* CTA */}
                     <div className="text-center">
-                        <div className="bg-gradient-to-r from-yellow-100 to-red-100 dark:from-yellow-800 dark:to-red-800 rounded-3xl p-8">
+                        <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-800 dark:to-red-800 rounded-3xl p-8">
                             <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Ready to Start Your Journey?
                             </h2>
@@ -276,7 +276,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-red-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                                className="bg-white text-primary-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                             >
                                 Start Practicing Now
                             </button>

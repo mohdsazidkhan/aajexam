@@ -18,7 +18,7 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Subcategory Not Found</h1>
                     <Link href="/categories">
-                        <span className="text-red-600 hover:text-red-700">← Back to Categories</span>
+                        <span className="text-primary-600 hover:text-red-700">← Back to Categories</span>
                     </Link>
                 </div>
             </div>
@@ -39,18 +39,18 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
 
             <UnifiedNavbar isLandingPage={true} />
 
-            <div className="py-20 sm:py-10 min-h-screen bg-gradient-to-br from-yellow-50 via-blue-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900  px-4">
+            <div className="py-20 sm:py-10 min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900  px-4">
                 <div className="container mx-auto px-0 lg:px-6 xl:px-8">
                     {/* Breadcrumb */}
                     <div className="mb-8">
                         <Link href="/categories">
-                            <span className="text-red-600 dark:text-red-400 hover:underline">Categories</span>
+                            <span className="text-primary-600 dark:text-red-400 hover:underline">Categories</span>
                         </Link>
                         {subcategory.category && (
                             <>
                                 <span className="mx-2 text-gray-400">→</span>
                                 <Link href={`/categories/${subcategory.category._id}`}>
-                                    <span className="text-red-600 dark:text-red-400 hover:underline">{subcategory.category.name}</span>
+                                    <span className="text-primary-600 dark:text-red-400 hover:underline">{subcategory.category.name}</span>
                                 </Link>
                             </>
                         )}
@@ -61,7 +61,7 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
                     {/* Subcategory Header */}
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl mb-8 border border-gray-100 dark:border-gray-700">
                         <div className="flex items-center mb-4">
-                            <FaBook className="text-4xl text-red-600 dark:text-red-400 mr-4" />
+                            <FaBook className="text-4xl text-primary-600 dark:text-red-400 mr-4" />
                             <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
                                 {subcategory.name}
                             </h1>
@@ -85,7 +85,7 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
                                     <div className="flex items-center gap-4 mb-4 text-sm text-gray-500 dark:text-gray-400">
                                         {quiz.difficulty && (
                                             <span className={`px-2 py-1 rounded ${quiz.difficulty === 'easy' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
-                                                quiz.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300' :
+                                                quiz.difficulty === 'medium' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300' :
                                                     'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
                                                 }`}>
                                                 {quiz.difficulty}
@@ -111,7 +111,7 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
 
                                     <button
                                         onClick={() => handleStartQuiz(quiz._id)}
-                                        className="w-full bg-gradient-to-r from-yellow-600 to-red-600 text-white px-6 py-3 rounded-lg hover:from-yellow-700 hover:to-red-700 transition-all font-semibold flex items-center justify-center"
+                                        className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all font-semibold flex items-center justify-center"
                                     >
                                         <FaPlay className="mr-2" /> Start Quiz
                                     </button>
@@ -137,7 +137,7 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
                                         </button>
                                     </Link>
                                 )}
-                                <span className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-red-600 dark:from-yellow-500 dark:to-red-500 text-white rounded-lg">
+                                <span className="px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 to-secondary-500 text-white rounded-lg">
                                     Page {pagination.page} of {pagination.totalPages}
                                 </span>
                                 {pagination.hasNext && (

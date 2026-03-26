@@ -172,7 +172,7 @@ const PayuFailure = () => {
           <div className="max-w-2xl mx-auto">
             <div className="text-center">
               <div className="w-24 h-24 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                <FaTimesCircle className="text-4xl text-red-600 dark:text-red-400" />
+                <FaTimesCircle className="text-4xl text-primary-600 dark:text-red-400" />
               </div>
 
               <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
@@ -205,7 +205,7 @@ const PayuFailure = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600 dark:text-gray-300">Status:</span>
-                          <span className="font-semibold text-red-600 dark:text-red-400">
+                          <span className="font-semibold text-primary-600 dark:text-red-400">
                             {paymentData.status?.toUpperCase() || 'FAILED'}
                           </span>
                         </div>
@@ -280,7 +280,7 @@ const PayuFailure = () => {
               <div className="space-y-4">
                 <button
                   onClick={handleTryAgain}
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
                 >
                   <FaSync className="text-sm" />
                   <span>Try Again</span>
@@ -304,8 +304,8 @@ const PayuFailure = () => {
                 )}
               </div>
 
-              <div className="mt-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700">
-                <p className="text-sm text-yellow-800 dark:text-yellow-200">
+              <div className="mt-8 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-200 dark:border-primary-700">
+                <p className="text-sm text-primary-800 dark:text-primary-200">
                   <strong>Note:</strong> If you were charged but didn't receive your subscription, please contact our support team with your transaction details.
                 </p>
               </div>

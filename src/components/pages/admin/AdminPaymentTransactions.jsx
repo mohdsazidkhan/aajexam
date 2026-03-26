@@ -265,9 +265,9 @@ const AdminPaymentTransactions = () => {
       case 'pending':
       case 'created':
       case 'authorized':
-        return <FaClock className="text-yellow-500" />;
+        return <FaClock className="text-primary-500" />;
       case 'refunded':
-        return <FaExclamationTriangle className="text-orange-500" />;
+        return <FaExclamationTriangle className="text-primary-500" />;
       default:
         return <FaExclamationTriangle className="text-gray-500" />;
     }
@@ -284,9 +284,9 @@ const AdminPaymentTransactions = () => {
       case 'pending':
       case 'created':
       case 'authorized':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       case 'refunded':
-        return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       default:
         return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
     }
@@ -324,7 +324,7 @@ const AdminPaymentTransactions = () => {
 
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <FaSort className="text-gray-400" />;
-    return sortOrder === 'asc' ? <FaSortUp className="text-blue-500" /> : <FaSortDown className="text-blue-500" />;
+    return sortOrder === 'asc' ? <FaSortUp className="text-secondary-500" /> : <FaSortDown className="text-secondary-500" />;
   };
 
   if (loading) {
@@ -365,26 +365,26 @@ const AdminPaymentTransactions = () => {
                 placeholder="Search transactions..."
                 value={filters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="pl-10 pr-4 py-2 w-full lg:w-auto border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500"
+                className="pl-10 pr-4 py-2 w-full lg:w-auto border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
               />
             </div>
             {/* View Mode Toggle - Hidden on mobile, shown on desktop */}
             <div className="flex justify-evenly items-center bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
               <button
                 onClick={() => setViewMode('table')}
-                className={`p-2 rounded ${viewMode === 'table' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'table' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaTable />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaTh />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded ${viewMode === 'list' ? 'bg-gradient-to-r from-red-500 to-yellow-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
+                className={`p-2 rounded ${viewMode === 'list' ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white' : 'text-gray-500 dark:text-gray-400'}`}
               >
                 <FaList />
               </button>
@@ -427,33 +427,33 @@ const AdminPaymentTransactions = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl p-3 text-white">
+            <div className="bg-gradient-to-r from-secondary-500 to-indigo-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-100 text-sm font-medium">This Period</p>
+                  <p className="text-secondary-100 text-sm font-medium">This Period</p>
                   <p className="text-2xl font-bold">{formatCurrency(summary.periodRevenue || 0)}</p>
                 </div>
-                <FaChartLine className="text-3xl text-blue-200" />
+                <FaChartLine className="text-3xl text-secondary-200" />
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-yellow-100 text-sm font-medium">Total Transactions</p>
+                  <p className="text-primary-100 text-sm font-medium">Total Transactions</p>
                   <p className="text-2xl font-bold">{summary.totalTransactions || 0}</p>
                 </div>
-                <FaReceipt className="text-3xl text-yellow-200" />
+                <FaReceipt className="text-3xl text-primary-200" />
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl p-3 text-white">
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl p-3 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-100 text-sm font-medium">Active Users</p>
+                  <p className="text-primary-100 text-sm font-medium">Active Users</p>
                   <p className="text-2xl font-bold">{summary.activeUsers || 0}</p>
                 </div>
-                <FaUsers className="text-3xl text-orange-200" />
+                <FaUsers className="text-3xl text-primary-200" />
               </div>
             </div>
           </div>
@@ -477,7 +477,7 @@ const AdminPaymentTransactions = () => {
                       <select
                         value={filters.year}
                         onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         {Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i).map(year => (
                           <option key={year} value={year}>{year}</option>
@@ -487,7 +487,7 @@ const AdminPaymentTransactions = () => {
                       <select
                         value={filters.month}
                         onChange={(e) => handleFilterChange('month', e.target.value === 'all' ? 'all' : parseInt(e.target.value))}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="all">All Months</option>
                         {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -500,7 +500,7 @@ const AdminPaymentTransactions = () => {
                       <select
                         value={filters.status}
                         onChange={(e) => handleFilterChange('status', e.target.value)}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="all">All Status</option>
                         {filterOptions.statuses.slice(1).map(status => (
@@ -511,7 +511,7 @@ const AdminPaymentTransactions = () => {
                       <select
                         value={filters.plan}
                         onChange={(e) => handleFilterChange('plan', e.target.value)}
-                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 w-full"
+                        className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 w-full"
                       >
                         <option value="all">All Plans</option>
                         {filterOptions.plans.map(plan => (
@@ -530,7 +530,7 @@ const AdminPaymentTransactions = () => {
           {/* Transactions Display */}
           {error ? (
             <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-6 text-center">
-              <div className="text-red-600 dark:text-red-400 text-lg mb-2">⚠️ Error</div>
+              <div className="text-primary-600 dark:text-red-400 text-lg mb-2">⚠️ Error</div>
               <div className="text-red-700 dark:text-red-300">{error}</div>
             </div>
           ) : transactions.length === 0 ? (
@@ -635,7 +635,7 @@ const AdminPaymentTransactions = () => {
                             <td className="px-6 py-4 whitespace-nowrap text-sm">
                               <button
                                 onClick={() => toggleTransactionDetails(transaction._id)}
-                                className="text-orange-700 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
+                                className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
                               >
                                 {expandedTransaction === transaction._id ? <FaEyeSlash /> : <FaEye />}
                               </button>
@@ -768,7 +768,7 @@ const AdminPaymentTransactions = () => {
                             key={page}
                             onClick={() => handlePageChange(page)}
                             className={`px-3 py-2 rounded-lg text-sm ${pagination.currentPage === page
-                              ? 'bg-yellow-600 text-white'
+                              ? 'bg-primary-600 text-white'
                               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                               }`}
                           >
