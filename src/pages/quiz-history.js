@@ -404,7 +404,7 @@ const QuizHistoryPage = () => {
     return (
       <>
         <Seo
-          title="Quiz History - SUBG QUIZ"
+          title="Quiz History - AajExam"
           description="View your complete quiz history, track your performance over time, and review past quiz attempts with detailed scores and statistics."
           noIndex={true}
         />
@@ -421,7 +421,7 @@ const QuizHistoryPage = () => {
   return (
     <>
       <Seo
-        title="Quiz History - SUBG QUIZ"
+        title="Quiz History - AajExam"
         description="View your complete quiz history, track your performance over time, and review past quiz attempts with detailed scores and statistics."
         noIndex={true}
       />

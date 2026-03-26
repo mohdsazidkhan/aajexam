@@ -126,8 +126,8 @@ const NotificationsPage = () => {
     return (
       <>
         <Seo
-          title="Notifications - SUBG QUIZ Platform"
-          description="Stay updated with your SUBG QUIZ notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
+          title="Notifications - AajExam Platform"
+          description="Stay updated with your AajExam notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
           noIndex={true}
         />
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
@@ -145,8 +145,8 @@ const NotificationsPage = () => {
   return (
     <>
       <Seo
-        title={`Notifications ${unreadCount > 0 ? `(${unreadCount})` : ''} - SUBG QUIZ Platform`}
-        description="Stay updated with your SUBG QUIZ notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
+        title={`Notifications ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam Platform`}
+        description="Stay updated with your AajExam notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
         noIndex={true}
       />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">

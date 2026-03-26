@@ -4,13 +4,13 @@ import { FaGraduationCap, FaUsers, FaChartLine, FaRocket, FaBook, FaTrophy, FaBu
 const EducationalContent = ({ content }) => {
     // Use default content if API fails
     const defaultContent = {
-        platformPurpose: "SUBG QUIZ is India's premier online platform for government exam preparation, offering comprehensive practice tests and quizzes designed specifically for aspirants preparing for competitive examinations. Our platform combines cutting-edge technology with expert-curated content to provide an unparalleled learning experience. We understand the challenges faced by government exam aspirants and have created a systematic approach to help you achieve your career goals through consistent practice and performance tracking.",
+        platformPurpose: "AajExam is India's premier online platform for government exam preparation, offering comprehensive practice tests and quizzes designed specifically for aspirants preparing for competitive examinations. Our platform combines cutting-edge technology with expert-curated content to provide an unparalleled learning experience. We understand the challenges faced by government exam aspirants and have created a systematic approach to help you achieve your career goals through consistent practice and performance tracking.",
 
-        targetAudience: "Our platform is designed for students and professionals preparing for various government competitive exams including SSC (Staff Selection Commission), UPSC (Union Public Service Commission), Banking exams (IBPS, SBI), Railway Recruitment Board (RRB), State Public Service Commissions, and other central and state government recruitment examinations. Whether you're a fresh graduate or a working professional looking to transition into government service, SUBG QUIZ provides the tools and resources you need to succeed.",
+        targetAudience: "Our platform is designed for students and professionals preparing for various government competitive exams including SSC (Staff Selection Commission), UPSC (Union Public Service Commission), Banking exams (IBPS, SBI), Railway Recruitment Board (RRB), State Public Service Commissions, and other central and state government recruitment examinations. Whether you're a fresh graduate or a working professional looking to transition into government service, AajExam provides the tools and resources you need to succeed.",
 
         educationalBenefits: "Regular practice through our quiz platform offers numerous educational benefits that directly impact your exam performance. Our scientifically designed quizzes help improve knowledge retention through spaced repetition, enhance time management skills crucial for competitive exams, build confidence through progressive difficulty levels, and identify weak areas that need focused attention. The platform tracks your performance metrics including accuracy rates, speed, and topic-wise strengths, enabling data-driven preparation strategies.",
 
-        learningMethodology: "SUBG QUIZ employs a unique 10-level progression system that mirrors the journey from beginner to expert. Each level is carefully calibrated to match your growing competence, with quizzes becoming progressively more challenging as you advance. Our methodology is based on three core principles: consistent practice (regular quiz attempts build muscle memory and reduce exam anxiety), performance analytics (detailed insights help you understand your strengths and weaknesses), and competitive learning (leaderboards and monthly challenges motivate continuous improvement)."
+        learningMethodology: "AajExam employs a unique 10-level progression system that mirrors the journey from beginner to expert. Each level is carefully calibrated to match your growing competence, with quizzes becoming progressively more challenging as you advance. Our methodology is based on three core principles: consistent practice (regular quiz attempts build muscle memory and reduce exam anxiety), performance analytics (detailed insights help you understand your strengths and weaknesses), and competitive learning (leaderboards and monthly challenges motivate continuous improvement)."
     };
 
     const data = content || defaultContent;
@@ -63,7 +63,7 @@ const EducationalContent = ({ content }) => {
                                 <FaBullseye className="text-3xl text-orange-700 dark:text-yellow-400" />
                             </div>
                             <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
-                                About SUBG QUIZ Platform
+                                About AajExam Platform
                             </h2>
                         </div>
                         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -145,7 +145,7 @@ const EducationalContent = ({ content }) => {
                 {/* Call to Action */}
                 <div className="mt-8 lg:mt-16 text-center bg-gradient-to-r from-yellow-600 to-red-600 dark:from-yellow-500 dark:to-red-500 rounded-2xl p-5 lg:p-10 shadow-2xl">
                     <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-white font-medium leading-relaxed">
-                        Join thousands of successful candidates who have achieved their government job dreams through SUBG QUIZ.
+                        Join thousands of successful candidates who have achieved their government job dreams through AajExam.
                         Start your preparation journey today and experience the difference that structured, data-driven practice can make.
                     </p>
                 </div>

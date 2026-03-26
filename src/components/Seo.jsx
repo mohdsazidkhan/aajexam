@@ -11,7 +11,7 @@ const Seo = ({
   noIndex = false
 }) => {
   const router = useRouter();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://subgquiz.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
   const url = `${siteUrl}${router.asPath || ''}`;
 
   return (
@@ -24,8 +24,8 @@ const Seo = ({
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@subgquiz" />
-      <meta name="twitter:creator" content="@subgquiz" />
+      <meta name="twitter:site" content="@AajExam" />
+      <meta name="twitter:creator" content="@AajExam" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
@@ -36,5 +36,6 @@ const Seo = ({
 };
 
 export default Seo;
+
 
 

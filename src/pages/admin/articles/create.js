@@ -7,7 +7,7 @@ export default function CreateArticle() {
   return (
     <>
       <Head>
-        <title>Create Article - Admin Panel - SUBG QUIZ</title>
+        <title>Create Article - Admin Panel - AajExam</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <AdminArticleForm />

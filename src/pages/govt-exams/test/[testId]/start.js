@@ -538,7 +538,7 @@ const TestStart = () => {
   return (
     <>
       <Head>
-        <title>{testTitle} - Taking Test | SUBG QUIZ</title>
+        <title>{testTitle} - Taking Test | AajExam</title>
         <meta
           name="description"
           content={`Taking ${testTitle}. ${questionCount} questions${durationText ? `, Duration: ${durationText}` : ""
@@ -550,7 +550,7 @@ const TestStart = () => {
         />
         <meta
           property="og:title"
-          content={`${testTitle} - Taking Test | SUBG QUIZ`}
+          content={`${testTitle} - Taking Test | AajExam`}
         />
         <meta
           property="og:description"
@@ -559,7 +559,7 @@ const TestStart = () => {
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`${testTitle} - SUBG QUIZ`} />
+        <meta name="twitter:title" content={`${testTitle} - AajExam`} />
         <meta
           name="twitter:description"
           content={`Taking ${testTitle} practice test.`}

@@ -119,7 +119,7 @@ const MyBlogsPage = () => {
   return (
     <>
       <Head>
-        <title>My Blogs - Subg Quiz</title>
+        <title>My Blogs - AajExam</title>
       </Head>
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-4 lg:py-8 px-4">
         <div className="container mx-auto py-0 px-0 lg:px-10">

@@ -181,7 +181,7 @@ const ModernLandingPage = ({ educationalContent }) => {
     ];
 
     return (
-        <MobileAppWrapper title="SUBG QUIZ" showHeader={false}>
+        <MobileAppWrapper title="AajExam" showHeader={false}>
             <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                 <UnifiedNavbar isLandingPage={true} />
 
@@ -382,7 +382,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
                                 <span className="text-transparent text-orange-700 via-orange-600 text-red-600 dark:text-yellow-400 dark:via-orange-400 dark:text-red-400">
-                                    Why Choose SUBG QUIZ?
+                                    Why Choose AajExam?
                                 </span>
                             </h2>
                         </div>
@@ -420,7 +420,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 {
                                     name: "Annu",
                                     level: "Level 10 - Legend",
-                                    quote: "SUBG QUIZ helped me crack SSC CGL! The level-based system kept me motivated throughout my preparation.",
+                                    quote: "AajExam helped me crack SSC CGL! The level-based system kept me motivated throughout my preparation.",
                                     rating: 5
                                 },
                                 {
@@ -511,7 +511,7 @@ const ModernLandingPage = ({ educationalContent }) => {
                                 <div className="bg-gradient-to-br from-yellow-500 to-red-600 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
                                     <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-4">
                                         <div className="flex items-center justify-between">
-                                            <div className="font-bold text-xl text-gray-900 dark:text-white">SUBG QUIZ</div>
+                                            <div className="font-bold text-xl text-gray-900 dark:text-white">AajExam</div>
                                             <FaMobileAlt className="text-red-600 text-2xl" />
                                         </div>
                                         <div className="space-y-3">

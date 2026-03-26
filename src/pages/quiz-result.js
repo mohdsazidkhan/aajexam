@@ -5,7 +5,7 @@ export default function QuizResult() {
   return (
     <>
       <Seo
-        title="Quiz Result - SUBG QUIZ Platform"
+        title="Quiz Result - AajExam Platform"
         description="View your quiz result and performance summary."
         noIndex={true}
       />

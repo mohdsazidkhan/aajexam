@@ -11,7 +11,7 @@ export default function AdminBankDetailsPage() {
   return (
     <>
       <Head>
-        <title>Admin Bank Details - SUBG QUIZ</title>
+        <title>Admin Bank Details - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

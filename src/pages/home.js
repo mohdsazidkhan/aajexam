@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Home - SUBG QUIZ Platform"
-        description="Welcome to SUBG QUIZ! Explore trending quizzes, track your progress, climb the leaderboard, and challenge yourself with knowledge-based quizzes."
+        title="Home - AajExam Platform"
+        description="Welcome to AajExam! Explore trending quizzes, track your progress, climb the leaderboard, and challenge yourself with knowledge-based quizzes."
         noIndex={true}
       />
       <Head>

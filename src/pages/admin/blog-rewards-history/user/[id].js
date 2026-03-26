@@ -17,7 +17,7 @@ export default function UserBlogRewardsHistoryPage() {
   return (
     <>
       <Head>
-        <title>User Blog Rewards History - SUBG QUIZ Admin</title>
+        <title>User Blog Rewards History - AajExam Admin</title>
         <meta name="description" content="View user-specific blog rewards history" />
         <meta name="robots" content="noindex,nofollow" />
       </Head>

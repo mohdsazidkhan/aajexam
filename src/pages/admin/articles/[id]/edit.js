@@ -15,7 +15,7 @@ export default function EditArticle() {
   return (
     <>
       <Head>
-        <title>Edit Article - Admin Panel - SUBG QUIZ</title>
+        <title>Edit Article - Admin Panel - AajExam</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <AdminArticleForm articleId={id} />

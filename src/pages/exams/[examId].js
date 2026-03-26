@@ -47,10 +47,10 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
     return (
         <>
             <Head>
-                <title>{examTitle} - Exam Details | SUBG QUIZ</title>
+                <title>{examTitle} - Exam Details | AajExam</title>
                 <meta name="description" content={exam.description || `Government exam: ${examTitle}`} />
                 <meta name="keywords" content={`${examTitle}, government exam, mock test, practice exam`} />
-                <meta property="og:title" content={`${examTitle} - Exam Details | SUBG QUIZ`} />
+                <meta property="og:title" content={`${examTitle} - Exam Details | AajExam`} />
                 <meta property="og:description" content={exam.description} />
                 <meta property="og:type" content="website" />
                 <meta name="robots" content={robotsMeta || 'index, follow'} />

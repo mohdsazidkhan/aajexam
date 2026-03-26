@@ -45,10 +45,10 @@ const MobileAppWrapper = ({ children, title, showHeader = true }) => {
     const path = router.pathname;
 
     // Return default if pathname is null
-    if (!path) return 'SUBG QUIZ';
+    if (!path) return 'AajExam';
 
     const pageNames = {
-      '/': 'SUBG QUIZ',
+      '/': 'AajExam',
       '/login': 'Login',
       '/register': 'Register',
       '/forgot-password': 'Forgot Password',
@@ -85,7 +85,7 @@ const MobileAppWrapper = ({ children, title, showHeader = true }) => {
     if (path.startsWith('/attempt-quiz/')) return 'Quiz';
 
     // Default fallback
-    return 'SUBG QUIZ';
+    return 'AajExam';
   };
 
   if (isAdminPage) {
@@ -125,7 +125,7 @@ const MobileAppWrapper = ({ children, title, showHeader = true }) => {
               >
                 <img
                   src="/logo.png"
-                  alt="SUBG QUIZ Logo"
+                  alt="AajExam Logo"
                   className="w-12 h-12 object-contain"
                 />
               </Link>

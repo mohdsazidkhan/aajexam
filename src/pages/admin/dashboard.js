@@ -11,7 +11,7 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Admin Dashboard - SUBG QUIZ</title>
+        <title>Admin Dashboard - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

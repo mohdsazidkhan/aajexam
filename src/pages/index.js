@@ -24,7 +24,7 @@ export default function Index({ educationalContent, isAuthenticated }) {
   return (
     <>
       <Seo
-        title="SUBG QUIZ - Exam Preparation & Reward Platform | Practice Tests & Quizzes"
+        title="AajExam - Exam Preparation & Reward Platform | Practice Tests & Quizzes"
         description="India's premier government exam preparation platform. Practice tests for SSC, UPSC, Banking, Railway exams. Earn Daily, Weekly, and Monthly Rewards with our 10-level progression system."
       />
 

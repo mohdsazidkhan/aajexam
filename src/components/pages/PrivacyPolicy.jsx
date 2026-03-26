@@ -57,7 +57,7 @@ const PrivacyPolicy = () => {
                 </h2>
               </div>
               <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                This Privacy Policy explains how <strong>SUBG QUIZ</strong> collects, uses, stores, and protects your information when you use our platform. By using SUBG QUIZ, you agree to the practices described below.
+                This Privacy Policy explains how <strong>AajExam</strong> collects, uses, stores, and protects your information when you use our platform. By using AajExam, you agree to the practices described below.
               </p>
             </div>
 
@@ -308,7 +308,7 @@ const PrivacyPolicy = () => {
                   </h3>
                   <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
                     <p>
-                      <strong>SUBG QUIZ</strong> uses <strong>Google AdSense</strong> to display advertisements on our platform. Google AdSense may use cookies and web beacons to serve ads based on your prior visits to this website or other websites on the Internet.
+                      <strong>AajExam</strong> uses <strong>Google AdSense</strong> to display advertisements on our platform. Google AdSense may use cookies and web beacons to serve ads based on your prior visits to this website or other websites on the Internet.
                     </p>
                     <p>
                       <strong>What this means:</strong>
@@ -376,7 +376,7 @@ const PrivacyPolicy = () => {
                 </h2>
               </div>
               <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                You must be <strong>14 years or older</strong> to use SUBG QUIZ. By registering, you confirm that you meet this requirement.
+                You must be <strong>14 years or older</strong> to use AajExam. By registering, you confirm that you meet this requirement.
               </p>
             </div>
 
@@ -391,7 +391,7 @@ const PrivacyPolicy = () => {
                 </h2>
               </div>
               <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                We may update this policy to reflect product, legal, or security changes. The updated version will be posted here with a revised date. Continued use of SUBG QUIZ after updates constitutes acceptance of the revised policy.
+                We may update this policy to reflect product, legal, or security changes. The updated version will be posted here with a revised date. Continued use of AajExam after updates constitutes acceptance of the revised policy.
               </p>
             </div>
 

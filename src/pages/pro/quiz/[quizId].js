@@ -14,7 +14,7 @@ export default function ProQuizDetailPage({ quiz, seo }) {
   return (
     <>
 			<Head>
-				<title>{seo?.title || 'Quiz Details - SUBG QUIZ Pro'}</title>
+				<title>{seo?.title || 'Quiz Details - AajExam Pro'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
 	if (!quiz) return { notFound: true, revalidate: 60 };
 
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Pro';
+	const titleBase = 'AajExam Pro';
 	const title = `${quiz?.title || 'Quiz Details'} - ${titleBase}`;
 	const description = quiz?.description || 'View and manage your pro quiz.';
 	const keywords = `${quiz?.title || 'quiz'}, pro, management, analytics`;

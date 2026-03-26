@@ -8,17 +8,17 @@ export default function Disclaimer() {
     return (
         <MobileAppWrapper title="Disclaimer">
             <Head>
-                <title>Disclaimer - Legal Information | SUBG QUIZ</title>
-                <meta name="description" content="Read the legal disclaimer for SUBG QUIZ. Information about accuracy of content, external links, and the educational nature of our platform." />
-                <meta name="keywords" content="disclaimer, legal, SUBG QUIZ disclaimer, educational disclaimer" />
-                <meta property="og:title" content="Disclaimer - SUBG QUIZ" />
-                <meta property="og:description" content="Legal information regarding the accuracy and educational nature of SUBG QUIZ content." />
+                <title>Disclaimer - Legal Information | AajExam</title>
+                <meta name="description" content="Read the legal disclaimer for AajExam. Information about accuracy of content, external links, and the educational nature of our platform." />
+                <meta name="keywords" content="disclaimer, legal, AajExam disclaimer, educational disclaimer" />
+                <meta property="og:title" content="Disclaimer - AajExam" />
+                <meta property="og:description" content="Legal information regarding the accuracy and educational nature of AajExam content." />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Disclaimer - SUBG QUIZ" />
-                <meta name="twitter:description" content="Legal disclaimer for the SUBG QUIZ educational platform." />
-                <meta name="twitter:image" content="https://subgquiz.com/logo.png" />
+                <meta name="twitter:title" content="Disclaimer - AajExam" />
+                <meta name="twitter:description" content="Legal disclaimer for the AajExam educational platform." />
+                <meta name="twitter:image" content="https://aajexam.com/logo.png" />
                 <meta name="robots" content="index, follow" />
             </Head>
 
@@ -39,7 +39,7 @@ export default function Disclaimer() {
                                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">General Information</h2>
                             </div>
                             <p className="leading-relaxed">
-                                The information provided by SUBG QUIZ ("we," "us," or "our") on our website and mobile application is for general educational purposes only. All information on the platform is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
+                                The information provided by AajExam ("we," "us," or "our") on our website and mobile application is for general educational purposes only. All information on the platform is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
                             </p>
                         </section>
 
@@ -49,21 +49,21 @@ export default function Disclaimer() {
                                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Educational Nature</h2>
                             </div>
                             <p className="leading-relaxed">
-                                SUBG QUIZ is an educational platform designed to help users prepare for government competitive exams. While our quizzes are based on historical exam patterns and expert research, they do not guarantee success in any official examination. Your performance on SUBG QUIZ is an indicator of practice levels and should not be taken as a final prediction of official exam results.
+                                AajExam is an educational platform designed to help users prepare for government competitive exams. While our quizzes are based on historical exam patterns and expert research, they do not guarantee success in any official examination. Your performance on AajExam is an indicator of practice levels and should not be taken as a final prediction of official exam results.
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">External Links Disclaimer</h2>
                             <p className="leading-relaxed">
-                                Our platform may contain links to external websites that are not provided or maintained by or in any way affiliated with SUBG QUIZ. Please note that SUBG QUIZ does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.
+                                Our platform may contain links to external websites that are not provided or maintained by or in any way affiliated with AajExam. Please note that AajExam does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Errors and Omissions Disclaimer</h2>
                             <p className="leading-relaxed">
-                                While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, SUBG QUIZ is not responsible for any errors or omissions, or for the results obtained from the use of this information.
+                                While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, AajExam is not responsible for any errors or omissions, or for the results obtained from the use of this information.
                             </p>
                         </section>
 

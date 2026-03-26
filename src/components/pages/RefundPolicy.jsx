@@ -41,7 +41,7 @@ const RefundPolicy = () => {
                 </h2>
               </div>
               <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                Thank you for using <strong>SUBG QUIZ</strong>. Please read this Refund & Subscription Policy carefully. By subscribing or purchasing any plan, you agree to the terms below.
+                Thank you for using <strong>AajExam</strong>. Please read this Refund & Subscription Policy carefully. By subscribing or purchasing any plan, you agree to the terms below.
               </p>
             </div>
 
@@ -71,7 +71,7 @@ const RefundPolicy = () => {
                 <div className="flex items-start gap-3">
                   <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    SUBG QUIZ is a <strong>skill‑based</strong> platform. Fees are charged for access to premium content/features, not for winning rewards.
+                    AajExam is a <strong>skill‑based</strong> platform. Fees are charged for access to premium content/features, not for winning rewards.
                   </p>
                 </div>
               </div>
@@ -269,7 +269,7 @@ const RefundPolicy = () => {
                 <div className="flex items-start gap-3">
                   <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
                   <p className="text-gray-700 dark:text-gray-300">
-                    SUBG QUIZ is a <strong>skill‑based</strong> platform. There is no gambling or chance involved.
+                    AajExam is a <strong>skill‑based</strong> platform. There is no gambling or chance involved.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -308,7 +308,7 @@ const RefundPolicy = () => {
                   Important Reminder
                 </h3>
                 <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300">
-                  All subscription purchases are <strong>final and non-refundable</strong>. Please ensure you understand the terms before making a purchase. SUBG QUIZ is a skill-based platform where fees are charged for access to premium content and features, not for winning rewards.
+                  All subscription purchases are <strong>final and non-refundable</strong>. Please ensure you understand the terms before making a purchase. AajExam is a skill-based platform where fees are charged for access to premium content and features, not for winning rewards.
                 </p>
               </div>
             </div>

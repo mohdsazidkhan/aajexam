@@ -5,7 +5,7 @@ export default function BlogRewardsHistoryPage() {
   return (
     <>
       <Head>
-        <title>Blog Rewards History - SUBG QUIZ Admin</title>
+        <title>Blog Rewards History - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <BlogRewardsHistory />

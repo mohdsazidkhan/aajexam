@@ -275,8 +275,8 @@ const SettingsPage = () => {
     return (
       <>
         <Seo
-          title="Account Settings - SUBG QUIZ Platform"
-          description="Manage your SUBG QUIZ account settings. Update your profile information, bank details, notification preferences, and security settings."
+          title="Account Settings - AajExam Platform"
+          description="Manage your AajExam account settings. Update your profile information, bank details, notification preferences, and security settings."
           noIndex={true}
         />
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
@@ -290,8 +290,8 @@ const SettingsPage = () => {
   return (
     <>
       <Seo
-        title="Account Settings - SUBG QUIZ Platform"
-        description="Manage your SUBG QUIZ account settings. Update your profile information, bank details, notification preferences, and security settings."
+        title="Account Settings - AajExam Platform"
+        description="Manage your AajExam account settings. Update your profile information, bank details, notification preferences, and security settings."
         noIndex={true}
       />
 

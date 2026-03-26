@@ -11,7 +11,7 @@ export default function UserReferralDetailPage() {
   return (
     <>
       <Head>
-        <title>User Referral Detail - SUBG QUIZ Admin</title>
+        <title>User Referral Detail - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

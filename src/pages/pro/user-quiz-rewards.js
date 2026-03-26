@@ -23,8 +23,8 @@ export default function UserQuizRewardsPage() {
     return (
         <>
             <Head>
-                <title>Quiz Rewards History - SUBG QUIZ Platform</title>
-                <meta name="description" content="View your historical earnings from approved quizzes on SUBG QUIZ." />
+                <title>Quiz Rewards History - AajExam Platform</title>
+                <meta name="description" content="View your historical earnings from approved quizzes on AajExam." />
             </Head>
             <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
                 <UserQuizRewards />

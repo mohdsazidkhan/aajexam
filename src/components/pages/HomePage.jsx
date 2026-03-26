@@ -917,32 +917,32 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <title>SUBG QUIZ - Student Unknown's Battle Ground Quiz Platform</title>
+        <title>AajExam - Student Unknown's Battle Ground Quiz Platform</title>
         <meta
           name="description"
-          content="Join SUBG QUIZ - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards. Start your quiz journey today!"
+          content="Join AajExam - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards. Start your quiz journey today!"
         />
         <meta
           name="keywords"
-          content="quiz platform, online quiz, skill-based quiz, quiz competition, SUBG QUIZ, student quiz, knowledge test, quiz rewards"
+          content="quiz platform, online quiz, skill-based quiz, quiz competition, AajExam, student quiz, knowledge test, quiz rewards"
         />
         <meta
           property="og:title"
-          content="SUBG QUIZ - Student Unknown's Battle Ground Quiz Platform"
+          content="AajExam - Student Unknown's Battle Ground Quiz Platform"
         />
         <meta
           property="og:description"
-          content="Join SUBG QUIZ - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards."
+          content="Join AajExam - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards."
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="SUBG QUIZ - Student Unknown's Battle Ground Quiz Platform"
+          content="AajExam - Student Unknown's Battle Ground Quiz Platform"
         />
         <meta
           name="twitter:description"
-          content="Join SUBG QUIZ - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards."
+          content="Join AajExam - India's premier skill-based quiz platform. Test your knowledge across 10+ levels, compete for monthly prizes, and earn real rewards."
         />
       </Head>
 
@@ -963,7 +963,7 @@ const HomePage = () => {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full text-sm font-semibold mb-6 animate-bounce shadow-lg">
                   <FaRocket className="w-4 h-4" />
-                  <span>Welcome to SUBG QUIZ Platform</span>
+                  <span>Welcome to AajExam Platform</span>
                 </div>
 
                 {/* Main Heading */}
@@ -1037,7 +1037,7 @@ const HomePage = () => {
                   🎉 Invite Friends & Earn Rewards! 🎉
                 </h2>
                 <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
-                  Invite your friends to SUBGQUIZ and earn wallet rewards.
+                  Invite your friends to AajExam and earn wallet rewards.
                 </p>
               </div>
 
@@ -1231,7 +1231,7 @@ const HomePage = () => {
                         </div>
 
                         <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold mb-4 text-black dark:text-white">
-                          Download SUBG QUIZ App
+                          Download AajExam App
                         </h2>
 
                         <p className="text-md md:text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
@@ -1292,7 +1292,7 @@ const HomePage = () => {
                                 </div>
 
                                 {/* App Name */}
-                                <h3 className="text-2xl font-bold mb-2">SUBG QUIZ</h3>
+                                <h3 className="text-2xl font-bold mb-2">AajExam</h3>
                                 <p className="text-sm opacity-90 mb-8 text-center">Learn & Play Quiz</p>
 
                                 {/* Features Icons */}
@@ -2496,3 +2496,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

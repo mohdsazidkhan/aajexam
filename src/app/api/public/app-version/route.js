@@ -11,7 +11,7 @@ export async function GET(req) {
         const forceUpdate = false;
         const updateUrl = platform === 'android'
             ? 'https://play.google.com/store/apps/details?id=com.subg.app'
-            : 'https://apps.apple.com/app/subg-quiz/id123456789';
+            : 'https://apps.apple.com/app/aajexam/id123456789';
 
         return NextResponse.json({
             success: true,
@@ -29,3 +29,4 @@ export async function GET(req) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
+

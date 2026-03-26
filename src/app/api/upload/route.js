@@ -9,7 +9,7 @@ export async function POST(req) {
 
         const formData = await req.formData();
         const file = formData.get('file');
-        const folder = formData.get('folder') || 'subg-quiz';
+        const folder = formData.get('folder') || 'aajexam';
 
         if (!file) return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
 
@@ -30,3 +30,4 @@ export async function POST(req) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
+

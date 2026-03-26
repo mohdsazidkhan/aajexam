@@ -57,8 +57,8 @@ const ResetPasswordPage = () => {
   return (
     <>
       <Seo
-        title="Reset Password - SUBG QUIZ Platform"
-        description="Create a new password for your SUBG QUIZ account. Enter your new password to regain access to your quiz account securely."
+        title="Reset Password - AajExam Platform"
+        description="Create a new password for your AajExam account. Enter your new password to regain access to your quiz account securely."
         noIndex={true}
       />
       <MobileAppWrapper title="Reset Password">

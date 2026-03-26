@@ -8,7 +8,7 @@ const AuthorBio = () => {
             </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Content reviewed and curated by <strong>Mohd Sazid Khan</strong>,
-                founder of SUBG QUIZ and educational technology expert with extensive
+                founder of AajExam and educational technology expert with extensive
                 experience in government exam preparation systems and online learning platforms.
             </p>
             <Link

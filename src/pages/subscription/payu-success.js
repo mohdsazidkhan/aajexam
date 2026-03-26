@@ -197,7 +197,7 @@ const PayuSuccess = () => {
   return (
     <MobileAppWrapper title="Payment Success">
       <Seo
-        title="Payment Success - SUBG QUIZ Platform"
+        title="Payment Success - AajExam Platform"
         description="Your payment was successful and your subscription is now active."
         noIndex={true}
       />

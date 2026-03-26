@@ -9,14 +9,14 @@ export default function CategoriesPage({ categories }) {
     return (
         <>
             <Head>
-                <title>Quiz Categories - Government Exam Preparation | SUBG QUIZ</title>
+                <title>Quiz Categories - Government Exam Preparation | AajExam</title>
                 <meta name="description" content="Browse quiz categories for SSC, UPSC, Banking, Railway and other government competitive exams. Comprehensive practice tests organized by subject and topic." />
                 <meta name="keywords" content="quiz categories, government exam topics, SSC subjects, UPSC topics, banking exam categories, railway exam subjects" />
-                <meta property="og:title" content="Quiz Categories - Government Exam Preparation | SUBG QUIZ" />
+                <meta property="og:title" content="Quiz Categories - Government Exam Preparation | AajExam" />
                 <meta property="og:description" content="Browse quiz categories for all major government competitive exams." />
                 <meta property="og:type" content="website" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Quiz Categories - SUBG QUIZ" />
+                <meta name="twitter:title" content="Quiz Categories - AajExam" />
                 <meta name="twitter:description" content="Browse quiz categories for government exam preparation." />
                 <meta name="robots" content="index, follow" />
             </Head>

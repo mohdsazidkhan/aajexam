@@ -163,7 +163,7 @@ const PayuFailure = () => {
   return (
     <MobileAppWrapper title="Payment Failed">
       <Seo
-        title="Payment Failed - SUBG QUIZ Platform"
+        title="Payment Failed - AajExam Platform"
         description="Your payment attempt was not successful. Please try again or contact support."
         noIndex={true}
       />

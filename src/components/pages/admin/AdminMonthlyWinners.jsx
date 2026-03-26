@@ -163,7 +163,7 @@ const AdminMonthlyWinners = () => {
                   <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm font-medium">
                     {activeType === 'daily' ? 'Rewarding daily consistency and quiz speed.' :
                       activeType === 'weekly' ? 'Weekly top performers and masterminds.' :
-                        'The ultimate monthly legends of SUBG QUIZ.'}
+                        'The ultimate monthly legends of AajExam.'}
                   </p>
                 </div>
               </div>

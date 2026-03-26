@@ -18,19 +18,19 @@ const FAQ = () => {
             icon: FaQuestionCircle,
             questions: [
                 {
-                    q: 'What is SUBG QUIZ?',
-                    a: 'SUBG QUIZ is India\'s premier government exam preparation platform offering comprehensive practice tests for SSC, UPSC, Banking, Railway, and state-level competitive examinations. We provide 2000+ quizzes with a unique 10-level progression system designed to systematically improve your exam readiness.'
+                    q: 'What is AajExam?',
+                    a: 'AajExam is India\'s premier government exam preparation platform offering comprehensive practice tests for SSC, UPSC, Banking, Railway, and state-level competitive examinations. We provide 2000+ quizzes with a unique 10-level progression system designed to systematically improve your exam readiness.'
                 },
                 {
-                    q: 'Who can use SUBG QUIZ?',
-                    a: 'Anyone aged 14 years or older can register and use SUBG QUIZ. Our platform is designed for students and professionals preparing for government competitive examinations in India.'
+                    q: 'Who can use AajExam?',
+                    a: 'Anyone aged 14 years or older can register and use AajExam. Our platform is designed for students and professionals preparing for government competitive examinations in India.'
                 },
                 {
-                    q: 'Is SUBG QUIZ free to use?',
+                    q: 'Is AajExam free to use?',
                     a: 'Yes! We offer a Free plan that provides access to Levels 0-3 with hundreds of practice quizzes. For advanced levels and additional features, we offer Basic, Premium, and Pro subscription plans.'
                 },
                 {
-                    q: 'What exams does SUBG QUIZ cover?',
+                    q: 'What exams does AajExam cover?',
                     a: 'We cover all major government competitive exams including SSC (CGL, CHSL, MTS), UPSC (Prelims, Mains), Banking (IBPS PO, Clerk, SBI), Railway (RRB NTPC, Group D), and various state-level examinations. Our question bank includes General Intelligence & Reasoning, Quantitative Aptitude, English Language, General Awareness, and Current Affairs.'
                 }
             ]
@@ -147,11 +147,11 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'What browsers are supported?',
-                    a: 'SUBG QUIZ works best on modern browsers including Google Chrome, Mozilla Firefox, Safari, and Microsoft Edge. We recommend keeping your browser updated to the latest version for optimal performance.'
+                    a: 'AajExam works best on modern browsers including Google Chrome, Mozilla Firefox, Safari, and Microsoft Edge. We recommend keeping your browser updated to the latest version for optimal performance.'
                 },
                 {
                     q: 'Is there a mobile app?',
-                    a: 'Currently, SUBG QUIZ is a web-based platform optimized for both desktop and mobile browsers. You can access it from any device with an internet connection.'
+                    a: 'Currently, AajExam is a web-based platform optimized for both desktop and mobile browsers. You can access it from any device with an internet connection.'
                 },
                 {
                     q: 'I\'m experiencing technical issues. What should I do?',
@@ -178,18 +178,18 @@ const FAQ = () => {
     return (
         <MobileAppWrapper title="Frequently Asked Questions">
             <Head>
-                <title>Common Questions & Help Center | SUBG QUIZ</title>
-                <meta name="description" content="Find answers to common questions about SUBG QUIZ's 10-level government exam preparation system, monthly rewards, and subscription plans." />
+                <title>Common Questions & Help Center | AajExam</title>
+                <meta name="description" content="Find answers to common questions about AajExam's 10-level government exam preparation system, monthly rewards, and subscription plans." />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="FAQ - Help Center | SUBG QUIZ" />
+                <meta property="og:title" content="FAQ - Help Center | AajExam" />
                 <meta property="og:description" content="Have questions about preparing for SSC, UPSC, or Banking exams? Check our frequently asked questions." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="FAQ - SUBG QUIZ" />
-                <meta name="twitter:description" content="Frequently asked questions about government exam preparation on SUBG QUIZ platform." />
-                <meta name="twitter:image" content="https://subgquiz.com/logo.png" />
+                <meta name="twitter:title" content="FAQ - AajExam" />
+                <meta name="twitter:description" content="Frequently asked questions about government exam preparation on AajExam platform." />
+                <meta name="twitter:image" content="https://aajexam.com/logo.png" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqs.flatMap(cat => cat.questions.map(q => ({ question: q.q, answer: q.a }))))) }}
@@ -211,7 +211,7 @@ const FAQ = () => {
                             Frequently Asked Questions
                         </h1>
                         <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Find answers to common questions about SUBG QUIZ platform, subscriptions, and exam preparation
+                            Find answers to common questions about AajExam platform, subscriptions, and exam preparation
                         </p>
                     </div>
 

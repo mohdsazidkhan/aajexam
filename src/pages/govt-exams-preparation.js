@@ -24,8 +24,8 @@ export default function GovtExamsPreparation({ initialData }) {
     return (
         <MobileAppWrapper title="Govt Exams Preparation">
             <Head>
-                <title>Govt Exams Preparation Guide - SUBG QUIZ</title>
-                <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at SUBG QUIZ." />
+                <title>Govt Exams Preparation Guide - AajExam</title>
+                <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
             </Head>
 
             <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-12 px-4 lg:px-10">
@@ -121,7 +121,7 @@ export default function GovtExamsPreparation({ initialData }) {
 
                     <div className="mt-20 bg-indigo-600 rounded-3xl p-10 lg:p-16 text-white text-center">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Ace Your Exam?</h2>
-                        <p className="text-lg opacity-90 mb-10 max-w-xl mx-auto">Join thousands of students who are already using SUBG QUIZ to improve their scores and time management.</p>
+                        <p className="text-lg opacity-90 mb-10 max-w-xl mx-auto">Join thousands of students who are already using AajExam to improve their scores and time management.</p>
                         <button
                             onClick={() => router.push('/quizzes')}
                             className="bg-white text-indigo-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform"

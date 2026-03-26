@@ -3,11 +3,11 @@ import Article from '../models/Article';
 import Level from '../models/Level';
 import Exam from '../models/Exam';
 
-let EXTERNAL_DATA_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://subgquiz.com';
+let EXTERNAL_DATA_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
 // Prevent localhost URLs from appearing in the sitemap unconditionally
 if (EXTERNAL_DATA_URL.includes('localhost') || EXTERNAL_DATA_URL.includes('127.0.0.1')) {
-    EXTERNAL_DATA_URL = 'https://subgquiz.com';
+    EXTERNAL_DATA_URL = 'https://aajexam.com';
 }
 
 function generateSiteMap({

@@ -210,7 +210,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
   return (
     <>
       <Head>
-        <title>{seo?.title || `${patternTitle} - Practice Tests | SUBG QUIZ`}</title>
+        <title>{seo?.title || `${patternTitle} - Practice Tests | AajExam`}</title>
         {seo?.description && <meta name="description" content={seo.description} />}
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
         <meta property="og:type" content="website" />
@@ -453,7 +453,7 @@ export async function getServerSideProps({ params, query }) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
     
     const seo = {
-      title: `${patternTitle} - Practice Tests | SUBG QUIZ`,
+      title: `${patternTitle} - Practice Tests | AajExam`,
       description,
       keywords: Array.from(keywordSet).join(', '),
       image: '/logo.png',
@@ -474,8 +474,8 @@ export async function getServerSideProps({ params, query }) {
 
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
     const fallbackSeo = {
-      title: 'Practice Tests | SUBG QUIZ',
-      description: 'Practice government exam patterns with realistic mock tests on SUBG QUIZ.',
+      title: 'Practice Tests | AajExam',
+      description: 'Practice government exam patterns with realistic mock tests on AajExam.',
       keywords: 'practice test, mock test, government exam',
       image: '/logo.png',
       url: baseUrl ? `${baseUrl}/govt-exams/pattern/${patternId}/tests` : undefined

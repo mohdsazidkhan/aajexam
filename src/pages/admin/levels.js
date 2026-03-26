@@ -5,7 +5,7 @@ export default function Levels() {
   return (
     <>
       <Head>
-        <title>Admin Levels - SUBG QUIZ</title>
+        <title>Admin Levels - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <LevelsPage />

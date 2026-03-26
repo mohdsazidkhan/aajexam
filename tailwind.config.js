@@ -48,8 +48,8 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'subg-light': 'linear-gradient(45deg, #eff6ff, #faf5ff)',
-        'subg-dark': 'linear-gradient(45deg, #1e293b, #1f2937)',
+        'aajexam-light': 'linear-gradient(45deg, #eff6ff, #faf5ff)',
+        'aajexam-dark': 'linear-gradient(45deg, #1e293b, #1f2937)',
       },
       boxShadow: {
         '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',

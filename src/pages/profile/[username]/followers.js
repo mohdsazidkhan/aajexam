@@ -15,15 +15,15 @@ export default function FollowersListPage() {
   return (
     <>
       <Head>
-        <title>Followers - SUBG QUIZ Platform</title>
-        <meta name="description" content="View user's followers on SUBG QUIZ. See who follows this user and explore their profiles." />
-        <meta name="keywords" content="followers, user followers, follower list, SUBG QUIZ followers" />
-        <meta property="og:title" content="Followers - SUBG QUIZ Platform" />
-        <meta property="og:description" content="View user's followers on SUBG QUIZ Platform." />
+        <title>Followers - AajExam Platform</title>
+        <meta name="description" content="View user's followers on AajExam. See who follows this user and explore their profiles." />
+        <meta name="keywords" content="followers, user followers, follower list, AajExam followers" />
+        <meta property="og:title" content="Followers - AajExam Platform" />
+        <meta property="og:description" content="View user's followers on AajExam Platform." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Followers - SUBG QUIZ" />
-        <meta name="twitter:description" content="View follower list on SUBG QUIZ Platform." />
+        <meta name="twitter:title" content="Followers - AajExam" />
+        <meta name="twitter:description" content="View follower list on AajExam Platform." />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
         <FollowersList username={username} />

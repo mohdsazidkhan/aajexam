@@ -11,7 +11,7 @@ export default function UserDetailsPageRoute() {
   return (
     <>
       <Head>
-        <title>User Details - SUBG QUIZ Admin</title>
+        <title>User Details - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

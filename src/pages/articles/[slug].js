@@ -80,7 +80,7 @@ export async function getStaticProps({ params }) {
 
     const fallbackSiteUrl = 'https://subgquiz.com';
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || fallbackSiteUrl;
-    const titleBase = 'SUBG QUIZ Platform';
+    const titleBase = 'AajExam Platform';
     const title = `${article?.metaTitle || article?.title || 'Article'} - ${titleBase}`;
     const rawDesc = article?.metaDescription || article?.excerpt || stripHtml(article?.content);
     const description = (rawDesc || '').slice(0, 160);

@@ -339,7 +339,7 @@ const LandingPage = () => {
   }
 
   return (
-    <MobileAppWrapper title="SUBG QUIZ" showHeader={false}>
+    <MobileAppWrapper title="AajExam" showHeader={false}>
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark text-gray-900 dark:text-white transition-colors duration-300 pt-12 sm:pt-0">
         {/* Unified Header */}
         <UnifiedNavbar isLandingPage={true} scrollToSection={scrollToSection} />
@@ -664,7 +664,7 @@ const LandingPage = () => {
                   🎉 Invite Friends & Earn Rewards! 🎉
                 </h2>
                 <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
-                  Invite your friends to SUBGQUIZ and earn wallet rewards.
+                  Invite your friends to AajExam and earn wallet rewards.
                 </p>
               </div>
 
@@ -803,7 +803,7 @@ const LandingPage = () => {
                       </div>
 
                       <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-extrabold mb-4 text-black dark:text-white">
-                        Download SUBG QUIZ App
+                        Download AajExam App
                       </h2>
 
                       <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
@@ -864,7 +864,7 @@ const LandingPage = () => {
                               </div>
 
                               {/* App Name */}
-                              <h3 className="text-2xl font-bold mb-2">SUBG QUIZ</h3>
+                              <h3 className="text-2xl font-bold mb-2">AajExam</h3>
                               <p className="text-sm opacity-90 mb-8 text-center">Learn & Play Quiz</p>
 
                               {/* Features Icons */}
@@ -1725,7 +1725,7 @@ const LandingPage = () => {
             <div className="text-center mb-4 md:mb-8 lg:mb-16">
               <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-600 dark:text-white">
-                  Why Choose SUBG QUIZ?
+                  Why Choose AajExam?
                 </span>
               </h2>
               <p className="text-md md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -2204,6 +2204,7 @@ const levelsInfo = [
 ];
 
 export default LandingPage;
+
 
 
 

@@ -36,7 +36,7 @@ const AboutUs = () => {
               <FaTrophy className="text-white text-3xl" />
             </div>
             <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-yellow-600 via-red-600 to-yellow-700 bg-clip-text text-transparent mb-4">
-              About SUBG QUIZ
+              About AajExam
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               India's Premier Government Exam Preparation Platform - Where Knowledge Meets Success
@@ -56,7 +56,7 @@ const AboutUs = () => {
 
             <div className="space-y-6 text-gray-700 dark:text-gray-300">
               <p className="text-md lg:text-lg leading-relaxed">
-                <strong>SUBG QUIZ</strong> is India's most comprehensive government exam preparation platform, dedicated to empowering millions of aspirants preparing for competitive examinations. Founded with the vision of democratizing quality education, we provide accessible, affordable, and effective learning resources for students across the country.
+                <strong>AajExam</strong> is India's most comprehensive government exam preparation platform, dedicated to empowering millions of aspirants preparing for competitive examinations. Founded with the vision of democratizing quality education, we provide accessible, affordable, and effective learning resources for students across the country.
               </p>
 
               <p className="text-md lg:text-lg leading-relaxed">
@@ -68,7 +68,7 @@ const AboutUs = () => {
               </p>
 
               <p className="text-md lg:text-lg leading-relaxed">
-                What sets SUBG QUIZ apart is our commitment to <strong>skill-based learning</strong> and <strong>merit recognition</strong>. Unlike traditional learning platforms, we combine rigorous academic preparation with a comprehensive performance-based recognition system. Our Daily, Weekly, and Monthly programs identify top performers who demonstrate exceptional dedication and knowledge.
+                What sets AajExam apart is our commitment to <strong>skill-based learning</strong> and <strong>merit recognition</strong>. Unlike traditional learning platforms, we combine rigorous academic preparation with a comprehensive performance-based recognition system. Our Daily, Weekly, and Monthly programs identify top performers who demonstrate exceptional dedication and knowledge.
               </p>
             </div>
           </div>
@@ -190,7 +190,7 @@ const AboutUs = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Our Commitment to Excellence</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  SUBG QUIZ operates on a foundation of <strong>100% skill-based learning</strong> with no element of chance or gambling. Every achievement on our platform is earned through genuine knowledge, hard work, and consistent performance. We are committed to maintaining the highest standards of educational integrity and fairness.
+                  AajExam operates on a foundation of <strong>100% skill-based learning</strong> with no element of chance or gambling. Every achievement on our platform is earned through genuine knowledge, hard work, and consistent performance. We are committed to maintaining the highest standards of educational integrity and fairness.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
                   As a <strong>UDYAM registered enterprise</strong> led by <strong>Mohd Sazid Khan</strong>, we operate with complete transparency and accountability. Our platform complies with all applicable educational technology regulations and data protection laws, ensuring your personal information and learning data remain secure and confidential.
@@ -201,7 +201,7 @@ const AboutUs = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Why Students Choose SUBG QUIZ</h3>
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Why Students Choose AajExam</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-3">
                     <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -251,7 +251,7 @@ const AboutUs = () => {
                 Ready to Start Your Exam Preparation Journey?
               </h2>
               <p className="text-md lg:text-xl mb-2 lg:mb-6 opacity-90 text-gray-800 dark:text-white">
-                Join thousands of successful aspirants who achieved their government job dreams with SUBG QUIZ
+                Join thousands of successful aspirants who achieved their government job dreams with AajExam
               </p>
               <button
                 onClick={() => router.push('/')}

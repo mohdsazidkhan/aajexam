@@ -13,7 +13,7 @@ export default function ArticleTag({ tagName, seo }) {
 		<>
 			<Head>
 				<meta name="robots" content="noindex, follow" />
-				<title>{seo?.title || 'Tagged Articles - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Tagged Articles - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -43,12 +43,12 @@ export async function getStaticProps({ params }) {
 	const { tagName } = params || {};
 	
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const humanTag = decodeURIComponent(tagName || '').replace(/-/g, ' ');
 	const title = `${humanTag ? `Articles tagged "${humanTag}"` : 'Tagged Articles'} - ${titleBase}`;
 	const description = humanTag
-		? `Explore articles tagged with ${humanTag} on SUBG QUIZ. Learn with curated resources and insights.`
-		: 'Browse articles by tag on SUBG QUIZ.';
+		? `Explore articles tagged with ${humanTag} on AajExam. Learn with curated resources and insights.`
+		: 'Browse articles by tag on AajExam.';
 	const keywords = humanTag ? `${humanTag}, articles, tags, learning` : 'articles, tags, learning';
 	const image = '/logo.png';
 	const url = baseUrl ? `${baseUrl}/articles/tag/${encodeURIComponent(tagName)}` : undefined;

@@ -230,14 +230,14 @@ const TestResult = () => {
   return (
     <>
       <Head>
-        <title>{testTitle} - Test Results | SUBG QUIZ</title>
+        <title>{testTitle} - Test Results | AajExam</title>
         <meta name="description" content={`Test Results: ${testTitle}. Score: ${scoreValue}, Accuracy: ${accuracyValue.toFixed(1)}%, Rank: #${rankValue}, Percentile: ${percentileValue.toFixed(1)}. ${correctCount} correct, ${wrongCount} wrong out of ${totalQuestions} questions.`} />
         <meta name="keywords" content={`${testTitle}, test results, exam results, practice test results, score, accuracy, rank, percentile`} />
-        <meta property="og:title" content={`${testTitle} - Test Results | SUBG QUIZ`} />
+        <meta property="og:title" content={`${testTitle} - Test Results | AajExam`} />
         <meta property="og:description" content={`Test Results: Score ${scoreValue}, Accuracy ${accuracyValue.toFixed(1)}%, Rank #${rankValue}, Percentile ${percentileValue.toFixed(1)}.`} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`${testTitle} - Test Results | SUBG QUIZ`} />
+        <meta name="twitter:title" content={`${testTitle} - Test Results | AajExam`} />
         <meta name="twitter:description" content={`Test Results: Score ${scoreValue}, Accuracy ${accuracyValue.toFixed(1)}%, Rank #${rankValue}.`} />
         <meta name="robots" content="noindex, nofollow" />
       </Head>

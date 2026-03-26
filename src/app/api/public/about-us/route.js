@@ -17,7 +17,7 @@ export async function GET() {
         return NextResponse.json({
             success: true,
             data: {
-                title: 'About Subg Quiz',
+                title: 'About AajExam',
                 purpose: content.platformPurpose,
                 audience: content.targetAudience,
                 benefits: content.educationalBenefits,
@@ -30,3 +30,4 @@ export async function GET() {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
+

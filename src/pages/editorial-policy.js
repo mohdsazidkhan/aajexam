@@ -18,13 +18,13 @@ export default function EditorialPolicy() {
     return (
         <MobileAppWrapper title="Editorial Policy">
             <Head>
-                <title>Editorial Policy - Content Quality Standards | SUBG QUIZ</title>
-                <meta name="description" content="Learn about SUBG QUIZ's editorial policy, content creation standards, quality assurance processes, and commitment to accurate, high-quality government exam preparation materials for SSC, UPSC, Banking, and Railway exams." />
-                <meta name="keywords" content="editorial policy, content quality, exam preparation standards, educational integrity, SUBG QUIZ standards" />
+                <title>Editorial Policy - Content Quality Standards | AajExam</title>
+                <meta name="description" content="Learn about AajExam's editorial policy, content creation standards, quality assurance processes, and commitment to accurate, high-quality government exam preparation materials for SSC, UPSC, Banking, and Railway exams." />
+                <meta name="keywords" content="editorial policy, content quality, exam preparation standards, educational integrity, AajExam standards" />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="Editorial Policy - SUBG QUIZ" />
+                <meta property="og:title" content="Editorial Policy - AajExam" />
                 <meta property="og:description" content="Our commitment to delivering accurate, high-quality government exam preparation content through rigorous editorial standards." />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <meta name="robots" content="index, follow" />
                 <script
                     type="application/ld+json"
@@ -54,7 +54,7 @@ export default function EditorialPolicy() {
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Our Mission</h2>
                         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            SUBG QUIZ is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
+                            AajExam is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
                         </p>
                         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                             We understand that our users trust us with their exam preparation, and we take this responsibility seriously. Our editorial team works diligently to ensure that all content is factually correct, up-to-date with current exam patterns, and aligned with official syllabus of SSC, UPSC, Banking, Railway, and other government examinations.
@@ -205,7 +205,7 @@ export default function EditorialPolicy() {
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
-                                SUBG QUIZ is committed to maintaining the highest ethical standards in educational content creation:
+                                AajExam is committed to maintaining the highest ethical standards in educational content creation:
                             </p>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">

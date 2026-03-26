@@ -77,7 +77,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             >
               <img
                 src="/logo.png"
-                alt="SUBG QUIZ Admin Logo"
+                alt="AajExam Admin Logo"
                 className="w-12 h-12 object-contain"
               />
             </Link>

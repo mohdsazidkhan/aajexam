@@ -11,15 +11,15 @@ export default function Search() {
   return (
     <>
       <Head>
-        <title>Search - SUBG QUIZ</title>
-        <meta name="description" content="Search for quizzes, questions, articles, users, and categories on SUBG QUIZ. Find the content you're looking for and discover new knowledge areas." />
+        <title>Search - AajExam</title>
+        <meta name="description" content="Search for quizzes, questions, articles, users, and categories on AajExam. Find the content you're looking for and discover new knowledge areas." />
         <meta name="keywords" content="search, find quizzes, search questions, search users, search articles, quiz search" />
-        <meta property="og:title" content="Search - SUBG QUIZ Platform" />
-        <meta property="og:description" content="Search for quizzes, questions, and more on SUBG QUIZ." />
+        <meta property="og:title" content="Search - AajExam Platform" />
+        <meta property="og:description" content="Search for quizzes, questions, and more on AajExam." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Search - SUBG QUIZ" />
-        <meta name="twitter:description" content="Search for content on SUBG QUIZ Platform." />
+        <meta name="twitter:title" content="Search - AajExam" />
+        <meta name="twitter:description" content="Search for content on AajExam Platform." />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
         <SearchPage />

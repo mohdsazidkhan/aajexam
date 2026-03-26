@@ -19,7 +19,7 @@ export default function Custom404() {
   return (
     <>
       <Head>
-        <title>404 - Page Not Found | SUBG QUIZ</title>
+        <title>404 - Page Not Found | AajExam</title>
         <meta name="description" content="The page you're looking for doesn't exist" />
         <meta name="robots" content="noindex,nofollow" />
       </Head>

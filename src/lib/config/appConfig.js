@@ -9,10 +9,10 @@ const config = {
   BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000',
 
   // Application Configuration
-  APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'SUBG QUIZ',
+  APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'AajExam',
   APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0',
   APP_DESCRIPTION: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Quiz Platform',
-  APP_AUTHOR: process.env.NEXT_PUBLIC_APP_AUTHOR || 'SUBG QUIZ TEAM',
+  APP_AUTHOR: process.env.NEXT_PUBLIC_APP_AUTHOR || 'AajExam TEAM',
   APP_DEVELOPER_URL: process.env.NEXT_PUBLIC_DEVELOPER_URL || 'https://mohdsazidkhan.com',
 
   // Security Configuration
@@ -29,8 +29,8 @@ const config = {
   PAYU_MERCHANT_KEY: process.env.NEXT_PUBLIC_PAYU_MERCHANT_KEY || 'your_payu_merchant_key',
   PAYU_MERCHANT_ID: process.env.NEXT_PUBLIC_PAYU_MERCHANT_ID || 'your_payu_merchant_id',
   PAYU_PAYMENT_URL: process.env.NEXT_PUBLIC_PAYU_PAYMENT_URL || 'https://test.payu.in/_payment',
-  PAYU_SUCCESS_URL: process.env.NEXT_PUBLIC_PAYU_SUCCESS_URL || `${process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000')}/subscription/payu-success`,
-  PAYU_FAILURE_URL: process.env.NEXT_PUBLIC_PAYU_FAILURE_URL || `${process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000')}/subscription/payu-failure`,
+  PAYU_SUCCESS_URL: process.env.NEXT_PUBLIC_PAYU_SUCCESS_URL || `${process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000')}/subscription/payu-success`,
+  PAYU_FAILURE_URL: process.env.NEXT_PUBLIC_PAYU_FAILURE_URL || `${process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000')}/subscription/payu-failure`,
 
   // Subscription Plans
   SUBSCRIPTION_PLANS: {
@@ -118,7 +118,7 @@ const config = {
     EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@mohdsazidkhan.com',
     PHONE: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91-7678131912',
     ADDRESS: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || 'Delhi, India',
-    WEBSITE: process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://subgquiz.com'
+    WEBSITE: process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://aajexam.com'
   },
 
   // Legal Information
@@ -205,3 +205,4 @@ export const getLegalLinks = () => {
 };
 
 export default config;
+

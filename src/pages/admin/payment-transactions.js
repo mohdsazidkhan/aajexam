@@ -11,7 +11,7 @@ export default function PaymentTransactions() {
   return (
     <>
       <Head>
-        <title>Admin Payment Transactions - SUBG QUIZ</title>
+        <title>Admin Payment Transactions - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

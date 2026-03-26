@@ -3,7 +3,7 @@
  * Helper functions for canonical URLs and meta tags
  */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://subgquiz.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
 /**
  * Generate canonical URL for current page
@@ -46,7 +46,7 @@ export const truncateText = (text, maxLength = 160) => {
  * @returns {string} Optimized description (150-160 chars)
  */
 export const optimizeMetaDescription = (description) => {
-    if (!description) return 'Practice government exam preparation with SUBG Quiz - SSC, UPSC, Banking, Railway exams with 2000+ quizzes and performance analytics.';
+    if (!description) return 'Practice government exam preparation with AajExam - SSC, UPSC, Banking, Railway exams with 2000+ quizzes and performance analytics.';
     return truncateText(description, 160);
 };
 

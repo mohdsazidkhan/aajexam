@@ -92,7 +92,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
   return (
     <>
       <Head>
-        <title>{seo?.title || `${categoryName} - Government Exams | SUBG QUIZ`}</title>
+        <title>{seo?.title || `${categoryName} - Government Exams | AajExam`}</title>
         {seo?.description && <meta name="description" content={seo.description} />}
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
         <meta property="og:type" content="website" />
@@ -294,7 +294,7 @@ export async function getServerSideProps({ params }) {
     const keywords = Array.from(new Set(baseKeywords)).join(', ');
 
     const seo = {
-      title: `${categoryName} - Government Exams | SUBG QUIZ`,
+      title: `${categoryName} - Government Exams | AajExam`,
       description,
       keywords,
       image: '/logo.png',
@@ -313,8 +313,8 @@ export async function getServerSideProps({ params }) {
     console.error('Failed to pre-render govt exam category:', error);
 
     const fallbackSeo = {
-      title: 'Government Exams - SUBG QUIZ Platform',
-      description: 'Explore government exam categories and practice with mock tests on SUBG QUIZ.',
+      title: 'Government Exams - AajExam Platform',
+      description: 'Explore government exam categories and practice with mock tests on AajExam.',
       keywords: 'government exams, mock test, practice test',
       image: '/logo.png',
       url: baseUrl ? `${baseUrl}/govt-exams/category/${categoryId}` : undefined

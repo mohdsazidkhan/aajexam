@@ -29,7 +29,7 @@ const TermsAndConditions = () => {
         />
       </Head>
 
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
 
           {/* Hero Section */}
@@ -41,7 +41,7 @@ const TermsAndConditions = () => {
               Terms & Conditions
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Legal Terms Governing Your Use of SUBG QUIZ Platform
+              Legal Terms Governing Your Use of AajExam Platform
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
               Last Updated: February 12, 2026
@@ -62,13 +62,13 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  Welcome to <strong>SUBG QUIZ</strong>, India's premier government exam preparation platform. These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and SUBG QUIZ (operated by Mohd Sazid Khan, UDYAM registered enterprise) governing your access to and use of our platform, services, and educational content.
+                  Welcome to <strong>AajExam</strong>, India's premier government exam preparation platform. These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and AajExam (operated by Mohd Sazid Khan, UDYAM registered enterprise) governing your access to and use of our platform, services, and educational content.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
                   By creating an account, accessing our website, or using any of our services, you acknowledge that you have read, understood, and agree to be bound by these Terms, our Privacy Policy, and all applicable laws and regulations. If you do not agree with any part of these Terms, you must immediately discontinue use of our platform.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
-                  SUBG QUIZ is a <strong>100% skill-based educational platform</strong> designed to help students prepare for government competitive examinations including SSC, UPSC, Banking, Railway, and state-level exams. Our platform does not involve gambling, games of chance, or any activities prohibited under Indian law. All achievements and recognition are based solely on knowledge, accuracy, and consistent performance.
+                  AajExam is a <strong>100% skill-based educational platform</strong> designed to help students prepare for government competitive examinations including SSC, UPSC, Banking, Railway, and state-level exams. Our platform does not involve gambling, games of chance, or any activities prohibited under Indian law. All achievements and recognition are based solely on knowledge, accuracy, and consistent performance.
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  <strong>Age Requirement:</strong> You must be at least <strong>14 years of age</strong> to register and use SUBG QUIZ. Users between 14-18 years should have parental or guardian consent. By registering, you represent and warrant that you meet this age requirement.
+                  <strong>Age Requirement:</strong> You must be at least <strong>14 years of age</strong> to register and use AajExam. Users between 14-18 years should have parental or guardian consent. By registering, you represent and warrant that you meet this age requirement.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
                   <strong>Account Accuracy:</strong> You agree to provide accurate, current, and complete information during registration and to update such information to maintain its accuracy. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
@@ -111,7 +111,7 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  SUBG QUIZ offers two subscription tiers, each providing access to different levels of our progression system:
+                  AajExam offers two subscription tiers, each providing access to different levels of our progression system:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
                   <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
@@ -264,7 +264,7 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  All content on SUBG QUIZ, including but not limited to quiz questions, educational materials, text, graphics, logos, icons, images, audio clips, digital downloads, and software, is the exclusive property of SUBG QUIZ or its content suppliers and is protected by Indian and international copyright laws.
+                  All content on AajExam, including but not limited to quiz questions, educational materials, text, graphics, logos, icons, images, audio clips, digital downloads, and software, is the exclusive property of AajExam or its content suppliers and is protected by Indian and international copyright laws.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
                   You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any material from our platform except as permitted for personal, non-commercial use.
@@ -284,7 +284,7 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  SUBG QUIZ is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee that our platform will be uninterrupted, secure, or error-free.
+                  AajExam is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee that our platform will be uninterrupted, secure, or error-free.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
                   We are not liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use our platform, including but not limited to loss of data, loss of profits, or exam performance outcomes.
@@ -306,7 +306,7 @@ const TermsAndConditions = () => {
                     8. Modifications to Terms & Services
                   </h3>
                   <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300">
-                    We reserve the right to modify these Terms, our services, quiz content, subscription pricing, recognition program structure, or any other aspect of our platform at any time without prior notice. Material changes will be communicated through email or platform notifications. Your continued use of SUBG QUIZ after such modifications constitutes acceptance of the updated Terms.
+                    We reserve the right to modify these Terms, our services, quiz content, subscription pricing, recognition program structure, or any other aspect of our platform at any time without prior notice. Material changes will be communicated through email or platform notifications. Your continued use of AajExam after such modifications constitutes acceptance of the updated Terms.
                   </p>
                 </div>
               </div>
@@ -324,7 +324,7 @@ const TermsAndConditions = () => {
               </div>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p className="text-md lg:text-lg leading-relaxed">
-                  These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these Terms or your use of SUBG QUIZ shall be subject to the exclusive jurisdiction of courts in [Your City/State], India.
+                  These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these Terms or your use of AajExam shall be subject to the exclusive jurisdiction of courts in [Your City/State], India.
                 </p>
                 <p className="text-md lg:text-lg leading-relaxed">
                   We encourage users to contact our support team first to resolve any concerns amicably before pursuing legal action.

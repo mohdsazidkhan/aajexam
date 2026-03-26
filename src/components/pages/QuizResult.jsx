@@ -362,15 +362,15 @@ const QuizResult = () => {
   return (
     <>
       <Head>
-        <title>Quiz Result - SUBG QUIZ Your Performance</title>
-        <meta name="description" content="View your SUBG QUIZ results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
-        <meta name="keywords" content="quiz result, SUBG QUIZ result, quiz performance, quiz score, quiz analysis" />
-        <meta property="og:title" content="Quiz Result - SUBG QUIZ Your Performance" />
-        <meta property="og:description" content="View your SUBG QUIZ results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
+        <title>Quiz Result - AajExam Your Performance</title>
+        <meta name="description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
+        <meta name="keywords" content="quiz result, AajExam result, quiz performance, quiz score, quiz analysis" />
+        <meta property="og:title" content="Quiz Result - AajExam Your Performance" />
+        <meta property="og:description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Quiz Result - SUBG QUIZ Your Performance" />
-        <meta name="twitter:description" content="View your SUBG QUIZ results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
+        <meta name="twitter:title" content="Quiz Result - AajExam Your Performance" />
+        <meta name="twitter:description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
       </Head>
       <>
         <div className="min-h-screen bg-subg-light dark:bg-subg-dark">

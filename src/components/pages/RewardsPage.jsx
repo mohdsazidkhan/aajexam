@@ -35,15 +35,15 @@ const RewardsPage = () => {
   return (
     <>
       <Head>
-        <title>Rewards Dashboard - SUBG QUIZ Earn & Track Rewards</title>
-        <meta name="description" content="View your SUBG QUIZ rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
-        <meta name="keywords" content="SUBG QUIZ rewards, quiz rewards, daily rewards, weekly rewards, monthly rewards, rewards dashboard, quiz earnings" />
-        <meta property="og:title" content="Rewards Dashboard - SUBG QUIZ Earn & Track Rewards" />
-        <meta property="og:description" content="View your SUBG QUIZ rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
+        <title>Rewards Dashboard - AajExam Earn & Track Rewards</title>
+        <meta name="description" content="View your AajExam rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
+        <meta name="keywords" content="AajExam rewards, quiz rewards, daily rewards, weekly rewards, monthly rewards, rewards dashboard, quiz earnings" />
+        <meta property="og:title" content="Rewards Dashboard - AajExam Earn & Track Rewards" />
+        <meta property="og:description" content="View your AajExam rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Rewards Dashboard - SUBG QUIZ Earn & Track Rewards" />
-        <meta name="twitter:description" content="View your SUBG QUIZ rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
+        <meta name="twitter:title" content="Rewards Dashboard - AajExam Earn & Track Rewards" />
+        <meta name="twitter:description" content="View your AajExam rewards dashboard. Track your earnings, daily, weekly, and monthly rewards, and achievements. See your progress towards all prize eligibility." />
       </Head>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">

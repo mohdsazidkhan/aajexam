@@ -65,15 +65,15 @@ export default function FollowingListPage() {
     <>
       <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <Head>
-          <title>Following - @{username} - SUBG QUIZ Platform</title>
-          <meta name="description" content={`View who @${username} is following on SUBG QUIZ. Explore the profiles they follow and discover new users.`} />
-          <meta name="keywords" content={`${username}, following, user following, following list, SUBG QUIZ following`} />
-          <meta property="og:title" content={`Following - @${username} - SUBG QUIZ Platform`} />
-          <meta property="og:description" content={`View who @${username} is following on SUBG QUIZ Platform.`} />
+          <title>Following - @{username} - AajExam Platform</title>
+          <meta name="description" content={`View who @${username} is following on AajExam. Explore the profiles they follow and discover new users.`} />
+          <meta name="keywords" content={`${username}, following, user following, following list, AajExam following`} />
+          <meta property="og:title" content={`Following - @${username} - AajExam Platform`} />
+          <meta property="og:description" content={`View who @${username} is following on AajExam Platform.`} />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={`Following - @${username}`} />
-          <meta name="twitter:description" content={`View @${username}'s following list on SUBG QUIZ.`} />
+          <meta name="twitter:description" content={`View @${username}'s following list on AajExam.`} />
         </Head>
 
         {/* Content */}

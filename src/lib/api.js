@@ -1387,7 +1387,7 @@ class ApiService {
   }
 
   // ===== GOVT EXAMS =====
-  // Preserving custom routes for subg-quiz backend alignment
+  // Preserving custom routes for aajexam backend alignment
   async getAdminExams(params = {}) {
     const queryString = this.buildQuery(params);
     return this.request(`/api/real-exams/admin/exams${queryString ? `?${queryString}` : ''}`);
@@ -1599,3 +1599,4 @@ class ApiService {
 
 const API = new ApiService();
 export default API;
+

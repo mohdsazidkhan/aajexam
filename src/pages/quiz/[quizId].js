@@ -34,10 +34,10 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
     return (
         <>
             <Head>
-                <title>{quiz.title} - Quiz Preview | SUBG QUIZ</title>
+                <title>{quiz.title} - Quiz Preview | AajExam</title>
                 <meta name="description" content={quiz.description || `Practice quiz: ${quiz.title}`} />
                 <meta name="keywords" content={`${quiz.title}, quiz, practice test, ${quiz.category?.name || 'government exam'}`} />
-                <meta property="og:title" content={`${quiz.title} - Quiz Preview | SUBG QUIZ`} />
+                <meta property="og:title" content={`${quiz.title} - Quiz Preview | AajExam`} />
                 <meta property="og:description" content={quiz.description} />
                 <meta property="og:type" content="website" />
                 <meta name="robots" content={robotsMeta || 'index, follow'} />

@@ -507,7 +507,7 @@ const ExamHistoryPage = () => {
     return (
       <>
         <Seo
-          title="Exam History - SUBG QUIZ"
+          title="Exam History - AajExam"
           description="View your complete exam attempt history, track your performance over time, and review past exam attempts with detailed scores and statistics."
           noIndex={true}
         />
@@ -524,7 +524,7 @@ const ExamHistoryPage = () => {
   return (
     <>
       <Seo
-        title="Exam History - SUBG QUIZ"
+        title="Exam History - AajExam"
         description="View your complete exam attempt history, track your performance over time, and review past exam attempts with detailed scores and statistics."
         noIndex={true}
       />

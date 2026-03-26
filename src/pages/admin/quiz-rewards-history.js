@@ -5,7 +5,7 @@ export default function QuizRewardsHistoryPage() {
     return (
         <>
             <Head>
-                <title>Quiz Rewards History - SUBG QUIZ Admin</title>
+                <title>Quiz Rewards History - AajExam Admin</title>
                 <meta name="robots" content="noindex,nofollow" />
             </Head>
             <AdminQuizRewardsHistory />

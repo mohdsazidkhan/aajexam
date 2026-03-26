@@ -11,7 +11,7 @@ export default function ReferralHistoryPage() {
   return (
     <>
       <Head>
-        <title>Referral History - SUBG QUIZ Admin</title>
+        <title>Referral History - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

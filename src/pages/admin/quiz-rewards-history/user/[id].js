@@ -15,7 +15,7 @@ export default function UserQuizRewardsHistoryPage() {
     return (
         <>
             <Head>
-                <title>User Quiz Rewards History - SUBG QUIZ Admin</title>
+                <title>User Quiz Rewards History - AajExam Admin</title>
                 <meta name="robots" content="noindex,nofollow" />
             </Head>
             <Suspense fallback={<div>Loading...</div>}>

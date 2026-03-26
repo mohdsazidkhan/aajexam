@@ -11,7 +11,7 @@ export default function ReferralsPage() {
   return (
     <>
       <Head>
-        <title>Referral Dashboard - SUBG QUIZ Admin</title>
+        <title>Referral Dashboard - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

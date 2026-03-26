@@ -27,9 +27,10 @@ async function testApi(url) {
 
 async function runTests() {
     await testApi('http://localhost:3000/api/public/categories/detailed');
-    await testApi('https://subgquiz.com/api/public/categories/detailed');
+    await testApi('https://aajexam.com/api/public/categories/detailed');
     await testApi('http://localhost:3000/api/public/categories');
-    await testApi('https://subgquiz.com/api/public/categories');
+    await testApi('https://aajexam.com/api/public/categories');
 }
 
 runTests();
+

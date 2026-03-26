@@ -11,7 +11,7 @@ export default function AnalyticsDashboardPage() {
   return (
     <>
       <Head>
-        <title>Admin Analytics - SUBG QUIZ</title>
+        <title>Admin Analytics - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

@@ -11,7 +11,7 @@ export default function CategoriesPage() {
   return (
     <>
       <Head>
-        <title>Admin Categories - SUBG QUIZ</title>
+        <title>Admin Categories - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

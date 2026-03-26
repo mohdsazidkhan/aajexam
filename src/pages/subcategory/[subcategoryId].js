@@ -14,7 +14,7 @@ export default function Subcategory({ subcategory, seo }) {
 	return (
 		<>
 			<Head>
-				<title>{seo?.title || 'Subcategory Quizzes - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Subcategory Quizzes - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -59,10 +59,10 @@ export async function getStaticProps({ params }) {
 		// We still allow rendering but SEO will be generic
 	}
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const name = subcategory?.name || 'Subcategory';
 	const title = `${name} Quizzes - ${titleBase}`;
-	const description = subcategory?.description || `Explore quizzes in ${name} on SUBG QUIZ.`;
+	const description = subcategory?.description || `Explore quizzes in ${name} on AajExam.`;
 	const keywords = `${name}, quizzes, practice, learning`;
 	const image = '/logo.png';
 	const url = baseUrl ? `${baseUrl}/subcategory/${subcategoryId}` : undefined;

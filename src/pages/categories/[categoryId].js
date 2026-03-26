@@ -37,10 +37,10 @@ export default function CategoryDetailPage({ category, subcategories, quizzes, p
     return (
         <>
             <Head>
-                <title>{category.name} - Quiz Category | SUBG QUIZ</title>
+                <title>{category.name} - Quiz Category | AajExam</title>
                 <meta name="description" content={category.description || `Practice quizzes for ${category.name} - Government exam preparation`} />
                 <meta name="keywords" content={`${category.name}, government exam, quiz, practice test`} />
-                <meta property="og:title" content={`${category.name} - Quiz Category | SUBG QUIZ`} />
+                <meta property="og:title" content={`${category.name} - Quiz Category | AajExam`} />
                 <meta property="og:description" content={category.description} />
                 <meta property="og:type" content="website" />
                 <meta name="robots" content="index, follow" />

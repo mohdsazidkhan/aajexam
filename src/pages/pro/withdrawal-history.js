@@ -28,7 +28,7 @@ export default function WithdrawalHistoryPage() {
     return (
         <>
             <Head>
-                <title>Withdrawal History | SUBG QUIZ</title>
+                <title>Withdrawal History | AajExam</title>
                 <meta name="description" content="View and track your withdrawal requests history." />
             </Head>
             <UserWithdrawalHistory />

@@ -70,12 +70,12 @@ const ArticleCategoryPage = () => {
   const title = useMemo(() => category?.name ? `${category.name} Articles` : 'Category Articles', [category]);
 
   const seoTitle = category?.name ? `${category.name} Articles` : 'Category Articles';
-  const seoDescription = category?.description || `${category?.name || 'Category'} articles on SUBG QUIZ.`;
+  const seoDescription = category?.description || `${category?.name || 'Category'} articles on AajExam.`;
 
   return (
     <>
       <Head>
-        <title>{seoTitle} - SUBG QUIZ Platform</title>
+        <title>{seoTitle} - AajExam Platform</title>
         <meta name="description" content={seoDescription} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />

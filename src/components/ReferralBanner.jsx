@@ -11,14 +11,14 @@ const ReferralBanner = ({ user }) => {
 
   const message =
     "🔥 Share Your Referral Code & Earn Instant Wallet Money! 💰🔥\n\n" +
-    "Invite your friends to SUBGQUIZ and earn real wallet rewards you can withdraw anytime! 🚀\n\n" +
+    "Invite your friends to AajExam and earn real wallet rewards you can withdraw anytime! 🚀\n\n" +
     "Here's what you earn:\n\n" +
     `💰 ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the Pro ₹${config.SUBSCRIPTION_PLANS.PRO.price} subscription (first-time)\n\n` +
     `🎁 Your Referral Code: ${referralCode}\n\n` +
     "📲 Download the App:\n\n" +
     "https://play.google.com/store/apps/details?id=com.subgapp\n\n" +
     "🔗 Login / Register on Website:\n\n" +
-    "https://subgquiz.com/register";
+    "https://aajexam.com/register";
 
   const copyReferralCode = () => {
     if (referralCode) {
@@ -191,3 +191,4 @@ const ReferralBanner = ({ user }) => {
 };
 
 export default ReferralBanner;
+

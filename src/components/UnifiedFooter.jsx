@@ -46,7 +46,7 @@ const UnifiedFooter = ({ isLandingPage = false }) => {
             <div className="col-span-1 md:col-span-2 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start mb-6">
                 <div className="w-10 h-10 lg:w-16 lg:h-16 flex items-center justify-center">
-                  <img src="/logo.png" alt="SUBG QUIZ Logo" width="64" height="64" className="w-full h-full object-contain" />
+                  <img src="/logo.png" alt="AajExam Logo" width="64" height="64" className="w-full h-full object-contain" />
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto md:mx-0">

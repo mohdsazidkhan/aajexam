@@ -11,7 +11,7 @@ export default function AttemptQuiz({ quiz, seo }) {
 	return (
 		<>
 			<Head>
-				<title>{seo?.title || 'Attempt Quiz - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Attempt Quiz - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />

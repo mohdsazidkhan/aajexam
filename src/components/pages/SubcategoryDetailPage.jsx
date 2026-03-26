@@ -110,9 +110,9 @@ const SubcategoryDetailPage = () => {
   return (
     <>
       <Head>
-        <title>{subcategory ? `${subcategory.name} - SUBG QUIZ` : 'Subcategory - SUBG QUIZ'}</title>
-        <meta name="description" content={subcategory ? `Explore ${subcategory.name} quizzes on SUBG QUIZ. Test your knowledge and compete for prizes.` : 'Explore subcategory quizzes on SUBG QUIZ platform.'} />
-        <meta name="keywords" content={`${subcategory?.name || 'subcategory'} quiz, ${subcategory?.name || 'subcategory'} questions, SUBG QUIZ ${subcategory?.name || 'subcategory'}`} />
+        <title>{subcategory ? `${subcategory.name} - AajExam` : 'Subcategory - AajExam'}</title>
+        <meta name="description" content={subcategory ? `Explore ${subcategory.name} quizzes on AajExam. Test your knowledge and compete for prizes.` : 'Explore subcategory quizzes on AajExam platform.'} />
+        <meta name="keywords" content={`${subcategory?.name || 'subcategory'} quiz, ${subcategory?.name || 'subcategory'} questions, AajExam ${subcategory?.name || 'subcategory'}`} />
       </Head>
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
         {/* Hero Section with Subcategory Name and Description */}

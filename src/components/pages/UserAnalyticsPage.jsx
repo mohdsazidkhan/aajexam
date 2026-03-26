@@ -71,15 +71,15 @@ const MyAnalyticsPage = () => {
   return (
     <>
       <Head>
-        <title>My Analytics - SUBG QUIZ Platform</title>
-        <meta name="description" content="View your comprehensive analytics on SUBG QUIZ Platform. Track your earnings, expenses, performance metrics, and content creation statistics." />
+        <title>My Analytics - AajExam Platform</title>
+        <meta name="description" content="View your comprehensive analytics on AajExam Platform. Track your earnings, expenses, performance metrics, and content creation statistics." />
         <meta name="keywords" content="analytics, earnings, expenses, performance, statistics, quiz analytics" />
-        <meta property="og:title" content="My Analytics - SUBG QUIZ Platform" />
-        <meta property="og:description" content="View your comprehensive analytics on SUBG QUIZ Platform." />
+        <meta property="og:title" content="My Analytics - AajExam Platform" />
+        <meta property="og:description" content="View your comprehensive analytics on AajExam Platform." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="My Analytics - SUBG QUIZ" />
-        <meta name="twitter:description" content="View your comprehensive analytics on SUBG QUIZ Platform." />
+        <meta name="twitter:title" content="My Analytics - AajExam" />
+        <meta name="twitter:description" content="View your comprehensive analytics on AajExam Platform." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">

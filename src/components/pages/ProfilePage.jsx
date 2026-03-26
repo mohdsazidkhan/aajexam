@@ -644,14 +644,14 @@ const ProfilePage = () => {
 
   const message =
     "🔥 Share Your Referral Code & Earn Instant Wallet Money! 💰🔥\n\n" +
-    "Invite your friends to SUBGQUIZ and earn real wallet rewards you can withdraw anytime! 🚀\n\n" +
+    "Invite your friends to AajExam and earn real wallet rewards you can withdraw anytime! 🚀\n\n" +
     "Here's what you earn:\n\n" +
     `1️⃣ ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the Pro Plan (first-time)\n\n` +
     `🎁 Your Referral Code: ${student?.referralCode}\n\n` +
     "📲 Download the App:\n\n" +
     "https://play.google.com/store/apps/details?id=com.subgapp\n\n" +
     "🔗 Login / Register on Website:\n\n" +
-    "https://subgquiz.com/register";
+    "https://aajexam.com/register";
 
   if (error)
     return (
@@ -673,8 +673,8 @@ const ProfilePage = () => {
   return (
     <>
       <Seo
-        title="My Profile - SUBG QUIZ User Dashboard"
-        description="View your SUBG QUIZ profile, track your progress, manage your account settings, and see your quiz achievements and rewards."
+        title="My Profile - AajExam User Dashboard"
+        description="View your AajExam profile, track your progress, manage your account settings, and see your quiz achievements and rewards."
         noIndex={true}
       />
       <>
@@ -1589,7 +1589,7 @@ const ProfilePage = () => {
                       🎉 Invite Friends & Earn Rewards! 🎉
                     </h2>
                     <p className="text-center mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-yellow-200 font-medium max-w-2xl sm:max-w-3xl lg:p-4 px-4 sm:px-0">
-                      Invite your friends to SUBGQUIZ and earn wallet rewards.
+                      Invite your friends to AajExam and earn wallet rewards.
                     </p>
                   </div>
 
@@ -2614,3 +2614,4 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage;
+

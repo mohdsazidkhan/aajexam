@@ -24,7 +24,7 @@ const HowItWorks = () => {
               How It Works
             </h1>
             <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Your step-by-step guide to mastering SUBG QUIZ and earning rewards
+              Your step-by-step guide to mastering AajExam and earning rewards
             </p>
           </div>
 
@@ -44,7 +44,7 @@ const HowItWorks = () => {
                     </h2>
                   </div>
                   <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Sign up using your mobile number or email to create your SUBG QUIZ account. It's quick, easy, and free to get started!
+                    Sign up using your mobile number or email to create your AajExam account. It's quick, easy, and free to get started!
                   </p>
                 </div>
               </div>
@@ -221,7 +221,7 @@ const HowItWorks = () => {
                   Important Note
                 </h3>
                 <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300">
-                  SUBG QUIZ is a <strong>100% skill-based platform</strong>. There is no gambling or betting involved. Rewards are purely based on consistent knowledge, accuracy, and performance.
+                  AajExam is a <strong>100% skill-based platform</strong>. There is no gambling or betting involved. Rewards are purely based on consistent knowledge, accuracy, and performance.
                 </p>
               </div>
             </div>

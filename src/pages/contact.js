@@ -5,15 +5,15 @@ const ContactPage = ({ contactInfo }) => {
   return (
     <>
       <Head>
-        <title>Contact Us - SUBG QUIZ Platform</title>
-        <meta name="description" content="Get in touch with SUBG QUIZ team. We're here to help with any questions, feedback, or support you need. Reach out to us anytime!" />
-        <meta name="keywords" content="contact, support, help, feedback, SUBG QUIZ contact" />
-        <meta property="og:title" content="Contact Us - SUBG QUIZ Platform" />
-        <meta property="og:description" content="Get in touch with SUBG QUIZ team. We're here to help with any questions, feedback, or support you need." />
+        <title>Contact Us - AajExam Platform</title>
+        <meta name="description" content="Get in touch with AajExam team. We're here to help with any questions, feedback, or support you need. Reach out to us anytime!" />
+        <meta name="keywords" content="contact, support, help, feedback, AajExam contact" />
+        <meta property="og:title" content="Contact Us - AajExam Platform" />
+        <meta property="og:description" content="Get in touch with AajExam team. We're here to help with any questions, feedback, or support you need." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us - SUBG QUIZ Platform" />
-        <meta name="twitter:description" content="Get in touch with SUBG QUIZ team. We're here to help with any questions, feedback, or support you need." />
+        <meta name="twitter:title" content="Contact Us - AajExam Platform" />
+        <meta name="twitter:description" content="Get in touch with AajExam team. We're here to help with any questions, feedback, or support you need." />
         <meta name="robots" content="index, follow" />
       </Head>
       <ContactUs contactInfo={contactInfo} />

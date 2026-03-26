@@ -38,8 +38,8 @@ const ForgotPasswordPage = () => {
   return (
     <>
       <Seo
-        title="Forgot Password - SUBG QUIZ Platform"
-        description="Forgot your password? Reset your SUBG QUIZ account password securely. Enter your email to receive a password reset link."
+        title="Forgot Password - AajExam Platform"
+        description="Forgot your password? Reset your AajExam account password securely. Enter your email to receive a password reset link."
         noIndex={true}
       />
       <MobileAppWrapper title="Forgot Password">

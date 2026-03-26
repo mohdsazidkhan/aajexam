@@ -19,7 +19,7 @@ export default function Custom500() {
   return (
     <>
       <Head>
-        <title>500 - Server Error | SUBG QUIZ</title>
+        <title>500 - Server Error | AajExam</title>
         <meta name="description" content="We're experiencing server issues. Please try again later." />
         <meta name="robots" content="noindex,nofollow" />
       </Head>

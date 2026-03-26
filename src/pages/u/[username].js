@@ -94,7 +94,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
     <>
       <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <Head>
-          <title>{seo?.title || 'Profile - SUBG QUIZ'}</title>
+          <title>{seo?.title || 'Profile - AajExam'}</title>
           {seo?.description && <meta name="description" content={seo.description} />}
           {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
           <meta property="og:type" content="profile" />
@@ -466,10 +466,10 @@ export async function getStaticProps({ params }) {
   if (!profile) return { notFound: true, revalidate: 60 };
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-  const titleBase = 'SUBG QUIZ';
+  const titleBase = 'AajExam';
   const name = profile?.name || username;
   const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
-  const description = profile?.bio || `${name}'s profile on SUBG QUIZ.`;
+  const description = profile?.bio || `${name}'s profile on AajExam.`;
   const image = profile?.profilePicture || '/logo.png';
   const keywords = `${name}, profile, quizzes`;
   const url = baseUrl ? `${baseUrl}/u/${encodeURIComponent(username)}` : undefined;

@@ -11,7 +11,7 @@ export default function GovtExams() {
   return (
     <>
       <Head>
-        <title>Government Exams - Categories | Admin - SUBG QUIZ</title>
+        <title>Government Exams - Categories | Admin - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>}>

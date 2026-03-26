@@ -33,11 +33,11 @@ export default function LevelPage({ level }) {
     return (
         <MobileAppWrapper title={`Level ${level.number}: ${level.name}`}>
             <Head>
-                <title>{`Level ${level.number}: ${level.name} - ${level.title} | SUBG QUIZ`}</title>
+                <title>{`Level ${level.number}: ${level.name} - ${level.title} | AajExam`}</title>
                 <meta name="description" content={level.metaDescription} />
                 <meta name="keywords" content={level.keywords} />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content={`Level ${level.number}: ${level.name} - SUBG QUIZ`} />
+                <meta property="og:title" content={`Level ${level.number}: ${level.name} - AajExam`} />
                 <meta property="og:description" content={level.metaDescription} />
                 <meta property="og:image" content="https://subgquiz.com/logo.png" />
                 <script
@@ -228,7 +228,7 @@ export async function getStaticProps({ params }) {
                 examRelevance: [
                     `This level is highly relevant for competitive exams where ${levelFromDb.name} level proficiency is expected.`
                 ],
-                metaDescription: `${levelFromDb.name} level preparation on SUBG QUIZ. Build your expertise in diverse subjects.`,
+                metaDescription: `${levelFromDb.name} level preparation on AajExam. Build your expertise in diverse subjects.`,
                 keywords: `level ${levelFromDb.levelNumber}, ${levelFromDb.name}, quiz prep, competition`,
                 studyTips: [
                     { title: 'Consistency', description: 'Regular practice is key to maintaining your progress.' },

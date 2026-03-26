@@ -8,17 +8,17 @@ export default function HalalDisclaimer() {
     return (
         <MobileAppWrapper title="Halal Disclaimer">
             <Head>
-                <title>Halal Disclaimer - Ethical Guidelines | SUBG QUIZ</title>
-                <meta name="description" content="Learn about SUBG QUIZ's commitment to Halal and ethical educational practices in accordance with Islamic Shariah guidelines." />
-                <meta name="keywords" content="halal disclaimer, ethical education, Islamic Shariah, SUBG QUIZ ethics" />
-                <meta property="og:title" content="Halal Disclaimer - Ethical Guidelines | SUBG QUIZ" />
+                <title>Halal Disclaimer - Ethical Guidelines | AajExam</title>
+                <meta name="description" content="Learn about AajExam's commitment to Halal and ethical educational practices in accordance with Islamic Shariah guidelines." />
+                <meta name="keywords" content="halal disclaimer, ethical education, Islamic Shariah, AajExam ethics" />
+                <meta property="og:title" content="Halal Disclaimer - Ethical Guidelines | AajExam" />
                 <meta property="og:description" content="Our commitment to Halal and ethical educational practices." />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Halal Disclaimer - SUBG QUIZ" />
-                <meta name="twitter:description" content="Ethical and Halal educational guidelines for SUBG QUIZ." />
-                <meta name="twitter:image" content="https://subgquiz.com/logo.png" />
+                <meta name="twitter:title" content="Halal Disclaimer - AajExam" />
+                <meta name="twitter:description" content="Ethical and Halal educational guidelines for AajExam." />
+                <meta name="twitter:image" content="https://aajexam.com/logo.png" />
                 <meta name="robots" content="index, follow" />
             </Head>
 
@@ -34,11 +34,11 @@ export default function HalalDisclaimer() {
 
                     <div className="space-y-8 text-gray-700 dark:text-gray-300">
                         <p className="text-lg leading-relaxed text-center font-medium">
-                            We at SUBG QUIZ are committed to ensuring that our platform aligns with the ethical and spiritual guidelines of Islamic Shariah, offering educational quizzes in a way that is Halal, transparent, and fair.
+                            We at AajExam are committed to ensuring that our platform aligns with the ethical and spiritual guidelines of Islamic Shariah, offering educational quizzes in a way that is Halal, transparent, and fair.
                         </p>
 
                         <section className="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl">
-                            <h2 className="text-2xl font-bold text-green-800 dark:text-green-400 mb-6 border-b border-green-200 pb-2">Why SUBG QUIZ is Halal:</h2>
+                            <h2 className="text-2xl font-bold text-green-800 dark:text-green-400 mb-6 border-b border-green-200 pb-2">Why AajExam is Halal:</h2>
 
                             <div className="space-y-6">
                                 <div>
@@ -81,7 +81,7 @@ export default function HalalDisclaimer() {
                         <section className="text-center pt-6">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Conclusion</h2>
                             <p className="leading-relaxed">
-                                The SUBG QUIZ model is designed to be educational, rewarding, and fully Halal, offering transparency and merit-based rewards.
+                                The AajExam model is designed to be educational, rewarding, and fully Halal, offering transparency and merit-based rewards.
                             </p>
                             <p className="mt-6 text-sm">For Shariah-related inquiries, email: <strong>support@mohdsazidkhan.com</strong></p>
                         </section>

@@ -6,7 +6,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-export const uploadImage = async (imagePath, folder = 'subg-quiz') => {
+export const uploadImage = async (imagePath, folder = 'aajexam') => {
     try {
         const result = await cloudinary.uploader.upload(imagePath, {
             folder: folder,
@@ -20,3 +20,4 @@ export const uploadImage = async (imagePath, folder = 'subg-quiz') => {
 };
 
 export default cloudinary;
+

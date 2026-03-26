@@ -87,7 +87,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
   return (
     <>
       <Head>
-        <title>{seo?.title || `${examName} - Exam Patterns | SUBG QUIZ`}</title>
+        <title>{seo?.title || `${examName} - Exam Patterns | AajExam`}</title>
         {seo?.description && <meta name="description" content={seo.description} />}
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
         <meta property="og:type" content="website" />
@@ -336,7 +336,7 @@ export async function getServerSideProps({ params }) {
     ].filter(Boolean));
 
     const seo = {
-      title: `${examName} - Exam Patterns | SUBG QUIZ`,
+      title: `${examName} - Exam Patterns | AajExam`,
       description,
       keywords: Array.from(keywordSet).join(', '),
       image: '/logo.png',
@@ -355,8 +355,8 @@ export async function getServerSideProps({ params }) {
     console.error('Failed to pre-render govt exam detail:', error);
 
     const fallbackSeo = {
-      title: 'Government Exam Patterns | SUBG QUIZ',
-      description: 'Explore government exam patterns and practice with realistic mock tests on SUBG QUIZ.',
+      title: 'Government Exam Patterns | AajExam',
+      description: 'Explore government exam patterns and practice with realistic mock tests on AajExam.',
       keywords: 'government exam, exam pattern, mock test, practice test',
       image: '/logo.png',
       url: baseUrl ? `${baseUrl}/govt-exams/exam/${examId}` : undefined

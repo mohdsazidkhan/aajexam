@@ -3,8 +3,8 @@ const path = require('path');
 const fs = require('fs');
 
 // Connection URIs
-const LIVE_URI = 'mongodb+srv://sajidpahat786:sajidpahat786@cluster0.dnrv0.mongodb.net/SubgQuiz?retryWrites=true&w=majority';
-const LOCAL_URI = 'mongodb://localhost:27017/SubgQuiz?retryWrites=true&w=majority';
+const LIVE_URI = 'mongodb+srv://sajidpahat786:sajidpahat786@cluster0.dnrv0.mongodb.net/AajExam?retryWrites=true&w=majority';
+const LOCAL_URI = 'mongodb://localhost:27017/AajExam?retryWrites=true&w=majority';
 
 async function syncDatabases() {
     const liveClient = new MongoClient(LIVE_URI);

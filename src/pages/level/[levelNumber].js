@@ -14,7 +14,7 @@ export default function Level({ levelNumber, level, seo }) {
   return (
     <>
 			<Head>
-				<title>{seo?.title || 'Level Details - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Level Details - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -65,11 +65,11 @@ export async function getStaticProps({ params }) {
 		console.error('Error in levelDetail getStaticProps:', e);
 	}
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const number = level?.number || levelNumber;
 	const name = level?.name ? `Level ${number}: ${level.name}` : `Level ${number}`;
 	const title = `${name} - ${titleBase}`;
-	const description = level?.description || `Explore details for Level ${number} on SUBG QUIZ. See requirements and rewards.`;
+	const description = level?.description || `Explore details for Level ${number} on AajExam. See requirements and rewards.`;
 	const keywords = `level ${number}, quizzes, achievements, learning`;
 	const image = '/logo.png';
 	const url = baseUrl ? `${baseUrl}/level/${encodeURIComponent(levelNumber)}` : undefined;

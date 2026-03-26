@@ -281,15 +281,15 @@ const PublicUserQuestions = () => {
   return (
     <>
       <Head>
-        <title>Public Questions - SUBG QUIZ Platform</title>
-        <meta name="description" content="Browse and answer community questions on SUBG QUIZ. Test your knowledge, help others learn, and engage with questions from users worldwide." />
+        <title>Public Questions - AajExam Platform</title>
+        <meta name="description" content="Browse and answer community questions on AajExam. Test your knowledge, help others learn, and engage with questions from users worldwide." />
         <meta name="keywords" content="public questions, community questions, answer questions, knowledge sharing, Q&A platform" />
-        <meta property="og:title" content="Public Questions - SUBG QUIZ Platform" />
-        <meta property="og:description" content="Browse and answer community questions on SUBG QUIZ. Test your knowledge and help others learn." />
+        <meta property="og:title" content="Public Questions - AajExam Platform" />
+        <meta property="og:description" content="Browse and answer community questions on AajExam. Test your knowledge and help others learn." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Public Questions - SUBG QUIZ" />
-        <meta name="twitter:description" content="Browse and answer community questions on SUBG QUIZ Platform." />
+        <meta name="twitter:title" content="Public Questions - AajExam" />
+        <meta name="twitter:description" content="Browse and answer community questions on AajExam Platform." />
       </Head>
       <>
         {content}

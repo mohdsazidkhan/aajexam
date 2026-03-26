@@ -181,15 +181,15 @@ const AddQuestionPage = () => {
   return (
     <>
       <Head>
-        <title>Add Question - SUBG QUIZ Pro</title>
-        <meta name="description" content="Create and submit questions to SUBG QUIZ. Contribute to the knowledge base and help others learn." />
+        <title>Add Question - AajExam Pro</title>
+        <meta name="description" content="Create and submit questions to AajExam. Contribute to the knowledge base and help others learn." />
         <meta name="keywords" content="add question, create question, submit question, contribute content, pro user, question creator" />
-        <meta property="og:title" content="Add Question - SUBG QUIZ Pro" />
-        <meta property="og:description" content="Create and submit questions to SUBG QUIZ." />
+        <meta property="og:title" content="Add Question - AajExam Pro" />
+        <meta property="og:description" content="Create and submit questions to AajExam." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Add Question - SUBG QUIZ Pro" />
-        <meta name="twitter:description" content="Create and contribute questions on SUBG QUIZ. All users can post!" />
+        <meta name="twitter:title" content="Add Question - AajExam Pro" />
+        <meta name="twitter:description" content="Create and contribute questions on AajExam. All users can post!" />
       </Head>
 
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-6 px-4">

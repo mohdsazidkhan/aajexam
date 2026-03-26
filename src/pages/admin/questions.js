@@ -11,7 +11,7 @@ export default function Questions() {
   return (
     <>
       <Head>
-        <title>Admin Questions - SUBG QUIZ</title>
+        <title>Admin Questions - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

@@ -10,7 +10,7 @@ export default function GovtExamExams() {
   return (
     <>
       <Head>
-        <title>Government Exams - Exams | Admin - SUBG QUIZ</title>
+        <title>Government Exams - Exams | Admin - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <AdminGovtExams />

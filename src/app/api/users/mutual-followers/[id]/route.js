@@ -17,7 +17,7 @@ export async function GET(req, { params }) {
         // Ensure parameters are resolved
         const { id: userId } = await params;
 
-        // We implement getMutualFollowers in-line if the static method isn't fully ported to subg-quiz yet
+        // We implement getMutualFollowers in-line if the static method isn't fully ported to aajexam yet
         // Mutual strategy: users that I follow, who also follow me (this is getMutualFollowers(currentUserId))
         // However, the target is `userId`: we want mutuals between `currentUserId` and `userId`.
         // Let's implement the logic from subg-backend

@@ -16,14 +16,14 @@ export default function ExamsPage({ exams, pagination }) {
     return (
         <>
             <Head>
-                <title>Government Exams - Practice Tests | SUBG QUIZ</title>
+                <title>Government Exams - Practice Tests | AajExam</title>
                 <meta name="description" content="Practice for real government exams including SSC, UPSC, Banking, Railway and other competitive examinations. Full-length mock tests with detailed solutions." />
                 <meta name="keywords" content="government exams, SSC exam, UPSC exam, banking exam, railway exam, mock tests, practice exams" />
-                <meta property="og:title" content="Government Exams - Practice Tests | SUBG QUIZ" />
+                <meta property="og:title" content="Government Exams - Practice Tests | AajExam" />
                 <meta property="og:description" content="Practice for real government competitive exams with full-length mock tests." />
                 <meta property="og:type" content="website" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Government Exams - SUBG QUIZ" />
+                <meta name="twitter:title" content="Government Exams - AajExam" />
                 <meta name="twitter:description" content="Practice for government competitive exams." />
                 <meta name="robots" content="index, follow" />
             </Head>

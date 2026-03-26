@@ -112,9 +112,9 @@ const CategoryDetailPage = () => {
   return (
     <>
       <Head>
-        <title>{category ? `${category.name} - SUBG QUIZ` : 'Category - SUBG QUIZ'}</title>
-        <meta name="description" content={category ? `Explore ${category.name} quizzes on SUBG QUIZ. Test your knowledge and compete for prizes.` : 'Explore category quizzes on SUBG QUIZ platform.'} />
-        <meta name="keywords" content={`${category?.name || 'category'} quiz, ${category?.name || 'category'} questions, SUBG QUIZ ${category?.name || 'category'}`} />
+        <title>{category ? `${category.name} - AajExam` : 'Category - AajExam'}</title>
+        <meta name="description" content={category ? `Explore ${category.name} quizzes on AajExam. Test your knowledge and compete for prizes.` : 'Explore category quizzes on AajExam platform.'} />
+        <meta name="keywords" content={`${category?.name || 'category'} quiz, ${category?.name || 'category'} questions, AajExam ${category?.name || 'category'}`} />
       </Head>
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
         {/* Hero Section with Category Name and Description */}

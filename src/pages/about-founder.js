@@ -18,13 +18,13 @@ export default function AboutAuthor() {
     return (
         <MobileAppWrapper title="About the Founder">
             <Head>
-                <title>About Mohd Sazid Khan - Founder of SUBG QUIZ | Educational Technology Expert</title>
-                <meta name="description" content="Meet Mohd Sazid Khan, founder of SUBG QUIZ. Full-stack developer, UDYAM registered entrepreneur, and educational technology expert dedicated to transforming government exam preparation in India through innovative digital solutions." />
-                <meta name="keywords" content="Mohd Sazid Khan, SUBG QUIZ founder, educational technology, government exam platform, full-stack developer, UDYAM entrepreneur" />
+                <title>About Mohd Sazid Khan - Founder of AajExam | Educational Technology Expert</title>
+                <meta name="description" content="Meet Mohd Sazid Khan, founder of AajExam. Full-stack developer, UDYAM registered entrepreneur, and educational technology expert dedicated to transforming government exam preparation in India through innovative digital solutions." />
+                <meta name="keywords" content="Mohd Sazid Khan, AajExam founder, educational technology, government exam platform, full-stack developer, UDYAM entrepreneur" />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="About Mohd Sazid Khan - Founder of SUBG QUIZ" />
+                <meta property="og:title" content="About Mohd Sazid Khan - Founder of AajExam" />
                 <meta property="og:description" content="Educational technology expert and full-stack developer transforming government exam preparation in India." />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <meta name="robots" content="index, follow" />
                 <script
                     type="application/ld+json"
@@ -43,7 +43,7 @@ export default function AboutAuthor() {
                             Mohd Sazid Khan
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
-                            Founder & CEO, SUBG QUIZ
+                            Founder & CEO, AajExam
                         </p>
                         <p className="text-lg text-gray-500 dark:text-gray-400">
                             Full-Stack Developer | Educational Technology Expert | UDYAM Registered Entrepreneur
@@ -55,13 +55,13 @@ export default function AboutAuthor() {
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">About the Founder</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
-                                Mohd Sazid Khan is the founder and driving force behind SUBG QUIZ, India's innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.
+                                Mohd Sazid Khan is the founder and driving force behind AajExam, India's innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.
                             </p>
                             <p>
                                 As a UDYAM registered entrepreneur, Sazid combines technical expertise with business acumen to create scalable, user-friendly educational solutions. His vision is to democratize access to high-quality government exam preparation resources, ensuring that students from all backgrounds have the tools they need to succeed in competitive examinations.
                             </p>
                             <p>
-                                Under his leadership, SUBG QUIZ has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform's unique 10-level progression system and comprehensive quiz database reflect his commitment to structured, effective learning methodologies.
+                                Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform's unique 10-level progression system and comprehensive quiz database reflect his commitment to structured, effective learning methodologies.
                             </p>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ export default function AboutAuthor() {
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">UDYAM Registration</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
-                                        Successfully registered SUBG QUIZ as a UDYAM enterprise, demonstrating commitment to formal business practices and regulatory compliance.
+                                        Successfully registered AajExam as a UDYAM enterprise, demonstrating commitment to formal business practices and regulatory compliance.
                                     </p>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@ export default function AboutAuthor() {
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">Platform Development</h3>
                                     <p className="text-gray-700 dark:text-gray-300">
-                                        Designed and developed the entire SUBG QUIZ platform from scratch, including frontend, backend, database architecture, and deployment infrastructure.
+                                        Designed and developed the entire AajExam platform from scratch, including frontend, backend, database architecture, and deployment infrastructure.
                                     </p>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@ export default function AboutAuthor() {
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Educational Philosophy</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
-                                Sazid believes that effective exam preparation requires more than just access to questions—it requires a structured, progressive learning path that builds confidence and competence systematically. This philosophy is embodied in SUBG QUIZ's unique 10-level progression system.
+                                Sazid believes that effective exam preparation requires more than just access to questions—it requires a structured, progressive learning path that builds confidence and competence systematically. This philosophy is embodied in AajExam's unique 10-level progression system.
                             </p>
                             <p>
                                 He advocates for a balanced approach that combines technology-enabled convenience with pedagogically sound learning principles. The platform's features—from detailed analytics to gamified progression—reflect his belief that students learn best when they can track their progress, identify weaknesses, and receive immediate feedback.
@@ -235,7 +235,7 @@ export default function AboutAuthor() {
                                 Join Thousands of Successful Students
                             </h2>
                             <p className="text-xl mb-6 text-gray-700 dark:text-gray-300">
-                                Start your government exam preparation journey with SUBG QUIZ today
+                                Start your government exam preparation journey with AajExam today
                             </p>
                             <button
                                 onClick={() => router.push('/')}

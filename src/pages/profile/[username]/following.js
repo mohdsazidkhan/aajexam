@@ -15,15 +15,15 @@ export default function FollowingListPage() {
   return (
     <>
       <Head>
-        <title>Following - SUBG QUIZ Platform</title>
-        <meta name="description" content="View who this user is following on SUBG QUIZ. Explore the profiles they follow and discover new users." />
-        <meta name="keywords" content="following, user following, following list, SUBG QUIZ following" />
-        <meta property="og:title" content="Following - SUBG QUIZ Platform" />
-        <meta property="og:description" content="View user's following list on SUBG QUIZ Platform." />
+        <title>Following - AajExam Platform</title>
+        <meta name="description" content="View who this user is following on AajExam. Explore the profiles they follow and discover new users." />
+        <meta name="keywords" content="following, user following, following list, AajExam following" />
+        <meta property="og:title" content="Following - AajExam Platform" />
+        <meta property="og:description" content="View user's following list on AajExam Platform." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Following - SUBG QUIZ" />
-        <meta name="twitter:description" content="View following list on SUBG QUIZ Platform." />
+        <meta name="twitter:title" content="Following - AajExam" />
+        <meta name="twitter:description" content="View following list on AajExam Platform." />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
         <FollowingList username={username} />

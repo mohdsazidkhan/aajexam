@@ -54,12 +54,12 @@ const ArticleTagPage = () => {
   };
 
   const seoTitle = tagName ? `${tagName?.toUpperCase()} Articles` : 'Tag Articles';
-  const seoDescription = tagName ? `Read articles tagged with ${tagName?.toUpperCase()} on SUBG QUIZ.` : 'Read tagged articles on SUBG QUIZ.';
+  const seoDescription = tagName ? `Read articles tagged with ${tagName?.toUpperCase()} on AajExam.` : 'Read tagged articles on AajExam.';
 
   return (
     <>
       <Head>
-        <title>{seoTitle} - SUBG QUIZ Platform</title>
+        <title>{seoTitle} - AajExam Platform</title>
         <meta name="description" content={seoDescription} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />

@@ -218,15 +218,15 @@ const SearchPage = () => {
   return (
     <>
       <Head>
-        <title>Search Quizzes - SUBG QUIZ Find Your Perfect Quiz</title>
-        <meta name="description" content="Search and discover quizzes on SUBG QUIZ platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
-        <meta name="keywords" content="search quizzes, quiz search, SUBG QUIZ search, find quiz, quiz discovery" />
-        <meta property="og:title" content="Search Quizzes - SUBG QUIZ Find Your Perfect Quiz" />
-        <meta property="og:description" content="Search and discover quizzes on SUBG QUIZ platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
+        <title>Search Quizzes - AajExam Find Your Perfect Quiz</title>
+        <meta name="description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
+        <meta name="keywords" content="search quizzes, quiz search, AajExam search, find quiz, quiz discovery" />
+        <meta property="og:title" content="Search Quizzes - AajExam Find Your Perfect Quiz" />
+        <meta property="og:description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Search Quizzes - SUBG QUIZ Find Your Perfect Quiz" />
-        <meta name="twitter:description" content="Search and discover quizzes on SUBG QUIZ platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
+        <meta name="twitter:title" content="Search Quizzes - AajExam Find Your Perfect Quiz" />
+        <meta name="twitter:description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

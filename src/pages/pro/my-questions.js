@@ -99,15 +99,15 @@ const MyUserQuestions = () => {
   return (
     <>
       <Head>
-        <title>My Questions - SUBG QUIZ Pro</title>
+        <title>My Questions - AajExam Pro</title>
         <meta name="description" content="View and manage all your submitted questions. Track approval status, views, likes, and performance metrics for each question you've created." />
         <meta name="keywords" content="my questions, submitted questions, question status, question performance, pro dashboard" />
-        <meta property="og:title" content="My Questions - SUBG QUIZ Pro" />
+        <meta property="og:title" content="My Questions - AajExam Pro" />
         <meta property="og:description" content="View and manage all your submitted questions and track their performance." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="My Questions - SUBG QUIZ Pro" />
-        <meta name="twitter:description" content="Manage your submitted questions on SUBG QUIZ Pro." />
+        <meta name="twitter:title" content="My Questions - AajExam Pro" />
+        <meta name="twitter:description" content="Manage your submitted questions on AajExam Pro." />
       </Head>
 
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-6 px-4">

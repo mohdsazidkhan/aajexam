@@ -14,7 +14,7 @@ export default function ArticleCategory({ category, seo }) {
   return (
     <>
 			<Head>
-				<title>{seo?.title || 'Category Articles - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Category Articles - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -59,10 +59,10 @@ export async function getStaticProps({ params }) {
 	}
 
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const name = category?.name || 'Category';
 	const title = `${name} Articles - ${titleBase}`;
-	const description = category?.description || `Browse educational articles in ${name} on SUBG QUIZ.`;
+	const description = category?.description || `Browse educational articles in ${name} on AajExam.`;
 	const keywords = `${name}, articles, study, learning`;
 	const image = '/logo.png';
 	const url = baseUrl ? `${baseUrl}/articles/category/${encodeURIComponent(categoryId)}` : undefined;

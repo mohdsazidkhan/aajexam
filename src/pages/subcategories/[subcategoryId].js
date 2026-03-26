@@ -28,10 +28,10 @@ export default function SubcategoryPage({ subcategory, quizzes, pagination }) {
     return (
         <>
             <Head>
-                <title>{subcategory.name} - Quizzes | SUBG QUIZ</title>
+                <title>{subcategory.name} - Quizzes | AajExam</title>
                 <meta name="description" content={subcategory.description || `Practice quizzes for ${subcategory.name}`} />
                 <meta name="keywords" content={`${subcategory.name}, quiz, practice test, government exam`} />
-                <meta property="og:title" content={`${subcategory.name} - Quizzes | SUBG QUIZ`} />
+                <meta property="og:title" content={`${subcategory.name} - Quizzes | AajExam`} />
                 <meta property="og:description" content={subcategory.description} />
                 <meta property="og:type" content="website" />
                 <meta name="robots" content="index, follow" />

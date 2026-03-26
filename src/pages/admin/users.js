@@ -11,7 +11,7 @@ export default function AdminUsersPage() {
   return (
     <>
       <Head>
-        <title>Admin Users - SUBG QUIZ</title>
+        <title>Admin Users - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Suspense fallback={<div>Loading...</div>}>

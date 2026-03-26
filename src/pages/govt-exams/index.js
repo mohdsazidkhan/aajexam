@@ -102,7 +102,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
   return (
     <>
       <Head>
-        <title>{seo?.title || 'Government Exams - SUBG QUIZ Platform'}</title>
+        <title>{seo?.title || 'Government Exams - AajExam Platform'}</title>
         {seo?.description && <meta name="description" content={seo.description} />}
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
         <meta property="og:type" content="website" />
@@ -258,7 +258,7 @@ export async function getServerSideProps() {
     const categoryCount = categories.length;
     const totalExams = categories.reduce((sum, cat) => sum + (cat.examCount || 0), 0);
 
-    const title = `Government Exams${categoryCount ? ` (${categoryCount} Categories)` : ''} - SUBG QUIZ Platform`;
+    const title = `Government Exams${categoryCount ? ` (${categoryCount} Categories)` : ''} - AajExam Platform`;
     const descriptionParts = [
       'Prepare for your dream government job with realistic mock tests.',
       categoryCount ? `Explore ${categoryCount} exam categor${categoryCount === 1 ? 'y' : 'ies'}` : null,
@@ -297,8 +297,8 @@ export async function getServerSideProps() {
     console.error('Failed to pre-render govt exams categories:', error);
 
     const fallbackSeo = {
-      title: 'Government Exams - SUBG QUIZ Platform',
-      description: 'Prepare for government exams with realistic mock tests on SUBG QUIZ.',
+      title: 'Government Exams - AajExam Platform',
+      description: 'Prepare for government exams with realistic mock tests on AajExam.',
       keywords: 'government exams, sarkari exam, mock test, practice test',
       image: '/logo.png',
       url: baseUrl ? `${baseUrl}/govt-exams` : undefined

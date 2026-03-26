@@ -63,13 +63,13 @@ export default function LevelsOverview({ initialLevels = [] }) {
     return (
         <MobileAppWrapper title="Level System Overview">
             <Head>
-                <title>10-Level Progression System - Government Exam Preparation | SUBG QUIZ</title>
-                <meta name="description" content="Understand SUBG QUIZ's unique 10-level progression system for government exam preparation. From Starter to Legend, each level builds your skills for SSC, UPSC, Banking, and Railway exams through structured practice." />
+                <title>10-Level Progression System - Government Exam Preparation | AajExam</title>
+                <meta name="description" content="Understand AajExam's unique 10-level progression system for government exam preparation. From Starter to Legend, each level builds your skills for SSC, UPSC, Banking, and Railway exams through structured practice." />
                 <meta name="keywords" content="level system, exam preparation levels, SSC preparation stages, UPSC study progression, government exam learning path, quiz difficulty levels" />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="10-Level Progression System - SUBG QUIZ" />
+                <meta property="og:title" content="10-Level Progression System - AajExam" />
                 <meta property="og:description" content="Master government exams through our structured 10-level system. Each level builds essential skills for competitive examination success." />
-                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta property="og:image" content="https://aajexam.com/logo.png" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -112,7 +112,7 @@ export default function LevelsOverview({ initialLevels = [] }) {
                         </h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
-                                SUBG QUIZ's 10-level progression system is designed to systematically build your knowledge and skills for government competitive examinations. Each level represents a milestone in your preparation journey, with increasing difficulty and complexity that mirrors the actual exam patterns of SSC, UPSC, Banking, and Railway examinations.
+                                AajExam's 10-level progression system is designed to systematically build your knowledge and skills for government competitive examinations. Each level represents a milestone in your preparation journey, with increasing difficulty and complexity that mirrors the actual exam patterns of SSC, UPSC, Banking, and Railway examinations.
                             </p>
                             <p>
                                 The system ensures you develop a strong foundation before advancing to complex topics. By requiring a specific number of quiz completions at each level, we guarantee comprehensive coverage of all essential concepts and adequate practice to build confidence and accuracy.

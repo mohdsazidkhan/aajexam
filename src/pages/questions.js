@@ -15,15 +15,15 @@ const QuestionsPage = () => {
   return (
     <>
       <Head>
-        <title>Questions - SUBG QUIZ</title>
-        <meta name="description" content="Explore and answer questions from the SUBG QUIZ community. Test your knowledge, help others learn, and contribute to the knowledge base." />
+        <title>Questions - AajExam</title>
+        <meta name="description" content="Explore and answer questions from the AajExam community. Test your knowledge, help others learn, and contribute to the knowledge base." />
         <meta name="keywords" content="questions, quiz questions, knowledge questions, community questions, Q&A" />
-        <meta property="og:title" content="Questions - SUBG QUIZ Platform" />
-        <meta property="og:description" content="Explore and answer questions from the SUBG QUIZ community. Test your knowledge and help others learn." />
+        <meta property="og:title" content="Questions - AajExam Platform" />
+        <meta property="og:description" content="Explore and answer questions from the AajExam community. Test your knowledge and help others learn." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Questions - SUBG QUIZ Platform" />
-        <meta name="twitter:description" content="Explore and answer questions from the SUBG QUIZ community." />
+        <meta name="twitter:title" content="Questions - AajExam Platform" />
+        <meta name="twitter:description" content="Explore and answer questions from the AajExam community." />
       </Head>
       <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
         <div className="text-center">

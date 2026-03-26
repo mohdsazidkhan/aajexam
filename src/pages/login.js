@@ -12,8 +12,8 @@ export default function Login() {
   return (
     <>
       <Seo
-        title="Login - SUBG QUIZ Platform"
-        description="Login to your SUBG QUIZ account to access quizzes, track your progress, compete on leaderboards, and earn rewards."
+        title="Login - AajExam Platform"
+        description="Login to your AajExam account to access quizzes, track your progress, compete on leaderboards, and earn rewards."
         noIndex={true}
       />
       <Suspense fallback={<div>Loading...</div>}>

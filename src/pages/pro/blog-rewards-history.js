@@ -23,8 +23,8 @@ export default function BlogRewardsHistoryPage() {
   return (
     <>
       <Head>
-        <title>Blog Rewards History - SUBG QUIZ Platform</title>
-        <meta name="description" content="View your historical earnings from approved blogs on SUBG QUIZ." />
+        <title>Blog Rewards History - AajExam Platform</title>
+        <meta name="description" content="View your historical earnings from approved blogs on AajExam." />
       </Head>
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
         <BlogRewardsHistory />

@@ -14,7 +14,7 @@ export default function QuizLevels({ levels }) {
     return (
         <>
             <Head>
-                <title>My Levels | SUBG QUIZ</title>
+                <title>My Levels | AajExam</title>
             </Head>
             <Suspense fallback={<div>Loading...</div>}>
                 {/* showNavbar={false} because this page is wrapped in StudentLayout which has its own Sidebar/Navbar */}

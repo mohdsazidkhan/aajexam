@@ -13,7 +13,7 @@ export default function PublicProfilePage({ username, profile, seo }) {
   return (
     <>
 			<Head>
-				<title>{seo?.title || 'User Profile - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'User Profile - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="profile" />
@@ -60,10 +60,10 @@ export async function getStaticProps({ params }) {
 		return { notFound: true, revalidate: 60 };
 	}
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const name = profile?.name || username;
 	const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
-	const description = profile?.bio || `${name}'s profile on SUBG QUIZ.`;
+	const description = profile?.bio || `${name}'s profile on AajExam.`;
 	const image = profile?.profilePicture || '/logo.png';
 	const keywords = `${name}, profile, quizzes`;
 	const url = baseUrl ? `${baseUrl}/profile/${encodeURIComponent(username)}` : undefined;

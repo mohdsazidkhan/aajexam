@@ -3,8 +3,8 @@
  * Generates JSON-LD structured data for better search engine understanding
  */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://subgquiz.com';
-const SITE_NAME = 'SUBG QUIZ';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
+const SITE_NAME = 'AajExam';
 
 /**
  * Organization Schema - Use on homepage
@@ -28,11 +28,11 @@ export const generateOrganizationSchema = () => {
             "addressCountry": "IN"
         },
         "sameAs": [
-            "https://facebook.com/subgquiz",
-            "https://twitter.com/subgquiz",
-            "https://instagram.com/subgquiz",
-            "https://youtube.com/subgquiz",
-            "https://linkedin.com/company/subgquiz"
+            "https://facebook.com/aajexam",
+            "https://twitter.com/aajexam",
+            "https://instagram.com/aajexam",
+            "https://youtube.com/aajexam",
+            "https://linkedin.com/company/aajexam"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -112,7 +112,7 @@ export const generateArticleSchema = (article) => {
         "dateModified": article.updatedAt || article.publishedAt || article.createdAt,
         "author": {
             "@type": "Person",
-            "name": article.authorName || "SUBG Quiz Team"
+            "name": article.authorName || "AajExam Team"
         },
         "publisher": {
             "@type": "Organization",

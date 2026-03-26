@@ -19,7 +19,7 @@ export async function POST(req) {
         // In production, redirects to frontend app
         const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || 
                             process.env.NEXT_PUBLIC_SITE_URL || 
-                            (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
+                            (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
 
         if (!isValid) {
             console.error('Invalid PayU Success Hash for txn:', data.txnid);
@@ -51,7 +51,7 @@ export async function POST(req) {
         console.error('Success callback error:', error);
         const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || 
                             process.env.NEXT_PUBLIC_SITE_URL || 
-                            (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
+                            (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
         return NextResponse.redirect(`${frontendUrl}/subscription/payu-failure`, 303);
     }
 }
@@ -59,6 +59,7 @@ export async function POST(req) {
 export async function GET(req) {
     const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL || 
                         process.env.NEXT_PUBLIC_SITE_URL || 
-                        (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
+                        (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
     return NextResponse.redirect(`${frontendUrl}/subscription/payu-success`, 303);
 }
+

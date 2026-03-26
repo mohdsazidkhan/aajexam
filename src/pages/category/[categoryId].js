@@ -12,7 +12,7 @@ export default function Category({ category, seo }) {
 	return (
 		<>
 			<Head>
-				<title>{seo?.title || 'Category Quizzes - SUBG QUIZ Platform'}</title>
+				<title>{seo?.title || 'Category Quizzes - AajExam Platform'}</title>
 				{seo?.description && <meta name="description" content={seo.description} />}
 				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
 				<meta property="og:type" content="website" />
@@ -58,10 +58,10 @@ export async function getStaticProps({ params }) {
 	}
 
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
-	const titleBase = 'SUBG QUIZ Platform';
+	const titleBase = 'AajExam Platform';
 	const name = category?.name || 'Category';
 	const title = `${name} Quizzes - ${titleBase}`;
-	const description = category?.description || `Browse quizzes in ${name} on SUBG QUIZ and test your knowledge.`;
+	const description = category?.description || `Browse quizzes in ${name} on AajExam and test your knowledge.`;
 	const keywords = `${name}, quizzes, practice, learning`;
 	const image = '/logo.png';
 	const url = baseUrl ? `${baseUrl}/category/${categoryId}` : undefined;
