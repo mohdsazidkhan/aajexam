@@ -1,0 +1,292 @@
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { FaQuestionCircle, FaGraduationCap, FaCreditCard, FaTrophy, FaUserShield, FaBook, FaChartLine } from 'react-icons/fa';
+import MobileAppWrapper from '../components/MobileAppWrapper';
+import UnifiedFooter from '../components/UnifiedFooter';
+import AuthorBio from '../components/AuthorBio';
+import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
+import { getCanonicalUrl } from '../utils/seo';
+import config from '../lib/config/appConfig';
+
+const FAQ = () => {
+    const router = useRouter();
+    const canonicalUrl = getCanonicalUrl(router.asPath);
+
+    const faqs = [
+        {
+            category: 'General',
+            icon: FaQuestionCircle,
+            questions: [
+                {
+                    q: 'What is SUBG QUIZ?',
+                    a: 'SUBG QUIZ is India\'s premier government exam preparation platform offering comprehensive practice tests for SSC, UPSC, Banking, Railway, and state-level competitive examinations. We provide 2000+ quizzes with a unique 10-level progression system designed to systematically improve your exam readiness.'
+                },
+                {
+                    q: 'Who can use SUBG QUIZ?',
+                    a: 'Anyone aged 14 years or older can register and use SUBG QUIZ. Our platform is designed for students and professionals preparing for government competitive examinations in India.'
+                },
+                {
+                    q: 'Is SUBG QUIZ free to use?',
+                    a: 'Yes! We offer a Free plan that provides access to Levels 0-3 with hundreds of practice quizzes. For advanced levels and additional features, we offer Basic, Premium, and Pro subscription plans.'
+                },
+                {
+                    q: 'What exams does SUBG QUIZ cover?',
+                    a: 'We cover all major government competitive exams including SSC (CGL, CHSL, MTS), UPSC (Prelims, Mains), Banking (IBPS PO, Clerk, SBI), Railway (RRB NTPC, Group D), and various state-level examinations. Our question bank includes General Intelligence & Reasoning, Quantitative Aptitude, English Language, General Awareness, and Current Affairs.'
+                }
+            ]
+        },
+        {
+            category: 'Learning System',
+            icon: FaGraduationCap,
+            questions: [
+                {
+                    q: 'How does the 10-level progression system work?',
+                    a: `Our platform features a structured ${config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD || 10}-level system (Starter to Legend) that gradually increases in difficulty. You progress through levels by completing quizzes and achieving minimum accuracy thresholds. Each level requires a specific number of quiz attempts (Level 1 requires 5 quizzes, Level 10 requires ${config.QUIZ_CONFIG.LEVEL_10_QUIZ_REQUIREMENT} quizzes). This ensures you build a strong foundation before advancing to complex topics.`
+                },
+                {
+                    q: 'What is a "high-score quiz"?',
+                    a: `A high-score quiz is any quiz where you achieve ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% or higher accuracy. These quizzes count toward your monthly performance metrics and eligibility for the monthly recognition program.`
+                },
+                {
+                    q: 'Can I retake quizzes?',
+                    a: 'Yes! You can retake quizzes to improve your understanding and scores. However, only your first attempt counts toward level progression and leaderboard rankings to maintain fairness.'
+                },
+                {
+                    q: 'How are quizzes structured?',
+                    a: 'Each quiz contains multiple-choice questions covering specific topics or exam patterns. Quizzes are timed to simulate real exam conditions. After completion, you receive detailed performance analytics including accuracy rate, time management, topic-wise breakdown, and comparative rankings.'
+                }
+            ]
+        },
+        {
+            category: 'Subscriptions & Payments',
+            icon: FaCreditCard,
+            questions: [
+                {
+                    q: 'What are the different subscription plans?',
+                    a: 'We offer 4 plans: Free (Levels 0-3), Basic (Levels 0-6), Premium (Levels 0-9), and Pro (All Levels 0-10). Each higher tier unlocks more advanced content and features. Visit our pricing page for current rates and detailed feature comparisons.'
+                },
+                {
+                    q: 'Are subscription fees refundable?',
+                    a: 'No. All subscription fees are non-refundable as stated in our Terms & Conditions. This policy applies regardless of usage, performance, or account status changes.'
+                },
+                {
+                    q: 'How do I upgrade my subscription?',
+                    a: 'You can upgrade your subscription anytime through your account dashboard. The upgrade takes effect immediately, and you\'ll gain access to higher-level content right away.'
+                },
+                {
+                    q: 'What payment methods do you accept?',
+                    a: 'We accept all major payment methods through our secure payment partner PayU, including credit/debit cards, UPI, net banking, and digital wallets.'
+                }
+            ]
+        },
+        {
+            category: 'Monthly Recognition Program',
+            icon: FaTrophy,
+            questions: [
+                {
+                    q: 'How does the monthly recognition program work?',
+                    a: `Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. We reward the Top ${config.QUIZ_CONFIG.DAILY_WINNER_COUNT || 1} for Daily, Top ${config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT || 3} for Weekly, and Top ${config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT || 5} for Monthly eligible PRO users who win prizes from a dynamic prize pool. Eligibility requires: an active PRO subscription and completing ${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes (≥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy) in the current month. Referral count is NOT required to qualify.`
+                },
+                {
+                    q: 'When are monthly recognitions distributed?',
+                    a: 'Recognition is processed within 7 business days after the month ends. Winners are notified via email and must provide verified bank details for payout processing.'
+                },
+                {
+                    q: 'Do my achievements carry over to the next month?',
+                    a: 'No. All monthly progress metrics reset on the 1st of each month. Each month is an independent recognition period. However, your overall level progression and total quiz count are permanent.'
+                },
+                {
+                    q: 'Can I be disqualified from recognition?',
+                    a: 'Yes. We maintain strict anti-fraud measures. Any attempt to cheat, use automated tools, create multiple accounts, or manipulate the system will result in immediate disqualification and permanent account suspension.'
+                }
+            ]
+        },
+        {
+            category: 'Account & Privacy',
+            icon: FaUserShield,
+            questions: [
+                {
+                    q: 'How is my personal data protected?',
+                    a: 'We use industry-standard security measures including HTTPS encryption, hashed passwords, and secure data storage. We never sell your personal information to third parties. Read our Privacy Policy for complete details on data collection and usage.'
+                },
+                {
+                    q: 'Can I delete my account?',
+                    a: 'Yes. You can request account deletion by contacting our support team at support@mohdsazidkhan.com. Note that some data may be retained for legal compliance and fraud prevention as outlined in our Privacy Policy.'
+                },
+                {
+                    q: 'How do I reset my password?',
+                    a: 'Click "Forgot Password" on the login page and follow the instructions sent to your registered email address.'
+                },
+                {
+                    q: 'Can I change my registered email or phone number?',
+                    a: 'Yes. You can update your contact information through your account settings. Email changes require verification of both old and new email addresses.'
+                }
+            ]
+        },
+        {
+            category: 'Performance & Analytics',
+            icon: FaChartLine,
+            questions: [
+                {
+                    q: 'What analytics do I get access to?',
+                    a: 'You receive comprehensive analytics including: overall accuracy trends, time management metrics, subject-wise performance breakdown, comparative rankings with peers, level progression tracking, monthly performance reports, and detailed quiz-by-quiz analysis.'
+                },
+                {
+                    q: 'How is my leaderboard rank calculated?',
+                    a: `Leaderboard rankings are based on multiple factors: number of high-score quizzes (≥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy), overall accuracy percentage, total quizzes completed, and consistency of performance. The algorithm prioritizes quality (accuracy) over quantity.`
+                },
+                {
+                    q: 'Can I see my performance history?',
+                    a: 'Yes! Your dashboard provides complete performance history including all quiz attempts, scores, time taken, and progress over time with visual charts and graphs.'
+                }
+            ]
+        },
+        {
+            category: 'Technical Support',
+            icon: FaBook,
+            questions: [
+                {
+                    q: 'What browsers are supported?',
+                    a: 'SUBG QUIZ works best on modern browsers including Google Chrome, Mozilla Firefox, Safari, and Microsoft Edge. We recommend keeping your browser updated to the latest version for optimal performance.'
+                },
+                {
+                    q: 'Is there a mobile app?',
+                    a: 'Currently, SUBG QUIZ is a web-based platform optimized for both desktop and mobile browsers. You can access it from any device with an internet connection.'
+                },
+                {
+                    q: 'I\'m experiencing technical issues. What should I do?',
+                    a: 'First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at support@mohdsazidkhan.com with details about the problem, your device, and browser information.'
+                },
+                {
+                    q: 'How do I report a quiz error or incorrect answer?',
+                    a: 'If you encounter an error in a quiz question or believe an answer is incorrect, please report it through the feedback option available after quiz completion, or email us at support@mohdsazidkhan.com with the quiz name and question details.'
+                }
+            ]
+        }
+    ];
+
+    const allFAQs = faqs.flatMap(category =>
+        category.questions.map(q => ({ question: q.q, answer: q.a }))
+    );
+
+    const faqSchema = generateFAQSchema(allFAQs);
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'FAQ' }
+    ]);
+
+    return (
+        <MobileAppWrapper title="Frequently Asked Questions">
+            <Head>
+                <title>Common Questions & Help Center | SUBG QUIZ</title>
+                <meta name="description" content="Find answers to common questions about SUBG QUIZ's 10-level government exam preparation system, monthly rewards, and subscription plans." />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta property="og:title" content="FAQ - Help Center | SUBG QUIZ" />
+                <meta property="og:description" content="Have questions about preparing for SSC, UPSC, or Banking exams? Check our frequently asked questions." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:image" content="https://subgquiz.com/logo.png" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="FAQ - SUBG QUIZ" />
+                <meta name="twitter:description" content="Frequently asked questions about government exam preparation on SUBG QUIZ platform." />
+                <meta name="twitter:image" content="https://subgquiz.com/logo.png" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqs.flatMap(cat => cat.questions.map(q => ({ question: q.q, answer: q.a }))))) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                />
+            </Head>
+
+            <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+                <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
+                    {/* Hero Section */}
+                    <div className="text-center mb-8 lg:mb-12">
+                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <FaQuestionCircle className="text-white text-3xl" />
+                        </div>
+                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                            Frequently Asked Questions
+                        </h1>
+                        <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                            Find answers to common questions about SUBG QUIZ platform, subscriptions, and exam preparation
+                        </p>
+                    </div>
+
+                    {/* FAQ Categories */}
+                    {faqs.map((category, catIndex) => {
+                        const Icon = category.icon;
+                        return (
+                            <div key={catIndex} className="mb-8 lg:mb-12">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                        <Icon className="text-white text-xl" />
+                                    </div>
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                        {category.category}
+                                    </h2>
+                                </div>
+
+                                <div className="space-y-4">
+                                    {category.questions.map((faq, qIndex) => (
+                                        <div
+                                            key={qIndex}
+                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300"
+                                        >
+                                            <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
+                                                <span className="text-blue-500 flex-shrink-0">Q:</span>
+                                                <span>{faq.q}</span>
+                                            </h3>
+                                            <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
+                                                <span className="text-green-500 font-semibold">A:</span> {faq.a}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })}
+
+                    {/* Contact Section */}
+                    <div className="text-center mt-12">
+                        <div className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-800 dark:to-purple-800 rounded-3xl p-6 lg:p-8">
+                            <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                                Still Have Questions?
+                            </h2>
+                            <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
+                                Can't find the answer you're looking for? Our support team is here to help!
+                            </p>
+                            <button
+                                onClick={() => router.push('/contact')}
+                                className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
+                            >
+                                Contact Support
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Author Bio */}
+                    <AuthorBio />
+
+                    {/* Last Updated */}
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                        Last Updated: March 19, 2026
+                    </p>
+
+                </div>
+            </div>
+            <UnifiedFooter />
+        </MobileAppWrapper>
+    );
+};
+
+export default FAQ;
+
+export async function getStaticProps() {
+    return {
+        props: {},
+        revalidate: 86400 // Revalidate once per day
+    };
+}

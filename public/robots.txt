@@ -1,0 +1,27 @@
+# https://www.robotstxt.org/robotstxt.html
+# Allow all crawlers to access all content
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /home
+Disallow: /profile
+Disallow: /settings
+Disallow: /notifications
+Disallow: /rewards
+Disallow: /exam-history
+Disallow: /quiz-history
+Disallow: /referral-history
+Disallow: /my-analytics
+Disallow: /attempt-quiz
+Disallow: /quiz-result
+Disallow: /subscription/payu-success
+Disallow: /subscription/payu-failure
+Disallow: /u/
+
+# Sitemap location
+Sitemap: https://subgquiz.com/sitemap.xml

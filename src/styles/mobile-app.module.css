@@ -1,0 +1,56 @@
+/* Mobile Quiz Page Specific Styles - AttemptQuizPage Only */
+
+/* Mobile Quiz Page Specific Fixes */
+.quizFullscreenBanner {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  padding: 0.5rem 0.25rem !important;
+}
+
+/* Mobile banner text optimization */
+.quizFullscreenBanner span {
+  font-size: 0.75rem !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 768px) {
+  .quizFullscreenBanner {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .quizFullscreenBanner span {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Quiz Page Scroll Fixes */
+.minHScreen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure quiz content is scrollable */
+.quizContainer {
+  min-height: calc(100vh - 80px);
+  padding-bottom: 120px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Touch Improvements */
+.touchManipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
