@@ -24,4 +24,4 @@ Disallow: /subscription/payu-failure
 Disallow: /u/
 
 # Sitemap location
-Sitemap: https://subgquiz.com/sitemap.xml
+Sitemap: https://aajexam.com/sitemap.xml
