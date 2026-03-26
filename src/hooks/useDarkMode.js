@@ -11,7 +11,7 @@ export const useDarkMode = () => {
       if (savedTheme) return savedTheme === 'dark';
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
     }
-    return false;
+    return process.env.NEXT_PUBLIC_DEFAULT_THEME === 'dark';
   });
 
   useEffect(() => {
