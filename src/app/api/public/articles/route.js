@@ -31,9 +31,9 @@ export async function GET(req) {
         
         if (featured === 'true') {
             query.isFeatured = true;
-        } else if (featured === 'false') {
-            query.isFeatured = false;
         }
+        // If featured is 'false' or not provided, we return both featured and non-featured articles
+        // to ensure the user gets all results on the main blog list.
 
         const articles = await Article.find(query)
             .populate('author', 'name email')
