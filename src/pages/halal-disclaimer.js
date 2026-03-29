@@ -22,7 +22,7 @@ export default function HalalDisclaimer() {
                 <meta name="robots" content="index, follow" />
             </Head>
 
-            <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-12 px-4 lg:px-10">
+            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-12 px-4 lg:px-10">
                 <div className="container  bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12 border-t-8 border-green-600">
                     <div className="text-center mb-10">
                         <div className="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">

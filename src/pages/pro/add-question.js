@@ -192,7 +192,7 @@ const AddQuestionPage = () => {
         <meta name="twitter:description" content="Create and contribute questions on AajExam. All users can post!" />
       </Head>
 
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-6 px-4">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-6 px-4">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">

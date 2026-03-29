@@ -176,17 +176,17 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </p>
           </div>
 
-          {/* Mobile App Section - HIDDEN
+
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-700 rounded-xl p-4">
             <h3 className="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-2 flex items-center">
               <span className="text-xl mr-2">📱</span>
-              Subg Mobile App is Now Live!
+              AajExam Mobile App is Now Live!
             </h3>
             <p className="text-primary-700 dark:text-primary-300 text-sm lg:text-base mb-4">
               The updated mobile app is now available on Google Play Store! You can now claim rewards, track your histories, and compete in quizzes directly from your phone.
             </p>
             <a
-              href="https://play.google.com/store/apps/details?id=com.subgapp"
+              href="https://play.google.com/store/apps/details?id=com.aajexam.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors shadow-md"
@@ -195,7 +195,6 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               Download from Play Store
             </a>
           </div>
-          */}
         </div>
 
         <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-b-2xl">

@@ -128,7 +128,7 @@ const PayuFailure = () => {
   if (loading) {
     return (
       <MobileAppWrapper title="Loading Payment Status">
-        <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
+        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"></div>
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
@@ -150,7 +150,7 @@ const PayuFailure = () => {
         description="Your payment attempt was not successful. Please try again or contact support."
         noIndex={true}
       />
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         <div className="container mx-auto py-4 px-4 lg:px-10">
           <div className="max-w-2xl mx-auto">
             <div className="text-center">

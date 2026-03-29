@@ -46,7 +46,7 @@ const ForgotPasswordPage = () => {
         {/* Desktop Header */}
         <UnifiedNavbar />
 
-        <div className="bg-subg-light dark:bg-subg-dark">
+        <div className="bg-aajexam-light dark:bg-aajexam-dark">
           <div className="flex items-center justify-center p-2 md:p-4">
             <div className="w-full max-w-md bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
               <div className="mb-6 flex items-center gap-2">

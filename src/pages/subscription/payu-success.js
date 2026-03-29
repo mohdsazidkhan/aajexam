@@ -154,7 +154,7 @@ const PayuSuccess = () => {
   if (verifying) {
     return (
       <MobileAppWrapper title="Payment Verification">
-        <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
+        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-600 mx-auto mb-4"></div>
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
@@ -184,7 +184,7 @@ const PayuSuccess = () => {
         description="Your payment was successful and your subscription is now active."
         noIndex={true}
       />
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         <div className="container mx-auto py-4 px-4 lg:px-10">
           <div className="max-w-2xl mx-auto">
             {verificationResult?.success ? (

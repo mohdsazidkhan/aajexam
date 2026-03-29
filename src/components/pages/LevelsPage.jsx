@@ -131,7 +131,7 @@ const LevelsPage = ({ showNavbar = true }) => {
 
   if (error && levels.length === 0) {
     return (
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
         <div className="text-center">
           <div className="text-primary-600 text-4xl mb-4">⚠️</div>
           <p className="text-primary-600 text-xl">{error}</p>
@@ -148,7 +148,7 @@ const LevelsPage = ({ showNavbar = true }) => {
 
   return (
     <>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         {showNavbar && <UnifiedNavbar isLandingPage={true} />}
         <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
 

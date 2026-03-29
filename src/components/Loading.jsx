@@ -31,7 +31,7 @@ const Loading = ({
   };
 
   const wrapperClasses = fullScreen
-    ? 'fixed inset-0 flex items-center justify-center bg-subg-light dark:bg-subg-dark z-50'
+    ? 'fixed inset-0 flex items-center justify-center bg-aajexam-light dark:bg-aajexam-dark z-50'
     : 'flex items-center justify-center py-8';
 
   return (

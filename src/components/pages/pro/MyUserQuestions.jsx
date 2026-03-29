@@ -95,7 +95,7 @@ const MyUserQuestions = () => {
 
 	return (
 		<>
-			<div className="min-h-screen bg-subg-light dark:bg-subg-dark py-4 lg:py-8 px-4">
+			<div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4">
 				<div className="container mx-auto py-4 px-0 lg:px-10">
 					{/* Header Section */}
 					<div className="text-center mb-8">

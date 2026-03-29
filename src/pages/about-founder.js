@@ -32,7 +32,7 @@ export default function AboutAuthor() {
                 />
             </Head>
 
-            <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero */}
                     <div className="text-center mb-12">

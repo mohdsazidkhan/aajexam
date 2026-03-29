@@ -167,7 +167,7 @@ const SubscriptionPage = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark relative overflow-hidden">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-br from-primary-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse"></div>

@@ -116,7 +116,7 @@ const CategoryDetailPage = () => {
         <meta name="description" content={category ? `Explore ${category.name} quizzes on AajExam. Test your knowledge and compete for prizes.` : 'Explore category quizzes on AajExam platform.'} />
         <meta name="keywords" content={`${category?.name || 'category'} quiz, ${category?.name || 'category'} questions, AajExam ${category?.name || 'category'}`} />
       </Head>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         {/* Hero Section with Category Name and Description */}
         {category && (
           <div className="bg-gradient-to-r from-primary-800 via-primary-800 to-red-800 text-white py-6 lg:py-12 px-4 lg:px-6 shadow-2xl">

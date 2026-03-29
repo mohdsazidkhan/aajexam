@@ -886,9 +886,9 @@ const HomePage = () => {
 
   if (loading) {
     return (
-      <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-subg-light dark:bg-subg-dark min-h-screen`}>
+      <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-aajexam-light dark:bg-aajexam-dark min-h-screen`}>
         {userInfo && userInfo.role === 'admin' && <Sidebar />}
-        <div className="relative min-h-screen bg-subg-light dark:bg-subg-dark overflow-x-hidden w-full">
+        <div className="relative min-h-screen bg-aajexam-light dark:bg-aajexam-dark overflow-x-hidden w-full">
           <HomePageSkeleton />
         </div>
       </div>
@@ -901,7 +901,7 @@ const HomePage = () => {
   if (error && !error.toLowerCase().includes("subscription") && error.toLowerCase() !== "not authorized") {
     return (
       <MobileAppWrapper title="Home">
-        <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-subg-light dark:bg-subg-dark min-h-screen`}>
+        <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-aajexam-light dark:bg-aajexam-dark min-h-screen`}>
           {userInfo && userInfo.role === 'admin' && <Sidebar />}
           <div className="min-h-screen bg-gradient-to-br from-primary-50 via-red-50 to-primary-100 dark:from-gray-900 dark:via-red-900 dark:to-primary-900 flex items-center justify-center w-full">
             <div className="text-center">
@@ -946,9 +946,9 @@ const HomePage = () => {
         />
       </Head>
 
-      <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-subg-light dark:bg-subg-dark min-h-screen`}>
+      <div className={`mainContent ${isOpen && userInfo?.role === 'admin' ? 'showPanel' : 'hidePanel'} bg-aajexam-light dark:bg-aajexam-dark min-h-screen`}>
         {userInfo && userInfo.role === 'admin' && <Sidebar />}
-        <div className="relative min-h-screen bg-subg-light dark:bg-subg-dark overflow-x-hidden w-full">
+        <div className="relative min-h-screen bg-aajexam-light dark:bg-aajexam-dark overflow-x-hidden w-full">
           {/* Hero Section - Enhanced Modern Design */}
           <section className="relative overflow-hidden z-10 bg-gradient-to-br from-primary-50 via-primary-50 to-red-50 dark:from-gray-900 dark:via-primary-900/20 dark:to-red-900/20">
             {/* Animated Background Elements */}

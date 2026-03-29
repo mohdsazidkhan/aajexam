@@ -451,7 +451,7 @@ const CreateBlogPage = () => {
   if (loadingBlog) {
     return (
       <>
-        <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-4 lg:py-8 px-4 flex items-center justify-center">
+        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4 flex items-center justify-center">
           <div className="text-center">
             <div className="text-gray-500 dark:text-gray-400">Loading blog...</div>
           </div>
@@ -466,7 +466,7 @@ const CreateBlogPage = () => {
       <Head>
         <title>{isEditMode ? 'Edit Blog' : 'Create Blog'} - AajExam</title>
       </Head>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-4 lg:py-8 px-4">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4">
         <div className="container mx-auto py-0 px-0 lg:px-10">
           {/* Header */}
           <div className="mb-6 flex flex-col lg:flex-row items-start lg:items-center justify-between">

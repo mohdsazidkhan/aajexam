@@ -61,7 +61,7 @@ export async function POST(req) {
             }
         });
 
-        // Deduct from balance (optional, usually done on approval, but subg-backend doesn't seem to deduct here)
+        // Deduct from balance (optional, usually done on approval, but aajexam-backend doesn't seem to deduct here)
         // wallet.balance -= amount;
         // await wallet.save();
 

@@ -114,7 +114,7 @@ const SubcategoryDetailPage = () => {
         <meta name="description" content={subcategory ? `Explore ${subcategory.name} quizzes on AajExam. Test your knowledge and compete for prizes.` : 'Explore subcategory quizzes on AajExam platform.'} />
         <meta name="keywords" content={`${subcategory?.name || 'subcategory'} quiz, ${subcategory?.name || 'subcategory'} questions, AajExam ${subcategory?.name || 'subcategory'}`} />
       </Head>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
         {/* Hero Section with Subcategory Name and Description */}
         {subcategory && (
           <div className="bg-gradient-to-r from-primary-800 via-primary-800 to-red-800 text-white py-6 lg:py-12 px-4 lg:px-6 shadow-2xl">

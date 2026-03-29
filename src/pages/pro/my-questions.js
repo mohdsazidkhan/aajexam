@@ -110,7 +110,7 @@ const MyUserQuestions = () => {
         <meta name="twitter:description" content="Manage your submitted questions on AajExam Pro." />
       </Head>
 
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark py-6 px-4">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-6 px-4">
         <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
           {/* Header Section */}
           <div className="flex items-center justify-between mb-6">

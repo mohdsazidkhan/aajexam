@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <MobileAppWrapper title="Forgot Password">
-      <div className="bg-subg-light dark:bg-subg-dark flex items-center justify-center p-2 md:p-4">
+      <div className="bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center p-2 md:p-4">
         <div className="w-full max-w-md bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
           <div className="mb-6 flex items-center gap-2">
             <Link href="/login" className="text-primary-600 hover:underline flex items-center gap-1">

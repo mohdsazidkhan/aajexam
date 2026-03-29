@@ -13,7 +13,7 @@ const sendBrevoEmail = async ({ to, subject, html, sender }) => {
         sendSmtpEmail.htmlContent = html;
         sendSmtpEmail.sender = sender || {
             name: process.env.BREVO_SENDER_NAME || 'AajExam',
-            email: process.env.BREVO_SENDER_EMAIL || 'no-reply@aajexam.com'
+            email: process.env.BREVO_SENDER_EMAIL || 'aajexam.com@gmail.com'
         };
         sendSmtpEmail.to = [{ email: to }];
 

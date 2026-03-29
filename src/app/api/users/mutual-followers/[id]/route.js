@@ -20,7 +20,7 @@ export async function GET(req, { params }) {
         // We implement getMutualFollowers in-line if the static method isn't fully ported to aajexam yet
         // Mutual strategy: users that I follow, who also follow me (this is getMutualFollowers(currentUserId))
         // However, the target is `userId`: we want mutuals between `currentUserId` and `userId`.
-        // Let's implement the logic from subg-backend
+        // Let's implement the logic from aajexam-backend
 
         let mutualIds = [];
         if (typeof Follow.getMutualFollowers === 'function') {

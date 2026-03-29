@@ -16,7 +16,7 @@ export async function GET(req) {
         const competitionType = searchParams.get('type') || 'monthly';
         const date = searchParams.get('date');
         const week = searchParams.get('week');
-        
+
         let userId;
 
         if (authResult.authenticated) {
@@ -41,10 +41,10 @@ export async function GET(req) {
             return NextResponse.json({ error: `No historical data found for ${competitionType} ${filterValue}` }, { status: 404 });
         }
 
-        // Get profile completion details (same as subg-backend)
+        // Get profile completion details (same as aajexam-backend)
         const profileCompletion = user.getProfileCompletionDetails();
 
-        // Get bank details for the user (same as subg-backend)
+        // Get bank details for the user (same as aajexam-backend)
         const bankDetail = await BankDetail.findOne({ user: userId });
 
         const isPro = user.subscriptionStatus === 'pro';

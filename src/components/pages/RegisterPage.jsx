@@ -104,7 +104,7 @@ const RegisterPage = () => {
 
   return (
     <MobileAppWrapper title="Register">
-      <div className="flex items-center justify-center p-2 md:p-4 bg-subg-light dark:bg-subg-dark">
+      <div className="flex items-center justify-center p-2 md:p-4 bg-aajexam-light dark:bg-aajexam-dark">
         <div className="w-full container mx-auto py-4 px-0 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
 
           {/* Left Side - Quiz Platform Info */}

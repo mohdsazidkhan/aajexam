@@ -319,7 +319,7 @@ const LandingPage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark flex items-center justify-center">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
         <div className="text-center max-w-md mx-auto p-6">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Oops! Something went wrong</h2>
@@ -340,7 +340,7 @@ const LandingPage = () => {
 
   return (
     <MobileAppWrapper title="AajExam" showHeader={false}>
-      <div className="min-h-screen bg-subg-light dark:bg-subg-dark text-gray-900 dark:text-white transition-colors duration-300 pt-12 sm:pt-0">
+      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark text-gray-900 dark:text-white transition-colors duration-300 pt-12 sm:pt-0">
         {/* Unified Header */}
         <UnifiedNavbar isLandingPage={true} scrollToSection={scrollToSection} />
 

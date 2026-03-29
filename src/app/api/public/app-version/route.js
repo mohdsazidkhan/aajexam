@@ -10,8 +10,8 @@ export async function GET(req) {
         const latestVersion = '2.4.0';
         const forceUpdate = false;
         const updateUrl = platform === 'android'
-            ? 'https://play.google.com/store/apps/details?id=com.subg.app'
-            : 'https://apps.apple.com/app/aajexam/id123456789';
+            ? 'https://play.google.com/store/apps/details?id=com.aajexam.app'
+            : 'https://apps.apple.com/app/aajexam/id6750037021';
 
         return NextResponse.json({
             success: true,

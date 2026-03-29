@@ -185,7 +185,7 @@ const PublicUserQuestions = () => {
   // Not using generic table columns; page has a custom list UI
 
   const content = (
-    <div className="min-h-screen bg-subg-light dark:bg-subg-dark">
+    <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-6">
 
         <div className='mb-4 flex flex-col lg:flex-row justify-between items-center gap-4'>
