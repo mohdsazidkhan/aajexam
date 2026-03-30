@@ -8,7 +8,7 @@ export async function GET() {
         const articles = await Article.find({ status: 'published', isFeatured: true })
             .populate('author', 'name email')
             .populate('category', 'name')
-            .sort({ publishedAt: -1 })
+            .sort({ createdAt: -1 })
             .limit(5)
             .lean();
         return NextResponse.json({ success: true, data: articles });

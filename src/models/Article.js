@@ -198,7 +198,7 @@ articleSchema.statics.getPublished = function () {
   return this.find({ status: 'published' })
     .populate('author', 'name email')
     .populate('category', 'name')
-    .sort({ publishedAt: -1 });
+    .sort({ createdAt: -1 });
 };
 
 // Static method to get featured articles
@@ -209,7 +209,7 @@ articleSchema.statics.getFeatured = function () {
   })
     .populate('author', 'name email')
     .populate('category', 'name')
-    .sort({ publishedAt: -1 });
+    .sort({ createdAt: -1 });
 };
 
 // Static method to get articles by category
@@ -220,7 +220,7 @@ articleSchema.statics.getByCategory = function (categoryId) {
   })
     .populate('author', 'name email')
     .populate('category', 'name')
-    .sort({ publishedAt: -1 });
+    .sort({ createdAt: -1 });
 };
 
 // Static method to search articles
@@ -231,7 +231,7 @@ articleSchema.statics.search = function (query) {
   })
     .populate('author', 'name email')
     .populate('category', 'name')
-    .sort({ score: { $meta: 'textScore' }, publishedAt: -1 });
+    .sort({ score: { $meta: 'textScore' }, createdAt: -1 });
 };
 
 // Instance method to increment views without triggering full validation

@@ -25,7 +25,7 @@ export async function GET(req, { params }) {
         })
             .populate('author', 'name email')
             .populate('category', 'name')
-            .sort({ publishedAt: -1 })
+            .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 
