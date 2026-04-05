@@ -160,7 +160,7 @@ function AppContent({ Component, pageProps }) {
         <meta name="format-detection" content="telephone=no" />
         <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       </Head>
-      {gtag.GA_MEASUREMENT_ID && (typeof window !== 'undefined' && window.location.hostname !== 'localhost') ? (
+      {gtag.GA_MEASUREMENT_ID ? (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
           <Script id="gtag-init" strategy="afterInteractive">
