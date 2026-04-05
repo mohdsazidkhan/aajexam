@@ -97,13 +97,13 @@ const AboutUs = () => {
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
                      </div>
-                     <h2 className=”text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight leading-none”>Good Education <br />For Every Student</h2>
-                     <p className=”text-slate-300 font-bold leading-relaxed”>AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.</p>
-                     <div className=”space-y-4”>
+                     <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />For Every Student</h2>
+                     <p className="text-slate-300 font-bold leading-relaxed">AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.</p>
+                     <div className="space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
-                           <div key={i} className=”flex items-center gap-3”>
-                              <div className=”w-5 h-5 bg-primary-500 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900”>✓</div>
-                              <span className=”text-sm font-black uppercase tracking-widest text-slate-300”>{pill}</span>
+                           <div key={i} className="flex items-center gap-3">
+                              <div className="w-5 h-5 bg-primary-500 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
+                              <span className="text-sm font-black uppercase tracking-widest text-slate-300">{pill}</span>
                            </div>
                         ))}
                      </div>
