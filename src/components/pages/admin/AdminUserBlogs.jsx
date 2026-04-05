@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,12 @@ import ViewToggle from '../../ViewToggle';
 import { isMobile } from 'react-device-detect';
 import { safeLocalStorage } from '../../../lib/utils/storage';
 import { toast } from 'react-toastify';
+import { 
+  FileText, Search, Filter, LayoutGrid, List, Eye, Heart, 
+  Trash2, CheckCircle2, X, Clock, MessageSquare, 
+  Settings, User, Layers, Sparkles, Zap, Award, ShieldCheck, Ban, ArrowRight, RotateCcw, Users, Activity
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../ui/Button';
 
 const AdminUserBlogs = () => {
@@ -139,20 +145,15 @@ const AdminUserBlogs = () => {
     setShowStatusModal(true);
   };
 
-  // Note: Reward tier is now always visible, but only required when status is 'approved'
-  // We don't auto-clear it so admins can see/change it for any status
-
   const handleStatusSubmit = async () => {
     if (!selectedBlog) return;
 
     try {
-      // Validate: if status is approved, rewardTier must be set
       if (statusFormData.status === 'approved' && !statusFormData.rewardTier) {
         toast.error('Please select a reward tier when approving a blog');
         return;
       }
 
-      // If status is not approved, clear rewardTier
       const updateData = {
         status: statusFormData.status
       };
@@ -160,7 +161,6 @@ const AdminUserBlogs = () => {
       if (statusFormData.status === 'approved') {
         updateData.rewardTier = statusFormData.rewardTier;
       } else {
-        // Clear reward tier if status is not approved
         updateData.rewardTier = null;
       }
 
@@ -196,208 +196,134 @@ const AdminUserBlogs = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      pending: { color: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300', text: 'Pending', icon: '⏳' },
-      approved: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Approved', icon: '✅' },
-      rejected: { color: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300', text: 'Rejected', icon: '❌' },
-      published: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Published', icon: '📝' },
-      draft: { color: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300', text: 'Draft', icon: '📄' }
+      pending: { color: 'bg-amber-500/10 text-amber-500 border-amber-500/20', text: 'In Review', icon: <Clock className="w-3 h-3" /> },
+      approved: { color: 'bg-blue-500/10 text-blue-500 border-blue-500/20', text: 'Approved', icon: <ShieldCheck className="w-3 h-3" /> },
+      rejected: { color: 'bg-rose-500/10 text-rose-500 border-rose-500/20', text: 'Rejected', icon: <Ban className="w-3 h-3" /> },
+      published: { color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20', text: 'Published', icon: <Zap className="w-3 h-3" /> },
+      draft: { color: 'bg-slate-500/10 text-slate-500 border-slate-500/20', text: 'Draft', icon: <FileText className="w-3 h-3" /> }
     };
     const config = statusConfig[status] || statusConfig.draft;
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
+      <span className={`px-2.5 py-1 rounded-lg border flex items-center gap-2 text-[9px] font-black uppercase tracking-widest ${config.color}`}>
         {config.icon} {config.text}
       </span>
     );
   };
 
-  const getRewardTierBadge = (tier, amount) => {
+  const getRewardTierBadge = (tier) => {
     if (!tier) return null;
     const tierConfig = {
-      normal: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Normal ₹5' },
-      good: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Good ₹10' },
-      high: { color: 'bg-purple-100 text-primary-800 dark:bg-purple-900/30 dark:text-primary-300', text: 'High ₹15' }
+      normal: { color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20', text: '₹5' },
+      good: { color: 'bg-blue-500/10 text-blue-500 border-blue-500/20', text: '₹10' },
+      high: { color: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20', text: '₹15' }
     };
     const config = tierConfig[tier];
     if (!config) return null;
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color} ml-2`}>
-        {config.text}
+      <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase tracking-widest ${config.color} whitespace-nowrap flex items-center gap-1.5`}>
+        <Award className="w-3 h-3" /> REWARD: {config.text}
       </span>
     );
   };
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                S.No.
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Blog
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Author
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Category
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Stats
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Created At
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Actions
-              </th>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden"
+    >
+      <div className="overflow-x-auto selection:bg-indigo-500/30">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-white/5">
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Submission</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Author</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Sector</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Moderation</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Metrics</th>
+              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Recorded</th>
+              <th className="px-8 py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Controls</th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody className="divide-y-2 divide-slate-100 dark:divide-white/5">
             {blogs.map((blog, index) => (
-              <tr key={blog._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
+              <motion.tr
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+                key={blog._id}
+                className="group hover:bg-indigo-500/5 transition-all text-nowrap"
+              >
+                <td className="px-8 py-6 text-[10px] font-black text-slate-400 tabular-nums">
                   {((currentPage - 1) * 10) + index + 1}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <img
-                        className="h-10 w-10 rounded-lg object-cover"
-                        src={blog.featuredImage || '/default_banner.png'}
-                        alt={blog.title}
-                      />
-                    </div>
-                    <div className="ml-4 max-w-96" >
-                      <div className="text-sm font-medium text-gray-900 dark:text-white" title={blog.title}>
-                        {blog.title?.length > 40 ? blog.title?.substring(0, 40) + '...' : blog.title}
+                <td className="px-8 py-6">
+                  <div className="flex items-center gap-4">
+                    <img
+                      className="h-14 w-14 rounded-2xl object-cover ring-2 ring-slate-100 dark:ring-white/10 group-hover:ring-indigo-500/50 transition-all shadow-lg"
+                      src={blog.featuredImage || '/default_banner.png'}
+                      alt={blog.title}
+                    />
+                    <div className="max-w-[250px]">
+                      <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight line-clamp-1" title={blog.title}>
+                        {blog.title}
                       </div>
+                      <div className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">/STUDENT_BLOG</div>
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                  {blog.author?.name || 'Unknown'}
+                <td className="px-8 py-6">
+                  <div className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{blog.author?.name || 'Unknown User'}</div>
+                  <div className="text-[9px] font-bold text-slate-400 tracking-widest">{blog.author?.email || 'PRIVACY_PROTECTED'}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                  {blog.category?.name || 'Uncategorized'}
+                <td className="px-8 py-6">
+                  <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-lg text-[9px] font-black uppercase border border-slate-200 dark:border-white/5">
+                    {blog.category?.name || 'GENERAL'}
+                  </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center flex-wrap gap-1">
+                <td className="px-8 py-6">
+                  <div className="flex items-center flex-wrap gap-2">
                     {getStatusBadge(blog.status)}
-                    {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
+                    {getRewardTierBadge(blog.rewardTier)}
                     {blog.rewardCredited && (
-                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 ml-2" title="Reward credited">
-                        💰
+                      <span className="p-1 px-2 rounded-lg bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-lg shadow-emerald-500/5">
+                        <Zap className="w-3 h-3 fill-current" /> SETTLED
                       </span>
                     )}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                  <div className="flex space-x-4">
-                    <span>👁️ {blog.views || 0}</span>
-                    <span>❤️ {blog.likes || 0}</span>
+                <td className="px-8 py-6">
+                  <div className="flex items-center gap-6 text-slate-400">
+                    <div className="flex items-center gap-2">
+                      <Eye className="w-4 h-4" />
+                      <span className="text-[11px] font-black tabular-nums">{blog.views || 0}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-4 h-4" />
+                      <span className="text-[11px] font-black tabular-nums">{blog.likes || 0}</span>
+                    </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                  <div className="font-medium text-gray-900 dark:text-white">
-                    {formatDate(blog.createdAt)}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+                <td className="px-8 py-6">
+                  <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest whitespace-nowrap">
+                    <div className="mb-1">{formatDate(blog.createdAt)}</div>
+                    <div className="opacity-50 flex items-center gap-1"><Clock className="w-3 h-3" /> {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <div className="flex space-x-2">
-                    <Button
-                      onClick={() => handleViewContent(blog)}
-                      variant="admin"
-                      size="small"
-                    >
-                      View
-                    </Button>
-                    <Button
-                      onClick={() => handleStatusChange(blog)}
-                      variant="admin"
-                      size="small"
-                    >
-                      Status
-                    </Button>
-                    <Button
-                      onClick={() => handleDelete(blog._id)}
-                      variant="danger"
-                      size="small"
-                    >
-                      Delete
-                    </Button>
+                <td className="px-8 py-6">
+                  <div className="flex items-center justify-center gap-2">
+                    <button onClick={() => handleViewContent(blog)} className="p-2 hover:bg-indigo-500 hover:text-white rounded-lg transition-colors"><Eye className="w-4 h-4" /></button>
+                    <button onClick={() => handleStatusChange(blog)} className="p-2 hover:bg-amber-500 hover:text-white rounded-lg transition-colors"><Settings className="w-4 h-4" /></button>
+                    <button onClick={() => handleDelete(blog._id)} className="p-2 hover:bg-rose-500 hover:text-white rounded-lg transition-colors"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      {/* Pagination */}
-      {pagination.totalPages > 1 && (
-        <div className="bg-white dark:bg-gray-800 px-4 py-3 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 sm:px-6">
-          <div className="flex-1 flex justify-between sm:hidden">
-            <button
-              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-              disabled={!pagination.hasPrev}
-              className="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Previous
-            </button>
-            <button
-              onClick={() => setCurrentPage(prev => Math.min(prev + 1, pagination.totalPages))}
-              disabled={!pagination.hasNext}
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Next
-            </button>
-          </div>
-          <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                Showing{' '}
-                <span className="font-medium">
-                  {((pagination.page - 1) * pagination.limit) + 1}
-                </span>{' '}
-                to{' '}
-                <span className="font-medium">
-                  {Math.min(pagination.page * pagination.limit, pagination.total)}
-                </span>{' '}
-                of{' '}
-                <span className="font-medium">{pagination.total}</span> results
-              </p>
-            </div>
-            <div>
-              <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
-                <button
-                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                  disabled={!pagination.hasPrev}
-                  className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Previous
-                </button>
-                <button
-                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, pagination.totalPages))}
-                  disabled={!pagination.hasNext}
-                  className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Next
-                </button>
-              </nav>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </motion.div>
   );
 
   const renderListView = () => (
@@ -414,40 +340,22 @@ const AdminUserBlogs = () => {
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{blog.title}</h3>
                 {getStatusBadge(blog.status)}
-                {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
-                {blog.rewardCredited && <span className="text-green-500" title="Reward credited">💰</span>}
+                {getRewardTierBadge(blog.rewardTier)}
+                {blog.rewardCredited && <span className="text-green-500" title="Reward credited">ðŸ’°</span>}
               </div>
               <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-4">
                 <span>By {blog.author?.name || 'Unknown'}</span>
                 <span>In {blog.category?.name || 'Uncategorized'}</span>
-                <span>👁️ {blog.views || 0}</span>
-                <span>❤️ {blog.likes || 0}</span>
+                <span>ðŸ‘ï¸ {blog.views || 0}</span>
+                <span>â¤ï¸ {blog.likes || 0}</span>
               </div>
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <div className="mt-1 text-xs text-slate-700 dark:text-gray-400">
                 Created: {formatDate(blog.createdAt)} at {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
               </div>
               <div className="mt-3 flex items-center gap-3">
-                <Button
-                  onClick={() => handleViewContent(blog)}
-                  variant="admin"
-                  size="small"
-                >
-                  View
-                </Button>
-                <Button
-                  onClick={() => handleStatusChange(blog)}
-                  variant="admin"
-                  size="small"
-                >
-                  Status
-                </Button>
-                <Button
-                  onClick={() => handleDelete(blog._id)}
-                  variant="danger"
-                  size="small"
-                >
-                  Delete
-                </Button>
+                <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View</Button>
+                <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Status</Button>
+                <Button onClick={() => handleDelete(blog._id)} variant="danger" size="small">Delete</Button>
               </div>
             </div>
           </div>
@@ -471,43 +379,21 @@ const AdminUserBlogs = () => {
             <h3 className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2">{blog.title}</h3>
             <div className="flex items-end gap-1">
               {getStatusBadge(blog.status)}
-              {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
-              {blog.rewardCredited && <span className="text-green-500 text-xs" title="Reward credited">💰</span>}
+              {getRewardTierBadge(blog.rewardTier)}
             </div>
           </div>
           <div className="mt-2 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-3">
             <span>{blog.author?.name || 'Unknown'}</span>
             <span>{blog.category?.name || 'Uncategorized'}</span>
           </div>
-          <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-4">
-            <span>👁️ {blog.views || 0}</span>
-            <span>❤️ {blog.likes || 0}</span>
-          </div>
-          <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Created: {new Date(blog.createdAt).toLocaleDateString('en-US')} at {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+          <div className="mt-2 text-xs text-slate-700 dark:text-gray-400 flex items-center gap-4">
+            <span>ðŸ‘ï¸ {blog.views || 0}</span>
+            <span>â¤ï¸ {blog.likes || 0}</span>
           </div>
           <div className="mt-3 flex items-center gap-3">
-            <Button
-              onClick={() => handleViewContent(blog)}
-              variant="admin"
-              size="small"
-            >
-              View
-            </Button>
-            <Button
-              onClick={() => handleStatusChange(blog)}
-              variant="admin"
-              size="small"
-            >
-              Status
-            </Button>
-            <Button
-              onClick={() => handleDelete(blog._id)}
-              variant="danger"
-              size="small"
-            >
-              Delete
-            </Button>
+            <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View</Button>
+            <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Status</Button>
+            <Button onClick={() => handleDelete(blog._id)} variant="danger" size="small">Delete</Button>
           </div>
         </div>
       ))}
@@ -516,12 +402,16 @@ const AdminUserBlogs = () => {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="User Blogs">
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+      <AdminMobileAppWrapper title="Community Submissions">
+        <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505]">
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-            <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading user blogs..." />
+          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white mt-12 lg:mt-0">
+            <div className="flex flex-col items-center justify-center py-48 space-y-8">
+              <div className="relative">
+                <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+                <MessageSquare className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
+              </div>
+              <div className="text-center text-slate-400 font-black uppercase tracking-[0.3em] text-xs">Accessing Community Ledger...</div>
             </div>
           </div>
         </div>
@@ -530,108 +420,146 @@ const AdminUserBlogs = () => {
   }
 
   return (
-    <AdminMobileAppWrapper title="User Blogs">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+    <AdminMobileAppWrapper title="Community Submissions">
+      <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-outfit selection:bg-indigo-500/30">
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-          {/* Header */}
-          <div className="mb-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  📝 User Blogs ({blogs?.length || 0})
+        <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+              <MessageSquare className="w-64 h-64 text-indigo-500 -rotate-12" />
+            </div>
+
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">COMMUNITY // MODERATION</span>
+                </div>
+
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                  COMMUNITY <span className="text-indigo-600">SUBMISSIONS</span>
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  Review, approve, and manage user-submitted blogs
+
+                <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
+                  Review, approve, and incentivize student-generated content. Standardize the community knowledge base with moderation controls.
                 </p>
               </div>
-              <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
-            </div>
-          </div>
 
-          {/* Filters */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-6 shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Search
-                </label>
-                <input
-                  type="text"
-                  name="search"
-                  value={filters.search}
-                  onChange={handleFilterChange}
-                  placeholder="Search blogs..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Status
-                </label>
-                <select
-                  name="status"
-                  value={filters.status}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  <option value="">All Status</option>
-                  <option value="pending">Pending</option>
-                  <option value="approved">Approved</option>
-                  <option value="rejected">Rejected</option>
-                  <option value="published">Published</option>
-                  <option value="draft">Draft</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Category
-                </label>
-                <select
-                  name="category"
-                  value={filters.category}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  <option value="">All Categories</option>
-                  {categories.map(cat => (
-                    <option key={cat._id} value={cat._id}>{cat.name}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Reward Tier
-                </label>
-                <select
-                  name="rewardTier"
-                  value={filters.rewardTier}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  <option value="">All Tiers</option>
-                  <option value="normal">Normal ₹5</option>
-                  <option value="good">Good ₹10</option>
-                  <option value="high">High ₹15</option>
-                </select>
+              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/20 p-3 rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5">
+                <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Content */}
-          {error ? (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-              <p className="text-red-800 dark:text-red-200">{error}</p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 lg:p-10 rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl mb-12 relative overflow-hidden"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Search Submissions</label>
+                <div className="relative group/field">
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
+                  <input
+                    type="text"
+                    name="search"
+                    value={filters.search}
+                    onChange={handleFilterChange}
+                    placeholder="QUERY TITLE/AUTHOR..."
+                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-amber-500 pl-3">Moderation State</label>
+                <div className="relative group/field">
+                  <Activity className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-amber-500 transition-colors" />
+                  <select
+                    name="status"
+                    value={filters.status}
+                    onChange={handleFilterChange}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">ALL STATUSES</option>
+                    <option value="pending">IN REVIEW</option>
+                    <option value="approved">APPROVED</option>
+                    <option value="rejected">REJECTED</option>
+                    <option value="published">PUBLISHED</option>
+                    <option value="draft">DRAFT</option>
+                  </select>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-blue-500 pl-3">Content Sector</label>
+                <div className="relative group/field">
+                  <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-blue-500 transition-colors" />
+                  <select
+                    name="category"
+                    value={filters.category}
+                    onChange={handleFilterChange}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">ALL SECTORS</option>
+                    {categories.map(cat => (
+                      <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-emerald-500 pl-3">Reward Tier</label>
+                <div className="relative group/field">
+                  <Award className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-emerald-500 transition-colors" />
+                  <select
+                    name="rewardTier"
+                    value={filters.rewardTier}
+                    onChange={handleFilterChange}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">ALL TIERS</option>
+                    <option value="normal">NORMAL - ₹5</option>
+                    <option value="good">GOOD - ₹10</option>
+                    <option value="high">HIGH - ₹15</option>
+                  </select>
+                </div>
+              </div>
             </div>
-          ) : blogs.length === 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
-              <p className="text-gray-500 dark:text-gray-400">No user blogs found</p>
-            </div>
-          ) : (
-            viewMode === 'table' ? renderTableView() :
-              viewMode === 'list' ? renderListView() :
-                renderGridView()
-          )}
+          </motion.div>
+
+          <AnimatePresence mode="wait">
+            {error ? (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-rose-500/10 border-4 border-rose-500/20 rounded-[3rem] p-10 flex items-center gap-6 shadow-2xl">
+                <div className="p-4 bg-rose-500 text-white rounded-2xl shadow-lg">
+                  <Ban className="w-8 h-8" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-black text-rose-500 uppercase tracking-tighter">Repository Failure</h4>
+                  <p className="text-sm font-bold text-rose-500/70 uppercase tracking-widest">{error}</p>
+                </div>
+              </motion.div>
+            ) : blogs.length === 0 ? (
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-32 text-center shadow-2xl">
+                <div className="w-32 h-32 rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8 mx-auto">
+                  <FileText className="w-16 h-16 text-slate-300" />
+                </div>
+                <h3 className="text-3xl font-black italic tracking-tighter text-slate-300 uppercase mb-4">No Submissions Found</h3>
+                <p className="max-w-md text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mx-auto">THE COMMUNITY REPOSITORY IS CURRENTLY VOID OF SUBMISSIONS IN THIS SECTOR</p>
+              </motion.div>
+            ) : (
+              <div className="space-y-12 pb-24">
+                {viewMode === 'table' ? renderTableView() :
+                  viewMode === 'list' ? renderListView() :
+                    renderGridView()}
+              </div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -648,9 +576,9 @@ const AdminUserBlogs = () => {
                   setShowContentModal(false);
                   setSelectedBlog(null);
                 }}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-slate-700 dark:text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               >
-                ✕
+                Ã¢Å“â€¢
               </button>
             </div>
             <div className="p-3 lg:p-6">
@@ -752,7 +680,7 @@ const AdminUserBlogs = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Reward Tier {statusFormData.status === 'approved' && '*'}
-                  {statusFormData.status === 'approved' && <span className="text-xs text-gray-500">(Required for approval)</span>}
+                  {statusFormData.status === 'approved' && <span className="text-xs text-slate-700 dark:text-gray-400">(Required for approval)</span>}
                 </label>
                 <select
                   value={statusFormData.rewardTier || ''}
@@ -797,4 +725,6 @@ const AdminUserBlogs = () => {
 };
 
 export default AdminUserBlogs;
+
+
 

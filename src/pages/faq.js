@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FaQuestionCircle, FaGraduationCap, FaCreditCard, FaTrophy, FaUserShield, FaBook, FaChartLine } from 'react-icons/fa';
 import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
 import AuthorBio from '../components/AuthorBio';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
 import { getCanonicalUrl } from '../utils/seo';
@@ -85,7 +84,7 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'How does the monthly recognition program work?',
-                    a: `Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. We reward the Top ${config.QUIZ_CONFIG.DAILY_WINNER_COUNT || 1} for Daily, Top ${config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT || 3} for Weekly, and Top ${config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT || 5} for Monthly eligible PRO users who win prizes from a dynamic prize pool. Eligibility requires: an active PRO subscription and completing ${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes (≥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy) in the current month. Referral count is NOT required to qualify.`
+                    a: `Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. We reward the Top ${config.QUIZ_CONFIG.DAILY_WINNER_COUNT || 1} for Daily, Top ${config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT || 3} for Weekly, and Top ${config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT || 5} for Monthly eligible PRO users who win prizes from a dynamic prize pool. Eligibility requires: an active PRO subscription and completing ${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes (â‰¥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy) in the current month. Referral count is NOT required to qualify.`
                 },
                 {
                     q: 'When are monthly recognitions distributed?',
@@ -133,7 +132,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'How is my leaderboard rank calculated?',
-                    a: `Leaderboard rankings are based on multiple factors: number of high-score quizzes (≥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy), overall accuracy percentage, total quizzes completed, and consistency of performance. The algorithm prioritizes quality (accuracy) over quantity.`
+                    a: `Leaderboard rankings are based on multiple factors: number of high-score quizzes (â‰¥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy), overall accuracy percentage, total quizzes completed, and consistency of performance. The algorithm prioritizes quality (accuracy) over quantity.`
                 },
                 {
                     q: 'Can I see my performance history?',
@@ -200,14 +199,14 @@ const FAQ = () => {
                 />
             </Head>
 
-            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
+            <div className="min-h-screen bg-white dark:bg-slate-950">
                 <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
                     {/* Hero Section */}
                     <div className="text-center mb-8 lg:mb-12">
-                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Frequently Asked Questions
                         </h1>
                         <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -221,7 +220,7 @@ const FAQ = () => {
                         return (
                             <div key={catIndex} className="mb-8 lg:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-purple-500 rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -236,7 +235,7 @@ const FAQ = () => {
                                             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300"
                                         >
                                             <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
-                                                <span className="text-secondary-500 flex-shrink-0">Q:</span>
+                                                <span className="text-primary-500 flex-shrink-0">Q:</span>
                                                 <span>{faq.q}</span>
                                             </h3>
                                             <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
@@ -251,12 +250,12 @@ const FAQ = () => {
 
                     {/* Contact Section */}
                     <div className="text-center mt-12">
-                        <div className="bg-gradient-to-r from-secondary-100 to-purple-100 dark:from-secondary-800 dark:to-purple-800 rounded-3xl p-6 lg:p-8">
+                        <div className="bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-800 dark:to-purple-800 rounded-3xl p-4 lg:p-8">
                             <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Still Have Questions?
                             </h2>
                             <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                                Can't find the answer you're looking for? Our support team is here to help!
+                                Can&apos;t find the answer you&apos;re looking for? Our support team is here to help!
                             </p>
                             <button
                                 onClick={() => router.push('/contact')}
@@ -277,7 +276,6 @@ const FAQ = () => {
 
                 </div>
             </div>
-            <UnifiedFooter />
         </MobileAppWrapper>
     );
 };
@@ -290,3 +288,4 @@ export async function getStaticProps() {
         revalidate: 86400 // Revalidate once per day
     };
 }
+

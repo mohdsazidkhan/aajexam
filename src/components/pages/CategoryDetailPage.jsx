@@ -1,297 +1,279 @@
-'use client';
+﻿'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'; // Pages Router
-import Link from 'next/link';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { FaClock, FaQuestionCircle, FaStar, FaLayerGroup, FaFolder, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import {
+   Clock,
+   HelpCircle,
+   Folder,
+   ChevronRight,
+   ArrowLeft,
+   Trophy,
+   Sparkles,
+   Target,
+   Map,
+   BookOpen
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import API from '../../lib/api';
 import QuizStartModal from '../QuizStartModal';
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 12;
 
 const CategoryDetailPage = () => {
-  const router = useRouter();
-  const { categoryId } = router.query;
-  const [category, setCategory] = useState(null);
-  const [subcategories, setSubcategories] = useState([]);
-  const [quizzes, setQuizzes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [subcategoriesLoading, setSubcategoriesLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [showQuizModal, setShowQuizModal] = useState(false);
-  const [selectedQuiz, setSelectedQuiz] = useState(null);
-  console.log(quizzes, 'quizzes');
-  useEffect(() => {
-    fetchCategory();
-    fetchSubcategories();
-    fetchQuizzes(page);
-    // eslint-disable-next-line
-  }, [categoryId, page]);
+   const router = useRouter();
+   const { categoryId } = router.query;
+   const [category, setCategory] = useState(null);
+   const [subcategories, setSubcategories] = useState([]);
+   const [quizzes, setQuizzes] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [subLoading, setSubLoading] = useState(true);
+   const [error, setError] = useState('');
+   const [page, setPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
+   const [showQuizModal, setShowQuizModal] = useState(false);
+   const [selectedQuiz, setSelectedQuiz] = useState(null);
 
-  const fetchCategory = async () => {
-    try {
-      // Use homeData or fetch from API if needed
-      const categories = await API.getCategories();
-      const found = categories.find(cat => cat._id === categoryId);
-      setCategory(found || null);
-    } catch {
-      setCategory(null);
-    }
-  };
+   const fetchCategory = useCallback(async () => {
+      try {
+         const categories = await API.getCategories();
+         const found = categories.find(cat => cat._id === categoryId);
+         setCategory(found || null);
+      } catch { setCategory(null); }
+   }, [categoryId]);
 
-  const fetchSubcategories = async () => {
-    try {
-      setSubcategoriesLoading(true);
-      const res = await API.getSubcategories(categoryId);
-      setSubcategories(res || []);
-    } catch (err) {
-      console.error('Error fetching subcategories:', err);
-      setSubcategories([]);
-    } finally {
-      setSubcategoriesLoading(false);
-    }
-  };
+   const fetchSubcategories = useCallback(async () => {
+      try {
+         setSubLoading(true);
+         const res = await API.getSubcategories(categoryId);
+         setSubcategories(res || []);
+      } catch { setSubcategories([]); }
+      finally { setSubLoading(false); }
+   }, [categoryId]);
 
-  const fetchQuizzes = async (pageNum) => {
-    setLoading(true);
-    setError('');
-    try {
-      const res = await API.request(`/api/student/quizzes/public/level-based?category=${categoryId}&page=${pageNum}&limit=${PAGE_SIZE}`);
-      if (res.success) {
-        setQuizzes(res.data);
-        setTotalPages(res.pagination.totalPages);
-      } else {
-        setError('Failed to load quizzes');
+   const fetchQuizzes = useCallback(async (pageNum) => {
+      if (!categoryId) return;
+      setLoading(true);
+      try {
+         const res = await API.request(`/api/student/quizzes/public/level-based?category=${categoryId}&page=${pageNum}&limit=${PAGE_SIZE}`);
+         if (res.success) {
+            setQuizzes(res.data);
+            setTotalPages(res.pagination.totalPages);
+         } else { setError('Failed to load quizzes'); }
+      } catch { setError('Connection lost. Please try again.'); }
+      finally { setLoading(false); }
+   }, [categoryId]);
+
+   useEffect(() => {
+      if (categoryId) {
+         fetchCategory();
+         fetchSubcategories();
+         fetchQuizzes(page);
       }
-    } catch (err) {
-      setError('Failed to load quizzes');
-    } finally {
-      setLoading(false);
-    }
-  };
+   }, [categoryId, page, fetchCategory, fetchSubcategories, fetchQuizzes]);
 
-  const handleQuizClick = (quizId) => {
-    // Check if user is logged in
-    const userInfo = localStorage.getItem('userInfo');
-    if (!userInfo) {
-      router.push('/login');
-      return;
-    }
-    const quiz = quizzes.find(q => q._id === quizId);
-    setSelectedQuiz(quiz);
-    setShowQuizModal(true);
-  };
+   const handleQuizClick = (quiz) => {
+      const userInfo = localStorage.getItem('userInfo');
+      if (!userInfo) { router.push('/login'); return; }
+      setSelectedQuiz(quiz);
+      setShowQuizModal(true);
+   };
 
-  const handleConfirmQuizStart = (competitionType) => {
-    setShowQuizModal(false);
-    if (selectedQuiz) {
-      // Store navigation data in localStorage
-      localStorage.setItem('quizNavigationData', JSON.stringify({
-        fromPage: 'category',
-        quizData: selectedQuiz,
-        competitionType,
-      }));
-      router.push(`/attempt-quiz/${selectedQuiz._id}`);
-    }
-  };
+   const handleConfirmQuizStart = (competitionType) => {
+      setShowQuizModal(false);
+      if (selectedQuiz) {
+         localStorage.setItem('quizNavigationData', JSON.stringify({
+            fromPage: 'category',
+            quizData: selectedQuiz,
+            competitionType,
+         }));
+         router.push(`/attempt-quiz/${selectedQuiz._id}`);
+      }
+   };
 
-  const handleCancelQuizStart = () => {
-    setShowQuizModal(false);
-    setSelectedQuiz(null);
-  };
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+         <Head>
+            <title>{category ? `${category.name} | AajExam` : 'Category Overview'}</title>
+         </Head>
 
-  const handleSubcategoryClick = (subcategoryId) => {
-    router.push(`/subcategory/${subcategoryId}`);
-  };
-
-  return (
-    <>
-      <Head>
-        <title>{category ? `${category.name} - AajExam` : 'Category - AajExam'}</title>
-        <meta name="description" content={category ? `Explore ${category.name} quizzes on AajExam. Test your knowledge and compete for prizes.` : 'Explore category quizzes on AajExam platform.'} />
-        <meta name="keywords" content={`${category?.name || 'category'} quiz, ${category?.name || 'category'} questions, AajExam ${category?.name || 'category'}`} />
-      </Head>
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-        {/* Hero Section with Category Name and Description */}
-        {category && (
-          <div className="bg-gradient-to-r from-primary-800 via-primary-800 to-red-800 text-white py-6 lg:py-12 px-4 lg:px-6 shadow-2xl">
-            <div className="container mx-auto text-center">
-              <div className="mb-4">
-                <h1 className="text-2xl sm:text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">
-                  {category.name}
-                </h1>
-                {category.description && (
-                  <p className="text-sm lg:text-xl text-red-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
-                    {category.description}
-                  </p>
-                )}
-              </div>
-              <div className="flex justify-center items-center gap-4 mt-6">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-2">
-                  <span className="text-sm font-semibold">Explore Quizzes</span>
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-2">
-                  <span className="text-sm font-semibold">Learn & Grow</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="container mx-auto px-4 lg:px-10 py-8">
-
-          {/* Subcategories Section */}
-          <div className="mb-8 sm:mb-12">
-            <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-800 dark:text-white flex items-center gap-2 sm:gap-3">
-                <FaFolder className="text-red-500" />
-                Subcategories ({subcategories?.length})
-              </h2>
-              <button
-                onClick={() => router.push("/home")}
-                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
-              >
-                <FaArrowLeft />
-                <span>Go Back</span>
-              </button>
-            </div>
-
-            {subcategoriesLoading ? (
-              <div className="flex justify-center items-center h-20 sm:h-32">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600"></div>
-              </div>
-            ) : subcategories.length === 0 ? (
-              <div className="text-center text-gray-500 font-medium py-6 sm:py-8 bg-white/50 dark:bg-gray-800/50 rounded-2xl">
-                No subcategories found for this category.
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-8 mb-2 md:mb-4 lg:mb-6 xl:mb-8">
-                {subcategories.map((subcategory) => (
-                  <div
-                    key={subcategory._id}
-                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 lg:p-6 border-2 border-red-400 hover:border-primary-500 cursor-pointer group"
-                    onClick={() => handleSubcategoryClick(subcategory._id)}
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-xl flex items-center justify-center">
-                        <FaFolder className="text-white text-xl" />
-                      </div>
-                      <FaArrowRight className="text-gray-400 group-hover:text-primary-500 transition-colors" />
-                    </div>
-
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                      {subcategory.name}
-                    </h3>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-200">
-                      <span>Explore quizzes</span>
-                      <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
-                        Browse
-                      </span>
-                    </div>
+         {/* --- Header Section --- */}
+         <AnimatePresence mode="wait">
+            {category && (
+               <motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="relative px-4 lg:px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 to-slate-900 z-0" />
+                  <div className="absolute inset-0 opacity-20 pointer-events-none">
+                     <Map className="absolute top-10 left-10 w-24 h-24 text-white/10" />
+                     <BookOpen className="absolute bottom-10 right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/5" />
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
 
-          {/* Quizzes Section */}
-          <div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-800 dark:text-white flex items-center gap-2 sm:gap-3">
-                <FaStar className="text-primary-500" />
-                Quizzes ({quizzes.length})
-              </h2>
+                  <div className="container mx-auto max-w-5xl relative z-10 space-y-8 text-center text-white">
+                     <div className="space-y-4">
+                        <div className="flex justify-center gap-3">
+                           <span className="px-4 py-1.5 bg-primary-500 text-white text-xs font-semibold rounded-full shadow-duo-secondary">Category</span>
+                           <span className="px-4 py-1.5 bg-white/10 text-white/80 text-xs font-semibold rounded-full backdrop-blur-sm border border-white/10">Practice quizzes</span>
+                        </div>
+                        <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight leading-none">{category.name}</h1>
+                        <p className="text-base font-medium text-slate-300 max-w-2xl mx-auto leading-relaxed">{category.description || 'Pick a topic inside this category and start practicing.'}</p>
+                     </div>
+
+                     <div className="flex flex-wrap justify-center gap-8 pt-4">
+                        {[
+                           { label: 'Topics', val: subcategories.length, icon: Folder },
+                           { label: 'Quizzes here', val: quizzes.length, icon: Trophy },
+                           { label: 'Current page', val: `${page}/${Math.max(totalPages, 1)}`, icon: Target }
+                        ].map((s, i) => (
+                           <div key={i} className="flex items-center gap-3">
+                              <div className="p-3 bg-white/10 rounded-2xl border border-white/5">
+                                 <s.icon className="w-5 h-5 text-primary-700 dark:text-primary-500" />
+                              </div>
+                              <div className="text-left">
+                                 <p className="text-xs font-semibold opacity-70 leading-none mb-1">{s.label}</p>
+                                 <p className="text-base font-black font-outfit">{s.val}</p>
+                              </div>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+               </motion.section>
+            )}
+         </AnimatePresence>
+
+         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-7xl space-y-6 lg:space-y-16">
+
+            {/* --- Back Control --- */}
+            <div className="flex justify-start">
+               <Button variant="ghost" onClick={() => router.push('/home')} className="px-6 py-4 rounded-2xl bg-white dark:bg-slate-800 text-sm font-semibold shadow-sm hover:text-primary-700 dark:text-primary-500 transition-colors">
+                  <ArrowLeft className="mr-2 w-4 h-4" /> Back to home
+               </Button>
             </div>
 
-            {loading ? (
-              <div className="flex justify-center items-center h-32 sm:h-64">
-                <Loading size="lg" color="gray" message="" />
-              </div>
-            ) : error ? (
-              <div className="text-center text-primary-600 font-semibold py-6 sm:py-10 text-sm sm:text-base">{error}</div>
-            ) : quizzes.length === 0 ? (
-              <div className="text-center text-gray-500 font-medium py-6 sm:py-10 bg-white/50 dark:bg-gray-800/50 rounded-2xl text-sm sm:text-base">
-                No quizzes found for this category.
-              </div>
-            ) : (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-8 mb-2 md:mb-4 lg:mb-6 xl:mb-8">
-                  {quizzes.map((quiz) => (
-                    <div key={quiz._id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 lg:p-6 border-2 border-red-400 hover:border-primary-500 cursor-pointer flex flex-col justify-between">
-                      <div>
-                        <h2 className="text-md md:tex-md lg:text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-                          {quiz.title} {quiz.isRecommended && <FaStar className="text-primary-400" />}
-                        </h2>
-                        {quiz.description && <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">{quiz.description}</p>}
-                        <div className="flex flex-wrap gap-3 text-xs text-gray-600 dark:text-gray-400 mb-2">
-                          <span className="flex items-center gap-1"><FaClock /> {quiz.timeLimit || 30} min</span>
-                          <span className="flex items-center gap-1"><FaQuestionCircle /> {quiz.totalMarks || 'Variable'} Qs</span>
-                          <span className="flex items-center gap-1"><FaLayerGroup /> Level {quiz.requiredLevel}</span>
-                          {quiz.difficulty && <span className="px-2 py-1 rounded-full bg-primary-100 text-primary-700 font-semibold">{quiz.difficulty}</span>}
+            {/* --- Subcategories Grid --- */}
+            <section className="space-y-8">
+               <div className="space-y-1">
+                  <h2 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight flex items-center gap-3">
+                     <Folder className="text-primary-700 dark:text-primary-500 w-6 h-6" /> Explore <span className="text-primary-700 dark:text-primary-500">topics</span>
+                  </h2>
+                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Tap on a topic to see all quizzes inside it.</p>
+               </div>
+
+               <AnimatePresence mode="wait">
+                  {subLoading ? (
+                     <div className="py-12 flex justify-center"><Loading size="md" /></div>
+                  ) : subcategories.length === 0 ? (
+                     <Card className="py-12 text-center border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[3rem]">
+                        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">No topics have been added to this category yet.</p>
+                     </Card>
+                  ) : (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-6">
+                        {subcategories.map((sub, idx) => (
+                           <motion.div key={sub._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} onClick={() => router.push(`/subcategory/${sub._id}`)}>
+                              <Card className="p-4 lg:p-6 group cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[1.5rem] lg:rounded-[2rem]">
+                                 <div className="flex items-center justify-between mb-4">
+                                    <div className="p-3 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-all shadow-sm">
+                                       <Folder className="w-5 h-5" />
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:translate-x-1 group-hover:text-primary-700 dark:text-primary-500 transition-all" />
+                                 </div>
+                                 <h3 className="text-lg font-black font-outfit truncate group-hover:text-primary-700 dark:text-primary-500 transition-colors">{sub.name}</h3>
+                                 <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">See quizzes</p>
+                              </Card>
+                           </motion.div>
+                        ))}
+                     </motion.div>
+                  )}
+               </AnimatePresence>
+            </section>
+
+            {/* --- Quizzes Grid --- */}
+            <section className="space-y-8">
+               <div className="space-y-1">
+                  <h2 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight flex items-center gap-3">
+                     <Trophy className="text-primary-700 dark:text-primary-500 w-6 h-6" /> Available <span className="text-primary-700 dark:text-primary-500">quizzes</span>
+                  </h2>
+                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Start with any quiz below to practice this category.</p>
+               </div>
+
+               <AnimatePresence mode="wait">
+                  {loading ? (
+                     <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+                  ) : quizzes.length === 0 ? (
+                     <Card className="py-24 text-center space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[4rem]">
+                        <Target className="w-16 h-16 text-slate-200 mx-auto" />
+                        <div className="space-y-2">
+                           <h3 className="text-xl font-black font-outfit">No quizzes found</h3>
+                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400">There are no active quizzes for this category right now.</p>
                         </div>
-                      </div>
+                     </Card>
+                  ) : (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
+                           {quizzes.map((quiz, idx) => (
+                              <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                                 <Card className="p-4 lg:p-8 h-full flex flex-col justify-between group border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all relative overflow-hidden rounded-[2rem] lg:rounded-[3rem]">
+                                    <div className="space-y-6">
+                                       <div className="flex justify-between items-start">
+                                          <div className="p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-all shadow-sm">
+                                             <Trophy className="w-6 h-6" />
+                                          </div>
+                                          <div className="flex flex-col items-end gap-2">
+                                             <span className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold px-3 py-1 rounded-full">Level {quiz.requiredLevel}</span>
+                                             {quiz.isRecommended && <Sparkles className="w-4 h-4 text-amber-500" />}
+                                          </div>
+                                       </div>
+                                       <h3 className="text-xl font-black font-outfit leading-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors line-clamp-2">{quiz.title}</h3>
+                                       <div className="grid grid-cols-2 gap-4">
+                                          <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                             <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Time limit</p>
+                                             <p className="text-sm font-black text-slate-900 dark:text-white"><Clock className="w-3 h-3 inline mr-1" /> {quiz.timeLimit || 30} min</p>
+                                          </div>
+                                          <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                             <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Total marks</p>
+                                             <p className="text-sm font-black text-slate-900 dark:text-white"><HelpCircle className="w-3 h-3 inline mr-1" /> {quiz.totalMarks || 'Varies'}</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div className="pt-8">
+                                       <Button variant="primary" fullWidth className="py-5 text-sm font-black shadow-duo-primary rounded-2xl" onClick={() => handleQuizClick(quiz)}>Start quiz</Button>
+                                    </div>
+                                    <Sparkles className="absolute -bottom-6 -right-6 w-24 h-24 text-primary-700 dark:text-primary-500/5 group-hover:text-primary-700 dark:text-primary-500/10 transition-colors" />
+                                 </Card>
+                              </motion.div>
+                           ))}
+                        </div>
 
-                      <button
-                        onClick={() => handleQuizClick(quiz._id)}
-                        className="mt-4 w-full bg-gradient-to-r from-red-500 to-primary-500 hover:from-primary-500 hover:to-secondary-500 text-white font-semibold py-2 rounded-xl transition-all duration-300 shadow-md text-center"
-                      >
-                        Start Quiz
-                      </button>
-                    </div>
-                  ))}
-                </div>
-                {/* Pagination - Responsive */}
-                <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mt-2 sm:mt-4 w-full">
-                  <button
-                    onClick={() => setPage(p => Math.max(1, p - 1))}
-                    disabled={page === 1}
-                    className="px-2 sm:px-4 py-1 sm:py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold disabled:opacity-50 text-xs sm:text-base"
-                  >
-                    Prev
-                  </button>
-                  {[...Array(totalPages)].map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setPage(idx + 1)}
-                      className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg font-semibold text-xs sm:text-base ${page === idx + 1 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'}`}
-                    >
-                      {idx + 1}
-                    </button>
-                  ))}
-                  <button
-                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                    disabled={page === totalPages}
-                    className="px-2 sm:px-4 py-1 sm:py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold disabled:opacity-50 text-xs sm:text-base"
-                  >
-                    Next
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+                        {/* --- Pagination --- */}
+                        {totalPages > 1 && (
+                           <div className="flex justify-center items-center gap-2">
+                              {[...Array(totalPages)].map((_, idx) => (
+                                 <button key={idx} onClick={() => setPage(idx + 1)} className={`w-12 h-12 rounded-2xl text-xs font-black transition-all ${page === idx + 1 ? 'bg-slate-900 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'}`}>{idx + 1}</button>
+                              ))}
+                           </div>
+                        )}
+                     </motion.div>
+                  )}
+               </AnimatePresence>
+            </section>
+         </div>
 
-        {/* Quiz Start Confirmation Modal */}
-        <QuizStartModal
-          isOpen={showQuizModal}
-          onClose={handleCancelQuizStart}
-          onConfirm={handleConfirmQuizStart}
-          quiz={selectedQuiz}
-        />
+         <QuizStartModal
+            isOpen={showQuizModal}
+            onClose={() => setShowQuizModal(false)}
+            onConfirm={handleConfirmQuizStart}
+            quiz={selectedQuiz}
+         />
+
+         <UnifiedFooter />
       </div>
-      <UnifiedFooter />
-    </>
-  );
+   );
 };
 
 export default CategoryDetailPage;
-
-
 
 

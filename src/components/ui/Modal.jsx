@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react';
+﻿'use client';
 
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ShieldAlert } from 'lucide-react';
+import Button from './Button';
+
+/**
+ * Modal - A friendly, Duolingo-inspired 3D modal overlay for the gamified learning experience.
+ */
 const Modal = ({
   isOpen,
   onClose,
   title,
+  subtitle,
   children,
-  size = 'medium',
+  size = 'md', // sm, md, lg, xl, fullscreen
   showCloseButton = true,
   closeOnBackdrop = true,
   className = '',
   titleClassName = '',
-  animationType = 'fade',
+  animationType = 'spring',
+  icon: Icon,
   ...props
 }) => {
   useEffect(() => {
@@ -31,36 +41,43 @@ const Modal = ({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
-  const getModalSizeClasses = () => {
-    const sizeClasses = {
-      small: 'w-11/12 max-w-md',
-      medium: 'w-11/12 max-w-lg',
-      large: 'w-11/12 max-w-2xl',
-      fullscreen: 'w-full h-full max-w-none max-h-none',
-    };
-    return sizeClasses[size];
+  const sizes = {
+    sm: 'max-w-md w-[90vw]',
+    lg: 'max-w-xl w-[95vw]',
+    lg: 'max-w-3xl w-[95vw]',
+    xl: 'max-w-5xl w-[95vw]',
+    fullscreen: 'max-w-none w-full h-full rounded-none',
   };
 
-  const getModalClasses = () => {
-    const baseClasses = 'bg-white dark:bg-gray-800 rounded-xl shadow-2xl';
-    const sizeClasses = getModalSizeClasses();
-    const animationClasses = animationType === 'slide' ? 'animate-slide-in' : 'animate-fade-in';
-    
-    return `${baseClasses} ${sizeClasses} ${animationClasses} ${className}`;
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
 
-  const getHeaderClasses = () => {
-    return 'flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700';
-  };
-
-  const getTitleClasses = () => {
-    return `text-lg font-bold text-gray-900 dark:text-white flex-1 ${titleClassName}`;
-  };
-
-  const getContentClasses = () => {
-    return 'p-6 max-h-96 overflow-y-auto';
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+      y: 20,
+      rotateX: -10
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        type: animationType === 'spring' ? 'spring' : 'tween',
+        stiffness: 300,
+        damping: 30
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: 20,
+      transition: { duration: 0.2 }
+    }
   };
 
   const handleBackdropClick = (e) => {
@@ -70,37 +87,76 @@ const Modal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm">
-      <div
-        className="fixed inset-0"
-        onClick={handleBackdropClick}
-        aria-hidden="true"
-      />
-      
-      <div className={getModalClasses()} {...props}>
-        {(title || showCloseButton) && (
-          <div className={getHeaderClasses()}>
-            {title && <h2 className={getTitleClasses()}>{title}</h2>}
-            {showCloseButton && (
-              <button
-                onClick={onClose}
-                className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
-                aria-label="Close modal"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+          {/* Cinematic Backdrop */}
+          <motion.div
+            variants={backdropVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            onClick={handleBackdropClick}
+            className="fixed inset-0 bg-slate-950/40 backdrop-blur-md"
+          />
+
+          <motion.div
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className={`
+              relative bg-white dark:bg-slate-900 
+              ${sizes[size]} 
+              ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] lg:rounded-[4.5rem]'} 
+              border-2 border-slate-200 dark:border-slate-800 
+              ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-2xl shadow-primary-500/10'} 
+              transition-all duration-300 font-outfit overflow-hidden
+              ${className}
+            `}
+            style={{ perspective: '1000px' }}
+            {...props}
+          >
+            {/* Header Stats */}
+            {(title || showCloseButton) && (
+              <div className="flex items-center justify-between p-10 lg:p-14 pb-6 lg:pb-8 border-b-2 border-slate-100 dark:border-slate-700/50">
+                <div className="flex items-center gap-6">
+                  {Icon && (
+                    <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
+                      <Icon className="w-8 h-8" />
+                    </div>
+                  )}
+                  <div className="space-y-1 text-left">
+                    {title && <h2 className={`text-xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
+                    {subtitle && <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-400">{subtitle}</p>}
+                  </div>
+                </div>
+
+                {showCloseButton && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={onClose}
+                    className="!p-3 border-b-4 hover:border-b-2 hover:translate-y-0.5"
+                    icon={X}
+                  />
+                )}
+              </div>
             )}
-          </div>
-        )}
-        
-        <div className={getContentClasses()}>
-          {children}
+
+            {/* Modal Content */}
+            <div className={`p-10 lg:p-14 pt-8 lg:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[70vh]'}`}>
+              {children}
+            </div>
+
+            {/* Glowing Accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          </motion.div>
         </div>
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };
 
 export default Modal;
+

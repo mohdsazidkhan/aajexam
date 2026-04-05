@@ -1,157 +1,124 @@
-import React from 'react';
+﻿import React from 'react';
 import { FaGraduationCap, FaChartLine, FaTrophy, FaBook, FaCheckCircle, FaRocket, FaBullseye, FaLightbulb, FaClock, FaUsers } from 'react-icons/fa';
 
 const PracticeTestsEducational = ({ levels }) => {
     return (
-        <section className="practice-tests-educational bg-gradient-to-br from-primary-50 via-purple-50 to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-5 lg: py-20 px-4">
-            <div className="container mx-auto px-0 lg:px-6 xl:px-8">
+        <section className="practice-tests-educational bg-white dark:bg-slate-900 py-20 px-4 font-outfit">
+            <div className="container mx-auto max-w-6xl">
                 {/* Main Heading with Icon */}
-                <div className="text-center mb-8 lg:mb-16 animate-fade-in">
-                    <div className="inline-block mb-0 lg:mb-4">
-                        <FaTrophy className="text-6xl text-primary-500 dark:text-primary-400 mx-auto mb-4 animate-bounce" />
+                <div className="text-center mb-20 animate-bounce-in">
+                    <div className="inline-block mb-6">
+                        <div className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center shadow-duo-primary border-4 border-white dark:border-slate-800 rotate-3">
+                            <FaTrophy className="text-4xl text-white" />
+                        </div>
                     </div>
-                    <h1 className="text-2xl lg:text-3xl xl:text-4xl font-extrabold bg-gradient-to-r from-primary-600 from-red-600 dark:from-primary-400 dark:from-red-400 bg-clip-text text-transparent mb-4">
-                        Government Exam Practice Tests
+                    <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
+                        Practice <span className="text-primary-700 dark:text-primary-500">Missions</span>
                     </h1>
-                    <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-                        Comprehensive 10-Level Progression System for SSC, UPSC, Banking, Railway, and Other Competitive Examinations
+                    <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed">
+                        Master your exams with our unique 10-level progression system designed for focused students.
                     </p>
                 </div>
 
                 {/* Educational Content Cards */}
-                <div className="space-y-8 mb-16">
+                <div className="space-y-12 mb-20">
                     {/* About Practice Test System */}
-                    <div className="group bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
-                        <div className="flex items-center mb-6">
-                            <div className="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-xl mr-4">
-                                <FaBook className="text-4xl text-primary-600 dark:text-red-400" />
+                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-4 border-b-[12px] border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
+                        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-duo-primary border-4 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                                <FaBook className="text-4xl text-white" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
-                                About Our Practice Test System
-                            </h2>
-                        </div>
-                        <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <p>
-                                AajExam's practice test system represents a revolutionary approach to government exam preparation, designed specifically for aspirants targeting competitive examinations across India. Our unique 10-level progression system has been meticulously crafted based on extensive research into successful exam preparation methodologies and the learning patterns of thousands of successful candidates. Each level represents a carefully calibrated milestone in your journey from beginner to expert, ensuring that you develop the comprehensive skill set required to excel in highly competitive government examinations.
-                            </p>
-                            <p>
-                                The foundation of our practice test system lies in the principle of progressive difficulty and adaptive learning. Unlike traditional study methods that present all content at once, our level-based approach ensures that you build a strong foundation before advancing to more complex topics and question patterns. This systematic progression mirrors the natural learning curve and prevents the overwhelm that many aspirants experience when preparing for multiple subjects simultaneously. Each level introduces new concepts while reinforcing previously learned material, creating a robust knowledge framework that withstands the pressure of actual examination conditions.
-                            </p>
-                            <p>
-                                Our practice tests are designed to simulate real examination conditions as closely as possible, incorporating time constraints, question patterns, difficulty levels, and marking schemes that mirror actual government competitive exams. This realistic simulation helps you develop crucial exam-taking skills including time management, question selection strategy, accuracy under pressure, and the mental stamina required to maintain focus throughout lengthy examination sessions. Regular practice with our tests builds the muscle memory and confidence needed to perform at your peak when it matters most.
-                            </p>
+                            <div className="flex-1 text-center lg:text-left">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700 dark:text-primary-500">
+                                    The Academy Protocol
+                                </h2>
+                                <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
+                                    <p>
+                                        AajExam represents a revolutionary approach to government exam preparation, designed for students targeting competitive examinations. Our 10-level progression ensures you develop the skill set required to excel.
+                                    </p>
+                                    <p>
+                                        The foundation lies in progressive difficulty. Our level-based approach ensures a strong foundation before advancing to more complex topics.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Learning Methodology */}
-                    <div className="group bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-100 dark:border-gray-700">
-                        <div className="flex items-center mb-6">
-                            <div className="bg-purple-100 dark:bg-purple-900 p-4 rounded-xl mr-4">
-                                <FaChartLine className="text-4xl text-primary-600 dark:text-primary-400" />
+                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-4 border-b-[12px] border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
+                        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-duo-secondary border-4 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
+                                <FaChartLine className="text-4xl text-white" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
-                                Learning Methodology and Progression System
-                            </h2>
-                        </div>
-                        <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <p>
-                                The AajExam 10-level progression system is built on three fundamental pillars: consistent practice, performance analytics, and competitive learning. Consistent practice forms the backbone of exam success, and our system encourages daily engagement through carefully portioned quiz sets that maintain your momentum without causing burnout. Each quiz is designed to be completed within a specific timeframe, helping you develop the time management skills essential for competitive exams where every second counts.
-                            </p>
-                            <p>
-                                Performance analytics provide you with detailed insights into your strengths and weaknesses across different subjects and topic areas. Our advanced tracking system monitors your accuracy rates, speed, topic-wise performance, and improvement trends over time. This data-driven approach enables you to make informed decisions about where to focus your study efforts, ensuring that you allocate your preparation time most effectively. The analytics dashboard presents this information in easy-to-understand visualizations, making it simple to identify patterns and adjust your strategy accordingly.
-                            </p>
-                            <p>
-                                Competitive learning through our leaderboard system and monthly challenges adds an element of motivation and accountability to your preparation. Competing with peers who share similar goals creates a positive pressure that drives consistent improvement. The monthly reward system recognizes and celebrates top performers, providing tangible incentives for excellence while fostering a community of serious aspirants who support and inspire each other's success.
-                            </p>
+                            <div className="flex-1 text-center lg:text-left">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700 dark:text-primary-500">
+                                    Adaptive Training
+                                </h2>
+                                <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
+                                    <p>
+                                        The AajExam system is built on three pillars: consistent practice, deep analytics, and social competition. We encourage daily engagement through portioned quiz sets.
+                                    </p>
+                                    <p>
+                                        Performance analytics provide insights into your weaknesses. Our system monitors accuracy and speed, enabling data-driven decisions.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Exam Coverage */}
-                    <div className="group bg-gradient-to-br from-secondary-50 to-cyan-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-secondary-100 dark:border-gray-700">
-                        <div className="flex items-center mb-6">
-                            <div className="bg-secondary-100 dark:bg-secondary-900 p-4 rounded-xl mr-4">
-                                <FaGraduationCap className="text-4xl text-secondary-600 dark:text-secondary-400" />
+                    <div className="group bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-xl border-4 border-b-[12px] border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
+                        <div className="absolute bottom-0 left-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-3xl -ml-24 -mb-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
+                        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-duo-primary border-4 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                                <FaGraduationCap className="text-4xl text-white" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
-                                Exam Coverage and Syllabus Alignment
-                            </h2>
-                        </div>
-                        <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <p>
-                                Our practice tests comprehensively cover the syllabus of major government competitive examinations including SSC CGL (Staff Selection Commission Combined Graduate Level), UPSC Prelims (Union Public Service Commission), Banking exams (IBPS PO, SBI Clerk, RBI Assistant), Railway Recruitment Board examinations (RRB NTPC, Group D), State Public Service Commission exams, and numerous other central and state government recruitment tests. Each quiz is carefully aligned with the latest exam patterns and syllabus requirements, ensuring that your preparation remains current and relevant.
-                            </p>
-                            <p>
-                                The question bank is continuously updated to reflect changes in exam patterns, emerging topics, and current affairs that frequently appear in competitive examinations. Our team of subject matter experts regularly reviews and refreshes content to maintain the highest standards of accuracy and relevance. This commitment to quality ensures that you're practicing with questions that truly represent what you'll encounter in your target examination, maximizing the effectiveness of every practice session.
-                            </p>
+                            <div className="flex-1 text-center lg:text-left">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700 dark:text-primary-500">
+                                    Syllabus Intelligence
+                                </h2>
+                                <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
+                                    <p>
+                                        Our tests cover the syllabus of major government competitive examinations including SSC CGL, UPSC Prelims, Banking exams, and Railway Recruitment Board examinations.
+                                    </p>
+                                    <p>
+                                        The question bank is continuously updated to reflect changes in patterns. Our team of subject matter experts reviews content to maintain accuracy and relevance.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Preparation Tips Section */}
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 lg:p-8 shadow-xl border border-gray-100 dark:border-gray-700">
-                    <div className="flex items-center justify-center mb-8">
-                        <div className="bg-green-100 dark:bg-green-900 p-4 rounded-xl mr-4">
-                            <FaLightbulb className="text-4xl text-green-600 dark:text-green-400" />
-                        </div>
-                        <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
-                            Preparation Tips for Success
+                <div className="bg-white dark:bg-slate-800 rounded-[3rem] p-4 md:p-8 lg:p-12 border-4 border-b-[16px] border-slate-100 dark:border-slate-700 shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 2px, transparent 2px)', backgroundSize: '32px 32px' }}></div>
+                    <div className="text-center mb-16 relative z-10">
+                        <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+                            Student <span className="text-primary-700 dark:text-primary-500">Playbook</span>
                         </h2>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mt-4">Essential Strategies for Success</p>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-                        <div className="group bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-green-500 dark:text-green-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Daily Practice Routine</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Attempt at least 2-3 quizzes daily to build consistency and maintain momentum in your preparation journey.</p>
-                                </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10">
+                        {[
+                            { title: "Daily Mission", text: "Attempt missions daily to build consistency and momentum.", color: "primary" },
+                            { title: "Review Mistakes", text: "Analyze every attempt to understand concepts better.", color: "secondary" },
+                            { title: "Accuracy First", text: "Prioritize accuracy over speed initially.", color: "green" },
+                            { title: "Watch Progress", text: "Use analytics to identify weak spots.", color: "purple" },
+                            { title: "Social Learning", text: "Compete on leaderboards to stay motivated.", color: "slate" },
+                            { title: "Recharge", text: "Take scheduled breaks to maintain focus.", color: "primary" },
+                        ].map((tip, idx) => (
+                            <div key={idx} className="bg-slate-50 dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0 active:border-b-4">
+                                <h3 className={`inline-flex px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-white mb-6 shadow-duo-${tip.color} bg-${tip.color}-500 transform -rotate-2 group-hover/tip:rotate-0 transition-transform`}>
+                                    {tip.title}
+                                </h3>
+                                <p className="text-[10px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+                                    {tip.text}
+                                </p>
                             </div>
-                        </div>
-                        <div className="group bg-gradient-to-br from-secondary-50 to-cyan-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-secondary-500 dark:text-secondary-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Analyze Every Attempt</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Review all incorrect answers thoroughly to understand concepts and avoid repeating the same mistakes.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-primary-500 dark:text-primary-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Focus on Accuracy First</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Prioritize accuracy over speed initially, then gradually work on improving your solving speed.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group bg-gradient-to-br from-primary-50 to-primary-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-primary-500 dark:text-primary-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Use Performance Analytics</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Regularly check your analytics dashboard to identify weak topics and adjust your study plan accordingly.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group bg-gradient-to-br from-red-50 to-pink-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-red-500 dark:text-red-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Compete on Leaderboards</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Engage with the community through leaderboards to stay motivated and benchmark your progress.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="flex items-start space-x-3">
-                                <FaCheckCircle className="text-red-500 dark:text-red-400 text-2xl flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">Take Regular Breaks</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">Avoid burnout by taking scheduled breaks to maintain mental freshness and sustained focus.</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -160,3 +127,5 @@ const PracticeTestsEducational = ({ levels }) => {
 };
 
 export default PracticeTestsEducational;
+
+

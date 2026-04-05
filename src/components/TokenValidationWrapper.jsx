@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -34,7 +34,7 @@ export default function TokenValidationWrapper({ children, showWarning = true })
   if (isValidating) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
       </div>
     )
   }
@@ -45,3 +45,5 @@ export default function TokenValidationWrapper({ children, showWarning = true })
 
   return <>{children}</>
 }
+
+

@@ -1,689 +1,406 @@
-'use client';
+﻿'use client';
 
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Head from "next/head";
+import {
+   Search,
+   BookOpen,
+   Trophy,
+   FileText,
+   User,
+   Layers,
+   Compass,
+   Sparkles,
+   History,
+   Zap,
+   Clock,
+   Eye,
+   ShieldCheck,
+   ChevronLeft,
+   ChevronRight,
+   Users
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from "next/image";
+
 import API from '../../lib/api';
 import QuizStartModal from "../QuizStartModal";
 import TestStartModal from "../TestStartModal";
-
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
 
 const SearchPage = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState("");
-  const [quizzes, setQuizzes] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
-  const [blogs, setBlogs] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [govtExamCategories, setGovtExamCategories] = useState([]);
-  const [govtExams, setGovtExams] = useState([]);
-  const [examPatterns, setExamPatterns] = useState([]);
-  const [practiceTests, setPracticeTests] = useState([]);
-  const [activeTab, setActiveTab] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [showQuizModal, setShowQuizModal] = useState(false);
-  const [selectedQuiz, setSelectedQuiz] = useState(null);
-  const [showTestModal, setShowTestModal] = useState(false);
-  const [selectedTest, setSelectedTest] = useState(null);
-  const isSearchingRef = useRef(false);
-  const hasInitialSearchedRef = useRef(false);
+   const router = useRouter();
+   const searchParams = useSearchParams();
+   const [query, setQuery] = useState("");
+   const [quizzes, setQuizzes] = useState([]);
+   const [categories, setCategories] = useState([]);
+   const [subcategories, setSubcategories] = useState([]);
+   const [blogs, setBlogs] = useState([]);
+   const [users, setUsers] = useState([]);
+   const [govtExamCategories, setGovtExamCategories] = useState([]);
+   const [govtExams, setGovtExams] = useState([]);
+   const [examPatterns, setExamPatterns] = useState([]);
+   const [practiceTests, setPracticeTests] = useState([]);
+   const [activeTab, setActiveTab] = useState('all');
+   const [currentPage, setCurrentPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
+   const [loading, setLoading] = useState(false);
+   const [showQuizModal, setShowQuizModal] = useState(false);
+   const [selectedQuiz, setSelectedQuiz] = useState(null);
+   const [showTestModal, setShowTestModal] = useState(false);
+   const [selectedTest, setSelectedTest] = useState(null);
+   const isSearchingRef = useRef(false);
+   const hasInitialSearchedRef = useRef(false);
 
-  const limit = 12;
+   const limit = 12;
 
-  const fetchData = async (searchQuery, pageNum = currentPage) => {
-    // Prevent multiple simultaneous API calls
-    if (isSearchingRef.current) {
-      return;
-    }
-
-    const trimmedQuery = searchQuery?.trim();
-    if (!trimmedQuery) {
-      // Clear results if query is empty
-      setQuizzes([]);
-      setCategories([]);
-      setSubcategories([]);
-      setBlogs([]);
-      setUsers([]);
-      setGovtExamCategories([]);
-      setGovtExams([]);
-      setExamPatterns([]);
-      setPracticeTests([]);
-      setTotalPages(1);
-      return;
-    }
-
-    try {
-      isSearchingRef.current = true;
-      setLoading(true);
-      const res = await API.searchAll({
-        query: trimmedQuery,
-        page: pageNum,
-        limit,
-      });
-      if (res.success) {
-        setQuizzes(res.quizzes || []);
-        setCategories(res.categories || []);
-        setSubcategories(res.subcategories || []);
-        setBlogs(res.blogs || []);
-        setUsers(res.users || []);
-        setGovtExamCategories(res.govtExamCategories || []);
-        setGovtExams(res.govtExams || []);
-        setExamPatterns(res.examPatterns || []);
-        setPracticeTests(res.practiceTests || []);
-        setTotalPages(res.totalPages);
+   const fetchData = useCallback(async (searchQuery, pageNum = currentPage) => {
+      if (isSearchingRef.current) return;
+      const trimmedQuery = searchQuery?.trim();
+      if (!trimmedQuery) {
+         clearResults();
+         return;
       }
-    } catch (err) {
-      console.error("Search failed:", err);
-    } finally {
-      setLoading(false);
-      isSearchingRef.current = false;
-    }
-  };
+      try {
+         isSearchingRef.current = true;
+         setLoading(true);
+         const res = await API.searchAll({ query: trimmedQuery, page: pageNum, limit });
+         if (res.success) {
+            setQuizzes(res.quizzes || []);
+            setCategories(res.categories || []);
+            setSubcategories(res.subcategories || []);
+            setBlogs(res.blogs || []);
+            setUsers(res.users || []);
+            setGovtExamCategories(res.govtExamCategories || []);
+            setGovtExams(res.govtExams || []);
+            setExamPatterns(res.examPatterns || []);
+            setPracticeTests(res.practiceTests || []);
+            setTotalPages(res.totalPages || 1);
+         }
+      } catch (err) { console.error("Search failed:", err); }
+      finally { setLoading(false); isSearchingRef.current = false; }
+   }, [currentPage]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (loading || isSearchingRef.current) return;
-    setCurrentPage(1);
-    hasInitialSearchedRef.current = true;
-    fetchData(query);
-  };
+   const clearResults = () => {
+      setQuizzes([]); setCategories([]); setSubcategories([]); setBlogs([]); setUsers([]);
+      setGovtExamCategories([]); setGovtExams([]); setExamPatterns([]); setPracticeTests([]);
+      setTotalPages(1);
+   };
 
-  // Effect for initial search from navigation - only run once on mount
-  useEffect(() => {
-    const searchQuery = searchParams.get('q');
-    if (searchQuery && !hasInitialSearchedRef.current) {
-      setQuery(searchQuery);
+   const handleSearch = (e) => {
+      e.preventDefault();
+      if (loading || isSearchingRef.current) return;
+      setCurrentPage(1);
       hasInitialSearchedRef.current = true;
-      // Auto-search only when coming from URL with query parameter on initial mount
-      fetchData(searchQuery, 1);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array - only run on mount
+      fetchData(query, 1);
+   };
 
-  const handleQuizAttempt = (quiz) => {
-    setSelectedQuiz(quiz);
-    setShowQuizModal(true);
-  };
+   useEffect(() => {
+      const searchQuery = searchParams.get('q');
+      if (searchQuery && !hasInitialSearchedRef.current) {
+         setQuery(searchQuery);
+         hasInitialSearchedRef.current = true;
+         fetchData(searchQuery, 1);
+      }
+   }, [searchParams, fetchData]);
 
-  const handleCancelQuizStart = () => {
-    setShowQuizModal(false);
-    setSelectedQuiz(null);
-  };
+   const tabs = [
+      { key: 'all', label: 'All Results', icon: Compass },
+      { key: 'quiz', label: 'Quizzes', icon: Trophy },
+      { key: 'exam', label: 'Govt Exams', icon: ShieldCheck },
+      { key: 'test', label: 'Practice Tests', icon: FileText },
+      { key: 'category', label: 'Categories', icon: Layers },
+      { key: 'blog', label: 'Articles', icon: BookOpen },
+      { key: 'user', label: 'Students', icon: User }
+   ];
 
-  const handleConfirmQuizStart = (competitionType) => {
-    setShowQuizModal(false);
-    if (selectedQuiz) {
-      // Store navigation data in localStorage
-      localStorage.setItem('quizNavigationData', JSON.stringify({
-        fromPage: 'search',
-        searchQuery: query,
-        quizData: selectedQuiz,
-        competitionType,
-      }));
-      router.push(`/attempt-quiz/${selectedQuiz._id}`);
-    }
-  };
+   const getFilteredResults = () => {
+      switch (activeTab) {
+         case 'all': return [...categories, ...subcategories, ...quizzes, ...blogs, ...users, ...govtExamCategories, ...govtExams, ...examPatterns, ...practiceTests];
+         case 'quiz': return quizzes;
+         case 'exam': return [...govtExams, ...govtExamCategories];
+         case 'test': return practiceTests;
+         case 'category': return [...categories, ...subcategories];
+         case 'blog': return blogs;
+         case 'user': return users;
+         default: return [];
+      }
+   };
 
-  const handleTestAttempt = (test) => {
-    setSelectedTest(test);
-    setShowTestModal(true);
-  };
+   const results = getFilteredResults();
 
-  const handleCancelTestStart = () => {
-    setShowTestModal(false);
-    setSelectedTest(null);
-  };
+   return (
+      <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
+         <Head>
+            <title>Search | AajExam</title>
+         </Head>
 
-  const handleConfirmTestStart = () => {
-    setShowTestModal(false);
-    if (selectedTest) {
-      // Store navigation data in localStorage
-      localStorage.setItem('testNavigationData', JSON.stringify({
-        fromPage: 'search',
-        searchQuery: query,
-        testData: selectedTest
-      }));
-      router.push(`/govt-exams/test/${selectedTest._id}/start`);
-    }
-  };
+         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-6 lg:space-y-12">
 
-  // Combine all results for "All" tab
-  const getAllResults = () => {
-    return [
-      ...categories,
-      ...subcategories,
-      ...quizzes,
-      ...blogs,
-      ...users,
-      ...govtExamCategories,
-      ...govtExams,
-      ...examPatterns,
-      ...practiceTests
-    ];
-  };
+            {/* --- Search Bar Section --- */}
+            <section className="relative text-center space-y-6 lg:space-y-8">
+               <div className="space-y-4">
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight leading-none px-4">Search <span className="text-primary-600">anything</span></h1>
+                  <p className="text-sm lg:text-base font-semibold text-content-secondary max-w-2xl mx-auto px-6">Type to find quizzes, topics, exams, and articles.</p>
+               </div>
 
-  // Get filtered results based on active tab
-  const getFilteredResults = () => {
-    switch (activeTab) {
-      case 'all':
-        return getAllResults();
-      case 'category':
-        return categories;
-      case 'subcategory':
-        return subcategories;
-      case 'quiz':
-        return quizzes;
-      case 'blog':
-        return blogs;
-      case 'user':
-        return users;
-      case 'examCategory':
-        return govtExamCategories;
-      case 'exam':
-        return govtExams;
-      case 'pattern':
-        return examPatterns;
-      case 'test':
-        return practiceTests;
-      default:
-        return getAllResults();
-    }
-  };
+               <Card className="max-w-3xl mx-auto p-1.5 lg:p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-none shadow-2xl rounded-2xl lg:rounded-[3rem] mx-4 lg:mx-auto">
+                  <form onSubmit={handleSearch} className="flex items-center gap-2">
+                     <div className="flex-1 relative group">
+                        <Search className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 w-5 h-5 lg:w-6 lg:h-6 text-slate-300 group-focus-within:text-primary-600 transition-colors" />
+                        <input
+                           type="text"
+                           className="w-full bg-transparent border-none focus:ring-0 py-4 lg:py-6 pl-12 lg:pl-16 pr-4 lg:pr-6 text-base lg:text-xl font-bold placeholder:text-slate-300 outline-none"
+                           placeholder="Search quizzes, topics, exams, or articles..."
+                           value={query}
+                           onChange={(e) => {
+                              setQuery(e.target.value);
+                              if (!e.target.value.trim()) clearResults();
+                           }}
+                        />
+                     </div>
+                     <button className="bg-primary-500 hover:bg-primary-600 px-6 lg:px-10 rounded-xl lg:rounded-[2rem] py-3.5 lg:py-5 text-sm font-black text-white shadow-duo-primary transition-all" type="submit" disabled={loading}>
+                        {loading ? '...' : (
+                           <>
+                              <span className="hidden lg:inline">Search now</span>
+                              <Search className="lg:hidden w-5 h-5" />
+                           </>
+                        )}
+                     </button>
+                  </form>
+               </Card>
 
-  // Get tab counts
-  const getTabCounts = () => {
-    return {
-      all: getAllResults().length,
-      category: categories.length,
-      subcategory: subcategories.length,
-      quiz: quizzes.length,
-      blog: blogs.length,
-      user: users.length,
-      examCategory: govtExamCategories.length,
-      exam: govtExams.length,
-      pattern: examPatterns.length,
-      test: practiceTests.length
-    };
-  };
-
-  const tabCounts = getTabCounts();
-  const filteredResults = getFilteredResults();
-
-  return (
-    <>
-      <Head>
-        <title>Search Quizzes - AajExam Find Your Perfect Quiz</title>
-        <meta name="description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
-        <meta name="keywords" content="search quizzes, quiz search, AajExam search, find quiz, quiz discovery" />
-        <meta property="og:title" content="Search Quizzes - AajExam Find Your Perfect Quiz" />
-        <meta property="og:description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Search Quizzes - AajExam Find Your Perfect Quiz" />
-        <meta name="twitter:description" content="Search and discover quizzes on AajExam platform. Find quizzes by category, subcategory, or keywords. Explore thousands of skill-based quiz questions." />
-      </Head>
-
-      <div className="min-h-screen bg-white dark:bg-gray-900">
-        <div className="px-4 md:px-10 py-8 container mx-auto">
-          <form onSubmit={handleSearch} className="flex items-center gap-2">
-            <input
-              type="text"
-              className="p-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white rounded w-full"
-              placeholder="Search quizzes, categories, exams, patterns, tests..."
-              value={query}
-              onChange={(e) => {
-                const newValue = e.target.value;
-                setQuery(newValue);
-                // Reset state when input is cleared
-                if (!newValue.trim()) {
-                  setQuizzes([]);
-                  setCategories([]);
-                  setSubcategories([]);
-                  setBlogs([]);
-                  setUsers([]);
-                  setGovtExamCategories([]);
-                  setGovtExams([]);
-                  setExamPatterns([]);
-                  setPracticeTests([]);
-                  setCurrentPage(1);
-                  setTotalPages(1);
-                  setActiveTab('all');
-                }
-              }}
-            />
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white px-4 py-2 rounded shadow hover:opacity-90"
-            >
-              Search
-            </button>
-          </form>
-
-          {loading ? (
-            <div className="text-center py-8">
-              <Loading size="md" color="yellow" message="Loading..." />
-            </div>
-          ) : (
-            <>
-              {/* Tabs */}
-              <div className="mt-4 mb-4">
-                <div className="flex gap-2 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
-                  {[
-                    { key: 'all', label: 'All' },
-                    { key: 'category', label: 'Categories' },
-                    { key: 'subcategory', label: 'Subcategories' },
-                    { key: 'quiz', label: 'Quizzes' },
-                    { key: 'blog', label: 'Blogs' },
-                    { key: 'user', label: 'Users' },
-                    { key: 'examCategory', label: 'Exam Categories' },
-                    { key: 'exam', label: 'Exams' },
-                    { key: 'pattern', label: 'Patterns' },
-                    { key: 'test', label: 'Tests' }
-                  ].map((tab) => (
-                    <button
-                      key={tab.key}
-                      onClick={() => setActiveTab(tab.key)}
-                      className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === tab.key
-                        ? 'bg-gradient-to-r from-primary-500 to-secondary-600 text-white border-b-2 border-primary-500'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                        }`}
-                    >
-                      {tab.label} ({tabCounts[tab.key] || 0})
-                    </button>
+               <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 px-4 lg:justify-center pb-2">
+                  {['UPSC', 'SSC', 'Current Affairs', 'Practice Test', 'Quiz', 'Tech', 'AI'].map((tag, i) => (
+                     <button key={i} onClick={() => { setQuery(tag); fetchData(tag, 1); }} className="flex-shrink-0 whitespace-nowrap px-5 py-2 bg-background-surface-secondary hover:bg-primary-500/10 hover:text-primary-600 rounded-full text-sm font-semibold transition-all">
+                        {tag}
+                     </button>
                   ))}
-                </div>
-              </div>
+               </div>
+            </section>
 
-              {/* Results Grid */}
-              <div className="mt-4">
-                {filteredResults.length === 0 ? (
-                  <p className="text-center text-gray-500 dark:text-gray-400 py-8">
-                    No results found for "{query}" in {activeTab === 'all' ? 'all categories' : activeTab}.
-                  </p>
-                ) : (
-                  <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
-                    {filteredResults.map((item) => {
-                      // Render based on type
-                      switch (item.type) {
-                        case 'category':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/category/${item._id}`)}
-                              className="border cursor-pointer border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.name}
-                              </h3>
-                              {item.description && (
-                                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                                  {item.description}
-                                </p>
-                              )}
-                            </div>
-                          );
+            {/* --- Tab Navigation --- */}
+            <section className="sticky top-0 z-40 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md py-4 border-b border-border-primary !mt-0">
+               <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar px-4 -mx-4 lg:px-0 lg:mx-0">
+                  {tabs.map(tab => (
+                     <button
+                        key={tab.key}
+                        onClick={() => setActiveTab(tab.key)}
+                        className={`flex items-center gap-3 px-5 py-3.5 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl text-sm font-semibold transition-all whitespace-nowrap ${activeTab === tab.key ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'bg-background-surface text-content-secondary hover:text-primary-600 hover:bg-primary-50'}`}
+                     >
+                        <tab.icon className={`w-3.5 h-3.5 lg:w-4 lg:h-4 ${activeTab === tab.key ? 'text-white' : 'text-primary-500'}`} />
+                        {tab.label}
+                     </button>
+                  ))}
+               </div>
+            </section>
 
-                        case 'subcategory':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/subcategory/${item._id}`)}
-                              className="border cursor-pointer border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.name}
-                              </h3>
-                              {item.category && (
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                  Category: {item.category.name}
-                                </p>
-                              )}
-                              {item.description && (
-                                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                                  {item.description}
-                                </p>
-                              )}
-                            </div>
-                          );
+            {/* --- Search Results --- */}
+            <AnimatePresence mode="wait">
+               {loading ? (
+                  <div className="py-8 flex justify-center"><Loading size="lg" /></div>
+               ) : results.length === 0 && !query ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-12">
+                     <div className="space-y-4 max-w-lg mx-auto">
+                        <h3 className="text-xl lg:text-3xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-none italic text-primary-600">What do you want <br />to study today?</h3>
+                        <p className="text-sm lg:text-base font-bold text-content-secondary px-6">Search for a topic you want to practice and get started.</p>
+                     </div>
+                     <div className="flex flex-wrap justify-center gap-4 opacity-70">
+                        <span className="flex items-center gap-2 text-xs font-black uppercase text-primary-600 bg-primary-100 dark:bg-primary-900/30 px-4 py-2 rounded-full"><Zap className="w-3 h-3" /> Quick access</span>
+                        <span className="flex items-center gap-2 text-xs font-black uppercase text-amber-600 bg-amber-100 dark:bg-amber-900/30 px-4 py-2 rounded-full"><Trophy className="w-3 h-3" /> Top Quizzes</span>
+                     </div>
+                  </motion.div>
+               ) : results.length === 0 && query ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center space-y-8">
+                     <div className="w-20 lg:w-32 h-20 lg:h-32 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto opacity-50">
+                        <History className="w-16 h-16 text-slate-300" />
+                     </div>
+                     <div className="space-y-2">
+                        <h3 className="text-xl lg:text-2xl font-black font-outfit">Nothing found</h3>
+                        <p className="text-sm font-medium text-content-secondary">We could not find results for "{query}". Try a different word.</p>
+                     </div>
+                     <Button variant="ghost" onClick={() => { setQuery(""); clearResults(); }} className="text-sm font-semibold">Clear search</Button>
+                  </motion.div>
+               ) : (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-8">
+                     {results.map((item, idx) => (
+                        <motion.div key={item._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (idx % 12) * 0.05 }}>
 
-                        case 'quiz':
-                          return (
-                            <div
-                              key={item._id}
-                              className="border-2 border-gray-200 dark:border-primary-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.title}
-                              </h3>
-                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                Category:{" "}
-                                <span className="font-medium text-gray-700 dark:text-gray-300">
-                                  {item.category?.name || "N/A"}
-                                </span>
-                                {item.subcategory && (
-                                  <>
-                                    {" "}| Subcategory:{" "}
-                                    <span className="font-medium text-gray-700 dark:text-gray-300">
-                                      {item.subcategory?.name || "N/A"}
-                                    </span>
-                                  </>
-                                )}
-                              </p>
-                              <button
-                                onClick={() => handleQuizAttempt(item)}
-                                className="mt-3 w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-2 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-base text-center"
-                              >
-                                Start Quiz
-                              </button>
-                            </div>
-                          );
+                           {item.type === 'quiz' && (
+                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-primary-500/10 hover:border-primary-500/30 transition-all overflow-hidden relative rounded-[3rem]">
+                                 <div className="space-y-4">
+                                    <div className="flex justify-between items-start">
+                                       <div className="p-3 bg-primary-500/10 text-primary-600 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                          <Trophy className="w-5 h-5" />
+                                       </div>
+                                       <div className="text-xs font-semibold text-content-secondary bg-background-surface-secondary px-3 py-1 rounded-full">Quiz</div>
+                                    </div>
+                                    <h3 className="text-lg font-black font-outfit leading-tight group-hover:text-primary-600 transition-colors line-clamp-2">{item.title}</h3>
+                                    <p className="text-sm font-medium text-content-secondary">{item.category?.name || 'Education'}</p>
+                                 </div>
+                                 <Button variant="secondary" fullWidth className="mt-6 py-4 text-sm font-black shadow-duo-secondary rounded-2xl" onClick={() => { setSelectedQuiz(item); setShowQuizModal(true); }}>Start quiz</Button>
+                                 <Zap className="absolute -bottom-6 -right-6 w-24 h-24 text-primary-600/5 group-hover:text-primary-600/10 transition-colors pointer-events-none" />
+                              </Card>
+                           )}
 
-                        case 'blog':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/articles/${item.slug || item._id}`)}
-                              className="border cursor-pointer border-indigo-200 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              {item.featuredImage && (
-                                <img
-                                  src={item.featuredImage}
-                                  alt={item.title}
-                                  className="w-full h-32 object-cover rounded mb-2"
-                                />
-                              )}
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.title}
-                              </h3>
-                              {item.excerpt && (
-                                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                                  {item.excerpt}
-                                </p>
-                              )}
-                              <div className="mt-2 flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                                {item.readingTime && (
-                                  <span>⏱️ {item.readingTime} min</span>
-                                )}
-                                {item.views && (
-                                  <span>👁️ {item.views}</span>
-                                )}
-                              </div>
-                            </div>
-                          );
+                           {item.type === 'test' && (
+                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-primary-500/10 hover:border-primary-500/30 transition-all rounded-[3rem]">
+                                 <div className="space-y-4">
+                                    <div className="flex justify-between items-start">
+                                       <div className="p-3 bg-primary-500/10 text-primary-600 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                          <FileText className="w-5 h-5" />
+                                       </div>
+                                       <div className="text-xs font-semibold text-white bg-primary-500 px-3 py-1 rounded-full shadow-sm">Practice test</div>
+                                    </div>
+                                    <h3 className="text-lg font-black font-outfit leading-tight group-hover:text-primary-600 transition-colors line-clamp-2">{item.title}</h3>
+                                    <div className="flex gap-4">
+                                       <span className="text-sm font-medium text-content-secondary"><Clock className="w-3 h-3 inline mr-1" /> {item.duration} min</span>
+                                       <span className="text-sm font-medium text-content-secondary"><Sparkles className="w-3 h-3 inline mr-1" /> {item.totalMarks} marks</span>
+                                    </div>
+                                 </div>
+                                 <Button variant="primary" fullWidth className="mt-6 py-4 text-sm font-black shadow-duo-primary rounded-2xl" onClick={() => { setSelectedTest(item); setShowTestModal(true); }}>Start test</Button>
+                              </Card>
+                           )}
 
-                        case 'examCategory':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/govt-exams/category/${item._id}`)}
-                              className="border cursor-pointer border-secondary-200 dark:border-secondary-700 bg-secondary-50 dark:bg-secondary-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <div className="flex items-center justify-between mb-2">
-                                <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                  {item.name}
-                                </h3>
-                                <span className="text-xs px-2 py-1 bg-secondary-500 text-white rounded">
-                                  {item.type === 'Central' || item.type === 'State' ? item.type : 'Central'}
-                                </span>
-                              </div>
-                              {item.description && (
-                                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                                  {item.description}
-                                </p>
-                              )}
-                              <div className="mt-2 flex gap-3 text-xs text-gray-600 dark:text-gray-400">
-                                {item.examsCount !== undefined && (
-                                  <span>📚 {item.examsCount} Exams</span>
-                                )}
-                                {item.testsCount !== undefined && (
-                                  <span>📝 {item.testsCount} Tests</span>
-                                )}
-                              </div>
-                            </div>
-                          );
+                           {item.type === 'exam' && (
+                              <Card className="p-6 h-full group flex flex-col justify-between border-2 border-blue-500/10 hover:border-blue-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => router.push(`/govt-exams/exam/${item._id}`)}>
+                                 <div className="space-y-4">
+                                    <div className="flex justify-between items-start">
+                                       <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+                                          <ShieldCheck className="w-5 h-5" />
+                                       </div>
+                                       <div className="text-xs font-semibold text-content-secondary bg-background-surface-secondary px-3 py-1 rounded-full">Exam</div>
+                                    </div>
+                                    <h3 className="text-lg font-black font-outfit leading-tight group-hover:text-blue-500 transition-colors line-clamp-2">{item.name}</h3>
+                                    <p className="text-sm font-medium text-content-secondary">{item.category?.name || 'Government exams'} Ã‚Â· {item.testsCount || 0} tests</p>
+                                 </div>
+                                 <div className="flex items-center gap-2 text-blue-500 pt-6">
+                                    <span className="text-sm font-semibold">View details</span>
+                                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                                 </div>
+                              </Card>
+                           )}
 
-                        case 'exam':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/govt-exams/exam/${item._id}`)}
-                              className="border cursor-pointer border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.name}
-                              </h3>
-                              {item.code && (
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                  Code: {item.code}
-                                </p>
-                              )}
-                              {item.category && (
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                  Category: {item.category.name} ({item.category.type})
-                                </p>
-                              )}
-                              {item.description && (
-                                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                                  {item.description}
-                                </p>
-                              )}
-                              <div className="mt-2 flex gap-3 text-xs text-gray-600 dark:text-gray-400">
-                                {item.patternsCount !== undefined && (
-                                  <span>📋 {item.patternsCount} Patterns</span>
-                                )}
-                                {item.testsCount !== undefined && (
-                                  <span>📝 {item.testsCount} Tests</span>
-                                )}
-                              </div>
-                            </div>
-                          );
+                           {item.type === 'blog' && (
+                              <Card className="h-full overflow-hidden flex flex-col group border-2 border-border-primary hover:border-indigo-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => router.push(`/articles/${item.slug || item._id}`)}>
+                                 <div className="h-40 overflow-hidden relative">
+                                    <Image
+                                       src={item.featuredImage || "/default_banner.png"}
+                                       alt={item.title}
+                                       fill
+                                       className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute top-3 left-3 px-3 py-1 bg-indigo-500 text-white text-xs font-semibold rounded-full z-10">Article</div>
+                                 </div>
+                                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                                    <h3 className="text-base font-black font-outfit leading-tight group-hover:text-indigo-500 transition-colors line-clamp-2">{item.title}</h3>
+                                    <div className="flex items-center justify-between text-sm font-medium text-content-secondary">
+                                       <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {item.views || 0}</span>
+                                       <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {item.readingTime || 5} min read</span>
+                                    </div>
+                                 </div>
+                              </Card>
+                           )}
 
-                        case 'pattern':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => router.push(`/govt-exams/pattern/${item._id}/tests`)}
-                              className="border cursor-pointer border-purple-200 dark:border-purple-700 bg-purple-50 dark:bg-purple-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.title}
-                              </h3>
-                              {item.exam && (
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                  Exam: {item.exam.name}
-                                </p>
-                              )}
-                              <div className="mt-2 flex gap-2 text-xs text-gray-600 dark:text-gray-400">
-                                {item.duration && (
-                                  <span>Duration: {item.duration} min</span>
-                                )}
-                                {item.totalMarks && (
-                                  <span>Marks: {item.totalMarks}</span>
-                                )}
-                              </div>
-                              {item.testsCount !== undefined && (
-                                <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">
-                                  <span>📝 {item.testsCount} Tests</span>
-                                </div>
-                              )}
-                            </div>
-                          );
+                           {(item.type === 'category' || item.type === 'subcategory') && (
+                              <Card className="p-6 h-full group flex flex-col justify-between border-2 border-border-primary hover:border-slate-300 transition-all cursor-pointer rounded-[3rem]" onClick={() => router.push(`/${item.type}/${item._id}`)}>
+                                 <div className="space-y-4">
+                                    <div className="flex justify-between items-start">
+                                       <div className="p-3 bg-background-surface-secondary text-content-secondary rounded-2xl group-hover:bg-slate-900 group-hover:text-white transition-all">
+                                          <Layers className="w-5 h-5" />
+                                       </div>
+                                       <div className="text-xs font-semibold text-content-secondary">{item.type === 'subcategory' ? 'Topic' : 'Category'}</div>
+                                    </div>
+                                    <h3 className="text-xl font-black font-outfit leading-tight group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{item.name}</h3>
+                                    <p className="text-sm font-medium text-content-secondary line-clamp-2">{item.description || 'Explore this area to find more topics, quizzes, and study material.'}</p>
+                                 </div>
+                                 <div className="flex items-center gap-2 text-content-secondary pt-6">
+                                    <span className="text-sm font-semibold">Open {item.type === 'subcategory' ? 'topic' : 'category'}</span>
+                                    <ChevronRight className="w-3 h-3" />
+                                 </div>
+                              </Card>
+                           )}
 
-                        case 'test':
-                          return (
-                            <div
-                              key={item._id}
-                              className="border-2 border-primary-200 dark:border-primary-400 bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200"
-                            >
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white">
-                                {item.title}
-                              </h3>
-                              {item.examPattern && item.examPattern.exam && (
-                                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                  Exam:{" "}
-                                  <span className="font-medium text-gray-700 dark:text-gray-300">
-                                    {item.examPattern.exam.name}
-                                  </span>
-                                </p>
-                              )}
-                              <div className="mt-2 flex gap-2 text-xs text-gray-600 dark:text-gray-400">
-                                {item.duration && (
-                                  <span>Duration: {item.duration} min</span>
-                                )}
-                                {item.totalMarks && (
-                                  <span>Marks: {item.totalMarks}</span>
-                                )}
-                              </div>
-                              <div className="mt-3 flex items-center justify-between">
-                                <span className={`text-xs px-2 py-1 rounded ${item.isFree
-                                  ? 'bg-green-500 text-white'
-                                  : 'bg-primary-500 text-white'
-                                  }`}>
-                                  {item.isFree ? 'Free' : 'Premium'}
-                                </span>
-                                <button
-                                  onClick={() => handleTestAttempt(item)}
-                                  className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-1 px-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-sm"
-                                >
-                                  Start Test
-                                </button>
-                              </div>
-                            </div>
-                          );
+                           {item.type === 'user' && (
+                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-border-primary hover:border-pink-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => item.username && router.push(`/u/${item.username}`)}>
+                                 <div className="flex items-center gap-4">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-white font-black text-2xl shadow-duo-secondary group-hover:scale-110 transition-transform">
+                                       {(item.name || item.username || 'S').charAt(0).toUpperCase()}
+                                    </div>
+                                    <div className="min-w-0">
+                                       <h3 className="text-lg font-black font-outfit truncate">{item.name || item.username}</h3>
+                                       <p className="text-sm font-medium text-content-secondary">Level {item.level?.currentLevel || 1} student</p>
+                                    </div>
+                                 </div>
+                                 <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl mt-6 border border-border-primary">
+                                    <p className="text-sm font-medium text-content-secondary flex items-center gap-2"><Users className="w-3 h-3" /> {item.followersCount || 0} followers</p>
+                                 </div>
+                              </Card>
+                           )}
 
-                        case 'user':
-                          return (
-                            <div
-                              key={item._id}
-                              onClick={() => {
-                                if (item.username) {
-                                  router.push(`/u/${item.username}`);
-                                }
-                              }}
-                              className="border cursor-pointer border-pink-200 dark:border-pink-700 bg-pink-50 dark:bg-pink-900/20 rounded-lg p-2 lg:p-4 shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105"
-                            >
-                              <div className="flex items-center gap-3">
+                        </motion.div>
+                     ))}
+                  </motion.div>
+               )}
+            </AnimatePresence>
 
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 from-red-500 flex items-center justify-center text-white font-bold text-lg">
-                                  {(item.name || item.username || item.email || 'U').charAt(0).toUpperCase()}
-                                </div>
-
-                                <div className="flex-1 min-w-0">
-                                  <h3 className="text-md lg:text-lg font-bold text-gray-900 dark:text-white truncate">
-                                    {item.name || item.username || item.email || 'User'}
-                                  </h3>
-                                  {item.username && (
-                                    <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
-                                      @{item.username}
-                                    </p>
-                                  )}
-                                  {item.bio && (
-                                    <p className="mt-1 text-xs text-gray-700 dark:text-gray-300 line-clamp-2">
-                                      {item.bio}
-                                    </p>
-                                  )}
-                                  <div className="mt-2 flex gap-3 text-xs text-gray-600 dark:text-gray-400">
-                                    {item.followersCount !== undefined && (
-                                      <span>👥 {item.followersCount} followers</span>
-                                    )}
-                                    {item.level && item.level.currentLevel !== undefined && (
-                                      <span>⭐ Level {item.level.currentLevel}</span>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-
-                        default:
-                          return null;
-                      }
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Pagination */}
-              <div className="flex justify-center mt-10 mb-6 space-x-2 flex-wrap gap-2">
-                <button
-                  disabled={currentPage === 1 || loading}
-                  onClick={() => {
-                    if (loading || isSearchingRef.current) return;
-                    const newPage = Math.max(currentPage - 1, 1);
-                    setCurrentPage(newPage);
-                    fetchData(query, newPage);
-                  }}
-                  className="px-4 py-2 rounded-lg border text-sm font-medium border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  Prev
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i}
-                    disabled={loading}
-                    onClick={() => {
-                      if (loading || isSearchingRef.current) return;
-                      const newPage = i + 1;
-                      setCurrentPage(newPage);
-                      fetchData(query, newPage);
-                    }}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${currentPage === i + 1
-                      ? "bg-gradient-to-r from-primary-600 to-secondary-600 text-white border-primary-600 shadow-lg"
-                      : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      } disabled:opacity-50 disabled:cursor-not-allowed`}
+            {/* --- Pagination --- */}
+            {totalPages > 1 && (
+               <section className="flex flex-col lg:flex-row justify-center items-center gap-6 py-12 px-4">
+                  <Button
+                     variant="ghost"
+                     disabled={currentPage === 1 || loading}
+                     onClick={() => { setCurrentPage(c => c - 1); fetchData(query, currentPage - 1); }}
+                     className="w-full lg:w-auto px-8 py-4 rounded-xl lg:rounded-2xl bg-background-surface text-sm font-semibold shadow-sm border-b-4 border-border-primary active:border-b-0 transition-all font-outfit"
                   >
-                    {i + 1}
-                  </button>
-                ))}
-                <button
-                  disabled={currentPage === totalPages || loading}
-                  onClick={() => {
-                    if (loading || isSearchingRef.current) return;
-                    const newPage = Math.min(currentPage + 1, totalPages);
-                    setCurrentPage(newPage);
-                    fetchData(query, newPage);
-                  }}
-                  className="px-4 py-2 rounded-lg border text-sm font-medium border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  Next
-                </button>
-              </div>
+                     <ChevronLeft className="mr-2 w-5 h-5" /> Previous
+                  </Button>
 
-              {/* Quiz Start Confirmation Modal */}
-              {showQuizModal &&
-                <QuizStartModal
-                  isOpen={showQuizModal}
-                  onClose={handleCancelQuizStart}
-                  onConfirm={handleConfirmQuizStart}
-                  quiz={selectedQuiz}
-                />
-              }
+                  <div className="flex gap-2 items-center overflow-x-auto max-w-full pb-2 lg:pb-0 no-scrollbar">
+                     {Array.from({ length: totalPages }, (_, i) => {
+                        const pageNum = i + 1;
+                        const isVisible = Math.abs(currentPage - pageNum) <= 1 || pageNum === 1 || pageNum === totalPages;
 
-              {/* Test Start Confirmation Modal */}
-              {showTestModal && selectedTest &&
-                <TestStartModal
-                  isOpen={showTestModal}
-                  onClose={handleCancelTestStart}
-                  onConfirm={handleConfirmTestStart}
-                  test={selectedTest}
-                  pattern={selectedTest.examPattern}
-                  exam={selectedTest.examPattern?.exam}
-                  category={selectedTest.examPattern?.exam?.category}
-                />
-              }
-            </>
-          )}
-        </div>
+                        if (!isVisible) {
+                           if (pageNum === 2 || pageNum === totalPages - 1) return <span key={pageNum} className="text-slate-400">...</span>;
+                           return null;
+                        }
+
+                        return (
+                           <button
+                              key={pageNum}
+                              onClick={() => { setCurrentPage(pageNum); fetchData(query, pageNum); }}
+                              className={`w-12 h-12 flex-shrink-0 rounded-xl lg:rounded-2xl text-xs font-black transition-all ${currentPage === pageNum ? 'bg-primary-500 text-white shadow-duo-primary scale-110' : 'bg-background-surface text-content-secondary border-2 border-border-primary'}`}
+                           >
+                              {pageNum}
+                           </button>
+                        );
+                     })}
+                  </div>
+
+                  <Button
+                     variant="ghost"
+                     disabled={currentPage === totalPages || loading}
+                     onClick={() => { setCurrentPage(c => c + 1); fetchData(query, currentPage + 1); }}
+                     className="w-full lg:w-auto px-8 py-4 rounded-xl lg:rounded-2xl bg-background-surface text-sm font-semibold shadow-sm border-b-4 border-border-primary active:border-b-0 transition-all font-outfit"
+                  >
+                     Next <ChevronRight className="ml-2 w-5 h-5" />
+                  </Button>
+               </section>
+            )}
+
+            {/* --- Modals --- */}
+            {showQuizModal && <QuizStartModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} onConfirm={(type) => { setShowQuizModal(false); if (selectedQuiz) { localStorage.setItem('quizNavigationData', JSON.stringify({ fromPage: 'search', searchQuery: query, quizData: selectedQuiz, competitionType: type })); router.push(`/attempt-quiz/${selectedQuiz._id}`); } }} quiz={selectedQuiz} />}
+            {showTestModal && selectedTest && <TestStartModal isOpen={showTestModal} onClose={() => setShowTestModal(false)} onConfirm={() => { setShowTestModal(false); if (selectedTest) { localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'search', searchQuery: query, testData: selectedTest })); router.push(`/govt-exams/test/${selectedTest._id}/start`); } }} test={selectedTest} pattern={selectedTest.examPattern} exam={selectedTest.examPattern?.exam} category={selectedTest.examPattern?.exam?.category} />}
+         </div>
+
+         <UnifiedFooter />
       </div>
-      <UnifiedFooter />
-    </>
-  );
+   );
 };
 
 export default SearchPage;

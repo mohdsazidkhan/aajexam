@@ -50,17 +50,21 @@ export default function LevelPage({ level }) {
                 />
             </Head>
 
-            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-                <div className="container mx-auto px-4 lg:px-10 py-8">
+            <div className="min-h-screen bg-white dark:bg-slate-950 font-outfit relative overflow-hidden">
+                {/* Background atmosphere */}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+                <div className="container mx-auto px-4 lg:px-0 relative z-10 mt-4">
                     {/* Hero */}
                     <div className="text-center mb-12">
                         <div className={`w-20 h-20 bg-gradient-to-r ${level.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
                             <IconComponent className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
                             Level {level.number}: {level.name}
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300">
+                        <p className="text-md md:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 mb-2">
                             {level.subtitle}
                         </p>
                         <p className="text-lg text-gray-500 dark:text-gray-400 mt-2">
@@ -69,9 +73,9 @@ export default function LevelPage({ level }) {
                     </div>
 
                     {/* Overview */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Overview</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight">Overview</h2>
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
                             {level.overview.map((para, idx) => (
                                 <p key={idx}>{para}</p>
                             ))}
@@ -79,9 +83,9 @@ export default function LevelPage({ level }) {
                     </div>
 
                     {/* Topics Covered */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Topics Covered</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight">Topics Covered</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                             {level.topics.map((topic, idx) => (
                                 <div key={idx} className="flex items-start gap-3">
                                     <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
@@ -92,24 +96,24 @@ export default function LevelPage({ level }) {
                     </div>
 
                     {/* Learning Outcomes */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Learning Outcomes</h2>
-                        <div className="space-y-3">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight">Learning Outcomes</h2>
+                        <div className="space-y-4">
                             {level.outcomes.map((outcome, idx) => (
-                                <div key={idx} className="flex items-start gap-3">
-                                    <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+                                <div key={idx} className="flex items-start gap-4">
+                                    <div className="w-10 h-10 bg-primary-500 rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black shadow-duo-primary border-b-4 border-primary-700">
                                         {idx + 1}
                                     </div>
-                                    <p className="text-gray-700 dark:text-gray-300 text-lg">{outcome}</p>
+                                    <p className="text-slate-700 dark:text-slate-300 text-lg lg:text-xl font-bold">{outcome}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Exam Relevance */}
-                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Exam Relevance</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-12 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight">Exam Relevance</h2>
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
                             {level.examRelevance.map((para, idx) => (
                                 <p key={idx}>{para}</p>
                             ))}
@@ -117,24 +121,27 @@ export default function LevelPage({ level }) {
                     </div>
 
                     {/* Study Tips */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Study Tips for This Level</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                            <div className="w-2 h-10 bg-primary-500 rounded-full" />
+                            Study Tips
+                        </h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {level.studyTips.map((tip, idx) => (
-                                <div key={idx} className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
-                                    <h3 className="font-semibold text-gray-800 dark:text-white mb-2">{tip.title}</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">{tip.description}</p>
+                                <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
+                                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{tip.title}</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{tip.description}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Navigation */}
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mt-12 bg-white dark:bg-slate-900 p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] border-2 border-slate-200 dark:border-slate-800 shadow-xl">
                         {level.number > 0 && (
                             <button
                                 onClick={() => router.push(`/levels/${level.number - 1}`)}
-                                className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
+                                className="w-full sm:w-auto bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-duo border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-1 active:border-b-0 transition-all"
                             >
                                 ← Previous Level
                             </button>
@@ -142,7 +149,7 @@ export default function LevelPage({ level }) {
                         {level.number < 10 && (
                             <button
                                 onClick={() => router.push(`/levels/${level.number + 1}`)}
-                                className="bg-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-700 transition-all ml-auto"
+                                className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 transition-all ml-auto"
                             >
                                 Next Level →
                             </button>
@@ -154,12 +161,11 @@ export default function LevelPage({ level }) {
 
                     {/* Last Updated */}
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
-                        Last Updated: February 12, 2026
+                        Last Updated: 1st April 2026
                     </p>
 
                 </div>
             </div>
-            <UnifiedFooter />
         </MobileAppWrapper>
     );
 }

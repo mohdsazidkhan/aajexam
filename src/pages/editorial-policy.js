@@ -32,141 +32,97 @@ export default function EditorialPolicy() {
                 />
             </Head>
 
-            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
+            <div className="min-h-screen bg-white dark:bg-slate-950">
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaShieldAlt className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-2xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Editorial Policy
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                             Our Commitment to Quality, Accuracy, and Educational Excellence
                         </p>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                            Last Updated: February 12, 2026
+                            Last Updated: 1st April 2026
                         </p>
                     </div>
 
                     {/* Mission Statement */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Our Mission</h2>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            AajExam is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
-                        </p>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                            We understand that our users trust us with their exam preparation, and we take this responsibility seriously. Our editorial team works diligently to ensure that all content is factually correct, up-to-date with current exam patterns, and aligned with official syllabus of SSC, UPSC, Banking, Railway, and other government examinations.
-                        </p>
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                            <div className="w-2 h-10 bg-primary-500 rounded-full" />
+                            Our Mission
+                        </h2>
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
+                            <p>
+                                AajExam is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
+                            </p>
+                            <p>
+                                We understand that our users trust us with their exam preparation, and we take this responsibility seriously. Our editorial team works diligently to ensure that all content is factually correct, up-to-date with current exam patterns, and aligned with official syllabus of SSC, UPSC, Banking, Railway, and other government examinations.
+                            </p>
+                        </div>
                     </div>
 
                     {/* Content Creation Process */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
                                 <FaBook className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Content Creation Process</h2>
+                            <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Creation Process</h2>
                         </div>
-                        <div className="space-y-6">
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Expert Content Development</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        All quiz questions and study materials are created by subject matter experts with extensive experience in government exam preparation. Our content creators include former government exam toppers, experienced educators, and subject specialists with advanced degrees in their respective fields.
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">2</div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Multi-Level Review</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        Every piece of content undergoes a rigorous multi-level review process. After initial creation, content is reviewed by at least two independent subject experts to verify accuracy, relevance, and alignment with current exam patterns. This ensures that errors are caught and corrected before publication.
-                                    </p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+                            {[
+                                { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-500' },
+                                { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-emerald-500' },
+                                { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-purple-500' },
+                                { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-500' }
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
+                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-duo border-b-4 border-black/20`}>
+                                        {item.step}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold">{item.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">3</div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Fact-Checking and Verification</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        All factual information, dates, statistics, and current affairs content is cross-verified with authoritative sources including official government publications, NCERT textbooks, reputable news agencies, and official exam conducting authority notifications. We maintain a comprehensive reference library for verification purposes.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">4</div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Regular Updates</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        We continuously monitor changes in exam patterns, syllabus updates, and current affairs developments. Our content is regularly updated to reflect the latest information and ensure relevance. Major updates are implemented quarterly, while current affairs content is updated weekly.
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
                     {/* Quality Standards */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
-                                <FaAward className="text-white text-2xl" />
-                            </div>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Quality Standards</h2>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-secondary-600 text-xl" />
-                                    <h3 className="font-semibold text-gray-800 dark:text-white">Accuracy</h3>
+                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-b-[12px] border-slate-800 shadow-2xl relative overflow-hidden text-center">
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
+                        <h2 className="text-xl lg:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                            {[
+                                { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-500' },
+                                { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-emerald-500' },
+                                { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-purple-500' },
+                                { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-500' }
+                            ].map((item, idx) => (
+                                <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
+                                    <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center shadow-duo-secondary">
+                                        <FaCheckCircle className="text-white text-lg" />
+                                    </div>
+                                    <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
+                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">{item.desc}</p>
                                 </div>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    All content must be factually accurate and verified against authoritative sources. Zero tolerance for misinformation.
-                                </p>
-                            </div>
-
-                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border border-green-200 dark:border-green-700">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-green-600 text-xl" />
-                                    <h3 className="font-semibold text-gray-800 dark:text-white">Relevance</h3>
-                                </div>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Content must align with current exam patterns and syllabus of target government examinations.
-                                </p>
-                            </div>
-
-                            <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-purple-600 text-xl" />
-                                    <h3 className="font-semibold text-gray-800 dark:text-white">Clarity</h3>
-                                </div>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Questions and explanations must be clear, unambiguous, and easily understandable by target audience.
-                                </p>
-                            </div>
-
-                            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <FaCheckCircle className="text-secondary-600 text-xl" />
-                                    <h3 className="font-semibold text-gray-800 dark:text-white">Difficulty Calibration</h3>
-                                </div>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Questions must be appropriately calibrated to match the difficulty level of their assigned level.
-                                </p>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
                     {/* User Feedback */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-secondary-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-primary-500 rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>
@@ -182,7 +138,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Corrections Policy */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Corrections and Updates Policy</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -201,7 +157,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Ethical Standards */}
-                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
+                    <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 rounded-3xl p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -228,18 +184,18 @@ export default function EditorialPolicy() {
                         </div>
                     </div>
 
-                    {/* Contact */}
-                    <div className="text-center">
-                        <div className="bg-gradient-to-r from-secondary-100 to-purple-100 dark:from-secondary-800 dark:to-purple-800 rounded-3xl p-8">
-                            <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
-                                Questions About Our Editorial Policy?
+                    {/* CTA */}
+                    <div className="text-center mt-16">
+                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-duo-primary">
+                            <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
+                                Questions About Our Policy?
                             </h2>
-                            <p className="text-xl mb-6 text-gray-700 dark:text-gray-300">
+                            <p className="text-md md:text-xl lg:text-2xl font-bold mb-10 text-white/90 uppercase tracking-widest text-xs">
                                 Contact our editorial team at: <strong>support@mohdsazidkhan.com</strong>
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
+                                className="bg-white text-primary-600 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
                             >
                                 Back to Home
                             </button>
@@ -247,7 +203,6 @@ export default function EditorialPolicy() {
                     </div>
                 </div>
             </div>
-            <UnifiedFooter />
         </MobileAppWrapper>
     );
 }
@@ -258,3 +213,4 @@ export async function getStaticProps() {
         revalidate: 86400
     };
 }
+

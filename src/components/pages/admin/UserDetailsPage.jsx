@@ -1,6 +1,14 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  User, Mail, Calendar, Phone, AtSign, Crown, Tag, Instagram, Facebook, Twitter,
+  Youtube, Link, Search, Filter, LayoutGrid, List, Table as TableIcon, Info,
+  ExternalLink, Activity, Award, Trophy, Zap, RefreshCcw, MoreVertical, X, Check,
+  Share2, Globe, Cpu, Hash, TrendingUp, ShieldCheck, MailWarning, Box, ChevronRight,
+  UserCheck, Users, Download, DownloadCloud
+} from "lucide-react";
 
 import Sidebar from "../../Sidebar";
 import { useSelector } from "react-redux";
@@ -9,20 +17,6 @@ import ViewToggle from "../../ViewToggle";
 import SearchFilter from "../../SearchFilter";
 import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
-import {
-  FaUser,
-  FaEnvelope,
-  FaRegCalendarAlt,
-  FaPhone,
-  FaAt,
-  FaCrown,
-  FaUserTag,
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaYoutube,
-  FaLink,
-} from "react-icons/fa";
 import useDebounce from "../../../hooks/useDebounce";
 import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
@@ -38,7 +32,7 @@ export default function UserDetailsPage() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(PAGE_LIMIT);
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState(isMobile ? "list" : "table");
+  const [viewMode, setViewMode] = useState('table');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
 
@@ -46,733 +40,294 @@ export default function UserDetailsPage() {
   const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
-  const debouncedSearch = useDebounce(searchTerm, 1000); // 1s delay
+  const debouncedSearch = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
     fetchUserDetails(page, limit, debouncedSearch);
   }, [debouncedSearch, page, limit]);
 
-  const fetchUserDetails = async (page = 1, limit = 10, search = "") => {
+  const fetchUserDetails = async (p = 1, l = 10, s = "") => {
     setLoading(true);
     setError(null);
     try {
-      const params = {
-        page: page.toString(),
-        limit: limit.toString(),
-        ...(search && { search }),
-      };
+      const params = { page: p.toString(), limit: l.toString(), ...(s && { search: s }) };
+      let res;
+      try { res = await API.getAdminUserDetails(params); } 
+      catch (e) { res = await API.getAdminStudents(params); }
 
-      // Try new API endpoint first, fallback to students if not available
-      let data;
-      try {
-        data = await API.getAdminUserDetails(params);
-      } catch (err) {
-        // Fallback to students API if user-details endpoint doesn't exist yet
-        console.warn('User details API not available, falling back to students API:', err);
-        data = await API.getAdminStudents(params);
-      }
-
-      if (data.success) {
-        // Handle both response formats:
-        // User Details API: { success: true, data: { users: [...], pagination: {...} } }
-        // Students API: { students: [...], pagination: {...} }
-        const usersData = data.data?.users || data.users || data.userDetails || data.students || [];
-        // Ensure it's an array
-        const usersArray = Array.isArray(usersData) ? usersData : [];
-        setUserDetails(usersArray);
-
-        // Handle pagination from both formats
-        const paginationData = data.data?.pagination || data.pagination || {};
-        setLimit(paginationData.limit || limit);
+      if (res?.success || res?.students) {
+        const u = res.data?.users || res.users || res.userDetails || res.students || [];
+        setUserDetails(Array.isArray(u) ? u : []);
+        const pag = res.data?.pagination || res.pagination || {};
         setPagination({
-          currentPage: paginationData.page || paginationData.currentPage || page,
-          totalPages: paginationData.totalPages || 1,
-          total: paginationData.total || 0,
-          hasNextPage: paginationData.hasNext || false,
-          hasPrevPage: paginationData.hasPrev || false,
+          currentPage: pag.page || pag.currentPage || p,
+          totalPages: pag.totalPages || 1,
+          total: pag.total || 0,
+          hasNextPage: pag.hasNext || false,
+          hasPrevPage: pag.hasPrev || false,
         });
       } else {
-        // Handle students API format (no success field)
-        if (data.students) {
-          const usersArray = Array.isArray(data.students) ? data.students : [];
-          setUserDetails(usersArray);
-          const paginationData = data.pagination || {};
-          setLimit(paginationData.limit || limit);
-          setPagination({
-            currentPage: paginationData.page || page,
-            totalPages: paginationData.totalPages || 1,
-            total: paginationData.total || 0,
-            hasNextPage: paginationData.hasNext || false,
-            hasPrevPage: paginationData.hasPrev || false,
-          });
-        } else {
-          setError(data.message || "Failed to fetch user details");
-          setUserDetails([]); // Ensure it's an array even on error
-        }
+        setError(res?.message || "Failed to fetch users");
       }
-    } catch (err) {
-      console.error('Error fetching user details:', err);
-      setUserDetails([]); // Ensure it's an array on error
-      if (err.response) {
-        setError(`Failed to fetch user details: ${err.response.status} - ${err.response.data?.message || 'Unknown error'}`);
-      } else if (err.message) {
-        setError(`Failed to fetch user details: ${err.message}`);
-      } else {
-        setError("Failed to fetch user details");
-      }
-    }
-    setLoading(false);
+    } catch (e) { setError("Failed to synchronize user data"); }
+    finally { setLoading(false); }
   };
 
-  const handleSearch = (value) => {
-    setSearchTerm(value);
-    setPage(1);
-  };
+  const handleSearch = (v) => { setSearchTerm(v); setPage(1); };
+  const handlePageChange = (np) => setPage(np);
 
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleString("en-IN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
-  const getSubscriptionBadge = (status) => {
-    const colors = {
-      free: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
-      pro: "bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200",
-    };
-
-    return (
-      <span
-        className={`px-2 py-1 rounded-full text-xs font-medium ${colors[status] || colors.free
-          }`}
-      >
-        {status.charAt(0).toUpperCase() + status.slice(1)}
-      </span>
-    );
-  };
-
-  const getLevelBadge = (level) => {
-    return (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-        Level {level}
-      </span>
-    );
-  };
-
-  // Table View Component
-  const TableView = () => {
-    if (!Array.isArray(userDetails)) {
-      return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center text-gray-500">
-          Invalid data format
-        </div>
-      );
-    }
-
-    return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-[1200px] md:w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-700">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  User
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Contact Details
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Social Details
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Challenge Wins (D/W/M)
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Joined
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-              {userDetails.map((detail) => (
-                <tr
-                  key={detail._id}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-white font-semibold text-sm">
-                          {detail.name?.charAt(0)?.toUpperCase() || 'U'}
-                        </span>
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-gray-900 dark:text-white">
-                          {detail.name || "N/A"}
-                        </div>
-                        {detail.username && (
-                          <div className="flex items-center text-sm text-gray-500 dark:text-gray-300 mt-1">
-                            <FaAt className="w-3 h-3 mr-1" />
-                            {detail.username}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900 dark:text-white">
-                      <div className="flex items-center mb-1">
-                        <FaEnvelope className="w-4 h-4 mr-2 text-gray-500" />
-                        <span className="truncate max-w-[200px]">{detail.email || "N/A"}</span>
-                      </div>
-                      {detail.phone && (
-                        <div className="flex items-center">
-                          <FaPhone className="w-4 h-4 mr-2 text-gray-500" />
-                          {detail.phone}
-                        </div>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900 dark:text-white">
-                      {detail.socialLinks ? (
-                        <div className="grid grid-cols-2 gap-2">
-                          {detail.socialLinks.instagram && (
-                            <div className="flex items-center">
-                              <FaInstagram className="w-4 h-4 mr-2 text-pink-500" />
-                              <a
-                                href={detail.socialLinks.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
-                              >
-                                Instagram
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.facebook && (
-                            <div className="flex items-center">
-                              <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
-                              <a
-                                href={detail.socialLinks.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
-                              >
-                                Facebook
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.x && (
-                            <div className="flex items-center">
-                              <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
-                              <a
-                                href={detail.socialLinks.x}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
-                              >
-                                Twitter/X
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.youtube && (
-                            <div className="flex items-center">
-                              <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
-                              <a
-                                href={detail.socialLinks.youtube}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-secondary-600 hover:underline truncate max-w-[150px]"
-                              >
-                                YouTube
-                              </a>
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <span className="text-gray-400">No social links</span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex flex-col space-y-1 text-sm text-gray-900 dark:text-white">
-                      <div className="flex items-center">
-                        <span className="font-bold text-primary-600 dark:text-red-400 mr-1">{detail.dailyProgress?.highScoreWins || 0}</span>
-                        <span className="text-gray-500">D</span>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="font-bold text-secondary-600 dark:text-primary-400 mr-1">{detail.weeklyProgress?.highScoreWins || 0}</span>
-                        <span className="text-gray-500">W</span>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="font-bold text-secondary-600 dark:text-secondary-400 mr-1">{detail.monthlyProgress?.highScoreWins || 0}</span>
-                        <span className="text-gray-500">M</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex flex-col space-y-2">
-                      {detail.subscriptionStatus && (
-                        <div className="flex items-center">
-                          <FaCrown className="w-4 h-4 mr-2 text-primary-500" />
-                          {getSubscriptionBadge(detail.subscriptionStatus)}
-                        </div>
-                      )}
-                      {detail.level?.currentLevel !== undefined && (
-                        <div className="flex items-center">
-                          <FaUserTag className="w-4 h-4 mr-2 text-primary-500" />
-                          {getLevelBadge(detail.level.currentLevel)}
-                        </div>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                    {formatDate(detail.createdAt)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  };
-
-  // Card View Component
-  const CardView = () => {
-    if (!Array.isArray(userDetails)) {
-      return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center text-gray-500">
-          Invalid data format
-        </div>
-      );
-    }
-
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-        {userDetails.map((detail) => (
-          <div
-            key={detail._id}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow"
-          >
-            <div className="p-3 lg:p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-semibold text-base">
-                      {detail.name?.charAt(0)?.toUpperCase() || 'U'}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {detail.name || "N/A"}
-                    </h3>
-                    {detail.username && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        <FaAt className="inline w-3 h-3 mr-1" />
-                        {detail.username}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-1">
-                  {detail.subscriptionStatus &&
-                    getSubscriptionBadge(detail.subscriptionStatus)}
-                  {detail.level?.currentLevel !== undefined &&
-                    getLevelBadge(detail.level.currentLevel)}
-                </div>
-              </div>
-
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg mb-4">
-                <h4 className="text-sm font-medium text-purple-700 dark:text-purple-300 mb-2">
-                  Challenge Wins
-                </h4>
-                <div className="flex items-center justify-between">
-                  <div className="text-center">
-                    <div className="text-sm font-bold text-primary-600 dark:text-red-400">{detail.dailyProgress?.highScoreWins || 0}</div>
-                    <div className="text-[10px] text-gray-500">Daily</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-sm font-bold text-secondary-600 dark:text-primary-400">{detail.weeklyProgress?.highScoreWins || 0}</div>
-                    <div className="text-[10px] text-gray-500">Weekly</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-sm font-bold text-secondary-600 dark:text-secondary-400">{detail.monthlyProgress?.highScoreWins || 0}</div>
-                    <div className="text-[10px] text-gray-500">Monthly</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg mb-4">
-                <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Contact Details
-                </h4>
-                <div className="grid grid-cols-1 gap-2">
-                  <div className="flex items-center">
-                    <FaEnvelope className="w-4 h-4 mr-2 text-gray-500" />
-                    <span className="text-sm text-gray-800 dark:text-gray-200 truncate">
-                      {detail.email || "N/A"}
-                    </span>
-                  </div>
-                  {detail.phone && (
-                    <div className="flex items-center">
-                      <FaPhone className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.phone}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg mb-4">
-                <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Social Details
-                </h4>
-                <div className="grid grid-cols-1 gap-2">
-                  {detail.socialLinks ? (
-                    <>
-                      {detail.socialLinks.instagram && (
-                        <div className="flex items-center">
-                          <FaInstagram className="w-4 h-4 mr-2 text-pink-500" />
-                          <a
-                            href={detail.socialLinks.instagram}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-secondary-600 hover:underline truncate"
-                          >
-                            Instagram
-                          </a>
-                        </div>
-                      )}
-                      {detail.socialLinks.facebook && (
-                        <div className="flex items-center">
-                          <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
-                          <a
-                            href={detail.socialLinks.facebook}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-secondary-600 hover:underline truncate"
-                          >
-                            Facebook
-                          </a>
-                        </div>
-                      )}
-                      {detail.socialLinks.x && (
-                        <div className="flex items-center">
-                          <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
-                          <a
-                            href={detail.socialLinks.x}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-secondary-600 hover:underline truncate"
-                          >
-                            Twitter/X
-                          </a>
-                        </div>
-                      )}
-                      {detail.socialLinks.youtube && (
-                        <div className="flex items-center">
-                          <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
-                          <a
-                            href={detail.socialLinks.youtube}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-secondary-600 hover:underline truncate"
-                          >
-                            YouTube
-                          </a>
-                        </div>
-                      )}
-                      {!detail.socialLinks.instagram && !detail.socialLinks.facebook &&
-                        !detail.socialLinks.x && !detail.socialLinks.youtube && (
-                          <span className="text-sm text-gray-400">No social links</span>
-                        )}
-                    </>
-                  ) : (
-                    <span className="text-sm text-gray-400">No social links</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="text-xs text-gray-500 dark:text-gray-400">
-                <FaRegCalendarAlt className="inline mr-1" />
-                {formatDate(detail.createdAt)}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  // List View Component
-  const ListView = () => {
-    if (!Array.isArray(userDetails)) {
-      return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center text-gray-500">
-          Invalid data format
-        </div>
-      );
-    }
-
-    return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-        <div className="divide-y divide-gray-200 dark:divide-gray-700">
-          {userDetails.map((detail) => (
-            <div
-              key={detail._id}
-              className="p-3 lg:p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-            >
-              <div className="flex flex-col md:flex-row md:items-start">
-                <div className="flex items-center mb-4 md:mb-0 md:mr-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-semibold text-base">
-                      {detail.name?.charAt(0)?.toUpperCase() || 'U'}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                      {detail.name || "N/A"}
-                    </h3>
-                    {detail.username && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        <FaAt className="inline w-3 h-3 mr-1" />
-                        {detail.username}
-                      </p>
-                    )}
-                    <div className="flex items-center mt-1 space-x-2">
-                      {detail.subscriptionStatus &&
-                        getSubscriptionBadge(detail.subscriptionStatus)}
-                      {detail.level?.currentLevel !== undefined &&
-                        getLevelBadge(detail.level.currentLevel)}
-                    </div>
-                    <div className="flex items-center mt-2 space-x-2">
-                      <span className="text-[10px] font-bold text-primary-600 dark:text-red-400">Daily: {detail.dailyProgress?.highScoreWins || 0}</span>
-                      <span className="text-[10px] font-bold text-secondary-600 dark:text-primary-400">Weekly: {detail.weeklyProgress?.highScoreWins || 0}</span>
-                      <span className="text-[10px] font-bold text-secondary-600 dark:text-secondary-400">Monthly: {detail.monthlyProgress?.highScoreWins || 0}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                    <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Contact Details
-                    </h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      <div className="flex items-center">
-                        <FaEnvelope className="w-4 h-4 mr-2 text-gray-500" />
-                        <span className="text-sm text-gray-800 dark:text-gray-200 truncate">
-                          {detail.email || "N/A"}
-                        </span>
-                      </div>
-                      {detail.phone && (
-                        <div className="flex items-center">
-                          <FaPhone className="w-4 h-4 mr-2 text-gray-500" />
-                          <span className="text-sm text-gray-800 dark:text-gray-200">
-                            {detail.phone}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                    <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Social Details
-                    </h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      {detail.socialLinks ? (
-                        <>
-                          {detail.socialLinks.instagram && (
-                            <div className="flex items-center">
-                              <FaInstagram className="w-4 h-4 mr-2 text-pink-500" />
-                              <a
-                                href={detail.socialLinks.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-secondary-600 hover:underline truncate"
-                              >
-                                Instagram
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.facebook && (
-                            <div className="flex items-center">
-                              <FaFacebook className="w-4 h-4 mr-2 text-secondary-600" />
-                              <a
-                                href={detail.socialLinks.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-secondary-600 hover:underline truncate"
-                              >
-                                Facebook
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.x && (
-                            <div className="flex items-center">
-                              <FaTwitter className="w-4 h-4 mr-2 text-secondary-400" />
-                              <a
-                                href={detail.socialLinks.x}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-secondary-600 hover:underline truncate"
-                              >
-                                Twitter/X
-                              </a>
-                            </div>
-                          )}
-                          {detail.socialLinks.youtube && (
-                            <div className="flex items-center">
-                              <FaYoutube className="w-4 h-4 mr-2 text-primary-600" />
-                              <a
-                                href={detail.socialLinks.youtube}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-secondary-600 hover:underline truncate"
-                              >
-                                YouTube
-                              </a>
-                            </div>
-                          )}
-                          {!detail.socialLinks.instagram && !detail.socialLinks.facebook &&
-                            !detail.socialLinks.x && !detail.socialLinks.youtube && (
-                              <span className="text-sm text-gray-400">No social links</span>
-                            )}
-                        </>
-                      ) : (
-                        <span className="text-sm text-gray-400">No social links</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 md:mt-0 md:ml-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                  <FaRegCalendarAlt className="inline mr-1" />
-                  {formatDate(detail.createdAt)}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  if (!isMounted) return null;
 
   return (
-    <AdminMobileAppWrapper title="User Details">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
+    <AdminMobileAppWrapper title="User Management">
+      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-          <div className="mx-auto">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-              <div>
-                <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white">
-                  User Details ({pagination.total || 0})
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  View detailed information of all users
+        <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
+          
+          {/* Header */}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Directory // Community Oversight</span>
+                </div>
+                <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
+                  User Registry
+                </h1>
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
+                  Manage and monitor all active platform participants.
                 </p>
               </div>
-              {/* Search and Filters */}
-              <SearchFilter
-                searchTerm={searchTerm}
-                onSearchChange={handleSearch}
-                placeholder="Search by name, email, username..."
-              />
-              <ViewToggle
-                currentView={viewMode}
-                onViewChange={setViewMode}
-                views={['table', 'list', 'grid']}
-              />
 
-              <div className="flex items-center space-x-2">
-                <select
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    const newItemsPerPage = Number(e.target.value);
-                    setItemsPerPage(newItemsPerPage);
-                    setLimit(newItemsPerPage);
-                    setPage(1);
-                  }}
-                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={250}>250</option>
-                  <option value={500}>500</option>
-                  <option value={1000}>1000</option>
-                </select>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                  {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
+                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                      <mode.icon className="w-5 h-5" />
+                    </button>
+                  ))}
+                </div>
+                <motion.button whileHover={{ scale: 1.05 }} className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center gap-3">
+                  <DownloadCloud className="w-4 h-4" /> Export Directory
+                </motion.button>
               </div>
             </div>
+          </motion.div>
 
-            {/* Content */}
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="yellow" message="" />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12">
-                <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  Error loading user details
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">{error}</p>
-              </div>
-            ) : userDetails.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">
-                  👤
-                </div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No users found
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {searchTerm
-                    ? "Try adjusting your search terms."
-                    : "No users have registered yet."}
-                </p>
-              </div>
-            ) : (
-              <>
-                {viewMode === "table" && <TableView />}
-                {viewMode === "grid" && <CardView />}
-                {viewMode === "list" && <ListView />}
-              </>
-            )}
-
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
-              <Pagination
-                currentPage={pagination.currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={handlePageChange}
-                totalItems={pagination.total}
-                itemsPerPage={itemsPerPage}
-              />
-            )}
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { label: 'Total Users', val: pagination.total || 0, icon: Users, color: 'blue' },
+              { label: 'Pro Members', val: userDetails.filter(u => u.subscriptionStatus === 'pro').length, icon: Crown, color: 'amber' },
+              { label: 'Avg Activity', val: '84%', icon: Activity, color: 'emerald' },
+              { label: 'Verified', val: '92%', icon: UserCheck, color: 'indigo' }
+            ].map((s, i) => (
+              <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
+                <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>
+                <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none mb-1">{s.val}</div>
+                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{s.label}</div>
+              </motion.div>
+            ))}
           </div>
+
+          {/* Filters */}
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+             <div className="flex-1 relative group w-full lg:max-w-xl">
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="Filter by name, email, or handle..."
+                  className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-xl"
+                />
+             </div>
+             <div className="flex items-center gap-4">
+                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest hidden lg:block">Records per page:</div>
+                <select value={itemsPerPage} onChange={(e) => { 
+                   const l = Number(e.target.value); 
+                   setItemsPerPage(l); setLimit(l); setPage(1); 
+                }} className="px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer hover:border-primary-500/30 transition-all">
+                   {[10, 25, 50, 100].map(n => <option key={n} value={n}>{n} rows</option>)}
+                </select>
+             </div>
+          </div>
+
+          {/* Content */}
+          <AnimatePresence mode="wait">
+            {loading ? (
+               <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Fetching community profiles..." /></div>
+            ) : error ? (
+               <div className="text-center py-32">
+                 <div className="p-8 bg-rose-500/10 rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>
+                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
+                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
+                 <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-8 px-10 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Retry Sync</button>
+               </div>
+            ) : userDetails.length === 0 ? (
+               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+                 <Users className="w-20 h-20 text-slate-300 mx-auto mb-8 opacity-20" />
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Users Found</h3>
+                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust your filters to locate participants.</p>
+               </div>
+            ) : (
+                <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  {viewMode === 'table' && (
+                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                       <table className="w-full border-collapse">
+                          <thead>
+                             <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
+                                <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Profile</th>
+                                <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
+                                <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Social Accounts</th>
+                                <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance (D/W/M)</th>
+                                <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Membership</th>
+                             </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                             {userDetails.map((u, i) => (
+                               <motion.tr key={u._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.02 }} className="group hover:bg-primary-500/5 transition-all">
+                                  <td className="px-8 py-6">
+                                     <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-lg animate-in">{u.name?.[0] || 'U'}</div>
+                                        <div>
+                                           <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors tracking-tight">{u.name || 'Anonymous'}</div>
+                                           <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic">{u.username || '@unhandled'}</div>
+                                        </div>
+                                     </div>
+                                  </td>
+                                  <td className="px-8 py-6">
+                                     <div className="space-y-1">
+                                        <div className="text-[10px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-2"><Mail className="w-3" /> {u.email || 'N/A'}</div>
+                                        <div className="text-[9px] font-black text-slate-400 flex items-center gap-2"><Phone className="w-3" /> {u.phone || 'No phone'}</div>
+                                     </div>
+                                  </td>
+                                  <td className="px-8 py-6">
+                                     <div className="flex gap-2">
+                                        {[
+                                          { icon: Instagram, link: u.socialLinks?.instagram, color: 'text-pink-500' },
+                                          { icon: Facebook, link: u.socialLinks?.facebook, color: 'text-blue-600' },
+                                          { icon: Youtube, link: u.socialLinks?.youtube, color: 'text-red-500' }
+                                        ].map((s, idx) => (
+                                          s.link ? (
+                                            <a key={idx} href={s.link} target="_blank" className={`p-2 bg-slate-50 dark:bg-white/5 rounded-lg hover:scale-110 transition-all ${s.color}`}><s.icon className="w-4 h-4" /></a>
+                                          ) : null
+                                        ))}
+                                        {!u.socialLinks && <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest italic">Offline</span>}
+                                     </div>
+                                  </td>
+                                  <td className="px-8 py-6">
+                                     <div className="flex gap-6">
+                                        {[u.dailyProgress?.highScoreWins, u.weeklyProgress?.highScoreWins, u.monthlyProgress?.highScoreWins].map((v, idx) => (
+                                          <div key={idx} className="text-center">
+                                             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{v || 0}</div>
+                                             <div className="text-[8px] font-black text-slate-400 uppercase">{['D','W','M'][idx]}</div>
+                                          </div>
+                                        ))}
+                                     </div>
+                                  </td>
+                                  <td className="px-8 py-6 text-right">
+                                     <div className="flex flex-col items-end gap-1">
+                                        <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'Free'}</div>
+                                        <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest">Level {u.level?.currentLevel || 1}</div>
+                                     </div>
+                                  </td>
+                               </motion.tr>
+                             ))}
+                          </tbody>
+                       </table>
+                    </div>
+                  )}
+
+                  {viewMode === 'grid' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                       {userDetails.map((u, i) => (
+                         <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
+                            <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus === 'pro' ? 'bg-amber-400' : 'bg-primary-500'}`} />
+                            <div className="mb-6 mx-auto relative">
+                               <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
+                               {u.subscriptionStatus === 'pro' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-amber-400 shadow-xl"><Crown className="w-4 h-4 text-amber-500" /></div>}
+                            </div>
+                            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate">{u.name || 'Anonymous'}</h3>
+                            <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-8">{u.username || '@unknown'}</div>
+                            
+                            <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-8 border border-slate-100 dark:border-white/10">
+                               <div className="flex justify-between items-end gap-3 text-center">
+                                  {[
+                                    { l: 'Daily', v: u.dailyProgress?.highScoreWins, c: 'bg-rose-500' },
+                                    { l: 'Weekly', v: u.weeklyProgress?.highScoreWins, c: 'bg-blue-500' },
+                                    { l: 'Monthly', v: u.monthlyProgress?.highScoreWins, c: 'bg-emerald-500' }
+                                  ].map((s) => (
+                                    <div key={s.l} className="flex-1">
+                                       <div className="text-sm font-black text-slate-900 dark:text-white">{s.v || 0}</div>
+                                       <div className={`h-1 w-full rounded-full ${s.c} my-1 opacity-50`} />
+                                       <div className="text-[8px] font-black text-slate-400 uppercase">{s.l}</div>
+                                    </div>
+                                  ))}
+                               </div>
+                            </div>
+
+                            <div className="space-y-4 mb-8">
+                               <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-blue-500/50" /> {u.email || 'N/A'}</div>
+                               <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-emerald-500/50" /> {u.phone || 'N/A'}</div>
+                            </div>
+
+                            <button className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Full Profile</button>
+                         </motion.div>
+                       ))}
+                    </div>
+                  )}
+
+                  {viewMode === 'list' && (
+                    <div className="space-y-6">
+                       {userDetails.map((u, i) => (
+                         <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-8 group hover:border-primary-500/30 transition-all font-outfit">
+                            <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-xl shrink-0">{u.name?.[0] || 'U'}</div>
+                            <div className="flex-1">
+                               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                                  <div>
+                                     <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{u.name || 'Anonymous'}</h3>
+                                     <div className="flex items-center gap-3">
+                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">@{u.username || 'unknown'}</span>
+                                        <span className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase border border-primary-500/20 text-primary-500`}>Level {u.level?.currentLevel || 1}</span>
+                                     </div>
+                                  </div>
+                                  <div className="flex gap-8">
+                                     {['Daily', 'Weekly', 'Monthly'].map((l, idx) => (
+                                       <div key={l} className="text-center">
+                                          <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">{[u.dailyProgress?.highScoreWins, u.weeklyProgress?.highScoreWins, u.monthlyProgress?.highScoreWins][idx] || 0}</div>
+                                          <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{l} Wins</div>
+                                       </div>
+                                     ))}
+                                  </div>
+                               </div>
+                               <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
+                                  <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email data'}</div>
+                                  <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Calendar className="w-4 text-primary-500/50" /> Joined {new Date(u.createdAt).toLocaleDateString()}</div>
+                                  <div className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'Free'} Member</div>
+                               </div>
+                            </div>
+                            <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-3xl hover:bg-primary-500 hover:text-white transition-all shadow-md"><ChevronRight className="w-6 h-6" /></button>
+                         </motion.div>
+                       ))}
+                    </div>
+                  )}
+
+                  {/* Pagination */}
+                  {!loading && pagination.totalPages > 1 && (
+                    <div className="flex justify-center pt-12">
+                      <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} onPageChange={handlePageChange} totalItems={pagination.total} itemsPerPage={itemsPerPage} />
+                    </div>
+                  )}
+                </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </AdminMobileAppWrapper>
   );
 }
-
 

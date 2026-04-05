@@ -1,268 +1,164 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-import { useGlobalError } from '../contexts/GlobalErrorContext';
-import { useTokenValidation } from '../hooks/useTokenValidation';
-import API from '../lib/api'
-import { FaBell, FaCheck, FaTimes, FaTrash, FaEye, FaEyeSlash } from 'react-icons/fa';
+import {
+  Bell,
+  Trash2,
+  Eye,
+  CircleCheck,
+  Trophy,
+  Target,
+  Zap,
+  CircleAlert,
+  Info,
+  Clock,
+  ArrowRight,
+  Inbox
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
+import MobileAppWrapper from '../components/MobileAppWrapper';
+import Card from '../components/ui/Card';
+import Button from '../components/ui/Button';
+import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 
 const NotificationsPage = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [markingAsRead, setMarkingAsRead] = useState(null);
-  const { handleError } = useGlobalError();
-  const { isValidating } = useTokenValidation();
-
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
+  const [markingId, setMarkingId] = useState(null);
 
   const fetchNotifications = async () => {
     try {
       setLoading(true);
       const res = await API.getStudentNotifications();
-      const payload = res?.data || res;
-      setNotifications(Array.isArray(payload) ? payload : (payload.items || []));
-    } catch (error) {
-      handleError(error, 'Failed to fetch notifications');
-    } finally {
-      setLoading(false);
-    }
+      const items = Array.isArray(res?.data) ? res.data : (res?.items || []);
+      setNotifications(items);
+    } finally { setLoading(false); }
   };
 
-  const markAsRead = async (notificationId) => {
+  useEffect(() => { fetchNotifications(); }, []);
+
+  const markRead = async (id) => {
+    setMarkingId(id);
     try {
-      setMarkingAsRead(notificationId);
-      await API.markNotificationAsRead(notificationId);
-
-      setNotifications(prev =>
-        prev.map(notification =>
-          notification.id === notificationId
-            ? { ...notification, isRead: true }
-            : notification
-        )
-      );
-    } catch (error) {
-      handleError(error, 'Failed to mark notification as read');
-    } finally {
-      setMarkingAsRead(null);
-    }
+      await API.markNotificationAsRead(id);
+      setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));
+    } finally { setMarkingId(null); }
   };
 
-  const markAllAsRead = async () => {
+  const markAllRead = async () => {
     try {
-      await API.request('/api/student/notifications/mark-all-read', {
-        method: 'PUT'
-      });
-
-      setNotifications(prev =>
-        prev.map(notification => ({ ...notification, isRead: true }))
-      );
-    } catch (error) {
-      handleError(error, 'Failed to mark all notifications as read');
-    }
+      await API.request('/api/student/notifications/mark-all-read', { method: 'PUT' });
+      setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+      toast.success("Inbox caught up!");
+    } catch (e) { }
   };
 
-  const deleteNotification = async (notificationId) => {
-    try {
-      await API.deleteNotification(notificationId);
-
-      setNotifications(prev =>
-        prev.filter(notification => notification.id !== notificationId)
-      );
-    } catch (error) {
-      handleError(error, 'Failed to delete notification');
-    }
-  };
-
-  const clearAllNotifications = async () => {
+  const clearAll = async () => {
+    if (!confirm("Clear your entire inbox?")) return;
     try {
       await API.request('/api/student/notifications/clear-all', { method: 'DELETE' });
       setNotifications([]);
-    } catch (error) {
-      handleError(error, 'Failed to clear all notifications');
-    }
+      toast.success("Inbox cleared");
+    } catch (e) { }
   };
 
-  const getNotificationIcon = (type) => {
+  const deleteOne = async (id) => {
+    try {
+      await API.deleteNotification(id);
+      setNotifications(prev => prev.filter(n => n.id !== id));
+    } catch (e) { }
+  };
+
+  if (loading) return <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center"><Loading size="md" /></div>;
+
+  const getIcon = (type) => {
     switch (type) {
-      case 'quiz_completed':
-        return '🎯';
-      case 'level_up':
-        return '🎉';
-      case 'reward_earned':
-        return '🏆';
-      case 'subscription_expired':
-        return '⚠️';
-      case 'system_update':
-        return '🔔';
-      default:
-        return '📢';
+      case 'quiz_completed': return <Target className="w-5 h-5 text-green-500" />;
+      case 'level_up': return <Zap className="w-5 h-5 text-primary-500" />;
+      case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-500" />;
+      case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-red-500" />;
+      default: return <Info className="w-5 h-5 text-blue-500" />;
     }
   };
-
-  const getNotificationColor = (type, isRead) => {
-    if (isRead) return 'bg-gray-50 dark:bg-gray-700';
-
-    switch (type) {
-      case 'quiz_completed':
-        return 'bg-green-50 dark:bg-green-900/20 border-l-green-500';
-      case 'level_up':
-        return 'bg-secondary-50 dark:bg-secondary-900/20 border-l-secondary-500';
-      case 'reward_earned':
-        return 'bg-primary-50 dark:bg-primary-900/20 border-l-primary-500';
-      case 'subscription_expired':
-        return 'bg-red-50 dark:bg-red-900/20 border-l-red-500';
-      case 'system_update':
-        return 'bg-purple-50 dark:bg-purple-900/20 border-l-purple-500';
-      default:
-        return 'bg-gray-50 dark:bg-gray-700 border-l-gray-500';
-    }
-  };
-
-  if (loading || isValidating) {
-    return (
-      <>
-        <Seo
-          title="Notifications - AajExam Platform"
-          description="Stay updated with your AajExam notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
-          noIndex={true}
-        />
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading notifications...</p>
-          </div>
-        </div>
-      </>
-    );
-  }
 
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <>
-      <Seo
-        title={`Notifications ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam Platform`}
-        description="Stay updated with your AajExam notifications. View quiz results, achievement unlocks, level ups, and important updates about your account."
-        noIndex={true}
-      />
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-        <div className="p-4 px-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                <FaBell className="mr-3 text-secondary-500" />
-                Notifications
-                {unreadCount > 0 && (
-                  <span className="ml-3 px-2 py-1 bg-red-500 text-white text-sm rounded-full">
-                    {unreadCount}
-                  </span>
-                )}
-              </h1>
+    <MobileAppWrapper title="Notifications">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+      <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
-              {notifications.length > 0 && (
-                <div className="flex space-x-2">
-                  {unreadCount > 0 && (
-                    <button
-                      onClick={markAllAsRead}
-                      className="flex items-center px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm"
-                    >
-                      <FaEye className="mr-2" />
-                      Mark All Read
-                    </button>
-                  )}
-                  <button
-                    onClick={clearAllNotifications}
-                    className="flex items-center px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm"
-                  >
-                    <FaTrash className="mr-2" />
-                    Clear All
-                  </button>
-                </div>
-              )}
-            </div>
+      <div className="container mx-auto px-6 py-12 max-w-4xl space-y-10 mt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center lg:text-left">
+            <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center lg:justify-start">
+              Inbox {unreadCount > 0 && <span className="bg-primary-500 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
+            </h1>
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Academy and Achievement pings</p>
+          </div>
 
+          <div className="flex gap-2">
+            {unreadCount > 0 && <Button variant="ghost" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>MARK ALL READ</Button>}
+            {notifications.length > 0 && <Button variant="ghost" size="sm" className="text-[10px] font-black tracking-widest text-red-500 hover:text-red-600" onClick={clearAll}>CLEAR ALL</Button>}
+          </div>
+        </div>
+
+        <Card className="p-2 lg:p-4 overflow-hidden">
+          <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
-              <div className="text-center py-12">
-                <FaBell className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No notifications
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  You're all caught up! Check back later for new updates.
-                </p>
-              </div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-32 text-center space-y-6">
+                <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
+                  <Inbox className="w-10 h-10 text-gray-400" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Inbox Empty</h3>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">You&apos;re all caught up with your academic updates!</p>
+                </div>
+              </motion.div>
             ) : (
-              <div className="space-y-3">
-                {notifications.map((notification) => (
-                  <div
-                    key={notification.id}
-                    className={`border-l-4 p-4 rounded-lg transition-all duration-200 ${getNotificationColor(notification.type, notification.isRead)}`}
-                    onClick={() => { if (!notification.isRead) { markAsRead(notification.id); } }}
+              <div className="divide-y-2 divide-slate-50 dark:divide-slate-800">
+                {notifications.map((n, idx) => (
+                  <motion.div
+                    key={n.id || idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className={`group relative p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start space-x-3 flex-1">
-                        <span className="text-2xl mt-1">
-                          {getNotificationIcon(notification.type)}
-                        </span>
+                    <div className={`p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-primary-500/10' : ''}`}>
+                      {getIcon(n.type)}
+                    </div>
 
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-2 mb-1">
-                            <h3 className={`font-medium ${notification.isRead ? 'text-gray-600 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`}>
-                              {notification.title}
-                            </h3>
-                            {!notification.isRead && (
-                              <span className="w-2 h-2 bg-secondary-500 rounded-full"></span>
-                            )}
-                          </div>
-
-                          <p className={`text-sm ${notification.isRead ? 'text-gray-500 dark:text-gray-500' : 'text-gray-700 dark:text-gray-300'}`}>
-                            {notification.message}
-                          </p>
-
-                          <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-                            {new Date(notification.createdAt).toLocaleString()}
-                          </p>
-                        </div>
+                    <div className="flex-1 space-y-1">
+                      <div className="flex items-center gap-2">
+                        {n.title && <h4 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h4>}
+                        {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />}
                       </div>
-
-                      <div className="flex items-center space-x-2 ml-4">
-                        {!notification.isRead && (
-                          <button
-                            onClick={(e) => { e.stopPropagation(); markAsRead(notification.id); }}
-                            disabled={markingAsRead === notification.id}
-                            className="p-1 text-green-600 hover:text-green-800 hover:bg-green-100 dark:hover:bg-green-900/20 rounded transition-colors"
-                            title="Mark as read"
-                          >
-                            {markingAsRead === notification.id ? (
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-green-600"></div>
-                            ) : (
-                              <FaEye className="h-4 w-4" />
-                            )}
-                          </button>
-                        )}
-
-                        <button
-                          onClick={(e) => { e.stopPropagation(); deleteNotification(notification.id); }}
-                          className="p-1 text-primary-600 hover:text-red-800 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors"
-                          title="Delete notification"
-                        >
-                          <FaTrash className="h-4 w-4" />
-                        </button>
+                      <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.message}</p>
+                      <div className="flex items-center gap-2 pt-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <Clock className="w-3 h-3" />
+                        <span className="text-[10px] font-black uppercase tracking-widest">{new Date(n.createdAt).toLocaleDateString()} â€¢ {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
                     </div>
-                  </div>
+
+                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0">
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-500 hover:bg-primary-500/10 rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-red-500 hover:bg-red-500/10 rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             )}
-          </div>
-        </div>
+          </AnimatePresence>
+        </Card>
       </div>
-    </>
+
+      </div>
+    </MobileAppWrapper>
   );
 };
 
 export default NotificationsPage;
+

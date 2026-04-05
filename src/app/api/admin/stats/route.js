@@ -24,42 +24,108 @@ export async function GET(req) {
         await dbConnect();
 
         const [
-            categories, subcategories, quizzes, questions, students,
-            bankDetails, totalQuizAttempts, totalLevels, activeLevels,
-            inactiveLevels, totalSubscriptions, activeSubscriptions,
-            freeSubscriptions, paidSubscriptions, totalPaymentOrders,
-            completedPaymentOrders, withdrawRequests, pendingWithdrawRequests,
-            userQuestions, pendingUserQuestions, approvedUserQuestions,
-            rejectedUserQuestions, userQuizzes, approvedUserQuizzes,
-            pendingUserQuizzes, rejectedUserQuizzes
+            categories, subcategories, questions, bankDetails, totalQuizAttempts, 
+            totalPaymentOrders, completedPaymentOrders, 
+            withdrawRequests, pendingWithdrawRequests,
+            userStats, levelStats, userQuestionStats, quizStats
         ] = await Promise.all([
             Category.countDocuments(),
             Subcategory.countDocuments(),
-            Quiz.countDocuments(),
             Question.countDocuments(),
-            User.countDocuments({ role: 'student' }),
             BankDetail.countDocuments(),
             QuizAttempt.countDocuments(),
-            Level.countDocuments(),
-            Level.countDocuments({ isActive: true }),
-            Level.countDocuments({ isActive: false }),
-            User.countDocuments({}),
-            User.countDocuments({ subscriptionExpiry: { $exists: true, $ne: null, $gt: new Date() } }),
-            User.countDocuments({ subscriptionStatus: 'free' }),
-            User.countDocuments({ subscriptionStatus: { $nin: ['free'] } }),
             PaymentOrder.countDocuments(),
             PaymentOrder.countDocuments({ payuStatus: 'success' }),
             WithdrawRequest.countDocuments(),
             WithdrawRequest.countDocuments({ status: 'pending' }),
-            UserQuestions.countDocuments(),
-            UserQuestions.countDocuments({ status: 'pending' }),
-            UserQuestions.countDocuments({ status: 'approved' }),
-            UserQuestions.countDocuments({ status: 'rejected' }),
-            Quiz.countDocuments({ createdType: 'user' }),
-            Quiz.countDocuments({ createdType: 'user', status: 'approved' }),
-            Quiz.countDocuments({ createdType: 'user', status: 'pending' }),
-            Quiz.countDocuments({ createdType: 'user', status: 'rejected' })
+            
+            // Grouped User Stats
+            User.aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        students: { $sum: { $cond: [{ $eq: ["$role", "student"] }, 1, 0] } },
+                        total: { $sum: 1 },
+                        activeSubs: { $sum: { $cond: [{ $and: [{ $ne: ["$subscriptionExpiry", null] }, { $gt: ["$subscriptionExpiry", new Date()] }] }, 1, 0] } },
+                        freeSubs: { $sum: { $cond: [{ $eq: ["$subscriptionStatus", "free"] }, 1, 0] } },
+                        paidSubs: { $sum: { $cond: [{ $ne: ["$subscriptionStatus", "free"] }, 1, 0] } }
+                    }
+                }
+            ]),
+
+            // Grouped Level Stats
+            Level.aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        total: { $sum: 1 },
+                        active: { $sum: { $cond: ["$isActive", 1, 0] } },
+                        inactive: { $sum: { $cond: ["$isActive", 0, 1] } }
+                    }
+                }
+            ]),
+
+            // Grouped UserQuestion Stats
+            UserQuestions.aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        total: { $sum: 1 },
+                        pending: { $sum: { $cond: [{ $eq: ["$status", "pending"] }, 1, 0] } },
+                        approved: { $sum: { $cond: [{ $eq: ["$status", "approved"] }, 1, 0] } },
+                        rejected: { $sum: { $cond: [{ $eq: ["$status", "rejected"] }, 1, 0] } }
+                    }
+                }
+            ]),
+
+            // Grouped Quiz Stats (including User-created)
+            Quiz.aggregate([
+                {
+                    $facet: {
+                        total: [{ $count: "count" }],
+                        userCreated: [
+                            { $match: { createdType: 'user' } },
+                            {
+                                $group: {
+                                    _id: null,
+                                    total: { $sum: 1 },
+                                    approved: { $sum: { $cond: [{ $eq: ["$status", "approved"] }, 1, 0] } },
+                                    pending: { $sum: { $cond: [{ $eq: ["$status", "pending"] }, 1, 0] } },
+                                    rejected: { $sum: { $cond: [{ $eq: ["$status", "rejected"] }, 1, 0] } }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ])
         ]);
+
+        const u = userStats[0] || { students: 0, total: 0, activeSubs: 0, freeSubs: 0, paidSubs: 0 };
+        const l = levelStats[0] || { total: 0, active: 0, inactive: 0 };
+        const uq = userQuestionStats[0] || { total: 0, pending: 0, approved: 0, rejected: 0 };
+        const qTotal = quizStats[0]?.total[0]?.count || 0;
+        const qUser = quizStats[0]?.userCreated[0] || { total: 0, approved: 0, pending: 0, rejected: 0 };
+
+        const students = u.students;
+        const totalSubscriptions = u.total;
+        const activeSubscriptions = u.activeSubs;
+        const freeSubscriptions = u.freeSubs;
+        const paidSubscriptions = u.paidSubs;
+        
+        const totalLevels = l.total;
+        const activeLevels = l.active;
+        const inactiveLevels = l.inactive;
+
+        const userQuestions = uq.total;
+        const pendingUserQuestions = uq.pending;
+        const approvedUserQuestions = uq.approved;
+        const rejectedUserQuestions = uq.rejected;
+
+        const quizzes = qTotal;
+        const userQuizzes = qUser.total;
+        const approvedUserQuizzes = qUser.approved;
+        const pendingUserQuizzes = qUser.pending;
+        const rejectedUserQuizzes = qUser.rejected;
 
         const revenueSummary = await PaymentOrder.aggregate([
             { $match: { payuStatus: 'success' } },

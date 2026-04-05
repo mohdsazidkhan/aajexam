@@ -1,23 +1,44 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
 import { toast } from 'react-toastify';
-import { FaUsers, FaCalendarAlt, FaSearch, FaDownload, FaUserFriends, FaTh, FaList, FaTable, FaUser } from 'react-icons/fa';
+import { 
+  Users, 
+  Calendar, 
+  Search, 
+  Download, 
+  UserPlus, 
+  LayoutGrid, 
+  List, 
+  Table as TableIcon, 
+  User, 
+  Filter, 
+  ChevronRight, 
+  ArrowRight,
+  TrendingUp,
+  Award,
+  Zap,
+  Clock,
+  ChevronLeft,
+  Mail,
+  ShieldCheck,
+  Hash
+} from 'lucide-react';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { isMobile } from 'react-device-detect';
 import Button from '../../ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AdminReferralAnalytics = () => {
     const [analytics, setAnalytics] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table'); // 'grid', 'list', 'table'
+    const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
 
-    // Get current year and month
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0');
@@ -41,13 +62,11 @@ const AdminReferralAnalytics = () => {
 
     const isOpen = useSelector((state) => state.sidebar.isOpen);
 
-    // Generate last 5 years + current year (total 6 years)
     const availableYears = [];
     for (let i = 0; i < 6; i++) {
         availableYears.push(currentYear - i);
     }
 
-    // All 12 months
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
@@ -56,7 +75,6 @@ const AdminReferralAnalytics = () => {
     const fetchAnalytics = useCallback(async () => {
         try {
             setLoading(true);
-
             const params = new URLSearchParams({
                 page: pagination.page,
                 limit: pagination.limit,
@@ -90,14 +108,13 @@ const AdminReferralAnalytics = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             fetchAnalytics();
-        }, 300); // Debounce search
-
+        }, 300);
         return () => clearTimeout(timer);
     }, [fetchAnalytics]);
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
-        setPagination(prev => ({ ...prev, page: 1 })); // Reset to page 1 on search
+        setPagination(prev => ({ ...prev, page: 1 }));
     };
 
     const handleYearChange = (e) => {
@@ -140,384 +157,356 @@ const AdminReferralAnalytics = () => {
         a.download = `referral-analytics-${yearText}-${monthName}.csv`;
         a.click();
         window.URL.revokeObjectURL(url);
-        toast.success('CSV exported successfully!');
+        toast.success('CSV Export Synchronized!');
     };
 
-    // Use summary from backend (filtered totals)
-    const totalReferralsSum = summary.totalReferralsSum;
-    const monthlyReferralsSum = summary.monthlyReferralsSum;
-    const usersWithReferrals = summary.usersWithReferrals;
+    if (loading && analytics.length === 0) {
+        return (
+          <AdminMobileAppWrapper title="Yield Analytics">
+            <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+              <div className="relative">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="w-28 h-28 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full shadow-2xl"
+                />
+                <TrendingUp className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
+              </div>
+              <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Network Expansion Logs...</div>
+            </div>
+          </AdminMobileAppWrapper>
+        );
+    }
 
     return (
-        <AdminMobileAppWrapper title="Referral Analytics">
-            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+        <AdminMobileAppWrapper title="Yield Analytics">
+            <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
                 <Sidebar />
-                <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-                    <div className="mx-auto">
-                        {/* Header */}
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
-                            <div>
-                                <h1 className="text-md lg:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-                                    <FaUserFriends className="text-secondary-600" />
-                                    Referral Analytics
+                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+                    
+                    {/* Header Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-12"
+                    >
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
+                                        <TrendingUp className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ANALYTICS_HUB // GROWTH_METRICS</span>
+                                </div>
+                                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                                    REFERRAL <span className="text-emerald-500">ANALYTICS</span>
                                 </h1>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Track total and monthly referral counts for users with referrals
-                                </p>
+                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of network expansion, referral yields, and community growth coefficients.</p>
                             </div>
 
-                            {/* View Toggle Buttons */}
-                            <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
-                                <button
-                                    onClick={() => setViewMode('grid')}
-                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'grid'
-                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
-                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                                        }`}
-                                >
-                                    <FaTh className="text-lg" />
-                                    <span>Grid</span>
-                                </button>
-                                <button
-                                    onClick={() => setViewMode('list')}
-                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'list'
-                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
-                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                                        }`}
-                                >
-                                    <FaList className="text-lg" />
-                                    <span>List</span>
-                                </button>
-                                <button
-                                    onClick={() => setViewMode('table')}
-                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${viewMode === 'table'
-                                        ? 'bg-white dark:bg-gray-600 text-secondary-600 dark:text-secondary-300 shadow-sm'
-                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                                        }`}
-                                >
-                                    <FaTable className="text-lg" />
-                                    <span>Table</span>
-                                </button>
+                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+                                {[
+                                  { icon: TableIcon, id: 'table', label: 'TAB' },
+                                  { icon: List, id: 'list', label: 'LIN' },
+                                  { icon: LayoutGrid, id: 'grid', label: 'SPC' }
+                                ].map((mode) => (
+                                  <button
+                                    key={mode.id}
+                                    onClick={() => setViewMode(mode.id)}
+                                    className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-emerald-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                                  >
+                                    <mode.icon className="w-4 h-4" />
+                                    {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
+                                  </button>
+                                ))}
                             </div>
                         </div>
 
-                        {/* Summary Cards */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 mb-4 lg:mb-8">
-                            <div className="bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-xl shadow-lg p-6 text-white">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className="text-secondary-100 text-sm font-medium mb-1">Total Users</p>
-                                        <p className="text-3xl font-bold">{pagination.total}</p>
+                        {/* Summary Visualization */}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-12">
+                            {[
+                                { label: "TOTAL_NODES", value: pagination.total, icon: Users, color: "bg-indigo-500", shadow: "shadow-indigo-500/20" },
+                                { label: "ACTIVE_TRANSMITTERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-emerald-500", shadow: "shadow-emerald-500/20" },
+                                { label: "LIFETIME_YIELD", value: summary.totalReferralsSum, icon: Award, color: "bg-rose-500", shadow: "shadow-rose-500/20" },
+                                { label: "MONTHLY_COEFFICIENT", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-amber-500", shadow: "shadow-amber-500/20" }
+                            ].map((stat, i) => (
+                                <motion.div
+                                    key={stat.label}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className={`relative overflow-hidden ${stat.color} rounded-[2.5rem] p-8 text-white shadow-2xl ${stat.shadow}`}
+                                >
+                                    <div className="absolute top-0 right-0 p-4 opacity-20">
+                                       <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2 text-white" />
                                     </div>
-                                    <FaUsers className="text-4xl text-secondary-200" />
-                                </div>
-                            </div>
-
-                            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className="text-green-100 text-sm font-medium mb-1">Users with Referrals</p>
-                                        <p className="text-3xl font-bold">{usersWithReferrals}</p>
+                                    <div className="relative z-10 space-y-4">
+                                        <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{stat.label}</div>
+                                        <div className="text-3xl lg:text-4xl font-black italic tracking-tighter tabular-nums">{stat.value}</div>
                                     </div>
-                                    <FaUserFriends className="text-4xl text-green-200" />
-                                </div>
-                            </div>
-
-                            <div className="bg-gradient-to-br from-purple-500 from-red-600 rounded-xl shadow-lg p-6 text-white">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className="text-primary-100 text-sm font-medium mb-1">Total Referrals (All Time)</p>
-                                        <p className="text-3xl font-bold">{totalReferralsSum}</p>
-                                    </div>
-                                    <FaUserFriends className="text-4xl text-primary-200" />
-                                </div>
-                            </div>
-
-                            <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl shadow-lg p-6 text-white">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className="text-primary-100 text-sm font-medium mb-1">
-                                            Monthly Referrals ({selectedMonth === 'all' ? 'All' : months[parseInt(selectedMonth) - 1]})
-                                        </p>
-                                        <p className="text-3xl font-bold">{monthlyReferralsSum}</p>
-                                    </div>
-                                    <FaCalendarAlt className="text-4xl text-primary-200" />
-                                </div>
-                            </div>
+                                </motion.div>
+                            ))}
                         </div>
 
-                        {/* Filters */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 mb-6">
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                                {/* Search */}
-                                <div className="relative">
-                                    <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        {/* Tactical Filters */}
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
+                             <div className="flex flex-wrap items-center gap-6 flex-1">
+                                <div className="relative flex-1 max-w-md group">
+                                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
                                     <input
                                         type="text"
-                                        placeholder="Search by name or email..."
+                                        placeholder="LOCALIZE_UNIT_ID..."
                                         value={searchTerm}
                                         onChange={handleSearch}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
+                                        className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-emerald-500/30 transition-all shadow-inner placeholder:text-slate-400"
                                     />
                                 </div>
 
-                                {/* Year Selector */}
-                                <div className="relative">
-                                    <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                                    <select
-                                        value={selectedYear}
-                                        onChange={handleYearChange}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white appearance-none"
-                                    >
-                                        <option value="all">All Years</option>
-                                        {availableYears.map(year => (
-                                            <option key={year} value={year}>
-                                                {year}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <div className="relative">
+                                        <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                                        <select
+                                            value={selectedYear}
+                                            onChange={handleYearChange}
+                                            className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
+                                        >
+                                            <option value="all">ALL_YEARS</option>
+                                            {availableYears.map(year => (
+                                                <option key={year} value={year}>{year}_CY</option>
+                                            ))}
+                                        </select>
+                                        <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+                                    </div>
 
-                                {/* Month Selector */}
-                                <div className="relative">
-                                    <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                                    <select
-                                        value={selectedMonth}
-                                        onChange={handleMonthChange}
-                                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white appearance-none"
-                                    >
-                                        <option value="all">All Months</option>
-                                        {months.map((month, index) => (
-                                            <option key={index + 1} value={(index + 1).toString().padStart(2, '0')}>
-                                                {month}
-                                            </option>
-                                        ))}
-                                    </select>
+                                    <div className="relative">
+                                        <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                                        <select
+                                            value={selectedMonth}
+                                            onChange={handleMonthChange}
+                                            className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
+                                        >
+                                            <option value="all">ALL_MONTHS</option>
+                                            {months.map((month, index) => (
+                                                <option key={index + 1} value={(index + 1).toString().padStart(2, '0')}>
+                                                    {month.toUpperCase()}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+                                    </div>
                                 </div>
+                             </div>
 
-                                {/* Export Button */}
-                                <Button
-                                    variant="admin"
-                                    onClick={exportToCSV}
-                                    disabled={analytics.length === 0}
-                                    className="flex items-center justify-center gap-2"
-                                >
-                                    <FaDownload />
-                                    Export CSV
-                                </Button>
-                            </div>
+                             <button
+                                onClick={exportToCSV}
+                                disabled={analytics.length === 0}
+                                className="px-8 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-emerald-600 rounded-[2.5rem] shadow-xl hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                             >
+                                <Download className="w-5 h-5" /> EXPORT_CSV
+                             </button>
                         </div>
+                    </motion.div>
 
-                        {/* Content */}
-                        {loading ? (
-                            <Loading />
-                        ) : analytics.length === 0 ? (
-                            <div className="text-center py-12">
-                                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">👥</div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                                    No users with referrals found
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Try adjusting your filters or search criteria
-                                </p>
-                            </div>
+                    {/* Content Stream */}
+                    <AnimatePresence mode="wait">
+                        {analytics.length === 0 ? (
+                            <motion.div
+                                key="empty"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                            >
+                                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_EXPANSION_NODES</h3>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded growth vectors detected for the selected tactical parameters.</p>
+                            </motion.div>
                         ) : (
-                            <>
-                                {/* Grid View */}
+                            <motion.div
+                                key="content"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="space-y-12"
+                            >
+                                {/* Grid Visualization */}
                                 {viewMode === 'grid' && (
-                                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-                                        {analytics.map((user, index) => (
-                                            <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                                                <div className="bg-gradient-to-r from-secondary-500 from-red-600 p-4 text-white">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                                                            <FaUser className="text-2xl" />
-                                                        </div>
-                                                        <div className="flex-1">
-                                                            <h3 className="font-bold text-lg truncate">{user.name}</h3>
-                                                            <p className="text-sm opacity-90 truncate">{user.email}</p>
-                                                        </div>
-                                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                                        {analytics.map((user, i) => (
+                                            <motion.div
+                                                key={user._id || i}
+                                                initial={{ opacity: 0, scale: 0.95 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: i * 0.05 }}
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                                            >
+                                                <div className="relative mb-8">
+                                                   <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] flex items-center justify-center border-4 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-emerald-500 transition-all uppercase font-black text-xl">
+                                                      {user.name?.[0]?.toUpperCase() || 'U'}
+                                                   </div>
+                                                   <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-2 rounded-xl shadow-lg border-4 border-white dark:border-[#060813]">
+                                                      <Award className="w-4 h-4" />
+                                                   </div>
+                                                </div>
+                                                
+                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'NULL_ID'}</h3>
+                                                <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-8 italic">{user.email || 'OFFLINE'}</div>
+                                                
+                                                <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
+                                                   <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
+                                                      <div className="text-slate-400 mb-2">Total Yield</div>
+                                                      <div className="text-xl italic text-primary-500 tabular-nums">{user.totalReferrals}</div>
+                                                   </div>
+                                                   <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
+                                                      <div className="text-slate-400 mb-2">Cycle Growth</div>
+                                                      <div className="text-xl italic text-emerald-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                   </div>
                                                 </div>
 
-                                                <div className="p-4 space-y-3">
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-sm text-gray-600 dark:text-gray-400">Referral Code</span>
-                                                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
-                                                            {user.referralCode}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-sm text-gray-600 dark:text-gray-400">Total Referrals</span>
-                                                        <span className="text-xl font-bold text-primary-600 dark:text-primary-400">
-                                                            {user.totalReferrals}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-sm text-gray-600 dark:text-gray-400">Monthly Referrals</span>
-                                                        <span className="text-xl font-bold text-primary-600 dark:text-secondary-400">
-                                                            {user.monthlyReferrals}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="pt-3 border-t border-gray-200 dark:border-gray-600">
-                                                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                            Joined: {new Date(user.createdAt).toLocaleDateString()}
-                                                        </span>
-                                                    </div>
+                                                <div className="w-full flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
+                                                   <div className="flex items-center gap-2">
+                                                      <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                                                      <span className="text-[10px] font-black uppercase text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">{user.referralCode}</span>
+                                                   </div>
+                                                   <span className="text-[9px] font-black uppercase text-slate-400 italic">SYNC_EST: {new Date(user.createdAt).getFullYear()}</span>
                                                 </div>
-                                            </div>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 )}
 
-                                {/* List View */}
+                                {/* List Visualization */}
                                 {viewMode === 'list' && (
-                                    <div className="space-y-4">
-                                        {analytics.map((user, index) => (
-                                            <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                                                <div className="p-4 lg:p-6">
-                                                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-                                                        <div className="flex items-center gap-4 flex-1">
-                                                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-secondary-500 from-red-600 flex items-center justify-center text-white font-bold text-xl">
-                                                                {user.name.charAt(0).toUpperCase()}
-                                                            </div>
-                                                            <div className="flex-1">
-                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{user.name}</h3>
-                                                                <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
-                                                                <div className="flex items-center gap-2 mt-1">
-                                                                    <span className="px-2 py-1 text-xs font-semibold rounded bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
-                                                                        {user.referralCode}
-                                                                    </span>
-                                                                    <span className="text-xs text-gray-400 dark:text-gray-500">
-                                                                        Joined: {new Date(user.createdAt).toLocaleDateString()}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                    <div className="space-y-6">
+                                        {analytics.map((user, i) => (
+                                            <motion.div
+                                                key={user._id || i}
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: i * 0.05 }}
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-10"
+                                            >
+                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] flex items-center justify-center shrink-0 border-4 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all uppercase font-black text-2xl">
+                                                    {user.name?.[0]?.toUpperCase() || 'U'}
+                                                </div>
 
-                                                        <div className="flex items-center gap-6">
-                                                            <div className="text-center">
-                                                                <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Referrals</div>
-                                                                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{user.totalReferrals}</div>
-                                                            </div>
-                                                            <div className="text-center">
-                                                                <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Monthly</div>
-                                                                <div className="text-2xl font-bold text-primary-600 dark:text-secondary-400">{user.monthlyReferrals}</div>
-                                                            </div>
-                                                        </div>
+                                                <div className="flex-1 space-y-4">
+                                                    <div className="flex flex-wrap items-center gap-4">
+                                                       <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{user.name || 'NULL_IDENTITY'}</h3>
+                                                       <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-emerald-500/20 text-emerald-500 bg-emerald-500/5 italic">{user.referralCode}</div>
+                                                    </div>
+                                                    <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                                                       <div className="flex items-center gap-2">
+                                                          <Mail className="w-4 h-4 text-slate-300" />
+                                                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{user.email}</span>
+                                                       </div>
+                                                       <div className="flex items-center gap-2">
+                                                          <Clock className="w-4 h-4 text-slate-300" />
+                                                          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">JOINED_CY: {new Date(user.createdAt).toLocaleDateString()}</span>
+                                                       </div>
                                                     </div>
                                                 </div>
-                                            </div>
+
+                                                <div className="flex gap-4">
+                                                   <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
+                                                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_YIELD</div>
+                                                      <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.totalReferrals}</div>
+                                                   </div>
+                                                   <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
+                                                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">CYCLE_GROWTH</div>
+                                                      <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                   </div>
+                                                </div>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 )}
 
-                                {/* Table View */}
+                                {/* Table Visualization */}
                                 {viewMode === 'table' && (
-                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                                        <div className="overflow-x-auto">
-                                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                                <thead className="bg-gray-50 dark:bg-gray-900">
-                                                    <tr>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            S.No.
-                                                        </th>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            User
-                                                        </th>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            Referral Code
-                                                        </th>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            Total Referrals
-                                                        </th>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            Monthly Referrals
-                                                        </th>
-                                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                                            Joined Date
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                                                    {analytics.map((user, index) => (
-                                                        <tr key={user._id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                                                {index + 1 + (pagination.page - 1) * pagination.limit}
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                                                    {user.name}
+                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                                        <table className="w-full">
+                                            <thead>
+                                                <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#IDX</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">EXPANSION_NODE</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">PROTOCOL</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">LIFETIME_YIELD</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">CYCLE_GROWTH</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">ESTABLISHED</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                                                {analytics.map((user, i) => (
+                                                    <motion.tr
+                                                        key={user._id || i}
+                                                        initial={{ opacity: 0, x: -20 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: i * 0.05 }}
+                                                        className="group hover:bg-emerald-500/5 transition-all"
+                                                    >
+                                                        <td className="px-8 py-6 text-center">
+                                                            <span className="text-[10px] font-black text-slate-400 tabular-nums">#{index + 1 + (pagination.page - 1) * pagination.limit}</span>
+                                                        </td>
+                                                        <td className="px-8 py-6">
+                                                            <div className="flex items-center gap-4">
+                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-emerald-500 transition-all uppercase">
+                                                                    {user.name?.[0]?.toUpperCase()}
                                                                 </div>
-                                                                <div className="text-xs text-gray-500 dark:text-gray-400">
-                                                                    {user.email}
+                                                                <div>
+                                                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{user.name}</div>
+                                                                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{user.email}</div>
                                                                 </div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200">
-                                                                    {user.referralCode}
-                                                                </span>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm font-bold text-primary-600 dark:text-primary-400">
-                                                                    {user.totalReferrals}
-                                                                </div>
-                                                                <div className="text-xs text-gray-500 dark:text-gray-400">
-                                                                    all time
-                                                                </div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm font-bold text-primary-600 dark:text-secondary-400">
-                                                                    {user.monthlyReferrals}
-                                                                </div>
-                                                                <div className="text-xs text-gray-500 dark:text-gray-400">
-                                                                    {selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1]} {selectedYear === 'all' ? '' : selectedYear}
-                                                                </div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                                                                {new Date(user.createdAt).toLocaleDateString()}
-                                                            </td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-8 py-6 text-center">
+                                                            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-emerald-500 italic">
+                                                               <Hash className="w-3 h-3" /> {user.referralCode}
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-8 py-6 text-right">
+                                                            <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{user.totalReferrals}</div>
+                                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">ALL_TIME_COEFF</div>
+                                                        </td>
+                                                        <td className="px-8 py-6 text-right">
+                                                            <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">{selectedMonth === 'all' ? 'FULL_CYCLE' : months[parseInt(selectedMonth) - 1].toUpperCase()}</div>
+                                                        </td>
+                                                        <td className="px-8 py-6 text-right font-black text-[10px] text-slate-400 uppercase tracking-widest tabular-nums">
+                                                            {new Date(user.createdAt).toLocaleDateString()}
+                                                        </td>
+                                                    </motion.tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 )}
 
-                                {/* Pagination */}
+                                {/* Spectral Pagination */}
                                 {pagination.totalPages > 1 && (
-                                    <div className="mt-6 bg-gray-50 dark:bg-gray-900 px-6 py-4 flex items-center justify-between border border-gray-200 dark:border-gray-700 rounded-lg">
-                                        <div className="text-sm text-gray-700 dark:text-gray-300">
-                                            Showing {((pagination.page - 1) * pagination.limit) + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} results
-                                        </div>
-                                        <div className="flex gap-2">
-                                            <button
-                                                onClick={() => handlePageChange(pagination.page - 1)}
-                                                disabled={pagination.page === 1}
-                                                className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                                            >
-                                                Previous
-                                            </button>
-                                            <span className="px-4 py-2 bg-secondary-600 text-white rounded-lg">
-                                                {pagination.page} / {pagination.totalPages}
-                                            </span>
-                                            <button
-                                                onClick={() => handlePageChange(pagination.page + 1)}
-                                                disabled={pagination.page === pagination.totalPages}
-                                                className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                                            >
-                                                Next
-                                            </button>
-                                        </div>
+                                    <div className="flex justify-center items-center gap-4 mt-16 text-[10px] font-black uppercase tracking-widest">
+                                      <button
+                                        onClick={() => handlePageChange(pagination.page - 1)}
+                                        disabled={pagination.page === 1}
+                                        className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-emerald-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                      >
+                                        <ChevronLeft className="w-5 h-5" />
+                                      </button>
+                                      
+                                      <div className="px-8 py-4 bg-emerald-600 text-white rounded-[2rem] shadow-2xl italic tracking-tighter shadow-emerald-500/40">
+                                         SPECTRAL_INDEX: {pagination.page} <span className="text-emerald-200 mx-2">//</span> TOTAL_NODES: {pagination.totalPages}
+                                      </div>
+
+                                      <button
+                                        onClick={() => handlePageChange(pagination.page + 1)}
+                                        disabled={pagination.page === pagination.totalPages}
+                                        className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-emerald-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                      >
+                                        <ChevronRight className="w-5 h-5" />
+                                      </button>
                                     </div>
                                 )}
-                            </>
+                            </motion.div>
                         )}
-                    </div>
+                    </AnimatePresence>
                 </div>
             </div>
         </AdminMobileAppWrapper>
@@ -525,3 +514,4 @@ const AdminReferralAnalytics = () => {
 };
 
 export default AdminReferralAnalytics;
+

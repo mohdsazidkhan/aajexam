@@ -1,4 +1,5 @@
-import React from 'react';
+﻿import React from 'react';
+import { Lock, Sparkles, PartyPopper, IndianRupee } from 'lucide-react';
 import config from '../lib/config/appConfig';
 
 const RewardBadge = ({ level, status, className = '' }) => {
@@ -6,27 +7,27 @@ const RewardBadge = ({ level, status, className = '' }) => {
     switch (status) {
       case 'locked':
         return {
-          text: 'Reward Locked',
-          bgColor: 'bg-primary-100 dark:bg-primary-900/20',
-          textColor: 'text-primary-800 dark:text-primary-300',
-          borderColor: 'border-primary-200 dark:border-primary-800',
-          icon: '🔒'
+          text: 'Locked',
+          bgColor: 'bg-slate-100 dark:bg-slate-700',
+          textColor: 'text-slate-600 dark:text-slate-400',
+          borderColor: 'border-slate-200 dark:border-slate-600',
+          icon: Lock
         };
       case 'unlocked':
         return {
-          text: 'Reward Unlocked',
-          bgColor: 'bg-secondary-100 dark:bg-secondary-900/20',
-          textColor: 'text-secondary-800 dark:text-secondary-300',
-          borderColor: 'border-secondary-200 dark:border-secondary-800',
-          icon: '✅'
+          text: 'Unlocked',
+          bgColor: 'bg-primary-500',
+          textColor: 'text-white',
+          borderColor: 'border-white/20',
+          icon: Sparkles
         };
       case 'claimed':
         return {
-          text: 'Reward Claimed',
-          bgColor: 'bg-green-100 dark:bg-green-900/20',
-          textColor: 'text-green-800 dark:text-green-300',
-          borderColor: 'border-green-200 dark:border-green-800',
-          icon: '🎉'
+          text: 'Claimed',
+          bgColor: 'bg-primary-500',
+          textColor: 'text-white',
+          borderColor: 'border-white/20',
+          icon: PartyPopper
         };
       default:
         return null;
@@ -35,22 +36,27 @@ const RewardBadge = ({ level, status, className = '' }) => {
 
   const badgeConfig = getBadgeConfig(level, status);
   if (!badgeConfig) return null;
+  const Icon = badgeConfig.icon;
 
   const getRewardAmount = (level) => {
     switch (level) {
-      case 10: return 'Monthly Prize Pool (PRO users × ₹' + config.QUIZ_CONFIG.PRIZE_PER_PRO + ')';
+      case 10: return `Monthly Prize Pool (PRO users Ã— ₹${config.QUIZ_CONFIG.PRIZE_PER_PRO})`;
       default: return '';
     }
   };
 
   return (
-    <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ${badgeConfig.bgColor} ${badgeConfig.textColor} ${badgeConfig.borderColor} ${className}`}>
-      <span className="mr-1">{badgeConfig.icon}</span>
+    <div className={`inline-flex items-center px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border-b-4 shadow-xl font-outfit ${badgeConfig.bgColor} ${badgeConfig.textColor} ${badgeConfig.borderColor} ${className}`}>
+      <Icon className="mr-2 w-3.5 h-3.5" />
       <span>{badgeConfig.text}</span>
-      <span className="ml-1 text-xs opacity-75">({getRewardAmount(level)})</span>
+      {getRewardAmount(level) && (
+        <span className="ml-2 text-[8px] opacity-70">({getRewardAmount(level)})</span>
+      )}
     </div>
   );
 };
 
 export default RewardBadge;
+
+
 

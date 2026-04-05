@@ -9,116 +9,105 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        outfit: ['Outfit', 'sans-serif'],
+        nunito: ['Nunito', 'sans-serif'],
+      },
       colors: {
         primary: {
-          50: '#f4f9f2',
-          100: '#e6f2e2',
-          200: '#cfe5c6',
-          300: '#acd19e',
-          400: '#7eb66a',
-          500: '#69c555ff',
-          600: '#4fa03d',
-          700: '#3d822e',
-          800: '#326629',
-          900: '#2b5224',
+          50: '#f7fff0',
+          100: '#edffdb',
+          200: '#d9ffb8',
+          300: '#bcff85',
+          400: '#94f54d',
+          500: '#58cc02', // Duolingo Green
+          600: '#46a302',
+          700: '#357a02',
+          800: '#2a6102',
+          900: '#235002',
         },
         secondary: {
-          50: '#f0f7fc',
-          100: '#e0eef8',
-          200: '#b9daf0',
-          300: '#7cbbe4',
-          400: '#3799d3',
-          500: '#1380d3ff',
-          600: '#0c77cfff',
-          700: '#1061a3ff',
-          800: '#08508aff',
-          900: '#053e6cff',
+          50: '#f0faff',
+          100: '#e0f5ff',
+          200: '#baeaff',
+          300: '#7cd9ff',
+          400: '#35c5ff',
+          500: '#1cb0f6', // Duolingo Blue
+          600: '#0097e0',
+          700: '#007eb3',
+          800: '#006a94',
+          900: '#00587a',
         },
-        brandGreen: '#8cc831',
-        brandBlue: '#02b4f1',
         accent: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          200: '#a5f3fc',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
+          orange: '#ffb020',
+          red: '#ff4b4b',
+          purple: '#ce82ff',
+          yellow: '#ffdc00',
+        },
+        slate: {
+          950: '#0F1720', // Even darker for specific surfaces
+          900: '#131f24', // Duolingo Dark Background (matches --bg-page in dark mode)
+          800: '#1c2d35', // Duolingo Dark Card (matches --bg-surface in dark mode)
+          700: '#344955', // (matches --border-primary in dark mode)
+          600: '#455a64',
+          500: '#64748b',
+          400: '#94a3b8',
+        },
+        // Semantic Theme Tokens
+        background: {
+          page: 'var(--bg-page)',
+          surface: 'var(--bg-surface)',
+          'surface-secondary': 'var(--bg-surface-secondary)',
+        },
+        content: {
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          muted: 'var(--text-muted)',
+        },
+        border: {
+          primary: 'var(--border-primary)',
+          secondary: 'var(--border-secondary)',
         },
       },
       backgroundImage: {
-        'aajexam-light': 'linear-gradient(45deg, #f4f9f2, #f0f7fc)',
-        'aajexam-dark': 'linear-gradient(45deg, #0b1c0e, #001f36)',
+        'aajexam-light': 'linear-gradient(to bottom, #f7f7f7, #ffffff)',
+        'aajexam-dark': 'linear-gradient(to bottom, #131f24, #1c2d35)',
       },
       boxShadow: {
-        '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
-        '4xl': '0 45px 80px -15px rgba(0, 0, 0, 0.3)',
+        'duo': '0 4px 0 0 rgba(0, 0, 0, 0.1)',
+        'duo-primary': '0 4px 0 0 #46a302',
+        'duo-secondary': '0 4px 0 0 #0097e0',
+        'duo-accent': '0 4px 0 0 #e69e1c',
+        'duo-red': '0 4px 0 0 #d94141',
+        'duo-inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite',
-        'shimmer': 'shimmer 2s infinite',
-        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-        'stagger-fade-in': 'staggerFadeIn 0.5s ease-out forwards',
-        'gradient-shift': 'gradientShift 3s ease infinite',
-        'fade-in': 'fadeIn 0.3s ease-out',
-        'slide-in': 'slideIn 0.3s ease-out',
-        'scale-in': 'scaleIn 0.3s ease-out',
-        'bounce-in': 'bounceIn 0.6s ease-out',
-        'blob': 'blob 7s infinite',
+        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+        'progress-fill': 'progress-fill 1s ease-out forwards',
+        'bounce-soft': 'bounce-soft 0.5s ease-out',
+        'pop-in': 'pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
-          '50%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)' },
+        'pulse-slow': {
+          '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.05)' },
         },
-        shimmer: {
-          '0%': { backgroundPosition: '-200px 0' },
-          '100%': { backgroundPosition: 'calc(200px + 100%) 0' },
+        'progress-fill': {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
         },
-        pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(59, 130, 246, 0.7)' },
-          '50%': { boxShadow: '0 0 0 10px rgba(59, 130, 246, 0)' },
+        'bounce-soft': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
         },
-        staggerFadeIn: {
-          from: { opacity: '0', transform: 'translateY(20px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
-        },
-        gradientShift: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideIn: {
-          '0%': { transform: 'translateY(-20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        scaleIn: {
-          '0%': { transform: 'scale(0.9)', opacity: '0' },
+        'pop-in': {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        bounceIn: {
-          '0%': { transform: 'scale(0.3)', opacity: '0' },
-          '50%': { transform: 'scale(1.05)' },
-          '70%': { transform: 'scale(0.9)' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
         },
       },
     },

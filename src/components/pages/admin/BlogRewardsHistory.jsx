@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -13,6 +13,32 @@ import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 import { isMobile } from 'react-device-detect';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  BookOpen,
+  Search,
+  ArrowRight,
+  Clock,
+  ChevronRight,
+  Wallet,
+  Award,
+  ShieldCheck,
+  TrendingUp,
+  FileText,
+  Mail,
+  Zap,
+  Filter,
+  CheckCircle2,
+  Calendar,
+  ExternalLink,
+  DollarSign,
+  Star,
+  Layers,
+  LayoutGrid,
+  List,
+  Table as TableIcon,
+  Image as ImageIcon
+} from 'lucide-react';
 
 const PAGE_LIMIT = 20;
 
@@ -91,31 +117,31 @@ export default function BlogRewardsHistory() {
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    const d = new Date(dateString);
+    return `${d.getDate()} ${['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()]} ${d.getFullYear()}`;
+  };
+
+  const formatTime = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
   };
 
   const getRewardTierLabel = (tier) => {
     const labels = {
-      'normal': 'Normal Blog - ₹5',
-      'good': 'Good Blog - ₹10',
-      'high': 'High Blog - ₹15',
+      'normal': 'Standard Yield',
+      'good': 'Enhanced Yield',
+      'high': 'Peak Yield',
     };
-    return labels[tier] || tier;
+    return labels[tier] || tier.toUpperCase();
   };
 
   const getRewardTierColor = (tier) => {
     const colors = {
-      'normal': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
-      'good': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'high': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
+      'normal': 'text-primary-500 bg-primary-500/10 border-primary-500/20',
+      'good': 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
+      'high': 'text-rose-500 bg-rose-500/10 border-rose-500/20',
     };
-    return colors[tier] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
+    return colors[tier] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
   };
 
   // Ensure Grid on small screens after mount and on orientation change
@@ -134,371 +160,346 @@ export default function BlogRewardsHistory() {
     } catch (e) { }
   }, []);
 
+  if (loading && transactions.length === 0) {
+    return (
+      <AdminMobileAppWrapper title="Intel History">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+          <div className="relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-28 h-28 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full shadow-2xl"
+            />
+            <BookOpen className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
+          </div>
+          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Intel Provision Logs...</div>
+        </div>
+      </AdminMobileAppWrapper>
+    );
+  }
+
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+    >
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Image
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Date
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                User
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Blog Title
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Reward Tier
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Amount
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Balance After
-              </th>
+        <table className="w-full">
+          <thead>
+            <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <th className="px-8 py-8">THUMBNAIL</th>
+              <th className="px-8 py-8">TIMESTAMP</th>
+              <th className="px-8 py-8">INTEL_AUTHOR</th>
+              <th className="px-8 py-8">INTEL_PAYLOAD</th>
+              <th className="px-8 py-8 text-center">YIELD_TIER</th>
+              <th className="px-8 py-8 text-right">VALUATION</th>
+              <th className="px-8 py-8 text-right">POST_SYNC_BAL</th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-            {transactions.map((tx) => (
-              <tr key={tx._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {tx.article?.featuredImage ? (
-                    <img
-                      src={tx.article.featuredImage}
-                      alt={tx.article.title || 'Blog image'}
-                      className="w-16 h-16 rounded-lg object-cover"
-                      onError={(e) => {
-                        e.target.src = '/default_banner.png';
-                      }}
-                    />
-                  ) : (
-                    <img
-                      src="/default_banner.png"
-                      alt="Default blog image"
-                      className="w-16 h-16 rounded-lg object-cover"
-                    />
-                  )}
+          <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+            {transactions.map((tx, i) => (
+              <motion.tr
+                key={tx._id || i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="group hover:bg-emerald-500/5 transition-all"
+              >
+                <td className="px-8 py-6">
+                   <div className="w-16 h-12 rounded-xl overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-105 transition-transform">
+                      <img
+                        src={tx.article?.featuredImage || '/default_banner.png'}
+                        alt="Intel"
+                        className="w-full h-full object-cover"
+                        onError={(e) => { e.target.src = '/default_banner.png'; }}
+                      />
+                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                  {formatDate(tx.date)}
+                <td className="px-8 py-6">
+                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(tx.date)}</div>
+                   <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {tx.user?._id ? (
-                    <Link
-                      href={`/admin/blog-rewards-history/user/${tx.user._id}`}
-                      className="hover:underline"
-                    >
-                      <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 cursor-pointer">
-                        {tx.user?.name || 'N/A'}
-                      </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        {tx.user?.email || 'N/A'}
-                      </div>
+                <td className="px-8 py-6">
+                   {tx.user?._id ? (
+                    <Link href={`/admin/blog-rewards-history/user/${tx.user._id}`} className="group/link block">
+                       <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-emerald-500 transition-colors flex items-center gap-2">
+                          {tx.user?.name || 'NULL_ID'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                       </div>
+                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.user?.email || 'OFFLINE'}</div>
                     </Link>
-                  ) : (
+                   ) : (
                     <div>
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">
-                        {tx.user?.name || 'N/A'}
-                      </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        {tx.user?.email || 'N/A'}
-                      </div>
+                       <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.user?.name || 'N/A'}</div>
+                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.user?.email || 'N/A'}</div>
                     </div>
-                  )}
+                   )}
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-8 py-6">
                   {tx.article ? (
-                    <Link
-                      href={`/admin/articles/${tx.article._id}/edit`}
-                      className="hover:underline"
-                    >
-                      <div className="text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300">
-                        {tx.article.title || 'N/A'}
-                      </div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        {tx.article.category || 'Uncategorized'}
-                      </div>
+                    <Link href={`/admin/articles/${tx.article._id}/edit`} className="group/link block max-w-xs">
+                       <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-tight mb-1 group-hover/link:text-primary-500 transition-colors line-clamp-1">
+                          {tx.article.title || 'N/A'}
+                       </div>
+                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.article.category || 'UNCATEGORIZED'}</div>
                     </Link>
                   ) : (
-                    <span className="text-sm text-gray-400 dark:text-gray-500">N/A</span>
+                    <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">INTEL_NODE_DELETED</span>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getRewardTierColor(tx.rewardTier)}`}>
-                    {getRewardTierLabel(tx.rewardTier)}
-                  </span>
+                <td className="px-8 py-6 text-center">
+                   <div className={`px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest inline-flex items-center gap-2 ${getRewardTierColor(tx.rewardTier)}`}>
+                      <Star className="w-3 h-3" />
+                      {getRewardTierLabel(tx.rewardTier)}
+                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600 dark:text-green-400">
-                  +₹{tx.amount}
+                <td className="px-8 py-6 text-right">
+                   <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
+                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">YIELD_SYNCHRONIZED</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                  ₹{tx.balance?.toLocaleString() || 0}
+                <td className="px-8 py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
+                   ₹{tx.balance?.toLocaleString() || 0}
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   );
 
   const renderListView = () => (
-    <div className="space-y-4">
-      {transactions.map((tx) => (
-        <div key={tx._id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
-          <div className="flex items-start gap-4">
-            {tx.article?.featuredImage ? (
-              <img
-                src={tx.article.featuredImage}
-                alt={tx.article.title || 'Blog image'}
-                className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-                onError={(e) => {
-                  e.target.src = '/default_banner.png';
-                }}
+    <div className="space-y-6">
+      {transactions.map((tx, i) => (
+        <motion.div
+           key={tx._id || i}
+           initial={{ opacity: 0, x: -20 }}
+           animate={{ opacity: 1, x: 0 }}
+           transition={{ delay: i * 0.05 }}
+           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-10"
+        >
+          <div className="w-24 h-20 rounded-[2rem] overflow-hidden border-4 border-slate-100 dark:border-white/10 shadow-xl shrink-0 group-hover:scale-105 transition-transform">
+             <img
+                src={tx.article?.featuredImage || '/default_banner.png'}
+                alt="Intel"
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = '/default_banner.png'; }}
               />
-            ) : (
-              <img
-                src="/default_banner.png"
-                alt="Default blog image"
-                className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-              />
-            )}
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                {tx.article ? (
-                  <Link
-                    href={`/admin/articles/${tx.article._id}/edit`}
-                    className="text-lg font-semibold text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300"
-                  >
-                    {tx.article.title || 'N/A'}
-                  </Link>
-                ) : (
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">N/A</h3>
-                )}
-                <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getRewardTierColor(tx.rewardTier)}`}>
-                  {getRewardTierLabel(tx.rewardTier)}
-                </span>
-              </div>
-              <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-4">
-                {tx.user?._id ? (
-                  <Link
-                    href={`/admin/blog-rewards-history/user/${tx.user._id}`}
-                    className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 hover:underline"
-                  >
-                    User: {tx.user?.name || 'N/A'} ({tx.user?.email || 'N/A'})
-                  </Link>
-                ) : (
-                  <span>User: {tx.user?.name || 'N/A'} ({tx.user?.email || 'N/A'})</span>
-                )}
-                {tx.article && (
-                  <span>Category: {tx.article.category || 'Uncategorized'}</span>
-                )}
-              </div>
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Date: {formatDate(tx.date)}
-              </div>
-              <div className="mt-2 flex items-center gap-4">
-                <span className="text-sm font-medium text-green-600 dark:text-green-400">
-                  Amount: +₹{tx.amount}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Balance: ₹{tx.balance?.toLocaleString() || 0}
-                </span>
-              </div>
-            </div>
           </div>
-        </div>
+
+          <div className="flex-1 text-center lg:text-left space-y-3">
+             <div className="flex flex-col lg:flex-row items-center gap-4">
+                <Link href={`/admin/articles/${tx.article?._id}/edit`} className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors line-clamp-1">{tx.article?.title || 'NULL_INTEL'}</Link>
+                <div className={`px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest inline-flex items-center gap-2 ${getRewardTierColor(tx.rewardTier)}`}>
+                   {getRewardTierLabel(tx.rewardTier)}
+                </div>
+             </div>
+             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-2">
+                <div className="flex items-center gap-2">
+                   <User className="w-4 h-4 text-slate-300" />
+                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{tx.user?.name || 'OFFLINE'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                   <Layers className="w-4 h-4 text-slate-300" />
+                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{tx.article?.category || 'UNCATEGORIZED'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                   <Clock className="w-4 h-4 text-slate-300" />
+                   <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest tabular-nums italic">{formatDate(tx.date)} @ {formatTime(tx.date)}</span>
+                </div>
+             </div>
+          </div>
+
+          <div className="flex gap-4">
+             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
+                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PROVISION_YIELD</div>
+                <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
+             </div>
+             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
+                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">POST_SYNC_BAL</div>
+                <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">₹{tx.balance?.toLocaleString() || 0}</div>
+             </div>
+          </div>
+        </motion.div>
       ))}
     </div>
   );
 
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {transactions.map((tx) => (
-        <div key={tx._id} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
-          <div className="mb-3">
-            {tx.article?.featuredImage ? (
-              <img
-                src={tx.article.featuredImage}
-                alt={tx.article.title || 'Blog image'}
-                className="w-full h-40 rounded-lg object-cover"
-                onError={(e) => {
-                  e.target.src = '/default_banner.png';
-                }}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {transactions.map((tx, i) => (
+        <motion.div
+           key={tx._id || i}
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ delay: i * 0.05 }}
+           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col overflow-hidden"
+        >
+          <div className="relative mb-6 rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl aspect-video">
+             <img
+                src={tx.article?.featuredImage || '/default_banner.png'}
+                alt="Intel"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                onError={(e) => { e.target.src = '/default_banner.png'; }}
               />
-            ) : (
-              <img
-                src="/default_banner.png"
-                alt="Default blog image"
-                className="w-full h-40 rounded-lg object-cover"
-              />
-            )}
+              <div className="absolute top-4 right-4 group-hover:scale-110 transition-transform">
+                 <div className={`px-4 py-1.5 rounded-full border backdrop-blur-md text-[8px] font-black uppercase tracking-widest shadow-2xl ${getRewardTierColor(tx.rewardTier)}`}>
+                    {getRewardTierLabel(tx.rewardTier)}
+                 </div>
+              </div>
           </div>
-          <div className="flex flex-col items-start justify-between gap-2 mb-2">
-            {tx.article ? (
-              <Link
-                href={`/admin/articles/${tx.article._id}/edit`}
-                className="text-base font-semibold text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 line-clamp-2 flex-1"
-              >
-                {tx.article.title || 'N/A'}
-              </Link>
-            ) : (
-              <h3 className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2">N/A</h3>
-            )}
-            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getRewardTierColor(tx.rewardTier)} flex-shrink-0`}>
-              {getRewardTierLabel(tx.rewardTier)}
-            </span>
+          
+          <div className="space-y-4 px-2">
+             <Link href={`/admin/articles/${tx.article?._id}/edit`} className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight hover:text-primary-500 transition-colors line-clamp-2 block h-10 uppercase">
+                {tx.article?.title || 'NULL_INTEL_ID'}
+             </Link>
+             
+             <div className="flex items-center gap-3 pt-2">
+                <div className="w-8 h-8 bg-slate-900 dark:bg-white/10 rounded-lg flex items-center justify-center font-black text-[10px] text-white">
+                   {tx.user?.name?.[0]?.toUpperCase() || 'U'}
+                </div>
+                <div className="flex-1 overflow-hidden">
+                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{tx.user?.name || 'NULL_AUTHOR'}</div>
+                   <div className="text-[8px] font-bold text-slate-400 uppercase italic truncate">{tx.user?.email || 'OFFLINE'}</div>
+                </div>
+             </div>
+
+             <div className="pt-4 border-t-2 border-slate-50 dark:border-white/5 flex items-center justify-between mt-auto">
+                <div className="flex flex-col">
+                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">VALUATION</span>
+                   <span className="text-xl font-black italic text-emerald-500 tabular-nums">+₹{tx.amount}</span>
+                </div>
+                <div className="flex flex-col text-right">
+                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">POST_BAL</span>
+                   <span className="text-xl font-black italic text-primary-500 tabular-nums">₹{tx.balance?.toLocaleString() || 0}</span>
+                </div>
+             </div>
           </div>
-          <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-            {tx.user?._id ? (
-              <Link
-                href={`/admin/blog-rewards-history/user/${tx.user._id}`}
-                className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 hover:underline"
-              >
-                <div>User: {tx.user?.name || 'N/A'}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">{tx.user?.email || 'N/A'}</div>
-              </Link>
-            ) : (
-              <>
-                <div>User: {tx.user?.name || 'N/A'}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">{tx.user?.email || 'N/A'}</div>
-              </>
-            )}
-          </div>
-          {tx.article && (
-            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              Category: {tx.article.category || 'Uncategorized'}
-            </div>
-          )}
-          <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-            Date: {formatDate(tx.date)}
-          </div>
-          <div className="mt-3 flex items-center justify-between">
-            <span className="text-sm font-medium text-green-600 dark:text-green-400">
-              +₹{tx.amount}
-            </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">
-              Balance: ₹{tx.balance?.toLocaleString() || 0}
-            </span>
-          </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 
   return (
-    <AdminMobileAppWrapper title="Blog Rewards History">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
+    <AdminMobileAppWrapper title="Intel History">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-          <div className="mx-auto">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-              <div>
-                <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white">
-                  Blog Rewards History
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  View all blog reward transactions
-                </p>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+          
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
+                    <BookOpen className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN_HUB // INTEL_YIELD_HISTORY</span>
+                </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  INTEL <span className="text-emerald-500">REWARDS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">HISTORY</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of community-generated intelligence provisions and associated reward distributions.</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-2 items-center">
-                <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
-                <select
-                  value={filterType}
-                  onChange={handleFilterChange}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                >
-                  <option value="all">All Tiers</option>
-                  <option value="normal">Normal Blog (₹5)</option>
-                  <option value="good">Good Blog (₹10)</option>
-                  <option value="high">High Blog (₹15)</option>
-                </select>
-                <SearchFilter
-                  searchTerm={searchTerm}
-                  onSearchChange={handleSearch}
-                  placeholder="Search by name, email, blog title..."
-                />
-              </div>
+
+               <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+                    {[
+                      { icon: TableIcon, id: 'table', label: 'TAB' },
+                      { icon: List, id: 'list', label: 'LIN' },
+                      { icon: LayoutGrid, id: 'grid', label: 'SPC' }
+                    ].map((mode) => (
+                      <button
+                        key={mode.id}
+                        onClick={() => setViewMode(mode.id)}
+                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                      >
+                        <mode.icon className="w-4 h-4" />
+                        {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="relative">
+                     <Filter className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                     <select
+                        value={filterType}
+                        onChange={handleFilterChange}
+                        className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
+                     >
+                        <option value="all">ALL_YIELD_TIERS</option>
+                        <option value="normal">STANDARD_YIELD (₹5)</option>
+                        <option value="good">ENHANCED_YIELD (₹10)</option>
+                        <option value="high">PEAK_YIELD (₹15)</option>
+                     </select>
+                     <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+                  </div>
+                  <SearchFilter
+                    searchTerm={searchTerm}
+                    onSearchChange={handleSearch}
+                    placeholder="LOCALIZE_INTEL..."
+                    className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] py-2 shadow-xl"
+                  />
+               </div>
             </div>
 
-            {/* Summary Cards */}
+            {/* Tactical Summary Cards */}
             {summary && (
-              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-5 gap-4 mb-6">
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Total Blogs</div>
-                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
-                    {summary.totalBlogs?.toLocaleString() || 0}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                    Blogs with rewards
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Total Rewards</div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    ₹{summary.totalRewards?.toLocaleString() || 0}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                    {summary.totalTransactions || 0} transactions
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Normal Blog</div>
-                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
-                    ₹{summary.normalRewards?.toLocaleString() || 0}
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Good Blog</div>
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                    ₹{summary.goodRewards?.toLocaleString() || 0}
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">High Blog</div>
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                    ₹{summary.highRewards?.toLocaleString() || 0}
-                  </div>
-                </div>
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-12">
+                {[
+                  { label: "INTEL_NODES", value: summary.totalBlogs, icon: BookOpen, color: "bg-slate-900 dark:bg-white/10 text-white" },
+                  { label: "LIFETIME_YIELD", value: summary.totalRewards, icon: DollarSign, color: "bg-emerald-600 text-white shadow-emerald-500/20" },
+                  { label: "STANDARD_TIER", value: summary.normalRewards, icon: Zap, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
+                  { label: "ENHANCED_TIER", value: summary.goodRewards, icon: Award, color: "bg-primary-500 text-white shadow-primary-500/20" },
+                  { label: "PEAK_TIER", value: summary.highRewards, icon: Star, color: "bg-rose-500 text-white shadow-rose-500/20" }
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`${stat.color} rounded-[2.5rem] p-8 lg:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group min-h-[160px]`}
+                  >
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                       <stat.icon className="w-16 h-16" />
+                    </div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-4">{stat.label}</div>
+                    <div className="text-2xl lg:text-4xl font-black italic tracking-tighter tabular-nums">
+                       {stat.label === 'INTEL_NODES' ? stat.value : `₹${stat.value?.toLocaleString() || 0}`}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             )}
+          </motion.div>
 
-            {/* Content */}
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="primary" message="" />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12">
-                <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  Error loading blog rewards history
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">{error}</p>
-              </div>
-            ) : transactions.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">
-                  📝
-                </div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No blog reward transactions found
-                </h3>
-              </div>
-            ) : (
-              viewMode === 'table' ? renderTableView() :
+          {/* Results Visuzalization */}
+          <AnimatePresence mode="wait">
+             {transactions.length === 0 ? (
+               <motion.div
+                 key="empty"
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+               >
+                 <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_PROVISIONS_RECOVERED</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded intel reward events detected for the current tactical filter.</p>
+               </motion.div>
+             ) : (
+                viewMode === 'table' ? renderTableView() :
                 viewMode === 'list' ? renderListView() :
-                  renderGridView()
-            )}
+                renderGridView()
+             )}
+          </AnimatePresence>
 
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
+          {/* Spectral Pagination */}
+          {pagination.totalPages > 1 && (
+            <div className="flex justify-center pt-16">
               <Pagination
                 currentPage={pagination.currentPage}
                 totalPages={pagination.totalPages}
@@ -506,8 +507,8 @@ export default function BlogRewardsHistory() {
                 totalItems={pagination.totalItems}
                 itemsPerPage={limit}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </AdminMobileAppWrapper>

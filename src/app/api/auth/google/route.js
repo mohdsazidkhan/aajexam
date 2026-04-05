@@ -1,12 +1,11 @@
-import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Subscription from '@/models/Subscription';
 import MonthlyUserReferral from '@/models/MonthlyUserReferral';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-import mongoose from 'mongoose';
 import { createNotification } from '@/utils/notifications';
+import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 
 async function getUniqueReferralCode() {
     let code;
@@ -75,7 +74,7 @@ export async function POST(req) {
         const { googleId, email, name, picture, referralCode } = body;
 
         if (!googleId || !email || !name) {
-            return NextResponse.json({ message: 'Google authentication data is incomplete' }, { status: 400 });
+            return errorResponse('Google authentication data is incomplete', 400);
         }
 
         let user = await User.findOne({ email });
@@ -191,20 +190,18 @@ export async function POST(req) {
         const levelInfo = await user.getLevelInfo();
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
-        return NextResponse.json({
-            success: true,
-            message: '🎉 Login Successful!',
+        return successResponse({
             token,
             user: {
                 _id: user._id, name: user.name, email: user.email, username: user.username,
                 role: user.role, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: user.currentSubscription,
-                badges: user.badges, level: levelInfo, profileCompletion: updatedProfileDetails
+                badges: user.badges, level: levelInfo, profileCompletion: updatedProfileDetails,
+                walletBalance: user.walletBalance || 0
             }
-        });
+        }, '🎉 Login Successful!');
 
     } catch (error) {
-        console.error('Google Auth error:', error);
-        return NextResponse.json({ message: error.message }, { status: 500 });
+        return errorResponse(error);
     }
 }

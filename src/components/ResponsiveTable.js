@@ -1,8 +1,33 @@
+'use client';
+
 import React, { useState } from 'react';
-import { FaList, FaTh, FaTable, FaEye, FaEdit, FaTrash, FaPhone, FaEnvelope } from 'react-icons/fa';
+import {
+  Table,
+  List,
+  LayoutGrid,
+  Eye,
+  Edit3,
+  Trash2,
+  ChevronDown,
+  MoreHorizontal,
+  Mail,
+  Phone,
+  Calendar,
+  Layers,
+  Hash,
+  Activity,
+  User
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
+import Loading from './Loading';
 
+/**
+ * Premium Responsive Table Component
+ * Supports dynamic column mapping for Table, List, and Grid views.
+ * Features gamified achievement cards, hero player cards, and glassmorphism.
+ */
 const ResponsiveTable = ({
   data = [],
   columns = [],
@@ -18,437 +43,297 @@ const ResponsiveTable = ({
   onViewChange = null,
   loading = false,
   emptyMessage = "No data available",
-  searchTerm = '',
-  onSearchChange = null,
-  filters = {},
-  onFilterChange = null,
-  onClearFilters = null,
-  filterOptions = {}
 }) => {
   const [internalView, setInternalView] = useState(defaultView);
   const currentViewState = currentView !== null ? currentView : internalView;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPageState, setItemsPerPage] = useState(itemsPerPage);
 
-  // Calculate pagination - if pagination is disabled, show all data
   const totalItems = data.length;
   const totalPages = showPagination ? Math.ceil(totalItems / itemsPerPageState) : 1;
-  const startIndex = showPagination ? (currentPage - 1) * itemsPerPageState : 0;
-  const endIndex = showPagination ? startIndex + itemsPerPageState : totalItems;
-  const currentData = showPagination ? data.slice(startIndex, endIndex) : data;
+  const startIndex = (currentPage - 1) * itemsPerPageState;
+  const currentData = showPagination ? data.slice(startIndex, startIndex + itemsPerPageState) : data;
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const handlePageChange = (page) => setCurrentPage(page);
 
   const handleViewChange = (view) => {
-    if (currentView === null) {
-      setInternalView(view);
-    }
-    setCurrentPage(1); // Reset to first page when changing view
-    if (onViewChange) {
-      onViewChange(view);
-    }
+    if (currentView === null) setInternalView(view);
+    setCurrentPage(1);
+    onViewChange?.(view);
   };
 
   const handleItemsPerPageChange = (e) => {
-    const newItemsPerPage = parseInt(e.target.value);
-    setItemsPerPage(newItemsPerPage);
-    setCurrentPage(1); // Reset to first page
+    setItemsPerPage(parseInt(e.target.value));
+    setCurrentPage(1);
   };
 
-  // Render table view
+  // --- Dynamic Icon Mapping based on column keys ---
+  const getIconForKey = (key) => {
+    const k = String(key || '').toLowerCase();
+    if (k.includes('name') || k.includes('student') || k.includes('user')) return <User className="w-3.5 h-3.5" />;
+    if (k.includes('join') || k.includes('date') || k.includes('time')) return <Calendar className="w-3.5 h-3.5" />;
+    if (k.includes('level') || k.includes('rank') || k.includes('type')) return <Layers className="w-3.5 h-3.5" />;
+    if (k.includes('contact') || k.includes('email') || k.includes('phone')) return <Mail className="w-3.5 h-3.5" />;
+    if (k.includes('code') || k.includes('id') || k.includes('ref')) return <Hash className="w-3.5 h-3.5" />;
+    if (k.includes('status') || k.includes('count') || k.includes('total')) return <Activity className="w-3.5 h-3.5" />;
+    return <ChevronDown className="w-3.5 h-3.5" />;
+  };
+
+  // --- Table View (Data Matrix) ---
   const renderTableView = () => (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden">
-        <thead className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800">
+    <div className="overflow-x-auto rounded-[2rem] border-4 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300">
+      <table className="w-full border-collapse bg-white dark:bg-slate-900 overflow-hidden">
+        <thead className="bg-slate-50 dark:bg-slate-800/40 border-b-2 border-slate-100 dark:border-slate-800">
           <tr>
             {columns.map((column, index) => (
               <th
                 key={index}
-                className="px-4 py-4 sm:px-6 sm:py-5 text-left text-xs sm:text-lg md:text-base font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider border-b border-gray-200 dark:border-gray-600"
+                className="px-6 py-5 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit"
               >
                 {column.header}
               </th>
             ))}
             {actions.length > 0 && (
-              <th className="px-4 py-4 sm:px-6 sm:py-5 text-left text-xs sm:text-lg md:text-base font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider border-b border-gray-200 dark:border-gray-600">
+              <th className="px-6 py-5 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">
                 Actions
               </th>
             )}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
+        <tbody className="divide-y-2 divide-slate-50 dark:divide-slate-800/30">
           {currentData.map((row, rowIndex) => (
-            <tr
+            <motion.tr
               key={rowIndex}
-              className={`hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 ${onRowClick ? 'cursor-pointer' : ''
-                }`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: rowIndex * 0.03 }}
+              className={`hover:bg-primary-500/5 dark:hover:bg-primary-500/10 transition-all duration-300 group ${onRowClick ? 'cursor-pointer' : ''}`}
               onClick={() => onRowClick && onRowClick(row)}
             >
               {columns.map((column, colIndex) => (
-                <td
-                  key={colIndex}
-                  className="px-4 py-4 sm:px-6 sm:py-5 text-xs sm:text-lg md:text-base text-gray-900 dark:text-gray-100 whitespace-nowrap"
-                >
-                  {column.render ? column.render(row[column.key], row) : row[column.key]}
+                <td key={colIndex} className="px-6 py-5 text-xs font-bold text-slate-700 dark:text-slate-200">
+                  {column.render ? column.render(row[column.key], row) : (row[column.key] || 'â€”')}
                 </td>
               ))}
               {actions.length > 0 && (
-                <td className="px-4 py-4 sm:px-6 sm:py-5 text-xs sm:text-lg md:text-base text-gray-900 dark:text-gray-100">
-                  <div className="flex items-center space-x-2 sm:space-x-3">
+                <td className="px-6 py-5">
+                  <div className="flex items-center gap-2">
                     {actions.map((action, actionIndex) => (
-                      <button
+                      <motion.button
                         key={actionIndex}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          action.onClick(row);
-                        }}
-                        className={`p-2 sm:p-2.5 rounded-lg transition-all duration-200 hover:scale-110 shadow-sm hover:shadow-md ${action.variant === 'danger'
-                          ? 'text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-red-200 dark:border-red-700'
-                          : action.variant === 'success'
-                            ? 'text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 border border-green-200 dark:border-green-700'
-                            : 'text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-700'
+                        whileHover={{ scale: 1.15, y: -2 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
+                        className={`p-2.5 rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/30 hover:bg-rose-100' :
+                          action.variant === 'success' ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 hover:bg-emerald-100' :
+                            'text-primary-700 dark:text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
                         title={action.label}
                       >
-                        {action.icon}
-                      </button>
+                        {action.icon || <MoreHorizontal className="w-4 h-4" />}
+                      </motion.button>
                     ))}
                   </div>
                 </td>
               )}
-            </tr>
+            </motion.tr>
           ))}
         </tbody>
       </table>
     </div>
   );
 
-  // Render list view
+  // --- List View (Achievement Cards) ---
   const renderListView = () => (
-    <div className="space-y-4 sm:space-y-5">
+    <div className="grid grid-cols-1 gap-6">
       {currentData.map((row, rowIndex) => (
-        <div
+        <motion.div
           key={rowIndex}
-          className={`bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-5 sm:p-6 md:p-7 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${onRowClick ? 'cursor-pointer hover:scale-[1.02]' : ''
-            }`}
-          onClick={() => onRowClick && onRowClick(row)}
+          layout
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className={`bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[1.5rem] border-4 border-slate-100 dark:border-slate-800 p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-500 group ${onRowClick ? 'cursor-pointer hover:translate-x-2' : ''}`}
+          onClick={() => onRowClick?.(row)}
         >
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
-            {/* Main content */}
-            <div className="flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
-                {/* Row 1: Student Name and Joined Date in single row */}
-                <div className="sm:col-span-1 col-span-2 grid grid-cols-2 gap-3 sm:block">
-                  {/* Student Name */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Student
-                      </span>
-                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-bold">
-                      {columns.find(col => col.key === 'name')?.render?.(null, row) || row.name || 'Unknown'}
-                    </div>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6">
+              {columns.map((col, idx) => (
+                <div key={idx} className="space-y-1.5 min-w-0">
+                  <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest truncate">
+                    {getIconForKey(col.key)} {col.header}
                   </div>
-
-                  {/* Joined Date */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Joined
-                      </span>
-                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'joined')?.render?.(null, row) || row.joined || 'N/A'}
-                    </div>
+                  <div className="text-xs font-black text-slate-800 dark:text-slate-100 truncate">
+                    {col.render ? col.render(row[col.key], row) : (row[col.key] || 'â€”')}
                   </div>
                 </div>
-
-                {/* Row 2: Contact in single row */}
-                <div className="sm:col-span-1 col-span-2">
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Contact
-                      </span>
-                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'contact')?.render?.(null, row) || row.email || 'No email'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row 3: Level and Referral Code in single row */}
-                <div className="sm:col-span-1 col-span-2 grid grid-cols-2 gap-3 sm:block">
-                  {/* Level */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Level
-                      </span>
-                      <div className="w-1 h-1 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'level')?.render?.(null, row) || row.level?.currentLevel || '1'}
-                    </div>
-                  </div>
-
-                  {/* Referral Code */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Ref Code
-                      </span>
-                      <div className="w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'referralCode')?.render?.(null, row) || row.referralCode || 'N/A'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row 4: Referral Count and Status in single row */}
-                <div className="sm:col-span-1 col-span-2 grid grid-cols-2 gap-3 sm:block">
-                  {/* Referral Count */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Ref Count
-                      </span>
-                      <div className="w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'referralCount')?.render?.(null, row) || row.referralCount || '0'}
-                    </div>
-                  </div>
-
-                  {/* Status */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs sm:text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                        Status
-                      </span>
-                      <div className="w-1 h-1 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    </div>
-                    <div className="text-sm sm:text-base text-gray-900 dark:text-gray-100 font-medium">
-                      {columns.find(col => col.key === 'status')?.render?.(null, row) || (
-                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                          {row.status || 'active'}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+              ))}
             </div>
-
-            {/* Actions */}
-            {columns.some(col => col.key === 'actions') && (
-              <div className="flex items-center justify-center lg:justify-end space-x-2 sm:space-x-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-gray-200 dark:border-gray-600">
-                {columns.find(col => col.key === 'actions')?.render?.(null, row)}
+            {actions.length > 0 && (
+              <div className="flex items-center lg:justify-end gap-3 pt-6 lg:pt-0 border-t-2 lg:border-t-0 border-slate-50 dark:border-slate-800/50">
+                {actions.map((action, actionIndex) => (
+                  <motion.button
+                    key={actionIndex}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
+                    className={`p-3.5 lg:p-3 rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/40 hover:bg-rose-100' :
+                      action.variant === 'success' ? 'bg-emerald-50 text-emerald-500 dark:bg-emerald-950/40 hover:bg-emerald-100' :
+                        'bg-primary-50 text-primary-700 dark:text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100'
+                      }`}
+                  >
+                    {action.icon}
+                  </motion.button>
+                ))}
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 
-  // Render grid view
+  // --- Grid View (Hero Player Cards) ---
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 sm:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 px-4 sm:px-0">
       {currentData.map((row, rowIndex) => (
-        <div
+        <motion.div
           key={rowIndex}
-          className={`bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 sm:p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 ${onRowClick ? 'cursor-pointer' : ''
-            }`}
-          onClick={() => onRowClick && onRowClick(row)}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ y: -10, scale: 1.02 }}
+          className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-800 p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden ${onRowClick ? 'cursor-pointer' : ''}`}
+          onClick={() => onRowClick?.(row)}
         >
-          {/* Card Header with gradient background */}
-          <div className="relative mb-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20 rounded-xl"></div>
-            <div className="relative p-4 text-center">
-              <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white text-xl font-bold">
-                  {row.name?.charAt(0)?.toUpperCase() || 'U'}
-                </span>
+          {/* Card Decorations */}
+          <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-gradient-to-br from-primary-500/10 to-primary-500/10 rounded-bl-[4rem] group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+
+          <div className="relative z-10 space-y-8">
+            {/* Hero Header */}
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-500 p-0.5 shadow-xl group-hover:rotate-6 transition-transform duration-500">
+                <div className="w-full h-full bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
+                  {(row.name || row[columns[0]?.key] || 'U')[0]}
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white truncate">
-                {row.name || 'Unknown'}
-              </h3>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white truncate">
+                  {row.name || row[columns[0]?.key] || 'Unknown Object'}
+                </h3>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <Activity className="w-3 h-3 text-emerald-500" />
+                  <span className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">{row.status || 'Active'}</span>
+                </div>
+              </div>
             </div>
+
+            {/* Info Grid */}
+            <div className="grid grid-cols-1 gap-4 py-2">
+              {columns.slice(1, 4).map((col, idx) => (
+                <div key={idx} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                    {getIconForKey(col.key)} {col.header}
+                  </div>
+                  <div className="text-[10px] font-black text-slate-800 dark:text-slate-200 text-right truncate max-w-[140px]">
+                    {col.render ? col.render(row[col.key], row) : (row[col.key] || 'â€”')}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Actions Bar */}
+            {actions.length > 0 && (
+              <div className="flex items-center justify-center gap-4 pt-6 border-t-2 border-slate-50 dark:border-slate-800 group-hover:border-primary-500/20 transition-all">
+                {actions.map((action, actionIndex) => (
+                  <motion.button
+                    key={actionIndex}
+                    whileHover={{ scale: 1.2, y: -3 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
+                    className={`p-4 lg:p-3 rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/30 hover:bg-rose-100' :
+                      'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:text-primary-500 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
+                      }`}
+                  >
+                    {action.icon}
+                  </motion.button>
+                ))}
+              </div>
+            )}
           </div>
-
-          {/* Card Content */}
-          <div className="space-y-3 sm:space-y-4">
-            {/* Joined Date-Time */}
-            <div className="group">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Joined
-                </span>
-                <div className="w-2 h-2 bg-secondary-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-              </div>
-              <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
-                {columns.find(col => col.key === 'joined')?.render?.(null, row) || row.joined || 'N/A'}
-              </div>
-            </div>
-            {/* First row: Level and Referral Code */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="group">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Level
-                  </span>
-                  <div className="w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                </div>
-                <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
-                  {columns.find(col => col.key === 'level')?.render?.(null, row) || row.level?.currentLevel || '1'}
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
-                    Ref Code
-                  </span>
-                  <div className="w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                </div>
-                <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
-                  {columns.find(col => col.key === 'referralCode')?.render?.(null, row) || row.referralCode || 'N/A'}
-                </div>
-              </div>
-            </div>
-
-            {/* Second row: Contact Info */}
-            <div className="group">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Contact
-                </span>
-                <div className="w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-              </div>
-              <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
-                {columns.find(col => col.key === 'contact')?.render?.(null, row) || row.email || 'No email'}
-              </div>
-            </div>
-
-            {/* Third row: Referral Count and Status */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="group">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Ref Count
-                  </span>
-                  <div className="w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                </div>
-                <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
-                  {columns.find(col => col.key === 'referralCount')?.render?.(null, row) || row.referralCount || '0'}
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Status
-                  </span>
-                  <div className="w-2 h-2 bg-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                </div>
-                <div className="mt-1">
-                  {columns.find(col => col.key === 'status')?.render?.(null, row) || (
-                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                      {row.status || 'active'}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card Footer with Actions */}
-          {columns.some(col => col.key === 'actions') && (
-            <div className="mt-5 pt-4 border-t border-gray-200 dark:border-gray-600">
-              <div className="flex items-center justify-center space-x-2">
-                {columns.find(col => col.key === 'actions')?.render?.(null, row)}
-              </div>
-            </div>
-          )}
-        </div>
+        </motion.div>
       ))}
     </div>
   );
-
-  // Render loading state
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-red-500"></div>
-      </div>
-    );
-  }
-
-  // Render empty state
-  if (data.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-gray-500 dark:text-gray-400 text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
-          {emptyMessage}
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className={`space-y-6 sm:space-y-8 ${className}`}>
-      {/* Header with view toggle and items per page */}
+    <div className={`space-y-10 ${className}`}>
+      {/* Header Controls (View Toggle & Density) */}
       {(showViewToggle || showPagination) && (
-        <div>
-          <div className="flex items-center justify-between gap-4">
-            {showViewToggle && (
-              <div className="flex items-center gap-3">
-                <ViewToggle
-                  currentView={currentViewState}
-                  onViewChange={handleViewChange}
-                  views={viewModes}
-                />
-              </div>
-            )}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+          {showViewToggle && (
+            <div className="p-2 bg-slate-100/50 dark:bg-slate-800/40 rounded-[1.25rem] lg:rounded-2xl border-2 border-slate-200/40 dark:border-slate-700/40 shadow-sm backdrop-blur-sm w-full sm:w-auto">
+              <ViewToggle
+                currentView={currentViewState}
+                onViewChange={handleViewChange}
+                views={viewModes}
+              />
+            </div>
+          )}
 
-            {/* Items per page selector */}
-            {showPagination && (
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <select
-                  value={itemsPerPageState}
-                  onChange={handleItemsPerPageChange}
-                  className="px-3 py-2 sm:px-4 sm:py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                </select>
-              </div>
-            )}
-          </div>
-        </div>
+          {showPagination && (
+            <div className="px-5 py-3 lg:py-2.5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-[1.25rem] lg:rounded-2xl shadow-sm flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
+              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">Show Units</span>
+              <select
+                value={itemsPerPageState}
+                onChange={handleItemsPerPageChange}
+                className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-700 dark:text-primary-500 transition-colors font-outfit"
+              >
+                {[5, 10, 20, 50].map(v => <option key={v} value={v} className="bg-slate-900">{v}</option>)}
+              </select>
+            </div>
+          )}
+        </motion.div>
       )}
 
-      {/* Content based on view mode */}
-      <div className="overflow-hidden">
-        {currentViewState === 'table' && renderTableView()}
-        {currentViewState === 'list' && <div>{renderListView()}</div>}
-        {currentViewState === 'grid' && <div>{renderGridView()}</div>}
-      </div>
+      {/* Primary Display Area */}
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <Loading size="lg" message="Accessing Archive..." />
+          </motion.div>
+        ) : data.length === 0 ? (
+          <motion.div
+            key="empty"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center justify-center py-24 bg-slate-50/50 dark:bg-slate-800/10 rounded-[3rem] border-4 border-dashed border-slate-100 dark:border-slate-800/50"
+          >
+            <div className="p-10 bg-white dark:bg-slate-800 rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-slate-700 mb-8">
+              <Layers className="w-16 h-16 text-slate-200 dark:text-slate-700" />
+            </div>
+            <p className="text-xs font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] font-outfit">{emptyMessage}</p>
+          </motion.div>
+        ) : (
+          <motion.div
+            key={currentViewState}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          >
+            {currentViewState === 'table' && renderTableView()}
+            {currentViewState === 'list' && renderListView()}
+            {currentViewState === 'grid' && renderGridView()}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Pagination */}
-      {showPagination && totalPages > 1 && (
-        <div>
+      {/* Footer Navigation */}
+      {showPagination && totalPages > 1 && !loading && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
@@ -456,10 +341,11 @@ const ResponsiveTable = ({
             totalItems={totalItems}
             itemsPerPage={itemsPerPageState}
           />
-        </div>
+        </motion.div>
       )}
     </div>
   );
 };
 
 export default ResponsiveTable;
+

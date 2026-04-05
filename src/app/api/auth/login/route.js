@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Subscription from '@/models/Subscription';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 
 export async function POST(req) {
     try {
@@ -12,7 +12,7 @@ export async function POST(req) {
         const { identifier, password } = body;
 
         if (!identifier || !password) {
-            return NextResponse.json({ message: 'Please provide identifier and password' }, { status: 400 });
+            return errorResponse('Please provide identifier and password', 400);
         }
 
         const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -24,28 +24,26 @@ export async function POST(req) {
         } else if (phoneRegex.test(identifier)) {
             user = await User.findOne({ phone: identifier }).populate('currentSubscription');
         } else {
-            return NextResponse.json({ message: 'Please provide a valid email or phone number.' }, { status: 400 });
+            return errorResponse('Please provide a valid email or phone number.', 400);
         }
 
         if (!user) {
-            return NextResponse.json({ message: 'User Not Found!' }, { status: 404 });
+            return errorResponse('User Not Found!', 404);
         }
 
         if (['suspended', 'banned'].includes(user.status)) {
-            return NextResponse.json({
-                message: `Your account is currently ${user.status.toUpperCase()}.
+            return errorResponse(`Your account is currently ${user.status.toUpperCase()}.
             
             Due to unusually high activity or repeated suspicious quiz attempts in a short period of time, we have temporarily restricted your access to protect the integrity of our platform.
             
             As a result, your previous quiz data has been reset.
             
-            If you believe this action was taken in error, please contact our support team for further assistance.`
-            }, { status: 403 });
+            If you believe this action was taken in error, please contact our support team for further assistance.`, 403);
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return NextResponse.json({ message: 'Invalid Credentials' }, { status: 401 });
+            return errorResponse('Invalid Credentials', 401);
         }
 
         const token = jwt.sign(
@@ -85,9 +83,7 @@ export async function POST(req) {
         const levelInfo = await user.getLevelInfo();
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
-        return NextResponse.json({
-            success: true,
-            message: '🎉 Login Successful!',
+        return successResponse({
             token,
             expiresAt,
             user: {
@@ -101,13 +97,14 @@ export async function POST(req) {
                 subscriptionExpiry: user.subscriptionExpiry,
                 currentSubscription: user.currentSubscription,
                 badges: user.badges,
-                level: levelInfo,
-                profileCompletion: updatedProfileDetails
+                level: levelInfo?.currentLevel?.number || 0,
+                levelDetails: levelInfo,
+                profileCompletion: updatedProfileDetails,
+                walletBalance: user.walletBalance || 0
             }
-        });
+        }, '🎉 Login Successful!');
 
     } catch (error) {
-        console.error('Login error:', error);
-        return NextResponse.json({ message: error.message }, { status: 500 });
+        return errorResponse(error);
     }
 }

@@ -127,7 +127,8 @@ const config = {
     TERMS: process.env.NEXT_PUBLIC_TERMS_URL || '/terms',
     REFUND_POLICY: process.env.NEXT_PUBLIC_REFUND_POLICY_URL || '/refund',
     DISCLAIMER: process.env.NEXT_PUBLIC_DISCLAIMER_URL || '/disclaimer',
-    HALAL_DISCLAIMER: process.env.NEXT_PUBLIC_HALAL_DISCLAIMER_URL || '/halal-disclaimer'
+    HALAL_DISCLAIMER: process.env.NEXT_PUBLIC_HALAL_DISCLAIMER_URL || '/halal-disclaimer',
+    CONTACT: process.env.NEXT_PUBLIC_CONTACT_URL || '/contact'
   },
 
   // Analytics and Monitoring
@@ -162,7 +163,7 @@ const config = {
     LAZY_LOADING: process.env.NEXT_PUBLIC_LAZY_LOADING === 'true',
     PRELOAD_CRITICAL_RESOURCES: process.env.NEXT_PUBLIC_PRELOAD_CRITICAL_RESOURCES === 'true'
   },
-  
+
   // Cron Job Configuration
   CRON_CONFIG: {
     DAILY_RESET: process.env.NEXT_PUBLIC_DAILY_CRON_TIME || '22:00',

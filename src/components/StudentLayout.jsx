@@ -1,19 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import StudentNavbar from './StudentNavbar';
+import StudentNavbar from './navbars/StudentNavbar';
 import StudentSidebar from './StudentSidebar';
-import MobileBottomNavigation from './MobileBottomNavigation';
+import StudentBottomNav from './navbars/StudentBottomNav';
 import { initializeDarkMode } from '../store/darkModeSlice';
-import { closeSidebar, openSidebar } from '../lib/store/sidebarSlice';
+import { closeSidebar } from '../lib/store/sidebarSlice';
 import { isAuthenticated, getCurrentUser } from '../lib/utils/authUtils';
 import { useSSR } from '../hooks/useSSR';
 import ClientOnly from './ClientOnly';
-import { usePathname } from 'next/navigation';
 
 const StudentLayout = ({ children }) => {
   const { isMounted, router } = useSSR();
-  const pathname = usePathname();
-  console.log(pathname, 'pathname');
+  const pathname = router?.pathname || '';
   const isStartPage = pathname?.includes('/start');
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
@@ -123,10 +121,11 @@ const StudentLayout = ({ children }) => {
         </main>
       </div>
       <ClientOnly>
-        <MobileBottomNavigation />
+        <StudentBottomNav />
       </ClientOnly>
     </div>
   );
 };
 
 export default StudentLayout;
+

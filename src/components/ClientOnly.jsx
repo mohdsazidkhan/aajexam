@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 const ClientOnly = ({ children, fallback = null }) => {
   const [hasMounted, setHasMounted] = useState(false);
@@ -15,3 +15,4 @@ const ClientOnly = ({ children, fallback = null }) => {
 };
 
 export default ClientOnly;
+

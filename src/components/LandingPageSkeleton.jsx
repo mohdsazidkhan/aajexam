@@ -1,79 +1,90 @@
-import React from 'react';
+﻿import React from 'react';
 import Skeleton from './Skeleton';
 
 const LandingPageSkeleton = () => {
     return (
-        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark transition-colors duration-300 pt-12 sm:pt-0">
+        <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300 pt-12 sm:pt-0">
             {/* Navbar Skeleton */}
-            <header className="fixed z-[99] w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 top-0">
-                <div className="container mx-auto px-0 lg:px-6 xl:px-8">
-                    <div className="flex justify-between items-center h-16">
+            <header className="fixed z-[99] w-full bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 top-0">
+                <div className="container mx-auto px-6 lg:px-12">
+                    <div className="flex justify-between items-center h-20">
                         {/* Logo Placeholder */}
-                        <Skeleton width="48px" height="48px" borderRadius="12px" />
+                        <div className="flex items-center gap-4">
+                            <Skeleton width="56px" height="56px" borderRadius="18px" className="shadow-duo" />
+                            <Skeleton width="120px" height="24px" borderRadius="10px" className="hidden sm:block" />
+                        </div>
 
-                        {/* Nav Links Placeholder - Hidden on mobile, visible on desktop */}
-                        <div className="hidden lg:flex items-center space-x-8">
-                            {[1, 2, 3, 4, 5, 6].map((i) => (
-                                <Skeleton key={i} width="80px" height="20px" />
+                        {/* Nav Links Placeholder */}
+                        <div className="hidden xl:flex items-center space-x-10">
+                            {[1, 2, 3, 4, 5].map((i) => (
+                                <Skeleton key={i} width="90px" height="20px" borderRadius="8px" />
                             ))}
                         </div>
 
                         {/* Right Actions */}
-                        <div className="flex items-center space-x-2">
-                            <Skeleton width="100px" height="40px" borderRadius="0.5rem" />
-                            <Skeleton width="32px" height="32px" borderRadius="50%" />
+                        <div className="flex items-center gap-4">
+                            <Skeleton width="130px" height="52px" borderRadius="20px" className="shadow-duo-primary" />
+                            <Skeleton width="48px" height="48px" borderRadius="50%" className="shadow-duo" />
                         </div>
                     </div>
                 </div>
             </header>
 
             {/* Hero Section Skeleton */}
-            <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-20 mt-16 md:mt-24">
-                <div className="text-center max-w-4xl mx-auto">
+            <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-28 mt-24">
+                <div className="text-center max-w-5xl mx-auto">
                     {/* Title */}
-                    <div className="flex flex-col items-center mb-6">
-                        <Skeleton width="80%" height="3rem" className="mb-2 hidden md:block" />
-                        <Skeleton width="60%" height="3rem" className="hidden md:block" />
-                        <Skeleton width="90%" height="2rem" className="md:hidden mb-2" />
+                    <div className="flex flex-col items-center mb-8">
+                        <Skeleton width="85%" height="4.5rem" className="mb-4 rounded-3xl" />
+                        <Skeleton width="65%" height="4.5rem" className="rounded-3xl" />
                     </div>
 
                     {/* Subtitle */}
-                    <div className="flex flex-col items-center mb-8">
-                        <Skeleton width="90%" height="1.2rem" className="mb-2" />
-                        <Skeleton width="70%" height="1.2rem" />
+                    <div className="flex flex-col items-center mb-12">
+                        <Skeleton width="80%" height="1.5rem" className="mb-3 rounded-lg" />
+                        <Skeleton width="60%" height="1.5rem" className="rounded-lg" />
                     </div>
 
                     {/* Button */}
-                    <div className="flex justify-center mb-10">
-                        <Skeleton width="200px" height="56px" borderRadius="0.75rem" />
+                    <div className="flex justify-center mb-20">
+                        <Skeleton width="280px" height="72px" borderRadius="24px" className="shadow-duo-primary" />
                     </div>
                 </div>
 
                 {/* Stats Grid Skeleton */}
-                <div className="mt-10 lg:mt-20 grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-3 lg:gap-6 p-4">
-                    {[...Array(9)].map((_, i) => (
-                        <div key={i} className="flex flex-col items-center p-2">
-                            <Skeleton width="48px" height="48px" borderRadius="50%" className="mb-3" />
-                            <Skeleton width="60px" height="24px" className="mb-1" />
-                            <Skeleton width="80px" height="12px" />
-                        </div>
-                    ))}
+                <div className="mt-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-10 border-4 border-b-[12px] border-slate-100 dark:border-slate-800 shadow-xl">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-6 gap-8">
+                        {[...Array(6)].map((_, i) => (
+                            <div key={i} className="flex flex-col items-center gap-4">
+                                <Skeleton width="64px" height="64px" borderRadius="20px" className="shadow-duo" />
+                                <div className="space-y-2 flex flex-col items-center">
+                                    <Skeleton width="80px" height="20px" borderRadius="8px" />
+                                    <Skeleton width="60px" height="10px" borderRadius="4px" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Referral Section Skeleton Placeholder */}
-            <div className="container mx-auto px-4 py-10 lg:py-20">
-                <div className="border border-gray-200 dark:border-gray-700 rounded-3xl p-6 lg:p-12">
-                    <div className="flex flex-col items-center mb-10">
-                        <Skeleton width="80px" height="80px" borderRadius="50%" className="mb-6" />
-                        <Skeleton width="60%" height="2.5rem" className="mb-4" />
-                        <Skeleton width="40%" height="1.5rem" />
+            {/* Content Section Skeleton */}
+            <div className="container mx-auto px-6 pb-24">
+                <div className="bg-white dark:bg-slate-800 border-4 border-b-[12px] border-slate-100 dark:border-slate-700 rounded-[3.5rem] p-10 lg:p-20 shadow-2xl relative overflow-hidden">
+                    <div className="flex flex-col items-center mb-16 relative z-10">
+                        <Skeleton width="100px" height="100px" borderRadius="2rem" className="mb-8 shadow-duo rotate-3" />
+                        <Skeleton width="70%" height="4rem" borderRadius="24px" className="mb-6" />
+                        <Skeleton width="45%" height="1.5rem" borderRadius="12px" />
                     </div>
 
                     {/* Reward Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
                         {[1, 2, 3, 4].map((i) => (
-                            <Skeleton key={i} width="100%" height="160px" borderRadius="1rem" />
+                            <div key={i} className="h-64 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900/50 border-4 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
+                                <Skeleton width="50%" height="2rem" className="mb-6 rounded-xl" />
+                                <Skeleton width="100%" height="1rem" className="mb-4 rounded-lg" />
+                                <Skeleton width="80%" height="1rem" className="mb-8 rounded-lg" />
+                                <Skeleton width="40%" height="3rem" className="rounded-2xl" />
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -83,3 +94,4 @@ const LandingPageSkeleton = () => {
 };
 
 export default LandingPageSkeleton;
+

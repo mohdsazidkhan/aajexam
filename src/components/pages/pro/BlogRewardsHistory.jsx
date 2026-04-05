@@ -1,539 +1,310 @@
-'use client';
+﻿'use client';
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Pagination from "../../Pagination";
+import {
+   Book,
+   Wallet,
+   Calendar,
+   CircleCheck,
+   LayoutGrid,
+   List,
+   Table as TableIcon,
+   TrendingUp,
+   Zap,
+   PlusCircle,
+   Search,
+   ArrowUpRight,
+   ShieldCheck,
+   Target,
+   Sparkles,
+   BarChart3,
+   Clock,
+   FileText,
+   CircleAlert,
+   Sticker
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../../lib/api';
 import UnifiedFooter from "../../UnifiedFooter";
 import Loading from "../../Loading";
-import ViewToggle from "../../ViewToggle";
 import { useSSR } from '../../../hooks/useSSR';
-import { FaBook, FaRupeeSign, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa';
-import { toast } from 'react-toastify';
-import { isMobile } from 'react-device-detect';
+import Card from '../../ui/Card';
+import Button from '../../ui/Button';
 
-const PAGE_LIMIT = 20;
+// Redesigned ViewToggle Inline
+const ViewToggle = ({ currentView, onViewChange, views = ['grid', 'list', 'table'] }) => {
+   return (
+      <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl shadow-inner">
+         {views.includes('grid') && (
+            <button onClick={() => onViewChange('grid')} className={`p-2 rounded-xl transition-all ${currentView === 'grid' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400 hover:text-slate-600'}`}>
+               <LayoutGrid className="w-4 h-4" />
+            </button>
+         )}
+         {views.includes('list') && (
+            <button onClick={() => onViewChange('list')} className={`p-2 rounded-xl transition-all ${currentView === 'list' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400 hover:text-slate-600'}`}>
+               <List className="w-4 h-4" />
+            </button>
+         )}
+         {views.includes('table') && (
+            <button onClick={() => onViewChange('table')} className={`p-2 rounded-xl transition-all ${currentView === 'table' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400 hover:text-slate-600'}`}>
+               <TableIcon className="w-4 h-4" />
+            </button>
+         )}
+      </div>
+   );
+};
 
 export default function BlogRewardsHistory() {
-  const { isMounted, isRouterReady, router } = useSSR();
+   const { isMounted, router } = useSSR();
 
-  const [transactions, setTransactions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(PAGE_LIMIT);
-  const [pagination, setPagination] = useState({});
-  const [summary, setSummary] = useState(null);
-  const [blogCount, setBlogCount] = useState({
-    currentCount: 0,
-    limit: 10,
-    remaining: 10,
-    canAddMore: true
-  });
-  const [viewMode, setViewMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return (isMobile || window.innerWidth < 768) ? 'grid' : 'table';
-    }
-    return isMobile ? 'list' : 'table';
-  });
+   const [transactions, setTransactions] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
+   const [page, setPage] = useState(1);
+   const [pagination, setPagination] = useState({});
+   const [summary, setSummary] = useState(null);
+   const [blogCount, setBlogCount] = useState({ currentCount: 0, limit: 10, remaining: 10, canAddMore: true });
+   const [viewMode, setViewMode] = useState('grid');
 
-  const fetchCurrentMonthBlogCount = async () => {
-    try {
-      const response = await API.getCurrentMonthBlogCount();
-      if (response.success && response.data) {
-        setBlogCount(response.data);
-      }
-    } catch (error) {
-      console.error('Error fetching current month blog count:', error);
-    }
-  };
+   const fetchStats = useCallback(async () => {
+      try {
+         const response = await API.getCurrentMonthBlogCount();
+         if (response.success && response.data) setBlogCount(response.data);
+      } catch (error) { console.error('Blog stats offline'); }
+   }, []);
 
-  useEffect(() => {
-    if (isMounted) {
-      fetchBlogRewardsHistory(page, limit);
-      fetchCurrentMonthBlogCount();
-    }
-  }, [isMounted, page, limit]);
-
-  const fetchBlogRewardsHistory = async (page = 1, limit = 20) => {
-    try {
+   const fetchHistory = useCallback(async (p = 1) => {
       setLoading(true);
-      setError(null);
-      const params = {
-        page,
-        limit,
-      };
-
-      const response = await API.getBlogRewardsHistory(params);
-
-      if (response?.success) {
-        setTransactions(response.data?.transactions || []);
-        setPagination(response.data?.pagination || {});
-        setSummary(response.data?.summary || null);
-      } else {
-        const errorMsg = response?.message || response?.error || 'Failed to fetch blog rewards history';
-        setError(errorMsg);
-        toast.error(errorMsg);
+      try {
+         const response = await API.getBlogRewardsHistory({ page: p, limit: 20 });
+         if (response?.success) {
+            setTransactions(response.data?.transactions || []);
+            setPagination(response.data?.pagination || {});
+            setSummary(response.data?.summary || null);
+         } else {
+            setError(response?.message || "Journal stream localized failure");
+         }
+      } catch (err) {
+         setError("Journal link sync failed");
+      } finally {
+         setLoading(false);
       }
-    } catch (err) {
-      console.error('Error fetching blog rewards history:', err);
-      console.error('Error details:', {
-        message: err?.message,
-        response: err?.response,
-        status: err?.response?.status,
-        data: err?.response?.data
+   }, []);
+
+   useEffect(() => {
+      if (isMounted) {
+         fetchHistory(page);
+         fetchStats();
+      }
+   }, [isMounted, page, fetchHistory, fetchStats]);
+
+   const formatDate = (dateString) => {
+      return new Date(dateString).toLocaleDateString('en-IN', {
+         day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
       });
-      const errorMessage = err?.response?.data?.message ||
-        err?.response?.data?.error ||
-        err?.message ||
-        'Failed to fetch blog rewards history. Please try again later.';
-      setError(errorMessage);
-      toast.error(errorMessage);
-    } finally {
-      setLoading(false);
-    }
-  };
+   };
 
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
+   const getTierConfig = (tier) => {
+      switch (tier) {
+         case 'high': return { color: 'primary', label: 'ELITE JOURNAL' };
+         case 'good': return { color: 'emerald', label: 'SCHOLAR ENTRY' };
+         default: return { color: 'secondary', label: 'STANDARD LOG' };
+      }
+   };
 
-  const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
-    return new Date(dateString).toLocaleDateString('en-IN', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
+   if (!isMounted) return null;
 
-  const getRewardTierLabel = (tier) => {
-    const labels = {
-      'normal': 'Normal Blog - ₹5',
-      'good': 'Good Blog - ₹10',
-      'high': 'High Blog - ₹15',
-    };
-    return labels[tier] || tier || 'Unknown';
-  };
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
 
-  const getRewardTierColor = (tier) => {
-    const colors = {
-      'normal': 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
-      'good': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'high': 'bg-purple-100 text-primary-800 dark:bg-purple-900 dark:text-primary-200',
-    };
-    return colors[tier] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
-  };
+            {/* --- Journal Bounty Hero --- */}
+            <section className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm">
+                  <Book className="w-10 h-10" />
+               </motion.div>
+               <div className="space-y-4">
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Journal <span className="text-primary-700 dark:text-primary-500">Bounty</span></h1>
+                  <p className="text-sm font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto">Historical stream of earnings from approved academic contributions</p>
+               </div>
 
-  if (!isMounted) {
-    return null;
-  }
+               <div className="flex justify-center pt-6">
+                  <Button variant="secondary" size="lg" onClick={() => router.push('/pro/create-blog')} className="px-10 py-5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-duo-secondary">
+                     <PlusCircle className="w-4 h-4 mr-2" /> NEW JOURNAL ENTRY
+                  </Button>
+               </div>
+            </section>
 
-  return (
-    <>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-6">
-        <div className="container mx-auto px-0 lg:px-6 xl:px-8">
-          <div className="flex items-center justify-between mb-2">
-            {/* Header */}
-            <div className="mb-2">
-              <h2 className="text-xl lg:text-2xl xl:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                📝 Blog Rewards History
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                View your earnings from approved blogs
-              </p>
-            </div>
+            {/* --- Journal Quota Status --- */}
+            <Card className={`p-8 border-2 transition-all ${!blogCount.canAddMore ? 'bg-primary-500/5 border-primary-500/20' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700'}`}>
+               <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+                  <div className="flex items-center gap-4">
+                     <div className={`p-4 rounded-2xl ${!blogCount.canAddMore ? 'bg-primary-500/10 text-primary-700 dark:text-primary-500' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400'}`}>
+                        <FileText className="w-6 h-6" />
+                     </div>
+                     <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">Journal Publication Quota</p>
+                        <p className={`text-xl font-black font-outfit uppercase ${!blogCount.canAddMore ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-300'}`}>
+                           {blogCount.currentCount} / {blogCount.limit} SYNCED THIS MONTH
+                        </p>
+                     </div>
+                  </div>
+                  <div className="flex-1 w-full max-w-sm">
+                     <div className="h-3 bg-slate-200 dark:bg-slate-900 rounded-full overflow-hidden border border-slate-100 dark:border-slate-800">
+                        <motion.div initial={{ width: 0 }} animate={{ width: `${(blogCount.currentCount / blogCount.limit) * 100}%` }} className="h-full bg-primary-500 shadow-duo-secondary" />
+                     </div>
+                     <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-2 flex justify-between">
+                        <span>{blogCount.remaining} ENTRIES REMAINING</span>
+                        <span>{Math.round((blogCount.currentCount / blogCount.limit) * 100)}% CAPACITY</span>
+                     </p>
+                  </div>
+               </div>
+            </Card>
 
-            {/* View Toggle */}
-            {!loading && !error && transactions.length > 0 && (
-              <div className="mb-4 flex justify-end">
-                <ViewToggle
-                  currentView={viewMode}
-                  onViewChange={setViewMode}
-                  views={['table', 'list', 'grid']}
-                />
-              </div>
+            {/* --- Summary Matrix --- */}
+            {summary && (
+               <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {[
+                     { label: 'TOTAL JOURNAL EARNINGS', val: `₹${summary.totalEarnings?.toLocaleString() || 0}`, icon: TrendingUp, color: 'emerald' },
+                     { label: 'APPROVED ENTRIES', val: summary.totalBlogs || 0, icon: BarChart3, color: 'secondary' }
+                  ].map((s, i) => (
+                     <Card key={i} className="p-10 group relative overflow-hidden border-b-8 border-slate-100 dark:border-slate-800 hover:border-slate-300 transition-all">
+                        <div className="flex justify-between items-center relative z-10">
+                           <div className="space-y-2">
+                              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">{s.label}</p>
+                              <p className={`text-5xl font-black font-outfit uppercase tracking-tight text-${s.color}-500`}>{s.val}</p>
+                           </div>
+                           <div className={`p-6 bg-${s.color}-500/10 text-${s.color}-500 rounded-[2rem] shadow-sm`}>
+                              <s.icon className="w-10 h-10" />
+                           </div>
+                        </div>
+                        <Sparkles className={`absolute -bottom-8 -right-8 w-24 lg:w-48 h-24 lg:h-48 text-${s.color}-500/5 group-hover:text-${s.color}-500/10 transition-colors pointer-events-none`} />
+                     </Card>
+                  ))}
+               </section>
             )}
-          </div>
 
-          {/* Monthly Blog Limit Info */}
-          <div className={`mb-4 lg:mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border ${!blogCount.canAddMore
-            ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-            : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
-            }`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className={`text-sm font-medium ${!blogCount.canAddMore
-                  ? 'text-red-800 dark:text-red-300'
-                  : 'text-primary-800 dark:text-primary-300'
-                  }`}>
-                  Monthly Blog Limit
-                </p>
-                <p className={`text-xs mt-1 ${!blogCount.canAddMore
-                  ? 'text-primary-600 dark:text-red-400'
-                  : 'text-primary-700 dark:text-primary-400'
-                  }`}>
-                  {blogCount.currentCount} / {blogCount.limit} blogs this month
-                  {blogCount.canAddMore && ` (${blogCount.remaining} remaining)`}
-                </p>
-              </div>
-              {!blogCount.canAddMore && (
-                <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
-                  Limit Reached
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Summary Stats */}
-          {summary && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 md:p-6">
-                <div className="flex items-center justify-between">
+            {/* --- Registry Registry --- */}
+            <section className="flex flex-col lg:flex-row justify-between items-center gap-8 bg-white dark:bg-slate-800/50 backdrop-blur-xl p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+               <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary-500 rounded-xl text-white shadow-duo-secondary">
+                     <Zap className="w-5 h-5" />
+                  </div>
                   <div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Blog Earnings</div>
-                    <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">
-                      ₹{summary.totalEarnings?.toLocaleString('en-IN') || 0}
-                    </div>
+                     <h3 className="text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Bounty Transaction Registry</h3>
+                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Global academic reward extractions</p>
                   </div>
-                  <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-4">
-                    <FaRupeeSign className="text-2xl text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 md:p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Blogs Rewarded</div>
-                    <div className="text-2xl md:text-3xl font-bold text-secondary-600 dark:text-secondary-400">
-                      {summary.totalBlogs || 0}
-                    </div>
-                  </div>
-                  <div className="bg-secondary-100 dark:bg-secondary-900/30 rounded-full p-4">
-                    <FaBook className="text-2xl text-secondary-600 dark:text-secondary-400" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+               </div>
 
+               <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['grid', 'list', 'table']} />
+            </section>
 
-
-          {/* Content */}
-          {loading ? (
-            <div className="flex items-center justify-center h-64">
-              <Loading size="lg" color="blue" message="" />
-            </div>
-          ) : error ? (
-            <div className="text-center py-12">
-              <div className="text-red-500 text-6xl mb-4">⚠️</div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                Error loading blog rewards history
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">{error}</p>
-            </div>
-          ) : transactions.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">
-                📝
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                No blog rewards found
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Start creating blogs to earn rewards!
-              </p>
-              <button
-                onClick={() => router.push('/pro/create-blog')}
-                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-lg hover:from-primary-600 hover:to-secondary-600 transition-all"
-              >
-                Create Your First Blog
-              </button>
-            </div>
-          ) : (
-            <>
-              {/* Table View */}
-              {viewMode === 'table' && (
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                      <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
-                        <tr>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Blog
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Reward Tier
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Amount
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Balance After
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Date
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                        {transactions.map((tx, index) => (
-                          <tr key={tx._id || index} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <div className="flex items-center gap-3">
-                                <div className="flex-shrink-0 h-12 w-12">
-                                  {tx.article?.featuredImage ? (
-                                    <img
-                                      className="h-12 w-12 rounded-lg object-cover"
-                                      src={tx.article.featuredImage}
-                                      alt={tx.articleTitle || 'Blog Image'}
-                                      onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = '/default_banner.png';
-                                      }}
-                                    />
-                                  ) : (
-                                    <div className="h-12 w-12 rounded-lg bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                                      <img
-                                        src="/default_banner.png"
-                                        alt="Default Blog Image"
-                                        className="h-12 w-12 rounded-lg object-cover"
-                                        onError={(e) => {
-                                          e.target.onerror = null;
-                                          e.target.style.display = 'none';
-                                          e.target.parentElement.innerHTML = '<span class="text-gray-400 text-xl">📝</span>';
-                                        }}
-                                      />
+            {/* --- Registry Results --- */}
+            <AnimatePresence mode="wait">
+               {loading ? (
+                  <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+               ) : error ? (
+                  <div className="py-24 text-center space-y-6">
+                     <CircleAlert className="w-16 h-16 text-primary-700 dark:text-primary-500 mx-auto" />
+                     <h3 className="text-xl font-black font-outfit uppercase">Registry Corrupted</h3>
+                     <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
+                     <Button variant="primary" onClick={() => fetchHistory(page)}>RETRY SYNC</Button>
+                  </div>
+               ) : transactions.length === 0 ? (
+                  <div className="py-32 text-center space-y-8">
+                     <div className="w-24 h-24 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto">
+                        <Sticker className="w-12 h-12 text-slate-300" />
+                     </div>
+                     <div className="space-y-2">
+                        <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Journal Empty</h3>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">No academic contributions have yielded bounties yet. Publish your first entry to begin.</p>
+                     </div>
+                     <Button variant="secondary" size="lg" onClick={() => router.push('/pro/create-blog')} className="rounded-full px-10 py-5 text-xs font-black shadow-duo-secondary uppercase tracking-widest">POST FIRST ENTRY</Button>
+                  </div>
+               ) : (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
+                     {viewMode === 'grid' ? (
+                        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                           {transactions.map((tx, idx) => {
+                              const conf = getTierConfig(tx.rewardTier);
+                              return (
+                                 <Card key={tx._id || idx} className="group hover:scale-[1.02] transition-all border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 relative overflow-hidden flex flex-col">
+                                    <div className="h-48 overflow-hidden relative">
+                                       <img
+                                          src={tx.article?.featuredImage || '/default_banner.png'}
+                                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                          alt="Blog Banner"
+                                          onError={(e) => { e.target.src = '/default_banner.png'; }}
+                                       />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                                       <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between">
+                                          <div className={`px-4 py-1.5 rounded-full border border-${conf.color}-500/20 bg-${conf.color}-500/10 text-${conf.color}-500 text-[8px] font-black uppercase tracking-widest`}>
+                                             {conf.label}
+                                          </div>
+                                          <p className="text-xl font-black font-outfit text-emerald-400">+₹{tx.amount?.toLocaleString()}</p>
+                                       </div>
                                     </div>
-                                  )}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                                    {tx.articleTitle || 'Unknown Blog'}
-                                  </div>
-                                  {tx.article?.status && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                                      Status: {tx.article.status}
+
+                                    <div className="p-8 flex-1 space-y-4 relative z-10">
+                                       <h3 className="text-lg font-black font-outfit uppercase line-clamp-2 leading-tight min-h-[3rem]">{tx.articleTitle || 'VERIFIED BLOG ENTRY'}</h3>
+
+                                       <div className="grid grid-cols-2 gap-4">
+                                          <div className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl">
+                                             <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-1">VAULT BALANCE</p>
+                                             <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">₹{tx.balance?.toLocaleString()}</p>
+                                          </div>
+                                          <div className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl">
+                                             <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-1">SYNCED AT</p>
+                                             <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{formatDate(tx.createdAt)}</p>
+                                          </div>
+                                       </div>
+
+                                       {tx.article?.status && (
+                                          <div className="flex items-center gap-2 pt-2">
+                                             <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+                                             <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest italic">Live Status: {tx.article.status}</p>
+                                          </div>
+                                       )}
                                     </div>
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getRewardTierColor(tx.rewardTier)}`}>
-                                {getRewardTierLabel(tx.rewardTier)}
-                              </span>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <div className="text-sm font-bold text-green-600 dark:text-green-400">
-                                +₹{tx.amount?.toLocaleString('en-IN') || 0}
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900 dark:text-white">
-                                ₹{tx.balance?.toLocaleString('en-IN') || 0}
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-500 dark:text-gray-400">
-                                {formatDate(tx.createdAt)}
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* Pagination */}
-                  {pagination.pages > 1 && (
-                    <div className="bg-gray-50 dark:bg-gray-700 px-4 py-3 border-t border-gray-200 dark:border-gray-600">
-                      <Pagination
-                        currentPage={pagination.page || 1}
-                        totalPages={pagination.pages || 1}
-                        onPageChange={handlePageChange}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* List View */}
-              {viewMode === 'list' && (
-                <div className="space-y-3">
-                  {transactions.map((tx, index) => (
-                    <div
-                      key={tx._id || index}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex flex-col sm:flex-row gap-4">
-                        {/* Blog Image */}
-                        <div className="flex-shrink-0">
-                          <div className="w-full sm:w-24 h-24 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                            {tx.article?.featuredImage ? (
-                              <img
-                                src={tx.article.featuredImage}
-                                alt={tx.articleTitle || 'Blog Image'}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.onerror = null;
-                                  e.target.src = '/default_banner.png';
-                                }}
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-                                <img
-                                  src="/default_banner.png"
-                                  alt="Default Blog Image"
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.style.display = 'none';
-                                    e.target.parentElement.innerHTML = '<span class="text-gray-400 text-2xl">📝</span>';
-                                  }}
-                                />
-                              </div>
-                            )}
-                          </div>
+                                    <Sparkles className="absolute -bottom-8 -right-8 w-40 h-40 text-primary-700 dark:text-primary-500/5 group-hover:text-primary-700 dark:text-primary-500/10 transition-all pointer-events-none" />
+                                 </Card>
+                              );
+                           })}
                         </div>
+                     ) : (
+                        <Card className="p-12 text-center text-slate-600 dark:text-slate-400 uppercase font-black text-[10px] tracking-widest">
+                           {viewMode} Mode Requires Tactical Console View (Desktop Only)
+                           <div className="mt-8">
+                              <Button variant="ghost" onClick={() => setViewMode('grid')}>RETURN TO VISUAL GRID</Button>
+                           </div>
+                        </Card>
+                     )}
 
-                        {/* Blog Content */}
-                        <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                          <div className="flex-1">
-                            <div className="flex items-start justify-between mb-2">
-                              <h3 className="text-base font-semibold text-gray-900 dark:text-white">
-                                {tx.articleTitle || 'Unknown Blog'}
-                              </h3>
-                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ml-2 ${getRewardTierColor(tx.rewardTier)}`}>
-                                {getRewardTierLabel(tx.rewardTier)}
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                              <div className="flex items-center gap-1">
-                                <FaRupeeSign className="text-green-600 dark:text-green-400" />
-                                <span className="font-bold text-green-600 dark:text-green-400">
-                                  +₹{tx.amount?.toLocaleString('en-IN') || 0}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <span>Balance:</span>
-                                <span className="font-medium">₹{tx.balance?.toLocaleString('en-IN') || 0}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <FaCalendarAlt className="text-gray-400" />
-                                <span>{formatDate(tx.createdAt)}</span>
-                              </div>
-                            </div>
-                            {tx.article?.status && (
-                              <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                                Status: {tx.article.status}
-                              </div>
-                            )}
-                          </div>
+                     {/* Pagination Hub */}
+                     {pagination.pages > 1 && (
+                        <div className="flex justify-center gap-2 pt-8">
+                           {[...Array(pagination.pages)].map((_, i) => (
+                              <button
+                                 key={i}
+                                 onClick={() => setPage(i + 1)}
+                                 className={`w-12 h-12 rounded-2xl text-[10px] font-black transition-all ${page === i + 1 ? 'bg-primary-500 text-white shadow-duo-secondary' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:text-primary-500'}`}
+                              >
+                                 {i + 1}
+                              </button>
+                           ))}
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                     )}
+                  </motion.div>
+               )}
+            </AnimatePresence>
 
-                  {/* Pagination */}
-                  {pagination.pages > 1 && (
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow px-4 py-3 border border-gray-200 dark:border-gray-700">
-                      <Pagination
-                        currentPage={pagination.page || 1}
-                        totalPages={pagination.pages || 1}
-                        onPageChange={handlePageChange}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Grid View */}
-              {viewMode === 'grid' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {transactions.map((tx, index) => (
-                    <div
-                      key={tx._id || index}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all hover:scale-105"
-                    >
-                      {/* Blog Image */}
-                      <div className="mb-3">
-                        <div className="w-full h-40 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                          {tx.article?.featuredImage ? (
-                            <img
-                              src={tx.article.featuredImage}
-                              alt={tx.articleTitle || 'Blog Image'}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = '/default_banner.png';
-                              }}
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-                              <img
-                                src="/default_banner.png"
-                                alt="Default Blog Image"
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.onerror = null;
-                                  e.target.style.display = 'none';
-                                  e.target.parentElement.innerHTML = '<span class="text-gray-400 text-4xl">📝</span>';
-                                }}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 flex-1">
-                          {tx.articleTitle || 'Unknown Blog'}
-                        </h3>
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ml-2 flex-shrink-0 ${getRewardTierColor(tx.rewardTier)}`}>
-                          {getRewardTierLabel(tx.rewardTier)}
-                        </span>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-gray-600 dark:text-gray-400">Reward Amount</span>
-                          <span className="text-lg font-bold text-green-600 dark:text-green-400">
-                            +₹{tx.amount?.toLocaleString('en-IN') || 0}
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-gray-600 dark:text-gray-400">Balance After</span>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">
-                            ₹{tx.balance?.toLocaleString('en-IN') || 0}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-200 dark:border-gray-700">
-                          <FaCalendarAlt />
-                          <span>{formatDate(tx.createdAt)}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Pagination */}
-                  {pagination.pages > 1 && (
-                    <div className="col-span-full bg-white dark:bg-gray-800 rounded-lg shadow px-4 py-3 border border-gray-200 dark:border-gray-700 mt-4">
-                      <Pagination
-                        currentPage={pagination.page || 1}
-                        totalPages={pagination.pages || 1}
-                        onPageChange={handlePageChange}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
-          )}
-        </div>
+         </div>
+         <UnifiedFooter />
       </div>
-      <UnifiedFooter />
-    </>
-  );
+   );
 }
+
 

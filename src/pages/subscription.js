@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { getCanonicalUrl } from '../utils/seo';
 
 const SubscriptionPage = dynamic(() => import('../components/pages/SubscriptionPage'), {
   ssr: false,

@@ -6,8 +6,7 @@ import dbConnect from '../../lib/db';
 import User from '../../models/User';
 import FollowButton from '../../components/FollowButton';
 import Loading from '../../components/Loading';
-// MobileAppWrapper import removed
-import UnifiedFooter from '../../components/UnifiedFooter';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const router = useRouter();
@@ -75,8 +74,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50 dark:bg-gray-900 px-4">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Profile Not Found</h2>
+      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white dark:bg-slate-950 px-4 font-outfit">
+        <h2 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
@@ -91,8 +90,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   if (!profile) return null;
 
   return (
-    <>
-      <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <MobileAppWrapper title={profile.name || 'Profile'}>
+      <div className="container mx-auto py-0 lg:py-6 px-0 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
         <Head>
           <title>{seo?.title || 'Profile - AajExam'}</title>
           {seo?.description && <meta name="description" content={seo.description} />}
@@ -109,8 +108,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {seo?.url && <link rel="canonical" href={seo.url} />}
         </Head>
 
-        <div className="bg-white dark:bg-gray-800 shadow-md mb-5">
-          <div className="h-32 lg:h-40 bg-gradient-to-r from-red-500 to-primary-600"></div>
+        <div className="bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-b-[12px] border-slate-200 dark:border-slate-800 shadow-2xl mb-8 overflow-hidden">
+          <div className="h-40 lg:h-56 bg-gradient-to-r from-primary-500 via-primary-500 to-primary-500 bg-[length:200%_auto] animate-gradient"></div>
 
           <div className="px-6 pb-6">
             {/* Avatar Section */}
@@ -119,21 +118,21 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <img
                   src={profile.profilePicture}
                   alt={profile.name}
-                  className="w-28 h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg object-cover"
+                  className="w-20 lg:w-32 h-20 lg:h-32 lg:w-40 lg:h-40 rounded-[2.5rem] border-8 border-white dark:border-slate-900 shadow-2xl object-cover"
                 />
               ) : (
-                <div className="w-28 h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center bg-gradient-to-br from-red-500 to-primary-600 text-white text-5xl lg:text-6xl font-bold">
+                <div className="w-20 lg:w-32 h-20 lg:h-32 lg:w-40 lg:h-40 rounded-[2.5rem] border-8 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center bg-gradient-to-br from-primary-500 to-primary-600 text-white text-6xl lg:text-7xl font-black">
                   {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                 </div>
               )}
             </div>
 
             {/* Profile Info */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5">
-              <div className="text-center md:text-left mb-4 md:mb-0">
-                <h1 className="text-2xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{profile.name}</h1>
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-5">
+              <div className="text-center lg:text-left mb-6 lg:mb-0">
+                <h1 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-2">{profile.name}</h1>
                 {profile.username && (
-                  <p className="text-base lg:text-lg font-semibold text-primary-700 dark:text-primary-400 mt-1">
+                  <p className="text-sm font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
                     @{profile.username}
                   </p>
                 )}
@@ -149,7 +148,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
               {isOwnProfile && (
                 <button
-                  className="px-6 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  className="px-8 py-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-widest text-xs rounded-2xl shadow-duo border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-1 active:border-b-0 transition-all"
                   onClick={() => router.push('/profile/settings')}
                 >
                   Edit Profile
@@ -159,30 +158,30 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
             {/* Bio */}
             {profile.bio && (
-              <div className="py-4 border-b border-gray-200 dark:border-gray-700 mb-5">
-                <p className="text-gray-700 dark:text-gray-300 text-center md:text-left">{profile.bio}</p>
+              <div className="py-6 border-b border-slate-100 dark:border-slate-800 mb-8">
+                <p className="text-slate-600 dark:text-slate-400 text-center lg:text-left font-bold leading-relaxed">{profile.bio}</p>
               </div>
             )}
 
             {/* Stats */}
-            <div className="flex justify-around gap-8 pt-5 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex justify-around gap-8 py-8 border-t border-slate-100 dark:border-slate-800">
               <div
-                className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex flex-col items-center cursor-pointer group"
                 onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
               >
-                <span className="text-2xl font-bold text-gray-900 dark:text-white">{profile.followersCount || 0}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Followers</span>
+                <span className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-2">Followers</span>
               </div>
               <div
-                className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex flex-col items-center cursor-pointer group"
                 onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
               >
-                <span className="text-2xl font-bold text-gray-900 dark:text-white">{profile.followingCount || 0}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Following</span>
+                <span className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-2">Following</span>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-gray-900 dark:text-white">{profile.profileViews || 0}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Views</span>
+              <div className="flex flex-col items-center group">
+                <span className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.profileViews || 0}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-2">Views</span>
               </div>
             </div>
           </div>
@@ -191,19 +190,23 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Content Sections */}
         <div className="px-0 space-y-5 pb-8">
           {/* Level & Badges Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
-            <h2 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-5">Level & Badges</h2>
-            <div className="flex flex-wrap items-center gap-5">
-              <div className="flex flex-col items-center px-6 py-5 bg-gradient-to-br from-red-500 to-primary-600 rounded-xl text-white min-w-[120px]">
-                <span className="text-4xl font-bold">{profile.level?.currentLevel?.number || 0}</span>
-                <span className="text-base mt-2">{profile.level?.currentLevel?.name || 'Starter'}</span>
+          <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
+            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+              <div className="w-2 h-8 bg-primary-500 rounded-full" />
+              Level & Badges
+            </h2>
+            <div className="flex flex-wrap items-center gap-8">
+              <div className="flex flex-col items-center px-10 py-6 bg-primary-500 rounded-3xl text-white shadow-duo-primary border-b-8 border-primary-700">
+                <span className="text-5xl font-black leading-none">{profile.level?.currentLevel?.number || 0}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest mt-3">{profile.level?.currentLevel?.name || 'Starter'}</span>
               </div>
               {profile.badges && profile.badges.length > 0 && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   {profile.badges.map((badge, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium"
+                      className="px-6 py-3 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-2xl text-[10px] font-black uppercase tracking-widest border-2 border-slate-100 dark:border-slate-800 shadow-sm"
                     >
                       {badge}
                     </span>
@@ -215,78 +218,85 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Quiz Statistics Section */}
           {(profile.isPublicProfile || isOwnProfile) && (
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
-              <h2 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-5">Quiz Statistics</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
+              <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+                <div className="w-2 h-8 bg-primary-500 rounded-full" />
+                Quiz Statistics
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
+                  <span className="text-4xl font-black text-primary-600 group-hover:scale-110 transition-transform">
                     {profile.level?.progress?.quizzesPlayed || 0}
                   </span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">Total Quizzes</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">Total Quizzes</span>
                 </div>
-                <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
+                <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
+                  <span className="text-4xl font-black text-emerald-600 group-hover:scale-110 transition-transform">
                     {profile.level?.stats?.highScoreRate || 0}%
                   </span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">High Score Rate</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">High Score Rate</span>
                 </div>
-                <div className="flex flex-col items-center p-5 bg-gray-50 dark:bg-gray-700 rounded-xl hover:shadow-lg transition-shadow">
-                  <span className="text-3xl font-bold text-primary-600 dark:text-red-400">
+                <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
+                  <span className="text-4xl font-black text-orange-600 group-hover:scale-110 transition-transform">
                     {profile.level?.stats?.averageScore || 0}%
                   </span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">Average Score</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">Average Score</span>
                 </div>
               </div>
             </div>
           )}
           {/* User Contributions Summary */}
           {loadingContributions ? (
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center">
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-slate-200 dark:border-slate-800 shadow-xl text-center">
               <Loading size="md" color="gray" message="Loading contributions..." />
             </div>
           ) : contributions && (contributions.categories.total > 0 || contributions.subcategories.total > 0 || contributions.quizzes.total > 0 || contributions.userQuestions?.total > 0) && (
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
-              <h2 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-5">Contributions</h2>
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
+              <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+                <div className="w-2 h-8 bg-primary-500 rounded-full" />
+                Contributions
+              </h2>
 
               {/* Contribution Counts Summary */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {contributions.categories.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/20 dark:to-secondary-800/20 rounded-lg text-center border border-secondary-200 dark:border-secondary-700">
-                    <div className="text-3xl font-bold text-secondary-600 dark:text-secondary-400">
+                  <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-slate-100 dark:border-slate-800 text-center shadow-duo group hover:shadow-lg transition-all">
+                    <div className="text-xl lg:text-3xl font-black text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform">
                       {contributions.categories.total}
                     </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                      📚 Categories
+                    <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 mt-2 uppercase tracking-widest">
+                      Categories
                     </div>
                   </div>
                 )}
                 {contributions.subcategories.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-purple-50 from-red-100 dark:from-purple-900/20 dark:from-red-800/20 rounded-lg text-center border border-purple-200 dark:border-purple-700">
-                    <div className="text-3xl font-bold text-primary-700 dark:text-primary-400">
+                  <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-slate-100 dark:border-slate-800 text-center shadow-duo group hover:shadow-lg transition-all">
+                    <div className="text-xl lg:text-3xl font-black text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform">
                       {contributions.subcategories.total}
                     </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                      📑 Subcategories
+                    <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 mt-2 uppercase tracking-widest">
+                      Subcategories
                     </div>
                   </div>
                 )}
                 {contributions.quizzes.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg text center border border-green-200 dark:border-green-700">
-                    <div className="text-3xl font-bold text-green-600 dark:text-green-400">
+                  <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-slate-100 dark:border-slate-800 text-center shadow-duo group hover:shadow-lg transition-all">
+                    <div className="text-xl lg:text-3xl font-black text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
                       {contributions.quizzes.total}
                     </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                      🎯 Quizzes
+                    <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 mt-2 uppercase tracking-widest">
+                      Quizzes
                     </div>
                   </div>
                 )}
                 {contributions.userQuestions?.total > 0 && (
-                  <div className="p-4 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center border border-primary-200 dark:border-primary-700">
-                    <div className="text-3xl font-bold text-primary-700 dark:text-primary-400">
+                  <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-slate-100 dark:border-slate-800 text-center shadow-duo group hover:shadow-lg transition-all">
+                    <div className="text-xl lg:text-3xl font-black text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform">
                       {contributions.userQuestions.total}
                     </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                      💭 Questions
+                    <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 mt-2 uppercase tracking-widest">
+                      Questions
                     </div>
                   </div>
                 )}
@@ -294,18 +304,18 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
               {/* Categories */}
               {contributions.categories.total > 0 && (
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
-                    📚 Categories ({contributions.categories.total})
+                <div className="mb-12">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                    📚 Categories
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     {contributions.categories.items.map((cat) => (
-                      <div key={cat._id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{cat.name}</h4>
+                      <div key={cat._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group">
+                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{cat.name}</h4>
                         {cat.description && (
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{cat.description}</p>
+                          <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{cat.description}</p>
                         )}
-                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-4">
                           Created {new Date(cat.createdAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -316,23 +326,23 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
               {/* Subcategories */}
               {contributions.subcategories.total > 0 && (
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
-                    📑 Subcategories ({contributions.subcategories.total})
+                <div className="mb-12">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                    📑 Subcategories
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     {contributions.subcategories.items.map((subcat) => (
-                      <div key={subcat._id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{subcat.name}</h4>
+                      <div key={subcat._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group">
+                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{subcat.name}</h4>
                         {subcat.category && (
-                          <p className="text-xs text-primary-700 dark:text-primary-400 mt-1">
-                            Category: {subcat.category.name}
+                          <p className="text-[10px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 mt-2">
+                            {subcat.category.name}
                           </p>
                         )}
                         {subcat.description && (
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{subcat.description}</p>
+                          <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{subcat.description}</p>
                         )}
-                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-4">
                           Created {new Date(subcat.createdAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -343,45 +353,32 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
               {/* Quizzes */}
               {contributions.quizzes.total > 0 && (
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
-                    🎯 Quizzes ({contributions.quizzes.total})
+                <div className="mb-12">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                    🎯 Quizzes
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     {contributions.quizzes.items.map((quiz) => (
-                      <div key={quiz._id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                      <div key={quiz._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-emerald-500 transition-all group">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900 dark:text-white">{quiz.title}</h4>
+                            <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-emerald-600 transition-colors">{quiz.title}</h4>
                             {quiz.description && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{quiz.description}</p>
+                              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{quiz.description}</p>
                             )}
-                            <div className="flex items-center gap-3 mt-2 flex-wrap">
+                            <div className="flex items-center gap-3 mt-4 flex-wrap">
                               {quiz.difficulty && (
-                                <span className="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full">
+                                <span className="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-xl text-[10px] font-black uppercase tracking-widest">
                                   {quiz.difficulty}
                                 </span>
                               )}
-                              {quiz.category && (
-                                <span className="text-xs text-gray-600 dark:text-gray-400">
-                                  📚 {quiz.category.name}
-                                </span>
-                              )}
-                              {quiz.subcategory && (
-                                <span className="text-xs text-gray-600 dark:text-gray-400">
-                                  📑 {quiz.subcategory.name}
-                                </span>
-                              )}
-                              <span className="text-xs text-gray-500 dark:text-gray-500">
-                                {quiz.questionsCount || 0} questions
-                              </span>
-                              <span className="text-xs text-gray-500 dark:text-gray-500">
-                                {quiz.attemptsCount || 0} attempts
+                              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                {quiz.questionsCount || 0} questions • {quiz.attemptsCount || 0} attempts
                               </span>
                             </div>
                           </div>
                         </div>
-                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-4">
                           Created {new Date(quiz.createdAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -393,29 +390,28 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* User Questions */}
               {contributions.userQuestions?.items && contributions.userQuestions.items.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
-                    💭 Community Questions ({contributions.userQuestions.total})
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                    💭 Community Questions
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {contributions.userQuestions.items.map((question) => (
-                      <div key={question._id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">{question.questionText}</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                      <div key={question._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-orange-500 transition-all group">
+                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6">{question.questionText}</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                           {question.options.map((option, idx) => (
                             <div
                               key={idx}
-                              className="p-2 rounded-lg border bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm"
+                              className="p-4 rounded-2xl border-2 bg-white dark:bg-slate-900 border-slate-50 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold"
                             >
-                              <span className="font-semibold mr-2">{String.fromCharCode(65 + idx)}.</span>
+                              <span className="text-primary-600 font-extrabold mr-2">{String.fromCharCode(65 + idx)}.</span>
                               {option}
                             </div>
                           ))}
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-                          <span className="flex items-center gap-1">👁️ {question.viewsCount || 0} views</span>
-                          <span className="flex items-center gap-1">❤️ {question.likesCount || 0} likes</span>
-                          <span className="flex items-center gap-1">📤 {question.sharesCount || 0} shares</span>
-                          <span className="text-gray-400">•</span>
+                        <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                          <span className="flex items-center gap-2">👁️ {question.viewsCount || 0} views</span>
+                          <span className="flex items-center gap-2">❤️ {question.likesCount || 0} likes</span>
+                          <span className="flex items-center gap-2">📤 {question.sharesCount || 0} shares</span>
                           <span>{new Date(question.createdAt).toLocaleDateString()}</span>
                         </div>
                       </div>
@@ -428,14 +424,17 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Private Profile Message */}
           {!profile.isPublicProfile && !isOwnProfile && (
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 text-center">
-              <p className="text-lg text-gray-600 dark:text-gray-400">🔒 This profile is private</p>
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-12 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl text-center">
+              <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                🔒
+              </div>
+              <p className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">This profile is private</p>
+              <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mt-2">Only the user can view their full stats and contributions.</p>
             </div>
           )}
         </div>
       </div>
-      <UnifiedFooter />
-    </>
+    </MobileAppWrapper>
   );
 };
 

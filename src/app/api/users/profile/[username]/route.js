@@ -1,9 +1,10 @@
-import { NextResponse } from 'next/server';
-export const dynamic = 'force-dynamic';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import { protect } from '@/middleware/auth';
+import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req, { params }) {
     try {
@@ -17,7 +18,7 @@ export async function GET(req, { params }) {
         const week = searchParams.get('week');
 
         const user = await User.findOne({ username: username.toLowerCase() }).select('-password -googleId');
-        if (!user) return NextResponse.json({ message: 'User not found' }, { status: 404 });
+        if (!user) return errorResponse('User not found', 404);
 
         if (!auth.authenticated || auth.user.id !== user._id.toString()) {
             await User.findByIdAndUpdate(user._id, { $inc: { profileViews: 1 }, lastProfileView: new Date() });
@@ -27,7 +28,7 @@ export async function GET(req, { params }) {
         const levelInfo = await User.getHistoricalLevelInfo(user._id, type, filterValue);
         
         if (!levelInfo && filterValue) {
-            return NextResponse.json({ error: `No historical data found for ${type} ${filterValue}` }, { status: 404 });
+            return errorResponse(`No historical data found for ${type} ${filterValue}`, 404);
         }
 
         const followersCount = await Follow.countDocuments({ following: user._id, status: 'active' });
@@ -56,8 +57,7 @@ export async function GET(req, { params }) {
                        (type === 'weekly' ? user.weeklyProgress : user.monthlyProgress);
         }
 
-        return NextResponse.json({
-            success: true,
+        return successResponse({
             user: { 
                 id: user._id, 
                 name: user.name, 
@@ -84,6 +84,6 @@ export async function GET(req, { params }) {
             }
         });
     } catch (error) {
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return errorResponse(error);
     }
 }

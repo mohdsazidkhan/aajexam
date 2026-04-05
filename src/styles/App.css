@@ -1,5 +1,6 @@
 .appContainer {
-  margin-top: 60px; /* No top margin by default */
+  margin-top: 0px;
+  /* No top margin by default */
   min-height: calc(100vh - 64px);
   transition: margin-left 0.3s ease-in-out;
 }
@@ -48,6 +49,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -73,6 +75,18 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   content: "Write your article content here...";
   color: #9ca3af;
   font-style: italic;
+}
+
+.scroll-to-top-btn {
+  background-color: #58cc02;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .rich-text-editor .toolbar {
@@ -312,36 +326,47 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 .dark .rich-text-editor.fullscreen .editor:focus {
   box-shadow: inset 0 0 0 2px #60a5fa;
 }
- .subscription-name-badge{
-    max-width: 75px;
-    min-width: 75px;
-    border-radius: 4px;
-    text-align: center;
-  }
+
+.subscription-name-badge {
+  max-width: 75px;
+  min-width: 75px;
+  border-radius: 4px;
+  text-align: center;
+}
+
 /* Mobile app container adjustments */
 @media (max-width: 768px) {
- 
+
   .appContainer {
     margin-top: 0;
-    padding-bottom: 0; /* Space for mobile bottom navigation */
+    padding-bottom: 0;
+    /* Space for mobile bottom navigation */
   }
-  .admin-mobile-content,.mobile-content{
+
+  .admin-mobile-content,
+  .mobile-content {
     padding-top: 0px;
   }
-  .quiz-fullscreen-mode .mobile-content{
+
+  .quiz-fullscreen-mode .mobile-content {
     padding-top: 0px;
   }
+
   .appContainer.has-navbar {
     margin-top: 0;
   }
 }
+
 /* When sidebar is open and user is admin, adjust main content */
 .appContainer.has-sidebar {
-  margin-left: 256px; /* Width of sidebar */
+  margin-left: 256px;
+  /* Width of sidebar */
 }
-.logo{
+
+.logo {
   max-width: 55px;
 }
+
 /* Sidebar toggle button styles */
 .toggleMenu {
   display: flex;
@@ -369,17 +394,21 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   color: #6b7280;
   margin-bottom: 1.5rem;
 }
+
 /* Responsive design for admin panel */
 @media (max-width: 768px) {
-  body{
+  body {
     padding-bottom: 48px;
   }
-  .appContainer{
+
+  .appContainer {
     margin-top: 0;
   }
+
   .appContainer.has-sidebar {
     margin-left: 0;
   }
+
   .sidebar {
     width: 100%;
     max-width: 280px;
@@ -392,6 +421,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -403,6 +433,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -414,6 +445,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -425,6 +457,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -432,18 +465,24 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(0, 96, 169, 0.3);
   }
+
   50% {
     box-shadow: 0 0 30px rgba(0, 96, 169, 0.6);
   }
@@ -453,6 +492,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
@@ -554,9 +594,11 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -568,9 +610,12 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
+
   50% {
     box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
   }
@@ -582,18 +627,36 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   animation: staggerFadeIn 0.5s ease-out forwards;
 }
 
-.stagger-item:nth-child(1) { animation-delay: 0.1s; }
-.stagger-item:nth-child(2) { animation-delay: 0.2s; }
-.stagger-item:nth-child(3) { animation-delay: 0.3s; }
-.stagger-item:nth-child(4) { animation-delay: 0.4s; }
-.stagger-item:nth-child(5) { animation-delay: 0.5s; }
-.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+.stagger-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.stagger-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.stagger-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.stagger-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.stagger-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.stagger-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
 
 @keyframes staggerFadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -606,6 +669,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -617,6 +681,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -650,9 +715,10 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 }
 
 .authPage,
-.sidebar{
+.sidebar {
   height: calc(100vh - 64px);
 }
+
 .adminContent {
   height: auto;
 }
@@ -666,7 +732,8 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   transition: all ease-in-out .3s;
   padding-top: 0;
 }
-.adminPanel.hidePanel{
+
+.adminPanel.hidePanel {
   width: 100%;
   margin-left: 0;
   transition: all ease-in-out .3s;
@@ -706,6 +773,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 
 /* Mobile styles for mainContent */
 @media (max-width: 768px) {
+
   .mainContent.showPanel,
   .mainContent.hidePanel {
     margin-left: 0 !important;
@@ -762,14 +830,17 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   .logo {
     max-width: 50px;
   }
-  .sidebar{
+
+  .sidebar {
     top: 0;
     bottom: 0;
     z-index: 999;
   }
-  header{
+
+  header {
     z-index: 99;
   }
+
   .authPage,
   .sidebar,
   .adminContent {
@@ -781,20 +852,21 @@ body.quiz-fullscreen-mode .fixed.z-50 {
     margin-left: 0;
     padding-top: 50px;
   }
-  
+
   /* Login form responsive styles */
   .login-form-container {
     padding: 1rem;
   }
-  
+
   .referral-code-input {
     margin-bottom: 1.5rem;
   }
-  
+
   .referral-code-input input {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
+    /* Prevents zoom on iOS */
   }
-  
+
   .referral-code-help-text {
     font-size: 11px;
     line-height: 1.4;

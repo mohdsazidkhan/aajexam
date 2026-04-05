@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Calendar, ShieldAlert, Zap, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Calendar, ShieldAlert, Zap, Loader2, CircleCheck, TriangleAlert } from 'lucide-react';
 import Sidebar from '../../Sidebar';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import { useSSR } from '../../../hooks/useSSR';
@@ -68,7 +68,7 @@ const AdminCompetitionResets = () => {
                     <Icon className={`w-6 h-6 text-${color}-600 dark:text-${color}-400`} />
                 </div>
                 {!dryRun && (
-                    <span className="flex items-center gap-1 text-xs font-bold text-primary-600 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">
+                    <span className="flex items-center gap-1 text-xs font-bold text-primary-700 dark:text-primary-500 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">
                         <ShieldAlert className="w-3 h-3" /> LIVE MODE
                     </span>
                 )}
@@ -76,18 +76,18 @@ const AdminCompetitionResets = () => {
 
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{title}</h3>
 
-            <div className="flex items-center gap-2 text-xs font-medium text-secondary-600 dark:text-secondary-400 mb-2 bg-secondary-50 dark:bg-secondary-900/20 w-fit px-2 py-0.5 rounded-full">
+            <div className="flex items-center gap-2 text-xs font-medium text-primary-700 dark:text-primary-500 dark:text-primary-400 mb-2 bg-primary-50 dark:bg-primary-900/20 w-fit px-2 py-0.5 rounded-full">
                 <Clock className="w-3 h-3" />
                 Auto: {schedules[type]} ({config.CRON_CONFIG.TIMEZONE})
             </div>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 flex-grow">{description}</p>
+            <p className="text-sm text-slate-700 dark:text-gray-400 mb-6 flex-grow">{description}</p>
 
             <button
                 onClick={() => handleReset(type)}
                 disabled={loading}
                 className={`w-full py-3 px-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${loading
-                    ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
+                    ? 'bg-gray-100 dark:bg-gray-700 text-slate-600 dark:text-gray-400 cursor-not-allowed'
                     : dryRun
                         ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-black'
                         : 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-500/30'
@@ -104,15 +104,15 @@ const AdminCompetitionResets = () => {
         <AdminMobileAppWrapper title="Manage Resets">
             <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-                <div className="adminContent p-2 md:p-6 w-full text-gray-900 dark:text-white">
+                <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white">
                     <div className="mx-auto max-w-6xl">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                             <div>
-                                <h1 className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-3">
-                                    <Calendar className="w-8 h-8 text-secondary-600" />
+                                <h1 className="text-xl lg:text-2xl font-black text-gray-900 dark:text-white flex items-center gap-3">
+                                    <Calendar className="w-8 h-8 text-primary-700 dark:text-primary-500" />
                                     Competition Reset Manager
                                 </h1>
-                                <p className="text-gray-500 dark:text-gray-400 mt-1">
+                                <p className="text-slate-700 dark:text-gray-400 mt-1">
                                     Manually trigger competition resets and historical data preservation.
                                 </p>
                             </div>
@@ -120,14 +120,14 @@ const AdminCompetitionResets = () => {
                             <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl border border-gray-200 dark:border-gray-700">
                                 <button
                                     onClick={() => setDryRun(true)}
-                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${dryRun ? 'bg-white dark:bg-gray-700 text-secondary-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${dryRun ? 'bg-white dark:bg-gray-700 text-primary-700 dark:text-primary-500 shadow-sm' : 'text-slate-700 dark:text-gray-400 hover:text-gray-700'
                                         }`}
                                 >
                                     Dry Run (Safe)
                                 </button>
                                 <button
                                     onClick={() => setDryRun(false)}
-                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${!dryRun ? 'bg-red-600 text-white shadow-sm' : 'text-gray-500 hover:text-red-500'
+                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${!dryRun ? 'bg-red-600 text-white shadow-sm' : 'text-slate-700 dark:text-gray-400 hover:text-red-500'
                                         }`}
                                 >
                                     Live Reset
@@ -137,7 +137,7 @@ const AdminCompetitionResets = () => {
 
                         {error && (
                             <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-700 dark:text-red-400">
-                                <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+                                <TriangleAlert className="w-5 h-5 flex-shrink-0" />
                                 <p className="text-sm font-medium">{error}</p>
                             </div>
                         )}
@@ -145,7 +145,7 @@ const AdminCompetitionResets = () => {
                         {result && (
                             <div className="mb-8 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="flex items-center gap-3 text-green-700 dark:text-green-400 mb-4">
-                                    <CheckCircle2 className="w-6 h-6" />
+                                    <CircleCheck className="w-6 h-6" />
                                     <h2 className="text-lg font-bold">Reset Successfully Triggered!</h2>
                                 </div>
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -169,7 +169,7 @@ const AdminCompetitionResets = () => {
                             </div>
                         )}
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             <ResetCard
                                 title="Daily Reset"
                                 type="daily"
@@ -196,9 +196,9 @@ const AdminCompetitionResets = () => {
                         {!dryRun && (
                             <div className="mt-8 p-6 bg-red-50 dark:bg-red-900/20 border-2 border-dashed border-red-200 dark:border-red-800 rounded-2xl">
                                 <h3 className="text-red-800 dark:text-red-300 font-black flex items-center gap-2 mb-2">
-                                    <AlertTriangle className="w-5 h-5" /> DANGER ZONE
+                                    <TriangleAlert className="w-5 h-5" /> DANGER ZONE
                                 </h3>
-                                <p className="text-sm text-primary-600/80 dark:text-red-400/80 leading-relaxed font-medium">
+                                <p className="text-sm text-primary-700 dark:text-primary-500/80 dark:text-red-400/80 leading-relaxed font-medium">
                                     Live resets are irreversible. Ensure you have verified the potential winners using **Dry Run** mode before proceeding.
                                     Data is protected by database transactions: if the historical snapshot fails, the reset will NOT proceed.
                                 </p>
@@ -212,3 +212,5 @@ const AdminCompetitionResets = () => {
 };
 
 export default AdminCompetitionResets;
+
+

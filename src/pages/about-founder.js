@@ -32,14 +32,14 @@ export default function AboutAuthor() {
                 />
             </Head>
 
-            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
+            <div className="min-h-screen bg-white dark:bg-slate-950">
                 <div className="container mx-auto px-4 lg:px-10 py-8">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-24 h-24 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-24 h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaUserGraduate className="text-white text-5xl" />
                         </div>
-                        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-2xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
                             Mohd Sazid Khan
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
@@ -51,153 +51,127 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* About */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">About the Founder</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+
+                        <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                            <div className="w-2 h-10 bg-primary-500 rounded-full" />
+                            About the Founder
+                        </h2>
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
                             <p>
-                                Mohd Sazid Khan is the founder and driving force behind AajExam, India's innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.
+                                Mohd Sazid Khan is the founder and driving force behind AajExam, India&apos;s innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.
                             </p>
                             <p>
                                 As a UDYAM registered entrepreneur, Sazid combines technical expertise with business acumen to create scalable, user-friendly educational solutions. His vision is to democratize access to high-quality government exam preparation resources, ensuring that students from all backgrounds have the tools they need to succeed in competitive examinations.
                             </p>
                             <p>
-                                Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform's unique 10-level progression system and comprehensive quiz database reflect his commitment to structured, effective learning methodologies.
+                                Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform&apos;s unique 10-level progression system and comprehensive quiz database reflect his commitment to structured, effective learning methodologies.
                             </p>
                         </div>
                     </div>
 
                     {/* Expertise */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-purple-500 rounded-xl flex items-center justify-center">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
                                 <FaCode className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Technical Expertise</h2>
+                            <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Technical Expertise</h2>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-700">
-                                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Full-Stack Development</h3>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.
-                                </p>
-                            </div>
-
-                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border border-green-200 dark:border-green-700">
-                                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Educational Technology</h3>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.
-                                </p>
-                            </div>
-
-                            <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
-                                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">System Architecture</h3>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.
-                                </p>
-                            </div>
-
-                            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
-                                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Data Analytics</h3>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize educational outcomes.
-                                </p>
-                            </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {[
+                                { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-500' },
+                                { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-emerald-500' },
+                                { title: 'System Architecture', desc: 'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color: 'bg-purple-500' },
+                                { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-500' }
+                            ].map((item, idx) => (
+                                <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
+                                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
+                                        <div className={`w-2 h-6 ${item.color} rounded-full`} />
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{item.desc}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
                     {/* Vision & Mission */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Vision & Mission</h2>
+                            <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Vision & Mission</h2>
                         </div>
-                        <div className="space-y-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
                             <div>
-                                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Vision</h3>
-                                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                                    To become India's most trusted and comprehensive government exam preparation platform, empowering millions of students to achieve their career goals in public service through innovative technology and quality educational content.
+                                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                    <div className="w-2 h-6 bg-primary-500 rounded-full" />
+                                    Vision
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                    To become India&apos;s most trusted and comprehensive government exam preparation platform, empowering millions of students to achieve their career goals in public service through innovative technology and quality educational content.
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Mission</h3>
-                                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                                    To provide accessible, affordable, and effective exam preparation resources that combine cutting-edge technology with proven pedagogical methods. We aim to bridge the gap between traditional coaching and modern digital learning, making quality education available to students regardless of their geographical or economic constraints.
+                                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                    <div className="w-2 h-6 bg-primary-500 rounded-full" />
+                                    Mission
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                    To provide accessible, affordable, and effective exam preparation resources that combine cutting-edge technology with proven pedagogical methods. We aim to bridge the gap between traditional coaching and modern digital learning.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     {/* Achievements */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-14 h-14 bg-emerald-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-emerald-700">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">Key Achievements</h2>
+                            <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Key Achievements</h2>
                         </div>
-                        <div className="space-y-4">
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
-                                <div>
-                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">UDYAM Registration</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        Successfully registered AajExam as a UDYAM enterprise, demonstrating commitment to formal business practices and regulatory compliance.
-                                    </p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {[
+                                { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-500' },
+                                { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-green-500' },
+                                { title: 'Content Curation', desc: 'Curated 2000+ quiz questions across multiple subjects.', color: 'bg-purple-500' },
+                                { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-500' }
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
+                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-duo border-b-4 border-black/20`}>
+                                        âœ“
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{item.title}</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
-                                <div>
-                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">Platform Development</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        Designed and developed the entire AajExam platform from scratch, including frontend, backend, database architecture, and deployment infrastructure.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
-                                <div>
-                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">Content Curation</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        Curated and organized 2000+ quiz questions across multiple subjects and difficulty levels, ensuring comprehensive coverage of government exam syllabus.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">✓</div>
-                                <div>
-                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">User Growth</h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        Successfully onboarded thousands of students across India, helping them prepare effectively for various government competitive examinations.
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
                     {/* Philosophy */}
-                    <div className="bg-gradient-to-r from-secondary-50 to-purple-50 dark:from-secondary-900/20 dark:to-purple-900/20 rounded-3xl p-6 lg:p-8 mb-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Educational Philosophy</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-b-[12px] border-slate-800 shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                        <h2 className="text-xl lg:text-4xl font-black text-white mb-8 uppercase tracking-tight relative z-10">Educational Philosophy</h2>
+                        <div className="space-y-6 text-slate-400 text-lg lg:text-xl font-bold leading-relaxed relative z-10">
                             <p>
-                                Sazid believes that effective exam preparation requires more than just access to questions—it requires a structured, progressive learning path that builds confidence and competence systematically. This philosophy is embodied in AajExam's unique 10-level progression system.
+                                Sazid believes that effective exam preparation requires more than just access to questionsâ€”it requires a structured, progressive learning path that builds confidence and competence systematically.
                             </p>
                             <p>
-                                He advocates for a balanced approach that combines technology-enabled convenience with pedagogically sound learning principles. The platform's features—from detailed analytics to gamified progression—reflect his belief that students learn best when they can track their progress, identify weaknesses, and receive immediate feedback.
-                            </p>
-                            <p>
-                                Above all, Sazid is committed to maintaining the highest standards of content quality and platform integrity. He personally oversees the editorial process and ensures that all content meets rigorous accuracy and relevance standards.
+                                He advocates for a balanced approach that combines technology-enabled convenience with pedagogically sound learning principles. He personally oversees the editorial process and ensures all content meets rigorous standards.
                             </p>
                         </div>
                     </div>
 
                     {/* Contact */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Connect with Sazid</h2>
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
@@ -211,7 +185,7 @@ export default function AboutAuthor() {
                                 href="https://www.linkedin.com/in/mohd-sazid-khan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-secondary-700 text-white px-6 py-3 rounded-xl hover:bg-secondary-800 transition-all"
+                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaLinkedin className="text-xl" />
                                 <span>LinkedIn</span>
@@ -229,17 +203,17 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* CTA */}
-                    <div className="text-center">
-                        <div className="bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-800 dark:to-purple-800 rounded-3xl p-8">
-                            <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                    <div className="text-center mt-16">
+                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-duo-primary">
+                            <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Join Thousands of Successful Students
                             </h2>
-                            <p className="text-xl mb-6 text-gray-700 dark:text-gray-300">
-                                Start your government exam preparation journey with AajExam today
+                            <p className="text-md md:text-xl lg:text-2xl font-bold mb-10 text-white/90 uppercase tracking-widest text-xs">
+                                Start your government exam preparation journey today
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
+                                className="bg-white text-primary-600 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
                             >
                                 Get Started Now
                             </button>
@@ -247,7 +221,6 @@ export default function AboutAuthor() {
                     </div>
                 </div>
             </div>
-            <UnifiedFooter />
         </MobileAppWrapper>
     );
 }
@@ -258,3 +231,4 @@ export async function getStaticProps() {
         revalidate: 86400
     };
 }
+

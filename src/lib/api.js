@@ -200,6 +200,19 @@ class ApiService {
     return this.request('/api/student/analytics');
   }
 
+  async getAnalyticsReport() {
+    return this.request('/api/analytics/report');
+  }
+
+  async getDailyDose() {
+    return this.request('/api/daily-dose');
+  }
+
+  async getStudyMaterials(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/study-materials${query ? `?${query}` : ''}`);
+  }
+
   // ===== PUBLIC / SHARED ENDPOINTS =====
   async getPrizePools() {
     return this.request('/api/prizepool');

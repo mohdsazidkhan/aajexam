@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { Bar, Pie, Line } from 'react-chartjs-2';
@@ -16,8 +16,20 @@ import {
 } from 'chart.js';
 
 import {
-  FaFilter, FaDownload, FaChartBar, FaChartLine, FaChartPie
-} from 'react-icons/fa';
+  Filter,
+  Download,
+  BarChart3,
+  LineChart,
+  PieChart as PieChartIcon,
+  ArrowLeft,
+  Activity,
+  Zap,
+  ChevronRight,
+  Search,
+  Calendar,
+  Layers,
+  ShieldCheck
+} from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -26,6 +38,7 @@ import API from '../../../lib/api';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
+import { motion, AnimatePresence } from 'framer-motion';
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement,
@@ -64,7 +77,6 @@ const UserAnalytics = () => {
 
   useEffect(() => {
     setLoading(true);
-    const params = new URLSearchParams(filters).toString();
     API.getUserAnalytics(filters)
       .then(res => {
         if (res.success) {
@@ -98,18 +110,18 @@ const UserAnalytics = () => {
 
   const chartColor = {
     text: {
-      light: '#000000',
-      dark: '#ffffff'
+      light: '#0f172a',
+      dark: '#f8fafc'
     },
     grid: {
-      light: 'rgba(0, 0, 0, 0.1)',
-      dark: 'rgba(255, 255, 255, 0.1)'
+      light: 'rgba(0, 0, 0, 0.05)',
+      dark: 'rgba(255, 255, 255, 0.05)'
     }
   };
 
-  const levelLabels = data?.levelDistribution?.map(l => `Level ${l._id}`) || [];
+  const levelLabels = data?.levelDistribution?.map(l => `LVL_${l._id}`) || [];
   const levelCounts = data?.levelDistribution?.map(l => l.count) || [];
-  const subscriptionLabels = data?.subscriptionStats?.map(s => s._id) || [];
+  const subscriptionLabels = data?.subscriptionStats?.map(s => s._id?.toUpperCase()) || [];
   const subscriptionCounts = data?.subscriptionStats?.map(s => s.count) || [];
   const userGrowthLabels = data?.userGrowth?.map(g => `${g._id.year}-${g._id.month}-${g._id.day}`) || [];
   const userGrowthCounts = data?.userGrowth?.map(g => g.count) || [];
@@ -117,143 +129,308 @@ const UserAnalytics = () => {
   const levelBarData = {
     labels: levelLabels,
     datasets: [{
-      label: 'Users',
+      label: 'CANDIDATE_VOLUME',
       data: levelCounts,
-      backgroundColor: 'rgba(59, 130, 246, 0.7)',
-      borderColor: 'rgba(59, 130, 246, 1)',
-      borderWidth: 1
+      backgroundColor: 'rgba(79, 70, 229, 0.7)',
+      borderColor: 'rgba(79, 70, 229, 1)',
+      borderWidth: 2,
+      borderRadius: 12,
+      hoverBackgroundColor: 'rgba(79, 70, 229, 0.9)',
     }]
   };
 
   const subscriptionPieData = {
     labels: subscriptionLabels,
     datasets: [{
-      label: 'Users',
+      label: 'SUBSCRIPTION_FLUX',
       data: subscriptionCounts,
       backgroundColor: [
-        'rgba(59, 130, 246, 0.7)',
-        'rgba(139, 92, 246, 0.7)',
-        'rgba(16, 185, 129, 0.7)',
-        'rgba(251, 191, 36, 0.7)'
+        'rgba(79, 70, 229, 0.8)',
+        'rgba(16, 185, 129, 0.8)',
+        'rgba(245, 158, 11, 0.8)',
+        'rgba(244, 63, 94, 0.8)'
       ],
-      borderColor: '#fff',
-      borderWidth: 2
+      offset: 20,
+      borderWidth: 0,
+      hoverOffset: 30
     }]
   };
 
   const userGrowthLineData = {
     labels: userGrowthLabels,
     datasets: [{
-      label: 'New Users',
+      label: 'GROWTH_TRAJECTORY',
       data: userGrowthCounts,
-      borderColor: 'rgba(59, 130, 246, 1)',
-      backgroundColor: 'rgba(59, 130, 246, 0.2)',
+      borderColor: 'rgba(79, 70, 229, 1)',
+      backgroundColor: 'rgba(79, 70, 229, 0.1)',
       fill: true,
-      tension: 0.4
+      tension: 0.5,
+      pointRadius: 6,
+      pointHoverRadius: 10,
+      pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 4
     }]
   };
 
   const baseOptions = (mode) => ({
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        labels: {
-          color: chartColor.text[mode]
-        }
+        display: false
+      },
+      tooltip: {
+        backgroundColor: mode === 'dark' ? '#1e293b' : '#fff',
+        titleColor: mode === 'dark' ? '#fff' : '#0f172a',
+        bodyColor: mode === 'dark' ? '#cbd5e1' : '#64748b',
+        borderColor: mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+        borderWidth: 1,
+        padding: 16,
+        boxPadding: 8,
+        usePointStyle: true,
+        titleFont: { family: 'Outfit', weight: '900', size: 12 },
+        bodyFont: { family: 'Outfit', weight: '700', size: 11 }
       }
     },
     scales: {
       x: {
-        ticks: { color: chartColor.text[mode] },
-        grid: { color: chartColor.grid[mode] }
+        ticks: { color: chartColor.text[mode], font: { family: 'Outfit', weight: '700', size: 10 } },
+        grid: { display: false }
       },
       y: {
-        ticks: { color: chartColor.text[mode] },
-        grid: { color: chartColor.grid[mode] }
+        ticks: { color: chartColor.text[mode], font: { family: 'Outfit', weight: '700', size: 10 } },
+        grid: { color: chartColor.grid[mode], drawBorder: false }
       }
     }
   });
 
   const pieOptions = (mode) => ({
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'bottom',
         labels: {
           color: chartColor.text[mode],
-          padding: 20,
-          usePointStyle: true
+          padding: 30,
+          usePointStyle: true,
+          font: { family: 'Outfit', weight: '900', size: 10 },
+          generateLabels: (chart) => {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              return data.labels.map((label, i) => ({
+                text: `${label} (${data.datasets[0].data[i]})`,
+                fillStyle: data.datasets[0].backgroundColor[i],
+                strokeStyle: data.datasets[0].backgroundColor[i],
+                pointStyle: 'circle',
+                hidden: false,
+                index: i
+              }));
+            }
+            return [];
+          }
         }
+      },
+      tooltip: {
+        backgroundColor: mode === 'dark' ? '#1e293b' : '#fff',
+        titleColor: mode === 'dark' ? '#fff' : '#0f172a',
+        padding: 16,
+        titleFont: { family: 'Outfit', weight: '900', size: 12 }
       }
     }
   });
 
-  const mode = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  const mode = typeof document !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 
-  if (loading) return <Loading fullScreen={true} size="lg" color="yellow" message="Loading..." />;
-  if (error) return <div className="min-h-screen p-3 lg:p-6 bg-gray-50 dark:bg-gray-900 text-primary-600 dark:text-red-400">{error}</div>;
-  if (!data) return <div className="min-h-screen p-3 lg:p-6 text-center text-gray-400 dark:text-gray-500">No data available</div>;
+  if (loading) {
+    return (
+      <AdminMobileAppWrapper title="Consumer Intelligence">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+          <div className="relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
+            />
+            <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
+          </div>
+          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Computing Demographic flux...</div>
+        </div>
+      </AdminMobileAppWrapper>
+    );
+  }
 
   return (
-    <AdminMobileAppWrapper title="User Analytics">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 md:p-6 w-full">
-          <h1 className="text-3xl font-bold mb-2">User Analytics</h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">Detailed insights into user behavior, growth, and performance</p>
+    <AdminMobileAppWrapper title="Consumer Intelligence">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
+        {isMounted && <Sidebar />}
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
-          {/* Filters */}
-          <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow mb-8">
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                    <Activity className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">CANDIDATE_ANALYTICS // GROWTH_DATA</span>
+                </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  CONSUMER <span className="text-indigo-600">INTEL</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">Detailed insights into candidate behavior, acquisition trends, and scholastic level performance across the ecosystem.</p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  onClick={handleExport}
+                  className="px-8 py-4 bg-indigo-600 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
+                >
+                  <Download className="w-4 h-4" /> EXPORT_SCHEMATIC_CSV
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Controller Bar */}
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
+                <Filter className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">DATA_FILTERING</div>
+                <div className="text-sm font-black italic uppercase tracking-tighter">Temporal Intelligence Parameters</div>
+              </div>
+            </div>
+
             <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2">
-                <FaFilter className="text-gray-500 dark:text-gray-300" />
-                <span className="font-medium text-sm">Filters:</span>
+              <div className="relative group">
+                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <select
+                  name="period"
+                  value={filters.period}
+                  onChange={handleFilterChange}
+                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
+                >
+                  <option value="week">TEMPORAL: 7_DAYS</option>
+                  <option value="month">TEMPORAL: 30_DAYS</option>
+                  <option value="quarter">TEMPORAL: QUARTERLY</option>
+                  <option value="year">TEMPORAL: ANNUAL</option>
+                </select>
+                <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
               </div>
-              <select name="period" value={filters.period} onChange={handleFilterChange}
-                className="px-4 py-2 rounded-lg border bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                <option value="week">Last 7 days</option>
-                <option value="month">Last 30 days</option>
-                <option value="quarter">Last 3 months</option>
-                <option value="year">Last 12 months</option>
-              </select>
-              <input name="level" value={filters.level} onChange={handleFilterChange} placeholder="Level"
-                className="px-4 py-2 rounded-lg border bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600" />
-              <input name="subscription" value={filters.subscription} onChange={handleFilterChange} placeholder="Subscription"
-                className="px-4 py-2 rounded-lg border bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600" />
-              <button onClick={handleExport}
-                className="ml-auto flex items-center gap-2 px-6 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition">
-                <FaDownload /> Export CSV
-              </button>
+
+              <div className="relative">
+                <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  name="level"
+                  value={filters.level}
+                  onChange={handleFilterChange}
+                  placeholder="FILTER_BY_LEVEL..."
+                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+                />
+              </div>
+
+              <div className="relative">
+                <ShieldCheck className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  name="subscription"
+                  value={filters.subscription}
+                  onChange={handleFilterChange}
+                  placeholder="FILTER_BY_PLAN..."
+                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Charts */}
+          {/* Visualizations Spectrum */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center mb-4">
-                <FaChartBar className="mr-2 text-secondary-600 dark:text-secondary-400" />
-                <h3 className="font-semibold text-lg">Level Distribution</h3>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+            >
+              <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">SCHOLASTIC_SPREAD</div>
+                    <div className="text-xl font-black italic uppercase tracking-tighter italic">Level Distribution</div>
+                  </div>
+                </div>
               </div>
-              {levelLabels.length > 0 ? <Bar data={levelBarData} options={baseOptions(mode)} /> : <p className="text-center text-gray-500">No data</p>}
-            </div>
+              <div className="h-[400px]">
+                {levelLabels.length > 0 ? <Bar data={levelBarData} options={baseOptions(mode)} /> : (
+                  <div className="h-full flex flex-col items-center justify-center text-slate-300">
+                     <BarChart3 className="w-16 h-16 mb-4 opacity-20" />
+                     <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                  </div>
+                )}
+              </div>
+            </motion.div>
 
-            <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center mb-4">
-                <FaChartPie className="mr-2 text-primary-600 dark:text-primary-400" />
-                <h3 className="font-semibold text-lg">Subscription Stats</h3>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+            >
+              <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl">
+                    <PieChartIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">ECONOMY_FLUX</div>
+                    <div className="text-xl font-black italic uppercase tracking-tighter italic">Subscription Stats</div>
+                  </div>
+                </div>
               </div>
-              {subscriptionLabels.length > 0 ? <Pie data={subscriptionPieData} options={pieOptions(mode)} /> : <p className="text-center text-gray-500">No data</p>}
-            </div>
+              <div className="h-[400px]">
+                {subscriptionLabels.length > 0 ? <Pie data={subscriptionPieData} options={pieOptions(mode)} /> : (
+                   <div className="h-full flex flex-col items-center justify-center text-slate-300">
+                      <PieChartIcon className="w-16 h-16 mb-4 opacity-20" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                   </div>
+                )}
+              </div>
+            </motion.div>
           </div>
 
-          {/* Line chart */}
-          <div className="bg-white dark:bg-gray-800 p-3 lg:p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700 mb-8">
-            <div className="flex items-center mb-4">
-              <FaChartLine className="mr-2 text-green-600 dark:text-green-400" />
-              <h3 className="font-semibold text-lg">User Growth</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+          >
+            <div className="flex items-center justify-between mb-12">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
+                  <LineChart className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">ACQUISITION_TRENDS</div>
+                  <div className="text-xl font-black italic uppercase tracking-tighter italic">Candidate Growth Curve</div>
+                </div>
+              </div>
             </div>
-            {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : <p className="text-center text-gray-500">No data</p>}
-          </div>
+            <div className="h-[400px] w-full">
+              {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
+                 <div className="h-full flex flex-col items-center justify-center text-slate-300">
+                    <LineChart className="w-16 h-16 mb-4 opacity-20" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                 </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
     </AdminMobileAppWrapper>
@@ -261,7 +438,4 @@ const UserAnalytics = () => {
 };
 
 export default UserAnalytics;
-
-
-
 

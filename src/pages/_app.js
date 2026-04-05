@@ -9,17 +9,14 @@ import store from '../store';
 import { initializeDarkMode } from '../store/darkModeSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
-import UnifiedNavbar from '../components/UnifiedNavbar';
-import AdminNavbar from '../components/AdminNavbar';
-import MobileBottomNavigation from '../components/MobileBottomNavigation';
-import AdminMobileBottomNavigation from '../components/AdminMobileBottomNavigation';
 import StudentLayout from '../components/StudentLayout';
 import { useRouter } from 'next/router';
-import { isAdmin } from '../lib/utils/adminUtils';
-import { hasAdminPrivileges } from '../lib/utils/adminUtils';
+import { isAdmin, hasAdminPrivileges } from '../lib/utils/adminUtils';
 import Sidebar from '../components/Sidebar';
 import ClientOnly from '../components/ClientOnly';
 import CookieConsent from '../components/CookieConsent';
+import { motion, AnimatePresence } from 'framer-motion';
+import ErrorBoundary from '../components/ErrorBoundary';
 import '../styles/App.css';
 import '../styles/darkMode.css';
 import '../styles/responsive.css';
@@ -30,9 +27,8 @@ import * as gtag from '../lib/gtag';
 const globalStyles = `
   /* Mobile Viewport and Touch Scrolling Fixes */
   html, body {
-    height: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
   }
@@ -67,72 +63,92 @@ const globalStyles = `
 
   /* Mobile Spacing Reductions for Quiz Page */
   @media (max-width: 767px) {
-    .space-y-3 > * + * {
-      margin-top: 0.5rem !important;
-    }
-    
-    .space-y-4 > * + * {
-      margin-top: 0.75rem !important;
-    }
-    
-    .space-y-6 > * + * {
-      margin-top: 1rem !important;
-    }
-    
-    .space-y-8 > * + * {
-      margin-top: 1.25rem !important;
-    }
-    
-    .mb-4 {
-      margin-bottom: 0.75rem !important;
-    }
-    
-    .mb-6 {
-      margin-bottom: 1rem !important;
-    }
-    
-    .mb-8 {
-      margin-bottom: 1.25rem !important;
-    }
-    
-    .py-4 {
-      padding-top: 0.75rem !important;
-      padding-bottom: 0.75rem !important;
-    }
-    
-    .py-6 {
-      padding-top: 1rem !important;
-      padding-bottom: 1rem !important;
-    }
-    
-    .py-8 {
-      padding-top: 1.25rem !important;
-      padding-bottom: 1.25rem !important;
-    }
+    .space-y-3 > * + * { margin-top: 0.5rem !important; }
+    .space-y-4 > * + * { margin-top: 0.75rem !important; }
+    .space-y-6 > * + * { margin-top: 1rem !important; }
+    .space-y-8 > * + * { margin-top: 1.25rem !important; }
+    .mb-4 { margin-bottom: 0.75rem !important; }
+    .mb-6 { margin-bottom: 1rem !important; }
+    .mb-8 { margin-bottom: 1.25rem !important; }
+    .py-4 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+    .py-6 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+    .py-8 { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; }
   }
 `;
+
 // App Layout Component that can use router
-function AppLayout({ Component, pageProps }) {
+import AppLayout from '../components/layout/AppLayout';
+import PublicNavbar from '../components/navbars/PublicNavbar';
+import PublicBottomNav from '../components/navbars/PublicBottomNav';
+
+function PageWrapper({ children, route }) {
+  return (
+    <motion.div
+      key={route}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="h-full"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function AppContent({ Component, pageProps }) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  // Initialize dark mode on app mount
   useEffect(() => {
     dispatch(initializeDarkMode());
   }, [dispatch]);
 
-  // Google Analytics page view tracking on route change
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
+    const handleRouteChange = (url) => gtag.pageview(url);
     router.events.on('routeChangeComplete', handleRouteChange);
-    // Track the initial page load as well
     handleRouteChange(router.asPath);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
+    return () => router.events.off('routeChangeComplete', handleRouteChange);
   }, [router.events, router.asPath]);
+
+  const renderContent = () => {
+    const isPublicRoute = router.pathname === '/' || 
+                          router.pathname.startsWith('/categories') || 
+                          router.pathname.startsWith('/subcategories') || 
+                          router.pathname.startsWith('/exams') || 
+                          router.pathname.startsWith('/levels') ||
+                          router.pathname.startsWith('/articles') ||
+                          router.pathname.startsWith('/login') ||
+                          router.pathname.startsWith('/register');
+
+    if (isPublicRoute) {
+      return (
+        <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
+          <ClientOnly>
+             <PublicNavbar />
+          </ClientOnly>
+          <div className="appContainer">
+            <PageWrapper route={router.asPath}>
+              {Component && <Component {...pageProps} />}
+            </PageWrapper>
+          </div>
+          <ClientOnly>
+            <PublicBottomNav />
+          </ClientOnly>
+        </main>
+      );
+    } 
+    
+    return (
+      <ClientOnly>
+        <AppLayout>
+          <PageWrapper route={router.asPath}>
+            {Component && <Component {...pageProps} />}
+          </PageWrapper>
+        </AppLayout>
+      </ClientOnly>
+    );
+  };
 
   return (
     <>
@@ -144,13 +160,9 @@ function AppLayout({ Component, pageProps }) {
         <meta name="format-detection" content="telephone=no" />
         <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       </Head>
-      {/* Google Analytics scripts */}
       {gtag.GA_MEASUREMENT_ID && (typeof window !== 'undefined' && window.location.hostname !== 'localhost') ? (
         <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
           <Script id="gtag-init" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
@@ -164,86 +176,53 @@ function AppLayout({ Component, pageProps }) {
         </>
       ) : null}
 
-      {/* Landing page and public pages - no layout wrapper */}
-      {router.pathname === '/' || router.pathname.startsWith('/categories') || router.pathname.startsWith('/subcategories') || router.pathname.startsWith('/exams') || router.pathname.startsWith('/levels') ? (
-        <main id="main-content" className="h-full">
-          <div className="appContainer">
-            {Component && <Component {...pageProps} />}
-          </div>
-          <ClientOnly>
-            <MobileBottomNavigation />
-          </ClientOnly>
-        </main>
-      ) : router.pathname.startsWith('/admin') ? (
-        <main id="main-content" className="h-full">
-          {/* Admin Navbar shows only on admin pages */}
-          <ClientOnly>
-            <AdminNavbar />
-          </ClientOnly>
-
-          {/* Sidebar only for admin users */}
-          <ClientOnly>
-            {isAdmin() && hasAdminPrivileges() && <Sidebar />}
-          </ClientOnly>
-
-          <div className={`appContainer ${router.pathname !== '/' ? 'has-navbar' : ''}`}>
-            {Component && <Component {...pageProps} />}
-          </div>
-
-          {/* Admin Mobile Bottom Navigation shows only on admin pages */}
-          <ClientOnly>
-            <AdminMobileBottomNavigation />
-          </ClientOnly>
-        </main>
-      ) : (
-        <main id="main-content" className="h-full">
-          {/* Student Layout with Sidebar for student pages */}
-          <ClientOnly>
-            <StudentLayout>
-              {Component && <Component {...pageProps} />}
-            </StudentLayout>
-          </ClientOnly>
-        </main>
-      )}
+      <ErrorBoundary>
+        <AnimatePresence mode="wait" initial={false}>
+          {renderContent()}
+        </AnimatePresence>
+      </ErrorBoundary>
     </>
   );
 }
 
 export default function App({ Component, pageProps }) {
-  // Get Google Client ID from environment variables
   const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
-  // If no Google Client ID is provided, wrap without GoogleOAuthProvider
   if (!googleClientId || googleClientId === 'your_google_client_id_here') {
-    console.warn('Google OAuth Client ID not configured. Google login will not work.');
     return (
       <Provider store={store}>
         <GlobalErrorProvider>
           <LanguageProvider>
-            <AppLayout Component={Component} pageProps={pageProps} />
+            <AppContent Component={Component} pageProps={pageProps} />
             <CookieConsent />
           </LanguageProvider>
           <Toaster
             position="top-right"
+            containerStyle={{ top: 80 }}
             toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#363636',
-                color: '#fff',
+              duration: 5000,
+              className: 'premium-toast',
+              style: { 
+                background: 'var(--bg-surface)', 
+                color: 'var(--text-primary)', 
+                borderRadius: '1.25rem', 
+                border: '1px solid var(--border-primary)', 
+                backdropFilter: 'blur(16px) saturate(180%)',
+                padding: '12px 20px',
+                fontSize: '12px',
+                fontWeight: '900',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+                maxWidth: '400px'
               },
-              success: {
-                duration: 3000,
-                theme: {
-                  primary: 'green',
-                  secondary: 'black',
-                },
+              success: { 
+                iconTheme: { primary: '#58cc02', secondary: '#fff' },
+                style: { borderLeft: '4px solid #58cc02' }
               },
-              error: {
-                duration: 5000,
-                theme: {
-                  primary: 'red',
-                  secondary: 'black',
-                },
+              error: { 
+                iconTheme: { primary: '#ff4b4b', secondary: '#fff' },
+                style: { borderLeft: '4px solid #ff4b4b' }
               },
             }}
           />
@@ -257,30 +236,36 @@ export default function App({ Component, pageProps }) {
       <Provider store={store}>
         <GlobalErrorProvider>
           <LanguageProvider>
-            <AppLayout Component={Component} pageProps={pageProps} />
+            <AppContent Component={Component} pageProps={pageProps} />
             <CookieConsent />
           </LanguageProvider>
           <Toaster
             position="top-right"
+            containerStyle={{ top: 80 }}
             toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#363636',
-                color: '#fff',
+              duration: 5000,
+              className: 'premium-toast',
+              style: { 
+                background: 'var(--bg-surface)', 
+                color: 'var(--text-primary)', 
+                borderRadius: '1.25rem', 
+                border: '1px solid var(--border-primary)', 
+                backdropFilter: 'blur(16px) saturate(180%)',
+                padding: '12px 20px',
+                fontSize: '12px',
+                fontWeight: '900',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+                maxWidth: '400px'
               },
-              success: {
-                duration: 3000,
-                theme: {
-                  primary: 'green',
-                  secondary: 'black',
-                },
+              success: { 
+                iconTheme: { primary: '#58cc02', secondary: '#fff' },
+                style: { borderLeft: '4px solid #58cc02' }
               },
-              error: {
-                duration: 5000,
-                theme: {
-                  primary: 'red',
-                  secondary: 'black',
-                },
+              error: { 
+                iconTheme: { primary: '#ff4b4b', secondary: '#fff' },
+                style: { borderLeft: '4px solid #ff4b4b' }
               },
             }}
           />

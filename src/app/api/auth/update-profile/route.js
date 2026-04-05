@@ -1,13 +1,13 @@
-import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect } from '@/middleware/auth';
+import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 
 export async function PUT(req) {
     try {
         const auth = await protect(req);
         if (!auth.authenticated) {
-            return NextResponse.json({ message: auth.message }, { status: 401 });
+            return errorResponse(auth.message, 401);
         }
 
         await dbConnect();
@@ -19,7 +19,7 @@ export async function PUT(req) {
 
         const user = await User.findById(userId);
         if (!user) {
-            return NextResponse.json({ message: 'User not found' }, { status: 404 });
+            return errorResponse('User not found', 404);
         }
 
         if (name) user.name = name;
@@ -31,9 +31,7 @@ export async function PUT(req) {
 
         await user.save();
 
-        return NextResponse.json({
-            success: true,
-            message: 'Profile updated successfully',
+        return successResponse({
             user: {
                 _id: user._id,
                 name: user.name,
@@ -43,9 +41,8 @@ export async function PUT(req) {
                 role: user.role,
                 profileImage: user.profileImage
             }
-        });
+        }, 'Profile updated successfully');
     } catch (error) {
-        console.error('Update profile error:', error);
-        return NextResponse.json({ message: error.message }, { status: 500 });
+        return errorResponse(error);
     }
 }

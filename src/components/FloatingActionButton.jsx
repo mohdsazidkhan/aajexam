@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { useRouter } from "next/router";
@@ -48,13 +48,13 @@ const FloatingActionButton = () => {
   return (
     <>
       {/* Floating Action Button - Only visible on mobile for paid users */}
-      <div className="fab-container">
+      <div className="fab-container font-outfit">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="fab-button"
+          className="fab-button shadow-duo-primary border-4 border-white dark:border-slate-800"
           aria-label="Create Quiz or Question"
         >
-          <FaPlus  />
+          <FaPlus className="text-xl" />
         </button>
       </div>
 
@@ -78,30 +78,29 @@ const FloatingActionButton = () => {
         }
 
         .fab-button {
-          width: 40px;
-          height: 40px;
-          border-radius: 4%;
-          background: linear-gradient(135deg, #f4c838 0%, #cd370f 100%);
+          width: 72px;
+          height: 72px;
+          border-radius: 24px;
+          background: #58cc02;
           color: white;
-          border: none;
-          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+          border: 4px solid white;
+          border-bottom-width: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+        }
 
-        }
-        .fab-button svg {
-          font-size: 16px;
-        }
         .fab-button:hover {
-          transform: scale(1.1);
-          box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+          transform: translateY(-4px);
+          filter: brightness(1.1);
         }
 
         .fab-button:active {
-          transform: scale(0.95);
+          transform: translateY(4px);
+          border-bottom-width: 4px;
         }
 
         /* Modal Backdrop */
@@ -132,13 +131,14 @@ const FloatingActionButton = () => {
           left: 0;
           right: 0;
           background: white;
-          border-radius: 24px 24px 0 0;
+          border-radius: 40px 40px 0 0;
           z-index: 1001;
-          max-height: 80vh;
+          max-height: 85vh;
           overflow-y: auto;
           transform: translateY(100%);
-          transition: transform 0.3s ease;
-          box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+          border-top: 4px solid #f0f0f0;
         }
 
         .bottom-sheet.open {
@@ -157,7 +157,8 @@ const FloatingActionButton = () => {
 
         /* Dark mode support */
         :global(.dark) .bottom-sheet {
-          background: #1f2937;
+          background: #1e293b;
+          border-top-color: #334155;
         }
 
         /* Handle Bar */
@@ -233,24 +234,26 @@ const FloatingActionButton = () => {
         .action-card {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 5px;
-          border-radius: 16px;
-          border: 2px solid transparent;
+          gap: 20px;
+          padding: 24px;
+          border-radius: 24px;
+          border: 2px solid #f0f0f0;
+          border-bottom-width: 6px;
           background: white;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: all 0.2s;
           text-align: left;
           width: 100%;
         }
 
         .action-card:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          border-color: #e0e0e0;
         }
 
         .action-card:active {
-          transform: translateY(0);
+          transform: translateY(2px);
+          border-bottom-width: 2px;
         }
 
         .quiz-card {
@@ -312,10 +315,12 @@ const FloatingActionButton = () => {
         }
 
         .action-card-title {
-          font-size: 16px;
-          font-weight: 600;
-          color: #1f2937;
-          margin-bottom: 2px;
+          font-size: 14px;
+          font-weight: 900;
+          color: #1e293b;
+          margin-bottom: 4px;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
 
         :global(.dark) .action-card-title {
@@ -323,13 +328,16 @@ const FloatingActionButton = () => {
         }
 
         .action-card-description {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.4;
+          font-size: 11px;
+          font-weight: 900;
+          color: #94a3b8;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          line-height: 1.6;
         }
 
         :global(.dark) .action-card-description {
-          color: #9ca3af;
+          color: #64748b;
         }
 
         /* Action Card Arrow */
@@ -394,3 +402,4 @@ const FloatingActionButton = () => {
 };
 
 export default FloatingActionButton;
+

@@ -257,7 +257,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
         textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-600',
         bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
         borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
-        icon: '🆓'
+        icon: 'ðŸ†“'
       };
     }
 
@@ -272,17 +272,17 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
           textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
           bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
           borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
-          icon: '⏰'
+          icon: 'â°'
         };
       }
 
       if (daysLeft <= 7) {
         return {
           text: `Expires in ${daysLeft} days`,
-          textColor: currentTheme === 'dark' ? 'text-secondary-400' : 'text-primary-600',
+          textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-600',
           bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
           borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
-          icon: '⚠️'
+          icon: 'âš ï¸'
         };
       }
 
@@ -291,7 +291,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
         textColor: currentTheme === 'dark' ? 'text-green-400' : 'text-green-600',
         bgColor: currentTheme === 'dark' ? 'bg-green-900/30' : 'bg-green-50',
         borderColor: currentTheme === 'dark' ? 'border-green-700' : 'border-green-200',
-        icon: '✅'
+        icon: 'âœ…'
       };
     }
 
@@ -301,7 +301,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
       bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
       borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
-      icon: '❌'
+      icon: 'âŒ'
     };
   } catch (error) {
     console.error('Error getting subscription status text with theme:', error);
@@ -310,7 +310,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       textColor: 'text-gray-500',
       bgColor: 'bg-gray-100',
       borderColor: 'border-gray-300',
-      icon: '❓'
+      icon: 'â“'
     };
   }
 };
@@ -547,3 +547,4 @@ export const getFormattedExpiryDate = () => {
 export const isSubscriptionEnabled = () => {
   return config.isFeatureEnabled('SUBSCRIPTION');
 };
+

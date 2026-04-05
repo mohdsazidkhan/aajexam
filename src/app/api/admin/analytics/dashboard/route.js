@@ -4,6 +4,7 @@ import User from '@/models/User';
 import Quiz from '@/models/Quiz';
 import QuizAttempt from '@/models/QuizAttempt';
 import PaymentOrder from '@/models/PaymentOrder';
+import config from '@/lib/config/appConfig';
 
 const calculateTotalRevenue = async () => {
     const revenueSummary = await PaymentOrder.aggregate([
@@ -42,8 +43,9 @@ export async function GET(req) {
             status: 'active'
         });
 
-        const PRIZE_PER_PRO = Number(process.env.NEXT_PUBLIC_PRIZE_PER_PRO || process.env.PRIZE_PER_PRO || 90);
-        const dynamicPrizePool = activeProUsers * PRIZE_PER_PRO;
+        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
+        const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
+        const dynamicPrizePool = Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL);
 
         const totalRevenue = await calculateTotalRevenue();
 

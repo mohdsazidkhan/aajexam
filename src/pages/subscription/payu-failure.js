@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
+import { ArrowLeft, CircleAlert, LoaderCircle, RefreshCcw } from 'lucide-react';
+
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
-import { FaTimesCircle, FaArrowLeft, FaSync, FaSpinner } from 'react-icons/fa';
 import Seo from '../../components/Seo';
 
-// Safe localStorage access
 const safeLocalStorage = {
   getItem: (key) => {
     if (typeof window !== 'undefined') {
@@ -14,15 +14,23 @@ const safeLocalStorage = {
     }
     return null;
   },
-  setItem: (key, value) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(key, value);
-    }
-  },
   removeItem: (key) => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem(key);
     }
+  },
+};
+
+const formatCurrency = (amount, currency = 'INR') => {
+  const safeAmount = Number(amount || 0);
+  try {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: currency || 'INR',
+      maximumFractionDigits: 0,
+    }).format(safeAmount);
+  } catch {
+    return `Rs.${safeAmount}`;
   }
 };
 
@@ -30,27 +38,21 @@ const PayuFailure = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [paymentData, setPaymentData] = useState(null);
-  const [error, setError] = useState(null);
-  // Removed mobile app source check for web-first experience
-  const [isFromMobileApp] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
     const fetchPaymentData = async () => {
       try {
-        // Get transaction ID from URL query params (sent by backend callback)
-        const { txnid: urlTxnid, status: urlStatus, error: urlError } = router.query;
-
-        console.log('PayU Failure - URL params:', { urlTxnid, urlStatus, urlError });
-
-        // Get transaction ID from localStorage (stored before PayU redirect) as fallback
-        let txnid = urlTxnid || safeLocalStorage.getItem('payu_txnid');
+        let txnid = router.query.txnid || safeLocalStorage.getItem('payu_txnid');
         const txnidTimestamp = safeLocalStorage.getItem('payu_txnid_timestamp');
 
-        // Check if txnid is not too old (within 1 hour)
         if (txnid && txnidTimestamp) {
-          const age = Date.now() - parseInt(txnidTimestamp);
-          if (age > 60 * 60 * 1000) { // 1 hour
-            console.log('PayU txnid is too old, clearing from localStorage');
+          const age = Date.now() - Number.parseInt(txnidTimestamp, 10);
+          if (age > 60 * 60 * 1000) {
             safeLocalStorage.removeItem('payu_txnid');
             safeLocalStorage.removeItem('payu_txnid_timestamp');
             txnid = null;
@@ -58,85 +60,69 @@ const PayuFailure = () => {
         }
 
         if (!txnid) {
-          console.log('No transaction ID found in URL or localStorage');
-          // If we have URL error, show that instead
-          if (urlError) {
-            setError(`Payment failed: ${decodeURIComponent(urlError)}`);
-          } else {
-            setError('No transaction ID found. Please check your payment status.');
-          }
-          setLoading(false);
+          const queryError = router.query.error ? decodeURIComponent(router.query.error) : '';
+          setError(queryError || 'We could not find the payment reference. Please try again from the subscription page.');
           return;
         }
 
-        console.log('Fetching payment data for txnid:', txnid);
-
-        // Fetch payment data from API
         const paymentDataRes = await API.getPaymentData(txnid);
-
-        if (!paymentDataRes.success) {
-          throw new Error(paymentDataRes.message || 'Failed to fetch payment data');
+        if (!paymentDataRes?.success) {
+          throw new Error(paymentDataRes?.message || 'Failed to fetch payment details.');
         }
 
         const data = paymentDataRes.data;
-        console.log('Payment data received:', data);
-
         setPaymentData(data);
 
-        // Show appropriate message based on payment status
-        if (data.status === 'failure' || data.status === 'failed') {
-          toast.error('Payment failed. Please try again.');
-        } else if (data.status === 'pending') {
-          toast.warning('Payment is still pending. Please wait or try again.');
+        if (data?.status === 'pending') {
+          toast.error('This payment is still pending.');
+          setError('Your payment is still pending. Please wait a little longer or check again from the subscription page.');
         } else {
-          toast.error('Payment could not be processed. Please try again.');
+          toast.error('Payment failed. Please try again.');
         }
-
-        // Clear PayU transaction ID from localStorage after processing
-        safeLocalStorage.removeItem('payu_txnid');
-        safeLocalStorage.removeItem('payu_txnid_timestamp');
-        console.log('Cleared PayU txnid from localStorage');
-
-      } catch (error) {
-        console.error('Error fetching payment data:', error);
-        setError(error.message || 'Failed to load payment information');
-        toast.error('Failed to load payment information');
-
-        // Clear PayU transaction ID from localStorage even on error
-        safeLocalStorage.removeItem('payu_txnid');
-        safeLocalStorage.removeItem('payu_txnid_timestamp');
-        console.log('Cleared PayU txnid from localStorage after error');
+      } catch (fetchError) {
+        setError(fetchError?.message || 'Failed to load payment information.');
+        toast.error(fetchError?.message || 'Failed to load payment information.');
       } finally {
+        safeLocalStorage.removeItem('payu_txnid');
+        safeLocalStorage.removeItem('payu_txnid_timestamp');
         setLoading(false);
       }
     };
 
-    // Only run when router.query is available (after hydration)
-    if (router.isReady) {
-      fetchPaymentData();
-    }
-  }, [router.isReady, router.query]);
+    fetchPaymentData();
+  }, [router.isReady, router.query.error, router.query.txnid]);
 
-  const handleTryAgain = () => {
-    router.push('/subscription');
-  };
-
-  const handleGoHome = () => {
-    router.push('/');
-  };
+  const detailRows = paymentData
+    ? [
+      { label: 'Plan', value: paymentData.planName || 'N/A' },
+      { label: 'Amount', value: formatCurrency(paymentData.amount, paymentData.currency) },
+      { label: 'Status', value: paymentData.status || 'failed' },
+      { label: 'Transaction ID', value: paymentData.txnid || 'N/A' },
+      { label: 'Receipt', value: paymentData.receipt || 'N/A' },
+      { label: 'Name', value: paymentData.user?.name || 'N/A' },
+      { label: 'Email', value: paymentData.user?.email || 'N/A' },
+      {
+        label: 'Payment date',
+        value: paymentData.createdAt ? new Date(paymentData.createdAt).toLocaleDateString() : 'N/A',
+      },
+    ]
+    : [];
 
   if (loading) {
     return (
-      <MobileAppWrapper title="Loading Payment Status">
-        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"></div>
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-              Loading Payment Status...
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Please wait while we check your payment status
-            </p>
+      <MobileAppWrapper title="Checking payment">
+        <Seo title="Checking Payment Status - AajExam" description="We are checking your failed payment attempt." noIndex={true} />
+        <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center p-6">
+          <div className="max-w-md w-full text-center bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
+            <div className="w-20 h-20 rounded-[2rem] bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
+              <LoaderCircle className="w-10 h-10 animate-spin" />
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Checking your payment</h1>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                We are gathering the latest payment details so you know what happened.
+              </p>
+            </div>
           </div>
         </div>
       </MobileAppWrapper>
@@ -144,147 +130,79 @@ const PayuFailure = () => {
   }
 
   return (
-    <MobileAppWrapper title="Payment Failed">
+    <MobileAppWrapper title="Payment failed">
       <Seo
         title="Payment Failed - AajExam Platform"
         description="Your payment attempt was not successful. Please try again or contact support."
         noIndex={true}
       />
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-        <div className="container mx-auto py-4 px-4 lg:px-10">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="w-24 h-24 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                <FaTimesCircle className="text-4xl text-primary-600 dark:text-red-400" />
+      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
+            <div className="text-center space-y-4">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                <CircleAlert className="w-12 h-12" />
               </div>
-
-              <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                Payment Failed
-              </h1>
-
-              {error ? (
-                <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 mb-6 border border-red-200 dark:border-red-700">
-                  <p className="text-red-800 dark:text-red-200">{error}</p>
-                </div>
-              ) : (
-                <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-3 lg:p-6 mb-8 shadow-lg">
-                  {paymentData && (
-                    <div className="text-left mb-4">
-                      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-                        Payment Details:
-                      </h3>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Plan:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white">
-                            {paymentData.planName || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Amount:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white">
-                            ₹{paymentData.amount} {paymentData.currency}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Status:</span>
-                          <span className="font-semibold text-primary-600 dark:text-red-400">
-                            {paymentData.status?.toUpperCase() || 'FAILED'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Transaction ID:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white text-xs">
-                            {paymentData.txnid || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Receipt:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white text-xs">
-                            {paymentData.receipt || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">User:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white">
-                            {paymentData.user?.name || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Email:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white text-xs">
-                            {paymentData.user?.email || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600 dark:text-gray-300">Payment Date:</span>
-                          <span className="font-semibold text-gray-800 dark:text-white">
-                            {paymentData.createdAt
-                              ? new Date(paymentData.createdAt).toLocaleDateString()
-                              : 'N/A'}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                    We're sorry, but your payment could not be processed. This could be due to various reasons such as insufficient funds, network issues, or payment gateway problems.
-                  </p>
-                </div>
-              )}
-
-              {!error && (
-                <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-3 lg:p-6 mb-8 shadow-lg">
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-                    What you can do:
-                  </h3>
-                  <ul className="text-left space-y-2 text-gray-600 dark:text-gray-300">
-                    <li className="flex items-start space-x-2">
-                      <span className="text-red-500 mt-1">•</span>
-                      <span>Check your bank account or card balance</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-red-500 mt-1">•</span>
-                      <span>Ensure your card details are correct</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-red-500 mt-1">•</span>
-                      <span>Try using a different payment method</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-red-500 mt-1">•</span>
-                      <span>Contact your bank if the issue persists</span>
-                    </li>
-                  </ul>
-                </div>
-              )}
-
-              <div className="space-y-4">
-                <button
-                  onClick={handleTryAgain}
-                  className="w-full bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
-                >
-                  <FaSync className="text-sm" />
-                  <span>Try Again</span>
-                </button>
-
-                <button
-                  onClick={handleGoHome}
-                  className="w-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
-                >
-                  <FaArrowLeft className="text-sm" />
-                  <span>Go to Home</span>
-                </button>
-
-                {/* Mobile app return button removed */}
-              </div>
-
-              <div className="mt-8 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-200 dark:border-primary-700">
-                <p className="text-sm text-primary-800 dark:text-primary-200">
-                  <strong>Note:</strong> If you were charged but didn't receive your subscription, please contact our support team with your transaction details.
+              <div className="space-y-2">
+                <h1 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
+                <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+                  {error || 'The payment could not be completed. Please try again or use a different payment method.'}
                 </p>
               </div>
+            </div>
+
+            {detailRows.length > 0 && (
+              <div className="rounded-[2.5rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 lg:p-8 space-y-4">
+                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment details</h2>
+                <div className="space-y-3">
+                  {detailRows.map((item) => (
+                    <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
+                      <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.label}</span>
+                      <span className="text-sm font-semibold text-slate-900 dark:text-white break-all sm:text-right">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="rounded-[2.5rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 lg:p-8 space-y-4">
+              <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">What to try next</h2>
+              <ul className="space-y-3">
+                {[
+                  'Check that your card or bank account has enough balance.',
+                  'Review the payment method details and try again carefully.',
+                  'Use a different payment option if the same method keeps failing.',
+                  'Contact support if you were charged but the plan was not activated.',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-primary-500 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button
+                onClick={() => router.push('/subscription')}
+                className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-lg flex items-center justify-center gap-3"
+              >
+                <RefreshCcw className="w-5 h-5" />
+                Try again
+              </button>
+              <button
+                onClick={() => router.push('/')}
+                className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Go home
+              </button>
+            </div>
+
+            <div className="rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 p-4">
+              <p className="text-sm font-medium text-primary-900 dark:text-primary-100">
+                If the amount was deducted but your plan was not activated, keep the transaction ID handy and contact support.
+              </p>
             </div>
           </div>
         </div>

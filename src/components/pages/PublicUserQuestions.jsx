@@ -1,12 +1,30 @@
-'use client';
+﻿'use client';
 
 import React, { useCallback, useEffect, useState, useRef } from 'react';
+import {
+  Search,
+  HelpCircle,
+  Zap,
+  MessageSquare,
+  TrendingUp,
+  Map,
+  Target,
+  Activity,
+  ArrowRight,
+  ShieldCheck,
+  History,
+  CircleCheck,
+  CircleAlert
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../lib/api';
-// MobileAppWrapper import removed
 import UnifiedFooter from '../UnifiedFooter';
 import PublicQuestionsList from '../PublicQuestionsList';
-import { toast } from 'react-toastify';
-// Removed SearchFilter; using inline search tailored to this page
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+import Loading from '../Loading';
 
 const PublicUserQuestions = () => {
   const [items, setItems] = useState([]);
@@ -21,12 +39,10 @@ const PublicUserQuestions = () => {
   const observerTarget = useRef(null);
   const isInitialMount = useRef(true);
 
-  // Initial load - replaces all items
   const load = useCallback(async (resetPage = false) => {
     const currentPage = resetPage ? 1 : page;
-    setLoading(true);
+    if (resetPage) setLoading(true);
     try {
-      // Pass empty string if searchTerm is blank to get default questions
       const searchParam = searchTerm.trim() || '';
       const res = await API.getPublicUserQuestions({ page: currentPage, limit, search: searchParam });
       if (res?.success) {
@@ -37,13 +53,11 @@ const PublicUserQuestions = () => {
         setHasMore(list.length === limit && list.length < (res.pagination?.total || 0));
       }
     } catch (e) {
-      console.error('Failed to load public questions', e);
-    } finally {
-      setLoading(false);
+      console.error('Failed to load questions', e);
     }
+    finally { setLoading(false); }
   }, [page, limit, searchTerm]);
 
-  // Load more - appends to existing items
   const loadMore = useCallback(async () => {
     if (loadingMore || !hasMore) return;
     setLoadingMore(true);
@@ -59,20 +73,18 @@ const PublicUserQuestions = () => {
       }
     } catch (e) {
       console.error('Failed to load more questions', e);
-    } finally {
-      setLoadingMore(false);
     }
+    finally { setLoadingMore(false); }
   }, [page, limit, searchTerm, loadingMore, hasMore, items.length]);
 
-  // Handle search
-  const handleSearch = useCallback(() => {
+  const handleSearch = useCallback((e) => {
+    if (e) e.preventDefault();
     setPage(1);
     setHasMore(true);
     setIsSearchActive(true);
     load(true);
   }, [load]);
 
-  // Handle clear search
   const handleClearSearch = useCallback(() => {
     setSearchTerm('');
     setPage(1);
@@ -80,24 +92,19 @@ const PublicUserQuestions = () => {
     setIsSearchActive(false);
   }, []);
 
-  // Initial load
   useEffect(() => {
     load();
     isInitialMount.current = false;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [load]);
 
-  // Reload when searchTerm is cleared (but not on initial mount)
   useEffect(() => {
     if (!isInitialMount.current && searchTerm === '' && !isSearchActive) {
       setPage(1);
       setHasMore(true);
       load(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, isSearchActive]);
+  }, [searchTerm, isSearchActive, load]);
 
-  // Infinite scroll observer
   useEffect(() => {
     const currentTarget = observerTarget.current;
     const observer = new IntersectionObserver(
@@ -105,33 +112,21 @@ const PublicUserQuestions = () => {
         if (entries[0].isIntersecting && hasMore && !loading && !loadingMore) {
           loadMore();
         }
-      },
-      { threshold: 0.1 }
+      }, { threshold: 0.1 }
     );
-
-    if (currentTarget) {
-      observer.observe(currentTarget);
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget);
-      }
-    };
+    if (currentTarget) observer.observe(currentTarget);
+    return () => { if (currentTarget) observer.unobserve(currentTarget); };
   }, [hasMore, loading, loadingMore, loadMore]);
 
   const answer = async (q, idx) => {
     try {
       if (typeof q.selectedOptionIndex === 'number') return;
-
-      // Immediately show visual feedback
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, selectedOptionIndex: idx, isAnswered: true } : it));
-
-      await API.answerUserQuestion(q._id, idx);
-      toast.success('Answer submitted successfully!');
+      const res = await API.answerUserQuestion(q._id, idx);
+      if (res?.success) toast.success('Correct answer!');
+      else toast.error('Wrong answer.');
     } catch (e) {
-      toast.error(e?.message || 'Failed to submit Answer!');
-      // Revert the visual feedback on error
+      toast.error('Answer failed to submit. Please try again.');
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, selectedOptionIndex: undefined, isAnswered: false } : it));
     }
   };
@@ -150,7 +145,7 @@ const PublicUserQuestions = () => {
       await API.shareUserQuestion(q._id);
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, sharesCount: (it.sharesCount || 0) + 1 } : it));
       if (navigator.share) {
-        navigator.share({ title: 'User Question', text: q.questionText, url: window.location.href }).catch(() => { });
+        navigator.share({ title: 'AajExam Questions', text: q.questionText, url: window.location.href }).catch(() => { });
       }
     } catch (e) { }
   };
@@ -164,113 +159,120 @@ const PublicUserQuestions = () => {
     } catch (e) { }
   };
 
-  // Not using generic table columns; page has a custom list UI
-
-  const content = (
-    <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-6">
-
-        <div className='mb-4 flex flex-col lg:flex-row justify-between items-center gap-4'>
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Questions ({total})</h1>
-            <p className="text-gray-600 dark:text-gray-400">Answer, like, share user questions</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  if (isSearchActive) {
-                    handleClearSearch();
-                  } else {
-                    handleSearch();
-                  }
-                }
-              }}
-              placeholder="Search by question, name, username, email..."
-              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent text-sm"
-            />
-            <button
-              onClick={() => {
-                if (isSearchActive) {
-                  handleClearSearch();
-                } else {
-                  handleSearch();
-                }
-              }}
-              className={`px-4 py-2 ${isSearchActive
-                ? 'bg-gray-500 hover:bg-gray-600'
-                : 'bg-secondary-600 hover:bg-secondary-700'
-                } text-white rounded-lg text-sm whitespace-nowrap`}
-            >
-              {isSearchActive ? 'Clear' : 'Search'}
-            </button>
-          </div>
-        </div>
-
-        {loading && (
-          <div className="mb-3">
-            <div className="h-2 w-24 bg-secondary-200 dark:bg-secondary-900 rounded animate-pulse"></div>
-          </div>
-        )}
-
-        <PublicQuestionsList
-          items={items}
-          onAnswer={answer}
-          onLike={like}
-          onShare={share}
-          onView={view}
-          startIndex={0}
-        />
-
-        {/* Loading More Indicator */}
-        {loadingMore && (
-          <div className="flex justify-center items-center py-8">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-            </div>
-          </div>
-        )}
-
-        {/* Observer Target for Infinite Scroll */}
-        <div ref={observerTarget} className="h-10"></div>
-
-        {/* End of Results Message */}
-        {!hasMore && items.length > 0 && (
-          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-            <p className="text-sm">🎉 You've reached the end!</p>
-            <p className="text-xs mt-1">No more questions to load</p>
-          </div>
-        )}
-
-        {/* Empty State */}
-        {!loading && items.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-            <p className="text-lg mb-2">📝 No questions found</p>
-            <p className="text-sm">Try a different search term</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-
   return (
-    <>
-      {content}
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+
+      <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-6 lg:space-y-12">
+
+        {/* --- Header Section --- */}
+        <section className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-20 h-20 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10">
+            <MessageSquare className="w-10 h-10" />
+          </motion.div>
+          <div className="space-y-4">
+            <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Student <span className="text-primary-700 dark:text-primary-500">Feed</span></h1>
+            <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] max-w-2xl mx-auto">A feed of questions shared by students in the community.</p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 lg:gap-6 max-w-4xl mx-auto pt-6">
+            {[
+              { label: 'Total Questions', val: total.toLocaleString(), icon: History, color: 'primary' },
+              { label: 'Active Students', val: '1.2K+', icon: Target, color: 'secondary' },
+              { label: 'Uptime', val: '100%', icon: Activity, color: 'secondary' }
+            ].map((s, i) => (
+              <Card key={i} className="p-6 flex items-center gap-6 border-2 border-slate-100 dark:border-slate-800 rounded-[2rem] bg-white dark:bg-slate-800/80 backdrop-blur-sm">
+                <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl shadow-sm border-2 border-${s.color}-500/10`}>
+                  <s.icon className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none mb-1">{s.label}</p>
+                  <p className="text-xl font-black font-outfit uppercase">{s.val}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* --- Search Section --- */}
+        <section className="sticky top-4 z-40 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md py-4 border-b border-slate-100 dark:border-slate-800 rounded-3xl">
+          <Card className="max-w-3xl mx-auto p-1.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-none shadow-2xl rounded-full">
+            <form onSubmit={handleSearch} className="flex items-center gap-2">
+              <div className="flex-1 relative group">
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:text-primary-500 transition-colors" />
+                <input
+                  type="text"
+                  className="w-full bg-transparent border-none focus:ring-0 py-4 pl-14 pr-6 text-sm font-bold placeholder:text-slate-300 outline-none"
+                  placeholder="Search for questions..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+              {isSearchActive ? (
+                <Button variant="ghost" onClick={handleClearSearch} className="rounded-full px-6 text-[10px] font-black uppercase font-outfit">CLEAR</Button>
+              ) : (
+                <Button variant="secondary" size="lg" className="rounded-full px-10 py-4 text-xs font-black shadow-duo-secondary font-outfit" type="submit">SEARCH</Button>
+              )}
+            </form>
+          </Card>
+        </section>
+
+        {/* --- Main Feed --- */}
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+          ) : items.length === 0 ? (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-32 text-center space-y-8">
+              <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto border-2 border-slate-200 dark:border-slate-700">
+                <Zap className="w-12 h-12 text-slate-300" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-black font-outfit uppercase tracking-tight">No Questions Found</h3>
+                <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Found no questions matching your search for "{searchTerm}"</p>
+              </div>
+              <Button variant="ghost" onClick={handleClearSearch} className="text-[10px] font-black uppercase tracking-widest rounded-2xl border-2 border-slate-200 dark:border-slate-700 px-8 py-3">Reset Search</Button>
+            </motion.div>
+          ) : (
+            <div className="space-y-12">
+              <PublicQuestionsList
+                items={items}
+                onAnswer={answer}
+                onLike={like}
+                onShare={share}
+                onView={view}
+                startIndex={0}
+              />
+
+              {/* --- Loading More Indicator --- */}
+              {hasMore && (
+                <div ref={observerTarget} className="flex justify-center py-12">
+                  <div className="flex items-center gap-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 px-8 py-4 rounded-[2rem] shadow-sm">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full animate-ping" />
+                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Loading more questions...</span>
+                  </div>
+                </div>
+              )}
+
+              {/* --- End of Feed --- */}
+              {!hasMore && (
+                <div className="text-center py-12 space-y-4">
+                  <ShieldCheck className="w-10 h-10 text-slate-200 mx-auto" />
+                  <div className="space-y-1">
+                    <h4 className="text-lg font-black font-outfit uppercase tracking-tight">End of Questions</h4>
+                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">You've reached the end of the feed.</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </AnimatePresence>
+
+      </div>
+
       <UnifiedFooter />
-    </>
+    </div>
   );
 };
 
 export default PublicUserQuestions;
-
-
-
-
 
 

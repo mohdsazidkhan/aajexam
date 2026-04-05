@@ -82,8 +82,9 @@ export async function POST(req, { params }) {
         attempt.rank = betterCount + 1;
         await attempt.save();
 
-        user.updateQuizBestScore(quizid, score, questions.length, competitionType);
-        const levelUpdate = await user.addQuizCompletion(score, questions.length, competitionType);
+        await user.updateQuizBestScore(quizid, score, questions.length, competitionType);
+        await user.addQuizCompletion(score, questions.length, competitionType);
+        await user.updatePerformanceMetrics(quiz, scorePercentage);
         const levelInfo = await user.getLevelInfo();
 
         await user.save();
@@ -97,20 +98,14 @@ export async function POST(req, { params }) {
             scorePercentage,
             attemptNumber: 1,
             attemptsLeft: 0,
-            bestScore: scorePercentage, // Single attempt system
+            bestScore: scorePercentage,
             isNewBestScore: true,
             isHighScore: scorePercentage >= 70,
             correctAnswers: questions.map(q => q.options[q.correctAnswerIndex]),
             answers: answerRecords,
             attemptId: attempt._id,
             subscriptionStatus: user.subscriptionStatus,
-            levelUpdate: levelUpdate ? {
-                levelIncreased: levelUpdate.levelIncreased,
-                newLevel: levelUpdate.newLevel,
-                newLevelName: levelUpdate.newLevelName,
-                levelInfo: levelInfo,
-                monthly: levelUpdate.monthly
-            } : null,
+            levelInfo: levelInfo,
             message: 'Quiz completed successfully!'
         });
 

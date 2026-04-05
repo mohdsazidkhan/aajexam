@@ -1,26 +1,26 @@
-'use client';
+﻿'use client';
 /**
  * ProgressBar
  * Animated progress bar with label and color variants.
  * Props:
- *   percent  — 0-100
- *   color    — 'orange' | 'blue' | 'purple' | 'green'
- *   showLabel — bool
- *   height   — 'sm' | 'md' | 'lg'
+ *   percent  Ã¢â‚¬â€ 0-100
+ *   color    Ã¢â‚¬â€ 'orange' | 'blue' | 'purple' | 'green'
+ *   showLabel Ã¢â‚¬â€ bool
+ *   height   Ã¢â‚¬â€ 'sm' | 'md' | 'lg'
  */
 
 const COLOR_MAP = {
-    orange: 'bg-gradient-to-r from-primary-500 to-primary-400',
-    blue:   'bg-gradient-to-r from-secondary-500 to-cyan-400',
-    purple: 'bg-gradient-to-r from-purple-600 to-indigo-400',
-    green:  'bg-gradient-to-r from-green-500 to-emerald-400',
-    red:    'bg-gradient-to-r from-red-500 to-primary-400',
+    orange: 'bg-primary-500 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    blue: 'bg-primary-500 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    purple: 'bg-purple-500 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    green: 'bg-emerald-500 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    red: 'bg-rose-500 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
 };
 
 const HEIGHT_MAP = {
-    sm: 'h-1.5',
-    md: 'h-2.5',
+    sm: 'h-2',
     lg: 'h-4',
+    lg: 'h-6',
 };
 
 export default function ProgressBar({
@@ -32,14 +32,14 @@ export default function ProgressBar({
     animate = true,
 }) {
     const clampedPct = Math.min(100, Math.max(0, percent));
-    const barColor   = COLOR_MAP[color] || COLOR_MAP.purple;
-    const barHeight  = HEIGHT_MAP[height] || HEIGHT_MAP.md;
+    const barColor = COLOR_MAP[color] || COLOR_MAP.purple;
+    const barHeight = HEIGHT_MAP[height] || HEIGHT_MAP.md;
 
     return (
-        <div className={`w-full ${className}`}>
-            <div className={`w-full bg-gray-800 rounded-full overflow-hidden ${barHeight}`}>
+        <div className={`w-full ${className} font-outfit`}>
+            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden ${barHeight} shadow-inner border-2 border-slate-200 dark:border-slate-700`}>
                 <div
-                    className={`${barHeight} ${barColor} rounded-full ${animate ? 'transition-all duration-700 ease-out' : ''}`}
+                    className={`${barHeight} ${barColor} rounded-full ${animate ? 'transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1)' : ''} border-r-4 border-white/20`}
                     style={{ width: `${clampedPct}%` }}
                     role="progressbar"
                     aria-valuenow={clampedPct}
@@ -48,12 +48,14 @@ export default function ProgressBar({
                 />
             </div>
             {showLabel && (
-                <div className="flex justify-between mt-1">
-                    <span className="text-xs text-gray-500">0%</span>
-                    <span className="text-xs font-bold text-white">{clampedPct}%</span>
-                    <span className="text-xs text-gray-500">100%</span>
+                <div className="flex justify-between mt-2 px-1">
+                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">0%</span>
+                    <span className="text-xs font-black text-slate-700 dark:text-slate-200">{clampedPct}% COMPLETED</span>
+                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">100%</span>
                 </div>
             )}
         </div>
     );
 }
+
+

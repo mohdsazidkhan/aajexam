@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from "react";
 
@@ -10,17 +10,11 @@ import SearchFilter from "../../SearchFilter";
 import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
 import {
-  FaUser,
-  FaEnvelope,
-  FaRegCalendarAlt,
-  FaUniversity,
-  FaPhone,
-  FaCreditCard,
-  FaBuilding,
-  FaKey,
-  FaCrown,
-  FaUserTag,
-} from "react-icons/fa";
+  User, Mail, Calendar, University, Phone, CreditCard,
+  Building, Key, Crown, UserCheck, Search, Filter,
+  Table as TableIcon, LayoutGrid, List, ChevronRight,
+  TrendingUp, Activity, Hash, Info, Zap, Settings, ArrowRight
+} from "lucide-react";
 import useDebounce from "../../../hooks/useDebounce";
 import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
@@ -109,130 +103,109 @@ export default function AdminBankDetails() {
   };
 
   const getSubscriptionBadge = (status) => {
-    const colors = {
-      free: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
-      basic: "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300",
-      premium:
-        "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
-      pro: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+    const configs = {
+      free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
+      basic: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+      premium: "text-rose-500 bg-rose-500/10 border-rose-500/20",
+      pro: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
     };
 
     return (
-      <span
-        className={`px-2 py-1 rounded-full text-xs font-medium ${colors[status] || colors.free
-          }`}
-      >
-        {status.charAt(0).toUpperCase() + status.slice(1)}
+      <span className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border-2 ${configs[status?.toLowerCase()] || configs.free}`}>
+        {status || 'FREE'}
       </span>
     );
   };
 
   const getLevelBadge = (level) => {
     return (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300">
+      <span className="px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest bg-primary-500/10 text-primary-500 border-2 border-primary-500/20">
         Level {level}
       </span>
     );
   };
 
-  // Table View Component
   const TableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-[1200px] md:w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                User
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Account Details
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Bank Info
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Date Added
-              </th>
+    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+      <div className="overflow-x-auto selection:bg-primary-500/30">
+        <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
+          <thead>
+            <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
+              <th className="px-6 py-4">USER NODE</th>
+              <th className="px-6 py-4">ACCOUNT DETAILS</th>
+              <th className="px-6 py-4">BANK INFORMATION</th>
+              <th className="px-6 py-4">STATUS RECOGNITION</th>
+              <th className="px-6 py-4">SYNC DATE</th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-            {bankDetails.map((detail) => (
+          <tbody>
+            {bankDetails.map((detail, index) => (
               <tr
                 key={detail._id}
-                className="hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
               >
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-3">
-                      <FaUser className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                <td className="px-6 py-6 first:rounded-l-[2rem]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                      <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
+                        {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
+                      </div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                      <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
                         {detail.user?.name || "N/A"}
                       </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-300">
-                        <FaEnvelope className="w-3 h-3 mr-1" />
+                      <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
+                        <Mail className="w-3 h-3 mr-1" />
                         {detail.user?.email || "N/A"}
                       </div>
-                      {detail.user?.phone && (
-                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-300">
-                          <FaPhone className="w-3 h-3 mr-1" />
-                          {detail.user.phone}
-                        </div>
-                      )}
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4">
-                  <div className="text-sm text-gray-900 dark:text-white">
-                    <div className="flex items-center mb-1">
-                      <FaUser className="w-4 h-4 mr-2 text-gray-500" />
+                <td className="px-6 py-6">
+                  <div className="space-y-1">
+                    <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+                      <User className="w-3.5 h-3.5 mr-2 text-primary-500" />
                       {detail.accountHolderName}
                     </div>
-                    <div className="flex items-center">
-                      <FaCreditCard className="w-4 h-4 mr-2 text-gray-500" />
+                    <div className="flex items-center text-[10px] font-bold text-slate-400 tabular-nums">
+                      <CreditCard className="w-3.5 h-3.5 mr-2 text-slate-400" />
                       {detail.accountNumber}
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4">
-                  <div className="text-sm text-gray-900 dark:text-white">
-                    <div className="flex items-center mb-1">
-                      <FaUniversity className="w-4 h-4 mr-2 text-gray-500" />
+                <td className="px-6 py-6">
+                  <div className="space-y-1">
+                    <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
+                      <University className="w-3.5 h-3.5 mr-2 text-primary-500" />
                       {detail.bankName}
                     </div>
-                    <div className="flex items-center mb-1">
-                      <FaKey className="w-4 h-4 mr-2 text-gray-500" />
+                    <div className="flex items-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                      <Key className="w-3.5 h-3.5 mr-2 text-slate-400" />
                       {detail.ifscCode}
-                    </div>
-                    <div className="flex items-center">
-                      <FaBuilding className="w-4 h-4 mr-2 text-gray-500" />
-                      {detail.branchName}
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex flex-col space-y-2">
+                <td className="px-6 py-6">
+                  <div className="flex flex-wrap gap-2">
                     {detail.user?.subscriptionStatus && (
                       <div className="flex items-center">
-                        <FaCrown className="w-4 h-4 mr-2 text-primary-500" />
+                        <Crown className="w-3 h-3 mr-1.5 text-amber-500" />
                         {getSubscriptionBadge(detail.user.subscriptionStatus)}
                       </div>
                     )}
                     {detail.user?.currentLevel !== undefined && (
                       <div className="flex items-center">
-                        <FaUserTag className="w-4 h-4 mr-2 text-primary-500" />
+                        <UserCheck className="w-3 h-3 mr-1.5 text-primary-500" />
                         {getLevelBadge(detail.user.currentLevel)}
                       </div>
                     )}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                  {formatDate(detail.createdAt)}
+                <td className="px-6 py-6 last:rounded-r-[2rem]">
+                  <div className="text-[10px] font-black text-slate-400 tabular-nums uppercase">
+                    {formatDate(detail.createdAt)}
+                  </div>
                 </td>
               </tr>
             ))}
@@ -242,179 +215,161 @@ export default function AdminBankDetails() {
     </div>
   );
 
-  // Card View Component
   const CardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-      {bankDetails.map((detail) => (
-        <div
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      {bankDetails.map((detail, i) => (
+        <motion.div
           key={detail._id}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.05 }}
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
         >
-          <div className="p-3 lg:p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-3">
-                  <FaUser className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {detail.user?.name || "N/A"}
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {detail.user?.email || "N/A"}
-                  </p>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
+                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+                  {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
                 </div>
               </div>
-              <div className="flex flex-col space-y-1">
-                {detail.user?.subscriptionStatus &&
-                  getSubscriptionBadge(detail.user.subscriptionStatus)}
-                {detail.user?.currentLevel !== undefined &&
-                  getLevelBadge(detail.user.currentLevel)}
+              <div>
+                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
+                  {detail.user?.name || "N/A"}
+                </h3>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
+                  {detail.user?.email || "N/A"}
+                </p>
               </div>
             </div>
-
-            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg mb-4">
-              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Account Details
-              </h4>
-              <div className="grid grid-cols-1 gap-2">
-                <div className="flex items-center">
-                  <FaUser className="w-4 h-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">
-                    {detail.accountHolderName}
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <FaCreditCard className="w-4 h-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">
-                    {detail.accountNumber}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg mb-4">
-              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Bank Information
-              </h4>
-              <div className="grid grid-cols-1 gap-2">
-                <div className="flex items-center">
-                  <FaUniversity className="w-4 h-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">
-                    {detail.bankName}
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <FaKey className="w-4 h-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">
-                    {detail.ifscCode}
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <FaBuilding className="w-4 h-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">
-                    {detail.branchName}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-xs text-gray-500 dark:text-gray-400">
-              <FaRegCalendarAlt className="inline mr-1" />
-              {formatDate(detail.createdAt)}
+            <div className="flex flex-col items-end gap-2">
+              {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
+              {detail.user?.currentLevel !== undefined && getLevelBadge(detail.user.currentLevel)}
             </div>
           </div>
-        </div>
+
+          <div className="space-y-6">
+            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-4 shadow-inner">
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT HOLDER</span>
+                <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase">
+                  {detail.accountHolderName}
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-white/5">
+                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT NUMBER</span>
+                <div className="flex items-center text-xs font-black text-slate-900 dark:text-white tabular-nums">
+                  {detail.accountNumber}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <University className="w-4 h-4 text-primary-500" />
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BANK NAME</span>
+                </div>
+                <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
+                  {detail.bankName}
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
+                <div className="flex items-center gap-2">
+                  <Key className="w-4 h-4 text-primary-500" />
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">IFSC CODE</span>
+                </div>
+                <div className="text-xs font-black text-slate-900 dark:text-white uppercase tabular-nums">
+                  {detail.ifscCode}
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
+                <div className="flex items-center gap-2">
+                  <Building className="w-4 h-4 text-primary-500" />
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BRANCH</span>
+                </div>
+                <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
+                  {detail.branchName}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between px-2">
+              <div className="text-[8px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
+                <Calendar className="w-3 h-3" />
+                SYNCED: {formatDate(detail.createdAt)}
+              </div>
+              <div className="text-[8px] font-black text-primary-500/50 uppercase tracking-widest">
+                ID: {detail._id?.slice(-8).toUpperCase()}
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl group-hover:bg-primary-500/10 transition-colors" />
+        </motion.div>
       ))}
     </div>
   );
 
-  // List View Component
   const ListView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        {bankDetails.map((detail) => (
-          <div
-            key={detail._id}
-            className="p-3 lg:p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-          >
-            <div className="flex flex-col md:flex-row md:items-start">
-              <div className="flex items-center mb-4 md:mb-0 md:mr-6">
-                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-3">
-                  <FaUser className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                    {detail.user?.name || "N/A"}
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {detail.user?.email || "N/A"}
-                  </p>
-                  <div className="flex items-center mt-1 space-x-2">
-                    {detail.user?.subscriptionStatus &&
-                      getSubscriptionBadge(detail.user.subscriptionStatus)}
-                    {detail.user?.currentLevel !== undefined &&
-                      getLevelBadge(detail.user.currentLevel)}
-                  </div>
-                </div>
+    <div className="space-y-6">
+      {bankDetails.map((detail, i) => (
+        <motion.div
+          key={detail._id}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.05 }}
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8"
+        >
+          <div className="flex items-center gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+              <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+                {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
               </div>
-
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Account Details
-                  </h4>
-                  <div className="grid grid-cols-1 gap-2">
-                    <div className="flex items-center">
-                      <FaUser className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.accountHolderName}
-                      </span>
-                    </div>
-                    <div className="flex items-center">
-                      <FaCreditCard className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.accountNumber}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Bank Information
-                  </h4>
-                  <div className="grid grid-cols-1 gap-2">
-                    <div className="flex items-center">
-                      <FaUniversity className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.bankName}
-                      </span>
-                    </div>
-                    <div className="flex items-center">
-                      <FaKey className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.ifscCode}
-                      </span>
-                    </div>
-                    <div className="flex items-center">
-                      <FaBuilding className="w-4 h-4 mr-2 text-gray-500" />
-                      <span className="text-sm text-gray-800 dark:text-gray-200">
-                        {detail.branchName}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4 md:mt-0 md:ml-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                <FaRegCalendarAlt className="inline mr-1" />
-                {formatDate(detail.createdAt)}
+            </div>
+            <div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
+                {detail.user?.name || "N/A"}
+              </h3>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
+                {detail.user?.email || "N/A"}
+              </p>
+              <div className="flex gap-2 mt-2">
+                {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
+                {detail.user?.currentLevel !== undefined && getLevelBadge(detail.user.currentLevel)}
               </div>
             </div>
           </div>
-        ))}
-      </div>
+
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:mx-8">
+            <div className="px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
+              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
+                <CreditCard className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">ACCOUNT DETAIL</span>
+                <span className="text-xs font-black text-slate-900 dark:text-white uppercase line-clamp-1">{detail.accountHolderName}</span>
+                <span className="text-[10px] font-bold text-slate-500 tabular-nums">{detail.accountNumber}</span>
+              </div>
+            </div>
+
+            <div className="px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
+              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
+                <University className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">BANK ENTITY</span>
+                <span className="text-xs font-black text-slate-900 dark:text-white uppercase line-clamp-1">{detail.bankName}</span>
+                <span className="text-[10px] font-bold text-slate-500 tabular-nums uppercase">{detail.ifscCode}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:w-32 text-right">
+            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SYNCED ON</div>
+            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(detail.createdAt)}</div>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 
@@ -422,31 +377,82 @@ export default function AdminBankDetails() {
     <AdminMobileAppWrapper title="Bank Details">
       <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+        <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto text-slate-900 dark:text-white">
           <div className="mx-auto">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-              <div>
-                <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white">
-                  User Bank Details ({pagination.total || 0})
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  View bank details of users
-                </p>
+            {/* Header section with Stats & Actions */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-12 mb-12 shadow-2xl relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
+                <University className="w-64 h-64 text-primary-500" />
               </div>
-              {/* Search and Filters */}
-              <SearchFilter
-                searchTerm={searchTerm}
-                onSearchChange={handleSearch}
-                placeholder="Search by name, email, or bank details..."
-              />
-              <ViewToggle
-                currentView={viewMode}
-                onViewChange={setViewMode}
-                views={['table', 'list', 'grid']}
-              />
 
-              <div className="flex items-center space-x-2">
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
+                      <University className="w-6 h-6" />
+                    </div>
+                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">FINANCE // BANKING_PORTAL</span>
+                  </div>
+
+                  <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                    BANK <span className="text-primary-500">DETAILS</span>
+                  </h1>
+
+                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
+                    Review and verify banking credentials for user withdrawal requests. 
+                    Manage the integrity of the capital distribution registry.
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-end gap-2 text-right">
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">REGISTRY DEPTH</span>
+                  <div className="flex items-center gap-3 text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
+                    <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
+                    {pagination.total || 0}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Controls Bar */}
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+              <div className="lg:col-span-2">
+                <div className="relative group/search">
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
+                  <input
+                    type="text"
+                    placeholder="Search by name, email, or bank details..."
+                    value={searchTerm}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    className="w-full pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+                {[
+                  { mode: 'table', icon: TableIcon },
+                  { mode: 'grid', icon: LayoutGrid },
+                  { mode: 'list', icon: List }
+                ].map(({ mode, icon: Icon }) => (
+                  <motion.button
+                    key={mode}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setViewMode(mode)}
+                    className={`flex-1 p-3 rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+                <Settings className="w-4 h-4 text-slate-400" />
                 <select
                   value={itemsPerPage}
                   onChange={(e) => {
@@ -455,16 +461,9 @@ export default function AdminBankDetails() {
                     setLimit(newItemsPerPage);
                     setPage(1);
                   }}
-                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
                 >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={250}>250</option>
-                  <option value={500}>500</option>
-                  <option value={1000}>1000</option>
+                  {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} nodes</option>)}
                 </select>
               </div>
             </div>
@@ -475,25 +474,21 @@ export default function AdminBankDetails() {
                 <Loading size="lg" color="yellow" message="" />
               </div>
             ) : error ? (
-              <div className="text-center py-12">
-                <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  Error loading bank details
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">{error}</p>
+              <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-[3.5rem] p-12 text-center shadow-2xl">
+                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-rose-500/30">
+                  <Zap className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Registry Fault Detected</h3>
+                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
               </div>
             ) : bankDetails.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">
-                  🏦
-                </div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No bank details found
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+              <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-[3.5rem] p-24 text-center shadow-2xl">
+                <University className="w-24 h-24 text-slate-300 mx-auto mb-8 opacity-20" />
+                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">REGISTRY_EMPTY</h3>
+                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
                   {searchTerm
-                    ? "Try adjusting your search terms."
-                    : "No users have added their bank details yet."}
+                    ? "No registry matching current filters detected."
+                    : "No banking nodes have been initialized in the primary network."}
                 </p>
               </div>
             ) : (
@@ -520,5 +515,6 @@ export default function AdminBankDetails() {
     </AdminMobileAppWrapper>
   );
 }
+
 
 

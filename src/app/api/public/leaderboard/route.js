@@ -11,12 +11,19 @@ export async function GET(req) {
         const date = searchParams.get('date');
         const week = searchParams.get('week');
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 10;
+        // Clamp limit between 10 and 20
+        const requestedLimit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.max(10, Math.min(20, requestedLimit));
         const skip = (page - 1) * limit;
 
         const now = new Date();
         const currentDate = now.toISOString().slice(0, 10);
         
+        // Timezone resilience: If local date is provided and matches UTC today OR yesterday/tomorrow 
+        // We consider it "Current" live data. This handles users ahead of UTC (like IST).
+        const isTodayOrNear = date === currentDate || 
+                             (date && Math.abs(new Date(date) - new Date(currentDate)) <= 86400000);
+
         // Weekly current calculation
         const oneJan = new Date(now.getFullYear(), 0, 1);
         const numberOfDays = Math.floor((now - oneJan) / (24 * 60 * 60 * 1000));
@@ -27,13 +34,13 @@ export async function GET(req) {
         let HistoricalModel;
         let query = {};
 
-        if (type === 'daily' && date && date !== currentDate) {
+        if (type === 'daily' && date && !isTodayOrNear) {
             isHistorical = true;
-            HistoricalModel = mongoose.models.PrevDailyPlayedUsers || mongoose.model('PrevDailyPlayedUsers');
+            HistoricalModel = mongoose.models.PrevDailyPlayedUsers || mongoose.model.PrevDailyPlayedUsers || mongoose.model('PrevDailyPlayedUsers');
             query.date = date;
         } else if (type === 'weekly' && week && week !== currentWeek) {
             isHistorical = true;
-            HistoricalModel = mongoose.models.PrevWeeklyPlayedUsers || mongoose.model('PrevWeeklyPlayedUsers');
+            HistoricalModel = mongoose.models.PrevWeeklyPlayedUsers || mongoose.model.PrevWeeklyPlayedUsers || mongoose.model('PrevWeeklyPlayedUsers');
             query.week = week;
         }
 
@@ -71,7 +78,44 @@ export async function GET(req) {
                 };
             });
 
+            // --- Padding Logic for Historical Data ---
+            if (leaders.length < 10) {
+                const existingIds = leaders.map(l => String(l.userId));
+                const padCount = 10 - leaders.length;
+                const paddedUsers = await User.find({ 
+                    role: 'student', 
+                    status: 'active',
+                    _id: { $nin: existingIds.filter(id => mongoose.Types.ObjectId.isValid(id)) }
+                })
+                    .select('name username profilePicture dailyProgress weeklyProgress monthlyProgress subscriptionStatus')
+                    .sort({ 'monthlyProgress.totalScore': -1 })
+                    .limit(padCount);
+                
+                const paddedLeaders = paddedUsers.map(leader => {
+                    const levelInfo = leader.getCompetitionLevel('monthly');
+                    const progress = leader.monthlyProgress;
+                    return {
+                        userId: leader._id,
+                        name: leader.name,
+                        username: leader.username,
+                        profilePicture: leader.profilePicture,
+                        currentLevel: levelInfo.currentLevel,
+                        levelName: levelInfo.levelName,
+                        totalScore: progress?.totalScore || 0,
+                        stats: {
+                            highScoreWins: progress?.highScoreWins || 0,
+                            totalQuizAttempts: progress?.totalQuizAttempts || 0,
+                            accuracy: progress?.accuracy || 0,
+                            totalCorrectAnswers: progress?.totalCorrectAnswers || 0
+                        },
+                        isPadded: true
+                    };
+                });
+                leaders = [...leaders, ...paddedLeaders];
+            }
+
             totalEntries = await HistoricalModel.countDocuments(query);
+            totalEntries = Math.max(totalEntries, leaders.length);
         } else {
             // Logic based on User model's leaderboard fields
             const rawLeaders = await User.find({ role: 'student', status: 'active' })
@@ -103,7 +147,40 @@ export async function GET(req) {
                 };
             });
 
-            totalEntries = await User.countDocuments({ role: 'student' });
+            // --- Padding Logic: If fewer than 10 users, add active top students ---
+            if (leaders.length < 10) {
+                const existingIds = leaders.map(l => String(l._id));
+                const padCount = 10 - leaders.length;
+                const paddedUsers = await User.find({ 
+                    role: 'student', 
+                    status: 'active',
+                    _id: { $nin: existingIds }
+                })
+                    .select('name username profilePicture dailyProgress weeklyProgress monthlyProgress subscriptionStatus')
+                    .sort({ 'monthlyProgress.totalScore': -1 }) // Use monthly as a reliable fallback
+                    .limit(padCount);
+                
+                const paddedLeaders = paddedUsers.map(leader => {
+                    const levelInfo = leader.getCompetitionLevel('monthly');
+                    const progress = leader.monthlyProgress;
+                    return {
+                        ...leader.toObject(),
+                        currentLevel: levelInfo.currentLevel,
+                        levelName: levelInfo.levelName,
+                        stats: {
+                            highScoreWins: progress?.highScoreWins || 0,
+                            totalQuizAttempts: progress?.totalQuizAttempts || 0,
+                            accuracy: progress?.accuracy || 0,
+                            totalCorrectAnswers: progress?.totalCorrectAnswers || 0,
+                            totalScore: progress?.totalScore || 0
+                        },
+                        isPadded: true // Flag to distinguish if needed
+                    };
+                });
+                leaders = [...leaders, ...paddedLeaders];
+            }
+
+            totalEntries = Math.max(leaders.length, await User.countDocuments({ role: 'student', status: 'active' }));
         }
 
         // Find current user if userId is provided

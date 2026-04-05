@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import config from '@/lib/config/appConfig';
 import User from '@/models/User';
 import Quiz from '@/models/Quiz';
 import QuizAttempt from '@/models/QuizAttempt';
@@ -18,7 +19,7 @@ export async function GET() {
             Exam.countDocuments()
         ]);
 
-        const PRIZE_PER_PRO = Number(process.env.NEXT_PUBLIC_PRIZE_PER_PRO || process.env.PRIZE_PER_PRO || 90);
+        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO;
         const today = new Date();
         const monthStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
         const activeProUsers = await User.countDocuments({
@@ -26,11 +27,15 @@ export async function GET() {
             $or: [{ 'monthlyProgress.month': monthStr }, { subscriptionExpiry: { $gte: new Date(today.getFullYear(), today.getMonth(), 1) } }]
         });
 
+        const calculatedPool = activeProUsers * PRIZE_PER_PRO;
+        const minPool = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 0;
+        const monthlyPrizePool = Math.max(calculatedPool, minPool);
+
         return NextResponse.json({
             success: true,
             data: {
                 activeStudents: totalUsers, quizCategories: totalCategories, subcategories: totalSubcategories, totalQuizzes, totalQuestions,
-                quizzesTaken: totalQuizAttempts, totalExams, paidSubscriptions, monthlyPrizePool: activeProUsers * PRIZE_PER_PRO, activeProUsers, prizePerUser: PRIZE_PER_PRO
+                quizzesTaken: totalQuizAttempts, totalExams, paidSubscriptions, monthlyPrizePool, activeProUsers, prizePerUser: PRIZE_PER_PRO
             }
         });
     } catch (error) {

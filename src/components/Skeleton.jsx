@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 
 const Skeleton = ({ className, width, height, borderRadius }) => {
     return (
         <div
-            className={`animate-pulse bg-gray-200 dark:bg-gray-700 ${className}`}
+            className={`animate-pulse bg-background-surface-secondary border border-border-primary/50 ${className}`}
             style={{
                 width,
                 height,
@@ -14,3 +14,4 @@ const Skeleton = ({ className, width, height, borderRadius }) => {
 };
 
 export default Skeleton;
+

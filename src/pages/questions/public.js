@@ -2,11 +2,32 @@
 
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
+import {
+  Search,
+  X,
+  Zap,
+  TrendingUp,
+  Eye,
+  Heart,
+  Share2,
+  MessageCircle,
+  Compass,
+  Target,
+  Sparkles,
+  Layers,
+  HelpCircle,
+  Clock,
+  ArrowRight
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../lib/api';
-import UnifiedFooter from '../../components/UnifiedFooter';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
 import PublicQuestionsList from '../../components/PublicQuestionsList';
-import { toast } from 'react-toastify';
-// Removed SearchFilter; using inline search tailored to this page
+import Loading from '../../components/Loading';
+import Card from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
 
 const PublicUserQuestions = () => {
   const [items, setItems] = useState([]);
@@ -23,23 +44,16 @@ const PublicUserQuestions = () => {
   const isLoadingRef = useRef(false);
   const searchTermRef = useRef(searchTerm);
 
-  // Update ref when searchTerm changes
   useEffect(() => {
     searchTermRef.current = searchTerm;
   }, [searchTerm]);
 
-  // Initial load - replaces all items
   const load = useCallback(async (resetPage = false) => {
-    // Prevent duplicate calls
-    if (isLoadingRef.current) {
-      return;
-    }
-
+    if (isLoadingRef.current) return;
     isLoadingRef.current = true;
     const currentPage = resetPage ? 1 : page;
     setLoading(true);
     try {
-      // Pass empty string if searchTerm is blank to get default questions
       const searchParam = searchTermRef.current.trim() || '';
       const res = await API.getPublicUserQuestions({ page: currentPage, limit, search: searchParam });
       if (res?.success) {
@@ -50,20 +64,18 @@ const PublicUserQuestions = () => {
         setHasMore(list.length === limit && list.length < (res.pagination?.total || 0));
       }
     } catch (e) {
-      console.error('Failed to load public questions', e);
+      toast.error('Global stream link failure');
     } finally {
       setLoading(false);
       isLoadingRef.current = false;
     }
-  }, [limit]);
+  }, [limit, page]);
 
-  // Load more - appends to existing items
   const loadMore = useCallback(async () => {
     if (loadingMore || !hasMore) return;
     setLoadingMore(true);
     try {
-      const currentPage = page;
-      const nextPage = currentPage + 1;
+      const nextPage = page + 1;
       const searchParam = searchTermRef.current.trim() || '';
       const res = await API.getPublicUserQuestions({ page: nextPage, limit, search: searchParam });
       if (res?.success) {
@@ -76,13 +88,12 @@ const PublicUserQuestions = () => {
         });
       }
     } catch (e) {
-      console.error('Failed to load more questions', e);
+      console.error('Buffer sync failed');
     } finally {
       setLoadingMore(false);
     }
   }, [page, limit, loadingMore, hasMore]);
 
-  // Handle search
   const handleSearch = useCallback(() => {
     setPage(1);
     setHasMore(true);
@@ -90,34 +101,22 @@ const PublicUserQuestions = () => {
     load(true);
   }, [load]);
 
-  // Handle clear search
   const handleClearSearch = useCallback(() => {
     setSearchTerm('');
     setPage(1);
     setHasMore(true);
     setIsSearchActive(false);
-  }, []);
+    searchTermRef.current = '';
+    load(true);
+  }, [load]);
 
-  // Initial load - only once on mount
   useEffect(() => {
     if (isInitialMount.current) {
       load(true);
       isInitialMount.current = false;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [load]);
 
-  // Reload when searchTerm is cleared (but not on initial mount)
-  useEffect(() => {
-    if (!isInitialMount.current && searchTerm === '' && !isSearchActive) {
-      setPage(1);
-      setHasMore(true);
-      load(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, isSearchActive]);
-
-  // Infinite scroll observer
   useEffect(() => {
     const currentTarget = observerTarget.current;
     if (!currentTarget) return;
@@ -132,24 +131,17 @@ const PublicUserQuestions = () => {
     );
 
     observer.observe(currentTarget);
-
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [hasMore, loading, loadingMore, loadMore]);
 
   const answer = async (q, idx) => {
     try {
       if (typeof q.selectedOptionIndex === 'number') return;
-
-      // Immediately show visual feedback
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, selectedOptionIndex: idx, isAnswered: true } : it));
-
       await API.answerUserQuestion(q._id, idx);
-      toast.success('Answer submitted successfully!');
+      toast.success('Answer recorded!');
     } catch (e) {
-      toast.error(e?.message || 'Failed to submit Answer!');
-      // Revert the visual feedback on error
+      toast.error('Failed to record answer.');
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, selectedOptionIndex: undefined, isAnswered: false } : it));
     }
   };
@@ -168,7 +160,10 @@ const PublicUserQuestions = () => {
       await API.shareUserQuestion(q._id);
       setItems(prev => prev.map(it => it._id === q._id ? { ...it, sharesCount: (it.sharesCount || 0) + 1 } : it));
       if (navigator.share) {
-        navigator.share({ title: 'User Question', text: q.questionText, url: window.location.href }).catch(() => { });
+        navigator.share({ title: 'Global Question', text: q.questionText, url: window.location.href }).catch(() => { });
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        toast.success('Profile link copied to clipboard');
       }
     } catch (e) { }
   };
@@ -182,121 +177,98 @@ const PublicUserQuestions = () => {
     } catch (e) { }
   };
 
-  // Not using generic table columns; page has a custom list UI
+  return (
+    <MobileAppWrapper title="Community Feed">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-  const content = (
-    <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-6">
+        <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
 
-        <div className='mb-4 flex flex-col lg:flex-row justify-between items-center gap-4'>
+          {/* --- Stream Hero --- */}
+          <header className="relative flex flex-col items-center text-center space-y-8">
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm">
+              <Sparkles className="w-10 h-10" />
+            </motion.div>
+            <div className="space-y-4">
+              <h1 className="text-4xl lg:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight">Community <span className="text-primary-500">Feed</span></h1>
+              <p className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto">Explore and solve questions shared by the community</p>
+            </div>
+          </header>
 
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Questions ({total})</h1>
-            <p className="text-gray-600 dark:text-gray-400">Answer, like, share user questions</p>
-          </div>
+          {/* --- Search & Discovery Hub --- */}
+          <section className="flex flex-col lg:flex-row justify-between items-center gap-8 bg-white dark:bg-slate-800/50 backdrop-blur-xl p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+            <div className="flex-1 w-full relative">
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 dark:text-slate-500" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && (isSearchActive ? handleClearSearch() : handleSearch())}
+                placeholder="SEARCH BY TOPIC, SUBJECT OR KEYWORD..."
+                className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-6 pl-16 text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all"
+              />
+            </div>
+            <div className="flex gap-4">
+              <Button
+                variant={isSearchActive ? 'ghost' : 'secondary'}
+                onClick={isSearchActive ? handleClearSearch : handleSearch}
+                className="px-10 py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-duo-secondary"
+              >
+                {isSearchActive ? 'CLEAR ALL' : 'SEARCH'}
+              </Button>
+            </div>
+          </section>
 
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  if (isSearchActive) {
-                    handleClearSearch();
-                  } else {
-                    handleSearch();
-                  }
-                }
-              }}
-              placeholder="Search by question, name, username, email..."
-              className="w-full sm:w-72 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent text-sm"
-            />
-            <button
-              onClick={() => {
-                if (isSearchActive) {
-                  handleClearSearch();
-                } else {
-                  handleSearch();
-                }
-              }}
-              className={`px-4 py-2 ${isSearchActive
-                ? 'bg-gray-500 hover:bg-gray-600'
-                : 'bg-secondary-600 hover:bg-secondary-700'
-                } text-white rounded-lg text-sm whitespace-nowrap`}
-            >
-              {isSearchActive ? 'Clear' : 'Search'}
-            </button>
-          </div>
-        </div>
+          {/* --- Stream Content --- */}
+          <div className="space-y-12">
+            <AnimatePresence mode="wait">
+              {loading ? (
+                <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+              ) : items.length === 0 ? (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-32 text-center space-y-8">
+                  <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto">
+                    <Layers className="w-12 h-12 text-slate-400 dark:text-slate-500" />
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-black font-outfit uppercase">No Results</h3>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">No questions detected in the current range. Try broad-spectrum searching.</p>
+                  </div>
+                  <Button variant="secondary" onClick={handleClearSearch} className="px-12 py-5 rounded-3xl">RETURN TO MAIN FEED</Button>
+                </motion.div>
+              ) : (
+                <PublicQuestionsList
+                  items={items}
+                  onAnswer={answer}
+                  onLike={like}
+                  onShare={share}
+                  onView={view}
+                  startIndex={0}
+                />
+              )}
+            </AnimatePresence>
 
-        {loading && (
-          <div className="mb-3">
-            <div className="h-2 w-24 bg-secondary-200 dark:bg-secondary-900 rounded animate-pulse"></div>
-          </div>
-        )}
-
-        <PublicQuestionsList
-          items={items}
-          onAnswer={answer}
-          onLike={like}
-          onShare={share}
-          onView={view}
-          startIndex={0}
-        />
-
-        {/* Loading More Indicator */}
-        {loadingMore && (
-          <div className="flex justify-center items-center py-8">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-3 h-3 bg-secondary-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            {/* Infinite Scroll Management */}
+            <div ref={observerTarget} className="h-20 flex items-center justify-center">
+              {loadingMore && (
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 bg-primary-500 rounded-full animate-bounce" />
+                  <div className="w-4 h-4 bg-primary-500 rounded-full animate-bounce [animation-delay:-0.2s]" />
+                  <div className="w-4 h-4 bg-primary-500 rounded-full animate-bounce [animation-delay:-0.4s]" />
+                </div>
+              )}
+              {!hasMore && items.length > 0 && (
+                <div className="text-center space-y-2 opacity-50">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em]">End of Feed</p>
+                  <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Feed fully synchronized</p>
+                </div>
+              )}
             </div>
           </div>
-        )}
 
-        {/* Observer Target for Infinite Scroll */}
-        <div ref={observerTarget} className="h-10"></div>
-
-        {/* End of Results Message */}
-        {!hasMore && items.length > 0 && (
-          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-            <p className="text-sm">🎉 You've reached the end!</p>
-            <p className="text-xs mt-1">No more questions to load</p>
-          </div>
-        )}
-
-        {/* Empty State */}
-        {!loading && items.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-            <p className="text-lg mb-2">📝 No questions found</p>
-            <p className="text-sm">Try a different search term</p>
-          </div>
-        )}
+        </div>
       </div>
-    </div>
-  );
-
-  return (
-    <>
-      <Head>
-        <title>Public Questions - AajExam Platform</title>
-        <meta name="description" content="Browse and answer community questions on AajExam. Test your knowledge, help others learn, and engage with questions from users worldwide." />
-        <meta name="keywords" content="public questions, community questions, answer questions, knowledge sharing, Q&A platform" />
-        <meta property="og:title" content="Public Questions - AajExam Platform" />
-        <meta property="og:description" content="Browse and answer community questions on AajExam. Test your knowledge and help others learn." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Public Questions - AajExam" />
-        <meta name="twitter:description" content="Browse and answer community questions on AajExam Platform." />
-      </Head>
-      <>
-        {content}
-        <UnifiedFooter />
-      </>
-    </>
+    </MobileAppWrapper>
   );
 };
 
 export default PublicUserQuestions;
+

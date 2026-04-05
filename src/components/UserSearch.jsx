@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
@@ -46,63 +46,63 @@ const UserSearch = () => {
   };
 
   return (
-    <div className="user-search-container max-w-[700px] mx-auto p-5">
-      <div className="search-box relative mb-5">
+    <div className="user-search-container max-w-[700px] mx-auto p-5 font-outfit">
+      <div className="search-box relative mb-8">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search users by name or username..."
-          className="search-input w-full p-4 pr-12 text-base border-2 border-gray-300 dark:border-gray-600 rounded-xl outline-none transition-all bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-secondary-500 focus:shadow-[0_0_0_3px_rgba(0,123,255,0.1)]"
+          placeholder="Search students by name or username..."
+          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:white focus:border-primary-500 shadow-sm"
         />
         {loading && (
-          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-gray-200 dark:border-gray-700 border-t-secondary-500 rounded-full animate-spin"></span>
+          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border-4 border-slate-100 dark:border-slate-700 border-t-primary-500 rounded-full animate-spin"></span>
         )}
       </div>
 
       {searched && users.length === 0 && !loading && (
-        <div className="no-results text-center py-10 px-5">
-          <p className="m-0 text-base text-gray-600 dark:text-gray-400">No users found for "{query}"</p>
+        <div className="no-results text-center py-16 px-5 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
+          <p className="m-0 text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">No students found for "{query}"</p>
         </div>
       )}
 
       {users.length > 0 && (
-        <div className="search-results flex flex-col gap-2.5">
+        <div className="search-results flex flex-col gap-5">
           {users.map((user) => (
             <div
               key={user._id}
-              className="user-result-item flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
               onClick={() => handleUserClick(user.username)}
             >
               <img
                 src={user.profilePicture || '/logo.png'}
                 alt={user.name}
-                className="user-result-avatar w-15 h-15 rounded-full object-cover flex-shrink-0"
+                className="user-result-avatar w-16 h-16 rounded-2xl object-cover flex-shrink-0 border-2 border-slate-100 shadow-sm"
               />
               <div className="user-result-info flex-1 min-w-0">
-                <h4 className="m-0 mb-1 text-base font-semibold text-gray-900 dark:text-white overflow-hidden text-ellipsis whitespace-nowrap">
+                <h4 className="m-0 mb-1 text-base font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors overflow-hidden text-ellipsis whitespace-nowrap">
                   {user.name}
                 </h4>
-                <p className="user-result-username m-0 mb-1 text-sm text-primary-600 dark:text-primary-400">
+                <p className="user-result-username m-0 mb-1 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
                   @{user.username}
                 </p>
                 {user.bio && (
-                  <p className="user-result-bio m-0 text-xs text-gray-600 dark:text-gray-400 overflow-hidden text-ellipsis whitespace-nowrap">
+                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
                     {user.bio}
                   </p>
                 )}
               </div>
-              <div className="user-result-stats flex items-center gap-4 flex-shrink-0">
+              <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="level-badge-small bg-gradient-to-br from-purple-600 from-red-800 text-white px-3 py-1.5 rounded-full text-xs font-bold">
-                    L{user.monthlyProgress?.currentLevel || 0}
+                  <span className="bg-primary-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-duo-primary">
+                    LEVEL {user.monthlyProgress?.currentLevel || 0}
                   </span>
                 </div>
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="text-base font-semibold text-gray-900 dark:text-white">
+                  <span className="text-lg font-black text-slate-900 dark:text-white">
                     {user.followersCount || 0}
                   </span>
-                  <small className="text-[11px] text-gray-600 dark:text-gray-400 mt-0.5">Followers</small>
+                  <small className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-0.5">Students</small>
                 </div>
               </div>
             </div>
@@ -114,4 +114,5 @@ const UserSearch = () => {
 };
 
 export default UserSearch;
+
 

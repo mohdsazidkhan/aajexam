@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+﻿import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 
 // Dynamic wrapper to handle SSR issues with useRouter
@@ -17,3 +17,4 @@ const DynamicWrapper = ({ children, fallback = null }) => {
 };
 
 export default DynamicWrapper;
+

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { hasActiveSubscription, getSubscriptionStatusTextWithTheme } from '../lib/utils/subscriptionUtils';
 
 /**
@@ -22,7 +22,7 @@ const SubscriptionGuard = ({
   return (
     <div className="flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
       <div className="text-center">
-        <div className="text-6xl mb-4">🔒</div>
+        <div className="text-6xl mb-4">Ã°Å¸â€â€™</div>
         <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
           Subscription Required
         </h3>
@@ -42,15 +42,15 @@ const SubscriptionGuard = ({
         {showUpgradeButton && (
           <Link
             href="/subscription"
-            className="inline-flex items-center px-6 py-3 bg-secondary-600 text-white font-medium rounded-lg hover:bg-secondary-700 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
-            <span className="mr-2">💳</span>
+            <span className="mr-2">Ã°Å¸â€™Â³</span>
             Upgrade to Premium
           </Link>
         )}
 
-        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          <p>Already have a subscription? <Link href="/subscription" className="text-secondary-600 hover:underline">Check your status</Link></p>
+        <div className="mt-4 text-sm text-slate-700 dark:text-gray-400">
+          <p>Already have a subscription? <Link href="/subscription" className="text-primary-700 dark:text-primary-500 hover:underline">Check your status</Link></p>
         </div>
       </div>
     </div>
@@ -58,3 +58,5 @@ const SubscriptionGuard = ({
 };
 
 export default SubscriptionGuard;
+
+

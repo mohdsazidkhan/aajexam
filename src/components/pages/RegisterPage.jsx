@@ -1,16 +1,31 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import {
+  User,
+  Mail,
+  Phone,
+  Lock,
+  Eye,
+  EyeOff,
+  Trophy,
+  Brain,
+  Rocket,
+  ShieldCheck,
+  Hash,
+  Sparkles
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { toast } from 'react-hot-toast';
 
 import API from '../../lib/api';
-import { toast } from 'react-toastify';
-import { FaUser, FaEnvelope, FaPhone, FaLock, FaEye, FaEyeSlash, FaTrophy, FaBrain, FaRocket } from 'react-icons/fa';
-import MonthlyRewardsInfo from '../MonthlyRewardsInfo';
-import MobileAppWrapper from '../MobileAppWrapper';
-import config from '../../lib/config/appConfig';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+import ProgressBar from '../ui/ProgressBar';
 import UnifiedFooter from '../UnifiedFooter';
+import MobileAppWrapper from '../MobileAppWrapper';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -20,17 +35,17 @@ const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [referralCode, setReferralCode] = useState("");
+  const [referralCode, setReferralCode] = useState('');
   const router = useRouter();
 
-  const checkPasswordStrength = (password) => {
-    let strength = 0;
-    if (password.length >= 8) strength += 1;
-    if (/[a-z]/.test(password)) strength += 1;
-    if (/[A-Z]/.test(password)) strength += 1;
-    if (/[0-9]/.test(password)) strength += 1;
-    if (/[@$!%*?&]/.test(password)) strength += 1;
-    return strength;
+  const checkPasswordStrength = (pass) => {
+    let score = 0;
+    if (pass.length >= 8) score += 20;
+    if (/[a-z]/.test(pass)) score += 20;
+    if (/[A-Z]/.test(pass)) score += 20;
+    if (/[0-9]/.test(pass)) score += 20;
+    if (/[@$!%*?&]/.test(pass)) score += 20;
+    return score;
   };
 
   const handlePasswordChange = (e) => {
@@ -39,303 +54,195 @@ const RegisterPage = () => {
     setPasswordStrength(checkPasswordStrength(value));
   };
 
-  const getPasswordStrengthColor = () => {
-    if (passwordStrength <= 2) return 'text-red-500';
-    if (passwordStrength <= 3) return 'text-primary-500';
-    if (passwordStrength <= 4) return 'text-primary-500';
-    return 'text-green-500';
-  };
-
-  const getPasswordStrengthText = () => {
-    if (passwordStrength <= 2) return 'Weak';
-    if (passwordStrength <= 3) return 'Fair';
-    if (passwordStrength <= 4) return 'Good';
-    return 'Strong';
-  };
-
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validate phone number (matches backend validation: exactly 10 digits)
-    const phoneRegex = /^[0-9]{10}$/;
-
-    if (!phoneRegex.test(phone)) {
+    if (!/^[0-9]{10}$/.test(phone)) {
       toast.error('Phone number must be exactly 10 digits');
       return;
     }
 
-    if (passwordStrength < 5) {
-      toast.error('Password must meet all requirements');
+    if (passwordStrength < 100) {
+      toast.error('Please meet all password requirements');
       return;
     }
 
     setIsLoading(true);
     try {
-      const response = await API.register({
-        name,
-        email,
-        phone,
-        password,
-        ...(referralCode && { referredBy: referralCode })
-      });
-      console.log(response, 'registerregister')
-      if (response.success) {
-        toast.success(`${response.message}`);
+      const res = await API.register({ name, email, phone, password, ...(referralCode && { referredBy: referralCode }) });
+      if (res.success) {
+        toast.success('Account created! Please login.');
         router.push('/login');
       }
     } catch (err) {
-      console.error('Registration error:', err);
-
-      // Handle different types of errors
-      if (err.response?.data?.message) {
-        // Backend validation error
-        toast.error(err.response.data.message);
-      } else if (err.message) {
-        // Network or other error
-        toast.error(err.message);
-      } else {
-        // Generic error
-        toast.error('Registration failed! Please try again.');
-      }
+      toast.error(err.response?.data?.message || 'Registration failed');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <MobileAppWrapper title="Register">
-      <div className="flex items-center justify-center p-2 md:p-4 bg-aajexam-light dark:bg-aajexam-dark">
-        <div className="w-full container mx-auto py-4 px-0 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
+    <MobileAppWrapper showHeader={true} title="Register">
+      <div className="flex-1 flex flex-col lg:flex-row items-stretch">
+        <div className="hidden lg:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
+          <div className="space-y-10 relative z-10">
+            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
+              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-duo-secondary w-fit">
+                <Rocket className="w-12 h-12" />
+              </div>
+            </motion.div>
 
-          {/* Left Side - Quiz Platform Info */}
-          <div className="hidden lg:block space-y-8">
-            <div className="text-center lg:text-left">
-              <h1 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-                Join the Quiz Revolution! 🚀
+            <div className="space-y-4">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">
+                Join the <span className="text-primary-400">community</span>.
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Challenge your mind, compete with others, and become a quiz legend!
+              <p className="text-xl font-bold text-slate-300 max-w-md leading-relaxed">
+                Join thousands of students who study every day, improve their scores, and win real rewards.
               </p>
             </div>
 
-            {/* Feature Cards */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
-                  <FaBrain className="text-white text-2xl" />
+            <div className="space-y-4 pt-8">
+              {[
+                { icon: Trophy, text: 'Win prizes every month' },
+                { icon: Brain, text: 'Learn step by step from beginner to champion' },
+                { icon: ShieldCheck, text: 'See your score and rank anytime' }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-4 text-slate-300 font-bold">
+                  <div className="p-2 bg-white/10 rounded-xl">
+                    <item.icon className="w-5 h-5 text-primary-400" />
+                  </div>
+                  <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Level-Based Learning</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Progress through 11 exciting levels from Starter to Legend</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg">
-                  <FaTrophy className="text-white text-2xl" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Rewards System</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Daily, Weekly & Monthly rewards! Pro users share dynamic prize pools based on performance, accuracy, and consistency.</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg">
-                  <FaRocket className="text-white text-2xl" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Live Competitions</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Participate in real-time quiz battles</p>
-                </div>
-              </div>
+              ))}
             </div>
-
           </div>
 
-          {/* Right Side - Registration Form */}
-          <div className="w-full max-w-md mx-auto">
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl px-2 py-4 md:p-8 border border-white/20">
-              <div className="text-center mb-8">
-                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FaUser className="text-white text-2xl" />
+          <Sparkles className="absolute -top-10 -right-10 w-96 h-96 opacity-10 animate-pulse" />
+        </div>
+
+        <div className="flex-1 flex items-center justify-center p-3 lg:p-6 bg-white dark:bg-slate-900 overflow-y-auto py-20">
+          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl space-y-8 rounded-[3rem]">
+            <div className="text-center space-y-3">
+              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Create account</h2>
+              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+                Fill in your details to create your free account.
+              </p>
+            </div>
+
+            <form onSubmit={handleRegister} className="space-y-5">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Full name</label>
+                <div className="relative">
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
+                  <input
+                    type="text"
+                    required
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    placeholder="Enter your full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </div>
-                <h2 className="text-xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-2">
-                  Create Account
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Start your quiz journey today!
-                </p>
               </div>
 
-              <form onSubmit={handleRegister} className="space-y-6">
-                {/* Name Input */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaUser className="h-5 w-5 text-gray-400" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Email</label>
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
+                    <input
+                      type="email"
+                      required
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                  />
                 </div>
 
-                {/* Email Input */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaEnvelope className="h-5 w-5 text-gray-400" />
+                <div className="space-y-2">
+                  <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Phone</label>
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
+                    <input
+                      type="number"
+                      required
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      placeholder="10 digits"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={e => setEmail(e.target.value?.toLowerCase())}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                  />
                 </div>
+              </div>
 
-                {/* Phone Input */}
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Password</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaPhone className="h-5 w-5 text-gray-400" />
-                  </div>
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                   <input
-                    type="text"
-                    placeholder="Phone Number (10 digits)"
-                    value={phone}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      if (/^\d{0,10}$/.test(value)) {
-                        setPhone(value);
-                      }
-                    }}
+                    type={showPassword ? 'text' : 'password'}
                     required
-                    pattern="[0-9]{10}"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                  />
-                </div>
-
-                {/* Password Input */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaLock className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    placeholder="Create a strong password"
                     value={password}
                     onChange={handlePasswordChange}
-                    required
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-500 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-700 dark:text-slate-400"
                   >
-                    {showPassword ? <FaEyeSlash className="h-5 w-5" /> : <FaEye className="h-5 w-5" />}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
 
-                {/* Password Requirements */}
-                <div className="p-4 bg-gradient-to-r from-primary-50 to-red-50 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-primary-200 dark:border-gray-600">
-                  <p className="font-medium mb-3 text-gray-800 dark:text-white">Password Requirements:</p>
-                  <div className="grid grid-cols-1 gap-2 text-sm">
-                    <div className={`flex items-center ${password.length >= 8 ? "text-green-600" : "text-gray-500"}`}>
-                      <span className="mr-2">{password.length >= 8 ? "✓" : "○"}</span>
-                      At least 8 characters
-                    </div>
-                    <div className={`flex items-center ${/[a-z]/.test(password) ? "text-green-600" : "text-gray-500"}`}>
-                      <span className="mr-2">{/[a-z]/.test(password) ? "✓" : "○"}</span>
-                      One lowercase letter
-                    </div>
-                    <div className={`flex items-center ${/[A-Z]/.test(password) ? "text-green-600" : "text-gray-500"}`}>
-                      <span className="mr-2">{/[A-Z]/.test(password) ? "✓" : "○"}</span>
-                      One uppercase letter
-                    </div>
-                    <div className={`flex items-center ${/[0-9]/.test(password) ? "text-green-600" : "text-gray-500"}`}>
-                      <span className="mr-2">{/[0-9]/.test(password) ? "✓" : "○"}</span>
-                      One number
-                    </div>
-                    <div className={`flex items-center ${/[@$!%*?&]/.test(password) ? "text-green-600" : "text-gray-500"}`}>
-                      <span className="mr-2">{/[@$!%*?&]/.test(password) ? "✓" : "○"}</span>
-                      One special character (@$!%*?&)
-                    </div>
+                <div className="px-2 pt-1">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">Password strength</span>
+                    <span className={`text-[10px] font-black ${passwordStrength === 100 ? 'text-green-500' : 'text-primary-700 dark:text-primary-500'}`}>
+                      {passwordStrength}%
+                    </span>
                   </div>
-                  {password && (
-                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-500">
-                      <span className={`text-sm font-medium ${getPasswordStrengthColor()}`}>
-                        Strength: {getPasswordStrengthText()}
-                      </span>
-                    </div>
-                  )}
+                  <ProgressBar progress={passwordStrength} color={passwordStrength === 100 ? 'green-500' : 'primary-500'} height="h-1.5" />
                 </div>
+              </div>
 
-                {/* Referral Code Input */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span className="text-gray-400 font-bold">#</span>
-                  </div>
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Referral code (optional)</label>
+                <div className="relative group">
+                  <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-500 transition-colors" />
                   <input
                     type="text"
-                    placeholder="Referral Code (optional)"
+                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 rounded-2xl outline-none focus:border-primary-500 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
+                    placeholder="Referral code"
                     value={referralCode}
-                    onChange={e => setReferralCode(e.target.value.toUpperCase())}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 tracking-widest uppercase"
-                    maxLength={8}
+                    onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
                   />
                 </div>
+              </div>
 
-                {/* Register Button */}
-                <button
-                  type="submit"
-                  disabled={passwordStrength < 5 || isLoading}
-                  className={`w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 ${passwordStrength < 5 || isLoading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 shadow-lg hover:shadow-xl'
-                    }`}
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mr-2"></div>
-                      <span className="text-gray-100 dark:text-gray-200">Creating Account...</span>
-                    </div>
-                  ) : (
-                    'Create Account'
-                  )}
-                </button>
+              <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-duo-primary" type="submit" disabled={isLoading || passwordStrength < 100}>
+                {isLoading ? 'Creating account...' : 'Create account'}
+              </Button>
+            </form>
 
-                {/* Login Link */}
-                <div className="text-center">
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Already have an account?{' '}
-                    <Link
-                      href="/login"
-                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors"
-                    >
-                      LOGIN
-                    </Link>
-                  </p>
-                </div>
-              </form>
+            <div className="text-center pt-4">
+              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+                Already have an account?{' '}
+                <Link href="/login" className="text-primary-700 dark:text-primary-500 hover:underline font-black">
+                  Log in
+                </Link>
+              </p>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
-      <UnifiedFooter />
     </MobileAppWrapper>
   );
 };
 
 export default RegisterPage;
-
-
-
-
 
 

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaGraduationCap, FaClock, FaTrophy, FaCalendar, FaChevronRight } from 'react-icons/fa';
-import UnifiedNavbar from '../../components/UnifiedNavbar';
+// UnifiedNavbar removed
 import UnifiedFooter from '../../components/UnifiedFooter';
 import dbConnect from '../../lib/db';
 import Exam from '../../models/Exam';
@@ -14,7 +14,7 @@ export default function ExamsPage({ exams, pagination }) {
     };
 
     return (
-        <>
+        <MobileAppWrapper showHeader={true} title="Government Exams">
             <Head>
                 <title>Government Exams - Practice Tests | AajExam</title>
                 <meta name="description" content="Practice for real government exams including SSC, UPSC, Banking, Railway and other competitive examinations. Full-length mock tests with detailed solutions." />
@@ -28,90 +28,83 @@ export default function ExamsPage({ exams, pagination }) {
                 <meta name="robots" content="index, follow" />
             </Head>
 
-            <UnifiedNavbar isLandingPage={true} />
+            <div className="min-h-screen bg-white dark:bg-slate-950 py-20 lg:py-24 px-4 font-outfit relative overflow-hidden">
+                {/* Background atmosphere */}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 from-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-10">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
                     {/* Header */}
                     <div className="text-center mb-8 lg:mb-16">
-                        <div className="inline-block mb-0 lg:mb-4">
-                            <FaGraduationCap className="text-3xl lg:text-6xl text-primary-600 dark:text-red-400 mx-auto" />
+                        <div className="inline-block mb-6">
+                            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mx-auto shadow-duo-primary border-2 border-white dark:border-slate-800">
+                                <FaGraduationCap className="text-3xl text-primary-600 dark:text-primary-400" />
+                            </div>
                         </div>
-                        <h1 className="text-xl lg:text-3xl xl:text-4xl font-extrabold text-primary-600 text-primary-600 dark:text-primary-400 dark:text-red-400 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
                             Government Exams
                         </h1>
-                        <p className="text-sm md:text-lg lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 font-medium">
+                        <p className="text-lg lg:text-xl lg:text-3xl font-black text-slate-600 dark:text-slate-400 max-w-3xl mx-auto uppercase tracking-widest text-xs">
                             Practice with real exam patterns for SSC, UPSC, Banking, Railway & more
                         </p>
                     </div>
 
                     {/* Exams List */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 lg:gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                         {exams.map(exam => (
                             <Link key={exam._id} href={`/exams/${exam._id}`}>
-                                <div className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 cursor-pointer">
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-3 mb-3">
-                                                <FaGraduationCap className="text-3xl text-primary-600 dark:text-red-400" />
-                                                <h2 className="text-2xl md:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-red-400 transition-colors">
-                                                    {exam.name || exam.title || exam.description || 'Untitled Exam'}
-                                                </h2>
+                                <div className="group bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-b-8 border-slate-100 dark:border-slate-800 active:translate-y-1 active:border-b-2 cursor-pointer h-full flex flex-col justify-between">
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-4 mb-6">
+                                            <div className="w-12 h-12 bg-primary-50 dark:bg-primary-900/20 rounded-xl flex items-center justify-center group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                                <FaGraduationCap className="text-2xl text-primary-600 dark:text-primary-400 group-hover:text-white" />
                                             </div>
+                                            <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                                {exam.name || exam.title || 'Untitled Exam'}
+                                            </h2>
+                                        </div>
 
-                                            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                                                {exam.description}
-                                            </p>
+                                        <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-6 line-clamp-2 leading-relaxed">
+                                            {exam.description}
+                                        </p>
 
-                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                                {exam.examDate && (
-                                                    <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaCalendar className="text-secondary-500 mr-2" />
-                                                        <div>
-                                                            <div className="text-xs text-gray-500 dark:text-gray-400">Exam Date</div>
-                                                            <div className="font-semibold">{formatDate(exam.examDate)}</div>
-                                                        </div>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                            {exam.examDate && (
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                                                        <FaCalendar className="text-orange-500 text-sm" />
                                                     </div>
-                                                )}
-                                                {exam.duration && (
-                                                    <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaClock className="text-green-500 mr-2" />
-                                                        <div>
-                                                            <div className="text-xs text-gray-500 dark:text-gray-400">Duration</div>
-                                                            <div className="font-semibold">{exam.duration} min</div>
-                                                        </div>
+                                                    <div>
+                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Exam Date</div>
+                                                        <div className="text-xs font-black text-slate-700 dark:text-slate-300">{formatDate(exam.examDate)}</div>
                                                     </div>
-                                                )}
-                                                {exam.totalMarks && (
-                                                    <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaTrophy className="text-primary-500 mr-2" />
-                                                        <div>
-                                                            <div className="text-xs text-gray-500 dark:text-gray-400">Total Marks</div>
-                                                            <div className="font-semibold">{exam.totalMarks}</div>
-                                                        </div>
+                                                </div>
+                                            )}
+                                            {exam.duration && (
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                                                        <FaClock className="text-emerald-500 text-sm" />
                                                     </div>
-                                                )}
-                                                {exam.passingMarks && (
-                                                    <div className="flex items-center text-gray-700 dark:text-gray-300">
-                                                        <FaTrophy className="text-primary-500 mr-2" />
-                                                        <div>
-                                                            <div className="text-xs text-gray-500 dark:text-gray-400">Passing Marks</div>
-                                                            <div className="font-semibold">{exam.passingMarks}</div>
-                                                        </div>
+                                                    <div>
+                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Duration</div>
+                                                        <div className="text-xs font-black text-slate-700 dark:text-slate-300">{exam.duration} MIN</div>
                                                     </div>
-                                                )}
-                                            </div>
-
-                                            {exam.category && (
-                                                <div className="mt-4">
-                                                    <span className="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">
-                                                        {exam.category.name}
-                                                    </span>
                                                 </div>
                                             )}
                                         </div>
 
-                                        <FaChevronRight className="text-gray-400 group-hover:text-primary-600 dark:group-hover:text-red-400 transition-colors text-xl mt-2" />
+                                        {exam.category && (
+                                            <div className="mb-6">
+                                                <span className="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-xl text-[10px] font-black uppercase tracking-widest">
+                                                    {exam.category.name}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-800">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-primary-600">View Details</span>
+                                        <FaChevronRight className="text-xs text-slate-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
                                     </div>
                                 </div>
                             </Link>
@@ -120,10 +113,10 @@ export default function ExamsPage({ exams, pagination }) {
 
                     {/* Empty State */}
                     {exams.length === 0 && (
-                        <div className="text-center py-20 bg-white dark:bg-gray-800 rounded-2xl">
-                            <FaGraduationCap className="text-6xl text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-                            <p className="text-xl text-gray-500 dark:text-gray-400">No exams available at the moment.</p>
-                            <p className="text-gray-400 dark:text-gray-500 mt-2">Check back soon for new exam schedules!</p>
+                        <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl">
+                            <FaGraduationCap className="text-6xl text-slate-200 dark:text-slate-800 mx-auto mb-6" />
+                            <p className="text-xl font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tight">No exams available at the moment.</p>
+                            <p className="text-slate-400 dark:text-slate-500 mt-2 text-xs font-black uppercase tracking-widest">Check back soon for new exam schedules!</p>
                         </div>
                     )}
 
@@ -137,7 +130,7 @@ export default function ExamsPage({ exams, pagination }) {
                                     </button>
                                 </Link>
                             )}
-                            <span className="px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 dark:to-secondary-500 text-white rounded-lg font-semibold">
+                            <span className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-600 dark:from-primary-500 dark:to-primary-500 text-white rounded-lg font-semibold">
                                 Page {pagination.page} of {pagination.totalPages}
                             </span>
                             {pagination.hasNext && (
@@ -151,8 +144,7 @@ export default function ExamsPage({ exams, pagination }) {
                     )}
                 </div>
             </div>
-            <UnifiedFooter />
-        </>
+        </MobileAppWrapper>
     );
 }
 
@@ -198,3 +190,4 @@ export async function getServerSideProps({ query }) {
         };
     }
 }
+

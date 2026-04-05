@@ -1,4 +1,4 @@
-"use client";
+﻿'use client';
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -8,24 +8,45 @@ import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import { useSelector } from "react-redux";
 import Sidebar from "../../Sidebar";
 import { getCurrentUser } from "../../../utils/authUtils";
-import ViewToggle from "../../ViewToggle";
 import Loading from "../../Loading";
-import Button from "../../ui/Button";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import {
+  Edit3,
+  Trash2,
+  Plus,
+  Search,
+  CheckCircle2,
+  AlertCircle,
+  Layers,
+  Activity,
+  X,
+  Settings,
+  Building2,
+  Globe2,
+  ChevronLeft,
+  ChevronRight,
+  LayoutGrid,
+  List,
+  Table as TableIcon,
+  Zap,
+  Calendar,
+  Clock,
+  Binary,
+  Boxes,
+  Compass,
+  FileText
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const AdminGovtExamPatterns = () => {
-
   const [loading, setLoading] = useState(false);
-
   const [categories, setCategories] = useState([]);
   const [exams, setExams] = useState([]);
   const [patterns, setPatterns] = useState([]);
-
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedExam, setSelectedExam] = useState("all");
-
   const [showModal, setShowModal] = useState(false);
   const [editingPattern, setEditingPattern] = useState(null);
+  const [viewMode, setViewMode] = useState('table');
 
   const [formData, setFormData] = useState({
     title: "",
@@ -42,27 +63,19 @@ const AdminGovtExamPatterns = () => {
     sectionDuration: ""
   });
 
-  const [viewMode, setViewMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.innerWidth < 768 ? "grid" : "table";
-    }
-    return "table";
-  });
-
   const user = getCurrentUser();
   const isOpen = useSelector((state) => state.sidebar.isOpen);
+  const isAdminRoute = typeof window !== "undefined" ? window.location.pathname.startsWith("/admin") : false;
 
-  const isAdminRoute =
-    typeof window !== "undefined"
-      ? window.location.pathname.startsWith("/admin")
-      : false;
-
-
-  // --------------------------------------
-  // 1️⃣ LOAD CATEGORIES ONLY ONCE
-  // --------------------------------------
   useEffect(() => {
     loadCategories();
+    // Check for examId in URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const examId = urlParams.get('examId');
+    if (examId) {
+      setSelectedExam(examId);
+      handleExamChange(examId);
+    }
   }, []);
 
   const loadCategories = async () => {
@@ -75,19 +88,12 @@ const AdminGovtExamPatterns = () => {
     }
   };
 
-
-  // --------------------------------------
-  // 2️⃣ SELECT CATEGORY → LOAD EXAMS
-  // --------------------------------------
   const handleCategoryChange = async (categoryId) => {
     setSelectedCategory(categoryId);
     setSelectedExam("all");
-
     setExams([]);
     setPatterns([]);
-
-    if (!categoryId) return;
-
+    if (!categoryId || categoryId === 'all') return;
     setLoading(true);
     try {
       const res = await API.getExamsByCategory(categoryId);
@@ -98,16 +104,10 @@ const AdminGovtExamPatterns = () => {
     setLoading(false);
   };
 
-
-  // --------------------------------------
-  // 3️⃣ SELECT EXAM → LOAD PATTERNS
-  // --------------------------------------
   const handleExamChange = async (examId) => {
     setSelectedExam(examId);
     setPatterns([]);
-
-    if (examId === "all") return;
-
+    if (!examId || examId === "all") return;
     setLoading(true);
     try {
       const res = await API.getPatternsByExam(examId);
@@ -120,49 +120,36 @@ const AdminGovtExamPatterns = () => {
     setLoading(false);
   };
 
-
-  // --------------------------------------
-  // 4️⃣ CREATE NEW PATTERN
-  // --------------------------------------
   const handleCreate = () => {
-    if (selectedExam === "all") return;
-
+    if (selectedExam === "all") {
+      toast.warning("Please select an exam first");
+      return;
+    }
     setEditingPattern(null);
-
     setFormData({
+      exam: selectedExam,
       title: "",
       duration: 60,
       negativeMarking: 0,
       sections: []
     });
-
     setShowModal(true);
   };
 
-
-  // --------------------------------------
-  // 5️⃣ EDIT PATTERN
-  // --------------------------------------
   const handleEdit = (pattern) => {
     setEditingPattern(pattern);
-
     setFormData({
+      exam: pattern.exam?._id || pattern.exam || selectedExam,
       title: pattern.title,
       duration: pattern.duration,
       negativeMarking: pattern.negativeMarking,
       sections: pattern.sections || []
     });
-
     setShowModal(true);
   };
 
-
-  // --------------------------------------
-  // 6️⃣ DELETE PATTERN → RELOAD SAME EXAM PATTERNS
-  // --------------------------------------
   const handleDelete = async (id) => {
     if (!confirm("Delete pattern?")) return;
-
     try {
       await API.deleteExamPattern(id);
       toast.success("Pattern deleted!");
@@ -172,609 +159,333 @@ const AdminGovtExamPatterns = () => {
     }
   };
 
-
-  // --------------------------------------
-  // 7️⃣ ADD NEW SECTION
-  // --------------------------------------
   const handleAddSection = () => {
     if (!newSection.name || newSection.totalQuestions <= 0) {
-      toast.error("Fill all section fields");
+      toast.error("Please fill section name and questions");
       return;
     }
-
-    setFormData({
-      ...formData,
-      sections: [...formData.sections, { ...newSection }]
-    });
-
-    setNewSection({
-      name: "",
-      totalQuestions: 1,
-      marksPerQuestion: 1,
-      negativePerQuestion: 0,
-      sectionDuration: ""
-    });
+    setFormData({ ...formData, sections: [...formData.sections, { ...newSection }] });
+    setNewSection({ name: "", totalQuestions: 1, marksPerQuestion: 1, negativePerQuestion: 0, sectionDuration: "" });
   };
 
-
-  // --------------------------------------
-  // 8️⃣ REMOVE SECTION
-  // --------------------------------------
   const handleRemoveSection = (index) => {
-    setFormData({
-      ...formData,
-      sections: formData.sections.filter((_, i) => i !== index)
-    });
+    setFormData({ ...formData, sections: formData.sections.filter((_, i) => i !== index) });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (formData.sections.length === 0) {
-      toast.error("Please add at least one section");
+      toast.error("Add at least one section");
       return;
     }
-
     try {
-      if (editingPattern) {
-        await API.updateExamPattern(editingPattern._id, formData);
-        toast.success("Pattern updated successfully");
-      } else {
-        await API.createExamPattern(formData);
-        toast.success("Pattern created successfully");
-      }
+      if (editingPattern) await API.updateExamPattern(editingPattern._id, formData);
+      else await API.createExamPattern(formData);
+      toast.success(`Pattern ${editingPattern ? 'updated' : 'created'}`);
       setShowModal(false);
-      fetchAllPatterns();
+      handleExamChange(selectedExam);
     } catch (err) {
-      console.error("Save error", err);
-      toast.error(err?.response?.data?.message || "Failed to save pattern");
+      toast.error(err?.response?.data?.message || "Failed to save");
     }
   };
 
-
-  // --------------------------------------
-  // 9️⃣ CALCULATE TOTAL MARKS
-  // --------------------------------------
-  const calculateTotalMarks = () =>
-    formData.sections.reduce(
-      (sum, sec) => sum + sec.totalQuestions * sec.marksPerQuestion,
-      0
-    );
-
-
-  // --------------------------------------
-  // 🔟 SELECTED EXAM / CATEGORY DATA (Optional)
-  // --------------------------------------
-  const selectedExamData = exams.find((e) => e._id === selectedExam);
-  const selectedCategoryData = categories.find(
-    (c) => c._id === selectedExamData?.category
-  );
-
-
-  // --------------------------------------
-  // 1️⃣1️⃣ FILTER PATTERNS FOR CURRENT EXAM
-  // --------------------------------------
-  const filteredPatterns =
-    selectedExam === "all"
-      ? patterns
-      : patterns.filter(
-        (pattern) =>
-          pattern.exam?._id === selectedExam || pattern.exam === selectedExam
-      );
-
+  const calculateTotalMarks = () => formData.sections.reduce((sum, sec) => sum + (sec.totalQuestions * sec.marksPerQuestion), 0);
 
   return (
     <AdminMobileAppWrapper title="Exam Patterns">
       <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 md:p-6 w-full text-gray-900 dark:text-white">
+        <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden">
+          
           {/* Header */}
-          <div className="mb-4 md:mb-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div className="w-full min-w-fit lg:max-w-sm lg:min-w-sm">
-                <h1 className="text-xl md:text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-0 lg:mb-2">
-                  🏛️ Exam Patterns
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
+                    <Binary className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Governance // Pattern Management</span>
+                </div>
+                <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                  Exam Patterns
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 hidden md:block">
-                  Manage exam patterns
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
+                  Configure structural templates for exam tests.
                 </p>
               </div>
-              {/* Filters */}
-              <div className="w-full lg:max-w-sm">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Category
-                </label>
-                <select
-                  onChange={(e) => handleCategoryChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                >
-                  <option value="">All Categories</option>
-                  {categories.map((cat) => (
-                    <option key={cat._id} value={cat._id}>
-                      {cat.name} Exams
-                    </option>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                  {[
+                    { icon: TableIcon, id: 'table', label: 'Table' },
+                    { icon: LayoutGrid, id: 'grid', label: 'Nodes' },
+                    { icon: List, id: 'list', label: 'List' }
+                  ].map((mode) => (
+                    <button
+                      key={mode.id}
+                      onClick={() => setViewMode(mode.id)}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                    >
+                      <mode.icon className="w-4 h-4" />
+                      {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
+                    </button>
                   ))}
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                  onClick={handleCreate}
+                  disabled={selectedExam === 'all'}
+                  className={`px-8 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-500 text-white'}`}
+                >
+                  <Plus className="w-4 h-4" /> New Pattern
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Filters */}
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-12 shadow-2xl">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 font-outfit">
+              <div className="w-full lg:w-1/2 flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
+                <Compass className="w-4 h-4 text-primary-500" />
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => handleCategoryChange(e.target.value)}
+                  className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full"
+                >
+                  <option value="all">All Category Sectors</option>
+                  {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name}</option>)}
                 </select>
               </div>
 
-              <div className="w-full lg:max-w-sm">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Exams
-                </label>
+              <div className="w-full lg:w-1/2 flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5 text-[10px] uppercase font-black">
+                <LayoutGrid className="w-4 h-4 text-primary-500" />
                 <select
                   value={selectedExam}
                   onChange={(e) => handleExamChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
+                  className="bg-transparent text-slate-900 dark:text-white tracking-widest focus:outline-none cursor-pointer w-full"
                 >
-                  <option value="all">All Exams</option>
-                  {exams.map((exam) => (
-                    <option key={exam._id} value={exam._id}>
-                      {exam.code} - {exam.name}
-                    </option>
-                  ))}
+                  <option value="all">All Active Exams</option>
+                  {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.code} - {exam.name}</option>)}
                 </select>
-              </div>
-              <div className="w-full lg:max-w-sm mt-2 lg:mt-5">
-                <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-              </div>
-              <div className="w-full lg:max-w-sm mt-2 lg:mt-6">
-                <Button
-                  variant="admin"
-                  onClick={handleCreate}
-                  disabled={selectedExam === "all"}
-                >
-                  + Add Pattern
-                </Button>
               </div>
             </div>
           </div>
 
-
-
-          {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <Loading size="md" color="blue" message="Loading patterns..." />
-            </div>
-          ) : filteredPatterns.length === 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-8 text-center text-gray-500 dark:text-gray-400">
-              {selectedExam === "all"
-                ? "No patterns found. Create your first pattern!"
-                : "No patterns found for the selected exam."}
-            </div>
-          ) : (
-            <>
-              {/* Table view */}
-              {viewMode === "table" && (
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead className="bg-gray-50 dark:bg-gray-700">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Title
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Exam
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Duration
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Total Marks
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Sections
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                      {filteredPatterns.map((pattern) => (
-                        <tr
-                          key={pattern._id}
-                          className="hover:bg-gray-50 dark:hover:bg-gray-700"
-                        >
-                          <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
-                            {pattern.title}
-                          </td>
-                          <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
-                            {pattern.exam?.name}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                            {pattern.duration} min
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                            {pattern.totalMarks}
-                          </td>
-                          <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
-                            {pattern.sections?.length || 0} sections
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                            <Link
-                              href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                              className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
-                            >
-                              Tests
-                            </Link>
-                            <button
-                              onClick={() => handleEdit(pattern)}
-                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => handleDelete(pattern._id)}
-                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
-                            >
-                              Delete
-                            </button>
-                          </td>
+          {/* Content */}
+          <AnimatePresence mode="wait">
+            {loading ? (
+              <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Syncing structures..." /></div>
+            ) : patterns.length === 0 ? (
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+                <Boxes className="w-16 h-16 text-slate-300 mx-auto mb-8 opacity-20" />
+                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Patterns Found</h3>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Selected exam has no active pattern templates</p>
+              </div>
+            ) : (
+              <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                {viewMode === 'table' && (
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Pattern Name</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Duration</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Negative Marks</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Sections</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Operations</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-
-              {/* List view */}
-              {viewMode === "list" && (
-                <div className="space-y-3">
-                  {filteredPatterns.map((pattern) => (
-                    <div
-                      key={pattern._id}
-                      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h3 className="text-md lg:text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                            {pattern.title}
-                          </h3>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm mb-2">
-                            <div>
-                              <span className="text-gray-500 dark:text-gray-400">
-                                Duration:
-                              </span>
-                              <span className="ml-2 font-medium text-gray-900 dark:text-white">
-                                {pattern.duration} min
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500 dark:text-gray-400">
-                                Marks:
-                              </span>
-                              <span className="ml-2 font-medium text-gray-900 dark:text-white">
-                                {pattern.totalMarks}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500 dark:text-gray-400">
-                                Sections:
-                              </span>
-                              <span className="ml-2 font-medium text-gray-900 dark:text-white">
-                                {pattern.sections?.length || 0}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500 dark:text-gray-400">
-                                Neg. Mark:
-                              </span>
-                              <span className="ml-2 font-medium text-gray-900 dark:text-white">
-                                {pattern.negativeMarking || 0}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 ml-4 flex-col sm:flex-row">
-                          <Link
-                            href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                            className="px-3 py-2 text-sm text-primary-600 dark:text-primary-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
-                          >
-                            Tests
-                          </Link>
-                          <button
-                            onClick={() => handleEdit(pattern)}
-                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
-                            title="Edit"
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(pattern._id)}
-                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
-                            title="Delete"
-                          >
-                            <FaTrash />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Grid view */}
-              {viewMode === "grid" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredPatterns.map((pattern) => (
-                    <div
-                      key={pattern._id}
-                      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-lg transition-shadow"
-                    >
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 truncate">
-                        {pattern.title}
-                      </h3>
-                      <div className="space-y-2 mb-4">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-500 dark:text-gray-400">
-                            Duration:
-                          </span>
-                          <span className="font-medium text-gray-900 dark:text-white">
-                            {pattern.duration} min
-                          </span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-500 dark:text-gray-400">
-                            Total Marks:
-                          </span>
-                          <span className="font-medium text-gray-900 dark:text-white">
-                            {pattern.totalMarks}
-                          </span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-500 dark:text-gray-400">
-                            Sections:
-                          </span>
-                          <span className="font-medium text-gray-900 dark:text-white">
-                            {pattern.sections?.length || 0}
-                          </span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-500 dark:text-gray-400">
-                            Neg. Mark:
-                          </span>
-                          <span className="font-medium text-gray-900 dark:text-white">
-                            {pattern.negativeMarking || 0}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
-                        <Link
-                          href={`/admin/govt-exams/tests?patternId=${pattern._id}`}
-                          className="flex-1 px-3 py-2 text-sm bg-purple-50 dark:bg-purple-900/20 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-center"
-                        >
-                          Tests
-                        </Link>
-                        <button
-                          onClick={() => handleEdit(pattern)}
-                          className="px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
-                        >
-                          <FaEdit />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(pattern._id)}
-                          className="px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
-                        >
-                          <FaTrash />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99]">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl p-3 lg:p-6 max-h-[90vh] overflow-y-auto">
-            <h2 className="text-md lg:text-xl font-bold mb-4 text-gray-900 dark:text-white">
-              {editingPattern ? `Edit Pattern: ${editingPattern.title}` : "Create New Pattern"}
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Pattern Title *
-                </label>
-                <input
-                  type="text"
-                  value={formData.title}
-                  onChange={(e) =>
-                    setFormData({ ...formData, title: e.target.value })
-                  }
-                  className="w-full lg:max-w-sm px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                  placeholder="e.g., SSC CGL Tier 1"
-                  required
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Duration (minutes) *
-                  </label>
-                  <input
-                    type="number"
-                    value={formData.duration}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        duration: parseInt(e.target.value) || 0,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                    min="1"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Negative Marking
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={formData.negativeMarking}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        negativeMarking: parseFloat(e.target.value) || 0,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                    min="0"
-                  />
-                </div>
-              </div>
-
-              {/* Sections */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Sections *
-                  <span className="text-xs text-gray-500 ml-2">
-                    Current Total: {calculateTotalMarks()} marks
-                  </span>
-                </label>
-
-                {/* Existing Sections */}
-                {formData.sections.length > 0 && (
-                  <div className="mb-4 space-y-2">
-                    {formData.sections.map((section, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-700 rounded"
-                      >
-                        <div className="flex-1">
-                          <span className="font-medium">{section.name}</span>
-                          <span className="text-sm text-gray-500 ml-2">
-                            ({section.totalQuestions} Q ×{" "}
-                            {section.marksPerQuestion} marks ={" "}
-                            {section.totalQuestions * section.marksPerQuestion}{" "}
-                            marks)
-                          </span>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveSection(index)}
-                          className="text-primary-600 hover:text-red-800"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ))}
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                        {patterns.map((p, idx) => (
+                          <motion.tr key={p._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.03 }} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all">
+                            <td className="px-8 py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{p.title}</td>
+                            <td className="px-8 py-6">
+                              <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                                <Clock className="w-4 h-4 text-primary-500" /> {p.duration} Min
+                              </div>
+                            </td>
+                            <td className="px-8 py-6 text-rose-500 font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} Per Error</td>
+                            <td className="px-8 py-6 text-center">
+                              <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sectors</span>
+                            </td>
+                            <td className="px-8 py-6 text-right">
+                              <div className="flex justify-end gap-3">
+                                <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
+                                  <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-500 rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
+                                </Link>
+                                <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
+                                <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-rose-500/10 text-rose-500 rounded-xl border border-rose-500/20"><Trash2 className="w-4 h-4" /></motion.button>
+                              </div>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
 
-                {/* Add New Section */}
-                <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4">
-                  <h4 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">
-                    Add Section
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4 mb-3">
+                {viewMode === 'grid' && (
+                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {patterns.map((p, idx) => (
+                        <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative font-outfit">
+                           <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-500 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
+                           <div className="mb-8">
+                             <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-1">Structural Pattern</div>
+                             <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{p.title}</h3>
+                           </div>
+                           <div className="grid grid-cols-2 gap-4 mb-8">
+                              <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100">
+                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Latency</p>
+                                <p className="text-sm font-black text-slate-900 dark:text-white">{p.duration} MIN</p>
+                              </div>
+                              <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100">
+                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Sectors</p>
+                                <p className="text-sm font-black text-slate-900 dark:text-white">{p.sections?.length || 0}</p>
+                              </div>
+                           </div>
+                           <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
+                              <Link href={`/admin/govt-exams/tests?patternId=${p._id}`} className="flex-1">
+                                <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg">Manage Tests</motion.button>
+                              </Link>
+                              <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
+                              <motion.button onClick={() => handleDelete(p._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
+                           </div>
+                        </motion.div>
+                      ))}
+                   </div>
+                )}
+
+                {viewMode === 'list' && (
+                  <div className="space-y-6">
+                    {patterns.map((p, idx) => (
+                      <motion.div key={p._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl">
+                         <div className="flex items-center gap-6">
+                            <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black italic shadow-2xl text-xs">{p.title.substring(0,3).toUpperCase()}</div>
+                            <div>
+                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{p.title}</h3>
+                               <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                  <span>{p.duration} MIN DURATION</span>
+                                  <span>{p.sections?.length || 0} SECTIONS</span>
+                               </div>
+                            </div>
+                         </div>
+                         <div className="flex items-center gap-3">
+                            <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
+                              <motion.button whileHover={{ scale: 1.05 }} className="px-8 py-3 bg-primary-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">Calibrate Tests</motion.button>
+                            </Link>
+                            <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
+                            <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
+                         </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {showModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-5xl bg-white dark:bg-[#0A0F1E] rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+               <div className="p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary-500 text-white rounded-2xl shadow-lg"><Binary className="w-6 h-6" /></div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Section Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={newSection.name}
-                        onChange={(e) =>
-                          setNewSection({ ...newSection, name: e.target.value })
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                        placeholder="e.g., General Awareness"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Total Questions *
-                      </label>
-                      <input
-                        type="number"
-                        value={newSection.totalQuestions}
-                        onChange={(e) =>
-                          setNewSection({
-                            ...newSection,
-                            totalQuestions: parseInt(e.target.value) || 1,
-                          })
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                        min="1"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Marks per Question *
-                      </label>
-                      <input
-                        type="number"
-                        value={newSection.marksPerQuestion}
-                        onChange={(e) =>
-                          setNewSection({
-                            ...newSection,
-                            marksPerQuestion: parseFloat(e.target.value) || 1,
-                          })
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                        min="0"
-                        step="0.01"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Negative per Question
-                      </label>
-                      <input
-                        type="number"
-                        value={newSection.negativePerQuestion}
-                        onChange={(e) =>
-                          setNewSection({
-                            ...newSection,
-                            negativePerQuestion:
-                              parseFloat(e.target.value) || 0,
-                          })
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                        min="0"
-                        step="0.01"
-                      />
+                       <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">Pattern <span className="text-primary-500">Configuration</span></h2>
+                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Adjusting Pattern: ${editingPattern.title}` : 'Initializing New Structure'}</p>
                     </div>
                   </div>
-                  <Button
-                    onClick={handleAddSection}
-                    variant="admin"
-                    fullWidth
-                  >
-                    + Add Section
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                >
-                  Cancel
-                </button>
-                <Button
-                  type="submit"
-                  variant="admin"
-                >
-                  {editingPattern ? "Update" : "Create"}
-                </Button>
-              </div>
-            </form>
+                  <button onClick={() => setShowModal(false)} className="p-3 rounded-xl hover:bg-rose-500/10 hover:text-rose-500 transition-colors"><X className="w-6 h-6" /></button>
+               </div>
+               <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
+                  <div className="w-full lg:w-2/5 p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
+                     <form onSubmit={handleSubmit} className="space-y-8">
+                        <div className="space-y-4">
+                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Pattern Title</label>
+                           <input type="text" value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-6">
+                           <div className="space-y-4">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Global Limit (Min)</label>
+                              <input type="number" value={formData.duration} onChange={(e) => setFormData({...formData, duration: parseInt(e.target.value) || 0})} required className="w-full px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
+                           </div>
+                           <div className="space-y-4">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-rose-500 pl-3 block ml-2">Negative Matrix</label>
+                              <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({...formData, negativeMarking: parseFloat(e.target.value) || 0})} className="w-full px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-rose-500/30 rounded-2xl text-xs font-black outline-none" />
+                           </div>
+                        </div>
+                        <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
+                           <div className="p-6 bg-emerald-500/5 rounded-3xl border-2 border-emerald-500/10 flex justify-between items-center font-outfit">
+                              <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Total Weightage</span>
+                              <span className="text-2xl font-black text-emerald-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
+                           </div>
+                           <button type="submit" className="w-full py-5 bg-primary-500 text-white rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center gap-3">
+                              <CheckCircle2 className="w-5 h-5" /> {editingPattern ? 'Update Pattern' : 'Create Pattern'}
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+                  <div className="flex-1 p-8 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
+                     <div className="max-w-2xl mx-auto space-y-10">
+                        <div className="space-y-4">
+                           <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-500" /> Structure Sections ({formData.sections.length})</h3>
+                           {formData.sections.map((sec, i) => (
+                              <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-white dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
+                                 <div className="flex items-center gap-6">
+                                    <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center font-black text-xs font-outfit">{i + 1}</div>
+                                    <div>
+                                       <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{sec.name}</h4>
+                                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{sec.totalQuestions} Qs x {sec.marksPerQuestion} pts | Neg: -{sec.negativePerQuestion}</p>
+                                    </div>
+                                 </div>
+                                 <button onClick={() => handleRemoveSection(i)} className="p-3 bg-rose-500/10 text-rose-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"><Trash2 className="w-4 h-4" /></button>
+                              </motion.div>
+                           ))}
+                        </div>
+                        <div className="p-8 bg-white dark:bg-white/5 rounded-[3rem] border-4 border-dashed border-primary-500/20 relative font-outfit">
+                           <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-500 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">Append New Section</div>
+                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                              <div className="lg:col-span-2 space-y-2">
+                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>
+                                 <input type="text" value={newSection.name} onChange={(e) => setNewSection({...newSection, name: e.target.value})} placeholder="E.G. QUANTITATIVE APTITUDE" className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black uppercase outline-none focus:border-primary-500/30" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Total Questions</label>
+                                 <input type="number" value={newSection.totalQuestions} onChange={(e) => setNewSection({...newSection, totalQuestions: parseInt(e.target.value) || 0})} className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Marks / Question</label>
+                                 <input type="number" value={newSection.marksPerQuestion} onChange={(e) => setNewSection({...newSection, marksPerQuestion: parseFloat(e.target.value) || 0})} className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Negative / Question</label>
+                                 <input type="number" step="0.01" value={newSection.negativePerQuestion} onChange={(e) => setNewSection({...newSection, negativePerQuestion: parseFloat(e.target.value) || 0})} className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Time (Optional Min)</label>
+                                 <input type="text" value={newSection.sectionDuration} onChange={(e) => setNewSection({...newSection, sectionDuration: e.target.value})} placeholder="30" className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                              </div>
+                           </div>
+                           <button type="button" onClick={handleAddSection} className="w-full mt-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3">
+                              <Plus className="w-5 h-5" /> Push to Architecture
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </AdminMobileAppWrapper>
   );
 };
 
 export default AdminGovtExamPatterns;
+

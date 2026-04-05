@@ -11,6 +11,7 @@ import '@/models/Category';
 import '@/models/Subcategory';
 import '@/models/Article';
 import '@/models/QuizAttempt';
+import '@/models/StudyMaterial';
 
 const MONGODB_URI = process.env.MONGO_URI;
 

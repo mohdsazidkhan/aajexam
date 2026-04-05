@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import config from '../lib/config/appConfig';
 import { useRewards } from '../hooks/useRewards';
 import RewardBadge from './RewardBadge';
@@ -38,25 +38,25 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
   const quizProgress = getQuizProgress();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 font-outfit">
       {/* Level Completion Status */}
       {isCompleted && (
-        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-green-800 mb-2">
-            🎉 Level {level} Completed!
+        <div className="bg-white dark:bg-slate-800 border-2 border-b-8 border-slate-100 dark:border-slate-700 rounded-[2rem] p-8 shadow-xl">
+          <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter flex items-center gap-3">
+            <span className="text-3xl">Ã°Å¸Å½â€°</span> Mission {level} Accomplished!
           </h3>
 
           {/* Show reward status if applicable */}
           {rewardStatus && (
-            <div className="mb-3">
+            <div className="mb-6">
               <RewardBadge level={level} status={rewardStatus} />
             </div>
           )}
 
           {/* Show monthly reward info */}
           {rewardStatus === 'monthly' && (
-            <div className="text-sm text-green-700 dark:text-green-300">
-              <p>🎉 You're eligible for monthly rewards! Maintain Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} position with ≥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy to win from a dynamic prize pool (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO}).</p>
+            <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
+              <p>You're eligible for monthly rewards! Maintain your status with Ã¢â€°Â¥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy to win from the collective prize pool.</p>
             </div>
           )}
         </div>
@@ -64,27 +64,27 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
 
       {/* Quiz Progress */}
       {quizProgress && (
-        <div className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-lg p-4">
-          <h4 className="font-semibold text-secondary-800 dark:text-secondary-300 mb-2">📚 Quiz Progress</h4>
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-secondary-700 dark:text-secondary-300">
-              {quizProgress.current} / {quizProgress.required} quizzes
+        <div className="bg-white dark:bg-slate-800 border-2 border-b-8 border-slate-100 dark:border-slate-700 rounded-[2rem] p-8 shadow-xl">
+          <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6">Mission Progress</h4>
+          <div className="flex justify-between items-center mb-4">
+            <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">
+              {quizProgress.current} / {quizProgress.required} Missions
             </span>
-            <span className="text-sm font-medium text-secondary-700 dark:text-secondary-300">
+            <span className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-widest">
               {Math.round(quizProgress.percentage)}%
             </span>
           </div>
-          <div className="w-full bg-secondary-200 dark:bg-secondary-800/40 rounded-full h-2">
+          <div className="w-full bg-slate-100 dark:bg-slate-700/50 rounded-2xl h-4 shadow-inner border-2 border-slate-200 dark:border-slate-700 overflow-hidden">
             <div
-              className="bg-secondary-600 h-2 rounded-full transition-all duration-300"
+              className="bg-primary-500 h-full rounded-2xl transition-all duration-1000 cubic-bezier(0.34, 1.56, 0.64, 1) shadow-[0_0_15px_rgba(239,68,68,0.4)]"
               style={{ width: `${quizProgress.percentage}%` }}
             ></div>
           </div>
 
           {/* Show unlock status */}
           {canUnlockRewards() && (
-            <div className="mt-2 text-sm text-green-700 font-medium">
-              ✅ All requirements met! Rewards can be unlocked.
+            <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl text-[10px] font-black text-green-600 dark:text-green-400 uppercase tracking-widest text-center border-2 border-green-100 dark:border-green-800">
+              Requirements Met! Unlock Now
             </div>
           )}
         </div>
@@ -92,43 +92,34 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
 
       {/* Leaderboard Position */}
       {leaderboardPosition && leaderboardPosition <= 3 && (
-        <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-lg p-4">
-          <h4 className="font-semibold text-primary-800 dark:text-primary-300 mb-2">
-            🏆 Top {leaderboardPosition} Position!
+        <div className="bg-primary-500 text-white rounded-[2rem] p-8 shadow-duo-secondary border-2 border-white dark:border-slate-700">
+          <h4 className="text-md md:text-xl lg:text-2xl font-black mb-4 uppercase tracking-tighter flex items-center gap-3">
+            <span className="text-3xl">Ã°Å¸Ââ€ </span> Rank {leaderboardPosition}!
           </h4>
 
-          {rewardStatus === 'monthly' && (
-            <p className="text-sm text-primary-700 dark:text-primary-300">
-              🏆 You're in Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS}! Maintain this position until month end to win from a dynamic prize pool (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO}).
-            </p>
-          )}
-
-          {rewardStatus === 'unlocked' && (
-            <p className="text-sm text-primary-700 dark:text-primary-300">
-              Your reward is unlocked and ready to claim!
-            </p>
-          )}
+          <p className="text-[10px] font-black text-white/80 uppercase tracking-widest leading-loose">
+            You're among the legends! Maintain this status to win from the collective prize pool.
+          </p>
         </div>
       )}
 
       {/* Action Buttons */}
-      <div className="flex space-x-3">
+      <div className="flex flex-col sm:flex-row gap-4">
         <button
           onClick={fetchRewards}
-          className="bg-secondary-600 text-white px-4 py-2 rounded-lg hover:bg-secondary-700 transition-colors"
+          className="flex-1 px-8 py-5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
         >
-          Refresh Rewards
+          Check Mission Status
         </button>
 
         {canUnlockRewards() && (
           <button
             onClick={() => {
-              // This would trigger the unlock process
               console.log('Unlocking rewards...');
             }}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            className="flex-1 px-8 py-5 bg-primary-500 text-white rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary active:translate-y-1 transition-all"
           >
-            Unlock Rewards
+            Unlock Mission Reward
           </button>
         )}
       </div>
@@ -137,6 +128,8 @@ const RewardsIntegration = ({ userId, level, isCompleted, leaderboardPosition })
 };
 
 export default RewardsIntegration;
+
+
 
 
 

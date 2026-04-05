@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState, useCallback } from "react";
 import API from '../../../lib/api';
@@ -8,12 +8,33 @@ import { useSelector } from "react-redux";
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { getCurrentUser } from "../../../utils/authUtils";
-// import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';
 import SearchFilter from '../../SearchFilter';
 import Button from '../../ui/Button';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  MessageSquare,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  Filter,
+  LayoutGrid,
+  List,
+  Table as TableIcon,
+  Search,
+  ChevronRight,
+  User,
+  Eye,
+  Heart,
+  MessageCircle,
+  ArrowRight,
+  MoreVertical,
+  ShieldCheck,
+  ShieldAlert,
+  Send
+} from 'lucide-react';
 
 const AdminUserQuestions = () => {
   const [items, setItems] = useState([]);
@@ -32,15 +53,6 @@ const AdminUserQuestions = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [updating, setUpdating] = useState(null);
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
-  };
   const [searchTerm, setSearchTerm] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [pagination, setPagination] = useState({});
@@ -48,7 +60,6 @@ const AdminUserQuestions = () => {
     typeof window !== "undefined" && window.innerWidth < 768 ? "list" : "table"
   );
 
-  // always in admin route in this page
   const isOpen = useSelector((state) => state.sidebar.isOpen);
   const isAdminRoute = pathname?.startsWith("/admin") || false;
   const user = getCurrentUser();
@@ -79,7 +90,6 @@ const AdminUserQuestions = () => {
     load();
   }, [load]);
 
-  // Keep URL in sync when status changes via UI
   useEffect(() => {
     const params = new URLSearchParams(searchParams?.toString());
     if (status) {
@@ -88,10 +98,8 @@ const AdminUserQuestions = () => {
       params.delete("status");
     }
     router.replace(`${pathname}?${params.toString()}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, pathname]);
 
-  // Update state if status in URL changes externally (e.g., navigation)
   useEffect(() => {
     const urlStatus = searchParams?.get("status");
     if (
@@ -102,17 +110,16 @@ const AdminUserQuestions = () => {
       setPage(1);
       setStatus(urlStatus);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const updateStatus = async (id, newStatus) => {
     setUpdating(id);
     try {
       await API.updateUserQuestionStatus(id, newStatus);
-      toast.success(`Question ${newStatus} successfully!`);
+      toast.success(`Protocol ${newStatus.toUpperCase()} executed!`);
       load();
     } catch (err) {
-      toast.error(err?.message || "Update failed");
+      toast.error(err?.message || "Protocol failure");
     } finally {
       setUpdating(null);
     }
@@ -120,30 +127,28 @@ const AdminUserQuestions = () => {
 
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
-  const getStatusColor = (status) => {
+  const getStatusConfig = (status) => {
     switch (status) {
       case "pending":
-        return "bg-primary-100 text-primary-800 border-primary-200 dark:bg-primary-900 dark:text-primary-200";
+        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "PENDING_REVIEW" };
       case "approved":
-        return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-200";
+        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "AUTHORIZED" };
       case "rejected":
-        return "bg-red-100 text-red-800 border-red-200 dark:bg-red-900 dark:text-red-200";
+        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "REJECT_ACCESS" };
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900 dark:text-gray-200";
+        return { color: "text-slate-500 bg-slate-500/10 border-slate-500/20", icon: MoreVertical, label: "UNKNOWN_STATE" };
     }
   };
 
-  const getStatusIcon = (status) => {
-    switch (status) {
-      case "pending":
-        return "⏳";
-      case "approved":
-        return "✅";
-      case "rejected":
-        return "❌";
-      default:
-        return "❓";
-    }
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const d = new Date(dateString);
+    return `${d.getDate().toString().padStart(2, '0')} ${['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()]} ${d.getFullYear()}`;
+  };
+
+  const formatTime = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
   };
 
   const handleItemsPerPageChange = (e) => {
@@ -156,449 +161,412 @@ const AdminUserQuestions = () => {
     setPage(1);
   };
 
-  // default view now controlled by viewMode state
-
-  const content = (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="mx-auto p-2 lg:p-4">
-        {/* Header */}
-        <div className="mb-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-            <div>
-              <h1 className="text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white flex items-center">
-                <span className="text-xl lg:text-4xl mr-3">💭</span>
-                User Questions ({total})
-              </h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-400">
-                Review and approve/reject user-submitted questions
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <SearchFilter
-                onSearch={handleSearch}
-                placeholder="Search questions..."
-                className="w-full lg:w-60"
-              />
-              <div className="flex items-center space-x-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                  Status:
-                </label>
-                <select
-                  value={status}
-                  onChange={(e) => {
-                    setPage(1);
-                    setStatus(e.target.value);
-                  }}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
-                >
-                  <option value="">All</option>
-                  <option value="pending">⏳ Pending Review</option>
-                  <option value="approved">✅ Approved</option>
-                  <option value="rejected">❌ Rejected</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2 flex-shrink-0">
-              <label className="text-xs sm:text-lg text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                Show:
-              </label>
-              <select
-                value={itemsPerPage}
-                onChange={handleItemsPerPageChange}
-                className="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs sm:text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white min-w-0"
-              >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-                <option value={250}>250</option>
-                <option value={500}>500</option>
-                <option value={1000}>1000</option>
-              </select>
-            </div>
-
-            {/* View toggle */}
-            <div className="flex items-center justify-end gap-2">
-              <button
-                onClick={() => setViewMode("list")}
-                className={`px-3 py-1 rounded ${viewMode === "list"
-                  ? "bg-secondary-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-                  }`}
-              >
-                List
-              </button>
-              <button
-                onClick={() => setViewMode("grid")}
-                className={`px-3 py-1 rounded ${viewMode === "grid"
-                  ? "bg-secondary-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-                  }`}
-              >
-                Grid
-              </button>
-              <button
-                onClick={() => setViewMode("table")}
-                className={`px-3 py-1 rounded ${viewMode === "table"
-                  ? "bg-secondary-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-                  }`}
-              >
-                Table
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Content */}
-        {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <Loading size="md" color="gray" message="" />
-          </div>
-        ) : items.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">
-              🤔
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-              No questions found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              {status === "pending"
-                ? "No pending questions to review."
-                : `No ${status} questions found.`}
-            </p>
-          </div>
-        ) : (
-          <>
-            {/* Table view */}
-            {viewMode === "table" && (
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse bg-white dark:bg-gray-800 shadow rounded-xl overflow-hidden">
-                  <thead className="bg-gray-50 dark:bg-gray-700">
-                    <tr>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        S.No.
-                      </th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        Question
-                      </th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        User
-                      </th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        Created At
-                      </th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        Stats
-                      </th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        Status / Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                    {items.map((q) => (
-                      <tr key={q._id}>
-                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
-                          {((page - 1) * limit) + items.indexOf(q) + 1}
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 max-w-[380px]">
-                          <div className="font-medium mb-2">
-                            {q.questionText}
-                          </div>
-
-                          {/* Options display */}
-                          <div className="flex flex-wrap space-x-2 mb-2">
-                            {(q.options || []).map((opt, idx) => (
-                              <div
-                                key={idx}
-                                className={`flex items-center space-x-2 text-xs ${idx === q.correctOptionIndex
-                                  ? "text-green-700 dark:text-green-400 font-medium"
-                                  : "text-gray-600 dark:text-gray-400"
-                                  }`}
-                              >
-                                <span className="w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-xs">
-                                  {String.fromCharCode(65 + idx)}
-                                </span>
-                                <span className="truncate">{opt}</span>
-                                {idx === q.correctOptionIndex && (
-                                  <span className="text-green-600 dark:text-green-400">
-                                    ✓
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
-                          <div className="font-medium text-gray-900 dark:text-white">
-                            {q.userId?.name || "Unknown"}
-                          </div>
-                          {(q.userId?.email || q.userId?.phone) && (
-                            <div className="text-xs text-gray-600 dark:text-gray-400">
-                              {q.userId?.email || ""}
-                              {q.userId?.email && q.userId?.phone ? " • " : ""}
-                              {q.userId?.phone || ""}
-                            </div>
-                          )}
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
-                          <div className="text-sm font-medium text-gray-900 dark:text-white">
-                            {formatDate(q.createdAt)}
-                          </div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            {new Date(q.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">
-                          <div className="flex items-center gap-3">
-                            <span className="text-secondary-600 dark:text-secondary-400">
-                              👁️ {q.viewsCount || 0}
-                            </span>
-                            <span className="text-primary-600 dark:text-red-400">
-                              ❤️ {q.likesCount || 0}
-                            </span>
-                            <span className="text-primary-600 dark:text-primary-400">
-                              💬 {(q.answers || []).length}
-                            </span>
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                          <div
-                            className={`inline-block px-3 py-1 rounded-lg font-medium border ${getStatusColor(
-                              q.status
-                            )}`}
-                          >
-                            {getStatusIcon(q.status)} {q.status}
-                          </div>
-                          {q.status === "pending" && (
-                            <div className="mt-2 flex gap-2">
-                              <Button
-                                size="sm"
-                                variant="success"
-                                onClick={() => updateStatus(q._id, "approved")}
-                              >
-                                Approve
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="danger"
-                                onClick={() => updateStatus(q._id, "rejected")}
-                              >
-                                Reject
-                              </Button>
-                            </div>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
-            {/* List view */}
-            {viewMode === "list" && (
-              <div className="space-y-3">
-                {items.map((q, idx) => (
-                  <div
-                    key={q._id}
-                    className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4"
-                  >
-                    <div className="flex items-start gap-2 mb-2">
-                      <span className="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                        {((page - 1) * (pagination.limit || itemsPerPage || limit)) + idx + 1}
-                      </span>
-                      <div className="font-medium text-gray-900 dark:text-white text-sm">
-                        {q.questionText}
-                      </div>
-                    </div>
-
-                    {/* Options display */}
-                    <div className="flex flex-wrap space-x-2 mb-2">
-                      {(q.options || []).map((opt, idx) => (
-                        <div
-                          key={idx}
-                          className={`flex items-center space-x-2 text-xs ${idx === q.correctOptionIndex
-                            ? "text-green-700 dark:text-green-400 font-medium"
-                            : "text-gray-600 dark:text-gray-400"
-                            }`}
-                        >
-                          <span className="w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-xs">
-                            {String.fromCharCode(65 + idx)}
-                          </span>
-                          <span className="truncate">{opt}</span>
-                          {idx === q.correctOptionIndex && (
-                            <span className="text-green-600 dark:text-green-400">
-                              ✓
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-2">
-                      <span>
-                        {q.userId?.name || "Unknown"}
-                        {q.userId?.email ? ` • ${q.userId.email}` : ""}
-                      </span>
-                      <span>
-                        Views: {q.viewsCount || 0} • Likes: {q.likesCount || 0}
-                      </span>
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                      Created: {formatDate(q.createdAt)} at {new Date(q.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div
-                        className={`px-2 py-0.5 rounded text-xs border ${getStatusColor(
-                          q.status
-                        )}`}
-                      >
-                        {getStatusIcon(q.status)} {q.status}
-                      </div>
-                      {q.status === "pending" && (
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="success"
-                            onClick={() => updateStatus(q._id, "approved")}
-                          >
-                            Approve
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="danger"
-                            onClick={() => updateStatus(q._id, "rejected")}
-                          >
-                            Reject
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Grid view */}
-            {viewMode === "grid" && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {items.map((q, idx) => (
-                  <div
-                    key={q._id}
-                    className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-sm"
-                  >
-                    <div className="flex items-start gap-2 mb-2">
-                      <span className="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                        {((page - 1) * (pagination.limit || itemsPerPage || limit)) + idx + 1}
-                      </span>
-                      <div className="text-sm font-bold text-gray-900 dark:text-white line-clamp-3">
-                        {q.questionText}
-                      </div>
-                    </div>
-
-                    {/* Options display */}
-                    <div className="flex flex-wrap space-x-2 mb-2">
-                      {(q.options || []).map((opt, idx) => (
-                        <div
-                          key={idx}
-                          className={`flex items-center space-x-2 text-xs ${idx === q.correctOptionIndex
-                            ? "text-green-700 dark:text-green-400 font-medium"
-                            : "text-gray-600 dark:text-gray-400"
-                            }`}
-                        >
-                          <span className="w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-xs">
-                            {String.fromCharCode(65 + idx)}
-                          </span>
-                          <span className="truncate">{opt}</span>
-                          {idx === q.correctOptionIndex && (
-                            <span className="text-green-600 dark:text-green-400">
-                              ✓
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="text-xs text-gray-600 dark:text-gray-300 mb-2">
-                      {q.userId?.name || "Unknown"}
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                      Created: {formatDate(q.createdAt)} at {new Date(q.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                    </div>
-                    <div className="flex items-center justify-between mb-3 text-sm">
-                      <span className="text-secondary-600 dark:text-secondary-400">
-                        👁️ {q.viewsCount || 0}
-                      </span>
-                      <span className="text-primary-600 dark:text-red-400">
-                        ❤️ {q.likesCount || 0}
-                      </span>
-                      <span className="text-primary-600 dark:text-primary-400">
-                        💬 {(q.answers || []).length}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div
-                        className={`px-2 py-0.5 rounded text-xs border ${getStatusColor(
-                          q.status
-                        )}`}
-                      >
-                        {getStatusIcon(q.status)} {q.status}
-                      </div>
-                      {q.status === "pending" && (
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="success"
-                            onClick={() => updateStatus(q._id, "approved")}
-                          >
-                            Approve
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="danger"
-                            onClick={() => updateStatus(q._id, "rejected")}
-                          >
-                            Reject
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-          </>
-        )}
-
-        {/* Pagination - Always show when there are items */}
-        {!loading && items.length > 0 && (
-          <div className="mt-8 pb-4">
-            <Pagination
-              currentPage={pagination.page || page}
-              totalPages={pagination.totalPages || totalPages}
-              onPageChange={setPage}
-              totalItems={pagination.total || total}
-              itemsPerPage={pagination.limit || itemsPerPage}
+  if (loading && items.length === 0) {
+    return (
+      <AdminMobileAppWrapper title="Question Matrix">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+          <div className="relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-28 h-28 border-4 border-primary-500/10 border-t-primary-500 rounded-full shadow-2xl"
             />
+            <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-        )}
-      </div>
-    </div>
-  );
+          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Query Stream...</div>
+        </div>
+      </AdminMobileAppWrapper>
+    );
+  }
 
   return (
-    <AdminMobileAppWrapper title="User Questions">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full text-gray-900 dark:text-white">
-          {content}
+    <AdminMobileAppWrapper title="Question Matrix">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
+        {isAdminRoute && <Sidebar />}
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
+                    <MessageSquare className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">MODERATION_HUB // USER_QUERIES</span>
+                </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  QUESTION <span className="text-primary-500">MATRIX</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({total})</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user-generated inquiries. Review, validate, or neutralize content nodes.</p>
+              </div>
+            </div>
+
+            {/* Interface Controller */}
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
+              <div className="flex flex-wrap items-center gap-6">
+                 <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
+                      <Filter className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
+                      <div className="text-sm italic uppercase tracking-tighter italic">Moderation Pipeline</div>
+                    </div>
+                 </div>
+
+                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                  {[
+                    { icon: TableIcon, id: 'table', label: 'TABULAR' },
+                    { icon: List, id: 'list', label: 'LINEAR' },
+                    { icon: LayoutGrid, id: 'grid', label: 'SPECTRAL' }
+                  ].map((mode) => (
+                    <button
+                      key={mode.id}
+                      onClick={() => setViewMode(mode.id)}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                    >
+                      <mode.icon className="w-4 h-4" />
+                      {viewMode === mode.id && <span className="uppercase tracking-widest pr-2">{mode.label}</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="relative group">
+                   <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                   <select
+                    value={status}
+                    onChange={(e) => { setPage(1); setStatus(e.target.value); }}
+                    className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                   >
+                    <option value="">ALL_PROTOCOLS</option>
+                    <option value="pending">PENDING_REVIEW</option>
+                    <option value="approved">AUTHORIZED_NODES</option>
+                    <option value="rejected">REJECTED_ENTRIES</option>
+                   </select>
+                   <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+                </div>
+
+                <div className="flex items-center gap-3">
+                   <span className="text-slate-400">INDEX_BY:</span>
+                   <select
+                    value={itemsPerPage}
+                    onChange={handleItemsPerPageChange}
+                    className="px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                   >
+                     {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
+                   </select>
+                </div>
+
+                <SearchFilter
+                  onSearch={handleSearch}
+                  placeholder="LOCALIZE_QUERY..."
+                  className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Results Grid/Table/List */}
+          <AnimatePresence mode="wait">
+            {items.length === 0 ? (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+              >
+                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                   <MessageSquare className="w-16 h-16 text-slate-300 dark:text-slate-600" />
+                 </div>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NODES_DEPLETED</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded user questions detected for the selected moderation parameters.</p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="content"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                {viewMode === 'table' && (
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">QUERY_PAYLOAD</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ORIGIN_IDENT</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">METRICS</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">MODERATION</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                        {items.map((q, i) => {
+                          const statusCfg = getStatusConfig(q.status);
+                          return (
+                            <motion.tr
+                              key={q._id || i}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.05 }}
+                              className="group hover:bg-primary-500/5 transition-all"
+                            >
+                              <td className="px-8 py-8 text-center">
+                                <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
+                              </td>
+                              <td className="px-8 py-8">
+                                <div className="max-w-md">
+                                   <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-4 group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</div>
+                                   <div className="flex flex-wrap gap-2">
+                                     {(q.options || []).map((opt, idx) => (
+                                       <div key={idx} className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest flex items-center gap-2 border ${idx === q.correctOptionIndex ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-slate-200 dark:border-white/10'}`}>
+                                          <span className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">{String.fromCharCode(65 + idx)}</span>
+                                          {opt}
+                                          {idx === q.correctOptionIndex && <CheckCircle2 className="w-3 h-3" />}
+                                       </div>
+                                     ))}
+                                   </div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-8">
+                                <div className="flex items-center gap-3">
+                                   <div className="w-10 h-10 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl flex items-center justify-center font-black text-xs shadow-inner group-hover:bg-primary-500 group-hover:text-white group-hover:scale-110 transition-all uppercase">
+                                     {q.userId?.name?.[0].toUpperCase() || 'U'}
+                                   </div>
+                                   <div>
+                                      <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'NULL_ID'}</div>
+                                      <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{q.userId?.email || 'OFFLINE'}</div>
+                                   </div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-8 text-center text-[10px] font-black">
+                                 <div className="flex justify-center gap-4">
+                                    <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-primary-500 transition-colors">
+                                       <Eye className="w-3 h-3" />
+                                       <span className="tabular-nums">{q.viewsCount || 0}</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-rose-500 transition-colors">
+                                       <Heart className="w-3 h-3" />
+                                       <span className="tabular-nums">{q.likesCount || 0}</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-indigo-500 transition-colors">
+                                       <MessageCircle className="w-3 h-3" />
+                                       <span className="tabular-nums">{(q.answers || []).length}</span>
+                                    </div>
+                                 </div>
+                              </td>
+                              <td className="px-8 py-8 text-right">
+                                <div className="flex flex-col items-end">
+                                  <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(q.createdAt)}</div>
+                                  <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(q.createdAt)}</div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-8">
+                                 <div className="flex flex-col items-center gap-4">
+                                    <div className={`px-4 py-1 rounded-[2rem] text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 ${statusCfg.color}`}>
+                                       <statusCfg.icon className="w-3 h-3" />
+                                       {statusCfg.label}
+                                    </div>
+                                    {q.status === 'pending' && (
+                                      <div className="flex gap-2">
+                                         <button onClick={() => updateStatus(q._id, 'approved')} className="p-2 bg-emerald-500/10 text-emerald-500 border-2 border-emerald-500/20 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-lg active:scale-95">
+                                            <ShieldCheck className="w-4 h-4" />
+                                         </button>
+                                         <button onClick={() => updateStatus(q._id, 'rejected')} className="p-2 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-lg active:scale-95">
+                                            <ShieldAlert className="w-4 h-4" />
+                                         </button>
+                                      </div>
+                                    )}
+                                 </div>
+                              </td>
+                            </motion.tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {viewMode === 'list' && (
+                  <div className="space-y-6">
+                    {items.map((q, i) => {
+                      const statusCfg = getStatusConfig(q.status);
+                      return (
+                        <motion.div
+                          key={q._id || i}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row gap-8 items-start relative"
+                        >
+                           <div className="absolute top-8 right-10 flex flex-col items-end">
+                              <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 mb-2 ${statusCfg.color}`}>
+                                 <statusCfg.icon className="w-3 h-3" />
+                                 {statusCfg.label}
+                              </div>
+                              <div className="text-[8px] font-black uppercase tracking-widest text-slate-400 italic">#{((page - 1) * itemsPerPage) + i + 1}</div>
+                           </div>
+
+                           <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-[1.5rem] flex items-center justify-center font-black text-xl shrink-0 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
+                             {q.userId?.name?.[0].toUpperCase() || 'U'}
+                           </div>
+
+                           <div className="flex-1 space-y-6">
+                              <div className="space-y-2">
+                                 <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{q.userId?.name || 'NULL_IDENTITY'} // {q.userId?.email || 'N/A'}</div>
+                                 <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
+                              </div>
+
+                              <div className="flex flex-wrap gap-3">
+                                {(q.options || []).map((opt, idx) => (
+                                  <div key={idx} className={`px-4 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center gap-3 border shadow-inner ${idx === q.correctOptionIndex ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-slate-200 dark:border-white/10'}`}>
+                                     <span className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center text-xs">{String.fromCharCode(65 + idx)}</span>
+                                     {opt}
+                                     {idx === q.correctOptionIndex && <ShieldCheck className="w-4 h-4" />}
+                                  </div>
+                                ))}
+                              </div>
+
+                              <div className="flex flex-wrap items-center gap-x-10 gap-y-4 pt-4">
+                                 <div className="flex items-center gap-3 text-slate-400">
+                                    <Eye className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.viewsCount || 0} IMPRESSIONS</span>
+                                 </div>
+                                 <div className="flex items-center gap-3 text-slate-400">
+                                    <Heart className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.likesCount || 0} REACTIONS</span>
+                                 </div>
+                                 <div className="flex items-center gap-3 text-slate-400">
+                                    <MessageCircle className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{(q.answers || []).length} ENGAGEMENTS</span>
+                                 </div>
+                                 <div className="flex items-center gap-3 text-slate-400 pl-4 border-l-2 border-slate-100 dark:border-white/5">
+                                    <Clock className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest italic">{formatDate(q.createdAt)} @ {formatTime(q.createdAt)}</span>
+                                 </div>
+                              </div>
+                           </div>
+
+                           {q.status === 'pending' && (
+                             <div className="flex lg:flex-col gap-4 pt-6 lg:pt-0">
+                                <button
+                                  onClick={() => updateStatus(q._id, 'approved')}
+                                  className="flex items-center justify-center gap-3 px-8 py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all"
+                                >
+                                   <ShieldCheck className="w-5 h-5" /> AUTHORIZE
+                                </button>
+                                <button
+                                  onClick={() => updateStatus(q._id, 'rejected')}
+                                  className="flex items-center justify-center gap-3 px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
+                                >
+                                   <ShieldAlert className="w-5 h-5" /> NEUTRALIZE
+                                </button>
+                             </div>
+                           )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {viewMode === 'grid' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {items.map((q, i) => {
+                      const statusCfg = getStatusConfig(q.status);
+                      return (
+                        <motion.div
+                          key={q._id || i}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
+                        >
+                           <div className="flex justify-between items-start mb-8">
+                              <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-2xl flex items-center justify-center font-black text-md shadow-inner group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                   {q.userId?.name?.[0].toUpperCase() || 'U'}
+                                </div>
+                                <div>
+                                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'NULL_ID'}</div>
+                                   <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(q.createdAt)}</div>
+                                </div>
+                              </div>
+                              <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 ${statusCfg.color}`}>
+                                 <statusCfg.icon className="w-3 h-3" />
+                                 {statusCfg.label}
+                              </div>
+                           </div>
+
+                           <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-3 mb-8 group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
+
+                           <div className="grid grid-cols-2 gap-3 mb-10 mt-auto">
+                              {(q.options || []).map((opt, idx) => (
+                                <div key={idx} className={`p-4 rounded-2xl text-[8px] font-black uppercase tracking-widest flex items-center gap-3 border shadow-inner ${idx === q.correctOptionIndex ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-slate-200 dark:border-white/10'}`}>
+                                   <span className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center">{String.fromCharCode(65 + idx)}</span>
+                                   <span className="truncate">{opt}</span>
+                                </div>
+                              ))}
+                           </div>
+
+                           <div className="flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
+                              <div className="flex items-center gap-6">
+                                 <div className="flex flex-col items-center text-slate-400 group-hover:text-primary-500">
+                                    <Eye className="w-4 h-4 mb-2" />
+                                    <span className="text-[9px] font-black tabular-nums">{q.viewsCount || 0}</span>
+                                 </div>
+                                 <div className="flex flex-col items-center text-slate-400 group-hover:text-rose-500">
+                                    <Heart className="w-4 h-4 mb-2" />
+                                    <span className="text-[9px] font-black tabular-nums">{q.likesCount || 0}</span>
+                                 </div>
+                                 <div className="flex flex-col items-center text-slate-400 group-hover:text-indigo-500">
+                                    <MessageCircle className="w-4 h-4 mb-2" />
+                                    <span className="text-[9px] font-black tabular-nums">{(q.answers || []).length}</span>
+                                 </div>
+                              </div>
+
+                              {q.status === 'pending' ? (
+                                <div className="flex gap-3">
+                                   <button onClick={() => updateStatus(q._id, 'approved')} className="p-4 bg-emerald-500 text-white rounded-2xl shadow-duo-emerald hover:scale-105 active:scale-95 transition-all">
+                                      <ShieldCheck className="w-5 h-5" />
+                                   </button>
+                                   <button onClick={() => updateStatus(q._id, 'rejected')} className="p-4 bg-rose-500 text-white rounded-2xl shadow-duo-rose hover:scale-105 active:scale-95 transition-all">
+                                      <ShieldAlert className="w-5 h-5" />
+                                   </button>
+                                </div>
+                              ) : (
+                                <div className="p-4 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-2xl shadow-inner cursor-pointer hover:bg-primary-500 hover:text-white transition-all">
+                                   <ArrowRight className="w-5 h-5" />
+                                </div>
+                              )}
+                           </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Spectral Pagination */}
+                {pagination.totalPages > 1 && (
+                  <div className="flex justify-center pt-16">
+                    <Pagination
+                      currentPage={page}
+                      totalPages={pagination.totalPages}
+                      onPageChange={setPage}
+                      totalItems={pagination.total}
+                      itemsPerPage={itemsPerPage}
+                    />
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </AdminMobileAppWrapper>
@@ -606,7 +574,4 @@ const AdminUserQuestions = () => {
 };
 
 export default AdminUserQuestions;
-
-
-
 

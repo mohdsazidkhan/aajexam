@@ -1,347 +1,291 @@
-'use client';
+﻿'use client';
 
-import React, { useEffect, useState } from 'react';
-import UnifiedFooter from '../../UnifiedFooter';
-import API from '../../../lib/api';
-import { useRouter, useParams } from 'next/navigation';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getCurrentUser } from '../../../utils/authUtils';
+import {
+   MessageSquare,
+   Search,
+   Plus,
+   CircleCheck,
+   Clock,
+   CircleAlert,
+   Eye,
+   ThumbsUp,
+   Share2,
+   MessageCircle,
+   TrendingUp,
+   ShieldCheck,
+   Zap,
+   BarChart3,
+   Layers,
+   Sparkles,
+   ChevronRight,
+   Target,
+   ArrowUpRight,
+   Database,
+   Calendar
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import API from '../../../lib/api';
+import UnifiedFooter from '../../UnifiedFooter';
 import Loading from '../../Loading';
+import Card from '../../ui/Card';
+import Button from '../../ui/Button';
 
 const MyUserQuestions = () => {
-	const router = useRouter();
-	const user = getCurrentUser();
-	const [items, setItems] = useState([]);
-	const [status, setStatus] = useState('');
-	const [page, setPage] = useState(1);
-	const [limit] = useState(20);
-	const [total, setTotal] = useState(0);
-	const [loading, setLoading] = useState(false);
-	const [stats, setStats] = useState({
-		total: 0,
-		pending: 0,
-		approved: 0,
-		rejected: 0
-	});
+   const router = useRouter();
+   const [items, setItems] = useState([]);
+   const [status, setStatus] = useState('');
+   const [page, setPage] = useState(1);
+   const [limit] = useState(20);
+   const [total, setTotal] = useState(0);
+   const [loading, setLoading] = useState(false);
+   const [stats, setStats] = useState({ total: 0, pending: 0, approved: 0, rejected: 0 });
 
-	const load = async () => {
-		setLoading(true);
-		try {
-			const res = await API.getMyUserQuestions({ status, page, limit });
-			if (res?.success) {
-				setItems(res.data || []);
-				setTotal(res.pagination?.total || 0);
-			}
-		} catch (err) {
-			console.error('Error loading questions:', err);
-		} finally {
-			setLoading(false);
-		}
-	};
+   const load = useCallback(async () => {
+      setLoading(true);
+      try {
+         const res = await API.getMyUserQuestions({ status, page, limit });
+         if (res?.success) {
+            setItems(res.data || []);
+            setTotal(res.pagination?.total || 0);
+         }
+      } catch (err) { console.error('Archive retrieval failed'); }
+      finally { setLoading(false); }
+   }, [status, page, limit]);
 
-	const loadStats = async () => {
-		try {
-			const [allRes, pendingRes, approvedRes, rejectedRes] = await Promise.all([
-				API.getMyUserQuestions({ page: 1, limit: 1 }),
-				API.getMyUserQuestions({ status: 'pending', page: 1, limit: 1 }),
-				API.getMyUserQuestions({ status: 'approved', page: 1, limit: 1 }),
-				API.getMyUserQuestions({ status: 'rejected', page: 1, limit: 1 })
-			]);
+   const loadStats = useCallback(async () => {
+      try {
+         const [allRes, pendingRes, approvedRes, rejectedRes] = await Promise.all([
+            API.getMyUserQuestions({ page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'pending', page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'approved', page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'rejected', page: 1, limit: 1 })
+         ]);
+         setStats({
+            total: allRes?.pagination?.total || 0,
+            pending: pendingRes?.pagination?.total || 0,
+            approved: approvedRes?.pagination?.total || 0,
+            rejected: rejectedRes?.pagination?.total || 0
+         });
+      } catch (err) { console.error('Stats offline'); }
+   }, []);
 
-			setStats({
-				total: allRes?.pagination?.total || 0,
-				pending: pendingRes?.pagination?.total || 0,
-				approved: approvedRes?.pagination?.total || 0,
-				rejected: rejectedRes?.pagination?.total || 0
-			});
-		} catch (err) {
-			console.error('Error loading stats:', err);
-		}
-	};
+   useEffect(() => {
+      load();
+      loadStats();
+   }, [load, loadStats]);
 
-	useEffect(() => {
-		load();
-		loadStats();
-	}, [status, page]);
+   const totalPages = Math.max(1, Math.ceil(total / limit));
 
-	const totalPages = Math.max(1, Math.ceil(total / limit));
+   const getStatusConfig = (s) => {
+      switch (s) {
+         case 'approved': return { color: 'emerald', icon: CircleCheck, label: 'VALIDATED' };
+         case 'rejected': return { color: 'primary', icon: CircleAlert, label: 'REJECTED' };
+         default: return { color: 'secondary', icon: Clock, label: 'UNDER SYNC' };
+      }
+   };
 
-	const getStatusColor = (status) => {
-		switch (status) {
-			case 'pending': return 'bg-primary-50 text-primary-700 border-primary-200 dark:bg-primary-900/20 dark:text-primary-200 dark:border-primary-800';
-			case 'approved': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800';
-			case 'rejected': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-200 dark:border-red-800';
-			default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-200 dark:border-gray-800';
-		}
-	};
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-5 lg:space-y-12">
 
-	const getStatusIcon = (status) => {
-		switch (status) {
-			case 'pending': return '🟡';
-			case 'approved': return '✅';
-			case 'rejected': return '❌';
-			default: return '📝';
-		}
-	};
+            {/* --- Archive Hero --- */}
+            <header className="relative flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 pt-4 lg:pt-8">
+               <div className="space-y-2 lg:space-y-4 text-center lg:text-left">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 text-primary-700 dark:text-primary-500 text-[10px] font-black uppercase tracking-widest border border-primary-500/20">
+                     <Database className="w-3 h-3" /> INTEL ARCHIVE
+                  </motion.div>
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                     Intel <span className="text-primary-700 dark:text-primary-500">Archive</span>
+                  </h1>
+                  <p className="text-xs lg:text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">Your submitted questions</p>
+               </div>
 
-	const getStatusText = (status) => {
-		switch (status) {
-			case 'pending': return 'Under Review';
-			case 'approved': return 'Approved';
-			case 'rejected': return 'Rejected';
-			default: return 'Unknown';
-		}
-	};
+               <div className="flex gap-4">
+                  <Button variant="secondary" onClick={() => router.push('/pro/questions/new')} className="px-5 py-3 lg:px-8 lg:py-5 rounded-2xl lg:rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-duo-secondary">
+                     <Plus className="w-4 h-4 mr-2" /> NEW
+                  </Button>
+               </div>
+            </header>
 
-	return (
-		<>
-			<div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4">
-				<div className="container mx-auto py-4 px-0 lg:px-10">
-					{/* Header Section */}
-					<div className="text-center mb-8">
-						<div className="inline-flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full mb-4">
-							<span className="text-md lg:text-2xl">📚</span>
-						</div>
-						<h1 className="text-xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-							My Questions
-						</h1>
-						<p className="text-sm lg:text-lg text-gray-600 dark:text-gray-300 mb-2">
-							Track your submitted questions and their performance
-						</p>
-						<p className="text-secondary-600 dark:text-secondary-400 text-sm font-medium mb-4">
-							📅 You Can Add Max 100 Questions Per Month
-						</p>
-						<Link
-							href="/pro/questions/new"
-							className="inline-flex items-center px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-						>
-							<span className="mr-2">🚀</span>
-							Create New Question
-						</Link>
-					</div>
+            {/* --- Mission Status Hub --- */}
+            <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+               {[
+                  { label: 'TOTAL SYNCED', val: stats.total, icon: Layers, color: 'slate' },
+                  { label: 'VALIDATED UNITS', val: stats.approved, icon: ShieldCheck, color: 'emerald' },
+                  { label: 'SYNC QUEUE', val: stats.pending, icon: Clock, color: 'secondary' },
+                  { label: 'REJECTED LOGS', val: stats.rejected, icon: CircleAlert, color: 'primary' }
+               ].map((s, i) => (
+                  <Card key={i} className="p-4 lg:p-6 border-b-4 border-slate-100 dark:border-slate-800 hover:border-slate-200 group">
+                     <div className="flex items-center gap-3 lg:gap-4">
+                        <div className={`p-3 lg:p-4 bg-${s.color === 'slate' ? 'slate-500' : s.color === 'emerald' ? 'emerald-500' : s.color === 'secondary' ? 'primary-500' : 'primary-500'}/10 text-${s.color === 'slate' ? 'slate-500' : s.color === 'emerald' ? 'emerald-500' : s.color === 'secondary' ? 'primary-500' : 'primary-500'} rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform`}>
+                           <s.icon className="w-4 h-4 lg:w-6 lg:h-6" />
+                        </div>
+                        <div>
+                           <p className="text-[8px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none mb-1">{s.label}</p>
+                           <p className="text-lg lg:text-2xl font-black font-outfit uppercase truncate">{s.val}</p>
+                        </div>
+                     </div>
+                  </Card>
+               ))}
+            </section>
 
-					{/* Stats Cards */}
-					<div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 mb-4 lg:mb-8">
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-							<div className="flex items-center justify-between">
-								<div>
-									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Questions</p>
-									<p className="text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
-								</div>
-								<div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-									<span className="text-md lg:text-2xl">📝</span>
-								</div>
-							</div>
-						</div>
+            {/* --- Navigation Registry --- */}
+            <section className="flex flex-col lg:flex-row justify-between items-center gap-8 bg-white dark:bg-slate-800/50 backdrop-blur-xl p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-full">
+                  {[
+                     { id: '', label: 'ALL INTEL', icon: Database },
+                     { id: 'pending', label: 'REVIEW QUEUE', icon: Clock },
+                     { id: 'approved', label: 'VALIDATED', icon: CircleCheck },
+                     { id: 'rejected', label: 'REJECTED', icon: CircleAlert }
+                  ].map(f => (
+                     <button
+                        key={f.id}
+                        onClick={() => { setPage(1); setStatus(f.id); }}
+                        className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 whitespace-nowrap ${status === f.id ? 'bg-primary-500 text-white shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-600'}`}
+                     >
+                        <f.icon className="w-4 h-4" /> {f.label}
+                     </button>
+                  ))}
+               </div>
 
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-							<div className="flex items-center justify-between">
-								<div>
-									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Under Review</p>
-									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400">{stats.pending}</p>
-								</div>
-								<div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-									<span className="text-md lg:text-2xl">🟡</span>
-								</div>
-							</div>
-						</div>
+               <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
+                  REGISTRY NODE: {items.length} / {total} UNITS
+               </div>
+            </section>
 
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-							<div className="flex items-center justify-between">
-								<div>
-									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Approved</p>
-									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400">{stats.approved}</p>
-								</div>
-								<div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-									<span className="text-md lg:text-2xl">✅</span>
-								</div>
-							</div>
-						</div>
+            {/* --- Intel Result Stream --- */}
+            <AnimatePresence mode="wait">
+               {loading ? (
+                  <div className="py-16 flex justify-center"><Loading size="lg" /></div>
+               ) : items.length === 0 ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-16 text-center space-y-6">
+                     <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
+                        <MessageSquare className="w-12 h-12 text-slate-300" />
+                     </div>
+                     <div className="space-y-3">
+                        <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Archive Void Detected</h3>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">No {status} Questions found in this sector. Synchronize new knowledge to populate the archive.</p>
+                     </div>
+                     <Button variant="secondary" onClick={() => router.push('/pro/questions/new')} className="px-10 py-5 rounded-full text-xs font-black shadow-duo-secondary uppercase tracking-widest">START NEW Creation</Button>
+                  </motion.div>
+               ) : (
+                  <div className="grid grid-cols-1 gap-4 lg:gap-8">
+                     {items.map((q, idx) => {
+                        const conf = getStatusConfig(q.status);
+                        return (
+                           <motion.div key={q._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                              <Card className="p-4 lg:p-8 group hover:border-primary-500/30 transition-all border-2 border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start relative z-10">
+                                    {/* Intel Metadata */}
+                                    <div className="w-full lg:w-1/4 space-y-4 lg:space-y-6 lg:border-r border-slate-100 dark:border-slate-800 lg:pr-8">
+                                       <div className={`inline-flex items-center gap-2 px-6 py-2 rounded-full border-2 border-${conf.color}-500/20 bg-${conf.color}-500/5 text-${conf.color}-500 text-[10px] font-black uppercase tracking-[0.2em]`}>
+                                          <conf.icon className="w-4 h-4" /> {conf.label}
+                                       </div>
 
-						<div className="bg-white dark:bg-gray-800 rounded-xl p-2 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-							<div className="flex items-center justify-between">
-								<div>
-									<p className="text-sm font-medium text-gray-600 dark:text-gray-400">Rejected</p>
-									<p className="text-xl lg:text-3xl font-bold text-primary-600 dark:text-red-400">{stats.rejected}</p>
-								</div>
-								<div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-									<span className="text-md lg:text-2xl">❌</span>
-								</div>
-							</div>
-						</div>
-					</div>
+                                       <div className="space-y-4">
+                                          <div className="flex items-center gap-3">
+                                             <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400">
+                                                <Calendar className="w-4 h-4" />
+                                             </div>
+                                             <div>
+                                                <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">SYNCHRONIZED</p>
+                                                <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{new Date(q.createdAt).toLocaleDateString()}</p>
+                                             </div>
+                                          </div>
+                                          <div className="flex items-center gap-3">
+                                             <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400">
+                                                <Target className="w-4 h-4" />
+                                             </div>
+                                             <div>
+                                                <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">TXN NODE</p>
+                                                <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">#{q._id.slice(-8).toUpperCase()}</p>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
 
-					{/* Filter Section */}
-					<div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-2 lg:p-6 mb-4 lg:mb-8">
-						<div className="flex flex-wrap items-center justify-between gap-4">
-							<div className="flex items-center space-x-4">
-								<label className="text-sm font-medium text-gray-700 dark:text-gray-300">Filter by Status:</label>
-								<select
-									value={status}
-									onChange={e => { setPage(1); setStatus(e.target.value); }}
-									className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-								>
-									<option value="">📝 All Questions</option>
-									<option value="pending">🟡 Under Review</option>
-									<option value="approved">✅ Approved</option>
-									<option value="rejected">❌ Rejected</option>
-								</select>
-							</div>
-							<div className="text-sm text-gray-600 dark:text-gray-400">
-								Showing {items.length} of {total} questions
-							</div>
-						</div>
-					</div>
+                                    {/* Intel Core Content */}
+                                    <div className="flex-1 space-y-4 lg:space-y-8">
+                                       <h3 className="text-base lg:text-2xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white group-hover:text-primary-700 dark:text-primary-500 transition-colors">
+                                          {q.questionText}
+                                       </h3>
 
-					{/* Questions List */}
-					<div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-						{loading ? (
-							<div className="p-8 text-center">
-								<Loading size="sm" color="gray" message="Loading your questions..." />
-							</div>
-						) : items.length === 0 ? (
-							<div className="p-8 text-center">
-								<div className="text-6xl mb-4">🤔</div>
-								<h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No questions found</h3>
-								<p className="text-gray-600 dark:text-gray-400 mb-4">
-									{status === '' ? "You haven't created any questions yet." : `No ${status} questions found.`}
-								</p>
-								<Link
-									href="/pro/questions/new"
-									className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg transition-colors"
-								>
-									<span className="mr-2">🚀</span>
-									Create Your First Question
-								</Link>
-							</div>
-						) : (
-							<div className="divide-y divide-gray-200 dark:divide-gray-700">
-								{items.map((q, index) => (
-									<div key={q._id} className="p-2 lg:p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-										<div className="flex items-start justify-between mb-2 lg:mb-4">
-											<div className="flex-1">
-												<div className="flex items-center space-x-3 mb-2">
-													<span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border ${getStatusColor(q.status)}`}>
-														<span className="mr-1">{getStatusIcon(q.status)}</span>
-														{getStatusText(q.status)}
-													</span>
-													<span className="text-sm text-gray-500 dark:text-gray-400">
-														{new Date(q.createdAt).toLocaleDateString()}
-													</span>
-												</div>
-												<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2">
-													{q.questionText}
-												</h3>
-											</div>
-										</div>
+                                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
+                                          {(q.options || []).map((option, oIdx) => (
+                                             <div key={oIdx} className={`p-4 rounded-2xl border-2 flex items-center gap-4 transition-all ${oIdx === q.correctOptionIndex ? 'bg-emerald-500/5 border-emerald-500/30 text-emerald-600' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-400'}`}>
+                                                <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs ${oIdx === q.correctOptionIndex ? 'bg-emerald-500 text-white shadow-duo-emerald' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
+                                                   {String.fromCharCode(65 + oIdx)}
+                                                </div>
+                                                <p className="text-sm font-bold truncate uppercase">{option}</p>
+                                                {oIdx === q.correctOptionIndex && <CircleCheck className="w-4 h-4 ml-auto" />}
+                                             </div>
+                                          ))}
+                                       </div>
 
-										{/* Question Options Preview */}
-										<div className="mb-4">
-											<div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-												{(q.options || []).map((option, idx) => (
-													<div key={idx} className={`flex items-center space-x-2 p-2 rounded-lg text-sm ${idx === q.correctOptionIndex
-														? 'bg-green-50 dark:bg-green-900/50 text-green-800 dark:text-green-200'
-														: 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-														}`}>
-														<span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${idx === q.correctOptionIndex
-															? 'bg-green-500 text-white'
-															: 'bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300'
-															}`}>
-															{String.fromCharCode(65 + idx)}
-														</span>
-														<span className="truncate">{option}</span>
-														{idx === q.correctOptionIndex && (
-															<span className="text-green-600 dark:text-green-400">✓</span>
-														)}
-													</div>
-												))}
-											</div>
-										</div>
+                                       {/* Engagement Matrix */}
+                                       <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-6 border-t border-slate-50 dark:border-slate-800">
+                                          {[
+                                             { icon: Eye, val: q.viewsCount || 0, label: 'SCAN VIEWS' },
+                                             { icon: ThumbsUp, val: q.likesCount || 0, label: 'NOD APPROVALS' },
+                                             { icon: Share2, val: q.sharesCount || 0, label: 'LINK BROADCASTS' },
+                                             { icon: MessageCircle, val: (q.answers || []).length, label: 'FEEDBACK UNITS' }
+                                          ].map((stat, sIdx) => (
+                                             <div key={sIdx} className="flex items-center gap-3">
+                                                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">
+                                                   <stat.icon className="w-4 h-4" />
+                                                </div>
+                                                <div>
+                                                   <p className="text-sm font-black font-outfit uppercase text-slate-900 dark:text-white leading-none">{stat.val}</p>
+                                                   <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                                                </div>
+                                             </div>
+                                          ))}
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <Sparkles className="absolute -bottom-12 -right-12 w-64 h-64 text-primary-700 dark:text-primary-500/5 group-hover:text-primary-700 dark:text-primary-500/10 transition-colors pointer-events-none" />
+                              </Card>
+                           </motion.div>
+                        );
+                     })}
+                  </div>
+               )}
+            </AnimatePresence>
 
-										{/* Statistics */}
-										<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2 md:gap-y-0">
-											<div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-												<div className="flex items-center space-x-1">
-													<span>👁️</span>
-													<span>{q.viewsCount || 0} views</span>
-												</div>
-												<div className="flex items-center space-x-1">
-													<span>❤️</span>
-													<span>{q.likesCount || 0} likes</span>
-												</div>
-												<div className="flex items-center space-x-1">
-													<span>📤</span>
-													<span>{q.sharesCount || 0} shares</span>
-												</div>
-												<div className="flex items-center space-x-1">
-													<span>💬</span>
-													<span>{(q.answers || []).length} answers</span>
-												</div>
-											</div>
-											<div className="text-xs text-gray-500 dark:text-gray-400">
-												Submitted {new Date(q.createdAt).toLocaleString()}
-											</div>
-										</div>
+            {/* --- Pagination Hub --- */}
+            {totalPages > 1 && (
+               <div className="flex flex-col lg:flex-row items-center justify-between p-8 bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
+                     VIEWING {((page - 1) * limit) + 1} - {Math.min(page * limit, total)} OF {total} QuestionS
+                  </p>
+                  <div className="flex items-center gap-2">
+                     {[...Array(totalPages)].map((_, i) => {
+                        const p = i + 1;
+                        if (p > 5 && p < totalPages) return null; // Simple ellipsis logic
+                        return (
+                           <button
+                              key={p}
+                              onClick={() => setPage(p)}
+                              className={`w-12 h-12 rounded-2xl text-[10px] font-black transition-all ${page === p ? 'bg-primary-500 text-white shadow-duo-secondary' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-600'}`}
+                           >
+                              {p}
+                           </button>
+                        );
+                     })}
+                  </div>
+               </div>
+            )}
 
-									</div>
-								))}
-							</div>
-						)}
-					</div>
-
-					{/* Pagination */}
-					{totalPages > 1 && (
-						<div className="flex flex-col lg:flex-row items-center justify-between mt-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-							<div className="text-sm text-gray-600 dark:text-gray-400">
-								Showing {((page - 1) * limit) + 1} to {Math.min(page * limit, total)} of {total} questions
-							</div>
-							<div className="mt-2 lg:mt-0 flex items-center space-x-2">
-								<button
-									disabled={page <= 1}
-									onClick={() => setPage(p => p - 1)}
-									className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-								>
-									Previous
-								</button>
-								<div className="flex items-center space-x-1">
-									{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-										const pageNum = i + 1;
-										return (
-											<button
-												key={pageNum}
-												onClick={() => setPage(pageNum)}
-												className={`px-3 py-2 text-sm font-medium rounded-md ${page === pageNum
-													? 'bg-primary-600 text-white'
-													: 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700'
-													}`}
-											>
-												{pageNum}
-											</button>
-										);
-									})}
-								</div>
-								<button
-									disabled={page >= totalPages}
-									onClick={() => setPage(p => p + 1)}
-									className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-								>
-									Next
-								</button>
-							</div>
-						</div>
-					)}
-				</div>
-			</div>
-			<UnifiedFooter />
-		</>
-	);
+         </div>
+         <UnifiedFooter />
+      </div>
+   );
 };
 
 export default MyUserQuestions;
-
-
-
-
-
 
 

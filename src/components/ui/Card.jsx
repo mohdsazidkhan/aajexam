@@ -1,85 +1,79 @@
-import React from 'react';
+﻿'use client';
 
+import React from 'react';
+import { motion } from 'framer-motion';
+
+/**
+ * Card - A friendly, Duolingo-inspired 3D card container for the gamified learning experience.
+ */
 const Card = ({
   children,
   className = '',
-  variant = 'default',
+  padded = true,
+  hoverable = false,
   onClick,
-  gradientColors,
-  padding = 'medium',
-  borderRadius = 'medium',
-  shadow = true,
-  ...props
+  variant = 'white', // white, glass, glass-light, glass-dark, dark, primary, secondary
+  radius = '3xl', // xl, 2xl, 3xl, 4xl, 5xl
+  noShadow = false,
+  noBorder = false,
+  depth = true,
+  glow = false
 }) => {
-  const getCardClasses = () => {
-    const baseClasses = 'bg-white dark:bg-gray-800 transition-all duration-200';
-
-    const paddingClasses = {
-      none: '',
-      small: 'p-3',
-      medium: 'p-4',
-      large: 'p-6',
-    };
-
-    const borderRadiusClasses = {
-      none: '',
-      small: 'rounded-lg',
-      medium: 'rounded-xl',
-      large: 'rounded-2xl',
-    };
-
-    const variantClasses = {
-      default: 'border border-gray-200 dark:border-gray-700',
-      elevated: shadow ? 'shadow-lg hover:shadow-xl' : '',
-      outlined: 'border-2 border-gray-300 dark:border-gray-600',
-      gradient: '',
-    };
-
-    const interactiveClasses = onClick ? 'cursor-pointer hover:scale-105' : '';
-
-    return `${baseClasses} ${paddingClasses[padding]} ${borderRadiusClasses[borderRadius]} ${variantClasses[variant]} ${interactiveClasses} ${className}`;
+  const variants = {
+    white: 'bg-background-surface text-content-primary border-border-primary shadow-sm hover:shadow-md',
+    glass: 'glass border-white/20 dark:border-slate-800/20 shadow-2xl',
+    'glass-light': 'glass-light border-white/10 shadow-xl',
+    'glass-dark': 'glass-dark border-white/10 shadow-2xl text-white',
+    dark: 'bg-slate-950 border-slate-800 text-white shadow-2xl',
+    primary: 'bg-primary-500 border-primary-600 shadow-duo-primary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    secondary: 'bg-primary-500 border-primary-600 shadow-duo-secondary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    emerald: 'bg-emerald-500 border-emerald-600 shadow-duo-emerald text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    amber: 'bg-amber-500 border-amber-600 shadow-duo-amber text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    rose: 'bg-rose-500 border-rose-600 shadow-duo-rose text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    none: '',
   };
 
-  const getGradientStyle = () => {
-    if (variant === 'gradient' && gradientColors) {
-      return {
-        background: `linear-gradient(135deg, ${gradientColors.join(', ')})`,
-      };
-    }
-    return {};
+  const radii = {
+    xl: 'rounded-[1.5rem]',
+    '2xl': 'rounded-[2rem]',
+    '3xl': 'rounded-[2.5rem]',
+    '4xl': 'rounded-[3.5rem]',
+    '5xl': 'rounded-[4.5rem]',
   };
 
-  const getGradientClasses = () => {
-    if (variant === 'gradient' && !gradientColors) {
-      return 'bg-gradient-to-br from-secondary-500 from-red-600';
-    }
-    return '';
-  };
-
-  const cardClasses = `${getCardClasses()} ${getGradientClasses()}`;
-
-  if (onClick) {
-    return (
-      <div
-        className={cardClasses}
-        style={getGradientStyle()}
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
+  const Container = hoverable ? motion.div : 'div';
+  const motionProps = hoverable ? {
+    whileHover: hoverable && !onClick ? {} : hoverable ? { y: -8, scale: 1.005 } : {}
+  } : {};
 
   return (
-    <div
-      className={cardClasses}
-      style={getGradientStyle()}
-      {...props}
+    <Container
+      onClick={onClick}
+      {...motionProps}
+      className={`
+        ${variants[variant]} 
+        ${radii[radius]}
+        ${noBorder ? 'border-none' : 'border-2'} 
+        ${depth && !noBorder && variant !== 'glass' && !variant.includes('glass-') ? 'border-b-8' : ''}
+        ${padded ? 'p-2 lg:p-4' : ''} 
+        ${hoverable ? 'cursor-pointer group' : ''} 
+        ${glow ? 'glow-border' : ''}
+        transition-all duration-300 font-outfit relative overflow-hidden
+        ${className}
+      `}
     >
-      {children}
-    </div>
+      {/* Premium Shimmer for Highlights */}
+      {variant.includes('glass') && (
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/5 pointer-events-none" />
+      )}
+
+      <div className="relative z-10">
+        {children}
+      </div>
+    </Container>
   );
 };
 
 export default Card;
+
+

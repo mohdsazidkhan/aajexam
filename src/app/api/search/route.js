@@ -11,6 +11,7 @@ import Exam from '@/models/Exam';
 import ExamPattern from '@/models/ExamPattern';
 import PracticeTest from '@/models/PracticeTest';
 import { protect } from '@/middleware/auth';
+export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
     try {

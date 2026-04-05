@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
+import { ArrowRight, CheckCircle2, CircleAlert, LayoutDashboard, LoaderCircle } from 'lucide-react';
+
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import Seo from '../../components/Seo';
 
-// Safe localStorage access
 const safeLocalStorage = {
   getItem: (key) => {
     if (typeof window !== 'undefined') {
@@ -14,15 +14,23 @@ const safeLocalStorage = {
     }
     return null;
   },
-  setItem: (key, value) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(key, value);
-    }
-  },
   removeItem: (key) => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem(key);
     }
+  },
+};
+
+const formatCurrency = (amount, currency = 'INR') => {
+  const safeAmount = Number(amount || 0);
+  try {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: currency || 'INR',
+      maximumFractionDigits: 0,
+    }).format(safeAmount);
+  } catch {
+    return `Rs.${safeAmount}`;
   }
 };
 
@@ -30,26 +38,20 @@ const PayuSuccess = () => {
   const router = useRouter();
   const [verifying, setVerifying] = useState(true);
   const [verificationResult, setVerificationResult] = useState(null);
-  // Removed mobile app source check for web-first experience
-  const [isFromMobileApp] = useState(false);
 
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
     const verifyPayment = async () => {
       try {
-        // Get transaction ID from URL query params (sent by backend callback)
-        const { txnid: urlTxnid, status: urlStatus, amount: urlAmount } = router.query;
-
-        console.log('PayU Success - URL params:', { urlTxnid, urlStatus, urlAmount });
-
-        // Get transaction ID from localStorage (stored before PayU redirect) as fallback
-        let txnid = urlTxnid || safeLocalStorage.getItem('payu_txnid');
+        let txnid = router.query.txnid || safeLocalStorage.getItem('payu_txnid');
         const txnidTimestamp = safeLocalStorage.getItem('payu_txnid_timestamp');
 
-        // Check if txnid is not too old (within 1 hour)
         if (txnid && txnidTimestamp) {
-          const age = Date.now() - parseInt(txnidTimestamp);
-          if (age > 60 * 60 * 1000) { // 1 hour
-            console.log('PayU txnid is too old, clearing from localStorage');
+          const age = Date.now() - Number.parseInt(txnidTimestamp, 10);
+          if (age > 60 * 60 * 1000) {
             safeLocalStorage.removeItem('payu_txnid');
             safeLocalStorage.removeItem('payu_txnid_timestamp');
             txnid = null;
@@ -57,53 +59,29 @@ const PayuSuccess = () => {
         }
 
         if (!txnid) {
-          console.log('No transaction ID found in localStorage');
           setVerificationResult({
             success: false,
-            message: 'No transaction ID found. Please check your payment status.'
+            message: 'We could not find your payment reference. Please open the subscription page to confirm your status.',
           });
-          setVerifying(false);
           return;
         }
 
-        console.log('Fetching payment data for txnid:', txnid);
-
-        // Fetch payment data from API
         const paymentDataRes = await API.getPaymentData(txnid);
-
-        if (!paymentDataRes.success) {
-          throw new Error(paymentDataRes.message || 'Failed to fetch payment data');
+        if (!paymentDataRes?.success) {
+          throw new Error(paymentDataRes?.message || 'Failed to fetch payment details.');
         }
 
         const paymentData = paymentDataRes.data;
-        console.log('Payment data received:', paymentData);
-
-        if (!paymentData.txnid || !paymentData.status) {
-          // If no payment data, show a message and redirect after a delay
-          if (!paymentData.txnid && !paymentData.status) {
-            console.log('No payment data found, redirecting to subscription page...');
-            setTimeout(() => {
-              router.push('/subscription');
-            }, 5000);
-            setVerificationResult({
-              success: false,
-              message: 'No payment data found. The payment redirect didn\'t include transaction details. Redirecting to subscription page...'
-            });
-            return;
-          }
-
-          throw new Error('Invalid payment data received. Missing transaction ID or status.');
+        if (!paymentData?.txnid || !paymentData?.status) {
+          throw new Error('Payment details are incomplete. Please check your subscription status.');
         }
 
-        // Check payment status from API data
         if (paymentData.status === 'success') {
-          // Payment was successful - show success message
           setVerificationResult({
             success: true,
-            message: 'Payment successful! Your subscription has been activated.',
+            message: 'Your payment was verified and your membership is now active.',
             subscription: {
               planName: paymentData.planName,
-              planId: paymentData.planId,
               amount: paymentData.amount,
               currency: paymentData.currency,
               status: paymentData.status,
@@ -111,65 +89,64 @@ const PayuSuccess = () => {
               receipt: paymentData.receipt,
               user: paymentData.user,
               createdAt: paymentData.createdAt,
-              updatedAt: paymentData.updatedAt
-            }
+            },
           });
-          toast.success('🎉 Payment successful! Subscription activated.');
+          toast.success('Payment verified successfully.');
         } else {
-          // Payment failed or pending
           setVerificationResult({
             success: false,
-            message: `Payment status: ${paymentData.status}. Please check your payment or try again.`
+            message: `Your payment is currently marked as ${paymentData.status}. Please check your subscription page or try again.`,
           });
           toast.error(`Payment status: ${paymentData.status}`);
         }
-
-        // Clear PayU transaction ID from localStorage after processing
+      } catch (error) {
+        setVerificationResult({
+          success: false,
+          message: error?.message || 'Payment verification failed.',
+        });
+        toast.error(error?.message || 'Payment verification failed.');
+      } finally {
         safeLocalStorage.removeItem('payu_txnid');
         safeLocalStorage.removeItem('payu_txnid_timestamp');
-        console.log('Cleared PayU txnid from localStorage');
-
-      } catch (error) {
-        toast.error('Payment verification failed: ' + (error.message || 'Unknown error'));
-        setVerificationResult({ success: false, message: error.message });
-      } finally {
         setVerifying(false);
       }
     };
 
-    // Only run when router.query is available (after hydration)
-    if (router.isReady) {
-      verifyPayment();
-    }
-  }, [router.isReady, router.query]);
+    verifyPayment();
+  }, [router.isReady, router.query.txnid]);
 
-  const handleGoToSubscription = () => {
-    router.push('/subscription');
-  };
-
-  const handleGoToLevels = () => {
-    router.push('/levels');
-  };
+  const detailRows = verificationResult?.subscription
+    ? [
+      { label: 'Plan', value: verificationResult.subscription.planName || 'N/A' },
+      { label: 'Amount', value: formatCurrency(verificationResult.subscription.amount, verificationResult.subscription.currency) },
+      { label: 'Status', value: verificationResult.subscription.status || 'active' },
+      { label: 'Transaction ID', value: verificationResult.subscription.txnid || 'N/A' },
+      { label: 'Receipt', value: verificationResult.subscription.receipt || 'N/A' },
+      { label: 'Name', value: verificationResult.subscription.user?.name || 'N/A' },
+      { label: 'Email', value: verificationResult.subscription.user?.email || 'N/A' },
+      {
+        label: 'Payment date',
+        value: verificationResult.subscription.createdAt
+          ? new Date(verificationResult.subscription.createdAt).toLocaleDateString()
+          : 'N/A',
+      },
+    ]
+    : [];
 
   if (verifying) {
     return (
-      <MobileAppWrapper title="Payment Verification">
-        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-600 mx-auto mb-4"></div>
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-              Verifying Payment...
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Please wait while we verify your payment
-            </p>
-            <div className="mt-4">
-              <button
-                onClick={() => router.push('/subscription')}
-                className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700"
-              >
-                Go to Subscription
-              </button>
+      <MobileAppWrapper title="Verifying payment">
+        <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
+        <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center p-6">
+          <div className="max-w-md w-full text-center bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
+            <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-700 dark:text-primary-500 flex items-center justify-center mx-auto">
+              <LoaderCircle className="w-10 h-10 animate-spin" />
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Verifying your payment</h1>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                This only takes a moment. Keep this page open while we confirm your transaction.
+              </p>
             </div>
           </div>
         </div>
@@ -177,139 +154,81 @@ const PayuSuccess = () => {
     );
   }
 
+  const success = verificationResult?.success;
+
   return (
-    <MobileAppWrapper title="Payment Success">
+    <MobileAppWrapper title={success ? "Payment success" : "Payment status"}>
       <Seo
-        title="Payment Success - AajExam Platform"
-        description="Your payment was successful and your subscription is now active."
+        title="Payment Status - AajExam Platform"
+        description="Check the status of your recent payment and subscription."
         noIndex={true}
       />
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-        <div className="container mx-auto py-4 px-4 lg:px-10">
-          <div className="max-w-2xl mx-auto">
-            {verificationResult?.success ? (
-              <div className="text-center">
-                <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaCheckCircle className="text-4xl text-green-600 dark:text-green-400" />
-                </div>
-
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                  Payment Successful!
-                </h1>
-
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                  Your subscription has been activated successfully. You can now access All PRO Features.
-                </p>
-
-                {verificationResult.subscription && (
-                  <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-3 lg:p-6 mb-8 shadow-lg">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-                      Subscription Details
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Plan:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white">
-                          {verificationResult.subscription.planName || 'N/A'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Amount:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white">
-                          ₹{verificationResult.subscription.amount} {verificationResult.subscription.currency}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Status:</span>
-                        <span className="font-semibold text-green-600 dark:text-green-400">
-                          {verificationResult.subscription.status?.toUpperCase() || 'ACTIVE'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Transaction ID:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white text-sm">
-                          {verificationResult.subscription.txnid || 'N/A'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Receipt:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white text-sm">
-                          {verificationResult.subscription.receipt || 'N/A'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">User:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white">
-                          {verificationResult.subscription.user?.name || 'N/A'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Email:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white text-sm">
-                          {verificationResult.subscription.user?.email || 'N/A'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Payment Date:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white">
-                          {verificationResult.subscription.createdAt
-                            ? new Date(verificationResult.subscription.createdAt).toLocaleDateString()
-                            : 'N/A'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="space-y-4">
-                  <button
-                    onClick={handleGoToLevels}
-                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  >
-                    Start Learning Now
-                  </button>
-
-                  <button
-                    onClick={handleGoToSubscription}
-                    className="w-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
-                  >
-                    View Subscription Details
-                  </button>
-
-                  {/* Mobile app return button removed */}
-                </div>
+      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
+            <div className="text-center space-y-4">
+              <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400' : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'}`}>
+                {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}
               </div>
-            ) : (
-              <div className="text-center">
-                <div className="w-24 h-24 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaTimesCircle className="text-4xl text-primary-600 dark:text-red-400" />
-                </div>
-
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                  Payment Verification Failed
+              <div className="space-y-2">
+                <h1 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">
+                  {success ? 'Payment successful' : 'We could not confirm the payment'}
                 </h1>
-
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                  {verificationResult?.message || 'There was an issue verifying your payment. Please contact support if the amount was deducted.'}
+                <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+                  {verificationResult?.message}
                 </p>
+              </div>
+            </div>
 
-                <div className="space-y-4">
-                  <button
-                    onClick={handleGoToSubscription}
-                    className="w-full bg-gradient-to-r from-secondary-600 to-indigo-600 hover:from-secondary-700 hover:to-indigo-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  >
-                    Try Again
-                  </button>
-
-                  <button
-                    onClick={() => router.push('/')}
-                    className="w-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white py-3 px-6 rounded-2xl font-semibold transition-all duration-300"
-                  >
-                    Go to Home
-                  </button>
+            {success && detailRows.length > 0 && (
+              <div className="rounded-[2.5rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 lg:p-8 space-y-4">
+                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Transaction details</h2>
+                <div className="space-y-3">
+                  {detailRows.map((item) => (
+                    <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
+                      <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.label}</span>
+                      <span className="text-sm font-semibold text-slate-900 dark:text-white break-all sm:text-right">{item.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {success ? (
+                <>
+                  <button
+                    onClick={() => router.push('/levels')}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-lg flex items-center justify-center gap-3"
+                  >
+                    <LayoutDashboard className="w-5 h-5" />
+                    Go to levels
+                  </button>
+                  <button
+                    onClick={() => router.push('/subscription')}
+                    className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                    Back to plans
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => router.push('/subscription')}
+                    className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-lg"
+                  >
+                    Try payment again
+                  </button>
+                  <button
+                    onClick={() => router.push('/')}
+                    className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300"
+                  >
+                    Go home
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ const levelSchema = new mongoose.Schema({
   },
   emoji: {
     type: String,
-    default: '🎯',
+    default: 'ðŸŽ¯',
     maxlength: 10
   },
 
@@ -63,7 +63,7 @@ const levelSchema = new mongoose.Schema({
   // Visual customization
   color: {
     type: String,
-    default: '#3B82F6' // Tailwind secondary-500
+    default: '#3B82F6' // Tailwind primary-500
   },
   icon: {
     type: String,
@@ -152,7 +152,7 @@ levelSchema.methods.getPreviousLevel = async function () {
   }).sort({ levelNumber: -1 });
 };
 
-const Level = mongoose.models.Level || mongoose.model('Level', levelSchema);
+const Level = mongoose.models?.Level || mongoose.model('Level', levelSchema);
 
 // Ensure static methods are present even if model was already registered (hot reloading fix)
 if (Level) {
@@ -166,5 +166,6 @@ if (Level) {
 }
 
 export default Level;
+
 
 

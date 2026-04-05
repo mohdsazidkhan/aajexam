@@ -4,6 +4,7 @@ import User from '@/models/User';
 import Quiz from '@/models/Quiz';
 import QuizAttempt from '@/models/QuizAttempt';
 import { protect, adminOnly } from '@/middleware/auth';
+import config from '@/lib/config/appConfig';
 
 export async function GET(req) {
     try {
@@ -31,7 +32,8 @@ export async function GET(req) {
             role: 'student', subscriptionStatus: 'pro', subscriptionExpiry: { $gte: now }, status: 'active'
         });
 
-        const PRIZE_PER_PRO = Number(process.env.NEXT_PUBLIC_PRIZE_PER_PRO || process.env.PRIZE_PER_PRO || 90);
+        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
+        const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
         const totalRevenue = 0; // PaymentOrder not always available
         const totalSubscriptions = await User.countDocuments({ role: 'student', subscriptionStatus: { $in: ['basic', 'premium', 'pro'] } });
 
@@ -63,7 +65,7 @@ export async function GET(req) {
                     totalUsers, totalNonAdminUsers: totalUsers, totalQuizzes, totalAttempts, totalRevenue,
                     activeUsers: activeUsersCount, totalSubscriptions,
                     currentMonthActiveProUsers: activeProUsers,
-                    dynamicPrizePool: activeProUsers * PRIZE_PER_PRO,
+                    dynamicPrizePool: Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL),
                     prizePerPro: PRIZE_PER_PRO
                 },
                 recentActivity, subscriptionDistribution, levelDistribution, topUsers

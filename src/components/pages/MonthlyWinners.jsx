@@ -1,614 +1,411 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import API from '../../lib/api';
-import { toast } from 'react-toastify';
-import { FaTrophy, FaMedal, FaCrown, FaCalendarAlt, FaUsers, FaRupeeSign, FaTh, FaList, FaTable } from 'react-icons/fa';
-// MobileAppWrapper import removed
-import UnifiedFooter from '../UnifiedFooter';
-import Loading from '../Loading';
-import { isMobile } from 'react-device-detect';
+import {
+   Trophy,
+   Medal,
+   Crown,
+   Calendar,
+   Users,
+   IndianRupee,
+   LayoutGrid,
+   List as ListIcon,
+   Table as TableIcon,
+   ChevronRight,
+   Sparkles,
+   Search,
+   RotateCcw,
+   Star,
+   CircleCheck,
+   Zap,
+   TrendingUp,
+   Clock
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import DatePicker from "react-datepicker";
+import dayjs from 'dayjs';
 import "react-datepicker/dist/react-datepicker.css";
 import "../datepicker-custom.css";
-import dayjs from 'dayjs';
+
+import API from '../../lib/api';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+import Loading from '../Loading';
+import UnifiedFooter from '../UnifiedFooter';
+import { toast } from 'react-hot-toast';
 
 const MonthlyWinners = () => {
-  const [monthlyWinners, setMonthlyWinners] = useState([]);
-  const [activeType, setActiveType] = useState('monthly'); // 'daily', 'weekly', 'monthly'
-  const [monthlyWinnersLoading, setMonthlyWinnersLoading] = useState(true);
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table'); // 'grid', 'list', 'table'
-  const [selectedDate, setSelectedDate] = useState(() => dayjs().subtract(1, 'day').format('YYYY-MM-DD'));
-  const [selectedWeek, setSelectedWeek] = useState(() => {
-    const d = dayjs().subtract(1, 'week');
-    const oneJan = dayjs(d).startOf('year');
-    const numberOfDays = d.diff(oneJan, 'day');
-    const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
-    return `${d.format('YYYY')}-W${weekNum}`;
-  });
-  const [selectedMonth, setSelectedMonth] = useState(() => {
-    return dayjs().subtract(1, 'month').format('YYYY-MM');
-  });
+   const [monthlyWinners, setMonthlyWinners] = useState([]);
+   const [activeType, setActiveType] = useState('monthly'); // 'daily', 'weekly', 'monthly'
+   const [loading, setLoading] = useState(true);
+   const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list', 'table'
+   const [selectedDate, setSelectedDate] = useState(() => dayjs().subtract(1, 'day').format('YYYY-MM-DD'));
+   const [selectedWeek, setSelectedWeek] = useState(() => {
+      const d = dayjs().subtract(1, 'week');
+      const oneJan = dayjs(d).startOf('year');
+      const numberOfDays = d.diff(oneJan, 'day');
+      const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
+      return `${d.format('YYYY')}-W${weekNum}`;
+   });
+   const [selectedMonth, setSelectedMonth] = useState(() => dayjs().subtract(1, 'month').format('YYYY-MM'));
 
-  // Check if user is logged in and get current user info
-  const currentUserId = typeof window !== 'undefined' ? (JSON.parse(localStorage.getItem("userInfo") || 'null')?._id) : undefined;
+   const fetchWinners = useCallback(async () => {
+      try {
+         setLoading(true);
+         const filters = {};
+         if (activeType === 'daily' && selectedDate) filters.date = selectedDate;
+         if (activeType === 'weekly' && selectedWeek) filters.week = selectedWeek;
+         if (activeType === 'monthly' && selectedMonth) filters.date = selectedMonth;
 
-  const fetchMonthlyWinners = useCallback(async () => {
-    try {
-      setMonthlyWinnersLoading(true);
-      const filters = {};
-      if (activeType === 'daily' && selectedDate) filters.date = selectedDate;
-      if (activeType === 'weekly' && selectedWeek) filters.week = selectedWeek;
-      if (activeType === 'monthly' && selectedMonth) filters.date = selectedMonth;
+         const response = await API.getRecentMonthlyWinners(12, null, activeType, filters);
 
-      // Consistent with MonthlyWinnersDisplay.jsx on Home Page
-      // Use getRecentMonthlyWinners for historical/previous winners data
-      const response = await API.getRecentMonthlyWinners(12, null, activeType, filters);
+         if (response && response.success) {
+            let transformed = [];
+            if (activeType === 'monthly') {
+               transformed = (response.data || []).map(monthData => ({
+                  ...monthData,
+                  winners: (monthData.winners || []).map((u, idx) => ({
+                     ...u,
+                     rank: u.rank || idx + 1,
+                     userId: {
+                        _id: u.studentId || u.userId || u._id || idx,
+                        name: u.studentName || u.name || u.userName || 'Unknown',
+                        profilePicture: u.profilePicture,
+                        email: u.studentEmail || u.email
+                     }
+                  }))
+               }));
+            } else {
+               transformed = [{
+                  winners: (response.data || []).map((u, idx) => ({
+                     ...u,
+                     rank: u.rank || idx + 1,
+                     userId: {
+                        _id: u.studentId || u.userId || u._id || idx,
+                        name: u.studentName || u.name || u.userName || 'Unknown',
+                        profilePicture: u.profilePicture,
+                        email: u.studentEmail || u.email
+                     }
+                  })),
+                  totalPrizePool: response.totalPrizePool || 0,
+                  monthYear: activeType.toUpperCase() + (activeType === 'daily' ? ` (${selectedDate})` : ` (${selectedWeek})`),
+                  totalWinners: response.data?.length || 0,
+                  resetDate: activeType === 'daily' ? selectedDate : new Date()
+               }];
+            }
+            setMonthlyWinners(transformed);
+         } else { setMonthlyWinners([]); }
+      } catch (error) {
+         console.error('Error:', error);
+         setMonthlyWinners([]);
+      } finally { setLoading(false); }
+   }, [selectedDate, selectedWeek, selectedMonth, activeType]);
 
-      if (response && response.success) {
-        let transformedWinnersData = [];
+   useEffect(() => { fetchWinners(); }, [fetchWinners]);
 
-        // Handle different data structures for monthly vs daily/weekly
-        if (activeType === 'monthly') {
-          // monthly returns an array of month objects: [{ _id, winners: [], totalPrizePool, ... }]
-          transformedWinnersData = (response.data || []).map(monthData => ({
-            ...monthData,
-            winners: (monthData.winners || []).map((u, idx) => {
-              const uId = u.studentId || u.userId || u._id || idx;
-              return {
-                ...u,
-                rank: u.rank || idx + 1,
-                userId: {
-                  _id: uId,
-                  name: u.studentName || u.name || u.userName || 'Unknown',
-                  profilePicture: u.profilePicture,
-                  email: u.studentEmail || u.email
-                }
-              };
-            })
-          }));
-        } else {
-          // daily/weekly returns flat array of winner objects
-          transformedWinnersData = [{
-            winners: (response.data || []).map((u, idx) => {
-              const uId = u.studentId || u.userId || u._id || idx;
-              return {
-                ...u,
-                rank: u.rank || idx + 1,
-                userId: {
-                  _id: uId,
-                  name: u.studentName || u.name || u.userName || 'Unknown',
-                  profilePicture: u.profilePicture,
-                  email: u.studentEmail || u.email
-                }
-              };
-            }),
-            totalPrizePool: response.totalPrizePool || 0,
-            monthYear: activeType.toUpperCase() + (activeType === 'daily' ? ` (${selectedDate})` : ` (${selectedWeek})`),
-            totalWinners: response.data?.length || 0,
-            resetDate: activeType === 'daily' ? selectedDate : new Date()
-          }];
-        }
+   const stats = [
+      { label: 'Total Periods', val: monthlyWinners.length, icon: Calendar, color: 'primary' },
+      { label: 'Total Winners', val: monthlyWinners.reduce((t, m) => t + (m.totalWinners || 0), 0), icon: Users, color: 'secondary' },
+      { label: 'Total Prize Money', val: `₹${monthlyWinners.reduce((t, m) => t + (m.totalPrizePool || 0), 0).toLocaleString()}`, icon: IndianRupee, color: 'blue' }
+   ];
 
-        setMonthlyWinners(transformedWinnersData);
-      } else {
-        setMonthlyWinners([]);
-      }
-    } catch (error) {
-      console.error('Error fetching winners:', error);
-      toast.error('Failed to fetch winners');
-      setMonthlyWinners([]);
-    } finally {
-      setMonthlyWinnersLoading(false);
-    }
-  }, [selectedDate, selectedWeek, selectedMonth, activeType]);
+   return (
+      <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
 
-  useEffect(() => {
-    fetchMonthlyWinners();
-  }, [fetchMonthlyWinners]);
+         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12 mt-0">
 
-  // Auto-fetch when year, month, or showAllMonths changes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      fetchMonthlyWinners();
-    }, 500); // Debounce for 500ms
+            {/* --- Header & Period Selector --- */}
+            <section className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 py-0 lg:py-6">
+               <div className="space-y-4 text-center lg:text-left">
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Top <span className="text-primary-600">Students</span></h1>
+                  <p className="text-sm font-bold text-content-secondary dark:text-slate-500 uppercase tracking-[0.3em]">These students studied the hardest and won this period</p>
+               </div>
 
-    return () => clearTimeout(timer);
-  }, [selectedDate, selectedWeek, selectedMonth, activeType]);
+               <div className="flex p-2 bg-background-surface-secondary rounded-3xl gap-2 h-fit">
+                  {[
+                     { id: 'daily', label: 'Daily', color: 'secondary' },
+                     { id: 'weekly', label: 'Weekly', color: 'blue' },
+                     { id: 'monthly', label: 'Monthly', color: 'primary' }
+                  ].map(tab => (
+                     <button
+                        key={tab.id}
+                        onClick={() => setActiveType(tab.id)}
+                        className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${activeType === tab.id ? `bg-${tab.color}-500 text-white shadow-lg scale-105` : 'text-content-secondary hover:text-slate-900'}`}
+                     >
+                        {tab.label}
+                     </button>
+                  ))}
+               </div>
+            </section>
 
-  return (
-    <>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-6">
-        <div className="container mx-auto px-0 lg:px-6 xl:px-8">
-          {/* Header */}
-          {/* Competition Type Selector (Tabs Outside) */}
-          <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-            {[
-              { id: 'daily', label: 'Daily', color: 'from-secondary-600 to-cyan-500' },
-              { id: 'weekly', label: 'Weekly', color: 'from-purple-600 to-indigo-500' },
-              { id: 'monthly', label: 'Monthly', color: 'from-primary-600 to-primary-500' }
-            ].map((tab) => {
-              const isActive = activeType === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveType(tab.id)}
-                  className={`flex items-center gap-2 px-3 lg:px-6 py-2 lg:py-2.5 rounded-xl font-bold text-sm transition-all whitespace-nowrap ${isActive
-                    ? `bg-gradient-to-r ${tab.color} text-white shadow-lg scale-105`
-                    : 'bg-white dark:bg-gray-800 text-gray-500 border border-gray-200 dark:border-gray-700 hover:border-gray-300'
-                    }`}
-                >
-                  {tab.label} Winners
-                </button>
-              );
-            })}
-          </div>
+            {/* --- Filter & View Controls --- */}
+            <Card className="p-6 border-none bg-white/50 dark:bg-slate-800/50 backdrop-blur-md shadow-sm border border-border-primary">
+               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
 
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-            {/* Header Content */}
-            <div className={`p-4 lg:p-6 border-b border-gray-100 dark:border-gray-700 bg-gradient-to-r ${activeType === 'daily' ? 'from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20' : activeType === 'weekly' ? 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20' : 'from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20'}`}>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-2xl shadow-inner ${activeType === 'daily' ? 'bg-secondary-100 dark:bg-secondary-900/50 text-secondary-600' : activeType === 'weekly' ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-600' : 'bg-primary-500 dark:bg-primary-900/50 text-secondary-600'}`}>
-                    <FaTrophy className="text-2xl lg:text-3xl" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white capitalize">
-                      Winners
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm lg:text-base">
-                      Celebrating our top-performing students from the previous seasons.
-                    </p>
-                  </div>
-                </div>
-
-                {/* View Toggles Integrated into Header */}
-                <div className="flex items-center gap-1 bg-gray-200/50 dark:bg-gray-900/50 rounded-xl p-1 w-fit border border-gray-200 dark:border-gray-700">
-                  <button onClick={() => setViewMode('grid')} className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Grid View"><FaTh /></button>
-                  <button onClick={() => setViewMode('list')} className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="List View"><FaList /></button>
-                  <button onClick={() => setViewMode('table')} className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-white dark:bg-gray-700 text-secondary-600 dark:text-secondary-400 shadow-md' : 'text-gray-500 hover:bg-white/50 dark:hover:bg-gray-800'}`} title="Table View"><FaTable /></button>
-                </div>
-              </div>
-
-              {/* Filters Row */}
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                {activeType === 'daily' && (
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest px-1">Select Day</label>
-                    <div className="relative group">
-                      <DatePicker
-                        selected={new Date(selectedDate)}
-                        onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
-                        dateFormat="yyyy-MM-dd"
-                        maxDate={new Date()}
-                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-secondary-500 dark:focus:border-secondary-500 outline-none shadow-sm transition-all w-full"
-                      />
-                    </div>
-                  </div>
-                )}
-                {activeType === 'weekly' && (
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest px-1">Select Month & Week</label>
-                    <div className="flex flex-row gap-2 items-center">
-                      <DatePicker
-                        selected={(() => {
-                          try {
-                            const [y, m] = selectedMonth.split('-').map(Number);
-                            if (y && m) return new Date(y, m - 1, 1);
-                          } catch (e) { }
-                          return new Date();
-                        })()}
-                        onChange={(date) => {
-                          const newMonth = dayjs(date).format('YYYY-MM');
-                          setSelectedMonth(newMonth);
-                          const firstDay = dayjs(date).startOf('month');
-                          const oneJan = dayjs(date).startOf('year');
-                          const numberOfDays = firstDay.diff(oneJan, 'day');
-                          const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
-                          setSelectedWeek(`${dayjs(date).format('YYYY')}-W${weekNum}`);
-                        }}
-                        dateFormat="MMMM yyyy"
-                        showMonthYearPicker
-                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-purple-500 dark:focus:border-purple-500 outline-none shadow-sm transition-all w-32"
-                      />
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4].map((w) => {
-                          const [y, m] = selectedMonth.split('-').map(Number);
-                          const dayInWeek = new Date(y, m - 1, (w - 1) * 7 + 1);
-                          const oneJan = new Date(dayInWeek.getFullYear(), 0, 1);
-                          const numberOfDays = Math.floor((dayInWeek - oneJan) / (24 * 60 * 60 * 1000));
-                          const weekNum = Math.ceil((numberOfDays + oneJan.getDay() + 1) / 7);
-                          const weekVal = `${y}-W${weekNum}`;
-                          const isActive = selectedWeek === weekVal;
-
-                          return (
-                            <button
-                              key={w}
-                              onClick={() => setSelectedWeek(weekVal)}
-                              className={`flex justify-center items-center px-3 py-2 rounded-xl text-xs font-black transition-all ${isActive
-                                ? 'bg-purple-500 text-white shadow-lg'
-                                : 'bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700 text-gray-500 hover:border-purple-300'
-                                }`}
-                            >
-                              {w}{w === 1 ? 'st' : w === 2 ? 'nd' : w === 3 ? 'rd' : 'th'}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {activeType === 'monthly' && (
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest px-1">Select Month</label>
-                    <div className="relative group">
-                      <DatePicker
-                        selected={(() => {
-                          try {
-                            const [y, m] = selectedMonth.split('-').map(Number);
-                            if (y && m) return new Date(y, m - 1, 1);
-                          } catch (e) { }
-                          return new Date();
-                        })()}
-                        onChange={(date) => setSelectedMonth(dayjs(date).format('YYYY-MM'))}
-                        dateFormat="MMMM yyyy"
-                        showMonthYearPicker
-                        maxDate={new Date()}
-                        className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-200 focus:border-primary-500 dark:focus:border-primary-500 outline-none shadow-sm transition-all w-full"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex items-end ml-auto">
-                  <button
-                    onClick={() => {
-                      if (activeType === 'daily') setSelectedDate(dayjs().subtract(1, 'day').format('YYYY-MM-DD'));
-                      if (activeType === 'monthly') setSelectedMonth(dayjs().subtract(1, 'month').format('YYYY-MM'));
-                      if (activeType === 'weekly') {
-                        const d = dayjs().subtract(1, 'week');
-                        const oneJan = dayjs(d).startOf('year');
-                        const numberOfDays = d.diff(oneJan, 'day');
-                        const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
-                        setSelectedWeek(`${d.format('YYYY')}-W${weekNum}`);
-                      }
-                    }}
-                    className="text-xs font-black text-secondary-500 hover:text-secondary-600 uppercase tracking-widest flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-all"
-                  >
-                    <span className="text-sm">↺</span> Reset
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-4 lg:p-8">
-
-              {/* Content */}
-              {monthlyWinnersLoading ? (
-                <div className="flex items-center justify-center h-64">
-                  <Loading size="lg" color="yellow" message="" />
-                </div>
-              ) : monthlyWinners.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">🏆</div>
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 underline capitalize">
-                    No {activeType} Winners Found
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    No winners found for this period. Try changing the filters above.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {/* Monthly Winners Summary Cards */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div className="bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 p-4 rounded-xl border border-primary-200 dark:border-primary-600">
-                      <div className="flex items-center gap-3">
-                        <FaTrophy className="text-2xl text-primary-600" />
-                        <div>
-                          <div className="text-sm text-primary-700 dark:text-primary-400 capitalize">Total {activeType === 'monthly' ? 'Months' : activeType === 'weekly' ? 'Weeks' : 'Days'}</div>
-                          <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">{monthlyWinners.length}</div>
+                  <div className="lg:col-span-8 flex flex-wrap items-center gap-6">
+                     {/* Period Picker */}
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest px-1">Study Period</label>
+                        <div className="flex items-center gap-4">
+                           {activeType === 'daily' && (
+                              <div className="relative">
+                                 <DatePicker
+                                    selected={new Date(selectedDate)}
+                                    onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
+                                    className="bg-white dark:bg-slate-900 border-2 border-border-primary rounded-2xl px-6 py-3.5 text-sm font-black uppercase text-slate-700 dark:text-white outline-none focus:border-primary-500 transition-all w-48"
+                                 />
+                                 <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 pointer-events-none" />
+                              </div>
+                           )}
+                           {activeType === 'monthly' && (
+                              <div className="relative">
+                                 <DatePicker
+                                    selected={dayjs(selectedMonth).toDate()}
+                                    onChange={(date) => setSelectedMonth(dayjs(date).format('YYYY-MM'))}
+                                    showMonthYearPicker
+                                    className="bg-white dark:bg-slate-900 border-2 border-border-primary rounded-2xl px-6 py-3.5 text-sm font-black uppercase text-slate-700 dark:text-white outline-none focus:border-primary-500 transition-all w-48"
+                                 />
+                                 <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 pointer-events-none" />
+                              </div>
+                           )}
+                           {activeType === 'weekly' && (
+                              <div className="flex gap-2">
+                                 {[1, 2, 3, 4].map(w => (
+                                    <button
+                                       key={w}
+                                       onClick={() => setSelectedWeek(`${dayjs(selectedMonth).format('YYYY')}-W${w}`)}
+                                       className={`w-12 h-12 flex items-center justify-center rounded-2xl text-xs font-black transition-all ${selectedWeek.includes(`-W${w}`) ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-100 dark:bg-slate-900 text-content-secondary'}`}
+                                    >
+                                       W{w}
+                                    </button>
+                                 ))}
+                              </div>
+                           )}
+                           <Button variant="ghost" onClick={fetchWinners} className="w-12 h-12 p-0 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-900"><RotateCcw className="w-5 h-5 text-content-secondary" /></Button>
                         </div>
-                      </div>
-                    </div>
+                     </div>
 
-                    <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-secondary-200 dark:border-secondary-600">
-                      <div className="flex items-center gap-3">
-                        <FaUsers className="text-2xl text-secondary-600" />
-                        <div>
-                          <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Winners</div>
-                          <div className="text-md lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
-                            {monthlyWinners.reduce((total, month) => total + (month.totalWinners || 0), 0)}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-600">
-                      <div className="flex items-center gap-3">
-                        <FaRupeeSign className="text-2xl text-green-600" />
-                        <div>
-                          <div className="text-sm text-green-700 dark:text-green-400">Total Distributed</div>
-                          <div className="text-md lg:text-2xl font-bold text-green-800 dark:text-green-200">
-                            ₹{monthlyWinners.reduce((total, month) => total + (month.totalPrizePool || 0), 0).toLocaleString()}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-600">
-                      <div className="flex items-center gap-3">
-                        <FaMedal className="text-2xl text-primary-600" />
-                        <div>
-                          <div className="text-sm text-primary-700 dark:text-primary-400 capitalize">Avg Winners/{activeType === 'monthly' ? 'Month' : activeType === 'weekly' ? 'Week' : 'Day'}</div>
-                          <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
-                            {monthlyWinners.length > 0 ? (monthlyWinners.reduce((total, month) => total + (month.totalWinners || 0), 0) / monthlyWinners.length).toFixed(1) : 0}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                     {/* Stats Segment */}
+                     <div className="hidden xl:flex items-center gap-8 pl-8 border-l-2 border-border-primary">
+                        {stats.map((s, i) => (
+                           <div key={i} className="space-y-1">
+                              <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{s.label}</p>
+                              <p className={`text-lg font-black text-content-primary`}>{s.val}</p>
+                           </div>
+                        ))}
+                     </div>
                   </div>
 
-                  {/* Monthly Winners Grid */}
-                  {viewMode === 'grid' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                      {monthlyWinners.map((monthData, index) => (
-                        <div key={monthData._id || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                          <div className="bg-gradient-to-r from-primary-400 to-primary-500 p-4 text-white">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <FaCalendarAlt className="text-xl" />
-                                <h3 className="text-lg font-bold">
-                                  {monthData.monthYear || (activeType === 'daily' ? new Date(monthData.resetDate).toLocaleDateString() : `Week ${monthData.weekNumber || ''}`)}
-                                </h3>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-sm opacity-90">Total Prize</div>
-                                <div className="text-lg font-bold">₹{monthData.totalPrizePool?.toLocaleString()}</div>
-                              </div>
-                            </div>
-                          </div>
+                  {/* View Switches */}
+                  <div className="lg:col-span-4 flex justify-end gap-2">
+                     {[
+                        { id: 'grid', icon: LayoutGrid },
+                        { id: 'list', icon: ListIcon },
+                        { id: 'table', icon: TableIcon }
+                     ].map(v => (
+                        <button
+                           key={v.id}
+                           onClick={() => setViewMode(v.id)}
+                           className={`w-12 h-12 flex items-center justify-center rounded-2xl transition-all ${viewMode === v.id ? 'bg-slate-900 text-white shadow-lg' : 'bg-slate-100 dark:bg-slate-900 text-content-secondary hover:text-slate-600'}`}
+                        >
+                           <v.icon className="w-5 h-5" />
+                        </button>
+                     ))}
+                  </div>
+               </div>
+            </Card>
 
-                          <div className="p-4">
-                            <div className="space-y-3">
-                              {monthData.winners?.map((winner, winnerIndex) => (
-                                <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
-                                  <div className="flex items-center gap-3">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-primary-500' :
-                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
-                                      }`}>
-                                      {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
-                                    </div>
-                                    <div>
-                                      <div className="font-medium text-gray-900 dark:text-white">{winner?.userId?.name || winner?.userName || winner?.username}</div>
-                                      {winner?.userId?.email && (
-                                        <div className="text-sm text-gray-500 dark:text-gray-400">{winner.userId.email}</div>
-                                      )}
-                                    </div>
-                                  </div>
-                                  <div className="text-right">
-                                    <div className="text-lg font-bold text-green-600 dark:text-green-400">
-                                      ₹{winner.rewardAmount?.toLocaleString()}
-                                    </div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                                      {winner.highScoreWins} wins • {winner.accuracy}% accuracy
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
+            {/* --- Main Content --- */}
+            <AnimatePresence mode="wait">
+               {loading ? (
+                  <div className="py-32 flex justify-center"><Loading size="lg" /></div>
+               ) : monthlyWinners.length === 0 ? (
+                  <Card className="py-24 text-center space-y-6 bg-transparent border-dashed border-2 border-slate-200 dark:border-slate-800">
+                     <Trophy className="w-20 h-20 text-slate-200 mx-auto" />
+                     <div className="space-y-2">
+                        <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">No Winners Found</h3>
+                        <p className="text-xs font-bold text-content-secondary uppercase tracking-widest">No winners have been recorded for this time period yet.</p>
+                     </div>
+                  </Card>
+               ) : (
+                  <motion.div key={activeType + viewMode} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-6 lg:space-y-12">
 
-                            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
-                              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                                <span>Winners: {monthData.totalWinners}</span>
-                                <span>Reset: {new Date(monthData.resetDate).toLocaleDateString()}</span>
+                     {/* --- The Podium (Top 3 Visual) --- */}
+                     {monthlyWinners[0]?.winners?.length > 0 && (
+                        <section className="relative pt-20 pb-10">
+                           <div className="flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-0 max-w-4xl mx-auto px-4">
+                              {/* Rank 2 */}
+                              <div className="w-full lg:w-1/3 order-2 lg:order-1">
+                                 {monthlyWinners[0].winners[1] && (
+                                    <div className="space-y-4 flex flex-col items-center">
+                                       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }} className="relative group">
+                                          <div className="w-24 h-24 rounded-full border-4 border-slate-300 dark:border-slate-600 overflow-hidden shadow-xl bg-slate-200">
+                                             <img src={monthlyWinners[0].winners[1].profilePicture || '/default-avatar.png'} alt="" className="w-full h-full object-cover" />
+                                          </div>
+                                          <div className="absolute -top-3 -right-3 w-10 h-10 bg-slate-300 rounded-full flex items-center justify-center text-slate-600 shadow-lg border-4 border-white dark:border-slate-800">
+                                             <Medal className="w-5 h-5" />
+                                          </div>
+                                       </motion.div>
+                                       <div className="text-center">
+                                          <p className="text-lg font-black font-outfit uppercase truncate max-w-[150px]">{monthlyWinners[0].winners[1].userId.name}</p>
+                                          <p className="text-xl font-black text-content-secondary">₹{monthlyWinners[0].winners[1].rewardAmount.toLocaleString()}</p>
+                                       </div>
+                                       <div className="w-full h-32 bg-gradient-to-t from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700/50 rounded-t-3xl border-t-4 border-slate-300 dark:border-slate-600 flex items-center justify-center">
+                                          <span className="text-5xl font-black font-outfit text-slate-300 dark:text-slate-600">2</span>
+                                       </div>
+                                    </div>
+                                 )}
                               </div>
-                            </div>
-                          </div>
+
+                              {/* Rank 1 */}
+                              <div className="w-full lg:w-1/3 order-1 lg:order-2 z-10">
+                                 <div className="space-y-4 flex flex-col items-center">
+                                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="relative">
+                                       <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-full border-8 border-primary-500 overflow-hidden shadow-duo-primary bg-primary-100 animate-pulse-subtle">
+                                          <img src={monthlyWinners[0].winners[0].profilePicture || '/default-avatar.png'} alt="" className="w-full h-full object-cover" />
+                                       </div>
+                                       <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white shadow-xl border-4 border-white dark:border-slate-800">
+                                          <Crown className="w-6 h-6" />
+                                       </div>
+                                       <Sparkles className="absolute -left-8 -top-8 w-12 h-12 text-primary-600 animate-bounce" />
+                                    </motion.div>
+                                    <div className="text-center">
+                                       <p className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-primary-600">{monthlyWinners[0].winners[0].userId.name}</p>
+                                       <p className="text-4xl font-black text-content-primary">₹{monthlyWinners[0].winners[0].rewardAmount.toLocaleString()}</p>
+                                    </div>
+                                    <div className="w-full h-48 bg-gradient-to-t from-primary-500 to-primary-400 rounded-t-3xl shadow-2xl flex items-center justify-center border-t-8 border-primary-600">
+                                       <span className="text-7xl font-black font-outfit text-white/50">1</span>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              {/* Rank 3 */}
+                              <div className="w-full lg:w-1/3 order-3 lg:order-3">
+                                 {monthlyWinners[0].winners[2] && (
+                                    <div className="space-y-4 flex flex-col items-center">
+                                       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4 }} className="relative">
+                                          <div className="w-24 h-24 rounded-full border-4 border-primary-700/50 overflow-hidden shadow-xl bg-primary-900/10">
+                                             <img src={monthlyWinners[0].winners[2].profilePicture || '/default-avatar.png'} alt="" className="w-full h-full object-cover" />
+                                          </div>
+                                          <div className="absolute -top-3 -right-3 w-10 h-10 bg-primary-700 rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white dark:border-slate-800">
+                                             <Medal className="w-5 h-5" />
+                                          </div>
+                                       </motion.div>
+                                       <div className="text-center">
+                                          <p className="text-lg font-black font-outfit uppercase truncate max-w-[150px]">{monthlyWinners[0].winners[2].userId.name}</p>
+                                          <p className="text-xl font-black text-content-secondary">₹{monthlyWinners[0].winners[2].rewardAmount.toLocaleString()}</p>
+                                       </div>
+                                       <div className="w-full h-24 bg-gradient-to-t from-primary-800/10 to-transparent dark:from-primary-900/20 rounded-t-3xl border-t-4 border-primary-700/30 flex items-center justify-center">
+                                          <span className="text-5xl font-black font-outfit text-primary-800/20">3</span>
+                                       </div>
+                                    </div>
+                                 )}
+                              </div>
+                           </div>
+                        </section>
+                     )}
+
+                     {/* --- Grid / List Content --- */}
+                     {viewMode !== 'table' ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+                           {monthlyWinners[0].winners.slice(3).map((w, idx) => (
+                              <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                                 <Card className={`p-6 group flex items-center gap-6 border-2 hover:border-slate-300 dark:hover:border-slate-700 transition-all ${viewMode === 'list' ? 'lg:col-span-1 lg:col-span-2' : ''}`}>
+                                    <div className="relative">
+                                       <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform">
+                                          <img src={w.profilePicture || '/default-avatar.png'} alt="" className="w-full h-full object-cover" />
+                                       </div>
+                                       <div className="absolute -top-2 -right-2 w-8 h-8 bg-slate-200 dark:bg-slate-700 rounded-xl flex items-center justify-center font-black text-xs text-slate-600 dark:text-slate-300 shadow-sm">
+                                          #{w.rank}
+                                       </div>
+                                    </div>
+
+                                    <div className="flex-1 space-y-1">
+                                       <h4 className="text-lg font-black font-outfit uppercase tracking-tight group-hover:text-primary-600 transition-colors">{(w.userId.name || 'Student').split(' ')[0]}</h4>
+                                       <div className="flex items-center gap-4">
+                                          <span className="flex items-center gap-1 text-[10px] font-black text-content-secondary uppercase tracking-widest"><CircleCheck className="w-3 h-3" /> {w.accuracy}%</span>
+                                          <span className="flex items-center gap-1 text-[10px] font-black text-content-secondary uppercase tracking-widest"><Zap className="w-3 h-3" /> {w.highScoreWins} Wins</span>
+                                       </div>
+                                    </div>
+
+                                    <div className="text-right">
+                                       <p className="text-xl lg:text-2xl font-black text-green-500">₹{w.rewardAmount.toLocaleString()}</p>
+                                       <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">REWARD</p>
+                                    </div>
+                                 </Card>
+                              </motion.div>
+                           ))}
                         </div>
-                      ))}
-                    </div>
-                  )}
+                     ) : (
+                        /* --- Table View --- */
+                        <Card className="overflow-hidden border-none shadow-xl">
+                           <div className="overflow-x-auto">
+                              <table className="w-full">
+                                 <thead>
+                                    <tr className="bg-slate-900 text-white">
+                                       <th className="px-8 py-6 text-left text-[10px] font-black uppercase tracking-[0.3em]">Student Name</th>
+                                       <th className="px-8 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Rank</th>
+                                       <th className="px-8 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Performance</th>
+                                       <th className="px-8 py-6 text-right text-[10px] font-black uppercase tracking-[0.3em]">Earned Reward</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody className="divide-y-2 divide-border-primary bg-white dark:bg-slate-900/50">
+                                    {monthlyWinners[0].winners.map((w, idx) => (
+                                       <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                                          <td className="px-8 py-6">
+                                             <div className="flex items-center gap-4">
+                                                <img src={w.profilePicture || '/default-avatar.png'} alt="" className="w-10 h-10 rounded-xl" />
+                                                <div>
+                                                   <p className="font-black font-outfit uppercase truncate max-w-[200px]">{w.userId.name}</p>
+                                                   <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mt-1">{w.userId.email}</p>
+                                                </div>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center">
+                                             <span className={`px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${w.rank === 1 ? 'bg-primary-500 text-white shadow-duo-primary' : w.rank < 4 ? 'bg-primary-500 text-white shadow-duo-secondary' : 'bg-slate-100 dark:bg-slate-800 text-content-secondary'}`}>
+                                                Rank #{w.rank}
+                                             </span>
+                                          </td>
+                                          <td className="px-8 py-6 text-center">
+                                             <div className="flex flex-col items-center gap-1">
+                                                <p className="text-sm font-black text-content-primary leading-none">{w.accuracy}% ACC</p>
+                                                <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{w.highScoreWins} WINS</p>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-right">
+                                             <p className="text-xl lg:text-2xl font-black text-green-500">₹{w.rewardAmount.toLocaleString()}</p>
+                                          </td>
+                                       </tr>
+                                    ))}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </Card>
+                     )}
 
-                  {/* Monthly Winners List View */}
-                  {viewMode === 'list' && (
-                    <div className="space-y-4">
-                      {monthlyWinners.map((monthData, index) => (
-                        <div key={monthData._id || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                          <div className="bg-gradient-to-r from-purple-500 to-pink-600 p-4 text-white">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <FaCalendarAlt className="text-xl" />
-                                <h3 className="text-xl font-bold">
-                                  {monthData.monthYear || (activeType === 'daily' ? new Date(monthData.resetDate).toLocaleDateString() : `Week ${monthData.weekNumber || ''}`)}
-                                </h3>
-                                <span className="text-sm opacity-90">• {monthData.totalWinners} Winners</span>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-sm opacity-90">Total Prize Pool</div>
-                                <div className="text-lg font-bold">₹{monthData.totalPrizePool?.toLocaleString()}</div>
-                              </div>
-                            </div>
-                          </div>
+                  </motion.div>
+               )}
+            </AnimatePresence>
 
-                          <div className="p-2 lg:p-6">
-                            <div className="space-y-4">
-                              {monthData.winners?.map((winner, winnerIndex) => (
-                                <div key={winner._id || winnerIndex} className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between p-2 lg:p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
-                                  <div className="flex items-center gap-4">
-                                    <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-full  flex items-center justify-center text-white font-bold text-lg ${winner.rank === 1 ? 'bg-primary-500' :
-                                      winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
-                                      }`}>
-                                      {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
-                                    </div>
-                                    <div>
-                                      <div className="text-lg font-semibold text-gray-900 dark:text-white">{winner?.userId?.name || winner?.userName || winner?.username}</div>
-                                      {winner?.userId?.email && (
-                                        <div className="text-sm text-gray-500 dark:text-gray-400">{winner.userId.email}</div>
-                                      )}
-                                      <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                                        {winner.highScoreWins} wins • {winner.accuracy}% accuracy
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="text-right">
-                                    <div className="text-md lg:text-2xl font-bold text-green-600 dark:text-green-400">
-                                      ₹{winner.rewardAmount?.toLocaleString()}
-                                    </div>
-                                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                                      Rank #{winner.rank}
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
+            {/* --- Footer Guide --- */}
+            <section className="pt-5">
+               <Card variant="dark" depth={false} className="p-6 lg:p-12 text-center bg-slate-950 border-none text-white shadow-2xl relative overflow-hidden">
+                  <div className="relative z-10 space-y-8 flex flex-col items-center p-4">
+                     <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Your Name <span className="text-primary-600">Next?</span></h2>
+                     <p className="text-md lg:text-lg font-bold opacity-60 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed">Continuous preparation leads to the top. <br />Start practicing today and reach your goal.</p>
+                     <Button onClick={() => router.push('/')} variant="primary" size="lg" className="px-12 py-6 text-sm font-black shadow-duo-primary">START PRACTICING NOW</Button>
+                  </div>
+                  <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/5" />
+               </Card>
+            </section>
 
-                            <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-600">
-                              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                                <span>Reset Date: {new Date(monthData.resetDate).toLocaleDateString()}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+         </div>
 
-                  {/* Monthly Winners Table View */}
-                  {viewMode === 'table' && (
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                      <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 p-4 text-white">
-                        <div className="flex items-center gap-3">
-                          <FaTrophy className="text-2xl" />
-                          <h3 className="text-xl font-bold">All Winners Table</h3>
-                        </div>
-                        <p className="text-sm opacity-90 mt-1">Complete list of all monthly winners with detailed information</p>
-                      </div>
-
-                      <div className="overflow-x-auto">
-                        <table className="w-full">
-                          <thead className="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                S.No.
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Rank
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Winner
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Period
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Performance
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Prize
-                              </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Date
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                            {monthlyWinners.map((monthData, monthIndex) =>
-                              monthData.winners?.map((winner, winnerIndex) => (
-                                <tr key={`${monthData._id}-${winner._id || winnerIndex}`} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                                    {(() => {
-                                      let serialNumber = 1;
-                                      for (let i = 0; i < monthIndex; i++) {
-                                        serialNumber += monthlyWinners[i].winners?.length || 0;
-                                      }
-                                      return serialNumber + winnerIndex;
-                                    })()}
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="flex items-center gap-2">
-                                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${winner.rank === 1 ? 'bg-primary-500' :
-                                        winner.rank === 2 ? 'bg-gray-400' : 'bg-primary-600'
-                                        }`}>
-                                        {winner.rank === 1 ? <FaCrown /> : winner.rank === 2 ? <FaMedal /> : <FaMedal />}
-                                      </div>
-                                      <span className="text-sm font-medium text-gray-900 dark:text-white">
-                                        #{winner.rank}
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div>
-                                      <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                        {winner?.userId?.name || winner?.userName || winner?.username}
-                                      </div>
-                                      {winner?.userId?.email && (
-                                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                                          {winner.userId.email}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900 dark:text-white font-medium">
-                                      {monthData.monthYear || (activeType === 'daily' ? new Date(monthData.resetDate).toLocaleDateString() : `Week ${monthData.weekNumber || ''}`)}
-                                    </div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                                      {activeType === 'monthly' ? new Date(monthData.resetDate).toLocaleDateString('en-US', {
-                                        month: 'long',
-                                        year: 'numeric'
-                                      }) : `Reset: ${new Date(monthData.resetDate).toLocaleDateString()}`}
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900 dark:text-white">
-                                      <span className="font-medium">{winner.highScoreWins}</span> wins
-                                    </div>
-                                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                                      <span className="font-medium">{winner.accuracy}%</span> accuracy
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-lg font-bold text-green-600 dark:text-green-400">
-                                      ₹{winner.rewardAmount?.toLocaleString()}
-                                    </div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                                      Prize Amount
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                                    <div className="font-medium text-gray-900 dark:text-white">
-                                      {(() => {
-                                        const date = new Date(monthData.resetDate);
-                                        const day = date.getDate().toString().padStart(2, '0');
-                                        const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                                        const month = monthNames[date.getMonth()];
-                                        const year = date.getFullYear();
-                                        return `${day}-${month}-${year}`;
-                                      })()}
-                                    </div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                                      {new Date(monthData.resetDate).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))
-                            )}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+         <UnifiedFooter />
       </div>
-      <UnifiedFooter />
-    </>
-  );
+   );
 };
 
 export default MonthlyWinners;
+
 

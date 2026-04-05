@@ -1,558 +1,296 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Link from 'next/link';
-import API from '../../lib/api';
-// MobileAppWrapper import removed
-import UnifiedFooter from '../../components/UnifiedFooter';
-import ViewToggle from '../../components/ViewToggle';
-import { toast } from 'react-toastify';
-import { FaPlus, FaEdit, FaHistory, FaTrash } from 'react-icons/fa';
+import {
+   Plus,
+   Edit,
+   History,
+   Trash2,
+   Grid,
+   List,
+   Table,
+   Search,
+   Filter,
+   CircleCheck,
+   Clock,
+   CircleAlert,
+   Globe,
+   FileText,
+   Sparkles,
+   ArrowRight,
+   Layers,
+   BarChart3,
+   Archive,
+   ChevronRight,
+   TrendingUp,
+   Zap,
+   LayoutGrid
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
 import { isMobile } from 'react-device-detect';
 
+import API from '../../lib/api';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
+import ViewToggle from '../../components/ViewToggle';
+import Card from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
+import Loading from '../../components/Loading';
+
 const MyBlogsPage = () => {
-  const router = useRouter();
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState('all');
-  const [blogCount, setBlogCount] = useState({
-    currentCount: 0,
-    limit: 10,
-    remaining: 10,
-    canAddMore: true
-  });
-  const [viewMode, setViewMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return (isMobile || window.innerWidth < 768) ? 'list' : 'table';
-    }
-    return isMobile ? 'list' : 'table';
-  });
+   const router = useRouter();
+   const [blogs, setBlogs] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [statusFilter, setStatusFilter] = useState('all');
+   const [blogCount, setBlogCount] = useState({ currentCount: 0, limit: 10, remaining: 10, canAddMore: true });
+   const [viewMode, setViewMode] = useState('grid');
 
-  const fetchCurrentMonthBlogCount = async () => {
-    try {
-      const response = await API.getCurrentMonthBlogCount();
-      if (response.success && response.data) {
-        setBlogCount(response.data);
-      }
-    } catch (error) {
-      console.error('Error fetching current month blog count:', error);
-    }
-  };
+   const fetchStats = useCallback(async () => {
+      try {
+         const response = await API.getCurrentMonthBlogCount();
+         if (response.success && response.data) setBlogCount(response.data);
+      } catch (e) { console.error('Limit check offline'); }
+   }, []);
 
-  useEffect(() => {
-    fetchBlogs();
-    fetchCurrentMonthBlogCount();
-  }, [statusFilter]);
-
-  const fetchBlogs = async () => {
-    try {
+   const fetchBlogs = useCallback(async () => {
       setLoading(true);
-      const params = statusFilter !== 'all' ? { status: statusFilter } : {};
-      const response = await API.getMyBlogs(params);
-      if (response.success) {
-        setBlogs(response.data || []);
-      }
-    } catch (error) {
-      console.error('Error fetching blogs:', error);
-      toast.error('Failed to load blogs');
-    } finally {
-      setLoading(false);
-    }
-  };
+      try {
+         const params = statusFilter !== 'all' ? { status: statusFilter } : {};
+         const response = await API.getMyBlogs(params);
+         if (response.success) setBlogs(response.data || []);
+      } catch (e) { toast.error('Archive synchronization failed'); }
+      finally { setLoading(false); }
+   }, [statusFilter]);
 
-  const handleDeleteBlog = async (blogId, blogTitle) => {
-    // Confirm deletion
-    if (!window.confirm(`Are you sure you want to delete "${blogTitle}"? This action cannot be undone.`)) {
-      return;
-    }
+   useEffect(() => {
+      fetchBlogs();
+      fetchStats();
+   }, [fetchBlogs, fetchStats]);
 
-    try {
-      const response = await API.deleteBlog(blogId);
-      if (response.success) {
-        toast.success('Blog deleted successfully');
-        // Refresh the list
-        fetchBlogs();
-      } else {
-        toast.error(response.message || 'Failed to delete blog');
-      }
-    } catch (error) {
-      console.error('Error deleting blog:', error);
-      const errorMessage = error?.response?.data?.message || error?.message || 'Failed to delete blog';
-      toast.error(errorMessage);
-    }
-  };
+   const handleDeleteBlog = async (blogId, blogTitle) => {
+      if (!window.confirm(`Permanently purge "${blogTitle}" from archive?`)) return;
+      try {
+         const res = await API.deleteBlog(blogId);
+         if (res.success) {
+            toast.success('Intel Purged');
+            fetchBlogs();
+         }
+      } catch (e) { toast.error('Deletion protocol failed'); }
+   };
 
-  const getStatusBadge = (status) => {
-    const statusConfig = {
-      pending: { color: 'bg-primary-100 text-primary-800', text: 'Pending' },
-      approved: { color: 'bg-green-100 text-green-800', text: 'Approved' },
-      rejected: { color: 'bg-red-100 text-red-800', text: 'Rejected' },
-      published: { color: 'bg-secondary-100 text-secondary-800', text: 'Published' },
-      draft: { color: 'bg-gray-100 text-gray-800', text: 'Draft' }
-    };
-    const config = statusConfig[status] || statusConfig.draft;
-    return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
-        {config.text}
-      </span>
-    );
-  };
+   const getStatusToken = (status) => {
+      const config = {
+         pending: { color: 'text-amber-500', bg: 'bg-amber-500/10', icon: Clock, label: 'PENDING REVIEW' },
+         approved: { color: 'text-emerald-500', bg: 'bg-emerald-500/10', icon: CircleCheck, label: 'VERIFIED' },
+         rejected: { color: 'text-primary-500', bg: 'bg-primary-500/10', icon: CircleAlert, label: 'PURGED' },
+         published: { color: 'text-primary-500', bg: 'bg-primary-500/10', icon: Globe, label: 'PUBLISHED' },
+         default: { color: 'text-slate-400', bg: 'bg-slate-100', icon: FileText, label: 'DRAFT' }
+      };
+      const { color, bg, icon: Icon, label } = config[status] || config.default;
+      return (
+         <div className={`px-4 py-1.5 rounded-xl ${bg} ${color} flex items-center gap-2 text-[8px] font-black uppercase tracking-widest border border-current opacity-80`}>
+            <Icon className="w-3 h-3" /> {label}
+         </div>
+      );
+   };
 
-  const getRewardTierBadge = (rewardTier, rewardAmount) => {
-    if (!rewardTier) return null;
-    const tierConfig = {
-      normal: { color: 'bg-green-100 text-green-800', text: 'Normal ₹5' },
-      good: { color: 'bg-secondary-100 text-secondary-800', text: 'Good ₹10' },
-      high: { color: 'bg-purple-100 text-primary-800', text: 'High ₹15' }
-    };
-    const config = tierConfig[rewardTier];
-    if (!config) return null;
-    return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color} ml-2`}>
-        {config.text}
-      </span>
-    );
-  };
+   return (
+      <MobileAppWrapper title="Personal Codex">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-  return (
-    <>
-      <Head>
-        <title>My Blogs - AajExam</title>
-      </Head>
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4">
-        <div className="container mx-auto py-0 px-0 lg:px-10">
-          {/* Header */}
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <h1 className="text-xl lg:text-2xl xl:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">
-                📝 My Blogs
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
-                Manage your blog submissions and track rewards
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <Link
-                href="/pro/blog-rewards-history"
-                className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
-              >
-                <FaHistory className="mr-2" />
-                Rewards History
-              </Link>
-              <Link
-                href="/pro/create-blog"
-                className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
-              >
-                <FaPlus className="mr-2" />
-                Create Blog
-              </Link>
-            </div>
-            {/* View Toggle */}
-            {!loading && blogs.length > 0 && (
-              <div className="flex justify-end">
-                <ViewToggle
-                  currentView={viewMode}
-                  onViewChange={setViewMode}
-                  views={['table', 'list', 'grid']}
-                />
-              </div>
-            )}
-          </div>
+            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
 
-          {/* Monthly Blog Limit Info */}
-          <div className={`mb-4 lg:mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border ${!blogCount.canAddMore
-            ? 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20'
-            : 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
-            }`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className={`text-sm font-medium ${!blogCount.canAddMore
-                  ? 'text-red-800 dark:text-red-300'
-                  : 'text-primary-800 dark:text-primary-300'
-                  }`}>
-                  Monthly Blog Limit
-                </p>
-                <p className={`text-xs mt-1 ${!blogCount.canAddMore
-                  ? 'text-primary-600 dark:text-red-400'
-                  : 'text-primary-700 dark:text-primary-400'
-                  }`}>
-                  {blogCount.currentCount} / {blogCount.limit} blogs this month
-                  {blogCount.canAddMore && ` (${blogCount.remaining} remaining)`}
-                </p>
-              </div>
-              {!blogCount.canAddMore && (
-                <span className="text-primary-600 dark:text-red-400 font-semibold text-sm">
-                  Limit Reached
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Status Filter and View Toggle */}
-          <div className="mb-4 lg:mb-6 space-y-4">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-0 lg:p-4 shadow-sm">
-              <div className="flex flex-wrap gap-2">
-                {['all', 'pending', 'approved', 'rejected', 'published'].map(status => (
-                  <button
-                    key={status}
-                    onClick={() => setStatusFilter(status)}
-                    className={`px-2 lg:px-4 py-1 lg:py-2 rounded-lg text-sm font-medium transition-colors ${statusFilter === status
-                      ? 'bg-primary-500 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                      }`}
-                  >
-                    {status.charAt(0).toUpperCase() + status.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-
-          </div>
-
-          {/* Blogs List */}
-          {loading ? (
-            <div className="text-center py-12">
-              <div className="text-gray-500">Loading blogs...</div>
-            </div>
-          ) : blogs.length === 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-12 text-center shadow-sm">
-              <p className="text-gray-500 dark:text-gray-400 mb-4">
-                No blogs found. Create your first blog to start earning rewards!
-              </p>
-              <Link
-                href="/pro/create-blog"
-                className="inline-flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600"
-              >
-                <FaPlus className="mr-2" />
-                Create Blog
-              </Link>
-            </div>
-          ) : (
-            <>
-              {/* Table View */}
-              {viewMode === 'table' && (
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-12 lg:mb-2">
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                      <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
-                        <tr>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Blog
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Status
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Category
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Reward
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Created
-                          </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Actions
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                        {blogs.map((blog) => (
-                          <tr key={blog._id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              <div className="flex items-center gap-3">
-                                <div className="flex-shrink-0 h-12 w-12">
-                                  {blog.featuredImage ? (
-                                    <img
-                                      className="h-12 w-12 rounded-lg object-cover"
-                                      src={blog.featuredImage}
-                                      alt={blog.title || 'Blog Image'}
-                                      onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = '/default_banner.png';
-                                      }}
-                                    />
-                                  ) : (
-                                    <div className="h-12 w-12 rounded-lg bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                                      <img
-                                        src="/default_banner.png"
-                                        alt="Default Blog Image"
-                                        className="h-12 w-12 rounded-lg object-cover"
-                                        onError={(e) => {
-                                          e.target.onerror = null;
-                                          e.target.style.display = 'none';
-                                          e.target.parentElement.innerHTML = '<span class="text-gray-400 text-xl">📝</span>';
-                                        }}
-                                      />
-                                    </div>
-                                  )}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                                    {blog.title}
-                                  </div>
-                                  {blog.excerpt && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                                      {blog.excerpt}
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              {getStatusBadge(blog.status)}
-                              {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
-                              {blog.rewardCredited && (
-                                <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-2" title="Reward credited">
-                                  💰
-                                </span>
-                              )}
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                              {blog.category?.name || 'Uncategorized'}
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                              {blog.rewardAmount ? (
-                                <span className="text-sm font-medium text-green-600 dark:text-green-400">
-                                  ₹{blog.rewardAmount}
-                                </span>
-                              ) : (
-                                <span className="text-sm text-gray-400">-</span>
-                              )}
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                              {new Date(blog.createdAt).toLocaleDateString()}
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm">
-                              {blog.status === 'pending' && (
-                                <div className="flex gap-2">
-                                  <button
-                                    onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                                    className="bg-secondary-500 text-white px-3 py-1 rounded hover:bg-secondary-600"
-                                    title="Edit"
-                                  >
-                                    <FaEdit />
-                                  </button>
-                                  <button
-                                    onClick={() => handleDeleteBlog(blog._id, blog.title)}
-                                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                                    title="Delete"
-                                  >
-                                    <FaTrash />
-                                  </button>
-                                </div>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+               {/* --- Codex Hero --- */}
+               <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8">
+                  <div className="space-y-4 text-center lg:text-left">
+                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary-500/10 text-primary-500 text-[10px] font-black uppercase tracking-widest border border-primary-500/20">
+                        <Archive className="w-3 h-3" /> PERSONAL KNOWLEDGE ARCHIVE
+                     </motion.div>
+                     <h1 className="text-4xl lg:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                        Personal <span className="text-primary-500">Codex</span>
+                     </h1>
+                     <p className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl">Manage your synchronized journal units and reward yields</p>
                   </div>
-                </div>
-              )}
 
-              {/* List View */}
-              {viewMode === 'list' && (
-                <div className="space-y-4 mb-12 lg:mb-2">
-                  {blogs.map((blog) => (
-                    <div
-                      key={blog._id}
-                      className="bg-white dark:bg-gray-800 rounded-lg p-2 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700"
-                    >
-                      <div className="flex flex-col md:flex-row gap-4">
-                        {/* Blog Image */}
-                        <div className="flex-shrink-0">
-                          <div className="w-full md:w-32 lg:w-40 h-32 md:h-32 lg:h-40 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                            {blog.featuredImage ? (
-                              <img
-                                src={blog.featuredImage}
-                                alt={blog.title || 'Blog Image'}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.onerror = null;
-                                  e.target.src = '/default_banner.png';
-                                }}
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-                                <img
-                                  src="/default_banner.png"
-                                  alt="Default Blog Image"
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.style.display = 'none';
-                                    e.target.parentElement.innerHTML = '<span class="text-gray-400 text-4xl">📝</span>';
-                                  }}
-                                />
-                              </div>
-                            )}
-                          </div>
-                        </div>
+                  <div className="flex flex-wrap justify-center gap-4">
+                     <Button variant="ghost" onClick={() => router.push('/pro/blog-rewards-history')} className="px-8 py-5 rounded-3xl bg-white dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                        <History className="w-4 h-4 mr-2" /> BOUNTY LOGS
+                     </Button>
+                     <Button variant="primary" onClick={() => router.push('/pro/create-blog')} className="px-8 py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary">
+                        <Plus className="w-4 h-4 mr-2" /> NEW Creation
+                     </Button>
+                  </div>
+               </header>
 
-                        {/* Blog Content */}
-                        <div className="flex-1 flex flex-col">
-                          <div className="flex items-start justify-between gap-2 mb-2">
-                            <div className="flex-1">
-                              <div className="flex items-center flex-wrap gap-2 mb-2">
-                                <h3 className="text-md lg:text-xl font-semibold text-gray-900 dark:text-white">
-                                  {blog.title}
-                                </h3>
-                                {getStatusBadge(blog.status)}
-                                {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
-                                {blog.rewardCredited && (
-                                  <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800" title="Reward credited">
-                                    💰 Credited
-                                  </span>
-                                )}
-                              </div>
-                              {blog.excerpt && (
-                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
-                                  {blog.excerpt}
-                                </p>
-                              )}
-                              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                                <span>Category: {blog.category?.name || 'Uncategorized'}</span>
-                                <span>
-                                  Created: {new Date(blog.createdAt).toLocaleDateString()}
-                                </span>
-                                {blog.rewardAmount && (
-                                  <span className="text-green-600 dark:text-green-400 font-medium">
-                                    Reward: ₹{blog.rewardAmount}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                            {/* Edit and Delete buttons - only show if status is pending */}
-                            {blog.status === 'pending' && (
-                              <div className="flex gap-2 flex-shrink-0">
-                                <button
-                                  onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                                  className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
-                                  title="Edit Blog"
-                                >
-                                  <FaEdit className="mr-2" />
-                                  <span className="hidden sm:inline">Edit</span>
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteBlog(blog._id, blog.title)}
-                                  className="flex items-center justify-center bg-gradient-to-r from-red-500 to-secondary-600 text-white px-2 lg:px-4 py-1 lg:py-2 rounded-lg font-medium hover:from-red-600 hover:to-secondary-700 transition-all duration-200 shadow-md hover:shadow-lg"
-                                  title="Delete Blog"
-                                >
-                                  <FaTrash className="mr-2" />
-                                  <span className="hidden sm:inline">Delete</span>
-                                </button>
-                              </div>
-                            )}
-                          </div>
+               {/* --- Quota Status Hub --- */}
+               <Card className={`p-8 border-2 transition-all ${!blogCount.canAddMore ? 'bg-primary-500/5 border-primary-500/20' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-800 shadow-xl'}`}>
+                  <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+                     <div className="flex items-center gap-6">
+                        <div className={`p-5 rounded-2xl ${!blogCount.canAddMore ? 'bg-primary-500/10 text-primary-500' : 'bg-primary-500/10 text-primary-500'}`}>
+                           <TrendingUp className="w-8 h-8" />
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+                        <div>
+                           <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Monthly Publication Quota</p>
+                           <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
+                              {blogCount.currentCount} / {blogCount.limit} UNITS COMPLETED
+                           </h3>
+                        </div>
+                     </div>
+                     <div className="flex-1 w-full max-w-md">
+                        <div className="h-3 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden border border-slate-100 dark:border-slate-800">
+                           <motion.div initial={{ width: 0 }} animate={{ width: `${(blogCount.currentCount / blogCount.limit) * 100}%` }} className="h-full bg-primary-500 shadow-duo-secondary" />
+                        </div>
+                        <div className="flex justify-between items-center mt-3">
+                           <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{blogCount.remaining} SLOTS AVAILABLE IN CURRENT SECTOR</p>
+                           {!blogCount.canAddMore && <span className="px-3 py-1 bg-primary-500 text-white rounded-lg text-[8px] font-black uppercase shadow-duo-primary">QUOTA FULL</span>}
+                        </div>
+                     </div>
+                  </div>
+               </Card>
 
-              {/* Grid View */}
-              {viewMode === 'grid' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12 lg:mb-2">
-                  {blogs.map((blog) => (
-                    <div
-                      key={blog._id}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all hover:scale-105"
-                    >
-                      {/* Blog Image */}
-                      <div className="mb-3">
-                        <div className="w-full h-40 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                          {blog.featuredImage ? (
-                            <img
-                              src={blog.featuredImage}
-                              alt={blog.title || 'Blog Image'}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = '/default_banner.png';
-                              }}
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-                              <img
-                                src="/default_banner.png"
-                                alt="Default Blog Image"
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.target.onerror = null;
-                                  e.target.style.display = 'none';
-                                  e.target.parentElement.innerHTML = '<span class="text-gray-400 text-4xl">📝</span>';
-                                }}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      </div>
+               {/* --- Inventory Matrix Hub --- */}
+               <div className="space-y-8">
+                  <div className="flex flex-col lg:flex-row items-center justify-between gap-6 bg-white dark:bg-slate-800/80 backdrop-blur-xl p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+                     <div className="flex flex-wrap gap-2">
+                        {['all', 'pending', 'approved', 'rejected', 'published'].map(status => (
+                           <button
+                              key={status}
+                              onClick={() => setStatusFilter(status)}
+                              className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${statusFilter === status ? 'bg-primary-500 text-white shadow-duo-primary' : 'text-slate-400 hover:text-slate-600'}`}
+                           >
+                              {status}
+                           </button>
+                        ))}
+                     </div>
 
-                      {/* Blog Content */}
-                      <div className="space-y-2">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 flex-1">
-                            {blog.title}
-                          </h3>
+                     <div className="flex bg-slate-100 dark:bg-slate-900 p-1.5 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <button onClick={() => setViewMode('grid')} className={`p-3 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-500' : 'text-slate-400'}`}><LayoutGrid className="w-5 h-5" /></button>
+                        <button onClick={() => setViewMode('list')} className={`p-3 rounded-xl transition-all ${viewMode === 'list' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-500' : 'text-slate-400'}`}><List className="w-5 h-5" /></button>
+                        <button onClick={() => setViewMode('table')} className={`p-3 rounded-xl transition-all ${viewMode === 'table' ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-500' : 'text-slate-400'}`}><Table className="w-5 h-5" /></button>
+                     </div>
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                     {loading ? (
+                        <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+                     ) : blogs.length === 0 ? (
+                        <div className="py-32 text-center space-y-8">
+                           <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
+                              <Layers className="w-12 h-12 text-slate-300" />
+                           </div>
+                           <div className="space-y-4">
+                              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Archive Quadrant Empty</h3>
+                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">No journal units detected in this sector. Initiating first Creation protocol is recommended.</p>
+                              <Button variant="primary" onClick={() => router.push('/pro/create-blog')} className="px-10 py-5 rounded-full text-xs font-black shadow-duo-primary uppercase tracking-widest">START Creation</Button>
+                           </div>
                         </div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          {getStatusBadge(blog.status)}
-                          {getRewardTierBadge(blog.rewardTier, blog.rewardAmount)}
-                          {blog.rewardCredited && (
-                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800" title="Reward credited">
-                              💰
-                            </span>
-                          )}
-                        </div>
-                        {blog.excerpt && (
-                          <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
-                            {blog.excerpt}
-                          </p>
-                        )}
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          <div>Category: {blog.category?.name || 'Uncategorized'}</div>
-                          <div>Created: {new Date(blog.createdAt).toLocaleDateString()}</div>
-                          {blog.rewardAmount && (
-                            <div className="text-green-600 dark:text-green-400 font-medium">
-                              Reward: ₹{blog.rewardAmount}
-                            </div>
-                          )}
-                        </div>
-                        {blog.status === 'pending' && (
-                          <div className="flex gap-2 pt-2">
-                            <button
-                              onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)}
-                              className="flex-1 flex items-center justify-center bg-secondary-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary-600"
-                            >
-                              <FaEdit className="mr-1" />
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => handleDeleteBlog(blog._id, blog.title)}
-                              className="flex-1 flex items-center justify-center bg-red-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-red-600"
-                            >
-                              <FaTrash className="mr-1" />
-                              Delete
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-      <UnifiedFooter />
-    </>
-  );
+                     ) : (
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={viewMode === 'grid' ? "grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8" : viewMode === 'list' ? "space-y-6" : "overflow-x-auto"}>
+                           {viewMode === 'table' ? (
+                              <table className="w-full text-left border-separate border-spacing-y-4">
+                                 <thead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                    <tr>
+                                       <th className="px-8 py-4">Question</th>
+                                       <th className="px-8 py-4">Status Matrix</th>
+                                       <th className="px-8 py-4 text-center">Bounty Yield</th>
+                                       <th className="px-8 py-4 text-right">Sync Protocol</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {blogs.map(blog => (
+                                       <tr key={blog._id} className="group bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border-none">
+                                          <td className="px-8 py-6 rounded-l-[2rem]">
+                                             <div className="flex items-center gap-6">
+                                                <div className="w-16 h-16 rounded-[1.2rem] overflow-hidden flex-shrink-0 bg-slate-100">
+                                                   <img src={blog.featuredImage || '/default_banner.png'} className="w-full h-full object-cover" alt="Blog" />
+                                                </div>
+                                                <div>
+                                                   <p className="text-lg font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors">{blog.title}</p>
+                                                   <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mt-1">SECTOR: {blog.category?.name || 'ACADEMY'}</p>
+                                                </div>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 uppercase">{getStatusToken(blog.status)}</td>
+                                          <td className="px-8 py-6 text-center tabular-nums">
+                                             {blog.rewardAmount ? (
+                                                <div className="inline-flex items-center gap-2 text-emerald-500 font-black font-outfit text-xl">
+                                                   <Zap className="w-5 h-5 fill-current" /> ₹{blog.rewardAmount}
+                                                </div>
+                                             ) : <span className="text-slate-300 font-black text-xs italic opacity-50 font-outfit">SCANNING...</span>}
+                                          </td>
+                                          <td className="px-8 py-6 text-right rounded-r-[2rem]">
+                                             <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                {blog.status === 'pending' && (
+                                                   <>
+                                                      <button onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)} className="p-4 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all"><Edit className="w-5 h-5" /></button>
+                                                      <button onClick={() => handleDeleteBlog(blog._id, blog.title)} className="p-4 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all"><Trash2 className="w-5 h-5" /></button>
+                                                   </>
+                                                )}
+                                                <button onClick={() => router.push(`/articles/${blog.slug}`)} className="p-4 bg-slate-100 dark:bg-slate-700 text-slate-400 rounded-xl hover:text-primary-500"><ChevronRight className="w-5 h-5" /></button>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    ))}
+                                 </tbody>
+                              </table>
+                           ) : blogs.map((blog, idx) => (
+                              <motion.div key={blog._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                                 <Card className={`group relative overflow-hidden transition-all duration-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 ${viewMode === 'list' ? 'flex flex-col lg:flex-row p-6 items-center gap-8' : 'flex flex-col'}`}>
+                                    <div className={`${viewMode === 'list' ? 'w-24 lg:w-48 h-24 lg:h-48 lg:w-56 lg:h-56' : 'h-64'} rounded-[2.5rem] overflow-hidden relative flex-shrink-0`}>
+                                       <img src={blog.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-[3rem]" alt="Blog" />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+                                       <div className="absolute top-4 left-6 flex gap-2">
+                                          {getStatusToken(blog.status)}
+                                       </div>
+                                    </div>
+
+                                    <div className={`p-8 flex-1 space-y-6 ${viewMode === 'list' ? 'py-2' : ''}`}>
+                                       <div className="space-y-4">
+                                          <h3 className="text-md md:text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors line-clamp-2">{blog.title}</h3>
+                                          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 italic">
+                                             <Layers className="w-3 h-3" /> {blog.category?.name || 'ACADEMY ARCHIVE'}
+                                          </p>
+                                       </div>
+
+                                       {blog.rewardAmount && (
+                                          <div className="flex items-center gap-4 bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/10 w-fit">
+                                             <Zap className="w-5 h-5 text-emerald-500 fill-current" />
+                                             <span className="text-lg font-black font-outfit text-emerald-500">BOUNTY: ₹{blog.rewardAmount}</span>
+                                          </div>
+                                       )}
+
+                                       <div className="pt-6 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
+                                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SYNCED {new Date(blog.createdAt).toLocaleDateString()}</p>
+                                          <div className="flex items-center gap-3">
+                                             {blog.status === 'pending' && (
+                                                <div className="flex gap-2">
+                                                   <button onClick={() => router.push(`/pro/create-blog?edit=${blog._id}`)} className="p-3 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all"><Edit className="w-4 h-4" /></button>
+                                                   <button onClick={() => handleDeleteBlog(blog._id, blog.title)} className="p-3 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                                                </div>
+                                             )}
+                                             <button onClick={() => router.push(`/articles/${blog.slug}`)} className="flex items-center gap-2 text-primary-500 group-hover:translate-x-2 transition-transform">
+                                                <span className="text-[10px] font-black uppercase tracking-widest">WIKI LINK</span>
+                                                <ArrowRight className="w-4 h-4" />
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <Sparkles className="absolute -bottom-12 -left-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-500/5 pointer-events-none" />
+                                 </Card>
+                              </motion.div>
+                           ))}
+                        </motion.div>
+                     )}
+                  </AnimatePresence>
+               </div>
+
+            </div>
+         </div>
+      </MobileAppWrapper>
+   );
 };
 
 export default MyBlogsPage;

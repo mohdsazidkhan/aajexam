@@ -1,397 +1,375 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
+import {
+   ArrowLeft,
+   Plus,
+   Minus,
+   Send,
+   Zap,
+   ShieldCheck,
+   Target,
+   BarChart3,
+   Clock,
+   CircleCheck,
+   CircleAlert,
+   HelpCircle,
+   FileText,
+   BadgeCheck,
+   TrendingUp,
+   Box,
+   Map,
+   Compass,
+   MessageSquare,
+   Sparkles,
+   Layers
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../lib/api';
-// MobileAppWrapper removed
-// UnifiedNavbar removed
-import UnifiedFooter from '../../components/UnifiedFooter';
-import { toast } from 'react-toastify';
-import { FaArrowLeft, FaPlus, FaMinus } from 'react-icons/fa';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
+import Card from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
+import Loading from '../../components/Loading';
 
 const AddQuestionPage = () => {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    question: '',
-    options: ['', '', '', ''],
-    correctAnswer: 0,
-    explanation: '',
-    category: '',
-    difficulty: 'medium'
-  });
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [questionCount, setQuestionCount] = useState({
-    currentCount: 0,
-    limit: 100,
-    remaining: 100,
-    canAddMore: true
-  });
-  const [dailyCount, setDailyCount] = useState({
-    currentCount: 0,
-    limit: 5,
-    remaining: 5,
-    canAddMore: true
-  });
+   const router = useRouter();
+   const [formData, setFormData] = useState({
+      question: '',
+      options: ['', '', '', ''],
+      correctAnswer: 0,
+      explanation: '',
+      category: '',
+      difficulty: 'medium'
+   });
+   const [categories, setCategories] = useState([]);
+   const [loading, setLoading] = useState(false);
+   const [submitting, setSubmitting] = useState(false);
+   const [questionCount, setQuestionCount] = useState({
+      currentCount: 0,
+      limit: 100,
+      remaining: 100,
+      canAddMore: true
+   });
+   const [dailyCount, setDailyCount] = useState({
+      currentCount: 0,
+      limit: 5,
+      remaining: 5,
+      canAddMore: true
+   });
 
-  useEffect(() => {
-    fetchCategories();
-    fetchCurrentMonthQuestionCount();
-    fetchCurrentDayQuestionCount();
-  }, []);
-
-  const fetchCategories = async () => {
-    try {
+   const fetchData = useCallback(async () => {
       setLoading(true);
-      const response = await API.getPublicCategories();
-      if (response.success) {
-        setCategories(response.data || []);
+      try {
+         const [catRes, monthRes, dayRes] = await Promise.all([
+            API.getPublicCategories(),
+            API.getCurrentMonthQuestionCount(),
+            API.getCurrentDayQuestionCount()
+         ]);
+
+         if (catRes.success) setCategories(catRes.data || []);
+         if (monthRes.success) setQuestionCount(monthRes.data);
+         if (dayRes.success) setDailyCount(dayRes.data);
+      } catch (error) {
+         toast.error('Global data sync failed');
+      } finally {
+         setLoading(false);
       }
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-      toast.error('Failed to load categories');
-    } finally {
-      setLoading(false);
-    }
-  };
+   }, []);
 
-  const fetchCurrentMonthQuestionCount = async () => {
-    try {
-      const response = await API.getCurrentMonthQuestionCount();
-      if (response.success) {
-        setQuestionCount(response.data);
+   useEffect(() => {
+      fetchData();
+   }, [fetchData]);
+
+   const handleOptionChange = (index, value) => {
+      const newOptions = [...formData.options];
+      newOptions[index] = value;
+      setFormData({ ...formData, options: newOptions });
+   };
+
+   const validateForm = () => {
+      if (!dailyCount.canAddMore) {
+         toast.error(`Daily limit of ${dailyCount.limit} reached. Transmission suspended.`);
+         return false;
       }
-    } catch (error) {
-      console.error('Error fetching current month question count:', error);
-    }
-  };
-
-  const fetchCurrentDayQuestionCount = async () => {
-    try {
-      const response = await API.getCurrentDayQuestionCount();
-      if (response.success) {
-        setDailyCount(response.data);
+      if (!questionCount.canAddMore) {
+         toast.error(`Monthly limit of ${questionCount.limit} reached. Archive full.`);
+         return false;
       }
-    } catch (error) {
-      console.error('Error fetching current day question count:', error);
-    }
-  };
+      if (!formData.question.trim() || formData.question.length < 10) {
+         toast.error('Intel text too short (Min 10 chars)');
+         return false;
+      }
+      if (formData.options.some(opt => !opt.trim())) {
+         toast.error('All response options must be synthesized');
+         return false;
+      }
+      if (!formData.category) {
+         toast.error('Sector designation required');
+         return false;
+      }
+      if (!formData.explanation.trim() || formData.explanation.length < 20) {
+         toast.error('Detailed reasoning required (Min 20 chars)');
+         return false;
+      }
+      return true;
+   };
 
-  const handleOptionChange = (index, value) => {
-    const newOptions = [...formData.options];
-    newOptions[index] = value;
-    setFormData({ ...formData, options: newOptions });
-  };
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
 
-  const validateForm = () => {
-    if (!dailyCount.canAddMore) {
-      toast.error(`You have reached the daily limit of ${dailyCount.limit} questions. You can add more questions tomorrow.`);
-      return false;
-    }
-
-    if (!questionCount.canAddMore) {
-      toast.error(`You have reached the monthly limit of ${questionCount.limit} questions. You can add more questions next month.`);
-      return false;
-    }
-
-    if (!formData.question.trim()) {
-      toast.error('Please enter a question');
-      return false;
-    }
-
-    if (formData.options.some(option => !option.trim())) {
-      toast.error('Please fill in all options');
-      return false;
-    }
-
-    if (!formData.category) {
-      toast.error('Please select a category');
-      return false;
-    }
-
-    if (!formData.explanation.trim()) {
-      toast.error('Please provide an explanation');
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
       setSubmitting(true);
+      try {
+         const payload = {
+            questionText: formData.question.trim(),
+            options: formData.options.map(opt => opt.trim()),
+            correctOptionIndex: formData.correctAnswer,
+            explanation: formData.explanation.trim(),
+            category: formData.category,
+            difficulty: formData.difficulty,
+         };
 
-      const payload = {
-        questionText: formData.question.trim(),
-        options: formData.options.map(opt => opt.trim()),
-        correctOptionIndex: formData.correctAnswer,
-        explanation: formData.explanation.trim(),
-        category: formData.category,
-        difficulty: formData.difficulty,
-      };
+         const response = await API.createUserQuestion(payload);
 
-      const response = await API.createUserQuestion(payload);
-
-      if (response.success) {
-        toast.success('Question submitted successfully! It will be reviewed before publishing.');
-
-        // Reset form
-        setFormData({
-          question: '',
-          options: ['', '', '', ''],
-          correctAnswer: 0,
-          explanation: '',
-          category: '',
-          difficulty: 'medium'
-        });
-
-        // Refresh question counts
-        fetchCurrentMonthQuestionCount();
-        fetchCurrentDayQuestionCount();
-
-        // Navigate back
-        router.back();
-      } else {
-        toast.error(response.message || 'Failed to submit question');
+         if (response.success) {
+            toast.success('Intel Broadcast Successful! Awaiting Academy Decryption');
+            router.push('/pro/my-questions');
+         } else {
+            toast.error(response.message || 'Transmission Intercepted');
+         }
+      } catch (error) {
+         toast.error('Global transmission failure');
+      } finally {
+         setSubmitting(false);
       }
-    } catch (error) {
-      console.error('Error submitting question:', error);
-      if (error?.response?.status === 429) {
-        const errorData = error?.response?.data;
-        if (errorData?.error === 'DAILY_LIMIT_EXCEEDED') {
-          toast.error('You can add max 5 questions per day');
-        } else if (errorData?.error === 'MONTHLY_LIMIT_EXCEEDED') {
-          toast.error('You can add max 100 questions in a month');
-        } else {
-          toast.error(errorData?.message || 'Daily/Monthly limit exceeded');
-        }
-      } else {
-        toast.error(error.message || 'Failed to submit question');
-      }
-    } finally {
-      setSubmitting(false);
-    }
-  };
+   };
 
-  return (
-    <>
-      <Head>
-        <title>Add Question - AajExam Pro</title>
-        <meta name="description" content="Create and submit questions to AajExam. Contribute to the knowledge base and help others learn." />
-        <meta name="keywords" content="add question, create question, submit question, contribute content, pro user, question creator" />
-        <meta property="og:title" content="Add Question - AajExam Pro" />
-        <meta property="og:description" content="Create and submit questions to AajExam." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Add Question - AajExam Pro" />
-        <meta name="twitter:description" content="Create and contribute questions on AajExam. All users can post!" />
-      </Head>
+   if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-900"><Loading size="lg" /></div>;
 
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-6 px-4">
-        <div className="max-w-2xl mx-auto">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => router.back()}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-              >
-                <FaArrowLeft className="text-gray-600 dark:text-gray-400" />
-              </button>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">📝 Create New Question</h1>
-                <p className="text-gray-600 dark:text-gray-300">Contribute quality questions to help the community</p>
-              </div>
+   return (
+      <MobileAppWrapper title="Broadcast Intel">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+
+            <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-5xl space-y-12">
+
+               {/* --- Broadcasting Hero --- */}
+               <header className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm">
+                     <Zap className="w-10 h-10 animate-pulse" />
+                  </motion.div>
+                  <div className="space-y-4">
+                     <h1 className="text-4xl lg:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight">Broadcasting <span className="text-primary-500 text-glow-primary">Terminal</span></h1>
+                     <p className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto">Transmit high-yield Questions to the academy database</p>
+                  </div>
+
+                  <div className="flex justify-center pt-6">
+                     <button onClick={() => router.back()} className="px-8 py-3 rounded-full bg-white dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest text-slate-400 border border-slate-100 dark:border-slate-800 flex items-center gap-2 hover:text-primary-500 transition-colors shadow-sm">
+                        <ArrowLeft className="w-4 h-4" /> ABORT TRANSMISSION
+                     </button>
+                  </div>
+               </header>
+
+               {/* --- Progress Bento --- */}
+               <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <Card className="p-8 border-b-4 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group overflow-hidden relative">
+                     <div className="flex justify-between items-start mb-6 relative z-10">
+                        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl">
+                           <Clock className="w-6 h-6" />
+                        </div>
+                        <BadgeCheck className={`w-6 h-6 ${dailyCount.canAddMore ? 'text-emerald-500' : 'text-slate-300'}`} />
+                     </div>
+                     <div className="space-y-1 relative z-10">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">DAILY COMM BANDWIDTH</p>
+                        <h4 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">{dailyCount.currentCount} / {dailyCount.limit} UNITS</h4>
+                     </div>
+                     <div className="mt-4 h-2 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden relative z-10">
+                        <motion.div initial={{ width: 0 }} animate={{ width: `${(dailyCount.currentCount / dailyCount.limit) * 100}%` }} className="h-full bg-primary-500 shadow-duo-primary" />
+                     </div>
+                     <Sparkles className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-primary-500/5 group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+                  </Card>
+
+                  <Card className="p-8 border-b-4 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group overflow-hidden relative">
+                     <div className="flex justify-between items-start mb-6 relative z-10">
+                        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl">
+                           <BarChart3 className="w-6 h-6" />
+                        </div>
+                        <BadgeCheck className={`w-6 h-6 ${questionCount.canAddMore ? 'text-emerald-500' : 'text-slate-300'}`} />
+                     </div>
+                     <div className="space-y-1 relative z-10">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">MONTHLY ARCHIVE QUOTA</p>
+                        <h4 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">{questionCount.currentCount} / {questionCount.limit} UNITS</h4>
+                     </div>
+                     <div className="mt-4 h-2 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden relative z-10">
+                        <motion.div initial={{ width: 0 }} animate={{ width: `${(questionCount.currentCount / questionCount.limit) * 100}%` }} className="h-full bg-primary-500 shadow-duo-secondary" />
+                     </div>
+                     <Sparkles className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-primary-500/5 group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+                  </Card>
+               </section>
+
+               {/* --- Creation Form --- */}
+               <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl mx-auto">
+
+                  {/* Section 1: Intel Content */}
+                  <Card className="p-10 space-y-10 border-none shadow-2xl bg-white dark:bg-slate-800 rounded-[3rem]">
+                     <div className="space-y-6">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2 underline underline-offset-4 decoration-primary-500/40">
+                           <MessageSquare className="w-4 h-4 text-primary-500" /> DEFINE INTEL TEXT
+                        </label>
+                        <textarea
+                           value={formData.question}
+                           onChange={(e) => setFormData({ ...formData, question: e.target.value })}
+                           className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-8 text-xl font-black font-outfit uppercase outline-none focus:border-primary-500 transition-all placeholder:text-slate-200"
+                           rows="4"
+                           placeholder="ENTER THE KNOWLEDGE QUERY UNIT..."
+                           required
+                        />
+                     </div>
+
+                     {/* Options Grid */}
+                     <div className="space-y-6">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2 underline underline-offset-4 decoration-primary-500/40">
+                           <Layers className="w-4 h-4 text-primary-500" /> SYNTHESIZE RESPONSE OPTIONS
+                        </label>
+                        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest pl-2 mb-4">IDENTIFY THE VERIFIED OPTION BY SELECTING THE ALPHA TOKEN</p>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                           {formData.options.map((option, index) => (
+                              <div key={index} className={`flex items-center gap-4 group transition-all`}>
+                                 <button
+                                    type="button"
+                                    onClick={() => setFormData({ ...formData, correctAnswer: index })}
+                                    className={`w-14 h-14 rounded-2xl border-2 flex items-center justify-center font-black transition-all ${formData.correctAnswer === index
+                                       ? 'bg-primary-500 border-primary-500 text-white shadow-duo-primary scale-110'
+                                       : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 text-slate-400 hover:border-primary-500/30'
+                                       }`}
+                                 >
+                                    {String.fromCharCode(65 + index)}
+                                 </button>
+                                 <input
+                                    type="text"
+                                    value={option}
+                                    onChange={(e) => handleOptionChange(index, e.target.value)}
+                                    className={`flex-1 px-6 py-4 border-2 rounded-2xl text-xs font-bold uppercase transition-all outline-none ${formData.correctAnswer === index ? 'bg-primary-500/5 border-primary-500/50' : 'bg-slate-50 dark:bg-slate-900 border-slate-100 dark:border-slate-800 focus:border-primary-500'}`}
+                                    placeholder={`ENTER OPTION ${String.fromCharCode(65 + index)}`}
+                                    required
+                                 />
+                              </div>
+                           ))}
+                        </div>
+                     </div>
+                  </Card>
+
+                  {/* Section 2: Metadata Protocol */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                     <Card className="p-8 space-y-6">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2">
+                           <Compass className="w-4 h-4 text-primary-500" /> SECTOR DESIGNATION
+                        </label>
+                        <select
+                           value={formData.category}
+                           onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                           className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-6 text-xs font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all"
+                           required
+                        >
+                           <option value="">-- ACCESS ARC SECTORS --</option>
+                           {categories.map((category) => (
+                              <option key={category._id} value={category._id}>{category.name}</option>
+                           ))}
+                        </select>
+                     </Card>
+
+                     <Card className="p-8 space-y-6">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2">
+                           <TrendingUp className="w-4 h-4 text-emerald-500" /> COMPLEXITY TIER
+                        </label>
+                        <div className="flex gap-4">
+                           {['easy', 'medium', 'hard'].map(level => (
+                              <button
+                                 key={level}
+                                 type="button"
+                                 onClick={() => setFormData({ ...formData, difficulty: level })}
+                                 className={`flex-1 py-5 rounded-2xl border-2 text-[10px] font-black uppercase tracking-widest transition-all ${formData.difficulty === level
+                                    ? 'bg-emerald-500 border-emerald-500 text-white shadow-duo-secondary'
+                                    : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 text-slate-400 hover:border-emerald-500/30'
+                                    }`}
+                              >
+                                 {level}
+                              </button>
+                           ))}
+                        </div>
+                     </Card>
+                  </div>
+
+                  {/* Section 3: Reasoning Protocol */}
+                  <Card className="p-10 space-y-10 border-none shadow-2xl bg-white dark:bg-slate-800 rounded-[3rem] relative overflow-hidden">
+                     <div className="space-y-6 relative z-10">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2 underline underline-offset-4 decoration-primary-500/40">
+                           <FileText className="w-4 h-4 text-primary-500" /> BROADCAST REASONING
+                        </label>
+                        <textarea
+                           value={formData.explanation}
+                           onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
+                           className="w-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl p-8 text-sm font-bold uppercase tracking-widest outline-none focus:border-primary-500 transition-all placeholder:text-slate-200"
+                           rows="4"
+                           placeholder="SYNOPSIS OF VERIFIED DATA AND LOGIC..."
+                           required
+                        />
+                     </div>
+
+                     {/* Protocol Guidelines */}
+                     <div className="p-6 bg-primary-500/10 rounded-2xl border border-primary-500/20 relative z-10">
+                        <h4 className="text-[10px] font-black text-primary-500 uppercase tracking-[0.25em] mb-4 flex items-center gap-4">
+                           <ShieldCheck className="w-5 h-5" /> ACADEMY PROTOCOL GUIDELINES
+                        </h4>
+                        <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-3">
+                           {[
+                              'Clear unambiguous intellectual units',
+                              'High-yield response alternatives',
+                              'Detailed Creation breakdown',
+                              'Verified empirical knowledge',
+                           ].map((item, i) => (
+                              <li key={i} className="text-[10px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-3">
+                                 <div className="w-1.5 h-1.5 bg-primary-500 rounded-full" /> {item}
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+                     <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-500/5 pointer-events-none" />
+                  </Card>
+
+                  {/* Submit Command */}
+                  <div className="pt-8">
+                     <Button
+                        type="submit"
+                        disabled={submitting || !questionCount.canAddMore || !dailyCount.canAddMore}
+                        variant="primary"
+                        fullWidth
+                        className="py-8 rounded-[2rem] text-sm font-black shadow-duo-primary uppercase tracking-[0.2em]"
+                     >
+                        {!dailyCount.canAddMore
+                           ? "DAILY BANDWIDTH EXHAUSTED"
+                           : !questionCount.canAddMore
+                              ? "MONTHLY ARCHIVE FULL"
+                              : submitting
+                                 ? "TRANSMITTING TO ACADEMY..."
+                                 : "âœ“ INITIATE BROADCAST PROTOCOL"
+                        }
+                     </Button>
+                     <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.5em] text-center mt-8 italic">
+                        * ALL BROADCASTS ARE ENCRYPTED AND SUBJECT TO PEER REVIEW
+                     </p>
+                  </div>
+               </form>
+
             </div>
-          </div>
-
-          {/* Daily Question Count */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700 mb-4">
-            <div className="text-center">
-              <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                Daily Progress: {dailyCount.currentCount}/{dailyCount.limit}
-              </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                {dailyCount.remaining} questions remaining today
-              </p>
-              {!dailyCount.canAddMore && (
-                <p className="text-xs text-primary-600 dark:text-red-400 font-semibold mt-1">
-                  ⚠️ Daily limit reached
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Monthly Question Count */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700 mb-6">
-            <div className="text-center">
-              <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                Monthly Progress: {questionCount.currentCount}/{questionCount.limit}
-              </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                {questionCount.remaining} questions remaining this month
-              </p>
-              {!questionCount.canAddMore && (
-                <p className="text-xs text-primary-600 dark:text-red-400 font-semibold mt-1">
-                  ⚠️ Monthly limit reached
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Question */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow border border-gray-200 dark:border-gray-700">
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                Question *
-              </label>
-              <textarea
-                value={formData.question}
-                onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                rows="4"
-                placeholder="Enter your question here..."
-                required
-              />
-            </div>
-
-            {/* Options */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow border border-gray-200 dark:border-gray-700">
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                Answer Options *
-              </label>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
-                Click on the option letter to mark it as correct
-              </p>
-
-              {formData.options.map((option, index) => (
-                <div key={index} className="flex items-center space-x-2 mb-3">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, correctAnswer: index })}
-                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${formData.correctAnswer === index
-                      ? 'bg-primary-600 border-primary-600 text-white'
-                      : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400'
-                      }`}
-                  >
-                    {String.fromCharCode(65 + index)}
-                  </button>
-                  <input
-                    type="text"
-                    value={option}
-                    onChange={(e) => handleOptionChange(index, e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder={`Enter option ${String.fromCharCode(65 + index)}`}
-                    required
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Category */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow border border-gray-200 dark:border-gray-700">
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                Category *
-              </label>
-              <select
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                required
-              >
-                <option value="">Select Category</option>
-                {categories.map((category) => (
-                  <option key={category._id} value={category._id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Difficulty */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow border border-gray-200 dark:border-gray-700">
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                Difficulty Level
-              </label>
-              <div className="flex space-x-2">
-                {['easy', 'medium', 'hard'].map(level => (
-                  <button
-                    key={level}
-                    type="button"
-                    onClick={() => setFormData({ ...formData, difficulty: level })}
-                    className={`px-4 py-2 rounded-lg border ${formData.difficulty === level
-                      ? 'bg-primary-600 border-primary-600 text-white'
-                      : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300'
-                      }`}
-                  >
-                    {level.charAt(0).toUpperCase() + level.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Explanation */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow border border-gray-200 dark:border-gray-700">
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                Explanation *
-              </label>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
-                Provide a clear explanation for the correct answer
-              </p>
-              <textarea
-                value={formData.explanation}
-                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                rows="4"
-                placeholder="Explain why this is the correct answer..."
-                required
-              />
-            </div>
-
-            {/* Guidelines */}
-            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 border border-primary-200 dark:border-primary-800">
-              <h3 className="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-2">
-                📋 Guidelines
-              </h3>
-              <ul className="text-sm text-primary-700 dark:text-primary-300 space-y-1">
-                <li>• Questions should be clear and unambiguous</li>
-                <li>• All options should be plausible</li>
-                <li>• Provide detailed explanations</li>
-                <li>• Avoid controversial or offensive content</li>
-                <li>• Questions will be reviewed before approval</li>
-              </ul>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={submitting || !questionCount.canAddMore || !dailyCount.canAddMore}
-              className={`w-full py-3 px-4 rounded-lg font-semibold ${!questionCount.canAddMore || !dailyCount.canAddMore || submitting
-                ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                : 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:from-primary-700 hover:to-secondary-700'
-                }`}
-            >
-              {!dailyCount.canAddMore
-                ? "Daily Limit Reached"
-                : !questionCount.canAddMore
-                  ? "Monthly Limit Reached"
-                  : submitting
-                    ? "Submitting..."
-                    : "Submit Question"
-              }
-            </button>
-          </form>
-        </div>
-      </div>
-      <UnifiedFooter />
-    </>
-  );
+         </div>
+      </MobileAppWrapper>
+   );
 };
 
 export default AddQuestionPage;
+

@@ -3,8 +3,7 @@ const nextConfig = {
   // Page generation timeout
   staticPageGenerationTimeout: 1000,
 
-  // Disable ETags to prevent caching issues during development
-  generateEtags: false,
+  generateEtags: true,
 
   reactStrictMode: true,
   images: {
@@ -26,14 +25,14 @@ const nextConfig = {
     const ContentSecurityPolicy = [
       "default-src 'self'",
       "base-uri 'self'",
-      "form-action 'self' https://secure.payu.in https://test.payu.in https://www.payu.in",
-      "frame-ancestors 'self' https://secure.payu.in https://test.payu.in https://www.payu.in",
+      "form-action 'self' https://secure.payu.in https://www.payu.in",
+      "frame-ancestors 'self' https://secure.payu.in https://www.payu.in",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com https://apis.google.com https://secure.payu.in https://test.payu.in https://www.payu.in https://www.googletagmanager.com https:",
       "style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com",
       "img-src 'self' https: data: blob:",
       "font-src 'self' https: data: https://fonts.gstatic.com",
-      "connect-src 'self' https://www.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://secure.payu.in https://test.payu.in https://www.payu.in https: wss:",
-      "frame-src 'self' https://secure.payu.in https://test.payu.in https://www.payu.in https://accounts.google.com https://vercel.live",
+      "connect-src 'self' https://www.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://secure.payu.in https://www.payu.in https: wss:",
+      "frame-src 'self' https://secure.payu.in https://www.payu.in https://accounts.google.com",
       "object-src 'none'",
       "upgrade-insecure-requests",
     ].join('; ');
@@ -56,7 +55,7 @@ const nextConfig = {
       {
         source: '/api/:path*',
         headers: [
-          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Origin', value: 'https://aajexam.com' },
           { key: 'Access-Control-Allow-Methods', value: 'GET,POST,PUT,DELETE,OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
         ],
@@ -64,7 +63,7 @@ const nextConfig = {
     ];
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
 };
 

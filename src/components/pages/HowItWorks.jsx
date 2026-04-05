@@ -1,288 +1,227 @@
-'use client';
+﻿'use client';
 
+import React from 'react';
 import { useRouter } from 'next/navigation';
-import { FaRocket, FaUserPlus, FaCreditCard, FaPlayCircle, FaChartLine, FaTrophy, FaGift, FaCheckCircle, FaLightbulb, FaShieldAlt } from 'react-icons/fa';
+import {
+   Rocket,
+   UserPlus,
+   CreditCard,
+   PlayCircle,
+   TrendingUp,
+   Trophy,
+   Gift,
+   CircleCheck,
+   Lightbulb,
+   ShieldCheck,
+   ChevronRight,
+   Sparkles,
+   Zap,
+   Target
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
-import MobileAppWrapper from '../MobileAppWrapper';
-import config from '../../lib/config/appConfig';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
+import config from '../../lib/config/appConfig';
 
 const HowItWorks = () => {
-  const router = useRouter();
+   const router = useRouter();
 
-  return (
-    <MobileAppWrapper title="How It Works">
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-        <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
+   const steps = [
+      {
+         id: 1,
+         title: 'Sign Up',
+         desc: 'Create your free account using your mobile number or email. It takes less than a minute to get started.',
+         icon: UserPlus,
+         color: 'primary',
+         badge: 'Step 1'
+      },
+      {
+         id: 2,
+         title: 'Pick a Plan',
+         desc: 'Choose a free or paid plan based on what you need. Your plan decides how many levels and quizzes you can use.',
+         icon: CreditCard,
+         color: 'secondary',
+         badge: 'Step 2',
+         details: [
+            { label: 'Free Plan', val: 'Levels 0 to 9', icon: CircleCheck },
+            { label: 'Pro Plan', val: 'All Levels (0-10)', icon: Sparkles }
+         ]
+      },
+      {
+         id: 3,
+         title: 'Take Practice Quizzes',
+         desc: 'Answer MCQ questions made by experts. Practice with daily, weekly, and monthly quizzes to get exam-ready.',
+         icon: PlayCircle,
+         color: 'blue',
+         badge: 'Step 3'
+      },
+      {
+         id: 4,
+         title: 'Track Your Progress',
+         desc: 'See how many questions you got right and how fast you answered. Check your results and improve in every subject.',
+         icon: TrendingUp,
+         color: 'secondary',
+         badge: 'Step 4'
+      },
+      {
+         id: 5,
+         title: 'Earn Rewards',
+         desc: 'Students who score the highest get rewarded every month. The better you do, the more you can win.',
+         icon: Gift,
+         color: 'primary',
+         badge: 'Step 5',
+         metrics: ['Daily Results', 'Weekly Rankings', 'Monthly Prizes']
+      }
+   ];
 
-          {/* Hero Section */}
-          <div className="text-center mb-4 lg:mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaRocket className="text-white text-3xl" />
-            </div>
-            <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-secondary-600 via-secondary-500 to-secondary-700 bg-clip-text text-transparent mb-4">
-              How It Works
-            </h1>
-            <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Your step-by-step guide to mastering AajExam and earning rewards
-            </p>
-          </div>
+   const features = [
+      { title: 'Only Your Knowledge Counts', desc: 'You win by knowing more, not by luck. Hard work and study is all that matters.', icon: ShieldCheck, color: 'primary' },
+      { title: 'Top Students Get Rewarded', desc: 'The best students earn real rewards every month. Your effort is recognised.', icon: Trophy, color: 'secondary' },
+      { title: 'Get Better as You Study', desc: 'As your score improves, you unlock harder questions and new levels.', icon: Zap, color: 'blue' }
+   ];
 
-          {/* Steps Section */}
-          <div className="space-y-6 lg:space-y-8 mb-8 lg:mb-12">
-            {/* Step 1 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaUserPlus className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">Step 1</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Register / Login
-                    </h2>
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+
+         <div className="container mx-auto px-6 py-4 lg:py-12 max-w-5xl space-y-20 mt-0">
+
+            {/* --- Hero Section --- */}
+            <section className="text-center space-y-6 relative overflow-hidden pt-10 lg:pt-20">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-duo-primary border-4 border-white/10 rotate-12">
+                  <Rocket className="w-10 h-10" />
+               </motion.div>
+               <div className="space-y-4">
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-700 dark:text-primary-500">Works</span></h1>
+                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] max-w-2xl mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and win rewards.</p>
+               </div>
+            </section>
+
+            {/* --- Step-by-Step Path --- */}
+            <section className="relative space-y-12">
+               {/* Center Line (hidden on small) */}
+               <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-1.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 rounded-full hidden lg:block" />
+
+               {steps.map((step, idx) => (
+                  <motion.div
+                     key={step.id}
+                     initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     viewport={{ once: true }}
+                     className={`relative flex flex-col lg:flex-row items-center gap-12 ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                  >
+                     {/* Step Marker */}
+                     <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden lg:flex">
+                        <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-lg`} />
+                     </div>
+
+                     {/* Content Card */}
+                     <div className="w-full lg:w-[45%]">
+                        <Card className="p-8 space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
+                           <div className="flex items-center justify-between">
+                              <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform shadow-sm`}>
+                                 <step.icon className="w-6 h-6" />
+                              </div>
+                              <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-${step.color}-500/10 text-${step.color}-500`}>
+                                 {step.badge}
+                              </span>
+                           </div>
+                           <div className="space-y-3">
+                              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">{step.title}</h3>
+                              <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{step.desc}</p>
+                           </div>
+
+                           {/* Tier Details (for step 2) */}
+                           {step.details && (
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                 {step.details.map((d, di) => (
+                                    <div key={di} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
+                                       <div className="flex items-center gap-2">
+                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-700 dark:text-primary-500' : 'text-primary-700 dark:text-primary-500'}`} />
+                                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{d.label}</p>
+                                       </div>
+                                       <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{d.val}</p>
+                                    </div>
+                                 ))}
+                              </div>
+                           )}
+
+                           {/* Reward Metrics (for step 5) */}
+                           {step.metrics && (
+                              <div className="flex flex-wrap gap-2 pt-2">
+                                 {step.metrics.map((m, mi) => (
+                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-700 dark:text-primary-500 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
+                                       {m}
+                                    </span>
+                                 ))}
+                              </div>
+                           )}
+                        </Card>
+                     </div>
+
+                     <div className="hidden lg:block w-[45%]" />
+                  </motion.div>
+               ))}
+            </section>
+
+            {/* --- Skill-Based Callout --- */}
+            <section className="pt-10">
+               <Card className="p-8 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden text-center lg:text-left">
+                  <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 px-4">
+                     <div className="w-20 h-20 bg-primary-500/20 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
+                        <Lightbulb className="w-10 h-10" />
+                     </div>
+                     <div className="space-y-2">
+                        <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Important Note</h3>
+                        <p className="text-sm font-bold text-slate-300 leading-relaxed uppercase tracking-wide">AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.</p>
+                     </div>
                   </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Sign up using your mobile number or email to create your AajExam account. It's quick, easy, and free to get started!
-                  </p>
-                </div>
-              </div>
-            </div>
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/5 -rotate-12" />
+               </Card>
+            </section>
 
-            {/* Step 2 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaCreditCard className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full">Step 2</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Choose Subscription & Access Levels
-                    </h2>
+            {/* --- Features Grid --- */}
+            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-10">
+               {features.map((f, i) => (
+                  <Card key={i} className="p-8 group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
+                     <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
+                        <f.icon className="w-6 h-6" />
+                     </div>
+                     <div className="space-y-2">
+                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-700 dark:text-primary-500 transition-colors">{f.title}</h4>
+                        <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.1em]">{f.desc}</p>
+                     </div>
+                  </Card>
+               ))}
+            </section>
+
+            {/* --- CTA --- */}
+            <section className="pt-20 pb-10">
+               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-4 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
+
+                  <div className="relative z-10 space-y-10">
+                     <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter">Get Started <span className="text-primary-400">Today</span></h2>
+                     <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and winning rewards. Join them today.</p>
+                     <Button
+                        onClick={() => router.push('/')}
+                        className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
+                     >
+                        START NOW
+                     </Button>
                   </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
-                    Access quizzes based on your subscription plan:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
-                    <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-800/30 rounded-xl p-3 lg:p-4 border border-secondary-200 dark:border-secondary-700">
-                      <div className="flex items-center gap-2 mb-2">
-                        <FaCheckCircle className="text-secondary-600 dark:text-secondary-400" />
-                        <h3 className="font-semibold text-gray-800 dark:text-white">Free Plan</h3>
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">Levels 0 to 9</p>
-                    </div>
-                    <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-3 lg:p-4 border border-primary-200 dark:border-primary-700">
-                      <div className="flex items-center gap-2 mb-2">
-                        <FaCheckCircle className="text-primary-600 dark:text-primary-400" />
-                        <h3 className="font-semibold text-gray-800 dark:text-white">Pro Plan</h3>
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">All Levels (0 to 10)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+               </Card>
+            </section>
 
-            {/* Step 3 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaPlayCircle className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full">Step 3</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Play Daily, Weekly & Monthly Quizzes
-                    </h2>
-                  </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Participate in skill-based multiple-choice quizzes designed to test your knowledge across various topics. Compete in Daily, Weekly & Monthly Challenges!
-                  </p>
-                </div>
-              </div>
-            </div>
+         </div>
 
-            {/* Step 4 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-secondary-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaChartLine className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-secondary-600 dark:text-secondary-400 bg-secondary-100 dark:bg-secondary-900/30 px-3 py-1 rounded-full">Step 4</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Track Progress
-                    </h2>
-                  </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    View your quiz performance, accuracy stats, and level advancement in your dashboard. Monitor your growth and see how you're improving over time.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 5 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaGift className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full">Step 5</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Daily, Weekly & Monthly Reward System
-                    </h2>
-                  </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
-                    Rewards are given to top eligible users from dynamic prize pools across multiple timeframes:
-                  </p>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-start gap-3">
-                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700 dark:text-gray-300"><strong>Daily Rewards:</strong> Compete every day to win from our daily prize pool.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700 dark:text-gray-300"><strong>Weekly Rewards:</strong> Consistent performance throughout the week earns you bigger rewards.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700 dark:text-gray-300"><strong>Monthly Rewards:</strong> Reached <strong>Level 10</strong>? Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} PRO users share the massive dynamic prize pool.</p>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-700">
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      <strong>Ranking is based on:</strong> 1) High-scoring quizzes, 2) Accuracy, 3) Total score.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 6 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaLightbulb className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full">Step 6</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Refer Friends & Earn More
-                    </h2>
-                  </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Boost your earnings by actively participating in the community! You can earn wallet credits by:
-                  </p>
-                  <ul className="list-disc ml-6 mt-2 text-md lg:text-lg text-gray-700 dark:text-gray-300 space-y-1">
-                    <li><strong>Referring Friends:</strong> Invite friends and earn a bonus when they subscribe to PRO!</li>
-                    <li><strong>Upgrading to PRO:</strong> Get access to the massive monthly prize pool.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 7 */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-white/20">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                <div className="w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <FaTrophy className="text-white text-2xl lg:text-3xl" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm lg:text-base font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">Step 7</span>
-                    <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
-                      Result & Prize Distribution
-                    </h2>
-                  </div>
-                  <p className="text-md lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Results are declared regularly per the challenge timeframe (e.g., end of the month for monthly). Winners receive their rewards from our dynamic prize pool directly to their wallets.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Important Note */}
-          <div className="bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-xl p-4 md:p-6 lg:p-8 border border-primary-200 dark:border-primary-700 mb-8 lg:mb-12">
-            <div className="flex items-start gap-4">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                <FaLightbulb className="text-white text-xl" />
-              </div>
-              <div>
-                <h3 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                  Important Note
-                </h3>
-                <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300">
-                  AajExam is a <strong>100% skill-based platform</strong>. There is no gambling or betting involved. Rewards are purely based on consistent knowledge, accuracy, and performance.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8 lg:mb-12">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mb-4">
-                <FaShieldAlt className="text-white text-xl" />
-              </div>
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Skill-Based</h3>
-              <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300">
-                Every quiz tests your knowledge and skills. No luck involved - only your expertise matters.
-              </p>
-            </div>
-
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center mb-4">
-                <FaTrophy className="text-white text-xl" />
-              </div>
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Real Rewards</h3>
-              <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300">
-                Earn real rewards based on your performance and accuracy in monthly competitions.
-              </p>
-            </div>
-
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary-500 to-primary-500 rounded-xl flex items-center justify-center mb-4">
-                <FaChartLine className="text-white text-xl" />
-              </div>
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-2">Track Progress</h3>
-              <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300">
-                Monitor your performance, accuracy, and level progression in real-time.
-              </p>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-secondary-100 from-red-100 dark:from-secondary-800 dark:from-red-800 rounded-3xl p-4 md:p-6 lg:p-8">
-              <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
-                Ready to Start Your Quiz Journey?
-              </h2>
-              <p className="text-md lg:text-xl mb-4 lg:mb-6 opacity-90 text-gray-800 dark:text-white">
-                Join thousands of learners who are already turning their knowledge into success
-              </p>
-              <button
-                onClick={() => router.push('/')}
-                className="bg-white text-gray-700 dark:text-secondary-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
-              >
-                Get Started Today
-              </button>
-            </div>
-          </div>
-
-        </div>
+         <UnifiedFooter />
       </div>
-      <UnifiedFooter />
-    </MobileAppWrapper>
-  );
+   );
 };
 
 export default HowItWorks;
+
+

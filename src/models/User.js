@@ -162,7 +162,27 @@ const userSchema = new mongoose.Schema({
     tier: String,            // 'pro'
     achievedAt: Date,
     extended: Boolean        // true if subscription was extended, false if new
-  }]
+  }],
+
+  // AajExam Transformation Fields
+  primaryTargetExam: { type: String, default: 'General' }, // e.g. SSC-CHSL, UPSC-CSE
+  performanceMetrics: {
+    rewardStats: {
+      totalWon: { type: Number, default: 0 },
+      bestRank: { type: Number, default: null },
+      participationStreak: { type: Number, default: 0 }
+    },
+    examStats: {
+      overallReadiness: { type: Number, default: 0 }, // 0-100 scale
+      subjectAccuracy: {
+        type: Map,
+        of: Number,
+        default: {} // e.g. { "Mathematics": 85, "Science": 70 }
+      },
+      mockTestsAttempted: { type: Number, default: 0 },
+      averageMockScore: { type: Number, default: 0 }
+    }
+  }
 
 }, { timestamps: true });
 
@@ -205,7 +225,7 @@ userSchema.statics.getLevelConfig = async function (useCache = true) {
 
 // Static level thresholds for synchronous lookup (Must match database!)
 userSchema.statics.LEVEL_CONFIG = {
-  0: { name: 'Starter', quizzesRequired: 0, description: 'Just registered - Start your journey!' },
+  0: { name: 'Starter', quizzesRequired: 0, description: 'Start your journey!' },
   1: { name: 'Rookie', quizzesRequired: 5, description: 'Begin your quiz journey' },
   2: { name: 'Explorer', quizzesRequired: 10, description: 'Discover new challenges' },
   3: { name: 'Thinker', quizzesRequired: 15, description: 'Develop critical thinking' },
@@ -221,7 +241,7 @@ userSchema.statics.LEVEL_CONFIG = {
 
 // Monthly reward distribution (dynamic based on active PRO users)
 userSchema.statics.getRewardDistribution = async function () {
-  const PRIZE_PER_PRO = Number(process.env.PRIZE_PER_PRO || 90);
+  const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
   const today = new Date();
   const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
 
@@ -234,7 +254,9 @@ userSchema.statics.getRewardDistribution = async function () {
       { subscriptionExpiry: { $gte: monthStart } }
     ]
   });
-  const totalPrizePool = activeProUsers * PRIZE_PER_PRO;
+  const calculatedPool = activeProUsers * PRIZE_PER_PRO;
+  const minPool = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 0;
+  const totalPrizePool = Math.max(calculatedPool, minPool);
 
   const distribution = [
     { rank: 1, percentage: 35, amount: Math.round(totalPrizePool * 0.35) },
@@ -257,7 +279,7 @@ userSchema.statics.getRewardDistribution = async function () {
 userSchema.statics.calculateLevelInfo = async function (attempts) {
   const levelConfig = await this.getLevelConfig();
   const maxLevel = Math.max(...Object.keys(levelConfig).map(Number));
-  
+
   let currentLevel = 0;
   let levelName = 'Starter';
 
@@ -272,7 +294,7 @@ userSchema.statics.calculateLevelInfo = async function (attempts) {
 };
 
 // Instance method to update level information for all periods
-userSchema.methods.updateLevel = async function() {
+userSchema.methods.updateLevel = async function () {
   const Model = this.constructor;
   this.ensureProgress();
 
@@ -387,7 +409,7 @@ userSchema.methods.addQuizCompletion = async function (score, totalQuestions, co
     progress.accuracy = progress.totalQuizAttempts > 0
       ? Math.round((progress.highScoreWins / progress.totalQuizAttempts) * 100)
       : 0;
-    
+
     // Always update level logic since all progress objects now have levels
     const levelInfo = await Model.calculateLevelInfo(progress.totalQuizAttempts);
     progress.currentLevel = levelInfo.currentLevel;
@@ -441,9 +463,9 @@ userSchema.methods.addQuizCompletion = async function (score, totalQuestions, co
 userSchema.methods.getLevelInfo = async function (competitionType = 'monthly') {
   try {
     const levelConfig = await this.constructor.getLevelConfig();
-    
+
     this.ensureProgress();
-    
+
     // Select the correct progress object based on competitionType
     let progress;
     if (competitionType === 'daily') {
@@ -494,9 +516,9 @@ userSchema.methods.getLevelInfo = async function (competitionType = 'monthly') {
 // Quick helper to get level number and name based on competition type
 userSchema.methods.getCompetitionLevel = function (competitionType = 'monthly') {
   this.ensureProgress();
-  const progress = competitionType === 'daily' ? this.dailyProgress : 
-                   (competitionType === 'weekly' ? this.weeklyProgress : this.monthlyProgress);
-  
+  const progress = competitionType === 'daily' ? this.dailyProgress :
+    (competitionType === 'weekly' ? this.weeklyProgress : this.monthlyProgress);
+
   return {
     currentLevel: progress?.currentLevel || 0,
     levelName: progress?.levelName || 'Starter'
@@ -614,6 +636,54 @@ userSchema.methods.updateQuizBestScore = function (quizId, score, totalQuestions
   };
 };
 
+// Method to update performance metrics for the AajExam "Exam Prep" track
+userSchema.methods.updatePerformanceMetrics = function (quiz, scorePercentage) {
+  try {
+    const isHighScore = scorePercentage >= (config.QUIZ_CONFIG?.QUIZ_HIGH_SCORE_PERCENTAGE || 60);
+    const subject = quiz.subject || 'General';
+
+    // 1. Update Reward Stats
+    if (isHighScore) {
+      if (!this.performanceMetrics.rewardStats) {
+        this.performanceMetrics.rewardStats = { totalWon: 0, participationStreak: 0 };
+      }
+      this.performanceMetrics.rewardStats.totalWon += 1;
+    }
+
+    // 2. Update Exam Stats
+    if (!this.performanceMetrics.examStats) {
+      this.performanceMetrics.examStats = { mockTestsAttempted: 0, averageMockScore: 0, overallReadiness: 0, subjectAccuracy: new Map() };
+    }
+
+    this.performanceMetrics.examStats.mockTestsAttempted += 1;
+
+    // Running average for Mock Score
+    const totalAttempts = this.performanceMetrics.examStats.mockTestsAttempted;
+    const currentAvg = this.performanceMetrics.examStats.averageMockScore || 0;
+    this.performanceMetrics.examStats.averageMockScore = Math.round(((currentAvg * (totalAttempts - 1)) + scorePercentage) / totalAttempts);
+
+    // Subject-wise accuracy (standard weighted average)
+    if (!this.performanceMetrics.examStats.subjectAccuracy) {
+      this.performanceMetrics.examStats.subjectAccuracy = new Map();
+    }
+
+    const currentSubjectAccuracy = this.performanceMetrics.examStats.subjectAccuracy.get(subject) || 0;
+    const newAccuracy = currentSubjectAccuracy === 0 ? scorePercentage : Math.round((currentSubjectAccuracy + scorePercentage) / 2);
+    this.performanceMetrics.examStats.subjectAccuracy.set(subject, newAccuracy);
+
+    // Overall Readiness calculation (Simple average of subject accuracies)
+    const accuracies = Array.from(this.performanceMetrics.examStats.subjectAccuracy.values());
+    const avgAccuracy = accuracies.reduce((a, b) => a + b, 0) / (accuracies.length || 1);
+
+    this.performanceMetrics.examStats.overallReadiness = Math.round(avgAccuracy);
+
+    return true;
+  } catch (error) {
+    console.error('Error updating performance metrics:', error);
+    return false;
+  }
+};
+
 // Method to get quiz attempt status
 userSchema.methods.getQuizAttemptStatus = function (quizId) {
   const existingQuiz = this.quizBestScores.find(q => q.quizId.toString() === quizId.toString());
@@ -651,7 +721,7 @@ userSchema.methods.canAccessLevel = function (levelNumber) {
   }
 
   const requiredLevel = getConfig('QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD') || 0;
-  
+
   // Regular users follow subscription-based access
   const subscriptionAccess = {
     'none': Array.from({ length: requiredLevel }, (_, i) => i), // 0 to requiredLevel-1
@@ -840,7 +910,7 @@ userSchema.statics.getHistoricalLevelInfo = async function (userId, competitionT
   const now = new Date();
   const currentDate = now.toISOString().slice(0, 10);
   const currentMonth = now.toISOString().slice(0, 7);
-  
+
   // Weekly current calculation
   const oneJan = new Date(now.getFullYear(), 0, 1);
   const numberOfDays = Math.floor((now - oneJan) / (24 * 60 * 60 * 1000));
@@ -877,9 +947,9 @@ userSchema.statics.getHistoricalLevelInfo = async function (userId, competitionT
   if (!record) return null;
 
   // Reconstruct levelInfo-like object from historical record
-  const progress = competitionType === 'daily' ? record.dailyProgress : 
-                   (competitionType === 'weekly' ? record.weeklyProgress : record.monthlyProgress);
-  
+  const progress = competitionType === 'daily' ? record.dailyProgress :
+    (competitionType === 'weekly' ? record.weeklyProgress : record.monthlyProgress);
+
   if (!progress) return null;
 
   const levelConfig = await this.getLevelConfig();

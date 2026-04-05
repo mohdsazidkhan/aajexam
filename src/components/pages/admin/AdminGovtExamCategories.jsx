@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
@@ -13,7 +13,29 @@ import { useSSR } from "../../../hooks/useSSR";
 import ViewToggle from "../../ViewToggle";
 import Loading from "../../Loading";
 import Button from "../../ui/Button";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Shield,
+  Map,
+  Plus,
+  Edit,
+  Trash2,
+  Filter,
+  ArrowRight,
+  Clock,
+  ChevronRight,
+  Search,
+  LayoutGrid,
+  List,
+  Table as TableIcon,
+  XCircle,
+  FileText,
+  Globe,
+  Star,
+  Zap,
+  CheckCircle2,
+  Settings
+} from "lucide-react";
 
 const AdminGovtExamCategories = () => {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -41,7 +63,6 @@ const AdminGovtExamCategories = () => {
     fetchCategories();
   }, []);
 
-  // Handle window resize to update view mode
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768 && viewMode === "table") {
@@ -92,15 +113,15 @@ const AdminGovtExamCategories = () => {
   };
 
   const handleDelete = async (categoryId) => {
-    if (!confirm("Are you sure you want to delete this category?")) return;
+    if (!confirm("Are you sure you want to neutralized this category node?")) return;
 
     try {
       await API.deleteExamCategory(categoryId);
-      toast.success("Category deleted successfully");
+      toast.success("Category node neutralized");
       fetchCategories();
     } catch (error) {
       console.error("Error deleting category:", error);
-      toast.error(error?.response?.data?.message || "Failed to delete category");
+      toast.error(error?.response?.data?.message || "Tactical failure during neutralization");
     }
   };
 
@@ -110,300 +131,326 @@ const AdminGovtExamCategories = () => {
     try {
       if (editingCategory) {
         await API.updateExamCategory(editingCategory._id, formData);
-        toast.success("Category updated successfully");
+        toast.success("Protocol updated successfully");
       } else {
         await API.createExamCategory(formData);
-        toast.success("Category created successfully");
+        toast.success("New protocol node established");
       }
       setShowModal(false);
       fetchCategories();
     } catch (error) {
       console.error("Error saving category:", error);
-      toast.error(error?.response?.data?.message || "Failed to save category");
+      toast.error(error?.response?.data?.message || "Failed to finalize transmission");
     }
   };
 
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric"
-    });
+    const d = new Date(dateString);
+    return `${d.getDate()} ${['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()]} ${d.getFullYear()}`;
   };
 
   if (!isMounted) return null;
 
   return (
-    <AdminMobileAppWrapper title="Government Exams - Categories">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+    <AdminMobileAppWrapper title="Exam Taxonomies">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 md:p-6 w-full text-gray-900 dark:text-white">
-          {/* Header */}
-          <div className="mb-4 md:mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="mt-2 lg:mt-0">
-              <h1 className="text-xl md:text-xl lg:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-0 lg:mb-2">
-                🏛️ Govt. Exams - Categories
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 hidden md:block">
-                Manage exam categories for Government Exams
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-              <Button
-                variant="admin"
-                onClick={handleCreate}
-              >
-                + Add Category
-              </Button>
-            </div>
-          </div>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
-          {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <Loading size="md" color="blue" message="Loading categories..." />
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN_HUB // EXAM_TAXONOMIES</span>
+                </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                   GOVT <span className="text-indigo-500">EXAMS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Manage macro-level government examination classifications. Configure spatial and regional parameters.</p>
+              </div>
+
+               <div className="flex items-center gap-4">
+                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+                    {[
+                      { icon: TableIcon, id: 'table', label: 'TAB' },
+                      { icon: List, id: 'list', label: 'LIN' },
+                      { icon: LayoutGrid, id: 'grid', label: 'SPC' }
+                    ].map((mode) => (
+                      <button
+                        key={mode.id}
+                        onClick={() => setViewMode(mode.id)}
+                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                      >
+                        <mode.icon className="w-4 h-4" />
+                        {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={handleCreate}
+                    className="px-8 py-5 bg-primary-600 text-white rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
+                  >
+                    <Plus className="w-5 h-5" /> ADD_IDENTITY
+                  </button>
+               </div>
             </div>
-          ) : categories.length === 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-8 text-center text-gray-500 dark:text-gray-400">
-              No categories found. Create your first category!
-            </div>
-          ) : (
-            <>
-              {/* Table view */}
-              {viewMode === "table" && (
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead className="bg-gray-50 dark:bg-gray-700">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Name
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Type
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Description
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Created
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                      {categories.map((category) => (
-                        <tr key={category._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                            {category.name} Exams
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${category.type === "Central"
-                              ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
-                              : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                              }`}>
-                              {category.type}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
-                            {category.description || "-"}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                            {formatDate(category.createdAt)}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                            <button
-                              onClick={() => handleEdit(category)}
-                              className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
+          </motion.div>
+
+          {/* Results Visuzalization */}
+          <AnimatePresence mode="wait">
+             {loading && categories.length === 0 ? (
+                <div className="flex justify-center py-40">
+                   <Loading size="lg" color="blue" message="" />
+                </div>
+             ) : categories.length === 0 ? (
+               <motion.div
+                 key="empty"
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+               >
+                 <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_NODES_FOUND</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Initialize the taxonomy matrix to begin government exam classification.</p>
+               </motion.div>
+             ) : (
+                <motion.div
+                  key="content"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  {/* Table View */}
+                  {viewMode === "table" && (
+                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">IDENTITY_LABEL</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">JURISDICTION</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DESCRIPTION_NODE</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">TIMESTAMP</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">COMMANDS</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                          {categories.map((category, i) => (
+                            <motion.tr
+                              key={category._id || i}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.05 }}
+                              className="group hover:bg-indigo-500/5 transition-all"
                             >
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => handleDelete(category._id)}
-                              className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-
-              {/* List view */}
-              {viewMode === "list" && (
-                <div className="space-y-3">
-                  {categories.map((category) => (
-                    <div
-                      key={category._id}
-                      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                              {category.name}
-                            </h3>
-                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${category.type === "Central"
-                              ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
-                              : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                              }`}>
-                              {category.type}
-                            </span>
-                          </div>
-                          {category.description && (
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                              {category.description}
-                            </p>
-                          )}
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            Created: {formatDate(category.createdAt)}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2 ml-4">
-                          <button
-                            onClick={() => handleEdit(category)}
-                            className="p-2 text-secondary-600 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-colors"
-                            title="Edit"
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(category._id)}
-                            className="p-2 text-primary-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
-                            title="Delete"
-                          >
-                            <FaTrash />
-                          </button>
-                        </div>
-                      </div>
+                              <td className="px-8 py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight text-lg">
+                                 {category.name} <span className="text-slate-300 text-xs ml-1 tracking-widest">// EXAMS</span>
+                              </td>
+                              <td className="px-8 py-6">
+                                 <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central" 
+                                   ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20 shadow-indigo-500/10" 
+                                   : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-emerald-500/10"}`}>
+                                    {category.type === "Central" ? <Globe className="w-3 h-3" /> : <Map className="w-3 h-3" />}
+                                    {category.type?.toUpperCase()}
+                                 </div>
+                              </td>
+                              <td className="px-8 py-6">
+                                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 line-clamp-1 max-w-xs">{category.description || 'GENERIC_SCHEMA'}</p>
+                              </td>
+                              <td className="px-8 py-6 font-black text-[10px] text-slate-400 uppercase tracking-tighter tabular-nums">
+                                 {formatDate(category.createdAt)}
+                              </td>
+                              <td className="px-8 py-6">
+                                 <div className="flex justify-center gap-3">
+                                    <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-xl hover:text-primary-500 hover:border-primary-500/30 transition-all shadow-inner">
+                                       <Edit className="w-4 h-4" />
+                                    </button>
+                                    <button onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-xl hover:text-rose-500 hover:border-rose-500/30 transition-all shadow-inner">
+                                       <Trash2 className="w-4 h-4" />
+                                    </button>
+                                 </div>
+                              </td>
+                            </motion.tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {/* Grid view */}
-              {viewMode === "grid" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {categories.map((category) => (
-                    <div
-                      key={category._id}
-                      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-lg transition-shadow"
-                    >
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate">
-                          {category.name}
-                        </h3>
-                        <span className={`px-2 py-1 rounded-full text-xs font-semibold flex-shrink-0 ml-2 ${category.type === "Central"
-                          ? "bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200"
-                          : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                          }`}>
-                          {category.type}
-                        </span>
-                      </div>
-                      {category.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
-                          {category.description}
-                        </p>
-                      )}
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                        Created: {formatDate(category.createdAt)}
-                      </p>
-                      <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
-                        <button
-                          onClick={() => handleEdit(category)}
-                          className="flex-1 px-3 py-2 text-sm bg-secondary-50 dark:bg-secondary-900/20 text-secondary-600 dark:text-secondary-400 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900/30 transition-colors"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDelete(category._id)}
-                          className="flex-1 px-3 py-2 text-sm bg-red-50 dark:bg-red-900/20 text-primary-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
-                        >
-                          Delete
-                        </button>
-                      </div>
+                  {/* List View */}
+                  {viewMode === "list" && (
+                    <div className="space-y-6">
+                       {categories.map((category, i) => (
+                         <motion.div
+                           key={category._id || i}
+                           initial={{ opacity: 0, x: -20 }}
+                           animate={{ opacity: 1, x: 0 }}
+                           transition={{ delay: i * 0.05 }}
+                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-8"
+                         >
+                            <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white shadow-indigo-500/20' : 'bg-emerald-500 border-emerald-200 text-white shadow-emerald-500/20'}`}>
+                               {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
+                            </div>
+
+                            <div className="flex-1 text-center lg:text-left space-y-2">
+                               <div className="flex flex-col lg:flex-row items-center gap-4">
+                                  <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{category.name}</h3>
+                                  <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500 border-indigo-100 dark:border-indigo-800' : 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500 border-emerald-100 dark:border-emerald-800'}`}>
+                                     {category.type?.toUpperCase()}
+                                  </div>
+                               </div>
+                               <p className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-2xl">{category.description || 'GENERIC PROTOCOL SCHEMA FOR GOVERNMENTAL EXAMINATION ASSESSMENT TAXONOMY.'}</p>
+                               <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
+                                  <Clock className="w-3 h-3 text-slate-300" />
+                                  <span className="text-[9px] font-black text-slate-300 uppercase italic tracking-widest">{formatDate(category.createdAt)} // REF_ID: {category._id?.slice(-8).toUpperCase()}</span>
+                               </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                               <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                                  <Edit className="w-6 h-6" />
+                               </button>
+                               <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-[2rem] hover:text-rose-500 hover:border-rose-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                                  <Trash2 className="w-6 h-6" />
+                               </button>
+                            </div>
+                         </motion.div>
+                       ))}
                     </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+                  )}
+
+                  {/* Grid View */}
+                  {viewMode === "grid" && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                       {categories.map((category, i) => (
+                         <motion.div
+                           key={category._id || i}
+                           initial={{ opacity: 0, scale: 0.95 }}
+                           animate={{ opacity: 1, scale: 1 }}
+                           transition={{ delay: i * 0.05 }}
+                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                         >
+                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-4 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white' : 'bg-emerald-500 border-emerald-200 text-white'}`}>
+                               {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
+                            </div>
+
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{category.name}</h3>
+                            <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-8 ${category.type === 'Central' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
+                               {category.type?.toUpperCase()}
+                            </div>
+
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-10 line-clamp-3">{category.description || 'GENERIC_PROTOCOL_SCHEMA'}</p>
+
+                            <div className="w-full flex gap-3 mt-auto">
+                               <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-500 hover:border-primary-500/30 transition-all">EDIT</button>
+                               <button onClick={() => handleDelete(category._id)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-rose-500 hover:border-rose-500/30 transition-all">DELETE</button>
+                            </div>
+                         </motion.div>
+                       ))}
+                    </div>
+                  )}
+                </motion.div>
+             )}
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99]">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md p-6">
-            <h2 className="text-md lg:text-xl font-bold mb-4 text-gray-900 dark:text-white">
-              {editingCategory ? `Edit Category: ${editingCategory.name}` : "Create New Category"}
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Category Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                  required
-                />
-              </div>
+      {/* Interface Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xl flex items-center justify-center p-4 z-[999]"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white dark:bg-[#0f172a] rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full overflow-hidden shadow-2xl"
+            >
+               <div className="p-10 border-b-4 border-slate-50 dark:border-white/5 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
+                        <Settings className="w-6 h-6" />
+                     </div>
+                     <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
+                       {editingCategory ? "UPDATE_PROTOCOL" : "NEW_PROTOCOL"}
+                     </h2>
+                  </div>
+                  <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-rose-500 transition-colors">
+                     <XCircle className="w-8 h-8" />
+                  </button>
+               </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Type
-                </label>
-                <select
-                  value={formData.type}
-                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                  required
-                >
-                  <option value="Central">Central Government</option>
-                  <option value="State">State Government</option>
-                </select>
-              </div>
+               <form onSubmit={handleSubmit} className="p-10 space-y-8">
+                  <div className="space-y-3">
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">IDENTITY_LABEL</label>
+                     <input
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                        placeholder="EXAM_NAME..."
+                        required
+                     />
+                  </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Description
-                </label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  rows="3"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-secondary-500 dark:bg-gray-700 dark:text-white"
-                />
-              </div>
+                  <div className="space-y-3">
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">JURISDICTION_PARAMETER</label>
+                     <div className="relative">
+                        <select
+                          value={formData.type}
+                          onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                          className="w-full px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
+                          required
+                        >
+                          <option value="Central">GLOBAL_CENTRAL</option>
+                          <option value="State">REGIONAL_STATE</option>
+                        </select>
+                        <ChevronRight className="absolute right-8 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 rotate-90 pointer-events-none" />
+                     </div>
+                  </div>
 
-              <div className="flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                >
-                  Cancel
-                </button>
-                <Button
-                  type="submit"
-                  variant="admin"
-                >
-                  {editingCategory ? "Update" : "Create"}
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+                  <div className="space-y-3">
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">DESCRIPTION_METADATA</label>
+                     <textarea
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        rows="4"
+                        className="w-full px-8 py-6 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                        placeholder="INJECT_DESCRIPTION..."
+                     />
+                  </div>
+
+                  <div className="flex gap-4 pt-4">
+                     <button
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                        className="flex-1 p-6 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+                     >
+                        ABORT
+                     </button>
+                     <button
+                        type="submit"
+                        className="flex-1 p-6 bg-primary-600 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all outline-none"
+                     >
+                        {editingCategory ? "SYNCHRONIZE" : "INITIALIZE"}
+                     </button>
+                  </div>
+               </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AdminMobileAppWrapper>
   );
 };

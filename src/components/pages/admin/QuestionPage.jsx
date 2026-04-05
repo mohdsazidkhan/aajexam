@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import API from '../../../lib/api';
@@ -10,12 +10,41 @@ import { toast } from 'react-toastify';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
 import SearchFilter from '../../SearchFilter';
-import { FaEdit, FaTrash, FaPlus, FaCheck } from 'react-icons/fa';
+import {
+  HelpCircle,
+  Plus,
+  Search,
+  Filter,
+  LayoutGrid,
+  List,
+  Table,
+  Edit3,
+  Trash2,
+  CheckCircle2,
+  Clock,
+  Zap,
+  Target,
+  BrainCircuit,
+  X,
+  Save,
+  Settings,
+  Fingerprint,
+  Hash,
+  Activity,
+  Layers,
+  Database,
+  ArrowRight,
+  ChevronRight,
+  Calendar,
+  AlertCircle
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
 import useDebounce from '../../../hooks/useDebounce';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
+import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 
 const QuestionPage = () => {
@@ -207,247 +236,287 @@ const QuestionPage = () => {
 
   // Table View Component
   const TableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+    <Card
+      variant="white"
+      className="p-0 border-none shadow-xl bg-white dark:bg-slate-900/60 overflow-hidden"
+    >
       <div className="overflow-x-auto">
-        <table className="w-[1600px] md:w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                S.No.
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Question
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Quiz
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Options
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Correct Answer
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Time Limit
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Created At
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Actions
-              </th>
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="border-b-2 border-slate-100 dark:border-white/5">
+              {[
+                { label: 'S.NO', icon: Hash },
+                { label: 'QUESTION', icon: HelpCircle },
+                { label: 'QUIZ', icon: BookOpen },
+                { label: 'ANSWER', icon: CheckCircle2 },
+                { label: 'TIME', icon: Clock },
+                { label: 'CREATED', icon: Calendar },
+                { label: 'ACTIONS', icon: ArrowRight, align: 'text-right' }
+              ].map((head, i) => (
+                <th key={i} className={`px-8 py-8 ${head.align || 'text-left'}`}>
+                  <div className={`flex items-center gap-3 ${head.align === 'text-right' ? 'justify-end' : ''}`}>
+                    <head.icon className="w-4 h-4 text-indigo-500" />
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{head.label}</span>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-            {questions.map((question) => (
-              <tr key={question._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                  {((currentPage - 1) * itemsPerPage) + questions.indexOf(question) + 1}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900 dark:text-white">
-                    {question.questionText}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900 dark:text-white">
-                    {question.quiz?.title || 'Unknown Quiz'}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-500 dark:text-gray-300">
-                    {question.options.map((option, index) => (
-                      <div key={index} className="mb-1">
-                        {String.fromCharCode(65 + index)}. {option}
-                      </div>
-                    ))}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                    {String.fromCharCode(65 + question.correctAnswerIndex)}
+          <tbody className="divide-y-2 divide-slate-50 dark:divide-white/5">
+            {questions.map((question, index) => (
+              <motion.tr
+                key={question._id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.03 }}
+                className="group hover:bg-indigo-500/5 transition-all"
+              >
+                <td className="px-8 py-6">
+                  <span className="text-xs font-black text-slate-400 font-mono">
+                    #{((currentPage - 1) * itemsPerPage) + index + 1}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-white">
-                    {question.timeLimit || 'No limit'} seconds
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                  <div className="font-medium text-gray-900 dark:text-white">
-                    {(() => {
-                      const date = new Date(question.createdAt);
-                      const day = date.getDate().toString().padStart(2, '0');
-                      const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                      const month = monthNames[date.getMonth()];
-                      const year = date.getFullYear();
-                      return `${day}-${month}-${year}`;
-                    })()}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {new Date(question.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+                <td className="px-8 py-6 max-w-md">
+                  <div className="space-y-1">
+                    <p className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 uppercase tracking-tight">
+                      {question.questionText}
+                    </p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {question.options.map((opt, i) => (
+                        <span key={i} className={`text-[8px] font-black px-2 py-0.5 rounded border ${i === question.correctAnswerIndex ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-slate-100 dark:bg-white/5 border-transparent text-slate-400'}`}>
+                          {String.fromCharCode(65 + i)}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-end space-x-2">
-                    <button
+                <td className="px-8 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
+                    <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest truncate max-w-[150px]">
+                      {question.quiz?.title || 'General'}
+                    </span>
+                  </div>
+                </td>
+                <td className="px-8 py-6">
+                  <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 border-emerald-500/20 bg-emerald-500/5 text-emerald-500`}>
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span className="text-[10px] font-black tracking-tighter">OPTION {String.fromCharCode(65 + question.correctAnswerIndex)}</span>
+                  </div>
+                </td>
+                <td className="px-8 py-6">
+                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                    <Clock className="w-4 h-4 text-amber-500" />
+                    <span className="text-[10px] font-black tracking-widest">{question.timeLimit || 15}s</span>
+                  </div>
+                </td>
+                <td className="px-8 py-6">
+                  <div className="space-y-0.5">
+                    <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+                      {new Date(question.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
+                    </p>
+                    <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">
+                      {new Date(question.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+                    </p>
+                  </div>
+                </td>
+                <td className="px-8 py-6">
+                  <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <motion.button
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => handleEdit(question)}
-                      className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
+                      className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl hover:bg-indigo-500 hover:text-white transition-all shadow-sm"
                     >
-                      <FaEdit className="w-4 h-4" />
-                    </button>
-                    <button
+                      <Edit3 className="w-4 h-4" />
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => handleDelete(question._id)}
-                      className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                      className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl hover:bg-rose-500 hover:text-white transition-all shadow-sm"
                     >
-                      <FaTrash className="w-4 h-4" />
-                    </button>
+                      <Trash2 className="w-4 h-4" />
+                    </motion.button>
                   </div>
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
-    </div>
+    </Card>
   );
 
   // Card View Component
   const CardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-      {questions.map((question) => (
-        <div key={question._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-8">
+      {questions.map((question, index) => (
+        <motion.div
+          key={question._id}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ y: -8 }}
+          transition={{ delay: index * 0.05 }}
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex flex-col"
+        >
+          {/* Gradient Header */}
+          <div className="relative h-24 overflow-hidden flex-shrink-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cyber-network.png')] opacity-10" />
+            <div className="relative z-10 p-6 flex justify-between items-center text-white">
+              <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-xl shadow-lg">
+                {String.fromCharCode(65 + question.correctAnswerIndex)}
+              </div>
+              <div className="flex gap-2">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => handleEdit(question)}
+                  className="p-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/30 hover:bg-white/40 transition-all"
+                >
+                  <Edit3 className="w-4 h-4" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => handleDelete(question._id)}
+                  className="p-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/30 hover:bg-rose-500 transition-all"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </motion.button>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-8 flex-1 flex flex-col">
+            <div className="mb-6 flex-1">
+              <div className="flex items-center gap-2 mb-3">
+                <Target className="w-4 h-4 text-indigo-500" />
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{question.quiz?.title || 'GENERAL'}</span>
+              </div>
+              <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-tight group-hover:text-indigo-500 transition-colors line-clamp-3">
                 {question.questionText}
               </h3>
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => handleEdit(question)}
-                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300"
-                >
-                  <FaEdit className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => handleDelete(question._id)}
-                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
-                >
-                  <FaTrash className="w-4 h-4" />
-                </button>
-              </div>
             </div>
 
-            <div className="mb-4">
-              <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                <span className="font-medium">Quiz:</span> {question.quiz?.title || 'Unknown Quiz'}
-              </div>
-            </div>
-
-            <div className="space-y-2 mb-4">
-              {question.options.map((option, index) => (
-                <div key={index} className={`flex items-center text-sm p-2 rounded ${index === question.correctAnswerIndex
-                  ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                  : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                  }`}>
-                  <span className="font-medium mr-2">{String.fromCharCode(65 + index)}.</span>
-                  <span className="flex-1">{option}</span>
-                  {index === question.correctAnswerIndex && (
-                    <FaCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
-                  )}
+            <div className="space-y-3 mb-8">
+              {question.options.map((option, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-4 px-4 py-3 rounded-2xl border-2 transition-all ${i === question.correctAnswerIndex
+                    ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
+                    : 'bg-slate-50 dark:bg-white/5 border-transparent text-slate-500 dark:text-slate-400'
+                    }`}
+                >
+                  <span className="text-xs font-black w-4">{String.fromCharCode(65 + i)}</span>
+                  <span className="text-xs font-bold truncate flex-1">{option}</span>
+                  {i === question.correctAnswerIndex && <CheckCircle2 className="w-4 h-4" />}
                 </div>
               ))}
             </div>
 
-            <div className="text-xs text-gray-500 dark:text-gray-400">
-              Time Limit: {question.timeLimit || 'No limit'} seconds
-            </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              Created: {(() => {
-                const date = new Date(question.createdAt);
-                const day = date.getDate().toString().padStart(2, '0');
-                const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                const month = monthNames[date.getMonth()];
-                const year = date.getFullYear();
-                return `${day}-${month}-${year}`;
-              })()} at {new Date(question.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+            <div className="pt-6 border-t-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-500" />
+                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">{question.timeLimit || 15}S LIMIT</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-slate-400" />
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  {new Date(question.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }).toUpperCase()}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 
   // List View Component
   const ListView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        {questions.map((question) => (
-          <div key={question._id} className="p-2 md:p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-            <div className="flex-col md:flex-row flex items-start justify-between">
-              <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-md md:text-lg font-medium text-gray-900 dark:text-white">
-                    {question.questionText}
-                  </h3>
-                  <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                    {String.fromCharCode(65 + question.correctAnswerIndex)}
-                  </span>
-                </div>
+    <div className="space-y-6">
+      {questions.map((question, index) => (
+        <motion.div
+          key={question._id}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.05 }}
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-8 hover:shadow-xl transition-all group"
+        >
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="flex items-start gap-8 flex-1">
+              <div className="w-20 h-20 rounded-[2rem] bg-indigo-500/10 border-2 border-indigo-500/20 flex items-center justify-center text-3xl shadow-xl flex-shrink-0 group-hover:rotate-6 transition-transform">
+                {String.fromCharCode(65 + question.correctAnswerIndex)}
+              </div>
 
-                <div className="mb-3">
-                  <span className="text-sm text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">Quiz:</span> {question.quiz?.title || 'Unknown Quiz'}
-                  </span>
+              <div className="space-y-4 flex-1">
+                <div className="flex items-center gap-3">
+                  <div className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{question.quiz?.title || 'GENERAL'}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span className="text-[10px] font-black tracking-widest uppercase">VERIFIED</span>
+                  </div>
                 </div>
+                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic leading-tight">
+                  {question.questionText}
+                </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
-                  {question.options.map((option, index) => (
-                    <div key={index} className={`flex items-center text-sm p-2 rounded ${index === question.correctAnswerIndex
-                      ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                      : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                      }`}>
-                      <span className="font-medium mr-2">{String.fromCharCode(65 + index)}.</span>
-                      <span className="flex-1">{option}</span>
-                      {index === question.correctAnswerIndex && (
-                        <FaCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
-                      )}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {question.options.map((option, i) => (
+                    <div
+                      key={i}
+                      className={`flex items-center gap-4 px-4 py-3 rounded-2xl border-2 transition-all ${i === question.correctAnswerIndex
+                        ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
+                        : 'bg-slate-50 dark:bg-white/5 border-transparent text-slate-500 dark:text-slate-400'
+                        }`}
+                    >
+                      <span className="text-xs font-black w-4">{String.fromCharCode(65 + i)}</span>
+                      <span className="text-xs font-bold truncate">{option}</span>
+                      {i === question.correctAnswerIndex && <CheckCircle2 className="w-4 h-4 ml-auto" />}
                     </div>
                   ))}
                 </div>
 
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Time Limit: {question.timeLimit || 'No limit'} seconds
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                  Created: {(() => {
-                    const date = new Date(question.createdAt);
-                    const day = date.getDate().toString().padStart(2, '0');
-                    const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                    const month = monthNames[date.getMonth()];
-                    const year = date.getFullYear();
-                    return `${day}-${month}-${year}`;
-                  })()} at {new Date(question.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                </p>
-              </div>
-              <div className="flex items-center space-x-2 ml-0 md:ml-4">
-                <button
-                  onClick={() => handleEdit(question)}
-                  className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-2 rounded-md hover:bg-secondary-50 dark:hover:bg-secondary-900/20"
-                >
-                  <FaEdit className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => handleDelete(question._id)}
-                  className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
-                >
-                  <FaTrash className="w-4 h-4" />
-                </button>
+                <div className="flex flex-wrap items-center gap-6 pt-2">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-amber-500" />
+                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Constraint:</span>
+                     <span className="text-xs font-black text-slate-900 dark:text-white uppercase italic">{question.timeLimit || 15}S LIMIT</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <Calendar className="w-4 h-4 text-indigo-500" />
+                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Created:</span>
+                     <span className="text-xs font-black text-slate-900 dark:text-white uppercase italic">{new Date(question.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <div className="flex items-center gap-4 lg:pl-8 lg:border-l-2 border-slate-50 dark:border-white/5">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleEdit(question)}
+                className="px-8 py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all"
+              >
+                <Edit3 className="w-4 h-4 inline mr-2" /> EDIT
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleDelete(question._id)}
+                className="p-4 bg-rose-500/10 text-rose-500 rounded-2xl hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+              >
+                <Trash2 className="w-5 h-5" />
+              </motion.button>
+            </div>
           </div>
-        ))}
-      </div>
+        </motion.div>
+      ))}
     </div>
   );
 
@@ -457,193 +526,359 @@ const QuestionPage = () => {
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
           <div className="mx-auto">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-              <div>
-                <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white">
-                  Questions ({pagination.total})
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  Create, edit, and delete questions
-                </p>
-              </div>
-              <ViewToggle
-                currentView={viewMode}
-                onViewChange={setViewMode}
-                views={['table', 'list', 'grid']}
-              />
-              <Button
-                variant="admin"
-                onClick={handleToggleForm}
-                icon={<FaPlus className="w-4 h-4" />}
-              >
-                Add Question
-              </Button>
-              <div className="flex items-center space-x-2">
-                <select
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    setItemsPerPage(Number(e.target.value));
-                    setCurrentPage(1);
-                  }}
-                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            {/* Tactical Command Header */}
+            <div className="relative mb-12">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="relative z-10"
                 >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={250}>250</option>
-                  <option value={500}>500</option>
-                  <option value={1000}>1000</option>
-                </select>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
+                      <HelpCircle className="w-8 h-8 text-primary-500" />
+                    </div>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-primary-500 uppercase">QUESTION BANK</span>
+                  </div>
+                   <h1 className="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
+                     QUESTION <span className="text-indigo-600 whitespace-nowrap">REPOSITORY</span>
+                   </h1>
+                  <p className="max-w-xl text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.1em] text-[10px] leading-relaxed">
+                    Total Questions: {pagination.total || 0} | Active Quizzes: {quizzes.length}
+                  </p>
+                </motion.div>
+
+                <div className="flex flex-wrap items-center gap-4 relative z-10">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
+                  >
+                    <button onClick={() => setViewMode('table')} className={`p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><Table className="w-5 h-5" /></button>
+                    <button onClick={() => setViewMode('list')} className={`p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><List className="w-5 h-5" /></button>
+                    <button onClick={() => setViewMode('grid')} className={`p-4 rounded-2xl transition-all ${viewMode === 'grid' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><LayoutGrid className="w-5 h-5" /></button>
+                  </motion.div>
+
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleToggleForm}
+                    className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-indigo-500/20 transition-all overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="relative flex items-center gap-3">
+                      <Plus className="w-5 h-5" /> ADD QUESTION
+                    </span>
+                  </motion.button>
+                </div>
               </div>
 
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+                {[
+                  { label: 'Total Questions', value: pagination.total || 0, icon: Target, color: 'primary' },
+                  { label: 'Time Limit', value: '15s', icon: Clock, color: 'amber' },
+                  { label: 'Active Quizzes', value: quizzes.length, icon: BookOpen, color: 'emerald' },
+                  { label: 'Page Total', value: pagination.totalPages || 0, icon: Database, color: 'purple' }
+                ].map((stat, i) => (
+                  <Card key={i} className="p-6 border-none shadow-sm flex items-center gap-4 bg-white dark:bg-slate-900">
+                    <div className={`p-3 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-500`}>
+                      <stat.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                      <h4 className="text-lg font-black text-slate-900 dark:text-white">{stat.value}</h4>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
 
-            <div className='mb-4'>
-              {/* Search and Filters */}
-              <SearchFilter
-                searchTerm={searchTerm}
-                onSearchChange={handleSearch}
-                filters={filters}
-                onFilterChange={handleFilterChange}
-                onClearFilters={handleClearFilters}
-                filterOptions={filterOptions}
-                placeholder="Search questions..."
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mb-12"
+            >
+              <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
+                <div className="flex flex-col lg:flex-row items-center gap-6">
+                  <div className="flex-1 w-full relative group">
+                    <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                      <Search className="w-5 h-5" />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Search questions..."
+                      value={searchTerm}
+                      onChange={(e) => handleSearch(e.target.value)}
+                      className="w-full pl-16 pr-8 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-xs font-black uppercase outline-none transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+                  <div className="flex items-center gap-4 w-full lg:w-auto">
+                    <div className="relative group flex-1 lg:w-64">
+                      <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                        <Filter className="w-5 h-5" />
+                      </div>
+                      <select
+                        value={filters.quiz}
+                        onChange={(e) => handleFilterChange('quiz', e.target.value)}
+                        className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                      >
+                        <option value="">Filter by Quiz</option>
+                        {quizzes.map(q => <option key={q._id} value={q._id}>{q.title}</option>)}
+                      </select>
+                    </div>
+                    <div className="relative lg:w-32">
+                      <select
+                        value={itemsPerPage}
+                        onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
+                        className="w-full px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                      >
+                        {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} ITEMS</option>)}
+                      </select>
+                    </div>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={handleClearFilters}
+                      className="p-5 bg-primary-500/10 text-primary-500 rounded-full hover:bg-primary-500 hover:text-white transition-all shadow-sm"
+                    >
+                      <X className="w-6 h-6" />
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-            {/* Form */}
-            {showForm && (
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="text-lg font-semibold mb-4">
-                  {editingId ? 'Edit Question' : 'Add New Question'}
-                </h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Quiz
-                        </label>
-                        <select
-                          value={quiz}
-                          onChange={(e) => setQuiz(e.target.value)}
-                          required
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
+            {/* Question Calibration Modal */}
+            <AnimatePresence>
+              {showForm && (
+                <div className="fixed inset-0 flex items-center justify-center z-[100] p-4 lg:p-8">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => { setShowForm(false); setEditingId(null); resetForm(); }}
+                    className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
+                  />
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    className="bg-white dark:bg-[#0A0F1E] rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-4xl max-h-[90vh] shadow-2xl overflow-hidden relative z-[101] flex flex-col"
+                  >
+                    <div className="p-4 md:p-8 lg:p-12 overflow-y-auto custom-scrollbar">
+                      <div className="flex justify-between items-start mb-10">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <BrainCircuit className="w-5 h-5 text-indigo-500 animate-pulse" />
+                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500/80">QUESTION EDITOR</span>
+                           </div>
+                           <h2 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none italic">
+                             {editingId ? 'Edit' : 'Create'} <span className="text-indigo-600">Question</span>
+                           </h2>
+                        </div>
+                        <motion.button
+                          whileHover={{ scale: 1.1, rotate: 90 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => { setShowForm(false); setEditingId(null); resetForm(); }}
+                          className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 text-slate-400 hover:text-indigo-500 transition-colors shadow-sm"
                         >
-                          <option value="">Select Quiz</option>
-                          {quizzes.map((q) => (
-                            <option key={q._id} value={q._id}>
-                              {q.title}
-                            </option>
-                          ))}
-                        </select>
+                          <X className="w-6 h-6" />
+                        </motion.button>
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Question Text
-                        </label>
-                        <textarea
-                          value={questionText}
-                          onChange={(e) => setQuestionText(e.target.value)}
-                          required
-                          rows="3"
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
-                          placeholder="Enter your question..."
-                        />
-                      </div>
+                      <form onSubmit={handleSubmit} className="gap-12">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                          <div className="space-y-8">
+                            {/* Strata Selection */}
+                            <div className="space-y-3">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">SELECT QUIZ</label>
+                              <div className="relative group">
+                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                                  <Layers className="w-5 h-5" />
+                                </div>
+                                <select
+                                  value={quiz}
+                                  onChange={(e) => setQuiz(e.target.value)}
+                                  required
+                                  className="w-full pl-14 pr-10 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                                >
+                                  <option value="">SELECT QUIZ</option>
+                                  {quizzes.map((q) => <option key={q._id} value={q._id}>{q.title.toUpperCase()}</option>)}
+                                </select>
+                              </div>
+                            </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Time Limit (seconds)
-                        </label>
-                        <input
-                          type="number"
-                          value={timeLimit}
-                          onChange={(e) => setTimeLimit(e.target.value)}
-                          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
-                          placeholder="Optional time limit"
-                        />
-                      </div>
-                    </div>
+                            {/* Question Text */}
+                            <div className="space-y-3">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">QUESTION CONTENT</label>
+                              <div className="relative group">
+                                <textarea
+                                  value={questionText}
+                                  onChange={(e) => setQuestionText(e.target.value)}
+                                  required
+                                  placeholder="Enter question text..."
+                                  rows="4"
+                                  className="w-full px-6 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-sm font-bold transition-all outline-none resize-none"
+                                />
+                              </div>
+                            </div>
 
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Options
-                        </label>
-                        {options.map((option, index) => (
-                          <div key={index} className="flex items-center space-x-2 mb-2">
-                            <input
-                              type="radio"
-                              name="correctAnswer"
-                              value={index}
-                              checked={correctAnswerIndex === index}
-                              onChange={(e) => setCorrectAnswerIndex(parseInt(e.target.value))}
-                              className="text-secondary-600 focus:ring-secondary-500"
-                            />
-                            <input
-                              type="text"
-                              value={option}
-                              onChange={(e) => handleOptionChange(index, e.target.value)}
-                              required
-                              className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500"
-                              placeholder={`Option ${String.fromCharCode(65 + index)}`}
-                            />
+                            {/* Time Limit */}
+                            <div className="space-y-3">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">TIME LIMIT (SECONDS)</label>
+                              <div className="relative group">
+                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                                  <Clock className="w-5 h-5" />
+                                </div>
+                                <input
+                                  type="number"
+                                  value={timeLimit}
+                                  onChange={(e) => setTimeLimit(e.target.value)}
+                                  placeholder="15"
+                                  className="w-full pl-14 pr-6 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold transition-all outline-none"
+                                />
+                              </div>
+                            </div>
                           </div>
-                        ))}
-                      </div>
+
+                          <div className="space-y-6">
+                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 block mb-2">ANSWER OPTIONS</label>
+                            {options.map((option, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className={`relative flex items-center gap-4 p-2 rounded-[2rem] border-2 transition-all ${correctAnswerIndex === index
+                                  ? 'bg-emerald-500/5 border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.1)]'
+                                  : 'bg-slate-50 dark:bg-white/5 border-transparent'
+                                  }`}
+                              >
+                                <label className="relative flex items-center justify-center w-12 h-12 flex-shrink-0 cursor-pointer">
+                                  <input
+                                    type="radio"
+                                    name="correctAnswer"
+                                    value={index}
+                                    checked={correctAnswerIndex === index}
+                                    onChange={(e) => setCorrectAnswerIndex(parseInt(e.target.value))}
+                                    className="peer hidden"
+                                  />
+                                  <div className="absolute inset-0 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-white/10 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-all shadow-sm" />
+                                  <span className={`relative text-xs font-black transition-colors ${correctAnswerIndex === index ? 'text-white' : 'text-slate-400'}`}>
+                                    {String.fromCharCode(65 + index)}
+                                  </span>
+                                </label>
+                                <input
+                                  type="text"
+                                  value={option}
+                                  onChange={(e) => handleOptionChange(index, e.target.value)}
+                                  required
+                                   placeholder={`OPTION ${String.fromCharCode(65 + index)}...`}
+                                   className="flex-1 bg-transparent px-2 py-3 text-sm font-bold outline-none text-slate-900 dark:text-white placeholder:text-slate-400"
+                                 />
+                                {correctAnswerIndex === index && (
+                                  <div className="pr-4">
+                                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                                  </div>
+                                )}
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="mt-12 flex flex-col lg:flex-row gap-4 pt-8 border-t-2 border-slate-50 dark:border-white/5">
+                          <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => { setShowForm(false); setEditingId(null); resetForm(); }}
+                            className="flex-1 py-5 px-8 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-rose-500 hover:text-white hover:border-transparent transition-all"
+                          >
+                            DISCARD CHANGES
+                          </motion.button>
+                          <motion.button
+                            type="submit"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="flex-[2] py-5 px-8 rounded-2xl bg-indigo-500 text-white shadow-xl shadow-indigo-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
+                          >
+                             <Save className="w-5 h-5" /> {editingId ? 'UPDATE QUESTION DATA' : 'FINALIZE NEW QUESTION'}
+                          </motion.button>
+                        </div>
+                      </form>
                     </div>
-                  </div>
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
 
-                  <div className="flex space-x-3">
-                    <Button
-                      type="submit"
-                      variant="admin"
-                    >
-                      {editingId ? 'Update' : 'Create'} Question
-                    </Button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowForm(false);
-                        setEditingId(null);
-                        resetForm();
-                      }}
-                      className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
-
-            {/* Content */}
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
-                <Loading size="md" color="gray" message="" />
-              </div>
-            ) : questions.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">❓</div>
-                <h3 className="text-md md:text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No questions found
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {searchTerm ? 'Try adjusting your search terms.' : 'Get started by creating your first question.'}
-                </p>
-              </div>
-            ) : (
-              <>
-                {viewMode === 'table' && <TableView />}
-                {viewMode === 'grid' && <CardView />}
-                {viewMode === 'list' && <ListView />}
-              </>
-            )}
+            {/* Content Display Zone */}
+            <div className="relative min-h-[400px]">
+              <AnimatePresence mode="wait">
+                {loading ? (
+                  <motion.div
+                    key="loading"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="flex flex-col items-center justify-center py-24 space-y-6"
+                  >
+                    <div className="relative">
+                      <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+                      <BrainCircuit className="absolute inset-0 m-auto w-10 h-10 text-indigo-500 animate-pulse" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.5em] mb-2 animate-pulse">Processing Question Data</p>
+                      <p className="text-sm font-bold text-slate-400 uppercase tracking-widest italic">Updating repository records...</p>
+                    </div>
+                  </motion.div>
+                ) : questions.length === 0 ? (
+                  <motion.div
+                    key="empty"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-col items-center justify-center py-32 text-center"
+                  >
+                    <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-[3rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8 relative group">
+                      <div className="absolute inset-0 bg-indigo-500/10 rounded-[3rem] group-hover:scale-110 transition-transform" />
+                      <HelpCircle className="w-16 h-16 text-slate-300 dark:text-slate-600 relative z-10" />
+                    </div>
+                    <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
+                      {searchTerm ? 'Search returned zero matches. Refine your query or expand parameters.' : 'Question repository is empty. Initialize your first entry to begin population.'}
+                    </h3>
+                    <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed">
+                      {searchTerm ? 'Refine your search criteria to locate specific records.' : 'The database is currently empty. Add your first question to begin building your assessment library.'}
+                    </p>
+                    {searchTerm && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleClearFilters}
+                        className="mt-8 px-8 py-4 bg-indigo-500/10 text-indigo-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all border-2 border-indigo-500/20"
+                      >
+                        Reset Neural Filters
+                      </motion.button>
+                    )}
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="results"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="pb-20"
+                  >
+                    {viewMode === 'table' && <TableView />}
+                    {viewMode === 'grid' && <CardView />}
+                    {viewMode === 'list' && <ListView />}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Pagination */}
             {pagination.totalPages > 1 && (
@@ -663,6 +898,7 @@ const QuestionPage = () => {
 };
 
 export default QuestionPage;
+
 
 
 

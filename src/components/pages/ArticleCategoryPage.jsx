@@ -1,161 +1,218 @@
-'use client';
+﻿'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { useRouter } from 'next/router'; // Pages Router
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
+import {
+   ArrowLeft,
+   Target,
+   Layers,
+   Eye,
+   Heart,
+   Clock,
+   Sparkles,
+   ChevronRight,
+   BookOpen,
+   Search,
+   Filter,
+   Zap,
+   BarChart3,
+   Database,
+   ArrowRight,
+   ShieldCheck
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import UnifiedFooter from '../UnifiedFooter';
 import API from '../../lib/api';
-import Head from 'next/head';
 import Loading from '../Loading';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
 
 const PAGE_LIMIT = 12;
 
 const ArticleCategoryPage = () => {
-  const router = useRouter();
-  const { categoryId } = router.query;
-  const [category, setCategory] = useState(null);
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+   const router = useRouter();
+   const { categoryId } = router.query;
+   const [category, setCategory] = useState(null);
+   const [articles, setArticles] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState('');
+   const [page, setPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    setPage(1);
-  }, [categoryId]);
-
-  useEffect(() => {
-    fetchCategoryMeta();
-  }, [categoryId]);
-
-  useEffect(() => {
-    fetchArticles(page);
-  }, [categoryId, page]);
-
-  const fetchCategoryMeta = async () => {
-    try {
-      const response = await API.getPublicCategories();
-      const found = (response?.data || response || []).find(c => c._id === categoryId);
-      console.log(response, categoryId, 'categoryIdcategoryId')
-      setCategory(found || null);
-    } catch (e) {
-      setCategory(null);
-    }
-  };
-
-  const fetchArticles = async (pageNum) => {
-    try {
-      setLoading(true);
-      setError('');
-      const res = await API.getArticlesByCategory(categoryId, { page: pageNum, limit: PAGE_LIMIT });
-      const payload = res.data || res;
-      setArticles(payload.articles || payload.items || payload || []);
-      if (payload.pagination) {
-        setTotalPages(payload.pagination.totalPages || 1);
-      } else if (payload.totalPages) {
-        setTotalPages(payload.totalPages);
-      } else {
-        setTotalPages(1);
+   const fetchCategoryMeta = useCallback(async () => {
+      try {
+         const response = await API.getPublicCategories();
+         const found = (response?.data || response || []).find(c => c._id === categoryId);
+         setCategory(found || null);
+      } catch (e) {
+         setCategory(null);
       }
-    } catch (e) {
-      console.error('Error loading category articles', e);
-      setError('Failed to load articles');
-      setArticles([]);
-      setTotalPages(1);
-    } finally {
-      setLoading(false);
-    }
-  };
+   }, [categoryId]);
 
-  const title = useMemo(() => category?.name ? `${category.name} Articles` : 'Category Articles', [category]);
+   const fetchArticles = useCallback(async (pageNum) => {
+      setLoading(true);
+      try {
+         const res = await API.getArticlesByCategory(categoryId, { page: pageNum, limit: PAGE_LIMIT });
+         const payload = res.data || res;
+         setArticles(payload.articles || payload.items || payload || []);
+         setTotalPages(payload.pagination?.totalPages || payload.totalPages || 1);
+      } catch (e) {
+         setError('Failed to load articles');
+         setArticles([]);
+      } finally { setLoading(false); }
+   }, [categoryId]);
 
-  const seoTitle = category?.name ? `${category.name} Articles` : 'Category Articles';
-  const seoDescription = category?.description || `${category?.name || 'Category'} articles on AajExam.`;
+   useEffect(() => {
+      if (categoryId) {
+         setPage(1);
+         fetchCategoryMeta();
+         fetchArticles(1);
+      }
+   }, [categoryId, fetchCategoryMeta, fetchArticles]);
 
-  return (
-    <>
-      <Head>
-        <title>{seoTitle} - AajExam Platform</title>
-        <meta name="description" content={seoDescription} />
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={seoTitle} />
-        <meta name="twitter:description" content={seoDescription} />
-      </Head>
-      <div className="mainContent bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
-        <div className="container mx-auto px-4 lg:px-10 py-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-6">
-            <div>
-              <h1 className="text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-3xl font-bold">{title}</h1>
-              {category?.description && (
-                <p className="text-gray-600 dark:text-gray-400 mt-1">{category.description}</p>
-              )}
-            </div>
-            <button onClick={() => router.back()} className=" bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg">
-              ← Back
-            </button>
-          </div>
+   useEffect(() => {
+      if (categoryId && page > 1) fetchArticles(page);
+   }, [page, categoryId, fetchArticles]);
 
-          {loading ? (
-            <div className="flex items-center justify-center h-48">
-              <Loading size="md" color="yellow" message="" />
-            </div>
-          ) : error ? (
-            <div className="text-center text-primary-600">{error}</div>
-          ) : articles.length === 0 ? (
-            <div className="text-center text-gray-600 dark:text-gray-300">No articles found.</div>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-              {articles.map((a) => (
-                <Link key={a._id} href={`/articles/${a.slug}`} className="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
-                  <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                    <img
-                      src={a.featuredImage || '/default_banner.png'}
-                      alt={a.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/default_banner.png';
-                      }}
-                    />
+   const seoTitle = category?.name ? `${category.name} Articles` : 'Article Category';
+   const seoDescription = category?.description || `${category?.name || 'Category'} articles on AajExam.`;
+
+   return (
+      <>
+         <Head>
+            <title>{seoTitle} - AajExam Platform</title>
+            <meta name="description" content={seoDescription} />
+         </Head>
+
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit">
+            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
+
+               {/* --- Header Section --- */}
+               <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8 px-4">
+                  <div className="space-y-4 text-center lg:text-left">
+                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary-500/10 text-primary-700 dark:text-primary-500 text-[10px] font-black uppercase tracking-widest border-2 border-primary-500/10">
+                        <Target className="w-3 h-3" /> CATEGORY FILTER ACTIVE
+                     </motion.div>
+                     <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                        {category?.name || 'Category'} <span className="text-primary-700 dark:text-primary-500">Articles</span>
+                     </h1>
+                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] max-w-2xl px-4 lg:px-0">
+                        {category?.description || `Explore all articles related to ${category?.name || 'this category'}.`}
+                     </p>
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400">{a.title}</h3>
-                    {a.excerpt && <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">{a.excerpt}</p>}
-                    <div className="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-3">
-                      <span>👁️ {a.views || 0}</span>
-                      <span>❤️ {a.likes || 0}</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
 
-          {totalPages > 1 && (
-            <div className="flex justify-center gap-2 mt-6">
-              <button disabled={page === 1} onClick={() => setPage(p => Math.max(1, p - 1))} className="px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 disabled:opacity-50">Prev</button>
-              {[...Array(totalPages)].map((_, i) => (
-                <button key={i} onClick={() => setPage(i + 1)} className={`px-3 py-1 rounded ${page === i + 1 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700'}`}>{i + 1}</button>
-              ))}
-              <button disabled={page === totalPages} onClick={() => setPage(p => Math.min(totalPages, p + 1))} className="px-3 py-1 rounded bg-gray-100 dark:bg-gray-700 disabled:opacity-50">Next</button>
+                  <div className="flex gap-4">
+                     <Button variant="ghost" onClick={() => router.push('/articles')} className="px-8 py-5 rounded-[2rem] bg-white dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
+                        <ArrowLeft className="w-4 h-4 mr-2" /> ALL CATEGORIES
+                     </Button>
+                  </div>
+               </header>
+
+               {/* --- Article List --- */}
+               <AnimatePresence mode="wait">
+                  {loading ? (
+                     <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+                  ) : articles.length === 0 ? (
+                     <div className="py-32 text-center space-y-8">
+                        <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto border-2 border-slate-200 dark:border-slate-700">
+                           <Database className="w-12 h-12 text-slate-300" />
+                        </div>
+                        <div className="space-y-4">
+                           <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">No Articles Found</h3>
+                           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed px-4">There are currently no articles in this category. Please check back later.</p>
+                        </div>
+                        <Button variant="primary" onClick={() => router.push('/articles')} className="rounded-full px-10 py-5 text-xs font-black shadow-duo-primary uppercase tracking-widest font-outfit">BACK TO ARTICLES</Button>
+                     </div>
+                  ) : (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                        {articles.map((a, idx) => (
+                           <Link key={a._id} href={`/articles/${a.slug}`}>
+                              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
+                                 <Card className="group relative overflow-hidden transition-all duration-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 flex flex-col h-full rounded-[3rem]">
+                                    <div className="h-64 overflow-hidden relative">
+                                       <img
+                                          src={a.featuredImage || "/default_banner.png"}
+                                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-[3rem]"
+                                          alt={a.title}
+                                          onError={(e) => { e.target.src = "/default_banner.png"; }}
+                                       />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                                       <div className="absolute bottom-4 left-6 right-6 flex justify-between items-center">
+                                          <div className="px-4 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[8px] font-black uppercase tracking-widest">
+                                             ARTICLE {idx + 1}
+                                          </div>
+                                          <p className="text-[8px] font-black text-white/60 uppercase tracking-widest">PUBLISHED {new Date(a.createdAt).toLocaleDateString()}</p>
+                                       </div>
+                                    </div>
+
+                                    <div className="p-4 lg:p-8 flex-1 flex flex-col space-y-4">
+                                       <div className="space-y-4">
+                                          <h3 className="text-xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white group-hover:text-primary-700 dark:text-primary-500 transition-colors line-clamp-2">
+                                             {a.title}
+                                          </h3>
+                                          <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed line-clamp-3 italic opacity-80 group-hover:opacity-100 transition-opacity">
+                                             "{a.excerpt || a.content?.substring(0, 150)}..."
+                                          </p>
+                                       </div>
+
+                                       <div className="mt-auto pt-6 border-t-2 border-slate-50 dark:border-slate-800 flex items-center justify-between">
+                                          <div className="flex items-center gap-6">
+                                             <div className="flex items-center gap-2">
+                                                <Eye className="w-4 h-4 text-slate-300" />
+                                                <span className="text-[10px] font-black font-outfit text-slate-600 dark:text-slate-400">{a.views || 0}</span>
+                                             </div>
+                                             <div className="flex items-center gap-2">
+                                                <Heart className="w-4 h-4 text-slate-300" />
+                                                <span className="text-[10px] font-black font-outfit text-slate-600 dark:text-slate-400">{a.likes || 0}</span>
+                                             </div>
+                                          </div>
+                                          <div className="flex items-center gap-2 text-primary-700 dark:text-primary-500 group-hover:translate-x-2 transition-transform">
+                                             <span className="text-[10px] font-black uppercase tracking-[0.2em] font-outfit">READ MORE</span>
+                                             <ArrowRight className="w-4 h-4" />
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <Sparkles className="absolute -bottom-12 -left-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 group-hover:text-primary-700 dark:text-primary-500/10 transition-colors pointer-events-none" />
+                                 </Card>
+                              </motion.div>
+                           </Link>
+                        ))}
+                     </motion.div>
+                  )}
+               </AnimatePresence>
+
+               {/* --- Pagination --- */}
+               {totalPages > 1 && (
+                  <nav className="flex flex-col lg:flex-row items-center justify-between p-8 bg-white dark:bg-slate-800/80 backdrop-blur-xl rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl gap-6">
+                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">
+                        PAGE {page} OF {totalPages}
+                     </p>
+                     <div className="flex items-center gap-2">
+                        {[...Array(totalPages)].map((_, i) => {
+                           const p = i + 1;
+                           return (
+                              <button
+                                 key={p}
+                                 onClick={() => setPage(p)}
+                                 className={`w-12 h-12 rounded-2xl text-[10px] font-black transition-all font-outfit ${page === p ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm border border-slate-100 dark:border-slate-800'}`}
+                              >
+                                 {p}
+                              </button>
+                           );
+                        })}
+                     </div>
+                  </nav>
+               )}
+
             </div>
-          )}
-        </div>
-        <UnifiedFooter />
-      </div>
-    </>
-  );
+            <UnifiedFooter />
+         </div>
+      </>
+   );
 };
 
 export default ArticleCategoryPage;
-
-
-
-
-
-
-
 

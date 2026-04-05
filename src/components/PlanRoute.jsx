@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation';
+﻿import { useRouter } from 'next/navigation';
 import { isAuthenticated, getCurrentUser } from '../utils/authUtils';
 import { hasSubscriptionPlan } from '../utils/subscriptionUtils';
 import { toast } from 'react-hot-toast';
@@ -33,3 +33,4 @@ const PlanRoute = ({ children, requiredPlan, redirectTo = '/subscription', showT
 };
 
 export default PlanRoute;
+

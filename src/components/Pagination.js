@@ -1,5 +1,13 @@
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+'use client';
 
+import React from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+/**
+ * Premium 3D Pagination Component
+ * Implements Duolingo-style 3D buttons, smooth lifting effects, and highly readable typography.
+ */
 const Pagination = ({
   currentPage,
   totalPages,
@@ -49,48 +57,72 @@ const Pagination = ({
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 bg-white dark:bg-gray-800 px-3 sm:px-4 md:px-6 py-3 sm:py-4 border-t border-gray-200 dark:border-gray-700 mt-2 md:mt-4 shadow-sm">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-6 px-6 py-8 bg-white dark:bg-slate-900 border-t-4 border-slate-100 dark:border-slate-800 rounded-b-[2rem] shadow-sm transition-colors duration-300">
+      {/* Visual Info Display */}
       {showInfo && (
-        <div className="text-xs sm:text-lg md:text-base text-gray-700 dark:text-gray-300 text-center sm:text-left">
-          Showing {startItem} to {endItem} of {totalItems} results
+        <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">
+           Result: <span className="text-slate-900 dark:text-white px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-xl mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-700 dark:text-primary-500 font-black">{totalItems}</span>
         </div>
       )}
 
-      <div className="flex items-center space-x-1 sm:space-x-2">
+      {/* Navigation Controls */}
+      <div className="flex items-center gap-3">
         {/* Previous Button */}
-        <button
+        <motion.button
+          whileHover={currentPage > 1 ? { y: -2 } : {}}
+          whileTap={currentPage > 1 ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 text-xs sm:text-lg md:text-base font-medium text-gray-500 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-4 shadow-sm ${
+            currentPage === 1
+              ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
+              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
+          }`}
         >
-          <FaChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
-        </button>
+          <ChevronLeft className="w-5 h-5" />
+        </motion.button>
 
-        {/* Page Numbers */}
-        {getPageNumbers().map((page, index) => (
-          <button
-            key={index}
-            onClick={() => typeof page === 'number' && onPageChange(page)}
-            disabled={page === '...'}
-            className={`px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 text-xs sm:text-lg md:text-base font-medium rounded-md transition-all duration-200 hover:scale-105 ${page === currentPage
-                ? 'bg-primary-600 text-white border border-primary-600 shadow-md'
-                : page === '...'
-                  ? 'text-gray-400 cursor-default hover:scale-100'
-                  : 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600'
-              }`}
-          >
-            {page}
-          </button>
-        ))}
+        {/* Numeric Page Buttons */}
+        <div className="flex items-center gap-2">
+          {getPageNumbers().map((page, index) => {
+             const isCurrent = page === currentPage;
+             const isDots = page === '...';
+
+             return (
+               <motion.button
+                 key={index}
+                 whileHover={!isDots && !isCurrent ? { y: -2 } : {}}
+                 whileTap={!isDots && !isCurrent ? { y: 0 } : {}}
+                 onClick={() => !isDots && onPageChange(page)}
+                 disabled={isDots}
+                 className={`min-w-[44px] h-11 px-2 flex items-center justify-center rounded-2xl font-black font-outfit text-xs transition-all duration-300 border-b-4 ${
+                   isCurrent
+                     ? 'bg-primary-500 border-primary-600 text-white shadow-duo-primary translate-y-0.5'
+                     : isDots
+                       ? 'text-slate-600 dark:text-slate-400 bg-transparent border-transparent cursor-default'
+                       : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm'
+                 }`}
+               >
+                 {page}
+               </motion.button>
+             );
+          })}
+        </div>
 
         {/* Next Button */}
-        <button
+        <motion.button
+          whileHover={currentPage < totalPages ? { y: -2 } : {}}
+          whileTap={currentPage < totalPages ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 text-xs sm:text-lg md:text-base font-medium text-gray-500 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-4 shadow-sm ${
+            currentPage === totalPages
+              ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
+              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
+          }`}
         >
-          <FaChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
-        </button>
+          <ChevronRight className="w-5 h-5" />
+        </motion.button>
       </div>
     </div>
   );

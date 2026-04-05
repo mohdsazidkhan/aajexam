@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import config from '../../../lib/config/appConfig';
 
@@ -10,10 +10,19 @@ import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Sidebar from '../../Sidebar';
 import Loading from '../../Loading';
 import { useSelector } from 'react-redux';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  FileText, Plus, Search, Filter, LayoutGrid, List, Table as TableIcon,
+  Search as SearchIcon, ChevronRight, Eye, Heart, StickyNote, Star,
+  ShieldCheck, Trash2, Edit3, CheckCircle2, Ban, Archive, MoreVertical,
+  ArrowRight, Users, TrendingUp, BarChart3, Database, Globe, Info, Clock, Bell, Layers,
+  Binary, Activity, Box, Boxes, Zap, Cpu
+} from 'lucide-react';
 import ViewToggle from '../../ViewToggle';
 import Pagination from '../../Pagination';
 import { isMobile } from 'react-device-detect';
 import Button from '../../ui/Button';
+import Card from '../../ui/Card';
 import { safeLocalStorage } from '../../../lib/utils/storage';
 
 const AdminArticles = () => {
@@ -49,6 +58,14 @@ const AdminArticles = () => {
     } catch (e) { }
     return isMobile ? 'grid' : 'table';
   });
+
+  // Derived Stats for Section Header
+  const articleStats = {
+    total: articles.length,
+    published: articles.filter(a => a.status === 'published').length,
+    featured: articles.filter(a => a.isFeatured).length,
+    avgViews: articles.length ? Math.round(articles.reduce((acc, curr) => acc + (curr.views || 0), 0) / articles.length) : 0
+  };
 
   // Ensure Grid on small screens after mount and on orientation change
   useEffect(() => {
@@ -168,172 +185,187 @@ const AdminArticles = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      published: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Published' },
-      draft: { color: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300', text: 'Draft' },
-      pending: { color: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300', text: 'Pending' },
-      approved: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Approved' },
-      rejected: { color: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300', text: 'Rejected' },
-      archived: { color: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300', text: 'Archived' }
+      published: {
+        color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20',
+        text: 'Published',
+        icon: <Zap className="w-3 h-3" />
+      },
+      draft: {
+        color: 'bg-slate-500/10 text-slate-500 border-slate-500/20',
+        text: 'Draft',
+        icon: <Cpu className="w-3 h-3" />
+      },
+      pending: {
+        color: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20',
+        text: 'Pending',
+        icon: <Activity className="w-3 h-3" />
+      },
+      approved: {
+        color: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
+        text: 'Approved',
+        icon: <ShieldCheck className="w-3 h-3" />
+      },
+      rejected: {
+        color: 'bg-rose-500/10 text-rose-500 border-rose-500/20',
+        text: 'Rejected',
+        icon: <Ban className="w-3 h-3" />
+      },
+      archived: {
+        color: 'bg-slate-700/10 text-slate-700 border-slate-700/20 dark:text-slate-400',
+        text: 'Archived',
+        icon: <Archive className="w-3 h-3" />
+      }
     };
     const config = statusConfig[status] || statusConfig.draft;
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
+      <span className={`px-2.5 py-1 rounded-lg border flex items-center gap-2 text-[8px] font-black uppercase tracking-widest ${config.color}`}>
         {config.text}
       </span>
     );
   };
 
-  const getRewardTierBadge = (rewardTier, rewardAmount) => {
+  const getRewardTierBadge = (rewardTier) => {
     if (!rewardTier) return null;
     const tierConfig = {
-      normal: { color: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300', text: 'Normal ₹5' },
-      good: { color: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300', text: 'Good ₹10' },
-      high: { color: 'bg-purple-100 text-primary-800 dark:bg-purple-900/30 dark:text-primary-300', text: 'High ₹15' }
+      normal: { color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20', text: '₹5' },
+      good: { color: 'bg-blue-500/10 text-blue-500 border-blue-500/20', text: '₹10' },
+      high: { color: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20', text: '₹15' }
     };
     const config = tierConfig[rewardTier];
     if (!config) return null;
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color} ml-2`}>
-        {config.text}
+      <span className={`px-3 py-1 rounded-lg border text-[10px] font-black uppercase tracking-widest ${config.color} whitespace-nowrap`}>
+        REWARD: {config.text}
       </span>
     );
   };
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800/50 backdrop-blur-xl rounded-[2.5rem] shadow-xl border-2 border-slate-100 dark:border-gray-700 overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
+        <table className="min-w-full divide-y-2 divide-slate-100 dark:divide-gray-700">
+          <thead className="bg-slate-50 dark:bg-slate-900/50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                S.No.
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Article
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Author
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Category
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Stats
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Created At
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Actions
-              </th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">S.No.</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Article</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Author</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Category</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Status</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Stats</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Created</th>
+              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody className="bg-white dark:bg-transparent divide-y-2 divide-slate-100 dark:divide-gray-700">
             {articles.map((article) => (
-              <tr key={article._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
+              <tr key={article._id} className="hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
+                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-500">
                   {((currentPage - 1) * (pagination.limit || itemsPerPage)) + articles.indexOf(article) + 1}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
-                        className="h-10 w-10 rounded-lg object-cover"
+                        className="h-10 w-10 rounded-xl object-cover border-2 border-slate-100"
                         src={article.featuredImage || '/default_banner.png'}
                         alt={article.title}
                       />
                     </div>
                     <div className="ml-4 max-w-96" >
-                      <div className="text-sm font-medium text-gray-900 dark:text-white" title={article.title}>
+                      <div className="text-xs font-black uppercase text-gray-900 dark:text-white" title={article.title}>
                         {article.title?.length > 40 ? article.title?.substring(0, 40) + '...' : article.title}
                         {article.isFeatured && (
-                          <span className="ml-2 text-primary-500">⭐</span>
+                          <span className="ml-2 text-indigo-500">â˜…</span>
                         )}
                         {article.isPinned && (
-                          <span className="ml-2 text-secondary-500">📌</span>
+                          <span className="ml-2 text-indigo-500">ðŸ“Œ</span>
                         )}
                       </div>
                       {article.slug && (
-                        <div className="text-xs text-secondary-600 dark:text-secondary-400 mt-1" title={article.slug}>
-                          <code>/articles/{article.slug?.length > 40 ? article.slug?.substring(0, 40) + '...' : article.slug}</code>
+                        <div className="text-[10px] text-indigo-500/70 font-black mt-1" title={article.slug}>
+                          <code>/{article.slug?.length > 40 ? article.slug?.substring(0, 40) + '...' : article.slug}</code>
                         </div>
                       )}
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white uppercase">
                   {article.author?.name || 'Unknown'}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                  {article.category?.name || 'Uncategorized'}
+                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white">
+                  {article.category?.name || 'General'}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center flex-wrap gap-1">
                     {getStatusBadge(article.status)}
                     {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
                     {article.rewardCredited && (
-                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 ml-2" title="Reward credited">
-                        💰
+                      <span className="px-2 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 ml-2" title="Reward credited">
+                        ðŸ’°
                       </span>
                     )}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                <td className="px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
                   <div className="flex space-x-4">
-                    <span>👁️ {article.views || 0}</span>
-                    <span>❤️ {article.likes || 0}</span>
+                    <span>ðŸ‘ï¸ {article.views || 0}</span>
+                    <span>â¤ï¸ {article.likes || 0}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                  <div className="font-medium text-gray-900 dark:text-white">
+                <td className="px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
+                  <div className="font-black text-gray-900 dark:text-white">
                     {formatDate(article.createdAt)}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="opacity-50">
                     {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <div className="flex space-x-2">
-                    <Link href={`/admin/articles/${article._id}/edit`}
-                      className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
+                      className="p-2 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors text-indigo-500"
+                      title="Edit"
                     >
-                      Edit
-                    </Link>
+                      âœŽ
+                    </button>
                     {article.status === 'published' ? (
                       <button
                         onClick={() => handleUnpublish(article._id)}
-                        className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300"
+                        className="p-2 hover:bg-slate-100 dark:hover:bg-gray-700 rounded-xl transition-colors"
+                        title="Unpublish"
                       >
-                        Unpublish
+                        ðŸš«
                       </button>
                     ) : (
                       <button
                         onClick={() => handlePublish(article._id)}
-                        className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300"
+                        className="p-2 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-xl transition-colors"
+                        title="Publish"
                       >
-                        Publish
+                        ðŸš€
                       </button>
                     )}
                     <button
                       onClick={() => handleToggleFeatured(article._id)}
-                      className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}
+                      className={`p-2 rounded-xl transition-colors ${article.isFeatured ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500' : 'hover:bg-slate-50'}`}
+                      title="Featured"
                     >
-                      ⭐
+                      â˜…
                     </button>
                     <button
                       onClick={() => handleTogglePinned(article._id)}
-                      className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}
+                      className={`p-2 rounded-xl transition-colors ${article.isPinned ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500' : 'hover:bg-slate-50'}`}
+                      title="Pinned"
                     >
-                      📌
+                      ðŸ“Œ
                     </button>
                     <button
                       onClick={() => handleDelete(article._id)}
-                      className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                      className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors text-red-500"
+                      title="Delete"
                     >
-                      Delete
+                      ðŸ—‘ï¸
                     </button>
                   </div>
                 </td>
@@ -348,50 +380,48 @@ const AdminArticles = () => {
   const renderListView = () => (
     <div className="space-y-4">
       {articles.map((article) => (
-        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
-          <div className="flex items-start gap-4">
+        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-[2rem] border-2 border-slate-100 dark:border-gray-700 p-6 shadow-xl hover:-translate-y-1 transition-all">
+          <div className="flex items-start gap-6">
             <img
               src={article.featuredImage || '/default_banner.png'}
               alt={article.title}
-              className="w-16 h-16 rounded-lg object-cover"
+              className="w-24 h-24 rounded-2xl object-cover border-2 border-slate-100"
             />
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{article.title}</h3>
+                <h3 className="text-lg font-black uppercase text-gray-900 dark:text-white">{article.title}</h3>
                 {getStatusBadge(article.status)}
                 {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
-                {article.rewardCredited && <span className="text-green-500" title="Reward credited">💰</span>}
-                {article.isFeatured && <span className="text-primary-500">⭐</span>}
-                {article.isPinned && <span className="text-secondary-500">📌</span>}
+                {article.rewardCredited && <span className="text-emerald-500" title="Reward credited">ðŸ’°</span>}
+                {article.isFeatured && <span className="text-indigo-500">â˜…</span>}
+                {article.isPinned && <span className="text-indigo-500">ðŸ“Œ</span>}
               </div>
-              <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-4">
+              <div className="mt-2 text-[10px] font-black uppercase text-gray-500 flex flex-wrap gap-4">
                 <span>By {article.author?.name || 'Unknown'}</span>
-                <span>In {article.category?.name || 'Uncategorized'}</span>
-                <span>👁️ {article.views || 0}</span>
-                <span>❤️ {article.likes || 0}</span>
+                <span>In {article.category?.name || 'General'}</span>
+                <span>ðŸ‘ï¸ {article.views || 0} VIEWS</span>
+                <span>â¤ï¸ {article.likes || 0} LIKES</span>
               </div>
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Created: {formatDate(article.createdAt)} at {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+              <div className="mt-2 text-[10px] font-black uppercase text-slate-400">
+                Created: {formatDate(article.createdAt)} AT {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
               </div>
               {article.slug && (
-                <div className="text-xs text-secondary-600 dark:text-secondary-400 mt-1">
-                  <code>/articles/{article.slug}</code>
+                <div className="text-[10px] text-indigo-500/70 font-black mt-2">
+                  <code>/{article.slug}</code>
                 </div>
               )}
-              <div className="mt-3 flex items-center gap-3">
-                <Link href={`/admin/articles/${article._id}/edit`}
-                  className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300"
-                >
-                  Edit
-                </Link>
+              <div className="mt-6 flex items-center gap-4">
+                <Button variant="primary" size="sm" onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3">Edit</Button>
                 {article.status === 'published' ? (
-                  <button onClick={() => handleUnpublish(article._id)} className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300">Unpublish</button>
+                  <Button variant="ghost" size="sm" onClick={() => handleUnpublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3">Unpublish</Button>
                 ) : (
-                  <button onClick={() => handlePublish(article._id)} className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300">Publish</button>
+                  <Button variant="primary" size="sm" onClick={() => handlePublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3 bg-emerald-500 hover:bg-emerald-600 border-none">Publish</Button>
                 )}
-                <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}>⭐</button>
-                <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}>📌</button>
-                <button onClick={() => handleDelete(article._id)} className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
+                <div className="flex items-center gap-2 ml-auto">
+                  <button onClick={() => handleToggleFeatured(article._id)} className={`p-2 rounded-xl transition-colors ${article.isFeatured ? 'bg-indigo-50 text-indigo-500' : 'hover:bg-slate-50'}`}>â˜…</button>
+                  <button onClick={() => handleTogglePinned(article._id)} className={`p-2 rounded-xl transition-colors ${article.isPinned ? 'bg-indigo-50 text-indigo-500' : 'hover:bg-slate-50'}`}>ðŸ“Œ</button>
+                  <button onClick={() => handleDelete(article._id)} className="p-2 hover:bg-red-50 rounded-xl transition-colors text-red-500">ðŸ—‘ï¸</button>
+                </div>
               </div>
             </div>
           </div>
@@ -401,45 +431,50 @@ const AdminArticles = () => {
   );
 
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {articles.map((article) => (
-        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
-          <div className="mb-3">
+        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-gray-700 p-5 shadow-xl hover:-translate-y-1 transition-all group">
+          <div className="mb-4 relative overflow-hidden rounded-2xl">
             <img
               src={article.featuredImage || '/default_banner.png'}
               alt={article.title}
-              className="w-full h-40 rounded-lg object-cover"
+              className="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-500"
             />
-          </div>
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2">{article.title}</h3>
-            <div className="flex flex-col items-end gap-1">
+            <div className="absolute top-3 right-3 flex flex-col gap-2">
               {getStatusBadge(article.status)}
-              {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
-              {article.rewardCredited && <span className="text-green-500 text-xs" title="Reward credited">💰</span>}
             </div>
           </div>
-          <div className="mt-2 text-sm text-gray-600 dark:text-gray-300 flex flex-wrap gap-3">
-            <span>{article.author?.name || 'Unknown'}</span>
-            <span>{article.category?.name || 'Uncategorized'}</span>
+          <div className="space-y-2">
+            <h3 className="text-sm font-black uppercase text-gray-900 dark:text-white line-clamp-2 leading-tight">{article.title}</h3>
+            <div className="flex items-center gap-2 flex-wrap">
+              {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
+              {article.rewardCredited && <span className="text-emerald-500 text-xs">ðŸ’°</span>}
+              {article.isFeatured && <span className="text-indigo-500">â˜…</span>}
+              {article.isPinned && <span className="text-indigo-500">ðŸ“Œ</span>}
+            </div>
           </div>
-          <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-4">
-            <span>👁️ {article.views || 0}</span>
-            <span>❤️ {article.likes || 0}</span>
+          <div className="mt-4 pt-4 border-t-2 border-slate-50 dark:border-gray-700">
+            <div className="flex items-center justify-between text-[10px] font-black uppercase text-gray-400">
+              <span>{article.author?.name || 'Unknown'}</span>
+              <div className="flex items-center gap-3">
+                <span>ðŸ‘ï¸ {article.views || 0}</span>
+                <span>â¤ï¸ {article.likes || 0}</span>
+              </div>
+            </div>
+            <p className="mt-2 text-[9px] font-black uppercase text-slate-300">
+              {formatDate(article.createdAt)}
+            </p>
           </div>
-          <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Created: {new Date(article.createdAt).toLocaleDateString('en-US')} at {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-          </div>
-          <div className="mt-3 flex items-center gap-3">
-            <Link href={`/admin/articles/${article._id}/edit`} className="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300">Edit</Link>
-            {article.status === 'published' ? (
-              <button onClick={() => handleUnpublish(article._id)} className="text-primary-600 hover:text-primary-900 dark:text-secondary-400 dark:hover:text-primary-300">Unpublish</button>
-            ) : (
-              <button onClick={() => handlePublish(article._id)} className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300">Publish</button>
-            )}
-            <button onClick={() => handleToggleFeatured(article._id)} className={`${article.isFeatured ? 'text-primary-600' : 'text-gray-400'} hover:text-primary-900 dark:hover:text-primary-300`}>⭐</button>
-            <button onClick={() => handleTogglePinned(article._id)} className={`${article.isPinned ? 'text-secondary-600' : 'text-gray-400'} hover:text-secondary-900 dark:hover:text-secondary-300`}>📌</button>
-            <button onClick={() => handleDelete(article._id)} className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">Delete</button>
+          <div className="mt-6 flex items-center justify-between border-t-2 border-slate-50 dark:border-gray-700 pt-4">
+            <Button variant="ghost" size="sm" onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="rounded-xl px-4 py-2 font-black uppercase text-[10px] tracking-tight">Edit</Button>
+            <div className="flex items-center gap-2">
+              <button onClick={() => handleDelete(article._id)} className="p-2 hover:bg-red-50 text-red-500 rounded-xl transition-colors">ðŸ—‘ï¸</button>
+              {article.status !== 'published' ? (
+                <button onClick={() => handlePublish(article._id)} className="p-2 hover:bg-emerald-50 text-emerald-500 rounded-xl transition-colors">ðŸš€</button>
+              ) : (
+                <button onClick={() => handleUnpublish(article._id)} className="p-2 hover:bg-slate-50 text-gray-400 rounded-xl transition-colors">ðŸš«</button>
+              )}
+            </div>
           </div>
         </div>
       ))}
@@ -448,13 +483,12 @@ const AdminArticles = () => {
 
 
 
-
   if (loading) {
     return (
       <AdminMobileAppWrapper title="Articles">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-12 lg:mt-0">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading articles..." />
             </div>
@@ -468,146 +502,441 @@ const AdminArticles = () => {
     <AdminMobileAppWrapper title="Articles">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-          {/* Header */}
-          <div className="mb-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative mb-10"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  📝 Articles ({articles?.length})
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="flex items-center gap-3 mb-4"
+                >
+                  <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-lg">
+                    <FileText className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500/80">CONTENT MANAGEMENT</span>
+                </motion.div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                  ARTICLES & <span className="text-indigo-500">CONTENT</span>
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
-                  Create, edit or delete articles and content
+                <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <Globe className="w-4 h-4" />
+                  Manage and curate educational content for the platform.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {[
+                  { label: 'Total Articles', value: articleStats.total, icon: FileText, color: 'indigo' },
+                  { label: 'Published', value: articleStats.published, icon: Zap, color: 'emerald' },
+                  { label: 'Featured', value: articleStats.featured, icon: Star, color: 'indigo' },
+                  { label: 'Avg Views', value: articleStats.avgViews, icon: Eye, color: 'blue' }
+                ].map((stat, idx) => (
+                  <div key={idx} className="px-6 py-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-white/5 shadow-sm">
+                    <stat.icon className={`w-4 h-4 text-${stat.color}-500 mb-2`} />
+                    <div className="flex flex-col">
+                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</span>
+                      <span className="text-lg font-black text-slate-900 dark:text-white leading-none tabular-nums">{stat.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4 bg-white dark:bg-slate-900 p-2 rounded-2xl border-2 border-slate-100 dark:border-white/10">
                 <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
+              </div>
 
-                <Button
-                  variant="admin"
-                  onClick={() => router.push('/admin/articles/create')}
-                  className="w-full sm:w-auto"
-                >
-                  + Create Article
-                </Button>
+              <Button
+                variant="primary"
+                onClick={() => router.push('/admin/articles/create')}
+                icon={Plus}
+                className="w-full lg:w-auto px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo-primary bg-indigo-500 hover:bg-indigo-600 border-none"
+              >
+                CREATE ARTICLE
+              </Button>
+            </div>
+          </motion.div>
+
+          <Card
+            variant="white"
+            className="p-6 lg:p-10 mb-12 border-none shadow-xl bg-white dark:bg-slate-900/60 relative overflow-hidden"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8 relative z-10">
+              <div className="lg:col-span-2 space-y-2">
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Search Articles</label>
+                <div className="relative">
+                  <SearchIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+                  <input
+                    type="text"
+                    name="search"
+                    value={filters.search}
+                    onChange={handleFilterChange}
+                    placeholder="Search by title..."
+                    className="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 rounded-2xl text-xs font-black uppercase outline-none transition-all placeholder:text-slate-400"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Article Status</label>
+                <div className="relative">
+                  <Activity className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <select
+                    name="status"
+                    value={filters.status}
+                    onChange={handleFilterChange}
+                    className="w-full pl-12 pr-8 py-4 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">All Statuses</option>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Article Category</label>
+                <div className="relative">
+                  <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <select
+                    name="category"
+                    value={filters.category}
+                    onChange={handleFilterChange}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">ALL CATEGORIES</option>
+                    {categories.map(category => (
+                      <option key={category._id} value={category._id}>
+                        {category.name.toUpperCase()}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Featured Status</label>
+                <div className="relative">
+                  <Star className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <select
+                    name="isFeatured"
+                    value={filters.isFeatured}
+                    onChange={handleFilterChange}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="">ALL TYPES</option>
+                    <option value="true">FEATURED ONLY</option>
+                    <option value="false">REGULAR ONLY</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-slate-400 pl-3">Items Per Page</label>
+                <div className="relative">
+                  <Box className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <select
+                    value={itemsPerPage}
+                    onChange={(e) => {
+                      const newItemsPerPage = Number(e.target.value);
+                      setItemsPerPage(newItemsPerPage);
+                      setCurrentPage(1);
+                    }}
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-slate-400/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    {[10, 20, 50, 100].map(v => <option key={v} value={v}>{v} ITEMS</option>)}
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
+          </Card>
 
-          {/* Filters */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-6 shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Search
-                </label>
-                <input
-                  type="text"
-                  name="search"
-                  value={filters.search}
-                  onChange={handleFilterChange}
-                  placeholder="Search articles..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Status
-                </label>
-                <select
-                  name="status"
-                  value={filters.status}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+          {/* Insight Content Matrix */}
+          <div className="relative min-h-[400px]">
+            <AnimatePresence mode="wait">
+              {loading ? (
+                <motion.div
+                  key="loading"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex flex-col items-center justify-center py-24 space-y-6"
                 >
-                  <option value="">All Status</option>
-                  <option value="published">Published</option>
-                  <option value="draft">Draft</option>
-                  <option value="archived">Archived</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Category
-                </label>
-                <select
-                  name="category"
-                  value={filters.category}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+                    <Database className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
+                  </div>
+                  <div className="text-center text-slate-400 font-bold uppercase tracking-widest text-sm">Loading Content Repository...</div>
+                </motion.div>
+              ) : articles.length === 0 ? (
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-32 text-center bg-white/30 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/5"
                 >
-                  <option value="">All Categories</option>
-                  {categories.map(category => (
-                    <option key={category._id} value={category._id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Featured
-                </label>
-                <select
-                  name="isFeatured"
-                  value={filters.isFeatured}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8">
+                    <StickyNote className="w-16 h-16 text-slate-300 dark:text-slate-600" />
+                  </div>
+                  <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
+                    No Articles Found
+                  </h3>
+                  <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed px-8">
+                    There are no articles matching your current filter criteria. Try adjusting your search or category selection.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="content"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                 >
-                  <option value="">All</option>
-                  <option value="true">Featured</option>
-                  <option value="false">Not Featured</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Pinned
-                </label>
-                <select
-                  name="isPinned"
-                  value={filters.isPinned}
-                  onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                >
-                  <option value="">All</option>
-                  <option value="true">Pinned</option>
-                  <option value="false">Not Pinned</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Page Size
-                </label>
-                <select
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    const newItemsPerPage = Number(e.target.value);
-                    setItemsPerPage(newItemsPerPage);
-                    setCurrentPage(1);
-                  }}
-                  className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={250}>250</option>
-                  <option value={500}>500</option>
-                  <option value={1000}>1000</option>
-                </select>
-              </div>
-            </div>
-          </div>
+                  {/* Table View */}
+                  {viewMode === 'table' && (
+                    <div className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden overflow-x-auto custom-scrollbar">
+                      <table className="w-full">
+                        <thead>
+                    <tr className="border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/50 uppercase">
+                      {['Article', 'Category', 'Status', 'Rewards', 'Engagement', 'Created On', 'Actions'].map((head) => (
+                        <th key={head} className="px-8 py-6 text-left text-[9px] font-black text-slate-400 uppercase tracking-widest">{head}</th>
+                      ))}
+                    </tr>
+                        </thead>
+                        <tbody className="divide-y-2 divide-slate-100 dark:divide-white/5">
+                          {articles.map((article, i) => (
+                            <motion.tr
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.05 }}
+                              key={article._id}
+                              className="group hover:bg-indigo-500/5 transition-all"
+                            >
+                              <td className="px-8 py-6">
+                                <div className="flex items-center gap-4">
+                                  <div className="relative">
+                                    <img src={article.featuredImage || '/default_banner.png'} className="w-14 h-14 rounded-2xl object-cover ring-2 ring-slate-100 dark:ring-white/10 group-hover:ring-indigo-500/50 transition-all shadow-lg" alt="" />
+                                    {article.isPinned && <div className="absolute -top-2 -right-2 p-1.5 bg-indigo-500 text-white rounded-lg shadow-lg"><ArrowRight className="w-3 h-3 rotate-[-45deg]" /></div>}
+                                  </div>
+                                  <div className="max-w-[250px]">
+                                    <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight line-clamp-1">{article.title}</h4>
+                                    <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">By {article.author?.name?.toUpperCase() || 'UNKNOWN'}</p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-6">
+                                <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-lg text-[9px] font-black uppercase border border-slate-200 dark:border-white/5">{article.category?.name || 'GENERAL'}</span>
+                              </td>
+                              <td className="px-8 py-6">
+                                {getStatusBadge(article.status)}
+                              </td>
+                              <td className="px-8 py-6">
+                                {getRewardTierBadge(article.rewardTier)}
+                              </td>
+                              <td className="px-8 py-6">
+                                <div className="flex items-center gap-4 text-slate-400">
+                                  <div className="flex items-center gap-1.5">
+                                    <Eye className="w-4 h-4" />
+                                    <span className="text-xs font-black tabular-nums">{article.views || 0}</span>
+                                  </div>
+                                  <div className="flex items-center gap-1.5">
+                                    <Heart className="w-4 h-4" />
+                                    <span className="text-xs font-black tabular-nums">{article.likes || 0}</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-6">
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest whitespace-nowrap">
+                                  <div className="text-slate-900 dark:text-white mb-1">{formatDate(article.createdAt)}</div>
+                                  <div className="opacity-50 flex items-center gap-1"><Clock className="w-3 h-3" /> {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
+                                </div>
+                              </td>
+                              <td className="px-8 py-6 text-right">
+                                <div className="flex items-center gap-3">
+                                  <motion.button whileHover={{ scale: 1.1 }} onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl border border-blue-500/20 hover:bg-blue-500 hover:text-white transition-all shadow-lg shadow-blue-500/5">
+                                    <Edit3 className="w-4 h-4" />
+                                  </motion.button>
 
-          {/* Articles Content - View modes */}
-          {viewMode === 'table' && renderTableView()}
-          {viewMode === 'list' && renderListView()}
-          {viewMode === 'grid' && renderGridView()}
+                                  {article.status === 'published' ? (
+                                    <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleUnpublish(article._id)} className="p-3 bg-slate-500/10 text-slate-500 rounded-2xl border border-slate-500/20 hover:bg-slate-500 hover:text-white transition-all shadow-lg" title="Unpublish">
+                                      <Ban className="w-4 h-4" />
+                                    </motion.button>
+                                  ) : (
+                                    <motion.button whileHover={{ scale: 1.1 }} onClick={() => handlePublish(article._id)} className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl border border-emerald-500/20 hover:bg-emerald-500 hover:text-white transition-all shadow-lg" title="Publish">
+                                      <Zap className="w-4 h-4" />
+                                    </motion.button>
+                                  )}
+
+                                  <div className="w-[1px] h-8 bg-slate-100 dark:bg-white/5 mx-1" />
+
+                                  <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(article._id)} className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all shadow-lg shadow-rose-500/5">
+                                    <Trash2 className="w-4 h-4" />
+                                  </motion.button>
+                                </div>
+                              </td>
+                            </motion.tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
+                  {/* Grid View */}
+                  {viewMode === 'grid' && (
+                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                      {articles.map((article, i) => (
+                        <motion.div
+                          key={article._id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="group bg-white dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden hover:border-indigo-500/30 transition-all flex flex-col relative"
+                        >
+                          <div className="relative aspect-[16/10] overflow-hidden">
+                            <img src={article.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-[3rem]" alt="" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute top-4 right-4 flex flex-col gap-2">
+                              {article.isFeatured && <div className="p-2 bg-indigo-500 text-white rounded-xl shadow-xl"><Star className="w-4 h-4 fill-current" /></div>}
+                              {article.isPinned && <div className="p-2 bg-primary-500 text-white rounded-xl shadow-xl"><ArrowRight className="w-4 h-4 rotate-[-45deg]" /></div>}
+                            </div>
+                            <div className="absolute bottom-4 left-4">
+                              {getStatusBadge(article.status)}
+                            </div>
+                          </div>
+
+                          <div className="p-8 flex-1 flex flex-col">
+                            <div className="flex items-center gap-3 mb-4">
+                              <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest px-3 py-1 bg-indigo-500/10 rounded-lg border border-indigo-500/10">{article.category?.name || 'UNSECTORED'}</span>
+                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{formatDate(article.createdAt)}</span>
+                            </div>
+
+                            <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-4 line-clamp-2 min-h-[3rem]">{article.title}</h3>
+
+                            <div className="flex items-center justify-between py-6 border-y-2 border-slate-100 dark:border-white/5 my-auto">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center text-[10px] font-black text-white dark:text-slate-900 uppercase italic">
+                                  {article.author?.name?.substring(0, 1) || '?'}
+                                </div>
+                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">{article.author?.name || 'S_CORE'}</span>
+                              </div>
+                              <div className="flex items-center gap-4">
+                                <div className="flex flex-col items-end">
+                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Gaze_Index</span>
+                                  <span className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{article.views || 0}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="mt-8 flex items-center gap-3">
+                              <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
+                                className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
+                              >
+                                TUNING_PROC
+                              </motion.button>
+                              <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                onClick={() => handleDelete(article._id)}
+                                className="p-4 bg-rose-500/10 text-rose-500 rounded-2xl hover:bg-rose-500 hover:text-white transition-all shadow-lg"
+                              >
+                                <Trash2 className="w-5 h-5" />
+                              </motion.button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* List View */}
+                  {viewMode === 'list' && (
+                    <div className="space-y-6">
+                      {articles.map((article, i) => (
+                        <motion.div
+                          key={article._id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 flex flex-col lg:flex-row lg:items-center gap-8 group hover:border-indigo-500/20 transition-all shadow-xl"
+                        >
+                          <div className="relative w-full lg:w-48 h-32 lg:h-32 shrink-0 overflow-hidden rounded-2xl shadow-xl">
+                            <img src={article.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="" />
+                            <div className="absolute inset-0 bg-black/20" />
+                            <div className="absolute bottom-3 left-3">
+                              {getStatusBadge(article.status)}
+                            </div>
+                          </div>
+
+                          <div className="flex-1 space-y-3">
+                            <div className="flex items-center gap-4">
+                              <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{article.category?.name || 'GENERAL'} MATRIX</span>
+                              <div className="h-1 w-1 bg-slate-300 dark:bg-white/10 rounded-full" />
+                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SYNC_DATE: {formatDate(article.createdAt)}</span>
+                            </div>
+                            <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-indigo-500 transition-colors">{article.title}</h3>
+                            <div className="flex flex-wrap items-center gap-6 pt-2">
+                              <div className="flex items-center gap-2">
+                                <Users className="w-4 h-4 text-slate-400" />
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">AUTHOR: {article.author?.name || 'S_CORE'}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Eye className="w-4 h-4 text-blue-500/50" />
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.views || 0} READ_CYCLES</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Heart className="w-4 h-4 text-rose-500/50" />
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.likes || 0} CORE_RESONANCE</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-4 pl-0 lg:pl-10 lg:border-l-2 border-slate-100 dark:border-white/5">
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
+                              className="px-10 py-5 bg-white dark:bg-white/5 text-slate-900 dark:text-white rounded-[2rem] font-black text-[10px] uppercase tracking-widest border-2 border-slate-100 dark:border-white/10 hover:border-indigo-500/30 shadow-lg transition-all"
+                            >
+                              EXEC_TUNING
+                            </motion.button>
+
+                            <div className="relative">
+                              <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                onClick={() => handleDelete(article._id)}
+                                className="p-4 bg-rose-500/10 text-rose-500 rounded-2xl hover:bg-rose-500 hover:text-white transition-all shadow-lg"
+                              >
+                                <Trash2 className="w-5 h-5" />
+                              </motion.button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           {/* Pagination */}
           {pagination.totalPages > 1 && (
-            <div className="mt-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-16 flex justify-center"
+            >
               <Pagination
                 currentPage={currentPage}
                 totalPages={pagination.totalPages}
@@ -615,23 +944,48 @@ const AdminArticles = () => {
                 totalItems={pagination.total}
                 itemsPerPage={itemsPerPage}
               />
-            </div>
+            </motion.div>
           )}
 
           {error && (
-            <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-              <div className="text-red-800 dark:text-red-200">{error}</div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-12 bg-rose-500/10 border-2 border-rose-500/20 rounded-3xl p-6 flex items-center gap-4 shadow-xl"
+            >
+              <div className="p-3 bg-rose-500 text-white rounded-2xl">
+                <Ban className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-rose-500 uppercase tracking-widest">Matrix_Sync_Fault</h4>
+                <p className="text-xs font-bold text-rose-500/70 uppercase">{error}</p>
+              </div>
+            </motion.div>
           )}
         </div>
       </div>
+      <style jsx global>{`
+        select {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+          background-position: right 1.5rem center;
+          background-size: 1em;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          height: 8px;
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #312e81;
+          border-radius: 10px;
+        }
+      `}</style>
     </AdminMobileAppWrapper>
   );
 };
 
 export default AdminArticles;
-
-
-
 
 

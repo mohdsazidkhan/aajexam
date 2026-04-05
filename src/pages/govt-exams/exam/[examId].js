@@ -1,9 +1,26 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import {
+  ArrowLeft,
+  Clock,
+  Trophy,
+  List,
+  Bookmark,
+  CircleCheck,
+  ChevronRight,
+  ShieldCheck,
+  Target
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
 import API from '../../../lib/api';
-import { FaArrowLeft, FaClock, FaTrophy, FaList, FaBookmark } from 'react-icons/fa';
-import Loading from '../../../components/Loading';
+import Button from '../../../components/ui/Button';
+import Card from '../../../components/ui/Card';
+import ProgressBar from '../../../components/ui/ProgressBar';
+import Skeleton from '../../../components/Skeleton';
 
 const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = '', seo, examId }) => {
   const router = useRouter();
@@ -14,247 +31,152 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
 
   const fetchExamAndPatterns = useCallback(async () => {
     if (!examId) return;
-
     try {
       setLoading(true);
-      setError('');
       const res = await API.getPatternsByExam(examId);
-
       if (res?.success) {
-        const fetchedPatterns = res.data || [];
-        setPatterns(fetchedPatterns);
-        if (res.exam) {
-          setExam(res.exam);
-        } else if (fetchedPatterns[0]?.exam) {
-          setExam(fetchedPatterns[0].exam);
-        }
+        setPatterns(res.data || []);
+        if (res.exam) setExam(res.exam);
       } else {
-        setError('Failed to load exam details. Please try again.');
+        setError('Failed to load patterns.');
       }
     } catch (err) {
-      console.error('Error fetching exam and patterns:', err);
-      setError('Failed to load exam details. Please try again.');
+      console.error('Error:', err);
+      setError('An error occurred.');
     } finally {
       setLoading(false);
     }
   }, [examId]);
 
   useEffect(() => {
-    if (!initialPatterns.length && !initialError) {
-      fetchExamAndPatterns();
-    }
+    if (!initialPatterns.length && !initialError) fetchExamAndPatterns();
   }, [initialPatterns.length, initialError, fetchExamAndPatterns]);
 
   const formatDuration = (minutes) => {
     const hrs = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    if (hrs > 0) {
-      return `${hrs}h ${mins > 0 ? `${mins}m` : ''}`;
-    }
-    return `${mins}m`;
+    return hrs > 0 ? `${hrs}h ${mins > 0 ? `${mins}m` : ''}` : `${mins}m`;
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <Loading size="lg" color="gray" message="Loading exam details..." />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
-        <div className="text-center max-w-md">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
-          <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">Error</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">{error}</p>
-          <button
-            onClick={() => router.back()}
-            className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-          >
-            Go Back
-          </button>
+      <div className="space-y-8 animate-fade-in py-10">
+        <Skeleton height="150px" borderRadius="1.5rem" />
+        <div className="space-y-4">
+          {[1, 2, 3].map(i => <Skeleton key={i} height="100px" borderRadius="1.5rem" />)}
         </div>
       </div>
     );
   }
 
   const examName = exam?.name || 'Government Exam';
-  const examDescription = exam?.description || 'Practice exam patterns and prepare for your government job';
-  const patternCount = patterns.length;
 
   return (
-    <>
+    <div className="space-y-8 animate-fade-in">
       <Head>
-        <title>{seo?.title || `${examName} - Exam Patterns | AajExam`}</title>
-        {seo?.description && <meta name="description" content={seo.description} />}
-        {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
-        <meta property="og:type" content="website" />
-        {seo?.title && <meta property="og:title" content={seo.title} />}
-        {seo?.description && <meta property="og:description" content={seo.description} />}
-        {seo?.image && <meta property="og:image" content={seo.image} />}
-        {seo?.url && <meta property="og:url" content={seo.url} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        {seo?.title && <meta name="twitter:title" content={seo.title} />}
-        {seo?.description && <meta name="twitter:description" content={seo.description} />}
-        {seo?.image && <meta name="twitter:image" content={seo.image} />}
-        {seo?.url && <link rel="canonical" href={seo.url} />}
+        <title>{seo?.title || `${examName} - Patterns | AajExam`}</title>
       </Head>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-2 lg:py-4 px-2 lg:px-4">
-        <div className="container mx-auto py-0 px-0 lg:px-10">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-between gap-2 mb-2 lg:mb-4">
 
-            <div className="flex items-start lg:items-center justify-start lg:justify-between gap-4">
+      {/* --- Breadcrumbs & Back --- */}
+      <section className="flex items-center justify-between">
+        <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
+          <ArrowLeft className="w-5 h-5" />
+          GO BACK
+        </Button>
+      </section>
 
-              {/* Back Button */}
-              <button
-                onClick={() => router.back()}
-                className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors"
-              >
-                <FaArrowLeft /> Back
-              </button>
-
-              <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                Available Patterns
-              </h2>
-            </div>
-
-            {/* Exam Header */}
-            <div className="flex justify-between items-center bg-gradient-to-r from-secondary-500 to-indigo-600 rounded-xl px-4 py-2 text-white gap-4">
-              <h1 className="text-xl lg:text-2xl font-bold">{exam?.name || 'Exam Patterns'}</h1>
-              {exam?.description && (
-                <p className="text-secondary-100 text-lg">{exam.description}</p>
-              )}
-              {exam?.code && (
-                <span className="inline-block px-4 py-1 bg-white/20 rounded-full text-sm font-semibold">
-                  {exam.code}
-                </span>
-              )}
-            </div>
+      {/* --- Exam Hero Card --- */}
+      <Card className="bg-gradient-to-br from-primary-500 to-indigo-600 text-white border-none shadow-duo-primary overflow-hidden relative">
+        <div className="relative z-10 space-y-3">
+          <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
+            <ShieldCheck className="w-4 h-4" />
+            Verified Exam Board
           </div>
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight">{examName}</h1>
+          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80 decoration-primary-300 underline-offset-4">Board Code: {exam.code}</p>}
+        </div>
+        <Target className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/10 -rotate-12" />
+      </Card>
 
-          {/* Patterns List */}
-          {patterns.length > 0 ? (
-            <div className="space-y-6">
+      {/* --- Patterns Overview --- */}
+      <section className="space-y-6">
+        <div className="flex justify-between items-center px-1">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase tracking-wide">Exam Stages</h2>
+          <span className="bg-primary-100 dark:bg-primary-900/30 px-4 py-1 rounded-full text-sm font-black text-primary-600 dark:text-primary-400">
+            {patterns.length} MODULES
+          </span>
+        </div>
 
-
-              {patterns.map((pattern) => (
-                <div
-                  key={pattern._id}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all overflow-hidden"
-                >
-                  {/* Pattern Header */}
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-600 py-2 px-4 text-white">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="text-md lg:text-xl font-bold">{pattern.title}</h3>
-                        {pattern.description && (
-                          <p className="text-primary-100">{pattern.description}</p>
-                        )}
-                      </div>
-                      {pattern.testCount > 0 && (
-                        <span className="ml-4 px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
-                          {pattern.testCount} Tests
-                        </span>
-                      )}
+        <div className="space-y-4">
+          {patterns.map((pattern, idx) => (
+            <motion.div
+              key={pattern._id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <Card className="group border-2 hover:border-primary-500 transition-all p-0 overflow-hidden shadow-md">
+                <div className="flex flex-col lg:flex-row">
+                  {/* Left: Info Indicator */}
+                  <div className="w-full lg:w-48 bg-gray-50 dark:bg-slate-700/50 p-6 flex flex-col items-center justify-center border-r-0 lg:border-r border-gray-100 dark:border-slate-700 gap-2">
+                    <div className="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-primary-500 shadow-sm border border-gray-100 dark:border-slate-600">
+                      <CircleCheck className="w-8 h-8" />
                     </div>
+                    <span className="font-black text-xs text-gray-400 uppercase tracking-widest">Stage {idx + 1}</span>
                   </div>
 
-                  {/* Pattern Details */}
-                  <div className="p-2 lg:p-4">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-4 mb-2 lg:mb-6">
-                      {pattern.duration && (
-                        <div className="flex items-center gap-3">
-                          <FaClock className="text-primary-600 text-xl" />
-                          <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Duration</p>
-                            <p className="font-semibold text-gray-900 dark:text-white">
-                              {formatDuration(pattern.duration)}
-                            </p>
-                          </div>
+                  {/* Right: Content */}
+                  <div className="flex-1 p-3 lg:p-6 space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase">{pattern.title}</h3>
+                        <p className="text-gray-500 dark:text-gray-400 font-bold text-sm">{pattern.description || 'Complete this stage to unlock advanced modules.'}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <div className="flex items-center gap-1 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase leading-none">
+                          <Clock className="w-3 h-3" />
+                          {formatDuration(pattern.duration || 60)}
                         </div>
-                      )}
-
-                      {pattern.totalMarks && (
-                        <div className="flex items-center gap-3">
-                          <FaTrophy className="text-primary-700 text-xl" />
-                          <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total Marks</p>
-                            <p className="font-semibold text-gray-900 dark:text-white">
-                              {pattern.totalMarks} marks
-                            </p>
-                          </div>
+                        <div className="flex items-center gap-1 bg-accent-orange/10 px-3 py-1 rounded-full text-[10px] font-black text-accent-orange uppercase leading-none">
+                          <Trophy className="w-3 h-3" />
+                          {pattern.totalMarks || 100} Marks
                         </div>
-                      )}
-
-                      {pattern.sections && pattern.sections.length > 0 && (
-                        <div className="flex items-center gap-3">
-                          <FaList className="text-secondary-600 text-xl" />
-                          <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Sections</p>
-                            <p className="font-semibold text-gray-900 dark:text-white">
-                              {pattern.sections.length} section{pattern.sections.length !== 1 ? 's' : ''}
-                            </p>
-                          </div>
-                        </div>
-                      )}
+                      </div>
                     </div>
 
-                    {/* Sections List */}
+                    {/* Sections Preview */}
                     {pattern.sections && pattern.sections.length > 0 && (
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Sections:</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {pattern.sections.map((section, idx) => (
-                            <div
-                              key={idx}
-                              className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg"
-                            >
-                              <div className="flex items-center justify-between">
-                                <span className="font-semibold text-gray-900 dark:text-white">
-                                  {section.name || `Section ${idx + 1}`}
-                                </span>
-                                <span className="text-sm text-gray-600 dark:text-gray-400">
-                                  {section.totalQuestions || 0} Q
-                                </span>
-                              </div>
-                              {section.marks && (
-                                <span className="text-xs text-gray-500 dark:text-gray-400">
-                                  {section.marks} marks
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                        {pattern.sections.slice(0, 4).map((section, sidx) => (
+                          <div key={sidx} className="bg-gray-50 dark:bg-slate-900/50 px-3 py-2 rounded-xl flex items-center justify-between border border-gray-100 dark:border-slate-800">
+                            <span className="text-[10px] font-black text-gray-500 uppercase truncate">{section.name || 'Module'}</span>
+                            <span className="text-[10px] font-black text-primary-500">{section.totalQuestions}Q</span>
+                          </div>
+                        ))}
                       </div>
                     )}
 
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => router.push(`/govt-exams/pattern/${pattern._id}/tests`)}
-                      className="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                    >
-                      <FaBookmark /> View Practice Tests
-                    </button>
+                    <div className="pt-2 flex items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <ProgressBar progress={0} color="primary" height="h-2" />
+                      </div>
+                      <Button
+                        variant="primary"
+                        size="md"
+                        onClick={() => router.push(`/govt-exams/pattern/${pattern._id}/tests`)}
+                        className="whitespace-nowrap px-8"
+                      >
+                        PRACTICE <ChevronRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-xl">
-              <FaList className="text-6xl text-gray-400 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                No Patterns Available
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Patterns will appear here once they're added
-              </p>
-            </div>
-          )}
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 
@@ -267,22 +189,11 @@ import PracticeTest from '../../../models/PracticeTest';
 
 export async function getServerSideProps({ params }) {
   const examId = params?.examId;
-
-  if (!examId) {
-    return { notFound: true };
-  }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  if (!examId) return { notFound: true };
 
   try {
     await dbConnect();
-
-    // Fetch patterns for the exam
-    const patternsDocs = await ExamPattern.find({ exam: examId })
-      .populate('exam', 'name code description')
-      .sort({ title: 1 })
-      .lean();
-
+    const patternsDocs = await ExamPattern.find({ exam: examId }).populate('exam', 'name code description').sort({ title: 1 }).lean();
     const patternIds = patternsDocs.map(p => p._id);
 
     let patterns = [];
@@ -293,84 +204,22 @@ export async function getServerSideProps({ params }) {
         { $match: { examPattern: { $in: patternIds } } },
         { $group: { _id: '$examPattern', total: { $sum: 1 } } }
       ]);
-
       const testMap = Object.fromEntries(testCounts.map(i => [i._id.toString(), i.total]));
 
       patterns = patternsDocs.map(p => ({
         ...JSON.parse(JSON.stringify(p)),
         testCount: testMap[p._id.toString()] || 0
       }));
-
       exam = patterns[0]?.exam || null;
+    } else {
+      exam = JSON.parse(JSON.stringify(await Exam.findById(examId).lean()));
     }
 
-    // If no patterns found, try to fetch exam info directly
-    if (!exam) {
-      const examDoc = await Exam.findById(examId).lean();
-      if (examDoc) {
-        exam = JSON.parse(JSON.stringify(examDoc));
-      }
-    }
+    if (!exam && patterns.length === 0) return { notFound: true };
 
-    if (!exam && patterns.length === 0) {
-      return { notFound: true };
-    }
-
-    const examName = exam?.name || 'Government Exam';
-    const patternCount = patterns.length;
-
-    const descriptionPieces = [
-      exam?.description,
-      patternCount ? `Explore ${patternCount} exam pattern${patternCount === 1 ? '' : 's'} and practice with realistic mock tests.` : 'Explore detailed exam patterns and practice with realistic mock tests.'
-    ].filter(Boolean);
-    const description = descriptionPieces.join(' ');
-
-    const keywordSet = new Set([
-      examName,
-      exam?.code,
-      'government exam',
-      'exam pattern',
-      'mock test',
-      'practice test',
-      'sarkari exam'
-    ].filter(Boolean));
-
-    const seo = {
-      title: `${examName} - Exam Patterns | AajExam`,
-      description,
-      keywords: Array.from(keywordSet).join(', '),
-      image: '/logo.png',
-      url: baseUrl ? `${baseUrl}/govt-exams/exam/${examId}` : undefined
-    };
-
-    return {
-      props: {
-        examId,
-        initialExam: exam,
-        initialPatterns: patterns,
-        seo
-      }
-    };
+    return { props: { examId, initialExam: exam, initialPatterns: patterns } };
   } catch (error) {
-    console.error('Failed to pre-render govt exam detail:', error);
-
-    const fallbackSeo = {
-      title: 'Government Exam Patterns | AajExam',
-      description: 'Explore government exam patterns and practice with realistic mock tests on AajExam.',
-      keywords: 'government exam, exam pattern, mock test, practice test',
-      image: '/logo.png',
-      url: baseUrl ? `${baseUrl}/govt-exams/exam/${examId}` : undefined
-    };
-
-    return {
-      props: {
-        examId,
-        initialExam: null,
-        initialPatterns: [],
-        initialError: 'Failed to load exam details. Please try again.',
-        seo: fallbackSeo
-      }
-    };
+    console.error('Data pre-render error:', error);
+    return { props: { initialError: 'Failed to load data.' } };
   }
 }
-

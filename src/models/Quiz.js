@@ -77,10 +77,29 @@ const quizSchema = new mongoose.Schema({
 
   // Engagement metrics (for user-created quizzes)
   viewsCount: { type: Number, default: 0 },
-  attemptsCount: { type: Number, default: 0 }
+  attemptsCount: { type: Number, default: 0 },
+
+  // AajExam Transformation Fields
+  quizType: { 
+    type: String, 
+    enum: ['reward_quiz', 'mock_test', 'practice_test'], 
+    default: 'reward_quiz' 
+  },
+  subject: { type: String, default: 'General' },
+  topic: { type: String, default: 'Miscellaneous' },
+  difficultyLevel: { 
+    type: String, 
+    enum: ['easy', 'medium', 'hard'], 
+    default: 'medium' 
+  },
+  thumbnailUrl: { type: String, default: '' }, // Cloudinary URL
+  examType: { type: String, default: 'General' } // Target exam (e.g. SSC, UPSC)
 }, { timestamps: true });
 
-// Index for efficient level-based queries
+// Performance Optimization Indexes
+quizSchema.index({ quizType: 1, isActive: 1 });
+quizSchema.index({ subject: 1, topic: 1 });
+quizSchema.index({ examType: 1, isActive: 1 });
 quizSchema.index({ requiredLevel: 1, isActive: 1 });
 quizSchema.index({ difficulty: 1, isActive: 1 });
 quizSchema.index({ createdBy: 1, createdType: 1, status: 1 });

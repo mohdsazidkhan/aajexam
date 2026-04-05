@@ -3,10 +3,11 @@ import { Suspense } from 'react';
 import Head from 'next/head';
 
 import Seo from '../components/Seo';
+import HomePageSkeleton from '../components/HomePageSkeleton';
 
 const HomePage = dynamic(() => import('../components/pages/HomePage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <HomePageSkeleton />
 });
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
       <Head>
         <meta name="keywords" content="home, quiz platform, trending quizzes, leaderboard, knowledge test" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<HomePageSkeleton />}>
         <HomePage />
       </Suspense>
     </>

@@ -1,6 +1,14 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Users, UserPlus, Search, Filter, LayoutGrid, List, Table as TableIcon,
+  Shield, Zap, Award, Mail, Phone, Calendar, MoreVertical, Trash2, Edit3,
+  CheckCircle2, XCircle, Info, ExternalLink, CreditCard, Wallet, Crown, Star,
+  TrendingUp, Activity, Box, Settings, ArrowRight, ChevronRight, Download,
+  MailWarning, UserCheck, UserMinus, RefreshCcw, Plus, X
+} from "lucide-react";
 
 import API from '../../../lib/api';
 import { useParams } from 'next/navigation';
@@ -13,7 +21,6 @@ import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
 import SearchFilter from '../../SearchFilter';
-import { FaTrash, FaEdit } from 'react-icons/fa';
 import { isMobile } from 'react-device-detect';
 import useDebounce from "../../../hooks/useDebounce";
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
@@ -216,7 +223,7 @@ const StudentsPage = () => {
               {student.name}
             </div>
             {student.username && (
-              <div className="text-xs text-gray-500 dark:text-gray-400">
+              <div className="text-xs text-slate-700 dark:text-gray-400">
                 @{student.username}
               </div>
             )}
@@ -239,7 +246,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div>
           <div className="text-sm text-gray-900 dark:text-white">{student.email}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-300">{student.phone || 'No phone'}</div>
+          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">{student.phone || 'No phone'}</div>
         </div>
       )
     },
@@ -251,7 +258,7 @@ const StudentsPage = () => {
           <div className="text-sm text-gray-900 dark:text-white">
             Level {student.level?.currentLevel || 1}
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-300">
+          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
             {getLevelName(student.level?.currentLevel || 1)}
           </div>
         </div>
@@ -322,7 +329,7 @@ const StudentsPage = () => {
       key: 'joined',
       header: 'Joined',
       render: (_, student) => (
-        <div className="text-sm text-gray-500 dark:text-gray-300">
+        <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
           {formatDate(student.createdAt)}
         </div>
       )
@@ -355,10 +362,10 @@ const StudentsPage = () => {
           // Handle edit functionality
           console.log('Edit student:', student);
         }}
-        className="text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-300 p-1.5 sm:p-2 rounded-md hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-colors"
+        className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 p-1.5 sm:p-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors"
         title="Edit Student"
       >
-        <FaEdit className="w-3 h-3 sm:w-4 sm:h-4" />
+        <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
 
       {/* Delete Button */}
@@ -367,10 +374,10 @@ const StudentsPage = () => {
           e.stopPropagation();
           handleDelete(student._id);
         }}
-        className="text-primary-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+        className="text-red-500 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
         title="Delete Student"
       >
-        <FaTrash className="w-3 h-3 sm:w-4 sm:h-4" />
+        <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
     </div>
   );
@@ -378,194 +385,477 @@ const StudentsPage = () => {
 
 
   return (
-    <AdminMobileAppWrapper title="Students">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+     <AdminMobileAppWrapper title="User Directory">
+       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 md:p-6 w-full text-gray-900 dark:text-white">
-          {/* Enhanced Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-            <div>
-              <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">
-                Students ({pagination?.total || students?.length})
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 text-lg">
-                Create, edit or delete students
-              </p>
-            </div>
-            {/* Search and Filters */}
-            <SearchFilter
-              searchTerm={searchTerm}
-              onSearchChange={handleSearch}
-              placeholder="Search students by name, email, or phone..."
-            />
-            {/* Create Subscription Button */}
-            <div className="flex items-center space-x-2 flex-shrink-0">
-              <Button
-                variant="admin"
-                size="small"
-                onClick={() => setShowCreateModal(true)}
-                icon={<span>+</span>}
-              >
-                Create Subscription
-              </Button>
+
+         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10`}>
+            {/* Student Directory Overview */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-12"
+            >
+             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+               <div className="space-y-4">
+                 <div className="flex items-center gap-3">
+                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                     <Users className="w-6 h-6" />
+                   </div>
+                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">USER MANAGEMENT</span>
+                 </div>
+                  <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                    STUDENT <span className="text-indigo-600">DIRECTORY</span>
+                  </h1>
+                  <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">
+                    Comprehensive administrative control over candidate accounts.
+                  </p>
+               </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                  <Button
+                    variant="primary"
+                    onClick={() => setShowCreateModal(true)}
+                    icon={UserPlus}
+                    className="px-8 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
+                  >
+                    ADD SUBSCRIPTION
+                  </Button>
+              </div>
             </div>
 
-            <ViewToggle
-              currentView={viewMode}
-              onViewChange={setViewMode}
-              views={['table', 'list', 'grid']}
-            />
-            <div className="flex items-center space-x-2 flex-shrink-0">
-              <select
-                value={itemsPerPage}
-                onChange={handleItemsPerPageChange}
-                className="w-full lg:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-xs sm:text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white min-w-0"
-              >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-                <option value={250}>250</option>
-                <option value={500}>500</option>
-                <option value={1000}>1000</option>
-              </select>
+             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+               {[
+                 { label: 'Total Registrations', value: pagination?.total || 0, icon: Users, color: 'blue' },
+                 { label: 'Active Sessions', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
+                 { label: 'Subscription Base', value: students.filter(s => s.subscriptionStatus === 'pro').length || 0, icon: Crown, color: 'amber' },
+                 { label: 'New Candidates', value: students.filter(s => s.level?.currentLevel <= 1).length || 0, icon: Star, color: 'indigo' }
+               ].map((stat, i) => (
+                 <div
+                   key={stat.label}
+                   className="p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                 >
+                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
+                     <stat.icon className="w-5 h-5" />
+                   </div>
+                   <div className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tabular-nums mb-2 tracking-tighter italic leading-none">{stat.value}</div>
+                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
+                 </div>
+               ))}
+             </div>
+          </motion.div>
+
+           {/* Search & Filter Controls */}
+           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl">
+             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+               <div className="flex-1 relative group w-full lg:max-w-2xl">
+                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                 <input
+                   type="text"
+                   value={searchTerm}
+                   onChange={(e) => handleSearch(e.target.value)}
+                   placeholder="Search candidate directory..."
+                   className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                 />
+               </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                  {[
+                    { icon: TableIcon, id: 'table', label: 'Table' },
+                    { icon: List, id: 'list', label: 'List' },
+                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
+                  ].map((mode) => (
+                    <button
+                      key={mode.id}
+                      onClick={() => setViewMode(mode.id)}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      title={mode.label}
+                    >
+                      <mode.icon className="w-5 h-5" />
+                      {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest pr-2">{mode.label}</span>}
+                    </button>
+                  ))}
+                </div>
+
+                 <div className="relative group">
+                   <Box className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                   <select
+                     value={itemsPerPage}
+                     onChange={handleItemsPerPageChange}
+                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all"
+                   >
+                     {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} PER PAGE</option>)}
+                   </select>
+                   <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+                 </div>
+              </div>
             </div>
           </div>
 
+           {/* Data Grid Interface */}
+           <AnimatePresence mode="wait">
+             {loading ? (
+               <motion.div
+                 key="loading"
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 exit={{ opacity: 0 }}
+                 className="flex flex-col items-center justify-center py-32 space-y-8"
+               >
+                 <div className="relative">
+                   <motion.div
+                     animate={{ rotate: 360 }}
+                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                     className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
+                   />
+                   <Users className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
+                 </div>
+                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading Student Directory...</div>
+               </motion.div>
+             ) : students.length === 0 ? (
+               <motion.div
+                 key="empty"
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+               >
+                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                   <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
+                 </div>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Records Found</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No matching candidate profiles found in the directory.</p>
+               </motion.div>
+            ) : (
+              <motion.div
+                key="content"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-12"
+              >
+                {/* View Render Logic */}
+                {viewMode === "table" && (
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet</th>
+                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
+                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level & Status</th>
+                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account State</th>
+                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                        {students.map((student, i) => (
+                          <motion.tr
+                            key={student._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.05 }}
+                            onClick={() => router.push(`/admin/students/${student._id}`)}
+                            className="group hover:bg-slate-50/80 dark:hover:bg-white/5 transition-all cursor-pointer"
+                          >
+                            <td className="px-8 py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
+                            <td className="px-8 py-6">
+                              <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center text-white font-black shadow-lg group-hover:scale-110 transition-transform">
+                                  {student.name?.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                  <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{student.name}</div>
+                                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">ID_{student._id.slice(-6).toUpperCase()}</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-8 py-6">
+                              <div className="text-sm font-black text-emerald-500 tabular-nums">
+                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(student.walletBalance || 0)}
+                              </div>
+                            </td>
+                            <td className="px-8 py-6">
+                              <div className="space-y-1">
+                                 <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-blue-500/50" /> {student.email}</div>
+                                 <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'DATA_MISSING'}</div>
+                              </div>
+                            </td>
+                            <td className="px-8 py-6">
+                               <div className="flex flex-col">
+                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">LEVEL: {student.level?.currentLevel || 1}</div>
+                                 <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{getLevelName(student.level?.currentLevel || 1)}</div>
+                               </div>
+                             </td>
+                            <td className="px-8 py-6">
+                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' :
+                                student.status === 'suspended' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
+                                  'bg-slate-500/10 text-slate-500 border-slate-500/20'
+                                }`}>
+                                 {student.status?.toUpperCase() || 'INACTIVE'}
+                               </div>
+                            </td>
+                            <td className="px-8 py-6 text-right">
+                              {renderStudentActions(student)}
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
 
-          {/* Content */}
-          {loading ? (
-            <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="gray" message="" />
-            </div>
-          ) : students.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">👥</div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                No students found
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                {searchTerm ? 'Try adjusting your search terms.' : 'No students have registered yet.'}
-              </p>
-            </div>
-          ) : (
-            <>
-              <ResponsiveTable
-                data={students}
-                columns={columns}
-                viewModes={['table', 'list', 'grid']}
-                defaultView={viewMode}
-                currentView={viewMode}
-                showPagination={false}
-                showViewToggle={false}
-                loading={loading}
-                emptyMessage="No students found"
-                onViewChange={setViewMode}
-                onRowClick={(student) => {
-                  // Handle row click if needed
-                  console.log('Student clicked:', student);
-                }}
-              />
+                {/* List View */}
+                {viewMode === "list" && (
+                  <div className="grid grid-cols-1 gap-6">
+                    {students.map((student, i) => (
+                      <motion.div
+                        key={student._id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        onClick={() => router.push(`/admin/students/${student._id}`)}
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-8 cursor-pointer"
+                      >
+                        <div className="w-20 h-20 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                          {student.name?.charAt(0).toUpperCase()}
+                        </div>
 
-              {/* External Pagination */}
-              {pagination.totalPages > 1 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={pagination.totalPages}
-                  onPageChange={handlePageChange}
-                  totalItems={pagination.total}
-                  itemsPerPage={itemsPerPage}
-                />
-              )}
-            </>
-          )}
+                        <div className="flex-1 space-y-4">
+                          <div className="flex flex-wrap items-center gap-4">
+                            <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{student.name}</h3>
+                             <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 ${student.subscriptionStatus === 'pro' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
+                               {student.subscriptionStatus?.toUpperCase() || 'FREE'}
+                             </div>
+                          </div>
+
+                          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                            <div className="flex items-center gap-2">
+                              <Mail className="w-4 h-4 text-blue-500/50" />
+                              <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{student.email}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Wallet className="w-4 h-4 text-emerald-500/50" />
+                              <span className="text-[10px] font-black text-emerald-500 tabular-nums uppercase tracking-widest">BAL_{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                            </div>
+                             <div className="flex items-center gap-2">
+                               <Crown className="w-4 h-4 text-amber-500/50" />
+                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">LEVEL: {student.level?.currentLevel || 1} {getLevelName(student.level?.currentLevel || 1)}</span>
+                             </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 pl-0 lg:pl-10 lg:border-l-2 border-slate-100 dark:border-white/5">
+                          {renderStudentActions(student)}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Grid View */}
+                {viewMode === "grid" && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    {students.map((student, i) => (
+                      <motion.div
+                        key={student._id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        onClick={() => router.push(`/admin/students/${student._id}`)}
+                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-500 to-primary-500" />
+
+                        <div className="mt-4 mb-6 relative">
+                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            {student.name?.charAt(0).toUpperCase()}
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
+                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'pro' ? 'text-amber-500' : 'text-slate-300'}`} />
+                          </div>
+                        </div>
+
+                         <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
+                         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'UNKNOWN USER'}</div>
+
+                        <div className="grid grid-cols-2 gap-4 w-full mb-8">
+                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
+                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">User Level</div>
+                             <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter">{student.level?.currentLevel || 1}</div>
+                           </div>
+                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
+                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
+                             <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
+                           </div>
+                        </div>
+
+                        <div className="w-full flex items-center gap-3">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                             className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
+                           >
+                             VIEW DETAILS
+                           </motion.button>
+                          <div className="p-1">
+                            {renderStudentActions(student)}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {/* External Pagination */}
+                {pagination.totalPages > 1 && (
+                  <div className="flex justify-center pt-12">
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={pagination.totalPages}
+                      onPageChange={handlePageChange}
+                      totalItems={pagination.total}
+                      itemsPerPage={itemsPerPage}
+                    />
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Create Subscription Modal */}
-        {showCreateModal && (
-          <div className="fixed inset-0 z-50 overflow-y-auto">
-            <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-              <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div className="absolute inset-0 bg-gray-500 opacity-75" onClick={() => setShowCreateModal(false)}></div>
-              </div>
+         {/* Subscription Provisioning Modal */}
+         <AnimatePresence>
+           {showCreateModal && (
+             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
+               <motion.div
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 exit={{ opacity: 0 }}
+                 onClick={() => setShowCreateModal(false)}
+                 className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl"
+               />
+ 
+               <motion.div
+                 initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                 animate={{ opacity: 1, scale: 1, y: 0 }}
+                 exit={{ opacity: 0, scale: 0.95, y: 40 }}
+                 className="relative w-full max-w-2xl bg-white dark:bg-[#0A0F1E] rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
+               >
+                 <div className="p-10 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                   <div className="flex items-center gap-6">
+                     <div className="p-5 bg-indigo-500/10 text-indigo-500 rounded-[1.5rem] shadow-xl">
+                       <Zap className="w-8 h-8 fill-current" />
+                     </div>
+                     <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Subscription Interface</span>
+                        </div>
+                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
+                           ALLOCATE <span className="text-indigo-600">PLAN</span>
+                         </h2>
+                      </div>
+                   </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setShowCreateModal(false)}
+                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-rose-500 rounded-2xl transition-colors"
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.button>
+                </div>
 
-              <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-
-              <div className="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
-                <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                  <div className="sm:flex sm:items-start">
-                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">
-                        Create Subscription
-                      </h3>
-                      <div className="mt-2">
-                        <form onSubmit={handleCreateSubscription} className="space-y-4">
-                          <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                              User Email
-                            </label>
-                            <input
-                              type="email"
-                              name="email"
-                              id="email"
-                              required
-                              value={createFormData.email}
-                              onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                              className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-lg"
-                              placeholder="support@mohdsazidkhan.com"
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="planId" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                              Plan
-                            </label>
-                            <select
-                              id="planId"
-                              name="planId"
-                              value={createFormData.planId}
-                              onChange={(e) => setCreateFormData({ ...createFormData, planId: e.target.value })}
-                              className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-lg"
-                            >
-                              <option value="basic">Basic (₹9)</option>
-                              <option value="premium">Premium (₹49)</option>
-                              <option value="pro">Pro (₹99)</option>
-                            </select>
-                          </div>
-
-                          <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                            <Button
-                              type="submit"
-                              variant="admin"
-                              loading={createLoading}
-                              className="sm:ml-3"
-                              fullWidth={!isMobile}
-                            >
-                              Create Subscription
-                            </Button>
-                            <button
-                              type="button"
-                              onClick={() => setShowCreateModal(false)}
-                              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-lg"
-                            >
-                              Cancel
-                            </button>
-                          </div>
-                        </form>
+                <div className="p-10">
+                  <form onSubmit={handleCreateSubscription} className="space-y-8">
+                     <div className="space-y-4">
+                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Recipient Account Email</label>
+                        <div className="relative group">
+                          <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+                          <input
+                            type="email"
+                            required
+                            value={createFormData.email}
+                            onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
+                            className="w-full pl-16 pr-8 py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                            placeholder="ENTER RECIPIENT EMAIL..."
+                          />
+                        </div>
+                      </div>
+ 
+                     <div className="space-y-6">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Plan Category Selection</label>
+                      <div className="grid grid-cols-1 gap-4">
+                         {[
+                           { id: 'basic', label: 'Basic Plan', price: '₹9', icon: Shield, color: 'blue' },
+                           { id: 'premium', label: 'Premium Plan', price: '₹49', icon: Star, color: 'emerald' },
+                           { id: 'pro', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'amber' }
+                         ].map((tier) => (
+                          <motion.div
+                            key={tier.id}
+                            whileHover={{ x: 10 }}
+                            onClick={() => setCreateFormData({ ...createFormData, planId: tier.id })}
+                            className={`p-6 rounded-3xl border-2 cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'bg-primary-500/10 border-primary-500/30 shadow-xl' : 'bg-slate-50 dark:bg-white/5 border-transparent opacity-60 hover:opacity-100'}`}
+                          >
+                            <div className="flex items-center gap-4">
+                              <div className={`p-3 rounded-xl bg-${tier.color}-500/10 text-${tier.color}-500`}>
+                                <tier.icon className="w-5 h-5" />
+                              </div>
+                              <div>
+                                 <div className="text-xs font-black uppercase italic tracking-tighter">{tier.label}</div>
+                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tier.id.toUpperCase()}_PLAN_ACTIVE</div>
+                               </div>
+                            </div>
+                            <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{tier.price}</div>
+                          </motion.div>
+                        ))}
                       </div>
                     </div>
-                  </div>
+
+                     <div className="flex items-center gap-4 pt-6 text-[10px] font-black uppercase tracking-widest text-slate-400 italic">
+                       <Info className="w-4 h-4" />
+                       Subscriptions will be active for the selected duration (standard 30 days).
+                     </div>
+
+                    <div className="flex items-center gap-4 pt-4">
+                      <motion.button
+                         type="button"
+                         whileHover={{ scale: 1.05 }}
+                         whileTap={{ scale: 0.95 }}
+                         onClick={() => setShowCreateModal(false)}
+                         className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                       >
+                         Cancel
+                       </motion.button>
+                      <motion.button
+                         type="submit"
+                         whileHover={{ scale: 1.05 }}
+                         whileTap={{ scale: 0.95 }}
+                         disabled={createLoading}
+                         className="flex-1 py-5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl shadow-indigo-500/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                       >
+                         {createLoading ? (
+                           <RefreshCcw className="w-4 h-4 animate-spin" />
+                         ) : (
+                           <>
+                             <Zap className="w-4 h-4" /> Add Subscription
+                           </>
+                         )}
+                       </motion.button>
+                    </div>
+                  </form>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </AdminMobileAppWrapper>
   );
 };
 
 export default StudentsPage;
+
+
 
 
 

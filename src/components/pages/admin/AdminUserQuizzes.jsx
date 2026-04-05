@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
@@ -12,6 +12,31 @@ import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import Loading from "../../Loading";
 import Button from "../../ui/Button";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Trophy,
+  Layers,
+  LayoutGrid,
+  Filter,
+  Search,
+  ChevronRight,
+  Clock,
+  User,
+  Eye,
+  Zap,
+  CheckCircle2,
+  XCircle,
+  MoreVertical,
+  ShieldCheck,
+  ShieldAlert,
+  ArrowRight,
+  HelpCircle,
+  FileText,
+  Plus,
+  ArrowLeft,
+  Crown,
+  Target
+} from "lucide-react";
 
 const AdminUserQuizzes = () => {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -23,11 +48,9 @@ const AdminUserQuizzes = () => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [adminNotes, setAdminNotes] = useState("");
-  const [actionType, setActionType] = useState(""); // approve, reject
-  const [statusFilter, setStatusFilter] = useState("all"); // all | pending | approved | rejected
+  const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  console.log(selectedQuiz, 'selectedQuiz')
-  // always in admin route in this page
+
   const isOpen = useSelector((state) => state.sidebar.isOpen);
   const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
   const user = getCurrentUser();
@@ -35,33 +58,22 @@ const AdminUserQuizzes = () => {
   useEffect(() => {
     fetchData();
   }, [activeTab, statusFilter, searchQuery]);
+
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, "0");
-    const monthNames = [
-      "JAN",
-      "FEB",
-      "MAR",
-      "APR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AUG",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DEC",
-    ];
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
-    const time = date.toLocaleTimeString("en-US", {
+    const d = new Date(dateString);
+    return `${d.getDate().toString().padStart(2, '0')} ${['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()]} ${d.getFullYear()}`;
+  };
+
+  const formatTime = (dateString) => {
+    if (!dateString) return "N/A";
+    return new Date(dateString).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
     });
-    return `${day} ${month} ${year} at ${time}`;
   };
+
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -134,7 +146,6 @@ const AdminUserQuizzes = () => {
           return;
         }
       }
-      // For approved/rejected: try to fetch questions via admin questions API
       let enriched = { ...quiz };
       try {
         const qres = await API.getAdminQuestions({ quiz: quiz._id, limit: 1000 });
@@ -142,9 +153,7 @@ const AdminUserQuizzes = () => {
         if (Array.isArray(questions) && questions.length > 0) {
           enriched = { ...enriched, questions };
         }
-      } catch (_) {
-        // ignore; show without questions if unavailable
-      }
+      } catch (_) { }
       setSelectedQuiz(enriched);
       setShowModal(true);
     } catch (err) {
@@ -159,7 +168,7 @@ const AdminUserQuizzes = () => {
         toast.success(response.message || "Quiz approved successfully");
         if (response.data?.milestoneAchieved) {
           toast.success(
-            `🎉 Milestone achieved! User upgraded to ${response.data.milestoneDetails.tier}`,
+            `Ã°Å¸Å½â€° Milestone achieved! User upgraded to ${response.data.milestoneDetails.tier}`,
             { autoClose: 5000 }
           );
         }
@@ -232,498 +241,469 @@ const AdminUserQuizzes = () => {
     }
   };
 
+  const getStatusConfig = (status) => {
+    switch (status) {
+      case "pending":
+        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "PENDING_MODERATION" };
+      case "approved":
+        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "PUBLISHED" };
+      case "rejected":
+        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "DENIED" };
+      default:
+        return { color: "text-slate-500 bg-slate-500/10 border-slate-500/20", icon: MoreVertical, label: "UNKNOWN" };
+    }
+  };
+
+  if (loading && quizzes.length === 0 && categories.length === 0 && subcategories.length === 0) {
+    return (
+      <AdminMobileAppWrapper title="Editorial Control">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+          <div className="relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-28 h-28 border-4 border-primary-500/10 border-t-primary-500 rounded-full shadow-2xl"
+            />
+            <Trophy className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
+          </div>
+          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Content Stream...</div>
+        </div>
+      </AdminMobileAppWrapper>
+    );
+  }
+
   return (
-    <AdminMobileAppWrapper title="User Questions">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full text-gray-900 dark:text-white">
-          <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-            <div className="mx-auto p-2 lg:p-4">
-              {/* Header */}
-              <div className="flex flex-col lg:flex-row justify-between items-center bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 lg:p-4 mb-1 lg:mb-6">
-                <h1 className="text-xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-2 lg:mb-0">
-                  User Quizzes
-                </h1>
+    <AdminMobileAppWrapper title="Editorial Control">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
+        {isMounted && <Sidebar />}
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
-                {/* Tabs */}
-                <div className="flex gap-2">
-                  {["quizzes", "categories", "subcategories"].map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab)}
-                      className={`px-3 lg:px-6 py-1 lg:py-3 rounded-lg font-medium capitalize ${activeTab === tab
-                        ? "bg-secondary-600 text-white"
-                        : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
-                        }`}
-                    >
-                      {tab}
-                    </button>
-                  ))}
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
+                    <Trophy className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">EDITORIAL_HUB // CONTENT_MODERATION</span>
                 </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  USER <span className="text-primary-500">CURATION</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user-generated entertainment modules, taxonomies, and sub-channels.</p>
+              </div>
+            </div>
 
-                {/* Filters */}
-                <div className="mt-3 flex flex-col lg:flex-row gap-2 lg:items-center">
-                  <div className="flex items-center gap-2">
-                    <label className="text-sm text-gray-600 dark:text-gray-300">
-                      Status
-                    </label>
-                    <select
-                      value={statusFilter}
-                      onChange={(e) => setStatusFilter(e.target.value)}
-                      className="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
-                    >
-                      <option value="all">All</option>
-                      <option value="pending">Pending</option>
-                      <option value="approved">Approved</option>
-                      <option value="rejected">Rejected</option>
-                    </select>
-                  </div>
-                  <div className="flex-1">
-                    <input
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search by title, creator, category..."
-                      className="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
-                    />
-                  </div>
+            {/* Navigation Tabs */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              {[
+                { id: "quizzes", label: "Entertainment Modules", icon: Trophy, count: quizzes.length },
+                { id: "categories", label: "Macro Taxonomies", icon: Layers, count: categories.length },
+                { id: "subcategories", label: "Micro Channels", icon: LayoutGrid, count: subcategories.length }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-8 py-5 rounded-[2.5rem] border-4 transition-all flex items-center gap-4 shadow-xl ${activeTab === tab.id
+                    ? "bg-primary-600 border-primary-500 text-white translate-y-[-4px] shadow-primary-500/50"
+                    : "bg-white dark:bg-white/5 border-slate-100 dark:border-white/5 text-slate-400 hover:border-primary-500/30 font-black uppercase tracking-widest text-[10px]"
+                    }`}
+                >
+                  <tab.icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : 'text-primary-500'}`} />
+                  {tab.label}
+                  <span className={`px-3 py-1 rounded-full text-[8px] font-black ${activeTab === tab.id ? 'bg-white/20' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>{tab.count}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Interface Controller */}
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-[10px] font-black">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
+                  <Filter className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
+                  <div className="text-sm italic uppercase tracking-tighter">Content Curation Parameters</div>
                 </div>
               </div>
 
-              {/* Content */}
-              {loading ? (
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-12 text-center">
-                  <Loading size="md" color="blue" message="Loading..." />
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="relative group">
+                  <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                  >
+                    <option value="all">ALL_PROTOCOLS</option>
+                    <option value="pending">PENDING_REVIEW</option>
+                    <option value="approved">AUTHORIZED_NODES</option>
+                    <option value="rejected">REJECTED_ENTRIES</option>
+                  </select>
+                  <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                 </div>
-              ) : (
-                <>
-                  {/* Quizzes Tab */}
+
+                <div className="relative">
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <input
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="LOCALIZE_UNIT_ID..."
+                    className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-80 placeholder:text-slate-400"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Results Visuzalization */}
+          <AnimatePresence mode="wait">
+             {loading ? (
+                <div className="flex justify-center py-40">
+                   <Loading size="lg" color="blue" message="" />
+                </div>
+             ) : (
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="space-y-8"
+                >
+                  {/* Quizzes Grid */}
                   {activeTab === "quizzes" && (
-                    <div className="space-y-4">
-                      {quizzes.length === 0 ? (
-                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-12 text-center">
-                          <p className="text-xl text-gray-600 dark:text-gray-400">
-                            No pending quizzes
-                          </p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                       {quizzes.length === 0 ? (
+                          <div className="lg:col-span-2 flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner">
+                            <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_QUIZZES_LOCATED</h3>
+                          </div>
+                       ) : (
+                         quizzes.map((quiz, i) => {
+                           const statusCfg = getStatusConfig(quiz.status);
+                           return (
+                             <motion.div
+                               key={quiz._id || i}
+                               initial={{ opacity: 0, scale: 0.95 }}
+                               animate={{ opacity: 1, scale: 1 }}
+                               transition={{ delay: i * 0.05 }}
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
+                             >
+                                <div className="flex justify-between items-start mb-8 text-[10px] font-black uppercase tracking-widest">
+                                   <div className="flex items-center gap-3">
+                                      <div className={`w-3 h-3 rounded-full ${quiz.status === 'approved' ? 'bg-emerald-500 animate-pulse' : quiz.status === 'rejected' ? 'bg-rose-500' : 'bg-amber-500 animate-bounce'}`} />
+                                      {quiz.category?.name || "UNCATEGORIZED"} // {quiz.difficulty?.toUpperCase()}
+                                   </div>
+                                   <div className={`px-4 py-1 rounded-full border ${statusCfg.color} flex items-center gap-2 italic`}>
+                                      <statusCfg.icon className="w-3 h-3" />
+                                      {statusCfg.label}
+                                   </div>
+                                </div>
+
+                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-2 group-hover:text-primary-500 transition-colors uppercase mb-4">{quiz.title}</h3>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-relaxed mb-8 line-clamp-2">{quiz.description}</p>
+
+                                <div className="grid grid-cols-3 gap-6 mb-10 text-[9px] font-black uppercase tracking-widest">
+                                   <div className="space-y-1">
+                                      <div className="text-slate-400">Questions</div>
+                                      <div className="text-sm italic">{quiz.questionCount || 0}_UNITS</div>
+                                   </div>
+                                   <div className="space-y-1">
+                                      <div className="text-slate-400">Yield_Potential</div>
+                                      <div className="text-sm italic text-emerald-500">₹{quiz.rewardAmount || 0}_INR</div>
+                                   </div>
+                                   <div className="space-y-1">
+                                      <div className="text-slate-400">Engagements</div>
+                                      <div className="text-sm italic">{quiz.viewsCount || 0}_VIEWS</div>
+                                   </div>
+                                </div>
+
+                                <div className="flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
+                                   <div className="flex items-center gap-4">
+                                      <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
+                                        {quiz.createdBy?.name?.[0]?.toUpperCase() || 'U'}
+                                      </div>
+                                      <div>
+                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{quiz.createdBy?.name || 'NULL_IDENTITY'}</div>
+                                         <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(quiz.createdAt)}</div>
+                                      </div>
+                                   </div>
+                                   <button 
+                                      onClick={() => handleViewQuiz(quiz)}
+                                      className="p-4 bg-primary-600 text-white rounded-2xl shadow-duo-primary hover:scale-105 active:scale-95 transition-all text-[8px] font-black uppercase tracking-widest flex items-center gap-3"
+                                   >
+                                      REVIEW_MOD <ArrowRight className="w-4 h-4" />
+                                   </button>
+                                </div>
+                             </motion.div>
+                           );
+                         })
+                       )}
+                    </div>
+                  )}
+
+                  {/* Categories View */}
+                  {activeTab === "categories" && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                       {categories.length === 0 ? (
+                         <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
+                            <Layers className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_TAXONOMIES_LOCATED</h3>
+                         </div>
+                       ) : (
+                         categories.map((cat, i) => {
+                           const statusCfg = getStatusConfig(cat.status);
+                           return (
+                             <motion.div
+                               key={cat._id || i}
+                               initial={{ opacity: 0, y: 20 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ delay: i * 0.05 }}
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                             >
+                                <div className="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-[2rem] flex items-center justify-center mb-8 border-2 border-emerald-500/20 shadow-inner group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                   <Layers className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{cat.name}</h3>
+                                <div className={`mb-8 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${statusCfg.color}`}>
+                                   {statusCfg.label}
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
+                                   <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
+                                      <div className="text-slate-400 mb-1">Micro_Channels</div>
+                                      <div className="text-sm italic tabular-nums">{cat.subcategoryCount || 0}</div>
+                                   </div>
+                                   <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
+                                      <div className="text-slate-400 mb-1">Identity</div>
+                                      <div className="text-sm italic truncate">{cat.createdBy?.email?.split('@')[0] || 'ADMIN'}</div>
+                                   </div>
+                                </div>
+
+                                {cat.status === 'pending' && (
+                                  <div className="flex gap-4 w-full">
+                                     <button onClick={() => handleApproveCategory(cat._id)} className="flex-1 p-4 bg-emerald-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all outline-none">
+                                        AUTHORIZE
+                                     </button>
+                                     <button onClick={() => handleRejectCategory(cat._id)} className="flex-1 p-4 bg-rose-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all outline-none">
+                                        DENY
+                                     </button>
+                                  </div>
+                                )}
+                             </motion.div>
+                           );
+                         })
+                       )}
+                    </div>
+                  )}
+
+                  {/* Subcategories View */}
+                  {activeTab === "subcategories" && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                       {subcategories.length === 0 ? (
+                         <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
+                            <LayoutGrid className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_CHANNELS_LOCATED</h3>
+                         </div>
+                       ) : (
+                         subcategories.map((sub, i) => {
+                           const statusCfg = getStatusConfig(sub.status);
+                           return (
+                             <motion.div
+                               key={sub._id || i}
+                               initial={{ opacity: 0, y: 20 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ delay: i * 0.05 }}
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-amber-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                             >
+                                <div className="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mb-6 border-2 border-amber-500/20 shadow-inner group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                                   <LayoutGrid className="w-7 h-7" />
+                                </div>
+                                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{sub.name}</h3>
+                                <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{sub.category?.name || 'GENERIC_PHASE'}</div>
+
+                                <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
+                                   <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
+                                      <div className="text-slate-400 mb-1">Modules</div>
+                                      <div className="text-sm italic tabular-nums">{sub.quizCount || 0}</div>
+                                   </div>
+                                   <div className={`p-4 rounded-2xl border shadow-inner ${statusCfg.color}`}>
+                                      <div className="text-slate-400 mb-1">Protocol</div>
+                                      <div className="text-sm italic truncate tracking-tight">{statusCfg.label.split('_')[0]}</div>
+                                   </div>
+                                </div>
+
+                                {sub.status === 'pending' && (
+                                  <div className="flex gap-4 w-full">
+                                     <button onClick={() => handleApproveSubcategory(sub._id)} className="flex-1 p-4 bg-emerald-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all outline-none">
+                                        <ShieldCheck className="w-4 h-4 mx-auto" />
+                                     </button>
+                                     <button onClick={() => handleRejectSubcategory(sub._id)} className="flex-1 p-4 bg-rose-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all outline-none">
+                                        <ShieldAlert className="w-4 h-4 mx-auto" />
+                                     </button>
+                                  </div>
+                                )}
+                             </motion.div>
+                           );
+                         })
+                       )}
+                    </div>
+                  )}
+                </motion.div>
+             )}
+          </AnimatePresence>
+
+          {/* Quiz Review Modal */}
+          <AnimatePresence>
+            {showModal && selectedQuiz && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-slate-900/60 backdrop-blur-xl flex items-center justify-center p-4 z-[999]"
+              >
+                <motion.div
+                  initial={{ scale: 0.9, y: 20 }}
+                  animate={{ scale: 1, y: 0 }}
+                  exit={{ scale: 0.9, y: 20 }}
+                  className="bg-white dark:bg-[#0f172a] rounded-[4rem] border-8 border-slate-100 dark:border-white/5 max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-indigo-500/20"
+                >
+                  <div className="bg-slate-50 dark:bg-white/5 p-10 border-b-4 border-slate-100 dark:border-white/5 flex items-center justify-between">
+                     <div className="flex items-center gap-6">
+                        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-[2rem]">
+                           <Crown className="w-8 h-8" />
                         </div>
-                      ) : (
-                        quizzes.map((quiz) => (
-                          <div
-                            key={quiz._id}
-                            className={`rounded-lg shadow-lg p-6 ${quiz.status === "approved"
-                              ? "bg-green-100 dark:bg-green-900/30"
-                              : quiz.status === "rejected"
-                                ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-primary-100 dark:bg-primary-900/30"
-                              }`}
-                          >
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1">
-                                <h3 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2">
-                                  {quiz.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-3">
-                                  {quiz.description}
-                                </p>
-                                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-7 gap-4 text-sm">
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Status:
-                                    </span>
-                                    <br />
-                                    <p
-                                      className={`mt-1 inline-block px-2 py-0.5 rounded text-xs font-semibold ${quiz.status === "approved"
-                                        ? "bg-green-600 text-white"
-                                        : quiz.status === "rejected"
-                                          ? "bg-red-600 text-white"
-                                          : "bg-primary-600 text-white"
+                        <div>
+                           <div className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em] mb-2">SCHEMATIC_INSPECTION // MOD_09</div>
+                           <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{selectedQuiz.title}</h2>
+                        </div>
+                     </div>
+                     <button 
+                        onClick={() => setShowModal(false)}
+                        className="p-5 bg-white dark:bg-white/5 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all border-4 border-slate-100 dark:border-white/10"
+                     >
+                        <XCircle className="w-8 h-8" />
+                     </button>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto p-10 lg:p-14 space-y-12">
+                     {/* Metadata Grid */}
+                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                           { icon: Layers, label: "Macros", value: `${selectedQuiz.category?.name} / ${selectedQuiz.subcategory?.name}` },
+                           { icon: Target, label: "Intensity", value: selectedQuiz.difficulty?.toUpperCase() },
+                           { icon: Zap, label: "Clearance", value: `LEVEL_${selectedQuiz.requiredLevel}` },
+                           { icon: Clock, label: "Temporal", value: `${selectedQuiz.timeLimit}_MIN` }
+                        ].map(item => (
+                           <div key={item.label} className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
+                              <item.icon className="w-5 h-5 text-primary-500 mb-4" />
+                              <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{item.label}</div>
+                              <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{item.value}</div>
+                           </div>
+                        ))}
+                     </div>
+
+                     {/* Synopsis */}
+                     <div className="space-y-4">
+                        <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest flex items-center gap-2">
+                           <FileText className="w-4 h-4" /> SYNOPSIS_PAYLOAD
+                        </div>
+                        <p className="text-slate-500 dark:text-slate-400 font-medium text-lg border-l-4 border-primary-500/20 pl-8 italic">
+                           {selectedQuiz.description || "No metadata synchronization detected for this objective synopsis."}
+                        </p>
+                     </div>
+
+                     {/* Query Matrix */}
+                     <div className="space-y-8">
+                        <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest flex items-center justify-between">
+                           <div className="flex items-center gap-2"><HelpCircle className="w-4 h-4" /> QUERY_MATRIX_DEPLOYMENT</div>
+                           <span className="bg-primary-500/10 px-4 py-1 rounded-full">{selectedQuiz.questions?.length || 0}_UNITS</span>
+                        </div>
+                        <div className="grid grid-cols-1 gap-6">
+                           {selectedQuiz.questions?.map((q, i) => (
+                             <motion.div
+                               key={i}
+                               initial={{ opacity: 0, scale: 0.98 }}
+                               animate={{ opacity: 1, scale: 1 }}
+                               transition={{ delay: i * 0.1 }}
+                               className="p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 group hover:border-primary-500/30 transition-all shadow-inner"
+                             >
+                                <div className="flex items-start gap-6 mb-8">
+                                   <div className="w-12 h-12 bg-primary-500 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-lg shrink-0 uppercase italic">{i + 1}</div>
+                                   <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight uppercase pt-1">{q.questionText}</h4>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-16">
+                                  {q.options.map((opt, j) => (
+                                    <div
+                                      key={j}
+                                      className={`p-5 rounded-2xl flex items-center gap-4 border-2 transition-all ${j === q.correctAnswerIndex
+                                        ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-500"
+                                        : "bg-white dark:bg-white/5 border-slate-100 dark:border-white/10 text-slate-400"
                                         }`}
                                     >
-                                      {quiz.status}
-                                    </p>
-                                  </div>
-
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Category:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {quiz.category?.name || "N/A"}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Difficulty:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white capitalize">
-                                      {quiz.difficulty}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Questions:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {quiz.questionCount || 0}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Creator:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {quiz.createdBy?.name ||
-                                        quiz.createdBy?.email ||
-                                        "Unknown"}
-                                    </p>
-                                    {quiz.createdBy?.email && (
-                                      <p className="text-xs text-gray-600 dark:text-gray-300">
-                                        {quiz.createdBy.email}
-                                      </p>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Created At:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {formatDate(quiz.createdAt) || 0}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Stats:
-                                    </span>
-                                    <div className="flex flex-col">
-                                      <span className="font-medium text-gray-800 dark:text-white text-xs">
-                                        Views: {quiz.viewsCount || 0}
-                                      </span>
-                                      {quiz.status === 'approved' && quiz.rewardAmount > 0 && (
-                                        <span className="font-bold text-green-600 dark:text-green-400 text-xs mt-1">
-                                          Reward: ₹{quiz.rewardAmount}
-                                        </span>
-                                      )}
+                                      <span className="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center text-[10px] font-black">{j + 1}</span>
+                                      <span className="text-sm font-black uppercase italic tracking-tight">{opt}</span>
+                                      {j === q.correctAnswerIndex && <ShieldCheck className="w-5 h-5 ml-auto text-emerald-500" />}
                                     </div>
-                                  </div>
+                                  ))}
                                 </div>
-                              </div>
-                              <Button
-                                variant="admin"
-                                onClick={() => handleViewQuiz(quiz)}
-                                className="ml-4 font-semibold"
-                              >
-                                Review
-                              </Button>
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  )}
-
-                  {/* Categories Tab */}
-                  {activeTab === "categories" && (
-                    <div className="space-y-4">
-                      {categories.length === 0 ? (
-                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-12 text-center">
-                          <p className="text-xl text-gray-600 dark:text-gray-400">
-                            No pending categories
-                          </p>
+                             </motion.div>
+                           ))}
                         </div>
-                      ) : (
-                        categories.map((cat) => (
-                          <div
-                            key={cat._id}
-                            className={`rounded-lg shadow-lg p-6 ${cat.status === "approved"
-                              ? "bg-green-100 dark:bg-green-900/30"
-                              : cat.status === "rejected"
-                                ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-primary-100 dark:bg-primary-900/30"
-                              }`}
-                          >
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1">
-                                <h3 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2">
-                                  {cat.name}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-3">
-                                  {cat.description || "No description"}
-                                </p>
-                                <div className="grid grid-cols-3 gap-4 text-sm">
-                                  <div className="text-sm">
-                                    <span className="text-gray-500">
-                                      Created by:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white ml-0 lg:ml-2">
-                                      {cat.createdBy?.email || "Unknown"}
-                                    </p>
-                                  </div>
-                                  <div className="text-sm">
-                                    <span className="text-gray-500">
-                                      Subcategories:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white ml-0 lg:ml-2">
-                                      {cat.subcategoryCount || 0}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Created At:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white ml-0 lg:ml-2">
-                                      {formatDate(cat.createdAt) || 0}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              {cat.status === 'pending' && (
-                                <div className="flex gap-2 ml-4">
-                                  <Button
-                                    size="sm"
-                                    variant="success"
-                                    onClick={() => handleApproveCategory(cat._id)}
-                                  >
-                                    ✓ Approve
-                                  </Button>
-                                  <Button
-                                    size="sm"
-                                    variant="danger"
-                                    onClick={() => handleRejectCategory(cat._id)}
-                                  >
-                                    ✗ Reject
-                                  </Button>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  )}
-
-                  {/* Subcategories Tab */}
-                  {activeTab === "subcategories" && (
-                    <div className="space-y-4">
-                      {subcategories.length === 0 ? (
-                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-12 text-center">
-                          <p className="text-xl text-gray-600 dark:text-gray-400">
-                            No pending subcategories
-                          </p>
-                        </div>
-                      ) : (
-                        subcategories.map((sub) => (
-                          <div
-                            key={sub._id}
-                            className={`rounded-lg shadow-lg p-6 ${sub.status === "approved"
-                              ? "bg-green-100 dark:bg-green-900/30"
-                              : sub.status === "rejected"
-                                ? "bg-red-100 dark:bg-red-900/30"
-                                : "bg-primary-100 dark:bg-primary-900/30"
-                              }`}
-                          >
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1">
-                                <h3 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2">
-                                  {sub.name}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-3">
-                                  {sub.description || "No description"}
-                                </p>
-                                <div className="grid grid-cols-4 gap-4 text-sm">
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Category:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {sub.category?.name || "N/A"}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Quizzes:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {sub.quizCount || 0}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Created by:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {sub.createdBy?.email || "Unknown"}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <span className="text-gray-500">
-                                      Created At:
-                                    </span>
-                                    <p className="font-medium text-gray-800 dark:text-white">
-                                      {formatDate(sub.createdAt) || 0}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              {sub.status === 'pending' && (
-                                <div className="flex gap-2 ml-4">
-                                  <Button
-                                    size="sm"
-                                    variant="success"
-                                    onClick={() =>
-                                      handleApproveSubcategory(sub._id)
-                                    }
-                                  >
-                                    ✓ Approve
-                                  </Button>
-                                  <Button
-                                    size="sm"
-                                    variant="danger"
-                                    onClick={() =>
-                                      handleRejectSubcategory(sub._id)
-                                    }
-                                  >
-                                    ✗ Reject
-                                  </Button>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  )}
-                </>
-              )}
-
-              {/* Quiz Review Modal */}
-              {showModal && selectedQuiz && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[99] overflow-y-auto">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
-                    <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                      Review Quiz: {selectedQuiz.title}
-                    </h2>
-
-                    <div className="space-y-4 mb-6">
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div>
-                          <span className="text-gray-500">Category:</span>
-                          <p className="font-medium text-gray-800 dark:text-white">
-                            {selectedQuiz.category?.name} /{" "}
-                            {selectedQuiz.subcategory?.name}
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">Difficulty:</span>
-                          <p className="font-medium text-gray-800 dark:text-white capitalize">
-                            {selectedQuiz.difficulty}
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">Level:</span>
-                          <p className="font-medium text-gray-800 dark:text-white">
-                            {selectedQuiz.requiredLevel}
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-gray-500">Time Limit:</span>
-                          <p className="font-medium text-gray-800 dark:text-white">
-                            {selectedQuiz.timeLimit} minutes
-                          </p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h3 className="font-bold text-gray-800 dark:text-white mb-2">
-                          Description:
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {selectedQuiz.description || "No description"}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h3 className="font-bold text-gray-800 dark:text-white mb-3">
-                          Questions ({selectedQuiz.questions?.length || 0}):
-                        </h3>
-                        <div className="space-y-4">
-                          {selectedQuiz.questions?.map((q, i) => (
-                            <div
-                              key={i}
-                              className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
-                            >
-                              <p className="font-medium text-gray-800 dark:text-white mb-2">
-                                {i + 1}. {q.questionText}
-                              </p>
-                              <div className="grid grid-cols-2 gap-2 ml-4">
-                                {q.options.map((opt, j) => (
-                                  <div
-                                    key={j}
-                                    className={`p-2 rounded ${j === q.correctAnswerIndex
-                                      ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 font-semibold"
-                                      : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300"
-                                      }`}
-                                  >
-                                    {j + 1}. {opt}
-                                    {j === q.correctAnswerIndex && " ✓"}
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="text-xs text-gray-500 mt-2">
-                                Time: {q.timeLimit}s
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Admin Notes (optional for approval, required for
-                        rejection):
-                      </label>
-                      <textarea
-                        value={adminNotes}
-                        onChange={(e) => setAdminNotes(e.target.value)}
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        rows={3}
-                        placeholder="Enter notes for the creator..."
-                      />
-                    </div>
-
-                    <div className="flex gap-4">
-                      <Button
-                        onClick={() => {
-                          setShowModal(false);
-                          setAdminNotes("");
-                        }}
-                        className="flex-1 font-semibold bg-gray-500 hover:bg-gray-600"
-                      >
-                        Close
-                      </Button>
-                      {selectedQuiz?.status === 'pending' && (
-                        <>
-                          <Button
-                            variant="danger"
-                            onClick={() => handleRejectQuiz(selectedQuiz._id)}
-                            className="flex-1 font-semibold"
-                          >
-                            ✗ Reject
-                          </Button>
-                          <Button
-                            variant="success"
-                            onClick={() => handleApproveQuiz(selectedQuiz._id)}
-                            className="flex-1 font-semibold"
-                          >
-                            ✓ Approve
-                          </Button>
-                        </>
-                      )}
-                    </div>
+                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-          </div>
+
+                  {/* Action Module */}
+                  <div className="bg-slate-50 dark:bg-white/5 p-10 lg:p-14 border-t-4 border-slate-100 dark:border-white/5">
+                     <div className="flex flex-col lg:flex-row gap-10">
+                        <div className="flex-1 space-y-4">
+                           <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                              <MessageSquare className="w-4 h-4" /> MODERATION_REMARKS
+                           </div>
+                           <textarea
+                             value={adminNotes}
+                             onChange={(e) => setAdminNotes(e.target.value)}
+                             className="w-full p-8 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-inner placeholder:text-slate-300 dark:placeholder:text-slate-700"
+                             rows={3}
+                             placeholder="Inject editorial feedback here (MANDATORY_FOR_REJECTION)..."
+                           />
+                        </div>
+                        <div className="flex flex-col lg:w-80 gap-4">
+                           {selectedQuiz?.status === 'pending' ? (
+                             <>
+                               <button
+                                 onClick={() => handleApproveQuiz(selectedQuiz._id)}
+                                 className="flex-1 p-8 bg-emerald-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                               >
+                                  <ShieldCheck className="w-6 h-6" /> AUTHORIZE_UNIT
+                               </button>
+                               <button
+                                 onClick={() => handleRejectQuiz(selectedQuiz._id)}
+                                 className="flex-1 p-8 bg-rose-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                               >
+                                  <ShieldAlert className="w-6 h-6" /> DENY_PROTOCOL
+                               </button>
+                             </>
+                           ) : (
+                             <button
+                               onClick={() => setShowModal(false)}
+                               className="flex-1 p-8 bg-slate-900 text-white dark:bg-white/10 rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-3"
+                             >
+                                <ArrowLeft className="w-6 h-6" /> EXIT_INSPECTION
+                             </button>
+                           )}
+                        </div>
+                     </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </AdminMobileAppWrapper>
@@ -731,3 +711,4 @@ const AdminUserQuizzes = () => {
 };
 
 export default AdminUserQuizzes;
+

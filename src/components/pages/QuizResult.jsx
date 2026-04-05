@@ -1,696 +1,376 @@
-import { useEffect, useState } from "react";
+﻿'use client';
+
+import React, { useEffect, useState } from "react";
 import Head from 'next/head';
 import {
-  FaTrophy,
-  FaCheckCircle,
-  FaTimesCircle,
-  FaCrown,
-  FaBrain,
-  FaAward,
-  FaArrowLeft,
-  FaQuestionCircle,
-  FaCheck,
-  FaTimes,
-} from "react-icons/fa";
-import { useRouter } from 'next/navigation';
+   Trophy,
+   CheckCircle,
+   XCircle,
+   Crown,
+   Brain,
+   Award,
+   ArrowLeft,
+   HelpCircle,
+   Check,
+   X,
+   Target,
+   Zap,
+   Activity,
+   ChevronRight,
+   TrendingUp,
+   Clock,
+   BookOpen,
+   Sparkles
+} from "lucide-react";
+import { useRouter } from 'next/router';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import API from '../../lib/api';
-// MobileAppWrapper import removed
-import UnifiedNavbar from '../UnifiedNavbar';
+import PublicNavbar from '../navbars/PublicNavbar';
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
 import config from '../../lib/config/appConfig';
 
 const LeaderboardTable = ({ leaderboard, currentUser }) => {
-  if (!leaderboard || leaderboard?.length === 0) {
-    return (
-      <div className="text-center py-0 md:py-2 lg:py-4 xl:py-6 mb-4">
-        <div className="bg-gradient-to-r from-red-50 to-primary-50 dark:from-red-900/20 dark:to-primary-900/20 rounded-2xl p-2 md:p-8 border border-red-200 dark:border-red-700">
-          <FaTrophy className="text-4xl text-red-500 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            No Leaderboard Yet
-          </h3>
-          <p className="text-gray-500 dark:text-gray-400">
-            Be the first to complete this quiz and claim the top spot!
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="mt-8 mb-8">
-      <div className="flex items-center space-x-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 rounded-xl flex items-center justify-center">
-          <FaTrophy className="text-white text-xl" />
-        </div>
-        <h3 className="text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-          Leaderboard
-        </h3>
-      </div>
-
-      {/* Mobile List View */}
-      <div className="block md:hidden space-y-3">
-        {leaderboard?.map(({ rank, studentName, studentId, score, attemptedAt }, index) => {
-          const isCurrentUser = studentId === currentUser?.id;
-          const isTopThree = rank <= 3;
-
-          return (
-            <div
-              key={rank}
-              className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg border p-4 transition-all duration-200 ${isCurrentUser
-                ? "border-primary-500 bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30"
-                : "border-white/20"
-                }`}
-            >
-              <div className="flex items-center justify-between mb-3">
-                {/* Rank Badge */}
-                <div className="flex items-center space-x-3">
-                  {isTopThree ? (
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${rank === 1
-                        ? "bg-gradient-to-r from-primary-400 to-secondary-500"
-                        : rank === 2
-                          ? "bg-gradient-to-r from-gray-400 to-gray-500"
-                          : "bg-gradient-to-r from-primary-600 to-primary-600"
-                        }`}
-                    >
-                      {rank === 1 ? <FaCrown className="text-xl" /> : rank}
-                    </div>
-                  ) : (
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 font-bold text-lg">
-                      {rank}
-                    </div>
-                  )}
-
-                  {/* Student Info */}
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
-                      {studentName?.charAt(0)?.toUpperCase() || "A"}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-800 dark:text-white">
-                        {studentName || "Anonymous"}
-                      </div>
-                      {isCurrentUser && (
-                        <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
-                          You
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Score */}
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-gray-800 dark:text-white">
-                    {score || 0}%
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Score
-                  </div>
-                </div>
-              </div>
-
-              {/* Date */}
-              <div className="text-xs text-gray-500 dark:text-gray-400 text-center pt-2 border-t border-gray-200 dark:border-gray-600">
-                {(() => {
-                  try {
-                    const date = new Date(attemptedAt);
-                    if (isNaN(date.getTime())) {
-                      return "N/A";
-                    }
-                    return date.toLocaleString("en-IN", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    });
-                  } catch (error) {
-                    return "N/A";
-                  }
-                })()}
-              </div>
+   if (!leaderboard || leaderboard?.length === 0) {
+      return (
+         <Card className="p-12 text-center bg-slate-50 dark:bg-slate-900 border-dashed border-2 border-slate-200 dark:border-slate-800">
+            <Trophy className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto mb-6" />
+            <div className="space-y-2">
+               <h3 className="text-xl font-black font-outfit uppercase tracking-tight">No Leaderboard Yet</h3>
+               <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose">
+                  Be the first to complete this quiz and reach the top!
+               </p>
             </div>
-          );
-        })}
-      </div>
+         </Card>
+      );
+   }
 
-      {/* Desktop Table View */}
-      <div className="hidden md:block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[30rem]">
-            <thead className="bg-gradient-to-r from-red-500 to-primary-500">
-              <tr>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">
-                  Rank
-                </th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-left">
-                  Student
-                </th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">
-                  Score
-                </th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">
-                  Attempted At
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard?.map(
-                (
-                  { rank, studentName, studentId, score, attemptedAt },
-                  index
-                ) => {
-                  const isCurrentUser = studentId === currentUser?.id;
-                  const isTopThree = rank <= 3;
+   return (
+      <div className="space-y-8 mt-12">
+         <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center shadow-duo-primary">
+               <Trophy className="text-white w-6 h-6" />
+            </div>
+            <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Leaderboard</h3>
+         </div>
 
-                  return (
-                    <tr
-                      key={rank}
-                      className={`transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 ${isCurrentUser
-                        ? "bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 border-l-4 border-primary-500"
-                        : ""
-                        }`}
-                    >
-                      <td className="py-2 md:py-4 px-2 md:px-6 text-center">
-                        <div className="flex items-center justify-center">
-                          {isTopThree ? (
-                            <div
-                              className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${rank === 1
-                                ? "bg-gradient-to-r from-primary-400 to-secondary-500"
-                                : rank === 2
-                                  ? "bg-gradient-to-r from-gray-400 to-gray-500"
-                                  : "bg-gradient-to-r from-primary-600 to-primary-600"
-                                }`}
-                            >
-                              {rank === 1 ? (
-                                <FaCrown className="text-sm" />
-                              ) : (
-                                rank
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-gray-600 dark:text-gray-400 font-medium">
-                              {rank}
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="py-2 md:py-4 px-2 md:px-6">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
-                            {studentName?.charAt(0)?.toUpperCase() || "A"}
-                          </div>
-                          <div>
-                            <div className="font-semibold text-gray-800 dark:text-white">
-                              {studentName || "Anonymous"}
-                            </div>
-                            {isCurrentUser && (
-                              <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
-                                You
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </td>
-                      <td className="py-2 md:py-4 px-2 md:px-6 text-center">
-                        <div className="flex items-center justify-center">
-                          <span className="text-lg font-bold text-gray-800 dark:text-white">
-                            {score || 0}%
-                          </span>
-                        </div>
-                      </td>
-                      <td className="py-2 md:py-4 px-2 md:px-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                        {(() => {
-                          try {
-                            const date = new Date(attemptedAt);
-                            if (isNaN(date.getTime())) {
-                              return "N/A";
-                            }
-                            return date.toLocaleString("en-IN", {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            });
-                          } catch (error) {
-                            return "N/A";
-                          }
-                        })()}
-                      </td>
-                    </tr>
-                  );
-                }
-              )}
-            </tbody>
-          </table>
-        </div>
+         <Card className="overflow-hidden border-none shadow-xl rounded-[2.5rem]">
+            <div className="overflow-x-auto">
+               <table className="w-full">
+                  <thead>
+                     <tr className="bg-slate-900 text-white">
+                        <th className="px-8 py-6 text-left text-[10px] font-black uppercase tracking-[0.3em]">Student</th>
+                        <th className="px-8 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Rank</th>
+                        <th className="px-8 py-6 text-center text-[10px] font-black uppercase tracking-[0.3em]">Performance</th>
+                        <th className="px-8 py-6 text-right text-[10px] font-black uppercase tracking-[0.3em]">Score</th>
+                     </tr>
+                  </thead>
+                  <tbody className="divide-y-2 divide-slate-50 dark:divide-slate-800 bg-white dark:bg-slate-900/50">
+                     {leaderboard.map((w, idx) => {
+                        const isCurrentUser = w.studentId === currentUser?.id;
+                        return (
+                           <tr key={idx} className={`hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group ${isCurrentUser ? 'bg-primary-500/5' : ''}`}>
+                              <td className="px-8 py-6">
+                                 <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-500 flex items-center justify-center text-white font-black">
+                                       {w.studentName?.charAt(0) || 'A'}
+                                    </div>
+                                    <div>
+                                       <p className="font-black font-outfit uppercase truncate max-w-[200px]">{w.studentName || 'Student'}</p>
+                                       {isCurrentUser && <p className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-widest leading-none mt-1">THAT'S YOU</p>}
+                                    </div>
+                                 </div>
+                              </td>
+                              <td className="px-8 py-6 text-center">
+                                 <div className="flex items-center justify-center">
+                                    {w.rank <= 3 ? (
+                                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-black shadow-lg ${w.rank === 1 ? 'bg-amber-500' : w.rank === 2 ? 'bg-slate-400' : 'bg-primary-600'}`}>
+                                          {w.rank === 1 ? <Crown className="w-4 h-4" /> : w.rank}
+                                       </div>
+                                    ) : (
+                                       <span className="font-black text-slate-400">{w.rank}</span>
+                                    )}
+                                 </div>
+                              </td>
+                              <td className="px-8 py-6 text-center">
+                                 <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">
+                                    {new Date(w.attemptedAt).toLocaleDateString()}
+                                 </p>
+                              </td>
+                              <td className="px-8 py-6 text-right">
+                                 <p className="text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500">{w.score}%</p>
+                              </td>
+                           </tr>
+                        );
+                     })}
+                  </tbody>
+               </table>
+            </div>
+         </Card>
       </div>
-    </div>
-  );
+   );
 };
 
 const QuizResult = () => {
-  const currentUser = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
+   const [currentUser, setCurrentUser] = useState(null);
+   const router = useRouter();
+   const [quizResult, setQuizResult] = useState(null);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState("");
+   const [quiz, setQuiz] = useState(null);
+   const [answers, setAnswers] = useState([]);
+   const [leaderboard, setLeaderboard] = useState([]);
 
-  const router = useRouter();
-  const [quizResult, setQuizResult] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [quiz, setQuiz] = useState(null);
-  const [answers, setAnswers] = useState([]);
-  const [leaderboard, setLeaderboard] = useState([]);
-
-  useEffect(() => {
-    async function fetchResult() {
-      let quizId = null;
-
-      // Check sessionStorage first (for data passed from profile page)
+   useEffect(() => {
       if (typeof window !== 'undefined') {
-        const storedResult = sessionStorage.getItem('quizResult');
-        if (storedResult) {
-          try {
-            const parsedResult = JSON.parse(storedResult);
-            const actualQuizId = parsedResult?.quiz?._id || parsedResult?._id;
+         setCurrentUser(JSON.parse(localStorage.getItem("userInfo") || 'null'));
+      }
+   }, []);
 
-            if (actualQuizId) {
-              const quizRes = await API.getQuizById(actualQuizId);
-              setQuiz(quizRes);
-              setAnswers(parsedResult?.answers || []);
-              setQuizResult(parsedResult);
-              const leaderboardRes = await API.getQuizLeaderboard(actualQuizId);
-              setLeaderboard(leaderboardRes?.leaderboard || []);
-              setLoading(false);
-              // Clear sessionStorage after reading
-              sessionStorage.removeItem('quizResult');
-              return;
+   useEffect(() => {
+      async function fetchResult() {
+         let quizId = null;
+
+         if (typeof window !== 'undefined') {
+            const storedResult = sessionStorage.getItem('quizResult');
+            if (storedResult) {
+               try {
+                  const parsedResult = JSON.parse(storedResult);
+                  const actualQuizId = parsedResult?.quiz?._id || parsedResult?._id;
+
+                  if (actualQuizId) {
+                     const quizRes = await API.getQuizById(actualQuizId);
+                     setQuiz(quizRes);
+                     setAnswers(parsedResult?.answers || []);
+                     setQuizResult(parsedResult);
+                     const leaderboardRes = await API.getQuizLeaderboard(actualQuizId);
+                     setLeaderboard(leaderboardRes?.leaderboard || []);
+                     setLoading(false);
+                     sessionStorage.removeItem('quizResult');
+                     return;
+                  }
+               } catch (err) {
+                  console.error('Error:', err);
+               }
             }
-          } catch (err) {
-            console.error('Error parsing stored quiz result:', err);
-          }
-        }
+         }
+
+         const params = new URLSearchParams(window.location.search);
+         quizId = params.get("quizId");
+
+         if (quizId) {
+            setLoading(true);
+            try {
+               const res = await API.getQuizResult(quizId);
+               if (res.success) {
+                  setQuizResult(res.data);
+                  const quizRes = await API.getQuizById(res.data.quiz || quizId);
+                  setQuiz(quizRes);
+                  const leaderboardRes = await API.getQuizLeaderboard(res.data.quiz || quizId);
+                  setLeaderboard(leaderboardRes?.leaderboard || []);
+               } else {
+                  setError("No results found");
+               }
+            } catch (err) {
+               setError("No results found");
+            } finally {
+               setLoading(false);
+            }
+         } else {
+            setLoading(false);
+            setError("No quiz data detected");
+         }
       }
+      fetchResult();
+   }, []);
 
-      // Try to get quizId from query param
-      const params = new URLSearchParams(window.location.search);
-      quizId = params.get("quizId");
+   const getScoreColor = (p) => {
+      if (p >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "text-primary-700 dark:text-primary-500";
+      return "text-indigo-500";
+   };
 
-      if (quizId) {
-        setLoading(true);
-        setError("");
-        try {
-          const res = await API.getQuizResult(quizId);
-          if (res.success) {
-            setQuizResult(res.data);
-          } else {
-            setError("No quiz result found");
-          }
-        } catch (err) {
-          setError("No quiz result found");
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setLoading(false);
-        setError("No quiz result data found");
-      }
-    }
-    fetchResult();
-  }, []);
+   const getScoreMessage = (p) => {
+      if (p >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "Excellent work! You reached a high score.";
+      if (p >= 50) return "Good attempt! Keep practicing to improve.";
+      return "Don't give up! Study the answers and try again.";
+   };
 
-  const getScoreColor = (percentage) => {
-    if (percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "text-primary-500";
-    if (percentage >= 50) return "text-red-500";
-    return "text-red-500";
-  };
+   if (loading) return <Loading fullScreen={true} size="lg" color="primary" message="Preparing your results..." />;
 
-  const getScoreEmoji = (percentage) => {
-    if (percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "🥇";
-    if (percentage >= 50) return "🥈";
-    return "🥉";
-  };
+   if (error) {
+      return (
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-6">
+            <Card className="max-w-md w-full p-12 text-center space-y-8">
+               <HelpCircle className="w-20 h-20 text-slate-200 mx-auto" />
+               <div className="space-y-2">
+                  <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">No Results Found</h3>
+                  <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
+               </div>
+               <Button variant="primary" fullWidth onClick={() => router.push("/profile")}>BACK TO PROFILE</Button>
+            </Card>
+         </div>
+      );
+   }
 
-  const getScoreMessage = (percentage) => {
-    if (percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE) return "Excellent! Great job!";
-    if (percentage >= 50) return "Good effort! Keep practicing!";
-    return "Keep learning and try again!";
-  };
+   const percentage = quizResult?.scorePercentage || 0;
 
-  if (loading) {
-    return <Loading fullScreen={true} size="lg" color="yellow" message="Loading quiz result..." />;
-  }
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col">
+         <Head>
+            <title>Quiz Results | AajExam</title>
+         </Head>
+         <PublicNavbar />
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-primary-600 text-4xl mb-4">⚠️</div>
-          <p className="text-primary-600 text-xl">{error}</p>
-          <button
-            onClick={() => router.push("/profile")}
-            className="mt-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300"
-          >
-            Back to Profile
-          </button>
-        </div>
-      </div>
-    );
-  }
+         <main className="flex-grow container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-5xl space-y-6 lg:space-y-12 mt-16">
 
-  return (
-    <>
-      <Head>
-        <title>Quiz Result - AajExam Your Performance</title>
-        <meta name="description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
-        <meta name="keywords" content="quiz result, AajExam result, quiz performance, quiz score, quiz analysis" />
-        <meta property="og:title" content="Quiz Result - AajExam Your Performance" />
-        <meta property="og:description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Quiz Result - AajExam Your Performance" />
-        <meta name="twitter:description" content="View your AajExam results, performance analysis, and leaderboard ranking. See detailed answers and track your progress." />
-      </Head>
-      <>
-        <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-          <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
-            {/* Hero Section */}
-            <div className="text-center mb-8">
-              <div className="text-8xl mb-4">
-                {getScoreEmoji(quizResult?.scorePercentage)}
-              </div>
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-4">
-                Quiz Result
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                {getScoreMessage(quizResult?.scorePercentage)}
-              </p>
+            {/* --- Hero Result --- */}
+            <section className="text-center space-y-5 lg:space-y-8 py-6 lg:py-10 relative overflow-hidden">
+               <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="relative inline-block">
+                  <div className={`w-24 lg:w-48 h-24 lg:h-48 rounded-[2.5rem] lg:rounded-[3.5rem] bg-white dark:bg-slate-800 flex items-center justify-center shadow-2xl border-8 ${percentage >= 80 ? 'border-primary-500' : 'border-slate-200 dark:border-slate-700'}`}>
+                     <span className={`text-2xl lg:text-5xl font-black font-outfit ${getScoreColor(percentage)}`}>{percentage}%</span>
+                  </div>
+                  {percentage >= 80 && (
+                     <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center text-white shadow-duo-primary rotate-12">
+                        <Crown className="w-8 h-8" />
+                     </div>
+                  )}
+               </motion.div>
+
+               <div className="space-y-4">
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">
+                     {quizResult?.quizTitle || "Results"}
+                  </h1>
+                  <p className="text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">{getScoreMessage(percentage)}</p>
+               </div>
+            </section>
+
+            {/* --- Quick Stats --- */}
+            <div className="grid grid-cols-3 gap-3 lg:gap-8">
+               <Card className="p-4 lg:p-8 space-y-2 lg:space-y-4 flex flex-col items-center text-center group">
+                  <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform"><CheckCircle className="w-5 h-5 lg:w-8 lg:h-8" /></div>
+                  <div>
+                     <p className="text-[8px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none mb-1">CORRECT</p>
+                     <span className="text-base lg:text-3xl font-black font-outfit text-slate-900 dark:text-white">{quizResult?.score || 0}/{quizResult?.answers?.length || 0}</span>
+                  </div>
+               </Card>
+               <Card className="p-4 lg:p-8 space-y-2 lg:space-y-4 flex flex-col items-center text-center group">
+                  <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform"><Activity className="w-5 h-5 lg:w-8 lg:h-8" /></div>
+                  <div>
+                     <p className="text-[8px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none mb-1">ACCURACY</p>
+                     <span className="text-base lg:text-3xl font-black font-outfit text-slate-900 dark:text-white">{percentage}%</span>
+                  </div>
+               </Card>
+               <Card className="p-4 lg:p-8 space-y-2 lg:space-y-4 flex flex-col items-center text-center group">
+                  <div className="p-3 lg:p-4 bg-indigo-500/10 text-indigo-500 rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform"><Clock className="w-5 h-5 lg:w-8 lg:h-8" /></div>
+                  <div>
+                     <p className="text-[8px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none mb-1">DATE</p>
+                     <span className="text-base lg:text-3xl font-black font-outfit text-slate-900 dark:text-white">{new Date(quizResult?.attemptedAt).toLocaleDateString()}</span>
+                  </div>
+               </Card>
             </div>
 
-            {/* Main Result Card */}
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl px-2 py-4 md:p-8 border border-white/20 container mx-auto py-0 lg:py-4 px-0 lg:px-10 mb-8">
-              {/* Quiz Title */}
-              <div className="text-center mb-6">
-                <h2 className="text-xl md:text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                  {quizResult?.quizTitle || "Quiz Result"}
-                </h2>
-                {quizResult?.categoryName && (
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Category: {quizResult.categoryName}
-                    {quizResult?.subcategoryName &&
-                      ` • ${quizResult.subcategoryName}`}
-                  </p>
-                )}
-              </div>
-
-              {/* Score Display */}
-              <div className="text-center mb-8">
-                <div
-                  className={`text-4xl md:text-sm md:text-lg lg:text-xl xl:text-2xl lg:text-4xl font-bold mb-4 ${getScoreColor(
-                    quizResult?.scorePercentage
-                  )}`}
-                >
-                  {quizResult?.scorePercentage}%
-                </div>
-
-                <div className="text-2xl text-gray-700 dark:text-gray-300 mb-2">
-                  Total Questions: {quizResult?.answers?.length}
-                </div>
-
-                <div className="text-2xl text-gray-700 dark:text-gray-300 mb-2">
-                  Correct Answers: {quizResult?.score}
-                </div>
-
-                <div className="text-lg text-gray-600 dark:text-gray-400">
-                  Attempted on{" "}
-                  {new Date(quizResult?.attemptedAt).toLocaleDateString()}
-                </div>
-              </div>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6 mb-8">
-                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <FaCheckCircle className="text-white text-xl" />
+            {/* --- Status Message --- */}
+            <Card className={`p-5 lg:p-8 border-none relative overflow-hidden ${percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-900 text-white shadow-xl'}`}>
+               <div className="relative z-10 flex flex-col lg:flex-row items-center gap-4 lg:gap-8">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-white/20 rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0 backdrop-blur-md border border-white/20">
+                     <TrendingUp className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                   </div>
-                  <div className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                    {quizResult?.score}
+                  <div className="space-y-1 text-center lg:text-left">
+                     <h4 className="text-xl font-black font-outfit uppercase tracking-tight">
+                        {percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE ? "Great Score!" : "Good Try!"}
+                     </h4>
+                     <p className="text-sm font-bold opacity-80 uppercase tracking-wide">
+                        {percentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
+                           ? "Well done! This score helps you move up to the next level."
+                           : `You need ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% or higher to level up. Keep practicing!`}
+                     </p>
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
-                    Correct Answers
-                  </div>
-                </div>
+               </div>
+               <Sparkles className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/5 -rotate-12" />
+            </Card>
 
-                <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-green-200 dark:border-green-700 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <FaBrain className="text-white text-xl" />
+            {/* --- Answer Review --- */}
+            <section className="space-y-8 pt-8">
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-white">
+                     <BookOpen className="w-6 h-6" />
                   </div>
-                  <div className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                    {quizResult?.scorePercentage}%
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
-                    Accuracy
-                  </div>
-                </div>
+                  <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Review Your Answers</h3>
+               </div>
 
-                <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-xl lg:rounded-2xl p-3 lg:p-6 border border-primary-200 dark:border-primary-700 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <FaAward className="text-white text-xl" />
-                  </div>
-                  <div className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                    {quizResult?.isHighScore ? "High Score" : "Standard"}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
-                    Performance
-                  </div>
-                </div>
-              </div>
+               <div className="space-y-6">
+                  {(quiz?.questions || []).map((q, idx) => {
+                     const userAns = answers?.[idx]?.answer || "SKIP";
+                     const correctAns = q.options[q.correctAnswerIndex];
+                     const isCorrect = userAns === correctAns;
+                     const isSkipped = userAns === "SKIP";
 
-              {/* High Score Status */}
-              <div
-                className={`text-center p-2 md:p-4 rounded-lg ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                  ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
-                  : "bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800"
-                  }`}
-              >
-                <div
-                  className={`text-xl md:text-md lg:text-2xl font-bold ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                    ? "text-green-800 dark:text-green-200"
-                    : "text-primary-800 dark:text-primary-200"
-                    }`}
-                >
-                  {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                    ? "🎉 High Score Achievement!"
-                    : "💪 Good Effort!"}
-                </div>
-                <div
-                  className={`text-sm ${quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                    ? "text-green-700 dark:text-green-300"
-                    : "text-primary-700 dark:text-primary-300"
-                    }`}
-                >
-                  {quizResult.scorePercentage >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                    ? "This score counts towards your level progression!"
-                    : `Need ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% or higher to count towards level progression. Keep practicing!`}
-                </div>
-              </div>
-            </div>
+                     return (
+                        <motion.div key={idx} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                           <Card className="p-8 space-y-6 border-2 hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+                              <div className="flex items-start gap-6">
+                                 <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-black text-white shadow-lg ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-primary-500' : 'bg-red-500'}`}>
+                                    {isSkipped ? <HelpCircle className="w-6 h-6" /> : isCorrect ? <Check className="w-6 h-6" /> : <X className="w-6 h-6" />}
+                                 </div>
+                                 <div className="space-y-1">
+                                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">QUESTION {idx + 1}</p>
+                                    <h4 className="text-lg font-black font-outfit uppercase text-slate-900 dark:text-white leading-tight">{q.questionText}</h4>
+                                 </div>
+                              </div>
 
-            {/* Quiz Review Section */}
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl p-2 md:p-8 border border-white/20 mb-8">
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl flex items-center justify-center">
-                  <FaBrain className="text-white text-2xl" />
-                </div>
-                <h2 className="text-xl md:text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                  Quiz Review
-                </h2>
-              </div>
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                 {q.options.map((opt, oIdx) => {
+                                    const isUsers = opt === userAns;
+                                    const isActual = opt === correctAns;
+                                    return (
+                                       <div key={oIdx} className={`p-4 rounded-2xl border-2 flex items-center gap-4 transition-all ${isActual ? 'bg-primary-500/5 border-primary-500/30' : isUsers ? 'bg-red-500/5 border-red-500/30' : 'bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-800'}`}>
+                                          <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs ${isActual ? 'bg-primary-500 text-white' : isUsers ? 'bg-red-500 text-white' : 'bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-400'}`}>
+                                             {String.fromCharCode(65 + oIdx)}
+                                          </div>
+                                          <span className={`text-sm font-black uppercase text-slate-900 dark:text-white ${isActual ? 'text-primary-700 dark:text-primary-500' : isUsers ? 'text-red-600' : ''}`}>{opt}</span>
+                                          {isActual && <CheckCircle className="ml-auto w-5 h-5 text-primary-700 dark:text-primary-500" />}
+                                       </div>
+                                    );
+                                 })}
+                              </div>
 
-              <div className="space-y-6">
-                {Array.isArray(quiz?.questions) && quiz.questions.length > 0 ? (
-                  <>
-                    {quiz.questions.map((question, index) => {
-                      const userAnswer = (Array.isArray(answers) && answers?.[index]?.answer) || "SKIP";
-                      const correctAnswer =
-                        question?.options?.[question.correctAnswerIndex];
-                      const isCorrect = userAnswer === correctAnswer;
-                      const isSkipped = userAnswer === "SKIP";
-
-                      return (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl p-2 md:p-6 border border-gray-200 dark:border-gray-600 shadow-lg"
-                        >
-                          <div className="flex items-start space-x-0 md:space-x-4 mb-6">
-                            <div
-                              className={`hidden md:flex w-12 h-12 rounded-2xl items-center justify-center text-white text-lg font-bold shadow-lg ${isSkipped
-                                ? "bg-gradient-to-r from-gray-400 to-gray-500"
-                                : isCorrect
-                                  ? "bg-gradient-to-r from-green-400 to-green-500"
-                                  : "bg-gradient-to-r from-red-400 to-secondary-500"
-                                }`}
-                            >
-                              {isSkipped ? (
-                                <FaQuestionCircle />
-                              ) : isCorrect ? (
-                                <FaCheck />
-                              ) : (
-                                <FaTimes />
+                              {!isCorrect && !isSkipped && (
+                                 <div className="p-4 bg-red-50 dark:bg-red-900/10 rounded-2xl border border-red-100 dark:border-red-900/30">
+                                    <p className="text-[10px] font-black text-red-600 uppercase tracking-widest leading-loose">YOU SELECTED: {userAns}</p>
+                                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest leading-loose">CORRECT ANSWER: {correctAns}</p>
+                                 </div>
                               )}
-                            </div>
+                              {isSkipped && (
+                                 <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700">
+                                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose">YOU SKIPPED THIS QUESTION. CORRECT ANSWER: {correctAns}</p>
+                                 </div>
+                              )}
+                           </Card>
+                        </motion.div>
+                     );
+                  })}
+               </div>
+            </section>
 
-                            <div className="flex-1">
-                              <h3 className="text-md lg:text-xl font-semibold text-gray-800 dark:text-white mb-4">
-                                {index + 1}: {question?.questionText}
-                              </h3>
-
-                              <div className="space-y-3 mb-6">
-                                {question?.options?.map((option, optIndex) => {
-                                  const isUserChoice = option === userAnswer;
-                                  const isCorrectOption = option === correctAnswer;
-                                  const optionLetter = String.fromCharCode(
-                                    65 + optIndex
-                                  );
-
-                                  return (
-                                    <div
-                                      key={optIndex}
-                                      className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${isCorrectOption
-                                        ? "bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/30 border-green-300 dark:border-green-600 shadow-lg"
-                                        : isUserChoice && !isCorrectOption
-                                          ? "bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-secondary-600 shadow-lg"
-                                          : "bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 hover:border-red-300 dark:hover:border-red-500"
-                                        }`}
-                                    >
-                                      <div className="flex items-center space-x-4">
-                                        <div
-                                          className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${isCorrectOption
-                                            ? "bg-gradient-to-r from-green-500 to-green-600"
-                                            : isUserChoice && !isCorrectOption
-                                              ? "bg-gradient-to-r from-red-500 to-secondary-600"
-                                              : "bg-gradient-to-r from-gray-400 to-gray-500"
-                                            }`}
-                                        >
-                                          {optionLetter}
-                                        </div>
-                                        <span
-                                          className={`font-medium text-lg ${isCorrectOption
-                                            ? "text-green-800 dark:text-green-200"
-                                            : isUserChoice && !isCorrectOption
-                                              ? "text-red-800 dark:text-red-200"
-                                              : "text-gray-700 dark:text-gray-300"
-                                            }`}
-                                        >
-                                          {option}
-                                        </span>
-                                        {isCorrectOption && (
-                                          <FaCheckCircle className="text-green-600 text-xl" />
-                                        )}
-                                        {isUserChoice && !isCorrectOption && (
-                                          <FaTimesCircle className="text-primary-600 text-xl" />
-                                        )}
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-
-                              <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20 rounded-xl p-4 border border-primary-200 dark:border-primary-600">
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                                  <div className="flex items-center space-x-2">
-                                    <span className="font-semibold text-gray-600 dark:text-gray-400">
-                                      Your Answer:
-                                    </span>
-                                    <span
-                                      className={`font-medium ${isSkipped
-                                        ? "text-gray-500"
-                                        : isCorrect
-                                          ? "text-green-600 dark:text-green-400"
-                                          : "text-primary-600 dark:text-red-400"
-                                        }`}
-                                    >
-                                      {isSkipped
-                                        ? "Skipped"
-                                        : userAnswer || "Not answered"}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <span className="font-semibold text-gray-600 dark:text-gray-400">
-                                      Correct Answer:
-                                    </span>
-                                    <span className="font-medium text-green-600 dark:text-green-400">
-                                      {correctAnswer}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <span className="font-semibold text-gray-600 dark:text-gray-400">
-                                      Status:
-                                    </span>
-                                    <span
-                                      className={`font-medium ${isSkipped
-                                        ? "text-gray-500"
-                                        : isCorrect
-                                          ? "text-green-600 dark:text-green-400"
-                                          : "text-primary-600 dark:text-red-400"
-                                        }`}
-                                    >
-                                      {isSkipped
-                                        ? "Skipped"
-                                        : isCorrect
-                                          ? "Correct"
-                                          : "Incorrect"}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <div className="text-center text-gray-500 dark:text-gray-300 mt-6">
-                    No Questions Found!
-                  </div>
-                )}
-              </div>
-            </div>
-
+            {/* --- Leaderboard Segment --- */}
             <LeaderboardTable leaderboard={leaderboard} currentUser={currentUser} />
 
-            {/* Action Buttons */}
-            <div className="text-center">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => router.push("/home", { state: { refreshHomeData: true } })}
-                  className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 transform hover:scale-105"
-                >
-                  Take Another Quiz
-                </button>
-                <button
-                  onClick={() => router.push("/profile")}
-                  className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105"
-                >
-                  View Profile
-                </button>
-                <button
-                  onClick={() => router.push(-1)}
-                  className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105"
-                >
-                  <FaArrowLeft className="inline mr-2" />
-                  Go Back
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <UnifiedFooter />
-      </>
-    </>
-  );
+            {/* --- Footer Actions --- */}
+            <section className="pt-12 text-center flex flex-col lg:flex-row justify-center gap-6">
+               <Button variant="primary" size="lg" className="px-12 py-6 shadow-duo-primary" onClick={() => router.push("/home")}>TAKE ANOTHER QUIZ</Button>
+               <Button variant="ghost" size="lg" className="px-12 py-6 bg-white dark:bg-slate-800 border-2" onClick={() => router.push("/profile")}>SEE MY PROGRESS</Button>
+               <Button variant="ghost" size="lg" className="px-12 py-6 bg-slate-200 dark:bg-slate-700" onClick={() => router.push(-1)}><ArrowLeft className="w-5 h-5 mr-2" /> GO BACK</Button>
+            </section>
+         </main>
+
+         <UnifiedFooter />
+      </div>
+   );
 };
 
 export default QuizResult;
+
+

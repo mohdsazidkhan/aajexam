@@ -1,12 +1,8 @@
 /* Student Layout Styles */
 .student-layout {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--bg-page);
   transition: background-color 0.3s ease;
-}
-
-.dark .student-layout {
-  background-color: #131a29;
 }
 
 /* Layout Content Container */
@@ -30,13 +26,8 @@
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
-  background-color: white;
-  border-right: 1px solid #e5e7eb;
-}
-
-.dark .student-sidebar {
-  background-color: #1f2937;
-  border-right-color: #374151;
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-primary);
 }
 
 /* Sidebar scrollbar styles */
@@ -49,12 +40,8 @@
 }
 
 .student-sidebar::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
+  background-color: var(--border-secondary);
   border-radius: 3px;
-}
-
-.dark .student-sidebar::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
 }
 
 .student-sidebar::-webkit-scrollbar-thumb:hover {

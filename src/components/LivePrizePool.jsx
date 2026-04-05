@@ -1,8 +1,21 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
-import { FaFire, FaUsers, FaArrowRight, FaTrophy, FaCalendarDay, FaCalendarAlt, FaCalendarCheck } from 'react-icons/fa';
+import {
+    Flame,
+    Users,
+    ArrowRight,
+    Trophy,
+    Calendar,
+    Clock,
+    Zap,
+    Sparkles,
+    TrendingUp,
+    Award,
+    IndianRupee
+} from 'lucide-react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import API from '../lib/api';
 import config from '../lib/config/appConfig';
 
@@ -32,7 +45,7 @@ const LivePrizePool = ({ isLandingPage = false }) => {
 
     if (loading || !prizepools) {
         return (
-            <div className="w-full h-64 bg-gray-100 dark:bg-gray-800 animate-pulse rounded-3xl mb-8"></div>
+            <div className="w-full h-80 bg-slate-100 dark:bg-slate-800 animate-pulse rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-700"></div>
         );
     }
 
@@ -43,7 +56,6 @@ const LivePrizePool = ({ isLandingPage = false }) => {
 
     if (currentPool.total < minPool) {
         currentPool.total = minPool;
-        // Recalculate distribution if total was below min
         currentPool.distribution = currentPool.distribution.map(d => ({
             ...d,
             amount: Math.round(minPool * (d.percentage / 100))
@@ -51,49 +63,49 @@ const LivePrizePool = ({ isLandingPage = false }) => {
     }
 
     const types = [
-        { id: 'daily', label: 'Daily', icon: FaCalendarDay, color: 'from-secondary-400 to-secondary-600', glow: 'shadow-secondary-500/20', accent: 'secondary' },
-        { id: 'weekly', label: 'Weekly', icon: FaCalendarAlt, color: 'from-purple-500 to-indigo-600', glow: 'shadow-purple-500/20', accent: 'purple' },
-        { id: 'monthly', label: 'Monthly', icon: FaCalendarCheck, color: 'from-primary-400 to-primary-600', glow: 'shadow-primary-500/20', accent: 'primary' }
+        { id: 'daily', label: 'Daily', icon: Clock, color: 'from-primary-400 to-primary-600', glow: 'shadow-duo-secondary', accent: 'secondary' },
+        { id: 'weekly', label: 'Weekly', icon: Zap, color: 'from-purple-500 to-purple-700', glow: 'shadow-duo-accent', accent: 'purple' },
+        { id: 'monthly', label: 'Monthly', icon: Trophy, color: 'from-primary-400 to-primary-600', glow: 'shadow-duo-primary', accent: 'primary' }
     ];
 
     const activeConfig = types.find(t => t.id === activeType);
 
     const getRankStyles = (rank) => {
         if (rank === 1) return {
-            bg: 'bg-primary-50/80 dark:bg-primary-500/10',
-            border: 'border-primary-200 dark:border-primary-500/30',
+            bg: 'bg-primary-50 dark:bg-primary-900/10',
+            border: 'border-primary-200 dark:border-primary-900/30 shadow-duo-primary',
             accent: 'bg-primary-500',
-            text: 'text-primary-700 dark:text-primary-400',
-            badge: '🥇'
+            text: 'text-primary-700 dark:text-primary-500 dark:text-primary-400',
+            icon: <Award className="w-8 h-8 fill-current" />
         };
         if (rank === 2) return {
-            bg: 'bg-slate-50/80 dark:bg-slate-400/10',
-            border: 'border-slate-200 dark:border-slate-400/30',
+            bg: 'bg-slate-50 dark:bg-slate-400/10',
+            border: 'border-slate-200 dark:border-slate-400/30 shadow-duo-secondary',
             accent: 'bg-slate-400',
             text: 'text-slate-600 dark:text-slate-300',
-            badge: '🥈'
+            icon: <Award className="w-8 h-8 fill-current opacity-70" />
         };
         if (rank === 3) return {
-            bg: 'bg-primary-50/80 dark:bg-primary-500/10',
-            border: 'border-primary-200 dark:border-primary-500/30',
-            accent: 'bg-primary-500',
-            text: 'text-primary-600 dark:text-secondary-400',
-            badge: '🥉'
+            bg: 'bg-amber-50 dark:bg-amber-900/10',
+            border: 'border-amber-200 dark:border-amber-900/30 shadow-duo-accent',
+            accent: 'bg-amber-500',
+            text: 'text-amber-600 dark:text-amber-400',
+            icon: <Award className="w-8 h-8 fill-current opacity-50" />
         };
         return {
-            bg: 'bg-gray-50/80 dark:bg-gray-800/30',
-            border: 'border-gray-100 dark:border-gray-700/50',
-            accent: 'bg-gray-300 dark:bg-gray-600',
-            text: 'text-gray-600 dark:text-gray-400',
-            badge: rank === 4 ? '🏅' : '🎖️'
+            bg: 'bg-slate-50 dark:bg-slate-800/50',
+            border: 'border-slate-100 dark:border-slate-700/50',
+            accent: 'bg-slate-300 dark:bg-slate-600',
+            text: 'text-slate-700 dark:text-slate-400',
+            icon: <TrendingUp className="w-8 h-8" />
         };
     };
 
     return (
-        <div className="relative group w-full mx-auto">
-            {/* Type Selector Tabs - Elevated Design */}
-            <div className="flex justify-center gap-3 mb-0">
-                <div className="flex gap-1.5 p-1.5 bg-gray-100/50 dark:bg-gray-900/50 backdrop-blur-md rounded-2xl border border-gray-200/50 dark:border-gray-700/50">
+        <div className="relative group w-full mx-auto font-outfit">
+            {/* Type Selector Tabs */}
+            <div className="flex justify-center mb-8 relative z-20">
+                <div className="flex gap-2 p-2 bg-slate-100 dark:bg-slate-800/50 rounded-[1.8rem] border-2 border-slate-200/50 dark:border-slate-700/30 shadow-inner">
                     {types.map((type) => {
                         const Icon = type.icon;
                         const isActive = activeType === type.id;
@@ -101,12 +113,12 @@ const LivePrizePool = ({ isLandingPage = false }) => {
                             <button
                                 key={type.id}
                                 onClick={() => setActiveType(type.id)}
-                                className={`flex items-center gap-2 px-3 lg:px-6 py-2 lg:py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ${isActive
-                                    ? `bg-white dark:bg-gray-800 text-${type.accent}-600 dark:text-${type.accent}-400 shadow-sm scale-[1.02] border border-gray-200/50 dark:border-gray-700/50`
-                                    : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-800/30'
+                                className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 ${isActive
+                                    ? `bg-white dark:bg-slate-800 text-${type.accent === 'primary' ? 'primary' : type.accent === 'secondary' ? 'secondary' : 'purple'}-600 shadow-duo border-b-4 border-slate-100 dark:border-slate-700`
+                                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 group'
                                     }`}
                             >
-                                <Icon className={`${isActive ? 'scale-110' : ''} transition-transform`} />
+                                <Icon className={`w-4 h-4 ${isActive ? 'scale-110' : 'group-hover:scale-110'} transition-transform`} />
                                 {type.label}
                             </button>
                         );
@@ -114,122 +126,117 @@ const LivePrizePool = ({ isLandingPage = false }) => {
                 </div>
             </div>
 
-            {/* Main Prize Pool Container - Multi-layered Glassmorphism */}
-            <div className={`relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-gray-950 border border-gray-200/80 dark:border-gray-800/80  shadow-xl lg:shadow-2xl p-3 lg:p-6 transition-all duration-700 group-hover:shadow-3xl`}>
+            {/* Main Prize Pool Container */}
+            <div className="relative overflow-hidden rounded-[3.5rem] bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-2xl p-4 md:p-8 lg:p-12 transition-all duration-500 hover:border-primary-500/20">
 
-                {/* Dynamic Background Glows */}
-                <div className={`absolute -top-24 -right-24 w-96 h-96 blur-[120px] rounded-full opacity-30 transition-all duration-1000 bg-gradient-to-br ${activeConfig.color}`}></div>
-                <div className={`absolute -bottom-24 -left-24 w-96 h-96 blur-[120px] rounded-full opacity-20 transition-all duration-1000 bg-gradient-to-br ${activeConfig.color}`}></div>
+                {/* Decorative Accents */}
+                <div className={`absolute top-0 right-0 w-[500px] h-[500px] blur-[150px] rounded-full opacity-10 bg-gradient-to-br ${activeConfig.color} pointer-events-none`}></div>
 
-                <div className="flex flex-col xl:flex-row items-center justify-between gap-12 relative z-10">
+                <div className="flex flex-col xl:flex-row items-center justify-between gap-16 relative z-10">
 
-                    {/* Left Section: Live Visuals & Stats */}
-                    <div className="text-center xl:text-left flex-1 space-y-6">
-                        <div className="flex flex-col items-center xl:items-start">
-                            <div className="relative inline-block mb-2">
-                                {/* Radar Pulse Effect */}
-                                <span className={`absolute inset-0 rounded-full animate-ping opacity-25 ${activeType === 'daily' ? 'bg-secondary-500' : activeType === 'weekly' ? 'bg-purple-500' : 'bg-primary-500'}`}></span>
-                                <span className={`relative flex items-center gap-2 px-4 py-1.5 text-white rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg ${activeType === 'daily' ? 'bg-secondary-600' : activeType === 'weekly' ? 'bg-purple-600' : 'bg-primary-600'}`}>
-                                    <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
-                                    Live Pool
+                    {/* Left Section */}
+                    <div className="text-center xl:text-left flex-1 space-y-8">
+                        <div className="flex flex-col items-center xl:items-start space-y-4">
+                            <div className="flex items-center gap-3">
+                                <div className="relative">
+                                    <div className={`absolute inset-0 rounded-full animate-ping opacity-25 bg-${activeConfig.accent === 'primary' ? 'primary' : activeConfig.accent === 'secondary' ? 'secondary' : 'purple'}-500`}></div>
+                                    <div className={`relative w-3 h-3 rounded-full bg-${activeConfig.accent === 'primary' ? 'primary' : activeConfig.accent === 'secondary' ? 'secondary' : 'purple'}-500 shadow-lg`}></div>
+                                </div>
+                                <span className={`text-[10px] font-black uppercase tracking-[0.4em] text-${activeConfig.accent === 'primary' ? 'primary' : activeConfig.accent === 'secondary' ? 'secondary' : 'purple'}-500`}>
+                                    Live Prize Synchronization
                                 </span>
                             </div>
 
-                            <div className="relative py-2 pb-4">
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-3 max-w-sm mx-auto xl:mx-0 leading-relaxed">
+                            <div className="space-y-6">
+                                <h2 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-none text-slate-900 dark:text-white uppercase font-outfit flex items-center justify-center xl:justify-start gap-2">
+                                    <span className={`text-transparent bg-clip-text bg-gradient-to-br ${activeConfig.color} flex items-center gap-2`}>
+                                        <IndianRupee className={`w-12 h-12 lg:w-20 lg:h-20 text-primary-500`} />{currentPool.total.toLocaleString('en-IN')}
+                                    </span>
+                                </h2>
+                                <p className="text-sm font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 max-w-md mx-auto xl:mx-0 leading-relaxed uppercase tracking-widest">
                                     {activeType === 'daily' ? (
-                                        <>Compete daily for amazing rewards! Top <span className="font-bold text-secondary-500 dark:text-secondary-400">{config.QUIZ_CONFIG.DAILY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-secondary-500 dark:text-secondary-400">{config.QUIZ_CONFIG.DAILY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every day.</>
+                                        <>Mission Alpha: Top core Users share the daily bounty pool through peak performance metrics.</>
                                     ) : activeType === 'weekly' ? (
-                                        <>Compete weekly for amazing rewards! Top <span className="font-bold text-purple-600 dark:text-purple-400">{config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-purple-600 dark:text-purple-400">{config.QUIZ_CONFIG.WEEKLY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every week.</>
+                                        <>Sector Weekly: Master high-tier evaluations to synchronize with the weekly asset yield.</>
                                     ) : (
-                                        <>Compete monthly for amazing rewards! Top <span className="font-bold text-primary-600 dark:text-primary-400">{config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT}</span> PRO performers with <span className="font-bold text-primary-600 dark:text-primary-400">{config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT}</span> high-score quizzes share a dynamic prize pool every month.</>
+                                        <>Grand Matrix: The ultimate monthly objective for elite performers. Secure your rank among legends.</>
                                     )}
                                 </p>
-                                <h3 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter flex items-center justify-center xl:justify-start">
-                                    <span className={`text-transparent bg-clip-text bg-gradient-to-br leading-tight ${activeConfig.color}`}>
-                                        ₹{currentPool.total.toLocaleString('en-IN')}
-                                    </span>
-                                </h3>
-                                {/* Reflection effect Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/5 to-white/0 pointer-events-none mix-blend-overlay"></div>
                             </div>
                         </div>
 
-                        <div className="space-y-4">
-                            <p className="text-gray-600 dark:text-gray-400 flex items-center justify-center xl:justify-start gap-2 font-semibold">
-                                <FaUsers className="text-gray-400" />
-                                {activeType === 'daily' ? `Daily @ 10:00 PM • Top ${config.QUIZ_CONFIG.DAILY_WINNER_COUNT} Wins` :
-                                    activeType === 'weekly' ? `Sundays @ 10:00 PM • Top ${config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT} Win` :
-                                        `Monthly @ 10:00 PM • Top ${config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT} Win`}
-                            </p>
-
-                            <Link
-                                href={isLandingPage ? "/register" : "/levels"}
-                                className={`inline-flex items-center gap-3 px-5 lg:px-10 py-2.5 lg:py-5 text-white rounded-[1.5rem] font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl bg-gradient-to-br ${activeConfig.color} ${activeConfig.glow} hover:brightness-110 border border-white/20`}
-                            >
-                                <FaTrophy className="text-white drop-shadow-sm" />
-                                <span>{isLandingPage ? "START WINNING" : "COMPETE NOW"}</span>
-                                <FaArrowRight className="text-white/80 group-hover:translate-x-2 transition-transform" />
+                        <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                            <Link href={isLandingPage ? "/register" : "/levels"}>
+                                <button className={`inline-flex items-center gap-4 px-10 py-5 text-white rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] transition-all transform hover:scale-105 active:scale-95 bg-gradient-to-br ${activeConfig.color} ${activeConfig.glow} shadow-xl border-b-4 border-black/20`}>
+                                    <Award className="w-5 h-5 fill-current" />
+                                    <span>{isLandingPage ? "JOIN PROTOCOL" : "SECURE RANK"}</span>
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                </button>
                             </Link>
+
+                            <div className="flex flex-col items-center sm:items-start">
+                                <p className="text-[9px] font-black text-slate-300 dark:text-slate-600 uppercase tracking-widest">Target Threshold</p>
+                                <p className="text-xs font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest">{activeType === 'daily' ? 'DAILY 22:00 IST' : activeType === 'weekly' ? 'WEEKLY SUNDAY' : 'MONTHLY RESET'}</p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Right Section: Prize Distribution Grid */}
-                    <div className="w-full xl:w-[450px]">
-                        <div className="grid grid-cols-1 gap-3 relative">
-                            <div className="flex items-center justify-between mb-2 pb-2 border-b border-gray-100 dark:border-gray-800 px-2">
-                                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">Awarded Positions</span>
-                                <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">Winning Amount</span>
-                            </div>
+                    {/* Right Section - Prize Grid */}
+                    <div className="w-full xl:w-[480px] space-y-4">
+                        <div className="flex items-center justify-between px-6 pb-2">
+                            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300 dark:text-slate-600">Rank Protocol</span>
+                            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300 dark:text-slate-600">Yield Amount</span>
+                        </div>
 
-                            {currentPool.distribution.map((prize, idx) => {
+                        <div className="grid grid-cols-1 gap-4">
+                            {currentPool.distribution.slice(0, 4).map((prize, idx) => {
                                 const styles = getRankStyles(prize.rank || idx + 1);
                                 return (
-                                    <div
+                                    <motion.div
                                         key={idx}
-                                        className={`group/rank relative flex items-center justify-between p-4 rounded-2xl border ${styles.border} ${styles.bg} transition-all duration-300 hover:translate-x-1 animate-stagger-fade-in overflow-hidden`}
-                                        style={{ animationDelay: `${idx * 100}ms` }}
+                                        whileHover={{ x: 6 }}
+                                        className={`flex items-center justify-between p-6 rounded-[2rem] border-2 ${styles.border} ${styles.bg} transition-all`}
                                     >
-                                        {/* Rank Accent Bar */}
-                                        <div className={`absolute inset-y-0 left-0 w-1 ${styles.accent}`}></div>
-
-                                        <div className="flex items-center gap-5">
-                                            <span className="text-3xl filter drop-shadow-md transform transition-transform group-hover/rank:scale-110 duration-300">
-                                                {styles.badge}
-                                            </span>
+                                        <div className="flex items-center gap-6">
+                                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${styles.text}`}>
+                                                {styles.icon}
+                                            </div>
                                             <div>
-                                                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1 text-left">
-                                                    Official Rank
-                                                </div>
-                                                <div className={`text-xl font-black ${styles.text} leading-none text-left`}>
+                                                <p className="text-[8px] font-black text-slate-300 dark:text-slate-600 uppercase tracking-widest leading-none mb-1">Rank Tier</p>
+                                                <p className={`text-xl lg:text-2xl font-black ${styles.text} uppercase tracking-tighter font-outfit`}>
                                                     #{prize.rank || idx + 1}
-                                                </div>
+                                                </p>
                                             </div>
                                         </div>
 
                                         <div className="text-right">
-                                            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">
-                                                Prize Amount
-                                            </div>
-                                            <div className="text-2xl font-black text-gray-900 dark:text-gray-100 tabular-nums leading-none">
+                                            <p className="text-[8px] font-black text-slate-300 dark:text-slate-600 uppercase tracking-widest leading-none mb-1">Asset Allocation</p>
+                                            <p className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums uppercase tracking-tighter font-outfit">
                                                 ₹{prize.amount.toLocaleString('en-IN')}
-                                            </div>
+                                            </p>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 );
                             })}
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Footnote */}
-                <div className="mt-10 pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                        <FaFire className="text-primary-500" />
-                        Live calculation based on {activeType} pro users
+                {/* Footnote */}
+                <div className="mt-12 pt-8 border-t-2 border-slate-50 dark:border-slate-700/50 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-slate-50 dark:bg-slate-700/30 rounded-lg">
+                            <Users className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                        </div>
+                        <p className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">
+                            Network Active: Synchronizing live with {activeType} Users
+                        </p>
                     </div>
-                    <div className="text-[10px] font-bold text-secondary-500 dark:text-secondary-400 uppercase tracking-widest animate-pulse">
-                        Next reset: {activeType === 'daily' ? 'Tonight' : activeType === 'weekly' ? 'Sunday' : 'End of Month'}
+                    <div className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
+                        <p className="text-[9px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest animate-pulse">
+                            Node Reset: {activeType === 'daily' ? 'Tonight' : activeType === 'weekly' ? 'Sunday Cycle' : 'End of Cycle'}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -238,3 +245,5 @@ const LivePrizePool = ({ isLandingPage = false }) => {
 };
 
 export default LivePrizePool;
+
+

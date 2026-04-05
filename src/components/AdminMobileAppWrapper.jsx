@@ -1,6 +1,17 @@
+﻿'use client';
+
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { FaSignOutAlt, FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  LogOut,
+  ShieldCheck,
+  ChevronLeft
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { secureLogout, getCurrentUser } from '../lib/utils/authUtils';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -9,126 +20,116 @@ import ScrollToTopButton from './ScrollToTopButton';
 import { useSSR } from '../hooks/useSSR';
 
 const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
-  // All hooks must be called at the top level, before any conditional returns
   const { isMounted, isRouterReady, router } = useSSR();
   const user = getCurrentUser();
   const dispatch = useDispatch();
   const { isOpen } = useSelector((state) => state.sidebar);
   const darkMode = useSelector((state) => state.darkMode.isDark);
 
-  // Initialize dark mode on mount to ensure DOM is in sync
   useEffect(() => {
     if (isMounted) {
       dispatch(initializeDarkMode());
     }
   }, [isMounted, dispatch]);
-  
-  // Don't render anything during SSR
+
   if (!isMounted) {
-    return <div>Loading...</div>;
+    return <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-pulse" />;
   }
 
   const toggleTheme = () => dispatch(toggleDarkMode());
-  
-  const handleSidebarToggle = () => {
-    dispatch(toggleSidebar());
-  };
 
   const getPageName = () => {
     if (title) return title;
-    
-    if (!isRouterReady || !router) return 'Admin Panel';
-    
+    if (!isRouterReady || !router) return 'ADMIN CORE';
+
     const path = router.pathname;
     const pathSegments = path.split('/').filter(Boolean);
-    
-    // Admin page name mapping
     const pageNames = {
-      'admin': 'Admin',
-      'dashboard': 'Dashboard',
-      'analytics': 'Analytics',
-      'users': 'Users',
-      'students': 'Students',
-      'categories': 'Categories',
-      'subcategories': 'Subcategories',
-      'quizzes': 'Quizzes',
-      'questions': 'Questions',
-      'contacts': 'Contacts',
-      'bank-details': 'Bank Details',
-      'monthly-winners': 'Monthly Winners',
-      'financial': 'Financial',
-      'performance': 'Performance'
+      'admin': 'CORE',
+      'dashboard': 'LOGISTICS',
+      'analytics': 'Stats',
+      'users': 'UserS',
+      'students': 'StudentS',
+      'categories': 'SECTORS',
+      'subcategories': 'DOMAINS',
+      'quizzes': 'TRIALS',
+      'questions': 'INTEL',
+      'contacts': 'UPLINK',
+      'bank-details': 'IDENTITY',
+      'monthly-winners': 'CHAMPIONS',
+      'financial': 'CREDITS',
+      'performance': 'EFFICIENCY'
     };
-    
-    // Get the last meaningful segment
+
     const lastSegment = pathSegments[pathSegments.length - 1];
-    return pageNames[lastSegment] || 'Admin Panel';
+    return pageNames[lastSegment] || 'SYSTEM NODE';
   };
 
   return (
-    <div className="admin-mobile-container">
+    <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} transition-colors duration-500 font-outfit`}>
       {showHeader && (
-        <div className="admin-mobile-header fixed top-0 left-0 right-0 z-50 md:hidden px-2 !bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 !border-b !border-gray-200 dark:!border-gray-700">
-          <div className="flex items-center justify-between">
-            {/* Logo on the left */}
-            <Link
-              href="/admin/dashboard"
-              className="flex items-center justify-center hover:opacity-80 transition-opacity duration-200"
-            >
-              <img
-                src="/logo.png"
-                alt="AajExam Admin Logo"
-                className="w-12 h-12 object-contain"
-              />
+        <header className="fixed top-0 left-0 right-0 z-[110] lg:hidden h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-xl px-4 flex items-center justify-between overflow-hidden">
+          {/* Decorative Pattern */}
+          <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
+
+          <div className="flex items-center gap-3 relative z-10 transition-transform active:scale-95">
+            <Link href="/admin/dashboard" className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 p-0.5 shadow-duo-primary">
+              <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-black italic">A</div>
             </Link>
-
-            {/* Page name in the center */}
-            <h1 className="text-sm font-semibold text-gray-900 dark:text-white flex-1 text-center">
-            {getPageName()?.length > 20 ? getPageName()?.slice(0, 20) + '...' : getPageName()}
-            </h1>
-
-            {/* Right side - Dark mode toggle, Logout button, and Sidebar toggle */}
-            <div className="flex items-center space-x-1">
-              {/* Dark mode toggle */}
-              <button
-                onClick={toggleTheme}
-                className="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition-all duration-200 hover:scale-105"
-                title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              >
-                {darkMode ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
-              </button>
-
-              {/* Logout button */}
-              {user && (
-                <button
-                  onClick={() => isRouterReady && router && secureLogout(router)}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-red-500 hover:bg-red-600 text-white transition-all duration-200 hover:scale-105 shadow-md"
-                  title="Logout"
-                >
-                  <FaSignOutAlt className="w-4 h-4" />
-                </button>
-              )}
-
-              {/* Sidebar toggle button */}
-              <button
-                onClick={handleSidebarToggle}
-                className="w-8 h-8 flex items-center justify-center rounded-lg bg-secondary-500 hover:bg-secondary-600 text-white transition-all duration-200 hover:scale-105 shadow-md"
-                title={isOpen ? "Hide Sidebar" : "Show Sidebar"}
-              >
-                {!isOpen ? <FaBars className="w-4 h-4" /> : <FaTimes className="w-4 h-4" />}
-              </button>
+            <div className="flex flex-col">
+              <h1 className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white leading-none">
+                {getPageName()}
+              </h1>
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-primary-500/60 leading-none mt-1">AAJEXAM OVERSEER</span>
             </div>
           </div>
-        </div>
+
+          <div className="font-outfit">
+            {/* Theme Toggle */}
+            <motion.button
+              whileTap={{ scale: 0.9, y: 1 }}
+              onClick={toggleTheme}
+              className={`w-10 h-10 flex items-center justify-center rounded-xl border-b-4 transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700 text-amber-400' : 'bg-slate-100 border-slate-300 text-slate-600'
+                }`}
+            >
+              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </motion.button>
+
+            {/* Logout */}
+            {user && (
+              <motion.button
+                whileTap={{ scale: 0.9, y: 1 }}
+                onClick={() => secureLogout(router)}
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-rose-500 border-b-4 border-rose-700 text-white shadow-lg shadow-rose-500/20"
+              >
+                <LogOut className="w-4 h-4" />
+              </motion.button>
+            )}
+
+            {/* Sidebar Toggle */}
+            <motion.button
+              whileTap={{ scale: 0.9, y: 1 }}
+              onClick={() => dispatch(toggleSidebar())}
+              className={`w-10 h-10 flex items-center justify-center rounded-xl border-b-4 transition-all ${isOpen ? 'bg-primary-600 border-primary-800' : 'bg-primary-500 border-primary-700'
+                } text-white shadow-lg shadow-primary-500/20`}
+            >
+              {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </motion.button>
+          </div>
+        </header>
       )}
-      <div className="admin-mobile-content min-h-screen bg-gray-50 dark:bg-gray-900">
-        {children}
-      </div>
-      
-      {/* Scroll to Top Button - Only show on mobile */}
+
+      <main className={`admin-mobile-content min-h-screen ${showHeader ? 'pt-20' : ''}`}>
+        <div className="px-4 py-8">
+          {children}
+        </div>
+      </main>
+
       <ScrollToTopButton />
     </div>
   );
 };
 
 export default AdminMobileAppWrapper;
+
+

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation';
+﻿import { useRouter } from 'next/navigation';
 import { isAuthenticated, getCurrentUser } from '../utils/authUtils';
 import { hasActiveSubscription } from '../utils/subscriptionUtils';
 import { toast } from 'react-hot-toast';
@@ -32,3 +32,4 @@ const SubscriptionRoute = ({ children, redirectTo = '/subscription', showToast =
 };
 
 export default SubscriptionRoute;
+

@@ -1,6 +1,14 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+    Search, Download, BarChart3, Users, Eye, Filter, RefreshCcw, IndianRupee,
+    TrendingUp, TrendingDown, LayoutGrid, List, Table as TableIcon, Tag,
+    Wallet, PieChart, Activity, ShieldCheck, Mail, Calendar, ChevronRight,
+    Zap, Target, ExternalLink, Cpu, Globe, ArrowRight, ArrowUpRight, ArrowDownRight, Layers,
+    DownloadCloud, UserCheck, Star, Award, Trophy, Info
+} from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
@@ -8,13 +16,7 @@ import Sidebar from '../../Sidebar';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import API from '../../../lib/api';
-import {
-    FaSearch, FaDownload, FaChartBar, FaUsers,
-    FaEye, FaFilter, FaSyncAlt, FaRupeeSign, FaArrowUp, FaArrowDown,
-    FaThLarge, FaList, FaTable, FaTag
-} from 'react-icons/fa';
 
-// ─── Main Component ────────────────────────────────────────────────────────────
 const AdminUsersAnalytics = () => {
     const { isMounted } = useSSR();
     const isOpen = useSelector(state => state.sidebar.isOpen);
@@ -40,31 +42,28 @@ const AdminUsersAnalytics = () => {
         netPlatform: 0
     });
 
-    const [viewMode, setViewMode] = useState(() =>
-        typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table'
-    );
+    const [viewMode, setViewMode] = useState('table');
     const LIMIT = 20;
 
     const fetchStudents = useCallback(async (pg = 1) => {
         try {
             setLoading(true);
             setError(null);
-            const params = { page: pg, limit: LIMIT };
-            if (search.trim()) params.search = search.trim();
-            if (subscription) params.subscriptionStatus = subscription;
+            const params = { page: pg, limit: LIMIT, ...(search.trim() && { search: search.trim() }), ...(subscription && { subscriptionStatus: subscription }) };
             const res = await API.getAdminUsersWithEarnings(params);
+            
             if (res?.success !== false) {
                 const list = res?.students || res?.data || res || [];
-                const pagination = res?.pagination || {};
+                const pag = res?.pagination || {};
                 setStudents(Array.isArray(list) ? list : []);
-                setTotalPages(pagination.totalPages || Math.ceil((pagination.totalUsers || list.length) / LIMIT));
-                setTotalUsers(pagination.totalUsers || list.length);
+                setTotalPages(pag.totalPages || Math.ceil((pag.totalUsers || list.length) / LIMIT));
+                setTotalUsers(pag.totalUsers || list.length);
                 setPage(pg);
             } else {
-                setError(res?.message || 'Failed to load students');
+                setError(res?.message || 'Data loading failure');
             }
         } catch (err) {
-            setError(err?.message || 'Failed to load students');
+            setError(err?.message || 'Failed to load student data');
         } finally {
             setLoading(false);
         }
@@ -75,474 +74,236 @@ const AdminUsersAnalytics = () => {
         API.getAdminAllUsersSummary()
             .then(res => { if (res?.success && res.data) setSummary(res.data); })
             .catch(() => { });
-    }, [subscription]);
+    }, [subscription, fetchStudents]);
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        fetchStudents(1);
-    };
+    const handleSearch = (e) => { e?.preventDefault(); fetchStudents(1); };
 
     const exportCSV = () => {
         if (!students.length) return;
-        const headers = ['Name', 'Email', 'Level', 'Subscription', 'Total Earnings (₹)', 'Joined'];
+        const headers = ['Name', 'Email', 'Level', 'Subscription', 'Earnings', 'Joined'];
         const rows = students.map(s => [
-            s.name || '',
-            s.email || '',
-            s.level?.currentLevel ?? 0,
-            s.subscriptionStatus || 'free',
-            s.totalEarnings ?? 0,
-            s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN') : ''
+            s.name, s.email, s.level?.currentLevel, s.subscriptionStatus, s.totalEarnings, 
+            s.createdAt ? new Date(s.createdAt).toLocaleDateString() : ''
         ]);
         const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
         const blob = new Blob([csv], { type: 'text/csv' });
         const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'users_analytics.csv'; a.click();
-        URL.revokeObjectURL(url);
+        const a = document.createElement('a'); a.href = url; a.download = 'student_analytics.csv'; a.click();
     };
-
-    const subBadge = (status) => {
-        const map = {
-            free: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
-            basic: 'bg-secondary-100 text-secondary-700 dark:bg-secondary-900/40 dark:text-secondary-300',
-            premium: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
-            pro: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
-        };
-        return map[status] || map.free;
-    };
-
-    const avatar = (name) => (
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-            {(name || 'U').charAt(0).toUpperCase()}
-        </div>
-    );
-
-    const viewBtn = (mode, Icon, label) => (
-        <button
-            title={label}
-            onClick={() => setViewMode(mode)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition border
-                ${viewMode === mode
-                    ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white border-transparent shadow-md'
-                    : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-primary-400'
-                }`}
-        >
-            <Icon className="text-sm" /> <span className="hidden sm:inline">{label}</span>
-        </button>
-    );
-
-    const goToUser = (id) => router.push(`/admin/analytics/users-overview/${id}`);
 
     if (!isMounted) return null;
 
-    // ── Pagination ──────────────────────────────────────────────────────────────
-    const Pagination = () => totalPages > 1 ? (
-        <div className="flex items-center justify-center gap-2 mt-6">
-            <button onClick={() => fetchStudents(page - 1)} disabled={page <= 1}
-                className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                ← Prev
-            </button>
-            <div className="flex items-center gap-1">
-                {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
-                    let p;
-                    if (totalPages <= 7) p = i + 1;
-                    else if (page <= 4) p = i + 1;
-                    else if (page >= totalPages - 3) p = totalPages - 6 + i;
-                    else p = page - 3 + i;
-                    return (
-                        <button key={p} onClick={() => fetchStudents(p)}
-                            className={`w-9 h-9 rounded-lg text-sm font-medium transition ${p === page ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-md' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'}`}>
-                            {p}
-                        </button>
-                    );
-                })}
-            </div>
-            <button onClick={() => fetchStudents(page + 1)} disabled={page >= totalPages}
-                className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                Next →
-            </button>
-        </div>
-    ) : null;
-
     return (
-        <AdminMobileAppWrapper title="All Users Analytics">
-            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen`}>
+        <AdminMobileAppWrapper title="User Analytics">
+            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
-                <div className="adminContent p-3 md:p-6 w-full">
-                    {/* Page Header */}
-                    <div className="relative overflow-hidden bg-gradient-to-r from-red-500 via-primary-500 to-secondary-500 dark:from-red-600 dark:via-primary-600 dark:to-secondary-600 rounded-2xl shadow-xl mb-6">
-                        <div className="absolute inset-0 bg-black opacity-10" />
-                        <div className="relative px-6 py-5 flex flex-col gap-5">
-                            {/* Title row */}
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="bg-white/20 backdrop-blur-lg rounded-2xl p-3 shadow-lg">
-                                        <FaUsers className="text-3xl text-white" />
+                <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
+                    
+                    {/* Header */}
+                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-12">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
+                                        <Users className="w-6 h-6" />
                                     </div>
-                                    <div>
-                                        <h1 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">All Users Analytics</h1>
-                                        <p className="text-white/80 text-sm mt-1">View detailed analytics for every user</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col sm:flex-row items-center gap-3">
-                                    <button onClick={() => router.push('/admin/expenses')}
-                                        className="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-lg text-white px-4 py-2.5 rounded-xl transition font-medium shadow-lg whitespace-nowrap">
-                                        <FaRupeeSign /> Manage Expenses
-                                    </button>
-                                    <button onClick={exportCSV}
-                                        className="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-lg text-white px-4 py-2.5 rounded-xl transition font-medium shadow-lg whitespace-nowrap">
-                                        <FaDownload /> Export CSV
-                                    </button>
-                                </div>
-
+                                     <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN // USER ANALYTICS</span>
+                                 </div>
+                                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                                     User Performance & Earnings
+                                 </h1>
+                                 <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
+                                     Detailed analysis of user activity, revenue, and reward distribution.
+                                 </p>
                             </div>
 
-                            {/* Aggregate stat cards */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4">
-                                    <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaUsers className="text-xl" /></div>
-                                    <div className="min-w-0">
-                                        <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Total Users</div>
-                                        <div className="text-xl font-bold truncate">{(summary.totalUsers || totalUsers).toLocaleString('en-IN')}</div>
-                                    </div>
-                                </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-green-400">
-                                    <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaArrowDown className="text-xl rotate-180" /></div>
-                                    <div className="min-w-0">
-                                        <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Total Revenue</div>
-                                        <div className="text-xl font-bold flex items-baseline gap-1 truncate">
-                                            <FaRupeeSign className="text-sm" />
-                                            {(summary.totalRevenue || 0).toLocaleString('en-IN')}
-                                        </div>
-                                        <div className="text-[10px] opacity-70">Subscriptions</div>
-                                    </div>
-                                </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-red-400">
-                                    <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaArrowUp className="text-xl rotate-180" /></div>
-                                    <div className="min-w-0">
-                                        <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">User Payouts</div>
-                                        <div className="text-xl font-bold flex items-baseline gap-1 truncate">
-                                            <FaRupeeSign className="text-sm" />
-                                            {(summary.totalEarnings || 0).toLocaleString('en-IN')}
-                                        </div>
-                                        <div className="text-[10px] opacity-70">Paid to users</div>
-                                    </div>
-                                </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-primary-400">
-                                    <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaTag className="text-xl" /></div>
-                                    <div className="min-w-0">
-                                        <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Other Expenses</div>
-                                        <div className="text-xl font-bold flex items-baseline gap-1 truncate">
-                                            <FaRupeeSign className="text-sm" />
-                                            {(summary.totalCustomExpenses || 0).toLocaleString('en-IN')}
-                                        </div>
-                                        <div className="text-[10px] opacity-70">Manual entries</div>
-                                    </div>
-                                </div>
-                                <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-5 py-4 text-white shadow-lg flex items-center gap-4 border-l-4 border-secondary-400">
-                                    <div className="bg-white/30 rounded-xl p-2.5 flex-shrink-0"><FaChartBar className="text-xl" /></div>
-                                    <div className="min-w-0">
-                                        <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider">Net Balance</div>
-                                        <div className={`text-xl font-bold flex items-baseline gap-1 truncate ${summary.netPlatform >= 0 ? 'text-green-300' : 'text-red-100'}`}>
-                                            <FaRupeeSign className="text-sm" />
-                                            {(summary.netPlatform || 0).toLocaleString('en-IN')}
-                                        </div>
-                                        <div className="text-[10px] opacity-70">Platform profit</div>
-                                    </div>
-                                </div>
+                            <div className="flex flex-wrap items-center gap-4">
+                                 <motion.button whileHover={{ scale: 1.05 }} onClick={() => router.push('/admin/expenses')} className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
+                                     <Wallet className="w-4 h-4" /> EXPENSE RECORDS
+                                 </motion.button>
+                                <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
+                                    <DownloadCloud className="w-6 h-6" />
+                                </motion.button>
                             </div>
-
                         </div>
+
+                        {/* Summary Metrics */}
+                        <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                            {[
+                                 { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'blue', desc: 'Active Learners' },
+                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'emerald', desc: 'Subscription Flow', isCurrency: true },
+                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'rose', desc: 'User Rewards', isCurrency: true },
+                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'amber', desc: 'Maintenance & Rewards', isCurrency: true },
+                                 { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', desc: 'Platform Performance', isCurrency: true, isNet: true }
+                             ].map((stat, i) => (
+                                <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl group hover:border-primary-500/30 transition-all">
+                                    <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><stat.icon className="w-5 h-5" /></div>
+                                    <div className="flex items-baseline gap-1 mb-1">
+                                        {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400 font-black" />}
+                                        <div className={`text-xl font-black tabular-nums tracking-tighter italic ${stat.isNet ? (stat.val >= 0 ? 'text-primary-500' : 'text-rose-500') : 'text-slate-900 dark:text-white'}`}>
+                                            {new Intl.NumberFormat('en-IN').format(stat.val)}
+                                        </div>
+                                    </div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Controls */}
+                    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-8 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 font-outfit">
+                         <div className="flex-1 relative group w-full lg:max-w-xl">
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+                             <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Filter by User Name or Email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />
+                         </div>
+                         <div className="flex flex-wrap items-center gap-4">
+                            <div className="relative group">
+                                <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                                <select value={subscription} onChange={e => setSubscription(e.target.value)} className="pl-12 pr-10 py-4 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
+                                    <option value="">All Tiers</option>
+                                    <option value="free">Free Access</option>
+                                    <option value="basic">Standard</option>
+                                    <option value="pro">Pro Status</option>
+                                </select>
+                            </div>
+                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                                {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
+                                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                                        <mode.icon className="w-5 h-5" />
+                                    </button>
+                                ))}
+                            </div>
+                         </div>
                     </div>
 
-                    {/* Filters + View Toggle */}
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow border border-gray-200 dark:border-gray-700 p-4 mb-6">
-                        <form onSubmit={handleSearch} className="flex flex-wrap items-center gap-3">
-                            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                <FaFilter className="text-sm" />
-                                <span className="text-sm font-medium">Filters:</span>
+                    <AnimatePresence mode="wait">
+                        {loading ? (
+                             <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Loading user analytics..." /></div>
+                        ) : error ? (
+                            <div className="text-center py-32">
+                                <div className="p-8 bg-rose-500/10 rounded-[3rem] mb-6 inline-block text-rose-500 text-6xl">!</div>
+                                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Error</h3>
+                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
-
-                            <div className="relative flex-1 min-w-[200px]">
-                                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-                                <input
-                                    value={search}
-                                    onChange={e => setSearch(e.target.value)}
-                                    placeholder="Search by name or email..."
-                                    className="w-full pl-9 pr-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-400"
-                                />
+                        ) : students.length === 0 ? (
+                            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+                                <Globe className="w-20 h-20 text-slate-300 mx-auto mb-8 opacity-20" />
+                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter italic">No Users Found</h3>
+                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust filters to locate participants.</p>
                             </div>
-
-                            <select
-                                value={subscription}
-                                onChange={e => setSubscription(e.target.value)}
-                                className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-400"
-                            >
-                                <option value="">All Plans</option>
-                                <option value="free">Free</option>
-                                <option value="basic">Basic</option>
-                                <option value="premium">Premium</option>
-                                <option value="pro">Pro</option>
-                            </select>
-
-                            <button type="submit"
-                                className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-5 py-2 rounded-lg font-medium transition shadow-md text-sm">
-                                <FaSearch /> Search
-                            </button>
-
-                            <button type="button" onClick={() => fetchStudents(page)}
-                                className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg font-medium transition text-sm">
-                                <FaSyncAlt /> Refresh
-                            </button>
-
-                            {/* View toggle */}
-                            <div className="ml-auto flex items-center gap-2">
-                                {viewBtn('list', FaList, 'List')}
-                                {viewBtn('grid', FaThLarge, 'Grid')}
-                                {viewBtn('table', FaTable, 'Table')}
-                            </div>
-                        </form>
-                    </div>
-
-                    {/* Content */}
-                    {loading ? (
-                        <Loading fullScreen={false} size="lg" color="yellow" message="Loading users..." />
-                    ) : error ? (
-                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-8 text-center">
-                            <div className="text-5xl mb-3">❌</div>
-                            <p className="text-red-500 font-semibold mb-4">{error}</p>
-                            <button onClick={() => fetchStudents(1)} className="bg-gradient-to-r from-red-500 to-primary-500 text-white px-6 py-2 rounded-xl font-medium hover:from-red-600 hover:to-primary-600 transition">
-                                Try Again
-                            </button>
-                        </div>
-                    ) : students.length === 0 ? (
-                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-12 text-center text-gray-500 dark:text-gray-400">
-                            <FaUsers className="text-5xl mx-auto mb-3 opacity-30" />
-                            <p className="text-lg font-medium">No users found</p>
-                        </div>
-                    ) : (
-                        <>
-                            {/* ── TABLE VIEW ──────────────────────────────────────────── */}
-                            {viewMode === 'table' && (
-                                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-sm">
+                        ) : (
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
+                                {viewMode === 'table' && (
+                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                                        <table className="w-full border-collapse">
                                             <thead>
-                                                <tr className="bg-gradient-to-r from-red-500 to-primary-500 text-white">
-                                                    <th className="px-4 py-3 text-left font-semibold">#</th>
-                                                    <th className="px-4 py-3 text-left font-semibold">Name</th>
-                                                    <th className="px-4 py-3 text-left font-semibold">Email</th>
-                                                    <th className="px-4 py-3 text-center font-semibold">Level</th>
-                                                    <th className="px-4 py-3 text-center font-semibold">Plan</th>
-                                                    <th className="px-4 py-3 text-center font-semibold">Total Earnings</th>
-                                                    <th className="px-4 py-3 text-center font-semibold">Joined</th>
-                                                    <th className="px-4 py-3 text-center font-semibold text-xs">Daily / Weekly / Monthly Wins</th>
-                                                    <th className="px-4 py-3 text-center font-semibold">Analytics</th>
+                                                <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
+                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
+                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Profile</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Tier</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Progression</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Net Yield</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                                            <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                                                 {students.map((s, idx) => (
-                                                    <tr key={s._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                                                        <td className="px-4 py-3 text-gray-500 dark:text-gray-400 font-mono">{(page - 1) * LIMIT + idx + 1}</td>
-                                                        <td className="px-4 py-3">
-                                                            <div className="flex items-center gap-3">
-                                                                {avatar(s.name)}
-                                                                <span className="font-medium text-gray-800 dark:text-white truncate max-w-[140px]">{s.name || '—'}</span>
+                                                    <motion.tr key={s._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-primary-500/5 transition-all cursor-pointer">
+                                                        <td className="px-8 py-6"><div className="w-10 h-10 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl flex items-center justify-center font-black italic text-xs">{idx + 1 + (page - 1) * LIMIT}</div></td>
+                                                        <td className="px-8 py-6">
+                                                            <div className="flex items-center gap-4">
+                                                                <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg">{(s.name || 'U')[0]}</div>
+                                                                <div>
+                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase tracking-tight">{s.name || 'Anonymous'}</div>
+                                                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
+                                                                </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-4 py-3 text-gray-600 dark:text-gray-400 truncate max-w-[180px]">{s.email || '—'}</td>
-                                                        <td className="px-4 py-3 text-center">
-                                                            <span className="inline-flex items-center gap-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-2.5 py-1 rounded-full text-xs font-semibold">
-                                                                Lv {s.level?.currentLevel ?? 0}
-                                                            </span>
+                                                        <td className="px-8 py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'Free'}</span></td>
+                                                        <td className="px-8 py-6 text-center">
+                                                            <div className="text-xs font-black text-primary-500 tracking-widest mb-1 italic">LVL_{s.level?.currentLevel || 0}</div>
+                                                            <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: `${Math.min((s.level?.currentLevel || 0)*5, 100)}%` }} /></div>
                                                         </td>
-                                                        <td className="px-4 py-3 text-center">
-                                                            <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-semibold capitalize ${subBadge(s.subscriptionStatus)}`}>
-                                                                {s.subscriptionStatus || 'free'}
-                                                            </span>
-                                                        </td>
-                                                        <td className="px-4 py-3 text-center font-semibold text-green-600 dark:text-green-400">
-                                                            <span className="flex items-center justify-center gap-1">
-                                                                <FaRupeeSign className="text-xs" />
-                                                                {(s.totalEarnings || 0).toLocaleString('en-IN')}
-                                                            </span>
-                                                        </td>
-                                                        <td className="px-4 py-3 text-center">
-                                                            <div className="flex items-center justify-center gap-2">
-                                                                <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-0.5 rounded-full font-bold" title="Daily Wins">
-                                                                    D: {s.dailyProgress?.highScoreWins || 0}
-                                                                </span>
-                                                                <span className="text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-2 py-0.5 rounded-full font-bold" title="Weekly Wins">
-                                                                    W: {s.weeklyProgress?.highScoreWins || 0}
-                                                                </span>
-                                                                <span className="text-xs bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 px-2 py-0.5 rounded-full font-bold" title="Monthly Wins">
-                                                                    M: {s.monthlyProgress?.highScoreWins || 0}
-                                                                </span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-4 py-3 text-center text-gray-500 dark:text-gray-400 text-xs">
-                                                            {s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
-                                                        </td>
-                                                        <td className="px-4 py-3 text-center">
-                                                            <button onClick={() => goToUser(s._id)}
-                                                                className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-md hover:shadow-lg transform hover:scale-105">
-                                                                <FaEye className="text-xs" /> View
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                        <td className="px-8 py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
+                                                        <td className="px-8 py-6 text-right"><motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-xl hover:bg-primary-500 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button></td>
+                                                    </motion.tr>
                                                 ))}
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
-                            {/* ── GRID VIEW ───────────────────────────────────────────── */}
-                            {viewMode === 'grid' && (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                    {students.map((s, idx) => (
-                                        <div key={s._id}
-                                            className="bg-white dark:bg-gray-800 rounded-2xl shadow border border-gray-200 dark:border-gray-700 p-5 flex flex-col gap-4 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
-                                            {/* Header */}
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md">
-                                                    {(s.name || 'U').charAt(0).toUpperCase()}
+                                {viewMode === 'grid' && (
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                                        {students.map((s, idx) => (
+                                            <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative flex flex-col group overflow-hidden">
+                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'pro' ? 'bg-amber-400' : 'bg-primary-500'}`} />
+                                                <div className="mb-6 mx-auto">
+                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
                                                 </div>
-                                                <div className="min-w-0">
-                                                    <div className="font-bold text-gray-800 dark:text-white truncate">{s.name || '—'}</div>
-                                                    <div className="text-xs text-gray-500 dark:text-gray-400 truncate">{s.email || '—'}</div>
-                                                </div>
-                                            </div>
-
-                                            {/* Badges */}
-                                            <div className="flex items-center gap-2 flex-wrap">
-                                                <span className="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-2.5 py-0.5 rounded-full text-xs font-semibold">
-                                                    Lv {s.level?.currentLevel ?? 0}
-                                                </span>
-                                                <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize ${subBadge(s.subscriptionStatus)}`}>
-                                                    {s.subscriptionStatus || 'free'}
-                                                </span>
-                                            </div>
-
-                                            {/* Earnings */}
-                                            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl px-4 py-3 flex items-center justify-between">
-                                                <span className="text-xs font-semibold text-green-700 dark:text-green-400">Total Earnings</span>
-                                                <span className="font-bold text-green-700 dark:text-green-400 flex items-center gap-1">
-                                                    <FaRupeeSign className="text-xs" />
-                                                    {(s.totalEarnings || 0).toLocaleString('en-IN')}
-                                                </span>
-                                            </div>
-
-                                            {/* Breakdown pills */}
-                                            {s.earningsBreakdown && (
-                                                <div className="grid grid-cols-3 gap-1 text-center text-xs">
-                                                    <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg py-1.5 px-1">
-                                                        <div className="font-bold text-primary-700 dark:text-primary-400">
-                                                            ₹{(s.earningsBreakdown.monthlyPrizes || 0).toLocaleString('en-IN')}
-                                                        </div>
-                                                        <div className="text-gray-500 dark:text-gray-400 text-[10px]">Monthly</div>
+                                                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 text-center truncate">{s.name || 'Anonymous'}</h3>
+                                                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center mb-8 truncate">{s.email || 'N/A'}</div>
+                                                <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mb-8">
+                                                    <div className="flex justify-between items-center mb-4">
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Yield</div>
+                                                        <div className="text-md font-black text-emerald-500 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     </div>
-                                                    <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-lg py-1.5 px-1">
-                                                        <div className="font-bold text-secondary-700 dark:text-secondary-400">
-                                                            ₹{(s.earningsBreakdown.referralEarnings || 0).toLocaleString('en-IN')}
-                                                        </div>
-                                                        <div className="text-gray-500 dark:text-gray-400 text-[10px]">Referral</div>
-                                                    </div>
-                                                    <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg py-1.5 px-1 col-span-3 mt-2">
-                                                        <div className="flex items-center justify-around">
-                                                            <div>
-                                                                <div className="font-bold text-primary-600 dark:text-red-400">{s.dailyProgress?.highScoreWins || 0}</div>
-                                                                <div className="text-[10px] text-gray-500 lowercase">Daily</div>
-                                                            </div>
-                                                            <div>
-                                                                <div className="font-bold text-secondary-600 dark:text-primary-400">{s.weeklyProgress?.highScoreWins || 0}</div>
-                                                                <div className="text-[10px] text-gray-500 lowercase">Weekly</div>
-                                                            </div>
-                                                            <div>
-                                                                <div className="font-bold text-secondary-600 dark:text-secondary-400">{s.monthlyProgress?.highScoreWins || 0}</div>
-                                                                <div className="text-[10px] text-gray-500 lowercase">Monthly</div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-[10px] text-gray-400 mt-1">Challenge Wins</div>
+                                                    <div className="flex justify-between items-center">
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Progression</div>
+                                                        <div className="text-md font-black text-primary-500 tabular-nums">LVL_{s.level?.currentLevel || 0}</div>
                                                     </div>
                                                 </div>
-                                            )}
+                                                <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">Audit Portfolio</button>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                )}
 
-                                            {/* Footer */}
-                                            <div className="flex items-center justify-between pt-1 border-t border-gray-100 dark:border-gray-700">
-                                                <span className="text-xs text-gray-400">
-                                                    {s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
-                                                </span>
-                                                <button onClick={() => goToUser(s._id)}
-                                                    className="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm hover:shadow-md">
-                                                    <FaEye className="text-xs" /> View
-                                                </button>
-                                            </div>
+                                {viewMode === 'list' && (
+                                    <div className="space-y-6">
+                                        {students.map((s, idx) => (
+                                            <motion.div key={s._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                                                <div className="flex items-center gap-6">
+                                                    <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-xl shadow-xl shrink-0 italic">{(s.name || 'U')[0]}</div>
+                                                    <div>
+                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{s.name || 'Candidate'}</h3>
+                                                        <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                                            <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email?.substring(0, 20)}...</span>
+                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>LVL_{s.level?.currentLevel || 0}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-8 border-t md:border-t-0 pt-4 md:pt-0">
+                                                    <div className="text-right">
+                                                        <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Yield</div>
+                                                    </div>
+                                                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-2xl shadow-sm"><ArrowUpRight className="w-5 h-5" /></motion.button>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {totalPages > 1 && (
+                                    <div className="flex items-center justify-center gap-2 mt-12 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 shadow-lg w-fit mx-auto">
+                                        <button onClick={() => fetchStudents(page - 1)} disabled={page <= 1} className="p-3 rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"><ChevronRight className="w-5 h-5 rotate-180" /></button>
+                                        <div className="flex items-center gap-1 px-4">
+                                            {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                                                let p = i + 1;
+                                                if (totalPages > 5 && page > 3) p = Math.min(page - 2 + i, totalPages - 4 + i);
+                                                return (
+                                                    <button key={p} onClick={() => fetchStudents(p)} className={`w-10 h-10 rounded-xl text-[10px] font-black transition-all ${p === page ? 'bg-primary-500 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}>{p < 10 ? `0${p}` : p}</button>
+                                                );
+                                            })}
                                         </div>
-                                    ))}
-                                </div>
-                            )}
-
-                            {/* ── LIST VIEW ───────────────────────────────────────────── */}
-                            {viewMode === 'list' && (
-                                <div className="flex flex-col gap-2">
-                                    {students.map((s, idx) => (
-                                        <div key={s._id}
-                                            className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center gap-4 hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-150">
-                                            {/* Rank */}
-                                            <div className="text-gray-400 font-mono text-sm w-7 text-center flex-shrink-0">
-                                                {(page - 1) * LIMIT + idx + 1}
-                                            </div>
-
-                                            {/* Avatar */}
-                                            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-red-400 to-primary-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                                {(s.name || 'U').charAt(0).toUpperCase()}
-                                            </div>
-
-                                            {/* Name + Email */}
-                                            <div className="flex-1 min-w-0">
-                                                <div className="font-semibold text-gray-800 dark:text-white truncate">{s.name || '—'}</div>
-                                                <div className="text-xs text-gray-500 dark:text-gray-400 truncate">{s.email || '—'}</div>
-                                            </div>
-
-                                            {/* Level */}
-                                            <span className="hidden sm:inline-flex items-center bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-2.5 py-0.5 rounded-full text-xs font-semibold flex-shrink-0">
-                                                Lv {s.level?.currentLevel ?? 0}
-                                            </span>
-
-                                            {/* Plan */}
-                                            <span className={`hidden md:inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize flex-shrink-0 ${subBadge(s.subscriptionStatus)}`}>
-                                                {s.subscriptionStatus || 'free'}
-                                            </span>
-
-                                            {/* Earnings */}
-                                            <div className="text-right flex-shrink-0">
-                                                <div className="font-bold text-green-600 dark:text-green-400 flex items-center gap-0.5 justify-end">
-                                                    <FaRupeeSign className="text-xs" />
-                                                    {(s.totalEarnings || 0).toLocaleString('en-IN')}
-                                                </div>
-                                                <div className="text-[10px] text-gray-400">earnings</div>
-                                            </div>
-
-                                            {/* Joined */}
-                                            <div className="hidden lg:block text-xs text-gray-400 flex-shrink-0 text-right w-24">
-                                                {s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
-                                            </div>
-
-                                            {/* View */}
-                                            <button onClick={() => goToUser(s._id)}
-                                                className="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-primary-500 hover:from-red-600 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-sm flex-shrink-0">
-                                                <FaEye className="text-xs" /> View
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-
-                            <Pagination />
-                        </>
-                    )}
+                                        <button onClick={() => fetchStudents(page + 1)} disabled={page >= totalPages} className="p-3 rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"><ChevronRight className="w-5 h-5" /></button>
+                                    </div>
+                                )}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </AdminMobileAppWrapper>
@@ -550,3 +311,5 @@ const AdminUsersAnalytics = () => {
 };
 
 export default AdminUsersAnalytics;
+const Gift = (props) => <Award {...props} />;
+

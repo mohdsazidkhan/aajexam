@@ -1,433 +1,304 @@
-'use client';
+﻿'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import UnifiedFooter from '../../UnifiedFooter';
 import { useRouter } from 'next/navigation';
+import {
+   MessageSquare,
+   Send,
+   Target,
+   Zap,
+   ShieldCheck,
+   CircleCheck,
+   CircleAlert,
+   Layers,
+   Sparkles,
+   ArrowLeft,
+   Calendar,
+   BarChart3,
+   HelpCircle,
+   FileText,
+   ChevronRight,
+   Database
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../../lib/api';
 import { getCurrentUser } from '../../../lib/utils/authUtils';
-import { toast } from 'react-hot-toast';
+import UnifiedFooter from '../../UnifiedFooter';
 import Loading from '../../Loading';
+import Card from '../../ui/Card';
+import Button from '../../ui/Button';
 
 const PostUserQuestion = () => {
-	const router = useRouter();
-	const user = getCurrentUser();
-	const [questionText, setQuestionText] = useState('');
-	const [options, setOptions] = useState(['', '', '', '']);
-	const [correctOptionIndex, setCorrectOptionIndex] = useState(0);
-	const [loading, setLoading] = useState(false);
-	const [focusedField, setFocusedField] = useState(null);
-	const [monthlyCount, setMonthlyCount] = useState(null);
-	const [dailyCount, setDailyCount] = useState(null);
-	const hasFetchedCounts = useRef(false);
+   const router = useRouter();
+   const user = getCurrentUser();
+   const [questionText, setQuestionText] = useState('');
+   const [options, setOptions] = useState(['', '', '', '']);
+   const [correctOptionIndex, setCorrectOptionIndex] = useState(0);
+   const [loading, setLoading] = useState(false);
+   const [focusedField, setFocusedField] = useState(null);
+   const [monthlyCount, setMonthlyCount] = useState(null);
+   const [dailyCount, setDailyCount] = useState(null);
+   const hasFetchedCounts = useRef(false);
 
-	// Redirect only if user is not authenticated
-	useEffect(() => {
-		if (!user) {
-			router.push('/login');
-			return;
-		}
-	}, [user, router]);
+   useEffect(() => {
+      if (!user) {
+         router.push('/login');
+         return;
+      }
+   }, [user, router]);
 
-	// Show loading if user is not loaded yet
-	if (!user) {
-		return <Loading fullScreen={true} size="lg" color="blue" message="Loading..." />;
-	}
+   useEffect(() => {
+      const fetchCounts = async () => {
+         if (user && user._id && !hasFetchedCounts.current) {
+            hasFetchedCounts.current = true;
+            try {
+               const [mRes, dRes] = await Promise.all([
+                  API.getCurrentMonthQuestionCount(user._id),
+                  API.getCurrentDayQuestionCount(user._id)
+               ]);
+               if (mRes) setMonthlyCount(mRes.data || mRes);
+               if (dRes) setDailyCount(dRes.data || dRes);
+            } catch (err) {
+               setMonthlyCount({ currentCount: 0, limit: 100, remaining: 100, canAddMore: true });
+               setDailyCount({ currentCount: 0, limit: 5, remaining: 5, canAddMore: true });
+            }
+         }
+      };
+      fetchCounts();
+   }, [user]);
 
-	// Fetch monthly and daily counts on component mount (only once)
-	useEffect(() => {
-		const fetchCounts = async () => {
-			if (user && user._id && !hasFetchedCounts.current) {
-				hasFetchedCounts.current = true;
+   if (!user) return <Loading fullScreen={true} size="lg" />;
 
-				try {
-					console.log('Fetching counts for user:', user._id);
-					console.log('User token:', localStorage.getItem('token') ? 'Present' : 'Missing');
+   const handleOptionChange = (idx, val) => {
+      const next = [...options];
+      next[idx] = val;
+      setOptions(next);
+   };
 
-					// Fetch monthly count
-					const monthlyResponse = await API.getCurrentMonthQuestionCount(user._id);
-					console.log('Monthly response:', monthlyResponse);
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!questionText.trim() || options.some(o => !o.trim())) {
+         toast.error('Protocol Incomplete: Fill all intel fields');
+         return;
+      }
+      if (dailyCount && !dailyCount.canAddMore) return toast.error('Daily Transmission Quota Exceeded');
+      if (monthlyCount && !monthlyCount.canAddMore) return toast.error('Monthly Broadcast Quota Exceeded');
 
-					if (monthlyResponse && monthlyResponse.success !== false) {
-						setMonthlyCount(monthlyResponse.data || monthlyResponse);
-					} else {
-						console.log('Monthly response not successful, using defaults');
-						setMonthlyCount({ currentCount: 0, limit: 100, remaining: 100, canAddMore: true });
-					}
+      setLoading(true);
+      try {
+         await API.createUserQuestion({ questionText, options, correctOptionIndex });
+         toast.success('Question Broadcast Successful');
+         router.push('/pro/questions/mine');
+      } catch (err) {
+         toast.error(err?.response?.data?.message || 'Transmission failed');
+      } finally {
+         setLoading(false);
+      }
+   };
 
-					// Fetch daily count
-					const dailyResponse = await API.getCurrentDayQuestionCount(user._id);
-					console.log('Daily response:', dailyResponse);
+   const formProgress = () => {
+      let completed = 0;
+      if (questionText.trim()) completed += 20;
+      options.forEach(o => { if (o.trim()) completed += 20; });
+      return completed;
+   };
 
-					if (dailyResponse && dailyResponse.success !== false) {
-						setDailyCount(dailyResponse.data || dailyResponse);
-					} else {
-						console.log('Daily response not successful, using defaults');
-						setDailyCount({ currentCount: 0, limit: 5, remaining: 5, canAddMore: true });
-					}
+   return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+         <div className="container mx-auto px-2 lg:px-6 max-w-6xl space-y-12">
 
-				} catch (err) {
-					console.error('Error fetching counts:', err);
-					console.error('Error details:', err.response);
+            {/* --- Transmission Hero --- */}
+            <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8">
+               <div className="space-y-4 text-center lg:text-left">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary-500/10 text-primary-700 dark:text-primary-500 text-[10px] font-black uppercase tracking-widest border border-primary-500/20">
+                     <Database className="w-3 h-3" /> INTEL Creation NODE
+                  </motion.div>
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                     Intel <span className="text-primary-700 dark:text-primary-500">Creation</span>
+                  </h1>
+                  <p className="text-sm font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em]">Broadcast your knowledge to the global academy network</p>
+               </div>
 
-					// Set default values as fallback
-					setMonthlyCount({ currentCount: 0, limit: 100, remaining: 100, canAddMore: true });
-					setDailyCount({ currentCount: 0, limit: 5, remaining: 5, canAddMore: true });
-				}
-			}
-		};
+               <div className="flex gap-4">
+                  <Button variant="ghost" onClick={() => router.push('/pro/questions/mine')} className="px-8 py-5 rounded-3xl bg-white dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                     <Layers className="w-4 h-4 mr-2" /> MY ARCHIVE
+                  </Button>
+               </div>
+            </header>
 
-		fetchCounts();
-	}, []); // Empty dependency array - only run once
+            {/* --- Quota Status Hub --- */}
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+               {[
+                  { label: 'DAILY TRANSMISSION', count: dailyCount, color: 'primary', icon: Zap },
+                  { label: 'MONTHLY BROADCAST', count: monthlyCount, color: 'secondary', icon: BarChart3 }
+               ].map((q, i) => (
+                  <Card key={i} className={`p-8 border-2 transition-all ${q.count && !q.count.canAddMore ? 'bg-primary-500/5 border-primary-500/20' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-800'}`}>
+                     <div className="flex items-center gap-6 mb-6">
+                        <div className={`p-4 rounded-2xl bg-${q.color === 'primary' ? 'primary' : 'secondary'}-500/10 text-${q.color === 'primary' ? 'primary' : 'secondary'}-500`}>
+                           <q.icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 mb-1">{q.label}</p>
+                           <h3 className="text-xl font-black font-outfit uppercase">{q.count?.currentCount || 0} / {q.count?.limit || 0} LOGGED</h3>
+                        </div>
+                     </div>
+                     <div className="h-2 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden border border-slate-100 dark:border-slate-800">
+                        <motion.div initial={{ width: 0 }} animate={{ width: `${((q.count?.currentCount || 0) / (q.count?.limit || 1)) * 100}%` }} className={`h-full bg-${q.color === 'primary' ? 'primary' : 'secondary'}-500`} />
+                     </div>
+                     <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-2 flex justify-between">
+                        <span>{q.count?.remaining || 0} UNITS REMAINING</span>
+                        <span>{Math.round(((q.count?.currentCount || 0) / (q.count?.limit || 1)) * 100)}% CAPACITY</span>
+                     </p>
+                  </Card>
+               ))}
+            </section>
 
-	const handleOptionChange = (idx, val) => {
-		const next = [...options];
-		next[idx] = val;
-		setOptions(next);
-	};
+            {/* --- Main Input Interface --- */}
+            <main className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+               <div className="lg:col-span-8 space-y-8">
+                  {/* Question Input Card */}
+                  <Card className="p-10 border-none shadow-2xl bg-white dark:bg-slate-800/80 backdrop-blur-xl relative overflow-hidden group">
+                     <div className="flex items-center gap-4 mb-8">
+                        <div className="p-3 bg-primary-500 rounded-xl text-white shadow-duo-primary">
+                           <HelpCircle className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-xl font-black font-outfit uppercase tracking-tight">Intel Core Unit</h3>
+                     </div>
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		if (!questionText.trim() || options.some(o => !o.trim())) {
-			toast.error('Please fill question and all 4 options');
-			return;
-		}
+                     <div className="relative">
+                        <textarea
+                           className="w-full bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-3xl p-8 text-xl font-medium placeholder:text-slate-300 dark:placeholder:text-slate-600 focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 transition-all resize-none min-h-[200px]"
+                           placeholder="Synthesize your practice question here..."
+                           value={questionText}
+                           onChange={e => setQuestionText(e.target.value)}
+                        />
+                        <div className="absolute bottom-6 right-8 flex items-center gap-2">
+                           <p className={`text-[10px] font-black uppercase tracking-widest ${questionText.length > 450 ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`}>
+                              {questionText.length} / 500
+                           </p>
+                        </div>
+                     </div>
+                     <Sparkles className="absolute -top-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 group-focus-within:text-primary-700 dark:text-primary-500/10 transition-colors pointer-events-none" />
+                  </Card>
 
-		// Check daily limit before submitting
-		if (dailyCount && !dailyCount.canAddMore) {
-			toast.error('You can add max 5 questions per day');
-			return;
-		}
+                  {/* Options Input Card */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                     {[0, 1, 2, 3].map(i => (
+                        <motion.div key={i} whileHover={{ y: -5 }}>
+                           <Card className={`p-8 border-2 transition-all relative overflow-hidden ${correctOptionIndex === i ? 'border-primary-500 bg-primary-500/[0.03]' : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/50'}`}>
+                              <div className="flex items-center gap-4 mb-4">
+                                 <button onClick={() => setCorrectOptionIndex(i)} className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs transition-all ${correctOptionIndex === i ? 'bg-primary-500 text-white shadow-duo-primary scale-110' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-200'}`}>
+                                    {String.fromCharCode(65 + i)}
+                                 </button>
+                                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">Intel Segment {i + 1}</p>
+                                 {correctOptionIndex === i && (
+                                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="ml-auto">
+                                       <CircleCheck className="w-5 h-5 text-primary-700 dark:text-primary-500" />
+                                    </motion.div>
+                                 )}
+                              </div>
+                              <input
+                                 className="w-full bg-transparent border-none text-lg font-bold placeholder:text-slate-200 dark:placeholder:text-slate-700 focus:outline-none"
+                                 placeholder={`Option ${String.fromCharCode(65 + i)}...`}
+                                 value={options[i]}
+                                 onChange={e => handleOptionChange(i, e.target.value)}
+                              />
+                              {correctOptionIndex === i && <div className="absolute bottom-0 right-0 p-4 opacity-10"><Target className="w-12 h-12 text-primary-700 dark:text-primary-500" /></div>}
+                           </Card>
+                        </motion.div>
+                     ))}
+                  </div>
+               </div>
 
-		// Check monthly limit before submitting
-		if (monthlyCount && !monthlyCount.canAddMore) {
-			toast.error('You can add max 100 questions in a month');
-			return;
-		}
+               {/* Sidebar: Synchronization Status */}
+               <div className="lg:col-span-4 space-y-8">
+                  <Card className="p-8 bg-slate-900 text-white border-none shadow-2xl sticky top-8">
+                     <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                           <div className="p-3 bg-primary-500 rounded-xl text-white">
+                              <Zap className="w-5 h-5" />
+                           </div>
+                           <div>
+                              <h4 className="text-lg font-black font-outfit uppercase tracking-tight">Sync Integrity</h4>
+                              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Protocol validation status</p>
+                           </div>
+                        </div>
 
-		setLoading(true);
-		try {
-			await API.createUserQuestion({ questionText, options, correctOptionIndex });
-			toast.success('Question submitted for review');
-			router.push('/pro/questions/mine');
-		} catch (err) {
-			if (err?.response?.status === 429) {
-				const errorData = err?.response?.data;
-				if (errorData?.error === 'DAILY_LIMIT_EXCEEDED') {
-					toast.error('You can add max 5 questions per day');
-				} else if (errorData?.error === 'MONTHLY_LIMIT_EXCEEDED') {
-					toast.error('You can add max 100 questions in a month');
-				} else {
-					toast.error(errorData?.message || 'Daily/Monthly limit exceeded');
-				}
-			} else {
-				toast.error(err?.message || 'Failed to submit question');
-			}
-		} finally {
-			setLoading(false);
-		}
-	};
+                        <div className="space-y-6">
+                           <div className="flex items-end justify-between">
+                              <p className="text-4xl font-black font-outfit text-primary-700 dark:text-primary-500">{formProgress()}%</p>
+                              <p className="text-[10px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest mb-1">DATA COMPLETE</p>
+                           </div>
+                           <div className="h-4 bg-slate-800 rounded-full overflow-hidden border border-slate-700 shadow-inner">
+                              <motion.div initial={{ width: 0 }} animate={{ width: `${formProgress()}%` }} className="h-full bg-gradient-to-r from-primary-600 to-primary-400 shadow-[0_0_20px_rgba(240,43,30,0.3)]" />
+                           </div>
+                        </div>
 
-	const isFormValid = questionText.trim() && options.every(o => o.trim()) &&
-		monthlyCount?.canAddMore !== false && dailyCount?.canAddMore !== false;
+                        <div className="space-y-4 pt-4 border-t border-slate-800">
+                           <div className="flex items-center gap-3">
+                              <div className={`p-1.5 rounded-lg ${questionText.trim() ? 'bg-primary-500 text-white' : 'bg-slate-800 text-slate-600'}`}>
+                                 <FileText className="w-3 h-3" />
+                              </div>
+                              <p className={`text-[10px] font-black uppercase tracking-widest ${questionText.trim() ? 'text-white' : 'text-slate-600'}`}>Core Unit Synthesized</p>
+                           </div>
+                           <div className="flex items-center gap-3">
+                              <div className={`p-1.5 rounded-lg ${options.every(o => o.trim()) ? 'bg-primary-500 text-white' : 'bg-slate-800 text-slate-600'}`}>
+                                 <Layers className="w-3 h-3" />
+                              </div>
+                              <p className={`text-[10px] font-black uppercase tracking-widest ${options.every(o => o.trim()) ? 'text-white' : 'text-slate-600'}`}>Intel Blocks Mapped</p>
+                           </div>
+                        </div>
 
-	// Calculate form completion percentage
-	const formProgress = () => {
-		let completed = 0;
-		if (questionText.trim()) completed += 25;
-		if (options[0].trim()) completed += 18.75;
-		if (options[1].trim()) completed += 18.75;
-		if (options[2].trim()) completed += 18.75;
-		if (options[3].trim()) completed += 18.75;
-		return completed;
-	};
+                        <Button
+                           variant="primary"
+                           size="lg"
+                           disabled={formProgress() < 100 || loading}
+                           onClick={handleSubmit}
+                           className="w-full py-6 rounded-3xl text-sm font-black uppercase tracking-widest shadow-duo-primary"
+                        >
+                           {loading ? <Loading size="sm" color="white" /> : (
+                              <span className="flex items-center justify-center gap-2">
+                                 <Send className="w-4 h-4" /> BROADCAST PROTOCOL
+                              </span>
+                           )}
+                        </Button>
 
-	return (
-		<>
-			<div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-4 lg:py-8 px-4">
-				<div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
-					{/* Header Section */}
-					<div className="text-center mb-6 md:mb-8">
-						<div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full mb-3 md:mb-4">
-							<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">💭</span>
-						</div>
-						<h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-							Post Your Question
-						</h1>
-						<p className="text-sm md:text-lg text-gray-600 dark:text-gray-300 mb-3 md:mb-4 px-4">
-							Share your knowledge with the community
-						</p>
-						<div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-3 md:mb-4">
+                        <p className="text-[8px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-[0.2em] text-center italic">
+                           * Intel subject to high-level verification before academy entry.
+                        </p>
+                     </div>
+                  </Card>
 
-							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-secondary-800 dark:from-red-800 rounded-full">
-								<span className="text-xs md:text-sm text-secondary-700 dark:text-secondary-200 font-medium">📅 Max 5 Questions Per Day</span>
-							</div>
-							<div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-800 dark:to-secondary-800 rounded-full">
-								<span className="text-xs md:text-sm text-green-700 dark:text-green-200 font-medium">📊 Max 100 Questions Per Month</span>
-							</div>
-						</div>
-					</div>
+                  {/* Extra Tips Bento */}
+                  <div className="p-8 bg-emerald-500/5 border-2 border-emerald-500/10 rounded-[2rem]">
+                     <div className="flex items-center gap-3 mb-4">
+                        <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                        <h5 className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em]">Quality Guidelines</h5>
+                     </div>
+                     <ul className="space-y-3">
+                        {[
+                           'Clear and non-ambiguous logic',
+                           'Plausible distractor segments',
+                           'Marking the absolute correct intel',
+                           'Source verification mandatory'
+                        ].map((tip, i) => (
+                           <li key={i} className="flex items-start gap-3">
+                              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1 flex-shrink-0" />
+                              <p className="text-[10px] font-bold text-slate-700 dark:text-slate-400 uppercase tracking-widest leading-relaxed">{tip}</p>
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               </div>
+            </main>
 
-					{/* Daily Count Display */}
-					{dailyCount && (
-						<div className="mb-4 md:mb-6 bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-xl p-4 md:p-6">
-							<div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3">
-								<div className="flex-shrink-0">
-									<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">📅</span>
-								</div>
-								<div className="flex-1">
-									<h3 className="text-base md:text-lg font-medium text-primary-800 dark:text-primary-200">
-										Daily Question Count
-									</h3>
-									<p className="text-sm md:text-base text-primary-700 dark:text-primary-300 mt-1">
-										You have created <span className="font-bold">{dailyCount.currentCount}</span> out of <span className="font-bold">{dailyCount.limit}</span> questions today
-									</p>
-									<div className="mt-2 w-full bg-primary-200 dark:bg-primary-800 rounded-full h-2">
-										<div
-											className="bg-primary-600 dark:bg-primary-400 h-2 rounded-full transition-all duration-300"
-											style={{ width: `${(dailyCount.currentCount / dailyCount.limit) * 100}%` }}
-										></div>
-									</div>
-									<p className="text-xs md:text-sm text-primary-700 dark:text-primary-400 mt-1">
-										{dailyCount.remaining} questions remaining today
-									</p>
-								</div>
-							</div>
-						</div>
-					)}
-
-					{/* Monthly Count Display */}
-					{monthlyCount && (
-						<div className="mb-6 md:mb-8 bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-xl p-4 md:p-6">
-							<div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3">
-								<div className="flex-shrink-0">
-									<span className="text-sm md:text-lg lg:text-xl xl:text-2xl">📊</span>
-								</div>
-								<div className="flex-1">
-									<h3 className="text-base md:text-lg font-medium text-secondary-800 dark:text-secondary-200">
-										Monthly Question Count
-									</h3>
-									<p className="text-sm md:text-base text-secondary-600 dark:text-secondary-300 mt-1">
-										You have created <span className="font-bold">{monthlyCount.currentCount}</span> out of <span className="font-bold">{monthlyCount.limit}</span> questions this month
-									</p>
-									<div className="mt-2 w-full bg-secondary-200 dark:bg-secondary-800 rounded-full h-2">
-										<div
-											className="bg-secondary-600 dark:bg-secondary-400 h-2 rounded-full transition-all duration-300"
-											style={{ width: `${(monthlyCount.currentCount / monthlyCount.limit) * 100}%` }}
-										></div>
-									</div>
-									<p className="text-xs md:text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-										{monthlyCount.remaining} questions remaining this month
-									</p>
-								</div>
-							</div>
-						</div>
-					)}
-
-					{/* Pro Status Alert removed - all users can post */}
-
-					{/* Main Form */}
-					<div className="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-						{/* Form Header */}
-						<div className="bg-gradient-to-r from-primary-600 to-secondary-600 px-4 md:px-8 py-4 md:py-6">
-							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
-								<div>
-									<h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-white mb-1 md:mb-2">Question Details</h2>
-									<p className="text-primary-100 text-sm md:text-base">Fill in your question and options below</p>
-								</div>
-								<div className="text-left sm:text-right">
-									<div className="text-white font-semibold mb-1 text-sm md:text-base">{Math.round(formProgress())}% Complete</div>
-									<div className="w-full sm:w-24 h-2 bg-white/30 rounded-full overflow-hidden">
-										<div
-											className="h-full bg-white rounded-full transition-all duration-500 ease-out"
-											style={{ width: `${formProgress()}%` }}
-										></div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<form onSubmit={handleSubmit} className="p-4 md:p-8 space-y-6 md:space-y-8">
-							{/* Question Text */}
-							<div className="space-y-2">
-								<label className="block text-base md:text-lg font-semibold text-gray-900 dark:text-white">
-									📝 Your Question
-								</label>
-								<div className="relative">
-									<textarea
-										className={`w-full border-2 rounded-lg md:rounded-xl p-3 md:p-4 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 transition-all duration-200 resize-none text-sm md:text-base ${focusedField === 'question'
-											? 'border-primary-500 ring-2 md:ring-4 ring-primary-200 dark:ring-primary-800'
-											: 'border-gray-300 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600'
-											}`}
-										rows={3}
-										placeholder="Enter your question here... (e.g., What is the capital of France?)"
-										value={questionText}
-										onChange={e => setQuestionText(e.target.value)}
-										onFocus={() => setFocusedField('question')}
-										onBlur={() => setFocusedField(null)}
-									/>
-									<div className={`absolute bottom-2 md:bottom-3 right-2 md:right-3 text-xs md:text-sm ${questionText.length > 450 ? 'text-red-500' :
-										questionText.length > 400 ? 'text-primary-500' :
-											'text-gray-400 dark:text-gray-500'
-										}`}>
-										{questionText.length}/500
-									</div>
-								</div>
-							</div>
-
-							{/* Options */}
-							<div className="space-y-3 md:space-y-4">
-								<label className="block text-base md:text-lg font-semibold text-gray-900 dark:text-white">
-									🎯 Answer Options
-								</label>
-								<div className="space-y-3 md:space-y-4">
-									{[0, 1, 2, 3].map(i => (
-										<div key={i} className="relative">
-											<div className={`flex items-center space-x-2 md:space-x-4 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-all duration-200 ${correctOptionIndex === i
-												? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
-												: focusedField === `option-${i}`
-													? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
-													: 'border-gray-300 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600'
-												}`}>
-												{/* Custom Radio Button */}
-												<div className="flex-shrink-0">
-													<div
-														onClick={() => setCorrectOptionIndex(i)}
-														className={`relative w-6 h-6 rounded-full border-2 cursor-pointer transition-all duration-200 ${correctOptionIndex === i
-															? 'border-primary-500 bg-primary-500'
-															: 'border-gray-300 dark:border-gray-600 hover:border-primary-400'
-															}`}
-													>
-														{correctOptionIndex === i && (
-															<div className="absolute inset-0 flex items-center justify-center">
-																<div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-															</div>
-														)}
-														{correctOptionIndex === i && (
-															<div className="absolute -inset-1 rounded-full border-2 border-primary-400 animate-ping opacity-30"></div>
-														)}
-													</div>
-												</div>
-
-												{/* Option Letter */}
-												<div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm transition-all duration-200 ${correctOptionIndex === i
-													? 'bg-primary-600 text-white shadow-lg transform scale-110'
-													: 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500'
-													}`}>
-													<span className={`transition-all duration-200 ${correctOptionIndex === i ? 'animate-pulse' : ''
-														}`}>
-														{String.fromCharCode(65 + i)}
-													</span>
-												</div>
-
-												{/* Input Field */}
-												<div className="flex-1">
-													<input
-														className="w-full border-none bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-sm md:text-lg"
-														placeholder={`Option ${i + 1}...`}
-														value={options[i]}
-														onChange={e => handleOptionChange(i, e.target.value)}
-														onFocus={() => setFocusedField(`option-${i}`)}
-														onBlur={() => setFocusedField(null)}
-
-													/>
-												</div>
-
-												{/* Correct Answer Indicator */}
-												{correctOptionIndex === i && (
-													<div className="flex-shrink-0">
-														<div className="w-6 h-6 md:w-8 md:h-8 bg-primary-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-															<span className="text-white text-sm md:text-lg font-bold">✓</span>
-														</div>
-													</div>
-												)}
-											</div>
-
-											{/* Option Helper Text */}
-											{correctOptionIndex === i && (
-												<div className="ml-12 md:ml-16 mt-2 flex items-center space-x-2 animate-fade-in">
-													<div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-													<p className="text-primary-700 dark:text-primary-400 font-medium">
-														This is the correct answer ✨
-													</p>
-												</div>
-											)}
-										</div>
-									))}
-								</div>
-							</div>
-
-							{/* Instructions */}
-							<div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg md:rounded-xl p-4 md:p-6">
-								<h3 className="text-base md:text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3">
-									💡 Tips for creating great questions:
-								</h3>
-								<ul className="space-y-2 text-sm md:text-base text-primary-800 dark:text-primary-300">
-									<li className="flex items-start space-x-2">
-										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
-										<span>Make your question clear and specific</span>
-									</li>
-									<li className="flex items-start space-x-2">
-										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
-										<span>Ensure all options are plausible</span>
-									</li>
-									<li className="flex items-start space-x-2">
-										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
-										<span>Mark the correct answer clearly</span>
-									</li>
-									<li className="flex items-start space-x-2">
-										<span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
-										<span>Your question will be reviewed before going live</span>
-									</li>
-								</ul>
-							</div>
-
-							{/* Submit Button */}
-							<div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
-								<button
-									disabled={!isFormValid || loading}
-									className="flex-1 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-sm md:text-base"
-								>
-									{loading ? (
-										<div className="flex items-center justify-center space-x-2">
-											<div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white"></div>
-											<span>Submitting Question...</span>
-										</div>
-									) : (
-										<div className="flex items-center justify-center space-x-2">
-											<span>🚀</span>
-											<span>Submit for Review</span>
-										</div>
-									)}
-								</button>
-
-								<button
-									type="button"
-									onClick={() => router.push('/pro/questions/mine')}
-									className="px-6 md:px-8 py-3 md:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg md:rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm md:text-base"
-								>
-									View My Questions
-								</button>
-							</div>
-						</form>
-					</div>
-
-					{/* Bottom Info */}
-					<div className="mt-6 md:mt-8 text-center px-4">
-						<p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-							Questions are reviewed by admin. You'll see your question in community when questions are approved! 🎉
-						</p>
-					</div>
-				</div>
-			</div>
-			<UnifiedFooter />
-		</>
-	);
+         </div>
+         <UnifiedFooter />
+      </div>
+   );
 };
 
 export default PostUserQuestion;
-
-
-
-
-
-
 

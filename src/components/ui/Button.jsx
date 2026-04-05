@@ -1,121 +1,76 @@
-import React from 'react';
+﻿'use client';
 
+import React from 'react';
+import { motion } from 'framer-motion';
+
+/**
+ * Button - A friendly, bubbly, Duolingo-inspired 3D button for the gamified learning experience.
+ */
 const Button = ({
   children,
-  onClick,
   variant = 'primary',
-  size = 'medium',
-  disabled = false,
-  loading = false,
-  icon,
-  iconPosition = 'left',
   className = '',
-  gradientColors,
+  onClick,
+  disabled = false,
   fullWidth = false,
-  type = 'button',
-  ...props
+  size = 'md',
+  icon: Icon,
+  iconPosition = 'left'
 }) => {
-  const getButtonClasses = () => {
-    const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
-
-    const sizeClasses = {
-      small: 'px-3 py-2 text-sm min-h-[36px]',
-      medium: 'px-4 py-3 text-base min-h-[44px]',
-      large: 'px-6 py-4 text-lg min-h-[52px]',
-    };
-
-    const variantClasses = {
-      primary: 'bg-secondary-500 hover:bg-secondary-600 text-white focus:ring-secondary-500',
-      secondary: 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-500',
-      outline: 'border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-50 focus:ring-secondary-500',
-      ghost: 'text-secondary-500 hover:bg-secondary-50 focus:ring-secondary-500',
-      gradient: 'text-white focus:ring-secondary-500',
-      admin: 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white dark:from-primary-600 dark:to-secondary-700 hover:opacity-90 transition-all duration-200 focus:ring-primary-500 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed',
-    };
-
-    const widthClasses = fullWidth ? 'w-full' : '';
-
-    return `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${widthClasses} ${className}`;
+  const variants = {
+    primary: 'bg-primary-500 shadow-duo-primary border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    secondary: 'bg-primary-500 shadow-duo-secondary border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    emerald: 'bg-emerald-500 shadow-duo-emerald border-emerald-600 text-white active:bg-emerald-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    amber: 'bg-amber-500 shadow-duo-amber border-amber-600 text-white active:bg-amber-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    rose: 'bg-rose-500 shadow-duo-rose border-rose-600 text-white active:bg-rose-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    ghost: 'bg-background-surface text-content-secondary border-border-primary hover:bg-background-surface-secondary !shadow-sm',
+    transparent: 'bg-transparent text-content-secondary hover:bg-background-surface-secondary/50 !shadow-none !border-none',
+    white: 'bg-white text-primary-600 border-b-[#E2E8F0] hover:bg-slate-50 shadow-sm',
+    none: '',
   };
 
-  const getGradientStyle = () => {
-    if (variant === 'gradient' && gradientColors) {
-      return {
-        background: `linear-gradient(135deg, ${gradientColors.join(', ')})`,
-      };
-    }
-    return {};
+  const sizes = {
+    sm: 'px-4 py-2.5 text-xs font-black uppercase tracking-[0.08em] rounded-xl',
+    md: 'px-6 py-3.5 text-sm font-black uppercase tracking-[0.08em] rounded-2xl',
+    lg: 'px-8 py-5 text-sm lg:text-base font-black uppercase tracking-[0.1em] rounded-[2rem]',
+    xl: 'px-10 py-6 text-base lg:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
   };
 
-  const getIconSize = () => {
-    const sizeMap = {
-      small: 'w-4 h-4',
-      medium: 'w-5 h-5',
-      large: 'w-6 h-6',
-    };
-    return sizeMap[size];
-  };
-
-  const getSpacingClasses = () => {
-    return iconPosition === 'left' ? 'mr-2' : 'ml-2';
-  };
-
-  const renderContent = () => {
-    if (loading) {
-      return (
-        <>
-          <svg className={`animate-spin ${getIconSize()} mr-2`} fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          Loading...
-        </>
-      );
-    }
-
-    const iconElement = icon && (
-      <span className={`${getIconSize()} ${getSpacingClasses()}`}>
-        {icon}
-      </span>
-    );
-
-    return (
-      <>
-        {iconPosition === 'left' && iconElement}
-        {children}
-        {iconPosition === 'right' && iconElement}
-      </>
-    );
-  };
-
-  if (variant === 'gradient') {
-    const defaultGradientColors = gradientColors || ['#3B82F6', '#8B5CF6'];
-
-    return (
-      <button
-        type={type}
-        onClick={onClick}
-        disabled={disabled || loading}
-        className={getButtonClasses()}
-        style={getGradientStyle()}
-        {...props}
-      >
-        {renderContent()}
-      </button>
-    );
-  }
+  const IconComponent = () => Icon ? (
+    <Icon className={`${size === 'sm' ? 'w-3.5 h-3.5' : size === 'xl' ? 'w-6 h-6' : 'w-5 h-5'} group-hover:scale-110 transition-transform`} />
+  ) : null;
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled || loading}
-      className={getButtonClasses()}
-      {...props}
+    <motion.button
+      whileTap={disabled ? {} : { y: 2, scale: 0.98 }}
+      whileHover={disabled ? {} : { y: -2 }}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+      className={`
+        ${variants[variant]} 
+        ${sizes[size]}
+        ${fullWidth ? 'w-full' : 'w-fit'}
+        ${disabled ? 'opacity-40 grayscale cursor-not-allowed !shadow-none !border-none' : ''}
+        relative border-b-[6px] transition-all duration-150 flex items-center justify-center gap-3 active:border-b-0
+        group cursor-pointer font-outfit overflow-hidden
+        ${className}
+      `}
     >
-      {renderContent()}
-    </button>
+      {/* Premium Shimmer Overlay */}
+      {!disabled && (variant === 'primary' || variant === 'secondary' || variant === 'emerald') && (
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+      )}
+
+      {/* Button Content */}
+      <div className="relative z-10 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+        {iconPosition === 'left' && <IconComponent />}
+        <span className="whitespace-nowrap flex items-center gap-2">{children}</span>
+        {iconPosition === 'right' && <IconComponent />}
+      </div>
+    </motion.button>
   );
 };
 
 export default Button;
+
+

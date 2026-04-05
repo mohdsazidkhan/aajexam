@@ -1,546 +1,177 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-import { useGlobalError } from '../contexts/GlobalErrorContext';
-import { useTokenValidation } from '../hooks/useTokenValidation';
-import API from '../lib/api'
-import Pagination from '../components/Pagination';
-import { FaClock, FaCheckCircle, FaTimesCircle, FaTrophy, FaEye, FaList, FaTh, FaTable, FaSearch, FaBrain } from 'react-icons/fa';
-import { useRouter } from 'next/router';
-// MobileAppWrapper import removed
-import UnifiedFooter from '../components/UnifiedFooter';
+import {
+   History,
+   Search,
+   Trophy,
+   Brain,
+   Target,
+   Clock,
+   Calendar,
+   ChevronRight,
+   Zap
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+
+import API from '../lib/api';
+import MobileAppWrapper from '../components/MobileAppWrapper';
+import Card from '../components/ui/Card';
+import Button from '../components/ui/Button';
+import ProgressBar from '../components/ui/ProgressBar';
 import Loading from '../components/Loading';
-import { isMobile } from 'react-device-detect';
-import config from '../lib/config/appConfig';
 import Seo from '../components/Seo';
+import Pagination from '../components/Pagination';
 
 const QuizHistoryPage = () => {
-  const [quizHistory, setQuizHistory] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const [currentView, setCurrentView] = useState(() => {
-    try {
+   const [history, setHistory] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [currentPage, setCurrentPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
+   const [searchTerm, setSearchTerm] = useState('');
+   const [filter, setFilter] = useState('');
+   const router = useRouter();
+
+   const fetchHistory = async () => {
+      try {
+         setLoading(true);
+         const params = { page: currentPage, limit: 12 };
+         if (searchTerm) params.search = searchTerm;
+         if (filter) params.status = filter;
+         const res = await API.getStudentQuizHistory(params);
+         const payload = res?.data || res;
+         const items = payload?.attempts || payload?.history || payload?.quizzes || payload?.items || payload?.data || [];
+         setHistory(Array.isArray(items) ? items : []);
+         setTotalPages(payload?.pagination?.totalPages || payload?.totalPages || 1);
+      } catch (e) {
+         toast.error("Could not load quiz history");
+      } finally { setLoading(false); }
+   };
+
+   useEffect(() => { fetchHistory(); }, [currentPage, filter]);
+
+   const getRankBadge = (acc) => {
+      if (acc >= 90) return { label: 'S', color: 'primary' };
+      if (acc >= 75) return { label: 'A', color: 'secondary' };
+      if (acc >= 50) return { label: 'B', color: 'blue' };
+      return { label: 'C', color: 'slate' };
+   };
+
+   const handleView = (attempt) => {
       if (typeof window !== 'undefined') {
-        return (isMobile || window.innerWidth < 768) ? 'grid' : 'table';
+         sessionStorage.setItem('quizResult', JSON.stringify(attempt));
       }
-    } catch (e) { }
-    return isMobile ? 'grid' : 'table';
-  });
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filters, setFilters] = useState({
-    status: '',
-    category: ''
-  });
-  const { handleError } = useGlobalError();
-  const { isValidating } = useTokenValidation();
-  const router = useRouter();
+      router.push("/quiz-result");
+   };
 
-  const itemsPerPage = 10;
+   if (loading && history.length === 0) return <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center"><Loading size="md" /></div>;
 
-  useEffect(() => {
-    if (!isValidating) {
-      fetchQuizHistory();
-    }
-  }, [currentPage, searchTerm, filters, isValidating]);
+   return (
+      <MobileAppWrapper title="Quiz History">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+            <Seo title="Quiz History - AajExam" noIndex={true} />
 
-  // Ensure Grid on small screens after mount and on orientation change
-  useEffect(() => {
-    try {
-      const enforceGridOnSmall = () => {
-        if (typeof window !== 'undefined' && window.innerWidth < 768) {
-          setCurrentView('grid');
-        }
-      };
-      enforceGridOnSmall();
-      window.addEventListener('resize', enforceGridOnSmall);
-      window.addEventListener('orientationchange', enforceGridOnSmall);
-      return () => {
-        window.removeEventListener('resize', enforceGridOnSmall);
-        window.removeEventListener('orientationchange', enforceGridOnSmall);
-      };
-    } catch (e) { }
-  }, []);
-
-  const fetchQuizHistory = async () => {
-    try {
-      setLoading(true);
-      const params = {
-        page: currentPage,
-        limit: itemsPerPage,
-        search: searchTerm,
-        ...filters
-      };
-
-      const response = await API.getStudentQuizHistory(params);
-      const payload = response?.data || response;
-      const attempts = payload.attempts || payload.items || [];
-
-      setQuizHistory(attempts);
-      setTotalPages(payload.pagination?.totalPages || payload.pagination?.pages || 1);
-      setTotalItems(payload.pagination?.totalAttempts || payload.pagination?.total || (attempts.length || 0));
-    } catch (error) {
-      handleError(error, 'Failed to fetch quiz history');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getStatusIcon = (status) => {
-    switch (status?.toLowerCase()) {
-      case 'completed':
-        return <FaCheckCircle className="text-green-500" />;
-      case 'failed':
-        return <FaTimesCircle className="text-red-500" />;
-      case 'timeout':
-        return <FaClock className="text-primary-500" />;
-      default:
-        return <FaClock className="text-gray-500" />;
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status?.toLowerCase()) {
-      case 'completed':
-        return 'text-green-600 dark:text-green-400';
-      case 'failed':
-        return 'text-primary-600 dark:text-red-400';
-      case 'timeout':
-        return 'text-primary-600 dark:text-primary-400';
-      default:
-        return 'text-gray-600 dark:text-gray-400';
-    }
-  };
-
-  const formatTime = (seconds) => {
-    if (!seconds) return '0:00';
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const formatAttemptedDate = (dateString) => {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    return date.toLocaleDateString();
-  };
-
-  const formatAttemptedTime = (dateString) => {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  };
-
-  const handleViewDetails = (attempt) => {
-    // Store quiz result in sessionStorage for access in quiz-result page (same as profile page)
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('quizResult', JSON.stringify(attempt));
-    }
-    router.push("/quiz-result");
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    setCurrentPage(1);
-  };
-
-  const handleFilterChange = (filterName, value) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterName]: value
-    }));
-    setCurrentPage(1);
-  };
-
-  const handleClearFilters = () => {
-    setFilters({
-      status: '',
-      category: ''
-    });
-    setSearchTerm('');
-    setCurrentPage(1);
-  };
-
-  // Render Table View
-  const renderTableView = () => (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-700">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-              Quiz
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-              Score
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-              Attempt Date
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-              Attempt Time
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-          {quizHistory.map((attempt) => (
-            <tr key={attempt._id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-              <td className="px-0 lg:px-6 py-4 whitespace-nowrap">
-                <div>
-                  <div className="font-medium text-md lg:text-lg text-gray-900 dark:text-white">
-                    {attempt.quizTitle || attempt.quiz?.title || 'Unknown Quiz'}
+            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12 mt-0">
+               <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                  <div className="space-y-2 text-center lg:text-left">
+                     <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Quiz History</h1>
+                     <p className="text-sm font-bold text-gray-400">All the quizzes you have attempted</p>
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {attempt.categoryName || attempt.quiz?.category?.name || 'No Category'}
-                  </div>
-                  {attempt.subcategoryName && (
-                    <div className="text-xs text-gray-500 dark:text-gray-500">
-                      {attempt.subcategoryName}
-                    </div>
-                  )}
-                </div>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-center">
-                  <div className="font-semibold text-secondary-600 dark:text-secondary-400">
-                    {attempt.score}/{attempt.totalQuestions || attempt.quiz?.questions?.length || 0}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {attempt.percentage || attempt.scorePercentage ? `${(attempt.percentage || attempt.scorePercentage).toFixed(1)}%` : '0%'}
-                  </div>
-                </div>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                {formatAttemptedDate(attempt.attemptedAt)}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                {formatAttemptedTime(attempt.attemptedAt)}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button
-                  onClick={() => handleViewDetails(attempt)}
-                  className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 flex items-center space-x-1"
-                >
-                  <FaEye />
-                  <span>View Result</span>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
 
-  // Render List View
-  const renderListView = () => (
-    <div className="space-y-4">
-      {quizHistory.map((attempt) => (
-        <div
-          key={attempt._id}
-          className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-2 lg:p-6 shadow-sm hover:shadow-md transition-all"
-        >
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div className="flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    Quiz
+                  <div className="flex flex-wrap gap-4 justify-center">
+                     <div className="relative group">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-500 transition-colors" />
+                        <input
+                           className="pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-bold outline-none focus:border-primary-500"
+                           placeholder="Search quizzes..."
+                           value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
+                           onKeyDown={(e) => e.key === 'Enter' && fetchHistory()}
+                        />
+                     </div>
+                     <select
+                        className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-500"
+                        value={filter} onChange={e => setFilter(e.target.value)}
+                     >
+                        <option value="">All</option>
+                        <option value="completed">Completed</option>
+                        <option value="failed">Failed</option>
+                     </select>
                   </div>
-                  <div className="font-bold text-gray-900 dark:text-white">
-                    {attempt.quizTitle || attempt.quiz?.title || 'Unknown Quiz'}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {attempt.categoryName || attempt.quiz?.category?.name || 'No Category'}
-                  </div>
-                  {attempt.subcategoryName && (
-                    <div className="text-xs text-gray-500 dark:text-gray-500">
-                      {attempt.subcategoryName}
-                    </div>
-                  )}
-                </div>
+               </div>
 
-                <div>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    Score
+               {history.length === 0 ? (
+                  <div className="py-32 text-center space-y-6">
+                     <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50"><Brain className="w-10 h-10 text-gray-400" /></div>
+                     <h3 className="text-xl lg:text-2xl font-black font-outfit">No quizzes yet</h3>
+                     <Button variant="secondary" onClick={() => router.push('/quizzes')}>Start a Quiz</Button>
                   </div>
-                  <div className="font-semibold text-secondary-600 dark:text-secondary-400 text-lg">
-                    {attempt.score}/{attempt.totalQuestions || attempt.quiz?.questions?.length || 0}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {attempt.percentage || attempt.scorePercentage ? `${(attempt.percentage || attempt.scorePercentage).toFixed(1)}%` : '0%'}
-                  </div>
-                </div>
+               ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+                     {history.map((attempt, idx) => {
+                        const acc = attempt.percentage || attempt.scorePercentage || 0;
+                        const rank = getRankBadge(acc);
+                        const title = attempt.quizTitle || attempt.quiz?.title || 'Quiz';
 
-                <div>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    Attempt Date
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {formatAttemptedDate(attempt.attemptedAt)}
-                  </div>
-                </div>
+                        return (
+                           <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
+                              <Card className="p-6 group cursor-pointer hover:shadow-2xl transition-all duration-500 border-2" onClick={() => handleView(attempt)}>
+                                 <div className="space-y-6">
+                                    <div className="flex justify-between items-start">
+                                       <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                                          <Brain className="w-6 h-6" />
+                                       </div>
+                                       <div className={`w-10 h-10 rounded-full border-4 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black font-outfit text-xl shadow-sm`}>
+                                          {rank.label}
+                                       </div>
+                                    </div>
 
-                <div>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    Attempt Time
+                                    <div className="space-y-1">
+                                       <h4 className="text-lg font-black font-outfit tracking-tight line-clamp-1">{title}</h4>
+                                       <p className="text-[10px] font-bold text-gray-400">{attempt.categoryName || 'General Knowledge'}</p>
+                                    </div>
+
+                                    <div className="space-y-4">
+                                       <div className="flex justify-between items-end">
+                                          <span className="text-[10px] font-black text-gray-400">Accuracy</span>
+                                          <span className={`text-sm font-black text-${rank.color}-500`}>{acc.toFixed(0)}%</span>
+                                       </div>
+                                       <ProgressBar progress={acc} color={`${rank.color}-500`} height="h-2" shadow={rank.color === 'primary' ? 'shadow-duo-primary' : 'shadow-duo-secondary'} />
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4 pt-2 border-t-2 border-slate-50 dark:border-slate-800">
+                                       <div className="space-y-1">
+                                          <span className="text-[8px] font-black text-gray-400">Score</span>
+                                          <p className="text-sm font-black">{attempt.score} / {attempt.totalQuestions || 10}</p>
+                                       </div>
+                                       <div className="space-y-1">
+                                          <span className="text-[8px] font-black text-gray-400">Streak</span>
+                                          <div className="flex items-center gap-1 text-sm font-black text-orange-500"><Zap className="w-3 h-3 fill-current" /> {attempt.streak || 0}</div>
+                                       </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between text-[9px] font-black text-gray-400">
+                                       <div className="flex items-center gap-1.5"><Calendar className="w-3 h-3" /> {new Date(attempt.attemptedAt).toLocaleDateString()}</div>
+                                       <div className="flex items-center gap-1.5 group-hover:text-primary-500 transition-colors">View Result <ChevronRight className="w-3 h-3" /></div>
+                                    </div>
+                                 </div>
+                              </Card>
+                           </motion.div>
+                        );
+                     })}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {formatAttemptedTime(attempt.attemptedAt)}
+               )}
+
+               {totalPages > 1 && (
+                  <div className="flex justify-center pt-10">
+                     <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
                   </div>
-                </div>
-              </div>
+               )}
             </div>
-
-            <div className="flex items-center justify-end">
-              <button
-                onClick={() => handleViewDetails(attempt)}
-                className="px-4 py-2 bg-secondary-600 text-white rounded-lg hover:bg-secondary-700 transition-colors flex items-center space-x-2"
-              >
-                <FaEye />
-                <span>View Result</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-
-  // Render Grid View
-  const renderGridView = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-      {quizHistory.map((attempt) => (
-        <div
-          key={attempt._id}
-          className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-2 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer"
-          onClick={() => handleViewDetails(attempt)}
-        >
-          {/* Card Header */}
-          <div className="mb-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
-                <FaBrain className="text-white text-xl" />
-              </div>
-              <div className={`px-3 py-1 rounded-full text-xs font-semibold ${(attempt.percentage || attempt.scorePercentage) >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE
-                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                : (attempt.percentage || attempt.scorePercentage) >= 50
-                  ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
-                  : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                }`}>
-                {(attempt.percentage || attempt.scorePercentage) >= config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE ? 'High Score' : (attempt.percentage || attempt.scorePercentage) >= 50 ? 'Good' : 'Attempted'}
-              </div>
-            </div>
-            <h3 className="font-bold text-md lg:text-lg text-gray-900 dark:text-white mb-1">
-              {attempt.quizTitle || attempt.quiz?.title || 'Unknown Quiz'}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {attempt.categoryName || attempt.quiz?.category?.name || 'No Category'}
-            </p>
-            {attempt.subcategoryName && (
-              <p className="text-xs text-gray-500 dark:text-gray-500">
-                {attempt.subcategoryName}
-              </p>
-            )}
-          </div>
-
-          {/* Card Content */}
-          <div className="space-y-3 mb-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Score:</span>
-              <span className="font-bold text-secondary-600 dark:text-secondary-400">
-                {attempt.score}/{attempt.totalQuestions || attempt.quiz?.questions?.length || 0}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Percentage:</span>
-              <span className="font-semibold text-gray-900 dark:text-white">
-                {attempt.percentage || attempt.scorePercentage ? `${(attempt.percentage || attempt.scorePercentage).toFixed(1)}%` : '0%'}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Attempt Date:</span>
-              <span className="font-semibold text-gray-900 dark:text-white">
-                {formatAttemptedDate(attempt.attemptedAt)}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Attempt Time:</span>
-              <span className="font-semibold text-gray-900 dark:text-white">
-                {formatAttemptedTime(attempt.attemptedAt)}
-              </span>
-            </div>
-          </div>
-
-          {/* Card Footer */}
-          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-end">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleViewDetails(attempt);
-                }}
-                className="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-300 flex items-center space-x-1 text-sm font-semibold"
-              >
-                <FaEye />
-                <span>View Result</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-
-  if (loading && quizHistory.length === 0) {
-    return (
-      <>
-        <Seo
-          title="Quiz History - AajExam"
-          description="View your complete quiz history, track your performance over time, and review past quiz attempts with detailed scores and statistics."
-          noIndex={true}
-        />
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-          <div className="text-center">
-            <Loading size="md" color="blue" message="Loading quiz history..." />
-          </div>
-        </div>
-        <UnifiedFooter />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Seo
-        title="Quiz History - AajExam"
-        description="View your complete quiz history, track your performance over time, and review past quiz attempts with detailed scores and statistics."
-        noIndex={true}
-      />
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-4 lg:py-8">
-        <div className="container mx-auto px-4 lg:px-10">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 lg:p-6">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-              <h1 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                <FaTrophy className="mr-3 text-primary-500" />
-                Quiz History
-              </h1>
-
-              {/* Search and Filters */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Search by quiz name or category..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                  />
-                </div>
-                <select
-                  value={filters.status}
-                  onChange={(e) => handleFilterChange('status', e.target.value)}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                >
-                  <option value="">All Status</option>
-                  <option value="completed">Completed</option>
-                  <option value="failed">Failed</option>
-                  <option value="timeout">Timeout</option>
-                </select>
-                {(searchTerm || filters.status) && (
-                  <button
-                    onClick={handleClearFilters}
-                    className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    Clear Filters
-                  </button>
-                )}
-              </div>
-
-              {/* View Toggle */}
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => setCurrentView('table')}
-                  className={`p-2 rounded-lg transition-colors ${currentView === 'table'
-                    ? 'bg-secondary-600 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
-                  title="Table View"
-                >
-                  <FaTable />
-                </button>
-                <button
-                  onClick={() => setCurrentView('list')}
-                  className={`p-2 rounded-lg transition-colors ${currentView === 'list'
-                    ? 'bg-secondary-600 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
-                  title="List View"
-                >
-                  <FaList />
-                </button>
-                <button
-                  onClick={() => setCurrentView('grid')}
-                  className={`p-2 rounded-lg transition-colors ${currentView === 'grid'
-                    ? 'bg-secondary-600 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
-                  title="Grid View"
-                >
-                  <FaTh />
-                </button>
-              </div>
-            </div>
-
-            {/* Content */}
-            {loading ? (
-              <div className="text-center py-12">
-                <Loading size="md" color="blue" message="Loading..." />
-              </div>
-            ) : quizHistory.length === 0 ? (
-              <div className="text-center py-12">
-                <FaBrain className="mx-auto text-gray-400 text-5xl mb-4" />
-                <p className="text-gray-600 dark:text-gray-400 text-lg font-semibold">No quiz history found</p>
-                <p className="text-gray-500 dark:text-gray-500 mt-2">
-                  {searchTerm || filters.status ? 'Try adjusting your filters' : 'Start playing quizzes to see your history here'}
-                </p>
-              </div>
-            ) : (
-              <>
-                {currentView === 'table' && renderTableView()}
-                {currentView === 'list' && renderListView()}
-                {currentView === 'grid' && renderGridView()}
-              </>
-            )}
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="mt-6">
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                  totalItems={totalItems}
-                  itemsPerPage={itemsPerPage}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <UnifiedFooter />
-    </>
-  );
+         </div>
+      </MobileAppWrapper>
+   );
 };
 
 export default QuizHistoryPage;

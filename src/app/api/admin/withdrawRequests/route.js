@@ -35,26 +35,38 @@ export async function GET(req) {
             WithdrawRequest.countDocuments(filter)
         ]);
 
-        // Enrich with bank details and wallet info
-        const enrichedItems = await Promise.all(items.map(async (item) => {
-            if (item.userId) {
-                const bankDetail = await BankDetail.findOne({ user: item.userId._id }).lean();
-                const user = await User.findById(item.userId._id).select('walletBalance isTopPerformer').lean();
-                const isReferralWithdrawal = item.metadata?.isTopPerformer !== undefined;
-                return {
-                    ...item,
-                    bankDetail,
-                    userWalletBalance: user?.walletBalance || 0,
-                    userIsTopPerformer: user?.isTopPerformer || false,
-                    requestType: isReferralWithdrawal ? 'referral' : 'pro'
-                };
-            }
+        // Optimization: Collect user IDs and bulk fetch bank details/wallet info
+        const userIds = items.map(item => item.userId?._id).filter(Boolean);
+        
+        const [bankDetails, userStates] = await Promise.all([
+            BankDetail.find({ user: { $in: userIds } }).lean(),
+            User.find({ _id: { $in: userIds } }).select('walletBalance isTopPerformer').lean()
+        ]);
+
+        const bankDetailsMap = bankDetails.reduce((acc, bd) => {
+            acc[bd.user.toString()] = bd;
+            return acc;
+        }, {});
+
+        const usersMap = userStates.reduce((acc, u) => {
+            acc[u._id.toString()] = u;
+            return acc;
+        }, {});
+
+        const enrichedItems = items.map(item => {
+            const userIdStr = item.userId?._id?.toString();
+            const bankDetail = userIdStr ? bankDetailsMap[userIdStr] : null;
+            const userState = userIdStr ? usersMap[userIdStr] : null;
             const isReferralWithdrawal = item.metadata?.isTopPerformer !== undefined;
+
             return {
                 ...item,
+                bankDetail,
+                userWalletBalance: userState?.walletBalance || 0,
+                userIsTopPerformer: userState?.isTopPerformer || false,
                 requestType: isReferralWithdrawal ? 'referral' : 'pro'
             };
-        }));
+        });
 
         return NextResponse.json({
             success: true,

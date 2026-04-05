@@ -174,7 +174,8 @@ export async function POST(req) {
                 _id: user._id, name: user.name, email: user.email, username: user.username,
                 role: user.role, referralCode: user.referralCode, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: freeSubscription,
-                badges: user.badges, level: levelInfo
+                badges: user.badges, level: levelInfo,
+                walletBalance: user.walletBalance || 0
             }
         }, { status: 201 });
 

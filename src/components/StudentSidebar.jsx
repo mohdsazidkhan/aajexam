@@ -1,52 +1,51 @@
+﻿'use client';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  FaHome,
-  FaFire,
-  FaUsers,
-  FaBookmark,
-  FaPlay,
-  FaBook,
-  FaGamepad,
-  FaUsers as FaTeam,
-  FaTrophy,
-  FaStore,
-  FaShoppingCart,
-  FaUser,
-  FaSignOutAlt,
-  FaChevronDown,
-  FaChevronRight,
-  FaQuestionCircle,
-  FaGraduationCap,
-  FaSearch,
-  FaBlog,
-  FaWallet,
-  FaCreditCard,
-  FaUserFriends,
-  FaUserPlus,
-  FaHistory,
-  FaCrown,
-  FaEdit,
-  FaPlusCircle,
-  FaRupeeSign,
-  FaChartLine,
-} from 'react-icons/fa';
+  Home,
+  Search,
+  HelpCircle,
+  BookOpen,
+  GraduationCap,
+  Trophy,
+  Crown,
+  PlusCircle,
+  Edit3,
+  Layout,
+  Wallet,
+  CreditCard,
+  TrendingUp,
+  User,
+  Settings,
+  LogOut,
+  ChevronDown,
+  Layers,
+  Award,
+  Globe,
+  Zap,
+  Target,
+  History,
+  MessageSquare,
+  ShieldCheck,
+  X
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
 import { secureLogout, getCurrentUser, isAuthenticated } from '../lib/utils/authUtils';
 import { useSSR } from '../hooks/useSSR';
-import { hasActiveSubscription } from '../lib/utils/subscriptionUtils';
-import { toast } from 'react-toastify';
 import API from '../lib/api';
-import { useRef } from 'react';
 
 const StudentSidebar = () => {
   const { isMounted, router } = useSSR();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
+  const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const user = getCurrentUser();
   const authenticated = isAuthenticated();
+
   const [walletBalance, setWalletBalance] = useState(0);
   const [claimableRewards, setClaimableRewards] = useState(0);
   const fetchRef = useRef(false);
@@ -56,341 +55,223 @@ const StudentSidebar = () => {
       if (authenticated && isMounted) {
         try {
           const res = await API.getWalletData();
-          if (res && res.success && res.data) {
+          if (res?.success && res.data) {
             setWalletBalance(res.data.walletBalance || 0);
             setClaimableRewards(res.data.claimableRewards || 0);
           }
-        } catch (err) {
-          console.error('Error fetching wallet in sidebar:', err);
-        }
+        } catch (err) { console.error('Wallet Stats offline'); }
       }
     };
-
     if (authenticated && isMounted && !fetchRef.current) {
       fetchRef.current = true;
       fetchWallet();
     }
   }, [authenticated, isMounted]);
 
-  // Menu expansion states
-  const [expandedMenus, setExpandedMenus] = useState({
-    games: false,
-    groups: false,
-    teams: false,
-    tournaments: false,
-    marketplace: false,
-    profile: false,
-    shop: false,
-    blogs: false,
-  });
-
-  useEffect(() => {
-    // Auto-expand menus based on current route
-    if (router?.pathname) {
-      if (router.pathname.startsWith('/home')) {
-        setExpandedMenus(prev => ({ ...prev, games: false }));
-      }
-    }
-  }, [router?.pathname]);
-
-  if (!isMounted) {
-    return null;
-  }
-
-  // Don't show sidebar if user is not authenticated
-  if (!authenticated || !user) {
-    return null;
-  }
+  const [expandedMenus, setExpandedMenus] = useState({});
 
   const toggleMenu = (menu) => {
-    setExpandedMenus(prev => ({
-      ...prev,
-      [menu]: !prev[menu]
-    }));
+    setExpandedMenus(prev => ({ ...prev, [menu]: !prev[menu] }));
   };
 
   const isActiveRoute = (path) => {
     if (!router?.pathname) return false;
-    if (path === '/home') {
-      return router.pathname === '/home' || router.pathname === '/';
-    }
-    return router.pathname.startsWith(path);
-  };
-
-  const getActiveClass = (path) => {
-    const baseClass = "flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200";
-    if (isActiveRoute(path)) {
-      return `${baseClass} bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-md`;
-    }
-    return `${baseClass} text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800`;
+    return path === '/home' ? router.pathname === '/home' || router.pathname === '/' : router.pathname.startsWith(path);
   };
 
   const handleNavClick = () => {
-    // Close sidebar on mobile after navigation
-    if (window.innerWidth < 768) {
-      dispatch(toggleSidebar());
-    }
+    if (window.innerWidth < 768) dispatch(toggleSidebar());
   };
 
-  const handleLogout = () => {
-    secureLogout(router);
-  };
-
-  // Get profile children dynamically based on user's username
-  const getProfileChildren = () => {
+  const getProfileChildren = useMemo(() => {
     const username = user?.username;
     const children = [
       { path: '/profile', label: 'My Profile' },
       { path: '/pro/quizzes/mine', label: 'My Quizzes' },
       { path: '/pro/questions/mine', label: 'My Questions' },
-      { path: '/pro/my-blogs', label: 'My Blogs' },
+      { path: '/pro/my-blogs', label: 'My Articles' },
     ];
-
-    // Add followers and followings if username exists
     if (username) {
       children.push(
-        { path: `/profile/${username}/followers`, label: 'My Followers' },
-        { path: `/profile/${username}/following`, label: 'My Followings' }
+        { path: `/profile/${username}/followers`, label: 'Followers' },
+        { path: `/profile/${username}/following`, label: 'Following' }
       );
     }
-
-    // Add Exam History
-    children.push({ path: '/exam-history', label: 'Exams History' });
-    children.push({ path: '/quiz-history', label: 'Quizzes History' });
-
-    // Add existing items
-    children.push(
-      { path: '/settings', label: 'Settings' }
-    );
-
+    children.push({ path: '/exam-history', label: 'Exam History' });
+    children.push({ path: '/quiz-history', label: 'Quiz History' });
+    children.push({ path: '/settings', label: 'Settings' });
     return children;
-  };
+  }, [user]);
 
-  // Student-related routes organized into logical sections - User-friendly order
   const sidebarSections = [
     {
-      title: 'Quick Access',
+      title: 'NAVIGATION',
       items: [
-        { path: '/home', icon: FaHome, label: 'Home', hasChildren: false },
-        { path: '/search', icon: FaSearch, label: 'Search', hasChildren: false },
+        { path: '/home', icon: Home, label: 'Home' },
+        { path: '/search', icon: Search, label: 'Search' },
       ]
     },
     {
-      title: 'Learn & Practice',
+      title: 'STUDY CENTER',
       items: [
-        { path: '/questions/public', icon: FaQuestionCircle, label: 'Questions', hasChildren: false },
-        { path: '/articles', icon: FaBlog, label: 'Articles', hasChildren: false },
-        { path: '/govt-exams', icon: FaGraduationCap, label: 'Govt Exams', hasChildren: false },
-        { path: '/quiz-levels', icon: FaBook, label: 'My Levels', hasChildren: false },
+        { path: '/questions/public', icon: HelpCircle, label: 'Questions' },
+        { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
+        { path: '/quiz-levels', icon: Layers, label: 'Levels' },
       ]
     },
     {
-      title: 'Compete & Win',
+      title: 'RANKING & REWARDS',
       items: [
-        { path: '/leaderboard', icon: FaCrown, label: 'Leaderboard', hasChildren: false },
-        { path: '/monthly-winners', icon: FaTrophy, label: 'Winners', hasChildren: false },
-        { path: '/rewards', icon: FaTrophy, label: 'Rewards', hasChildren: false },
+        { path: '/leaderboard', icon: Crown, label: 'Leaderboard' },
+        { path: '/monthly-winners', icon: Trophy, label: 'Monthly Winners' },
+        { path: '/rewards', icon: Award, label: 'Rewards', badge: claimableRewards > 0 ? `₹${claimableRewards}` : null, badgeColor: 'primary' },
       ]
     },
     {
-      title: 'Create & Share',
+      title: 'CREATION',
       items: [
-        { path: '/pro/questions/new', icon: FaPlusCircle, label: 'Post Question', hasChildren: false },
-        { path: '/pro/quiz/create', icon: FaEdit, label: 'Post Quiz', hasChildren: false },
-        {
-          path: '/pro/create-blog',
-          icon: FaBlog,
-          label: 'Post Blog',
-          hasChildren: false,
-        },
+        { path: '/pro/questions/new', icon: PlusCircle, label: 'Add Question' },
+        { path: '/pro/quiz/create', icon: Edit3, label: 'Create Quiz' },
+        { path: '/pro/create-blog', icon: MessageSquare, label: 'Write Article' },
       ]
     },
     {
-      title: 'My Account',
+      title: 'MY ACCOUNT',
       items: [
-        {
-          path: '/profile',
-          icon: FaUser,
-          label: 'My Profile',
-          hasChildren: true,
-          getChildren: getProfileChildren,
-        },
-        { path: '/pro/wallet', icon: FaWallet, label: 'My Wallet', hasChildren: false },
-        { path: '/subscription', icon: FaCreditCard, label: 'Subscription', hasChildren: false },
+        { path: '/profile', icon: User, label: 'Profile', hasChildren: true, children: getProfileChildren },
+        { path: '/pro/wallet', icon: Wallet, label: 'Wallet', badge: walletBalance > 0 ? `₹${walletBalance}` : null, badgeColor: 'emerald' },
+        { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
       ]
     },
     {
-      title: 'My Earnings',
+      title: 'MY PROGRESS',
       items: [
-        { path: '/my-analytics', icon: FaChartLine, label: 'My Analytics', hasChildren: false },
-        { path: '/pro/user-quiz-rewards', icon: FaTrophy, label: 'Quiz Rewards', hasChildren: false },
-        { path: '/pro/question-rewards-history', icon: FaQuestionCircle, label: 'Question Rewards', hasChildren: false },
-        { path: '/pro/blog-rewards-history', icon: FaBlog, label: 'Blog Rewards', hasChildren: false },
-        { path: '/referral-history', icon: FaHistory, label: 'Referral Rewards', hasChildren: false },
+        { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
+        { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
-    },
-    {
-      title: 'Help & Support',
-      items: [
-        { path: '/contact', icon: FaUser, label: 'Contact Us', hasChildren: false },
-      ]
-    },
+    }
   ];
 
-  return (
-    <div className={`student-sidebar bg-white dark:bg-gray-900 text-gray-900 dark:text-white transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
-      } flex flex-col h-full shadow-lg relative`}>
+  if (!isMounted || !authenticated || !user) return null;
 
-      {/* Navigation Links - Scrollable on mobile, with bottom padding on desktop for fixed user section */}
-      <nav className="flex-1 overflow-y-auto py-4 md:pb-10">
-        <div className="space-y-4 px-2">
-          {sidebarSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="space-y-1">
-              {/* Section Header */}
-              <div className="px-3 py-2">
-                <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+  return (
+    <>
+      {/* Main Sidebar Container Ã¢â‚¬â€ No internal overlay, handled by AppLayout */}
+      <motion.div
+        initial={false}
+        animate={{
+          x: isOpen ? 0 : -320,
+          width: isOpen ? 320 : 0,
+          opacity: isOpen ? 1 : 0
+        }}
+        className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
+      >
+        <div className="absolute top-0 -left-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <nav className="flex-1 overflow-y-auto py-2 px-2 space-y-2 scrollbar-premium relative z-10">
+          {sidebarSections.map((section, idx) => (
+            <div key={idx} className="space-y-2">
+              <div className="flex items-center gap-3 px-4">
+                <h3 className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] whitespace-nowrap">
                   {section.title}
                 </h3>
               </div>
+              <div className="space-y-1.5 px-1">
+                {section.items.map((item, itemIdx) => {
+                  const isExpanded = expandedMenus[item.label] || false;
+                  const active = isActiveRoute(item.path);
 
-              {/* Section Items */}
-              {section.items.map((item, itemIndex) => {
-                // Skip items that require Pro ₹99 if user doesn't have it
-                if (item.requiresPro99 && !hasPro99Plan()) {
-                  return null;
-                }
+                  return (
+                    <div key={itemIdx} className="relative">
+                      {item.hasChildren ? (
+                        <div className="space-y-1.5">
+                          <button
+                            onClick={() => toggleMenu(item.label)}
+                            className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
+                              ? 'text-primary-700 dark:text-primary-500'
+                              : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
+                              }`}
+                          >
+                            {active && (
+                              <motion.div layoutId="sidebar-active-glow" className="absolute inset-0 bg-primary-500/5 dark:bg-primary-500/10 border border-primary-500/20 shadow-[0_0_20px_rgba(88,204,2,0.05)] rounded-2xl" />
+                            )}
+                            {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
 
-                const Icon = item.icon;
-                // Get children from either static children array or dynamic getChildren function
-                const children = item.getChildren ? item.getChildren() : item.children;
-                const hasChildren = item.hasChildren && children && children.length > 0;
-                const isExpanded = expandedMenus[item.label.toLowerCase().replace(/\s+/g, '')] || false;
-
-                return (
-                  <div key={itemIndex}>
-                    {hasChildren ? (
-                      <>
-                        <button
-                          onClick={() => toggleMenu(item.label.toLowerCase().replace(/\s+/g, ''))}
-                          className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-200 ${isActiveRoute(item.path)
-                            ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-md'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                            }`}
-                        >
-                          <div className="flex items-center space-x-3">
-                            <Icon className="text-lg" />
-                            <span className="font-medium">{item.label}</span>
-                          </div>
-                          {isExpanded ? (
-                            <FaChevronDown className="text-sm" />
-                          ) : (
-                            <FaChevronRight className="text-sm" />
-                          )}
-                        </button>
-                        {isExpanded && children && (
-                          <div className="ml-6 mt-1 space-y-1">
-                            {children.map((child, childIndex) => (
-                              <Link
-                                key={childIndex}
-                                href={child.path}
-                                onClick={handleNavClick}
-                                className={`block px-3 py-2 rounded-lg transition-all duration-200 ${isActiveRoute(child.path)
-                                  ? 'bg-primary-500 dark:bg-red-900 text-primary-600 dark:text-primary-600 font-medium'
-                                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                                  }`}
+                            <div className="flex items-center gap-4 relative z-10">
+                              <item.icon className={`w-4.5 h-4.5 transition-transform group-hover:scale-110 ${active ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`} />
+                              <span className="text-[10px] font-black tracking-[0.15em] uppercase">{item.label}</span>
+                            </div>
+                            <ChevronDown className={`w-3.5 h-3.5 text-slate-600 dark:text-slate-400 transition-transform duration-500 relative z-10 ${isExpanded ? 'rotate-180 text-primary-700 dark:text-primary-500' : ''}`} />
+                          </button>
+                          <AnimatePresence>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                className="pl-14 space-y-1 overflow-hidden"
                               >
-                                {child.label}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <Link
-                        href={item.path}
-                        onClick={(e) => {
-                          // Validate Pro ₹99 plan for Post Blog
-                          if (item.requiresPro99 && !hasPro99Plan()) {
-                            e.preventDefault();
-                            toast.error('Only Pro ₹99 users can create blogs. Upgrade now to start earning rewards.');
-                            router.push('/subscription');
-                            return;
-                          }
-                          handleNavClick();
-                        }}
-                        className={getActiveClass(item.path)}
-                      >
-                        <Icon className="text-lg" />
-                        <span className="font-medium flex-1">{item.label}</span>
-                        {item.path === '/pro/wallet' && walletBalance > 0 && (
-                          <span className="ml-2 text-[10px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-bold">
-                            ₹{walletBalance.toLocaleString()}
-                          </span>
-                        )}
-                        {item.path === '/rewards' && claimableRewards > 0 && (
-                          <span className="ml-2 text-[10px] bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-secondary-600 px-2 py-0.5 rounded-full font-bold">
-                            ₹{claimableRewards.toLocaleString()}
-                          </span>
-                        )}
-                        {item.requiresPro99 && (
-                          <span className="ml-2 text-xs bg-primary-300 dark:bg-primary-900 text-primary-900 dark:text-primary-300 px-2 py-0.5 rounded-full">
-                            Pro
-                          </span>
-                        )}
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
+                                {item.children.map((child, childIdx) => (
+                                  <Link key={childIdx} href={child.path} onClick={handleNavClick}>
+                                    <button className={`w-full text-left py-3 text-[9px] font-black uppercase tracking-[0.2em] transition-all relative group flex items-center gap-3 ${isActiveRoute(child.path) ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-400 hover:text-slate-300'
+                                      }`}>
+                                      <div className={`w-1 h-1 rounded-full ${isActiveRoute(child.path) ? 'bg-primary-500 shadow-duo-primary' : 'bg-slate-700'}`} />
+                                      <span className="group-hover:translate-x-1 transition-transform">{child.label}</span>
+                                    </button>
+                                  </Link>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link href={item.path} onClick={handleNavClick}>
+                          <button className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
+                            ? 'text-white'
+                            : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
+                            }`}>
+                            {active && (
+                              <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl border-t border-white/20" />
+                            )}
+                            {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
+
+                            <div className="flex items-center gap-4 relative z-10">
+                              <item.icon className="w-4.5 h-4.5 flex-shrink-0 transition-transform group-hover:scale-110" />
+                              <span className="text-[10px] font-black tracking-[0.15em] uppercase truncate">{item.label}</span>
+                            </div>
+                            {item.badge && (
+                              <span className={`px-2.5 py-1 rounded-lg text-[8px] font-black relative z-10 shadow-sm border border-white/10 ${active ? 'bg-white/20 text-white' : item.badgeColor === 'emerald' ? 'bg-emerald-500 text-white' : 'bg-primary-500 text-white'
+                                }`}>
+                                {item.badge}
+                              </span>
+                            )}
+                          </button>
+                        </Link>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           ))}
-        </div>
+        </nav>
 
-        {/* User Section - Scrollable on mobile (inside nav), will be hidden on desktop */}
-        {user && (
-          <div className="mt-4 p-4 border-t border-gray-200 dark:border-gray-700 md:hidden">
-            <div className="flex items-center space-x-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
-                <FaUser className="text-white" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
-                  {user.name || 'Student'}
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                  {user.email || 'support@mohdsazidkhan.com'}
-                </p>
-                {walletBalance > 0 && (
-                  <div className="mt-1 flex items-center gap-1 text-[10px] font-bold text-green-600 dark:text-green-400">
-                    <FaWallet className="text-[8px]" />
-                    <span>₹{walletBalance.toLocaleString()}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-200 text-white text-sm bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800"
-            >
-              <FaSignOutAlt className="text-lg" /> Logout
-            </button>
-          </div>
-        )}
-      </nav>
-
-      {/* User Section - Fixed at bottom on desktop only */}
-      {user && (
-        <div className="hidden md:block p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-200 text-white text-sm bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800"
+        <div className="p-8 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-950 relative z-20">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => secureLogout(router)}
+            className="w-full py-5 rounded-[1.75rem] bg-rose-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-red hover:bg-rose-600 transition-all flex items-center justify-center gap-3 border-t border-white/20 group"
           >
-            <FaSignOutAlt className="text-lg" /> Logout
-          </button>
+            <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> LOG OUT
+          </motion.button>
         </div>
-      )}
-    </div>
+      </motion.div>
+    </>
   );
 };
 
 export default StudentSidebar;
+
+

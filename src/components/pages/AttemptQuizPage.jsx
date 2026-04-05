@@ -1,133 +1,129 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../../styles/mobile-app.module.css';
+import {
+  Clock,
+  ArrowLeft,
+  ArrowRight,
+  Brain,
+  CircleCheck,
+  XCircle,
+  Trophy,
+  Star,
+  Rocket,
+  TrendingUp,
+  Crown,
+  Check,
+  X,
+  HelpCircle,
+  BookOpen,
+  GraduationCap,
+  TriangleAlert,
+  Home,
+  Zap,
+  Target,
+  ShieldCheck,
+  ShieldAlert,
+  Sparkles,
+  Layers,
+  ChevronRight,
+  ChevronLeft,
+  Timer,
+  BadgeCheck,
+  Award,
+  History,
+  Layout,
+  Activity
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../lib/api';
-import { toast } from 'react-toastify';
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
-import {
-  FaClock,
-  FaArrowLeft,
-  FaArrowRight,
-  FaBrain,
-  FaCheckCircle,
-  FaTimesCircle,
-  FaTrophy,
-  FaStar,
-  FaRocket,
-  FaChartLine,
-  FaCrown,
-  FaCheck,
-  FaTimes,
-  FaQuestionCircle,
-  FaBookOpen,
-  FaGraduationCap,
-  FaExclamationTriangle,
-  FaHome
-} from 'react-icons/fa';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
 
+/* --- Top Performers Component --- */
 const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard?.length === 0) {
     return (
-      <div className="text-center py-0 md:py-2 lg:py-4 xl:py-6 mb-4">
-        <div className="bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/20 dark:to-red-900/20 rounded-2xl p-2 md:p-8 border border-primary-200 dark:border-red-700">
-          <FaTrophy className="text-4xl text-primary-500 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No Leaderboard Yet</h3>
-          <p className="text-gray-500 dark:text-gray-400">Be the first to complete this quiz and claim the top spot!</p>
-        </div>
+      <div className="py-12">
+        <Card className="p-12 text-center space-y-6 border-dashed border-2 border-slate-100 dark:border-slate-800 bg-transparent">
+          <div className="w-20 h-20 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto shadow-sm">
+            <Trophy className="w-10 h-10" />
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-xl font-black font-outfit uppercase tracking-tight">No Results Yet</h3>
+            <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">Be the first to finish this quiz and see your rank!</p>
+          </div>
+        </Card>
       </div>
     );
   }
 
   return (
-    <div className="mt-8">
-      <div className="flex items-center space-x-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 rounded-xl flex items-center justify-center">
-          <FaTrophy className="text-white text-xl" />
+    <div className="space-y-8">
+      <div className="flex items-center gap-4">
+        <div className="p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-2xl">
+          <Award className="w-6 h-6" />
         </div>
-        <h3 className="text-md lg:text-2xl font-bold text-gray-800 dark:text-white">Leaderboard</h3>
+        <div className="space-y-1">
+          <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Top Students</h3>
+          <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">Best performers for this quiz</p>
+        </div>
       </div>
 
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+      <Card className="overflow-hidden border-none shadow-xl bg-white dark:bg-slate-800 rounded-[2.5rem]">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[30rem]">
-            <thead className="bg-gradient-to-r from-primary-500 to-secondary-500">
-              <tr>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">Rank</th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-left">Student</th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">Score</th>
-                <th className="py-2 md:py-4 px-2 md:px-6 text-white font-semibold text-center">Attempted At</th>
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-slate-50 dark:bg-slate-900/50">
+                <th className="py-6 px-8 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">RANK</th>
+                <th className="py-6 px-8 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">STUDENT</th>
+                <th className="py-6 px-8 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] text-center">SCORE</th>
+                <th className="py-6 px-8 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] text-right">DATE</th>
               </tr>
             </thead>
-            <tbody>
-              {leaderboard?.map(({ rank, studentName, studentId, score, attemptedAt }, index) => {
+            <tbody className="divide-y divide-slate-50 dark:divide-slate-900/50">
+              {leaderboard?.map(({ rank, studentName, studentId, score, attemptedAt }) => {
                 const isCurrentUser = studentId === currentUser?.id;
                 const isTopThree = rank <= 3;
 
                 return (
-                  <tr
-                    key={rank}
-                    className={`transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50 ${isCurrentUser ? 'bg-gradient-to-r from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 border-l-4 border-primary-500' : ''
-                      }`}
-                  >
-                    <td className="py-2 md:py-4 px-2 md:px-6 text-center">
-                      <div className="flex items-center justify-center">
+                  <tr key={rank} className={`group hover:bg-slate-50/50 dark:hover:bg-slate-900/20 transition-all ${isCurrentUser ? 'bg-primary-500/5' : ''}`}>
+                    <td className="py-6 px-8">
+                      <div className="flex items-center gap-4">
                         {isTopThree ? (
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${rank === 1 ? 'bg-gradient-to-r from-primary-400 to-primary-500' :
-                            rank === 2 ? 'bg-gradient-to-r from-gray-400 to-gray-500' :
-                              'bg-gradient-to-r from-amber-600 to-primary-600'
-                            }`}>
-                            {rank === 1 ? <FaCrown className="text-sm" /> : rank}
+                          <div className={`w-10 h-10 rounded-[1rem] flex items-center justify-center text-white shadow-duo-${rank === 1 ? 'primary' : rank === 2 ? 'secondary' : 'emerald'} ${rank === 1 ? 'bg-primary-500' : rank === 2 ? 'bg-slate-400' : 'bg-emerald-500'}`}>
+                            {rank === 1 ? <Crown className="w-5 h-5" /> : <span className="font-black font-outfit">{rank}</span>}
                           </div>
                         ) : (
-                          <span className="text-gray-600 dark:text-gray-400 font-medium">{rank}</span>
+                          <span className="text-sm font-black text-slate-300 ml-4">{rank}</span>
                         )}
                       </div>
                     </td>
-                    <td className="py-2 md:py-4 px-2 md:px-6">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
-                          {studentName?.charAt(0)?.toUpperCase() || 'A'}
+                    <td className="py-6 px-8">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-xl flex items-center justify-center font-black text-slate-900 dark:text-white uppercase shadow-inner border border-slate-200 dark:border-slate-800">
+                          {studentName?.charAt(0) || 'A'}
                         </div>
                         <div>
-                          <div className="font-semibold text-gray-800 dark:text-white">
-                            {studentName || 'Anonymous'}
-                          </div>
-                          {isCurrentUser && (
-                            <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
-                              You
-                            </div>
-                          )}
+                          <p className="text-sm font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{studentName || 'STUDENT'}</p>
+                          {isCurrentUser && <p className="text-[8px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-widest mt-1">YOUR ANSWER</p>}
                         </div>
                       </div>
                     </td>
-                    <td className="py-2 md:py-4 px-2 md:px-6 text-center">
-                      <div className="flex items-center justify-center">
-                        <span className="text-lg font-bold text-gray-800 dark:text-white">
-                          {score || 0}%
-                        </span>
+                    <td className="py-6 px-8 text-center">
+                      <div className="inline-block px-4 py-2 bg-slate-100 dark:bg-slate-900 rounded-xl text-sm font-black font-mono text-slate-900 dark:text-white shadow-inner">
+                        {score || 0}%
                       </div>
                     </td>
-                    <td className="py-2 md:py-4 px-2 md:px-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                      {(() => {
-                        try {
-                          const date = new Date(attemptedAt);
-                          if (isNaN(date.getTime())) {
-                            return 'N/A';
-                          }
-                          return date.toLocaleString('en-IN', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                          });
-                        } catch (error) {
-                          return 'N/A';
-                        }
-                      })()}
+                    <td className="py-6 px-8 text-right">
+                      <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                        {new Date(attemptedAt).toLocaleDateString('en-GB')}
+                      </span>
                     </td>
                   </tr>
                 );
@@ -135,15 +131,16 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };
 
+/* --- Main AttemptQuizPage Component --- */
 const AttemptQuizPage = () => {
   const router = useRouter();
-  const { quizId } = router.query; // Get quizId from router.query for Pages Router
-  // Memoize navigation data parsing to prevent re-computation on every render
+  const { quizId } = router.query;
+
   const navigationData = useMemo(() => {
     if (typeof window === 'undefined') return null;
     const data = localStorage.getItem('quizNavigationData');
@@ -155,7 +152,7 @@ const AttemptQuizPage = () => {
     const userInfo = localStorage.getItem('userInfo');
     return userInfo ? JSON.parse(userInfo) : null;
   }, []);
-  console.log(navigationData, 'navigationData')
+
   const quizData = navigationData?.quizData;
   const fromPage = navigationData?.fromPage;
   const levelNumber = navigationData?.levelNumber;
@@ -171,171 +168,73 @@ const AttemptQuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  //const [selectedOption, setSelectedOption] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [loading, setLoading] = useState(true);
-  // Fullscreen functions
+  const [started, setStarted] = useState(false);
+
+  /* --- Fullscreen Experience --- */
   const enterFullscreen = useCallback(async () => {
     try {
       if (document.documentElement.requestFullscreen) {
         await document.documentElement.requestFullscreen();
       } else if (document.documentElement.webkitRequestFullscreen) {
         await document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) {
-        await document.documentElement.msRequestFullscreen();
-      } else {
-        console.warn('Fullscreen mode is not supported in your browser.');
-        return;
       }
       setIsFullscreen(true);
     } catch (error) {
-      // Silently handle fullscreen errors - don't show toast
-      // This is expected when browser blocks auto-fullscreen
-      console.log('Fullscreen blocked (expected):', error.message);
+      console.log('Focus mode deferred');
     }
   }, []);
 
   const exitFullscreen = useCallback(async () => {
     try {
-      if (document.exitFullscreen) {
-        await document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        await document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        await document.msExitFullscreen();
-      }
+      if (document.exitFullscreen) await document.exitFullscreen();
+      else if (document.webkitExitFullscreen) await document.webkitExitFullscreen();
       setIsFullscreen(false);
     } catch (error) {
-      console.error('Error exiting fullscreen:', error);
+      console.error('Exit failed');
     }
   }, []);
 
   const handleFullscreenChange = useCallback(() => {
-    const isFullscreenNow = !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+    const isFullscreenNow = !!(document.fullscreenElement || document.webkitFullscreenElement);
     setIsFullscreen(isFullscreenNow);
-
-    // If user exited fullscreen during quiz (not submitted), show confirmation
     if (!isFullscreenNow && !submitted && quiz && !showExitConfirm) {
-      console.log('Fullscreen exited - Showing confirmation...');
       setShowExitConfirm(true);
     }
   }, [submitted, quiz, showExitConfirm]);
 
   const handleExitConfirm = (confirmed) => {
     setShowExitConfirm(false);
-    if (confirmed) {
-      // User confirmed exit - submit quiz
-      handleSubmit();
-    } else {
-      // User cancelled - re-enter fullscreen
-      enterFullscreen();
-    }
+    if (confirmed) handleSubmit();
+    else enterFullscreen();
   };
 
-  // Fullscreen button removed - quiz stays in fullscreen until submitted
-  // User cannot manually toggle fullscreen during quiz
-
-  // Fullscreen event listeners
   useEffect(() => {
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-    document.addEventListener('msfullscreenchange', handleFullscreenChange);
-
-    // F11 key disabled - quiz must stay in fullscreen until submitted
-    const handleKeyDown = (event) => {
-      if (event.key === 'F11' && !submitted && quiz) {
-        event.preventDefault(); // Block F11 toggle during quiz
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('msfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [submitted, quiz, handleFullscreenChange]);
+  }, [handleFullscreenChange]);
 
-  // Enter fullscreen immediately when page loads (default behavior)
-  useEffect(() => {
-    // Attempt to enter fullscreen as soon as component mounts
-    // This happens on page load, user already accepted in QuizStartModal
-    if (!submitted && !loading) {
-      // Small delay to ensure page is fully loaded
-      const timer = setTimeout(() => {
-        enterFullscreen();
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [submitted, loading, enterFullscreen]);
+  const handleStart = useCallback(async () => {
+    await enterFullscreen();
+    setStarted(true);
+  }, [enterFullscreen]);
 
-  // Also enter fullscreen when quiz loads (backup in case first attempt fails)
-  useEffect(() => {
-    if (quiz && !submitted && !loading) {
-      // User already gave consent in QuizStartModal
-      // This is safe because modal open was triggered by user click
-      enterFullscreen();
-    }
-  }, [quiz, submitted, loading, enterFullscreen]);
-
-  // Browser back button prevention
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      if (!submitted && quiz) {
-        event.preventDefault();
-        event.returnValue = 'Are you sure you want to leave? Your quiz progress will be lost.';
-        return 'Are you sure you want to leave? Your quiz progress will be lost.';
-      }
-    };
-
-    const handlePopState = (event) => {
-      if (!submitted && quiz) {
-        event.preventDefault();
-        // Show confirmation on back button
-        setShowExitConfirm(true);
-        // Push the current state back to prevent navigation
-        if (router.isReady) {
-          window.history.pushState(null, '', window.location.href);
-        }
-      }
-    };
-
-    // Add event listeners
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    window.addEventListener('popstate', handlePopState);
-
-    // Push current state to history
-    if (router.isReady) {
-      window.history.pushState(null, '', window.location.href);
-    }
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [submitted, quiz, router.isReady]);
-
+  /* --- Results Submission --- */
   const handleSubmit = useCallback(async () => {
     try {
       setIsTimerRunning(false);
-      // Set submitted to true before exiting fullscreen to prevent exit confirmation
       setSubmitted(true);
 
-      // Exit fullscreen when submitting - check actual fullscreen state
-      const isCurrentlyFullscreen = !!(document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.msFullscreenElement);
-
+      const isCurrentlyFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
       if (isCurrentlyFullscreen) {
-        try {
-          await exitFullscreen();
-        } catch (error) {
-          console.log('Error exiting fullscreen:', error);
-        }
+        try { await exitFullscreen(); } catch (e) { }
       }
 
       const actualQuizId = quizData?._id || quizId;
@@ -350,74 +249,37 @@ const AttemptQuizPage = () => {
       try {
         const leaderboardRes = await API.getQuizLeaderboard(actualQuizId);
         setLeaderboard(leaderboardRes.leaderboard || []);
-      } catch (leaderboardError) {
-        console.log('Leaderboard not available:', leaderboardError);
+      } catch (e) {
         setLeaderboard([]);
       }
     } catch (error) {
-      console.error('Error submitting quiz:', error);
-      toast.error(error.response?.data?.message || 'Error submitting quiz');
-      // Reset submitted state if there's an error
-      setSubmitted(false);
+      const msg = error.message || '';
+      const alreadyAttempted = msg.toLowerCase().includes('already attempted') || error.response?.status === 409;
+      if (alreadyAttempted) {
+        toast.error(msg || 'You have already attempted this quiz today.');
+        setTimeout(() => {
+          if (typeof window !== 'undefined') localStorage.removeItem('quizNavigationData');
+          router.push('/');
+        }, 2000);
+      } else {
+        toast.error('Could not save your results');
+        setSubmitted(false);
+      }
     }
-  }, [quizData?._id, quizId, answers, exitFullscreen]);
+  }, [quizData?._id, quizId, answers, exitFullscreen, competitionType, router]);
 
-  // Ensure fullscreen exits after submission
-  useEffect(() => {
-    if (submitted) {
-      // Force exit fullscreen when quiz is submitted
-      const exitFullscreenNow = async () => {
-        const isCurrentlyFullscreen = !!(document.fullscreenElement ||
-          document.webkitFullscreenElement ||
-          document.msFullscreenElement);
-
-        if (isCurrentlyFullscreen) {
-          try {
-            if (document.exitFullscreen) {
-              await document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-              await document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-              await document.msExitFullscreen();
-            }
-            setIsFullscreen(false);
-          } catch (error) {
-            console.log('Error exiting fullscreen after submit:', error);
-          }
-        }
-      };
-
-      exitFullscreenNow();
-    }
-  }, [submitted]);
-
-  const handleSkipQuestion = useCallback(() => {
-    const updated = [...answers];
-    updated[currentQuestionIndex] = 'SKIP';
-    setAnswers(updated);
-
-    if (currentQuestionIndex < quiz.questions.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
-    } else {
-      handleSubmit();
-    }
-  }, [currentQuestionIndex, quiz?.questions?.length, answers, handleSubmit]);
-
-
-  // Timer effect
+  /* --- Timer Logic --- */
   useEffect(() => {
     let interval = null;
     if (isTimerRunning && timeLeft > 0) {
       interval = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
-            // Skip question logic inline to avoid dependency issues
             const updated = [...answers];
             updated[currentQuestionIndex] = 'SKIP';
             setAnswers(updated);
-
             if (currentQuestionIndex < quiz.questions.length - 1) {
-              setCurrentQuestionIndex(prev => prev + 1);
+              setCurrentQuestionIndex(prevIndex => prevIndex + 1);
             } else {
               handleSubmit();
             }
@@ -430,16 +292,14 @@ const AttemptQuizPage = () => {
     return () => clearInterval(interval);
   }, [isTimerRunning, timeLeft, currentQuestionIndex, quiz?.questions?.length, answers, handleSubmit]);
 
-  // Start timer when question changes
   useEffect(() => {
-    if (quiz && quiz.questions && quiz.questions[currentQuestionIndex]) {
+    if (started && quiz && quiz.questions && quiz.questions[currentQuestionIndex]) {
       const question = quiz.questions[currentQuestionIndex];
       const questionTime = question.timeLimit || 30;
       setTimeLeft(questionTime);
       setIsTimerRunning(true);
-      //setSelectedOption(null);
     }
-  }, [currentQuestionIndex, quiz]);
+  }, [started, currentQuestionIndex, quiz]);
 
   useEffect(() => {
     const fetchQuizData = async () => {
@@ -449,51 +309,43 @@ const AttemptQuizPage = () => {
         const quizRes = await API.getQuizById(actualQuizId);
         setQuiz(quizRes);
         setTimeLeft(quizRes.timeLimit || 30);
-
-        // Initialize answers array
         setAnswers(new Array(quizRes.questions.length).fill(null));
 
-        // Load quiz-specific leaderboard
         try {
           const leaderboardRes = await API.getQuizLeaderboard(actualQuizId);
           setLeaderboard(leaderboardRes.leaderboard || []);
-        } catch (leaderboardError) {
-          console.log('Leaderboard not available:', leaderboardError);
-          setLeaderboard([]);
-        }
+        } catch (e) { }
       } catch (error) {
-        console.error('Error fetching quiz:', error);
-        toast.error('Error loading quiz');
+        toast.error('Could not load quiz questions');
       } finally {
         setLoading(false);
       }
     };
-
-    if (quizId || quizData?._id) {
-      fetchQuizData();
-    }
+    if (quizId || quizData?._id) fetchQuizData();
   }, [quizId, quizData?._id]);
 
   const handleSelect = (option) => {
-    // Check if user is logged in
     if (!currentUser) {
-      // Store current quiz context for return after login
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('redirectAfterLogin', window.location.pathname);
-      }
-      toast.info('Please login to answer questions');
+      if (typeof window !== 'undefined') localStorage.setItem('redirectAfterLogin', window.location.pathname);
+      toast.error('Please login to take the quiz');
       router.push('/login');
       return;
     }
-
-    //setSelectedOption(option);
     const updated = [...answers];
     updated[currentQuestionIndex] = option;
     setAnswers(updated);
   };
 
-
-
+  const handleSkipQuestion = () => {
+    const updated = [...answers];
+    updated[currentQuestionIndex] = 'SKIP';
+    setAnswers(updated);
+    if (currentQuestionIndex < quiz.questions.length - 1) {
+      setCurrentQuestionIndex(prev => prev + 1);
+    } else {
+      handleSubmit();
+    }
+  };
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < quiz.questions.length - 1) {
@@ -504,510 +356,391 @@ const AttemptQuizPage = () => {
   };
 
   const handlePreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
-    }
-  };
-
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    if (currentQuestionIndex > 0) setCurrentQuestionIndex(prev => prev - 1);
   };
 
   const handleBack = useCallback(() => {
-    // Clear the navigation data from localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('quizNavigationData');
-    }
-
-    if (fromPage === "category") {
-      router.push(`/category/${quizData?.category?._id}`);
-    } else if (fromPage === "subcategory") {
-      router.push(`/subcategory/${subcategoryId || quizData?.subcategory?._id}`);
-    } else if (fromPage === "level-quizzes") {
-      router.push(`/level-quizzes`);
-    } else if (fromPage === "level-detail") {
-      router.push(`/level/${levelNumber}`);
-    } else if (fromPage === "home") {
-      router.push(`/level/${levelNumber}`);
-    } else if (fromPage === "search") {
-      router.push(`/search?q=${searchQuery}`);
-    } else {
-      router.push(`/`);
-    }
+    if (typeof window !== 'undefined') localStorage.removeItem('quizNavigationData');
+    if (fromPage === "category") router.push(`/category/${quizData?.category?._id}`);
+    else if (fromPage === "subcategory") router.push(`/subcategory/${subcategoryId || quizData?.subcategory?._id}`);
+    else if (fromPage === "level-detail" || fromPage === "home") router.push(`/level/${levelNumber}`);
+    else if (fromPage === "search") router.push(`/search?q=${searchQuery}`);
+    else router.push(`/`);
   }, [fromPage, quizData?.category?._id, subcategoryId, quizData?.subcategory?._id, levelNumber, searchQuery, router]);
 
+  if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-900"><Loading size="lg" /></div>;
 
-  // Add/remove fullscreen class to body for global styling (must be before early returns)
-  useEffect(() => {
-    if (isFullscreen && !submitted) {
-      document.body.classList.add('quiz-fullscreen-mode');
-    } else {
-      document.body.classList.remove('quiz-fullscreen-mode');
-    }
-
-    return () => {
-      document.body.classList.remove('quiz-fullscreen-mode');
-    };
-  }, [isFullscreen, submitted]);
-
-  // Exit confirmation modal
-  if (showExitConfirm) {
+  if (!started && !submitted) {
     return (
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-3 lg:p-6 md:p-8 max-w-md w-full shadow-2xl border border-red-200 dark:border-red-700">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaExclamationTriangle className="text-white text-2xl" />
-            </div>
-
-            <h2 className="text-sm md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 dark:text-white mb-4">
-              Exit Quiz?
-            </h2>
-
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              You're currently on question {currentQuestionIndex + 1} of {quiz?.questions?.length || 0}.
-              Exiting fullscreen will submit your quiz with current answers.
-            </p>
-
-            <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 mb-6">
-              <p className="text-sm text-primary-800 dark:text-primary-200">
-                ⚠️ This action cannot be undone. Your quiz will be automatically submitted.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => handleExitConfirm(false)}
-                className="flex-1 px-3 py-1 bg-gray-500 hover:bg-gray-600 text-white rounded-xl transition-colors duration-300 font-medium"
-              >
-                Continue Quiz
-              </button>
-              <button
-                onClick={() => handleExitConfirm(true)}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-red-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-xl transition-colors duration-300 font-medium"
-              >
-                Exit & Submit
-              </button>
-            </div>
+      <div className="min-h-screen max-h-screen bg-slate-900 flex items-center justify-center p-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-md w-full space-y-8 text-center"
+        >
+          <div className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto shadow-duo-primary">
+            <Layout className="w-12 h-12 text-white" />
           </div>
-        </div>
+          <div className="space-y-3">
+            <h1 className="text-3xl font-black font-outfit uppercase tracking-tight text-white">{quiz?.title}</h1>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{quiz?.questions?.length} Questions</p>
+          </div>
+          <button
+            onClick={handleStart}
+            className="w-full py-5 bg-primary-500 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-4 border-primary-700 active:border-b-0 active:translate-y-1 transition-all"
+          >
+            Start Quiz
+          </button>
+        </motion.div>
       </div>
     );
   }
 
-  if (loading) {
+  if (showExitConfirm) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-primary-900 flex items-center justify-center">
-        <Loading size="lg" color="gray" message="Loading your quiz..." />
+      <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center z-[100] p-6">
+        <Card className="p-12 max-w-md w-full space-y-8 border-none bg-white dark:bg-slate-800 rounded-[3rem] shadow-2xl">
+          <div className="text-center space-y-6">
+            <div className="w-20 h-20 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto shadow-sm">
+              <ShieldAlert className="w-10 h-10 animate-pulse" />
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Leave Quiz?</h2>
+              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed">If you leave now, your quiz will end and your answers will be saved. Are you sure?</p>
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-4 mt-4">
+            <Button onClick={() => handleExitConfirm(false)} variant="secondary" className="flex-1 py-6 rounded-2xl text-xs font-black uppercase tracking-widest shadow-duo-secondary">
+              STAY IN QUIZ
+            </Button>
+            <Button onClick={() => handleExitConfirm(true)} variant="primary" className="flex-1 py-6 rounded-2xl text-xs font-black uppercase tracking-widest bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 !shadow-none">
+              LEAVE QUIZ
+            </Button>
+          </div>
+        </Card>
       </div>
     );
   }
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
-
   return (
-    <>
-      <div className={`${styles.minHScreen} bg-gradient-to-br from-secondary-50 via-purple-50 to-pink-50 dark:from-red-900 dark:via-gray-900 dark:to-primary-900 overflow-x-hidden overflow-y-auto`} style={{ height: 'auto', minHeight: '100vh' }}>
-        {/* Fullscreen Active Banner */}
-        {isFullscreen && !submitted && (
-          <div className={`${styles.quizFullscreenBanner} fixed top-0 left-0 right-0 bg-gradient-to-r from-green-500 to-secondary-500 text-white text-center py-2 z-[100] shadow-lg`}>
-            <div className="flex items-center justify-center space-x-2 px-2">
-              <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
-              <span className="text-xs md:text-sm font-medium">
-                <span className="hidden md:inline">✅ Fullscreen Mode - Stay focused! Complete quiz to exit</span>
-                <span className="md:hidden">✅ Fullscreen Mode</span>
-              </span>
-            </div>
-          </div>
+    <div className="min-h-screen max-h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 animate-fade-in relative selection:bg-primary-500 selection:text-white">
+
+      {/* Celebration Effect */}
+      <AnimatePresence>
+        {showConfetti && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 pointer-events-none z-[110] overflow-hidden">
+            {[...Array(40)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  y: [0, 1000],
+                  x: [0, (Math.random() - 0.5) * 400],
+                  rotate: [0, 360 * 2]
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className={`absolute w-3 h-3 rounded-sm ${['bg-primary-500', 'bg-primary-500', 'bg-emerald-500', 'bg-amber-500', 'bg-blue-500'][Math.floor(Math.random() * 5)]}`}
+                style={{ left: `${Math.random() * 100}%`, top: '-5%' }}
+              />
+            ))}
+          </motion.div>
         )}
+      </AnimatePresence>
 
-        <div className={`container mx-auto px-2 pt-2 lg:px-10 pb-32 ${styles.minHScreen} ${styles.quizContainer}`} style={{ height: 'auto', minHeight: '100vh', overflowY: 'auto' }}>
-          {quiz.questions.length === 0 && (
-            <div className="bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-xl p-2 text-red-700 dark:text-red-300 text-center">
-              <FaTimesCircle className="text-2xl mx-auto mb-2" />
-              No questions available for this quiz.
-            </div>
-          )}
+      {submitted ? (
+        /* --- Results View --- */
+        <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-5xl space-y-6 lg:space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
-          {/* Quiz Header */}
-          <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-1 md:p-2 mb-2 md:mb-4 ${isFullscreen ? 'mt-4 md:mt-8' : 'mt-0'}`}>
-            <div className="flex items-center justify-between flex-col md:flex-row mb-0">
-              <div className="flex items-center space-x-2 md:space-x-4">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl flex items-center justify-center">
-                  <FaBookOpen className="text-white text-lg md:text-2xl" />
-                </div>
-                <div>
-                  <h1 className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 dark:text-white m-0 md:m-1">{quiz?.title}</h1>
-                  <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-1 md:space-x-2">
-                    <FaGraduationCap className="text-red-500 text-xs md:text-sm" />
-                    <span>{quiz.questions.length} Questions • {quiz.category?.name || 'General Knowledge'}</span>
-                  </p>
+          {/* Results Header */}
+          <header className="py-10 lg:py-24 text-center space-y-6 lg:space-y-10 relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-slate-950 border-b-4 lg:border-b-8 border-slate-900 shadow-2xl glass-dark">
+            <div className="relative z-20 space-y-8">
+              <motion.div initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', damping: 10, stiffness: 100 }} className="w-28 h-28 bg-primary-500 rounded-[2.5rem] flex items-center justify-center mx-auto shadow-duo-primary relative">
+                <Trophy className="w-14 h-14 text-white" />
+                <motion.div animate={{ opacity: [0, 1, 0], scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 rounded-[2.5rem] bg-primary-400/30 -z-10" />
+              </motion.div>
+              <div className="space-y-4">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-white">Quiz <span className="text-primary-700 dark:text-primary-500 text-glow-primary">Results</span></h1>
+                <div className="flex items-center justify-center gap-4">
+                  <div className="h-[1px] w-12 bg-slate-700" />
+                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.5em] leading-none">HOW YOU DID</p>
+                  <div className="h-[1px] w-12 bg-slate-700" />
                 </div>
               </div>
-
-              {/* Fullscreen indicator */}
-              {!submitted && isFullscreen && (
-                <div className="mb-2 md:mb-4">
-                  <div className="flex items-center justify-center space-x-1 md:space-x-2 px-2 md:px-4 py-1 md:py-2 rounded-lg text-xs md:text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200">
-                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span>✅ Fullscreen Active - Stay focused!</span>
-                  </div>
-                  <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-1 md:mt-2">
-                    Press ESC or complete the quiz to exit fullscreen
-                  </p>
-                </div>
-              )}
             </div>
-          </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(88,204,2,0.15),transparent)] pointer-events-none" />
+            <Sparkles className="absolute -bottom-24 -right-24 w-96 h-96 text-primary-700 dark:text-primary-500/5 animate-pulse-slow" />
+          </header>
 
-          {submitted ? (
-            <>
-              {/* Confetti Effect */}
-              {showConfetti && (
-                <div className="fixed inset-0 pointer-events-none z-50">
-                  {[...Array(50)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute animate-bounce"
-                      style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 2}s`,
-                        animationDuration: `${1 + Math.random() * 2}s`
-                      }}
-                    >
-                      <div className={`w-2 h-2 rounded-full ${['bg-primary-400', 'bg-red-400', 'bg-secondary-400', 'bg-green-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]
-                        }`}></div>
-                    </div>
-                  ))}
+          {/* Performance Stats */}
+          <section className="grid grid-cols-3 lg:grid-cols-3 gap-3 lg:gap-6">
+            {[
+              { label: 'CORRECT', val: result?.score, sub: 'OUT OF TOTAL', icon: Target, color: 'emerald', glow: 'text-glow-primary' },
+              { label: 'ACCURACY', val: `${result?.scorePercentage}%`, sub: 'YOUR SCORE', icon: Zap, color: 'secondary', glow: 'text-glow-secondary' },
+              { label: 'TOTAL', val: result?.total, sub: 'QUESTIONS IN QUIZ', icon: Layers, color: 'primary', glow: '' }
+            ].map((s, i) => (
+              <Card key={i} variant="white" className="p-4 lg:p-10 hover:border-primary-500 transition-all group overflow-hidden relative" glow={s.color === 'emerald'}>
+                <div className="flex justify-between items-start mb-4 lg:mb-8">
+                  <div className={`p-2 lg:p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform`}>
+                    <s.icon className="w-4 h-4 lg:w-6 lg:h-6" />
+                  </div>
                 </div>
-              )}
+                <div className="space-y-0.5 lg:space-y-1">
+                  <p className="text-[8px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">{s.label}</p>
+                  <h4 className={`text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight dark:text-white ${s.glow}`}>{s.val}</h4>
+                  <p className="text-[8px] font-black text-slate-300 dark:text-slate-500 uppercase tracking-widest leading-none pt-1 lg:pt-3">{s.sub}</p>
+                </div>
+              </Card>
+            ))}
+          </section>
 
-              {/* Results Section */}
-              <div className="text-center mb-8">
-                <div className="bg-gradient-to-r from-green-50 via-secondary-50 from-red-50 dark:from-green-900/30 dark:via-secondary-900/30 dark:from-red-900/30 rounded-3xl p-2 md:p-8 border border-green-200 dark:border-green-700 shadow-2xl">
-                  <div className="flex justify-center mb-6">
-                    <div className="w-24 h-24 bg-gradient-to-r from-green-400 to-secondary-500 rounded-full flex items-center justify-center animate-pulse">
-                      <FaTrophy className="text-white text-4xl" />
-                    </div>
-                  </div>
-
-                  <h2 className="text-md md:text-md lg:text-2xl xl:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    🎉 Quiz Completed!
-                  </h2>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div className="bg-white/60 dark:bg-gray-700/60 rounded-2xl p-2 md:p-6 border border-white/20">
-                      <div className="text-md lg:text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
-                        {result?.score}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Correct Answers</div>
-                    </div>
-
-                    <div className="bg-white/60 dark:bg-gray-700/60 rounded-2xl p-2 md:p-6 border border-white/20">
-                      <div className="text-md lg:text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-2">
-                        {result?.scorePercentage}%
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
-                    </div>
-
-                    <div className="bg-white/60 dark:bg-gray-700/60 rounded-2xl p-2 md:p-6 border border-white/20">
-                      <div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                        {result?.total}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Total Questions</div>
-                    </div>
-                  </div>
-
+          {/* Achievements */}
+          <section className="space-y-4">
+            <AnimatePresence>
+              {(result?.isNewBestScore || result?.isHighScore || (result?.levelUpdate && result.levelUpdate.levelIncreased)) && (
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
                   {result?.isNewBestScore && (
-                    <div className="bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 text-primary-800 dark:text-primary-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
-                      <FaCrown className="text-xl" />
-                      <span className="font-semibold">🏆 New Best Score!</span>
+                    <div className="bg-primary-500 text-white p-6 rounded-3xl flex items-center gap-4 shadow-duo-primary">
+                      <div className="p-3 bg-white/20 rounded-xl"><Crown className="w-5 h-5" /></div>
+                      <p className="text-[10px] font-black uppercase tracking-widest">Your New Best Score!</p>
                     </div>
                   )}
-
                   {result?.isHighScore && (
-                    <div className="bg-gradient-to-r from-green-100 to-secondary-100 dark:from-green-900/30 dark:to-secondary-900/30 text-green-800 dark:text-green-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
-                      <FaStar className="text-xl" />
-                      <span className="font-semibold">⭐ High Score Achievement!</span>
+                    <div className="bg-primary-500 text-white p-6 rounded-3xl flex items-center gap-4 shadow-duo-secondary">
+                      <div className="p-3 bg-white/20 rounded-xl"><Star className="w-5 h-5" /></div>
+                      <p className="text-[10px] font-black uppercase tracking-widest">High Score!</p>
                     </div>
                   )}
+                  {result?.levelUpdate?.levelIncreased && (
+                    <div className="bg-emerald-500 text-white p-6 rounded-3xl flex items-center gap-4 shadow-duo-emerald">
+                      <div className="p-3 bg-white/20 rounded-xl"><Rocket className="w-5 h-5" /></div>
+                      <p className="text-[10px] font-black uppercase tracking-widest">Level Up: {result.levelUpdate.newLevel}</p>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </section>
 
-                  {result?.levelUpdate && result.levelUpdate.levelIncreased && (
-                    <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-primary-800 dark:text-primary-200 px-6 py-3 rounded-2xl mb-4 flex items-center justify-center space-x-2">
-                      <FaRocket className="text-xl" />
-                      <span className="font-semibold">🚀 Level Up! You are now Level {result.levelUpdate.newLevel}</span>
-                    </div>
-                  )}
-                </div>
+          {/* Answer Review */}
+          <section className="space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl">
+                <History className="w-6 h-6" />
               </div>
+              <div className="space-y-1">
+                <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Check Your Answers</h3>
+                <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none">See which answers were right and which were wrong</p>
+              </div>
+            </div>
 
-              {/* Quiz Review Section */}
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl p-2 md:p-8 border border-white/20 mb-8">
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
-                    <FaBrain className="text-white text-2xl" />
-                  </div>
-                  <h2 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                    Quiz Review
-                  </h2>
-                </div>
-
-                <div className="space-y-6">
-                  {quiz.questions.map((question, index) => {
-                    const userAnswer = answers[index];
-                    const correctAnswer = question.options[question.correctAnswerIndex];
-                    const isCorrect = userAnswer === correctAnswer;
-                    const isSkipped = userAnswer === 'SKIP';
-                    return (
-                      <div key={index} className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl p-2 md:p-6 border border-gray-200 dark:border-gray-600 shadow-lg">
-                        <div className="flex items-start space-x-0 md:space-x-4 mb-6">
-                          <div className={`hidden md:flex w-12 h-12 rounded-2xl items-center justify-center text-white text-lg font-bold shadow-lg ${isSkipped ? 'bg-gradient-to-r from-gray-400 to-gray-500' :
-                            isCorrect ? 'bg-gradient-to-r from-green-400 to-green-500' : 'bg-gradient-to-r from-red-400 to-secondary-500'
-                            }`}>
-                            {isSkipped ? <FaQuestionCircle /> : isCorrect ? <FaCheck /> : <FaTimes />}
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-                              {index + 1}: {question.questionText}
-                            </h3>
-
-                            <div className="space-y-3 mb-6">
-                              {question.options.map((option, optIndex) => {
-                                const isUserChoice = option === userAnswer;
-                                const isCorrectOption = option === correctAnswer;
-                                const optionLetter = String.fromCharCode(65 + optIndex);
-
-                                return (
-                                  <div
-                                    key={optIndex}
-                                    className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${isCorrectOption
-                                      ? 'bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/30 border-green-300 dark:border-green-600 shadow-lg'
-                                      : isUserChoice && !isCorrectOption
-                                        ? 'bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/30 border-red-300 dark:border-secondary-600 shadow-lg'
-                                        : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 hover:border-purple-300 dark:hover:border-purple-500'
-                                      }`}
-                                  >
-                                    <div className="flex items-center space-x-4">
-                                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${isCorrectOption
-                                        ? 'bg-gradient-to-r from-green-500 to-green-600'
-                                        : isUserChoice && !isCorrectOption
-                                          ? 'bg-gradient-to-r from-red-500 to-secondary-600'
-                                          : 'bg-gradient-to-r from-gray-400 to-gray-500'
-                                        }`}>
-                                        {optionLetter}
-                                      </div>
-                                      <span className={`font-medium text-lg ${isCorrectOption
-                                        ? 'text-green-800 dark:text-green-200'
-                                        : isUserChoice && !isCorrectOption
-                                          ? 'text-red-800 dark:text-red-200'
-                                          : 'text-gray-700 dark:text-gray-300'
-                                        }`}>
-                                        {option}
-                                      </span>
-                                      {isCorrectOption && <FaCheckCircle className="text-green-600 text-xl" />}
-                                      {isUserChoice && !isCorrectOption && <FaTimesCircle className="text-primary-600 text-xl" />}
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-
-                            {/* Answer Summary */}
-                            <div className="bg-gradient-to-r from-secondary-50 from-red-50 dark:from-secondary-900/20 dark:from-red-900/20 rounded-xl p-4 border border-secondary-200 dark:border-secondary-600">
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                                <div className="flex items-center space-x-2">
-                                  <span className="font-semibold text-gray-600 dark:text-gray-400">Your Answer:</span>
-                                  <span className={`font-medium ${isSkipped ? 'text-gray-500' :
-                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-primary-600 dark:text-red-400'
-                                    }`}>
-                                    {isSkipped ? 'Skipped' : userAnswer || 'Not answered'}
-                                  </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                  <span className="font-semibold text-gray-600 dark:text-gray-400">Correct Answer:</span>
-                                  <span className="font-medium text-green-600 dark:text-green-400">
-                                    {correctAnswer}
-                                  </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                  <span className="font-semibold text-gray-600 dark:text-gray-400">Status:</span>
-                                  <span className={`font-medium ${isSkipped ? 'text-gray-500' :
-                                    isCorrect ? 'text-green-600 dark:text-green-400' : 'text-primary-600 dark:text-red-400'
-                                    }`}>
-                                    {isSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Incorrect'}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+            <div className="space-y-4 lg:space-y-6">
+              {quiz.questions.map((question, index) => {
+                const userAnswer = answers[index];
+                const correctAnswer = question.options[question.correctAnswerIndex];
+                const isCorrect = userAnswer === correctAnswer;
+                const isSkipped = userAnswer === 'SKIP';
+                return (
+                  <Card key={index} className="p-4 lg:p-10 border-none shadow-xl bg-white dark:bg-slate-800 rounded-[2rem] lg:rounded-[3rem] group">
+                    <div className="flex items-start gap-3 lg:gap-4 mb-4 lg:mb-8">
+                      <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-duo-${isSkipped ? 'slate' : isCorrect ? 'emerald' : 'primary'} ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-primary-500'}`}>
+                        {isSkipped ? <HelpCircle className="w-6 h-6" /> : isCorrect ? <Check className="w-6 h-6" /> : <X className="w-6 h-6" />}
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex justify-center space-x-2 md:space-x-6 mb-4 md:mb-8">
-                <button
-                  onClick={() => router.push("/home")}
-                  className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-secondary-500 to-indigo-600 text-white rounded-2xl hover:from-secondary-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
-                >
-                  <FaHome />
-                  <span>Home</span>
-                </button>
-                <button
-                  onClick={() => router.push('/profile')}
-                  className="px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-2xl hover:from-green-600 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
-                >
-                  <FaChartLine />
-                  <span>Profile</span>
-                </button>
-                <button
-                  onClick={handleBack}
-                  className="px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
-                >
-                  <FaArrowLeft />
-                  <span>Back</span>
-                </button>
-              </div>
-
-              <LeaderboardTable leaderboard={leaderboard} currentUser={currentUser} />
-            </>
-          ) : (
-            <div className="space-y-4">
-              {/* Progress Bar */}
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 border border-white/20 shadow-xl">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-secondary-600 to-primary-600 rounded-xl flex items-center justify-center">
-                      <FaChartLine className="text-white" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-1">QUESTION {index + 1}</p>
+                        <h4 className="text-xl font-black font-outfit uppercase leading-tight">{question.questionText}</h4>
+                      </div>
                     </div>
-                    <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">Progress</span>
-                  </div>
-                  <span className="text-lg font-bold text-gray-800 dark:text-white">
-                    {currentQuestionIndex + 1} / {quiz.questions.length}
-                  </span>
-                </div>
-                <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
-                  <div
-                    className="bg-gradient-to-r from-secondary-600 to-primary-600 h-3 rounded-full transition-all duration-500 ease-out shadow-lg"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-              </div>
 
-              {/* Timer and Controls */}
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-2 border border-white/20 shadow-xl">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                      <FaQuestionCircle className="text-primary-500" />
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
-                        Question {currentQuestionIndex + 1} of {quiz.questions.length}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className={`flex items-center space-x-2 px-4 py-2 rounded-xl shadow-lg ${timeLeft <= 10 ? 'bg-gradient-to-r from-red-500 to-secondary-600 text-white' :
-                      timeLeft <= 20 ? 'bg-gradient-to-r from-primary-500 to-primary-500 text-white' :
-                        'bg-gradient-to-r from-green-500 to-teal-500 text-white'
-                      }`}>
-                      <FaClock className="text-sm" />
-                      <span className="font-mono text-sm font-bold">{formatTime(timeLeft)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Current Question */}
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl py-2 md:py-4 px-1 md:px-2 border border-white/20 shadow-2xl mb-2 md:mb-4">
-                <div className="flex items-start space-x-2 md:space-x-4 mb-1 md:mb-2">
-                  <div className="hidden md:flex w-8 h-8 bg-gradient-to-r from-red-500 to-primary-500 rounded-2xl items-center justify-center">
-                    <span className="text-white font-bold text-lg">{currentQuestionIndex + 1}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm md:text-md lg:text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-1 md:mb-2 leading-relaxed break-words">
-                      {currentQuestion.questionText}
-                    </h3>
-
-                    <div className="space-y-2 md:space-y-3">
-                      {currentQuestion.options.map((opt, j) => {
-                        const optionLetter = String.fromCharCode(65 + j);
-                        const isSelected = answers[currentQuestionIndex] === opt;
-
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      {question.options.map((option, optIdx) => {
+                        const isUserChoice = option === userAnswer;
+                        const isCorrectTarget = option === correctAnswer;
                         return (
-                          <div
-                            key={j}
-                            onClick={() => handleSelect(opt)}
-                            className={`p-1 lg:p-3 rounded-2xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${styles.touchManipulation} ${isSelected
-                              ? 'bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 border-red-400 dark:border-red-500 shadow-lg'
-                              : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-500 hover:shadow-lg'
-                              }`}
-                          >
-                            <div className="flex items-center space-x-2 md:space-x-4">
-                              <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center font-bold text-sm md:text-lg transition-all duration-300 flex-shrink-0 ${isSelected
-                                ? 'bg-gradient-to-r from-red-500 to-primary-500 text-white shadow-lg'
-                                : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-400'
-                                }`}>
-                                {optionLetter}
-                              </div>
-                              <span className={`text-sm md:text-base lg:text-lg font-medium transition-colors duration-300 break-words flex-1 ${isSelected
-                                ? 'text-red-800 dark:text-primary-200'
-                                : 'text-gray-700 dark:text-gray-300'
-                                }`}>
-                                {opt}
-                              </span>
-                              {isSelected && (
-                                <div className="ml-auto flex-shrink-0">
-                                  <FaCheck className="text-red-500 text-lg md:text-xl" />
-                                </div>
-                              )}
+                          <div key={optIdx} className={`p-5 rounded-2xl border-2 flex items-center gap-4 transition-all ${isCorrectTarget ? 'bg-emerald-500/5 border-emerald-500/30' : isUserChoice && !isCorrectTarget ? 'bg-primary-500/5 border-primary-500/30' : 'bg-slate-50 dark:bg-slate-900/50 border-transparent'}`}>
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-[10px] ${isCorrectTarget ? 'bg-emerald-500 text-white shadow-duo-emerald' : isUserChoice ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
+                              {String.fromCharCode(65 + optIdx)}
                             </div>
+                            <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrectTarget ? 'text-emerald-600' : isUserChoice ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`}>{option}</span>
+                            {isCorrectTarget && <BadgeCheck className="w-4 h-4 text-emerald-500 ml-auto" />}
                           </div>
                         );
                       })}
                     </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </section>
+
+          <LeaderboardTable leaderboard={leaderboard} currentUser={currentUser} />
+
+          <div className="pt-6 lg:pt-12 text-center space-y-6">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-6">
+              <Button variant="secondary" onClick={handleBack} size="lg" className="px-8 py-4 lg:px-12 lg:py-6 rounded-[1.5rem] lg:rounded-[2rem] text-xs font-black uppercase tracking-widest shadow-duo-secondary">
+                <Home className="w-4 h-4 mr-2" /> GO HOME
+              </Button>
+              <Button variant="primary" onClick={() => window.location.reload()} size="lg" className="px-8 py-4 lg:px-12 lg:py-6 rounded-[1.5rem] lg:rounded-[2rem] text-xs font-black uppercase tracking-widest shadow-duo-primary">
+                <Zap className="w-4 h-4 mr-2" /> TRY AGAIN
+              </Button>
+            </div>
+            <p className="text-[8px] font-black text-slate-300 uppercase tracking-[0.5em] pt-8">* YOUR SCORE IS SAVED TO YOUR PROFILE</p>
+          </div>
+        </div>
+      ) : (
+        /* --- Quiz Mode --- */
+        <div className="space-y-0 min-h-screen flex flex-col">
+
+          {/* Header Progress Bar */}
+          <div className="sticky top-0 z-50 px-3 lg:px-6 py-3">
+            <Card variant="glass" className="!p-3 !rounded-2xl border-none shadow-2xl max-w-5xl mx-auto">
+              <div className="flex items-center gap-3">
+                {/* Left: icon + title */}
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <div className="w-9 h-9 bg-primary-500 text-white rounded-xl flex items-center justify-center shadow-duo-primary flex-shrink-0">
+                    <Layout className="w-4 h-4" />
+                  </div>
+                  <div className="hidden sm:block">
+                    <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none mb-0.5">QUIZ TITLE</p>
+                    <h2 className="text-[10px] font-black font-outfit uppercase truncate max-w-[10rem] dark:text-white">{quiz?.title}</h2>
                   </div>
                 </div>
-              </div>
 
-              {/* Navigation Buttons */}
-              <div className="flex justify-center items-center gap-1 md:gap-2 lg:gap-4 mb-2 md:mb-4">
+                {/* Center: progress */}
+                <div className="flex-1 min-w-0 mx-3">
+                  <div className="flex justify-between text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] mb-1.5">
+                    <span className="flex items-center gap-1"><Activity className="w-3 h-3" /> PROGRESS</span>
+                    <span>{currentQuestionIndex + 1} OF {quiz?.questions.length}</span>
+                  </div>
+                  <div className="h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div initial={{ width: 0 }} animate={{ width: `${progress}%` }} className="h-full bg-primary-500 shadow-duo-primary" />
+                  </div>
+                </div>
 
-                <div className="flex space-x-1 md:space-x-2 lg:space-x-4">
-
-                  <button
-                    onClick={handleNextQuestion}
-                    disabled={!answers[currentQuestionIndex]}
-                    className={`flex items-center space-x-1 md:space-x-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-secondary-600 to-primary-600 text-white rounded-2xl hover:from-red-800 hover:to-primary-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg ${styles.touchManipulation} min-h-[40px] md:min-h-[48px]`}
-                  >
-                    <span className="font-medium text-xs md:text-sm lg:text-base">
-                      {currentQuestionIndex === quiz.questions.length - 1 ? 'Submit Quiz' : 'Next'}
-                    </span>
-                    <FaArrowRight className="text-xs md:text-sm" />
-                  </button>
+                {/* Right: timer */}
+                <div className={`flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0 transition-all duration-300 ${timeLeft < 10 ? 'bg-primary-500 text-white shadow-duo-primary animate-pulse' : 'bg-slate-100/50 dark:bg-slate-900/50 text-slate-900 dark:text-white border border-slate-200/50 dark:border-slate-700/50'}`}>
+                  <Timer className={`w-4 h-4 ${timeLeft < 10 ? 'animate-bounce' : 'text-slate-600 dark:text-slate-400'}`} />
+                  <span className="text-base font-black font-mono leading-none">{timeLeft < 10 ? `0${timeLeft}` : timeLeft}</span>
                 </div>
               </div>
+            </Card>
+          </div>
+
+          <div className="container mx-auto px-3 lg:px-6 py-2 lg:py-4 pb-8 max-w-5xl flex-1 flex flex-col justify-center gap-4 lg:gap-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentQuestionIndex}
+                initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -40, filter: 'blur(10px)' }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="space-y-6 lg:space-y-8"
+              >
+                {/* Question Text */}
+                <div className="text-center space-y-2 lg:space-y-4">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-500/10 rounded-full border border-primary-500/20">
+                    <Brain className="w-3 h-3 text-primary-700 dark:text-primary-500 animate-pulse" />
+                    <p className="text-[9px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-[0.4em]">QUESTION {currentQuestionIndex + 1}</p>
+                  </div>
+                  <h3 className="text-base lg:text-xl xl:text-2xl font-black font-outfit tracking-tight leading-[1.2] max-w-5xl mx-auto dark:text-white drop-shadow-sm">
+                    {currentQuestion?.questionText}
+                  </h3>
+                </div>
+
+                {/* Options */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 max-w-5xl mx-auto px-0">
+                  {currentQuestion?.options.map((option, idx) => {
+                    const isSelected = answers[currentQuestionIndex] === option;
+                    return (
+                      <motion.button
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 + (idx * 0.05) }}
+                        whileHover={{ scale: 1.02, y: -4 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => handleSelect(option)}
+                        className={`w-full px-3 py-3 lg:px-6 lg:py-5 rounded-[1.5rem] border-4 flex items-center gap-3 lg:gap-5 text-left transition-all relative overflow-hidden group ${isSelected ? 'bg-primary-500 border-primary-600 text-white shadow-duo-secondary scale-[1.02]' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white hover:border-primary-500/50'}`}
+                      >
+                        {/* Selection Effect */}
+                        {isSelected && <div className="absolute inset-0 bg-white/10 shimmer opacity-30" />}
+
+                        <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl flex-shrink-0 flex items-center justify-center font-black text-base lg:text-xl transition-all shadow-inner border-2 ${isSelected ? 'bg-white text-primary-700 dark:text-primary-500 border-white shadow-lg' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-primary-700 dark:text-primary-500 group-hover:border-primary-500/30'}`}>
+                          {String.fromCharCode(65 + idx)}
+                        </div>
+                        <div className="flex-1">
+                          <span className="text-sm lg:text-xl font-black font-outfit tracking-tight leading-tight">{option}</span>
+                        </div>
+                        {isSelected && (
+                          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute -right-2 -bottom-2 opacity-10">
+                            <BadgeCheck className="w-8 lg:w-16 h-8 lg:h-16 text-white" />
+                          </motion.div>
+                        )}
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Bar */}
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-3 lg:px-6 pb-3 lg:pb-4">
+            <div className="max-w-4xl mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[1.5rem] lg:rounded-[2rem] shadow-2xl border border-slate-200/50 dark:border-slate-700/50 p-3 lg:p-4 flex items-center">
+              {/* PREV — left */}
+              <div className="flex-1 flex justify-start">
+                <Button variant="ghost" onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0} className="px-4 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-[1.5rem] text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                  <ChevronLeft className="w-4 h-4 mr-1 lg:mr-2" /> PREV
+                </Button>
+              </div>
+
+              {/* SKIP — center */}
+              <div className="flex-1 flex justify-center">
+                <Button onClick={handleSkipQuestion} variant="ghost" className="px-4 py-3 lg:px-10 lg:py-4 rounded-xl lg:rounded-[1.5rem] text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 !shadow-none !border-none">
+                  SKIP
+                </Button>
+              </div>
+
+              {/* NEXT/SUBMIT — right */}
+              <div className="flex-1 flex justify-end">
+                <Button
+                  onClick={handleNextQuestion}
+                  variant="primary"
+                  size="md"
+                  className={`px-6 py-3 lg:px-12 lg:py-4 rounded-xl lg:rounded-[1.5rem] text-[9px] lg:text-[10px] font-black uppercase tracking-widest shadow-duo-primary ${!answers[currentQuestionIndex] ? 'opacity-50 grayscale' : ''}`}
+                >
+                  {currentQuestionIndex === quiz.questions.length - 1 ? 'SUBMIT' : 'NEXT'} <ChevronRight className="w-4 h-4 ml-1 lg:ml-2" />
+                </Button>
+              </div>
             </div>
-          )}
+          </div>
         </div>
-      </div>
-      <UnifiedFooter />
-    </>
+      )}
+
+
+      <style jsx global>{`
+        .quiz-focus-mode {
+          overflow-y: auto !important;
+        }
+        .animate-spin-slow {
+          animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
   );
 };
 
+
 export default AttemptQuizPage;
-
-
-
-
-
 
 

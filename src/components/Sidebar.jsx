@@ -1,16 +1,46 @@
+﻿'use client';
+
+import React from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSSR } from '../hooks/useSSR';
 import {
-  MdDashboard, MdCategory, MdQuiz, MdQuestionAnswer, MdPeople,
-  MdAnalytics, MdTrendingUp, MdLogout, MdAccountBalance, MdCardGiftcard,
-  MdNotifications, MdPerson,
-  MdArticle, MdSchool, MdAssignment, MdHistory, MdEmojiEvents, MdContactMail,
-  MdLayers, MdClass, MdMoneyOff, MdBarChart, MdSettingsBackupRestore
-} from 'react-icons/md';
+  LayoutDashboard,
+  Bell,
+  Layers,
+  Puzzle,
+  BookOpen,
+  HelpCircle,
+  GraduationCap,
+  Trophy,
+  Users,
+  User,
+  History,
+  BarChart3,
+  ShieldCheck,
+  Banknote,
+  Wallet,
+  CreditCard,
+  TrendingUp,
+  Settings,
+  LogOut,
+  ChevronRight,
+  Menu,
+  FileText,
+  Zap,
+  RotateCcw,
+  Globe,
+  Contact2,
+  Flame,
+  Activity,
+  Crown,
+  X
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { useSSR } from '../hooks/useSSR';
 import { isAdmin, hasAdminPrivileges, logAdminAction } from '../lib/utils/adminUtils';
 import { secureLogout } from '../lib/utils/authUtils';
-import { toggleSidebar } from '../store/sidebarSlice';
+import { toggleSidebar } from '../lib/store/sidebarSlice';
 
 const Sidebar = () => {
   const { isMounted, router } = useSSR();
@@ -18,7 +48,7 @@ const Sidebar = () => {
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
   const handleNavClick = (page) => {
-    dispatch(toggleSidebar());
+    if (window.innerWidth < 1024) dispatch(toggleSidebar());
     logAdminAction('navigate', page, { timestamp: new Date().toISOString() });
   };
 
@@ -28,161 +58,175 @@ const Sidebar = () => {
     return router?.pathname?.startsWith(path + '/');
   };
 
-  const getActiveClass = (path) => {
-    return isActiveRoute(path)
-      ? "flex items-center space-x-2 p-2 bg-gradient-to-r from-red-600 to-primary-600 text-white transition-colors rounded-lg shadow-sm my-1"
-      : "flex items-center space-x-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-700 dark:text-gray-300 rounded-lg my-1";
-  };
-
-  // Define Sidebar Sections
   const sidebarSections = [
     {
-      title: 'Overview',
+      title: 'OVERVIEW',
       items: [
-        { path: '/admin/dashboard', icon: MdDashboard, label: 'Dashboard', key: 'dashboard' }
+        { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' }
       ]
     },
     {
-      title: 'Communication',
+      title: 'NOTIFICATIONS',
       items: [
-        { path: '/admin/notifications', icon: MdNotifications, label: 'Notifications', key: 'notifications' },
+        { path: '/admin/notifications', icon: Bell, label: 'Alerts', key: 'notifications' },
       ]
     },
     {
-      title: 'Master Data',
+      title: 'ORGANIZATION',
       items: [
-        { path: '/admin/categories', icon: MdCategory, label: 'Categories', key: 'categories' },
-        { path: '/admin/subcategories', icon: MdLayers, label: 'Sub Categories', key: 'subcategories' },
-        { path: '/admin/levels', icon: MdClass, label: 'Levels', key: 'levels' },
+        { path: '/admin/categories', icon: Layers, label: 'Categories', key: 'categories' },
+        { path: '/admin/subcategories', icon: Puzzle, label: 'Subcategories', key: 'subcategories' },
+        { path: '/admin/levels', icon: Trophy, label: 'Levels', key: 'levels' },
       ]
     },
     {
-      title: 'Content Management',
+      title: 'MANAGE CONTENT',
       items: [
-        { path: '/admin/quizzes', icon: MdQuiz, label: 'Quizzes', key: 'quizzes' },
-        { path: '/admin/questions', icon: MdQuestionAnswer, label: 'Questions', key: 'questions' },
-        { path: '/admin/articles', icon: MdArticle, label: 'Articles', key: 'articles' },
+        { path: '/admin/quizzes', icon: BookOpen, label: 'Quizzes', key: 'quizzes' },
+        { path: '/admin/questions', icon: HelpCircle, label: 'Questions', key: 'questions' },
+        { path: '/admin/articles', icon: Zap, label: 'Articles', key: 'articles' },
       ]
     },
     {
-      title: 'Govt. Exams',
+      title: 'GOVT EXAMS',
       items: [
-        { path: '/admin/govt-exams', icon: MdCategory, label: 'Categories', key: 'govt-exams-categories' },
-        { path: '/admin/govt-exams/exams', icon: MdSchool, label: 'Exams', key: 'govt-exams-exams' },
-        { path: '/admin/govt-exams/patterns', icon: MdLayers, label: 'Patterns', key: 'govt-exams-patterns' },
-        { path: '/admin/govt-exams/tests', icon: MdQuiz, label: 'Tests', key: 'govt-exams-tests' },
-        { path: '/admin/govt-exams/results', icon: MdEmojiEvents, label: 'Results', key: 'govt-exams-results' },
+        { path: '/admin/govt-exams', icon: ShieldCheck, label: 'Exam Categories', key: 'govt-exams-categories' },
+        { path: '/admin/govt-exams/exams', icon: GraduationCap, label: 'Practice Exams', key: 'govt-exams-exams' },
+        { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Exam Patterns', key: 'govt-exams-patterns' },
+        { path: '/admin/govt-exams/tests', icon: FileText, label: 'Practice Tests', key: 'govt-exams-tests' },
+        { path: '/admin/govt-exams/results', icon: Activity, label: 'Results & Stats', key: 'govt-exams-results' },
       ]
     },
     {
-      title: 'User Submissions',
+      title: 'USER SUBMISSIONS',
       items: [
-        { path: '/admin/user-questions', icon: MdQuestionAnswer, label: 'User Questions', key: 'user-questions' },
-        { path: '/admin/user-quizzes', icon: MdQuiz, label: 'User Quizzes', key: 'user-quizzes' },
-        { path: '/admin/user-blogs', icon: MdArticle, label: 'User Blogs', key: 'user-blogs' },
+        { path: '/admin/user-questions', icon: HelpCircle, label: 'User Questions', key: 'user-questions' },
+        { path: '/admin/user-quizzes', icon: BookOpen, label: 'User Quizzes', key: 'user-quizzes' },
+        { path: '/admin/user-blogs', icon: Zap, label: 'User Articles', key: 'user-blogs' },
       ]
     },
     {
-      title: 'User Management',
+      title: 'USER MANAGEMENT',
       items: [
-        { path: '/admin/students', icon: MdPeople, label: 'Students', key: 'students' },
-        { path: '/admin/user-details', icon: MdPerson, label: 'User Details', key: 'user-details' },
-        { path: '/admin/prev-month-played-users', icon: MdPeople, label: 'Prev Played Users', key: 'prev-month-users' },
-        { path: '/admin/contacts', icon: MdContactMail, label: 'Contacts', key: 'contacts' },
+        { path: '/admin/students', icon: Users, label: 'Students', key: 'students' },
+        { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
+        { path: '/admin/prev-month-played-users', icon: History, label: 'Activity Logs', key: 'prev-month-users' },
+        { path: '/admin/contacts', icon: Contact2, label: 'Contact Requests', key: 'contacts' },
       ]
     },
     {
-      title: 'Rewards & History',
+      title: 'STATS & REWARDS',
       items: [
-        { path: '/admin/referral-history', icon: MdHistory, label: 'Referral History', key: 'referral-history' },
-        { path: '/admin/referral-analytics', icon: MdBarChart, label: 'Referral Analytics', key: 'referral-analytics' },
-        { path: '/admin/blog-rewards-history', icon: MdEmojiEvents, label: 'Blog Rewards', key: 'blog-rewards' },
-        { path: '/admin/quiz-rewards-history', icon: MdEmojiEvents, label: 'Quiz Rewards', key: 'quiz-rewards' },
-        { path: '/admin/monthly-winners', icon: MdEmojiEvents, label: 'Winners', key: 'monthly-winners' },
-        { path: '/admin/competition-resets', icon: MdSettingsBackupRestore, label: 'Manage Resets', key: 'competition-resets' },
+        { path: '/admin/referral-history', icon: Globe, label: 'Referral History', key: 'referral-history' },
+        { path: '/admin/referral-analytics', icon: BarChart3, label: 'Referral Stats', key: 'referral-analytics' },
+        { path: '/admin/blog-rewards-history', icon: Flame, label: 'Article Rewards', key: 'blog-rewards' },
+        { path: '/admin/quiz-rewards-history', icon: Trophy, label: 'Quiz Rewards', key: 'quiz-rewards' },
+        { path: '/admin/monthly-winners', icon: Crown, label: 'Monthly Winners', key: 'monthly-winners' },
+        { path: '/admin/competition-resets', icon: RotateCcw, label: 'Reset History', key: 'competition-resets' },
       ]
     },
     {
-      title: 'Analytics',
+      title: 'REPORTS & ANALYTICS',
       items: [
-        { path: '/admin/analytics/dashboard', icon: MdBarChart, label: 'Dashboard Analytics', key: 'analytics-dashboard' },
-        { path: '/admin/analytics/users', icon: MdPeople, label: 'User Analytics', key: 'analytics-users' },
-        { path: '/admin/analytics/users-overview', icon: MdAnalytics, label: 'All Users Analytics', key: 'analytics-users-overview' },
-        { path: '/admin/analytics/quizzes', icon: MdQuiz, label: 'Quiz Analytics', key: 'analytics-quizzes' },
-        { path: '/admin/analytics/financial', icon: MdTrendingUp, label: 'Financial Analytics', key: 'analytics-financial' },
-        { path: '/admin/analytics/performance', icon: MdAnalytics, label: 'Performance Analytics', key: 'analytics-performance' },
-
+        { path: '/admin/analytics/dashboard', icon: BarChart3, label: 'General Stats', key: 'analytics-dashboard' },
+        { path: '/admin/analytics/users', icon: Users, label: 'User Stats', key: 'analytics-users' },
+        { path: '/admin/analytics/users-overview', icon: TrendingUp, label: 'Growth Stats', key: 'analytics-users-overview' },
+        { path: '/admin/analytics/quizzes', icon: BookOpen, label: 'Quiz Stats', key: 'analytics-quizzes' },
+        { path: '/admin/analytics/financial', icon: Banknote, label: 'Payment Stats', key: 'analytics-financial' },
+        { path: '/admin/analytics/performance', icon: Activity, label: 'Performance', key: 'analytics-performance' },
       ]
     },
     {
-      title: 'Finance & Wallets',
+      title: 'PAYMENTS & WALLETS',
       items: [
-        { path: '/admin/user-wallets', icon: MdAccountBalance, label: 'User Wallets', key: 'user-wallets' },
-        { path: '/admin/withdraw-requests', icon: MdMoneyOff, label: 'Withdraw Requests', key: 'withdraw-requests' },
-        { path: '/admin/bank-details', icon: MdAssignment, label: 'Bank Details', key: 'bank-details' },
-        { path: '/admin/payment-transactions', icon: MdTrendingUp, label: 'Transactions', key: 'transactions' },
-        { path: '/admin/subscriptions', icon: MdCardGiftcard, label: 'Subscriptions', key: 'subscriptions' },
-        { path: '/admin/expenses', icon: MdMoneyOff, label: 'Platform Expenses', key: 'platform-expenses' },
+        { path: '/admin/user-wallets', icon: Wallet, label: 'Student Wallets', key: 'user-wallets' },
+        { path: '/admin/withdraw-requests', icon: Banknote, label: 'Payout Requests', key: 'withdraw-requests' },
+        { path: '/admin/bank-details', icon: FileText, label: 'Bank Information', key: 'bank-details' },
+        { path: '/admin/payment-transactions', icon: Activity, label: 'Transactions', key: 'transactions' },
+        { path: '/admin/subscriptions', icon: CreditCard, label: 'Subscribers', key: 'subscriptions' },
+        { path: '/admin/expenses', icon: History, label: 'Platform Costs', key: 'platform-expenses' },
       ]
     },
-
   ];
 
-  // Don't render anything during SSR
-  if (!isMounted) {
-    return null;
-  }
-
-  if (!isAdmin() || !hasAdminPrivileges()) return null;
+  if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
-    <div className={`sidebar bg-white dark:bg-gray-900 dark:text-white text-gray-900 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} flex flex-col h-full shadow-lg border-r border-gray-200 dark:border-gray-800`}>
+    <div className={`fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-80' : '-translate-x-full w-0 opacity-0'}`}>
 
-      {/* Scrollable Navigation Area */}
-      <nav className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
-        <div className="space-y-3 px-2">
-          {sidebarSections.map((section, idx) => (
-            <div key={idx}>
-              {/* Section Title */}
-              <div className="px-2 mb-2">
-                <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  {section.title}
-                </h3>
-              </div>
+      {/* Decorative Background Glows */}
+      <div className="absolute top-0 -left-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Section Items */}
-              <div className="space-y-1">
-                {section.items.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <Link
-                      key={item.key}
-                      href={item.path}
-                      onClick={() => handleNavClick(item.key)}
-                      className={getActiveClass(item.path)}
-                    >
-                      <Icon className={`text-xl ${isActiveRoute(item.path) ? 'text-white font-normal' : 'text-gray-500 dark:text-gray-400'}`} />
-                      <span className={`text-md ${isActiveRoute(item.path) ? 'text-white font-normal' : 'text-gray-500 dark:text-gray-400'}`}>{item.label}</span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+      {/* --- Admin Header --- (Hidden on Mobile) */}
+      <div className="hidden lg:flex p-10 pb-8 items-center justify-between relative z-10 border-b border-slate-200 dark:border-white/5">
+        <div className="flex items-center gap-4 group">
+          <div className="w-10 h-10 rounded-2xl bg-primary-500 flex items-center justify-center p-0.5 shadow-duo-primary transition-transform group-hover:rotate-6">
+            <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center text-white text-lg font-black font-outfit">A</div>
+          </div>
+          <div className="flex flex-col">
+            <h2 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
+              ADMIN<span className="text-primary-700 dark:text-primary-500"> PANEL</span>
+            </h2>
+            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-primary-500/60 leading-none mt-1">AAJEXAM SYSTEM</span>
+          </div>
         </div>
+      </div>
+
+      {/* --- Main Navigation Area --- */}
+      <nav className="flex-1 overflow-y-auto py-8 px-6 space-y-12 scrollbar-premium relative z-10">
+        {sidebarSections.map((section, idx) => (
+          <div key={idx} className="space-y-5">
+            <div className="flex items-center gap-3 px-4">
+              <h3 className="text-[9px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.4em] whitespace-nowrap">{section.title}</h3>
+            </div>
+            <div className="space-y-1.5 px-1">
+              {section.items.map((item, itemIdx) => {
+                const active = isActiveRoute(item.path);
+                return (
+                  <div key={itemIdx} className="relative group">
+                    <Link href={item.path} onClick={() => handleNavClick(item.key)}>
+                      <button className={`w-full flex items-center gap-5 px-5 py-3.5 rounded-2xl transition-all duration-300 relative overflow-hidden ${active ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}>
+                        {active && (
+                          <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl" />
+                        )}
+                        {!active && <div className="absolute inset-0 bg-white/0 group-hover:bg-slate-500/5 dark:group-hover:bg-white/5 transition-colors" />}
+
+                        <item.icon className={`w-4.5 h-4.5 relative z-10 transition-transform group-hover:scale-110 ${active ? 'text-white' : 'text-slate-500 dark:text-slate-400 group-hover:text-primary-500'}`} />
+                        <span className="text-[10px] font-black tracking-[0.15em] uppercase relative z-10 transition-all group-hover:translate-x-1">{item.label}</span>
+                        {active && <ChevronRight className="w-3 h-3 ml-auto text-white/50 relative z-10" />}
+                      </button>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
-      {/* Logout Button (Fixed at bottom) */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-        <button
+      {/* --- Logout Area --- */}
+      <div className="p-8 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-950 relative z-20">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => secureLogout(router)}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-200 text-white text-sm bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 pointer-events-auto"
+          className="w-full py-5 rounded-2xl bg-rose-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-rose hover:bg-rose-600 transition-all flex items-center justify-center gap-3 border-none group"
         >
-          <MdLogout className="text-xl" /> Logout
-        </button>
+          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> LOG OUT
+        </motion.button>
+        <div className="pt-5 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 group">
+            <span className="w-1 h-1 rounded-full bg-primary-500 animate-pulse group-hover:scale-150 transition-transform" />
+            <p className="text-[8px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest leading-none">SECURE ACCESS ACTIVE</p>
+          </div>
+        </div>
       </div>
     </div>
+
   );
 };
 
 export default Sidebar;
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 
 const ScrollToTopButton = () => {
@@ -43,3 +43,4 @@ const ScrollToTopButton = () => {
 };
 
 export default ScrollToTopButton;
+

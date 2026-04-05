@@ -1,415 +1,437 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import Link from 'next/link';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import {
+  ArrowLeft,
+  Award,
+  Brain,
+  Crown,
+  Gem,
+  History,
+  Layout,
+  Lock,
+  Medal,
+  Rocket,
+  Sparkles,
+  Star,
+  Target,
+  Trophy,
+  Unlock,
+  UserPlus,
+  Wand2,
+  Zap,
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-import { FaTrophy, FaCrown, FaStar, FaMedal, FaRocket, FaBrain, FaChartLine, FaArrowLeft, FaAward, FaGem } from 'react-icons/fa';
-import { FaUserGraduate, FaMagic } from 'react-icons/fa';
 import API from '../../lib/api';
 import MonthlyRewardsInfo from '../MonthlyRewardsInfo';
-// MobileAppWrapper import removed
 import Loading from '../Loading';
 import config from '../../lib/config/appConfig';
 import UnifiedFooter from '../UnifiedFooter';
-import UnifiedNavbar from '../UnifiedNavbar';
-// Level badge icon mapping (same as HomePage)
-const levelBadgeIcons = {
-  'Starter': FaUserGraduate,
-  'Rookie': FaStar,
-  'Explorer': FaRocket,
-  'Thinker': FaBrain,
-  'Strategist': FaChartLine,
-  'Achiever': FaAward,
-  'Mastermind': FaGem,
-  'Champion': FaTrophy,
-  'Prodigy': FaMedal,
-  'Wizard': FaMagic,
-  'Legend': FaCrown,
-  Default: FaStar,
+import PublicNavbar from '../navbars/PublicNavbar';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+
+const LEVEL_CONFIG = {
+  Starter: {
+    icon: UserPlus,
+    desc: 'Getting started',
+    solid: 'bg-slate-500',
+    soft: 'bg-slate-500/10 text-slate-700 dark:text-slate-300',
+    progress: 'bg-slate-500',
+  },
+  Rookie: {
+    icon: Star,
+    desc: 'Starting your journey',
+    solid: 'bg-blue-500',
+    soft: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
+    progress: 'bg-blue-500',
+  },
+  Explorer: {
+    icon: Rocket,
+    desc: 'Growing fast',
+    solid: 'bg-indigo-500',
+    soft: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400',
+    progress: 'bg-indigo-500',
+  },
+  Thinker: {
+    icon: Brain,
+    desc: 'Thinking deeply',
+    solid: 'bg-violet-500',
+    soft: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
+    progress: 'bg-violet-500',
+  },
+  Strategist: {
+    icon: Layout,
+    desc: 'Smart thinking',
+    solid: 'bg-purple-500',
+    soft: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
+    progress: 'bg-purple-500',
+  },
+  Achiever: {
+    icon: Award,
+    desc: 'High achiever',
+    solid: 'bg-emerald-500',
+    soft: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+    progress: 'bg-emerald-500',
+  },
+  Mastermind: {
+    icon: Gem,
+    desc: 'Top student',
+    solid: 'bg-pink-500',
+    soft: 'bg-pink-500/10 text-pink-600 dark:text-pink-400',
+    progress: 'bg-pink-500',
+  },
+  Champion: {
+    icon: Trophy,
+    desc: 'Quiz champion',
+    solid: 'bg-amber-500',
+    soft: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
+    progress: 'bg-amber-500',
+  },
+  Prodigy: {
+    icon: Medal,
+    desc: 'Very talented',
+    solid: 'bg-orange-500',
+    soft: 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
+    progress: 'bg-orange-500',
+  },
+  Wizard: {
+    icon: Wand2,
+    desc: 'Master of subjects',
+    solid: 'bg-cyan-500',
+    soft: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
+    progress: 'bg-cyan-500',
+  },
+  Legend: {
+    icon: Crown,
+    desc: 'Ultimate learner',
+    solid: 'bg-primary-500',
+    soft: 'bg-primary-500/10 text-primary-700 dark:text-primary-500',
+    progress: 'bg-primary-500',
+  },
+  Default: {
+    icon: Sparkles,
+    desc: 'Learner',
+    solid: 'bg-slate-500',
+    soft: 'bg-slate-500/10 text-slate-700 dark:text-slate-300',
+    progress: 'bg-slate-500',
+  },
 };
 
-// Fallback levels data if API fails
-const fallbackLevels = [
-  { _id: 0, levelName: 'Starter', quizzesRequired: 0, quizCount: 0, description: 'Starting point for all users' },
-  { _id: 1, levelName: 'Rookie', quizzesRequired: 2, quizCount: 0, description: 'Begin your quiz journey' },
-  { _id: 2, levelName: 'Explorer', quizzesRequired: 6, quizCount: 0, description: 'Discover new challenges' },
-  { _id: 3, levelName: 'Thinker', quizzesRequired: 12, quizCount: 0, description: 'Develop critical thinking' },
-  { _id: 4, levelName: 'Strategist', quizzesRequired: 20, quizCount: 0, description: 'Master quiz strategies' },
-  { _id: 5, levelName: 'Achiever', quizzesRequired: 30, quizCount: 0, description: 'Reach new heights' },
-  { _id: 6, levelName: 'Mastermind', quizzesRequired: 42, quizCount: 0, description: 'Become a quiz expert' },
-  { _id: 7, levelName: 'Champion', quizzesRequired: 56, quizCount: 0, description: 'Compete with the best' },
-  { _id: 8, levelName: 'Prodigy', quizzesRequired: 72, quizCount: 0, description: 'Show exceptional talent' },
-  { _id: 9, levelName: 'Wizard', quizzesRequired: 90, quizCount: 0, description: 'Master of all quizzes' },
-  { _id: 10, levelName: 'Legend', quizzesRequired: config.QUIZ_CONFIG.LEVEL_10_QUIZ_REQUIREMENT || 110, quizCount: 0, description: 'Achieve legendary status' }
+const HOW_IT_WORKS = [
+  {
+    label: 'Score high',
+    value: `${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% score required`,
+    icon: Target,
+    tone: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+  },
+  {
+    label: 'Monthly reset',
+    value: 'Your score resets every month. A new chance to win!',
+    icon: History,
+    tone: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
+  },
+  {
+    label: 'Unlock levels',
+    value: 'Pass enough quizzes to unlock the next level',
+    icon: Lock,
+    tone: 'bg-primary-500/10 text-primary-700 dark:text-primary-500',
+  },
 ];
-
-
 
 const LevelsPage = ({ showNavbar = true }) => {
   const router = useRouter();
   const [userLevelData, setUserLevelData] = useState(null);
   const [levels, setLevels] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'path'
   const [activeProUsers, setActiveProUsers] = useState(0);
-  console.log(userLevelData, 'userLevelData')
+
   useEffect(() => {
     const fetchData = async () => {
-      let profileRes = null;
       try {
         setLoading(true);
-
-        // Check if user is logged in
         const token = localStorage.getItem('token');
+        const requests = [API.getAllLevels(), API.getPublicLandingStats()];
 
-        // Fetch levels (public), profile (if authenticated) and stats for prize pool
-        const promises = [API.getAllLevels(), API.getPublicLandingStats()];
         if (token) {
-          promises.unshift(API.getProfile());
+          requests.unshift(API.getProfile());
         }
 
-        const results = await Promise.all(promises);
+        const results = await Promise.all(requests);
 
-        // Parse results based on whether profile was fetched
         if (token) {
-          profileRes = results[0];
-          const levelsRes = results[1];
-          const statsRes = results[2];
-          setUserLevelData(profileRes?.user);
-          if (levelsRes.success) {
-            setLevels(levelsRes.data);
-          } else {
-            console.warn('Using fallback levels data due to API failure');
-            setLevels(fallbackLevels);
-          }
-          if (statsRes?.success) {
-            setActiveProUsers(statsRes.data.activeProUsers || 0);
-          }
-        } else {
-          // No authentication - just use levels and stats data
-          const levelsRes = results[0];
-          const statsRes = results[1];
-          if (levelsRes.success) {
-            setLevels(levelsRes.data);
-          } else {
-            console.warn('Using fallback levels data due to API failure');
-            setLevels(fallbackLevels);
-          }
-          if (statsRes?.success) {
-            setActiveProUsers(statsRes.data.activeProUsers || 0);
-          }
+          const [profileRes, levelsRes, statsRes] = results;
+          setUserLevelData(profileRes?.user || null);
+          if (levelsRes.success) setLevels(levelsRes.data || []);
+          if (statsRes?.success) setActiveProUsers(statsRes.data.activeProUsers || 0);
+          return;
         }
-      } catch (err) {
-        console.error('Error fetching data:', err);
-        console.error('Error details:', {
-          message: err.message,
-          response: err.response,
-          stack: err.stack
-        });
-        console.warn('Using fallback levels data due to error');
-        setLevels(fallbackLevels);
-        // Only set error if it's a critical failure
-        if (err.message && !err.message.includes('Not authorized')) {
-          setError(`Failed to load data: ${err.message || 'Unknown error'}`);
-        }
+
+        const [levelsRes, statsRes] = results;
+        if (levelsRes.success) setLevels(levelsRes.data || []);
+        if (statsRes?.success) setActiveProUsers(statsRes.data.activeProUsers || 0);
+      } catch {
+        console.error('Data fetch failure');
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
   const highScoreQuizzes = userLevelData?.monthlyProgress?.highScoreWins || 0;
-  const totalQuizAttempts = userLevelData?.monthlyProgress?.totalQuizAttempts || 0;
-  // Use the levelInfo from API response instead of calculating from highScoreQuizzes
-  const userLevel = userLevelData?.levelInfo?.currentLevel || { number: 0, name: 'Starter' };
+  const userLevel = userLevelData?.levelInfo?.currentLevel || { number: 0, name: 'Starter', description: 'Start practicing to unlock your first level.' };
+  const currentVisual = LEVEL_CONFIG[userLevel.name] || LEVEL_CONFIG.Default;
+  const CurrentLevelIcon = currentVisual.icon;
+  const estimatedRewardPool = Math.max(activeProUsers * (config.QUIZ_CONFIG.PRIZE_PER_PRO || 0), config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 0);
 
   if (loading) {
-    return <Loading fullScreen={true} size="lg" color="yellow" message="Loading level data..." />;
-  }
-
-  if (error && levels.length === 0) {
-    return (
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-primary-600 text-4xl mb-4">⚠️</div>
-          <p className="text-primary-600 text-xl">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-primary-600 hover:to-secondary-600 transition-all duration-300"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
+    return <div className="min-h-screen flex items-center justify-center bg-slate-900"><Loading size="lg" /></div>;
   }
 
   return (
-    <>
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark">
-        {showNavbar && <UnifiedNavbar isLandingPage={true} />}
-        <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+      <Head>
+        <title>Levels | AajExam</title>
+      </Head>
 
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaTrophy className="text-white text-3xl" />
-            </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 dark:text-white mb-2 sm:mb-4 drop-shadow-lg">
-              Level Progression System
-            </h1>
-            <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
-              Journey from{" "}
-              <span className="font-bold text-primary-600 dark:text-primary-300">
-                Starter
-              </span>{" "}
-              to{" "}
-              <span className="font-bold text-primary-600 dark:text-red-300">
-                Legend
-              </span>{" "}
-              through{" "}
-              <span className="font-bold text-green-600 dark:text-green-400">
-                11 exciting levels
-              </span>
-            </p>
-          </div>
+      {showNavbar && <PublicNavbar />}
 
-
-          {/* Info Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            {/* Scholarship Info */}
-            <div className="bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/30 rounded-3xl shadow-2xl p-2 md:p-4 lg:p-6 xl:p-8 border border-primary-200 dark:border-primary-700">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center">
-                  <FaAward className="text-white text-2xl" />
-                </div>
-                <h3 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                  Scholarship & Prizes
-                </h3>
-              </div>
-              <div className="space-y-4">
-                <p className="text-gray-700 dark:text-gray-300">
-                  Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} ranked users in Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} (<span className="font-bold text-primary-600">Legend</span>) win scholarships and prizes!
-                </p>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary-600 mb-2">
-                      {activeProUsers > 0 ? `₹${(activeProUsers * config.QUIZ_CONFIG.PRIZE_PER_PRO).toLocaleString('en-IN')}` : `₹${config.QUIZ_CONFIG.PRIZE_PER_PRO}+`}
-                    </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Monthly Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} PRO users at Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} with ≥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy win prizes (active PRO users × ₹{config.QUIZ_CONFIG.PRIZE_PER_PRO})</div>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold text-primary-600 dark:text-primary-400">
-                    Reach Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} with high accuracy to qualify for monthly prizes!
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            {/* Progression Rules */}
-            <div className="bg-gradient-to-br from-primary-50 to-red-50 dark:from-primary-900/30 dark:to-red-900/30 rounded-3xl shadow-2xl p-2 xl:p-4 lg:p-6 xl:p-8 border border-primary-200 dark:border-primary-700">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
-                  <FaGem className="text-white text-2xl" />
-                </div>
-                <h3 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
-                  Progression Rules
-                </h3>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Only quizzes with <span className="font-bold text-green-600">{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% or higher score</span> count towards level progression
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Achieve high scores consistently to advance through levels
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Focus on quality over quantity - aim for excellence in every quiz!
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Every month, your progress resets to encourage fresh learning
-                    and growth
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center mt-0.5">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Reach Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} with ≥{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% accuracy to win monthly prizes!
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Monthly Rewards Information */}
-          <div className="mb-8">
-            <MonthlyRewardsInfo />
-          </div>
-
-          {/* Current Level Card */}
-          <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-2 md:p-8 border border-white/20 mb-8">
-            <div className="text-center">
-              <h2 className="text-xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">
-                🎯 Your Current Level
-              </h2>
-              <div className="flex items-center justify-center space-x-6 mb-6">
-                <div className={`w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-500 dark:to-secondary-500 rounded-2xl flex items-center justify-center`}>
-                  {(() => {
-                    const BadgeIcon = levelBadgeIcons[userLevel.name] || levelBadgeIcons.Default;
-                    return (
-                      <BadgeIcon className="text-primary-600 dark:text-white text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-                    );
-                  })()}
-                </div>
-                <div className="text-left">
-                  <div className="text-xl md:text-3xl font-bold text-gray-800 dark:text-white">
-                    {userLevel.name}
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300">
-                    Level {userLevel.number}
-                  </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    {userLevel.description}
-                  </div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-md lg:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                  {highScoreQuizzes} / {totalQuizAttempts || 0} Quizzes
-                </div>
-                <div className="text-gray-600 dark:text-gray-300">
-                  High-score quizzes completed ({config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}%+ score)
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Levels Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-            {levels.map((lvl) => {
-              const isCurrentLevel = lvl.level === userLevel.number;
-              const isUnlocked = highScoreQuizzes >= lvl.quizzesRequired;
-              const cardBg = `bg-gradient-to-br 
-  from-primary-50 to-red-50
-  dark:from-gray-800 dark:via-gray-900 dark:to-black`;
-              return (
-                <div
-                  key={lvl.level}
-                  className={`group relative rounded-2xl shadow-xl border-2 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 ${isCurrentLevel
-                    ? 'border-primary-500 shadow-primary-500/25'
-                    : isUnlocked
-                      ? 'border-green-500 shadow-green-500/25'
-                      : 'border-gray-300 dark:border-gray-600'
-                    } ${cardBg}`}
-                >
-                  {/* Level Badge */}
-                  <div className="absolute -top-3 -right-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${isCurrentLevel
-                      ? 'bg-primary-500'
-                      : isUnlocked
-                        ? 'bg-green-500'
-                        : 'bg-gray-400'
-                      }`}>
-                      {lvl.level}
-                    </div>
-                  </div>
-
-                  {/* Icon */}
-                  <div className="w-12 h-12 md:w-24 md:h-24 bg-gradient-to-r from-primary-100 to-red-100 dark:from-primary-500 dark:to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-4">
-                    {(() => {
-                      const BadgeIcon = levelBadgeIcons[lvl.name] || levelBadgeIcons.Default;
-                      return (
-                        <BadgeIcon className="text-primary-600 dark:text-primary-200 text-3xl md:text-5xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-                      );
-                    })()}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 pt-0">
-                    <h3 className="text-md lg:text-xl font-bold text-gray-800 dark:text-white mb-2 text-center">
-                      {lvl.name}
-                    </h3>
-
-                    <p className="text-gray-800 dark:text-white text-sm mb-4 text-center">
-                      {lvl.description}
-                    </p>
-
-                    {/* Stats */}
-                    <div className="space-y-2 mb-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-500 dark:text-gray-200 text-sm">Required:</span>
-                        <span className="font-semibold text-gray-800 dark:text-white">{lvl.quizzesRequired} quizzes</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-500 dark:text-gray-200 text-sm">Available:</span>
-                        <span className="font-semibold text-black dark:text-primary-200">{lvl.quizCount} quizzes</span>
-                      </div>
-                    </div>
-
-                    {/* Status */}
-                    <div className={`text-center py-2 rounded-lg text-sm font-semibold shadow-md ${isCurrentLevel
-                      ? 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
-                      : isUnlocked
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                        : 'bg-red-100 text-gray-600 dark:bg-red-700 dark:text-red-300'
-                      }`}>
-                      {isCurrentLevel ? 'Current Level' : isUnlocked ? 'Unlocked' : 'Locked'}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-
-          {/* Back Button */}
-          <div className="text-center">
-            <button
-              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-3 rounded-xl hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:scale-105 flex items-center space-x-2 mx-auto"
-              onClick={() => {
-                router.back();
-              }}
+      <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-7xl space-y-8 lg:space-y-16">
+        <header className="relative py-10 lg:py-20 text-center space-y-6 lg:space-y-8 overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white dark:bg-slate-900 shadow-2xl border-2 border-b-8 border-slate-100 dark:border-primary-500/20 transition-all duration-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-white dark:from-indigo-950/50 dark:to-slate-900 z-0" />
+          <div className="relative z-10 space-y-10 px-4">
+            <motion.div
+              initial={{ scale: 0, rotate: -20 }}
+              animate={{ scale: 1, rotate: 0 }}
+              className="w-20 lg:w-32 h-20 lg:h-32 bg-primary-500 rounded-[2.5rem] flex items-center justify-center mx-auto shadow-duo-primary border-4 border-white/10"
             >
-              <FaArrowLeft className="text-sm" />
-              <span>Back to Profile</span>
-            </button>
+              <Trophy className="w-8 lg:w-16 h-8 lg:h-16 text-white" />
+            </motion.div>
+            <div className="space-y-4">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-black font-outfit tracking-tight text-slate-900 dark:text-white leading-none">
+                Your <span className="text-primary-700 dark:text-primary-500 text-glow-primary">progress path</span>
+              </h1>
+              <p className="text-base lg:text-lg font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                See where you are, how rewards work, and what you need to reach the next level.
+              </p>
+            </div>
           </div>
+          <Sparkles className="absolute -bottom-24 -right-24 w-96 h-96 text-primary-600/10 dark:text-primary-500/10 pointer-events-none" />
+        </header>
+
+        {/* --- Tab Switcher (Mobile Scrollable) --- */}
+        <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 lg:mb-12 w-fit border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 shadow-inner px-3">
+          {[
+            { id: 'overview', label: 'My Progress', icon: Zap },
+            { id: 'path', label: 'Learning Path', icon: Target }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeTab === tab.id ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-700'}`}
+            >
+              <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-500'}`} />
+              {tab.label}
+            </button>
+          ))}
+        </section>
+
+        <AnimatePresence mode="wait">
+          {activeTab === 'overview' && (
+            <motion.div
+              key="overview"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-8 lg:space-y-16"
+            >
+              <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <Card className="p-5 lg:p-10 space-y-5 lg:space-y-8 border-none bg-white dark:bg-slate-800 rounded-[2rem] lg:rounded-[3rem] shadow-xl relative overflow-hidden group hover:border-primary-500/30 border-2 border-transparent transition-all">
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-2xl">
+                      <Award className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                    <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight">Reward system</h2>
+                  </div>
+                  <div className="space-y-4 lg:space-y-6 relative z-10">
+                    <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
+                      Students who reach the <span className="text-primary-700 dark:text-primary-500 font-semibold">Legend</span> level with high scores can win monthly rewards.
+                    </p>
+                    <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[1.5rem] lg:rounded-[2rem] border border-slate-100 dark:border-slate-800 text-center space-y-2">
+                      <div className="text-3xl lg:text-4xl font-black font-outfit text-primary-700 dark:text-primary-500 tracking-tight">
+                        Rs.{estimatedRewardPool.toLocaleString('en-IN')}+
+                      </div>
+                      <p className="text-sm font-medium text-slate-600 dark:text-slate-400">This month's estimated prize pool</p>
+                    </div>
+                  </div>
+                  <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+                </Card>
+
+                <Card className="p-5 lg:p-10 space-y-5 lg:space-y-8 border-none bg-white dark:bg-slate-800 rounded-[2rem] lg:rounded-[3rem] shadow-xl relative overflow-hidden group hover:border-primary-500/30 border-2 border-transparent transition-all">
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-2xl">
+                      <Gem className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                    <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight">How it works</h2>
+                  </div>
+                  <ul className="space-y-4 relative z-10">
+                    {HOW_IT_WORKS.map((item) => (
+                      <li key={item.label} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl">
+                        <div className={`p-2 rounded-lg ${item.tone}`}>
+                          <item.icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.label}</p>
+                          <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{item.value}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+                </Card>
+              </section>
+
+              <MonthlyRewardsInfo />
+
+              <section className="relative group">
+                <Card className="p-5 lg:p-10 border-none bg-white/50 dark:bg-slate-800/50 backdrop-blur-xl rounded-[2rem] lg:rounded-[3rem] shadow-2xl border-2 border-primary-500/20 text-center space-y-6 lg:space-y-10 overflow-hidden">
+                  <div className="space-y-4 relative z-10">
+                    <p className="text-sm font-semibold text-primary-700 dark:text-primary-500 uppercase tracking-widest">Your progress</p>
+                    <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">
+                      Current level: <span className="text-primary-700 dark:text-primary-500">{userLevel.name}</span>
+                    </h2>
+                  </div>
+
+                  <div className="flex flex-col lg:flex-row items-center justify-center gap-12 relative z-10">
+                    <div className="transition-transform group-hover:scale-105 duration-500">
+                      <div className={`w-20 lg:w-32 h-20 lg:h-32 rounded-[2.5rem] flex items-center justify-center shadow-xl ${currentVisual.solid}`}>
+                        <CurrentLevelIcon className="w-8 lg:w-16 h-8 lg:h-16 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="text-center lg:text-left space-y-6">
+                      <div className="space-y-1">
+                        <p className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Level {userLevel.number}</p>
+                        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{userLevel.description || currentVisual.desc}</p>
+                      </div>
+                      <div className="p-6 bg-slate-900 dark:bg-black rounded-2xl border border-slate-700 inline-block">
+                        <p className="text-xl lg:text-3xl font-black font-mono text-primary-700 dark:text-primary-500 tracking-tighter">{highScoreQuizzes}</p>
+                        <p className="text-sm font-medium text-slate-400 pt-1">High-score quizzes you did this month</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Sparkles className="absolute -top-12 -left-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 pointer-events-none" />
+                </Card>
+              </section>
+            </motion.div>
+          )}
+
+          {activeTab === 'path' && (
+            <motion.div
+              key="path"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-10"
+            >
+              <div className="text-center space-y-2">
+                <h3 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">Learning Path</h3>
+                <p className="text-sm font-medium text-content-secondary">See what each level needs and how close you are to reaching it.</p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8">
+                {levels.map((level) => {
+                  const levelVisual = LEVEL_CONFIG[level.name] || LEVEL_CONFIG.Default;
+                  const LevelIcon = levelVisual.icon;
+                  const isCurrent = level.level === userLevel.number;
+                  const isUnlocked = highScoreQuizzes >= level.quizzesRequired;
+                  const progressPercent = level.quizzesRequired ? Math.min(100, (highScoreQuizzes / level.quizzesRequired) * 100) : 0;
+
+                  const statePill = isCurrent
+                    ? 'bg-primary-500 text-white'
+                    : isUnlocked
+                      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400';
+
+                  const progressTone = isCurrent
+                    ? 'bg-primary-500'
+                    : isUnlocked
+                      ? 'bg-emerald-500'
+                      : levelVisual.progress;
+
+                  return (
+                    <motion.div key={level.level} whileHover={{ y: -8 }} className="relative h-full">
+                      <Card className={`p-5 lg:p-8 h-full flex flex-col justify-between group border-2 transition-all rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden ${isCurrent ? 'border-primary-500 shadow-duo-primary bg-primary-500/5' : isUnlocked ? 'border-emerald-500/30' : 'border-slate-100 dark:border-slate-800'}`}>
+                        <div className="space-y-6 relative z-10 h-full flex flex-col justify-between">
+                          <div className="space-y-6">
+                            <div className="flex justify-between items-start gap-4">
+                              <div className={`p-4 rounded-2xl ${levelVisual.soft}`}>
+                                <LevelIcon className="w-6 h-6" />
+                              </div>
+                              <div className={`px-4 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2 ${statePill}`}>
+                                {isCurrent ? <Zap className="w-3 h-3" /> : isUnlocked ? <Unlock className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
+                                {isCurrent ? 'Active' : isUnlocked ? 'Unlocked' : 'Locked'}
+                              </div>
+                            </div>
+
+                            <div className="space-y-1">
+                              <h4 className="text-xl font-black font-outfit tracking-tight">{level.name}</h4>
+                              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Level {level.level}</p>
+                            </div>
+
+                            <p className="text-xs lg:text-sm font-medium text-slate-700 dark:text-slate-400 leading-relaxed">
+                              {level.description || levelVisual.desc}
+                            </p>
+                          </div>
+
+                          <div className="space-y-3 pt-6">
+                            <div className="flex justify-between text-[10px] uppercase font-black tracking-widest gap-3">
+                              <span className="text-slate-600 dark:text-slate-400">Goal</span>
+                              <span className="text-slate-900 dark:text-white text-right">{level.quizzesRequired} Wins</span>
+                            </div>
+                            <div className="h-2 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden">
+                              <div className={`h-full ${progressTone}`} style={{ width: `${progressPercent}%` }} />
+                            </div>
+                          </div>
+                        </div>
+
+                        <Sparkles className="absolute -bottom-6 -right-6 w-24 h-24 text-slate-700 dark:text-slate-400/5 group-hover:text-primary-700 dark:text-primary-500/10 transition-colors pointer-events-none" />
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="pt-20 text-center">
+          <Button
+            onClick={() => router.push('/profile')}
+            size="lg"
+            variant="ghost"
+            icon={ArrowLeft}
+            className="px-16 py-7 rounded-[2rem] bg-white dark:bg-slate-800 text-sm font-black shadow-xl hover:text-primary-700 dark:text-primary-500 transition-all"
+          >
+            Return to profile
+          </Button>
         </div>
       </div>
+
       <UnifiedFooter />
-    </>
+    </div>
   );
 };
 
 export default LevelsPage;
-
-
-
-
-
 
 

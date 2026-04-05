@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,31 @@ import { useRouter } from 'next/router';
 import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
 import { toast } from 'react-toastify';
-import { FaCalendarAlt, FaUsers, FaEye, FaChevronLeft, FaChevronRight, FaTrophy, FaSort, FaSortUp, FaSortDown, FaTh, FaList, FaTable } from 'react-icons/fa';
+import { 
+  Calendar, 
+  Users, 
+  Eye, 
+  ChevronLeft, 
+  ChevronRight, 
+  Trophy, 
+  ArrowUpDown, 
+  ArrowUp, 
+  ArrowDown, 
+  LayoutGrid, 
+  List, 
+  Table as TableIcon,
+  Activity,
+  Zap,
+  Target,
+  Award,
+  Filter,
+  Search,
+  Clock,
+  ShieldCheck,
+  Star,
+  Settings,
+  MoreVertical
+} from 'lucide-react';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
@@ -15,6 +39,7 @@ import dayjs from 'dayjs';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../datepicker-custom.css";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AdminPrevMonthPlayedUsers = () => {
   const router = useRouter();
@@ -32,12 +57,11 @@ const AdminPrevMonthPlayedUsers = () => {
     hasNextPage: false,
     hasPrevPage: false
   });
-  const [sortBy, setSortBy] = useState('highScoreQuiz'); // Default sort by high score quiz
-  const [sortOrder, setSortOrder] = useState('desc'); // 'asc' or 'desc'
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table'); // 'grid', 'list', 'table'
+  const [sortBy, setSortBy] = useState('highScoreQuiz');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
-  // Precise filter states (Synced with Monthly Winners style)
   const [preciseDate, setPreciseDate] = useState(dayjs().subtract(1, 'month').format('YYYY-MM-DD'));
   const [preciseMonth, setPreciseMonth] = useState(dayjs().subtract(1, 'month').format('YYYY-MM'));
   const [preciseWeek, setPreciseWeek] = useState(() => {
@@ -49,112 +73,68 @@ const AdminPrevMonthPlayedUsers = () => {
     return `${d.format('YYYY')}-W${weekNum}`;
   });
 
-  // Sync selectedMonth with precise pickers
   useEffect(() => {
-    if (activeTab === 'daily') {
-      setSelectedMonth(preciseDate);
-    } else if (activeTab === 'weekly') {
-      setSelectedMonth(preciseWeek);
-    } else {
-      setSelectedMonth(preciseMonth);
-    }
+    if (activeTab === 'daily') setSelectedMonth(preciseDate);
+    else if (activeTab === 'weekly') setSelectedMonth(preciseWeek);
+    else setSelectedMonth(preciseMonth);
   }, [activeTab, preciseDate, preciseMonth, preciseWeek]);
 
-  // Fetch available periods based on tab
   const fetchAvailablePeriods = useCallback(async (type) => {
     try {
       const response = await API.getAvailablePrevMonthPlayedUsersMonths(type);
       let periods = response.data || [];
-
-      // Add current period if it's not already in the list
       const now = new Date();
       let currentPeriodStr = '';
-      if (type === 'daily') {
-        currentPeriodStr = now.toISOString().split('T')[0];
-      } else if (type === 'weekly') {
+      if (type === 'daily') currentPeriodStr = now.toISOString().split('T')[0];
+      else if (type === 'weekly') {
         const oneJan = new Date(now.getFullYear(), 0, 1);
         const numberOfDays = Math.floor((now - oneJan) / (24 * 60 * 60 * 1000));
         const weekNum = Math.ceil((numberOfDays + oneJan.getDay() + 1) / 7);
         currentPeriodStr = `${now.getFullYear()}-W${weekNum}`;
-      } else {
-        currentPeriodStr = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
-      }
+      } else currentPeriodStr = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
 
-      if (!periods.includes(currentPeriodStr)) {
-        periods = [currentPeriodStr, ...periods];
-      }
-
+      if (!periods.includes(currentPeriodStr)) periods = [currentPeriodStr, ...periods];
       setAvailableMonths(periods);
       if (periods.length > 0) {
-        // Calculate previous month string (YYYY-MM)
         const prevMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
         const prevMonthStr = `${prevMonthDate.getFullYear()}-${(prevMonthDate.getMonth() + 1).toString().padStart(2, '0')}`;
-
-        // Try to find the best default period
-        let defaultPeriod = periods[0]; // Fallback to newest
-
+        let defaultPeriod = periods[0];
         if (type === 'monthly') {
-          // Look for previous month exactly
           const found = periods.find(p => p === prevMonthStr);
           if (found) defaultPeriod = found;
         } else if (type === 'weekly' || type === 'daily') {
-          // Look for the latest period belonging to the previous month
           const found = periods.find(p => p.startsWith(prevMonthStr));
           if (found) defaultPeriod = found;
-          else if (periods.length > 1) {
-            // If prev month not found, maybe just take the one before "current" if it's currently "current"
-            if (periods[0] === currentPeriodStr) defaultPeriod = periods[1];
-          }
+          else if (periods.length > 1 && periods[0] === currentPeriodStr) defaultPeriod = periods[1];
         }
-
         setSelectedMonth(defaultPeriod);
-      } else {
-        setSelectedMonth('');
-      }
+      } else setSelectedMonth('');
     } catch (error) {
       console.error('Error fetching available periods:', error);
       toast.error('Failed to fetch available periods');
     }
   }, []);
 
-  // Fetch users
   const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
-      const params = {
-        page,
-        limit: 20,
-        type: activeTab
-      };
-
-      if (selectedMonth) {
-        params.monthYear = selectedMonth;
-      }
-
+      const params = { page, limit: 20, type: activeTab };
+      if (selectedMonth) params.monthYear = selectedMonth;
       const response = await API.getAllPrevMonthPlayedUsers(params);
-
       if (response && response.success) {
-        // Handle successful response - check if data exists and is an array
-        const usersData = Array.isArray(response.data) ? response.data : [];
-        if (usersData.length === 0) {
-          setLoading(false);
-        }
-        setUsers(usersData);
+        setUsers(Array.isArray(response.data) ? response.data : []);
         setPagination(response.pagination || pagination);
       } else {
-        setLoading(false);
-        // If response is not successful or doesn't have success flag, set empty users
         setUsers([]);
       }
     } catch (error) {
-      setLoading(false);
-      console.error('Error fetching prevMonthPlayedUsers:', error);
-      toast.error('Failed to fetch users');
+      console.error('Error fetching users:', error);
+      toast.error('Failed to fetch transmission stream');
       setUsers([]);
     } finally {
       setLoading(false);
     }
-  }, [page, selectedMonth]);
+  }, [page, selectedMonth, activeTab]);
 
   useEffect(() => {
     fetchAvailablePeriods(activeTab);
@@ -162,36 +142,23 @@ const AdminPrevMonthPlayedUsers = () => {
   }, [activeTab, fetchAvailablePeriods]);
 
   useEffect(() => {
-    if (selectedMonth) {
-      fetchUsers();
-    }
+    if (selectedMonth) fetchUsers();
   }, [page, selectedMonth, fetchUsers]);
 
   const handleViewUserDetails = (userId) => {
     router.push(`/admin/prev-month-played-users/${userId}/quiz-scores`);
   };
 
-  const handleMonthChange = (e) => {
-    setSelectedMonth(e.target.value);
-    setPage(1); // Reset to first page
-  };
-
   const handleSort = (field) => {
-    if (sortBy === field) {
-      // Toggle sort order if clicking same field
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    } else {
-      // Set new sort field and default to desc
+    if (sortBy === field) setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    else {
       setSortBy(field);
       setSortOrder('desc');
     }
   };
 
-  // Sort users based on current sort settings
   const sortedUsers = [...users].sort((a, b) => {
-
     let aValue, bValue;
-
     if (sortBy === 'highScoreQuiz') {
       aValue = (a.monthlyProgress?.highScoreWins || 0);
       bValue = (b.monthlyProgress?.highScoreWins || 0);
@@ -204,97 +171,115 @@ const AdminPrevMonthPlayedUsers = () => {
     } else if (sortBy === 'totalQuizzes') {
       aValue = (a.monthlyProgress?.totalQuizAttempts || 0);
       bValue = (b.monthlyProgress?.totalQuizAttempts || 0);
-    } else {
-      return 0;
-    }
-
-    if (sortOrder === 'asc') {
-      return aValue - bValue;
-    } else {
-      return bValue - aValue;
-    }
+    } else return 0;
+    return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
   });
 
-  const getSortIcon = (field) => {
-    if (sortBy !== field) {
-      return <FaSort className="text-gray-400" />;
-    }
-    return sortOrder === 'asc' ? <FaSortUp className="text-secondary-600" /> : <FaSortDown className="text-secondary-600" />;
-  };
+  if (loading && users.length === 0) {
+    return (
+      <AdminMobileAppWrapper title="Yield Stream">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+          <div className="relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
+            />
+            <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
+          </div>
+          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Diagnostic Performance Logs...</div>
+        </div>
+      </AdminMobileAppWrapper>
+    );
+  }
 
   return (
-    <AdminMobileAppWrapper title={`${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Played Users`}>
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
+    <AdminMobileAppWrapper title="Yield Stream">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         <Sidebar />
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
-          <div className="mx-auto">
-            {/* Header & Filters */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
-              <div>
-                <h2 className={`text-md lg:text-3xl font-black italic tracking-tighter uppercase ${activeTab === 'daily' ? 'text-secondary-600 dark:text-secondary-400' :
-                  activeTab === 'weekly' ? 'text-purple-600 dark:text-purple-400' :
-                    'text-secondary-600 dark:text-primary-500'
-                  }`}>
-                  {activeTab} Played Users
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm font-medium">
-                  Analysis of {activeTab} user participation and performance.
-                </p>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+          
+          {/* Header & Modulation Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN_HUB // PERFORMANCE_AUDIT</span>
+                </div>
+                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  {activeTab} <span className="text-indigo-500">PLAYED</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">USERS</span>
+                </h1>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user engagement metrics, accuracy coefficients, and high-score attribution.</p>
               </div>
 
-              {/* Competition Type Selector */}
-              <div className="flex p-1 bg-gray-100 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+               <div className="flex p-2 bg-white dark:bg-white/5 rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl">
                 {['daily', 'weekly', 'monthly'].map((type) => (
                   <button
                     key={type}
                     onClick={() => setActiveTab(type)}
-                    className={`px-4 py-1.5 rounded-lg text-xs font-black transition-all duration-200 capitalize ${activeTab === type
-                      ? activeTab === 'daily' ? 'bg-secondary-600 text-white shadow-lg' :
-                        activeTab === 'weekly' ? 'bg-purple-600 text-white shadow-lg' :
-                          'bg-primary-600 text-white shadow-lg'
-                      : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                    className={`px-8 py-3 rounded-[2rem] text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${activeTab === type
+                      ? 'bg-primary-600 text-white shadow-lg scale-105'
+                      : 'text-slate-400 hover:text-slate-600'
                       }`}
                   >
                     {type}
                   </button>
                 ))}
               </div>
+            </div>
 
-              {/* Filters Bar */}
-              <div className="flex flex-wrap items-center gap-3 bg-gray-50 dark:bg-gray-800 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
-                {activeTab === 'daily' && (
-                  <div className="flex items-center gap-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:block">Date:</label>
-                    <DatePicker
-                      selected={new Date(preciseDate)}
-                      onChange={(date) => setPreciseDate(dayjs(date).format('YYYY-MM-DD'))}
-                      dateFormat="yyyy-MM-dd"
-                      maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-secondary-500"
-                    />
-                  </div>
-                )}
+            {/* Tactical Control Console */}
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
+               <div className="flex flex-wrap items-center gap-8 flex-1">
+                  
+                  {activeTab === 'daily' && (
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl">
+                         <Calendar className="w-5 h-5" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-slate-400 uppercase tracking-widest">TEMPORAL_INDEX</div>
+                        <DatePicker
+                          selected={new Date(preciseDate)}
+                          onChange={(date) => setPreciseDate(dayjs(date).format('YYYY-MM-DD'))}
+                          dateFormat="yyyy-MM-dd"
+                          maxDate={new Date()}
+                          className="bg-transparent text-sm font-black uppercase italic tracking-tighter outline-none cursor-pointer text-slate-900 dark:text-white"
+                        />
+                      </div>
+                    </div>
+                  )}
 
-                {activeTab === 'weekly' && (
-                  <div className="flex items-center gap-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:block">Week:</label>
-                    <div className="flex items-center gap-2">
-                      <DatePicker
-                        selected={dayjs(preciseMonth).toDate()}
-                        onChange={(date) => {
-                          const newMonth = dayjs(date).format('YYYY-MM');
-                          setPreciseMonth(newMonth);
-                          const firstDay = dayjs(date).startOf('month');
-                          const oneJan = dayjs(date).startOf('year');
-                          const numberOfDays = firstDay.diff(oneJan, 'day');
-                          const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
-                          setPreciseWeek(`${dayjs(date).format('YYYY')}-W${weekNum}`);
-                        }}
-                        dateFormat="MMMM yyyy"
-                        showMonthYearPicker
-                        className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none w-32"
-                      />
-                      <div className="flex gap-1">
+                  {activeTab === 'weekly' && (
+                    <div className="flex items-center gap-6">
+                      <div className="flex items-center gap-4">
+                         <div className="p-4 bg-purple-500/10 text-purple-500 rounded-2xl">
+                            <Clock className="w-5 h-5" />
+                         </div>
+                         <div className="space-y-1">
+                            <div className="text-slate-400 uppercase tracking-widest">CYCLE_MONTH</div>
+                            <DatePicker
+                              selected={dayjs(preciseMonth).toDate()}
+                              onChange={(date) => {
+                                const newMonth = dayjs(date).format('YYYY-MM');
+                                setPreciseMonth(newMonth);
+                                const d = dayjs(date);
+                                setPreciseWeek(`${d.format('YYYY')}-W${Math.ceil((d.startOf('month').diff(d.startOf('year'), 'day') + d.startOf('month').day() + 1) / 7)}`);
+                              }}
+                              dateFormat="MMMM yyyy"
+                              showMonthYearPicker
+                              className="bg-transparent text-sm font-black uppercase italic tracking-tighter outline-none cursor-pointer text-slate-900 dark:text-white w-32"
+                            />
+                         </div>
+                      </div>
+                      <div className="flex gap-2">
                         {[1, 2, 3, 4, 5].map((w) => {
                           const [y, m] = preciseMonth.split('-').map(Number);
                           const dayInWeek = new Date(y, m - 1, (w - 1) * 7 + 1);
@@ -308,491 +293,333 @@ const AdminPrevMonthPlayedUsers = () => {
                             <button
                               key={w}
                               onClick={() => setPreciseWeek(weekVal)}
-                              className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs font-black transition-all ${isActive
-                                ? 'bg-purple-600 text-white shadow-md'
-                                : 'bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-500'
+                              className={`w-10 h-10 flex items-center justify-center rounded-xl text-[10px] font-black transition-all ${isActive
+                                ? 'bg-purple-600 text-white shadow-lg scale-110'
+                                : 'bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-slate-600'
                                 }`}
                             >
-                              {w}
+                              W{w}
                             </button>
                           );
                         })}
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {activeTab === 'monthly' && (
-                  <div className="flex items-center gap-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:block">Month:</label>
-                    <DatePicker
-                      selected={dayjs(preciseMonth).toDate()}
-                      onChange={(date) => setPreciseMonth(dayjs(date).format('YYYY-MM'))}
-                      dateFormat="MMMM yyyy"
-                      showMonthYearPicker
-                      maxDate={new Date()}
-                      className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm font-bold text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-primary-500"
-                    />
-                  </div>
-                )}
+                  {activeTab === 'monthly' && (
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                         <Filter className="w-5 h-5" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-slate-400 uppercase tracking-widest">FISCAL_CYCLE</div>
+                        <DatePicker
+                          selected={dayjs(preciseMonth).toDate()}
+                          onChange={(date) => setPreciseMonth(dayjs(date).format('YYYY-MM'))}
+                          dateFormat="MMMM yyyy"
+                          showMonthYearPicker
+                          maxDate={new Date()}
+                          className="bg-transparent text-sm font-black uppercase italic tracking-tighter outline-none cursor-pointer text-slate-900 dark:text-white"
+                        />
+                      </div>
+                    </div>
+                  )}
+               </div>
 
-                {/* View Toggles */}
-                <div className="flex items-center gap-1 ml-auto">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
-                  >
-                    <FaTh size={14} />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
-                  >
-                    <FaList size={14} />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('table')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30' : 'text-gray-400 hover:bg-gray-100'}`}
-                  >
-                    <FaTable size={14} />
-                  </button>
-                </div>
-              </div>
+               <div className="flex items-center gap-4">
+                  <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                    {[
+                      { icon: TableIcon, id: 'table', label: 'TAB' },
+                      { icon: List, id: 'list', label: 'LIN' },
+                      { icon: LayoutGrid, id: 'grid', label: 'SPC' }
+                    ].map((mode) => (
+                      <button
+                        key={mode.id}
+                        onClick={() => setViewMode(mode.id)}
+                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                      >
+                        <mode.icon className="w-4 h-4" />
+                        {viewMode === mode.id && <span className="text-[8px] font-black tracking-widest pr-1">{mode.label}</span>}
+                      </button>
+                    ))}
+                  </div>
+               </div>
             </div>
 
-            {/* Summary Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-secondary-200 dark:border-secondary-600">
-                <div className="flex items-center gap-3">
-                  <FaUsers className="text-2xl text-secondary-600" />
-                  <div>
-                    <div className="text-sm text-secondary-700 dark:text-secondary-400">Total Users</div>
-                    <div className="text-md lg:text-2xl font-bold text-secondary-800 dark:text-secondary-200">
-                      {pagination.total}
+            {/* Metric Summary Modules */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-12">
+                {[
+                  { label: "CONNECTED_UNITS", value: pagination.total, icon: Users, color: "bg-indigo-500" },
+                  { label: "CURRENT_SEGMENT", value: selectedMonth || 'FULL_SPECTRUM', icon: Calendar, color: "bg-emerald-500" },
+                  { label: "INDEX_PAGE", value: `${pagination.page} / ${pagination.totalPages}`, icon: Zap, color: "bg-rose-500" },
+                  { label: "DIAGNOSTIC_TAB", value: activeTab.toUpperCase(), icon: ShieldCheck, color: "bg-amber-500" }
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`${stat.color} rounded-[2.5rem] p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group min-h-[140px] text-white`}
+                  >
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                       <stat.icon className="w-16 h-16" />
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-600">
-                <div className="flex items-center gap-3">
-                  <FaCalendarAlt className="text-2xl text-green-600" />
-                  <div>
-                    <div className="text-sm text-green-700 dark:text-green-400">Selected {activeTab === 'daily' ? 'Date' : activeTab === 'weekly' ? 'Week' : 'Month'}</div>
-                    <div className="text-md lg:text-2xl font-bold text-green-800 dark:text-secondary-200">
-                      {selectedMonth || 'All'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-600">
-                <div className="flex items-center gap-3">
-                  <FaUsers className="text-2xl text-primary-600" />
-                  <div>
-                    <div className="text-sm text-primary-700 dark:text-primary-400">Current Page</div>
-                    <div className="text-md lg:text-2xl font-bold text-primary-800 dark:text-primary-200">
-                      {pagination.page} / {pagination.totalPages}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-80 mb-4">{stat.label}</div>
+                    <div className="text-xl lg:text-3xl font-black italic tracking-tighter tabular-nums uppercase">{stat.value}</div>
+                  </motion.div>
+                ))}
             </div>
+          </motion.div>
 
-            {/* Users Table */}
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="blue" message="" />
-              </div>
-            ) : users.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 text-6xl mb-4">📭</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  No Data Found
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {selectedMonth
-                    ? `No data found for ${selectedMonth}. Try selecting a different ${activeTab === 'daily' ? 'date' : activeTab === 'weekly' ? 'week' : 'month'}.`
-                    : `No data found. Check if data has been saved for previous ${activeTab === 'daily' ? 'days' : activeTab === 'weekly' ? 'weeks' : 'months'}.`
-                  }
-                </p>
-              </div>
-            ) : (
-              <>
-                {/* Grid View */}
-                {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
-                    {sortedUsers.map((user, index) => {
-                      const serialNumber = (pagination.page - 1) * pagination.limit + index + 1;
-                      return (
-                        <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                          <div className="bg-gradient-to-r from-secondary-500 to-indigo-600 p-4 text-white">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <div className="text-sm opacity-90">#{serialNumber}</div>
-                                <div className="text-sm lg:text-lg font-bold">{user.name || 'N/A'}</div>
-                                {user.email && (
-                                  <div className="text-sm opacity-80">{user.email}</div>
-                                )}
-                              </div>
-                              <FaUsers className="text-2xl opacity-80" />
-                            </div>
-                          </div>
-
-                          <div className="p-4 space-y-3">
-                            <div className="space-y-2">
-                              <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-600 dark:text-gray-400">Email:</span>
-                                <span className="text-gray-900 dark:text-white font-medium truncate ml-2">{user.email || 'N/A'}</span>
-                              </div>
-                              {user.phone && (
-                                <div className="flex items-center justify-between text-sm">
-                                  <span className="text-gray-600 dark:text-gray-400">Phone:</span>
-                                  <span className="text-gray-900 dark:text-white font-medium">{user.phone}</span>
-                                </div>
-                              )}
-                              <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-600 dark:text-gray-400">
-                                  {activeTab === 'daily' ? 'Date' : activeTab === 'weekly' ? 'Week' : 'Month'}:
-                                </span>
-                                <span className="text-gray-900 dark:text-white font-medium">{user.monthYear}</span>
-                              </div>
-                              <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-600 dark:text-gray-400">Level:</span>
-                                <span className="text-gray-900 dark:text-white font-medium">
-                                  {user.monthlyProgress?.currentLevel || user.level?.currentLevel || 0} - {user.monthlyProgress?.levelName || user.level?.levelName || 'N/A'}
-                                </span>
-                              </div>
-                              <div className="flex items-center justify-between text-sm">
-                                <span className="text-gray-600 dark:text-gray-400">Subscription:</span>
-                                <span className="text-gray-900 dark:text-white font-medium capitalize">
-                                  {user.subscriptionStatus || 'free'}
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="pt-3 border-t border-gray-200 dark:border-gray-700 grid grid-cols-2 gap-3">
-                              <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Total Quizzes</div>
-                                <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                  {user?.monthlyProgress?.totalQuizAttempts || 0}
-                                </div>
-                              </div>
-                              <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                <div className="text-xs text-gray-600 dark:text-gray-400">High Scores</div>
-                                <div className="text-sm lg:text-lg font-bold text-green-600 dark:text-green-400 flex items-center justify-center gap-1">
-                                  <FaTrophy className="text-sm" />
-                                  {user?.monthlyProgress?.highScoreWins || 0}
-                                </div>
-                              </div>
-                              <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Accuracy</div>
-                                <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                  {user.monthlyProgress?.accuracy || 0}%
-                                </div>
-                              </div>
-                              <div className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Score</div>
-                                <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                  {user.getScore} / {user.totalScore}
-                                </div>
-                              </div>
-                            </div>
-
-                            <Button
-                              onClick={() => handleViewUserDetails(user.originalUserId)}
-                              variant="admin"
-                              size="small"
-                              fullWidth
-                              icon={<FaEye className="text-sm" />}
-                              className="mt-3"
-                            >
-                              View Scores
-                            </Button>
-                          </div>
+          {/* User Yield Stream */}
+          <AnimatePresence mode="wait">
+             {loading && users.length === 0 ? (
+                <div className="flex justify-center py-40">
+                   <Loading size="lg" color="blue" message="" />
+                </div>
+             ) : users.length === 0 ? (
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                >
+                  <Activity className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_DIAGNOSTIC_DATA</h3>
+                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded performance markers detected for the current tactical segment.</p>
+                </motion.div>
+             ) : (
+                <motion.div
+                  key="content"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-12"
+                >
+                   {/* Table View */}
+                   {viewMode === 'table' && (
+                     <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                        <div className="overflow-x-auto">
+                           <table className="w-full">
+                              <thead>
+                                <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                  <th className="px-8 py-8 text-center w-20">#REF</th>
+                                  <th className="px-8 py-8">UNIT_IDENTITY</th>
+                                  <th className="px-8 py-8 text-center">TEMPORAL_MARKER</th>
+                                  <th className="px-8 py-8 text-center">EVOLUTION_LEVEL</th>
+                                  <th className="px-8 py-8 text-center">SUBSCRIPTION</th>
+                                  <th onClick={() => handleSort('totalQuizzes')} className="px-8 py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">YIELD_TOTAL <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th onClick={() => handleSort('highScoreQuiz')} className="px-8 py-8 text-center cursor-pointer hover:text-emerald-500 transition-colors">PEAK_SCORE <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th onClick={() => handleSort('accuracy')} className="px-8 py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">PRECISION <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th className="px-8 py-8 text-right">VALUATION</th>
+                                  <th className="px-8 py-8 text-center">ACTION</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                                 {sortedUsers.map((user, i) => {
+                                    const serialNumber = (pagination.page - 1) * pagination.limit + i + 1;
+                                    return (
+                                       <motion.tr
+                                          key={user._id || i}
+                                          initial={{ opacity: 0, x: -20 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          transition={{ delay: i * 0.05 }}
+                                          className="group hover:bg-indigo-500/5 transition-all text-[10px] font-black uppercase tracking-widest text-slate-500"
+                                       >
+                                          <td className="px-8 py-6 text-center tabular-nums opacity-30">#{serialNumber}</td>
+                                          <td className="px-8 py-6">
+                                             <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all">
+                                                   {user.name?.[0]?.toUpperCase() || 'U'}
+                                                </div>
+                                                <div className="overflow-hidden max-w-[150px]">
+                                                   <div className="text-slate-900 dark:text-white truncate mb-1">{user.name || 'NULL_ID'}</div>
+                                                   <div className="text-[8px] opacity-60 truncate italic">{user.email || 'OFFLINE'}</div>
+                                                </div>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center tabular-nums italic text-slate-900 dark:text-white">{user.monthYear}</td>
+                                          <td className="px-8 py-6 text-center">
+                                             <div className="flex flex-col items-center">
+                                                <span className="text-indigo-500 text-sm italic tracking-tighter">LVL_{user.monthlyProgress?.currentLevel || 0}</span>
+                                                <span className="text-[8px] opacity-40">{user.monthlyProgress?.levelName || 'GENESIS'}</span>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center">
+                                             <div className={`px-3 py-1 rounded-full border text-[8px] font-black ${user.subscriptionStatus === 'premium' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10'}`}>
+                                                {user.subscriptionStatus?.toUpperCase() || 'FREE'}
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</td>
+                                          <td className="px-8 py-6 text-center">
+                                             <div className="flex items-center justify-center gap-2 text-emerald-500">
+                                                <Trophy className="w-3 h-3" />
+                                                <span className="text-sm italic tracking-tighter tabular-nums">{user.monthlyProgress?.highScoreWins || 0}</span>
+                                             </div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center">
+                                             <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.accuracy || 0}%</div>
+                                          </td>
+                                          <td className="px-8 py-6 text-right">
+                                             <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.getScore} / {user.totalScore}</div>
+                                             <div className="text-[8px] opacity-40">YIELD_RATIO</div>
+                                          </td>
+                                          <td className="px-8 py-6 text-center">
+                                             <button
+                                                onClick={() => handleViewUserDetails(user.originalUserId)}
+                                                className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-xl hover:text-primary-500 hover:border-primary-500/30 transition-all shadow-inner"
+                                             >
+                                                <Eye className="w-4 h-4" />
+                                             </button>
+                                          </td>
+                                       </motion.tr>
+                                    );
+                                 })}
+                              </tbody>
+                           </table>
                         </div>
-                      );
-                    })}
-                  </div>
-                )}
+                     </div>
+                   )}
 
-                {/* List View */}
-                {viewMode === 'list' && (
-                  <div className="space-y-4">
-                    {sortedUsers.map((user, index) => {
-                      const serialNumber = (pagination.page - 1) * pagination.limit + index + 1;
-                      return (
-                        <div key={user._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
-                          <div className="p-2 md:p-4 lg:p-6">
-                            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                              <div className="flex items-center gap-4 flex-1">
-                                <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r from-secondary-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
-                                  {serialNumber}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center gap-2 mb-1">
-                                    <h3 className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                      {user.name || 'N/A'}
-                                    </h3>
-                                  </div>
-                                  <div className="text-sm text-gray-600 dark:text-gray-400">{user.email || 'N/A'}</div>
-
-                                </div>
+                   {/* Grid View */}
+                   {viewMode === 'grid' && (
+                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                        {sortedUsers.map((user, i) => (
+                           <motion.div
+                              key={user._id || i}
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: i * 0.05 }}
+                              className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                           >
+                              <div className="relative mb-6">
+                                 <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] flex items-center justify-center border-4 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-2xl">
+                                    {user.name?.[0]?.toUpperCase() || 'U'}
+                                 </div>
+                                 <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-2 rounded-xl shadow-lg border-4 border-white dark:border-[#060813]">
+                                    <Trophy className="w-4 h-4" />
+                                 </div>
                               </div>
 
-                              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
-                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Total Quizzes</div>
-                                  <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                    {user?.monthlyProgress?.totalQuizAttempts || 0}
-                                  </div>
-                                </div>
-                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">High Scores</div>
-                                  <div className="text-sm lg:text-lg font-bold text-green-600 dark:text-green-400 flex items-center justify-center gap-1">
-                                    <FaTrophy className="text-sm" />
-                                    {user?.monthlyProgress?.highScoreWins || 0}
-                                  </div>
-                                </div>
-                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Accuracy</div>
-                                  <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                    {user.monthlyProgress?.accuracy || 0}%
-                                  </div>
-                                </div>
-                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Score</div>
-                                  <div className="text-sm lg:text-lg font-bold text-gray-900 dark:text-white">
-                                    {user.getScore} / {user.totalScore}
-                                  </div>
-                                </div>
+                              <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'NULL_ID'}</h3>
+                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-8 italic">{user.email || 'OFFLINE'}</div>
+
+                              <div className="grid grid-cols-2 gap-4 w-full mb-8">
+                                 <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_YIELD</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</div>
+                                 </div>
+                                 <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PEAK_WINS</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyProgress?.highScoreWins || 0}</div>
+                                 </div>
+                                 <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-indigo-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PRECISION</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{user.monthlyProgress?.accuracy || 0}%</div>
+                                 </div>
+                                 <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 group-hover:border-rose-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">VALUATION</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-rose-500 tabular-nums">{user.getScore}</div>
+                                 </div>
                               </div>
 
-                              <div className="flex flex-col gap-2">
-                                <Button
-                                  onClick={() => handleViewUserDetails(user.originalUserId)}
-                                  variant="admin"
-                                  size="small"
-                                  icon={<FaEye className="text-sm" />}
-                                >
-                                  View Scores
-                                </Button>
-                                <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                                  {user.monthYear} • Level {user.monthlyProgress?.currentLevel || 0}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
+                              <button
+                                 onClick={() => handleViewUserDetails(user.originalUserId)}
+                                 className="w-full p-5 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-primary-600 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95"
+                              >
+                                 <Eye className="w-5 h-5" /> VIEW_PROFILE_INTEL
+                              </button>
+                           </motion.div>
+                        ))}
+                     </div>
+                   )}
 
-                {/* Table View */}
-                {viewMode === 'table' && (
-                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                   {/* List View */}
+                   {viewMode === 'list' && (
+                     <div className="space-y-6">
+                        {sortedUsers.map((user, i) => (
+                           <motion.div
+                              key={user._id || i}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.05 }}
+                              className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-10"
+                           >
+                              <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] flex items-center justify-center shrink-0 border-4 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-2xl">
+                                 {user.name?.[0]?.toUpperCase() || 'U'}
+                              </div>
 
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead className="bg-gray-50 dark:bg-gray-700">
-                          <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              S.No.
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Name
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Email
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              {activeTab === 'daily' ? 'Date' : activeTab === 'weekly' ? 'Week' : 'Month'}
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Level
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Subscription
-                            </th>
-                            <th
-                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                              onClick={() => handleSort('totalQuizzes')}
-                            >
-                              <div className="flex items-center gap-2">
-                                Total Played Quizzes
-                                {getSortIcon('totalQuizzes')}
+                              <div className="flex-1 text-center lg:text-left space-y-3">
+                                 <div className="flex flex-col lg:flex-row items-center gap-4">
+                                    <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors uppercase">{user.name || 'NULL_IDENTITY'}</h3>
+                                    <div className={`px-4 py-1 rounded-full border text-[8px] font-black uppercase tracking-widest ${user.subscriptionStatus === 'premium' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-slate-100 dark:bg-white/5'}`}>
+                                       {user.subscriptionStatus?.toUpperCase() || 'FREE'}
+                                    </div>
+                                 </div>
+                                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-2">
+                                    <div className="flex items-center gap-2">
+                                       <Mail className="w-4 h-4 text-slate-300" />
+                                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{user.email || 'OFFLINE'}</span>
+                                    </div>
+                                    <div className={`flex items-center gap-2 ${activeTab === 'daily' ? 'text-primary-500' : activeTab === 'weekly' ? 'text-purple-500' : 'text-indigo-500'}`}>
+                                       <Activity className="w-4 h-4" />
+                                       <span className="text-[10px] font-black uppercase tracking-widest italic">{activeTab.toUpperCase()}_DIAGNOSTIC_CYCLE: {user.monthYear}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                       <Award className="w-4 h-4 text-amber-500" />
+                                       <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic">EVO_LEVEL: {user.monthlyProgress?.currentLevel || 0}</span>
+                                    </div>
+                                 </div>
                               </div>
-                            </th>
-                            <th
-                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                              onClick={() => handleSort('highScoreQuiz')}
-                            >
-                              <div className="flex items-center gap-2">
-                                High Score Quiz
-                                {getSortIcon('highScoreQuiz')}
+
+                              <div className="flex gap-4">
+                                 <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_ATTEMPTS</div>
+                                    <div className="text-2xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</div>
+                                 </div>
+                                 <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PEAK_SUCCESS</div>
+                                    <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyProgress?.highScoreWins || 0}</div>
+                                 </div>
                               </div>
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Accuracy
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Score
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                              Action
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                          {sortedUsers.map((user, index) => {
-                            const serialNumber = (pagination.page - 1) * pagination.limit + index + 1;
-                            return (
-                              <tr key={user._id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                                  {serialNumber}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                    {user.name || 'N/A'}
-                                  </div>
-                                  {user.userName && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                      @{user.userName}
-                                    </div>
-                                  )}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm text-gray-900 dark:text-white">
-                                    {user.email || 'N/A'}
-                                  </div>
-                                  {user.phone && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                      {user.phone}
-                                    </div>
-                                  )}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm text-gray-900 dark:text-white font-medium">
-                                    {user.monthYear}
-                                  </div>
-                                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                                    {user.savedAt ? new Date(user.savedAt).toLocaleDateString() : 'N/A'}
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm text-gray-900 dark:text-white">
-                                    {user.monthlyProgress?.currentLevel || 0} - {user.monthlyProgress?.levelName || 'N/A'}
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white capitalize">
-                                    {user.subscriptionStatus || 'free'}
-                                  </div>
-                                  {user.subscriptionExpiry && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                      {(() => {
-                                        const date = new Date(user.subscriptionExpiry);
-                                        const day = date.getDate().toString().padStart(2, '0');
-                                        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-                                        const year = date.getFullYear();
-                                        return `${day}/${month}/${year}`;
-                                      })()}
-                                    </div>
-                                  )}
-                                  {!user.subscriptionExpiry && user.subscriptionStatus && user.subscriptionStatus !== 'free' && (
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                      No expiry date
-                                    </div>
-                                  )}
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                    {(user?.monthlyProgress?.totalQuizAttempts || 0)}
-                                  </div>
-                                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                                    quizzes
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="flex items-center gap-2">
-                                    <FaTrophy className="text-green-600 dark:text-green-400" />
-                                    <div>
-                                      <div className="text-sm font-medium text-green-600 dark:text-green-400">
-                                        {(user?.monthlyProgress?.highScoreWins || 0)}
-                                      </div>
-                                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                                        high scores
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                    {user.monthlyProgress?.accuracy || 0}%
-                                  </div>
-                                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                                    {activeTab === 'daily' ? 'daily' : activeTab === 'weekly' ? 'weekly' : 'monthly'} accuracy
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                    {user.getScore} / {user.totalScore}
-                                  </div>
-                                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                                    Get Score/Total Score
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                  <Button
-                                    onClick={() => handleViewUserDetails(user.originalUserId)}
-                                    variant="admin"
-                                    size="small"
-                                    icon={<FaEye className="text-sm" />}
-                                  >
-                                    View Scores
-                                  </Button>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-                {/* Pagination */}
-                {pagination.totalPages > 1 && (
-                  <div className="flex flex-col lg:flex-row item-start lg:items-center justify-start lg:justify-between mt-6 bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-                    <div className="text-sm text-gray-700 dark:text-gray-300">
-                      Showing {((pagination.page - 1) * pagination.limit) + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} users
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => setPage(page - 1)}
-                        disabled={!pagination.hasPrevPage}
-                        className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                      >
-                        <FaChevronLeft className="text-sm" />
-                        <span>Previous</span>
-                      </button>
-                      <span className="px-4 py-2 text-gray-700 dark:text-gray-300">
-                        Page {pagination.page} of {pagination.totalPages}
-                      </span>
-                      <button
-                        onClick={() => setPage(page + 1)}
-                        disabled={!pagination.hasNextPage}
-                        className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                      >
-                        <span>Next</span>
-                        <FaChevronRight className="text-sm" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+
+                              <button
+                                 onClick={() => handleViewUserDetails(user.originalUserId)}
+                                 className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl"
+                              >
+                                 <Eye className="w-8 h-8" />
+                              </button>
+                           </motion.div>
+                        ))}
+                     </div>
+                   )}
+                </motion.div>
+             )}
+          </AnimatePresence>
+
+          {/* Spectral Pagination */}
+          {pagination.totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-16 text-[10px] font-black uppercase tracking-widest">
+              <button
+                onClick={() => setPage(page - 1)}
+                disabled={!pagination.hasPrevPage}
+                className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <div className="px-8 py-4 bg-slate-900 dark:bg-white/10 text-white rounded-[2rem] shadow-2xl italic tracking-tighter">
+                 DIAGNOSTIC_INDEX: {pagination.page} <span className="text-slate-500 mx-2">//</span> TOTAL_UNITS: {pagination.totalPages}
+              </div>
+
+              <button
+                onClick={() => setPage(page + 1)}
+                disabled={!pagination.hasNextPage}
+                className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </AdminMobileAppWrapper>

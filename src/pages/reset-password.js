@@ -1,14 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import Head from 'next/head';
-import API from '../lib/api'
+import {
+  Lock,
+  Eye,
+  EyeOff,
+  ArrowLeft,
+  ShieldCheck,
+  CircleCheck,
+  Rocket
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import { FaLock, FaEye, FaEyeSlash, FaArrowLeft } from 'react-icons/fa';
+
+import API from '../lib/api';
+import Card from '../components/ui/Card';
+import Button from '../components/ui/Button';
 import MobileAppWrapper from '../components/MobileAppWrapper';
-import Seo from '../components/Seo';
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -20,111 +30,99 @@ const ResetPasswordPage = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    // Extract token from query string
     const tokenParam = searchParams.get('token');
-    if (tokenParam) {
-      setToken(tokenParam);
-    }
+    if (tokenParam) setToken(tokenParam);
   }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!token) {
-      toast.error('Invalid or missing reset token.');
-      return;
-    }
-    if (!newPassword || newPassword.length < 6) {
-      toast.error('Password must be at least 6 characters.');
-      return;
-    }
+    if (!token) return toast.error('Invalid reset token');
+    if (newPassword.length < 6) return toast.error('Minimum 6 characters required');
+
     setIsLoading(true);
     try {
       const res = await API.resetPassword({ token, newPassword });
       if (res.success) {
         setSuccess(true);
-        toast.success(res.message || 'Password reset successful!');
+        toast.success("Master password updated!");
         setTimeout(() => router.push('/login'), 2000);
-      } else {
-        toast.error(res.message || 'Failed to reset password.');
       }
     } catch (err) {
-      toast.error(err.message || 'Failed to reset password.');
+      toast.error("Password reset failed");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <>
-      <Seo
-        title="Reset Password - AajExam Platform"
-        description="Create a new password for your AajExam account. Enter your new password to regain access to your quiz account securely."
-        noIndex={true}
-      />
-      <MobileAppWrapper title="Reset Password">
-        <div className="bg-gradient-to-br from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 dark:via-red-900 dark:to-primary-900 flex items-center justify-center min-h-screen p-2 md:p-4">
-          <div className="w-full max-w-md bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
-            <div className="mb-6 flex items-center gap-2">
-              <Link href="/login" className="text-primary-600 hover:underline flex items-center gap-1">
-                <FaArrowLeft /> Back to Login
-              </Link>
+    <MobileAppWrapper showHeader={true} title="Reset Password">
+      <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
+        <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden py-32">
+          {/* --- Background Decorative Icons --- */}
+          <div className="absolute top-20 right-20 opacity-5 rotate-12 hidden lg:block"><ShieldCheck className="w-64 h-64" /></div>
+          <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden lg:block"><Rocket className="w-64 h-64 text-primary-500" /></div>
+
+          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl relative z-10 space-y-8">
+            <div className="text-center space-y-2">
+              <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+                <Lock className="w-8 h-8" />
+              </div>
+              <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Reset Password</h1>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Update your master academy credentials</p>
             </div>
-            <h2 className="text-xl lg:text-md lg:text-2xl font-bold text-gray-800 dark:text-white mb-2 text-center">Reset Password</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">Enter your new password below.</p>
-            {success ? (
-              <div className="text-green-600 text-center font-semibold py-6">Password reset successful! Redirecting to login...</div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-gray-700 dark:text-gray-200 mb-2 font-semibold" htmlFor="newPassword">
-                    New Password
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                      <FaLock />
-                    </span>
-                    <input
-                      id="newPassword"
-                      type={showPassword ? 'text' : 'password'}
-                      className="w-full pl-10 pr-12 py-3 rounded-xl border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-900 text-gray-800 dark:text-primary-100"
-                      placeholder="Enter new password"
-                      value={newPassword}
-                      onChange={e => setNewPassword(e.target.value)}
-                      required
-                      minLength={6}
-                      disabled={isLoading}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-                      tabIndex={-1}
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+
+            <AnimatePresence mode="wait">
+              {success ? (
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
+                  <div className="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto">
+                    <ShieldCheck className="w-10 h-10" />
                   </div>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 shadow-lg hover:shadow-xl"
-                  disabled={isLoading}
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-black uppercase">Success!</h3>
+                    <p className="text-sm font-bold text-gray-500">Your security credentials have been updated. Redirecting you to the login gateway...</p>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                  onSubmit={handleSubmit} className="space-y-6"
                 >
-                  {isLoading ? (
-                    <span className="flex items-center justify-center">
-                      <span className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mr-2"></span>
-                      Resetting...
-                    </span>
-                  ) : (
-                    'Reset Password'
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">New Master Password</label>
+                    <div className="relative group">
+                      <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-primary-500 transition-colors" />
+                      <input
+                        type={showPassword ? "text" : "password"} required
+                        className="w-full pl-12 pr-12 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/50 font-bold outline-none focus:border-primary-500 transition-all"
+                        placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                        value={newPassword} onChange={e => setNewPassword(e.target.value)}
+                      />
+                      <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300">
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest px-2">Minimum 6 characters required for high-level security</p>
+                  </div>
+
+                  <Button variant="secondary" fullWidth size="lg" className="py-5 text-sm font-black shadow-duo-secondary" type="submit" disabled={isLoading}>
+                    {isLoading ? 'UPDATING...' : 'UPDATE PASSWORD'}
+                  </Button>
+
+                  <div className="text-center pt-2">
+                    <Link href="/login" className="text-xs font-black text-primary-500 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
+                      <ArrowLeft className="w-4 h-4" /> BACK TO LOGIN
+                    </Link>
+                  </div>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </Card>
         </div>
-      </MobileAppWrapper>
-    </>
+      </div>
+    </MobileAppWrapper>
   );
 };
 
 export default ResetPasswordPage;
+

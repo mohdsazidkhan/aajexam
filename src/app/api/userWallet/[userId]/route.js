@@ -5,7 +5,7 @@ import UserQuestions from '@/models/UserQuestions';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
 
-export async function GET(req) {
+export async function GET(req, { params }) {
     try {
         await dbConnect();
         const auth = await protect(req);
@@ -13,11 +13,7 @@ export async function GET(req) {
             return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
         }
 
-        // Extract userId from URL if needed, but usually we use the logged in user's ID
-        // The route is /api/userWallet/[userId]/route.js, so we get it from params
-        const url = new URL(req.url);
-        const pathParts = url.pathname.split('/');
-        const userId = pathParts[pathParts.length - 1]; // /api/userWallet/USER_ID
+        const { userId } = await params;
 
         if (auth.user.id !== userId && auth.user.role !== 'admin') {
             return NextResponse.json({ success: false, message: 'Forbidden' }, { status: 403 });

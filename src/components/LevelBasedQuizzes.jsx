@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+﻿import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { FaStar, FaClock, FaQuestionCircle, FaFilter, FaLevelUpAlt, FaArrowLeft } from 'react-icons/fa';
 import API from '../lib/utils/api';
@@ -266,12 +266,12 @@ const LevelBasedQuizzes = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20 flex flex-col items-center justify-center">
             <div className="text-center mb-6">
-              <div className="text-primary-600 text-3xl mb-2">⚠️</div>
-              <p className="text-primary-600 text-lg font-semibold mb-4">{error}</p>
+              <div className="text-primary-700 dark:text-primary-500 text-3xl mb-2">Ã¢Å¡Â Ã¯Â¸Â</div>
+              <p className="text-primary-700 dark:text-primary-500 text-lg font-semibold mb-4">{error}</p>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Subscribe now to unlock all quizzes and levels!</p>
               <Link
                 href="/subscription"
-                className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
+                className="inline-block bg-gradient-to-r from-primary-600 to-primary-600 hover:from-primary-700 hover:to-primary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
               >
                 Subscribe Now
               </Link>
@@ -282,56 +282,61 @@ const LevelBasedQuizzes = () => {
         <div className="container mx-auto px-4 py-8">
           {/* User Level Info */}
           {userLevel && (
-            <div className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-lg p-2 md:p-6 mb-4 md:mb-8">
-              <div className="flex items-center justify-between">
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-[2.5rem] p-6 mb-8 shadow-xl border-b-8 border-primary-700 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <FaLevelUpAlt className="w-20 lg:w-32 h-20 lg:h-32 text-white rotate-12" />
+              </div>
+              <div className="flex items-center justify-between relative z-10">
                 <div>
-                  <h2 className="text-xl md:text-md lg:text-2xl font-bold mb-2">
-                    Level {userLevel.currentLevel} - {userLevel.levelName}
+                  <p className="text-white/70 text-[10px] font-black uppercase tracking-[0.3em] mb-1">Your Progress</p>
+                  <h2 className="text-2xl lg:text-xl lg:text-3xl font-black font-outfit uppercase tracking-tighter">
+                    Level {userLevel.currentLevel}: {userLevel.levelName}
                   </h2>
-                  <p className="text-primary-100">
-                    Progress to next level: {userLevel.progress}%
-                  </p>
-                </div>
-                <div className="text-right">
-                  <FaLevelUpAlt className="text-4xl text-primary-300" />
                 </div>
               </div>
-              <div className="mt-4 w-full bg-primary-400 rounded-full h-2">
-                <div
-                  className="bg-primary-300 h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${userLevel.progress}%` }}
-                ></div>
+              <div className="mt-6 w-full bg-white/20 rounded-full h-4 overflow-hidden relative border-2 border-white/30">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${userLevel.progress}%` }}
+                  transition={{ duration: 1, ease: 'easeOut' }}
+                  className="bg-white h-full transition-all duration-300"
+                ></motion.div>
               </div>
+              <p className="mt-2 text-white/80 text-[10px] font-black uppercase tracking-widest text-right">
+                {userLevel.progress}% COMPLETE TO LEVEL {userLevel.currentLevel + 1}
+              </p>
             </div>
           )}
 
           {/* Filters */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-2 md:p-6 mb-2 md:mb-8">
-            <div className="flex items-center justify-between flex-col md:flex-row mb-4">
-              <div className="flex items-center gap-2">
-                <FaFilter className="text-gray-600" />
-                <h3 className="text-lg font-semibold text-white dark:text-gray-100">Filters</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 p-8 mb-8 shadow-sm">
+            <div className="flex items-center justify-between flex-col lg:flex-row mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center text-primary-700 dark:text-primary-500">
+                  <FaFilter className="w-4 h-4" />
+                </div>
+                <h3 className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Refine Quizzes</h3>
               </div>
-              <div className="flex items-center gap-2 mt-4 md:mt-0">
+              <div className="flex items-center gap-2 mt-4 lg:mt-0">
                 <div className="relative">
                   <input
                     type="text"
                     placeholder="Search quizzes, categories, subcategories..."
                     value={searchInput}
                     onChange={(e) => handleSearchChange(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 text-sm w-64 pr-0 md:pr-8"
+                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm w-64 pr-0 lg:pr-8"
                     disabled={searchLoading}
                   />
                   {searchLoading && (
                     <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-                      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-secondary-600"></div>
+                      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-600"></div>
                     </div>
                   )}
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-6 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Category
@@ -339,7 +344,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.category}
                   onChange={(e) => handleFilterChange('category', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value="">All Categories</option>
                   {categories.map(cat => (
@@ -355,7 +360,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.subcategory}
                   onChange={(e) => handleFilterChange('subcategory', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                   disabled={!filters.category}
                 >
                   <option value="">All Subcategories</option>
@@ -372,7 +377,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.difficulty}
                   onChange={(e) => handleFilterChange('difficulty', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value="">All Difficulties</option>
                   <option value="beginner">Beginner</option>
@@ -389,7 +394,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.level}
                   onChange={(e) => handleFilterChange('level', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value="">All Levels</option>
                   <option value="1">Level 1 - Rookie</option>
@@ -404,7 +409,7 @@ const LevelBasedQuizzes = () => {
                   <option value="10">Level 10 - Legend</option>
                 </select>
                 {filters.level && (
-                  <div className="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                  <div className="mt-1 text-xs text-primary-700 dark:text-primary-500 dark:text-primary-400">
                     Showing Level {filters.level} - {getLevelName(parseInt(filters.level))}
                   </div>
                 )}
@@ -417,7 +422,7 @@ const LevelBasedQuizzes = () => {
                 <select
                   value={filters.attempted}
                   onChange={(e) => handleFilterChange('attempted', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value="">All Quizzes</option>
                   <option value="not_attempted">Not Attempted</option>
@@ -441,39 +446,39 @@ const LevelBasedQuizzes = () => {
 
           {/* Filter Summary */}
           {(filters.category || filters.subcategory || filters.difficulty || filters.level || filters.attempted || filters.search) && (
-            <div className="bg-secondary-50 dark:bg-secondary-900/20 rounded-lg p-4 mb-6">
+            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4 mb-6">
               <div className="flex items-center gap-2 mb-2">
-                <FaFilter className="text-secondary-600" />
-                <span className="text-sm font-medium text-secondary-800 dark:text-secondary-200">Active Filters:</span>
+                <FaFilter className="text-primary-700 dark:text-primary-500" />
+                <span className="text-sm font-medium text-primary-800 dark:text-primary-200">Active Filters:</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {filters.category && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Category: {categories.find(c => c._id === filters.category)?.name}
                   </span>
                 )}
                 {filters.subcategory && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Subcategory: {subcategories.find(s => s._id === filters.subcategory)?.name}
                   </span>
                 )}
                 {filters.difficulty && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Difficulty: {filters.difficulty.charAt(0).toUpperCase() + filters.difficulty.slice(1)}
                   </span>
                 )}
                 {filters.level && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Level: {filters.level} - {getLevelName(parseInt(filters.level))}
                   </span>
                 )}
                 {filters.attempted && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Status: {filters.attempted === 'attempted' ? 'Attempted' : 'Not Attempted'}
                   </span>
                 )}
                 {filters.search && (
-                  <span className="px-2 py-1 bg-secondary-100 text-secondary-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary-100 text-primary-800 rounded-full text-xs">
                     Search: "{filters.search}"
                   </span>
                 )}
@@ -486,44 +491,44 @@ const LevelBasedQuizzes = () => {
           {/* Quizzes Grid */}
           <div className="mb-8">
             <div className="flex flex-row items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
-              <h2 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
+              <h2 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 {filters.level
-                  ? `Level ${filters.level} - ${getLevelName(parseInt(filters.level))} Quizzes`
-                  : 'Your Level Quizzes'
+                  ? `Level ${filters.level}: ${getLevelName(parseInt(filters.level))} Quizzes`
+                  : 'Recommended for You'
                 }
               </h2>
 
               <button
                 onClick={() => isRouterReady && router && router.push("/home")}
-                className="px-3 md:px-4 py-1 md:py-2 bg-gradient-to-r from-primary-500 to-secondary-600 text-white rounded-2xl hover:from-secondary-600 hover:from-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
+                className="px-6 py-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-2xl border-2 border-b-4 border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2"
               >
-                <FaArrowLeft />
+                <FaArrowLeft className="w-3 h-3" />
                 <span>Go Back</span>
               </button>
             </div>
             {quizzes.length === 0 && !searchLoading ? (
               <div className="text-center py-12">
-                <FaQuestionCircle className="text-6xl text-gray-400 mx-auto mb-4" />
+                <FaQuestionCircle className="text-6xl text-slate-600 dark:text-gray-400 mx-auto mb-4" />
                 <p className="text-gray-600 dark:text-gray-400 text-lg">
                   No quizzes found for your current level and filters.
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-6">
                 {quizzes.map((quiz) => (
                   <div
                     key={quiz._id}
-                    className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-2 md:p-6 border-2 transition-all duration-300 hover:shadow-lg ${quiz.isRecommended ? 'border-secondary-500' :
-                      quiz.hasAttempted ? 'border-gray-300' : 'border-green-500'
+                    className={`bg-white dark:bg-slate-800 rounded-[2.5rem] p-4 mlgp-8 border-2 border-b-8 transition-all duration-300 hover:shadow-lg ${quiz.isRecommended ? 'border-primary-500 shadow-primary-100 dark:shadow-none' :
+                      quiz.hasAttempted ? 'border-slate-100 dark:border-slate-700 opacity-80' : 'border-primary-500 shadow-primary-50 dark:shadow-none'
                       }`}
                   >
                     {/* Quiz Header */}
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                    <div className="flex justify-between items-start mb-6">
+                      <h3 className="text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">
                         {quiz.title}
                       </h3>
                       {quiz.isRecommended && (
-                        <FaStar className="text-primary-500 text-xl" />
+                        <FaStar className="text-primary-700 dark:text-primary-500 text-xl" />
                       )}
                     </div>
 
@@ -592,7 +597,7 @@ const LevelBasedQuizzes = () => {
                           </span>
 
                           {quiz.attemptStatus.bestScore && (
-                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-secondary-100 text-secondary-800">
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                               Score: {quiz.attemptStatus.bestScore}%
                             </span>
                           )}
@@ -622,7 +627,7 @@ const LevelBasedQuizzes = () => {
                     ) : (
                       <button
                         disabled
-                        className="w-full py-2 px-4 rounded-md font-medium bg-gray-300 text-gray-500 cursor-not-allowed"
+                        className="w-full py-2 px-4 rounded-md font-medium bg-gray-300 text-slate-700 dark:text-gray-400 cursor-not-allowed"
                       >
                         Locked
                       </button>
@@ -644,7 +649,7 @@ const LevelBasedQuizzes = () => {
                 Previous
               </button>
 
-              <span className="px-4 py-2 text-gray-400">
+              <span className="px-4 py-2 text-slate-600 dark:text-gray-400">
                 Page {pagination.currentPage} of {pagination.totalPages}
               </span>
 
@@ -671,3 +676,5 @@ const LevelBasedQuizzes = () => {
 };
 
 export default LevelBasedQuizzes;
+
+

@@ -30,7 +30,7 @@
 }
 
 .text-4xl-responsive {
-  @apply text-4xl sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl xl:text-4xl lg:text-7xl;
+  @apply text-4xl sm:text-lg md:text-lg lg:text-xl xl:text-2xl lg:text-3xl xl:text-2xl lg:text-5xl;
 }
 
 .text-5xl-responsive {
@@ -447,7 +447,7 @@
 
 /* Responsive info states */
 .info-responsive {
-  @apply border-secondary-500 focus:ring-secondary-500 focus:border-secondary-500;
+  @apply border-primary-500 focus:ring-primary-500 focus:border-primary-500;
 }
 
 /* Responsive dark mode support */
@@ -472,7 +472,7 @@
 }
 
 .focus-visible-responsive {
-  @apply focus:outline-none focus:ring-2 focus:ring-secondary-500;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500;
 }
 
 /* Responsive animations */
@@ -497,7 +497,7 @@
 
 /* Responsive gradients */
 .gradient-responsive {
-  @apply bg-gradient-to-r from-primary-500 to-secondary-500;
+  @apply bg-gradient-to-r from-primary-500 to-primary-500;
 }
 
 /* Responsive borders */
@@ -512,7 +512,7 @@
 
 /* Responsive ring */
 .ring-responsive {
-  @apply ring-0 focus:ring-2 focus:ring-secondary-500;
+  @apply ring-0 focus:ring-2 focus:ring-primary-500;
 }
 
 /* Responsive divide */
@@ -522,12 +522,12 @@
 
 /* Responsive accent */
 .accent-responsive {
-  @apply text-secondary-500;
+  @apply text-primary-500;
 }
 
 /* Responsive caret */
 .caret-responsive {
-  @apply text-secondary-500;
+  @apply text-primary-500;
 }
 
 /* Responsive scrollbar */
@@ -537,7 +537,7 @@
 
 /* Responsive selection */
 .selection-responsive {
-  @apply text-secondary-500;
+  @apply text-primary-500;
 }
 
 /* Responsive placeholder */
@@ -547,12 +547,12 @@
 
 /* Responsive file input */
 .file-responsive {
-  @apply mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-secondary-50 text-primary-600 hover:bg-secondary-100;
+  @apply mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-primary-50 text-primary-600 hover:bg-primary-100;
 }
 
 /* Responsive marker */
 .marker-responsive {
-  @apply text-secondary-500;
+  @apply text-primary-500;
 }
 
 /* Responsive list */
@@ -567,7 +567,7 @@
 
 /* Responsive form elements */
 .form-input-responsive {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent;
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
 }
 
 /* Responsive button groups */
@@ -677,7 +677,7 @@
 
 /* Responsive focus system */
 .focus-system-responsive {
-  @apply focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
 }
 
 /* Responsive active system */
@@ -712,5 +712,6 @@
 
 /* Responsive info system */
 .info-system-responsive {
-  @apply text-secondary-600 bg-secondary-50 border-secondary-200;
+  @apply text-primary-600 bg-primary-50 border-primary-200;
 }
+

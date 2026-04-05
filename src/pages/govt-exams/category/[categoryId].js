@@ -3,9 +3,23 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import {
+  ArrowLeft,
+  GraduationCap,
+  Building,
+  Target,
+  Zap,
+  Star,
+  ChevronRight,
+  Info
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
 import API from '../../../lib/api';
-import { FaArrowLeft, FaGraduationCap, FaClock, FaUsers, FaBuilding, FaChartLine } from 'react-icons/fa';
-import Loading from '../../../components/Loading';
+import Button from '../../../components/ui/Button';
+import Card from '../../../components/ui/Card';
+import ProgressBar from '../../../components/ui/ProgressBar';
+import Skeleton from '../../../components/Skeleton';
 
 const CategoryExams = ({ initialCategory = null, initialExams = [], initialError = '', seo, categoryId }) => {
   const router = useRouter();
@@ -16,192 +30,137 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
   const fetchCategoryAndExams = useCallback(async () => {
     if (!categoryId) return;
-
     try {
       setLoading(true);
-      setError('');
-
       const res = await API.getExamsByCategory(categoryId);
-
       if (res?.success) {
-        const fetchedExams = res.data || [];
-        setExams(fetchedExams);
-
-        const derivedCategory = res.category || fetchedExams[0]?.category;
-        if (derivedCategory) {
-          setCategory((prev) => ({
-            ...(prev || {}),
-            ...derivedCategory
-          }));
-        }
+        setExams(res.data || []);
+        if (res.category) setCategory(res.category);
       } else {
-        setError('Failed to load exams. Please try again.');
+        setError('Failed to load exams.');
       }
     } catch (err) {
       console.error('Error fetching exams:', err);
-      setError('Failed to load exams. Please try again.');
+      setError('An error occurred.');
     } finally {
       setLoading(false);
     }
   }, [categoryId]);
 
   useEffect(() => {
-    if (!initialExams.length && !initialError) {
-      fetchCategoryAndExams();
-    }
+    if (!initialExams.length && !initialError) fetchCategoryAndExams();
   }, [initialExams.length, initialError, fetchCategoryAndExams]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <Loading size="lg" color="gray" message="Loading exams..." />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
-        <div className="text-center max-w-md">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
-          <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Error Loading Exams
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">{error}</p>
-          <button
-            onClick={() => router.back()}
-            className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors mr-3"
-          >
-            Go Back
-          </button>
-          <button
-            onClick={fetchCategoryAndExams}
-            className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-          >
-            Try Again
-          </button>
+      <div className="space-y-8 animate-fade-in py-10">
+        <Skeleton height="200px" borderRadius="1.5rem" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
+          {[1, 2, 3, 4].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}
         </div>
       </div>
     );
   }
 
   const categoryName = category?.name || 'Government Exams';
-  const categoryDescription = category?.description || 'Explore government exams in this category';
-  const examCount = exams.length;
 
   return (
-    <>
+    <div className="space-y-10 animate-fade-in font-outfit">
       <Head>
-        <title>{seo?.title || `${categoryName} - Government Exams | AajExam`}</title>
-        {seo?.description && <meta name="description" content={seo.description} />}
-        {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
-        <meta property="og:type" content="website" />
-        {seo?.title && <meta property="og:title" content={seo.title} />}
-        {seo?.description && <meta property="og:description" content={seo.description} />}
-        {seo?.image && <meta property="og:image" content={seo.image} />}
-        {seo?.url && <meta property="og:url" content={seo.url} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        {seo?.title && <meta name="twitter:title" content={seo.title} />}
-        {seo?.description && <meta name="twitter:description" content={seo.description} />}
-        {seo?.image && <meta name="twitter:image" content={seo.image} />}
-        {seo?.url && <link rel="canonical" href={seo.url} />}
+        <title>{seo?.title || `${categoryName} - AajExam`}</title>
       </Head>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-2 lg:py-4 px-2 lg:px-4">
-        <div className="container mx-auto py-0 px-0 lg:px-10">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-between gap-2 mb-2 lg:mb-4">
-            {/* Back Button */}
-            <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors"
-            >
-              <FaArrowLeft /> Back to Categories
-            </button>
 
-            {/* Header */}
-            <div className="bg-gradient-to-r from-red-500 to-pink-600 rounded-xl py-2 px-4 text-white">
-              <div className="flex items-center gap-2">
-                <FaGraduationCap className="text-xl lg:text-3xl" />
-                <h1 className="text-xl lg:text-2xl font-bold">
-                  {category?.name ? category.name + " " + "Exams" : 'Government Exams'}
-                </h1>
-              </div>
-              {category?.description && (
-                <p className="text-red-100 text-lg">{category.description}</p>
-              )}
+      {/* --- Header Section --- */}
+      <section className="space-y-6">
+        <button
+          onClick={() => router.push('/govt-exams')}
+          className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-duo border-2 border-b-4 border-slate-200 dark:border-slate-800 active:translate-y-1 active:border-b-0 transition-all w-fit"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Back to Hub
+        </button>
+
+        <div className="bg-slate-950 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-14 shadow-2xl relative overflow-hidden border-2 border-b-[12px] border-slate-800">
+          {/* Background atmosphere */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -ml-32 -mb-32" />
+
+          <div className="relative z-10 space-y-6">
+            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
+              <Target className="w-3 h-3" />
+              {category?.type || 'Competitive'} Category
             </div>
+            <h1 className="text-2xl lg:text-4xl xl:text-6xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
+            <p className="text-lg font-bold text-slate-400 max-w-2xl leading-relaxed">
+              {category?.description || 'Everything you need to master exams in this category. Start your journey today!'}
+            </p>
           </div>
+          <Building className="absolute -bottom-10 -right-10 w-64 h-64 text-white/5 -rotate-12 pointer-events-none" />
+        </div>
+      </section>
 
-          {/* Exams Grid */}
-          {exams.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-              {exams.map((exam) => (
-                <div
-                  key={exam._id}
-                  onClick={() => router.push(`/govt-exams/exam/${exam._id}`)}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 overflow-hidden"
-                >
-                  {/* Exam Header */}
-                  <div className="flex flex-col justify-between items-center bg-gradient-to-r from-secondary-500 to-indigo-600 p-2 lg:p-4 text-white">
-                    <h3 className="text lg:text-xl font-bold mb-2">{exam.name}</h3>
-                    {exam.code && (
-                      <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
-                        {exam.code}
-                      </span>
-                    )}
-                  </div>
+      {/* --- Exams List --- */}
+      <section className="space-y-8">
+        <div className="flex justify-between items-center px-4">
+          <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Available Exams</h2>
+          <span className="bg-slate-100 dark:bg-slate-800 px-5 py-2 rounded-2xl text-[10px] font-black text-slate-500 uppercase tracking-widest border-2 border-slate-50 dark:border-slate-800">
+            {exams.length} TOTAL
+          </span>
+        </div>
 
-                  {/* Exam Details */}
-                  <div className="p-2 lg:p-4">
-                    {exam.description && (
-                      <p className="text-gray-600 dark:text-gray-400 mb-0 lg:mb-4 line-clamp-3">
-                        {exam.description}
-                      </p>
-                    )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
+          {exams.map((exam, idx) => (
+            <motion.div
+              key={exam._id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+            >
+              <div
+                onClick={() => router.push(`/govt-exams/exam/${exam._id}`)}
+                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
+              >
+                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-duo-secondary border-b-8 border-primary-700">
+                  {exam.code?.[0] || 'E'}
+                </div>
 
-                    <div className="space-y-2 text-sm">
-                      {exam.department && (
-                        <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                          <FaBuilding className="text-gray-500" />
-                          <span>{exam.department}</span>
-                        </div>
-                      )}
-                      {exam.level && (
-                        <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                          <FaChartLine className="text-gray-500" />
-                          <span className="capitalize">{exam.level}</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex items-center justify-between gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                      {exam.patternCount !== undefined && (
-                        <p className="text-sm font-semibold text-primary-600">
-                          {exam.patternCount} {exam.patternCount === 1 ? 'Pattern' : 'Patterns'}
-                        </p>
-                      )}
-                      {exam.testCount !== undefined && (
-                        <p className="text-sm text-primary-600 font-semibold">
-                          {exam.testCount} {exam.testCount === 1 ? 'Test' : 'Tests'}
-                        </p>
-                      )}
-                    </div>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
+                    {exam.name}
+                  </h3>
+                  <div className="flex items-center gap-6">
+                    <span className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                      <Zap className="w-3.5 h-3.5 fill-slate-400 stroke-none" />
+                      {exam.testCount || 0} Tests
+                    </span>
+                    <span className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                      <Star className="w-3.5 h-3.5 fill-slate-400 stroke-none" />
+                      {exam.patternCount || 0} Patterns
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-xl">
-              <FaGraduationCap className="text-6xl text-gray-400 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                No Exams Available
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Exams will appear here once they're added to this category
-              </p>
-            </div>
-          )}
+
+                <div className="w-8 lg:w-12 h-8 lg:h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-duo border-2 border-slate-100 dark:border-slate-800">
+                  <ChevronRight className="w-6 h-6" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </>
+
+        {exams.length === 0 && (
+          <div className="py-24 text-center space-y-6 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+            <div className="w-20 h-20 bg-slate-200 dark:bg-slate-800 rounded-3xl flex items-center justify-center mx-auto text-slate-400">
+              <Info className="w-10 h-10" />
+            </div>
+            <div>
+              <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tight">No exams found</h3>
+              <p className="text-slate-400 font-bold mt-2">Try another category or search in the Study Hub.</p>
+            </div>
+          </div>
+        )}
+      </section>
+    </div>
   );
 };
 
@@ -215,22 +174,11 @@ import PracticeTest from '../../../models/PracticeTest';
 
 export async function getServerSideProps({ params }) {
   const categoryId = params?.categoryId;
-
-  if (!categoryId) {
-    return { notFound: true };
-  }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  if (!categoryId) return { notFound: true };
 
   try {
     await dbConnect();
-
-    // Fetch exams for the category
-    const examsDocs = await Exam.find({ category: categoryId, isActive: true })
-      .populate('category', 'name type description')
-      .sort({ name: 1 })
-      .lean();
-
+    const examsDocs = await Exam.find({ category: categoryId, isActive: true }).sort({ name: 1 }).lean();
     const examIds = examsDocs.map(e => e._id);
 
     let exams = [];
@@ -238,10 +186,7 @@ export async function getServerSideProps({ params }) {
 
     if (examIds.length > 0) {
       const [patterns, tests] = await Promise.all([
-        ExamPattern.aggregate([
-          { $match: { exam: { $in: examIds } } },
-          { $group: { _id: '$exam', total: { $sum: 1 } } }
-        ]),
+        ExamPattern.aggregate([{ $match: { exam: { $in: examIds } } }, { $group: { _id: '$exam', total: { $sum: 1 } } }]),
         PracticeTest.aggregate([
           { $lookup: { from: 'exampatterns', localField: 'examPattern', foreignField: '_id', as: 'pattern' } },
           { $unwind: '$pattern' },
@@ -259,76 +204,16 @@ export async function getServerSideProps({ params }) {
         testCount: testMap[e._id.toString()] || 0
       }));
 
-      category = exams[0]?.category || null;
+      category = JSON.parse(JSON.stringify(await ExamCategory.findById(categoryId).lean()));
+    } else {
+      category = JSON.parse(JSON.stringify(await ExamCategory.findById(categoryId).lean()));
     }
 
-    // If no exams found, we still need to try to get the category info
-    if (!category) {
-      const catDoc = await ExamCategory.findById(categoryId).lean();
-      if (catDoc) {
-        category = JSON.parse(JSON.stringify(catDoc));
-      }
-    }
+    if (!category && exams.length === 0) return { notFound: true };
 
-    if (!category && exams.length === 0) {
-      return { notFound: true };
-    }
-
-    const categoryName = category?.name || 'Government Exams';
-    const examCount = exams.length;
-
-    const descriptionSegments = [
-      category?.description,
-      examCount ? `Practice ${examCount} competitive exam${examCount === 1 ? '' : 's'} with detailed patterns and insights.` : 'Practice top competitive exams with detailed patterns and insights.'
-    ].filter(Boolean);
-    const description = descriptionSegments.join(' ');
-
-    const baseKeywords = [
-      categoryName,
-      category?.type,
-      'government exam',
-      'sarkari exam',
-      'mock test',
-      'practice test'
-    ].filter(Boolean);
-    const keywords = Array.from(new Set(baseKeywords)).join(', ');
-
-    const seo = {
-      title: `${categoryName} - Government Exams | AajExam`,
-      description,
-      keywords,
-      image: '/logo.png',
-      url: baseUrl ? `${baseUrl}/govt-exams/category/${categoryId}` : undefined
-    };
-
-    return {
-      props: {
-        categoryId,
-        initialCategory: category,
-        initialExams: exams,
-        seo
-      }
-    };
+    return { props: { categoryId, initialCategory: category, initialExams: exams } };
   } catch (error) {
-    console.error('Failed to pre-render govt exam category:', error);
-
-    const fallbackSeo = {
-      title: 'Government Exams - AajExam Platform',
-      description: 'Explore government exam categories and practice with mock tests on AajExam.',
-      keywords: 'government exams, mock test, practice test',
-      image: '/logo.png',
-      url: baseUrl ? `${baseUrl}/govt-exams/category/${categoryId}` : undefined
-    };
-
-    return {
-      props: {
-        categoryId,
-        initialCategory: null,
-        initialExams: [],
-        initialError: 'Failed to load exams. Please try again.',
-        seo: fallbackSeo
-      }
-    };
+    console.error('Data pre-render error:', error);
+    return { props: { initialError: 'Failed to load data.' } };
   }
 }
-

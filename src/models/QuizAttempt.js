@@ -39,6 +39,9 @@ QuizAttemptSchema.index({ user: 1, attemptedAt: -1 });
 // Index for quiz leaderboard queries
 QuizAttemptSchema.index({ quiz: 1, scorePercentage: -1, attemptedAt: 1 });
 
+// Index for efficient deduplication and period-based queries
+QuizAttemptSchema.index({ user: 1, quiz: 1, period: 1 });
+
 // Pre-save middleware to validate user status
 QuizAttemptSchema.pre('save', async function (next) {
   try {

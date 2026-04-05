@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+﻿import React, { useRef, useEffect, useState } from 'react';
 
 const CustomEditor = ({
   value = '',
@@ -128,7 +128,7 @@ const CustomEditor = ({
         { type: 'separator' },
         { type: 'heading', title: 'Heading' },
         { type: 'separator' },
-        { type: 'bulletList', label: '• List', title: 'Bullet List' },
+        { type: 'bulletList', label: 'â€¢ List', title: 'Bullet List' },
         { type: 'numberedList', label: '1. List', title: 'Numbered List' }
       ],
       minimal: [
@@ -145,20 +145,20 @@ const CustomEditor = ({
         { type: 'separator' },
         { type: 'heading', title: 'Heading' },
         { type: 'separator' },
-        { type: 'bulletList', label: '• List', title: 'Bullet List' },
+        { type: 'bulletList', label: 'â€¢ List', title: 'Bullet List' },
         { type: 'numberedList', label: '1. List', title: 'Numbered List' },
         { type: 'separator' },
-        { type: 'link', label: '🔗 Link', title: 'Insert Link' },
-        { type: 'image', label: '🖼️ Image', title: 'Insert Image' },
-        { type: 'table', label: '📊 Table', title: 'Insert Table' },
+        { type: 'link', label: 'ðŸ”— Link', title: 'Insert Link' },
+        { type: 'image', label: 'ðŸ–¼ï¸ Image', title: 'Insert Image' },
+        { type: 'table', label: 'ðŸ“Š Table', title: 'Insert Table' },
         { type: 'separator' },
-        { type: 'alignLeft', label: '←', title: 'Align Left' },
-        { type: 'alignCenter', label: '↔', title: 'Align Center' },
-        { type: 'alignRight', label: '→', title: 'Align Right' },
+        { type: 'alignLeft', label: 'â†', title: 'Align Left' },
+        { type: 'alignCenter', label: 'â†”', title: 'Align Center' },
+        { type: 'alignRight', label: 'â†’', title: 'Align Right' },
         { type: 'separator' },
         { type: 'removeFormat', label: 'Clear', title: 'Remove Formatting' },
         { type: 'separator' },
-        { type: 'fullscreen', label: isFullscreen ? '⤓ Exit' : '⤢ Fullscreen', title: isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen' }
+        { type: 'fullscreen', label: isFullscreen ? 'â¤“ Exit' : 'â¤¢ Fullscreen', title: isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen' }
       ]
     };
 
@@ -259,3 +259,4 @@ const CustomEditor = ({
 };
 
 export default CustomEditor;
+

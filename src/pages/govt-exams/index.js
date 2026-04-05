@@ -1,219 +1,233 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import {
+  GraduationCap,
+  Building,
+  MapPin,
+  Search,
+  BookOpen,
+  Calculator,
+  Lightbulb,
+  Globe,
+  Languages,
+  ArrowRight,
+  TrendingUp,
+  Sparkles,
+  Zap,
+  Star
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
 import API from '../../lib/api';
-import { FaGraduationCap, FaBuilding, FaCity } from 'react-icons/fa';
-import UnifiedFooter from '../../components/UnifiedFooter';
-import Loading from '../../components/Loading';
+import Button from '../../components/ui/Button';
+import Card from '../../components/ui/Card';
+import ProgressBar from '../../components/ui/ProgressBar';
+import Skeleton from '../../components/Skeleton';
 
 const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo }) => {
   const router = useRouter();
   const [categories, setCategories] = useState(initialCategories);
   const [loading, setLoading] = useState(!initialCategories.length && !initialError);
   const [error, setError] = useState(initialError);
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const subjects = [
+    { name: 'Mathematics', icon: Calculator, color: 'primary', progress: 45, exams: 12 },
+    { name: 'Reasoning', icon: Lightbulb, color: 'secondary', progress: 68, exams: 8 },
+    { name: 'GS & GK', icon: Globe, color: 'emerald', progress: 92, exams: 15 },
+    { name: 'English', icon: Languages, color: 'orange', progress: 30, exams: 10 },
+  ];
 
   const fetchCategories = useCallback(async () => {
     try {
       setLoading(true);
-      setError('');
       const res = await API.getRealExamCategories();
-      if (res?.success) {
-        setCategories(res.data || []);
-      } else {
-        setError('Failed to load exam categories. Please try again.');
-      }
+      if (res?.success) setCategories(res.data || []);
     } catch (err) {
       console.error('Error fetching categories:', err);
-      setError('Failed to load exam categories. Please try again.');
+      setError('Failed to load exam categories.');
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    if (!categories.length) {
-      fetchCategories();
-    }
+    if (!categories.length) fetchCategories();
   }, [categories.length, fetchCategories]);
 
-  const groupedCategories = useMemo(() => categories.reduce((acc, cat) => {
-    const type = cat.type || 'Other';
-    if (!acc[type]) acc[type] = [];
-    acc[type].push(cat);
-    return acc;
-  }, {}), [categories]);
+  const filteredCategories = useMemo(() => {
+    if (activeFilter === 'all') return categories;
+    return categories.filter(cat => cat.type?.toLowerCase() === activeFilter.toLowerCase());
+  }, [categories, activeFilter]);
 
-  const getIconForType = (type) => {
-    switch (type?.toLowerCase()) {
-      case 'central':
-        return <FaBuilding className="text-md lg:text-2xl" />;
-      case 'state':
-        return <FaCity className="text-md lg:text-2xl" />;
-      default:
-        return <FaGraduationCap className="text-md lg:text-2xl" />;
-    }
-  };
-
-  const getColorForType = (type) => {
-    switch (type?.toLowerCase()) {
-      case 'central':
-        return 'from-secondary-500 to-indigo-600';
-      case 'state':
-        return 'from-green-500 to-emerald-600';
-      default:
-        return 'from-purple-500 to-pink-600';
-    }
-  };
+  const filters = [
+    { id: 'all', label: 'All Exams', icon: Sparkles },
+    { id: 'central', label: 'Central Govt', icon: Building },
+    { id: 'state', label: 'State Level', icon: MapPin },
+  ];
 
   if (loading) {
     return (
-      <>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-          <Loading size="lg" color="gray" message="Loading exam categories..." />
+      <div className="space-y-8 animate-fade-in py-10">
+        <Skeleton height="100px" borderRadius="1.5rem" />
+        <div className="flex gap-4">
+          <Skeleton width="120px" height="40px" borderRadius="2rem" />
+          <Skeleton width="120px" height="40px" borderRadius="2rem" />
         </div>
-        <UnifiedFooter />
-      </>
-    );
-  }
-
-  if (error) {
-    return (
-      <>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
-          <div className="text-center max-w-md">
-            <div className="text-red-500 text-5xl mb-4">⚠️</div>
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              Error Loading Categories
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">{error}</p>
-            <button
-              onClick={fetchCategories}
-              className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-            >
-              Try Again
-            </button>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {[1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} height="150px" borderRadius="1.5rem" />)}
         </div>
-        <UnifiedFooter />
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="space-y-6 lg:space-y-12 animate-fade-in bg-transparent font-outfit pb-10">
       <Head>
-        <title>{seo?.title || 'Government Exams - AajExam Platform'}</title>
-        {seo?.description && <meta name="description" content={seo.description} />}
-        {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
-        <meta property="og:type" content="website" />
-        {seo?.title && <meta property="og:title" content={seo.title} />}
-        {seo?.description && <meta property="og:description" content={seo.description} />}
-        {seo?.image && <meta property="og:image" content={seo.image} />}
-        {seo?.url && <meta property="og:url" content={seo.url} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        {seo?.title && <meta name="twitter:title" content={seo.title} />}
-        {seo?.description && <meta name="twitter:description" content={seo.description} />}
-        {seo?.image && <meta name="twitter:image" content={seo.image} />}
-        {seo?.url && <link rel="canonical" href={seo.url} />}
+        <title>{seo?.title || 'Study Hub - AajExam'}</title>
       </Head>
-      <>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-2 lg:px-4">
-          <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
-            {/* Header */}
-            <div className="text-center mb-6 lg:mb-12">
-              <h1 className="text-xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 flex items-center justify-center gap-3">
-                <FaGraduationCap className="text-primary-600" />
-                Government Exams
+
+      {/* --- Section 1: Hero Header --- */}
+      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30">
+        {/* Dynamic Backgrounds */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-500 dark:from-slate-900 dark:via-primary-900/40 dark:to-slate-900 transition-colors duration-700" />
+
+        {/* Animated Mesh Overlay (Light Mode Only for Performance/Clarity) */}
+        <div className="absolute inset-0 opacity-20 dark:opacity-10 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,1),transparent)]" />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-2 bg-white/20 dark:bg-primary-500/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30 dark:border-primary-500/30"
+            >
+              <TrendingUp className="w-3.5 h-3.5" />
+              Trending: SSC GL 2026
+            </motion.div>
+
+            <div className="space-y-2">
+              <h1 className="text-2xl lg:text-6xl font-black font-outfit uppercase leading-tight text-white tracking-tighter drop-shadow-lg">
+                Study Hub
               </h1>
-              <p className="text-md lg:text-lg text-gray-600 dark:text-gray-400">
-                Prepare for your dream government job with realistic mock tests
+              <p className="text-lg lg:text-xl font-bold text-white/90 max-w-md leading-relaxed">
+                What would you like to master today?
               </p>
             </div>
+          </div>
 
-            {/* Categories by Type */}
-            {Object.keys(groupedCategories).length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12">
-                {Object.entries(groupedCategories).map(([type, typeCategories]) => (
-                  <div key={type}>
-                    {/* Type Header */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className={`p-2 lg:p-3 rounded-lg bg-gradient-to-r ${getColorForType(type)} text-white`}>
-                        {getIconForType(type)}
-                      </div>
-                      <h2 className="text-md lg:text-2xl font-bold text-gray-900 dark:text-white capitalize">
-                        {type} Exams
-                      </h2>
-                    </div>
-
-                    {/* Category Grid */}
-                    <div className="grid grid-cols-1 gap-6">
-                      {typeCategories.map((category) => (
-                        <div
-                          key={category._id}
-                          onClick={() =>
-                            router.push(
-                              {
-                                pathname: `/govt-exams/category/${category._id}`,
-                                query: {
-                                  name: category.name,
-                                  type: category.type || '',
-                                  description: category.description || ''
-                                }
-                              },
-                              `/govt-exams/category/${category._id}`
-                            )
-                          }
-                          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 p-3 lg:p-6"
-                        >
-                          <div className="flex items-start gap-4">
-                            <div className={`p-2 lg:p-3 rounded-lg bg-gradient-to-r ${getColorForType(type)} text-white`}>
-                              {getIconForType(type)}
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="text-md lg:text-md lg:text-xl font-bold text-gray-900 dark:text-white mb-2">
-                                {category.name}
-                              </h3>
-                              {category.description && (
-                                <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
-                                  {category.description}
-                                </p>
-                              )}
-                              <div className="flex items-center justify-between gap-2">
-                                {category.examCount !== undefined && (
-                                  <p className="text-sm text-primary-600 font-semibold mt-2">
-                                    {category.examCount} {category.examCount === 1 ? 'Exam' : 'Exams'}
-                                  </p>
-                                )}
-                                {category.testCount !== undefined && (
-                                  <p className="text-sm text-primary-600 font-semibold mt-2">
-                                    {category.testCount} {category.testCount === 1 ? 'Test' : 'Tests'}
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <FaGraduationCap className="text-6xl text-gray-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                  No Categories Available
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Categories will appear here once they're added
-                </p>
-              </div>
-            )}
+          <div className="w-full md:w-auto">
+            <Button
+              variant="white"
+              size="md"
+              icon={Search}
+              iconPosition="left"
+              onClick={() => router.push('/search')}
+              fullWidth={true}
+              className="rounded-2xl px-10 py-5 font-black uppercase tracking-widest text-xs group md:w-fit"
+            >
+              Start Learning <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
         </div>
-        <UnifiedFooter />
-      </>
-    </>
+
+        {/* Decorative Elements */}
+        <div className="absolute -bottom-10 -right-10 opacity-20 dark:opacity-30 pointer-events-none">
+          <GraduationCap className="w-80 h-80 text-white rotate-12" />
+        </div>
+        <div className="absolute top-10 right-20 w-20 lg:w-32 h-20 lg:h-32 bg-white/10 dark:bg-primary-500/10 rounded-full blur-3xl pointer-events-none animte-pulse" />
+      </section>
+
+      {/* --- Section 2: Subject Grid (Duolingo Style) --- */}
+      <section className="space-y-6">
+        <h2 className="text-md md:text-xl lg:text-2xl font-black text-content-primary font-outfit uppercase tracking-widest px-1">Subject Hub</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+          {subjects.map((sub, idx) => (
+            <Card
+              key={idx}
+              hoverable
+              className="flex flex-col items-center text-center p-6 gap-4 group transition-all border-border-primary bg-background-surface rounded-[2.5rem]"
+            >
+              <div className={`mx-auto mb-2 w-20 h-20 flex items-center justify-center rounded-3xl bg-${sub.color}-100 dark:bg-${sub.color}-900/30 text-${sub.color}-600 dark:text-${sub.color}-400 group-hover:scale-110 transition-transform shadow-duo`}>
+                <sub.icon className="w-10 h-10" />
+              </div>
+              <div className="space-y-1">
+                <span className="font-black text-lg tracking-wide font-outfit uppercase text-content-primary">{sub.name}</span>
+                <p className="text-[10px] font-black text-content-muted uppercase tracking-wider">{sub.exams} Quizzes</p>
+              </div>
+              <ProgressBar progress={sub.progress} variant={sub.color} height="sm" />
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* --- Section 3: Sticky Filters & Exam Categories --- */}
+      <section className="space-y-8">
+        <div className="sticky top-16 lg:top-20 z-20 bg-background-page/80 backdrop-blur-xl py-6 -mx-4 px-4 border-b border-border-primary/50">
+          <div className="flex gap-3 overflow-x-auto no-scrollbar">
+            {filters.map((f) => (
+              <button
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
+                className={`
+                  flex items-center gap-2 px-6 py-3 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all shadow-duo border-b-4 active:translate-y-1 active:border-b-0
+                  ${activeFilter === f.id
+                    ? 'bg-primary-500 text-white border-primary-600 border-b-4'
+                    : 'bg-background-surface text-content-secondary border-border-primary hover:bg-background-page'}
+                `}
+              >
+                <f.icon className="w-4 h-4" />
+                {f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 pt-4">
+          {filteredCategories.map((cat) => (
+            <Card
+              key={cat._id}
+              hoverable
+              onClick={() => router.push(`/govt-exams/category/${cat._id}`)}
+              className="group p-5 lg:p-8 flex flex-col md:flex-row items-start gap-4 lg:gap-6 border-border-primary hover:border-primary-500 transition-all rounded-[2rem] lg:rounded-[2.5rem] bg-background-surface shadow-xl"
+            >
+              <div className="mb-2 w-20 h-20 bg-background-page rounded-[1.5rem] flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform shadow-duo border-2 border-border-primary/50">
+                {cat.type === 'central' ? <Building className="w-10 h-10" /> : <MapPin className="w-10 h-10" />}
+              </div>
+              <div className="flex-1 space-y-3">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary font-outfit uppercase tracking-tight">
+                    {cat.name}
+                  </h3>
+                  <ArrowRight className="w-6 h-6 text-slate-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" />
+                </div>
+                <p className="text-content-secondary text-sm font-bold line-clamp-2 leading-relaxed">
+                  {cat.description || 'Prepare for all competitive exams in this category with realistic mock tests.'}
+                </p>
+                <div className="pt-4 flex items-center gap-4">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-4 py-2 rounded-2xl border-2 border-primary-100 dark:border-primary-800/50 shadow-sm">
+                    <Zap className="w-3.5 h-3.5 fill-primary-600" />
+                    {cat.examCount || 0} Exams
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-500/10 px-4 py-2 rounded-2xl border-2 border-primary-100 dark:border-primary-500/20 shadow-sm">
+                    <Star className="w-3.5 h-3.5 fill-primary-600" />
+                    {cat.testCount || 0} Tests
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+          {filteredCategories.length === 0 && !loading && (
+            <div className="col-span-full py-20 text-center space-y-4">
+              <Search className="w-20 h-20 text-gray-300 mx-auto" />
+              <h3 className="text-xl lg:text-2xl font-black text-gray-400 font-outfit uppercase">No categories found</h3>
+              <Button variant="primary" onClick={() => setActiveFilter('all')}>View All Exams</Button>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };
 
@@ -255,62 +269,18 @@ export async function getServerSideProps() {
       testCount: testCountMap[c._id.toString()] || 0
     }));
 
-    const categoryCount = categories.length;
-    const totalExams = categories.reduce((sum, cat) => sum + (cat.examCount || 0), 0);
-
-    const title = `Government Exams${categoryCount ? ` (${categoryCount} Categories)` : ''} - AajExam Platform`;
-    const descriptionParts = [
-      'Prepare for your dream government job with realistic mock tests.',
-      categoryCount ? `Explore ${categoryCount} exam categor${categoryCount === 1 ? 'y' : 'ies'}` : null,
-      totalExams ? `covering ${totalExams} competitive exam${totalExams === 1 ? '' : 's'}.` : null
-    ].filter(Boolean);
-    const description = descriptionParts.join(' ');
-
-    const categoryKeywords = Array.from(new Set(categories
-      .map((cat) => cat?.name)
-      .filter(Boolean)));
-    const keywords = [
-      'government exams',
-      'sarkari exam',
-      'mock test',
-      'practice test',
-      'central government exam',
-      'state government exam',
-      ...categoryKeywords
-    ].join(', ');
-
     const seo = {
-      title,
-      description,
-      keywords,
+      title: 'Study Hub - Government Exam Preparation',
+      description: 'Master government exams (SSC, Banking, UPSC) with our gamified learning paths and mock tests.',
+      keywords: 'SSC, Banking, UPSC, Mock Test, Govt Job Preparation',
       image: '/logo.png',
       url: baseUrl ? `${baseUrl}/govt-exams` : undefined
     };
 
-    return {
-      props: {
-        initialCategories: categories,
-        seo
-      }
-    };
+    return { props: { initialCategories: categories, seo } };
   } catch (error) {
     console.error('Failed to pre-render govt exams categories:', error);
-
-    const fallbackSeo = {
-      title: 'Government Exams - AajExam Platform',
-      description: 'Prepare for government exams with realistic mock tests on AajExam.',
-      keywords: 'government exams, sarkari exam, mock test, practice test',
-      image: '/logo.png',
-      url: baseUrl ? `${baseUrl}/govt-exams` : undefined
-    };
-
-    return {
-      props: {
-        initialCategories: [],
-        initialError: 'Failed to load exam categories. Please try again.',
-        seo: fallbackSeo
-      }
-    };
+    return { props: { initialCategories: [], initialError: 'Failed to load data.' } };
   }
 }
 

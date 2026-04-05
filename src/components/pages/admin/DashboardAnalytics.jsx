@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
@@ -12,7 +12,24 @@ import {
   Legend,
   ArcElement
 } from 'chart.js';
-import { FaUsers, FaChartBar, FaMoneyBillWave, FaTrophy, FaClock, FaStar, FaUser, FaBook, FaCalendarAlt, FaMedal, FaCrown, FaAward } from 'react-icons/fa';
+import {
+  Users,
+  BarChart3,
+  Wallet,
+  Trophy,
+  Clock,
+  Star,
+  User,
+  BookOpen,
+  Calendar,
+  Medal,
+  Crown,
+  Award,
+  FileText,
+  Zap,
+  TrendingUp,
+  Layout
+} from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -89,11 +106,11 @@ const DashboardAnalytics = () => {
   // Helper function to convert Tailwind gradient classes to CSS colors
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
-      'from-secondary-500 to-indigo-600': '#3b82f6, #4f46e5',
+      'from-primary-500 to-indigo-600': '#3b82f6, #4f46e5',
       'from-green-500 to-emerald-600': '#10b981, #059669',
       'from-primary-500 to-primary-600': '#eab308, #ea580c',
       'from-purple-500 to-pink-600': '#8b5cf6, #db2777',
-      'from-primary-500 to-secondary-600': '#6366f1, #2563eb',
+      'from-primary-500 to-primary-600': '#6366f1, #2563eb',
       'from-pink-500 to-rose-600': '#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
@@ -121,16 +138,17 @@ const DashboardAnalytics = () => {
     datasets: [{
       label: 'Users',
       data: subscriptionCounts,
-      backgroundColor: [
-        'rgba(59, 130, 246, 0.7)',
-        'rgba(139, 92, 246, 0.7)',
-        'rgba(16, 185, 129, 0.7)',
-        'rgba(251, 191, 36, 0.7)'
-      ],
-      borderColor: isDark ? 'rgba(17, 24, 39, 1)' : '#fff',
-      borderWidth: 2,
-    }]
-  };
+       data: subscriptionCounts,
+       backgroundColor: [
+         'rgba(79, 70, 229, 0.7)', // Indigo
+         'rgba(16, 185, 129, 0.7)', // Emerald
+         'rgba(245, 158, 11, 0.7)', // Amber
+         'rgba(244, 63, 94, 0.7)'   // Rose
+       ],
+       borderColor: isDark ? 'rgba(5, 5, 5, 1)' : '#fff',
+       borderWidth: 2,
+     }]
+   };
 
   const chartOptions = {
     responsive: true,
@@ -174,31 +192,31 @@ const DashboardAnalytics = () => {
   // Recent Activity View Components
   const RecentActivityTableView = () => (
     <div className="overflow-x-auto">
-      <table className="w-[1200px] md:w-full">
+      <table className="w-[1200px] lg:w-full">
         <thead>
-          <tr className="border-b-2 border-secondary-200 dark:border-secondary-700">
-            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
+          <tr className="border-b-2 border-primary-200 dark:border-primary-700">
+            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <FaUser className="text-secondary-600 dark:text-secondary-400" />
+                <User className="w-4 h-4 text-indigo-500" />
                 User
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <FaBook className="text-secondary-600 dark:text-secondary-400" />
+                <BookOpen className="w-4 h-4 text-indigo-500" />
                 Quiz
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <FaTrophy className="text-secondary-600 dark:text-secondary-400" />
+                <Trophy className="w-4 h-4 text-indigo-500" />
                 Score
               </div>
             </th>
-            <th className="text-left py-4 px-4 font-bold text-secondary-800 dark:text-secondary-200 text-lg">
+            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <FaCalendarAlt className="text-secondary-600 dark:text-secondary-400" />
-                Attempted At
+                <Calendar className="w-4 h-4 text-indigo-500" />
+                Attempt Date
               </div>
             </th>
           </tr>
@@ -208,7 +226,7 @@ const DashboardAnalytics = () => {
             recentActivities.map((a, i) => (
               <tr
                 key={i}
-                className="border-b border-gray-200 dark:border-gray-700 hover:bg-gradient-to-r hover:from-secondary-50 hover:to-indigo-50 dark:hover:from-secondary-900/10 dark:hover:to-indigo-900/10 transition-all duration-200 group"
+                className="border-b border-gray-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 group"
               >
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-3">
@@ -234,10 +252,10 @@ const DashboardAnalytics = () => {
                       }`}>
                       {a.score || 0}
                     </span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
+                    <span className="text-xs text-slate-700 dark:text-gray-400 ml-1">
                       ({a.scorePercentage || 0}%)
                     </span>
-                    {a.score >= 80 && <FaTrophy className="text-primary-500 text-sm" />}
+                    {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-amber-500" />}
                   </div>
                 </td>
                 <td className="py-4 px-4">
@@ -252,7 +270,7 @@ const DashboardAnalytics = () => {
                         return `${day}-${month}-${year}`;
                       })()}
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                    <div className="text-xs text-slate-700 dark:text-gray-400">
                       {new Date(a.attemptedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
                     </div>
                   </div>
@@ -262,10 +280,10 @@ const DashboardAnalytics = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="4" className="text-center py-0 md:py-2 lg:py-4 xl:py-6 text-gray-500 dark:text-gray-400">
+              <td colSpan="4" className="text-center py-12 text-slate-400">
                 <div className="flex flex-col items-center gap-2">
-                  <span className="text-4xl">📝</span>
-                  <span>No recent activity</span>
+                  <FileText className="w-8 h-8 opacity-20" />
+                  <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
                 </div>
               </td>
             </tr>
@@ -276,13 +294,13 @@ const DashboardAnalytics = () => {
   );
 
   const RecentActivityCardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border border-secondary-200 dark:border-secondary-700 rounded-lg p-4 hover:shadow-lg transition-all duration-200">
+          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                <FaUser className="text-secondary-600 dark:text-secondary-400" />
+              <div className="w-10 h-10 bg-indigo-500/10 rounded-lg flex items-center justify-center">
+                <User className="w-5 h-5 text-indigo-500" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -294,30 +312,26 @@ const DashboardAnalytics = () => {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                  <FaBook className="text-green-600 dark:text-green-400 text-xs" />
+                <div className="w-6 h-6 bg-emerald-500/10 rounded-md flex items-center justify-center">
+                  <BookOpen className="w-3.5 h-3.5 text-emerald-500" />
                 </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                <span className="text-sm text-gray-700 dark:text-gray-300 font-medium limit-text-1">
                   {a.quiz?.title || 'Unknown Quiz'}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
-                  <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
+                <div className="w-6 h-6 bg-amber-500/10 rounded-md flex items-center justify-center">
+                  <Trophy className="w-3.5 h-3.5 text-amber-500" />
                 </div>
-                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-green-600 dark:text-green-400' :
-                  a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
-                    a.score >= 40 ? 'text-primary-600 dark:text-secondary-400' :
-                      'text-primary-600 dark:text-red-400'
-                  }`}>
-                  {a.score || 0}
+                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-emerald-600' : 'text-slate-700 dark:text-slate-300'}`}>
+                  {a.score || 0} Scored
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                  <FaCalendarAlt className="text-primary-600 dark:text-primary-400 text-xs" />
+                <div className="w-6 h-6 bg-indigo-500/10 rounded-md flex items-center justify-center">
+                  <Calendar className="w-3.5 h-3.5 text-indigo-500" />
                 </div>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Attempted: {(() => {
@@ -335,10 +349,10 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="col-span-full text-center py-0 md:py-2 lg:py-4 xl:py-6 text-gray-500 dark:text-gray-400">
+        <div className="col-span-full text-center py-12 text-slate-400">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl">📝</span>
-            <span>No recent activity</span>
+            <FileText className="w-8 h-8 opacity-20" />
+            <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
           </div>
         </div>
       )}
@@ -349,11 +363,11 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border border-secondary-200 dark:border-secondary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div key={i} className="bg-gradient-to-r from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                  <FaUser className="text-secondary-600 dark:text-secondary-400" />
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-100 to-indigo-100 dark:from-primary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
+                  <User className="w-5 h-5 text-indigo-500" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -363,10 +377,10 @@ const DashboardAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                    <FaBook className="text-green-600 dark:text-green-400 text-xs" />
+                    <BookOpen className="w-3.5 h-3.5 text-emerald-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
                     {a.quiz?.title || 'Unknown Quiz'}
@@ -375,12 +389,12 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
-                    <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
+                    <Trophy className="w-3.5 h-3.5 text-amber-500" />
                   </div>
                   <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-green-600 dark:text-green-400' :
-                    a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
-                      a.score >= 40 ? 'text-primary-600 dark:text-secondary-400' :
-                        'text-primary-600 dark:text-red-400'
+                    a.score >= 60 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
+                      a.score >= 40 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
+                        'text-primary-700 dark:text-primary-500 dark:text-red-400'
                     }`}>
                     {a.score || 0}
                   </span>
@@ -388,7 +402,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <FaCalendarAlt className="text-primary-600 dark:text-primary-400 text-xs" />
+                    <Calendar className="w-3.5 h-3.5 text-indigo-500" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attempted: {(() => {
@@ -407,10 +421,10 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="text-center py-0 md:py-2 lg:py-4 xl:py-6 text-gray-500 dark:text-gray-400">
+        <div className="text-center py-12 text-slate-400">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl">📝</span>
-            <span>No recent activity</span>
+            <FileText className="w-8 h-8 opacity-20" />
+            <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
           </div>
         </div>
       )}
@@ -420,42 +434,42 @@ const DashboardAnalytics = () => {
   // Top Users View Components
   const TopUsersTableView = () => (
     <div className="overflow-x-auto relative">
-      <table className="w-full min-w-full table-auto text-sm md:text-base">
+      <table className="w-full min-w-full table-auto text-sm lg:text-base">
         <thead>
-          <tr className={`border-b-2 ${activeTab === 'daily' ? 'border-secondary-200 dark:border-secondary-700' : activeTab === 'weekly' ? 'border-purple-200 dark:border-purple-700' : 'border-primary-200 dark:border-primary-700'}`}>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaMedal className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
+          <tr className="border-b-2 border-slate-100 dark:border-white/5">
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[10%]">
+              <div className="flex items-center gap-2">
+                <Medal className="w-4 h-4 text-indigo-500" />
                 Rank
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaUser className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
-                Name
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[25%]">
+              <div className="flex items-center gap-2">
+                <User className="w-4 h-4 text-indigo-500" />
+                User
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[20%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaTrophy className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[20%]">
+              <div className="flex items-center gap-2">
+                <Trophy className="w-4 h-4 text-indigo-500" />
                 Level
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaChartBar className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
-                {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} Quizzes
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
+              <div className="flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-indigo-500" />
+                Quizzes
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaAward className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-indigo-500" />
                 High Scores
               </div>
             </th>
-            <th className={`text-left py-3 px-2 font-bold text-sm w-[15%] ${activeTab === 'daily' ? 'text-secondary-800 dark:text-secondary-200' : activeTab === 'weekly' ? 'text-purple-800 dark:text-purple-200' : 'text-primary-800 dark:text-primary-200'}`}>
-              <div className="flex items-center gap-1">
-                <FaStar className={`text-sm ${activeTab === 'daily' ? 'text-secondary-600' : activeTab === 'weekly' ? 'text-purple-600' : 'text-primary-600 dark:text-primary-400'}`} />
+            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 text-indigo-500" />
                 Accuracy
               </div>
             </th>
@@ -473,12 +487,12 @@ const DashboardAnalytics = () => {
               >
                 <td className="py-3 px-2">
                   <div className="flex items-center gap-2">
-                    <span className={`w-8 h-8 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
-                      i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                        i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
-                          "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
+                    <span className={`w-8 h-8 text-xs flex items-center justify-center rounded-xl font-bold ${i === 0 ? "bg-amber-500 text-white shadow-lg" :
+                      i === 1 ? "bg-slate-400 text-white shadow-md" :
+                        i === 2 ? "bg-orange-400 text-white shadow-md" :
+                          "bg-slate-100 dark:bg-slate-800 text-slate-500"
                       }`}>
-                      {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
+                      {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
                     </span>
                   </div>
                 </td>
@@ -492,7 +506,7 @@ const DashboardAnalytics = () => {
                     <div className="font-semibold text-gray-900 dark:text-white text-sm">
                       {u.level?.levelName || 'No Level'}
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                    <div className="text-xs text-slate-700 dark:text-gray-400">
                       Level {u.level?.currentLevel || 0}
                     </div>
                   </div>
@@ -516,9 +530,9 @@ const DashboardAnalytics = () => {
                   </div>
                 </td>
                 <td className="py-3 px-2">
-                  <div className="bg-secondary-100 dark:bg-secondary-900/30 px-2 py-1 rounded-lg">
+                  <div className="bg-primary-100 dark:bg-primary-900/30 px-2 py-1 rounded-lg">
                     <div className="text-center">
-                      <div className="text-sm font-bold text-secondary-800 dark:text-secondary-200">
+                      <div className="text-sm font-bold text-primary-800 dark:text-primary-200">
                         {u.progress?.accuracy || 0}%
                       </div>
                     </div>
@@ -528,7 +542,7 @@ const DashboardAnalytics = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="6" className="text-center py-10 text-gray-500 dark:text-gray-400">
+              <td colSpan="6" className="text-center py-10 text-slate-700 dark:text-gray-400">
                 {topPerformersLoading ? 'Loading...' : 'No data available'}
               </td>
             </tr>
@@ -539,22 +553,22 @@ const DashboardAnalytics = () => {
   );
 
   const TopUsersCardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
       {topPerformers?.length > 0 ? (
         topPerformers.map((u, i) => (
           <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-lg transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
             i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
               i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
-                "from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border-secondary-200 dark:border-secondary-700"
+                "from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border-primary-200 dark:border-primary-700"
             }`}>
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
                   i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
                     i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
+                      "bg-gradient-to-r from-primary-400 to-indigo-500 text-white"
                   }`}>
-                  {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
+                  {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
                 </span>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -568,7 +582,7 @@ const DashboardAnalytics = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                  <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
+                  <Trophy className="w-3.5 h-3.5 text-indigo-500" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
@@ -577,7 +591,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                  <FaChartBar className="text-primary-600 dark:text-secondary-400 text-xs" />
+                  <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.progress?.totalQuizAttempts || 0} Total Quizzes
@@ -586,7 +600,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                  <FaAward className="text-green-600 dark:text-green-400 text-xs" />
+                  <Award className="w-3.5 h-3.5 text-emerald-500" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.progress?.highScoreWins || 0} High Scores
@@ -595,7 +609,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 bg-gradient-to-r from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 rounded-md flex items-center justify-center">
-                  <FaStar className="text-teal-600 dark:text-teal-400 text-xs" />
+                  <Star className="w-3.5 h-3.5 text-teal-500" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300">
                   {u.progress?.accuracy || 0}% Accuracy
@@ -605,9 +619,9 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="col-span-full text-center py-0 md:py-2 lg:py-4 xl:py-6 text-gray-500 dark:text-gray-400">
+        <div className="col-span-full text-center py-0 lg:py-2 lg:py-4 xl:py-6 text-slate-700 dark:text-gray-400">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl">👥</span>
+            <span className="text-4xl">ðŸ‘¥</span>
             <span>No users found</span>
           </div>
         </div>
@@ -622,16 +636,16 @@ const DashboardAnalytics = () => {
           <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-md transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
             i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
               i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
-                "from-secondary-50 to-indigo-50 dark:from-secondary-900/20 dark:to-indigo-900/20 border-secondary-200 dark:border-secondary-700"
+                "from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border-primary-200 dark:border-primary-700"
             }`}>
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
                   i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
                     i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-secondary-400 to-indigo-500 text-white"
+                      "bg-gradient-to-r from-primary-400 to-indigo-500 text-white"
                   }`}>
-                  {i === 0 ? <FaCrown className="text-sm" /> : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
+                  {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
                 </span>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -641,10 +655,10 @@ const DashboardAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <FaTrophy className="text-primary-600 dark:text-primary-400 text-xs" />
+                    <Trophy className="w-3.5 h-3.5 text-indigo-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
@@ -653,7 +667,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                    <FaChartBar className="text-primary-600 dark:text-secondary-400 text-xs" />
+                    <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.progress?.totalQuizAttempts || 0} Total Quizzes
@@ -662,7 +676,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                    <FaAward className="text-green-600 dark:text-green-400 text-xs" />
+                    <Award className="w-3.5 h-3.5 text-emerald-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.progress?.highScoreWins || 0} High Scores
@@ -671,7 +685,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-gradient-to-r from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 rounded-md flex items-center justify-center">
-                    <FaStar className="text-teal-600 dark:text-teal-400 text-xs" />
+                    <Star className="w-3.5 h-3.5 text-teal-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {u.progress?.accuracy || 0}% Accuracy
@@ -682,7 +696,7 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="text-center py-10 text-gray-500 dark:text-gray-400">
+        <div className="text-center py-10 text-slate-700 dark:text-gray-400">
           {topPerformersLoading ? 'Loading...' : 'No data available'}
         </div>
       )}
@@ -700,88 +714,95 @@ const DashboardAnalytics = () => {
   );
 
   if (!data) return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-center text-gray-500 dark:text-gray-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
       No data available
     </div>
   );
 
   return (
-    <AdminMobileAppWrapper title="Analytics">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 md:p-6 w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-          <div className="mb-4 lg:mb-8">
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-xl lg:text-3xl font-bold mb-2">Analytics Dashboard</h1>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Comprehensive overview of platform performance and user engagement
-                </p>
-              </div>
+     <AdminMobileAppWrapper title="Intelligence Overview">
+       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
+         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
+         <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+           <div className="mb-12">
+             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+               <div className="space-y-4">
+                 <div className="flex items-center gap-3">
+                   <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl">
+                     <BarChart3 className="w-6 h-6" />
+                   </div>
+                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">ADMIN // ANALYTICS</span>
+                 </div>
+                 <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
+                   PERFORMANCE <span className="text-indigo-600">INTELLIGENCE</span>
+                 </h1>
+                 <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
+                   High-fidelity data orchestration and behavioral insights.
+                 </p>
+               </div>
+             </div>
+           </div>
 
-            </div>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 lg:gap-6 mb-4 lg:mb-8">
-            {[
-              {
-                label: 'Total Users',
-                icon: <FaUsers />,
-                value: data.overview?.totalUsers,
-                gradient: 'from-secondary-500 to-indigo-600'
-              },
-              {
-                label: 'Total Quizzes',
-                icon: <FaChartBar />,
-                value: data.overview?.totalQuizzes,
-                gradient: 'from-green-500 to-emerald-600'
-              },
-              {
-                label: 'Total Revenue',
-                icon: <FaMoneyBillWave />,
-                value: `₹${data.overview?.totalRevenue}`,
-                gradient: 'from-primary-500 to-primary-600'
-              },
-              {
-                label: 'Active Users',
-                icon: <FaTrophy />,
-                value: data.overview?.activeUsers,
-                gradient: 'from-purple-500 to-pink-600'
-              },
-              {
-                label: 'Total Attempts',
-                icon: <FaClock />,
-                value: data.overview?.totalAttempts,
-                color: 'indigo',
-                gradient: 'from-primary-500 to-secondary-600',
-                bgGradient: 'from-primary-50 to-secondary-50',
-                darkBgGradient: 'from-primary-900/20 to-secondary-900/20'
-              },
-              {
-                label: 'Subscriptions',
-                icon: <FaStar />,
-                value: data.overview?.totalSubscriptions,
-                gradient: 'from-pink-500 to-rose-600'
-              },
-            ].map((stat, i) => (
-              <div key={i} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-2 lg:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-                <div className="flex flex-col items-center text-center">
-                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r ${stat.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                    {React.cloneElement(stat.icon, { className: 'w-8 h-8 text-white' })}
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm font-semibold mb-2 uppercase tracking-wide text-gray-600 dark:text-gray-300">{stat.label}</p>
-                    <p className="text-xl lg:text-3xl font-bold bg-gradient-to-r bg-clip-text text-transparent" style={{
-                      backgroundImage: `linear-gradient(to right, ${getGradientColors(stat.gradient)})`
-                    }}>
-                      {stat.value?.toLocaleString() || 0}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+           {/* Metric Matrix */}
+           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-12">
+             {[
+               {
+                 label: 'ENUMERATED USERS',
+                 icon: <Users />,
+                 value: data.overview?.totalUsers,
+                 gradient: 'text-indigo-600 bg-indigo-600/10 border-indigo-600/20'
+               },
+               {
+                 label: 'ASSESSMENT MODULES',
+                 icon: <BarChart3 />,
+                 value: data.overview?.totalQuizzes,
+                 gradient: 'text-emerald-600 bg-emerald-600/10 border-emerald-600/20'
+               },
+               {
+                 label: 'GROSS REVENUE',
+                 icon: <Wallet />,
+                 value: `₹${data.overview?.totalRevenue}`,
+                 gradient: 'text-amber-600 bg-amber-600/10 border-amber-600/20'
+               },
+               {
+                 label: 'ACTIVE PROXIES',
+                 icon: <Trophy />,
+                 value: data.overview?.activeUsers,
+                 gradient: 'text-purple-600 bg-purple-600/10 border-purple-600/20'
+               },
+               {
+                 label: 'ENGAGEMENT CYCLES',
+                 icon: <Clock />,
+                 value: data.overview?.totalAttempts,
+                 gradient: 'text-rose-600 bg-rose-600/10 border-rose-600/20'
+               },
+               {
+                 label: 'ALLOCATED TIERS',
+                 icon: <Star />,
+                 value: data.overview?.totalSubscriptions,
+                 gradient: 'text-blue-600 bg-blue-600/10 border-blue-600/20'
+               },
+             ].map((stat, i) => (
+               <motion.div
+                 key={i}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ delay: i * 0.05 }}
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-xl hover:border-indigo-600/30 transition-all hover:scale-[1.02]"
+               >
+                 <div className="flex items-center justify-between mb-6">
+                   <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
+                     {React.cloneElement(stat.icon, { className: 'w-6 h-6' })}
+                   </div>
+                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
+                 </div>
+                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-indigo-600 transition-colors">
+                   {stat.value?.toLocaleString() || 0}
+                 </div>
+                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-all" />
+               </motion.div>
+             ))}
+           </div>
 
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -790,7 +811,7 @@ const DashboardAnalytics = () => {
               {levelLabels.length > 0 ? (
                 <Bar data={levelBarData} options={chartOptions} />
               ) : (
-                <div className="h-64 flex items-center justify-center text-gray-400">No data available</div>
+                <div className="h-64 flex items-center justify-center text-slate-600 dark:text-gray-400">No data available</div>
               )}
             </div>
 
@@ -799,7 +820,7 @@ const DashboardAnalytics = () => {
               {subscriptionLabels.length > 0 ? (
                 <Pie data={subscriptionPieData} options={pieOptions} />
               ) : (
-                <div className="h-64 flex items-center justify-center text-gray-400">No data available</div>
+                <div className="h-64 flex items-center justify-center text-slate-600 dark:text-gray-400">No data available</div>
               )}
             </div>
           </div>
@@ -810,12 +831,12 @@ const DashboardAnalytics = () => {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-secondary-100 to-indigo-100 dark:from-secondary-900/30 dark:to-indigo-900/30 rounded-xl flex items-center justify-center">
-                    <span className="text-2xl">📊</span>
+                  <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center">
+                    <BarChart3 className="w-6 h-6 text-indigo-500" />
                   </div>
                   <div>
-                    <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white">Recent Activity</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Latest user quiz attempts and activities</p>
+                    <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Recent Activity</h3>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Latest platform engagements</p>
                   </div>
                 </div>
 
@@ -835,52 +856,52 @@ const DashboardAnalytics = () => {
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-3 lg:p-6 mb-4 lg:mb-6 relative overflow-hidden">
               {topPerformersLoading && (
                 <div className="absolute inset-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm z-10 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-600"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
                 </div>
               )}
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6 gap-4">
                 <div className="flex items-center space-x-3">
-                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-r rounded-xl flex items-center justify-center ${activeTab === 'daily' ? 'from-secondary-400 to-indigo-500' : activeTab === 'weekly' ? 'from-purple-400 to-pink-500' : 'from-primary-400 to-primary-500'}`}>
-                    <FaCrown className="text-white text-xl" />
+                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center`}>
+                    <Crown className="text-indigo-500 w-8 h-8" />
                   </div>
                   <div>
-                    <h2 className="text-xl md:text-md lg:text-2xl font-bold text-gray-800 dark:text-white">
+                    <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                       Top Performers
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Based on {activeTab === 'daily' ? 'Today\'s' : activeTab === 'weekly' ? 'This Week\'s' : 'This Month\'s'} performance
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">
+                      {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} high-yield accounts
                     </p>
                   </div>
                 </div>
 
                 {/* Competition Tabs */}
-                <div className="inline-flex p-1 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-inner border border-gray-200 dark:border-gray-700">
+                <div className="inline-flex p-1 bg-slate-100 dark:bg-white/5 rounded-2xl shadow-inner border border-slate-200 dark:border-white/5">
                   <button
                     onClick={() => setActiveTab('daily')}
-                    className={`px-4 py-2 rounded-lg font-bold text-xs transition-all duration-300 flex items-center gap-1.5 ${activeTab === 'daily'
-                      ? "bg-secondary-600 text-white shadow-lg"
-                      : "text-gray-500 hover:text-secondary-600 hover:bg-white dark:hover:bg-gray-800"
+                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'daily'
+                      ? "bg-indigo-600 text-white shadow-xl"
+                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
                   >
-                    <span>📅</span> Daily
+                    <Clock className="w-3.5 h-3.5" /> Daily
                   </button>
                   <button
                     onClick={() => setActiveTab('weekly')}
-                    className={`px-4 py-2 rounded-lg font-bold text-xs transition-all duration-300 flex items-center gap-1.5 ${activeTab === 'weekly'
-                      ? "bg-purple-600 text-white shadow-lg"
-                      : "text-gray-500 hover:text-purple-600 hover:bg-white dark:hover:bg-gray-800"
+                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'weekly'
+                      ? "bg-indigo-600 text-white shadow-xl"
+                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
                   >
-                    <span>🗓️</span> Weekly
+                    <Calendar className="w-3.5 h-3.5" /> Weekly
                   </button>
                   <button
                     onClick={() => setActiveTab('monthly')}
-                    className={`px-4 py-2 rounded-lg font-bold text-xs transition-all duration-300 flex items-center gap-1.5 ${activeTab === 'monthly'
-                      ? "bg-amber-500 text-white shadow-lg"
-                      : "text-gray-500 hover:text-amber-600 hover:bg-white dark:hover:bg-gray-800"
+                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'monthly'
+                      ? "bg-indigo-600 text-white shadow-xl"
+                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
                   >
-                    <span>🏆</span> Monthly
+                    <Trophy className="w-3.5 h-3.5" /> Monthly
                   </button>
                 </div>
 
@@ -903,6 +924,8 @@ const DashboardAnalytics = () => {
 };
 
 export default DashboardAnalytics;
+
+
 
 
 

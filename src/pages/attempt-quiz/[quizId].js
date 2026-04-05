@@ -1,11 +1,24 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Head from 'next/head';
+import Loading from '../../components/Loading';
 
 const AttemptQuizPage = dynamic(() => import('../../components/pages/AttemptQuizPage'), {
 	ssr: false,
-	loading: () => <div>Loading...</div>
+	loading: () => (
+		<div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center gap-4">
+			<Loading size="lg" />
+			<p className="text-sm font-medium text-slate-600 dark:text-slate-400">Preparing your quiz...</p>
+		</div>
+	)
 });
+
+const AttemptQuizFallback = () => (
+	<div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center gap-4">
+		<Loading size="lg" />
+		<p className="text-sm font-medium text-slate-600 dark:text-slate-400">Preparing your quiz...</p>
+	</div>
+);
 
 export default function AttemptQuiz({ quiz, seo }) {
 	return (
@@ -25,7 +38,7 @@ export default function AttemptQuiz({ quiz, seo }) {
 				{seo?.image && <meta name="twitter:image" content={seo.image} />}
 				{seo?.url && <link rel="canonical" href={seo.url} />}
 			</Head>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<AttemptQuizFallback />}>
 				<AttemptQuizPage />
 			</Suspense>
 		</>

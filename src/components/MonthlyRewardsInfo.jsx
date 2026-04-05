@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import { Sunrise, Calendar, Trophy, Medal, Award, Star, IndianRupee } from 'lucide-react';
 import config from '../lib/config/appConfig';
 import API from '../lib/api';
 import Loading from './Loading';
@@ -41,20 +42,22 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
 
   if (compact) {
     return (
-      <div className={`bg-gradient-to-br from-secondary-50 to-indigo-50 dark:from-secondary-900/10 dark:to-indigo-900/10 border border-secondary-200/50 dark:border-secondary-800/50 rounded-xl p-4 ${className} backdrop-blur-sm`}>
-        <h4 className="font-bold text-secondary-800 dark:text-secondary-300 mb-3 text-sm flex items-center gap-2">
-          <span className="p-1 bg-secondary-100 dark:bg-secondary-800 rounded">📋</span>
-          Rewards System
+      <div className={`bg-white dark:bg-slate-800 border-2 border-b-4 border-slate-100 dark:border-slate-700 rounded-[1.5rem] p-5 shadow-xl font-outfit ${className}`}>
+        <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+          Reward Pools
         </h4>
-        <div className="space-y-2">
-          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
-            <strong>Daily:</strong> ₹{(stats.prizepools.daily?.total ?? stats.prizepools.daily ?? 0).toLocaleString()} total pool
+        <div className="space-y-3">
+          <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+            <span className="text-primary-700 dark:text-primary-500">Daily Pool</span>
+            <span className="text-slate-700 dark:text-white flex items-center gap-1"><IndianRupee className="w-2.5 h-2.5" /> {(stats.prizepools.daily?.total ?? stats.prizepools.daily ?? 0).toLocaleString()}</span>
           </div>
-          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
-            <strong>Weekly:</strong> ₹{(stats.prizepools.weekly?.total ?? stats.prizepools.weekly ?? 0).toLocaleString()} total pool
+          <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+            <span className="text-primary-700 dark:text-primary-500">Weekly Pool</span>
+            <span className="text-slate-700 dark:text-white flex items-center gap-1"><IndianRupee className="w-2.5 h-2.5" /> {(stats.prizepools.weekly?.total ?? stats.prizepools.weekly ?? 0).toLocaleString()}</span>
           </div>
-          <div className="text-[10px] text-secondary-700 dark:text-secondary-300">
-            <strong>Monthly:</strong> ₹{(stats.prizepools.monthly?.total ?? stats.prizepools.monthly ?? 0).toLocaleString()} total pool
+          <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+            <span className="text-green-500">Monthly Pool</span>
+            <span className="text-slate-700 dark:text-white flex items-center gap-1"><IndianRupee className="w-2.5 h-2.5" /> {(stats.prizepools.monthly?.total ?? stats.prizepools.monthly ?? 0).toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -68,7 +71,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
   const challengeInfo = [
     {
       type: 'Daily',
-      icon: '🌅',
+      icon: Sunrise,
       color: 'blue',
       pool: stats.prizepools.daily,
       req: `${config.QUIZ_CONFIG.DAILY_REWARD_QUIZ_REQUIREMENT} Quizzes`,
@@ -77,7 +80,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
     },
     {
       type: 'Weekly',
-      icon: '📅',
+      icon: Calendar,
       color: 'purple',
       pool: stats.prizepools.weekly,
       req: `${config.QUIZ_CONFIG.WEEKLY_REWARD_QUIZ_REQUIREMENT} Quizzes`,
@@ -86,7 +89,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
     },
     {
       type: 'Monthly',
-      icon: '🏆',
+      icon: Trophy,
       color: 'orange',
       pool: stats.prizepools.monthly,
       req: `${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} Quizzes`,
@@ -96,116 +99,99 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
   ];
 
   return (
-    <div className={`relative overflow-hidden bg-gradient-to-br from-secondary-50 via-white to-indigo-50 dark:from-gray-900 dark:via-secondary-900/10 dark:to-gray-800 border-2 border-secondary-100 dark:border-secondary-800/50 rounded-3xl p-6 lg:p-10 ${className} shadow-xl`}>
+    <div className={`relative overflow-hidden bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-100 dark:border-slate-800 rounded-[2.5rem] p-4 md:p-8 lg:p-12 ${className} shadow-2xl font-outfit`}>
       <div className="relative z-10">
-        <h3 className="text-2xl lg:text-3xl font-black text-gray-800 dark:text-white mb-8 tracking-tight">
-          Rewards & <span className="text-secondary-600 dark:text-secondary-400">Challenges System</span>
+        <h3 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-12 tracking-tighter uppercase">
+          Estimated <span className="text-primary-700 dark:text-primary-500">Rewards</span>
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {challengeInfo.map((item) => (
-            <div key={item.type} className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl p-6 border border-white dark:border-gray-700 shadow-sm transition-transform hover:scale-[1.02]">
-              <div className={`w-10 h-10 bg-${item.color}-100 dark:bg-${item.color}-900/50 rounded-xl flex items-center justify-center mb-4 text-xl`}>
-                {item.icon}
+            <div key={item.type} className="bg-slate-50 dark:bg-slate-800 p-10 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl transition-all hover:-translate-y-2 group">
+              <div className="w-20 h-20 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center mb-8 shadow-duo border-4 border-slate-100 dark:border-slate-600 rotate-3 group-hover:rotate-6 transition-transform">
+                <item.icon className="w-10 h-10 text-primary-500" />
               </div>
-              <h4 className="font-bold text-gray-800 dark:text-white mb-1">{item.type} Challenge</h4>
-              <div className={`text-${item.color}-600 dark:text-${item.color}-400 text-2xl font-black mb-3`}>
-                ₹{(item.pool?.total ?? item.pool ?? 0).toLocaleString()}
-                <span className="text-[10px] text-gray-400 block font-normal uppercase">Current Prize Pool</span>
+              <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mb-3">{item.type} Prize Pool</h4>
+              <div className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter group-hover:text-primary-700 dark:text-primary-500 transition-colors flex items-center gap-2">
+                <span className="text-2xl lg:text-4xl text-slate-400">₹</span>{(item.pool?.total ?? item.pool ?? 0).toLocaleString()}
               </div>
-              <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
-                  <strong>{item.levelReq}</strong>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
-                  <strong>{item.req}</strong>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
-                  <span>{config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE}% Min Accuracy</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
-                  <span>{item.reset}</span>
-                </li>
-              </ul>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                  <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
+                  <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest leading-none">{item.levelReq}</span>
+                </div>
+                <div className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                  <div className="w-2 h-2 rounded-full bg-primary-500"></div>
+                  <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest leading-none">{item.req}</span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-xl border border-secondary-100 dark:border-secondary-800">
-          <p className="text-sm text-secondary-800 dark:text-secondary-200 text-center">
-            Prizes are calculated based on <strong>{activePro} Active PRO Users</strong>. More PRO users = Higher Prize Pools!
+        <div className="mt-12 p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-4 border-slate-100 dark:border-slate-800 shadow-inner group">
+          <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] text-center">
+            Prizes scale with active Pro students. Currently <span className="text-primary-700 dark:text-primary-500 group-hover:scale-110 inline-block transition-transform">{activePro} students</span> are Pro!
           </p>
         </div>
       </div>
 
       {/* Reward Potential Example */}
-      <div className="mt-12 pt-10 border-t border-gray-200 dark:border-gray-700">
-        <div className="relative group overflow-hidden rounded-3xl p-1">
-          {/* Animated border/glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-secondary-500 opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-gradient-shift"></div>
+      <div className="mt-16 pt-16 border-t-4 border-slate-100 dark:border-slate-800">
+        <div className="relative group overflow-hidden rounded-[3rem] p-1 shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-500 to-primary-500 opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-gradient-shift"></div>
 
-          <div className="relative z-10 bg-gradient-to-br from-indigo-600 to-secondary-700 dark:from-indigo-900 dark:to-secondary-900 rounded-[calc(1.5rem-1px)] p-6 lg:p-10 text-white shadow-2xl overflow-hidden">
-            {/* Complex Background Decor */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-[100px] rounded-full -mr-40 -mt-40 animate-blob"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary-400/10 blur-[100px] rounded-full -ml-40 -mb-40 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-purple-400/10 blur-[80px] rounded-full -ml-20 -mt-20 animate-blob animation-delay-4000"></div>
+          <div className="relative z-10 bg-white dark:bg-slate-900 rounded-[calc(3rem-4px)] p-4 md:p-10 lg:p-16 overflow-hidden border-4 border-slate-100 dark:border-slate-800">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 blur-[120px] rounded-full -mr-48 -mt-48"></div>
 
             <div className="relative z-10">
               {/* Type Switcher */}
-              <div className="flex items-center gap-2 mb-8 bg-white/10 p-1 rounded-xl self-start">
+              <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 lg:mb-12 w-fit max-w-full shadow-inner border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 px-3">
                 {['daily', 'weekly', 'monthly'].map((type) => (
                   <button
                     key={type}
                     onClick={() => setExampleType(type)}
-                    className={`px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${
-                      exampleType === type
-                        ? 'bg-white text-indigo-700 shadow-lg'
-                        : 'text-white/60 hover:text-white hover:bg-white/5'
-                    }`}
+                    className={`px-6 lg:px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap flex-shrink-0 ${exampleType === type
+                      ? 'bg-white dark:bg-slate-700 text-primary-700 dark:text-primary-500 shadow-duo border-2 border-slate-100 dark:border-slate-600 active:translate-y-0.5'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'
+                      }`}
                   >
                     {type}
                   </button>
                 ))}
               </div>
 
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                <div className="max-w-xl">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 border border-white/10">
-                    <span className="flex h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
-                    {exampleType.charAt(0).toUpperCase() + exampleType.slice(1)} Earning Example
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 text-center lg:text-left">
+                <div className="max-w-2xl">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary-50 dark:bg-slate-800 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6 border-2 border-primary-100 dark:border-slate-700 text-primary-700 dark:text-primary-500">
+                    <span className="flex h-2 w-2 rounded-full bg-primary-500 animate-pulse"></span>
+                    {exampleType} Reward Projection
                   </div>
-                  <h2 className="text-xl md:text-3xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-secondary-600 to-primary-500 uppercase">
-                    REWARD SYSTEM
+                  <h2 className="text-2xl lg:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-6 uppercase">
+                    Reward <span className="text-primary-700 dark:text-primary-500">System</span>
                   </h2>
-                  <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-bold tracking-widest uppercase mt-1">
-                    Compete, Win & Grow
-                  </p>
-                  <p className="text-indigo-100 text-sm lg:text-base leading-relaxed font-medium">
+                  <p className="text-slate-700 dark:text-slate-400 text-sm lg:text-base leading-relaxed font-black uppercase tracking-widest max-w-xl mx-auto lg:mx-0 opacity-80">
                     {exampleType === 'monthly' && (
-                      <>Our prize pool grows with every new PRO member. For every PRO user who joins,
-                      <span className="text-white font-bold bg-white/10 px-2 py-0.5 rounded mx-1"> ₹{config.QUIZ_CONFIG.MONTHLY_POOL_MULTIPLIER} </span> is added to the monthly pool!</>
+                      <>The prize pool grows with every student. For every new student, 
+                        <span className="text-primary-700 dark:text-primary-500 font-black"> ₹{config.QUIZ_CONFIG.MONTHLY_POOL_MULTIPLIER} </span> is added to the monthly prize pool!</>
                     )}
                     {exampleType === 'weekly' && (
-                      <>Weekly rewards are distributed every Sunday. For the weekly pool, we add 
-                      <span className="text-white font-bold bg-white/10 px-2 py-0.5 rounded mx-1"> ₹{config.QUIZ_CONFIG.WEEKLY_POOL_MULTIPLIER} </span> per PRO user, divided by 4 weeks.</>
+                      <>Weekly rewards are distributed every Sunday. We add 
+                        <span className="text-primary-700 dark:text-primary-500 font-black"> ₹{config.QUIZ_CONFIG.WEEKLY_POOL_MULTIPLIER} </span> per PRO to the pool.</>
                     )}
                     {exampleType === 'daily' && (
-                      <>Daily winners are recognized every night! For the daily pool, we add 
-                      <span className="text-white font-bold bg-white/10 px-2 py-0.5 rounded mx-1"> ₹{config.QUIZ_CONFIG.DAILY_POOL_MULTIPLIER} </span> per PRO user, divided by 30 days.</>
+                      <>Daily rewards for top students. We add 
+                        <span className="text-green-500 font-black"> ₹{config.QUIZ_CONFIG.DAILY_POOL_MULTIPLIER} </span> per PRO to the daily pool.</>
                     )}
                   </p>
                 </div>
 
-                <div className="relative">
-                  <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full scale-75 animate-pulse-glow"></div>
-                  <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 text-center lg:min-w-[280px] shadow-2xl hover-scale">
-                    <div className="text-xs uppercase font-black text-indigo-200 tracking-widest mb-2">Hypothetical: 100 PRO Users</div>
-                    <div className="text-5xl lg:text-6xl font-black text-white tracking-tighter sm:text-4xl">
-                      ₹{(() => {
+                <div className="relative group/val">
+                  <div className="absolute inset-0 bg-primary-500/10 blur-[60px] rounded-full scale-110 group-hover/val:scale-125 transition-transform"></div>
+                  <div className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 border-4 border-b-[16px] border-primary-500 shadow-2xl text-center lg:min-w-[320px] transition-all group-hover/val:-translate-y-2">
+                    <div className="text-[10px] uppercase font-black text-slate-600 dark:text-slate-400 tracking-[0.4em] mb-6">100 Pro Members Active</div>
+                    <div className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 flex items-center justify-center gap-2">
+                      <span className="text-2xl lg:text-4xl text-slate-400">₹</span>{(() => {
                         const base = 100;
                         if (exampleType === 'monthly') return (base * config.QUIZ_CONFIG.MONTHLY_POOL_MULTIPLIER).toLocaleString('en-IN');
                         if (exampleType === 'weekly') return Math.round((base * config.QUIZ_CONFIG.WEEKLY_POOL_MULTIPLIER) / 4).toLocaleString('en-IN');
@@ -213,39 +199,39 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
                         return 0;
                       })()}
                     </div>
-                    <div className="text-[10px] text-indigo-200 mt-2 font-bold uppercase tracking-wide">Total {exampleType.charAt(0).toUpperCase() + exampleType.slice(1)} Prize Pool</div>
+                    <div className="text-[10px] text-primary-700 dark:text-primary-500 font-black uppercase tracking-[0.3em]">Projected Prize Pool</div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-10 grid grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                 {(() => {
                   const distributions = {
                     daily: [
-                      { label: 'Rank 1 Wins', percentage: 1.0, icon: '🥇' }
+                      { label: '1st Rank', percentage: 1.0, icon: Trophy }
                     ],
                     weekly: [
-                      { label: 'Rank 1 Wins', percentage: 0.50, icon: '🥇' },
-                      { label: 'Rank 2 Wins', percentage: 0.30, icon: '🥈' },
-                      { label: 'Rank 3 Wins', percentage: 0.20, icon: '🥉' }
+                      { label: '1st Rank', percentage: 0.50, icon: Trophy },
+                      { label: '2nd Rank', percentage: 0.30, icon: Medal },
+                      { label: '3rd Rank', percentage: 0.20, icon: Award }
                     ],
                     monthly: [
-                      { label: 'Rank 1 Wins', percentage: 0.35, icon: '🥇' },
-                      { label: 'Rank 2 Wins', percentage: 0.25, icon: '🥈' },
-                      { label: 'Rank 3 Wins', percentage: 0.20, icon: '🥉' },
-                      { label: 'Rank 4 Wins', percentage: 0.12, icon: '🏅' },
-                      { label: 'Rank 5 Wins', percentage: 0.08, icon: '🎖️' }
+                      { label: '1st Rank', percentage: 0.35, icon: Trophy },
+                      { label: '2nd Rank', percentage: 0.25, icon: Medal },
+                      { label: '3rd Rank', percentage: 0.20, icon: Award },
+                      { label: '4th Rank', percentage: 0.12, icon: Star },
+                      { label: '5th Rank', percentage: 0.08, icon: Star }
                     ]
                   };
 
                   return (distributions[exampleType] || distributions.monthly).map((reward, i) => (
-                    <div key={i} className="group/card bg-white/40 dark:bg-white/10 hover:bg-white/50 dark:hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/10 dark:border-white/5 transition-all duration-300 hover:-translate-y-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="text-[10px] font-black text-white/70 uppercase tracking-wider">{reward.label}</div>
-                        <span className="text-xl opacity-50 group-hover/card:opacity-100 transition-opacity">{reward.icon}</span>
+                    <div key={i} className="bg-slate-50 dark:bg-slate-800 p-8 rounded-[2rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-700 shadow-xl transition-all hover:-translate-y-2 group/card">
+                      <div className="flex items-center justify-between mb-6">
+                        <reward.icon className="w-8 h-8 text-primary-500 rotate-3 group-hover/card:rotate-12 transition-transform" />
+                        <div className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{reward.label}</div>
                       </div>
-                      <div className="text-xl lg:text-2xl font-black text-white group-hover/card:text-primary-300 transition-colors">
-                        ₹{(() => {
+                      <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter flex items-center gap-1.5">
+                        <span className="text-sm lg:text-base text-slate-400">₹</span>{(() => {
                           const base = 100;
                           let pool = 0;
                           if (exampleType === 'monthly') pool = base * config.QUIZ_CONFIG.MONTHLY_POOL_MULTIPLIER;
@@ -254,20 +240,17 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
                           return Math.round(pool * reward.percentage).toLocaleString('en-IN');
                         })()}
                       </div>
-                      <div className="mt-1 flex items-center gap-1.5">
-                        <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-primary-400 to-primary-500" style={{ width: `${reward.percentage * 100}%` }}></div>
-                        </div>
-                        <span className="text-[9px] font-bold text-indigo-200">{(reward.percentage * 100).toFixed(0)}%</span>
+                      <div className="h-2.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden shadow-inner">
+                        <div className="h-full bg-primary-500 shadow-duo-primary" style={{ width: `${reward.percentage * 100}%` }}></div>
                       </div>
                     </div>
                   ));
                 })()}
               </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
-                <p className="text-[10px] text-indigo-200 italic max-w-md">
-                  * Illustrative example. Actual rewards are calculated based on real-time active PRO users. Join the legends today!
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+                <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-md">
+                  * PROJECTION ONLY. ACTUAL PAYOUTS ARE BASED ON ACTIVE PRO MEMBERS.
                 </p>
               </div>
             </div>
@@ -279,3 +262,5 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
 };
 
 export default MonthlyRewardsInfo;
+
+

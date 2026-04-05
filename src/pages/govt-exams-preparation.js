@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
 import { FaGraduationCap, FaChartLine, FaChevronLeft, FaChevronRight, FaQuestionCircle } from 'react-icons/fa';
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
@@ -22,52 +21,66 @@ export default function GovtExamsPreparation({ initialData }) {
     };
 
     return (
-        <MobileAppWrapper title="Govt Exams Preparation">
+        <MobileAppWrapper showHeader={true} title="Govt Exams Preparation">
             <Head>
                 <title>Govt Exams Preparation Guide - AajExam</title>
                 <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
             </Head>
 
-            <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-12 px-4 lg:px-10">
-                <div className="container bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12 border-t-8 border-primary-600">
+            <div className="py-20 lg:py-24 min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
+                {/* Background atmosphere */}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+                <div className="container mx-auto px-2 lg:px-6 xl:px-8 relative z-10">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-sm font-bold mb-4">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-white dark:border-slate-800 mb-6">
                             <FaQuestionCircle className="w-4 h-4" />
                             <span>{pagination.totalExams || 0} Exams Available</span>
                         </div>
-                        <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Government Exams Preparation</h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Master your competitive exams with our structured quiz modules and real-time performance tracking.</p>
+                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
+                            Government Exams <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-600">Preparation</span>
+                        </h1>
+                        <p className="text-lg lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                            Master your competitive exams with our structured quiz modules and real-time performance tracking.
+                        </p>
                     </div>
 
                     {loading ? (
                         <div className="flex justify-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary-600"></div>
                         </div>
                     ) : (
                         <>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <div key={exam._id || index} className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-700 group">
-                                            <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-900 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
-                                                {exam.logo ? (
-                                                    <img src={exam.logo} alt={exam.name} className="w-full h-full object-cover" />
-                                                ) : (
-                                                    <FaGraduationCap className="text-indigo-600 dark:text-indigo-400 text-2xl" />
-                                                )}
+                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-b-8 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                            <div>
+                                                <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center mb-6 shadow-duo border-2 border-white dark:border-slate-800 overflow-hidden">
+                                                    {exam.logo ? (
+                                                        <img src={exam.logo} alt={exam.name} className="w-full h-full object-cover" />
+                                                    ) : (
+                                                        <FaGraduationCap className="text-primary-600 dark:text-primary-400 text-2xl" />
+                                                    )}
+                                                </div>
+                                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                                    {exam.name}
+                                                </h3>
+                                                <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 line-clamp-3 leading-relaxed">
+                                                    {exam.description || 'Comprehensive exam preparation materials and practice tests.'}
+                                                </p>
                                             </div>
-                                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{exam.name}</h3>
-                                            <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">{exam.description || 'Comprehensive exam preparation materials and practice tests.'}</p>
                                             <button
                                                 onClick={() => router.push(`/exams/${exam.code || exam._id}`)}
-                                                className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform"
+                                                className="w-full bg-primary-500 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0"
                                             >
-                                                Start Practice <FaChartLine />
+                                                Start Practice <FaChartLine className="ml-2" />
                                             </button>
                                         </div>
                                     ))
                                 ) : (
-                                    <div className="col-span-full text-center py-10 text-gray-500">
+                                    <div className="col-span-full text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl font-bold uppercase tracking-widest text-slate-400 text-sm">
                                         No exams found.
                                     </div>
                                 )}
@@ -75,16 +88,16 @@ export default function GovtExamsPreparation({ initialData }) {
 
                             {/* Pagination */}
                             {pagination.totalPages > 1 && (
-                                <div className="mt-12 flex items-center justify-center gap-2">
+                                <div className="mt-20 flex items-center justify-center gap-3">
                                     <button
                                         onClick={() => handlePageChange(pagination.currentPage - 1)}
                                         disabled={pagination.currentPage <= 1}
-                                        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 transition-all flex items-center"
+                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-duo active:translate-y-1 active:border-b-0"
                                     >
                                         <FaChevronLeft className="w-4 h-4" />
                                     </button>
 
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center gap-3">
                                         {[...Array(Math.min(5, pagination.totalPages))].map((_, idx) => {
                                             const pageNum = pagination.currentPage <= 3
                                                 ? idx + 1
@@ -92,13 +105,15 @@ export default function GovtExamsPreparation({ initialData }) {
 
                                             if (pageNum > pagination.totalPages || pageNum <= 0) return null;
 
+                                            const isActive = pageNum === pagination.currentPage;
+
                                             return (
                                                 <button
                                                     key={pageNum}
                                                     onClick={() => handlePageChange(pageNum)}
-                                                    className={`px-4 py-2 rounded-lg font-semibold transition-all ${pageNum === pagination.currentPage
-                                                        ? 'bg-primary-600 text-white shadow-lg'
-                                                        : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50'
+                                                    className={`w-12 h-12 rounded-2xl font-black transition-all shadow-duo border-2 border-b-4 ${isActive
+                                                        ? 'bg-primary-500 border-primary-700 text-white active:translate-y-1 active:border-b-0'
+                                                        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 active:translate-y-1 active:border-b-0'
                                                         }`}
                                                 >
                                                     {pageNum}
@@ -110,7 +125,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                     <button
                                         onClick={() => handlePageChange(pagination.currentPage + 1)}
                                         disabled={!pagination.hasMore}
-                                        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 transition-all flex items-center"
+                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-duo active:translate-y-1 active:border-b-0"
                                     >
                                         <FaChevronRight className="w-4 h-4" />
                                     </button>
@@ -119,19 +134,25 @@ export default function GovtExamsPreparation({ initialData }) {
                         </>
                     )}
 
-                    <div className="mt-20 bg-indigo-600 rounded-3xl p-10 lg:p-16 text-white text-center">
-                        <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Ace Your Exam?</h2>
-                        <p className="text-lg opacity-90 mb-10 max-w-xl mx-auto">Join thousands of students who are already using AajExam to improve their scores and time management.</p>
+                    <div className="mt-32 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 lg:p-10 xl:p-20 text-white text-center border-4 border-slate-800 relative overflow-hidden shadow-2xl">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
+
+                        <h2 className="text-2xl lg:text-5xl font-black mb-6 uppercase tracking-tighter relative z-10">
+                            Ready to <span className="text-primary-400">Ace</span> Your Exam?
+                        </h2>
+                        <p className="text-lg lg:text-xl font-bold opacity-80 mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
+                            Join thousands of students who are already using AajExam to improve their scores and time management.
+                        </p>
                         <button
                             onClick={() => router.push('/quizzes')}
-                            className="bg-white text-indigo-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform"
+                            className="bg-primary-500 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all relative z-10"
                         >
                             Get Started Now
                         </button>
                     </div>
                 </div>
             </div>
-            <UnifiedFooter />
         </MobileAppWrapper>
     );
 }
@@ -177,3 +198,4 @@ export async function getServerSideProps(context) {
         };
     }
 }
+

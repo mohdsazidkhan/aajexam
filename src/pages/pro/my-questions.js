@@ -1,361 +1,279 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
+import {
+   ArrowLeft,
+   Plus,
+   Eye,
+   Heart,
+   Share2,
+   MessageCircle,
+   Zap,
+   ShieldCheck,
+   Clock,
+   CircleCheck,
+   CircleAlert,
+   HelpCircle,
+   FileText,
+   TrendingUp,
+   Box,
+   Compass,
+   Sparkles,
+   Layers,
+   Search,
+   Filter,
+   LayoutGrid,
+   List
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+
 import API from '../../lib/api';
-// MobileAppWrapper removed
-// UnifiedNavbar removed
-import UnifiedFooter from '../../components/UnifiedFooter';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
 import Loading from '../../components/Loading';
-import { toast } from 'react-toastify';
-import { FaArrowLeft, FaPlus, FaEye, FaHeart, FaShare, FaComment } from 'react-icons/fa';
+import Card from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
 
 const MyUserQuestions = () => {
-  const router = useRouter();
-  const [items, setItems] = useState([]);
-  const [status, setStatus] = useState('');
-  const [page, setPage] = useState(1);
-  const [limit] = useState(20);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [stats, setStats] = useState({
-    total: 0,
-    pending: 0,
-    approved: 0,
-    rejected: 0
-  });
+   const router = useRouter();
+   const [items, setItems] = useState([]);
+   const [status, setStatus] = useState('');
+   const [page, setPage] = useState(1);
+   const [limit] = useState(20);
+   const [total, setTotal] = useState(0);
+   const [loading, setLoading] = useState(false);
+   const [stats, setStats] = useState({
+      total: 0,
+      pending: 0,
+      approved: 0,
+      rejected: 0
+   });
 
-  const load = async () => {
-    setLoading(true);
-    try {
-      const res = await API.getMyUserQuestions({ status, page, limit });
-      if (res?.success) {
-        setItems(res.data || []);
-        setTotal(res.pagination?.total || 0);
+   const load = useCallback(async () => {
+      setLoading(true);
+      try {
+         const res = await API.getMyUserQuestions({ status, page, limit });
+         if (res?.success) {
+            setItems(res.data || []);
+            setTotal(res.pagination?.total || 0);
+         }
+      } catch (err) {
+         toast.error('Archive link failure');
+      } finally {
+         setLoading(false);
       }
-    } catch (err) {
-      console.error('Error loading questions:', err);
-      toast.error('Failed to load questions');
-    } finally {
-      setLoading(false);
-    }
-  };
+   }, [status, page, limit]);
 
-  const loadStats = async () => {
-    try {
-      const [allRes, pendingRes, approvedRes, rejectedRes] = await Promise.all([
-        API.getMyUserQuestions({ page: 1, limit: 1 }),
-        API.getMyUserQuestions({ status: 'pending', page: 1, limit: 1 }),
-        API.getMyUserQuestions({ status: 'approved', page: 1, limit: 1 }),
-        API.getMyUserQuestions({ status: 'rejected', page: 1, limit: 1 })
-      ]);
+   const loadStats = useCallback(async () => {
+      try {
+         const [allRes, pendingRes, approvedRes, rejectedRes] = await Promise.all([
+            API.getMyUserQuestions({ page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'pending', page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'approved', page: 1, limit: 1 }),
+            API.getMyUserQuestions({ status: 'rejected', page: 1, limit: 1 })
+         ]);
 
-      setStats({
-        total: allRes?.pagination?.total || 0,
-        pending: pendingRes?.pagination?.total || 0,
-        approved: approvedRes?.pagination?.total || 0,
-        rejected: rejectedRes?.pagination?.total || 0
-      });
-    } catch (err) {
-      console.error('Error loading stats:', err);
-    }
-  };
+         setStats({
+            total: allRes?.pagination?.total || 0,
+            pending: pendingRes?.pagination?.total || 0,
+            approved: approvedRes?.pagination?.total || 0,
+            rejected: rejectedRes?.pagination?.total || 0
+         });
+      } catch (err) {
+         console.error('Stats offline');
+      }
+   }, []);
 
-  useEffect(() => {
-    load();
-    loadStats();
-  }, [status, page]);
+   useEffect(() => {
+      load();
+      loadStats();
+   }, [load, loadStats]);
 
-  const totalPages = Math.max(1, Math.ceil(total / limit));
+   const totalPages = Math.max(1, Math.ceil(total / limit));
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'pending': return 'bg-primary-100 text-primary-800 border-primary-200 dark:bg-primary-900/20 dark:text-primary-200 dark:border-primary-800';
-      case 'approved': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800';
-      case 'rejected': return 'bg-secondary-100 text-secondary-800 border-secondary-200 dark:bg-secondary-900/20 dark:text-secondary-200 dark:border-secondary-800';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-200 dark:border-gray-800';
-    }
-  };
+   const getStatusConfig = (status) => {
+      switch (status) {
+         case 'approved': return { color: 'emerald', icon: CircleCheck, label: 'PUBLISHED' };
+         case 'rejected': return { color: 'primary', icon: CircleAlert, label: 'REDACTED' };
+         default: return { color: 'amber', icon: Clock, label: 'UNDER REVIEW' };
+      }
+   };
 
-  const getStatusIcon = (status) => {
-    switch (status) {
-      case 'pending': return '🟡';
-      case 'approved': return '✅';
-      case 'rejected': return '❌';
-      default: return '📝';
-    }
-  };
+   return (
+      <MobileAppWrapper title="Broadcasting Archives">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-  const getStatusText = (status) => {
-    switch (status) {
-      case 'pending': return 'Under Review';
-      case 'approved': return 'Approved';
-      case 'rejected': return 'Rejected';
-      default: return 'Unknown';
-    }
-  };
+            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
 
-  return (
-    <>
-      <Head>
-        <title>My Questions - AajExam Pro</title>
-        <meta name="description" content="View and manage all your submitted questions. Track approval status, views, likes, and performance metrics for each question you've created." />
-        <meta name="keywords" content="my questions, submitted questions, question status, question performance, pro dashboard" />
-        <meta property="og:title" content="My Questions - AajExam Pro" />
-        <meta property="og:description" content="View and manage all your submitted questions and track their performance." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="My Questions - AajExam Pro" />
-        <meta name="twitter:description" content="Manage your submitted questions on AajExam Pro." />
-      </Head>
-
-      <div className="min-h-screen bg-aajexam-light dark:bg-aajexam-dark py-6 px-4">
-        <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10">
-          {/* Header Section */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => router.back()}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-              >
-                <FaArrowLeft className="text-gray-600 dark:text-gray-400" />
-              </button>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">📚 My Questions</h1>
-                <p className="text-gray-600 dark:text-gray-300">Track your submitted questions and their performance</p>
-              </div>
-            </div>
-            <button
-              onClick={() => router.push('/pro/add-question')}
-              className="bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
-            >
-              <FaPlus />
-              <span>Add Question</span>
-            </button>
-          </div>
-
-          {/* Monthly Limit Info */}
-          <div className="bg-secondary-50 dark:bg-secondary-900/20 border border-secondary-200 dark:border-secondary-800 rounded-xl p-4 mb-6">
-            <p className="text-secondary-800 dark:text-secondary-200 text-sm font-medium text-center">
-              📅 You Can Add Max 100 Questions Per Month
-            </p>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total</p>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
-                </div>
-                <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-                  <span className="text-lg">📝</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Pending</p>
-                  <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stats.pending}</p>
-                </div>
-                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-                  <span className="text-lg">🟡</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Approved</p>
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.approved}</p>
-                </div>
-                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
-                  <span className="text-lg">✅</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Rejected</p>
-                  <p className="text-2xl font-bold text-primary-600 dark:text-red-400">{stats.rejected}</p>
-                </div>
-                <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-                  <span className="text-lg">❌</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Filter Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 p-4 mb-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center space-x-4">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Filter by Status:</label>
-                <select
-                  value={status}
-                  onChange={e => { setPage(1); setStatus(e.target.value); }}
-                  className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                >
-                  <option value="">📝 All Questions</option>
-                  <option value="pending">🟡 Under Review</option>
-                  <option value="approved">✅ Approved</option>
-                  <option value="rejected">❌ Rejected</option>
-                </select>
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Showing {items.length} of {total} questions
-              </div>
-            </div>
-          </div>
-
-          {/* Questions List */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
-            {loading ? (
-              <div className="p-8 text-center">
-                <Loading size="sm" color="yellow" message="Loading your questions..." />
-              </div>
-            ) : items.length === 0 ? (
-              <div className="p-8 text-center">
-                <div className="text-6xl mb-4">🤔</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No questions found</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {status === '' ? "You haven't created any questions yet." : `No ${status} questions found.`}
-                </p>
-                <button
-                  onClick={() => router.push('/pro/add-question')}
-                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg transition-colors"
-                >
-                  <FaPlus className="mr-2" />
-                  Create Your First Question
-                </button>
-              </div>
-            ) : (
-              <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                {items.map((q, index) => (
-                  <div key={q._id} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border ${getStatusColor(q.status)}`}>
-                            <span className="mr-1">{getStatusIcon(q.status)}</span>
-                            {getStatusText(q.status)}
-                          </span>
-                          <span className="text-sm text-gray-500 dark:text-gray-400">
-                            {new Date(q.createdAt).toLocaleDateString()}
-                          </span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                          {q.questionText}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Question Options Preview */}
-                    <div className="mb-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {(q.options || []).map((option, idx) => (
-                          <div key={idx} className={`flex items-center space-x-2 p-2 rounded-lg text-sm ${idx === q.correctOptionIndex
-                            ? 'bg-green-50 dark:bg-green-900/50 text-green-800 dark:text-green-200'
-                            : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                            }`}>
-                            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${idx === q.correctOptionIndex
-                              ? 'bg-green-500 text-white'
-                              : 'bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300'
-                              }`}>
-                              {String.fromCharCode(65 + idx)}
-                            </span>
-                            <span className="truncate">{option}</span>
-                            {idx === q.correctOptionIndex && (
-                              <span className="text-green-600 dark:text-green-400">✓</span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Statistics */}
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2 md:gap-y-0">
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-                        <div className="flex items-center space-x-1">
-                          <FaEye />
-                          <span>{q.viewsCount || 0} views</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <FaHeart />
-                          <span>{q.likesCount || 0} likes</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <FaShare />
-                          <span>{q.sharesCount || 0} shares</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <FaComment />
-                          <span>{(q.answers || []).length} answers</span>
-                        </div>
-                      </div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        Submitted {new Date(q.createdAt).toLocaleString()}
-                      </div>
-                    </div>
+               {/* --- Archives Hero --- */}
+               <header className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-20 h-20 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm">
+                     <Layers className="w-10 h-10" />
+                  </motion.div>
+                  <div className="space-y-4">
+                     <h1 className="text-4xl lg:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight">Broadcasting <span className="text-primary-500 text-glow-primary">Archives</span></h1>
+                     <p className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto">Database of synthesized knowledge units and transmission logs</p>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Showing {((page - 1) * limit) + 1} to {Math.min(page * limit, total)} of {total} questions
-              </div>
-              <div className="flex items-center space-x-2">
-                <button
-                  disabled={page <= 1}
-                  onClick={() => setPage(p => p - 1)}
-                  className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-                >
-                  Previous
-                </button>
-                <div className="flex items-center space-x-1">
-                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                    const pageNum = i + 1;
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => setPage(pageNum)}
-                        className={`px-3 py-2 text-sm font-medium rounded-md ${page === pageNum
-                          ? 'bg-primary-600 text-white'
-                          : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700'
-                          }`}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
-                </div>
-                <button
-                  disabled={page >= totalPages}
-                  onClick={() => setPage(p => p + 1)}
-                  className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-                >
-                  Next
-                </button>
-              </div>
+                  <div className="flex flex-wrap justify-center gap-4 pt-6">
+                     <Button variant="ghost" onClick={() => router.back()} className="px-8 py-5 rounded-3xl bg-white dark:bg-slate-800 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                        <ArrowLeft className="w-4 h-4 mr-2" /> BACK TO TERMINAL
+                     </Button>
+                     <Button variant="primary" size="lg" onClick={() => router.push('/pro/add-question')} className="px-8 py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary">
+                        <Plus className="w-4 h-4 mr-2" /> NEW BROADCAST
+                     </Button>
+                  </div>
+               </header>
+
+               {/* --- Status Metrics Bento --- */}
+               <section className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                     { label: 'TOTAL BROADCASTS', val: stats.total, icon: Zap, color: 'slate' },
+                     { label: 'ACTIVE REVIEW', val: stats.pending, icon: Clock, color: 'amber' },
+                     { label: 'PUBLISHED UNITS', val: stats.approved, icon: CircleCheck, color: 'emerald' },
+                     { label: 'REDACTED UNITS', val: stats.rejected, icon: CircleAlert, color: 'primary' }
+                  ].map((s, i) => (
+                     <Card key={i} className="p-6 border-b-4 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group overflow-hidden relative">
+                        <div className="flex items-center gap-4 relative z-10">
+                           <div className={`p-4 bg-${s.color === 'slate' ? 'slate-500/10' : `${s.color}-500/10`} text-${s.color === 'slate' ? 'slate-500' : `${s.color}-500`} rounded-2xl`}>
+                              <s.icon className="w-6 h-6" />
+                           </div>
+                           <div className="min-w-0">
+                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{s.label}</p>
+                              <p className="text-xl lg:text-2xl font-black font-outfit uppercase truncate">{s.val}</p>
+                           </div>
+                        </div>
+                        <Sparkles className="absolute -bottom-8 -right-8 w-24 h-24 text-slate-500/5 group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+                     </Card>
+                  ))}
+               </section>
+
+               {/* --- Archives Navigation Hub --- */}
+               <section className="flex flex-col lg:flex-row justify-between items-center gap-8 bg-white dark:bg-slate-800/50 backdrop-blur-xl p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl">
+                  <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-full">
+                     {[
+                        { id: '', label: 'ALL UNITS', icon: Search },
+                        { id: 'pending', label: 'REVIEW', icon: Clock },
+                        { id: 'approved', label: 'PUBLISHED', icon: CircleCheck },
+                        { id: 'rejected', label: 'REDACTED', icon: CircleAlert }
+                     ].map(f => (
+                        <button
+                           key={f.id}
+                           onClick={() => { setPage(1); setStatus(f.id); }}
+                           className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 whitespace-nowrap ${status === f.id ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-slate-600'}`}
+                        >
+                           <f.icon className="w-4 h-4" /> {f.label}
+                        </button>
+                     ))}
+                  </div>
+
+                  <div className="flex items-center gap-4 text-sm font-black text-slate-300 uppercase tracking-widest">
+                     <span className="hidden lg:inline">INDEX {items.length} / {total}</span>
+                     <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-xl flex">
+                        <button className="p-2 text-primary-500 bg-white dark:bg-slate-700 rounded-lg shadow-sm"><LayoutGrid className="w-4 h-4" /></button>
+                        <button className="p-2 text-slate-400 hover:text-slate-600"><List className="w-4 h-4" /></button>
+                     </div>
+                  </div>
+               </section>
+
+               {/* --- Archives Result Matrix --- */}
+               <AnimatePresence mode="wait">
+                  {loading ? (
+                     <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+                  ) : items.length === 0 ? (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center space-y-8">
+                        <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto">
+                           <HelpCircle className="w-12 h-12 text-slate-300" />
+                        </div>
+                        <div className="space-y-4">
+                           <h3 className="text-xl font-black font-outfit uppercase">Archive Void</h3>
+                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">Zero synthesized Questions detected in this sector under current parameters.</p>
+                        </div>
+                        <Button variant="primary" onClick={() => router.push('/pro/add-question')} className="px-10 py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary">
+                           INITIATE NEW BROADCAST
+                        </Button>
+                     </motion.div>
+                  ) : (
+                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {items.map((q, idx) => {
+                           const conf = getStatusConfig(q.status);
+                           return (
+                              <motion.div key={q._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                                 <Card className="h-full group border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all relative overflow-hidden">
+                                    <div className="p-8 space-y-6 relative z-10">
+                                       <div className="flex justify-between items-start">
+                                          <div className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 border-${conf.color}-500/20 bg-${conf.color}-500/5 text-${conf.color}-500 flex items-center gap-2`}>
+                                             <conf.icon className="w-4 h-4" /> {conf.label}
+                                          </div>
+                                          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                             {new Date(q.createdAt).toLocaleDateString('en-GB')}
+                                          </span>
+                                       </div>
+
+                                       <h3 className="text-lg font-black font-outfit uppercase leading-tight group-hover:text-primary-500 transition-colors line-clamp-2 min-h-[3.5rem]">
+                                          {q.questionText}
+                                       </h3>
+
+                                       <div className="grid grid-cols-2 gap-3">
+                                          {q.options?.map((opt, oIdx) => (
+                                             <div key={oIdx} className={`p-3 rounded-xl border-2 flex items-center gap-3 transition-all ${oIdx === q.correctOptionIndex ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-600' : 'bg-slate-50/50 dark:bg-slate-900/50 border-transparent text-slate-400'}`}>
+                                                <span className="text-[8px] font-black opacity-50">{String.fromCharCode(65 + oIdx)}</span>
+                                                <span className="text-[10px] font-black uppercase truncate">{opt}</span>
+                                             </div>
+                                          ))}
+                                       </div>
+
+                                       <div className="pt-4 flex items-center justify-between border-t border-slate-50 dark:border-slate-800">
+                                          <div className="flex gap-4">
+                                             {[
+                                                { icon: Eye, val: q.viewsCount || 0 },
+                                                { icon: Heart, val: q.likesCount || 0 },
+                                                { icon: Share2, val: q.sharesCount || 0 },
+                                                { icon: MessageCircle, val: (q.answers || []).length }
+                                             ].map((m, mi) => (
+                                                <div key={mi} className="flex items-center gap-1.5 text-slate-300">
+                                                   <m.icon className="w-3 h-3" />
+                                                   <span className="text-[10px] font-black">{m.val}</span>
+                                                </div>
+                                             ))}
+                                          </div>
+                                          <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-400 group-hover:text-primary-500 transition-colors shadow-inner">
+                                             <ArrowLeft className="w-4 h-4 rotate-180" />
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <Sparkles className="absolute -bottom-8 -left-8 w-24 lg:w-48 h-24 lg:h-48 text-primary-500/5 group-hover:text-primary-500/10 transition-colors pointer-events-none" />
+                                 </Card>
+                              </motion.div>
+                           );
+                        })}
+                     </div>
+                  )}
+               </AnimatePresence>
+
+               {/* --- Archives Pagination Hub --- */}
+               {totalPages > 1 && (
+                  <div className="flex justify-center pt-12">
+                     <div className="bg-white dark:bg-slate-800 p-2 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-800 flex gap-2">
+                        {[...Array(totalPages)].map((_, i) => (
+                           <button
+                              key={i}
+                              onClick={() => setPage(i + 1)}
+                              className={`w-12 h-12 rounded-2xl text-[10px] font-black transition-all ${page === i + 1 ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-50 dark:bg-slate-900 text-slate-400 hover:text-slate-600'}`}
+                           >
+                              {i + 1}
+                           </button>
+                        ))}
+                     </div>
+                  </div>
+               )}
+
             </div>
-          )}
-        </div>
-      </div>
-      <UnifiedFooter />
-    </>
-  );
+         </div>
+      </MobileAppWrapper>
+   );
 };
 
 export default MyUserQuestions;
