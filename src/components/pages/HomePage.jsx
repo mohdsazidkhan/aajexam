@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -23,6 +23,7 @@ import {
    MessageSquare,
    Activity,
    Radar,
+   Library,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -41,6 +42,7 @@ const HomePage = () => {
    const [dailyDose, setDailyDose] = useState(null);
    const [articles, setArticles] = useState([]);
    const [performanceReport, setPerformanceReport] = useState(null);
+   const [activePeriod, setActivePeriod] = useState('daily');
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
@@ -89,11 +91,27 @@ const HomePage = () => {
       );
    }
 
-   const xpProgress = performanceReport?.overallAccuracy ?? 0;
-   const streakCount = user?.streak ?? 0;
-   const userLevel = Math.floor((performanceReport?.totalAttempts ?? 0) / 10) + 1;
-   const quizAttempts = performanceReport?.totalAttempts ?? 0;
-   const accuracyScore = performanceReport?.overallAccuracy ?? 0;
+   // --- Extract Performance Data ---
+   const metrics = performanceReport?.performanceMetrics || {};
+   const examStats = metrics.examStats || {};
+   const rewardStats = metrics.rewardStats || {};
+   const legacyProgress = performanceReport?.legacyProgress || {};
+
+   // Period Data
+   const periodData = legacyProgress[activePeriod] || {};
+
+   const overallReadiness = examStats.overallReadiness ?? 0;
+   const averageMockScore = examStats.averageMockScore ?? 0;
+   const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
+   const streakCount = rewardStats.participationStreak ?? user?.streak ?? 0;
+   const totalWon = rewardStats.totalWon ?? 0;
+
+   // Display values for active period
+   const periodQuizAttempts = periodData.totalQuizAttempts ?? 0;
+   const periodAccuracy = periodData.accuracy ?? 0;
+   const periodLevel = periodData.currentLevel ?? 0;
+   const periodLevelName = periodData.levelName ?? 'Starter';
+
    const coinsEarned = user?.coins || 0;
 
    const containerVariants = {
@@ -114,7 +132,7 @@ const HomePage = () => {
          variants={containerVariants}
          initial="hidden"
          animate="visible"
-         className="pb-20 relative selection:bg-primary-500 selection:text-white font-outfit"
+         className="relative selection:bg-primary-500 selection:text-white font-outfit"
       >
          <Head>
             <title>AajExam | Home</title>
@@ -149,18 +167,25 @@ const HomePage = () => {
                         <h1 className="text-lg lg:text-5xl font-black text-content-primary font-outfit uppercase tracking-tighter leading-none">
                            Hi, <span className="text-primary-600">{user?.name?.split(' ')[0] || 'Student'}</span>
                         </h1>
-                        <p className="text-sm lg:text-lg font-bold text-content-secondary tracking-[0.04em]">What would you like to practice today?</p>
+                        <div className="flex items-center justify-center lg:justify-start gap-2">
+                           <p className="text-sm lg:text-lg font-bold text-content-secondary tracking-[0.04em]">What would you like to practice today?</p>
+                           {performanceReport?.primaryTargetExam && (
+                              <span className="px-3 py-1 bg-primary-500 border-b-4 border-primary-700 text-white text-[10px] font-black rounded-xl uppercase tracking-widest animate-bounce">
+                                 Target: {performanceReport.primaryTargetExam}
+                              </span>
+                           )}
+                        </div>
                      </div>
 
                      <div className="flex flex-wrap justify-center lg:justify-start gap-2 lg:gap-4 pt-0 lg:pt-4">
                         <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
-                           <BookOpen className="w-3 h-3 lg:w-4 lg:h-4 text-primary-600" /> Quiz: <span className="text-content-primary">{quizAttempts}</span>
+                           <BookOpen className="w-3 h-3 lg:w-4 lg:h-4 text-primary-600" /> Tests Attempted: <span className="text-content-primary">{mockTestsAttempted}</span>
                         </div>
                         <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
-                           <Target className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-500" /> <span className="text-content-primary">{accuracyScore.toFixed(0)}%</span>
+                           <Target className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-500" /> Readiness: <span className="text-content-primary">{overallReadiness}%</span>
                         </div>
                         <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
-                           <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" /> <span className="text-content-primary">{coinsEarned}</span>
+                           <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" /> Total Rewards Won: <span className="text-content-primary">{totalWon}</span>
                         </div>
                      </div>
                   </div>
@@ -181,59 +206,90 @@ const HomePage = () => {
             </motion.section>
 
             {/* --- Progress Section --- */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 relative z-10 px-2 lg:px-4">
-
-               {/* XP & Level Core */}
+            <div className="flex flex-col gap-4 lg:gap-8 relative z-10 px-2 lg:px-4">
+               {/* --- Overall Status Dashboard --- */}
                <motion.div variants={itemVariants} className="lg:col-span-8">
                   <Card variant="white" depth={false} className="h-full border-none shadow-2xl p-0 overflow-hidden group relative rounded-[1.5rem] lg:rounded-[4rem]">
-                     <div className="p-4 md:p-8 lg:p-12 space-y-4 lg:space-y-12 relative z-10">
-                        <div className="flex flex-col lg:flex-row justify-between items-start gap-4 lg:gap-8">
-                           <div className="flex items-center justify-between gap-3 lg:gap-4">
-                              <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-background-page rounded-full border border-border-primary">
-                                 <Activity className="w-3.5 h-3.5 text-primary-500" />
-                                 <p className="text-[10px] font-black text-content-muted uppercase tracking-[0.4em]">YOUR LEVEL</p>
+                     <div className="space-y-6 lg:space-y-10 relative z-10">
+                        {/* Overall Readiness & Mock Average */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                           <div className="space-y-4 lg:space-y-6">
+                              <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary-500/10 rounded-full border border-primary-500/20 shadow-inner">
+                                 <Radar className="w-4 h-4 text-primary-600 animate-pulse" />
+                                 <p className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em]">Overall Preparation</p>
                               </div>
-                              <h2 className="text-xl lg:text-5xl font-black font-outfit uppercase text-content-primary tracking-tighter leading-none">LEVEL {userLevel}</h2>
+                              <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase text-content-primary tracking-tighter leading-none">EXAM READINESS</h2>
+                              <div className="relative pt-2">
+                                 <div className="flex justify-between items-end mb-2">
+                                    <span className="text-[10px] font-black text-content-muted uppercase tracking-widest">Confidence Index</span>
+                                    <span className="text-xl lg:text-2xl font-black text-primary-600 font-outfit">{overallReadiness}%</span>
+                                 </div>
+                                 <div className="h-4 lg:h-6 bg-background-page rounded-full p-1 border-2 border-border-primary shadow-inner">
+                                    <motion.div
+                                       initial={{ width: 0 }}
+                                       animate={{ width: `${overallReadiness}%` }}
+                                       className="h-full bg-primary-500 rounded-full shadow-duo-primary"
+                                    />
+                                 </div>
+                              </div>
                            </div>
-                           <motion.div
-                              whileHover={{ scale: 1.05 }}
-                              className="flex items-center gap-3 lg:gap-4 bg-background-page px-4 lg:px-8 py-3 lg:py-5 rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-2xl w-full lg:w-auto"
-                           >
-                              <div className="w-9 h-9 lg:w-12 lg:h-12 bg-orange-500 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-amber">
-                                 <Flame className="w-4 h-4 lg:w-6 lg:h-6 text-white fill-white" />
+
+                           <div className="grid grid-cols-2 gap-4">
+                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-emerald-500/20 transition-all">
+                                 <TrendingUp className="w-6 h-6 text-emerald-500 mb-2" />
+                                 <p className="text-[9px] font-black text-content-muted uppercase mb-1">Mock Average</p>
+                                 <h3 className="text-xl lg:text-3xl font-black text-content-primary font-outfit">{averageMockScore}</h3>
                               </div>
-                              <div>
-                                 <p className="text-[8px] lg:text-[9px] font-black text-content-muted uppercase tracking-widest leading-none mb-1">DAILY STREAK</p>
-                                 <span className="text-xl lg:text-3xl font-black text-content-primary font-outfit">{streakCount} DAYS</span>
+                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-amber-500/20 transition-all">
+                                 <Flame className="w-6 h-6 text-orange-500 mb-2 fill-orange-500" />
+                                 <p className="text-[9px] font-black text-content-muted uppercase mb-1">Streak</p>
+                                 <h3 className="text-xl lg:text-3xl font-black text-content-primary font-outfit">{streakCount}D</h3>
                               </div>
-                           </motion.div>
+                           </div>
                         </div>
 
-                        <div className="space-y-3 lg:space-y-8 pt-2 lg:pt-8">
-                           <div className="flex justify-between items-end">
-                              <div className="flex items-center gap-4">
-                                 <div className="p-3 lg:p-4 bg-primary-500 rounded-xl lg:rounded-2xl shadow-duo-primary border-2 border-primary-500/10">
-                                    <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
+                        {/* Quiz Status Tabs (Daily, Weekly, Monthly) */}
+                        <div className="space-y-6 pt-6 border-t-2 border-border-primary/50">
+                           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                              <div className="flex items-center gap-3">
+                                 <div className="p-3 bg-indigo-500/10 rounded-xl">
+                                    <Activity className="w-5 h-5 text-indigo-500" />
                                  </div>
-                                 <div>
-                                    <span className="text-md md:text-xl lg:text-2xl font-black text-content-primary font-outfit uppercase block">Next Level</span>
-                                    <span className="text-[8px] lg:text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">GOAL: {userLevel + 1}</span>
-                                 </div>
+                                 <h3 className="text-lg lg:text-2xl font-black text-content-primary uppercase tracking-tighter">Quiz Performance Status</h3>
                               </div>
-                              <span className="text-md md:text-xl lg:text-2xl font-black text-content-muted font-outfit tracking-tighter">{xpProgress.toFixed(0)}%</span>
+                              <div className="flex p-1.5 bg-background-page rounded-2xl border-2 border-border-primary shadow-inner">
+                                 {['daily', 'weekly', 'monthly'].map((tab) => (
+                                    <button
+                                       key={tab}
+                                       onClick={() => setActivePeriod(tab)}
+                                       className={`px-4 lg:px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activePeriod === tab
+                                          ? 'bg-primary-500 text-white shadow-lg scale-105'
+                                          : 'text-content-muted hover:text-content-primary'
+                                          }`}
+                                    >
+                                       {tab}
+                                    </button>
+                                 ))}
+                              </div>
                            </div>
 
-                           <div className="relative">
-                              <div className="h-8 lg:h-14 bg-background-page rounded-2xl lg:rounded-[2rem] p-1 lg:p-2 border-2 border-border-primary overflow-hidden shadow-inner">
-                                 <motion.div
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${xpProgress}%` }}
-                                    transition={{ duration: 2, ease: "circOut" }}
-                                    className="h-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 rounded-xl lg:rounded-2xl flex items-center justify-end px-4 lg:px-6 shadow-duo-primary relative overflow-hidden"
-                                 >
-                                    <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer" />
-                                    <Star className="w-4 h-4 lg:w-6 lg:h-6 text-white animate-pulse" />
-                                 </motion.div>
+                           <div className="grid grid-cols-3 gap-3 lg:gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
+                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Quiz Played</p>
+                                 <div className="text-lg lg:text-3xl font-black text-content-primary font-outfit">{periodData.highScoreWins || 0} / {periodData.totalQuizAttempts || 0}</div>
+                                 <p className="text-[8px] font-black text-primary-500 uppercase mt-1">H-Wins / Attempts</p>
+                              </div>
+                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
+                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Accuracy</p>
+                                 <div className="text-lg lg:text-3xl font-black text-emerald-500 font-outfit">{periodAccuracy}%</div>
+                                 <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
+                                    <motion.div initial={{ width: 0 }} animate={{ width: `${periodAccuracy}%` }} className="h-full bg-emerald-500" />
+                                 </div>
+                              </div>
+                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
+                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Evolution</p>
+                                 <div className="text-lg lg:text-3xl font-black text-indigo-500 font-outfit uppercase">LVL {periodLevel}</div>
+                                 <p className="text-[8px] font-black text-indigo-400 uppercase mt-1">{periodLevelName}</p>
                               </div>
                            </div>
                         </div>
@@ -242,14 +298,11 @@ const HomePage = () => {
                      <div className="absolute -bottom-10 -right-10 p-10 opacity-5 group-hover:opacity-10 transition-opacity rotate-12 group-hover:rotate-0 duration-700">
                         <Award className="w-64 h-64 lg:w-96 lg:h-96 text-white" />
                      </div>
-                     <div className="h-2 lg:h-3 bg-primary-500 relative">
-                        <div className="absolute inset-0 bg-white/50 animate-pulse" />
-                     </div>
                   </Card>
                </motion.div>
 
                {/* Stats Cards */}
-               <motion.div variants={itemVariants} className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-8">
+               <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
                   <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto" onClick={() => router.push('/search')}>
                      <div className="flex justify-between items-start relative z-10">
                         <div className="p-2 lg:p-5 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl lg:rounded-2xl border-2 border-emerald-100 dark:border-emerald-800 shadow-inner">
@@ -280,6 +333,22 @@ const HomePage = () => {
                         <h4 className="text-lg lg:text-4xl font-black font-outfit uppercase leading-none tracking-tighter text-content-primary">₹{user?.walletBalance || 0} <span className="block text-amber-500 text-[10px] lg:text-2xl font-black uppercase tracking-widest mt-0.5 lg:mt-2">Balance</span></h4>
                      </div>
                      <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-amber-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
+                  </Card>
+
+                  <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto col-span-2 lg:col-span-1" onClick={() => router.push('/govt-exams')}>
+                     <div className="flex justify-between items-start relative z-10">
+                        <div className="p-2 lg:p-5 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl lg:rounded-2xl border-2 border-indigo-100 dark:border-indigo-800 shadow-inner">
+                           <Library className="w-5 h-5 lg:w-10 lg:h-10 text-indigo-500 fill-indigo-500" />
+                        </div>
+                        <motion.div whileHover={{ x: 5 }} className="hidden sm:block p-2 lg:p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl">
+                           <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-indigo-600" />
+                        </motion.div>
+                     </div>
+                     <div className="space-y-0.5 relative z-10 pt-2 lg:pt-8">
+                        <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-[0.2em] lg:tracking-[0.3em]">OFFICIAL</p>
+                        <h4 className="text-lg lg:text-4xl font-black font-outfit uppercase leading-none tracking-tighter text-content-primary">GOVT. <span className="block text-indigo-500 font-black">EXAMS</span></h4>
+                     </div>
+                     <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-indigo-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
                   </Card>
                </motion.div>
             </div>

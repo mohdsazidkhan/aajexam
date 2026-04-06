@@ -19,10 +19,10 @@ const LeaderboardPage = () => {
         <meta name="twitter:title" content="Top Performers - AajExam Platform" />
         <meta name="twitter:description" content="Check the AajExam top performers and compete with other quiz enthusiasts." />
       </Head>
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-12 font-outfit relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-slate-950 py-4 font-outfit relative overflow-hidden">
         {/* Background atmosphere */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-primary-500/10 to-transparent blur-[120px] pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <TopPerformers />
         </div>

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
@@ -144,7 +144,7 @@ const TopPerformers = () => {
                      </div>
                      <div className="space-y-1">
                         <p className="font-black text-sm uppercase line-clamp-1">{top3[1].name}</p>
-                        <p className="text-xl font-black text-primary-700 dark:text-primary-500">{top3[1].totalScore || top3[1].level?.totalScore || 0}</p>
+                        <p className="text-xl font-black text-primary-700 dark:text-primary-500">{top3[1].stats?.totalScore || top3[1].totalScore || 0}</p>
                      </div>
                      <div className="h-24 lg:h-32 bg-slate-200 dark:bg-slate-700 rounded-t-[2rem] shadow-inner" />
                   </motion.div>
@@ -164,8 +164,9 @@ const TopPerformers = () => {
                      </div>
                      <div className="space-y-1">
                         <p className="font-black text-lg lg:text-xl uppercase line-clamp-1">{top3[0].name}</p>
-                        <p className="text-2xl lg:text-xl lg:text-3xl font-black text-primary-700 dark:text-primary-500 leading-none">{top3[0].totalScore || top3[0].level?.totalScore || 0}</p>
-                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Points earned</p>
+                        <p className="text-2xl lg:text-xl lg:text-3xl font-black text-primary-700 dark:text-primary-500 leading-none">{top3[0].stats?.totalScore || top3[0].totalScore || 0}</p>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Total Score</p>
+
                      </div>
                      <div className="h-40 lg:h-56 bg-primary-500 rounded-t-[3rem] shadow-duo-primary flex flex-col items-center justify-center text-white">
                         <Award className="w-12 h-12 mb-2 opacity-50" />
@@ -187,7 +188,7 @@ const TopPerformers = () => {
                      </div>
                      <div className="space-y-1">
                         <p className="font-black text-sm uppercase line-clamp-1">{top3[2].name}</p>
-                        <p className="text-lg font-black text-primary-700 dark:text-primary-500">{top3[2].totalScore || top3[2].level?.totalScore || 0}</p>
+                        <p className="text-lg font-black text-primary-700 dark:text-primary-500">{top3[2].stats?.totalScore || top3[2].totalScore || 0}</p>
                      </div>
                      <div className="h-20 lg:h-24 bg-amber-100 dark:bg-amber-900/40 rounded-t-[2rem] shadow-inner" />
                   </motion.div>
@@ -198,29 +199,29 @@ const TopPerformers = () => {
 
          {/* --- User Rank Sticky Bar --- */}
          {data?.currentUser && (
-            <Card className="bg-primary-500 text-white border-none p-6 shadow-duo-primary relative overflow-hidden group">
+            <Card className="bg-primary-500 dark:bg-primary-800 text-white border-none p-3 lg:p-6 shadow-duo-primary relative overflow-hidden group">
                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
                   <div className="flex items-center gap-6">
                      <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center font-black text-3xl">
                         {data.currentUser.rank || data.currentUser.position}
                      </div>
                      <div>
-                        <h4 className="text-xl font-black font-outfit uppercase">Your Performance</h4>
-                        <p className="text-xs font-bold text-white/70 uppercase tracking-widest leading-none">Global Ranking for {getCurrentMonthDisplay()}</p>
+                        <h4 className="text-xl font-black font-outfit">Your Performance</h4>
+                        <p className="text-xs font-bold text-white/70 tracking-widest leading-none">Global Ranking for {getCurrentMonthDisplay()}</p>
                      </div>
                   </div>
                   <div className="grid grid-cols-3 gap-8 lg:gap-12">
                      <div className="text-center">
-                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.level?.totalScore || 0}</p>
-                        <p className="text-[10px] font-black uppercase opacity-60">Score</p>
+                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.stats?.highScoreWins ?? data.currentUser.stats?.totalScore ?? 0}</p>
+                        <p className="text-[10px] font-black opacity-60">High Score Wins</p>
                      </div>
                      <div className="text-center">
-                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.level?.accuracy || 0}%</p>
-                        <p className="text-[10px] font-black uppercase opacity-60">Accuracy</p>
+                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.stats?.accuracy ?? 0}%</p>
+                        <p className="text-[10px] font-black opacity-60">Accuracy</p>
                      </div>
                      <div className="text-center">
-                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.level?.quizzesPlayed || 0}</p>
-                        <p className="text-[10px] font-black uppercase opacity-60">Quests</p>
+                        <p className="text-xl lg:text-2xl font-black font-outfit leading-none">{data.currentUser.stats?.totalQuizAttempts ?? 0}</p>
+                        <p className="text-[10px] font-black opacity-60">Quizzes Played</p>
                      </div>
                   </div>
                   <Button variant="white" size="lg" className="!text-primary-800 dark:!text-primary-400 hover:bg-slate-50 transition-all font-black px-10">CLIMB HIGHER</Button>
@@ -266,23 +267,23 @@ const TopPerformers = () => {
                                           </div>
                                           <div className="space-y-0.5">
                                              <p className="font-bold text-sm leading-tight line-clamp-1">{player.name}</p>
-                                             <p className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase">Level {player.level?.currentLevel}</p>
+                                             <div className="text-xs font-black italic tracking-tighter text-indigo-500 tabular-nums">LVL {player.level?.currentLevel?.number ?? player.level?.currentLevel ?? 0} {player.level?.levelName ? `- ${player.level.levelName}` : ''}</div>
                                           </div>
                                        </div>
                                     </td>
                                     <td className="px-6 py-5">
                                        <div className="flex flex-col items-center gap-1 min-w-[100px]">
-                                          <span className="text-[10px] font-bold text-slate-600 dark:text-gray-400 uppercase">{player.level?.accuracy || 0}% Accuracy</span>
+                                          <span className="text-[10px] font-bold text-slate-600 dark:text-gray-400 uppercase">{player.stats?.accuracy || 0}% Accuracy</span>
                                           <div className="w-full h-1.5 bg-gray-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                                             <ProgressBar progress={player.level?.accuracy || 0} color="secondary" height="h-full" />
+                                             <ProgressBar progress={player.stats?.accuracy || 0} color="secondary" height="h-full" />
                                           </div>
                                        </div>
                                     </td>
                                     <td className="px-6 py-5 text-center">
-                                       <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-black">{player.level?.quizzesPlayed || 0}</span>
+                                       <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-black">{player.stats?.totalQuizAttempts || 0}</span>
                                     </td>
                                     <td className="px-6 py-5 text-right font-black text-slate-700 dark:text-slate-100 italic">
-                                       {player.totalScore || player.level?.totalScore || 0}
+                                       {player.stats?.highScoreWins || player.stats?.totalScore || 0}
                                     </td>
                                  </motion.tr>
                               ))}
@@ -301,7 +302,7 @@ const TopPerformers = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.05 }}
                         whileHover={{ scale: 1.02 }}
-                        className="bg-white dark:bg-slate-900/50 border-2 border-b-8 border-slate-100 dark:border-slate-800 rounded-[2rem] p-5 shadow-sm relative overflow-hidden group"
+                        className="bg-white dark:bg-slate-900/50 border-2 border-b-4 lg:border-b-8 border-slate-100 dark:border-slate-800 rounded-[1rem] lg:rounded-[2rem] p-2 lg:p-4 shadow-sm relative overflow-hidden group"
                      >
                         <div className="flex items-center justify-between mb-4">
                            <div className="flex items-center gap-4">
@@ -310,9 +311,10 @@ const TopPerformers = () => {
                               </div>
                               <div>
                                  <h4 className="font-bold text-base leading-tight line-clamp-1">{player.name}</h4>
+                                 <h4 className="font-italic text-md leading-tight line-clamp-1">{`@${player?.username}`}</h4>
                                  <div className="flex items-center gap-2">
-                                    <span className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase">LVL {player.level?.currentLevel}</span>
-                                    <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase">â€¢ RANK #{idx + 4}</span>
+                                    <span className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase">LVL {player.level?.currentLevel?.number ?? player.level?.currentLevel ?? 0} {player.level?.levelName ? `- ${player.level.levelName}` : ''}</span>
+                                    <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase">{'\u2022'} RANK #{idx + 4}</span>
                                  </div>
                               </div>
                            </div>
@@ -320,22 +322,22 @@ const TopPerformers = () => {
 
                         <div className="grid grid-cols-2 gap-4 mb-4">
                            <div className="bg-slate-50 dark:bg-slate-800/30 p-3 rounded-2xl border border-slate-100 dark:border-slate-800/50">
-                              <p className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase mb-1">Quests</p>
-                              <p className="text-base font-black">{player.level?.quizzesPlayed || 0}</p>
+                              <p className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase mb-1">High Score Wins</p>
+                              <p className="text-base font-black">{player.stats?.highScoreWins || 0}</p>
                            </div>
                            <div className="bg-slate-50 dark:bg-slate-800/30 p-3 rounded-2xl border border-slate-100 dark:border-slate-800/50">
                               <p className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase mb-1">Score</p>
-                              <p className="text-base font-black text-primary-600">{player.totalScore || player.level?.totalScore || 0}</p>
+                              <p className="text-base font-black text-primary-600">{player.stats?.totalScore || 0}</p>
                            </div>
                         </div>
 
                         <div className="space-y-2">
                            <div className="flex justify-between items-center text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase">
-                              <span>Mastery</span>
-                              <span>{player.level?.accuracy || 0}% Accuracy</span>
+                              <span>Accuracy</span>
+                              <span>{player.stats?.accuracy || 0}%</span>
                            </div>
                            <div className="w-full h-2 bg-slate-100 dark:bg-slate-800/50 rounded-full overflow-hidden">
-                              <ProgressBar progress={player.level?.accuracy || 0} color="secondary" height="h-full" />
+                              <ProgressBar progress={player.stats?.accuracy || 0} color="secondary" height="h-full" />
                            </div>
                         </div>
                      </motion.div>

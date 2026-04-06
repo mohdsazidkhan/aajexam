@@ -109,7 +109,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
 
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-6xl font-black font-outfit uppercase leading-tight text-white tracking-tighter drop-shadow-lg">
-                Study Hub
+                Exams Hub
               </h1>
               <p className="text-lg lg:text-xl font-bold text-white/90 max-w-md leading-relaxed">
                 What would you like to master today?
@@ -127,7 +127,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
               fullWidth={true}
               className="rounded-2xl px-10 py-5 font-black uppercase tracking-widest text-xs group md:w-fit"
             >
-              Start Learning <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              Start Practice <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
         </div>

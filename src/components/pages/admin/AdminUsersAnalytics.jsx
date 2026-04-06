@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -222,7 +222,7 @@ const AdminUsersAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'Free'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <div className="text-xs font-black text-primary-500 tracking-widest mb-1 italic">LVL_{s.level?.currentLevel || 0}</div>
+                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">EVO_LEVEL: LVL {s.level?.currentLevel?.number ?? s.level?.currentLevel ?? 0}</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: `${Math.min((s.level?.currentLevel || 0)*5, 100)}%` }} /></div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
@@ -251,7 +251,7 @@ const AdminUsersAnalytics = () => {
                                                     </div>
                                                     <div className="flex justify-between items-center">
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Progression</div>
-                                                        <div className="text-md font-black text-primary-500 tabular-nums">LVL_{s.level?.currentLevel || 0}</div>
+                                                        <span className="text-indigo-500 text-sm italic tracking-tighter">LVL {s.level?.currentLevel?.number ?? s.level?.currentLevel ?? 0}</span>
                                                     </div>
                                                 </div>
                                                 <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">Audit Portfolio</button>

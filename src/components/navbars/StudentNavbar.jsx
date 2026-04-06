@@ -115,7 +115,7 @@ const StudentNavbar = () => {
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     className="absolute right-0 mt-3 w-64 bg-background-surface border border-border-primary rounded-[2rem] p-3 shadow-2xl z-[110]"
                   >
-                    <div className="p-4 mb-2 bg-background-surface-secondary border border-border-primary/50">
+                    <div className="p-4 mb-2 rounded-[2rem] bg-background-surface-secondary border border-border-primary/50">
                       <p className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">Authenticated</p>
                       <p className="text-sm font-black text-content-primary truncate">{user.email}</p>
                     </div>
