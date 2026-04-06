@@ -230,20 +230,20 @@ const AdminUserBlogs = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden"
+      className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden"
     >
       <div className="overflow-x-auto selection:bg-indigo-500/30">
         <table className="w-full">
           <thead>
             <tr className="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-white/5">
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Submission</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Author</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Sector</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Moderation</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Metrics</th>
-              <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Recorded</th>
-              <th className="px-8 py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Controls</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Submission</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Author</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Sector</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Moderation</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Metrics</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Recorded</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Controls</th>
             </tr>
           </thead>
           <tbody className="divide-y-2 divide-slate-100 dark:divide-white/5">
@@ -255,10 +255,10 @@ const AdminUserBlogs = () => {
                 key={blog._id}
                 className="group hover:bg-indigo-500/5 transition-all text-nowrap"
               >
-                <td className="px-8 py-6 text-[10px] font-black text-slate-400 tabular-nums">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 text-[10px] font-black text-slate-400 tabular-nums">
                   {((currentPage - 1) * 10) + index + 1}
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center gap-4">
                     <img
                       className="h-14 w-14 rounded-2xl object-cover ring-2 ring-slate-100 dark:ring-white/10 group-hover:ring-indigo-500/50 transition-all shadow-lg"
@@ -273,16 +273,16 @@ const AdminUserBlogs = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{blog.author?.name || 'Unknown User'}</div>
                   <div className="text-[9px] font-bold text-slate-400 tracking-widest">{blog.author?.email || 'PRIVACY_PROTECTED'}</div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-lg text-[9px] font-black uppercase border border-slate-200 dark:border-white/5">
                     {blog.category?.name || 'GENERAL'}
                   </span>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center flex-wrap gap-2">
                     {getStatusBadge(blog.status)}
                     {getRewardTierBadge(blog.rewardTier)}
@@ -293,8 +293,8 @@ const AdminUserBlogs = () => {
                     )}
                   </div>
                 </td>
-                <td className="px-8 py-6">
-                  <div className="flex items-center gap-6 text-slate-400">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
+                  <div className="flex items-center gap-3 lg:gap-6 text-slate-400">
                     <div className="flex items-center gap-2">
                       <Eye className="w-4 h-4" />
                       <span className="text-[11px] font-black tabular-nums">{blog.views || 0}</span>
@@ -305,13 +305,13 @@ const AdminUserBlogs = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest whitespace-nowrap">
                     <div className="mb-1">{formatDate(blog.createdAt)}</div>
                     <div className="opacity-50 flex items-center gap-1"><Clock className="w-3 h-3" /> {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center justify-center gap-2">
                     <button onClick={() => handleViewContent(blog)} className="p-2 hover:bg-indigo-500 hover:text-white rounded-lg transition-colors"><Eye className="w-4 h-4" /></button>
                     <button onClick={() => handleStatusChange(blog)} className="p-2 hover:bg-amber-500 hover:text-white rounded-lg transition-colors"><Settings className="w-4 h-4" /></button>
@@ -405,8 +405,8 @@ const AdminUserBlogs = () => {
       <AdminMobileAppWrapper title="Community Submissions">
         <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505]">
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white mt-12 lg:mt-0">
-            <div className="flex flex-col items-center justify-center py-48 space-y-8">
+          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white mt-4 lg:mt-12 lg:mt-0">
+            <div className="flex flex-col items-center justify-center py-48 space-y-4 lg:space-y-8">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
                 <MessageSquare className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
@@ -427,14 +427,14 @@ const AdminUserBlogs = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <MessageSquare className="w-64 h-64 text-indigo-500 -rotate-12" />
             </div>
 
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-              <div className="space-y-6">
+              <div className="space-y-3 lg:space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Users className="w-6 h-6" />
@@ -451,7 +451,7 @@ const AdminUserBlogs = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/20 p-3 rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5">
+              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/20 p-3 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5">
                 <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               </div>
             </div>
@@ -460,9 +460,9 @@ const AdminUserBlogs = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 lg:p-10 rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl mb-12 relative overflow-hidden"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-10 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl mb-4 lg:mb-12 relative overflow-hidden"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 relative z-10">
               <div className="space-y-4">
                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Search Submissions</label>
                 <div className="relative group/field">
@@ -473,7 +473,7 @@ const AdminUserBlogs = () => {
                     value={filters.search}
                     onChange={handleFilterChange}
                     placeholder="QUERY TITLE/AUTHOR..."
-                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all"
+                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all"
                   />
                 </div>
               </div>
@@ -485,7 +485,7 @@ const AdminUserBlogs = () => {
                     name="status"
                     value={filters.status}
                     onChange={handleFilterChange}
-                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                   >
                     <option value="">ALL STATUSES</option>
                     <option value="pending">IN REVIEW</option>
@@ -504,7 +504,7 @@ const AdminUserBlogs = () => {
                     name="category"
                     value={filters.category}
                     onChange={handleFilterChange}
-                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                   >
                     <option value="">ALL SECTORS</option>
                     {categories.map(cat => (
@@ -521,7 +521,7 @@ const AdminUserBlogs = () => {
                     name="rewardTier"
                     value={filters.rewardTier}
                     onChange={handleFilterChange}
-                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/20 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                    className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                   >
                     <option value="">ALL TIERS</option>
                     <option value="normal">NORMAL - ₹5</option>
@@ -535,7 +535,7 @@ const AdminUserBlogs = () => {
 
           <AnimatePresence mode="wait">
             {error ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-rose-500/10 border-4 border-rose-500/20 rounded-[3rem] p-10 flex items-center gap-6 shadow-2xl">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-rose-500/10 border-4 border-rose-500/20 rounded-xl lg:rounded-[3rem] p-4 lg:p-10 flex items-center gap-3 lg:gap-6 shadow-2xl">
                 <div className="p-4 bg-rose-500 text-white rounded-2xl shadow-lg">
                   <Ban className="w-8 h-8" />
                 </div>
@@ -545,15 +545,15 @@ const AdminUserBlogs = () => {
                 </div>
               </motion.div>
             ) : blogs.length === 0 ? (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-32 text-center shadow-2xl">
-                <div className="w-32 h-32 rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8 mx-auto">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-32 text-center shadow-2xl">
+                <div className="w-32 h-32 rounded-2xl lg:rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-4 lg:mb-8 mx-auto">
                   <FileText className="w-16 h-16 text-slate-300" />
                 </div>
                 <h3 className="text-3xl font-black italic tracking-tighter text-slate-300 uppercase mb-4">No Submissions Found</h3>
                 <p className="max-w-md text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mx-auto">THE COMMUNITY REPOSITORY IS CURRENTLY VOID OF SUBMISSIONS IN THIS SECTOR</p>
               </motion.div>
             ) : (
-              <div className="space-y-12 pb-24">
+              <div className="space-y-4 lg:space-y-12 pb-24">
                 {viewMode === 'table' ? renderTableView() :
                   viewMode === 'list' ? renderListView() :
                     renderGridView()}

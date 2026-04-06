@@ -106,14 +106,14 @@ const AdminUserWallets = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+          <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
             <Wallet className="w-64 h-64 text-indigo-500 -rotate-12" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-            <div className="space-y-6">
+            <div className="space-y-3 lg:space-y-6">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                   <Wallet className="w-6 h-6" />
@@ -136,7 +136,7 @@ const AdminUserWallets = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={handleResetClaimableRewards}
                 disabled={resetting}
-                className="flex items-center gap-3 px-8 py-4 bg-rose-500 text-white rounded-2xl shadow-xl shadow-rose-500/20 group/btn disabled:opacity-50"
+                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl shadow-xl shadow-rose-500/20 group/btn disabled:opacity-50"
               >
                 <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : 'group-hover/btn:rotate-180 transition-transform'}`} />
                 <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET REWARDS'}</span>
@@ -146,7 +146,7 @@ const AdminUserWallets = () => {
         </motion.div>
 
         {/* Search + Controls */}
-        <div className="flex flex-col lg:flex-row items-center gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4 lg:mb-12">
           <div className="relative group/search w-full lg:w-96">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
             <input
@@ -196,18 +196,18 @@ const AdminUserWallets = () => {
         ) : (
           <>
             {viewMode === 'table' && (
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="overflow-x-auto selection:bg-indigo-500/30 text-nowrap">
-                  <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
+                  <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                     <thead>
                       <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                        <th className="px-6 py-4">S.No.</th>
-                        <th className="px-6 py-4">User Details</th>
-                        <th className="px-6 py-4">Contact</th>
-                        <th className="px-6 py-4 text-right">Wallet Amount</th>
-                        <th className="px-6 py-4 text-center">Claimable</th>
-                        <th className="px-6 py-4">Questions Track</th>
-                        <th className="px-6 py-4">Join Date</th>
+                        <th className="px-3 lg:px-6 py-4">S.No.</th>
+                        <th className="px-3 lg:px-6 py-4">User Details</th>
+                        <th className="px-3 lg:px-6 py-4">Contact</th>
+                        <th className="px-3 lg:px-6 py-4 text-right">Wallet Amount</th>
+                        <th className="px-3 lg:px-6 py-4 text-center">Claimable</th>
+                        <th className="px-3 lg:px-6 py-4">Questions Track</th>
+                        <th className="px-3 lg:px-6 py-4">Join Date</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
@@ -219,10 +219,10 @@ const AdminUserWallets = () => {
                           transition={{ delay: idx * 0.03 }}
                           className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
                         >
-                          <td className="px-6 py-6 first:rounded-l-[2rem]">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                             <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + idx + 1}</span>
                           </td>
-                          <td className="px-6 py-6">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
                               <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
                                 <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-indigo-500">
@@ -238,16 +238,16 @@ const AdminUserWallets = () => {
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-6 text-[10px] font-bold text-slate-500">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-[10px] font-bold text-slate-500">
                             <div className="flex items-center gap-2 mb-1"><Mail className="w-3 h-3" /> {row.user?.email || row.email || '-'}</div>
                             <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {row.user?.phone || row.phone || '-'}</div>
                           </td>
-                          <td className="px-6 py-6 text-right">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
                             <div className="text-sm font-black text-emerald-600 dark:text-emerald-500 tabular-nums italic tracking-tighter">
                               {formatAmount(row.amount || row.walletBalance)}
                             </div>
                           </td>
-                          <td className="px-6 py-6 text-center">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
                             {row.claimableRewards > 0 ? (
                               <span className="inline-flex items-center px-4 py-1 rounded-full text-[10px] font-black bg-indigo-500 text-white shadow-lg shadow-indigo-500/20 uppercase tracking-widest">
                                 {row.claimableRewards} REWARDS
@@ -256,7 +256,7 @@ const AdminUserWallets = () => {
                               <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">NONE</span>
                             )}
                           </td>
-                          <td className="px-6 py-6">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="grid grid-cols-2 gap-2 max-w-[150px]">
                               <div className="flex flex-col">
                                 <span className="text-[8px] font-black text-slate-400 uppercase">TOTAL</span>
@@ -268,7 +268,7 @@ const AdminUserWallets = () => {
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-6 last:rounded-r-[2rem]">
+                          <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
                             <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{formatDate(row.createdAt)}</div>
                             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{row.createdAt ? new Date(row.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '-'}</div>
                           </td>
@@ -282,16 +282,16 @@ const AdminUserWallets = () => {
 
             {/* List View */}
             {viewMode === 'list' && (
-              <div className="space-y-6">
+              <div className="space-y-3 lg:space-y-6">
                 {items.map((row, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8"
+                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3 lg:gap-6">
                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg">
                         <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-indigo-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
@@ -307,7 +307,7 @@ const AdminUserWallets = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-6 lg:justify-end">
+                    <div className="flex flex-wrap items-center gap-3 lg:gap-6 lg:justify-end">
                       <div className="flex flex-col items-end">
                         <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">CLAIMABLE</span>
                         <div className={`text-md font-black italic tracking-tighter ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>
@@ -329,20 +329,20 @@ const AdminUserWallets = () => {
 
             {/* Grid View */}
             {viewMode === 'grid' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
                 {items.map((row, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
+                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                       <Wallet className="w-24 h-24 text-indigo-500 -rotate-12" />
                     </div>
 
-                    <div className="flex items-center gap-6 mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
+                    <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
                       <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[3px] shadow-xl">
                         <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-indigo-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
@@ -357,7 +357,7 @@ const AdminUserWallets = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-4 mb-8">
+                    <div className="space-y-4 mb-4 lg:mb-8">
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">CLAIMABLE</span>
                         <span className={`text-sm font-black italic tabular-nums ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>{row.claimableRewards || 0} REWARDS</span>
@@ -379,7 +379,7 @@ const AdminUserWallets = () => {
 
             {/* Pagination */}
             {Math.max(1, Math.ceil(total / itemsPerPage)) > 1 && (
-              <div className="mt-12 flex justify-center">
+              <div className="mt-4 lg:mt-12 flex justify-center">
                 <Pagination
                   currentPage={page}
                   totalPages={Math.max(1, Math.ceil(total / itemsPerPage))}

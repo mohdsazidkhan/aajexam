@@ -181,7 +181,7 @@ const AdminMonthlyWinners = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveType(type)}
-                    className={`px-6 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all uppercase ${activeType === type
+                    className={`px-3 lg:px-6 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all uppercase ${activeType === type
                       ? activeType === 'daily' ? 'bg-indigo-500 text-white shadow-xl' :
                         activeType === 'weekly' ? 'bg-blue-500 text-white shadow-xl' :
                           'bg-indigo-500 text-white shadow-xl'
@@ -279,7 +279,7 @@ const AdminMonthlyWinners = () => {
               {/* View Toggle Buttons */}
               <div className="flex items-center justify-between gap-3">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
-                  <div className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 rounded-[1.5rem] p-2 border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                  <div className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 rounded-lg lg:rounded-[1.5rem] p-2 border-2 border-slate-200 dark:border-white/10 shadow-inner">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -341,7 +341,7 @@ const AdminMonthlyWinners = () => {
               </div>
             ) : monthlyWinners.length === 0 ? (
               <div className="text-center py-12">
-                <div className="text-slate-600 dark:text-gray-400 dark:text-gray-500 text-6xl mb-4">ðŸ†</div>
+                <div className="text-slate-600 dark:text-gray-400 dark:text-gray-500 text-2xl lg:text-6xl mb-4">ðŸ†</div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 underline capitalize">
                   {showAllMonths ? `No ${activeType} Winners Available` : `No ${activeType} Winners Found`}
                 </h3>
@@ -358,9 +358,9 @@ const AdminMonthlyWinners = () => {
             ) : (
               <>
                 {/* Dynamic Summary Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
-                  <motion.div whileHover={{ y: -5 }} className={`bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl p-8 rounded-[2.5rem] shadow-2xl border-b-8 transition-all relative overflow-hidden group ${activeType === 'daily' ? 'border-indigo-500' : 'border-blue-500'}`}>
-                    <div className="flex items-center gap-6 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-6 mb-4 lg:mb-10">
+                  <motion.div whileHover={{ y: -5 }} className={`bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl p-3 lg:p-8 rounded-xl lg:rounded-[2.5rem] shadow-2xl border-b-8 transition-all relative overflow-hidden group ${activeType === 'daily' ? 'border-indigo-500' : 'border-blue-500'}`}>
+                    <div className="flex items-center gap-3 lg:gap-6 relative z-10">
                       <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-indigo-500/10 text-indigo-500' : 'bg-blue-500/10 text-blue-500'}`}>
                         <Calendar className="w-6 h-6" />
                       </div>
@@ -373,8 +373,8 @@ const AdminMonthlyWinners = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div whileHover={{ y: -5 }} className={`bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl p-8 rounded-[2.5rem] shadow-2xl border-b-8 transition-all relative overflow-hidden group ${activeType === 'daily' ? 'border-indigo-500' : 'border-blue-500'}`}>
-                    <div className="flex items-center gap-6 relative z-10">
+                  <motion.div whileHover={{ y: -5 }} className={`bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl p-3 lg:p-8 rounded-xl lg:rounded-[2.5rem] shadow-2xl border-b-8 transition-all relative overflow-hidden group ${activeType === 'daily' ? 'border-indigo-500' : 'border-blue-500'}`}>
+                    <div className="flex items-center gap-3 lg:gap-6 relative z-10">
                       <div className={`p-4 rounded-2xl ${activeType === 'daily' ? 'bg-indigo-500/10 text-indigo-500' : 'bg-blue-500/10 text-blue-500'}`}>
                         <Users className="w-6 h-6" />
                       </div>
@@ -434,12 +434,12 @@ const AdminMonthlyWinners = () => {
 
 
                 {/* Rules Badge Info Section - Moved to Bottom */}
-                <div className={`mt-8 p-10 rounded-[3rem] border-4 border-slate-100 dark:border-white/5 flex flex-col lg:flex-row gap-12 items-center justify-between transition-all duration-300 shadow-2xl relative overflow-hidden backdrop-blur-3xl ${activeType === 'daily' ? 'bg-indigo-50/50 dark:bg-indigo-900/10' :
+                <div className={`mt-4 lg:mt-8 p-4 lg:p-10 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 flex flex-col lg:flex-row gap-12 items-center justify-between transition-all duration-300 shadow-2xl relative overflow-hidden backdrop-blur-3xl ${activeType === 'daily' ? 'bg-indigo-50/50 dark:bg-indigo-900/10' :
                   activeType === 'weekly' ? 'bg-blue-50/50 dark:bg-blue-900/10' :
                     'bg-indigo-50/50 dark:bg-indigo-900/10'
                   }`}>
-                  <div className="flex items-center gap-8 text-center lg:text-left relative z-10">
-                    <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center shadow-2xl transform rotate-6 scale-110 ${activeType === 'daily' ? 'bg-indigo-500 text-white' :
+                  <div className="flex items-center gap-3 lg:gap-8 text-center lg:text-left relative z-10">
+                    <div className={`w-16 h-16 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shadow-2xl transform rotate-6 scale-110 ${activeType === 'daily' ? 'bg-indigo-500 text-white' :
                       activeType === 'weekly' ? 'bg-blue-500 text-white' :
                         'bg-indigo-500 text-white'
                       }`}>
@@ -466,7 +466,7 @@ const AdminMonthlyWinners = () => {
                   <div className="shrink-0 relative z-10">
                     <motion.span 
                       whileHover={{ scale: 1.05, rotate: -2 }}
-                      className={`px-10 py-4 rounded-[2rem] text-[10px] font-black uppercase italic tracking-[0.2em] shadow-2xl transition-all ${activeType === 'daily' ? 'bg-indigo-500 text-white shadow-indigo-500/20' :
+                      className={`px-4 lg:px-10 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase italic tracking-[0.2em] shadow-2xl transition-all ${activeType === 'daily' ? 'bg-indigo-500 text-white shadow-indigo-500/20' :
                       activeType === 'weekly' ? 'bg-blue-500 text-white shadow-blue-500/20' :
                         'bg-indigo-500 text-white shadow-indigo-500/20'
                       }`}>
@@ -476,7 +476,7 @@ const AdminMonthlyWinners = () => {
                 </div>
                 {/* Monthly Winners Grid */}
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-2 gap-3 lg:gap-6">
                     {monthlyWinners.map((monthData, index) => (
                       <div key={monthData._id || index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                         <div className="bg-gradient-to-r from-primary-400 to-primary-500 p-4 text-white">
@@ -598,13 +598,13 @@ const AdminMonthlyWinners = () => {
 
                 {/* Monthly Winners Table View */}
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[4rem] shadow-2xl border-4 border-slate-100 dark:border-white/5 overflow-hidden">
-                    <div className={`p-10 text-white relative overflow-hidden ${activeType === 'daily' ? 'bg-indigo-600' : 'bg-blue-600'}`}>
-                      <div className="absolute top-0 right-0 p-8 opacity-10">
+                  <div className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] shadow-2xl border-4 border-slate-100 dark:border-white/5 overflow-hidden">
+                    <div className={`p-4 lg:p-10 text-white relative overflow-hidden ${activeType === 'daily' ? 'bg-indigo-600' : 'bg-blue-600'}`}>
+                      <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">
                         <Crown className="w-48 h-48 -rotate-12 translate-x-12 translate-y-[-12px]" />
                       </div>
                       <div className="flex items-center justify-between relative z-10">
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-3 lg:gap-6">
                           <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-3xl shadow-xl">
                             <Trophy className="w-8 h-8 text-white" />
                           </div>
@@ -624,27 +624,27 @@ const AdminMonthlyWinners = () => {
                       <table className="w-full">
                         <thead className="bg-slate-50/50 dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-white/5">
                           <tr>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Acknowledgment</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performer</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Capability</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Cycle ID</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance Matrix</th>
-                            <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Disbursement</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Acknowledgment</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performer</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Capability</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Cycle ID</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance Matrix</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Disbursement</th>
                             {activeType === 'monthly' && (
                               <>
-                                <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Count</th>
-                                <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Status</th>
+                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Count</th>
+                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Status</th>
                               </>
                             )}
-                            <th className="px-8 py-6 text-right text-[10px] font-black text-slate-400 uppercase tracking-widest">Settlement Recorded</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-right text-[10px] font-black text-slate-400 uppercase tracking-widest">Settlement Recorded</th>
                           </tr>
                         </thead>
                         <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                           {monthlyWinners.map((monthData, monthIndex) =>
                             monthData.winners?.map((winner, winnerIndex) => (
                               <tr key={`${monthData._id}-${winner._id || winnerIndex}`} className="group hover:bg-indigo-500/5 transition-all text-nowrap">
-                                <td className="px-8 py-8 text-[10px] font-black text-slate-400 tabular-nums">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 tabular-nums">
                                   {(() => {
                                     let serialNumber = 1;
                                     for (let i = 0; i < monthIndex; i++) {
@@ -653,7 +653,7 @@ const AdminMonthlyWinners = () => {
                                     return (serialNumber + winnerIndex).toString().padStart(2, '0');
                                   })()}
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <div className="flex items-center gap-4">
                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white font-black shadow-2xl transition-transform group-hover:scale-110 shadow-lg ${winner.rank === 1 ? 'bg-indigo-500 shadow-indigo-500/20' :
                                       winner.rank === 2 ? 'bg-slate-400' : 'bg-indigo-600'
@@ -662,7 +662,7 @@ const AdminMonthlyWinners = () => {
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <div className="flex flex-col">
                                     <span className="text-xs font-black text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors uppercase tracking-tight italic">
                                       {winner?.userId?.name || winner?.userName || 'Unknown'}
@@ -672,17 +672,17 @@ const AdminMonthlyWinners = () => {
                                     </span>
                                   </div>
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <span className={`px-4 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] shadow-lg ${activeType === 'daily' ? 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20' : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'}`}>
                                     LEVEL {winner.userLevel || winner?.userId?.level || '0'}
                                   </span>
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <div className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                                     {monthData.monthYear || (activeType === 'daily' ? dayjs(monthData.resetDate).format('DD MMM YY') : activeType === 'weekly' ? `Week ${monthData.weekNumber}` : dayjs(monthData.resetDate).format('MMM YYYY'))}
                                   </div>
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <div className="flex items-center gap-2">
                                     <div className="flex flex-col">
                                       <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{winner.highScoreWins} Wins</span>
@@ -693,19 +693,19 @@ const AdminMonthlyWinners = () => {
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-8 py-8">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8">
                                   <div className={`text-sm font-black tabular-nums ${activeType === 'daily' ? 'text-indigo-600' : 'text-blue-600'}`}>
                                     ₹{winner.rewardAmount?.toLocaleString()}
                                   </div>
                                 </td>
                                 {activeType === 'monthly' && (
                                   <>
-                                    <td className="px-8 py-8">
+                                    <td className="px-4 lg:px-8 py-4 lg:py-8">
                                       <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">
                                         {winner.monthlyReferralCount || 0}
                                       </div>
                                     </td>
-                                    <td className="px-8 py-8">
+                                    <td className="px-4 lg:px-8 py-4 lg:py-8">
                                       <span className={`px-3 py-1 inline-flex text-[9px] uppercase font-black rounded-full tracking-widest shadow-sm ${winner.referralEligible
                                         ? 'bg-green-600 text-white'
                                         : 'bg-red-100 text-red-700'
@@ -715,7 +715,7 @@ const AdminMonthlyWinners = () => {
                                     </td>
                                   </>
                                 )}
-                                <td className="px-8 py-8 text-right">
+                                <td className="px-4 lg:px-8 py-4 lg:py-8 text-right">
                                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest mb-1 italic">
                                     {dayjs(monthData.resetDate).format('DD MMM YY')}
                                   </div>

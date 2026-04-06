@@ -162,9 +162,9 @@ const AdminGovtExamCategories = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -179,7 +179,7 @@ const AdminGovtExamCategories = () => {
               </div>
 
                <div className="flex items-center gap-4">
-                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
                     {[
                       { icon: TableIcon, id: 'table', label: 'TAB' },
                       { icon: List, id: 'list', label: 'LIN' },
@@ -197,7 +197,7 @@ const AdminGovtExamCategories = () => {
                   </div>
                   <button
                     onClick={handleCreate}
-                    className="px-8 py-5 bg-primary-600 text-white rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
+                    className="px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
                   >
                     <Plus className="w-5 h-5" /> ADD CATEGORY
                   </button>
@@ -216,9 +216,9 @@ const AdminGovtExamCategories = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                 <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO CATEGORIES FOUND</h3>
                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Add categories to start managing government exams.</p>
                </motion.div>
@@ -230,15 +230,15 @@ const AdminGovtExamCategories = () => {
                 >
                   {/* Table View */}
                   {viewMode === "table" && (
-                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                       <table className="w-full">
                         <thead>
                           <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">CATEGORY NAME</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">JURISDICTION</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DESCRIPTION</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ADDED ON</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTIONS</th>
+                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">CATEGORY NAME</th>
+                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">JURISDICTION</th>
+                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DESCRIPTION</th>
+                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ADDED ON</th>
+                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTIONS</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -250,10 +250,10 @@ const AdminGovtExamCategories = () => {
                               transition={{ delay: i * 0.05 }}
                               className="group hover:bg-indigo-500/5 transition-all"
                             >
-                              <td className="px-8 py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight text-lg">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight text-lg">
                                  {category.name} <span className="text-slate-300 text-xs ml-1 tracking-widest">// EXAMS</span>
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                  <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central" 
                                    ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20 shadow-indigo-500/10" 
                                    : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-emerald-500/10"}`}>
@@ -261,13 +261,13 @@ const AdminGovtExamCategories = () => {
                                     {category.type?.toUpperCase()}
                                  </div>
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 line-clamp-1 max-w-xs">{category.description || 'GENERIC_SCHEMA'}</p>
                               </td>
-                              <td className="px-8 py-6 font-black text-[10px] text-slate-400 uppercase tracking-tighter tabular-nums">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-[10px] text-slate-400 uppercase tracking-tighter tabular-nums">
                                  {formatDate(category.createdAt)}
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                  <div className="flex justify-center gap-3">
                                     <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-xl hover:text-primary-500 hover:border-primary-500/30 transition-all shadow-inner">
                                        <Edit className="w-4 h-4" />
@@ -286,16 +286,16 @@ const AdminGovtExamCategories = () => {
 
                   {/* List View */}
                   {viewMode === "list" && (
-                    <div className="space-y-6">
+                    <div className="space-y-3 lg:space-y-6">
                        {categories.map((category, i) => (
                          <motion.div
                            key={category._id || i}
                            initial={{ opacity: 0, x: -20 }}
                            animate={{ opacity: 1, x: 0 }}
                            transition={{ delay: i * 0.05 }}
-                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-8"
+                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
                          >
-                            <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white shadow-indigo-500/20' : 'bg-emerald-500 border-emerald-200 text-white shadow-emerald-500/20'}`}>
+                            <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white shadow-indigo-500/20' : 'bg-emerald-500 border-emerald-200 text-white shadow-emerald-500/20'}`}>
                                {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
                             </div>
 
@@ -314,10 +314,10 @@ const AdminGovtExamCategories = () => {
                             </div>
 
                             <div className="flex gap-4">
-                               <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                               <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                                   <Edit className="w-6 h-6" />
                                </button>
-                               <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-[2rem] hover:text-rose-500 hover:border-rose-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                               <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-rose-500 hover:border-rose-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                                   <Trash2 className="w-6 h-6" />
                                </button>
                             </div>
@@ -328,25 +328,25 @@ const AdminGovtExamCategories = () => {
 
                   {/* Grid View */}
                   {viewMode === "grid" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                        {categories.map((category, i) => (
                          <motion.div
                            key={category._id || i}
                            initial={{ opacity: 0, scale: 0.95 }}
                            animate={{ opacity: 1, scale: 1 }}
                            transition={{ delay: i * 0.05 }}
-                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                          >
                             <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-4 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white' : 'bg-emerald-500 border-emerald-200 text-white'}`}>
                                {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
                             </div>
 
                             <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{category.name}</h3>
-                            <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-8 ${category.type === 'Central' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
+                            <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
                                {category.type?.toUpperCase()}
                             </div>
 
-                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-10 line-clamp-3">{category.description || 'No description'}</p>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-4 lg:mb-10 line-clamp-3">{category.description || 'No description'}</p>
 
                             <div className="w-full flex gap-3 mt-auto">
                                <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-500 hover:border-primary-500/30 transition-all">EDIT</button>
@@ -375,9 +375,9 @@ const AdminGovtExamCategories = () => {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white dark:bg-[#0f172a] rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full overflow-hidden shadow-2xl"
+              className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full overflow-hidden shadow-2xl"
             >
-               <div className="p-10 border-b-4 border-slate-50 dark:border-white/5 flex items-center justify-between">
+               <div className="p-4 lg:p-10 border-b-4 border-slate-50 dark:border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                      <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                         <Settings className="w-6 h-6" />
@@ -391,14 +391,14 @@ const AdminGovtExamCategories = () => {
                   </button>
                </div>
 
-               <form onSubmit={handleSubmit} className="p-10 space-y-8">
+               <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8">
                   <div className="space-y-3">
                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                      <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
                         placeholder="EXAM_NAME..."
                         required
                      />
@@ -410,7 +410,7 @@ const AdminGovtExamCategories = () => {
                         <select
                           value={formData.type}
                           onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                          className="w-full px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
+                          className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
                           required
                         >
                           <option value="Central">GLOBAL_CENTRAL</option>
@@ -426,7 +426,7 @@ const AdminGovtExamCategories = () => {
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                         rows="4"
-                        className="w-full px-8 py-6 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                        className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
                         placeholder="INJECT_DESCRIPTION..."
                      />
                   </div>
@@ -435,13 +435,13 @@ const AdminGovtExamCategories = () => {
                      <button
                         type="button"
                         onClick={() => setShowModal(false)}
-                        className="flex-1 p-6 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+                        className="flex-1 p-6 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
                      >
                         ABORT
                      </button>
                      <button
                         type="submit"
-                        className="flex-1 p-6 bg-primary-600 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all outline-none"
+                        className="flex-1 p-6 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all outline-none"
                      >
                         {editingCategory ? "SYNCHRONIZE" : "INITIALIZE"}
                      </button>

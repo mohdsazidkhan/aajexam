@@ -164,14 +164,14 @@ const AdminExpenses = () => {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
                     >
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Receipt className="w-64 h-64 text-indigo-500 -rotate-12" />
                         </div>
 
                         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-                            <div className="space-y-6">
+                            <div className="space-y-3 lg:space-y-6">
                                 <div className="flex items-center gap-3">
                                     <div className="p-3 bg-red-500/10 text-red-500 rounded-2xl">
                                         <TrendingDown className="w-6 h-6" />
@@ -192,7 +192,7 @@ const AdminExpenses = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handleOpenModal()}
-                                className="flex items-center gap-4 px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] shadow-2xl shadow-slate-900/20 group/btn"
+                                className="flex items-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-2xl shadow-slate-900/20 group/btn"
                             >
                                 <PlusCircle className="w-5 h-5 group-hover/btn:rotate-90 transition-transform" />
                                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">ADD NEW EXPENSE</span>
@@ -201,11 +201,11 @@ const AdminExpenses = () => {
                     </motion.div>
 
                     {/* Summary Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 mb-4 lg:mb-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-red-500" />
                             <div className="p-4 bg-red-500/10 text-red-500 rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
@@ -223,7 +223,7 @@ const AdminExpenses = () => {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
+                                className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                             >
                                 <div className="absolute top-0 left-0 w-full h-1 bg-indigo-500" />
                                 <div className="p-4 bg-indigo-500/10 text-indigo-500 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
@@ -238,7 +238,7 @@ const AdminExpenses = () => {
                     </div>
 
                     {/* Filters */}
-                    <div className="flex flex-col lg:flex-row items-center gap-6 mb-12">
+                    <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4 lg:mb-12">
                         <form onSubmit={handleSearch} className="relative group/search w-full lg:w-96">
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
                             <input
@@ -250,7 +250,7 @@ const AdminExpenses = () => {
                             />
                         </form>
 
-                        <div className="flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/10 rounded-[2rem] shadow-xl border-4 border-slate-100 dark:border-white/5">
+                        <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-xl border-4 border-slate-100 dark:border-white/5">
                             <Filter className="w-4 h-4 text-indigo-500" />
                             <select
                                 value={category}
@@ -276,8 +276,8 @@ const AdminExpenses = () => {
                         {loading ? (
                             <div className="p-32 flex justify-center"><Loading size="md" color="yellow" message="Syncing expense ledger..." /></div>
                         ) : expenses.length === 0 ? (
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-2xl">
-                                <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-8 opacity-20" />
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-2xl">
+                                <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                                 <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">Financial Void</h3>
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">No expenditures recorded for this sector</p>
                             </motion.div>
@@ -285,17 +285,17 @@ const AdminExpenses = () => {
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
+                                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
                             >
                                 <div className="overflow-x-auto selection:bg-indigo-500/30 text-nowrap">
-                                    <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
+                                    <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                                         <thead>
                                             <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                                                <th className="px-6 py-4">Expenditure Details</th>
-                                                <th className="px-6 py-4 text-center">Classification</th>
-                                                <th className="px-6 py-4 text-right">Value</th>
-                                                <th className="px-6 py-4">Recorded Date</th>
-                                                <th className="px-6 py-4 text-center">Controls</th>
+                                                <th className="px-3 lg:px-6 py-4">Expenditure Details</th>
+                                                <th className="px-3 lg:px-6 py-4 text-center">Classification</th>
+                                                <th className="px-3 lg:px-6 py-4 text-right">Value</th>
+                                                <th className="px-3 lg:px-6 py-4">Recorded Date</th>
+                                                <th className="px-3 lg:px-6 py-4 text-center">Controls</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -307,23 +307,23 @@ const AdminExpenses = () => {
                                                     transition={{ delay: idx * 0.03 }}
                                                     className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
                                                 >
-                                                    <td className="px-6 py-6 border-l-4 border-transparent group-hover:border-indigo-500 first:rounded-l-[2rem]">
+                                                    <td className="px-3 lg:px-6 py-3 lg:py-6 border-l-4 border-transparent group-hover:border-indigo-500 first:rounded-l-[2rem]">
                                                         <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors leading-none mb-2">{expense.title}</div>
                                                         <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No detailed metadata recorded'}</div>
                                                     </td>
-                                                    <td className="px-6 py-6 text-center">
+                                                    <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
                                                         <span className="px-4 py-1.5 rounded-xl bg-indigo-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-indigo-500/20">
                                                             {expense.category}
                                                         </span>
                                                     </td>
-                                                    <td className="px-6 py-6 text-right tabular-nums font-black text-red-500 italic tracking-tighter text-lg">
+                                                    <td className="px-3 lg:px-6 py-3 lg:py-6 text-right tabular-nums font-black text-red-500 italic tracking-tighter text-lg">
                                                         {formatAmount(expense.amount)}
                                                     </td>
-                                                    <td className="px-6 py-6">
+                                                    <td className="px-3 lg:px-6 py-3 lg:py-6">
                                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{new Date(expense.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
                                                         <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{new Date(expense.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                                                     </td>
-                                                    <td className="px-6 py-6 last:rounded-r-[2rem]">
+                                                    <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
                                                         <div className="flex items-center justify-center gap-3">
                                                             <motion.button
                                                                 whileHover={{ scale: 1.1 }}
@@ -352,23 +352,23 @@ const AdminExpenses = () => {
 
                     {/* Pagination */}
                     {totalPages > 1 && (
-                        <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl w-fit mx-auto">
+                        <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl w-fit mx-auto">
                             <motion.button
                                 whileHover={{ x: -2 }}
                                 onClick={() => fetchExpenses(page - 1)}
                                 disabled={page === 1}
-                                className="px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
+                                className="px-3 lg:px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
                             >
                                 PREV
                             </motion.button>
-                            <div className="px-6 text-[10px] font-black text-indigo-500 uppercase tracking-widest border-x-2 border-slate-100 dark:border-white/10">
+                            <div className="px-3 lg:px-6 text-[10px] font-black text-indigo-500 uppercase tracking-widest border-x-2 border-slate-100 dark:border-white/10">
                                 PAGE {page} OF {totalPages}
                             </div>
                             <motion.button
                                 whileHover={{ x: 2 }}
                                 onClick={() => fetchExpenses(page + 1)}
                                 disabled={page === totalPages}
-                                className="px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
+                                className="px-3 lg:px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
                             >
                                 NEXT
                             </motion.button>
@@ -392,10 +392,10 @@ const AdminExpenses = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative bg-white dark:bg-slate-900 w-full max-w-xl rounded-[3rem] shadow-2xl overflow-hidden border-4 border-slate-100 dark:border-white/10"
+                            className="relative bg-white dark:bg-slate-900 w-full max-w-xl rounded-xl lg:rounded-[3rem] shadow-2xl overflow-hidden border-4 border-slate-100 dark:border-white/10"
                         >
-                            <div className="bg-slate-900 p-10 text-white relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-8 opacity-10">
+                            <div className="bg-slate-900 p-4 lg:p-10 text-white relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">
                                     <Receipt className="w-24 h-24 rotate-12" />
                                 </div>
                                 <div className="relative z-10">
@@ -407,7 +407,7 @@ const AdminExpenses = () => {
                                 </button>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="p-10 space-y-8">
+                            <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8">
                                 <div className="space-y-4">
                                     <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Expenditure Metadata</label>
                                     <div className="relative group/field">
@@ -418,12 +418,12 @@ const AdminExpenses = () => {
                                             value={formData.title}
                                             onChange={e => setFormData({ ...formData, title: e.target.value })}
                                             placeholder="TITLE E.G. META ADS - AUG 2024"
-                                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                            className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                         />
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-8">
                                     <div className="space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Currency Value</label>
                                         <div className="relative group/field">
@@ -434,7 +434,7 @@ const AdminExpenses = () => {
                                                 value={formData.amount}
                                                 onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                                 placeholder="0.00"
-                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
+                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
                                             />
                                         </div>
                                     </div>
@@ -447,7 +447,7 @@ const AdminExpenses = () => {
                                                 type="date"
                                                 value={formData.date}
                                                 onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -458,7 +458,7 @@ const AdminExpenses = () => {
                                     <select
                                         value={formData.category}
                                         onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                        className="w-full px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
+                                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
                                     >
                                         {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                                     </select>
@@ -470,17 +470,17 @@ const AdminExpenses = () => {
                                         value={formData.description}
                                         onChange={e => setFormData({ ...formData, description: e.target.value })}
                                         rows="3"
-                                        className="w-full px-8 py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
+                                        className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
                                         placeholder="RECORD ADDITIONAL TRANSACTION DATA..."
                                     />
                                 </div>
 
-                                <div className="flex gap-6 pt-4">
+                                <div className="flex gap-3 lg:gap-6 pt-4">
                                     <motion.button
                                         whileHover={{ x: -5 }}
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 py-5 rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
+                                        className="flex-1 py-5 rounded-lg lg:rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
                                     >
                                         DISCARD
                                     </motion.button>
@@ -488,7 +488,7 @@ const AdminExpenses = () => {
                                         whileHover={{ x: 5 }}
                                         type="submit"
                                         disabled={formLoading}
-                                        className="flex-1 py-5 rounded-[2rem] bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl disabled:opacity-50"
+                                        className="flex-1 py-5 rounded-lg lg:rounded-[2rem] bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl disabled:opacity-50"
                                     >
                                         {formLoading ? 'COMMITING...' : (isEditing ? 'REVISE ENTRY' : 'COMMIT RECORD')}
                                     </motion.button>

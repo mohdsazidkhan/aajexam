@@ -98,7 +98,7 @@ export default function ReferralDashboard() {
   if (loading && referrals.length === 0) {
     return (
       <AdminMobileAppWrapper title="Yield Dashboard">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -107,7 +107,7 @@ export default function ReferralDashboard() {
             />
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Network Yield Data...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Network Yield Data...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -123,9 +123,9 @@ export default function ReferralDashboard() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -141,8 +141,8 @@ export default function ReferralDashboard() {
             </div>
 
             {/* Tactical Control Panel */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
-              <div className="flex flex-wrap items-center gap-6">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+              <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                       <Filter className="w-5 h-5" />
@@ -172,9 +172,9 @@ export default function ReferralDashboard() {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
-                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_ATTRIBUTION_FOUND</h3>
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded referral attribution detected for the current network slice.</p>
               </motion.div>
@@ -183,17 +183,17 @@ export default function ReferralDashboard() {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
               >
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                        <th className="px-8 py-8">USER</th>
-                        <th className="px-8 py-8 text-center">REFERRAL CODE</th>
-                        <th className="px-8 py-8 text-center">JOINED ON</th>
-                        <th className="px-8 py-8 text-right">WALLET BALANCE</th>
-                        <th className="px-8 py-8">REFERRAL REWARDS</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8">USER</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">REFERRAL CODE</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">JOINED ON</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">WALLET BALANCE</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8">REFERRAL REWARDS</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -205,7 +205,7 @@ export default function ReferralDashboard() {
                           transition={{ delay: i * 0.05 }}
                           className="group hover:bg-primary-500/5 transition-all"
                         >
-                          <td className="px-8 py-6">
+                          <td className="px-4 lg:px-8 py-3 lg:py-6">
                              <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
                                     {u.name?.[0]?.toUpperCase() || 'U'}
@@ -216,19 +216,19 @@ export default function ReferralDashboard() {
                                 </div>
                              </div>
                           </td>
-                          <td className="px-8 py-6 text-center">
+                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                              <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-500 italic inline-flex items-center gap-2 tabular-nums">
                                 <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
                              </div>
                           </td>
-                          <td className="px-8 py-6 text-center">
+                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'DIRECT_ENTRY'}</span>
                           </td>
-                          <td className="px-8 py-6 text-right">
+                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                              <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">₹{u.walletBalance || 0}</div>
                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">ACTIVE_LIQUIDITY</div>
                           </td>
-                          <td className="px-8 py-6">
+                          <td className="px-4 lg:px-8 py-3 lg:py-6">
                              <div className="flex flex-col gap-2">
                                 {u.referralRewards?.length > 0 ? (
                                   <>

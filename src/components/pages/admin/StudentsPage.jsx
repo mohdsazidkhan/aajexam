@@ -399,9 +399,9 @@ const StudentsPage = () => {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-12"
+              className="mb-4 lg:mb-12"
             >
-             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
                <div className="space-y-4">
                  <div className="flex items-center gap-3">
                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -422,14 +422,14 @@ const StudentsPage = () => {
                     variant="primary"
                     onClick={() => setShowCreateModal(true)}
                     icon={UserPlus}
-                    className="px-8 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
+                    className="px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
                   >
                     ADD SUBSCRIPTION
                   </Button>
               </div>
             </div>
 
-             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                {[
                  { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'blue' },
                  { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
@@ -438,7 +438,7 @@ const StudentsPage = () => {
                ].map((stat, i) => (
                  <div
                    key={stat.label}
-                   className="p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                   className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                  >
                    <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                      <stat.icon className="w-5 h-5" />
@@ -451,8 +451,8 @@ const StudentsPage = () => {
           </motion.div>
 
            {/* Search & Filter Controls */}
-           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl">
-             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl">
+             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
                <div className="flex-1 relative group w-full lg:max-w-2xl">
                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
                  <input
@@ -465,7 +465,7 @@ const StudentsPage = () => {
                </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: List, id: 'list', label: 'List' },
@@ -506,7 +506,7 @@ const StudentsPage = () => {
                  initial={{ opacity: 0 }}
                  animate={{ opacity: 1 }}
                  exit={{ opacity: 0 }}
-                 className="flex flex-col items-center justify-center py-32 space-y-8"
+                 className="flex flex-col items-center justify-center py-32 space-y-4 lg:space-y-8"
                >
                  <div className="relative">
                    <motion.div
@@ -523,9 +523,9 @@ const StudentsPage = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Records Found</h3>
@@ -536,21 +536,21 @@ const StudentsPage = () => {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-12"
+                className="space-y-4 lg:space-y-12"
               >
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                     <table className="w-full min-w-[700px]">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level & Status</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account State</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level & Status</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account State</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -563,8 +563,8 @@ const StudentsPage = () => {
                             onClick={() => router.push(`/admin/students/${student._id}`)}
                             className="group hover:bg-slate-50/80 dark:hover:bg-white/5 transition-all cursor-pointer"
                           >
-                            <td className="px-8 py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center text-white font-black shadow-lg group-hover:scale-110 transition-transform">
                                   {student.name?.charAt(0).toUpperCase()}
@@ -575,24 +575,24 @@ const StudentsPage = () => {
                                 </div>
                               </div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="text-sm font-black text-emerald-500 tabular-nums">
                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(student.walletBalance || 0)}
                               </div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="space-y-1">
                                  <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-blue-500/50" /> {student.email}</div>
                                  <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'No phone'}</div>
                               </div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex flex-col">
                                  <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Level {student.level?.currentLevel || 1}</div>
                                  <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{getLevelName(student.level?.currentLevel || 1)}</div>
                                </div>
                              </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' :
                                 student.status === 'suspended' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
                                   'bg-slate-500/10 text-slate-500 border-slate-500/20'
@@ -600,7 +600,7 @@ const StudentsPage = () => {
                                  {student.status || 'Inactive'}
                                </div>
                             </td>
-                            <td className="px-8 py-6 text-right">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               {renderStudentActions(student)}
                             </td>
                           </motion.tr>
@@ -612,7 +612,7 @@ const StudentsPage = () => {
 
                 {/* List View */}
                 {viewMode === "list" && (
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 gap-3 lg:gap-6">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -620,9 +620,9 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-8 cursor-pointer"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
                       >
-                        <div className="w-20 h-20 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <div className="w-20 h-20 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
                         </div>
 
@@ -660,7 +660,7 @@ const StudentsPage = () => {
 
                 {/* Grid View */}
                 {viewMode === "grid" && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -668,12 +668,12 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-500 to-primary-500" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
@@ -684,7 +684,7 @@ const StudentsPage = () => {
                          <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
                          <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'No username'}</div>
 
-                        <div className="grid grid-cols-2 gap-4 w-full mb-8">
+                        <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                            <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">User Level</div>
                              <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter">{student.level?.currentLevel || 1}</div>
@@ -698,7 +698,7 @@ const StudentsPage = () => {
                         <div className="w-full flex items-center gap-3">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
-                             className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
+                             className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
                            >
                              VIEW DETAILS
                            </motion.button>
@@ -744,11 +744,11 @@ const StudentsPage = () => {
                  initial={{ opacity: 0, scale: 0.95, y: 40 }}
                  animate={{ opacity: 1, scale: 1, y: 0 }}
                  exit={{ opacity: 0, scale: 0.95, y: 40 }}
-                 className="relative w-full max-w-2xl bg-white dark:bg-[#0A0F1E] rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
+                 className="relative w-full max-w-2xl bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
                >
-                 <div className="p-10 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
-                   <div className="flex items-center gap-6">
-                     <div className="p-5 bg-indigo-500/10 text-indigo-500 rounded-[1.5rem] shadow-xl">
+                 <div className="p-4 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                   <div className="flex items-center gap-3 lg:gap-6">
+                     <div className="p-5 bg-indigo-500/10 text-indigo-500 rounded-lg lg:rounded-[1.5rem] shadow-xl">
                        <Zap className="w-8 h-8 fill-current" />
                      </div>
                      <div>
@@ -770,8 +770,8 @@ const StudentsPage = () => {
                   </motion.button>
                 </div>
 
-                <div className="p-10">
-                  <form onSubmit={handleCreateSubscription} className="space-y-8">
+                <div className="p-4 lg:p-10">
+                  <form onSubmit={handleCreateSubscription} className="space-y-4 lg:space-y-8">
                      <div className="space-y-4">
                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Student Email</label>
                         <div className="relative group">
@@ -781,13 +781,13 @@ const StudentsPage = () => {
                             required
                             value={createFormData.email}
                             onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                            className="w-full pl-16 pr-8 py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                            className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                             placeholder="ENTER RECIPIENT EMAIL..."
                           />
                         </div>
                       </div>
  
-                     <div className="space-y-6">
+                     <div className="space-y-3 lg:space-y-6">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Select Plan</label>
                       <div className="grid grid-cols-1 gap-4">
                          {[

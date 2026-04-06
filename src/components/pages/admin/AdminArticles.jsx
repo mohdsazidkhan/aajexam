@@ -241,28 +241,28 @@ const AdminArticles = () => {
   };
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800/50 backdrop-blur-xl rounded-[2.5rem] shadow-xl border-2 border-slate-100 dark:border-gray-700 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800/50 backdrop-blur-xl rounded-xl lg:rounded-[2.5rem] shadow-xl border-2 border-slate-100 dark:border-gray-700 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y-2 divide-slate-100 dark:divide-gray-700">
           <thead className="bg-slate-50 dark:bg-slate-900/50">
             <tr>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">S.No.</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Article</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Author</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Category</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Status</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Stats</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Created</th>
-              <th className="px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Actions</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">S.No.</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Article</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Author</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Category</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Status</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Stats</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Created</th>
+              <th className="px-3 lg:px-6 py-4 text-left text-[10px] font-black text-gray-500 uppercase tracking-widest">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-transparent divide-y-2 divide-slate-100 dark:divide-gray-700">
             {articles.map((article) => (
               <tr key={article._id} className="hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
-                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-500">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-500">
                   {((currentPage - 1) * (pagination.limit || itemsPerPage)) + articles.indexOf(article) + 1}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
@@ -289,13 +289,13 @@ const AdminArticles = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white uppercase">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white uppercase">
                   {article.author?.name || 'Unknown'}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-xs font-bold text-gray-900 dark:text-white">
                   {article.category?.name || 'General'}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center flex-wrap gap-1">
                     {getStatusBadge(article.status)}
                     {getRewardTierBadge(article.rewardTier, article.rewardAmount)}
@@ -306,13 +306,13 @@ const AdminArticles = () => {
                     )}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
                   <div className="flex space-x-4">
                     <span>ðŸ‘ï¸ {article.views || 0}</span>
                     <span>â¤ï¸ {article.likes || 0}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-[10px] font-black uppercase text-gray-500">
                   <div className="font-black text-gray-900 dark:text-white">
                     {formatDate(article.createdAt)}
                   </div>
@@ -320,7 +320,7 @@ const AdminArticles = () => {
                     {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
@@ -380,8 +380,8 @@ const AdminArticles = () => {
   const renderListView = () => (
     <div className="space-y-4">
       {articles.map((article) => (
-        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-[2rem] border-2 border-slate-100 dark:border-gray-700 p-6 shadow-xl hover:-translate-y-1 transition-all">
-          <div className="flex items-start gap-6">
+        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-gray-700 p-6 shadow-xl hover:-translate-y-1 transition-all">
+          <div className="flex items-start gap-3 lg:gap-6">
             <img
               src={article.featuredImage || '/default_banner.png'}
               alt={article.title}
@@ -411,11 +411,11 @@ const AdminArticles = () => {
                 </div>
               )}
               <div className="mt-6 flex items-center gap-4">
-                <Button variant="primary" size="sm" onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3">Edit</Button>
+                <Button variant="primary" size="sm" onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-3 lg:px-6 py-3">Edit</Button>
                 {article.status === 'published' ? (
-                  <Button variant="ghost" size="sm" onClick={() => handleUnpublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3">Unpublish</Button>
+                  <Button variant="ghost" size="sm" onClick={() => handleUnpublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-3 lg:px-6 py-3">Unpublish</Button>
                 ) : (
-                  <Button variant="primary" size="sm" onClick={() => handlePublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-6 py-3 bg-emerald-500 hover:bg-emerald-600 border-none">Publish</Button>
+                  <Button variant="primary" size="sm" onClick={() => handlePublish(article._id)} className="rounded-xl font-black uppercase text-[10px] tracking-widest px-3 lg:px-6 py-3 bg-emerald-500 hover:bg-emerald-600 border-none">Publish</Button>
                 )}
                 <div className="flex items-center gap-2 ml-auto">
                   <button onClick={() => handleToggleFeatured(article._id)} className={`p-2 rounded-xl transition-colors ${article.isFeatured ? 'bg-indigo-50 text-indigo-500' : 'hover:bg-slate-50'}`}>â˜…</button>
@@ -431,9 +431,9 @@ const AdminArticles = () => {
   );
 
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-6">
       {articles.map((article) => (
-        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-gray-700 p-5 shadow-xl hover:-translate-y-1 transition-all group">
+        <div key={article._id} className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-gray-700 p-5 shadow-xl hover:-translate-y-1 transition-all group">
           <div className="mb-4 relative overflow-hidden rounded-2xl">
             <img
               src={article.featuredImage || '/default_banner.png'}
@@ -488,7 +488,7 @@ const AdminArticles = () => {
       <AdminMobileAppWrapper title="Articles">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-12 lg:mt-0">
+          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-4 lg:mt-12 lg:mt-0">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading articles..." />
             </div>
@@ -502,13 +502,13 @@ const AdminArticles = () => {
     <AdminMobileAppWrapper title="Articles">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
+        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative mb-10"
+            className="relative mb-4 lg:mb-10"
           >
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
               <div>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -537,7 +537,7 @@ const AdminArticles = () => {
                   { label: 'Featured', value: articleStats.featured, icon: Star, color: 'indigo' },
                   { label: 'Avg Views', value: articleStats.avgViews, icon: Eye, color: 'blue' }
                 ].map((stat, idx) => (
-                  <div key={idx} className="px-6 py-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-white/5 shadow-sm">
+                  <div key={idx} className="px-3 lg:px-6 py-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-white/5 shadow-sm">
                     <stat.icon className={`w-4 h-4 text-${stat.color}-500 mb-2`} />
                     <div className="flex flex-col">
                       <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</span>
@@ -548,7 +548,7 @@ const AdminArticles = () => {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="mt-4 lg:mt-10 flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6">
               <div className="flex items-center gap-4 bg-white dark:bg-slate-900 p-2 rounded-2xl border-2 border-slate-100 dark:border-white/10">
                 <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               </div>
@@ -557,7 +557,7 @@ const AdminArticles = () => {
                 variant="primary"
                 onClick={() => router.push('/admin/articles/create')}
                 icon={Plus}
-                className="w-full lg:w-auto px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo-primary bg-indigo-500 hover:bg-indigo-600 border-none"
+                className="w-full lg:w-auto px-4 lg:px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo-primary bg-indigo-500 hover:bg-indigo-600 border-none"
               >
                 CREATE ARTICLE
               </Button>
@@ -566,9 +566,9 @@ const AdminArticles = () => {
 
           <Card
             variant="white"
-            className="p-6 lg:p-10 mb-12 border-none shadow-xl bg-white dark:bg-slate-900/60 relative overflow-hidden"
+            className="p-6 lg:p-10 mb-4 lg:mb-12 border-none shadow-xl bg-white dark:bg-slate-900/60 relative overflow-hidden"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-8 relative z-10">
               <div className="lg:col-span-2 space-y-2">
                 <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Search Articles</label>
                 <div className="relative">
@@ -671,7 +671,7 @@ const AdminArticles = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="flex flex-col items-center justify-center py-24 space-y-6"
+                  className="flex flex-col items-center justify-center py-24 space-y-3 lg:space-y-6"
                 >
                   <div className="relative">
                     <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
@@ -684,15 +684,15 @@ const AdminArticles = () => {
                   key="empty"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-32 text-center bg-white/30 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/5"
+                  className="flex flex-col items-center justify-center py-32 text-center bg-white/30 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/5"
                 >
-                  <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8">
+                  <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-2xl lg:rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-4 lg:mb-8">
                     <StickyNote className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                   </div>
                   <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
                     No Articles Found
                   </h3>
-                  <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed px-8">
+                  <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed px-4 lg:px-8">
                     There are no articles matching your current filter criteria. Try adjusting your search or category selection.
                   </p>
                 </motion.div>
@@ -704,12 +704,12 @@ const AdminArticles = () => {
                 >
                   {/* Table View */}
                   {viewMode === 'table' && (
-                    <div className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden overflow-x-auto custom-scrollbar">
+                    <div className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden overflow-x-auto custom-scrollbar">
                       <table className="w-full">
                         <thead>
                     <tr className="border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/50 uppercase">
                       {['Article', 'Category', 'Status', 'Rewards', 'Engagement', 'Created On', 'Actions'].map((head) => (
-                        <th key={head} className="px-8 py-6 text-left text-[9px] font-black text-slate-400 uppercase tracking-widest">{head}</th>
+                        <th key={head} className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[9px] font-black text-slate-400 uppercase tracking-widest">{head}</th>
                       ))}
                     </tr>
                         </thead>
@@ -722,7 +722,7 @@ const AdminArticles = () => {
                               key={article._id}
                               className="group hover:bg-indigo-500/5 transition-all"
                             >
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 <div className="flex items-center gap-4">
                                   <div className="relative">
                                     <img src={article.featuredImage || '/default_banner.png'} className="w-14 h-14 rounded-2xl object-cover ring-2 ring-slate-100 dark:ring-white/10 group-hover:ring-indigo-500/50 transition-all shadow-lg" alt="" />
@@ -734,16 +734,16 @@ const AdminArticles = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-lg text-[9px] font-black uppercase border border-slate-200 dark:border-white/5">{article.category?.name || 'GENERAL'}</span>
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 {getStatusBadge(article.status)}
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 {getRewardTierBadge(article.rewardTier)}
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 <div className="flex items-center gap-4 text-slate-400">
                                   <div className="flex items-center gap-1.5">
                                     <Eye className="w-4 h-4" />
@@ -755,13 +755,13 @@ const AdminArticles = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-8 py-6">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6">
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest whitespace-nowrap">
                                   <div className="text-slate-900 dark:text-white mb-1">{formatDate(article.createdAt)}</div>
                                   <div className="opacity-50 flex items-center gap-1"><Clock className="w-3 h-3" /> {new Date(article.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
                                 </div>
                               </td>
-                              <td className="px-8 py-6 text-right">
+                              <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                 <div className="flex items-center gap-3">
                                   <motion.button whileHover={{ scale: 1.1 }} onClick={() => router.push(`/admin/articles/${article._id}/edit`)} className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl border border-blue-500/20 hover:bg-blue-500 hover:text-white transition-all shadow-lg shadow-blue-500/5">
                                     <Edit3 className="w-4 h-4" />
@@ -793,17 +793,17 @@ const AdminArticles = () => {
 
                   {/* Grid View */}
                   {viewMode === 'grid' && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                       {articles.map((article, i) => (
                         <motion.div
                           key={article._id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.1 }}
-                          className="group bg-white dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden hover:border-indigo-500/30 transition-all flex flex-col relative"
+                          className="group bg-white dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden hover:border-indigo-500/30 transition-all flex flex-col relative"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden">
-                            <img src={article.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-[3rem]" alt="" />
+                            <img src={article.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-xl lg:rounded-[3rem]" alt="" />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                             <div className="absolute top-4 right-4 flex flex-col gap-2">
                               {article.isFeatured && <div className="p-2 bg-indigo-500 text-white rounded-xl shadow-xl"><Star className="w-4 h-4 fill-current" /></div>}
@@ -814,7 +814,7 @@ const AdminArticles = () => {
                             </div>
                           </div>
 
-                          <div className="p-8 flex-1 flex flex-col">
+                          <div className="p-3 lg:p-8 flex-1 flex flex-col">
                             <div className="flex items-center gap-3 mb-4">
                               <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest px-3 py-1 bg-indigo-500/10 rounded-lg border border-indigo-500/10">{article.category?.name || 'UNSECTORED'}</span>
                               <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{formatDate(article.createdAt)}</span>
@@ -822,7 +822,7 @@ const AdminArticles = () => {
 
                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-4 line-clamp-2 min-h-[3rem]">{article.title}</h3>
 
-                            <div className="flex items-center justify-between py-6 border-y-2 border-slate-100 dark:border-white/5 my-auto">
+                            <div className="flex items-center justify-between py-3 lg:py-6 border-y-2 border-slate-100 dark:border-white/5 my-auto">
                               <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center text-[10px] font-black text-white dark:text-slate-900 uppercase italic">
                                   {article.author?.name?.substring(0, 1) || '?'}
@@ -837,12 +837,12 @@ const AdminArticles = () => {
                               </div>
                             </div>
 
-                            <div className="mt-8 flex items-center gap-3">
+                            <div className="mt-4 lg:mt-8 flex items-center gap-3">
                               <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
-                                className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
+                                className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
                               >
                                 TUNING_PROC
                               </motion.button>
@@ -862,14 +862,14 @@ const AdminArticles = () => {
 
                   {/* List View */}
                   {viewMode === 'list' && (
-                    <div className="space-y-6">
+                    <div className="space-y-3 lg:space-y-6">
                       {articles.map((article, i) => (
                         <motion.div
                           key={article._id}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 flex flex-col lg:flex-row lg:items-center gap-8 group hover:border-indigo-500/20 transition-all shadow-xl"
+                          className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 group hover:border-indigo-500/20 transition-all shadow-xl"
                         >
                           <div className="relative w-full lg:w-48 h-32 lg:h-32 shrink-0 overflow-hidden rounded-2xl shadow-xl">
                             <img src={article.featuredImage || '/default_banner.png'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="" />
@@ -886,7 +886,7 @@ const AdminArticles = () => {
                               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SYNC_DATE: {formatDate(article.createdAt)}</span>
                             </div>
                             <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-indigo-500 transition-colors">{article.title}</h3>
-                            <div className="flex flex-wrap items-center gap-6 pt-2">
+                            <div className="flex flex-wrap items-center gap-3 lg:gap-6 pt-2">
                               <div className="flex items-center gap-2">
                                 <Users className="w-4 h-4 text-slate-400" />
                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">AUTHOR: {article.author?.name || 'S_CORE'}</span>
@@ -906,7 +906,7 @@ const AdminArticles = () => {
                             <motion.button
                               whileHover={{ scale: 1.02 }}
                               onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
-                              className="px-10 py-5 bg-white dark:bg-white/5 text-slate-900 dark:text-white rounded-[2rem] font-black text-[10px] uppercase tracking-widest border-2 border-slate-100 dark:border-white/10 hover:border-indigo-500/30 shadow-lg transition-all"
+                              className="px-4 lg:px-10 py-5 bg-white dark:bg-white/5 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest border-2 border-slate-100 dark:border-white/10 hover:border-indigo-500/30 shadow-lg transition-all"
                             >
                               EXEC_TUNING
                             </motion.button>
@@ -951,7 +951,7 @@ const AdminArticles = () => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-12 bg-rose-500/10 border-2 border-rose-500/20 rounded-3xl p-6 flex items-center gap-4 shadow-xl"
+              className="mt-4 lg:mt-12 bg-rose-500/10 border-2 border-rose-500/20 rounded-3xl p-6 flex items-center gap-4 shadow-xl"
             >
               <div className="p-3 bg-rose-500 text-white rounded-2xl">
                 <Ban className="w-6 h-6" />

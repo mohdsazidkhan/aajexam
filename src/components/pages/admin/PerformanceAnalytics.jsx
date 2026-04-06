@@ -131,8 +131,8 @@ const PerformanceAnalytics = () => {
         <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
           
           {/* Header */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
@@ -149,7 +149,7 @@ const PerformanceAnalytics = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                   {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
                     <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
                       <mode.icon className="w-5 h-5" />
@@ -158,7 +158,7 @@ const PerformanceAnalytics = () => {
                 </div>
                 <div className="relative group">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <select name="period" value={filters.period} onChange={handleFilterChange} className="pl-12 pr-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer shadow-2xl">
+                  <select name="period" value={filters.period} onChange={handleFilterChange} className="pl-12 pr-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer shadow-2xl">
                     <option value="week">Past 7 Days</option>
                     <option value="month">Past 30 Days</option>
                     <option value="quarter">Past 90 Days</option>
@@ -172,27 +172,27 @@ const PerformanceAnalytics = () => {
 
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex flex-col items-center justify-center py-32 space-y-6">
+              <div className="flex flex-col items-center justify-center py-32 space-y-3 lg:space-y-6">
                 <Loading size="md" color="blue" message="Compiling performance data..." />
               </div>
             ) : error ? (
-               <div className="text-center py-32 bg-rose-500/5 rounded-[4rem] border-4 border-dashed border-rose-500/10">
-                 <ZapOff className="w-20 h-20 text-rose-300 mx-auto mb-8 opacity-40" />
+               <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">
+                 <ZapOff className="w-20 h-20 text-rose-300 mx-auto mb-4 lg:mb-8 opacity-40" />
                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">Connection Interrupted</h3>
                  <p className="text-rose-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
-                 <button onClick={() => window.location.reload()} className="mt-8 px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-widest">Retry Connection</button>
+                 <button onClick={() => window.location.reload()} className="mt-4 lg:mt-8 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest">Retry Connection</button>
                </div>
             ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 lg:space-y-12">
                   
                   {/* Visual Analytics */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                      {[
                        { title: 'Level Success Rate', data: levelScores, color: 'rgba(99, 102, 241, 0.8)' },
                        { title: 'User Distribution', data: levelUsers, color: 'rgba(139, 92, 246, 0.8)' }
                      ].map((chart, i) => (
-                       <div key={i} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative group">
-                          <div className="flex items-center justify-between mb-8">
+                       <div key={i} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative group">
+                          <div className="flex items-center justify-between mb-4 lg:mb-8">
                              <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">{chart.title}</h3>
                              <Activity className="w-5 h-5 text-primary-500 opacity-30" />
                           </div>
@@ -207,13 +207,13 @@ const PerformanceAnalytics = () => {
                   </div>
 
                   {/* Summary Spotlight */}
-                  <div className="bg-slate-900 dark:bg-white rounded-[4rem] p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
-                     <div className="relative z-10 space-y-6 text-center lg:text-left">
+                  <div className="bg-slate-900 dark:bg-white rounded-2xl lg:rounded-[4rem] p-4 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+                     <div className="relative z-10 space-y-3 lg:space-y-6 text-center lg:text-left">
                         <div className="flex items-center justify-center lg:justify-start gap-4">
                            <div className="p-3 bg-primary-500 text-white rounded-2xl"><Award className="w-8 h-8" /></div>
                            <h2 className="text-3xl lg:text-4xl font-black text-white dark:text-slate-900 uppercase italic tracking-tighter leading-none">Session Performance <span className="text-primary-500 block">Lead Distribution</span></h2>
                         </div>
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-6">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 lg:gap-6">
                            {[
                             { l: 'Daily Accomplishments', v: '1,240', c: 'text-rose-400' },
                             { l: 'Weekly Highlights', v: '8,500', c: 'text-indigo-400' },
@@ -227,9 +227,9 @@ const PerformanceAnalytics = () => {
                         </div>
                      </div>
                      {getSortedTopPerformers().length > 0 && (
-                       <motion.div whileHover={{ scale: 1.05 }} className="bg-white/10 dark:bg-slate-900/10 backdrop-blur-3xl p-8 rounded-[3rem] border-2 border-white/20 dark:border-slate-900/20 text-center lg:text-left min-w-[320px]">
+                       <motion.div whileHover={{ scale: 1.05 }} className="bg-white/10 dark:bg-slate-900/10 backdrop-blur-3xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-2 border-white/20 dark:border-slate-900/20 text-center lg:text-left min-w-[320px]">
                           <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-4">Top Contributor</div>
-                          <div className="flex items-center gap-6 mb-6">
+                          <div className="flex items-center gap-3 lg:gap-6 mb-6">
                              <div className="w-16 h-16 bg-primary-500 text-white rounded-3xl flex items-center justify-center text-3xl font-black italic shadow-xl">{(getSortedTopPerformers()[0]?.name || 'U')[0]}</div>
                              <div>
                                 <div className="text-xl font-black text-white dark:text-slate-900 uppercase italic tracking-tighter leading-none mb-1">{getSortedTopPerformers()[0]?.name}</div>
@@ -246,16 +246,16 @@ const PerformanceAnalytics = () => {
                   </div>
 
                   {/* Rankings / Listings */}
-                  <div className="space-y-8">
-                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-8">
-                        <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-xl overflow-hidden">
+                  <div className="space-y-4 lg:space-y-8">
+                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 mb-4 lg:mb-8">
+                        <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-xl overflow-hidden">
                           {['daily', 'weekly', 'monthly'].map(t => (
-                            <button key={t} onClick={() => setActiveTab(t)} className={`px-8 py-3 rounded-[2rem] text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === t ? 'bg-primary-500 text-white shadow-xl' : 'text-slate-400'}`}>{t}</button>
+                            <button key={t} onClick={() => setActiveTab(t)} className={`px-4 lg:px-8 py-3 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === t ? 'bg-primary-500 text-white shadow-xl' : 'text-slate-400'}`}>{t}</button>
                           ))}
                         </div>
-                         <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                         <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                             <div className="pl-6 pr-2 text-[8px] font-black text-slate-400 uppercase tracking-widest">Sort By</div>
-                           <select name="sortBy" value={filters.sortBy || 'highScores'} onChange={handleFilterChange} className="px-6 py-3 bg-slate-100 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer">
+                           <select name="sortBy" value={filters.sortBy || 'highScores'} onChange={handleFilterChange} className="px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer">
                               <option value="highScores">High Scores</option>
                               <option value="avgScore">Accuracy</option>
                               <option value="quizzesPlayed">Engagement</option>
@@ -264,25 +264,25 @@ const PerformanceAnalytics = () => {
                      </div>
 
                      {viewMode === 'table' ? (
-                       <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                       <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                           <table className="w-full border-collapse">
                              <thead>
                                 <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
-                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Profile</th>
-                                   <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Progression</th>
-                                   <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Efficiency</th>
-                                   <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Engagement</th>
-                                   <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Net Score</th>
+                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
+                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Profile</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Progression</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Efficiency</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Engagement</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Net Score</th>
                                 </tr>
                              </thead>
                              <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                                 {getSortedTopPerformers().map((p, idx) => (
                                   <motion.tr key={p._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-primary-500/5 transition-all cursor-pointer">
-                                     <td className="px-8 py-6">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6">
                                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black italic text-sm ${idx < 3 ? 'bg-amber-500 text-white shadow-xl' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                      </td>
-                                     <td className="px-8 py-6">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6">
                                         <div className="flex items-center gap-4">
                                            <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center font-black text-sm uppercase shadow-lg">{(p.name || 'U')[0]}</div>
                                            <div>
@@ -291,19 +291,19 @@ const PerformanceAnalytics = () => {
                                            </div>
                                         </div>
                                      </td>
-                                     <td className="px-8 py-6 text-center">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                         <div className="text-xs font-black text-primary-500 uppercase tracking-widest mb-1">LVL_{p.level?.currentLevel}</div>
                                         <div className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase inline-block ${p.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500' : 'bg-slate-500/10 text-slate-500'}`}>{p.subscriptionStatus}</div>
                                      </td>
-                                     <td className="px-8 py-6 text-center">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                         <div className={`text-lg font-black tabular-nums tracking-tighter ${p.level?.accuracy >= 80 ? 'text-emerald-500' : 'text-primary-500'}`}>{p.level?.accuracy}%</div>
                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Accuracy</div>
                                      </td>
-                                     <td className="px-8 py-6 text-center">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                         <div className="text-lg font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{p.level?.quizzesPlayed || 0}</div>
                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Quizzes</div>
                                      </td>
-                                     <td className="px-8 py-6 text-right">
+                                     <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                         <div className="text-lg font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">{p.level?.totalScore?.toFixed(2) || "0.00"}</div>
                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Net Points</div>
                                      </td>
@@ -313,11 +313,11 @@ const PerformanceAnalytics = () => {
                           </table>
                        </div>
                      ) : viewMode === 'grid' ? (
-                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                           {getSortedTopPerformers().map((p, idx) => (
-                            <motion.div key={p._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative flex flex-col group overflow-hidden">
+                            <motion.div key={p._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative flex flex-col group overflow-hidden">
                                <div className={`absolute top-0 left-0 w-full h-1.5 ${idx < 3 ? 'bg-amber-400' : 'bg-primary-500'}`} />
-                               <div className="flex justify-between items-start mb-8">
+                               <div className="flex justify-between items-start mb-4 lg:mb-8">
                                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic text-xs ${idx < 3 ? 'bg-amber-500 text-white shadow-lg' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                   <div className="flex flex-col items-end">
                                      <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">LVL_{p.level?.currentLevel}</div>
@@ -325,10 +325,10 @@ const PerformanceAnalytics = () => {
                                   </div>
                                </div>
                                <div className="mb-6 mx-auto">
-                                  <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[1.5rem] flex items-center justify-center font-black text-2xl shadow-xl group-hover:rotate-6 transition-all">{(p.name || 'U')[0]}</div>
+                                  <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center font-black text-2xl shadow-xl group-hover:rotate-6 transition-all">{(p.name || 'U')[0]}</div>
                                </div>
                                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 text-center truncate">{p.name || 'Anonymous'}</h3>
-                               <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center mb-8 truncate">{p.email || 'N/A'}</div>
+                               <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center mb-4 lg:mb-8 truncate">{p.email || 'N/A'}</div>
                                <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mt-auto">
                                   <div className="flex justify-between items-center mb-4">
                                      <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Efficiency</div>
@@ -343,10 +343,10 @@ const PerformanceAnalytics = () => {
                           ))}
                        </div>
                      ) : (
-                       <div className="space-y-6">
+                       <div className="space-y-3 lg:space-y-6">
                           {getSortedTopPerformers().map((p, idx) => (
-                            <motion.div key={p._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
-                               <div className="flex items-center gap-6">
+                            <motion.div key={p._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                               <div className="flex items-center gap-3 lg:gap-6">
                                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-black italic shadow-xl shrink-0 ${idx < 3 ? 'bg-amber-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{idx + 1}</div>
                                   <div>
                                      <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{p.name || 'User'}</h3>
@@ -356,7 +356,7 @@ const PerformanceAnalytics = () => {
                                      </div>
                                   </div>
                                </div>
-                               <div className="flex flex-wrap items-center gap-8 border-t md:border-t-0 pt-4 md:pt-0">
+                               <div className="flex flex-wrap items-center gap-3 lg:gap-8 border-t md:border-t-0 pt-4 md:pt-0">
                                   {[
                                     { l: 'Efficiency', v: `${p.level?.accuracy}%`, c: 'text-emerald-500' },
                                     { l: 'Engagement', v: p.level?.quizzesPlayed, c: 'text-indigo-500' },
@@ -376,8 +376,8 @@ const PerformanceAnalytics = () => {
                   </div>
 
                   {/* Sub-Category Deep Dive */}
-                  <div className="space-y-8 pt-12 border-t border-slate-100 dark:border-white/5">
-                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                  <div className="space-y-4 lg:space-y-8 pt-12 border-t border-slate-100 dark:border-white/5">
+                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                         <div className="space-y-4">
                            <div className="flex items-center gap-3">
                             <div className="p-3 bg-purple-500/20 text-purple-500 rounded-2xl"><PieChart className="w-6 h-6" /></div>
@@ -386,7 +386,7 @@ const PerformanceAnalytics = () => {
                            <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">Category Performance</h2>
                            <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">Analyzing engagement volume across active exam categories.</p>
                         </div>
-                        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-2xl p-4 rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-xl flex items-center gap-6">
+                        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-2xl p-4 rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-xl flex items-center gap-3 lg:gap-6">
                            <div className="border-r border-slate-100 dark:border-white/10 pr-6">
                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Categories</div>
                               <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">{data?.categoryPerformance?.length || 0}</div>
@@ -398,37 +398,37 @@ const PerformanceAnalytics = () => {
                         </div>
                      </div>
 
-                     <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                     <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                         <table className="w-full border-collapse">
                            <thead>
                               <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">ID</th>
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Category</th>
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Attempt Count</th>
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Avg Accuracy</th>
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Completion Rate</th>
-                                 <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Status</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">ID</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Category</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Attempt Count</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Avg Accuracy</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Completion Rate</th>
+                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Status</th>
                               </tr>
                            </thead>
                            <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                               {(data?.categoryPerformance || []).sort((a,b) => b.attemptCount - a.attemptCount).map((cat, i) => (
                                 <motion.tr key={cat._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="group hover:bg-purple-500/5 transition-all">
-                                   <td className="px-8 py-6 text-[10px] font-black text-slate-300 font-mono italic">#{String(i+1).padStart(2, '0')}</td>
-                                   <td className="px-8 py-6">
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-[10px] font-black text-slate-300 font-mono italic">#{String(i+1).padStart(2, '0')}</td>
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6">
                                       <div className="flex items-center gap-4">
                                          <div className="p-3 bg-purple-500/10 text-purple-500 rounded-xl"><Layers className="w-5 h-5" /></div>
                                          <span className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-purple-500 transition-colors">{cat.categoryName}</span>
                                       </div>
                                    </td>
-                                   <td className="px-8 py-6 text-center text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{cat.attemptCount.toLocaleString()} <span className="text-[8px] uppercase not-italic opacity-40 ml-1">attempts</span></td>
-                                   <td className="px-8 py-6 text-center text-lg font-black text-indigo-500 tabular-nums tracking-tighter">{cat.avgScore.toFixed(1)}%</td>
-                                   <td className="px-8 py-6">
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-center text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{cat.attemptCount.toLocaleString()} <span className="text-[8px] uppercase not-italic opacity-40 ml-1">attempts</span></td>
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-center text-lg font-black text-indigo-500 tabular-nums tracking-tighter">{cat.avgScore.toFixed(1)}%</td>
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6">
                                       <div className="w-32 mx-auto">
                                          <div className="flex justify-between text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1"><span>Target Completion</span><span>{(cat.completionRate*100).toFixed(0)}%</span></div>
                                          <div className="h-1.5 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden"><motion.div initial={{width:0}} animate={{width:`${cat.completionRate * 100}%`}} className="h-full bg-gradient-to-r from-purple-500 to-indigo-500" /></div>
                                       </div>
                                    </td>
-                                   <td className="px-8 py-6 text-right">
+                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                       <div className={`px-4 py-1.5 rounded-xl border-2 text-[8px] font-black uppercase tracking-widest inline-block ${cat.avgScore >= 75 ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{cat.avgScore >= 75 ? 'Optimal' : 'Standard'}</div>
                                    </td>
                                 </motion.tr>

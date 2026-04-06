@@ -253,7 +253,7 @@ const QuestionPage = () => {
                 { label: 'CREATED', icon: Calendar },
                 { label: 'ACTIONS', icon: ArrowRight, align: 'text-right' }
               ].map((head, i) => (
-                <th key={i} className={`px-8 py-8 ${head.align || 'text-left'}`}>
+                <th key={i} className={`px-4 lg:px-8 py-4 lg:py-8 ${head.align || 'text-left'}`}>
                   <div className={`flex items-center gap-3 ${head.align === 'text-right' ? 'justify-end' : ''}`}>
                     <head.icon className="w-4 h-4 text-indigo-500" />
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{head.label}</span>
@@ -271,12 +271,12 @@ const QuestionPage = () => {
                 transition={{ delay: index * 0.03 }}
                 className="group hover:bg-indigo-500/5 transition-all"
               >
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <span className="text-xs font-black text-slate-400 font-mono">
                     #{((currentPage - 1) * itemsPerPage) + index + 1}
                   </span>
                 </td>
-                <td className="px-8 py-6 max-w-md">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 max-w-md">
                   <div className="space-y-1">
                     <p className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 uppercase tracking-tight">
                       {question.questionText}
@@ -290,7 +290,7 @@ const QuestionPage = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
                     <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest truncate max-w-[150px]">
@@ -298,19 +298,19 @@ const QuestionPage = () => {
                     </span>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 border-emerald-500/20 bg-emerald-500/5 text-emerald-500`}>
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span className="text-[10px] font-black tracking-tighter">OPTION {String.fromCharCode(65 + question.correctAnswerIndex)}</span>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
                     <Clock className="w-4 h-4 text-amber-500" />
                     <span className="text-[10px] font-black tracking-widest">{question.timeLimit || 15}s</span>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                       {new Date(question.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
@@ -320,7 +320,7 @@ const QuestionPage = () => {
                     </p>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <motion.button
                       whileHover={{ scale: 1.1, y: -2 }}
@@ -350,7 +350,7 @@ const QuestionPage = () => {
 
   // Card View Component
   const CardView = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
       {questions.map((question, index) => (
         <motion.div
           key={question._id}
@@ -358,7 +358,7 @@ const QuestionPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ y: -8 }}
           transition={{ delay: index * 0.05 }}
-          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex flex-col"
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex flex-col"
         >
           {/* Gradient Header */}
           <div className="relative h-24 overflow-hidden flex-shrink-0">
@@ -389,7 +389,7 @@ const QuestionPage = () => {
             </div>
           </div>
 
-          <div className="p-8 flex-1 flex flex-col">
+          <div className="p-3 lg:p-8 flex-1 flex flex-col">
             <div className="mb-6 flex-1">
               <div className="flex items-center gap-2 mb-3">
                 <Target className="w-4 h-4 text-indigo-500" />
@@ -400,7 +400,7 @@ const QuestionPage = () => {
               </h3>
             </div>
 
-            <div className="space-y-3 mb-8">
+            <div className="space-y-3 mb-4 lg:mb-8">
               {question.options.map((option, i) => (
                 <div
                   key={i}
@@ -436,18 +436,18 @@ const QuestionPage = () => {
 
   // List View Component
   const ListView = () => (
-    <div className="space-y-6">
+    <div className="space-y-3 lg:space-y-6">
       {questions.map((question, index) => (
         <motion.div
           key={question._id}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.05 }}
-          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-8 hover:shadow-xl transition-all group"
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-3 lg:p-8 hover:shadow-xl transition-all group"
         >
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div className="flex items-start gap-8 flex-1">
-              <div className="w-20 h-20 rounded-[2rem] bg-indigo-500/10 border-2 border-indigo-500/20 flex items-center justify-center text-3xl shadow-xl flex-shrink-0 group-hover:rotate-6 transition-transform">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+            <div className="flex items-start gap-3 lg:gap-8 flex-1">
+              <div className="w-20 h-20 rounded-lg lg:rounded-[2rem] bg-indigo-500/10 border-2 border-indigo-500/20 flex items-center justify-center text-3xl shadow-xl flex-shrink-0 group-hover:rotate-6 transition-transform">
                 {String.fromCharCode(65 + question.correctAnswerIndex)}
               </div>
 
@@ -481,7 +481,7 @@ const QuestionPage = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-6 pt-2">
+                <div className="flex flex-wrap items-center gap-3 lg:gap-6 pt-2">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-amber-500" />
                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Constraint:</span>
@@ -501,7 +501,7 @@ const QuestionPage = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleEdit(question)}
-                className="px-8 py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all"
+                className="px-4 lg:px-8 py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all"
               >
                 <Edit3 className="w-4 h-4 inline mr-2" /> EDIT
               </motion.button>
@@ -527,8 +527,8 @@ const QuestionPage = () => {
         <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
           <div className="mx-auto">
             {/* Tactical Command Header */}
-            <div className="relative mb-12">
-              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
+            <div className="relative mb-4 lg:mb-12">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -553,7 +553,7 @@ const QuestionPage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
+                    className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
                   >
                     <button onClick={() => setViewMode('table')} className={`p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><Table className="w-5 h-5" /></button>
                     <button onClick={() => setViewMode('list')} className={`p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><List className="w-5 h-5" /></button>
@@ -566,7 +566,7 @@ const QuestionPage = () => {
                     whileHover={{ scale: 1.05, rotate: 2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleToggleForm}
-                    className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-indigo-500/20 transition-all overflow-hidden"
+                    className="group relative px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-indigo-500/20 transition-all overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span className="relative flex items-center gap-3">
@@ -576,7 +576,7 @@ const QuestionPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:mt-10">
                 {[
                   { label: 'Total Questions', value: pagination.total || 0, icon: Target, color: 'primary' },
                   { label: 'Time Limit', value: '15s', icon: Clock, color: 'amber' },
@@ -600,10 +600,10 @@ const QuestionPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mb-12"
+              className="mb-4 lg:mb-12"
             >
-              <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
-                <div className="flex flex-col lg:flex-row items-center gap-6">
+              <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
+                <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
                   <div className="flex-1 w-full relative group">
                     <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
                       <Search className="w-5 h-5" />
@@ -624,7 +624,7 @@ const QuestionPage = () => {
                       <select
                         value={filters.quiz}
                         onChange={(e) => handleFilterChange('quiz', e.target.value)}
-                        className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                        className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                       >
                         <option value="">Filter by Quiz</option>
                         {quizzes.map(q => <option key={q._id} value={q._id}>{q.title}</option>)}
@@ -634,7 +634,7 @@ const QuestionPage = () => {
                       <select
                         value={itemsPerPage}
                         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                        className="w-full px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                        className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                       >
                         {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} ITEMS</option>)}
                       </select>
@@ -668,10 +668,10 @@ const QuestionPage = () => {
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                    className="bg-white dark:bg-[#0A0F1E] rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-4xl max-h-[90vh] shadow-2xl overflow-hidden relative z-[101] flex flex-col"
+                    className="bg-white dark:bg-[#0A0F1E] rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-4xl max-h-[90vh] shadow-2xl overflow-hidden relative z-[101] flex flex-col"
                   >
                     <div className="p-4 md:p-8 lg:p-12 overflow-y-auto custom-scrollbar">
-                      <div className="flex justify-between items-start mb-10">
+                      <div className="flex justify-between items-start mb-4 lg:mb-10">
                         <div>
                           <div className="flex items-center gap-3 mb-2">
                             <BrainCircuit className="w-5 h-5 text-indigo-500 animate-pulse" />
@@ -693,7 +693,7 @@ const QuestionPage = () => {
 
                       <form onSubmit={handleSubmit} className="gap-12">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                          <div className="space-y-8">
+                          <div className="space-y-4 lg:space-y-8">
                             {/* Strata Selection */}
                             <div className="space-y-3">
                               <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">SELECT QUIZ</label>
@@ -723,7 +723,7 @@ const QuestionPage = () => {
                                   required
                                   placeholder="Enter question text..."
                                   rows="4"
-                                  className="w-full px-6 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-sm font-bold transition-all outline-none resize-none"
+                                  className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-sm font-bold transition-all outline-none resize-none"
                                 />
                               </div>
                             </div>
@@ -746,7 +746,7 @@ const QuestionPage = () => {
                             </div>
                           </div>
 
-                          <div className="space-y-6">
+                          <div className="space-y-3 lg:space-y-6">
                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 block mb-2">ANSWER OPTIONS</label>
                             {options.map((option, index) => (
                               <motion.div
@@ -754,7 +754,7 @@ const QuestionPage = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`relative flex items-center gap-4 p-2 rounded-[2rem] border-2 transition-all ${correctAnswerIndex === index
+                                className={`relative flex items-center gap-4 p-2 rounded-lg lg:rounded-[2rem] border-2 transition-all ${correctAnswerIndex === index
                                   ? 'bg-emerald-500/5 border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.1)]'
                                   : 'bg-slate-50 dark:bg-white/5 border-transparent'
                                   }`}
@@ -791,13 +791,13 @@ const QuestionPage = () => {
                           </div>
                         </div>
 
-                        <div className="mt-12 flex flex-col lg:flex-row gap-4 pt-8 border-t-2 border-slate-50 dark:border-white/5">
+                        <div className="mt-4 lg:mt-12 flex flex-col lg:flex-row gap-4 pt-8 border-t-2 border-slate-50 dark:border-white/5">
                           <motion.button
                             type="button"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => { setShowForm(false); setEditingId(null); resetForm(); }}
-                            className="flex-1 py-5 px-8 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-rose-500 hover:text-white hover:border-transparent transition-all"
+                            className="flex-1 py-5 px-4 lg:px-8 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-rose-500 hover:text-white hover:border-transparent transition-all"
                           >
                             DISCARD CHANGES
                           </motion.button>
@@ -805,7 +805,7 @@ const QuestionPage = () => {
                             type="submit"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex-[2] py-5 px-8 rounded-2xl bg-indigo-500 text-white shadow-xl shadow-indigo-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
+                            className="flex-[2] py-5 px-4 lg:px-8 rounded-2xl bg-indigo-500 text-white shadow-xl shadow-indigo-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
                           >
                              <Save className="w-5 h-5" /> {editingId ? 'UPDATE QUESTION DATA' : 'FINALIZE NEW QUESTION'}
                           </motion.button>
@@ -826,7 +826,7 @@ const QuestionPage = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex flex-col items-center justify-center py-24 space-y-6"
+                    className="flex flex-col items-center justify-center py-24 space-y-3 lg:space-y-6"
                   >
                     <div className="relative">
                       <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
@@ -844,8 +844,8 @@ const QuestionPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex flex-col items-center justify-center py-32 text-center"
                   >
-                    <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-[3rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8 relative group">
-                      <div className="absolute inset-0 bg-indigo-500/10 rounded-[3rem] group-hover:scale-110 transition-transform" />
+                    <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-xl lg:rounded-[3rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-4 lg:mb-8 relative group">
+                      <div className="absolute inset-0 bg-indigo-500/10 rounded-xl lg:rounded-[3rem] group-hover:scale-110 transition-transform" />
                       <HelpCircle className="w-16 h-16 text-slate-300 dark:text-slate-600 relative z-10" />
                     </div>
                     <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
@@ -859,7 +859,7 @@ const QuestionPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handleClearFilters}
-                        className="mt-8 px-8 py-4 bg-indigo-500/10 text-indigo-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all border-2 border-indigo-500/20"
+                        className="mt-4 lg:mt-8 px-4 lg:px-8 py-4 bg-indigo-500/10 text-indigo-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all border-2 border-indigo-500/20"
                       >
                         Reset Neural Filters
                       </motion.button>

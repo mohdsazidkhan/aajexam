@@ -127,7 +127,7 @@ const AdminNotificationsPage = () => {
   if (loading && items.length === 0) {
     return (
       <AdminMobileAppWrapper title="Signal Relay">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -136,7 +136,7 @@ const AdminNotificationsPage = () => {
             />
             <Bell className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-rose-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Signal Waveforms...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Signal Waveforms...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -152,9 +152,9 @@ const AdminNotificationsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl">
@@ -174,7 +174,7 @@ const AdminNotificationsPage = () => {
                     <select
                       value={limit}
                       onChange={(e) => handleLimitChange(e.target.value)}
-                      className="px-6 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
+                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
                     >
                       {[10, 20, 50, 100].map((n) => (
                         <option key={n} value={n}>{n}_PAGES</option>
@@ -183,7 +183,7 @@ const AdminNotificationsPage = () => {
                  </div>
                  <button
                     onClick={handleClearAll}
-                    className="px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-rose-500 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-rose-500 hover:text-white transition-all flex items-center gap-3 active:scale-95"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-rose-500 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-rose-500 hover:text-white transition-all flex items-center gap-3 active:scale-95"
                  >
                    <Trash2 className="w-4 h-4" /> NEUTRALIZE_ALL
                  </button>
@@ -198,9 +198,9 @@ const AdminNotificationsPage = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_SIGNALS_DETECTED</h3>
@@ -211,7 +211,7 @@ const AdminNotificationsPage = () => {
                  key="stream"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8"
                >
                  {items.map((n, i) => {
                    const href = typeToPath[n.type] || '/admin/notifications';
@@ -231,7 +231,7 @@ const AdminNotificationsPage = () => {
                          }
                          router.push(href);
                        }}
-                       className={`group relative rounded-[3rem] border-4 p-8 cursor-pointer transition-all shadow-xl hover:scale-[1.02] flex flex-col ${n.isRead 
+                       className={`group relative rounded-xl lg:rounded-[3rem] border-4 p-3 lg:p-8 cursor-pointer transition-all shadow-xl hover:scale-[1.02] flex flex-col ${n.isRead 
                          ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
                          : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-primary-500/20 active-signal'}`}
                      >
@@ -282,7 +282,7 @@ const AdminNotificationsPage = () => {
                 <ChevronLeft className="w-5 h-5" />
               </button>
               
-              <div className="px-8 py-4 bg-slate-900 text-white rounded-[2rem] shadow-2xl italic tracking-tighter">
+              <div className="px-4 lg:px-8 py-4 bg-slate-900 text-white rounded-lg lg:rounded-[2rem] shadow-2xl italic tracking-tighter">
                  PAGE_IDENT: {page} <span className="text-slate-500 ml-2">//</span> TOTAL: {totalPages}
               </div>
 

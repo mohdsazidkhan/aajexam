@@ -490,7 +490,7 @@ const QuizPage = () => {
                 { label: 'CREATED', icon: Calendar },
                 { label: 'ACTIONS', icon: ArrowRight, align: 'text-right' }
               ].map((head, i) => (
-                <th key={i} className={`px-8 py-8 ${head.align || 'text-left'}`}>
+                <th key={i} className={`px-4 lg:px-8 py-4 lg:py-8 ${head.align || 'text-left'}`}>
                   <div className={`flex items-center gap-3 ${head.align === 'text-right' ? 'justify-end' : ''}`}>
                     <head.icon className="w-4 h-4 text-fuchsia-500" />
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{head.label}</span>
@@ -508,12 +508,12 @@ const QuizPage = () => {
                 transition={{ delay: index * 0.03 }}
                 className="group hover:bg-indigo-500/5 transition-all"
               >
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <span className="text-xs font-black text-slate-400 font-mono">
                     #{((currentPage - 1) * itemsPerPage) + index + 1}
                   </span>
                 </td>
-                <td className="px-8 py-6 max-w-md">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 max-w-md">
                   <div className="space-y-1 text-left">
                     <p className="text-sm font-bold text-slate-900 dark:text-white line-clamp-1 uppercase tracking-tight">
                       {quiz.title}
@@ -523,7 +523,7 @@ const QuizPage = () => {
                     </p>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <Database className="w-3 h-3 text-indigo-500" />
@@ -537,17 +537,17 @@ const QuizPage = () => {
                     )}
                   </div>
                 </td>
-                <td className="px-8 py-6 text-center">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-500/10 border-2 border-indigo-500/20 text-indigo-600 font-black text-xs">
                     {quiz.questionCount || 0}
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <span className={`inline-flex px-3 py-1.5 rounded-xl border-2 text-[10px] font-black tracking-tighter uppercase ${getDifficultyColor(quiz.difficulty)}`}>
                     {quiz.difficulty}
                   </span>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <Star className="w-3.5 h-3.5 text-amber-500" />
@@ -559,7 +559,7 @@ const QuizPage = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">
                       {new Date(quiz.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
@@ -569,7 +569,7 @@ const QuizPage = () => {
                     </p>
                   </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <motion.button
                       whileHover={{ scale: 1.1, y: -2 }}
@@ -610,7 +610,7 @@ const QuizPage = () => {
 
   // Card View Component
   const CardView = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
       {quizzes.map((quiz, index) => (
         <motion.div
           key={quiz._id}
@@ -618,7 +618,7 @@ const QuizPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ y: -8 }}
           transition={{ delay: index * 0.05 }}
-          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex flex-col"
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex flex-col"
         >
           {/* Gradient Header */}
           <div className="relative h-28 overflow-hidden flex-shrink-0">
@@ -659,7 +659,7 @@ const QuizPage = () => {
             </div>
           </div>
 
-          <div className="p-8 flex-1 flex flex-col">
+          <div className="p-3 lg:p-8 flex-1 flex flex-col">
             <div className="mb-6 flex-1">
               <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-tight group-hover:text-indigo-500 transition-colors line-clamp-2 mb-3">
                 {quiz.title}
@@ -669,7 +669,7 @@ const QuizPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-2 gap-4 mb-4 lg:mb-8">
               <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border-2 border-transparent group-hover:border-indigo-500/10 transition-all">
                 <div className="flex items-center gap-2 mb-1">
                   <Star className="w-3.5 h-3.5 text-amber-500" />
@@ -708,18 +708,18 @@ const QuizPage = () => {
 
   // List View Component
   const ListView = () => (
-    <div className="space-y-6">
+    <div className="space-y-3 lg:space-y-6">
       {quizzes.map((quiz, index) => (
         <motion.div
           key={quiz._id}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.05 }}
-          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-8 hover:shadow-xl transition-all group"
+          className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-3 lg:p-8 hover:shadow-xl transition-all group"
         >
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div className="flex items-start gap-8 flex-1">
-              <div className="w-24 h-24 rounded-[2rem] bg-fuchsia-500/10 border-2 border-fuchsia-500/20 flex items-center justify-center text-4xl shadow-xl flex-shrink-0 group-hover:rotate-6 transition-transform">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+            <div className="flex items-start gap-3 lg:gap-8 flex-1">
+              <div className="w-24 h-24 rounded-lg lg:rounded-[2rem] bg-fuchsia-500/10 border-2 border-fuchsia-500/20 flex items-center justify-center text-4xl shadow-xl flex-shrink-0 group-hover:rotate-6 transition-transform">
                 {quiz.title.charAt(0).toUpperCase()}
               </div>
 
@@ -743,7 +743,7 @@ const QuizPage = () => {
                    {quiz.description || "NO_DESCRIPTION_AVAILABLE"}
                  </p>
 
-                <div className="flex flex-wrap items-center gap-8 pt-2 font-black text-[10px] uppercase tracking-widest text-slate-400">
+                <div className="flex flex-wrap items-center gap-3 lg:gap-8 pt-2 font-black text-[10px] uppercase tracking-widest text-slate-400">
                   <div className="flex items-center gap-2 text-slate-900 dark:text-white italic">
                     <BrainCircuit className="w-4 h-4 text-indigo-500" />
                     <span>{quiz.questionCount || 0} QUESTIONS</span>
@@ -770,7 +770,7 @@ const QuizPage = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleViewQuiz(quiz)}
-                  className="px-8 py-4 bg-fuchsia-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-fuchsia-500/20 transition-all flex items-center justify-center gap-3"
+                  className="px-4 lg:px-8 py-4 bg-fuchsia-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-fuchsia-500/20 transition-all flex items-center justify-center gap-3"
                 >
                   <Eye className="w-5 h-5" /> DETAILS
                 </motion.button>
@@ -806,8 +806,8 @@ const QuizPage = () => {
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white">
           {/* Tactical Command Header */}
-          <div className="relative mb-12">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
+          <div className="relative mb-4 lg:mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -832,7 +832,7 @@ const QuizPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
+                  className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
                 >
                   <button onClick={() => setViewMode('table')} className={`p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400 hover:text-primary-500'}`}><Table className="w-5 h-5" /></button>
                   <button onClick={() => setViewMode('list')} className={`p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400 hover:text-primary-500'}`}><List className="w-5 h-5" /></button>
@@ -845,7 +845,7 @@ const QuizPage = () => {
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowForm(true)}
-                  className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-primary-500/20 transition-all overflow-hidden"
+                  className="group relative px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-primary-500/20 transition-all overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="relative flex items-center gap-3">
@@ -856,7 +856,7 @@ const QuizPage = () => {
             </div>
 
             {/* Mastery Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:mt-8">
               {[
                 { label: 'Total Quizzes', value: pagination.total || 0, icon: Target, color: 'primary' },
                 { label: 'Time Avg', value: '25m', icon: Clock, color: 'amber' },
@@ -880,10 +880,10 @@ const QuizPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
-              <div className="flex flex-col lg:flex-row items-center gap-6">
+            <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
+              <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
                 <div className="flex-1 w-full relative group">
                   <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-fuchsia-500 transition-colors">
                     <Search className="w-5 h-5" />
@@ -893,7 +893,7 @@ const QuizPage = () => {
                     placeholder="SEARCH ALL QUIZZES..."
                     value={searchTerm}
                     onChange={(e) => handleSearch(e.target.value)}
-                    className="w-full pl-16 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-[2.5rem] text-xs font-black uppercase tracking-widest outline-none transition-all placeholder:text-slate-400"
+                    className="w-full pl-16 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-xs font-black uppercase tracking-widest outline-none transition-all placeholder:text-slate-400"
                   />
                 </div>
                 <div className="flex items-center gap-4 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
@@ -904,7 +904,7 @@ const QuizPage = () => {
                     <select
                       value={filters.category}
                       onChange={(e) => handleFilterChange('category', e.target.value)}
-                      className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                      className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                     >
                       <option value="">DOMAIN: ALL</option>
                       {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
@@ -915,7 +915,7 @@ const QuizPage = () => {
                     <select
                       value={filters.difficulty}
                       onChange={(e) => handleFilterChange('difficulty', e.target.value)}
-                      className="w-full px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                      className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                     >
                       <option value="">DIFFICULTY</option>
                       <option value="beginner">BEGINNER</option>
@@ -929,7 +929,7 @@ const QuizPage = () => {
                     <select
                       value={itemsPerPage}
                       onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                      className="w-full px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                      className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                     >
                        {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} ITEMS</option>)}
                     </select>
@@ -964,10 +964,10 @@ const QuizPage = () => {
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="relative w-full max-w-5xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+                  className="relative w-full max-w-5xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
                 >
                   {/* Modal Header */}
-                  <div className="p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-fuchsia-100/50 to-transparent dark:from-fuchsia-500/5">
+                  <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-fuchsia-100/50 to-transparent dark:from-fuchsia-500/5">
                     <div className="flex items-center gap-4">
                       <div className="p-3 bg-fuchsia-500 text-white rounded-2xl shadow-lg shadow-fuchsia-500/20">
                         <Plus className="w-6 h-6" />
@@ -987,16 +987,16 @@ const QuizPage = () => {
                     </motion.button>
                   </div>
 
-                  <div className="p-8 overflow-y-auto custom-scrollbar">
-                    <form onSubmit={handleSubmit} className="space-y-12">
+                  <div className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
+                    <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-12">
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div className="space-y-8">
+                        <div className="space-y-4 lg:space-y-8">
                           <div className="flex items-center gap-3 pb-2 border-b-2 border-slate-100 dark:border-white/5">
                             <Fingerprint className="w-5 h-5 text-fuchsia-500" />
                             <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">Core Identity</h3>
                           </div>
 
-                          <div className="space-y-6">
+                          <div className="space-y-3 lg:space-y-6">
                             <div className="relative group">
                               <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 mb-2 block">Quiz Title</label>
                               <input
@@ -1004,7 +1004,7 @@ const QuizPage = () => {
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 placeholder="E.G. ADVANCED NEURAL NETWORKS"
-                                className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300"
+                                className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300"
                               />
                             </div>
 
@@ -1015,7 +1015,7 @@ const QuizPage = () => {
                                 onChange={(e) => setDescription(e.target.value)}
                                 rows="4"
                                 placeholder="ENTER QUIZ DESCRIPTION..."
-                                className="w-full px-6 py-4 bg-slate-50 dark:border-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300 resize-none"
+                                className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:border-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300 resize-none"
                               />
                             </div>
 
@@ -1026,26 +1026,26 @@ const QuizPage = () => {
                                 value={tags}
                                 onChange={(e) => setTags(e.target.value)}
                                 placeholder="E.G. NETWORK, SECURITY, INFRA"
-                                className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300"
+                                className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300"
                               />
                             </div>
                           </div>
                         </div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-4 lg:space-y-8">
                           <div className="flex items-center gap-3 pb-2 border-b-2 border-slate-100 dark:border-white/5">
                             <Settings className="w-5 h-5 text-indigo-500" />
                             <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">Calibration Parameters</h3>
                           </div>
 
-                          <div className="space-y-6">
-                            <div className="grid grid-cols-2 gap-6">
+                          <div className="space-y-3 lg:space-y-6">
+                            <div className="grid grid-cols-2 gap-3 lg:gap-6">
                               <div className="relative group">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 mb-2 block">Primary Domain</label>
                                 <select
                                   value={category}
                                   onChange={(e) => handleCategoryChange(e.target.value)}
-                                  className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all appearance-none cursor-pointer"
+                                  className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all appearance-none cursor-pointer"
                                 >
                                   <option value="">SELECT DOMAIN</option>
                                   {categories?.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
@@ -1057,7 +1057,7 @@ const QuizPage = () => {
                                   value={subcategory}
                                   onChange={(e) => setSubcategory(e.target.value)}
                                   disabled={!category || loadingSubcategories}
-                                  className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all appearance-none cursor-pointer disabled:opacity-50"
+                                  className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all appearance-none cursor-pointer disabled:opacity-50"
                                 >
                                   <option value="">{loadingSubcategories ? 'UPDATING...' : 'SELECT SUB-CATEGORY'}</option>
                                   {filteredSubcategories.map(sub => <option key={sub._id} value={sub._id}>{sub.name.toUpperCase()}</option>)}
@@ -1065,14 +1065,14 @@ const QuizPage = () => {
                               </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-6">
+                            <div className="grid grid-cols-2 gap-3 lg:gap-6">
                               <div className="group">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 mb-2 block">Total Marks</label>
                                 <input
                                   type="number"
                                   value={totalMarks}
                                   onChange={(e) => setTotalMarks(e.target.value)}
-                                  className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black outline-none transition-all"
+                                  className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black outline-none transition-all"
                                 />
                               </div>
                               <div className="group">
@@ -1081,7 +1081,7 @@ const QuizPage = () => {
                                   type="number"
                                   value={timeLimit}
                                   onChange={(e) => setTimeLimit(e.target.value)}
-                                  className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black outline-none transition-all"
+                                  className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black outline-none transition-all"
                                 />
                               </div>
                             </div>
@@ -1091,7 +1091,7 @@ const QuizPage = () => {
                               <select
                                 value={difficulty}
                                 onChange={(e) => setDifficulty(e.target.value)}
-                                className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                                className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                               >
                                 <option value="beginner">BEGINNER</option>
                                 <option value="intermediate">INTERMEDIATE</option>
@@ -1100,7 +1100,7 @@ const QuizPage = () => {
                               </select>
                             </div>
 
-                            <div className="p-6 bg-indigo-500/5 rounded-[2rem] border-2 border-indigo-500/10 space-y-6">
+                            <div className="p-6 bg-indigo-500/5 rounded-lg lg:rounded-[2rem] border-2 border-indigo-500/10 space-y-3 lg:space-y-6">
                               <h4 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] text-center">Access Control</h4>
                               <div className="grid grid-cols-2 gap-4">
                                 <div>
@@ -1133,7 +1133,7 @@ const QuizPage = () => {
                           whileTap={{ scale: 0.98 }}
                           type="button"
                           onClick={() => { setShowForm(false); resetForm(); }}
-                          className="px-10 py-5 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl font-black text-xs uppercase tracking-widest transition-all"
+                          className="px-4 lg:px-10 py-5 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl font-black text-xs uppercase tracking-widest transition-all"
                         >
                           Abort
                         </motion.button>
@@ -1142,7 +1142,7 @@ const QuizPage = () => {
                           whileTap={{ scale: 0.95 }}
                           type="submit"
                           disabled={isSubmitting}
-                          className="px-12 py-5 bg-fuchsia-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-fuchsia-500/20 transition-all flex items-center gap-3 disabled:opacity-50"
+                          className="px-4 lg:px-12 py-5 bg-fuchsia-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-fuchsia-500/20 transition-all flex items-center gap-3 disabled:opacity-50"
                         >
                           {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Zap className="w-5 h-5" />}
                           CREATE_QUIZ
@@ -1164,7 +1164,7 @@ const QuizPage = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="flex flex-col items-center justify-center py-24 space-y-6"
+                  className="flex flex-col items-center justify-center py-24 space-y-3 lg:space-y-6"
                 >
                   <div className="relative">
                     <div className="w-24 h-24 rounded-full border-4 border-fuchsia-500/20 border-t-fuchsia-500 animate-spin" />
@@ -1182,8 +1182,8 @@ const QuizPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex flex-col items-center justify-center py-32 text-center"
                 >
-                  <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-8 relative group">
-                    <div className="absolute inset-0 bg-fuchsia-500/10 rounded-[3.5rem] group-hover:scale-110 transition-transform" />
+                  <div className="w-20 lg:w-32 h-20 lg:h-32 rounded-2xl lg:rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-4 lg:mb-8 relative group">
+                    <div className="absolute inset-0 bg-fuchsia-500/10 rounded-2xl lg:rounded-[3.5rem] group-hover:scale-110 transition-transform" />
                     <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600 relative z-10" />
                   </div>
                   <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
@@ -1197,7 +1197,7 @@ const QuizPage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleClearFilters}
-                      className="mt-8 px-10 py-5 bg-fuchsia-500/10 text-fuchsia-500 rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all border-2 border-fuchsia-500/20 shadow-xl"
+                      className="mt-4 lg:mt-8 px-4 lg:px-10 py-5 bg-fuchsia-500/10 text-fuchsia-500 rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all border-2 border-fuchsia-500/20 shadow-xl"
                     >
                       Reset Filters
                     </motion.button>
@@ -1223,7 +1223,7 @@ const QuizPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-12 mb-20"
+              className="mt-4 lg:mt-12 mb-20"
             >
               <Pagination
                 currentPage={currentPage}
@@ -1252,10 +1252,10 @@ const QuizPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-4xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+              className="relative w-full max-w-4xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
             >
               {/* Modal Header */}
-              <div className="p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-indigo-100/50 to-transparent dark:from-indigo-500/5">
+              <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-indigo-100/50 to-transparent dark:from-indigo-500/5">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-indigo-500 text-white rounded-2xl shadow-lg shadow-indigo-500/20">
                     <Info className="w-6 h-6" />
@@ -1275,8 +1275,8 @@ const QuizPage = () => {
                 </motion.button>
               </div>
 
-              <div className="p-8 overflow-y-auto custom-scrollbar">
-                <div className="space-y-12">
+              <div className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
+                <div className="space-y-4 lg:space-y-12">
                   {/* Top Stats Grid */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
@@ -1299,7 +1299,7 @@ const QuizPage = () => {
                       <Database className="w-5 h-5 text-indigo-500" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">Quiz Overview</h3>
                     </div>
-                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed p-6 bg-slate-50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
                       {selectedQuiz.description || "NO_OVERVIEW_AVAILABLE"}
                     </p>
                   </div>
@@ -1322,7 +1322,7 @@ const QuizPage = () => {
                   )}
 
                   {/* Questions Block */}
-                  <div className="space-y-6">
+                  <div className="space-y-3 lg:space-y-6">
                     <div className="flex items-center gap-3 pb-2 border-b-2 border-slate-100 dark:border-white/5">
                       <Layers className="w-5 h-5 text-indigo-500" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest text-center">Questions List</h3>
@@ -1336,9 +1336,9 @@ const QuizPage = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.05 }}
                             key={q._id || i}
-                            className="p-4 lg:p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 hover:border-indigo-500/20 transition-all group"
+                            className="p-4 lg:p-8 bg-slate-50 dark:bg-white/5 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 hover:border-indigo-500/20 transition-all group"
                           >
-                            <div className="flex items-start gap-6">
+                            <div className="flex items-start gap-3 lg:gap-6">
                               <div className="w-12 h-12 rounded-2xl bg-indigo-500 text-white flex items-center justify-center font-black italic shadow-lg shadow-indigo-500/20 flex-shrink-0 group-hover:rotate-6 transition-transform">
                                 {i + 1}
                               </div>
@@ -1348,7 +1348,7 @@ const QuizPage = () => {
                                 </p>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                                   {q.options?.map((opt, j) => (
-                                    <div key={j} className={`px-6 py-4 rounded-xl border-2 text-[10px] font-black uppercase tracking-widest transition-all ${j === q.correctAnswerIndex ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600' : 'bg-white/50 dark:bg-white/5 border-transparent text-slate-400'}`}>
+                                    <div key={j} className={`px-3 lg:px-6 py-4 rounded-xl border-2 text-[10px] font-black uppercase tracking-widest transition-all ${j === q.correctAnswerIndex ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600' : 'bg-white/50 dark:bg-white/5 border-transparent text-slate-400'}`}>
                                       <span className="mr-3 opacity-50">{String.fromCharCode(65 + j)}.</span> {opt}
                                       {j === q.correctAnswerIndex && <CheckCircle2 className="w-4 h-4 inline-block ml-2 mb-1" />}
                                     </div>
@@ -1359,7 +1359,7 @@ const QuizPage = () => {
                           </motion.div>
                         ))
                       ) : (
-                        <div className="py-20 text-center bg-slate-50 dark:bg-white/5 rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/5">
+                        <div className="py-20 text-center bg-slate-50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/5">
                           <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
                           <p className="text-xs font-black text-slate-400 uppercase tracking-widest">No questions found in this quiz. Items must be added.</p>
                         </div>
@@ -1369,12 +1369,12 @@ const QuizPage = () => {
                 </div>
               </div>
 
-              <div className="p-8 border-t-2 border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 flex justify-end gap-4">
+              <div className="p-3 lg:p-8 border-t-2 border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 flex justify-end gap-4">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowModal(false)}
-                  className="px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-xl transition-all"
+                  className="px-4 lg:px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-xl transition-all"
                 >
                   Acknowledge
                 </motion.button>
@@ -1404,10 +1404,10 @@ const QuizPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-6xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[95vh] flex flex-col"
+              className="relative w-full max-w-6xl bg-white/90 dark:bg-[#0A0F1E]/90 backdrop-blur-2xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden max-h-[95vh] flex flex-col"
             >
               {/* Modal Header */}
-              <div className="p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-emerald-100/50 to-transparent dark:from-emerald-500/5">
+              <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-emerald-100/50 to-transparent dark:from-emerald-500/5">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-emerald-500 text-white rounded-2xl shadow-lg shadow-emerald-500/20">
                     <Database className="w-6 h-6" />
@@ -1432,11 +1432,11 @@ const QuizPage = () => {
                 </motion.button>
               </div>
 
-              <div className="p-8 overflow-y-auto custom-scrollbar">
+              <div className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
                 <div className="grid grid-cols-1 xl:grid-cols-12 gap-12">
 
                   {/* Left Column: Form Wrapper */}
-                  <div className="xl:col-span-5 space-y-8">
+                  <div className="xl:col-span-5 space-y-4 lg:space-y-8">
                     <div className="flex items-center gap-3 pb-2 border-b-2 border-slate-100 dark:border-white/5">
                       <PlusSquare className="w-5 h-5 text-emerald-500" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">
@@ -1444,7 +1444,7 @@ const QuizPage = () => {
                       </h3>
                     </div>
 
-                    <div className="p-4 lg:p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 space-y-8">
+                    <div className="p-4 lg:p-8 bg-slate-50 dark:bg-white/5 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 space-y-4 lg:space-y-8">
                       <div className="space-y-4">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block">Question Text</label>
                         <textarea
@@ -1452,7 +1452,7 @@ const QuizPage = () => {
                           onChange={(e) => setEditQuestionText(e.target.value)}
                           placeholder="ENTER QUESTION TEXT..."
                           rows="4"
-                          className="w-full px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300 resize-none shadow-sm"
+                          className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-xs font-bold uppercase tracking-tight outline-none transition-all placeholder:text-slate-300 resize-none shadow-sm"
                         />
                       </div>
 
@@ -1469,7 +1469,7 @@ const QuizPage = () => {
                                 value={option}
                                 onChange={(e) => handleOptionChange(index, e.target.value)}
                                 placeholder={`OPTION ${String.fromCharCode(65 + index)}`}
-                                className="flex-1 px-6 py-3 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-xl text-xs font-bold uppercase tracking-tight outline-none transition-all shadow-sm"
+                                className="flex-1 px-3 lg:px-6 py-3 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-xl text-xs font-bold uppercase tracking-tight outline-none transition-all shadow-sm"
                               />
                             </div>
                           ))}
@@ -1484,7 +1484,7 @@ const QuizPage = () => {
                             type="number"
                             value={editTimeLimit}
                             onChange={(e) => setEditTimeLimit(e.target.value)}
-                            className="w-full px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-sm font-black outline-none transition-all shadow-sm"
+                            className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-sm font-black outline-none transition-all shadow-sm"
                           />
                         </div>
                       </div>
@@ -1521,7 +1521,7 @@ const QuizPage = () => {
                   </div>
 
                   {/* Right Column: Node List Wrapper */}
-                  <div className="xl:col-span-7 space-y-8">
+                  <div className="xl:col-span-7 space-y-4 lg:space-y-8">
                     <div className="flex items-center justify-between pb-2 border-b-2 border-slate-100 dark:border-white/5">
                       <div className="flex items-center gap-3">
                         <Layers className="w-5 h-5 text-indigo-500" />
@@ -1539,7 +1539,7 @@ const QuizPage = () => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             key={q._id || i}
-                            className={`p-6 rounded-[2.5rem] border-4 transition-all group ${editingQuestionIndex === i ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-emerald-500/10'}`}
+                            className={`p-6 rounded-xl lg:rounded-[2.5rem] border-4 transition-all group ${editingQuestionIndex === i ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-emerald-500/10'}`}
                           >
                             <div className="flex items-start gap-4">
                               <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic shadow-lg flex-shrink-0 ${editingQuestionIndex === i ? 'bg-emerald-500 text-white shadow-emerald-500/20' : 'bg-white dark:bg-white/5 text-slate-400'}`}>
@@ -1585,7 +1585,7 @@ const QuizPage = () => {
                           </motion.div>
                         ))
                       ) : (
-                        <div className="py-32 text-center bg-slate-50 dark:bg-white/5 rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/5">
+                        <div className="py-32 text-center bg-slate-50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/5">
                           <Fingerprint className="w-16 h-16 text-slate-200 mx-auto mb-6 animate-pulse" />
                           <h4 className="text-xl font-black italic text-slate-300 uppercase tracking-tighter mb-2">No Questions Found</h4>
                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest max-w-xs mx-auto leading-relaxed">
@@ -1598,7 +1598,7 @@ const QuizPage = () => {
                 </div>
               </div>
 
-              <div className="p-8 border-t-2 border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 flex gap-4 shrink-0">
+              <div className="p-3 lg:p-8 border-t-2 border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 flex gap-4 shrink-0">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -1609,7 +1609,7 @@ const QuizPage = () => {
                     setEditingQuestionIndex(null);
                     fetchQuizzes(currentPage, searchTerm, filters);
                   }}
-                  className="flex-1 py-5 bg-emerald-500 text-white rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-3"
+                  className="flex-1 py-5 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-3"
                 >
                   <CheckCircle2 className="w-5 h-5" />
                   CONSOLIDATE_ALL_RECALIBRATIONS

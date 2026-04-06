@@ -246,7 +246,7 @@ const UserAnalytics = () => {
   if (loading) {
     return (
       <AdminMobileAppWrapper title="Consumer Intelligence">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -255,7 +255,7 @@ const UserAnalytics = () => {
             />
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Computing Demographic flux...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Computing Demographic flux...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -271,9 +271,9 @@ const UserAnalytics = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -290,7 +290,7 @@ const UserAnalytics = () => {
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={handleExport}
-                  className="px-8 py-4 bg-indigo-600 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
+                  className="px-4 lg:px-8 py-4 bg-indigo-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
                 >
                   <Download className="w-4 h-4" /> EXPORT_SCHEMATIC_CSV
                 </button>
@@ -299,7 +299,7 @@ const UserAnalytics = () => {
           </motion.div>
 
           {/* Controller Bar */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                 <Filter className="w-5 h-5" />
@@ -352,13 +352,13 @@ const UserAnalytics = () => {
           </div>
 
           {/* Visualizations Spectrum */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-12">
+              <div className="flex items-center justify-between mb-4 lg:mb-12">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                     <BarChart3 className="w-5 h-5" />
@@ -382,9 +382,9 @@ const UserAnalytics = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-12">
+              <div className="flex items-center justify-between mb-4 lg:mb-12">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl">
                     <PieChartIcon className="w-5 h-5" />
@@ -409,9 +409,9 @@ const UserAnalytics = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-12 shadow-2xl overflow-hidden"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center justify-between mb-4 lg:mb-12">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
                   <LineChart className="w-5 h-5" />

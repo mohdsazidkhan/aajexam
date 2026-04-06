@@ -106,7 +106,7 @@ const AdminCompetitionResets = () => {
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
                 <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white">
                     <div className="mx-auto max-w-6xl">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 lg:mb-8">
                             <div>
                                 <h1 className="text-xl lg:text-2xl font-black text-gray-900 dark:text-white flex items-center gap-3">
                                     <Calendar className="w-8 h-8 text-primary-700 dark:text-primary-500" />
@@ -136,14 +136,14 @@ const AdminCompetitionResets = () => {
                         </div>
 
                         {error && (
-                            <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-700 dark:text-red-400">
+                            <div className="mb-4 lg:mb-8 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-700 dark:text-red-400">
                                 <TriangleAlert className="w-5 h-5 flex-shrink-0" />
                                 <p className="text-sm font-medium">{error}</p>
                             </div>
                         )}
 
                         {result && (
-                            <div className="mb-8 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl animate-in fade-in slide-in-from-top-4 duration-500">
+                            <div className="mb-4 lg:mb-8 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl animate-in fade-in slide-in-from-top-4 duration-500">
                                 <div className="flex items-center gap-3 text-green-700 dark:text-green-400 mb-4">
                                     <CircleCheck className="w-6 h-6" />
                                     <h2 className="text-lg font-bold">Reset Successfully Triggered!</h2>
@@ -169,7 +169,7 @@ const AdminCompetitionResets = () => {
                             </div>
                         )}
 
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
                             <ResetCard
                                 title="Daily Reset"
                                 type="daily"
@@ -194,7 +194,7 @@ const AdminCompetitionResets = () => {
                         </div>
 
                         {!dryRun && (
-                            <div className="mt-8 p-6 bg-red-50 dark:bg-red-900/20 border-2 border-dashed border-red-200 dark:border-red-800 rounded-2xl">
+                            <div className="mt-4 lg:mt-8 p-6 bg-red-50 dark:bg-red-900/20 border-2 border-dashed border-red-200 dark:border-red-800 rounded-2xl">
                                 <h3 className="text-red-800 dark:text-red-300 font-black flex items-center gap-2 mb-2">
                                     <TriangleAlert className="w-5 h-5" /> DANGER ZONE
                                 </h3>

@@ -33,7 +33,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-indigo-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-indigo-500/30 transition-all shadow-xl overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -104,14 +104,14 @@ const AdminUserAnalyticsDetail = () => {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
                     >
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <PieChart className="w-64 h-64 text-indigo-500 -rotate-12" />
                         </div>
 
                         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-                            <div className="space-y-6">
+                            <div className="space-y-3 lg:space-y-6">
                                 <div className="flex items-center gap-4">
                                     <motion.button
                                         whileHover={{ scale: 1.1, x: -5 }}
@@ -134,12 +134,12 @@ const AdminUserAnalyticsDetail = () => {
                                 </h1>
 
                                  {!loading && (
-                                     <div className="flex flex-wrap items-center gap-6">
-                                         <div className="flex items-center gap-3 px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+                                     <div className="flex flex-wrap items-center gap-3 lg:gap-6">
+                                         <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
                                              <Mail className="w-4 h-4 text-slate-400" />
                                              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{userData.email || 'N/A'}</span>
                                          </div>
-                                         <div className="flex items-center gap-3 px-6 py-3 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
+                                         <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
                                              <TrendingUp className="w-4 h-4 text-indigo-500" />
                                              <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">LVL_{userData.level?.currentLevel ?? 0} // {userData.subscriptionStatus?.toUpperCase() || 'STANDARD'}</span>
                                          </div>
@@ -151,7 +151,7 @@ const AdminUserAnalyticsDetail = () => {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className={`relative px-10 py-8 rounded-[2.5rem] border-4 shadow-2xl overflow-hidden
+                                    className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-xl lg:rounded-[2.5rem] border-4 shadow-2xl overflow-hidden
                                         ${netEarnings >= 0 ? "bg-emerald-500 border-emerald-400/50" : "bg-rose-500 border-rose-400/50"}`}
                                 >
                                      <div className="relative z-10 flex flex-col items-center">
@@ -174,18 +174,18 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="flex flex-col items-center justify-center py-32 space-y-8"
+                                className="flex flex-col items-center justify-center py-32 space-y-4 lg:space-y-8"
                             >
                                 <div className="relative">
                                     <motion.div
                                         animate={{ rotate: 360 }}
                                         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                        className="w-24 h-24 border-4 border-indigo-500/20 rounded-[2rem]"
+                                        className="w-24 h-24 border-4 border-indigo-500/20 rounded-lg lg:rounded-[2rem]"
                                     />
                                     <motion.div
                                         animate={{ rotate: -360 }}
                                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-0 border-t-4 border-indigo-500 rounded-[2rem]"
+                                        className="absolute inset-0 border-t-4 border-indigo-500 rounded-lg lg:rounded-[2rem]"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <Cpu className="w-8 h-8 text-indigo-500 animate-pulse" />
@@ -201,30 +201,30 @@ const AdminUserAnalyticsDetail = () => {
                                 key="error"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="max-w-2xl mx-auto bg-rose-500/10 border-4 border-rose-500/20 rounded-[3.5rem] p-12 text-center shadow-2xl"
+                                className="max-w-2xl mx-auto bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
                             >
-                                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-rose-500/30">
+                                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                                     <Zap className="w-10 h-10 text-white" />
                                 </div>
                                 <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">DATA_LOAD_FAILED</h3>
-                                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest mb-12">{error}</p>
+                                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest mb-4 lg:mb-12">{error}</p>
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => router.push('/admin/analytics/users-overview')}
-                                    className="px-8 py-4 bg-rose-500 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-rose-500/20"
+                                    className="px-4 lg:px-8 py-4 bg-rose-500 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-rose-500/20"
                                 >
                                     Back_To_Users
                                 </motion.button>
                             </motion.div>
                         ) : data && (
-                            <div className="space-y-12">
+                            <div className="space-y-4 lg:space-y-12">
                                  {/* Financial Matrix */}
                                  <motion.section
                                      initial={{ opacity: 0, y: 20 }}
                                      animate={{ opacity: 1, y: 0 }}
                                      transition={{ delay: 0.1 }}
-                                     className="space-y-8"
+                                     className="space-y-4 lg:space-y-8"
                                  >
                                      <div className="flex items-center gap-4">
                                          <div className="p-4 bg-emerald-500/20 text-emerald-600 rounded-2xl shadow-inner">
@@ -235,7 +235,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Aggregate fiscal performance tracking</p>
                                          </div>
                                      </div>
-                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-6">
                                          <MetricCard i={0} color="emerald" icon={ArrowUp} label="Agg_Gross_Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="Cumulative_Volume" />
                                          <MetricCard i={1} color="rose" icon={ArrowDown} label="Disbursement_Vol" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Transaction_Costs" />
                                          <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net_Variance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "SURPLUS_ALIGNED" : "DEFICIT_ALIGNED"} />
@@ -249,7 +249,7 @@ const AdminUserAnalyticsDetail = () => {
                                      initial={{ opacity: 0, y: 20 }}
                                      animate={{ opacity: 1, y: 0 }}
                                      transition={{ delay: 0.2 }}
-                                     className="space-y-8"
+                                     className="space-y-4 lg:space-y-8"
                                  >
                                      <div className="flex items-center gap-4">
                                          <div className="p-4 bg-indigo-500/10 text-indigo-600 rounded-2xl shadow-inner">
@@ -260,7 +260,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Assessment accuracy and cohort positioning</p>
                                          </div>
                                      </div>
-                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
                                          <MetricCard i={0} color="purple" icon={Star} label="Tier_Positioning" value={totalHighScoreWins.toLocaleString('en-IN')} sub="Leaderboard_Dominance" />
                                          <MetricCard i={1} color="indigo" icon={TrendingUp} label="Aggregate_Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Protocol_Correctness" />
                                          <MetricCard i={2} color="cyan" icon={GraduationCap} label="Completed_Ass_Cycles" value={testAttemptsCount.toLocaleString('en-IN')} sub="Registry_Execution" />
@@ -272,7 +272,7 @@ const AdminUserAnalyticsDetail = () => {
                                      initial={{ opacity: 0, y: 20 }}
                                      animate={{ opacity: 1, y: 0 }}
                                      transition={{ delay: 0.3 }}
-                                     className="space-y-8"
+                                     className="space-y-4 lg:space-y-8"
                                  >
                                      <div className="flex items-center gap-4">
                                          <div className="p-4 bg-amber-500/10 text-amber-600 rounded-2xl shadow-inner">
@@ -283,7 +283,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Time-series engagement monitoring</p>
                                          </div>
                                      </div>
-                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
                                          <MetricCard i={0} color="rose" icon={Zap} label="Diurnal_Output" value={`${userData.dailyProgress?.highScoreWins || 0} Wins`} sub={`${userData.dailyProgress?.totalQuizAttempts || 0} Att (${userData.dailyProgress?.accuracy || 0}%_ACC)`} />
                                          <MetricCard i={1} color="indigo" icon={Zap} label="Weekly_Output" value={`${userData.weeklyProgress?.highScoreWins || 0} Wins`} sub={`${userData.weeklyProgress?.totalQuizAttempts || 0} Att (${userData.weeklyProgress?.accuracy || 0}%_ACC)`} />
                                          <MetricCard i={2} color="indigo" icon={Zap} label="Monthly_Output" value={`${userData.monthlyProgress?.highScoreWins || 0} Wins`} sub={`${userData.monthlyProgress?.totalQuizAttempts || 0} Att (${userData.monthlyProgress?.accuracy || 0}%_ACC)`} />
@@ -295,7 +295,7 @@ const AdminUserAnalyticsDetail = () => {
                                      initial={{ opacity: 0, y: 20 }}
                                      animate={{ opacity: 1, y: 0 }}
                                      transition={{ delay: 0.4 }}
-                                     className="space-y-8"
+                                     className="space-y-4 lg:space-y-8"
                                  >
                                      <div className="flex items-center gap-4">
                                          <div className="p-4 bg-pink-500/10 text-pink-600 rounded-2xl shadow-inner">
@@ -306,7 +306,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Network reach and referral mapping</p>
                                          </div>
                                      </div>
-                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
                                          <MetricCard i={0} color="rose" icon={Users} label="Cohort_Reach" value={followersCount.toLocaleString('en-IN')} sub="Follower_Base" />
                                          <MetricCard i={1} color="cyan" icon={Users} label="Inter_Connectivity" value={followingCount.toLocaleString('en-IN')} sub="Following_Nodes" />
                                          <MetricCard i={2} color="amber" icon={UserPlus} label="Network_Expansion" value={referralCount.toLocaleString('en-IN')} sub="Inbound_Referrals" />
@@ -318,7 +318,7 @@ const AdminUserAnalyticsDetail = () => {
                                      initial={{ opacity: 0, y: 20 }}
                                      animate={{ opacity: 1, y: 0 }}
                                      transition={{ delay: 0.5 }}
-                                     className="space-y-8"
+                                     className="space-y-4 lg:space-y-8"
                                  >
                                      <div className="flex items-center gap-4">
                                          <div className="p-4 bg-purple-500/10 text-purple-600 rounded-2xl shadow-inner">
@@ -329,7 +329,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Platform genesis and metadata expandsion</p>
                                          </div>
                                      </div>
-                                     <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-cols-5 gap-6">
+                                     <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-6">
                                          <MetricCard i={0} color="purple" icon={HelpCircle} label="Knowledge_Units" value={questionsPostedCount.toLocaleString('en-IN')} sub="Inquiry_Assets" />
                                          <MetricCard i={1} color="rose" icon={Folder} label="Curriculum_Roots" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Classification_Nodes" />
                                          <MetricCard i={2} color="emerald" icon={Layers} label="Sub_Taxonomy_Nodes" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Granular_Mapping" />

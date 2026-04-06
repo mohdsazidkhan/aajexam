@@ -237,7 +237,7 @@ const LevelsPage = () => {
     <AdminMobileAppWrapper title="Levels">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit mt-12 lg:mt-0">
+        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
 
           {/* Status Messages */}
           <AnimatePresence>
@@ -246,7 +246,7 @@ const LevelsPage = () => {
                 initial={{ opacity: 0, y: -20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="mb-8 p-6 bg-emerald-500/10 border-2 border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-[2rem] flex items-center gap-4 backdrop-blur-xl"
+                className="mb-4 lg:mb-8 p-6 bg-emerald-500/10 border-2 border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-lg lg:rounded-[2rem] flex items-center gap-4 backdrop-blur-xl"
               >
                 <div className="p-3 rounded-2xl bg-emerald-500 text-white shadow-lg">
                   <Shield className="w-5 h-5" />
@@ -263,7 +263,7 @@ const LevelsPage = () => {
                 initial={{ opacity: 0, y: -20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="mb-8 p-6 bg-primary-500/10 border-2 border-primary-500/20 text-primary-600 dark:text-primary-400 rounded-[2rem] flex items-center gap-4 backdrop-blur-xl"
+                className="mb-4 lg:mb-8 p-6 bg-primary-500/10 border-2 border-primary-500/20 text-primary-600 dark:text-primary-400 rounded-lg lg:rounded-[2rem] flex items-center gap-4 backdrop-blur-xl"
               >
                 <div className="p-3 rounded-2xl bg-primary-500 text-white shadow-lg">
                   <Activity className="w-5 h-5" />
@@ -280,9 +280,9 @@ const LevelsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-10">
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-1 bg-amber-500 rounded-full" />
@@ -297,7 +297,7 @@ const LevelsPage = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <div className="px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
+                <div className="px-3 lg:px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
                   <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-500">
                     <Trophy className="w-6 h-6" />
                   </div>
@@ -307,7 +307,7 @@ const LevelsPage = () => {
                   </div>
                 </div>
 
-                <div className="px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
+                <div className="px-3 lg:px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
                   <div className="p-3 rounded-2xl bg-primary-500/10 text-primary-500">
                     <Target className="w-6 h-6" />
                   </div>
@@ -322,7 +322,7 @@ const LevelsPage = () => {
             </div>
 
             {/* Action Bar */}
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 p-4 bg-white/50 dark:bg-slate-900/40 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 rounded-[2.5rem] shadow-sm">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6 p-4 bg-white/50 dark:bg-slate-900/40 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 rounded-xl lg:rounded-[2.5rem] shadow-sm">
               <div className="flex-1 w-full lg:w-auto relative group">
                 <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-amber-500 transition-colors">
                   <Search className="w-5 h-5" />
@@ -374,7 +374,7 @@ const LevelsPage = () => {
                 <Button
                   variant="admin"
                   onClick={openCreateModal}
-                  className="!px-6 !py-4 rounded-2xl !bg-amber-600 hover:!bg-amber-700 shadow-lg shadow-amber-500/20 whitespace-nowrap"
+                  className="!px-3 lg:px-6 !py-4 rounded-2xl !bg-amber-600 hover:!bg-amber-700 shadow-lg shadow-amber-500/20 whitespace-nowrap"
                 >
                   <Plus className="w-5 h-5 mr-3" /> Add Level
                 </Button>
@@ -389,7 +389,7 @@ const LevelsPage = () => {
             </div>
           ) : filteredLevels.length === 0 ? (
             <div className="text-center py-12 text-slate-700 dark:text-gray-400 bg-white dark:bg-gray-800 rounded-lg shadow">
-              <div className="text-6xl mb-4">ðŸŽ¯</div>
+              <div className="text-2xl lg:text-6xl mb-4">ðŸŽ¯</div>
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                 No levels found
               </h3>
@@ -400,7 +400,7 @@ const LevelsPage = () => {
           ) : (
             <>
               {viewMode === 'table' && (
-                <div className="overflow-x-auto rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm overflow-hidden">
+                <div className="overflow-x-auto rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm overflow-hidden">
                   <table className="w-full border-collapse bg-white dark:bg-[#0A0F1E]/60 backdrop-blur-3xl">
                     <thead className="bg-slate-50 dark:bg-white/5 border-b-2 border-slate-100 dark:border-white/5">
                       <tr>
@@ -413,7 +413,7 @@ const LevelsPage = () => {
                           { label: 'Status', icon: Activity },
                           { label: 'Actions', icon: Zap }
                         ].map((head, i) => (
-                          <th key={i} className="px-6 py-5 text-left">
+                          <th key={i} className="px-3 lg:px-6 py-5 text-left">
                             <div className="flex items-center gap-2">
                               {head.icon && <head.icon className="w-3 h-3 text-amber-500" />}
                               <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em]">{head.label}</span>
@@ -431,21 +431,21 @@ const LevelsPage = () => {
                           transition={{ delay: index * 0.05 }}
                           className="hover:bg-amber-500/5 dark:hover:bg-amber-500/10 transition-colors group"
                         >
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <div className="flex items-center gap-3">
                               <span className="text-2xl drop-shadow-md group-hover:scale-125 transition-transform">{level.emoji || 'ðŸŽ¯'}</span>
                               <span className="text-md lg:text-xl font-black text-slate-900 dark:text-white">L{level.levelNumber}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{level.name}</span>
                           </td>
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <p className="text-xs font-bold text-slate-500 dark:text-slate-400 max-w-[200px] truncate uppercase tracking-wide">
                               {level.description || 'NO_DESCRIPTION'}
                             </p>
                           </td>
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <div className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
                               <span className="text-xs font-black text-slate-700 dark:text-slate-200">
@@ -453,7 +453,7 @@ const LevelsPage = () => {
                               </span>
                             </div>
                           </td>
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border-2 ${level.requiredSubscription === 'free'
                               ? 'bg-slate-500/10 text-slate-500 border-slate-500/20'
                               : 'bg-primary-500/10 text-primary-500 border-primary-500/20'
@@ -462,13 +462,13 @@ const LevelsPage = () => {
                               {level.requiredSubscription}
                             </div>
                           </td>
-                          <td className="px-6 py-5">
+                          <td className="px-3 lg:px-6 py-5">
                             <div className={`flex items-center gap-1.5 ${level.isActive ? 'text-emerald-500' : 'text-slate-400'}`}>
                               <div className={`w-2 h-2 rounded-full ${level.isActive ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300 dark:bg-slate-700'}`} />
                               <span className="text-[10px] font-black uppercase tracking-widest">{level.isActive ? 'ACTIVE' : 'INACTIVE'}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-5 text-right">
+                          <td className="px-3 lg:px-6 py-5 text-right">
                             <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                               <motion.button
                                 whileHover={{ scale: 1.1, y: -2 }}
@@ -496,7 +496,7 @@ const LevelsPage = () => {
               )}
 
               {viewMode === 'grid' && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {filteredLevels.map((level, index) => (
                     <motion.div
                       key={level._id}
@@ -504,7 +504,7 @@ const LevelsPage = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       whileHover={{ y: -8 }}
                       transition={{ delay: index * 0.05 }}
-                      className="bg-white dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden"
+                      className="bg-white dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all group overflow-hidden"
                     >
                       {/* Gradient Header */}
                       <div className="relative h-32 overflow-hidden">
@@ -525,7 +525,7 @@ const LevelsPage = () => {
                         </div>
                       </div>
 
-                      <div className="p-8 space-y-6">
+                      <div className="p-3 lg:p-8 space-y-3 lg:space-y-6">
                         <div>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 text-[8px] font-black uppercase tracking-[0.2em] border border-amber-500/10">
@@ -578,19 +578,19 @@ const LevelsPage = () => {
               )}
 
               {viewMode === 'list' && (
-                <div className="space-y-6">
+                <div className="space-y-3 lg:space-y-6">
                   {filteredLevels.map((level, index) => (
                     <motion.div
                       key={level._id}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="bg-white dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-8 hover:shadow-xl transition-all group"
+                      className="bg-white dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 p-3 lg:p-8 hover:shadow-xl transition-all group"
                     >
-                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                        <div className="flex items-center gap-8">
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+                        <div className="flex items-center gap-3 lg:gap-8">
                           <div
-                            className="w-20 h-20 rounded-[2rem] flex items-center justify-center text-4xl shadow-xl group-hover:rotate-6 transition-transform relative overflow-hidden"
+                            className="w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-4xl shadow-xl group-hover:rotate-6 transition-transform relative overflow-hidden"
                             style={{ backgroundColor: `${level.color || '#F59E0B'}15`, border: `2px solid ${level.color || '#F59E0B'}30` }}
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
@@ -611,7 +611,7 @@ const LevelsPage = () => {
                               {level.description || 'No description available'}
                             </p>
 
-                            <div className="flex flex-wrap items-center gap-6 pt-2">
+                            <div className="flex flex-wrap items-center gap-3 lg:gap-6 pt-2">
                               <div className="flex items-center gap-2">
                                 <Zap className="w-4 h-4 text-amber-500" />
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Requirement:</span>
@@ -631,7 +631,7 @@ const LevelsPage = () => {
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => openEditModal(level)}
-                            className="px-8 py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 transition-all border-2 border-transparent"
+                            className="px-4 lg:px-8 py-4 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 transition-all border-2 border-transparent"
                           >
                             <Edit3 className="w-4 h-4 inline mr-2" /> EDIT LEVEL
                           </motion.button>
@@ -668,10 +668,10 @@ const LevelsPage = () => {
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="bg-white dark:bg-[#0A0F1E] rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-3xl shadow-2xl overflow-hidden relative z-[101]"
+                  className="bg-white dark:bg-[#0A0F1E] rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-3xl shadow-2xl overflow-hidden relative z-[101]"
                 >
                   <div className="p-4 md:p-8 lg:p-12">
-                    <div className="flex justify-between items-start mb-10">
+                    <div className="flex justify-between items-start mb-4 lg:mb-10">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
                           <Settings className="w-5 h-5 text-amber-500 animate-spin-slow" />
@@ -691,8 +691,8 @@ const LevelsPage = () => {
                       </motion.button>
                     </div>
 
-                    <form onSubmit={editingLevel ? handleUpdateLevel : handleCreateLevel} className="space-y-8">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <form onSubmit={editingLevel ? handleUpdateLevel : handleCreateLevel} className="space-y-4 lg:space-y-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                         {/* Level Number & Emoji */}
                         <div className="space-y-3">
                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">Level # & Emoji</label>
@@ -718,7 +718,7 @@ const LevelsPage = () => {
                                 value={formData.emoji}
                                 onChange={handleInputChange}
                                 placeholder="ðŸŽ¯"
-                                className="w-full px-6 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/30 rounded-2xl text-center text-2xl transition-all outline-none"
+                                className="w-full px-3 lg:px-6 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/30 rounded-2xl text-center text-2xl transition-all outline-none"
                               />
                             </div>
                           </div>
@@ -754,13 +754,13 @@ const LevelsPage = () => {
                             onChange={handleInputChange}
                             placeholder="Enter level description..."
                             rows="3"
-                            className="w-full px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/30 rounded-[2rem] text-sm font-bold transition-all outline-none resize-none"
+                            className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-amber-500/30 rounded-lg lg:rounded-[2rem] text-sm font-bold transition-all outline-none resize-none"
                             required
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                         {/* Requirement */}
                         <div className="space-y-3">
                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">Required Quizzes</label>
@@ -803,8 +803,8 @@ const LevelsPage = () => {
                       </div>
 
                       {/* Color & Status */}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6 border-t-2 border-slate-50 dark:border-white/5">
-                        <div className="flex items-center gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 pt-6 border-t-2 border-slate-50 dark:border-white/5">
+                        <div className="flex items-center gap-3 lg:gap-6">
                           <div className="space-y-2">
                             <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest pl-1">Level Color</p>
                             <div className="flex items-center gap-4 bg-slate-50 dark:bg-white/5 p-3 rounded-2xl border border-slate-100 dark:border-white/5">
@@ -843,7 +843,7 @@ const LevelsPage = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => { setShowModal(false); resetForm(); }}
-                            className="flex-1 py-4 px-6 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-primary-500 hover:text-white hover:border-transparent transition-all"
+                            className="flex-1 py-4 px-3 lg:px-6 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-primary-500 hover:text-white hover:border-transparent transition-all"
                           >
                             Cancel
                           </motion.button>
@@ -851,7 +851,7 @@ const LevelsPage = () => {
                             type="submit"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex-[2] py-4 px-6 rounded-2xl bg-amber-500 text-white shadow-lg shadow-amber-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
+                            className="flex-[2] py-4 px-3 lg:px-6 rounded-2xl bg-amber-500 text-white shadow-lg shadow-amber-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
                           >
                             <Save className="w-4 h-4" /> {editingLevel ? 'Update' : 'Create'}
                           </motion.button>
@@ -880,10 +880,10 @@ const LevelsPage = () => {
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="bg-white dark:bg-[#0A0F1E] rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-md shadow-2xl overflow-hidden relative z-[111]"
+                  className="bg-white dark:bg-[#0A0F1E] rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/5 w-full max-w-md shadow-2xl overflow-hidden relative z-[111]"
                 >
-                  <div className="p-8 lg:p-10 flex flex-col items-center text-center">
-                    <div className="w-24 h-24 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-500 mb-8 relative">
+                  <div className="p-3 lg:p-10 flex flex-col items-center text-center">
+                    <div className="w-24 h-24 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-500 mb-4 lg:mb-8 relative">
                       <div className="absolute inset-0 bg-primary-500 animate-ping opacity-20 rounded-full" />
                       <Trash2 className="w-10 h-10 relative z-10" />
                     </div>
@@ -893,7 +893,7 @@ const LevelsPage = () => {
                       <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary-500/80">DELETE LEVEL</span>
                     </div>
 
-                    <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-10 leading-relaxed italic">
+                    <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4 lg:mb-10 leading-relaxed italic">
                       Are you sure you want to delete level: <span className="text-slate-900 dark:text-white underline">{showDeleteConfirm.name}</span>?<br />
                       This action cannot be undone.
                     </p>
@@ -903,7 +903,7 @@ const LevelsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowDeleteConfirm(null)}
-                        className="py-4 px-6 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        className="py-4 px-3 lg:px-6 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
                       >
                         Cancel
                       </motion.button>
@@ -911,7 +911,7 @@ const LevelsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleDeleteLevel(showDeleteConfirm._id)}
-                        className="py-4 px-6 rounded-2xl bg-primary-500 text-white shadow-lg shadow-primary-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                        className="py-4 px-3 lg:px-6 rounded-2xl bg-primary-500 text-white shadow-lg shadow-primary-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all"
                       >
                         Delete
                       </motion.button>

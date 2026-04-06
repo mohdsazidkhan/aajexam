@@ -164,7 +164,7 @@ const AdminUserQuestions = () => {
   if (loading && items.length === 0) {
     return (
       <AdminMobileAppWrapper title="Question Matrix">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -173,7 +173,7 @@ const AdminUserQuestions = () => {
             />
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Query Stream...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Query Stream...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -189,9 +189,9 @@ const AdminUserQuestions = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -207,8 +207,8 @@ const AdminUserQuestions = () => {
             </div>
 
             {/* Interface Controller */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
-              <div className="flex flex-wrap items-center gap-6">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+              <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                       <Filter className="w-5 h-5" />
@@ -219,7 +219,7 @@ const AdminUserQuestions = () => {
                     </div>
                  </div>
 
-                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
                     { icon: TableIcon, id: 'table', label: 'TABULAR' },
                     { icon: List, id: 'list', label: 'LINEAR' },
@@ -258,7 +258,7 @@ const AdminUserQuestions = () => {
                    <select
                     value={itemsPerPage}
                     onChange={handleItemsPerPageChange}
-                    className="px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                    className="px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                    >
                      {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
                    </select>
@@ -280,9 +280,9 @@ const AdminUserQuestions = () => {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
-                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <MessageSquare className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO QUESTIONS FOUND</h3>
@@ -295,16 +295,16 @@ const AdminUserQuestions = () => {
                 animate={{ opacity: 1, y: 0 }}
               >
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">QUERY_PAYLOAD</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ORIGIN_IDENT</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">METRICS</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">MODERATION</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">QUERY_PAYLOAD</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ORIGIN_IDENT</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">METRICS</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">MODERATION</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -318,10 +318,10 @@ const AdminUserQuestions = () => {
                               transition={{ delay: i * 0.05 }}
                               className="group hover:bg-primary-500/5 transition-all"
                             >
-                              <td className="px-8 py-8 text-center">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8 text-center">
                                 <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
                               </td>
-                              <td className="px-8 py-8">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8">
                                 <div className="max-w-md">
                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-4 group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</div>
                                    <div className="flex flex-wrap gap-2">
@@ -335,7 +335,7 @@ const AdminUserQuestions = () => {
                                    </div>
                                 </div>
                               </td>
-                              <td className="px-8 py-8">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8">
                                 <div className="flex items-center gap-3">
                                    <div className="w-10 h-10 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl flex items-center justify-center font-black text-xs shadow-inner group-hover:bg-primary-500 group-hover:text-white group-hover:scale-110 transition-all uppercase">
                                      {q.userId?.name?.[0].toUpperCase() || 'U'}
@@ -346,7 +346,7 @@ const AdminUserQuestions = () => {
                                    </div>
                                 </div>
                               </td>
-                              <td className="px-8 py-8 text-center text-[10px] font-black">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8 text-center text-[10px] font-black">
                                  <div className="flex justify-center gap-4">
                                     <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-primary-500 transition-colors">
                                        <Eye className="w-3 h-3" />
@@ -362,15 +362,15 @@ const AdminUserQuestions = () => {
                                     </div>
                                  </div>
                               </td>
-                              <td className="px-8 py-8 text-right">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8 text-right">
                                 <div className="flex flex-col items-end">
                                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(q.createdAt)}</div>
                                   <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(q.createdAt)}</div>
                                 </div>
                               </td>
-                              <td className="px-8 py-8">
+                              <td className="px-4 lg:px-8 py-4 lg:py-8">
                                  <div className="flex flex-col items-center gap-4">
-                                    <div className={`px-4 py-1 rounded-[2rem] text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 ${statusCfg.color}`}>
+                                    <div className={`px-4 py-1 rounded-lg lg:rounded-[2rem] text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 ${statusCfg.color}`}>
                                        <statusCfg.icon className="w-3 h-3" />
                                        {statusCfg.label}
                                     </div>
@@ -395,7 +395,7 @@ const AdminUserQuestions = () => {
                 )}
 
                 {viewMode === 'list' && (
-                  <div className="space-y-6">
+                  <div className="space-y-3 lg:space-y-6">
                     {items.map((q, i) => {
                       const statusCfg = getStatusConfig(q.status);
                       return (
@@ -404,7 +404,7 @@ const AdminUserQuestions = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row gap-8 items-start relative"
+                          className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row gap-3 lg:gap-8 items-start relative"
                         >
                            <div className="absolute top-8 right-10 flex flex-col items-end">
                               <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border flex items-center gap-2 mb-2 ${statusCfg.color}`}>
@@ -414,11 +414,11 @@ const AdminUserQuestions = () => {
                               <div className="text-[8px] font-black uppercase tracking-widest text-slate-400 italic">#{((page - 1) * itemsPerPage) + i + 1}</div>
                            </div>
 
-                           <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-[1.5rem] flex items-center justify-center font-black text-xl shrink-0 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
+                           <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center font-black text-xl shrink-0 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
                              {q.userId?.name?.[0].toUpperCase() || 'U'}
                            </div>
 
-                           <div className="flex-1 space-y-6">
+                           <div className="flex-1 space-y-3 lg:space-y-6">
                               <div className="space-y-2">
                                  <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{q.userId?.name || 'Unknown'} / {q.userId?.email || 'N/A'}</div>
                                  <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
@@ -458,13 +458,13 @@ const AdminUserQuestions = () => {
                              <div className="flex lg:flex-col gap-4 pt-6 lg:pt-0">
                                 <button
                                   onClick={() => updateStatus(q._id, 'approved')}
-                                  className="flex items-center justify-center gap-3 px-8 py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all"
+                                  className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all"
                                 >
                                    <ShieldCheck className="w-5 h-5" /> AUTHORIZE
                                 </button>
                                 <button
                                   onClick={() => updateStatus(q._id, 'rejected')}
-                                  className="flex items-center justify-center gap-3 px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
+                                  className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
                                 >
                                    <ShieldAlert className="w-5 h-5" /> NEUTRALIZE
                                 </button>
@@ -477,7 +477,7 @@ const AdminUserQuestions = () => {
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-8">
                     {items.map((q, i) => {
                       const statusCfg = getStatusConfig(q.status);
                       return (
@@ -486,9 +486,9 @@ const AdminUserQuestions = () => {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
+                          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
                         >
-                           <div className="flex justify-between items-start mb-8">
+                           <div className="flex justify-between items-start mb-4 lg:mb-8">
                               <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-2xl flex items-center justify-center font-black text-md shadow-inner group-hover:bg-primary-500 group-hover:text-white transition-all">
                                    {q.userId?.name?.[0].toUpperCase() || 'U'}
@@ -504,9 +504,9 @@ const AdminUserQuestions = () => {
                               </div>
                            </div>
 
-                           <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-3 mb-8 group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
+                           <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-3 mb-4 lg:mb-8 group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
 
-                           <div className="grid grid-cols-2 gap-3 mb-10 mt-auto">
+                           <div className="grid grid-cols-2 gap-3 mb-4 lg:mb-10 mt-auto">
                               {(q.options || []).map((opt, idx) => (
                                 <div key={idx} className={`p-4 rounded-2xl text-[8px] font-black uppercase tracking-widest flex items-center gap-3 border shadow-inner ${idx === q.correctOptionIndex ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-slate-200 dark:border-white/10'}`}>
                                    <span className="w-5 h-5 bg-white/20 rounded-lg flex items-center justify-center">{String.fromCharCode(65 + idx)}</span>
@@ -516,7 +516,7 @@ const AdminUserQuestions = () => {
                            </div>
 
                            <div className="flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
-                              <div className="flex items-center gap-6">
+                              <div className="flex items-center gap-3 lg:gap-6">
                                  <div className="flex flex-col items-center text-slate-400 group-hover:text-primary-500">
                                     <Eye className="w-4 h-4 mb-2" />
                                     <span className="text-[9px] font-black tabular-nums">{q.viewsCount || 0}</span>

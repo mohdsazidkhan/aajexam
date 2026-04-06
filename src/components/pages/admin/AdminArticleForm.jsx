@@ -220,8 +220,8 @@ const AdminArticleForm = () => {
       <AdminMobileAppWrapper title={isEdit ? "Edit Article" : "Create Article"}>
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-12 lg:mt-0">
-            <div className="flex flex-col items-center justify-center py-24 space-y-6">
+          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-4 lg:mt-12 lg:mt-0">
+            <div className="flex flex-col items-center justify-center py-24 space-y-3 lg:space-y-6">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
                 <Database className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
@@ -238,16 +238,16 @@ const AdminArticleForm = () => {
     <AdminMobileAppWrapper title={isEdit ? "Edit Article" : "Create Article"}>
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
+        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
           {/* Article Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative mb-12"
+            className="relative mb-4 lg:mb-12"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-transparent blur-3xl -z-10 rounded-full" />
 
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
               <div>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -262,7 +262,7 @@ const AdminArticleForm = () => {
                     {isEdit ? 'Update Article' : 'New Article'}
                   </span>
                 </motion.div>
-                <h1 className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                <h1 className="text-2xl lg:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   {isEdit ? 'Edit' : 'Create'} <span className="text-indigo-500">Article</span>
                 </h1>
                 <p className="mt-4 text-sm font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
@@ -276,7 +276,7 @@ const AdminArticleForm = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-500 transition-all flex items-center gap-3"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-500 transition-all flex items-center gap-3"
                   >
                     <X className="w-4 h-4" /> Cancel
                   </motion.button>
@@ -286,7 +286,7 @@ const AdminArticleForm = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   disabled={loading}
-                  className="px-10 py-5 bg-indigo-500 text-white rounded-[2rem] font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/30 flex items-center justify-center gap-3 group overflow-hidden relative"
+                  className="px-4 lg:px-10 py-5 bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/30 flex items-center justify-center gap-3 group overflow-hidden relative"
                 >
                   <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12" />
                   {loading ? <Activity className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
@@ -296,24 +296,24 @@ const AdminArticleForm = () => {
             </div>
           </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <form onSubmit={handleSubmit} className="space-y-3 lg:space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
               {/* Left Column: Core Content */}
-              <div className="lg:col-span-2 space-y-8">
+              <div className="lg:col-span-2 space-y-4 lg:space-y-8">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
+                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 lg:p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
                 >
-                  <div className="flex items-center gap-4 mb-8">
+                  <div className="flex items-center gap-4 mb-4 lg:mb-8">
                     <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                       <FileText className="w-6 h-6" />
                     </div>
                     <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Article Content</h3>
                   </div>
 
-                  <div className="space-y-8">
+                  <div className="space-y-4 lg:space-y-8">
                     <div className="space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Article Title *</label>
                       <input
@@ -322,7 +322,7 @@ const AdminArticleForm = () => {
                         value={formData.title}
                         onChange={handleChange}
                         required
-                        className="w-full px-8 py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all placeholder:text-slate-300 shadow-inner"
+                        className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all placeholder:text-slate-300 shadow-inner"
                       />
                       {formData.title && (
                         <motion.div
@@ -339,7 +339,7 @@ const AdminArticleForm = () => {
 
                     <div className="space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-emerald-500 pl-3">Full Content *</label>
-                      <div className="border-4 border-slate-100 dark:border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl bg-white dark:bg-slate-950">
+                      <div className="border-4 border-slate-100 dark:border-white/5 rounded-xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl bg-white dark:bg-slate-950">
                         <CustomEditor
                           value={formData.content}
                           onChange={handleContentChange}
@@ -358,7 +358,7 @@ const AdminArticleForm = () => {
                         onChange={handleChange}
                         rows={3}
                         placeholder="Write a brief summary of the article..."
-                        className="w-full px-8 py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/30 rounded-3xl text-xs font-bold outline-none transition-all placeholder:text-slate-300 shadow-inner resize-none"
+                        className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/30 rounded-3xl text-xs font-bold outline-none transition-all placeholder:text-slate-300 shadow-inner resize-none"
                       />
                     </div>
                   </div>
@@ -369,9 +369,9 @@ const AdminArticleForm = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl"
+                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 lg:p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl"
                 >
-                  <div className="flex items-center gap-4 mb-8">
+                  <div className="flex items-center gap-4 mb-4 lg:mb-8">
                     <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl">
                       <Globe className="w-6 h-6" />
                     </div>
@@ -379,13 +379,13 @@ const AdminArticleForm = () => {
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div className="space-y-6">
+                    <div className="space-y-3 lg:space-y-6">
                       <div className="space-y-4">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Featured Image</label>
                         <div className="space-y-4">
                           <div className="flex items-center gap-4">
                             <label className="flex-1 cursor-pointer">
-                              <div className="px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-dashed border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-center gap-3 text-[10px] font-black text-slate-400 uppercase hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all group">
+                              <div className="px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-dashed border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-center gap-3 text-[10px] font-black text-slate-400 uppercase hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all group">
                                 <Upload className="w-4 h-4 group-hover:animate-bounce" /> UPLOAD IMAGE
                               </div>
                               <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
@@ -413,12 +413,12 @@ const AdminArticleForm = () => {
                           value={formData.featuredImageAlt}
                           onChange={handleChange}
                           placeholder="Describe the image..."
-                          className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner"
+                          className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-3 lg:space-y-6">
                       <div className="space-y-4">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-emerald-500 pl-3">Meta Title</label>
                         <div className="relative">
@@ -429,7 +429,7 @@ const AdminArticleForm = () => {
                             onChange={handleChange}
                             maxLength={60}
                             placeholder="Max 60 characters..."
-                            className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner"
+                            className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner"
                           />
                           <div className="absolute right-4 bottom-2 text-[8px] font-black text-slate-300">{formData.metaTitle.length}/60</div>
                         </div>
@@ -445,7 +445,7 @@ const AdminArticleForm = () => {
                             maxLength={160}
                             rows={4}
                             placeholder="Brief description for search engines..."
-                            className="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner resize-none"
+                            className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-[10px] font-black outline-none transition-all shadow-inner resize-none"
                           />
                           <div className="absolute right-4 bottom-2 text-[8px] font-black text-slate-300">{formData.metaDescription.length}/160</div>
                         </div>
@@ -456,21 +456,21 @@ const AdminArticleForm = () => {
               </div>
 
               {/* Right Column: Configuration & Settings */}
-              <div className="space-y-8">
+              <div className="space-y-4 lg:space-y-8">
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
+                  className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 lg:p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
                 >
-                  <div className="flex items-center gap-4 mb-8">
+                  <div className="flex items-center gap-4 mb-4 lg:mb-8">
                     <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                       <Settings className="w-6 h-6" />
                     </div>
                     <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Article Configuration</h3>
                   </div>
 
-                  <div className="space-y-8">
+                  <div className="space-y-4 lg:space-y-8">
                     <div className="space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-blue-500 pl-3">Category *</label>
                       <div className="relative">
@@ -551,9 +551,9 @@ const AdminArticleForm = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
-                      className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-[3rem] p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
+                      className="bg-white/80 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 lg:p-10 border-4 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden"
                     >
-                      <div className="flex items-center gap-4 mb-8">
+                      <div className="flex items-center gap-4 mb-4 lg:mb-8">
                         <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                           <Zap className="w-6 h-6" />
                         </div>

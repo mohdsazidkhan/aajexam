@@ -77,7 +77,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -181,9 +181,9 @@ const FinancialAnalytics = () => {
         <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
           
           {/* Header */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
-              <div className="space-y-6 flex-1">
+              <div className="space-y-3 lg:space-y-6 flex-1">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-emerald-500/20 text-emerald-500 rounded-2xl shadow-sm">
                     <Banknote className="w-6 h-6" />
@@ -197,7 +197,7 @@ const FinancialAnalytics = () => {
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="relative group min-w-[200px]">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-12 pr-10 py-4 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
+                    <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-12 pr-10 py-4 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                       <option value="today">Today</option>
                       <option value="yesterday">Yesterday</option>
                       <option value="last-7-days">Past 7 Days</option>
@@ -207,13 +207,13 @@ const FinancialAnalytics = () => {
                       <option value="current-year">Annual</option>
                     </select>
                   </div>
-                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-8 py-4 bg-emerald-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
+                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
                      <DownloadCloud className="w-4 h-4" /> EXPORT AUDIT
                    </motion.button>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-10 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-[3rem] border-4 border-emerald-500/20 relative overflow-hidden group">
+              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-xl lg:rounded-[3rem] border-4 border-emerald-500/20 relative overflow-hidden group">
                <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
                  <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-emerald-500" />
@@ -230,16 +230,16 @@ const FinancialAnalytics = () => {
                  <Loading size="md" color="emerald" message="Loading revenue data..." />
                </div>
             ) : error ? (
-              <div className="text-center py-32 bg-rose-500/5 rounded-[4rem] border-4 border-dashed border-rose-500/10">
+              <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">
                 <Zap className="w-16 h-16 text-rose-500 mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Sync Error</h3>
                 <p className="text-rose-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
               </div>
             ) : (
-              <div className="space-y-12">
+              <div className="space-y-4 lg:space-y-12">
                 
                 {/* Financial Metrics */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                    <FinancialMetric i={0} color="emerald" icon={IndianRupee} label="Total Revenue" value={`₹${(data.overview?.totalRevenue || 0).toLocaleString('en-IN')}`} sub={data.overview?.totalRevenueCount} />
                    <FinancialMetric i={1} color="primary" icon={TrendingUp} label="Period Revenue" value={`₹${(data.overview?.periodRevenue || 0).toLocaleString('en-IN')}`} sub={data.overview?.periodRevenueCount} />
                    <FinancialMetric i={2} color="amber" icon={Layers} label="Subscription Plans" value={data.subscriptionStats?.length || 0} sub={data.subscriptionStats?.length} />
@@ -247,9 +247,9 @@ const FinancialAnalytics = () => {
                 </div>
 
                 {/* Performance Grids */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative">
-                    <div className="flex items-center justify-between mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
+                    <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
                        <PieChart className="w-5 h-5 text-indigo-500 opacity-30" />
                     </div>
@@ -258,8 +258,8 @@ const FinancialAnalytics = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl relative">
-                    <div className="flex items-center justify-between mb-8">
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
+                    <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Velocity</h3>
                        <BarChart3 className="w-5 h-5 text-emerald-500 opacity-30" />
                     </div>
@@ -270,8 +270,8 @@ const FinancialAnalytics = () => {
                 </div>
 
                 {/* Subscriptions Deep Dive */}
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl overflow-hidden">
-                  <div className="flex items-center justify-between mb-12">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl overflow-hidden">
+                  <div className="flex items-center justify-between mb-4 lg:mb-12">
                     <div className="flex items-center gap-4">
                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
@@ -285,19 +285,19 @@ const FinancialAnalytics = () => {
                     <table className="w-full border-collapse">
                        <thead>
                           <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                              <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
-                              <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Subscription Plan</th>
-                              <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">User Count</th>
-                              <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Total Revenue</th>
+                              <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
+                              <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Subscription Plan</th>
+                              <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">User Count</th>
+                              <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Total Revenue</th>
                           </tr>
                        </thead>
                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                           {topRevenuePlans.map((p, idx) => (
                             <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-emerald-500/5 transition-all">
-                               <td className="px-8 py-6">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-amber-500 text-white shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                </td>
-                               <td className="px-8 py-6">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">
                                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-emerald-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
                                      <div>
@@ -306,11 +306,11 @@ const FinancialAnalytics = () => {
                                      </div>
                                   </div>
                                </td>
-                               <td className="px-8 py-6 text-center">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                   <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">{p.count || 0} USERS</div>
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Subscribers</div>
                                </td>
-                               <td className="px-8 py-6 text-right">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                   <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Revenue Generated</div>
                                </td>

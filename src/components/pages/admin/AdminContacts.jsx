@@ -118,7 +118,7 @@ export default function AdminContacts() {
   if (loading && contacts.length === 0) {
     return (
       <AdminMobileAppWrapper title="Correspondence Stream">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -127,7 +127,7 @@ export default function AdminContacts() {
             />
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Extracting Transmission Metadata...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Extracting Transmission Metadata...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -143,9 +143,9 @@ export default function AdminContacts() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -161,8 +161,8 @@ export default function AdminContacts() {
             </div>
 
             {/* Interface Controller */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-8 text-[10px] font-black">
-              <div className="flex flex-wrap items-center gap-6">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+              <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                       <Filter className="w-5 h-5" />
@@ -173,7 +173,7 @@ export default function AdminContacts() {
                     </div>
                  </div>
 
-                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
                     { icon: TableIcon, id: 'table', label: 'TABULAR' },
                     { icon: List, id: 'list', label: 'LINEAR' },
@@ -197,7 +197,7 @@ export default function AdminContacts() {
                    <select
                     value={itemsPerPage}
                     onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                    className="px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                    className="px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                    >
                      {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
                    </select>
@@ -220,9 +220,9 @@ export default function AdminContacts() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_SIGNALS_RECOVERED</h3>
@@ -233,19 +233,19 @@ export default function AdminContacts() {
                  key="content"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="space-y-12"
+                 className="space-y-4 lg:space-y-12"
                >
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-24">UNIT</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">TRANSMITTER_IDENT</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">SIGNAL_PAYLOAD</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTION_MODULE</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-24">UNIT</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">TRANSMITTER_IDENT</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">SIGNAL_PAYLOAD</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTION_MODULE</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -257,28 +257,28 @@ export default function AdminContacts() {
                             transition={{ delay: i * 0.05 }}
                             className="group hover:bg-primary-500/5 transition-all"
                           >
-                            <td className="px-8 py-6 text-center">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                               <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
                             </td>
-                            <td className="px-8 py-6 text-center">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
                                  {contact.name?.[0].toUpperCase() || 'U'}
                                </div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{contact.email || 'OFFLINE'}</div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>
                             </td>
-                            <td className="px-8 py-6 text-right">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               <div className="flex flex-col items-end">
                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(contact.createdAt)}</div>
                                 <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(contact.createdAt)}</div>
                               </div>
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex justify-center gap-3">
                                   <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-lg active:scale-95">
                                      <Send className="w-4 h-4" />
@@ -296,23 +296,23 @@ export default function AdminContacts() {
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                      {contacts.map((contact, i) => (
                        <motion.div
                          key={contact._id || i}
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                        >
-                          <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-lg">
+                          <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-lg">
                              {contact.name?.[0].toUpperCase() || 'U'}
                           </div>
                           
                           <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{contact.name || 'Unknown'}</h3>
                           <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{contact.email || 'OFFLINE'}</div>
                           
-                          <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-8 relative">
+                          <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-4 lg:mb-8 relative">
                              <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed text-slate-400 line-clamp-4">{contact.message}</p>
                           </div>
 
@@ -336,16 +336,16 @@ export default function AdminContacts() {
                 )}
 
                 {viewMode === 'list' && (
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 gap-3 lg:gap-6">
                     {contacts.map((contact, i) => (
                       <motion.div
                         key={contact._id || i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-8"
+                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                       >
-                         <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 group-hover:text-white transition-all">
+                         <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 group-hover:text-white transition-all">
                             <User className="w-7 h-7" />
                          </div>
 
@@ -370,13 +370,13 @@ export default function AdminContacts() {
                          <div className="flex lg:flex-col gap-4">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="flex items-center justify-center gap-3 px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all"
                             >
                                <Send className="w-5 h-5" /> RESPOND
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="flex items-center justify-center gap-3 px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
                             >
                                <Trash2 className="w-5 h-5" /> NEUTRALIZE
                             </button>

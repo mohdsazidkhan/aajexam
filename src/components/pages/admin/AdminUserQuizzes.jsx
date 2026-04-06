@@ -257,7 +257,7 @@ const AdminUserQuizzes = () => {
   if (loading && quizzes.length === 0 && categories.length === 0 && subcategories.length === 0) {
     return (
       <AdminMobileAppWrapper title="Editorial Control">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -266,7 +266,7 @@ const AdminUserQuizzes = () => {
             />
             <Trophy className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Content Stream...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Content Stream...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -282,9 +282,9 @@ const AdminUserQuizzes = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -300,7 +300,7 @@ const AdminUserQuizzes = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-wrap items-center gap-4 mb-4 lg:mb-10">
               {[
                 { id: "quizzes", label: "Quizzes", icon: Trophy, count: quizzes.length },
                 { id: "categories", label: "Categories", icon: Layers, count: categories.length },
@@ -309,7 +309,7 @@ const AdminUserQuizzes = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-8 py-5 rounded-[2.5rem] border-4 transition-all flex items-center gap-4 shadow-xl ${activeTab === tab.id
+                  className={`px-4 lg:px-8 py-5 rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 shadow-xl ${activeTab === tab.id
                     ? "bg-primary-600 border-primary-500 text-white translate-y-[-4px] shadow-primary-500/50"
                     : "bg-white dark:bg-white/5 border-slate-100 dark:border-white/5 text-slate-400 hover:border-primary-500/30 font-black uppercase tracking-widest text-[10px]"
                     }`}
@@ -322,7 +322,7 @@ const AdminUserQuizzes = () => {
             </div>
 
             {/* Interface Controller */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-[10px] font-black">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                   <Filter className="w-5 h-5" />
@@ -373,14 +373,14 @@ const AdminUserQuizzes = () => {
                   key={activeTab}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="space-y-8"
+                  className="space-y-4 lg:space-y-8"
                 >
                   {/* Quizzes Grid */}
                   {activeTab === "quizzes" && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                        {quizzes.length === 0 ? (
-                          <div className="lg:col-span-2 flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner">
-                            <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                          <div className="lg:col-span-2 flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner">
+                            <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                             <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_QUIZZES_LOCATED</h3>
                           </div>
                        ) : (
@@ -392,9 +392,9 @@ const AdminUserQuizzes = () => {
                                initial={{ opacity: 0, scale: 0.95 }}
                                animate={{ opacity: 1, scale: 1 }}
                                transition={{ delay: i * 0.05 }}
-                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col"
                              >
-                                <div className="flex justify-between items-start mb-8 text-[10px] font-black uppercase tracking-widest">
+                                <div className="flex justify-between items-start mb-4 lg:mb-8 text-[10px] font-black uppercase tracking-widest">
                                    <div className="flex items-center gap-3">
                                       <div className={`w-3 h-3 rounded-full ${quiz.status === 'approved' ? 'bg-emerald-500 animate-pulse' : quiz.status === 'rejected' ? 'bg-rose-500' : 'bg-amber-500 animate-bounce'}`} />
                                       {quiz.category?.name || "UNCATEGORIZED"} // {quiz.difficulty?.toUpperCase()}
@@ -406,9 +406,9 @@ const AdminUserQuizzes = () => {
                                 </div>
 
                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-2 group-hover:text-primary-500 transition-colors uppercase mb-4">{quiz.title}</h3>
-                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-relaxed mb-8 line-clamp-2">{quiz.description}</p>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-relaxed mb-4 lg:mb-8 line-clamp-2">{quiz.description}</p>
 
-                                <div className="grid grid-cols-3 gap-6 mb-10 text-[9px] font-black uppercase tracking-widest">
+                                <div className="grid grid-cols-3 gap-3 lg:gap-6 mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="space-y-1">
                                       <div className="text-slate-400">Questions</div>
                                       <div className="text-sm italic">{quiz.questionCount || 0}_UNITS</div>
@@ -449,10 +449,10 @@ const AdminUserQuizzes = () => {
 
                   {/* Categories View */}
                   {activeTab === "categories" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                        {categories.length === 0 ? (
                          <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
-                            <Layers className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                            <Layers className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                             <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_TAXONOMIES_LOCATED</h3>
                          </div>
                        ) : (
@@ -464,17 +464,17 @@ const AdminUserQuizzes = () => {
                                initial={{ opacity: 0, y: 20 }}
                                animate={{ opacity: 1, y: 0 }}
                                transition={{ delay: i * 0.05 }}
-                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                              >
-                                <div className="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-[2rem] flex items-center justify-center mb-8 border-2 border-emerald-500/20 shadow-inner group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                <div className="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-[2rem] flex items-center justify-center mb-4 lg:mb-8 border-2 border-emerald-500/20 shadow-inner group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                    <Layers className="w-8 h-8" />
                                 </div>
                                 <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{cat.name}</h3>
-                                <div className={`mb-8 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${statusCfg.color}`}>
+                                <div className={`mb-4 lg:mb-8 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${statusCfg.color}`}>
                                    {statusCfg.label}
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
+                                <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                                       <div className="text-slate-400 mb-1">Micro_Channels</div>
                                       <div className="text-sm italic tabular-nums">{cat.subcategoryCount || 0}</div>
@@ -504,10 +504,10 @@ const AdminUserQuizzes = () => {
 
                   {/* Subcategories View */}
                   {activeTab === "subcategories" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                        {subcategories.length === 0 ? (
                          <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
-                            <LayoutGrid className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                            <LayoutGrid className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                             <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_CHANNELS_LOCATED</h3>
                          </div>
                        ) : (
@@ -519,7 +519,7 @@ const AdminUserQuizzes = () => {
                                initial={{ opacity: 0, y: 20 }}
                                animate={{ opacity: 1, y: 0 }}
                                transition={{ delay: i * 0.05 }}
-                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-amber-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                               className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-amber-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                              >
                                 <div className="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mb-6 border-2 border-amber-500/20 shadow-inner group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
                                    <LayoutGrid className="w-7 h-7" />
@@ -527,7 +527,7 @@ const AdminUserQuizzes = () => {
                                 <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{sub.name}</h3>
                                 <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{sub.category?.name || 'GENERIC_PHASE'}</div>
 
-                                <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
+                                <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                                       <div className="text-slate-400 mb-1">Modules</div>
                                       <div className="text-sm italic tabular-nums">{sub.quizCount || 0}</div>
@@ -571,11 +571,11 @@ const AdminUserQuizzes = () => {
                   initial={{ scale: 0.9, y: 20 }}
                   animate={{ scale: 1, y: 0 }}
                   exit={{ scale: 0.9, y: 20 }}
-                  className="bg-white dark:bg-[#0f172a] rounded-[4rem] border-8 border-slate-100 dark:border-white/5 max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-indigo-500/20"
+                  className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[4rem] border-8 border-slate-100 dark:border-white/5 max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-indigo-500/20"
                 >
-                  <div className="bg-slate-50 dark:bg-white/5 p-10 border-b-4 border-slate-100 dark:border-white/5 flex items-center justify-between">
-                     <div className="flex items-center gap-6">
-                        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-[2rem]">
+                  <div className="bg-slate-50 dark:bg-white/5 p-4 lg:p-10 border-b-4 border-slate-100 dark:border-white/5 flex items-center justify-between">
+                     <div className="flex items-center gap-3 lg:gap-6">
+                        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-[2rem]">
                            <Crown className="w-8 h-8" />
                         </div>
                         <div>
@@ -591,16 +591,16 @@ const AdminUserQuizzes = () => {
                      </button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-10 lg:p-14 space-y-12">
+                  <div className="flex-1 overflow-y-auto p-4 lg:p-14 space-y-4 lg:space-y-12">
                      {/* Metadata Grid */}
-                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8">
                         {[
                            { icon: Layers, label: "Macros", value: `${selectedQuiz.category?.name} / ${selectedQuiz.subcategory?.name}` },
                            { icon: Target, label: "Intensity", value: selectedQuiz.difficulty?.toUpperCase() },
                            { icon: Zap, label: "Clearance", value: `LEVEL_${selectedQuiz.requiredLevel}` },
                            { icon: Clock, label: "Temporal", value: `${selectedQuiz.timeLimit}_MIN` }
                         ].map(item => (
-                           <div key={item.label} className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
+                           <div key={item.label} className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
                               <item.icon className="w-5 h-5 text-primary-500 mb-4" />
                               <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{item.label}</div>
                               <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{item.value}</div>
@@ -619,21 +619,21 @@ const AdminUserQuizzes = () => {
                      </div>
 
                      {/* Query Matrix */}
-                     <div className="space-y-8">
+                     <div className="space-y-4 lg:space-y-8">
                         <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest flex items-center justify-between">
                            <div className="flex items-center gap-2"><HelpCircle className="w-4 h-4" /> QUERY_MATRIX_DEPLOYMENT</div>
                            <span className="bg-primary-500/10 px-4 py-1 rounded-full">{selectedQuiz.questions?.length || 0}_UNITS</span>
                         </div>
-                        <div className="grid grid-cols-1 gap-6">
+                        <div className="grid grid-cols-1 gap-3 lg:gap-6">
                            {selectedQuiz.questions?.map((q, i) => (
                              <motion.div
                                key={i}
                                initial={{ opacity: 0, scale: 0.98 }}
                                animate={{ opacity: 1, scale: 1 }}
                                transition={{ delay: i * 0.1 }}
-                               className="p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 group hover:border-primary-500/30 transition-all shadow-inner"
+                               className="p-3 lg:p-8 bg-slate-50 dark:bg-white/5 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 group hover:border-primary-500/30 transition-all shadow-inner"
                              >
-                                <div className="flex items-start gap-6 mb-8">
+                                <div className="flex items-start gap-3 lg:gap-6 mb-4 lg:mb-8">
                                    <div className="w-12 h-12 bg-primary-500 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-lg shrink-0 uppercase italic">{i + 1}</div>
                                    <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight uppercase pt-1">{q.questionText}</h4>
                                 </div>
@@ -659,7 +659,7 @@ const AdminUserQuizzes = () => {
                   </div>
 
                   {/* Action Module */}
-                  <div className="bg-slate-50 dark:bg-white/5 p-10 lg:p-14 border-t-4 border-slate-100 dark:border-white/5">
+                  <div className="bg-slate-50 dark:bg-white/5 p-4 lg:p-14 border-t-4 border-slate-100 dark:border-white/5">
                      <div className="flex flex-col lg:flex-row gap-10">
                         <div className="flex-1 space-y-4">
                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
@@ -668,7 +668,7 @@ const AdminUserQuizzes = () => {
                            <textarea
                              value={adminNotes}
                              onChange={(e) => setAdminNotes(e.target.value)}
-                             className="w-full p-8 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-inner placeholder:text-slate-300 dark:placeholder:text-slate-700"
+                             className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-inner placeholder:text-slate-300 dark:placeholder:text-slate-700"
                              rows={3}
                              placeholder="Inject editorial feedback here (MANDATORY_FOR_REJECTION)..."
                            />
@@ -678,13 +678,13 @@ const AdminUserQuizzes = () => {
                              <>
                                <button
                                  onClick={() => handleApproveQuiz(selectedQuiz._id)}
-                                 className="flex-1 p-8 bg-emerald-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                                 className="flex-1 p-3 lg:p-8 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                >
                                   <ShieldCheck className="w-6 h-6" /> AUTHORIZE_UNIT
                                </button>
                                <button
                                  onClick={() => handleRejectQuiz(selectedQuiz._id)}
-                                 className="flex-1 p-8 bg-rose-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                                 className="flex-1 p-3 lg:p-8 bg-rose-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                >
                                   <ShieldAlert className="w-6 h-6" /> REJECT
                                </button>
@@ -692,7 +692,7 @@ const AdminUserQuizzes = () => {
                            ) : (
                              <button
                                onClick={() => setShowModal(false)}
-                               className="flex-1 p-8 bg-slate-900 text-white dark:bg-white/10 rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-3"
+                               className="flex-1 p-3 lg:p-8 bg-slate-900 text-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-3"
                              >
                                 <ArrowLeft className="w-6 h-6" /> EXIT_INSPECTION
                              </button>

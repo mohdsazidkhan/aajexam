@@ -149,7 +149,7 @@ export default function UserBlogRewardsHistory({ userId }) {
   if (loading) {
     return (
       <AdminMobileAppWrapper title="Creative Analytics">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -158,7 +158,7 @@ export default function UserBlogRewardsHistory({ userId }) {
             />
             <FileText className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Analyzing Editorial Flux...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Analyzing Editorial Flux...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -174,9 +174,9 @@ export default function UserBlogRewardsHistory({ userId }) {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -203,7 +203,7 @@ export default function UserBlogRewardsHistory({ userId }) {
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => router.push('/admin/blog-rewards-history')}
-                  className="px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
+                  className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4 text-primary-500" /> EXIT_TO_MAIN_INDEX
                 </button>
@@ -212,7 +212,7 @@ export default function UserBlogRewardsHistory({ userId }) {
 
             {/* Metric Overview */}
             {summary && (
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                 {[
                   { label: 'Total Manuscripts', value: summary.totalBlogs || 0, icon: FileText, color: 'blue' },
                   { label: 'Aggregated Rewards', value: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Wallet, color: 'emerald' },
@@ -222,7 +222,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                 ].map((stat, i) => (
                   <div
                     key={stat.label}
-                    className="p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                    className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                   >
                     <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-inner`}>
                       <stat.icon className="w-5 h-5" />
@@ -236,7 +236,7 @@ export default function UserBlogRewardsHistory({ userId }) {
           </motion.div>
 
           {/* Interface Controller */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-[10px] font-black">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                 <Filter className="w-5 h-5" />
@@ -248,7 +248,7 @@ export default function UserBlogRewardsHistory({ userId }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+              <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                 {[
                   { icon: TableIcon, id: 'table', label: 'Tabular' },
                   { icon: List, id: 'list', label: 'Linear' },
@@ -296,9 +296,9 @@ export default function UserBlogRewardsHistory({ userId }) {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
-                <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                   <FileText className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_MATCHES_LOCATED</h3>
@@ -309,19 +309,19 @@ export default function UserBlogRewardsHistory({ userId }) {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-12"
+                className="space-y-4 lg:space-y-12"
               >
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Visual</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Manuscript_Title</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Protocol</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Payout</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
-                          <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Temporal_Stamp</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Visual</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Manuscript_Title</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Protocol</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Payout</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Temporal_Stamp</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -333,7 +333,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                             transition={{ delay: i * 0.05 }}
                             className="group hover:bg-primary-500/5 transition-all"
                           >
-                            <td className="px-8 py-6 text-center">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                               <img
                                 src={tx.article?.featuredImage || '/default_banner.png'}
                                 alt="Visual"
@@ -341,7 +341,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                                 onError={(e) => { e.target.src = '/default_banner.png'; }}
                               />
                             </td>
-                            <td className="px-8 py-6">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
                               {tx.article ? (
                                 <Link href={`/admin/articles/${tx.article._id}/edit`} className="group/link">
                                   <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover/link:text-primary-500 transition-colors">{tx.article.title || 'Untitled'}</div>
@@ -351,18 +351,18 @@ export default function UserBlogRewardsHistory({ userId }) {
                                 <span className="text-[10px] font-black text-slate-300 italic">ORPHANED_RELATION</span>
                               )}
                             </td>
-                            <td className="px-8 py-6 text-center">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                               <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest inline-block border ${getRewardTierColor(tx.rewardTier)}`}>
                                 {getRewardTierLabel(tx.rewardTier)}
                               </div>
                             </td>
-                            <td className="px-8 py-6 text-center">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                               <div className="text-sm font-black text-emerald-500 tabular-nums italic">+₹{tx.amount}</div>
                             </td>
-                            <td className="px-8 py-6 text-right">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>
                             </td>
-                            <td className="px-8 py-6 text-right">
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               <div className="flex flex-col items-end">
                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">{formatDate(tx.date)}</div>
                                 <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
@@ -376,16 +376,16 @@ export default function UserBlogRewardsHistory({ userId }) {
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                     {transactions.map((tx, i) => (
                       <motion.div
                         key={tx._id || i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-4 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-4 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                       >
-                        <div className="w-full aspect-video rounded-[2rem] overflow-hidden mb-6 border-2 border-slate-100 dark:border-white/10 shadow-inner group-hover:scale-[1.02] transition-transform relative">
+                        <div className="w-full aspect-video rounded-lg lg:rounded-[2rem] overflow-hidden mb-6 border-2 border-slate-100 dark:border-white/10 shadow-inner group-hover:scale-[1.02] transition-transform relative">
                            <img
                              src={tx.article?.featuredImage || '/default_banner.png'}
                              alt="Poster"
@@ -413,16 +413,16 @@ export default function UserBlogRewardsHistory({ userId }) {
                 )}
 
                 {viewMode === 'list' && (
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 gap-3 lg:gap-6">
                     {transactions.map((tx, i) => (
                       <motion.div
                         key={tx._id || i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-8"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                       >
-                        <div className="w-40 h-24 rounded-[2rem] overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+                        <div className="w-40 h-24 rounded-lg lg:rounded-[2rem] overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg shrink-0 group-hover:scale-105 transition-transform">
                            <img
                              src={tx.article?.featuredImage || '/default_banner.png'}
                              alt="Poster"

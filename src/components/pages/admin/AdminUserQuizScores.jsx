@@ -106,7 +106,7 @@ const AdminUserQuizScores = ({ userId }) => {
   if (loading) {
     return (
       <AdminMobileAppWrapper title="Academic Records">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
            <div className="relative">
              <motion.div
                animate={{ rotate: 360 }}
@@ -115,7 +115,7 @@ const AdminUserQuizScores = ({ userId }) => {
              />
              <BookOpen className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
            </div>
-           <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Retrieving Scholastic Integrity...</div>
+           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Retrieving Scholastic Integrity...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -124,15 +124,15 @@ const AdminUserQuizScores = ({ userId }) => {
   if (!user) {
     return (
       <AdminMobileAppWrapper title="Academic Records">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans flex flex-col items-center justify-center p-8">
-           <div className="p-10 bg-white dark:bg-white/5 rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans flex flex-col items-center justify-center p-3 lg:p-8">
+           <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
              <Target className="w-16 h-16 text-slate-200 dark:text-slate-700" />
            </div>
            <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">STUDENT NOT FOUND</h3>
-           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-8">The student you are looking for does not exist.</p>
+           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">The student you are looking for does not exist.</p>
            <button
              onClick={() => router.push('/admin/students')}
-             className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"
+             className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"
            >
              <ArrowLeft className="w-4 h-4" /> RETURN TO DIRECTORY
            </button>
@@ -151,9 +151,9 @@ const AdminUserQuizScores = ({ userId }) => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -178,7 +178,7 @@ const AdminUserQuizScores = ({ userId }) => {
               <div className="flex flex-wrap items-center gap-4">
                  <button
                    onClick={() => router.push('/admin/students')}
-                   className="px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
+                   className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                  >
                    <ArrowLeft className="w-4 h-4 text-indigo-500" /> BACK TO DIRECTORY
                  </button>
@@ -186,7 +186,7 @@ const AdminUserQuizScores = ({ userId }) => {
             </div>
 
             {/* Metric Overview */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
               {[
                 { label: 'Cumulative Volume', value: pagination.total, icon: BookOpen, color: 'blue' },
                 { label: 'Peak Performance', value: user?.monthlyProgress?.highScoreWins || 0, icon: Trophy, color: 'emerald' },
@@ -195,7 +195,7 @@ const AdminUserQuizScores = ({ userId }) => {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                 >
                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-inner`}>
                     <stat.icon className="w-5 h-5" />
@@ -208,7 +208,7 @@ const AdminUserQuizScores = ({ userId }) => {
           </motion.div>
 
           {/* Controller Bar */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
              <div className="flex items-center gap-4">
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                    <Zap className="w-5 h-5" />
@@ -220,7 +220,7 @@ const AdminUserQuizScores = ({ userId }) => {
              </div>
 
              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Tabular' },
                     { icon: List, id: 'list', label: 'Linear' },
@@ -256,9 +256,9 @@ const AdminUserQuizScores = ({ userId }) => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_ENTRIES_LOCATED</h3>
@@ -269,19 +269,19 @@ const AdminUserQuizScores = ({ userId }) => {
                  key="content"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="space-y-12"
+                 className="space-y-4 lg:space-y-12"
                >
                  {viewMode === 'table' && (
-                   <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                   <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                      <table className="w-full">
                        <thead>
                          <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Assessment Module</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Optimum Score</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Precision %</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Benchmark</th>
-                           <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Last Interaction</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Assessment Module</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Optimum Score</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Precision %</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Benchmark</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Last Interaction</th>
                          </tr>
                        </thead>
                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -295,8 +295,8 @@ const AdminUserQuizScores = ({ userId }) => {
                                transition={{ delay: i * 0.05 }}
                                className="group hover:bg-black/5 dark:hover:bg-white/5 transition-all"
                              >
-                               <td className="px-8 py-6 text-xs font-bold text-slate-400 tabular-nums">{((page - 1) * 20) + i + 1}</td>
-                               <td className="px-8 py-6">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-400 tabular-nums">{((page - 1) * 20) + i + 1}</td>
+                               <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">
                                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-black text-xs shadow-lg group-hover:scale-110 transition-transform ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`}>
                                         {score.quiz?.title?.[0].toUpperCase() || 'Q'}
@@ -307,15 +307,15 @@ const AdminUserQuizScores = ({ userId }) => {
                                      </div>
                                   </div>
                                </td>
-                               <td className="px-8 py-6 text-center">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                   <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic">{score.bestScore || 0}</div>
                                </td>
-                               <td className="px-8 py-6 text-center">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                   <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest inline-block border ${getScoreBadge(percentage)}`}>
                                      {percentage}%
                                   </div>
                                </td>
-                               <td className="px-8 py-6 text-center">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                   {score.isHighScore ? (
                                     <div className="flex items-center justify-center gap-2 text-emerald-500 animate-pulse">
                                        <Award className="w-4 h-4" />
@@ -325,7 +325,7 @@ const AdminUserQuizScores = ({ userId }) => {
                                     <div className="text-slate-300 dark:text-slate-600 text-[9px] font-black uppercase tracking-widest">SUB_PEAK</div>
                                   )}
                                </td>
-                               <td className="px-8 py-6 text-right">
+                               <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                   <div className="flex flex-col items-end">
                                      <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter">{formatDate(score.lastAttemptDate)}</div>
                                      <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(score.lastAttemptDate)}</div>
@@ -340,7 +340,7 @@ const AdminUserQuizScores = ({ userId }) => {
                  )}
 
                  {viewMode === 'grid' && (
-                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
                       {quizScores.map((score, i) => {
                         const serialNumber = (page - 1) * 20 + i + 1;
                         const percentage = score.bestScorePercentage || 0;
@@ -350,12 +350,12 @@ const AdminUserQuizScores = ({ userId }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
-                            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                           >
                              <div className={`absolute top-0 left-0 w-full h-2 ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`} />
                              
                              <div className="mt-4 mb-6 relative">
-                               <div className={`w-20 h-20 rounded-[1.5rem] flex items-center justify-center text-white text-2xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`}>
+                               <div className={`w-20 h-20 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center text-white text-2xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`}>
                                   {score.quiz?.title?.[0].toUpperCase() || 'Q'}
                                </div>
                                <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-slate-900 rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
@@ -368,7 +368,7 @@ const AdminUserQuizScores = ({ userId }) => {
                              </h3>
                              <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Module: {score.quiz?.category || 'General'}</div>
 
-                             <div className="grid grid-cols-2 gap-4 w-full mb-8">
+                             <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                                    <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Peak Score</div>
                                    <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter italic">{score.bestScore || 0}</div>
@@ -397,7 +397,7 @@ const AdminUserQuizScores = ({ userId }) => {
                  )}
 
                  {viewMode === 'list' && (
-                    <div className="grid grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 gap-3 lg:gap-6">
                        {quizScores.map((score, i) => {
                          const percentage = score.bestScorePercentage || 0;
                          return (
@@ -406,9 +406,9 @@ const AdminUserQuizScores = ({ userId }) => {
                              initial={{ opacity: 0, x: -20 }}
                              animate={{ opacity: 1, x: 0 }}
                              transition={{ delay: i * 0.05 }}
-                             className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-8"
+                             className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                            >
-                              <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0 ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`}>
+                              <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0 ${percentage >= 75 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-primary-500' : 'bg-rose-500'}`}>
                                  {score.quiz?.title?.[0].toUpperCase() || 'Q'}
                               </div>
                               

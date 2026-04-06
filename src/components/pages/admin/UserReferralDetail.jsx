@@ -136,7 +136,7 @@ export default function UserReferralDetail() {
     if (loading) {
         return (
             <AdminMobileAppWrapper title="Economic Intelligence">
-                <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+                <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
                     <div className="relative">
                         <motion.div
                             animate={{ rotate: 360 }}
@@ -145,7 +145,7 @@ export default function UserReferralDetail() {
                         />
                         <Wallet className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
                     </div>
-                    <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Treasury Logs...</div>
+                    <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Treasury Logs...</div>
                 </div>
             </AdminMobileAppWrapper>
         );
@@ -154,15 +154,15 @@ export default function UserReferralDetail() {
     if (!userId || error) {
         return (
             <AdminMobileAppWrapper title="Economic Intelligence">
-                <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
-                    <div className="p-10 bg-white dark:bg-white/5 rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-8">
+                <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
+                    <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                         <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                     </div>
                     <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'ACCESS_DENIED' : 'IDENTIFIER_MISSING'}</h3>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-8">{error || 'The requested referral stream could not be localized.'}</p>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">{error || 'The requested referral stream could not be localized.'}</p>
                     <button
                         onClick={() => router.push('/admin/referral-history')}
-                        className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105"
+                        className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105"
                     >
                         <ArrowLeft className="w-4 h-4" /> RETURN_COLLECTOR
                     </button>
@@ -181,9 +181,9 @@ export default function UserReferralDetail() {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-12"
+                        className="mb-4 lg:mb-12"
                     >
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3">
                                     <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
@@ -209,7 +209,7 @@ export default function UserReferralDetail() {
                             <div className="flex flex-wrap items-center gap-4">
                                 <button
                                     onClick={() => router.push('/admin/referral-history')}
-                                    className="px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
+                                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                                 >
                                     <ArrowLeft className="w-4 h-4 text-emerald-500" /> EXIT_TO_HISTORY
                                 </button>
@@ -217,7 +217,7 @@ export default function UserReferralDetail() {
                         </div>
 
                         {/* Metric Overview */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                             {[
                                 { label: 'Liquid Assets', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
                                 { label: 'Affiliate Network', value: user?.referralCount || 0, icon: Users, color: 'indigo' },
@@ -226,7 +226,7 @@ export default function UserReferralDetail() {
                             ].map((stat, i) => (
                                 <div
                                     key={stat.label}
-                                    className="p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                                    className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                                 >
                                     <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-inner`}>
                                         <stat.icon className="w-5 h-5" />
@@ -239,7 +239,7 @@ export default function UserReferralDetail() {
                     </motion.div>
 
                     {/* Earnings Breakdown Spectral */}
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 lg:mb-12">
                         {[
                             { id: 'total', label: 'GROSS VOLUME', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
                             { id: 'registration', label: 'ACTIVATE_TX', amount: user?.referralRewards?.filter(r => r.type === 'registration').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'registration').length || 0, icon: CheckCircle2, color: 'primary' },
@@ -247,7 +247,7 @@ export default function UserReferralDetail() {
                             { id: 'plan49', label: 'PREMIUM_OPS', amount: user?.referralRewards?.filter(r => r.type === 'plan49').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan49').length || 0, icon: Crown, color: 'indigo' },
                             { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                         ].map((tier) => (
-                            <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
+                            <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
                                 <div className={`p-3 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit`}>
                                     <tier.icon className="w-5 h-5" />
                                 </div>
@@ -259,7 +259,7 @@ export default function UserReferralDetail() {
                     </div>
 
                     {/* Table Controller */}
-                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
                                 <Zap className="w-5 h-5" />
@@ -290,9 +290,9 @@ export default function UserReferralDetail() {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                             >
-                                <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
+                                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                                     <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                                 </div>
                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_TRANSACTIONS</h3>
@@ -303,16 +303,16 @@ export default function UserReferralDetail() {
                                 key="content"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+                                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
                             >
                                 <table className="w-full">
                                     <thead>
                                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Temporal_Stamp</th>
-                                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Recipient_Identification</th>
-                                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Category</th>
-                                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Disbursement</th>
-                                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Temporal_Stamp</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Recipient_Identification</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Category</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Disbursement</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -324,13 +324,13 @@ export default function UserReferralDetail() {
                                                 transition={{ delay: i * 0.05 }}
                                                 className="group hover:bg-emerald-500/5 transition-all"
                                             >
-                                                <td className="px-8 py-6">
+                                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                     <div className="flex flex-col">
                                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-1">{formatDate(tx.date)}</div>
                                                         <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
                                                     </div>
                                                 </td>
-                                                <td className="px-8 py-6">
+                                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                     {tx.invitee ? (
                                                         <div className="flex items-center gap-4">
                                                             <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg">
@@ -345,15 +345,15 @@ export default function UserReferralDetail() {
                                                         <span className="text-[10px] font-black text-slate-300 italic">Unknown</span>
                                                     )}
                                                 </td>
-                                                <td className="px-8 py-6 text-center">
+                                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                                     <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest inline-block border ${getRewardTypeColor(tx.rewardType)}`}>
                                                         {getRewardTypeLabel(tx.rewardType)}
                                                     </div>
                                                 </td>
-                                                <td className="px-8 py-6 text-center">
+                                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                                     <div className="text-sm font-black text-emerald-500 tabular-nums italic">+₹{tx.amount}</div>
                                                 </td>
-                                                <td className="px-8 py-6 text-right">
+                                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>
                                                 </td>
                                             </motion.tr>

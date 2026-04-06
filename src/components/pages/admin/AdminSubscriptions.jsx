@@ -35,7 +35,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-indigo-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-indigo-500/30 transition-all shadow-xl overflow-hidden cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -414,14 +414,14 @@ const AdminSubscriptions = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-12 shadow-2xl overflow-hidden group"
+            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <Layers className="w-64 h-64 text-indigo-500 -rotate-12" />
             </div>
 
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-              <div className="space-y-6">
+              <div className="space-y-3 lg:space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Layers className="w-6 h-6" />
@@ -467,7 +467,7 @@ const AdminSubscriptions = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={exportToCSV}
-                    className="flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
+                    className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
                   >
                     <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
                     <span className="text-[10px] font-black uppercase tracking-widest">EXPORT CSV</span>
@@ -477,7 +477,7 @@ const AdminSubscriptions = () => {
 
               <div className="flex flex-col items-end gap-2 text-right">
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL REVENUE</span>
-                <div className="flex items-center gap-3 text-5xl lg:text-7xl font-black text-indigo-600 tabular-nums tracking-tighter">
+                <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-indigo-600 tabular-nums tracking-tighter">
                   <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                   {(summary.totalRevenue || 0).toLocaleString('en-IN')}
                 </div>
@@ -486,7 +486,7 @@ const AdminSubscriptions = () => {
           </motion.div>
 
           {/* Stats Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
             <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBS" value={summary.totalSubscriptions || 0} sub="GRAND TOTAL" />
             <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE PLANS" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
             <StatsCard i={2} color="rose" icon={Zap} label="PAID PLANS" value={summary.paidSubscriptions || 0} sub="PREMIUM MEMBERS" />
@@ -501,10 +501,10 @@ const AdminSubscriptions = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-12 shadow-xl"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 lg:mb-12 shadow-xl"
           >
-            <div className="flex flex-col lg:flex-row items-center gap-6">
-              <div className="flex items-center gap-4 px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+            <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
                 <Filter className="w-4 h-4 text-indigo-500" />
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">REFINE RESULTS</span>
               </div>
@@ -574,9 +574,9 @@ const AdminSubscriptions = () => {
                 key="error"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-rose-500/10 border-4 border-rose-500/20 rounded-[3.5rem] p-12 text-center shadow-2xl"
+                className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
               >
-                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-rose-500/30">
+                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">FAILED TO LOAD DATA</h3>
@@ -587,9 +587,9 @@ const AdminSubscriptions = () => {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-[3.5rem] p-24 text-center shadow-2xl"
+                className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl"
               >
-                <Layers className="w-24 h-24 text-slate-300 mx-auto mb-8 opacity-20" />
+                <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                 <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No active subscriptions detected in the current filter.</p>
               </motion.div>
@@ -599,25 +599,25 @@ const AdminSubscriptions = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="space-y-12"
+                className="space-y-4 lg:space-y-12"
               >
                 {/* Table View */}
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                     <div className="overflow-x-auto selection:bg-indigo-500/30">
-                      <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
+                      <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                         <thead>
                           <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                            <th className="px-6 py-4">S.No.</th>
-                            <th className="px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
+                            <th className="px-3 lg:px-6 py-4">S.No.</th>
+                            <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
                               <div className="flex items-center gap-2 group-hover:text-indigo-500 transition-colors">CREATED AT <SortIcon field="createdAt" /></div>
                             </th>
-                            <th className="px-6 py-4">USER</th>
-                            <th className="px-6 py-4">PLAN</th>
-                            <th className="px-6 py-4">STATUS</th>
-                            <th className="px-6 py-4">VALIDITY</th>
-                            <th className="px-6 py-4 text-right">AMOUNT</th>
-                            <th className="px-6 py-4 text-right">ACTIONS</th>
+                            <th className="px-3 lg:px-6 py-4">USER</th>
+                            <th className="px-3 lg:px-6 py-4">PLAN</th>
+                            <th className="px-3 lg:px-6 py-4">STATUS</th>
+                            <th className="px-3 lg:px-6 py-4">VALIDITY</th>
+                            <th className="px-3 lg:px-6 py-4 text-right">AMOUNT</th>
+                            <th className="px-3 lg:px-6 py-4 text-right">ACTIONS</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -629,10 +629,10 @@ const AdminSubscriptions = () => {
                               transition={{ delay: index * 0.03 }}
                               className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
                             >
-                              <td className="px-6 py-6 first:rounded-l-[2rem]">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                                 <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((pagination.currentPage - 1) * filters.limit) + index + 1}</span>
                               </td>
-                              <td className="px-6 py-6">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6">
                                 <div className="flex flex-col">
                                   <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">
                                     {formatDate(subscription.createdAt || subscription.created_at || subscription.startDate)}
@@ -640,7 +640,7 @@ const AdminSubscriptions = () => {
                                   <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">ID: {subscription._id?.slice(-6).toUpperCase()}</span>
                                 </div>
                               </td>
-                              <td className="px-6 py-6">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6">
                                 <div className="flex items-center gap-4">
                                   <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
                                     <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-indigo-500">
@@ -653,19 +653,19 @@ const AdminSubscriptions = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-6 py-6">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6">
                                 <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
                                   {getPlanIcon(subscription.planName)}
                                   {subscription.planName || 'FREE'}
                                 </div>
                               </td>
-                              <td className="px-6 py-6">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6">
                                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
                                   {getStatusIcon(subscription.status)}
                                   {subscription.status || 'UNKNOWN'}
                                 </div>
                               </td>
-                              <td className="px-6 py-6">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6">
                                 <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
@@ -677,12 +677,12 @@ const AdminSubscriptions = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-6 py-6 text-right">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
                                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
                                   {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
                                 </div>
                               </td>
-                              <td className="px-6 py-6 last:rounded-r-[2rem] text-right">
+                              <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem] text-right">
                                 <div className="flex items-center justify-end gap-2">
                                   <motion.button
                                     whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
@@ -712,16 +712,16 @@ const AdminSubscriptions = () => {
 
                 {/* Grid View */}
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
                     {subscriptions.map((subscription, index) => (
                       <motion.div
                         key={subscription._id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
                       >
-                        <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center justify-between mb-4 lg:mb-8">
                           <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
                             {subscription.planName || 'FREE'}
                           </div>
@@ -740,8 +740,8 @@ const AdminSubscriptions = () => {
                           </div>
                         </div>
 
-                        <div className="space-y-6">
-                          <div className="flex items-center gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
+                        <div className="space-y-3 lg:space-y-6">
+                          <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
                             <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[3px] shadow-xl">
                               <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-indigo-500">
                                 {subscription.user?.name?.charAt(0) || 'U'}
@@ -753,7 +753,7 @@ const AdminSubscriptions = () => {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-6">
+                          <div className="grid grid-cols-2 gap-3 lg:gap-6">
                             <div className="space-y-1">
                               <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">START DATE</span>
                               <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatDate(subscription.startDate || subscription.createdAt)}</div>
@@ -781,16 +781,16 @@ const AdminSubscriptions = () => {
 
                 {/* List View */}
                 {viewMode === 'list' && (
-                  <div className="space-y-6">
+                  <div className="space-y-3 lg:space-y-6">
                     {subscriptions.map((subscription, index) => (
                       <motion.div
                         key={subscription._id}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8"
+                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                       >
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-3 lg:gap-6">
                           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg">
                             <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-indigo-500">
                               {subscription.user?.name?.charAt(0) || 'U'}
@@ -840,13 +840,13 @@ const AdminSubscriptions = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex flex-col lg:flex-row items-center justify-between gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
+                    className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
                   >
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 lg:px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
                       Showing {((pagination.currentPage - 1) * pagination.limit) + 1} // {Math.min(pagination.currentPage * pagination.limit, pagination.total)} OF {pagination.total} ENTRIES_ACTIVE
                     </div>
 
-                    <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
                       <motion.button
                         whileHover={{ scale: 1.1, x: -3 }}
                         whileTap={{ scale: 0.9 }}
@@ -905,16 +905,16 @@ const AdminSubscriptions = () => {
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
+                  className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
                 >
-                  <div className="absolute top-0 right-0 p-8">
+                  <div className="absolute top-0 right-0 p-3 lg:p-8">
                     <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
                       <X className="w-6 h-6" />
                     </motion.button>
                   </div>
 
-                  <div className="p-12">
-                    <div className="flex items-center gap-4 mb-12">
+                  <div className="p-4 lg:p-12">
+                    <div className="flex items-center gap-4 mb-4 lg:mb-12">
                       <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
                         <Layers className="w-8 h-8" />
                       </div>
@@ -924,13 +924,13 @@ const AdminSubscriptions = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-12 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                       <div className="space-y-4">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">START DATE</label>
                         <select
                           value={extendForm.plan}
                           onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                         >
                           <option value="free">Free_Node</option>
                           <option value="basic">Basic_Logic</option>
@@ -943,7 +943,7 @@ const AdminSubscriptions = () => {
                         <select
                           value={extendForm.duration}
                           onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                         >
                           <option value="1 month">01_Month_Cycle</option>
                           <option value="2 months">02_Month_Cycle</option>
@@ -956,7 +956,7 @@ const AdminSubscriptions = () => {
                     </div>
 
                     {error && (
-                      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8 p-4 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl text-[10px] font-black text-rose-500 uppercase tracking-widest text-center">
+                      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl text-[10px] font-black text-rose-500 uppercase tracking-widest text-center">
                         {error}
                       </motion.div>
                     )}

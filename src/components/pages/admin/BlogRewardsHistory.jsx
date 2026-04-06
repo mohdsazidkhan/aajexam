@@ -163,7 +163,7 @@ export default function BlogRewardsHistory() {
   if (loading && transactions.length === 0) {
     return (
       <AdminMobileAppWrapper title="Intel History">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -172,7 +172,7 @@ export default function BlogRewardsHistory() {
             />
             <BookOpen className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
           </div>
-          <div className="mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Intel Provision Logs...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Intel Provision Logs...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -182,19 +182,19 @@ export default function BlogRewardsHistory() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+      className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
     >
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
-              <th className="px-8 py-8">THUMBNAIL</th>
-              <th className="px-8 py-8">TIMESTAMP</th>
-              <th className="px-8 py-8">INTEL_AUTHOR</th>
-              <th className="px-8 py-8">INTEL_PAYLOAD</th>
-              <th className="px-8 py-8 text-center">REWARD TIER</th>
-              <th className="px-8 py-8 text-right">VALUATION</th>
-              <th className="px-8 py-8 text-right">POST_SYNC_BAL</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">THUMBNAIL</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">TIMESTAMP</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">INTEL_AUTHOR</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">INTEL_PAYLOAD</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">REWARD TIER</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">VALUATION</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">POST_SYNC_BAL</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -206,7 +206,7 @@ export default function BlogRewardsHistory() {
                 transition={{ delay: i * 0.05 }}
                 className="group hover:bg-emerald-500/5 transition-all"
               >
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                    <div className="w-16 h-12 rounded-xl overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-105 transition-transform">
                       <img
                         src={tx.article?.featuredImage || '/default_banner.png'}
@@ -216,11 +216,11 @@ export default function BlogRewardsHistory() {
                       />
                    </div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(tx.date)}</div>
                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                    {tx.user?._id ? (
                     <Link href={`/admin/blog-rewards-history/user/${tx.user._id}`} className="group/link block">
                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-emerald-500 transition-colors flex items-center gap-2">
@@ -235,7 +235,7 @@ export default function BlogRewardsHistory() {
                     </div>
                    )}
                 </td>
-                <td className="px-8 py-6">
+                <td className="px-4 lg:px-8 py-3 lg:py-6">
                   {tx.article ? (
                     <Link href={`/admin/articles/${tx.article._id}/edit`} className="group/link block max-w-xs">
                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-tight mb-1 group-hover/link:text-primary-500 transition-colors line-clamp-1">
@@ -247,17 +247,17 @@ export default function BlogRewardsHistory() {
                     <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">Article Deleted</span>
                   )}
                 </td>
-                <td className="px-8 py-6 text-center">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                    <div className={`px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest inline-flex items-center gap-2 ${getRewardTierColor(tx.rewardTier)}`}>
                       <Star className="w-3 h-3" />
                       {getRewardTierLabel(tx.rewardTier)}
                    </div>
                 </td>
-                <td className="px-8 py-6 text-right">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                    <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
                    <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">YIELD_SYNCHRONIZED</div>
                 </td>
-                <td className="px-8 py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
+                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
                    ₹{tx.balance?.toLocaleString() || 0}
                 </td>
               </motion.tr>
@@ -269,16 +269,16 @@ export default function BlogRewardsHistory() {
   );
 
   const renderListView = () => (
-    <div className="space-y-6">
+    <div className="space-y-3 lg:space-y-6">
       {transactions.map((tx, i) => (
         <motion.div
            key={tx._id || i}
            initial={{ opacity: 0, x: -20 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ delay: i * 0.05 }}
-           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-10"
+           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-10"
         >
-          <div className="w-24 h-20 rounded-[2rem] overflow-hidden border-4 border-slate-100 dark:border-white/10 shadow-xl shrink-0 group-hover:scale-105 transition-transform">
+          <div className="w-24 h-20 rounded-lg lg:rounded-[2rem] overflow-hidden border-4 border-slate-100 dark:border-white/10 shadow-xl shrink-0 group-hover:scale-105 transition-transform">
              <img
                 src={tx.article?.featuredImage || '/default_banner.png'}
                 alt="Intel"
@@ -311,11 +311,11 @@ export default function BlogRewardsHistory() {
           </div>
 
           <div className="flex gap-4">
-             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
+             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
                 <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">REWARD AMOUNT</div>
                 <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
              </div>
-             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
+             <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
                 <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">POST_SYNC_BAL</div>
                 <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">₹{tx.balance?.toLocaleString() || 0}</div>
              </div>
@@ -326,16 +326,16 @@ export default function BlogRewardsHistory() {
   );
 
   const renderGridView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
       {transactions.map((tx, i) => (
         <motion.div
            key={tx._id || i}
            initial={{ opacity: 0, scale: 0.95 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ delay: i * 0.05 }}
-           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col overflow-hidden"
+           className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col overflow-hidden"
         >
-          <div className="relative mb-6 rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl aspect-video">
+          <div className="relative mb-6 rounded-lg lg:rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl aspect-video">
              <img
                 src={tx.article?.featuredImage || '/default_banner.png'}
                 alt="Intel"
@@ -390,9 +390,9 @@ export default function BlogRewardsHistory() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
@@ -406,8 +406,8 @@ export default function BlogRewardsHistory() {
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of community-generated intelligence provisions and associated reward distributions.</p>
               </div>
 
-               <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+               <div className="flex flex-col sm:flex-row items-center gap-3 lg:gap-6">
+                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
                     {[
                       { icon: TableIcon, id: 'table', label: 'TAB' },
                       { icon: List, id: 'list', label: 'LIN' },
@@ -429,7 +429,7 @@ export default function BlogRewardsHistory() {
                      <select
                         value={filterType}
                         onChange={handleFilterChange}
-                        className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
+                        className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
                      >
                         <option value="all">All Tiers</option>
                         <option value="normal">Standard (₹5)</option>
@@ -442,14 +442,14 @@ export default function BlogRewardsHistory() {
                     searchTerm={searchTerm}
                     onSearchChange={handleSearch}
                     placeholder="Search blogs..."
-                    className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] py-2 shadow-xl"
+                    className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
                   />
                </div>
             </div>
 
             {/* Tactical Summary Cards */}
             {summary && (
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-12">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-4 lg:mb-12">
                 {[
                   { label: "TOTAL BLOGS", value: summary.totalBlogs, icon: BookOpen, color: "bg-slate-900 dark:bg-white/10 text-white" },
                   { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-emerald-600 text-white shadow-emerald-500/20" },
@@ -462,7 +462,7 @@ export default function BlogRewardsHistory() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className={`${stat.color} rounded-[2.5rem] p-8 lg:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group min-h-[160px]`}
+                    className={`${stat.color} rounded-xl lg:rounded-[2.5rem] p-3 lg:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group min-h-[160px]`}
                   >
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                        <stat.icon className="w-16 h-16" />
@@ -484,9 +484,9 @@ export default function BlogRewardsHistory() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
+                 <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_PROVISIONS_RECOVERED</h3>
                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded intel reward events detected for the current tactical filter.</p>
                </motion.div>

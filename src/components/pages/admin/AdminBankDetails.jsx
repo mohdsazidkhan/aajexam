@@ -127,16 +127,16 @@ export default function AdminBankDetails() {
   };
 
   const TableView = () => (
-    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
       <div className="overflow-x-auto selection:bg-primary-500/30">
-        <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
+        <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
           <thead>
             <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-              <th className="px-6 py-4">USER</th>
-              <th className="px-6 py-4">ACCOUNT DETAILS</th>
-              <th className="px-6 py-4">BANK INFORMATION</th>
-              <th className="px-6 py-4">PLAN</th>
-              <th className="px-6 py-4">ADDED ON</th>
+              <th className="px-3 lg:px-6 py-4">USER</th>
+              <th className="px-3 lg:px-6 py-4">ACCOUNT DETAILS</th>
+              <th className="px-3 lg:px-6 py-4">BANK INFORMATION</th>
+              <th className="px-3 lg:px-6 py-4">PLAN</th>
+              <th className="px-3 lg:px-6 py-4">ADDED ON</th>
             </tr>
           </thead>
           <tbody>
@@ -145,7 +145,7 @@ export default function AdminBankDetails() {
                 key={detail._id}
                 className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
               >
-                <td className="px-6 py-6 first:rounded-l-[2rem]">
+                <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
                       <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
@@ -163,7 +163,7 @@ export default function AdminBankDetails() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-6">
+                <td className="px-3 lg:px-6 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                       <User className="w-3.5 h-3.5 mr-2 text-primary-500" />
@@ -175,7 +175,7 @@ export default function AdminBankDetails() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-6">
+                <td className="px-3 lg:px-6 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
                       <University className="w-3.5 h-3.5 mr-2 text-primary-500" />
@@ -187,7 +187,7 @@ export default function AdminBankDetails() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-6">
+                <td className="px-3 lg:px-6 py-3 lg:py-6">
                   <div className="flex flex-wrap gap-2">
                     {detail.user?.subscriptionStatus && (
                       <div className="flex items-center">
@@ -203,7 +203,7 @@ export default function AdminBankDetails() {
                     )}
                   </div>
                 </td>
-                <td className="px-6 py-6 last:rounded-r-[2rem]">
+                <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
                   <div className="text-[10px] font-black text-slate-400 tabular-nums uppercase">
                     {formatDate(detail.createdAt)}
                   </div>
@@ -217,16 +217,16 @@ export default function AdminBankDetails() {
   );
 
   const CardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
       {bankDetails.map((detail, i) => (
         <motion.div
           key={detail._id}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
         >
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-4 lg:mb-8">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
                 <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
@@ -248,7 +248,7 @@ export default function AdminBankDetails() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-3 lg:space-y-6">
             <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-4 shadow-inner">
               <div className="flex items-center justify-between">
                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT HOLDER</span>
@@ -312,16 +312,16 @@ export default function AdminBankDetails() {
   );
 
   const ListView = () => (
-    <div className="space-y-6">
+    <div className="space-y-3 lg:space-y-6">
       {bankDetails.map((detail, i) => (
         <motion.div
           key={detail._id}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 lg:gap-6">
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
               <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
                 {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
@@ -342,7 +342,7 @@ export default function AdminBankDetails() {
           </div>
 
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:mx-8">
-            <div className="px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
+            <div className="px-3 lg:px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
               <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
                 <CreditCard className="w-4 h-4" />
               </div>
@@ -353,7 +353,7 @@ export default function AdminBankDetails() {
               </div>
             </div>
 
-            <div className="px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
+            <div className="px-3 lg:px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
               <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
                 <University className="w-4 h-4" />
               </div>
@@ -384,14 +384,14 @@ export default function AdminBankDetails() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-12 mb-12 shadow-2xl relative overflow-hidden group"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 lg:mb-12 shadow-2xl relative overflow-hidden group"
             >
-              <div className="absolute top-0 right-0 p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
+              <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
                 <University className="w-64 h-64 text-primary-500" />
               </div>
 
               <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-                <div className="space-y-6">
+                <div className="space-y-3 lg:space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
                       <University className="w-6 h-6" />
@@ -411,7 +411,7 @@ export default function AdminBankDetails() {
 
                 <div className="flex flex-col items-end gap-2 text-right">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL RECORDS</span>
-                  <div className="flex items-center gap-3 text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
+                  <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
                     <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                     {pagination.total || 0}
                   </div>
@@ -420,7 +420,7 @@ export default function AdminBankDetails() {
             </motion.div>
 
             {/* Controls Bar */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
               <div className="lg:col-span-2">
                 <div className="relative group/search">
                   <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
@@ -452,7 +452,7 @@ export default function AdminBankDetails() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
                 <Settings className="w-4 h-4 text-slate-400" />
                 <select
                   value={itemsPerPage}
@@ -475,16 +475,16 @@ export default function AdminBankDetails() {
                 <Loading size="lg" color="yellow" message="" />
               </div>
             ) : error ? (
-              <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-[3.5rem] p-12 text-center shadow-2xl">
-                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-rose-500/30">
+              <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
+                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Data</h3>
                 <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
               </div>
             ) : bankDetails.length === 0 ? (
-              <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-[3.5rem] p-24 text-center shadow-2xl">
-                <University className="w-24 h-24 text-slate-300 mx-auto mb-8 opacity-20" />
+              <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">
+                <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                 <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO RECORDS FOUND</h3>
                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
                   {searchTerm

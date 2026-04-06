@@ -503,7 +503,7 @@ const DashboardPage = () => {
           <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
-                <div className="text-6xl mb-4">âš ï¸</div>
+                <div className="text-2xl lg:text-6xl mb-4">âš ï¸</div>
                 <div className="text-lg text-primary-700 dark:text-primary-500 dark:text-red-400">{error}</div>
               </div>
             </div>
@@ -517,12 +517,12 @@ const DashboardPage = () => {
     <AdminMobileAppWrapper title="Dashboard">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
+        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
            {/* Header */}
            <motion.div
              initial={{ opacity: 0, y: -20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="mb-12 px-4 lg:px-0"
+             className="mb-4 lg:mb-12 px-4 lg:px-0"
            >
              <div className="flex items-center gap-4 mb-4">
                <div className="w-12 h-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/20" />
@@ -542,7 +542,7 @@ const DashboardPage = () => {
             }}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-12"
+            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12"
           >
             {cards.map((card, idx) => (
               <motion.div
@@ -556,10 +556,10 @@ const DashboardPage = () => {
                    hoverable
                    padded={false}
                    onClick={() => router.push(card.link)}
-                   className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] overflow-hidden group"
+                   className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] overflow-hidden group"
                  >
                    <div className="p-6 lg:p-10 flex flex-col h-full relative">
-                     <div className="flex items-center justify-between mb-8 lg:mb-12">
+                     <div className="flex items-center justify-between mb-4 lg:mb-12">
                        <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
                          <card.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                        </div>
@@ -585,7 +585,7 @@ const DashboardPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-12"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12"
             >
               {[
                { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Total collected amount', icon: Banknote, color: 'emerald' },
@@ -593,7 +593,7 @@ const DashboardPage = () => {
                { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of total`, icon: TrendingUp, color: 'purple' },
                { label: 'FREE vs PAID', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Free vs Paid plans', icon: Sparkles, color: 'rose' }
              ].map((item, idx) => (
-               <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-8 lg:p-10 rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
+               <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
                  <div className="flex items-center justify-between relative z-10">
                    <div>
                      <p className={`text-${item.color}-600 dark:text-${item.color}-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2`}>{item.label}</p>
@@ -616,9 +616,9 @@ const DashboardPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl border-none relative overflow-hidden"
+              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl border-none relative overflow-hidden"
             >
-             <div className="flex items-center gap-6 mb-12 px-6">
+             <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-12 px-3 lg:px-6">
                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
                  <Zap className="w-7 h-7 fill-current" />
                </div>
@@ -630,7 +630,7 @@ const DashboardPage = () => {
                </div>
              </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 px-4 lg:px-0">
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10 px-4 lg:px-0">
                  {[
                    { href: "/admin/categories", label: "Categories", desc: "Manage exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
                    { href: "/admin/subcategories", label: "Subcategories", desc: "Add exam sub-topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
@@ -650,8 +650,8 @@ const DashboardPage = () => {
                      whileHover={{ x: 10 }}
                      whileTap={{ scale: 0.98 }}
                    >
-                     <Link href={action.href} className="flex items-center p-8 rounded-[3rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
-                       <div className={`w-16 h-16 ${action.color} rounded-[1.5rem] flex items-center justify-center mr-6 shadow-inner group-hover:rotate-6 transition-transform shrink-0`}>
+                     <Link href={action.href} className="flex items-center p-3 lg:p-8 rounded-xl lg:rounded-[3rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
+                       <div className={`w-16 h-16 ${action.color} rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mr-6 shadow-inner group-hover:rotate-6 transition-transform shrink-0`}>
                          <action.icon className="w-8 h-8" />
                        </div>
                        <div>

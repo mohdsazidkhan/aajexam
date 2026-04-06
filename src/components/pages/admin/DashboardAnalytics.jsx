@@ -620,7 +620,7 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="col-span-full text-center py-0 lg:py-2 lg:py-4 xl:py-6 text-slate-700 dark:text-gray-400">
+        <div className="col-span-full text-center py-0 lg:py-4 xl:py-6 text-slate-700 dark:text-gray-400">
           <div className="flex flex-col items-center gap-2">
             <span className="text-4xl">ðŸ‘¥</span>
             <span>No users found</span>
@@ -725,8 +725,8 @@ const DashboardAnalytics = () => {
        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
          <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
-           <div className="mb-12">
-             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+           <div className="mb-4 lg:mb-12">
+             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
                  <div className="flex items-center gap-3">
                    <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl">
@@ -745,7 +745,7 @@ const DashboardAnalytics = () => {
            </div>
 
            {/* Metric Matrix */}
-           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-12">
+           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
              {[
                {
                  label: 'ENUMERATED USERS',
@@ -789,7 +789,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-8 shadow-xl hover:border-indigo-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-indigo-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
@@ -806,7 +806,7 @@ const DashboardAnalytics = () => {
            </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-8">
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
               <h3 className="text-lg font-semibold mb-4">Level Distribution</h3>
               {levelLabels.length > 0 ? (
@@ -879,7 +879,7 @@ const DashboardAnalytics = () => {
                 <div className="inline-flex p-1 bg-slate-100 dark:bg-white/5 rounded-2xl shadow-inner border border-slate-200 dark:border-white/5">
                   <button
                     onClick={() => setActiveTab('daily')}
-                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'daily'
+                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'daily'
                       ? "bg-indigo-600 text-white shadow-xl"
                       : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
@@ -888,7 +888,7 @@ const DashboardAnalytics = () => {
                   </button>
                   <button
                     onClick={() => setActiveTab('weekly')}
-                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'weekly'
+                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'weekly'
                       ? "bg-indigo-600 text-white shadow-xl"
                       : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
@@ -897,7 +897,7 @@ const DashboardAnalytics = () => {
                   </button>
                   <button
                     onClick={() => setActiveTab('monthly')}
-                    className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'monthly'
+                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'monthly'
                       ? "bg-indigo-600 text-white shadow-xl"
                       : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
                       }`}
