@@ -160,7 +160,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                     <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                                         <Award className="w-6 h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">SCHOLASTIC_YIELD // DISBURSEMENT_AUDIT</span>
+                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / QUIZ REWARD HISTORY</span>
                                 </div>
                                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                                     REWARD <span className="text-emerald-500">SCHEMATICS</span>
@@ -245,7 +245,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                             <SearchFilter
                                 searchTerm={searchTerm}
                                 onSearchChange={handleSearch}
-                                placeholder="LOCALIZE_BY_DESCRIPTION..."
+                                placeholder="Search by description..."
                                 className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
                             />
                         </div>
@@ -306,7 +306,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                                                     {tx.user?.name?.[0].toUpperCase() || 'U'}
                                                                 </div>
                                                                 <div>
-                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-emerald-500 transition-colors uppercase">{tx.user?.name || 'NULL_IDENTITY'}</div>
+                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-emerald-500 transition-colors uppercase">{tx.user?.name || 'Unknown'}</div>
                                                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.user?.email || 'N/A'}</div>
                                                                 </div>
                                                             </div>
@@ -314,7 +314,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                                         <td className="px-8 py-6">
                                                             <div className="flex items-center gap-3 text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                                                                 <HelpCircle className="w-4 h-4 text-emerald-500/50" />
-                                                                <span className="text-[10px] font-black uppercase tracking-widest">{tx.description || 'GENERIC_SCHOLASTIC_REWARD'}</span>
+                                                                <span className="text-[10px] font-black uppercase tracking-widest">{tx.description || 'Quiz Reward'}</span>
                                                             </div>
                                                         </td>
                                                         <td className="px-8 py-6 text-center">
@@ -344,12 +344,12 @@ export default function UserQuizRewardsHistory({ userId }) {
                                                     <Trophy className="w-8 h-8" />
                                                 </div>
 
-                                                <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 limit-text-2">{tx.description || 'GENERIC_SCHOLASTIC_REWARD'}</h3>
-                                                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-6">{tx.user?.name || 'NULL_IDENTITY'}</div>
+                                                <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 limit-text-2">{tx.description || 'Quiz Reward'}</h3>
+                                                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-6">{tx.user?.name || 'Unknown'}</div>
 
                                                 <div className="grid grid-cols-2 gap-4 w-full mb-8">
                                                     <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Payload</div>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Amount</div>
                                                         <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter italic">+₹{tx.amount}</div>
                                                     </div>
                                                     <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
@@ -386,13 +386,13 @@ export default function UserQuizRewardsHistory({ userId }) {
 
                                                 <div className="flex-1 space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
-                                                        <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{tx.description || 'GENERIC_SCHOLASTIC_REWARD'}</h3>
+                                                        <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{tx.description || 'Quiz Reward'}</h3>
                                                         <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">YIELD_TRANSACTION</div>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                                                         <div className="flex items-center gap-2">
                                                             <Wallet className="w-4 h-4 text-emerald-500/50" />
-                                                            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">PAYOUT: +₹{tx.amount}</span>
+                                                            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Reward: +₹{tx.amount}</span>
                                                         </div>
                                                         <div className="flex items-center gap-2">
                                                             <Target className="w-4 h-4 text-indigo-500/50" />

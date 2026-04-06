@@ -245,7 +245,7 @@ export default function UserReferralDetail() {
                             { id: 'registration', label: 'ACTIVATE_TX', amount: user?.referralRewards?.filter(r => r.type === 'registration').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'registration').length || 0, icon: CheckCircle2, color: 'primary' },
                             { id: 'plan9', label: 'BASIC_STREAM', amount: user?.referralRewards?.filter(r => r.type === 'plan9').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan9').length || 0, icon: Star, color: 'emerald' },
                             { id: 'plan49', label: 'PREMIUM_OPS', amount: user?.referralRewards?.filter(r => r.type === 'plan49').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan49').length || 0, icon: Crown, color: 'indigo' },
-                            { id: 'plan99', label: 'ELITE_PROTOCOL', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
+                            { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                         ].map((tier) => (
                             <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
                                 <div className={`p-3 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit`}>
@@ -342,7 +342,7 @@ export default function UserReferralDetail() {
                                                             </div>
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[10px] font-black text-slate-300 italic">UNKNOWN_ENTITY</span>
+                                                        <span className="text-[10px] font-black text-slate-300 italic">Unknown</span>
                                                     )}
                                                 </td>
                                                 <td className="px-8 py-6 text-center">

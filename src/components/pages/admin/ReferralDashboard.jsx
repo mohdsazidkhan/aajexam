@@ -158,7 +158,7 @@ export default function ReferralDashboard() {
                 <SearchFilter
                   searchTerm={searchTerm}
                   onSearchChange={handleSearch}
-                  placeholder="LOCALIZE_EXPANSION_NODE..."
+                  placeholder="Search users..."
                   className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2 w-full lg:w-96"
                 />
               </div>
@@ -189,11 +189,11 @@ export default function ReferralDashboard() {
                   <table className="w-full">
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                        <th className="px-8 py-8">EXPANSION_NODE</th>
-                        <th className="px-8 py-8 text-center">PROTOCOL_ID</th>
-                        <th className="px-8 py-8 text-center">ORIGIN_ATTRIBUTION</th>
-                        <th className="px-8 py-8 text-right">CAPITAL_BALANCE</th>
-                        <th className="px-8 py-8">YIELD_TRANSFERS</th>
+                        <th className="px-8 py-8">USER</th>
+                        <th className="px-8 py-8 text-center">REFERRAL CODE</th>
+                        <th className="px-8 py-8 text-center">JOINED ON</th>
+                        <th className="px-8 py-8 text-right">WALLET BALANCE</th>
+                        <th className="px-8 py-8">REFERRAL REWARDS</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -211,7 +211,7 @@ export default function ReferralDashboard() {
                                     {u.name?.[0]?.toUpperCase() || 'U'}
                                 </div>
                                 <div>
-                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'NULL_ID'}</div>
+                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'Unknown'}</div>
                                     <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{u.email}</div>
                                 </div>
                              </div>
@@ -243,7 +243,7 @@ export default function ReferralDashboard() {
                                     )}
                                   </>
                                 ) : (
-                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-30 italic">ZERO_YIELD_HISTORY</span>
+                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-30 italic">No rewards yet</span>
                                 )}
                              </div>
                           </td>

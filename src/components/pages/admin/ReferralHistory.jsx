@@ -195,7 +195,7 @@ export default function ReferralHistory() {
                         className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                      >
                         <option value="all">ALL_TRANSMISSION_TYPES</option>
-                        <option value="registration">REGISTRATION_YIELD (₹10)</option>
+                        <option value="registration">Registration Reward (₹10)</option>
                         <option value="plan9">PLAN_9_COEFF (₹3)</option>
                         <option value="plan49">PLAN_49_COEFF (₹15)</option>
                         <option value="plan99">PLAN_99_COEFF (₹33)</option>
@@ -205,7 +205,7 @@ export default function ReferralHistory() {
                   <SearchFilter
                     searchTerm={searchTerm}
                     onSearchChange={handleSearch}
-                    placeholder="LOCALIZE_UNIT..."
+                    placeholder="Search..."
                     className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] py-2 shadow-xl"
                   />
                </div>
@@ -215,7 +215,7 @@ export default function ReferralHistory() {
             {summary && (
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-12">
                 {[
-                  { label: "LIFETIME_YIELD", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
+                  { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
                   { label: "REG_PROTO", value: summary.registrationRewards, icon: UserPlus, color: "bg-primary-500 text-white shadow-primary-500/20" },
                   { label: "PLAN_9", value: summary.plan9Rewards, icon: Zap, color: "bg-emerald-500 text-white shadow-emerald-500/20" },
                   { label: "PLAN_49", value: summary.plan49Rewards, icon: Briefcase, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
@@ -264,11 +264,11 @@ export default function ReferralHistory() {
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
                           <th className="px-8 py-8">TIMESTAMP</th>
-                          <th className="px-8 py-8">INVITER_UNIT</th>
-                          <th className="px-8 py-8">INVITEE_NODE</th>
-                          <th className="px-8 py-8 text-center">YIELD_PROTOCOL</th>
-                          <th className="px-8 py-8 text-right">TRANSFER</th>
-                          <th className="px-8 py-8 text-right">POST_TRANS_BAL</th>
+                          <th className="px-8 py-8">INVITER</th>
+                          <th className="px-8 py-8">INVITED USER</th>
+                          <th className="px-8 py-8 text-center">REWARD TYPE</th>
+                          <th className="px-8 py-8 text-right">AMOUNT</th>
+                          <th className="px-8 py-8 text-right">BALANCE AFTER</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -292,7 +292,7 @@ export default function ReferralHistory() {
                                      </div>
                                      <div>
                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-500 transition-colors flex items-center gap-2">
-                                           {tx.inviter?.name || 'NULL_ID'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                                           {tx.inviter?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                                         </div>
                                         <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.inviter?.email || 'OFFLINE'}</div>
                                      </div>
@@ -306,12 +306,12 @@ export default function ReferralHistory() {
                                         <User className="w-5 h-5" />
                                      </div>
                                      <div>
-                                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.invitee.name || 'NULL_NODE'}</div>
+                                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.invitee.name || 'Unknown'}</div>
                                         <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.invitee.email || 'OFFLINE'}</div>
                                      </div>
                                   </div>
                                ) : (
-                                  <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">EXTERNAL_ATTRIBUTION</span>
+                                  <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">External</span>
                                 )}
                             </td>
                             <td className="px-8 py-6 text-center">

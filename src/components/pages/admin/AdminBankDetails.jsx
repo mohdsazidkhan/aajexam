@@ -18,6 +18,7 @@ import {
 import useDebounce from "../../../hooks/useDebounce";
 import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
+import { motion, AnimatePresence } from 'framer-motion';
 import { useSSR } from '../../../hooks/useSSR';
 
 const PAGE_LIMIT = 10;
@@ -131,11 +132,11 @@ export default function AdminBankDetails() {
         <table className="w-full border-separate border-spacing-y-4 px-8 py-4">
           <thead>
             <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-              <th className="px-6 py-4">USER NODE</th>
+              <th className="px-6 py-4">USER</th>
               <th className="px-6 py-4">ACCOUNT DETAILS</th>
               <th className="px-6 py-4">BANK INFORMATION</th>
-              <th className="px-6 py-4">STATUS RECOGNITION</th>
-              <th className="px-6 py-4">SYNC DATE</th>
+              <th className="px-6 py-4">PLAN</th>
+              <th className="px-6 py-4">ADDED ON</th>
             </tr>
           </thead>
           <tbody>
@@ -296,7 +297,7 @@ export default function AdminBankDetails() {
             <div className="flex items-center justify-between px-2">
               <div className="text-[8px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
                 <Calendar className="w-3 h-3" />
-                SYNCED: {formatDate(detail.createdAt)}
+                ADDED: {formatDate(detail.createdAt)}
               </div>
               <div className="text-[8px] font-black text-primary-500/50 uppercase tracking-widest">
                 ID: {detail._id?.slice(-8).toUpperCase()}
@@ -357,7 +358,7 @@ export default function AdminBankDetails() {
                 <University className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">BANK ENTITY</span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">BANK</span>
                 <span className="text-xs font-black text-slate-900 dark:text-white uppercase line-clamp-1">{detail.bankName}</span>
                 <span className="text-[10px] font-bold text-slate-500 tabular-nums uppercase">{detail.ifscCode}</span>
               </div>
@@ -365,7 +366,7 @@ export default function AdminBankDetails() {
           </div>
 
           <div className="lg:w-32 text-right">
-            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SYNCED ON</div>
+            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">ADDED ON</div>
             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(detail.createdAt)}</div>
           </div>
         </motion.div>
@@ -395,7 +396,7 @@ export default function AdminBankDetails() {
                     <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
                       <University className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">FINANCE // BANKING_PORTAL</span>
+                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
                   </div>
 
                   <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
@@ -409,7 +410,7 @@ export default function AdminBankDetails() {
                 </div>
 
                 <div className="flex flex-col items-end gap-2 text-right">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">REGISTRY DEPTH</span>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL RECORDS</span>
                   <div className="flex items-center gap-3 text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
                     <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                     {pagination.total || 0}
@@ -463,7 +464,7 @@ export default function AdminBankDetails() {
                   }}
                   className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
                 >
-                  {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} nodes</option>)}
+                  {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} items</option>)}
                 </select>
               </div>
             </div>
@@ -478,17 +479,17 @@ export default function AdminBankDetails() {
                 <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-rose-500/30">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Registry Fault Detected</h3>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Data</h3>
                 <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
               </div>
             ) : bankDetails.length === 0 ? (
               <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-[3.5rem] p-24 text-center shadow-2xl">
                 <University className="w-24 h-24 text-slate-300 mx-auto mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">REGISTRY_EMPTY</h3>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO RECORDS FOUND</h3>
                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
                   {searchTerm
-                    ? "No registry matching current filters detected."
-                    : "No banking nodes have been initialized in the primary network."}
+                    ? "No records match your search."
+                    : "No bank details have been added yet."}
                 </p>
               </div>
             ) : (

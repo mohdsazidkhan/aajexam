@@ -128,8 +128,8 @@ const AdminUserQuizScores = ({ userId }) => {
            <div className="p-10 bg-white dark:bg-white/5 rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-8">
              <Target className="w-16 h-16 text-slate-200 dark:text-slate-700" />
            </div>
-           <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">IDENTITY_NOT_FOUND</h3>
-           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-8">The requested student profile could not be localized.</p>
+           <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">STUDENT NOT FOUND</h3>
+           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-8">The student you are looking for does not exist.</p>
            <button
              onClick={() => router.push('/admin/students')}
              className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"

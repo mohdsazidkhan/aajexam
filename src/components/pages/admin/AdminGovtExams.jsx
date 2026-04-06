@@ -158,7 +158,7 @@ const AdminGovtExams = () => {
                    <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl shadow-inner">
                      <Building2 className="w-6 h-6" />
                    </div>
-                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN // CURRICULUM REGISTRY</span>
+                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN / GOVT EXAMS</span>
                  </div>
                  <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    ASSESSMENT <span className="text-indigo-600">INVENTORY</span>

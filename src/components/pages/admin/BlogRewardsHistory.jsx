@@ -192,7 +192,7 @@ export default function BlogRewardsHistory() {
               <th className="px-8 py-8">TIMESTAMP</th>
               <th className="px-8 py-8">INTEL_AUTHOR</th>
               <th className="px-8 py-8">INTEL_PAYLOAD</th>
-              <th className="px-8 py-8 text-center">YIELD_TIER</th>
+              <th className="px-8 py-8 text-center">REWARD TIER</th>
               <th className="px-8 py-8 text-right">VALUATION</th>
               <th className="px-8 py-8 text-right">POST_SYNC_BAL</th>
             </tr>
@@ -224,7 +224,7 @@ export default function BlogRewardsHistory() {
                    {tx.user?._id ? (
                     <Link href={`/admin/blog-rewards-history/user/${tx.user._id}`} className="group/link block">
                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-emerald-500 transition-colors flex items-center gap-2">
-                          {tx.user?.name || 'NULL_ID'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                          {tx.user?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                        </div>
                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.user?.email || 'OFFLINE'}</div>
                     </Link>
@@ -244,7 +244,7 @@ export default function BlogRewardsHistory() {
                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.article.category || 'UNCATEGORIZED'}</div>
                     </Link>
                   ) : (
-                    <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">INTEL_NODE_DELETED</span>
+                    <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">Article Deleted</span>
                   )}
                 </td>
                 <td className="px-8 py-6 text-center">
@@ -289,7 +289,7 @@ export default function BlogRewardsHistory() {
 
           <div className="flex-1 text-center lg:text-left space-y-3">
              <div className="flex flex-col lg:flex-row items-center gap-4">
-                <Link href={`/admin/articles/${tx.article?._id}/edit`} className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors line-clamp-1">{tx.article?.title || 'NULL_INTEL'}</Link>
+                <Link href={`/admin/articles/${tx.article?._id}/edit`} className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors line-clamp-1">{tx.article?.title || 'Untitled'}</Link>
                 <div className={`px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest inline-flex items-center gap-2 ${getRewardTierColor(tx.rewardTier)}`}>
                    {getRewardTierLabel(tx.rewardTier)}
                 </div>
@@ -312,7 +312,7 @@ export default function BlogRewardsHistory() {
 
           <div className="flex gap-4">
              <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
-                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PROVISION_YIELD</div>
+                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">REWARD AMOUNT</div>
                 <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
              </div>
              <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
@@ -351,7 +351,7 @@ export default function BlogRewardsHistory() {
           
           <div className="space-y-4 px-2">
              <Link href={`/admin/articles/${tx.article?._id}/edit`} className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight hover:text-primary-500 transition-colors line-clamp-2 block h-10 uppercase">
-                {tx.article?.title || 'NULL_INTEL_ID'}
+                {tx.article?.title || 'Untitled'}
              </Link>
              
              <div className="flex items-center gap-3 pt-2">
@@ -359,7 +359,7 @@ export default function BlogRewardsHistory() {
                    {tx.user?.name?.[0]?.toUpperCase() || 'U'}
                 </div>
                 <div className="flex-1 overflow-hidden">
-                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{tx.user?.name || 'NULL_AUTHOR'}</div>
+                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{tx.user?.name || 'Unknown'}</div>
                    <div className="text-[8px] font-bold text-slate-400 uppercase italic truncate">{tx.user?.email || 'OFFLINE'}</div>
                 </div>
              </div>
@@ -398,7 +398,7 @@ export default function BlogRewardsHistory() {
                   <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                     <BookOpen className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN_HUB // INTEL_YIELD_HISTORY</span>
+                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / BLOG REWARD HISTORY</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   INTEL <span className="text-emerald-500">REWARDS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">HISTORY</span>
@@ -431,17 +431,17 @@ export default function BlogRewardsHistory() {
                         onChange={handleFilterChange}
                         className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
                      >
-                        <option value="all">ALL_YIELD_TIERS</option>
-                        <option value="normal">STANDARD_YIELD (₹5)</option>
-                        <option value="good">ENHANCED_YIELD (₹10)</option>
-                        <option value="high">PEAK_YIELD (₹15)</option>
+                        <option value="all">All Tiers</option>
+                        <option value="normal">Standard (₹5)</option>
+                        <option value="good">Good (₹10)</option>
+                        <option value="high">High (₹15)</option>
                      </select>
                      <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                   </div>
                   <SearchFilter
                     searchTerm={searchTerm}
                     onSearchChange={handleSearch}
-                    placeholder="LOCALIZE_INTEL..."
+                    placeholder="Search blogs..."
                     className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-[2.5rem] py-2 shadow-xl"
                   />
                </div>
@@ -451,11 +451,11 @@ export default function BlogRewardsHistory() {
             {summary && (
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-12">
                 {[
-                  { label: "INTEL_NODES", value: summary.totalBlogs, icon: BookOpen, color: "bg-slate-900 dark:bg-white/10 text-white" },
-                  { label: "LIFETIME_YIELD", value: summary.totalRewards, icon: DollarSign, color: "bg-emerald-600 text-white shadow-emerald-500/20" },
-                  { label: "STANDARD_TIER", value: summary.normalRewards, icon: Zap, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
-                  { label: "ENHANCED_TIER", value: summary.goodRewards, icon: Award, color: "bg-primary-500 text-white shadow-primary-500/20" },
-                  { label: "PEAK_TIER", value: summary.highRewards, icon: Star, color: "bg-rose-500 text-white shadow-rose-500/20" }
+                  { label: "TOTAL BLOGS", value: summary.totalBlogs, icon: BookOpen, color: "bg-slate-900 dark:bg-white/10 text-white" },
+                  { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-emerald-600 text-white shadow-emerald-500/20" },
+                  { label: "STANDARD", value: summary.normalRewards, icon: Zap, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
+                  { label: "GOOD", value: summary.goodRewards, icon: Award, color: "bg-primary-500 text-white shadow-primary-500/20" },
+                  { label: "HIGH", value: summary.highRewards, icon: Star, color: "bg-rose-500 text-white shadow-rose-500/20" }
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -469,7 +469,7 @@ export default function BlogRewardsHistory() {
                     </div>
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-4">{stat.label}</div>
                     <div className="text-2xl lg:text-4xl font-black italic tracking-tighter tabular-nums">
-                       {stat.label === 'INTEL_NODES' ? stat.value : `₹${stat.value?.toLocaleString() || 0}`}
+                       {stat.label === 'TOTAL BLOGS' ? stat.value : `₹${stat.value?.toLocaleString() || 0}`}
                     </div>
                   </motion.div>
                 ))}

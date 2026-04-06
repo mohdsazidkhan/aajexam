@@ -665,7 +665,7 @@ const AdminMonthlyWinners = () => {
                                 <td className="px-8 py-8">
                                   <div className="flex flex-col">
                                     <span className="text-xs font-black text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors uppercase tracking-tight italic">
-                                      {winner?.userId?.name || winner?.userName || 'ANONYMOUS_ENTITY'}
+                                      {winner?.userId?.name || winner?.userName || 'Unknown'}
                                     </span>
                                     <span className="text-[9px] font-bold text-slate-400 lowercase tracking-widest mt-1 opacity-70">
                                       {winner?.userId?.email || 'REDACTED_ACCESS'}

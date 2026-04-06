@@ -290,21 +290,21 @@ const AdminUserQuizzes = () => {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <Trophy className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">EDITORIAL_HUB // CONTENT_MODERATION</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / USER QUIZZES</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   USER <span className="text-primary-500">CURATION</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user-generated entertainment modules, taxonomies, and sub-channels.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Review and manage quizzes, categories, and subcategories created by users.</p>
               </div>
             </div>
 
             {/* Navigation Tabs */}
             <div className="flex flex-wrap items-center gap-4 mb-10">
               {[
-                { id: "quizzes", label: "Entertainment Modules", icon: Trophy, count: quizzes.length },
-                { id: "categories", label: "Macro Taxonomies", icon: Layers, count: categories.length },
-                { id: "subcategories", label: "Micro Channels", icon: LayoutGrid, count: subcategories.length }
+                { id: "quizzes", label: "Quizzes", icon: Trophy, count: quizzes.length },
+                { id: "categories", label: "Categories", icon: Layers, count: categories.length },
+                { id: "subcategories", label: "Subcategories", icon: LayoutGrid, count: subcategories.length }
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -341,10 +341,10 @@ const AdminUserQuizzes = () => {
                     onChange={(e) => setStatusFilter(e.target.value)}
                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                   >
-                    <option value="all">ALL_PROTOCOLS</option>
-                    <option value="pending">PENDING_REVIEW</option>
-                    <option value="approved">AUTHORIZED_NODES</option>
-                    <option value="rejected">REJECTED_ENTRIES</option>
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
                   </select>
                   <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                 </div>
@@ -354,7 +354,7 @@ const AdminUserQuizzes = () => {
                   <input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="LOCALIZE_UNIT_ID..."
+                    placeholder="Search..."
                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-80 placeholder:text-slate-400"
                   />
                 </div>
@@ -429,7 +429,7 @@ const AdminUserQuizzes = () => {
                                         {quiz.createdBy?.name?.[0]?.toUpperCase() || 'U'}
                                       </div>
                                       <div>
-                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{quiz.createdBy?.name || 'NULL_IDENTITY'}</div>
+                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{quiz.createdBy?.name || 'Unknown'}</div>
                                          <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(quiz.createdAt)}</div>
                                       </div>
                                    </div>
@@ -686,7 +686,7 @@ const AdminUserQuizzes = () => {
                                  onClick={() => handleRejectQuiz(selectedQuiz._id)}
                                  className="flex-1 p-8 bg-rose-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                >
-                                  <ShieldAlert className="w-6 h-6" /> DENY_PROTOCOL
+                                  <ShieldAlert className="w-6 h-6" /> REJECT
                                </button>
                              </>
                            ) : (

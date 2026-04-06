@@ -40,6 +40,7 @@ import API from '../../../lib/api';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
@@ -759,7 +760,7 @@ const DashboardAnalytics = () => {
                  gradient: 'text-emerald-600 bg-emerald-600/10 border-emerald-600/20'
                },
                {
-                 label: 'GROSS REVENUE',
+                 label: 'TOTAL REVENUE',
                  icon: <Wallet />,
                  value: `₹${data.overview?.totalRevenue}`,
                  gradient: 'text-amber-600 bg-amber-600/10 border-amber-600/20'

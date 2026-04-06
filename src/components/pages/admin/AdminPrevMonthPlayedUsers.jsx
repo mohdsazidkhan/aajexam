@@ -402,10 +402,10 @@ const AdminPrevMonthPlayedUsers = () => {
                            <table className="w-full">
                               <thead>
                                 <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                                  <th className="px-8 py-8 text-center w-20">#REF</th>
-                                  <th className="px-8 py-8">UNIT_IDENTITY</th>
-                                  <th className="px-8 py-8 text-center">TEMPORAL_MARKER</th>
-                                  <th className="px-8 py-8 text-center">EVOLUTION_LEVEL</th>
+                                  <th className="px-8 py-8 text-center w-20">S.NO</th>
+                                  <th className="px-8 py-8">STUDENT</th>
+                                  <th className="px-8 py-8 text-center">JOINED ON</th>
+                                  <th className="px-8 py-8 text-center">LEVEL</th>
                                   <th className="px-8 py-8 text-center">SUBSCRIPTION</th>
                                   <th onClick={() => handleSort('totalQuizzes')} className="px-8 py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">YIELD_TOTAL <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
                                   <th onClick={() => handleSort('highScoreQuiz')} className="px-8 py-8 text-center cursor-pointer hover:text-emerald-500 transition-colors">PEAK_SCORE <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
@@ -432,7 +432,7 @@ const AdminPrevMonthPlayedUsers = () => {
                                                    {user.name?.[0]?.toUpperCase() || 'U'}
                                                 </div>
                                                 <div className="overflow-hidden max-w-[150px]">
-                                                   <div className="text-slate-900 dark:text-white truncate mb-1">{user.name || 'NULL_ID'}</div>
+                                                   <div className="text-slate-900 dark:text-white truncate mb-1">{user.name || 'Unknown'}</div>
                                                    <div className="text-[8px] opacity-60 truncate italic">{user.email || 'OFFLINE'}</div>
                                                 </div>
                                              </div>
@@ -500,12 +500,12 @@ const AdminPrevMonthPlayedUsers = () => {
                                  </div>
                               </div>
 
-                              <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'NULL_ID'}</h3>
+                              <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'Unknown'}</h3>
                               <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-8 italic">{user.email || 'OFFLINE'}</div>
 
                               <div className="grid grid-cols-2 gap-4 w-full mb-8">
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_YIELD</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL REWARDS</div>
                                     <div className="text-xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
@@ -550,7 +550,7 @@ const AdminPrevMonthPlayedUsers = () => {
 
                               <div className="flex-1 text-center lg:text-left space-y-3">
                                  <div className="flex flex-col lg:flex-row items-center gap-4">
-                                    <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors uppercase">{user.name || 'NULL_IDENTITY'}</h3>
+                                    <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors uppercase">{user.name || 'Unknown'}</h3>
                                     <div className={`px-4 py-1 rounded-full border text-[8px] font-black uppercase tracking-widest ${user.subscriptionStatus === 'premium' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-slate-100 dark:bg-white/5'}`}>
                                        {user.subscriptionStatus?.toUpperCase() || 'FREE'}
                                     </div>

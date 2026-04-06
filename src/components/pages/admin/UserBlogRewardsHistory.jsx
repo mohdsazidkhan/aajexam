@@ -130,9 +130,9 @@ export default function UserBlogRewardsHistory({ userId }) {
 
   const getRewardTierLabel = (tier) => {
     const labels = {
-      'normal': 'STANDARD_TIER',
-      'good': 'ADVANCED_TIER',
-      'high': 'ELITE_TIER',
+      'normal': 'Standard',
+      'good': 'Good',
+      'high': 'High',
     };
     return labels[tier] || tier.toUpperCase();
   };
@@ -182,10 +182,10 @@ export default function UserBlogRewardsHistory({ userId }) {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <BookOpen className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">EDITORIAL_INSIGHTS // REWARD_PROTOCOL</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / BLOG REWARDS</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  BLOG <span className="text-primary-500">SCHEMATICS</span>
+                  BLOG <span className="text-primary-500">REWARDS</span>
                 </h1>
                 {userInfo && (
                   <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
@@ -272,7 +272,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                   onChange={handleFilterChange}
                   className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                 >
-                  <option value="all">ALL_REWARD_TIERS</option>
+                  <option value="all">All Tiers</option>
                   <option value="normal">STANDARD (₹5)</option>
                   <option value="good">ADVANCED (₹10)</option>
                   <option value="high">ELITE (₹15)</option>
@@ -283,7 +283,7 @@ export default function UserBlogRewardsHistory({ userId }) {
               <SearchFilter
                 searchTerm={searchTerm}
                 onSearchChange={handleSearch}
-                placeholder="LOCALIZE_BY_TITLE..."
+                placeholder="Search by title..."
                 className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
               />
             </div>
@@ -344,7 +344,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                             <td className="px-8 py-6">
                               {tx.article ? (
                                 <Link href={`/admin/articles/${tx.article._id}/edit`} className="group/link">
-                                  <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover/link:text-primary-500 transition-colors">{tx.article.title || 'NULL_TITLE'}</div>
+                                  <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover/link:text-primary-500 transition-colors">{tx.article.title || 'Untitled'}</div>
                                   <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.article.category || 'SYSTEM_CHANNELS'}</div>
                                 </Link>
                               ) : (
@@ -401,7 +401,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-[0.2em] border w-fit mx-auto ${getRewardTierColor(tx.rewardTier)}`}>
                              {getRewardTierLabel(tx.rewardTier)}
                            </div>
-                           <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-2">{tx.article?.title || 'NULL_TITLE'}</h3>
+                           <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-2">{tx.article?.title || 'Untitled'}</h3>
                            <div className="flex flex-col items-center gap-2 pt-4 border-t-2 border-slate-100 dark:border-white/5">
                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">BALANCE: ₹{tx.balance?.toLocaleString() || 0}</div>
                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatDate(tx.date)}</div>
@@ -433,7 +433,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                         
                         <div className="flex-1 space-y-4">
                            <div className="flex flex-wrap items-center gap-4">
-                              <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{tx.article?.title || 'NULL_TITLE'}</h3>
+                              <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{tx.article?.title || 'Untitled'}</h3>
                               <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border ${getRewardTierColor(tx.rewardTier)}`}>
                                  {getRewardTierLabel(tx.rewardTier)}
                               </div>
@@ -441,7 +441,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                               <div className="flex items-center gap-2">
                                  <Wallet className="w-4 h-4 text-emerald-500/50" />
-                                 <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">PAYOUT: +₹{tx.amount}</span>
+                                 <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Reward: +₹{tx.amount}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                  <TrendingUp className="w-4 h-4 text-primary-500/50" />

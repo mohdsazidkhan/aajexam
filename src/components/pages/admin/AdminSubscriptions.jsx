@@ -919,14 +919,14 @@ const AdminSubscriptions = () => {
                         <Layers className="w-8 h-8" />
                       </div>
                       <div className="flex flex-col">
-                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND_PROTOCOL</h3>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'NODE_RESUME'} // {selectedSubscription?.user?.email || 'N/A'}</span>
+                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND PLAN</h3>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} / {selectedSubscription?.user?.email || 'N/A'}</span>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                       <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">GENESIS_PROTOCOL</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">START DATE</label>
                         <select
                           value={extendForm.plan}
                           onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
@@ -968,7 +968,7 @@ const AdminSubscriptions = () => {
                         onClick={closeExtendModal}
                         className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400 font-black uppercase tracking-widest rounded-2xl text-[10px]"
                       >
-                        CANCEL_PROTOCOL
+                        CANCEL
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -978,7 +978,7 @@ const AdminSubscriptions = () => {
                         disabled={extending}
                       >
                         {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                        {extending ? 'SYNCING_PROTOCOL...' : 'DEPLOY_EXTENSION'}
+                        {extending ? 'Saving...' : 'EXTEND PLAN'}
                       </motion.button>
                     </div>
                   </div>

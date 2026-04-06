@@ -225,10 +225,10 @@ const AdminReferralAnalytics = () => {
                         {/* Summary Visualization */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-12">
                             {[
-                                { label: "TOTAL_NODES", value: pagination.total, icon: Users, color: "bg-indigo-500", shadow: "shadow-indigo-500/20" },
-                                { label: "ACTIVE_TRANSMITTERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-emerald-500", shadow: "shadow-emerald-500/20" },
-                                { label: "LIFETIME_YIELD", value: summary.totalReferralsSum, icon: Award, color: "bg-rose-500", shadow: "shadow-rose-500/20" },
-                                { label: "MONTHLY_COEFFICIENT", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-amber-500", shadow: "shadow-amber-500/20" }
+                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-indigo-500", shadow: "shadow-indigo-500/20" },
+                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-emerald-500", shadow: "shadow-emerald-500/20" },
+                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-rose-500", shadow: "shadow-rose-500/20" },
+                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-amber-500", shadow: "shadow-amber-500/20" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}
@@ -255,7 +255,7 @@ const AdminReferralAnalytics = () => {
                                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
                                     <input
                                         type="text"
-                                        placeholder="LOCALIZE_UNIT_ID..."
+                                        placeholder="Search users..."
                                         value={searchTerm}
                                         onChange={handleSearch}
                                         className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-emerald-500/30 transition-all shadow-inner placeholder:text-slate-400"
@@ -317,8 +317,8 @@ const AdminReferralAnalytics = () => {
                                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                             >
                                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
-                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_EXPANSION_NODES</h3>
-                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded growth vectors detected for the selected tactical parameters.</p>
+                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No referral data found for the selected filters.</p>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -347,7 +347,7 @@ const AdminReferralAnalytics = () => {
                                                    </div>
                                                 </div>
                                                 
-                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'NULL_ID'}</h3>
+                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'Unknown'}</h3>
                                                 <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-8 italic">{user.email || 'OFFLINE'}</div>
                                                 
                                                 <div className="grid grid-cols-2 gap-4 w-full mb-10 text-[9px] font-black uppercase tracking-widest">
@@ -390,7 +390,7 @@ const AdminReferralAnalytics = () => {
 
                                                 <div className="flex-1 space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
-                                                       <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{user.name || 'NULL_IDENTITY'}</h3>
+                                                       <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{user.name || 'Unknown'}</h3>
                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-emerald-500/20 text-emerald-500 bg-emerald-500/5 italic">{user.referralCode}</div>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -400,14 +400,14 @@ const AdminReferralAnalytics = () => {
                                                        </div>
                                                        <div className="flex items-center gap-2">
                                                           <Clock className="w-4 h-4 text-slate-300" />
-                                                          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">JOINED_CY: {new Date(user.createdAt).toLocaleDateString()}</span>
+                                                          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">Joined: {new Date(user.createdAt).toLocaleDateString()}</span>
                                                        </div>
                                                     </div>
                                                 </div>
 
                                                 <div className="flex gap-4">
                                                    <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
-                                                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_YIELD</div>
+                                                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL REFERRALS</div>
                                                       <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.totalReferrals}</div>
                                                    </div>
                                                    <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
@@ -427,9 +427,9 @@ const AdminReferralAnalytics = () => {
                                             <thead>
                                                 <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#IDX</th>
-                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">EXPANSION_NODE</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">USER</th>
                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">PROTOCOL</th>
-                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">LIFETIME_YIELD</th>
+                                                    <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TOTAL REFERRALS</th>
                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">CYCLE_GROWTH</th>
                                                     <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">ESTABLISHED</th>
                                                 </tr>
@@ -492,7 +492,7 @@ const AdminReferralAnalytics = () => {
                                       </button>
                                       
                                       <div className="px-8 py-4 bg-emerald-600 text-white rounded-[2rem] shadow-2xl italic tracking-tighter shadow-emerald-500/40">
-                                         SPECTRAL_INDEX: {pagination.page} <span className="text-emerald-200 mx-2">//</span> TOTAL_NODES: {pagination.totalPages}
+                                         Page {pagination.page} <span className="text-emerald-200 mx-2">/</span> {pagination.totalPages}
                                       </div>
 
                                       <button

@@ -526,13 +526,13 @@ const DashboardPage = () => {
            >
              <div className="flex items-center gap-4 mb-4">
                <div className="w-12 h-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/20" />
-               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600">MANAGEMENT CONSOLE</span>
+               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600">ADMIN PANEL</span>
              </div>
              <h1 className="text-3xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
-               BUSINESS <span className="text-indigo-600">INTELLIGENCE</span>
+               ADMIN <span className="text-indigo-600">DASHBOARD</span>
              </h1>
              <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
-               Comprehensive performance analytics and administrative orchestration for the AajExam ecosystem.
+               Overview of all key stats and quick links for the AajExam platform.
              </p>
            </motion.div>
 
@@ -568,7 +568,7 @@ const DashboardPage = () => {
                        </div>
                      </div>
                      <div className="mt-auto">
-                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'ANALYTIC METRIC'}</p>
+                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
                        <h2 className="text-md lg:text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none">
                          {card.title}
                        </h2>
@@ -588,10 +588,10 @@ const DashboardPage = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-12"
             >
               {[
-               { label: 'GROSS REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Aggregate processed volume', icon: Banknote, color: 'emerald' },
-               { label: 'CONVERSION RATE', value: `${stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%`, subtitle: `${stats.completedPaymentOrders || 0} / ${stats.paymentOrders || 0} successful`, icon: BarChart3, color: 'blue' },
-               { label: 'ACTIVE SUBSCRIPTIONS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% activation ratio`, icon: TrendingUp, color: 'purple' },
-               { label: 'DISTRIBUTION RATIO', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Free vs Premium Allocation', icon: Sparkles, color: 'rose' }
+               { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Total collected amount', icon: Banknote, color: 'emerald' },
+               { label: 'PAYMENT SUCCESS', value: `${stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%`, subtitle: `${stats.completedPaymentOrders || 0} / ${stats.paymentOrders || 0} successful`, icon: BarChart3, color: 'blue' },
+               { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of total`, icon: TrendingUp, color: 'purple' },
+               { label: 'FREE vs PAID', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Free vs Paid plans', icon: Sparkles, color: 'rose' }
              ].map((item, idx) => (
                <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-8 lg:p-10 rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
                  <div className="flex items-center justify-between relative z-10">
@@ -623,27 +623,27 @@ const DashboardPage = () => {
                  <Zap className="w-7 h-7 fill-current" />
                </div>
                <div>
-                 <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em] mb-1 block">QUICK ACCESS</span>
+                 <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
                  <h2 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                   ADMINISTRATIVE <span className="text-indigo-600">SHORTCUTS</span>
+                   QUICK <span className="text-indigo-600">LINKS</span>
                  </h2>
                </div>
              </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 px-4 lg:px-0">
                  {[
-                   { href: "/admin/categories", label: "Category Management", desc: "Orchestrate exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subcategories", label: "Specialty Mapping", desc: "Add granular exam sub-topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/levels", label: "Progression Tiers", desc: "Configure user advancement stages", icon: Trophy, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/quizzes", label: "Assessment Creation", desc: "Design new examination modules", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/questions", label: "Knowledge Base", desc: "Expand the primary question library", icon: HelpCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/articles", label: "Editorial Content", desc: "Curate platform educational insights", icon: FileText, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions", label: "User Inquiries", desc: "Review student-submitted queries", icon: MessageCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions?status=pending", label: "Audit Queue", desc: "Pending items awaiting verification", icon: Clock, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/withdraw-requests", label: "Payout Settlements", desc: "Process student disbursement requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/students", label: "Identity Registry", desc: "Oversee registered platform profiles", icon: Users, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/payment-transactions", label: "Financial Ledger", desc: "Audit all monetary transactions", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subscriptions", label: "Access Control", desc: "Manage premium licensing and billing", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/categories", label: "Categories", desc: "Manage exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/subcategories", label: "Subcategories", desc: "Add exam sub-topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/levels", label: "Levels", desc: "Set up user levels", icon: Trophy, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/quizzes", label: "Quizzes", desc: "Create new quizzes", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/questions", label: "Questions", desc: "Add questions to the bank", icon: HelpCircle, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/articles", label: "Articles", desc: "Write and manage articles", icon: FileText, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/user-questions", label: "User Questions", desc: "View questions asked by students", icon: MessageCircle, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/user-questions?status=pending", label: "Pending Review", desc: "Questions waiting for approval", icon: Clock, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Handle payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/students", label: "Students", desc: "View all registered students", icon: Users, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/payment-transactions", label: "Payments", desc: "View all payments", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/subscriptions", label: "Subscriptions", desc: "Manage student plans", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
                  ].map((action, i) => (
                    <motion.div
                      key={i}

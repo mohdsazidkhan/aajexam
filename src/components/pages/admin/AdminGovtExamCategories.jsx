@@ -199,7 +199,7 @@ const AdminGovtExamCategories = () => {
                     onClick={handleCreate}
                     className="px-8 py-5 bg-primary-600 text-white rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
                   >
-                    <Plus className="w-5 h-5" /> ADD_IDENTITY
+                    <Plus className="w-5 h-5" /> ADD CATEGORY
                   </button>
                </div>
             </div>
@@ -219,8 +219,8 @@ const AdminGovtExamCategories = () => {
                  className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-8" />
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_NODES_FOUND</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Initialize the taxonomy matrix to begin government exam classification.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO CATEGORIES FOUND</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Add categories to start managing government exams.</p>
                </motion.div>
              ) : (
                 <motion.div
@@ -234,11 +234,11 @@ const AdminGovtExamCategories = () => {
                       <table className="w-full">
                         <thead>
                           <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">IDENTITY_LABEL</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">CATEGORY NAME</th>
                             <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">JURISDICTION</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DESCRIPTION_NODE</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">TIMESTAMP</th>
-                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">COMMANDS</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DESCRIPTION</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ADDED ON</th>
+                            <th className="px-8 py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTIONS</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -346,7 +346,7 @@ const AdminGovtExamCategories = () => {
                                {category.type?.toUpperCase()}
                             </div>
 
-                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-10 line-clamp-3">{category.description || 'GENERIC_PROTOCOL_SCHEMA'}</p>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-10 line-clamp-3">{category.description || 'No description'}</p>
 
                             <div className="w-full flex gap-3 mt-auto">
                                <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-500 hover:border-primary-500/30 transition-all">EDIT</button>
@@ -383,7 +383,7 @@ const AdminGovtExamCategories = () => {
                         <Settings className="w-6 h-6" />
                      </div>
                      <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
-                       {editingCategory ? "UPDATE_PROTOCOL" : "NEW_PROTOCOL"}
+                       {editingCategory ? "UPDATE CATEGORY" : "NEW CATEGORY"}
                      </h2>
                   </div>
                   <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-rose-500 transition-colors">
@@ -393,7 +393,7 @@ const AdminGovtExamCategories = () => {
 
                <form onSubmit={handleSubmit} className="p-10 space-y-8">
                   <div className="space-y-3">
-                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">IDENTITY_LABEL</label>
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                      <input
                         type="text"
                         value={formData.name}

@@ -130,7 +130,7 @@ const AdminUserQuestions = () => {
   const getStatusConfig = (status) => {
     switch (status) {
       case "pending":
-        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "PENDING_REVIEW" };
+        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "Pending" };
       case "approved":
         return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "AUTHORIZED" };
       case "rejected":
@@ -245,16 +245,16 @@ const AdminUserQuestions = () => {
                     onChange={(e) => { setPage(1); setStatus(e.target.value); }}
                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                    >
-                    <option value="">ALL_PROTOCOLS</option>
-                    <option value="pending">PENDING_REVIEW</option>
-                    <option value="approved">AUTHORIZED_NODES</option>
-                    <option value="rejected">REJECTED_ENTRIES</option>
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
                    </select>
                    <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                 </div>
 
                 <div className="flex items-center gap-3">
-                   <span className="text-slate-400">INDEX_BY:</span>
+                   <span className="text-slate-400">Show:</span>
                    <select
                     value={itemsPerPage}
                     onChange={handleItemsPerPageChange}
@@ -266,7 +266,7 @@ const AdminUserQuestions = () => {
 
                 <SearchFilter
                   onSearch={handleSearch}
-                  placeholder="LOCALIZE_QUERY..."
+                  placeholder="Search questions..."
                   className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
                 />
               </div>
@@ -285,8 +285,8 @@ const AdminUserQuestions = () => {
                  <div className="p-10 bg-slate-100/50 dark:bg-white/5 rounded-[3rem] mb-8 shadow-xl">
                    <MessageSquare className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NODES_DEPLETED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded user questions detected for the selected moderation parameters.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO QUESTIONS FOUND</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No user questions found for the selected filters.</p>
               </motion.div>
             ) : (
               <motion.div
@@ -341,7 +341,7 @@ const AdminUserQuestions = () => {
                                      {q.userId?.name?.[0].toUpperCase() || 'U'}
                                    </div>
                                    <div>
-                                      <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'NULL_ID'}</div>
+                                      <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'Unknown'}</div>
                                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{q.userId?.email || 'OFFLINE'}</div>
                                    </div>
                                 </div>
@@ -420,7 +420,7 @@ const AdminUserQuestions = () => {
 
                            <div className="flex-1 space-y-6">
                               <div className="space-y-2">
-                                 <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{q.userId?.name || 'NULL_IDENTITY'} // {q.userId?.email || 'N/A'}</div>
+                                 <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{q.userId?.name || 'Unknown'} / {q.userId?.email || 'N/A'}</div>
                                  <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-primary-500 transition-colors uppercase">{q.questionText}</h3>
                               </div>
 
@@ -494,7 +494,7 @@ const AdminUserQuestions = () => {
                                    {q.userId?.name?.[0].toUpperCase() || 'U'}
                                 </div>
                                 <div>
-                                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'NULL_ID'}</div>
+                                   <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'Unknown'}</div>
                                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(q.createdAt)}</div>
                                 </div>
                               </div>

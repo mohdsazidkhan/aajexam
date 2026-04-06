@@ -81,7 +81,7 @@ export default function AdminContacts() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to neutralized this signal node?')) {
       try {
-        const res = await API.getAdminContacts(id);
+        const res = await API.deleteContact(id);
         if (res.ok) {
           toast.success('Signal node neutralized!');
           fetchContacts(page, itemsPerPage, searchTerm);
@@ -193,7 +193,7 @@ export default function AdminContacts() {
 
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-3">
-                   <span className="text-slate-400">INDEX_BY:</span>
+                   <span className="text-slate-400">Show:</span>
                    <select
                     value={itemsPerPage}
                     onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
@@ -206,7 +206,7 @@ export default function AdminContacts() {
                 <SearchFilter
                   searchTerm={searchTerm}
                   onSearchChange={handleSearch}
-                  placeholder="LOCALIZE_TRANSMITTER..."
+                  placeholder="Search..."
                   className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
                 />
               </div>
@@ -266,7 +266,7 @@ export default function AdminContacts() {
                                </div>
                             </td>
                             <td className="px-8 py-6">
-                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'NULL_ID'}</div>
+                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{contact.email || 'OFFLINE'}</div>
                             </td>
                             <td className="px-8 py-6">
@@ -309,7 +309,7 @@ export default function AdminContacts() {
                              {contact.name?.[0].toUpperCase() || 'U'}
                           </div>
                           
-                          <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{contact.name || 'NULL_ID'}</h3>
+                          <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{contact.name || 'Unknown'}</h3>
                           <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{contact.email || 'OFFLINE'}</div>
                           
                           <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-8 relative">
@@ -351,7 +351,7 @@ export default function AdminContacts() {
 
                          <div className="flex-1 space-y-4">
                             <div className="flex flex-wrap items-center gap-4">
-                               <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{contact.name || 'NULL_IDENTITY'}</h3>
+                               <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{contact.name || 'Unknown'}</h3>
                                <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'OFFLINE'}</div>
                             </div>
                             <p className="text-[11px] lg:text-sm font-black uppercase tracking-widest leading-relaxed text-slate-500">{contact.message}</p>

@@ -329,7 +329,7 @@ const AdminGovtExamTests = () => {
                                          <div className="p-3 bg-slate-100 dark:bg-white/10 rounded-xl group-hover:bg-indigo-500/10 group-hover:text-indigo-600 transition-colors shadow-inner"><FileText className="w-5 h-5" /></div>
                                          <div>
                                             <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{test.title}</div>
-                                            <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">REGISTRY_ID: {test._id.slice(-8)}</div>
+                                            <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">ID: {test._id.slice(-8)}</div>
                                          </div>
                                      </div>
                                   </td>

@@ -407,5 +407,4 @@ const AdminUserWallets = () => {
   );
 };
 
-
-
+export default AdminUserWallets;

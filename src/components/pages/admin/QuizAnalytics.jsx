@@ -27,6 +27,7 @@ import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import Button from '../../ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 ChartJS.register(
   CategoryScale,
@@ -298,7 +299,7 @@ const QuizAnalytics = () => {
                     onClick={handleExportRecent}
                     className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center gap-3"
                   >
-                    <Download className="w-4 h-4" /> EXPORT REGISTRY
+                    <Download className="w-4 h-4" /> EXPORT DATA
                   </motion.button>
               </div>
             </div>
