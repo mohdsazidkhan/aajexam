@@ -112,7 +112,7 @@ const MonthlyWinners = () => {
    return (
       <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12 mt-0">
+         <div className="container mx-auto px-2 lg:px-6 py-4 space-y-12 mt-0">
 
             {/* --- Header & Period Selector --- */}
             <section className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 py-0 lg:py-6">

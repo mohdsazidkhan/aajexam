@@ -72,7 +72,7 @@ const ContactUs = ({ contactInfo = {
    return (
       <MobileAppWrapper title="Contact Support">
          <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/50 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
-            <div className="container mx-auto px-4 lg:px-10 py-10 lg:py-20 max-w-7xl space-y-12 lg:space-y-20">
+            <div className="container mx-auto px-4 lg:px-10 py-10 lg:py-20 space-y-12 lg:space-y-20">
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">

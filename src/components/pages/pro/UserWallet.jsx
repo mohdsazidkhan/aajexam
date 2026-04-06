@@ -157,7 +157,7 @@ const UserWallet = () => {
    return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit">
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-7xl space-y-8 lg:space-y-16">
+         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-8 lg:space-y-16">
 
             {/* --- Vault Hero Section --- */}
             <header className="relative py-4 lg:py-6 text-center space-y-3 lg:space-y-8 bg-white dark:bg-slate-800/50 rounded-[2rem] lg:rounded-[3rem] shadow-duo-primary border-4 border-white dark:border-slate-800 backdrop-blur-xl">

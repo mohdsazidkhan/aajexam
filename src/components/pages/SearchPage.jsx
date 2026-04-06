@@ -139,7 +139,7 @@ const SearchPage = () => {
             <title>Search | AajExam</title>
          </Head>
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-6 lg:space-y-12">
+         <div className="container mx-auto px-2 lg:px-6 py-4 space-y-6 lg:space-y-12">
 
             {/* --- Search Bar Section --- */}
             <section className="relative text-center space-y-6 lg:space-y-8">

@@ -90,7 +90,7 @@ const MyUserQuestions = () => {
 
    return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
-         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-5 lg:space-y-12">
+         <div className="container mx-auto px-2 lg:px-6 py-4 space-y-5 lg:space-y-12">
 
             {/* --- Archive Hero --- */}
             <header className="relative flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 pt-4 lg:pt-8">

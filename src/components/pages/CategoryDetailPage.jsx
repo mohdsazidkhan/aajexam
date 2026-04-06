@@ -145,7 +145,7 @@ const CategoryDetailPage = () => {
             )}
          </AnimatePresence>
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-7xl space-y-6 lg:space-y-16">
+         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-6 lg:space-y-16">
 
             {/* --- Back Control --- */}
             <div className="flex justify-start">

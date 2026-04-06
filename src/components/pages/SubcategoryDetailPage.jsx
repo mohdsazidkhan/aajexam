@@ -138,7 +138,7 @@ const SubcategoryDetailPage = () => {
             )}
          </AnimatePresence>
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-6 lg:space-y-12">
+         <div className="container mx-auto px-2 lg:px-6 py-4 space-y-6 lg:space-y-12">
 
             {/* --- Header Controls --- */}
             <section className="flex flex-col lg:flex-row items-center justify-between gap-6">

@@ -105,7 +105,7 @@ const MyUserQuestions = () => {
       <MobileAppWrapper title="Broadcasting Archives">
          <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
+            <div className="container mx-auto px-2 lg:px-6 py-4 space-y-12">
 
                {/* --- Archives Hero --- */}
                <header className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">

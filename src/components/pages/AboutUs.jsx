@@ -62,7 +62,7 @@ const AboutUs = () => {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
          </Head>
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-7xl space-y-8 lg:space-y-16 mt-0">
+         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-8 lg:space-y-16 mt-0">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">

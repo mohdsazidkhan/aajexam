@@ -34,7 +34,7 @@ const CookieConsent = () => {
         <div className="fixed bottom-0 left-0 right-0 z-[100] p-6 lg:p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t-4 border-slate-100 dark:border-slate-800 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] animate-slide-up relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
 
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+            <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
                 {/* Icon & Message */}
                 <div className="flex items-center gap-6 text-center lg:text-left">
                     <div className="w-12 h-12 bg-primary-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-duo-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform hidden sm:flex">
@@ -45,7 +45,7 @@ const CookieConsent = () => {
                             Current <span className="text-primary-700 dark:text-primary-500">Data Protocol</span>
                         </h3>
                         <p className="text-[10px] lg:text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide leading-tight">
-                            We use cookies for the best experience. 
+                            We use cookies for the best experience.
                             Agreed? {' '}
                             <Link href="/privacy" className="text-primary-700 dark:text-primary-500 hover:underline transition-colors font-black">
                                 PRIVACY RULES

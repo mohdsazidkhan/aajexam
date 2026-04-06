@@ -288,7 +288,7 @@ const ModernLandingPage = () => {
                      </div>
                   </div>
 
-                  <div className="relative w-full max-w-7xl mx-auto px-0 lg:px-4 lg:px-0">
+                  <div className="relative w-full mx-auto px-0 lg:px-4 lg:px-0">
                      <div className="absolute -inset-20 bg-primary-500/10 blur-[120px] rounded-full opacity-50" />
                      <MonthlyWinnersDisplay />
                   </div>
@@ -297,7 +297,7 @@ const ModernLandingPage = () => {
          </section>
 
          <section className="pb-20 lg:pb-40 px-6">
-            <Card className="max-w-7xl mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-2xl p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
+            <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-2xl p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
                <div className="relative z-10 space-y-8">
                   <motion.h2
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}

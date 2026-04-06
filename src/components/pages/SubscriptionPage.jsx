@@ -94,7 +94,7 @@ const SubscriptionPage = () => {
 
   if (loading) {
     return (
-      <div className="space-y-12 py-10 px-4 max-w-7xl mx-auto mt-16">
+      <div className="space-y-12 py-10 px-4 mx-auto mt-16">
         <Skeleton height="200px" borderRadius="2.5rem" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Skeleton height="500px" borderRadius="2rem" />
@@ -110,7 +110,7 @@ const SubscriptionPage = () => {
         <title>Subscription | AajExam</title>
       </Head>
 
-      <div className="space-y-8 lg:space-y-16 animate-fade-in px-2 lg:px-10 max-w-7xl mx-auto">
+      <div className="space-y-8 lg:space-y-16 animate-fade-in px-2 lg:px-10 mx-auto">
         {subscription && (
           <Card variant="dark" depth={false} className={`p-5 lg:p-8 border-none overflow-hidden relative rounded-[2rem] lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-slate-950 shadow-2xl'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">

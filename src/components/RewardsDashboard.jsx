@@ -88,7 +88,7 @@ const RewardsDashboard = () => {
   };
 
   if (loading) return (
-    <div className="space-y-8 py-10 px-4 max-w-7xl mx-auto">
+    <div className="space-y-8 py-10 px-4 mx-auto">
       <Skeleton height="120px" borderRadius="2rem" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Skeleton height="300px" borderRadius="1.5rem" />
@@ -99,7 +99,7 @@ const RewardsDashboard = () => {
   );
 
   return (
-    <div className="space-y-12 animate-fade-in px-0 lg:px-4 lg:px-10 max-w-7xl mx-auto font-outfit mt-4 mt-4">
+    <div className="space-y-12 animate-fade-in px-0 lg:px-4 lg:px-10 mx-auto font-outfit mt-4 mt-4">
 
       {/* --- Rewards Hub --- */}
       <section className="relative group">

@@ -58,7 +58,7 @@ const PublicNavbar = () => {
           : 'py-4 bg-transparent border-b border-white/5'
           }`}
       >
-        <div className="container mx-auto px-3 lg:px-6 max-w-7xl pointer-events-auto">
+        <div className="container mx-auto px-3 lg:px-6 pointer-events-auto">
           <div className="flex items-center justify-between">
 
             {/* --- Logo --- */}
@@ -136,7 +136,7 @@ const PublicNavbar = () => {
                 </div>
                 <div className="mt-4 p-4">
                   <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                     <Button variant="primary" fullWidth className="py-5 rounded-3xl font-black uppercase tracking-widest text-sm">Join AajExam</Button>
+                    <Button variant="primary" fullWidth className="py-5 rounded-3xl font-black uppercase tracking-widest text-sm">Join AajExam</Button>
                   </Link>
                 </div>
               </div>

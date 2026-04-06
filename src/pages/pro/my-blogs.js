@@ -101,7 +101,7 @@ const MyBlogsPage = () => {
       <MobileAppWrapper title="Personal Codex">
          <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-            <div className="container mx-auto px-2 lg:px-6 py-4 max-w-7xl space-y-12">
+            <div className="container mx-auto px-2 lg:px-6 py-4 space-y-12">
 
                {/* --- Codex Hero --- */}
                <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8">
