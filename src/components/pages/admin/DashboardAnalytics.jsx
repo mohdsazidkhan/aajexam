@@ -721,7 +721,7 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <AdminMobileAppWrapper title="Intelligence Overview">
+     <AdminMobileAppWrapper title="Analytics Overview">
        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
          <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">

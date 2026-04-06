@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
@@ -554,7 +554,7 @@ const AttemptQuizPage = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-1">QUESTION {index + 1}</p>
-                        <h4 className="text-xl font-black font-outfit uppercase leading-tight">{question.questionText}</h4>
+                        <h4 className="text-xl font-black font-outfit leading-tight">{question.questionText}</h4>
                       </div>
                     </div>
 
@@ -567,7 +567,7 @@ const AttemptQuizPage = () => {
                             <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-[10px] ${isCorrectTarget ? 'bg-emerald-500 text-white shadow-duo-emerald' : isUserChoice ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
                               {String.fromCharCode(65 + optIdx)}
                             </div>
-                            <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrectTarget ? 'text-emerald-600' : isUserChoice ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`}>{option}</span>
+                            <span className={`text-[10px] font-black tracking-widest ${isCorrectTarget ? 'text-emerald-600' : isUserChoice ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`}>{option}</span>
                             {isCorrectTarget && <BadgeCheck className="w-4 h-4 text-emerald-500 ml-auto" />}
                           </div>
                         );
@@ -582,7 +582,7 @@ const AttemptQuizPage = () => {
           <LeaderboardTable leaderboard={leaderboard} currentUser={currentUser} />
 
           <div className="pt-6 lg:pt-12 text-center space-y-6">
-            <div className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-6">
+            <div className="flex justify-center gap-2 lg:gap-6">
               <Button variant="secondary" onClick={handleBack} size="lg" className="px-8 py-4 lg:px-12 lg:py-6 rounded-[1.5rem] lg:rounded-[2rem] text-xs font-black uppercase tracking-widest shadow-duo-secondary">
                 <Home className="w-4 h-4 mr-2" /> GO HOME
               </Button>
@@ -595,8 +595,7 @@ const AttemptQuizPage = () => {
         </div>
       ) : (
         /* --- Quiz Mode --- */
-        <div className="space-y-0 min-h-screen flex flex-col">
-
+        <div className="space-y-0 lg:min-h-screen flex flex-col">
           {/* Header Progress Bar */}
           <div className="sticky top-0 z-50 px-3 lg:px-6 py-3">
             <Card variant="glass" className="!p-3 !rounded-2xl border-none shadow-2xl max-w-5xl mx-auto">
@@ -606,9 +605,9 @@ const AttemptQuizPage = () => {
                   <div className="w-9 h-9 bg-primary-500 text-white rounded-xl flex items-center justify-center shadow-duo-primary flex-shrink-0">
                     <Layout className="w-4 h-4" />
                   </div>
-                  <div className="hidden sm:block">
+                  <div className="block min-w-0">
                     <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] leading-none mb-0.5">QUIZ TITLE</p>
-                    <h2 className="text-[10px] font-black font-outfit uppercase truncate max-w-[10rem] dark:text-white">{quiz?.title}</h2>
+                    <h2 className="text-[10px] font-black font-outfit uppercase truncate max-w-[7rem] sm:max-w-[10rem] dark:text-white">{quiz?.title}</h2>
                   </div>
                 </div>
 

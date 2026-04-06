@@ -256,7 +256,7 @@ const AdminUserQuizzes = () => {
 
   if (loading && quizzes.length === 0 && categories.length === 0 && subcategories.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Editorial Control">
+      <AdminMobileAppWrapper title="User Quizzes">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
@@ -273,7 +273,7 @@ const AdminUserQuizzes = () => {
   }
 
   return (
-    <AdminMobileAppWrapper title="Editorial Control">
+    <AdminMobileAppWrapper title="User Quizzes">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>

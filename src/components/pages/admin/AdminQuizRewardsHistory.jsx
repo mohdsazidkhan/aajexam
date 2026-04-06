@@ -89,7 +89,7 @@ export default function AdminQuizRewardsHistory() {
     if (!isMounted) return null;
 
     return (
-        <AdminMobileAppWrapper title="Reward Distribution Logs">
+        <AdminMobileAppWrapper title="Quiz Rewards History">
             <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
                 {user?.role === "admin" && isAdminRoute && <Sidebar />}
                 <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">

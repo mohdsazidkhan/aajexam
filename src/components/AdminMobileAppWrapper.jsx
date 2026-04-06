@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
@@ -40,29 +40,29 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
 
   const getPageName = () => {
     if (title) return title;
-    if (!isRouterReady || !router) return 'ADMIN CORE';
+    if (!isRouterReady || !router) return 'Admin Panel';
 
     const path = router.pathname;
     const pathSegments = path.split('/').filter(Boolean);
     const pageNames = {
-      'admin': 'CORE',
-      'dashboard': 'LOGISTICS',
-      'analytics': 'Stats',
-      'users': 'UserS',
-      'students': 'StudentS',
-      'categories': 'SECTORS',
-      'subcategories': 'DOMAINS',
-      'quizzes': 'TRIALS',
-      'questions': 'INTEL',
-      'contacts': 'UPLINK',
-      'bank-details': 'IDENTITY',
-      'monthly-winners': 'CHAMPIONS',
-      'financial': 'CREDITS',
-      'performance': 'EFFICIENCY'
+      'admin': 'Admin',
+      'dashboard': 'Dashboard',
+      'analytics': 'Analytics',
+      'users': 'Users',
+      'students': 'Students',
+      'categories': 'Categories',
+      'subcategories': 'Subcategories',
+      'quizzes': 'Quizzes',
+      'questions': 'Questions',
+      'contacts': 'Contacts',
+      'bank-details': 'Bank Details',
+      'monthly-winners': 'Monthly Winners',
+      'financial': 'Financial',
+      'performance': 'Performance'
     };
 
     const lastSegment = pathSegments[pathSegments.length - 1];
-    return pageNames[lastSegment] || 'SYSTEM NODE';
+    return pageNames[lastSegment] || 'Admin';
   };
 
   return (
@@ -80,7 +80,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <h1 className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white leading-none">
                 {getPageName()}
               </h1>
-              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-primary-500/60 leading-none mt-1">AAJEXAM OVERSEER</span>
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-primary-500/60 leading-none mt-1">Admin Panel</span>
             </div>
           </div>
 

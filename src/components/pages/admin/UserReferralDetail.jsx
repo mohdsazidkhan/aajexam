@@ -135,7 +135,7 @@ export default function UserReferralDetail() {
 
     if (loading) {
         return (
-            <AdminMobileAppWrapper title="Economic Intelligence">
+            <AdminMobileAppWrapper title="Referral Detail">
                 <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
                     <div className="relative">
                         <motion.div
@@ -153,7 +153,7 @@ export default function UserReferralDetail() {
 
     if (!userId || error) {
         return (
-            <AdminMobileAppWrapper title="Economic Intelligence">
+            <AdminMobileAppWrapper title="Referral Detail">
                 <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
                     <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                         <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
@@ -172,7 +172,7 @@ export default function UserReferralDetail() {
     }
 
     return (
-        <AdminMobileAppWrapper title="Economic Intelligence">
+        <AdminMobileAppWrapper title="Referral Detail">
             <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
                 {isMounted && <Sidebar />}
                 <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>

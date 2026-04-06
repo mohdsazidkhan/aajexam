@@ -148,7 +148,7 @@ export default function UserBlogRewardsHistory({ userId }) {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="Creative Analytics">
+      <AdminMobileAppWrapper title="Blog Reward History">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
@@ -165,7 +165,7 @@ export default function UserBlogRewardsHistory({ userId }) {
   }
 
   return (
-    <AdminMobileAppWrapper title="Creative Analytics">
+    <AdminMobileAppWrapper title="Blog Reward History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>

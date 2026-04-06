@@ -162,7 +162,7 @@ export default function BlogRewardsHistory() {
 
   if (loading && transactions.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Intel History">
+      <AdminMobileAppWrapper title="Blog Rewards History">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
@@ -381,7 +381,7 @@ export default function BlogRewardsHistory() {
   );
 
   return (
-    <AdminMobileAppWrapper title="Intel History">
+    <AdminMobileAppWrapper title="Blog Rewards History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>

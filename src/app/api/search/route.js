@@ -10,6 +10,7 @@ import ExamCategory from '@/models/ExamCategory';
 import Exam from '@/models/Exam';
 import ExamPattern from '@/models/ExamPattern';
 import PracticeTest from '@/models/PracticeTest';
+import Question from '@/models/Question';
 import { protect } from '@/middleware/auth';
 export const dynamic = 'force-dynamic';
 
@@ -61,11 +62,19 @@ export async function GET(req) {
         };
 
         const [allQuizzes, quizCount] = await Promise.all([
-            Quiz.find(quizFilter).populate('category', 'name').populate('subcategory', 'name').select('_id title category subcategory requiredLevel').lean(),
+            Quiz.find(quizFilter).populate('category', 'name').populate('subcategory', 'name').select('_id title category subcategory requiredLevel timeLimit').lean(),
             Quiz.countDocuments(quizFilter)
         ]);
 
         const shuffled = allQuizzes.sort(() => Math.random() - 0.5).slice(skip, skip + limit);
+
+        // Count questions for each quiz in the result set
+        const quizIds = shuffled.map(q => q._id);
+        const questionCounts = await Question.aggregate([
+            { $match: { quiz: { $in: quizIds } } },
+            { $group: { _id: '$quiz', count: { $sum: 1 } } }
+        ]);
+        const countMap = Object.fromEntries(questionCounts.map(q => [q._id.toString(), q.count]));
 
         return NextResponse.json({
             success: true,
@@ -75,7 +84,7 @@ export async function GET(req) {
             page, limit, totalQuizzes: quizCount,
             categories: categories.map(c => ({ ...c, type: 'category' })),
             subcategories: subcategories.map(s => ({ ...s, type: 'subcategory' })),
-            quizzes: shuffled.map(q => ({ ...q, type: 'quiz' })),
+            quizzes: shuffled.map(q => ({ ...q, type: 'quiz', questionsCount: countMap[q._id.toString()] || 0 })),
             blogs: articles.map(a => ({ ...a, type: 'blog' })),
             users: users.map(u => ({ ...u, type: 'user' })),
             govtExamCategories: govtExamCategories.map(c => ({ ...c, type: 'examCategory' })),
