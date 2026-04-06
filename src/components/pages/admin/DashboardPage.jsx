@@ -26,9 +26,13 @@
   MessageCircle,
   Building,
   BarChart3,
-  Sparkles
+  Sparkles,
+  ChevronRight
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
+import Sidebar from '../../Sidebar';
 import { motion, AnimatePresence } from 'framer-motion';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';

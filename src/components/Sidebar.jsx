@@ -158,20 +158,6 @@ const Sidebar = () => {
       <div className="absolute top-0 -left-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* --- Admin Header --- (Hidden on Mobile) */}
-      <div className="hidden lg:flex p-10 pb-8 items-center justify-between relative z-10 border-b border-slate-200 dark:border-white/5">
-        <div className="flex items-center gap-4 group">
-          <div className="w-10 h-10 rounded-2xl bg-primary-500 flex items-center justify-center p-0.5 shadow-duo-primary transition-transform group-hover:rotate-6">
-            <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center text-white text-lg font-black font-outfit">A</div>
-          </div>
-          <div className="flex flex-col">
-            <h2 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-              ADMIN<span className="text-primary-700 dark:text-primary-500"> PANEL</span>
-            </h2>
-            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-primary-500/60 leading-none mt-1">AAJEXAM SYSTEM</span>
-          </div>
-        </div>
-      </div>
 
       {/* --- Main Navigation Area --- */}
       <nav className="flex-1 overflow-y-auto py-8 px-6 space-y-12 scrollbar-premium relative z-10">
