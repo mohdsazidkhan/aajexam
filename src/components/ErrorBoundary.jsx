@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { RefreshCcw, Home, Terminal, ShieldAlert, AlertCircle } from 'lucide-react';
@@ -51,10 +51,10 @@ class ErrorBoundary extends React.Component {
               </div>
 
               <h1 className="text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white mb-4 drop-shadow-sm">
-                Critical Breach
+                Oops! Something Went Wrong
               </h1>
               <p className="text-[11px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] leading-relaxed">
-                SYSTEM FAILURE DETECTED. <br /> OPERATIONS STABILITY COMPROMISED.
+                Don&apos;t worry — your progress is safe. <br /> Let&apos;s get you back on track.
               </p>
             </div>
 
@@ -70,7 +70,7 @@ class ErrorBoundary extends React.Component {
                   onClick={() => window.location.reload()}
                   className="flex-1 px-8 py-5 bg-rose-500 text-white rounded-3xl border-b-[8px] border-rose-700 shadow-duo-red font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
                 >
-                  <RefreshCcw className="w-5 h-5" /> REBOOT OPS
+                  <RefreshCcw className="w-5 h-5" /> Try Again
                 </motion.button>
 
                 <motion.button
@@ -79,7 +79,7 @@ class ErrorBoundary extends React.Component {
                   onClick={() => window.location.href = '/'}
                   className="flex-1 px-8 py-5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 dark:text-slate-300 rounded-3xl border-b-[8px] border-slate-200 dark:border-slate-700 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white dark:hover:bg-slate-750"
                 >
-                  <Home className="w-5 h-5" /> ABORT MISSION
+                  <Home className="w-5 h-5" /> Go Home
                 </motion.button>
               </div>
 
@@ -88,7 +88,7 @@ class ErrorBoundary extends React.Component {
                 <details className="group border-2 border-slate-50 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300">
                   <summary className="cursor-pointer px-8 py-5 bg-slate-50/50 dark:bg-slate-800/40 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                     <div className="flex items-center gap-2.5">
-                      <Terminal className="w-3.5 h-3.5" /> DECRYPTION LOGS
+                      <Terminal className="w-3.5 h-3.5" /> Error Details
                     </div>
                     <div className="w-4 h-4 group-open:rotate-180 transition-transform duration-300">
                       <RefreshCcw className="w-3.5 h-3.5 rotate-90" />
@@ -96,11 +96,11 @@ class ErrorBoundary extends React.Component {
                   </summary>
                   <div className="p-8 bg-slate-950 text-emerald-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2 mb-4 text-rose-400 border-b border-rose-900/30 pb-2">
-                      <AlertCircle className="w-4 h-4" /> <span>ERROR_ORIGIN_Stats</span>
+                      <AlertCircle className="w-4 h-4" /> <span>Error Info</span>
                     </div>
-                    <span className="text-rose-400/80"># FAULT_TYPE:</span> {this.state.error?.toString()}
+                    <span className="text-rose-400/80"># Error:</span> {this.state.error?.toString()}
                     <br /><br />
-                    <span className="text-rose-400/80"># COMPONENT_STACK:</span>
+                    <span className="text-rose-400/80"># Component Stack:</span>
                     <br />
                     <div className="mt-2 text-slate-600 dark:text-slate-400/80">
                       {this.state.errorInfo?.componentStack}
@@ -113,7 +113,7 @@ class ErrorBoundary extends React.Component {
             {/* Bottom Metadata */}
             <div className="mt-12 text-center relative z-10">
               <p className="text-[9px] font-black text-slate-300 dark:text-slate-800 uppercase tracking-[0.5em] mix-blend-difference">
-                CORE_REF: {new Date().getTime().toString(16).toUpperCase()} // AAJ_SECURE_PROTO
+                AajExam &mdash; Your exam prep journey continues
               </p>
             </div>
           </motion.div>

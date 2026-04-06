@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Link from 'next/link';
 import { FaBook, FaChevronRight, FaQuestionCircle } from 'react-icons/fa';
+import MobileAppWrapper from '../../components/MobileAppWrapper';
 // UnifiedNavbar removed
 import UnifiedFooter from '../../components/UnifiedFooter';
 
