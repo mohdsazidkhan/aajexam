@@ -727,8 +727,6 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   display: flex;
   flex-direction: row;
   width: 100%;
-  width: calc(100% - 240px);
-  margin-left: 240px;
   transition: all ease-in-out .3s;
   padding-top: 0;
 }

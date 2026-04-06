@@ -517,7 +517,7 @@ const DashboardPage = () => {
     <AdminMobileAppWrapper title="Dashboard">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
+        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit mt-12 lg:mt-0">
            {/* Header */}
            <motion.div
              initial={{ opacity: 0, y: -20 }}

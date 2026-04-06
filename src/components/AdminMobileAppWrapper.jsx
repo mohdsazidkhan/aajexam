@@ -119,10 +119,8 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
         </header>
       )}
 
-      <main className={`admin-mobile-content min-h-screen ${showHeader ? 'pt-20' : ''}`}>
-        <div className="px-4 py-8">
-          {children}
-        </div>
+      <main className="admin-mobile-content min-h-screen">
+        {children}
       </main>
 
       <ScrollToTopButton />
