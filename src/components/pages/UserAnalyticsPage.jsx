@@ -51,7 +51,7 @@ const MyAnalyticsPage = () => {
    }, []);
 
    if (loading) return (
-      <div className="space-y-8 animate-fade-in py-10 mt-16">
+      <div className="space-y-8 animate-fade-in">
          <Skeleton height="150px" borderRadius="2rem" />
          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}

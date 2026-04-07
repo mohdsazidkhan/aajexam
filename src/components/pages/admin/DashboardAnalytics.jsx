@@ -708,7 +708,7 @@ const DashboardAnalytics = () => {
 
   if (error) return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-red-700">
-      <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-red-100 border border-red-400 px-4 py-3 rounded">
+      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-red-100 border border-red-400 px-4 py-3 rounded">
         {error}
       </div>
     </div>

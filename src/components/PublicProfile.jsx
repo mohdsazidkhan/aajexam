@@ -104,7 +104,7 @@ const PublicProfile = ({ username }) => {
 
   return (
     <>
-      <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
         {/* Top Navigation Bar */}
         <div className="sticky top-0 z-50 flex items-center justify-between px-6 py-5 bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 shadow-xl lg:hidden rounded-b-[2.5rem]">
           <button
@@ -220,7 +220,7 @@ const PublicProfile = ({ username }) => {
         </div>
 
         {/* Content Sections */}
-        <div className="px-0 space-y-5 pb-8">
+        <div className="px-4 space-y-5 pb-8">
           {/* Level & Badges Section */}
           <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl p-10 mb-10 group">
             <h2 className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] mb-10">Ranking & Honors</h2>

@@ -91,7 +91,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   return (
     <MobileAppWrapper title={profile.name || 'Profile'}>
-      <div className="container mx-auto py-0 lg:py-6 px-0 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
+      <div className="container mx-auto py-0 lg:py-6 px-4 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
         <Head>
           <title>{seo?.title || 'Profile - AajExam'}</title>
           {seo?.description && <meta name="description" content={seo.description} />}
@@ -188,7 +188,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         </div>
 
         {/* Content Sections */}
-        <div className="px-0 space-y-5 pb-8">
+        <div className="px-4 space-y-5 pb-8">
           {/* Level & Badges Section */}
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden relative">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />

@@ -83,7 +83,7 @@ const FollowersList = ({ username: usernameProp }) => {
 
   return (
     <>
-      <div className="container mx-auto py-0 lg:py-4 px-0 lg:px-10 bg-white dark:bg-slate-900 min-h-screen font-outfit">
+      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-white dark:bg-slate-900 min-h-screen font-outfit">
         {/* Content */}
         <div className="p-2">
           {loading ? (

@@ -62,7 +62,7 @@ export default function FollowingListPage() {
 
   return (
     <MobileAppWrapper title={`Following - @${username}`}>
-      <div className="container mx-auto py-0 lg:py-6 px-0 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
+      <div className="container mx-auto py-0 lg:py-6 px-4 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
         <Head>
           <title>Following - @{username} - AajExam Platform</title>
           <meta name="description" content={`View who @${username} is following on AajExam. Explore the profiles they follow and discover new users.`} />

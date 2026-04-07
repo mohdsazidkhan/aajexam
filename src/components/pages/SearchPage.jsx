@@ -190,7 +190,7 @@ const SearchPage = () => {
                      <button
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key)}
-                        className={`flex items-center gap-3 px-2 lg:px-4 py-2 lg:py-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl text-sm font-semibold transition-all whitespace-nowrap ${activeTab === tab.key ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'bg-background-surface text-content-secondary hover:text-primary-600 hover:bg-primary-50'}`}
+                        className={`flex items-center gap-3 px-2 lg:px-4 py-2 lg:py-4 rounded-xl lg:rounded-2xl text-sm font-semibold transition-all whitespace-nowrap ${activeTab === tab.key ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'bg-background-surface text-content-secondary hover:text-primary-600 hover:bg-primary-50'}`}
                      >
                         <tab.icon className={`w-3.5 h-3.5 lg:w-4 lg:h-4 ${activeTab === tab.key ? 'text-white' : 'text-primary-500'}`} />
                         {tab.label}
