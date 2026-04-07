@@ -1440,7 +1440,7 @@ const QuizPage = () => {
                   {/* Left Column: Question Form */}
                   <div className="xl:col-span-5 space-y-4 lg:space-y-8">
                     <div className="flex items-center gap-3 pb-2 border-b-2 border-slate-100 dark:border-white/5">
-                      <PlusSquare className="w-5 h-5 text-emerald-500" />
+                      <SquarePlus className="w-5 h-5 text-emerald-500" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">
                         {editingQuestion ? `Editing Question ${editingQuestionIndex + 1}` : 'Add New Question'}
                       </h3>
