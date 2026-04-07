@@ -37,7 +37,9 @@ import {
   Award,
   BookOpen,
   Hash,
-  HelpCircle
+  HelpCircle,
+  Fingerprint,
+  SquarePlus
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isMobile } from "react-device-detect";
@@ -1570,13 +1572,13 @@ const QuizPage = () => {
                                       onClick={() => handleEditQuestion(q, i)}
                                       className="p-2 bg-indigo-500/10 text-indigo-500 rounded-lg hover:bg-indigo-500 hover:text-white transition-all shadow-sm"
                                     >
-                                      <FaEdit className="w-4 h-4" />
+                                      <Edit3 className="w-4 h-4" />
                                     </button>
                                     <button
                                       onClick={() => handleDeleteQuestion(q._id)}
                                       className="p-2 bg-rose-500/10 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition-all shadow-sm"
                                     >
-                                      <FaTrash className="w-4 h-4" />
+                                      <Trash2 className="w-4 h-4" />
                                     </button>
                                   </div>
                                 </div>

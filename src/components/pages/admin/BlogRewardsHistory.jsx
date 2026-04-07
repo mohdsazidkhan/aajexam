@@ -37,7 +37,8 @@ import {
   LayoutGrid,
   List,
   Table as TableIcon,
-  Image as ImageIcon
+  Image as ImageIcon,
+  User
 } from 'lucide-react';
 
 const PAGE_LIMIT = 20;

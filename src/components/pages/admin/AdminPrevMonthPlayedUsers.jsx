@@ -29,7 +29,8 @@ import {
   ShieldCheck,
   Star,
   Settings,
-  MoreVertical
+  MoreVertical,
+  Mail
 } from 'lucide-react';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
