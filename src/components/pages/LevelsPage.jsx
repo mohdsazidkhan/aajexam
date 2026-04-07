@@ -202,7 +202,7 @@ const LevelsPage = ({ showNavbar = true }) => {
 
       {showNavbar && <PublicNavbar />}
 
-      <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-8 lg:space-y-16">
+      <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
         <header className="relative py-10 lg:py-20 text-center space-y-6 lg:space-y-8 overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white dark:bg-slate-900 shadow-2xl border-2 border-b-8 border-slate-100 dark:border-primary-500/20 transition-all duration-500">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-white dark:from-indigo-950/50 dark:to-slate-900 z-0" />
           <div className="relative z-10 space-y-10 px-4">

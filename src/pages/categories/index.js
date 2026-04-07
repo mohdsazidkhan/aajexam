@@ -27,7 +27,7 @@ export default function CategoriesPage({ categories }) {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto px-2 lg:px-6 xl:px-8 relative z-10">
+                <div className="container mx-auto px-4 lg:px-8 xl:px-8 relative z-10">
                     {/* Header */}
                     <div className='flex justify-center items-center gap-3'>
                         <div className="inline-block mb-6">

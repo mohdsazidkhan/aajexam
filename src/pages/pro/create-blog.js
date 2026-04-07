@@ -162,7 +162,7 @@ const CreateBlogPage = () => {
       <MobileAppWrapper title={isEditMode ? 'Sync Journal' : 'Synthesize Journal'}>
          <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
 
-            <div className="container mx-auto px-2 lg:px-6 max-w-6xl space-y-12">
+            <div className="container mx-auto px-4 lg:px-8 max-w-6xl space-y-12">
 
                {/* --- Creation Hero --- */}
                <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8 text-center lg:text-left">

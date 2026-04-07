@@ -285,7 +285,7 @@ const HomePage = () => {
                </motion.div>
 
                {/* Stats Cards */}
-               <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
+               <motion.div variants={itemVariants} className="grid grid-cols-3 gap-3 lg:gap-8">
                   <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto" onClick={() => router.push('/search')}>
                      <div className="flex justify-between items-start relative z-10">
                         <div className="p-2 lg:p-5 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl lg:rounded-2xl border-2 border-emerald-100 dark:border-emerald-800 shadow-inner">
@@ -318,7 +318,7 @@ const HomePage = () => {
                      <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-amber-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
                   </Card>
 
-                  <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto col-span-2 lg:col-span-1" onClick={() => router.push('/govt-exams')}>
+                  <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto lg:col-span-1" onClick={() => router.push('/govt-exams')}>
                      <div className="flex justify-between items-start relative z-10">
                         <div className="p-2 lg:p-5 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl lg:rounded-2xl border-2 border-indigo-100 dark:border-indigo-800 shadow-inner">
                            <Library className="w-5 h-5 lg:w-10 lg:h-10 text-indigo-500 fill-indigo-500" />

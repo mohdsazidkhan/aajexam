@@ -62,7 +62,7 @@ const AboutUs = () => {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
          </Head>
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-8 lg:space-y-16 mt-0">
+         <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 mt-0">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
@@ -71,7 +71,7 @@ const AboutUs = () => {
                </motion.div>
                <div className="space-y-4">
                   <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-700 dark:text-primary-500">Us</span></h1>
-                  <p className="text-lg lg:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest max-w-3xl mx-auto leading-tight">Practice daily. Learn more. Get the job you always wanted.</p>
+                  <p className="text-lg md:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest max-w-3xl mx-auto leading-tight">Practice daily. Learn more. Get the job you always wanted.</p>
                </div>
 
                {/* Stats Ribbon */}

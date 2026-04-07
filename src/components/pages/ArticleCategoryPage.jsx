@@ -88,7 +88,7 @@ const ArticleCategoryPage = () => {
          </Head>
 
          <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit">
-            <div className="container mx-auto px-2 lg:px-6 py-4 space-y-12">
+            <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-12">
 
                {/* --- Header Section --- */}
                <header className="relative flex flex-col lg:flex-row items-center justify-between gap-8 pt-8 px-4">

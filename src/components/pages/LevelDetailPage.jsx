@@ -143,7 +143,7 @@ const LevelDetailPage = () => {
    return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit">
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 space-y-5 lg:space-y-16">
+         <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-5 lg:space-y-16">
 
             {/* --- Navigation Bar --- */}
             <div className="flex justify-between items-center bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl p-3 lg:p-4 rounded-[1.5rem] lg:rounded-[2rem] shadow-xl border-2 border-slate-50 dark:border-slate-800">

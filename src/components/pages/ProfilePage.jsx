@@ -133,7 +133,7 @@ const ProfilePage = () => {
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto px-2 lg:px-6 py-4 space-y-5 lg:space-y-12">
+      <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-5 lg:space-y-12">
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
           <Card className="lg:col-span-8 p-5 lg:p-10 relative overflow-hidden border-none shadow-2xl rounded-[2rem] lg:rounded-[4rem] bg-background-surface">
             <div className="flex flex-col lg:flex-row items-center gap-5 lg:gap-10 relative z-10">

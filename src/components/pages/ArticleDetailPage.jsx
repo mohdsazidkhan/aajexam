@@ -185,7 +185,7 @@ const ArticleDetailPage = ({ article: initialArticle, slug: initialSlug }) => {
          </section>
 
          {/* --- Article Content --- */}
-         <main className="container mx-auto px-2 lg:px-6 -mt-6 lg:-mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 relative z-20 font-outfit">
+         <main className="container mx-auto px-4 lg:px-8 -mt-6 lg:-mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 relative z-20 font-outfit">
 
             <div className="lg:col-span-8 space-y-6 lg:space-y-12">
                <Card className="p-5 lg:p-20 border-none shadow-2xl bg-white dark:bg-slate-800/80 backdrop-blur-xl relative overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">

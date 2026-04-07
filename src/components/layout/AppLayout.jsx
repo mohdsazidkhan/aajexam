@@ -89,7 +89,7 @@ const AppLayout = ({ children }) => {
       {/* --- Main Content Area --- */}
       <main className={`transition-all duration-500 min-h-screen
         ${showAppNav ?
-          (isSidebarOpen ? 'lg:ml-80 pt-20 pb-20 lg:pb-12' : 'ml-0 pt-20 px-0 pb-20') :
+          (isSidebarOpen ? 'lg:ml-80 pt-20 pb-20 lg:pb-12' : 'ml-0 pt-20 px-4 pb-20') :
           (isQuestPage ? 'p-0 m-0 w-full overflow-hidden' : 'pt-20')
         }`}
       >

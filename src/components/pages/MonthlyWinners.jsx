@@ -112,7 +112,7 @@ const MonthlyWinners = () => {
    return (
       <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
 
-         <div className="container mx-auto px-2 lg:px-6 py-4 space-y-12 mt-0">
+         <div className="container mx-auto px-4 lg:px-8 py-4 lg;py-8 space-y6 lg:space-y-12 mt-0">
 
             {/* --- Header & Period Selector --- */}
             <section className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 py-0 lg:py-6">
@@ -121,7 +121,7 @@ const MonthlyWinners = () => {
                   <p className="text-sm font-bold text-content-secondary dark:text-slate-500 uppercase tracking-[0.3em]">These students studied the hardest and won this period</p>
                </div>
 
-               <div className="flex p-2 bg-background-surface-secondary rounded-3xl gap-2 h-fit">
+               <div className="flex bg-background-surface-secondary rounded-3xl gap-2 h-fit mb-4">
                   {[
                      { id: 'daily', label: 'Daily', color: 'secondary' },
                      { id: 'weekly', label: 'Weekly', color: 'blue' },

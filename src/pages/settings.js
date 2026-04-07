@@ -103,7 +103,7 @@ const SettingsPage = () => {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
-        <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-5xl space-y-12">
+        <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 max-w-5xl space-y-12">
           <div className="space-y-4 max-w-3xl px-4 lg:px-0">
             <h1 className="text-3xl lg:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
             <p className="text-sm lg:text-base font-bold text-content-secondary max-w-xl">

@@ -456,7 +456,7 @@ const AttemptQuizPage = () => {
 
       {submitted ? (
         /* --- Results View --- */
-        <div className="container mx-auto px-2 lg:px-6 py-4 lg:py-12 max-w-5xl space-y-6 lg:space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+        <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 max-w-5xl space-y-6 lg:space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
           {/* Results Header */}
           <header className="py-10 lg:py-24 text-center space-y-6 lg:space-y-10 relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-slate-950 border-b-4 lg:border-b-8 border-slate-900 shadow-2xl glass-dark">
