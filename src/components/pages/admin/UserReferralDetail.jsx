@@ -28,7 +28,8 @@ import {
     CreditCard,
     Star,
     Crown,
-    Mail
+    Mail,
+    PieChart
 } from 'lucide-react';
 
 const PAGE_LIMIT = 20;

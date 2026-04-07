@@ -35,7 +35,8 @@ import {
   Plus,
   ArrowLeft,
   Crown,
-  Target
+  Target,
+  MessageSquare
 } from "lucide-react";
 
 const AdminUserQuizzes = () => {
