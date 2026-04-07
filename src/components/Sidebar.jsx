@@ -162,19 +162,19 @@ const Sidebar = () => {
       {/* --- Main Navigation Area --- */}
       <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
-          <div key={idx} className="space-y-5">
-            <div className="flex items-center gap-3 px-4">
+          <div key={idx} className="space-y-2 lg:space-y-5">
+            <div className="flex items-center gap-2 lg:gap-3 px-4">
               <h3 className="text-[9px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.4em] whitespace-nowrap">{section.title}</h3>
             </div>
-            <div className="space-y-1.5 px-1">
+            <div className="space-y-1 lg:space-y-1.5 px-1">
               {section.items.map((item, itemIdx) => {
                 const active = isActiveRoute(item.path);
                 return (
                   <div key={itemIdx} className="relative group">
                     <Link href={item.path} onClick={() => handleNavClick(item.key)}>
-                      <button className={`w-full flex items-center gap-5 px-5 py-3.5 rounded-2xl transition-all duration-300 relative overflow-hidden ${active ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}>
+                      <button className={`w-full flex items-center gap-2 lg:gap-5 px-2 lg:px-4 py-2 lg:py-4 rounded-xl lg:rounded-2xl transition-all duration-300 relative overflow-hidden ${active ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}>
                         {active && (
-                          <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl" />
+                          <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl lg:rounded-2xl" />
                         )}
                         {!active && <div className="absolute inset-0 bg-white/0 group-hover:bg-slate-500/5 dark:group-hover:bg-white/5 transition-colors" />}
 
@@ -192,21 +192,15 @@ const Sidebar = () => {
       </nav>
 
       {/* --- Logout Area --- */}
-      <div className="p-8 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-950 relative z-20">
+      <div className="p-4 lg:p-8 border-t border-slate-200 dark:border-rose-500 bg-slate-50 dark:bg-slate-950 relative z-20">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => secureLogout(router)}
-          className="w-full py-5 rounded-2xl bg-rose-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-rose hover:bg-rose-600 transition-all flex items-center justify-center gap-3 border-none group"
+          className="w-full py-5 rounded-xl lg:rounded-2xl bg-rose-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-rose hover:bg-rose-600 transition-all flex items-center justify-center gap-3 border-none group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> LOG OUT
         </motion.button>
-        <div className="pt-5 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 group">
-            <span className="w-1 h-1 rounded-full bg-primary-500 animate-pulse group-hover:scale-150 transition-transform" />
-            <p className="text-[8px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest leading-none">SECURE ACCESS ACTIVE</p>
-          </div>
-        </div>
       </div>
     </div>
 

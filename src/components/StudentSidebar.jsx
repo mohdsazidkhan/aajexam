@@ -177,7 +177,7 @@ const StudentSidebar = () => {
                   {section.title}
                 </h3>
               </div>
-              <div className="space-y-1.5 px-1">
+              <div className="space-y-1 lg:space-y-1.5 px-1">
                 {section.items.map((item, itemIdx) => {
                   const isExpanded = expandedMenus[item.label] || false;
                   const active = isActiveRoute(item.path);
@@ -188,7 +188,7 @@ const StudentSidebar = () => {
                         <div className="space-y-1.5">
                           <button
                             onClick={() => toggleMenu(item.label)}
-                            className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
+                            className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
                               ? 'text-primary-700 dark:text-primary-500'
                               : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
                               }`}
@@ -227,7 +227,7 @@ const StudentSidebar = () => {
                         </div>
                       ) : (
                         <Link href={item.path} onClick={handleNavClick}>
-                          <button className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
+                          <button className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
                             ? 'text-white'
                             : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
                             }`}>

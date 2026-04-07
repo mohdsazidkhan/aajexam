@@ -829,7 +829,7 @@ const QuizPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
+                  className="flex justify-between lg:justify-start items-center bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
                 >
                   <button onClick={() => setViewMode('table')} className={`p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400 hover:text-primary-500'}`}><Table className="w-5 h-5" /></button>
                   <button onClick={() => setViewMode('list')} className={`p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400 hover:text-primary-500'}`}><List className="w-5 h-5" /></button>
