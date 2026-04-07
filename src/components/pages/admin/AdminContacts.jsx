@@ -45,7 +45,7 @@ export default function AdminContacts() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
 
@@ -162,7 +162,7 @@ export default function AdminContacts() {
 
             {/* Filters and Controls */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
-              <div className="flex flex-wrap items-center gap-3 lg:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-6 w-full lg:w-auto">
                  <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
                       <Filter className="w-5 h-5" />
@@ -191,13 +191,13 @@ export default function AdminContacts() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center gap-3 w-full lg:w-auto">
                    <span className="text-slate-400">Show:</span>
                    <select
                     value={itemsPerPage}
                     onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                    className="px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                    >
                      {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
                    </select>
@@ -207,7 +207,7 @@ export default function AdminContacts() {
                   searchTerm={searchTerm}
                   onSearchChange={handleSearch}
                   placeholder="Search..."
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
                 />
               </div>
             </div>

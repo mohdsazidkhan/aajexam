@@ -548,7 +548,7 @@ const AdminArticles = () => {
               </div>
             </div>
 
-            <div className="mt-4 lg:mt-10 flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6">
+            <div className="mt-4 lg:mt-10 grid grid-cols-1 lg:flex lg:items-center lg:justify-between gap-3 lg:gap-6 w-full">
               <div className="flex items-center gap-4 bg-white dark:bg-slate-900 p-2 rounded-2xl border-2 border-slate-100 dark:border-white/10">
                 <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               </div>

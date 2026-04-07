@@ -52,7 +52,7 @@ const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [showForm, setShowForm] = useState(false);
 
   const { darkMode } = useDarkMode();
@@ -392,7 +392,7 @@ const CategoryPage = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-3 lg:gap-4 w-full lg:w-auto">
                 <div className="px-3 lg:px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
                   <div className="p-3 rounded-2xl bg-primary-500/10 text-primary-500">
                     <Layers className="w-6 h-6" />
@@ -432,7 +432,7 @@ const CategoryPage = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-3 w-full lg:w-auto overflow-x-auto pb-1 lg:pb-0">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <ViewToggle
                   currentView={viewMode}
                   onViewChange={setViewMode}
@@ -445,7 +445,7 @@ const CategoryPage = () => {
                     setItemsPerPage(Number(e.target.value));
                     setCurrentPage(1);
                   }}
-                  className="px-5 py-4 bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl text-xs font-black uppercase tracking-widest outline-none cursor-pointer focus:border-primary-500/30 transition-all"
+                  className="w-full lg:w-auto px-5 py-4 bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl text-xs font-black uppercase tracking-widest outline-none cursor-pointer focus:border-primary-500/30 transition-all"
                 >
                   {[10, 20, 50, 100].map(v => <option key={v} value={v}>{v} CATEGORIES</option>)}
                 </select>
@@ -453,7 +453,7 @@ const CategoryPage = () => {
                 <Button
                   variant="admin"
                   onClick={() => setShowForm(!showForm)}
-                  className="!px-3 lg:px-6 !py-4 rounded-2xl shadow-lg shadow-indigo-500/20 whitespace-nowrap"
+                  className="w-full lg:w-auto !px-3 lg:px-6 !py-4 rounded-2xl shadow-lg shadow-indigo-500/20 whitespace-nowrap"
                 >
                   <Plus className="w-5 h-5 mr-3" /> Create Category
                 </Button>

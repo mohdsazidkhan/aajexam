@@ -44,7 +44,7 @@ const AdminUserQuizScores = ({ userId }) => {
     hasNextPage: false,
     hasPrevPage: false
   });
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
   const fetchQuizScores = useCallback(async () => {
@@ -208,7 +208,7 @@ const AdminUserQuizScores = ({ userId }) => {
           </motion.div>
 
           {/* View Controls */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl grid grid-cols-1 lg:flex lg:items-center justify-between gap-3 lg:gap-8">
              <div className="flex items-center gap-4">
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                    <Zap className="w-5 h-5" />
@@ -219,8 +219,8 @@ const AdminUserQuizScores = ({ userId }) => {
                 </div>
              </div>
 
-             <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: List, id: 'list', label: 'List' },
@@ -229,7 +229,7 @@ const AdminUserQuizScores = ({ userId }) => {
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`flex-1 lg:flex-none p-4 rounded-full transition-all flex items-center justify-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <mode.icon className="w-4 h-4" />
                       {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest pr-2">{mode.label}</span>}
@@ -237,10 +237,10 @@ const AdminUserQuizScores = ({ userId }) => {
                   ))}
                 </div>
 
-                <div className="relative group">
+                <div className="relative group w-full lg:w-auto">
                   <PieChart className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <select
-                    className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
+                    className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
                   >
                     <option>20 per page</option>
                   </select>

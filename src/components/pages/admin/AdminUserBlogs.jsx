@@ -451,7 +451,7 @@ const AdminUserBlogs = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/20 p-3 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5">
+              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/20 p-3 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 w-full lg:w-auto">
                 <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               </div>
             </div>

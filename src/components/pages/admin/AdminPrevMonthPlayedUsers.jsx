@@ -60,7 +60,7 @@ const AdminPrevMonthPlayedUsers = () => {
   });
   const [sortBy, setSortBy] = useState('highScoreQuiz');
   const [sortOrder, setSortOrder] = useState('desc');
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
   const [preciseDate, setPreciseDate] = useState(dayjs().subtract(1, 'month').format('YYYY-MM-DD'));
@@ -237,7 +237,7 @@ const AdminPrevMonthPlayedUsers = () => {
             </div>
 
             {/* Filter Controls */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl grid grid-cols-1 xl:flex xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
                <div className="flex flex-wrap items-center gap-3 lg:gap-8 flex-1">
                   
                   {activeTab === 'daily' && (
@@ -327,8 +327,8 @@ const AdminPrevMonthPlayedUsers = () => {
                   )}
                </div>
 
-               <div className="flex items-center gap-4">
-                  <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+               <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                  <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
                     {[
                       { icon: TableIcon, id: 'table', label: 'Table' },
                       { icon: List, id: 'list', label: 'List' },
@@ -337,7 +337,7 @@ const AdminPrevMonthPlayedUsers = () => {
                       <button
                         key={mode.id}
                         onClick={() => setViewMode(mode.id)}
-                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`flex-1 lg:flex-none p-4 rounded-full transition-all flex items-center justify-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
                       >
                         <mode.icon className="w-4 h-4" />
                         {viewMode === mode.id && <span className="text-[8px] font-black tracking-widest pr-1">{mode.label}</span>}

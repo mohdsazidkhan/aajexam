@@ -46,7 +46,7 @@ const AdminGovtExamPatterns = () => {
   const [selectedExam, setSelectedExam] = useState("all");
   const [showModal, setShowModal] = useState(false);
   const [editingPattern, setEditingPattern] = useState(null);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
 
   const [formData, setFormData] = useState({
     title: "",
@@ -215,8 +215,8 @@ const AdminGovtExamPatterns = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: LayoutGrid, id: 'grid', label: 'Nodes' },
@@ -225,7 +225,7 @@ const AdminGovtExamPatterns = () => {
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <mode.icon className="w-4 h-4" />
                       {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -236,7 +236,7 @@ const AdminGovtExamPatterns = () => {
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   onClick={handleCreate}
                   disabled={selectedExam === 'all'}
-                  className={`px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-500 text-white'}`}
+                  className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-500 text-white'}`}
                 >
                   <Plus className="w-4 h-4" /> New Pattern
                 </motion.button>

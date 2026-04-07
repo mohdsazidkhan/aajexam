@@ -32,7 +32,7 @@ export default function AdminBankDetails() {
   // const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(PAGE_LIMIT);
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState(isMobile ? "list" : "table");
+  const [viewMode, setViewMode] = useState(isMobile ? "grid" : "table");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
 
@@ -433,7 +433,7 @@ export default function AdminBankDetails() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
                 {[
                   { mode: 'table', icon: TableIcon },
                   { mode: 'grid', icon: LayoutGrid },
@@ -451,7 +451,7 @@ export default function AdminBankDetails() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
                 <Settings className="w-4 h-4 text-slate-400" />
                 <select
                   value={itemsPerPage}
@@ -461,7 +461,7 @@ export default function AdminBankDetails() {
                     setLimit(newItemsPerPage);
                     setPage(1);
                   }}
-                  className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
+                  className="w-full lg:w-auto bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
                 >
                   {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} items</option>)}
                 </select>

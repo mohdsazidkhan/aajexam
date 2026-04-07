@@ -32,7 +32,7 @@ export default function UserDetailsPage() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(PAGE_LIMIT);
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
 
@@ -102,15 +102,15 @@ export default function UserDetailsPage() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                   {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
-                      <mode.icon className="w-5 h-5" />
+                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                      <mode.icon className="w-5 h-5 mx-auto" />
                     </button>
                   ))}
                 </div>
-                <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center gap-3">
+                <motion.button whileHover={{ scale: 1.05 }} className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center justify-center gap-3">
                   <DownloadCloud className="w-4 h-4" /> Export Students
                 </motion.button>
               </div>
@@ -145,12 +145,12 @@ export default function UserDetailsPage() {
                   className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-xl"
                 />
              </div>
-             <div className="flex items-center gap-4">
+             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest hidden lg:block">Records per page:</div>
-                <select value={itemsPerPage} onChange={(e) => { 
-                   const l = Number(e.target.value); 
-                   setItemsPerPage(l); setLimit(l); setPage(1); 
-                }} className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer hover:border-primary-500/30 transition-all">
+                <select value={itemsPerPage} onChange={(e) => {
+                   const l = Number(e.target.value);
+                   setItemsPerPage(l); setLimit(l); setPage(1);
+                }} className="w-full lg:w-auto px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer hover:border-primary-500/30 transition-all">
                    {[10, 25, 50, 100].map(n => <option key={n} value={n}>{n} rows</option>)}
                 </select>
              </div>

@@ -49,7 +49,7 @@ const MonthlyWinnersDisplay = () => {
     fetchWinners();
     const setDefaultViewMode = () => {
       if (typeof window !== 'undefined') {
-        const defaultMode = window.innerWidth >= 1024 ? 'table' : 'list';
+        const defaultMode = window.innerWidth >= 1024 ? 'table' : 'grid';
         setViewMode(defaultMode);
       }
     };

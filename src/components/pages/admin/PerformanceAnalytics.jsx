@@ -47,7 +47,7 @@ const exportCSV = (data, filename) => {
 
 const PerformanceAnalytics = () => {
   const { isMounted, isRouterReady, router } = useSSR();
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
   const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
   const isOpen = useSelector((state) => state.sidebar.isOpen);
@@ -149,24 +149,24 @@ const PerformanceAnalytics = () => {
                  </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                   {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
-                      <mode.icon className="w-5 h-5" />
+                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                      <mode.icon className="w-5 h-5 mx-auto" />
                     </button>
                   ))}
                 </div>
-                <div className="relative group">
+                <div className="relative group w-full lg:w-auto">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <select name="period" value={filters.period} onChange={handleFilterChange} className="pl-12 pr-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer shadow-2xl">
+                  <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full lg:w-auto pl-12 pr-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer shadow-2xl">
                     <option value="week">Past 7 Days</option>
                     <option value="month">Past 30 Days</option>
                     <option value="quarter">Past 90 Days</option>
                     <option value="year">Full Year</option>
                   </select>
                 </div>
-                <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg"><DownloadCloud className="w-6 h-6" /></motion.button>
+                <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="w-full lg:w-auto p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center"><DownloadCloud className="w-6 h-6" /></motion.button>
               </div>
             </div>
           </motion.div>

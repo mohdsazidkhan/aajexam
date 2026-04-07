@@ -57,7 +57,7 @@ const AdminUserWallets = () => {
 
   useEffect(() => { load(); }, [load]);
 
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
 
   const formatAmount = (n) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(n || 0);
 
@@ -159,33 +159,35 @@ const AdminUserWallets = () => {
             />
           </div>
 
-          <div className="flex bg-slate-100 dark:bg-white/10 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
-            {[
-              { id: 'table', icon: Table },
-              { id: 'grid', icon: LayoutGrid },
-              { id: 'list', icon: List }
-            ].map((mode) => (
-              <motion.button
-                key={mode.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setViewMode(mode.id)}
-                className={`p-3 rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-indigo-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
-              >
-                <mode.icon className="w-4 h-4" />
-              </motion.button>
-            ))}
-          </div>
+          <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+            <div className="flex bg-slate-100 dark:bg-white/10 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
+              {[
+                { id: 'table', icon: Table },
+                { id: 'grid', icon: LayoutGrid },
+                { id: 'list', icon: List }
+              ].map((mode) => (
+                <motion.button
+                  key={mode.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setViewMode(mode.id)}
+                  className={`flex-1 lg:flex-none p-3 rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-indigo-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <mode.icon className="w-4 h-4 mx-auto" />
+                </motion.button>
+              ))}
+            </div>
 
-          <div className="flex items-center gap-4 ml-auto">
-            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ROWS PER PAGE</span>
-            <select
-              value={itemsPerPage}
-              onChange={handleItemsPerPageChange}
-              className="bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-            >
-              {[10, 20, 50, 100, 250, 500, 1000].map(v => <option key={v} value={v}>{v}</option>)}
-            </select>
+            <div className="flex items-center gap-4 w-full lg:w-auto lg:ml-auto">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ROWS PER PAGE</span>
+              <select
+                value={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+                className="w-full lg:w-auto bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+              >
+                {[10, 20, 50, 100, 250, 500, 1000].map(v => <option key={v} value={v}>{v}</option>)}
+              </select>
+            </div>
           </div>
         </div>
 

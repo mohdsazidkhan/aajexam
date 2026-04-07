@@ -434,8 +434,8 @@ const AdminSubscriptions = () => {
                 </h1>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <div className="relative group/search">
+                <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                  <div className="relative group/search w-full lg:w-auto">
                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
                     <input
                       type="text"
@@ -468,7 +468,7 @@ const AdminSubscriptions = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={exportToCSV}
-                    className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
+                    className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
                   >
                     <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
                     <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
@@ -504,8 +504,8 @@ const AdminSubscriptions = () => {
             transition={{ delay: 0.4 }}
             className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
           >
-            <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
                 <Filter className="w-4 h-4 text-indigo-500" />
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
               </div>
@@ -514,7 +514,7 @@ const AdminSubscriptions = () => {
                 <select
                   value={filters.plan}
                   onChange={(e) => handleFilterChange('plan', e.target.value)}
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
                   <option value="all">All Plans</option>
                   {filterOptions.plans.map(plan => (
@@ -525,7 +525,7 @@ const AdminSubscriptions = () => {
                 <select
                   value={filters.status}
                   onChange={(e) => handleFilterChange('status', e.target.value)}
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
                   <option value="all">All Statuses</option>
                   {filterOptions.statuses.slice(1).map(status => (
@@ -536,7 +536,7 @@ const AdminSubscriptions = () => {
                 <select
                   value={filters.year}
                   onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
                   <option value="">All Years</option>
                   {filterOptions.years.map(year => (
@@ -547,7 +547,7 @@ const AdminSubscriptions = () => {
                 <select
                   value={filters.month}
                   onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
                   <option value={0}>All Months</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -560,7 +560,7 @@ const AdminSubscriptions = () => {
                 <select
                   value={filters.limit}
                   onChange={(e) => handlePageSizeChange(e.target.value)}
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
                   {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
                 </select>

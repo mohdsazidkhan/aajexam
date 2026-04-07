@@ -67,7 +67,7 @@ const QuestionPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [filters, setFilters] = useState({
     quiz: ''
   });
@@ -535,13 +535,8 @@ const QuestionPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   className="relative z-10"
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
-                      <HelpCircle className="w-8 h-8 text-primary-500" />
-                    </div>
-                    <span className="text-[10px] font-black tracking-[0.4em] text-primary-500 uppercase">QUESTION MANAGEMENT</span>
-                  </div>
-                   <h1 className="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
+                 
+                   <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
                      ALL <span className="text-indigo-600 whitespace-nowrap">QUESTIONS</span>
                    </h1>
                   <p className="max-w-xl text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.1em] text-[10px] leading-relaxed">
@@ -549,16 +544,16 @@ const QuestionPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="flex flex-wrap items-center gap-4 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto relative z-10">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10"
+                    className="flex bg-slate-100/50 dark:bg-white/5 backdrop-blur-xl p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/10 w-full lg:w-auto"
                   >
-                    <button onClick={() => setViewMode('table')} className={`p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><Table className="w-5 h-5" /></button>
-                    <button onClick={() => setViewMode('list')} className={`p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><List className="w-5 h-5" /></button>
-                    <button onClick={() => setViewMode('grid')} className={`p-4 rounded-2xl transition-all ${viewMode === 'grid' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><LayoutGrid className="w-5 h-5" /></button>
+                    <button onClick={() => setViewMode('table')} className={`flex-1 lg:flex-none p-4 rounded-2xl transition-all ${viewMode === 'table' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><Table className="w-5 h-5 mx-auto" /></button>
+                    <button onClick={() => setViewMode('list')} className={`flex-1 lg:flex-none p-4 rounded-2xl transition-all ${viewMode === 'list' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><List className="w-5 h-5 mx-auto" /></button>
+                    <button onClick={() => setViewMode('grid')} className={`flex-1 lg:flex-none p-4 rounded-2xl transition-all ${viewMode === 'grid' ? 'bg-indigo-500 text-white shadow-lg' : 'text-slate-400 hover:text-indigo-500'}`}><LayoutGrid className="w-5 h-5 mx-auto" /></button>
                   </motion.div>
 
                   <motion.button
@@ -567,10 +562,10 @@ const QuestionPage = () => {
                     whileHover={{ scale: 1.05, rotate: 2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleToggleForm}
-                    className="group relative px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-indigo-500/20 transition-all overflow-hidden"
+                    className="group relative w-full lg:w-auto px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-indigo-500/20 transition-all overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="relative flex items-center gap-3">
+                    <span className="relative flex items-center justify-center gap-3">
                       <Plus className="w-5 h-5" /> ADD QUESTION
                     </span>
                   </motion.button>
@@ -617,25 +612,25 @@ const QuestionPage = () => {
                       className="w-full pl-16 pr-8 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-xs font-black uppercase outline-none transition-all placeholder:text-slate-400"
                     />
                   </div>
-                  <div className="flex items-center gap-4 w-full lg:w-auto">
-                    <div className="relative group flex-1 lg:w-64">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                    <div className="relative group w-full lg:w-64">
                       <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
                         <Filter className="w-5 h-5" />
                       </div>
                       <select
                         value={filters.quiz}
                         onChange={(e) => handleFilterChange('quiz', e.target.value)}
-                        className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
+                        className="w-full lg:w-auto pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                       >
                         <option value="">All Quizzes</option>
                         {quizzes.map(q => <option key={q._id} value={q._id}>{q.title}</option>)}
                       </select>
                     </div>
-                    <div className="relative lg:w-32">
+                    <div className="relative w-full lg:w-32">
                       <select
                         value={itemsPerPage}
                         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                        className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                        className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                       >
                         {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} per page</option>)}
                       </select>
@@ -644,7 +639,7 @@ const QuestionPage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleClearFilters}
-                      className="p-5 bg-primary-500/10 text-primary-500 rounded-full hover:bg-primary-500 hover:text-white transition-all shadow-sm"
+                      className="w-full lg:w-auto p-5 bg-primary-500/10 text-primary-500 rounded-full hover:bg-primary-500 hover:text-white transition-all shadow-sm flex items-center justify-center"
                     >
                       <X className="w-6 h-6" />
                     </motion.button>

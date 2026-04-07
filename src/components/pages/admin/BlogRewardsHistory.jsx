@@ -407,8 +407,8 @@ export default function BlogRewardsHistory() {
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View the history of blog rewards paid to students for their published articles.</p>
               </div>
 
-               <div className="flex flex-col sm:flex-row items-center gap-3 lg:gap-6">
-                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+               <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                  <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                     {[
                       { icon: TableIcon, id: 'table', label: 'TAB' },
                       { icon: List, id: 'list', label: 'LIN' },
@@ -417,7 +417,7 @@ export default function BlogRewardsHistory() {
                       <button
                         key={mode.id}
                         onClick={() => setViewMode(mode.id)}
-                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
                       >
                         <mode.icon className="w-4 h-4" />
                         {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
@@ -425,12 +425,12 @@ export default function BlogRewardsHistory() {
                     ))}
                   </div>
 
-                  <div className="relative">
+                  <div className="relative w-full lg:w-auto">
                      <Filter className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                      <select
                         value={filterType}
                         onChange={handleFilterChange}
-                        className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
+                        className="w-full lg:w-auto pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit shadow-xl"
                      >
                         <option value="all">All Tiers</option>
                         <option value="normal">Standard (₹5)</option>

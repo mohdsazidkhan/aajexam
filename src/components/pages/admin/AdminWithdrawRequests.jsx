@@ -38,7 +38,7 @@ const AdminWithdrawRequests = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [pagination, setPagination] = useState({ page: 1, limit: 20, total: 0, totalPages: 1 });
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
 
   const isOpen = useSelector((state) => state.sidebar.isOpen);
   const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
@@ -188,8 +188,8 @@ const AdminWithdrawRequests = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <SearchFilter onSearch={setSearchTerm} placeholder="Search requests..." className="w-full sm:w-64" />
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <SearchFilter onSearch={setSearchTerm} placeholder="Search requests..." className="w-full lg:w-64" />
                 <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                   {[{ icon: Table, id: 'table' }, { icon: List, id: 'list' }].map((mode) => (
                     <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}>
@@ -202,12 +202,12 @@ const AdminWithdrawRequests = () => {
           </motion.div>
 
           {/* Quick Filters */}
-          <div className="flex flex-wrap items-center gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-4 mb-4">
              {statusOptions.map((opt) => (
                <button
                  key={opt.value}
                  onClick={() => { setStatus(opt.value); setPage(1); }}
-                 className={`px-4 lg:px-8 py-5 rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 relative group overflow-hidden ${
+                 className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 relative group overflow-hidden ${
                    status === opt.value 
                    ? 'bg-white dark:bg-indigo-600 border-indigo-600 dark:border-indigo-500 shadow-2xl' 
                    : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-indigo-500/30'

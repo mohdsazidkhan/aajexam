@@ -45,7 +45,7 @@ export default function AdminQuizRewardsHistory() {
     const [searchTerm, setSearchTerm] = useState("");
     const [pagination, setPagination] = useState({});
     const [summary, setSummary] = useState(null);
-    const [viewMode, setViewMode] = useState('table');
+    const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
 
     const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
     const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
@@ -112,12 +112,12 @@ export default function AdminQuizRewardsHistory() {
                           </p>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-4">
+                        <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                           <SearchFilter searchTerm={searchTerm} onSearchChange={handleSearch} placeholder="Search by student name or email..." />
-                          <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                          <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                             {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                              <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
-                                <mode.icon className="w-5 h-5" />
+                              <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                                <mode.icon className="w-5 h-5 mx-auto" />
                               </button>
                             ))}
                           </div>

@@ -60,7 +60,7 @@ const AdminPaymentTransactions = () => {
   });
   const [showFilters, setShowFilters] = useState(true);
   const [expandedTransaction, setExpandedTransaction] = useState(null);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
   const [sortField, setSortField] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState('desc');
 
@@ -254,7 +254,7 @@ const AdminPaymentTransactions = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
@@ -274,7 +274,7 @@ const AdminPaymentTransactions = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   onClick={exportToCSV}
-                  className="px-4 lg:px-8 py-4 bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3"
+                  className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3"
                 >
                   <Download className="w-4 h-4" /> Export CSV
                 </motion.button>
@@ -322,19 +322,19 @@ const AdminPaymentTransactions = () => {
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 {[
                   { icon: Calendar, val: filters.year, options: Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i), key: 'year' },
                   { icon: Calendar, val: filters.month, options: [{ l: 'All Months', v: 'all' }, ...Array.from({ length: 12 }, (_, i) => ({ l: new Date(0, i).toLocaleString('default', { month: 'long' }), v: i + 1 }))], key: 'month' },
                   { icon: Activity, val: filters.status, options: [{ l: 'All Statuses', v: 'all' }, ...filterOptions.statuses.slice(1).map(s => ({ l: s.charAt(0).toUpperCase() + s.slice(1), v: s }))], key: 'status' },
                   { icon: PieChart, val: filters.plan, options: [{ l: 'All Plans', v: 'all' }, ...filterOptions.plans.map(p => ({ l: p, v: p }))], key: 'plan' }
                 ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
+                  <div key={i} className="w-full lg:w-auto flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                     <f.icon className="w-4 h-4 text-indigo-500" />
                     <select
                       value={f.val}
                       onChange={(e) => handleFilterChange(f.key, e.target.value === 'all' ? 'all' : (f.key === 'year' || f.key === 'month' ? parseInt(e.target.value) : e.target.value))}
-                      className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
+                      className="w-full lg:w-auto bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
                     >
                       {f.options.map((o, idx) => (
                         <option key={idx} value={typeof o === 'object' ? o.v : o}>{typeof o === 'object' ? o.l : o}</option>

@@ -204,7 +204,7 @@ const AdminReferralAnalytics = () => {
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral performance, user activity, and monthly growth trends.</p>
                             </div>
 
-                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                                 {[
                                   { icon: TableIcon, id: 'table', label: 'Table' },
                                   { icon: List, id: 'list', label: 'List' },
@@ -213,7 +213,7 @@ const AdminReferralAnalytics = () => {
                                   <button
                                     key={mode.id}
                                     onClick={() => setViewMode(mode.id)}
-                                    className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-emerald-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                                    className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-emerald-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
                                   >
                                     <mode.icon className="w-4 h-4" />
                                     {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
@@ -250,8 +250,8 @@ const AdminReferralAnalytics = () => {
 
                         {/* Filters */}
                         <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
-                             <div className="flex flex-wrap items-center gap-3 lg:gap-6 flex-1">
-                                <div className="relative flex-1 max-w-md group">
+                             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 flex-1 w-full lg:w-auto">
+                                <div className="relative group w-full lg:max-w-md">
                                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
                                     <input
                                         type="text"
@@ -262,13 +262,13 @@ const AdminReferralAnalytics = () => {
                                     />
                                 </div>
 
-                                <div className="flex flex-wrap items-center gap-4">
-                                    <div className="relative">
+                                <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                                    <div className="relative w-full lg:w-auto">
                                         <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                         <select
                                             value={selectedYear}
                                             onChange={handleYearChange}
-                                            className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
+                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
                                         >
                                             <option value="all">All Years</option>
                                             {availableYears.map(year => (
@@ -278,12 +278,12 @@ const AdminReferralAnalytics = () => {
                                         <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                                     </div>
 
-                                    <div className="relative">
+                                    <div className="relative w-full lg:w-auto">
                                         <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                         <select
                                             value={selectedMonth}
                                             onChange={handleMonthChange}
-                                            className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
+                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
                                         >
                                             <option value="all">All Months</option>
                                             {months.map((month, index) => (
@@ -300,7 +300,7 @@ const AdminReferralAnalytics = () => {
                              <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-emerald-600 rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-emerald-600 rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-emerald-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
                              >
                                 <Download className="w-5 h-5" /> Export CSV
                              </button>

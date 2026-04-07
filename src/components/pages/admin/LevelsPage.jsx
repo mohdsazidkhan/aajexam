@@ -287,10 +287,6 @@ const LevelsPage = () => {
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-10">
               <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-1 bg-amber-500 rounded-full" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-500/80">USER PROGRESSION</span>
-                </div>
                 <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white leading-none font-outfit uppercase">
                   MANAGE <span className="text-amber-500">LEVELS</span>
                 </h1>
@@ -299,7 +295,7 @@ const LevelsPage = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-3 lg:gap-4 w-full lg:w-auto">
                 <div className="px-3 lg:px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-100 dark:border-white/5 flex items-center gap-5 shadow-sm">
                   <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-500">
                     <Trophy className="w-6 h-6" />
@@ -339,7 +335,7 @@ const LevelsPage = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-3 w-full lg:w-auto overflow-x-auto pb-1 lg:pb-0">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/50 p-1.5 rounded-2xl border-2 border-transparent">
                   <button
                     onClick={() => setViewMode('table')}
@@ -367,7 +363,7 @@ const LevelsPage = () => {
                     setFilterActive(e.target.value);
                     fetchLevels();
                   }}
-                  className="px-5 py-4 bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl text-xs font-black uppercase tracking-widest outline-none cursor-pointer focus:border-amber-500/30 transition-all"
+                  className="w-full lg:w-auto px-5 py-4 bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl text-xs font-black uppercase tracking-widest outline-none cursor-pointer focus:border-amber-500/30 transition-all"
                 >
                   <option value="all">ALL LEVELS</option>
                   <option value="active">ACTIVE</option>
@@ -377,7 +373,7 @@ const LevelsPage = () => {
                 <Button
                   variant="admin"
                   onClick={openCreateModal}
-                  className="!px-3 lg:px-6 !py-4 rounded-2xl !bg-amber-600 hover:!bg-amber-700 shadow-lg shadow-amber-500/20 whitespace-nowrap"
+                  className="w-full lg:w-auto !px-3 lg:px-6 !py-4 rounded-2xl !bg-amber-600 hover:!bg-amber-700 shadow-lg shadow-amber-500/20 whitespace-nowrap"
                 >
                   <Plus className="w-5 h-5 mr-3" /> Add Level
                 </Button>

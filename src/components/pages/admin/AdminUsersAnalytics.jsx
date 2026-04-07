@@ -42,7 +42,7 @@ const AdminUsersAnalytics = () => {
         netPlatform: 0
     });
 
-    const [viewMode, setViewMode] = useState('table');
+    const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
     const LIMIT = 20;
 
     const fetchStudents = useCallback(async (pg = 1) => {
@@ -118,11 +118,11 @@ const AdminUsersAnalytics = () => {
                                  </p>
                             </div>
 
-                            <div className="flex flex-wrap items-center gap-4">
-                                 <motion.button whileHover={{ scale: 1.05 }} onClick={() => router.push('/admin/expenses')} className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
+                            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                                 <motion.button whileHover={{ scale: 1.05 }} onClick={() => router.push('/admin/expenses')} className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3">
                                      <Wallet className="w-4 h-4" /> Expenses
                                  </motion.button>
-                                <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
+                                <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="w-full lg:w-auto p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center">
                                     <DownloadCloud className="w-6 h-6" />
                                 </motion.button>
                             </div>
@@ -157,20 +157,20 @@ const AdminUsersAnalytics = () => {
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
                              <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />
                          </div>
-                         <div className="flex flex-wrap items-center gap-4">
-                            <div className="relative group">
+                         <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                            <div className="relative group w-full lg:w-auto">
                                 <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                                <select value={subscription} onChange={e => setSubscription(e.target.value)} className="pl-12 pr-10 py-4 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
+                                <select value={subscription} onChange={e => setSubscription(e.target.value)} className="w-full lg:w-auto pl-12 pr-10 py-4 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                                     <option value="">All Tiers</option>
                                     <option value="free">Free Access</option>
                                     <option value="basic">Standard</option>
                                     <option value="pro">Pro Status</option>
                                 </select>
                             </div>
-                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
+                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                                 {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
-                                        <mode.icon className="w-5 h-5" />
+                                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                                        <mode.icon className="w-5 h-5 mx-auto" />
                                     </button>
                                 ))}
                             </div>

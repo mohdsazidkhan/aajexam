@@ -238,7 +238,7 @@ const AdminExpenses = () => {
                     </div>
 
                     {/* Filters */}
-                    <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
+                    <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 mb-4">
                         <form onSubmit={handleSearch} className="relative group/search w-full lg:w-96">
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
                             <input
@@ -250,12 +250,12 @@ const AdminExpenses = () => {
                             />
                         </form>
 
-                        <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-xl border-4 border-slate-100 dark:border-white/5">
+                        <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-xl border-4 border-slate-100 dark:border-white/5 w-full lg:w-auto">
                             <Filter className="w-4 h-4 text-indigo-500" />
                             <select
                                 value={category}
                                 onChange={e => setCategory(e.target.value)}
-                                className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
+                                className="w-full lg:w-auto bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
                             >
                                 <option value="">ALL CATEGORIES</option>
                                 {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
@@ -265,9 +265,9 @@ const AdminExpenses = () => {
                         <motion.button
                             whileHover={{ rotate: 180 }}
                             onClick={() => { setSearch(''); setCategory(''); fetchExpenses(1); }}
-                            className="p-4 rounded-full bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-100 dark:border-white/10 shadow-xl hover:text-indigo-500 transition-colors ml-auto"
+                            className="w-full lg:w-auto p-4 rounded-full bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-100 dark:border-white/10 shadow-xl hover:text-indigo-500 transition-colors lg:ml-auto"
                         >
-                            <RotateCcw className="w-5 h-5" />
+                            <RotateCcw className="w-5 h-5 mx-auto" />
                         </motion.button>
                     </div>
 

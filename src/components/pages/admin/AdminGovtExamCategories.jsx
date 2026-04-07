@@ -45,7 +45,7 @@ const AdminGovtExamCategories = () => {
   const [editingCategory, setEditingCategory] = useState(null);
   const [viewMode, setViewMode] = useState(() => {
     if (typeof window !== "undefined") {
-      return window.innerWidth < 768 ? "list" : "table";
+      return window.innerWidth < 768 ? "grid" : "table";
     }
     return "table";
   });
@@ -178,7 +178,7 @@ const AdminGovtExamCategories = () => {
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Organize government exams by category and jurisdiction.</p>
               </div>
 
-               <div className="flex items-center gap-4">
+               <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                   <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
                     {[
                       { icon: TableIcon, id: 'table', label: 'TAB' },
@@ -197,7 +197,7 @@ const AdminGovtExamCategories = () => {
                   </div>
                   <button
                     onClick={handleCreate}
-                    className="px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
+                    className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
                   >
                     <Plus className="w-5 h-5" /> ADD CATEGORY
                   </button>

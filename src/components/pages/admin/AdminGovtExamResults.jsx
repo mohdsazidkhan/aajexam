@@ -63,7 +63,7 @@ const AdminGovtExamResults = () => {
   const [selectedExam, setSelectedExam] = useState("all");
   const [selectedPattern, setSelectedPattern] = useState("all");
   const [selectedTest, setSelectedTest] = useState("all");
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
 
   const requestCache = useRef({
     exams: new Map(),
@@ -276,13 +276,13 @@ const AdminGovtExamResults = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl shadow-slate-100/50">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl shadow-slate-100/50 w-full lg:w-auto">
                   {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }].map((mode) => (
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400'}`}
+                      className={`p-3 rounded-full transition-all flex-1 lg:flex-none flex items-center justify-center ${viewMode === mode.id ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400'}`}
                     >
                       <mode.icon className="w-5 h-5" />
                     </button>
@@ -291,7 +291,7 @@ const AdminGovtExamResults = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   onClick={handleExportCSV}
-                  className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center gap-3"
+                  className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center justify-center gap-3"
                 >
                   <Download className="w-4 h-4" /> Export CSV
                 </motion.button>

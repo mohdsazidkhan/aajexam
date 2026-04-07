@@ -65,14 +65,11 @@ const AdminNavbar = () => {
         {/* --- Left: Admin Logo & Brand --- */}
         <div className="flex items-center gap-6">
           <Link href="/admin/dashboard" className="flex items-center group gap-3">
-             <div className="w-10 h-10 lg:w-12 lg:h-12 bg-primary-500 rounded-xl lg:rounded-2xl flex items-center justify-center text-white shadow-duo-primary group-hover:rotate-6 transition-transform">
-               <ShieldCheck className="w-6 h-6 lg:w-7 lg:h-7" />
-             </div>
-             <div className="hidden sm:flex flex-col">
-               <span className="text-lg lg:text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                 ADMIN <span className="text-primary-700 dark:text-primary-500">DASHBOARD</span>
-               </span>
-               <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-primary-500/60 leading-none mt-1">AAJEXAM SYSTEM</span>
+<h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
+                AAJ<span className="text-primary-500 text-glow-primary">EXAM</span>
+              </h2>
+             <div className="hidden sm:flex">
+               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black dark:white leading-none mt-1">ADMIN</span>
              </div>
           </Link>
         </div>

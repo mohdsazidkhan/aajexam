@@ -41,7 +41,7 @@ const AdminGovtExams = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [editingExam, setEditingExam] = useState(null);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
@@ -168,8 +168,8 @@ const AdminGovtExams = () => {
                  </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: LayoutGrid, id: 'grid', label: 'Nodes' },
@@ -178,7 +178,7 @@ const AdminGovtExams = () => {
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <mode.icon className="w-4 h-4" />
                       {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -188,7 +188,7 @@ const AdminGovtExams = () => {
                  <motion.button
                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                    onClick={handleCreate}
-                   className="px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center gap-3"
+                   className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center justify-center gap-3"
                  >
                    <Plus className="w-4 h-4" /> ADD EXAM
                  </motion.button>
@@ -228,7 +228,7 @@ const AdminGovtExams = () => {
                  />
                </div>
  
-               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5 min-w-[280px]">
+               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto lg:min-w-[280px]">
                  <Layers className="w-4 h-4 text-indigo-600" />
                  <select
                    value={selectedCategory}

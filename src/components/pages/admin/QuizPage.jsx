@@ -79,7 +79,7 @@ const QuizPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-  const [viewMode, setViewMode] = useState(isMobile ? "list" : "table");
+  const [viewMode, setViewMode] = useState(isMobile ? "grid" : "table");
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -815,13 +815,8 @@ const QuizPage = () => {
                 animate={{ opacity: 1, x: 0 }}
                 className="relative z-10"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
-                    <Zap className="w-8 h-8 text-primary-500" />
-                  </div>
-                  <span className="text-[10px] font-black tracking-[0.4em] text-primary-500 uppercase">Quiz Management</span>
-                </div>
-                <h1 className="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
+              
+                <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
                   MANAGE <span className="text-indigo-600 whitespace-nowrap">QUIZZES</span>
                 </h1>
                 <p className="max-w-xl text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.1em] text-[10px] leading-relaxed">
@@ -829,7 +824,7 @@ const QuizPage = () => {
                 </p>
               </motion.div>
 
-              <div className="flex flex-wrap items-center gap-4 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-4 w-full lg:w-auto relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -847,7 +842,7 @@ const QuizPage = () => {
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowForm(true)}
-                  className="group relative px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-primary-500/20 transition-all overflow-hidden"
+                  className="group relative w-full lg:w-auto px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl hover:shadow-primary-500/20 transition-all overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="relative flex items-center gap-3">
@@ -898,8 +893,8 @@ const QuizPage = () => {
                     className="w-full pl-16 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-xs font-black uppercase tracking-widest outline-none transition-all placeholder:text-slate-400"
                   />
                 </div>
-                <div className="flex items-center gap-4 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
-                  <div className="relative group min-w-[200px]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto pb-2 lg:pb-0 scrollbar-hide">
+                  <div className="relative group w-full lg:w-auto min-w-[200px]">
                     <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-fuchsia-500 transition-colors">
                       <Database className="w-5 h-5" />
                     </div>
@@ -913,11 +908,11 @@ const QuizPage = () => {
                     </select>
                   </div>
 
-                  <div className="relative group min-w-[150px]">
+                  <div className="relative group w-full lg:w-auto min-w-[150px]">
                     <select
                       value={filters.difficulty}
                       onChange={(e) => handleFilterChange('difficulty', e.target.value)}
-                      className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                      className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                     >
                       <option value="">All Difficulties</option>
                       <option value="beginner">Beginner</option>
@@ -927,11 +922,11 @@ const QuizPage = () => {
                     </select>
                   </div>
 
-                  <div className="relative min-w-[120px]">
+                  <div className="relative w-full lg:w-auto min-w-[120px]">
                     <select
                       value={itemsPerPage}
                       onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                      className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
+                      className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-fuchsia-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                     >
                        {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} per page</option>)}
                     </select>
@@ -941,7 +936,7 @@ const QuizPage = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleClearFilters}
-                    className="p-5 bg-primary-500/10 text-primary-500 rounded-full hover:bg-primary-500 hover:text-white transition-all shadow-sm"
+                    className="w-full lg:w-auto p-5 bg-primary-500/10 text-primary-500 rounded-full hover:bg-primary-500 hover:text-white transition-all shadow-sm"
                   >
                     <X className="w-6 h-6" />
                   </motion.button>

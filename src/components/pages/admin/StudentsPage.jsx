@@ -36,7 +36,7 @@ const StudentsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table');
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [filters, setFilters] = useState({
     level: ''
   });
@@ -417,12 +417,12 @@ const StudentsPage = () => {
                   </p>
                </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                   <Button
                     variant="primary"
                     onClick={() => setShowCreateModal(true)}
                     icon={UserPlus}
-                    className="px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
+                    className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
                   >
                     CREATE SUBSCRIPTION
                   </Button>
@@ -464,8 +464,8 @@ const StudentsPage = () => {
                  />
                </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto justify-center lg:justify-start">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: List, id: 'list', label: 'List' },
@@ -483,12 +483,12 @@ const StudentsPage = () => {
                   ))}
                 </div>
 
-                 <div className="relative group">
+                 <div className="relative group w-full lg:w-auto">
                    <Box className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                    <select
                      value={itemsPerPage}
                      onChange={handleItemsPerPageChange}
-                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all"
+                     className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all"
                    >
                      {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} per page</option>)}
                    </select>

@@ -178,10 +178,10 @@ export default function UserQuizRewardsHistory({ userId }) {
                                 )}
                             </div>
 
-                            <div className="flex flex-wrap items-center gap-4">
+                            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                                 <button
                                     onClick={() => router.push('/admin/quiz-rewards-history')}
-                                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
+                                    className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center justify-center gap-2"
                                 >
                                     <ArrowLeft className="w-4 h-4 text-emerald-500" /> Back to All Quiz Rewards
                                 </button>
@@ -224,8 +224,8 @@ export default function UserQuizRewardsHistory({ userId }) {
                             </div>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-4">
-                            <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                        <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                            <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
                                 {[
                                     { icon: TableIcon, id: 'table', label: 'Table' },
                                     { icon: List, id: 'list', label: 'List' },
@@ -234,7 +234,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                     <button
                                         key={mode.id}
                                         onClick={() => setViewMode(mode.id)}
-                                        className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-emerald-600 text-emerald-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                                        className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-white dark:bg-emerald-600 text-emerald-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                                     >
                                         <mode.icon className="w-4 h-4" />
                                         {viewMode === mode.id && <span className="uppercase tracking-widest pr-2">{mode.label}</span>}

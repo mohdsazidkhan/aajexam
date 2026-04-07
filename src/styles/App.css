@@ -5,6 +5,12 @@
   transition: margin-left 0.3s ease-in-out;
 }
 
+/* Fix dropdown option colors in dark mode */
+.dark select option {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
 /* Fullscreen Quiz Mode - Hide all navigation elements */
 body.quiz-fullscreen-mode .navbar,
 body.quiz-fullscreen-mode nav,

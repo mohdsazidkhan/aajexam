@@ -26,7 +26,7 @@ const AdminMonthlyWinners = () => {
   const [activeType, setActiveType] = useState('monthly'); // 'daily', 'weekly', 'monthly'
   const [monthlyWinnersLoading, setMonthlyWinnersLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false);
-  const [viewMode, setViewMode] = useState(isMobile ? 'list' : 'table'); // 'grid', 'list', 'table'
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table'); // 'grid', 'list', 'table'
   // Get current date
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -194,7 +194,7 @@ const AdminMonthlyWinners = () => {
               </div>
 
               {/* Year and Month Filters - Moved to Header */}
-              <div className="flex flex-wrap items-center gap-3 bg-gray-50 dark:bg-gray-800 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto bg-gray-50 dark:bg-gray-800 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
                 {activeType === 'daily' && !showAllMonths && (
                   <div className="flex items-center gap-2">
                     <label className="text-xs font-bold text-slate-700 dark:text-gray-400 uppercase tracking-wider hidden sm:block">Date:</label>
@@ -277,8 +277,8 @@ const AdminMonthlyWinners = () => {
 
               </div>
               {/* View Toggle Buttons */}
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+              <div className="grid grid-cols-1 lg:flex lg:items-center lg:justify-between gap-3 w-full lg:w-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                   <div className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 rounded-lg lg:rounded-[1.5rem] p-2 border-2 border-slate-200 dark:border-white/10 shadow-inner">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
