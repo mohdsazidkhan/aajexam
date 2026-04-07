@@ -785,7 +785,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
 }
 
 .adminContent {
-  padding-bottom: 20px;
+  padding: 1rem;
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -844,11 +844,14 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   .adminContent {
     height: auto;
   }
+  .adminContent {
+    padding: 0.5rem;
+  }
 
   .adminPanel {
     width: calc(100%);
     margin-left: 0;
-    padding-top: 50px;
+    padding-top: 0;
   }
 
   /* Login form responsive styles */

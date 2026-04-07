@@ -164,15 +164,15 @@ export default function ReferralHistory() {
     <AdminMobileAppWrapper title="Referral History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
           
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
@@ -180,7 +180,7 @@ export default function ReferralHistory() {
                   </div>
                   <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / REFERRAL HISTORY</span>
                 </div>
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   REFERRAL <span className="text-primary-500">HISTORY</span>
                 </h1>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View all referral reward transactions and payouts.</p>
@@ -213,7 +213,7 @@ export default function ReferralHistory() {
 
             {/* Summary Cards */}
             {summary && (
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-4 lg:mb-12">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-4">
                 {[
                   { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
                   { label: "REGISTRATION", value: summary.registrationRewards, icon: UserPlus, color: "bg-primary-500 text-white shadow-primary-500/20" },
@@ -246,7 +246,7 @@ export default function ReferralHistory() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <History className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS FOUND</h3>

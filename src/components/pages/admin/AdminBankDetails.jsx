@@ -378,13 +378,13 @@ export default function AdminBankDetails() {
     <AdminMobileAppWrapper title="Bank Details">
       <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto text-slate-900 dark:text-white">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           <div className="mx-auto">
             {/* Header section with Stats & Actions */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 lg:mb-12 shadow-2xl relative overflow-hidden group"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-2xl relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
                 <University className="w-64 h-64 text-primary-500" />
@@ -419,7 +419,7 @@ export default function AdminBankDetails() {
             </motion.div>
 
             {/* Controls Bar */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
               <div className="lg:col-span-2">
                 <div className="relative group/search">
                   <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />

@@ -275,7 +275,7 @@ const MonthlyWinnersDisplay = () => {
               <Trophy className="w-12 h-12 text-content-muted" />
             </div>
             <div className="space-y-2">
-              <h4 className="text-md lg:text-xl font-black text-content-primary uppercase tracking-tight">Coming Soon</h4>
+              <h4 className="text-sm lg:text-xl font-black text-content-primary uppercase tracking-tight">Coming Soon</h4>
               <p className="text-sm font-bold text-content-secondary max-w-sm mx-auto uppercase tracking-widest leading-relaxed">Winners are currently being announced. Check back soon!</p>
             </div>
           </div>

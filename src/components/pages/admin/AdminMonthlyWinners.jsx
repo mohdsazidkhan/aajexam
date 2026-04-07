@@ -153,13 +153,13 @@ const AdminMonthlyWinners = () => {
     <AdminMobileAppWrapper title={`${activeType.charAt(0).toUpperCase() + activeType.slice(1)} Winners`}>
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         <Sidebar />
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+        <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
           <div className="mx-auto">
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
               <div className="flex items-center gap-3">
                 <div>
-                  <h2 className={`text-md lg:text-xl lg:text-3xl font-black italic tracking-tighter uppercase ${activeType === 'daily' ? 'text-indigo-600 dark:text-indigo-400' :
+                  <h2 className={`text-md md:text-xl lg:text-2xl font-black italic tracking-tighter uppercase ${activeType === 'daily' ? 'text-indigo-600 dark:text-indigo-400' :
                     activeType === 'weekly' ? 'text-blue-600 dark:text-blue-400' :
                       'text-indigo-600 dark:text-indigo-400'
                     }`}>

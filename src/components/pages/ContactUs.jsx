@@ -80,7 +80,7 @@ const ContactUs = ({ contactInfo = {
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
                   <div className="space-y-4">
-                     <h1 className="text-3xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-500">Support</span></h1>
+                     <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-500">Support</span></h1>
                      <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] max-w-2xl mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
                   </div>
                </section>

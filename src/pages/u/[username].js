@@ -192,7 +192,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {/* Level & Badges Section */}
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden relative">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-primary-500 rounded-full" />
               Level & Badges
             </h2>
@@ -220,7 +220,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden relative">
               <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-              <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+              <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
                 <div className="w-2 h-8 bg-primary-500 rounded-full" />
                 Quiz Statistics
               </h2>
@@ -253,7 +253,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             </div>
           ) : contributions && (contributions.categories.total > 0 || contributions.subcategories.total > 0 || contributions.quizzes.total > 0 || contributions.userQuestions?.total > 0) && (
             <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 mlgp-8 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
-              <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+              <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
                 <div className="w-2 h-8 bg-primary-500 rounded-full" />
                 Contributions
               </h2>
@@ -311,7 +311,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <div className="space-y-4">
                     {contributions.categories.items.map((cat) => (
                       <div key={cat._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group">
-                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{cat.name}</h4>
+                        <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{cat.name}</h4>
                         {cat.description && (
                           <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{cat.description}</p>
                         )}
@@ -333,7 +333,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <div className="space-y-4">
                     {contributions.subcategories.items.map((subcat) => (
                       <div key={subcat._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all group">
-                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{subcat.name}</h4>
+                        <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{subcat.name}</h4>
                         {subcat.category && (
                           <p className="text-[10px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 mt-2">
                             {subcat.category.name}
@@ -362,7 +362,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                       <div key={quiz._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-emerald-500 transition-all group">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-emerald-600 transition-colors">{quiz.title}</h4>
+                            <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-emerald-600 transition-colors">{quiz.title}</h4>
                             {quiz.description && (
                               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{quiz.description}</p>
                             )}
@@ -396,7 +396,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <div className="space-y-4">
                     {contributions.userQuestions.items.map((question) => (
                       <div key={question._id} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-orange-500 transition-all group">
-                        <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6">{question.questionText}</h4>
+                        <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6">{question.questionText}</h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                           {question.options.map((option, idx) => (
                             <div
@@ -428,7 +428,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
                 🔒
               </div>
-              <p className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">This profile is private</p>
+              <p className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">This profile is private</p>
               <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mt-2">Only the user can view their full stats and contributions.</p>
             </div>
           )}

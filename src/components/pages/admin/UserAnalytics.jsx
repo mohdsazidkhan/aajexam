@@ -265,15 +265,15 @@ const UserAnalytics = () => {
     <AdminMobileAppWrapper title="User Analytics">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
 
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -281,7 +281,7 @@ const UserAnalytics = () => {
                   </div>
                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
                 </div>
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   User <span className="text-indigo-600">Analytics</span>
                 </h1>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth, level distribution, and subscription trends at a glance.</p>
@@ -299,7 +299,7 @@ const UserAnalytics = () => {
           </motion.div>
 
           {/* Controller Bar */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                 <Filter className="w-5 h-5" />
@@ -358,7 +358,7 @@ const UserAnalytics = () => {
               animate={{ opacity: 1, x: 0 }}
               className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-4 lg:mb-12">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                     <BarChart3 className="w-5 h-5" />
@@ -384,7 +384,7 @@ const UserAnalytics = () => {
               animate={{ opacity: 1, x: 0 }}
               className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-4 lg:mb-12">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl">
                     <PieChartIcon className="w-5 h-5" />
@@ -411,7 +411,7 @@ const UserAnalytics = () => {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-4 lg:mb-12">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
                   <LineChart className="w-5 h-5" />

@@ -178,10 +178,10 @@ const FinancialAnalytics = () => {
     <AdminMobileAppWrapper title="Revenue Analytics">
       <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
               <div className="space-y-3 lg:space-y-6 flex-1">
                 <div className="flex items-center gap-3">
@@ -271,7 +271,7 @@ const FinancialAnalytics = () => {
 
                 {/* Subscriptions Deep Dive */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl overflow-hidden">
-                  <div className="flex items-center justify-between mb-4 lg:mb-12">
+                  <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-4">
                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>

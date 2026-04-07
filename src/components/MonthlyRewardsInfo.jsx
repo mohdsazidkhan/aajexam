@@ -146,7 +146,7 @@ const MonthlyRewardsInfo = ({ compact = false, className = '', prizePool: propPr
 
             <div className="relative z-10">
               {/* Type Switcher */}
-              <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 lg:mb-12 w-fit max-w-full shadow-inner border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 px-3">
+              <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 w-fit max-w-full shadow-inner border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 px-3">
                 {['daily', 'weekly', 'monthly'].map((type) => (
                   <button
                     key={type}

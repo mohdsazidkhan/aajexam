@@ -125,7 +125,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {quiz.educationalDescription && quiz.educationalDescription.trim() !== '' && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 overflow-hidden relative font-outfit">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-primary-500 rounded-full" />
               About This Quiz
             </h2>
@@ -137,7 +137,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {quiz.syllabusCovered && quiz.syllabusCovered.length > 0 && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 overflow-hidden relative font-outfit">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-primary-500 rounded-full" />
               Syllabus Covered
             </h2>
@@ -156,7 +156,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {quiz.learningOutcomes && quiz.learningOutcomes.length > 0 && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 overflow-hidden relative font-outfit">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-emerald-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-emerald-500 rounded-full" />
               Learning Outcomes
             </h2>
@@ -175,7 +175,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {quiz.examRelevance && quiz.examRelevance.trim() !== '' && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 overflow-hidden relative font-outfit">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-orange-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-orange-500 rounded-full" />
               Exam Relevance
             </h2>
@@ -187,7 +187,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {quiz.attemptsCount !== undefined && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 overflow-hidden relative font-outfit">
             <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-purple-500/5 rounded-full blur-2xl -mr-16 -mt-16" />
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-purple-500 rounded-full" />
               Global Statistics
             </h2>
@@ -211,7 +211,7 @@ export default function QuizPreviewPage({ quiz, robotsMeta, robotsReason }) {
         {/* Tags */}
         {quiz.tags && quiz.tags.length > 0 && (
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 lg:p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl mb-10 font-outfit">
-            <h2 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+            <h2 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center gap-3">
               <div className="w-2 h-8 bg-slate-400 rounded-full" />
               Tags
             </h2>

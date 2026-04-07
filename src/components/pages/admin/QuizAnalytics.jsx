@@ -261,12 +261,12 @@ const QuizAnalytics = () => {
           } bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}
       >
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 lg:p-6 w-full">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {/* Header with Theme Toggle */}
            <motion.div
              initial={{ opacity: 0, y: -20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="mb-4 lg:mb-12"
+             className="mb-4"
            >
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
@@ -276,7 +276,7 @@ const QuizAnalytics = () => {
                    </div>
                     <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">Admin / Quiz Analytics</span>
                   </div>
-                  <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                     Quiz <span className="text-indigo-600">Analytics</span>
                   </h1>
                   <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
@@ -306,7 +306,7 @@ const QuizAnalytics = () => {
           </motion.div>
 
             {/* Filter Interface */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl">
              <div className="flex flex-wrap items-center gap-3 lg:gap-8">
                <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-slate-100 dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                  <Filter className="w-4 h-4 text-indigo-600" />
@@ -350,7 +350,7 @@ const QuizAnalytics = () => {
            </div>
 
             {/* Key Metrics */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8 mb-4 lg:mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8 mb-4">
               {[
                 { label: 'TOTAL QUIZZES', val: data.overview?.totalQuizzes || 0, icon: FileText, color: 'indigo' },
                 { label: 'TOTAL ATTEMPTS', val: data.overview?.totalAttempts || 0, icon: Activity, color: 'emerald' },
@@ -366,7 +366,7 @@ const QuizAnalytics = () => {
                  <div className={`p-5 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-600 w-fit mb-4 lg:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-inner`}>
                    <stat.icon className="w-8 h-8" />
                  </div>
-                 <div className="text-3xl lg:text-5xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-4 italic leading-none">
+                 <div className="text-2xl lg:text-4xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-4 italic leading-none">
                    {stat.val.toLocaleString()}
                  </div>
                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>

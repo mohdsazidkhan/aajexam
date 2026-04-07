@@ -349,7 +349,7 @@ const SubcategoryPage = () => {
                     {sub.category?.name || 'GENERAL'}
                   </span>
                 </div>
-                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
                   {sub.name}
                 </h3>
                 <div className="flex flex-wrap items-center gap-4 mt-1">
@@ -397,21 +397,18 @@ const SubcategoryPage = () => {
     <AdminMobileAppWrapper title="Subcategories">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit ">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-10">
               <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-1 bg-primary-500 rounded-full" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary-500/80">SUB-CATEGORY MANAGEMENT</span>
-                </div>
-                <h1 className="text-3xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 font-outfit">
+                
+                <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 font-outfit">
                   MANAGE <span className="text-primary-500">SUB-CATEGORIES</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
@@ -495,7 +492,7 @@ const SubcategoryPage = () => {
                 initial={{ opacity: 0, height: 0, scale: 0.95 }}
                 animate={{ opacity: 1, height: 'auto', scale: 1 }}
                 exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                className="mb-4 lg:mb-12 overflow-hidden"
+                className="mb-4 overflow-hidden"
               >
                 <div className="p-3 lg:p-10 bg-gradient-to-br from-emerald-500 to-teal-700 rounded-xl lg:rounded-[3rem] shadow-2xl relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
@@ -597,7 +594,7 @@ const SubcategoryPage = () => {
                 <div className="p-4 lg:p-10 bg-white dark:bg-slate-800 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-slate-700 mb-4 lg:mb-8">
                   <Target className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                 </div>
-                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">
+                <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">
                   No Sub-Categories Found
                 </h3>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">

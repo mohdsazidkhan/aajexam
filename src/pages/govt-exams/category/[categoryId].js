@@ -125,7 +125,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                 </div>
 
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
                     {exam.name}
                   </h3>
                   <div className="flex items-center gap-6">

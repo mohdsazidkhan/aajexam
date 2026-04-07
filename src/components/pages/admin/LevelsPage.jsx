@@ -226,7 +226,7 @@ const LevelsPage = () => {
       <AdminMobileAppWrapper title="Levels ">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent p-4 w-full">
+          <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
             <div className="flex items-center justify-center h-64">
               <div className="text-2xl text-gray-600 dark:text-gray-400">Loading...</div>
             </div>
@@ -240,7 +240,7 @@ const LevelsPage = () => {
     <AdminMobileAppWrapper title="Levels">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit ">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Status Messages */}
           <AnimatePresence>
@@ -283,7 +283,7 @@ const LevelsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-10">
               <div className="space-y-4">
@@ -291,7 +291,7 @@ const LevelsPage = () => {
                   <div className="w-10 h-1 bg-amber-500 rounded-full" />
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-500/80">USER PROGRESSION</span>
                 </div>
-                <h1 className="text-3xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-none font-outfit uppercase">
+                <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white leading-none font-outfit uppercase">
                   MANAGE <span className="text-amber-500">LEVELS</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
@@ -437,7 +437,7 @@ const LevelsPage = () => {
                           <td className="px-3 lg:px-6 py-5">
                             <div className="flex items-center gap-3">
                               <span className="text-2xl drop-shadow-md group-hover:scale-125 transition-transform">{level.emoji || 'ðŸŽ¯'}</span>
-                              <span className="text-md lg:text-xl font-black text-slate-900 dark:text-white">L{level.levelNumber}</span>
+                              <span className="text-sm lg:text-xl font-black text-slate-900 dark:text-white">L{level.levelNumber}</span>
                             </div>
                           </td>
                           <td className="px-3 lg:px-6 py-5">
@@ -535,7 +535,7 @@ const LevelsPage = () => {
                               LEVEL {level.levelNumber}
                             </div>
                           </div>
-                          <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-amber-500 transition-colors">
+                          <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-amber-500 transition-colors">
                             {level.name}
                           </h3>
                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2 line-clamp-2 leading-relaxed">

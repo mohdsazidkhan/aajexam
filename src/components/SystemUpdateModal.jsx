@@ -82,7 +82,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
 
         <div className="p-4 lg:p-10 space-y-8">
           <div className="bg-primary-500 text-white rounded-[2rem] p-8 shadow-duo-secondary border-2 border-white dark:border-slate-700">
-            <h3 className="text-md lg:text-xl font-black mb-6 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm lg:text-xl font-black mb-6 flex items-center uppercase tracking-tight">
               <FaCreditCard className="mr-3" /> One Wallet, Two Balances
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -167,7 +167,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           </div>
 
           <div className="bg-gradient-to-br from-primary-50 to-pink-50 dark:from-primary-900/20 dark:to-pink-900/20 border border-primary-200 dark:border-primary-700 rounded-2xl p-6">
-            <h3 className="text-md lg:text-xl font-black text-primary-800 dark:text-primary-200 mb-2 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm lg:text-xl font-black text-primary-800 dark:text-primary-200 mb-2 flex items-center uppercase tracking-tight">
               <FaGift className="text-2xl mr-2 text-primary-600" />
               Referral Bonuses
             </h3>
@@ -177,7 +177,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           </div>
 
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-700 rounded-2xl p-6">
-            <h3 className="text-md lg:text-xl font-black text-primary-800 dark:text-primary-200 mb-2 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm lg:text-xl font-black text-primary-800 dark:text-primary-200 mb-2 flex items-center uppercase tracking-tight">
               <span className="text-xl mr-2">ðŸ“±</span>
               AajExam Mobile App is Now Live!
             </h3>

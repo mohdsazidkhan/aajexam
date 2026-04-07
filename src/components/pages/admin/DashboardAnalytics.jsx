@@ -724,8 +724,8 @@ const DashboardAnalytics = () => {
      <AdminMobileAppWrapper title="Analytics Overview">
        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-         <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
-           <div className="mb-4 lg:mb-12">
+         <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+           <div className="mb-4">
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
                  <div className="flex items-center gap-3">
@@ -734,7 +734,7 @@ const DashboardAnalytics = () => {
                    </div>
                    <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Admin / Analytics</span>
                  </div>
-                 <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
+                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
                    Analytics <span className="text-indigo-600">Overview</span>
                  </h1>
                  <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
@@ -745,7 +745,7 @@ const DashboardAnalytics = () => {
            </div>
 
            {/* Metric Matrix */}
-           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
+           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
              {[
                {
                  label: 'Total Users',

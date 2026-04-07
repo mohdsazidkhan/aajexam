@@ -87,7 +87,7 @@ export default function AboutAuthor() {
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
+                                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
                                         <div className={`w-2 h-6 ${item.color} rounded-full`} />
                                         {item.title}
                                     </h3>
@@ -108,7 +108,7 @@ export default function AboutAuthor() {
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
                             <div>
-                                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
                                     <div className="w-2 h-6 bg-primary-500 rounded-full" />
                                     Vision
                                 </h3>
@@ -117,7 +117,7 @@ export default function AboutAuthor() {
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
                                     <div className="w-2 h-6 bg-primary-500 rounded-full" />
                                     Mission
                                 </h3>

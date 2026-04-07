@@ -278,7 +278,7 @@ const MonthlyRewardDashboard = () => {
                   <div className="p-3 bg-emerald-500 text-white rounded-2xl shadow-duo-secondary">
                     <PieChart className="w-5 h-5" />
                   </div>
-                  <h2 className="text-md lg:text-xl font-black text-content-primary uppercase tracking-tight">Prize Distribution</h2>
+                  <h2 className="text-sm lg:text-xl font-black text-content-primary uppercase tracking-tight">Prize Distribution</h2>
                 </div>
                 <div className="space-y-3">
                   {data.prizepool?.distribution?.map((reward) => {

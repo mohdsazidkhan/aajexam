@@ -106,7 +106,7 @@ const AdminUserWallets = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
+          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
             <Wallet className="w-64 h-64 text-indigo-500 -rotate-12" />
@@ -121,7 +121,7 @@ const AdminUserWallets = () => {
                 <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN // WALLETS</span>
               </div>
 
-              <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                 STUDENT <span className="text-indigo-600">WALLETS</span>
               </h1>
 
@@ -146,7 +146,7 @@ const AdminUserWallets = () => {
         </motion.div>
 
         {/* Search + Controls */}
-        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4 lg:mb-12">
+        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
           <div className="relative group/search w-full lg:w-96">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
             <input
@@ -405,7 +405,7 @@ const AdminUserWallets = () => {
     <AdminMobileAppWrapper title="Student Wallets">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent  w-full text-gray-900 dark:text-white">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {content}
         </div>
       </div>

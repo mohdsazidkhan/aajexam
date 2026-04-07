@@ -88,12 +88,12 @@ const MyAnalyticsPage = () => {
 
                   <div className="flex items-center gap-4 lg:gap-6">
                      <div className="text-center">
-                        <p className="text-3xl lg:text-5xl font-black font-outfit">{averageAccuracy.toFixed(0)}%</p>
+                        <p className="text-2xl lg:text-4xl font-black font-outfit">{averageAccuracy.toFixed(0)}%</p>
                         <p className="text-[10px] font-black opacity-60">Accuracy</p>
                      </div>
                      <div className="h-12 lg:h-16 w-1 bg-white/20 rounded-full" />
                      <div className="text-center">
-                        <p className="text-3xl lg:text-5xl font-black font-outfit">{testAttemptsCount}</p>
+                        <p className="text-2xl lg:text-4xl font-black font-outfit">{testAttemptsCount}</p>
                         <p className="text-[10px] font-black opacity-60">Quizzes Done</p>
                      </div>
                   </div>

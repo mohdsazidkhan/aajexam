@@ -98,11 +98,11 @@ const AdminUsersAnalytics = () => {
             <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
-                <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
+                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     
                     {/* Header */}
-                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-4 lg:mb-12">
+                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-4">
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3">
                                     <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
@@ -152,7 +152,7 @@ const AdminUsersAnalytics = () => {
                     </motion.div>
 
                     {/* Controls */}
-                    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-8 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 font-outfit">
+                    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-8 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 font-outfit">
                          <div className="flex-1 relative group w-full lg:max-w-xl">
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
                              <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />

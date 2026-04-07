@@ -75,7 +75,7 @@ export default function HalalDisclaimer() {
                                         }
                                     ].map((item, idx) => (
                                         <div key={idx} className="relative pl-8 border-l-4 border-emerald-500/20">
-                                            <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
+                                            <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
                                                 <FaCheckCircle className="text-emerald-500 text-lg flex-shrink-0" />
                                                 {item.title}
                                             </h3>

@@ -68,7 +68,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   return (
     <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} transition-colors duration-500 font-outfit`}>
       {showHeader && (
-        <header className="fixed top-0 left-0 right-0 z-[110] lg:hidden h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-xl px-4 flex items-center justify-between overflow-hidden">
+        <header className="fixed top-0 left-0 right-0 z-[110] lg:hidden h-16 lg:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-xl px-4 flex items-center justify-between overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 
@@ -84,7 +84,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             </div>
           </div>
 
-          <div className="font-outfit">
+          <div className="font-outfit hidden lg:flex">
             {/* Theme Toggle */}
             <motion.button
               whileTap={{ scale: 0.9, y: 1 }}

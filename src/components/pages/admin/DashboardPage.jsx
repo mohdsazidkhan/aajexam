@@ -485,9 +485,9 @@ const DashboardPage = () => {
       <AdminMobileAppWrapper title="Dashboard">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
             <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading your dashboard..." />
+              <Loading size="md" color="yellow" message="Loading..." />
             </div>
           </div>
         </div>
@@ -500,7 +500,7 @@ const DashboardPage = () => {
       <AdminMobileAppWrapper title="Dashboard">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
                 <div className="text-2xl lg:text-6xl mb-4">âš ï¸</div>
@@ -517,18 +517,14 @@ const DashboardPage = () => {
     <AdminMobileAppWrapper title="Dashboard">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit ">
+        <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
            {/* Header */}
            <motion.div
              initial={{ opacity: 0, y: -20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="mb-4 lg:mb-12 px-4 lg:px-0"
+             className="mb-4 px-4 lg:px-0"
            >
-             <div className="flex items-center gap-4 mb-4">
-               <div className="w-12 h-1.5 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/20" />
-               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600">ADMIN PANEL</span>
-             </div>
-             <h1 className="text-3xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
+             <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
                ADMIN <span className="text-indigo-600">DASHBOARD</span>
              </h1>
              <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
@@ -542,7 +538,7 @@ const DashboardPage = () => {
             }}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12"
+            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-4"
           >
             {cards.map((card, idx) => (
               <motion.div
@@ -559,7 +555,7 @@ const DashboardPage = () => {
                    className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] overflow-hidden group"
                  >
                    <div className="p-3 lg:p-6 flex flex-col h-full relative">
-                     <div className="flex items-center justify-between mb-4 lg:mb-12">
+                     <div className="flex items-center justify-between mb-4">
                        <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
                          <card.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                        </div>
@@ -569,7 +565,7 @@ const DashboardPage = () => {
                      </div>
                      <div className="mt-auto">
                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
-                       <h2 className="text-md lg:text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none">
+                       <h2 className="text-sm lg:text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none">
                          {card.title}
                        </h2>
                      </div>
@@ -585,7 +581,7 @@ const DashboardPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4"
             >
               {[
                { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Lifetime earnings from payments', icon: Banknote, color: 'emerald' },
@@ -618,7 +614,7 @@ const DashboardPage = () => {
               transition={{ delay: 0.3 }}
               className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 shadow-2xl border-none relative overflow-hidden"
             >
-             <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-12 px-3 lg:px-6">
+             <div className="flex items-center gap-3 lg:gap-6 mb-4 px-3 lg:px-6">
                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
                  <Zap className="w-7 h-7 fill-current" />
                </div>

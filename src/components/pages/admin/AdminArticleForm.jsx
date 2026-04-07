@@ -220,7 +220,7 @@ const AdminArticleForm = () => {
       <AdminMobileAppWrapper title={isEdit ? "Edit Article" : "Create Article"}>
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white ">
+          <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
             <div className="flex flex-col items-center justify-center py-24 space-y-3 lg:space-y-6">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
@@ -238,12 +238,12 @@ const AdminArticleForm = () => {
     <AdminMobileAppWrapper title={isEdit ? "Edit Article" : "Create Article"}>
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit ">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {/* Article Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative mb-4 lg:mb-12"
+            className="relative mb-4"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-transparent blur-3xl -z-10 rounded-full" />
 
@@ -310,7 +310,7 @@ const AdminArticleForm = () => {
                     <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                       <FileText className="w-6 h-6" />
                     </div>
-                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Title and Body</h3>
+                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Title and Body</h3>
                   </div>
 
                   <div className="space-y-4 lg:space-y-8">
@@ -375,7 +375,7 @@ const AdminArticleForm = () => {
                     <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl">
                       <Globe className="w-6 h-6" />
                     </div>
-                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Cover Image & Search Settings</h3>
+                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Cover Image & Search Settings</h3>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -467,7 +467,7 @@ const AdminArticleForm = () => {
                     <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                       <Settings className="w-6 h-6" />
                     </div>
-                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Publishing Options</h3>
+                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Publishing Options</h3>
                   </div>
 
                   <div className="space-y-4 lg:space-y-8">
@@ -557,7 +557,7 @@ const AdminArticleForm = () => {
                         <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                           <Zap className="w-6 h-6" />
                         </div>
-                        <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Author Payment</h3>
+                        <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Author Payment</h3>
                       </div>
 
                       <div className="space-y-4">

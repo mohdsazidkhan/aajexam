@@ -92,10 +92,10 @@ export default function AdminQuizRewardsHistory() {
         <AdminMobileAppWrapper title="Quiz Rewards History">
             <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
                 {user?.role === "admin" && isAdminRoute && <Sidebar />}
-                <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
+                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     
                     {/* Header */}
-                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
+                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
                       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                         <div className="space-y-4">
                           <div className="flex items-center gap-3">
@@ -127,7 +127,7 @@ export default function AdminQuizRewardsHistory() {
 
                     {/* Summary Cards */}
                     {summary && (
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
                          {[
                            { label: 'Total Rewards', val: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Trophy, color: 'emerald' },
                            { label: 'Total Payouts', val: summary.totalTransactions || 0, icon: Activity, color: 'blue' },

@@ -104,7 +104,7 @@ const AdminCompetitionResets = () => {
         <AdminMobileAppWrapper title="Manage Resets">
             <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-                <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white">
+                <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
                     <div className="mx-auto max-w-6xl">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 lg:mb-8">
                             <div>

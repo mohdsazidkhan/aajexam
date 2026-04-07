@@ -394,14 +394,14 @@ const StudentsPage = () => {
        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
-         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10`}>
+         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-16'} p-4 lg:p-10`}>
             {/* Student Directory Overview */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-4 lg:mb-12"
+              className="mb-4"
             >
-             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
+             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                <div className="space-y-4">
                  <div className="flex items-center gap-3">
                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -409,7 +409,7 @@ const StudentsPage = () => {
                    </div>
                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">USER MANAGEMENT</span>
                  </div>
-                  <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                  <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                     STUDENT <span className="text-indigo-600">DIRECTORY</span>
                   </h1>
                   <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">
@@ -451,7 +451,7 @@ const StudentsPage = () => {
           </motion.div>
 
            {/* Search & Filter Controls */}
-           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl">
+           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl">
              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
                <div className="flex-1 relative group w-full lg:max-w-2xl">
                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
@@ -523,7 +523,7 @@ const StudentsPage = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
@@ -681,7 +681,7 @@ const StudentsPage = () => {
                           </div>
                         </div>
 
-                         <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
+                         <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
                          <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'No username set'}</div>
 
                         <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
@@ -810,7 +810,7 @@ const StudentsPage = () => {
                                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tier.price}/month</div>
                                </div>
                             </div>
-                            <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{tier.price}</div>
+                            <div className="text-sm lg:text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{tier.price}</div>
                           </motion.div>
                         ))}
                       </div>

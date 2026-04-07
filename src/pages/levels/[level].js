@@ -129,7 +129,7 @@ export default function LevelPage({ level }) {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {level.studyTips.map((tip, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{tip.title}</h3>
+                                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{tip.title}</h3>
                                     <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{tip.description}</p>
                                 </div>
                             ))}

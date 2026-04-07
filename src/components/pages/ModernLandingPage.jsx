@@ -301,7 +301,7 @@ const ModernLandingPage = () => {
                <div className="relative z-10 space-y-8">
                   <motion.h2
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
-                     className="text-3xl lg:text-6xl lg:text-9xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
+                     className="text-2xl lg:text-4xl lg:text-9xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
                   >
                      Your Dream Job <br /><span className="text-primary-700 dark:text-primary-500">Is Waiting.</span>
                   </motion.h2>

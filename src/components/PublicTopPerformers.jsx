@@ -210,7 +210,7 @@ const PublicTopPerformers = () => {
                       {performer?.name?.charAt(0).toUpperCase()}
                     </div>
                     <div>
-                      <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{performer?.name || 'Anonymous'}</h4>
+                      <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{performer?.name || 'Anonymous'}</h4>
                       <p className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">{performer?.subscriptionName || 'FREE'} STUDENT</p>
                     </div>
                   </div>

@@ -182,15 +182,15 @@ const AdminReferralAnalytics = () => {
         <AdminMobileAppWrapper title="Referral Analytics">
             <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
                 <Sidebar />
-                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+                <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
                     
                     {/* Header Section */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-4 lg:mb-12"
+                        className="mb-4"
                     >
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3">
                                     <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
@@ -198,7 +198,7 @@ const AdminReferralAnalytics = () => {
                                     </div>
                                     <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / REFERRAL ANALYTICS</span>
                                 </div>
-                                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                                     REFERRAL <span className="text-emerald-500">ANALYTICS</span>
                                 </h1>
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral performance, user activity, and monthly growth trends.</p>
@@ -223,7 +223,7 @@ const AdminReferralAnalytics = () => {
                         </div>
 
                         {/* Summary Visualization */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4">
                             {[
                                 { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-indigo-500", shadow: "shadow-indigo-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-emerald-500", shadow: "shadow-emerald-500/20" },
@@ -249,7 +249,7 @@ const AdminReferralAnalytics = () => {
                         </div>
 
                         {/* Filters */}
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
                              <div className="flex flex-wrap items-center gap-3 lg:gap-6 flex-1">
                                 <div className="relative flex-1 max-w-md group">
                                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
@@ -314,7 +314,7 @@ const AdminReferralAnalytics = () => {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                                className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                             >
                                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>

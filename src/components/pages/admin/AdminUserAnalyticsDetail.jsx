@@ -100,11 +100,11 @@ const AdminUserAnalyticsDetail = () => {
             <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
-                <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
+                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
                     >
                         <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <PieChart className="w-64 h-64 text-indigo-500 -rotate-12" />
@@ -192,7 +192,7 @@ const AdminUserAnalyticsDetail = () => {
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Loading analytics...</div>
+                                    <div className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Loading analytics...</div>
                                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-2">Fetching user data...</div>
                                 </div>
                             </motion.div>
@@ -207,7 +207,7 @@ const AdminUserAnalyticsDetail = () => {
                                     <Zap className="w-10 h-10 text-white" />
                                 </div>
                                 <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">Failed to load data. Please try again.</h3>
-                                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest mb-4 lg:mb-12">{error}</p>
+                                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest mb-4">{error}</p>
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
@@ -231,7 +231,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <Coins className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Revenue & Spending</h3>
+                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Revenue & Spending</h3>
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Earnings and expenses overview</p>
                                          </div>
                                      </div>
@@ -256,7 +256,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <Trophy className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Engagement & Performance</h3>
+                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Engagement & Performance</h3>
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quiz accuracy and leaderboard standing</p>
                                          </div>
                                      </div>
@@ -279,7 +279,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <Activity className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Activity Timeline</h3>
+                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Activity Timeline</h3>
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Daily, weekly, and monthly progress</p>
                                          </div>
                                      </div>
@@ -302,7 +302,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <Users className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Referral Network</h3>
+                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Referral Network</h3>
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Followers, following, and referrals</p>
                                          </div>
                                      </div>
@@ -325,7 +325,7 @@ const AdminUserAnalyticsDetail = () => {
                                              <Book className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Content Contributions</h3>
+                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Content Contributions</h3>
                                              <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questions, categories, quizzes, and blogs created</p>
                                          </div>
                                      </div>

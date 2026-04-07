@@ -488,7 +488,7 @@ const AdminArticles = () => {
       <AdminMobileAppWrapper title="Articles">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white ">
+          <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading articles..." />
             </div>
@@ -502,7 +502,7 @@ const AdminArticles = () => {
     <AdminMobileAppWrapper title="Articles">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit ">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -521,7 +521,7 @@ const AdminArticles = () => {
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500/80">ARTICLE MANAGEMENT</span>
                 </motion.div>
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   ARTICLES & <span className="text-indigo-500">RESOURCES</span>
                 </h1>
                 <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
@@ -566,7 +566,7 @@ const AdminArticles = () => {
 
           <Card
             variant="white"
-            className="p-6 lg:p-10 mb-4 lg:mb-12 border-none shadow-xl bg-white dark:bg-slate-900/60 relative overflow-hidden"
+            className="p-6 lg:p-10 mb-4 border-none shadow-xl bg-white dark:bg-slate-900/60 relative overflow-hidden"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-8 relative z-10">
               <div className="lg:col-span-2 space-y-2">
@@ -820,7 +820,7 @@ const AdminArticles = () => {
                               <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{formatDate(article.createdAt)}</span>
                             </div>
 
-                            <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-4 line-clamp-2 min-h-[3rem]">{article.title}</h3>
+                            <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-4 line-clamp-2 min-h-[3rem]">{article.title}</h3>
 
                             <div className="flex items-center justify-between py-3 lg:py-6 border-y-2 border-slate-100 dark:border-white/5 my-auto">
                               <div className="flex items-center gap-2">

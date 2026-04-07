@@ -222,8 +222,8 @@ const AdminPaymentTransactions = () => {
       <AdminMobileAppWrapper title="Payment Transactions">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent p-4 w-full flex items-center justify-center min-h-[60vh]">
-            <Loading size="md" color="yellow" message="Loading transactions..." />
+          <div className="adminContent w-full flex items-center justify-center">
+            <Loading size="md" color="yellow" message="Loading Transactions..." />
           </div>
         </div>
       </AdminMobileAppWrapper>
@@ -234,10 +234,10 @@ const AdminPaymentTransactions = () => {
     <AdminMobileAppWrapper title="Payment Transactions">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header Section */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-12">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -283,7 +283,7 @@ const AdminPaymentTransactions = () => {
           </motion.div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
             {[
               { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, color: 'emerald', isCurrency: true },
               { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'indigo', isCurrency: true },
@@ -309,7 +309,7 @@ const AdminPaymentTransactions = () => {
           </div>
 
           {/* Filter Bar */}
-          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 lg:mb-12 shadow-2xl">
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
               <div className="flex-1 relative group w-full">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />

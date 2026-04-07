@@ -663,7 +663,7 @@ const QuizPage = () => {
 
           <div className="p-3 lg:p-8 flex-1 flex flex-col">
             <div className="mb-6 flex-1">
-              <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-tight group-hover:text-indigo-500 transition-colors line-clamp-2 mb-3">
+              <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-tight group-hover:text-indigo-500 transition-colors line-clamp-2 mb-3">
                 {quiz.title}
               </h3>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest line-clamp-3 leading-relaxed">
@@ -806,9 +806,9 @@ const QuizPage = () => {
     <AdminMobileAppWrapper title="Quizzes">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-2 lg:p-6 w-full text-gray-900 dark:text-white">
+        <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
           {/* Page Header */}
-          <div className="relative mb-4 lg:mb-12">
+          <div className="relative mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -882,7 +882,7 @@ const QuizPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
             <div className="bg-white/50 dark:bg-[#0A0F1E]/60 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-6 border-4 border-slate-100 dark:border-white/5 shadow-2xl">
               <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">

@@ -226,7 +226,7 @@ const LevelsPage = ({ showNavbar = true }) => {
         </header>
 
         {/* --- Tab Switcher (Mobile Scrollable) --- */}
-        <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 lg:mb-12 w-fit border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 shadow-inner px-3">
+        <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-4 w-fit border-2 border-slate-200 dark:border-slate-700 mx-auto lg:mx-0 shadow-inner px-3">
           {[
             { id: 'overview', label: 'My Progress', icon: Zap },
             { id: 'path', label: 'Learning Path', icon: Target }

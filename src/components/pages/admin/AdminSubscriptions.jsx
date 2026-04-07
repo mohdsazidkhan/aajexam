@@ -395,7 +395,7 @@ const AdminSubscriptions = () => {
       <AdminMobileAppWrapper title="Subscriptions">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
+          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading subscriptions..." />
             </div>
@@ -409,12 +409,12 @@ const AdminSubscriptions = () => {
     <AdminMobileAppWrapper title="Subscriptions">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
+            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
           >
             <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <Layers className="w-64 h-64 text-indigo-500 -rotate-12" />
@@ -429,7 +429,7 @@ const AdminSubscriptions = () => {
                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN / SUBSCRIPTIONS</span>
                 </div>
 
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   MANAGE <span className="text-indigo-600">SUBSCRIPTIONS</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
@@ -487,7 +487,7 @@ const AdminSubscriptions = () => {
           </motion.div>
 
           {/* Stats Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
             <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBSCRIPTIONS" value={summary.totalSubscriptions || 0} sub="ALL STUDENTS" />
             <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
             <StatsCard i={2} color="rose" icon={Zap} label="PAID MEMBERS" value={summary.paidSubscriptions || 0} sub="PAID PLANS" />
@@ -502,7 +502,7 @@ const AdminSubscriptions = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 lg:mb-12 shadow-xl"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
           >
             <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
               <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
@@ -749,7 +749,7 @@ const AdminSubscriptions = () => {
                               </div>
                             </div>
                             <div className="flex flex-col">
-                              <h4 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
+                              <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
                               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
                             </div>
                           </div>
@@ -915,7 +915,7 @@ const AdminSubscriptions = () => {
                   </div>
 
                   <div className="p-4 lg:p-12">
-                    <div className="flex items-center gap-4 mb-4 lg:mb-12">
+                    <div className="flex items-center gap-4 mb-4">
                       <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
                         <Layers className="w-8 h-8" />
                       </div>
@@ -925,7 +925,7 @@ const AdminSubscriptions = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-12 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                       <div className="space-y-4">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
                         <select

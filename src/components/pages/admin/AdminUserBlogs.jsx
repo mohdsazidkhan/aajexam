@@ -405,7 +405,7 @@ const AdminUserBlogs = () => {
       <AdminMobileAppWrapper title="Student Blogs">
         <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505]">
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white ">
+          <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
             <div className="flex flex-col items-center justify-center py-48 space-y-4 lg:space-y-8">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
@@ -423,11 +423,11 @@ const AdminUserBlogs = () => {
     <AdminMobileAppWrapper title="Student Blogs">
       <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-outfit selection:bg-indigo-500/30">
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
+            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
           >
             <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <MessageSquare className="w-64 h-64 text-indigo-500 -rotate-12" />
@@ -442,7 +442,7 @@ const AdminUserBlogs = () => {
                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">BLOG MANAGEMENT</span>
                 </div>
 
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   STUDENT <span className="text-indigo-600">BLOGS</span>
                 </h1>
 
@@ -460,7 +460,7 @@ const AdminUserBlogs = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-10 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl mb-4 lg:mb-12 relative overflow-hidden"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-10 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl mb-4 relative overflow-hidden"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 relative z-10">
               <div className="space-y-4">

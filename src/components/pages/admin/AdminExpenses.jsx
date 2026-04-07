@@ -159,12 +159,12 @@ const AdminExpenses = () => {
             <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
                 {userInfo?.role === 'admin' && <Sidebar />}
 
-                <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
+                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     {/* Header */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 lg:mb-12 shadow-2xl overflow-hidden group"
+                        className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
                     >
                         <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Receipt className="w-64 h-64 text-indigo-500 -rotate-12" />
@@ -179,7 +179,7 @@ const AdminExpenses = () => {
                                     <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em]">ADMIN // EXPENSES</span>
                                 </div>
 
-                                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                                     PLATFORM <span className="text-indigo-600">EXPENSES</span>
                                 </h1>
 
@@ -201,7 +201,7 @@ const AdminExpenses = () => {
                     </motion.div>
 
                     {/* Summary Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 mb-4 lg:mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 mb-4">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -238,7 +238,7 @@ const AdminExpenses = () => {
                     </div>
 
                     {/* Filters */}
-                    <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4 lg:mb-12">
+                    <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
                         <form onSubmit={handleSearch} className="relative group/search w-full lg:w-96">
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
                             <input

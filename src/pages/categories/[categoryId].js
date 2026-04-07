@@ -121,7 +121,7 @@ export default function CategoryDetailPage({ category, subcategories, quizzes, p
               {quizzes.map(quiz => (
                 <div key={quiz._id} className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group">
                   <div>
-                    <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight group-hover:text-primary-600 transition-colors">{quiz.title}</h3>
+                    <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight group-hover:text-primary-600 transition-colors">{quiz.title}</h3>
                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-6 line-clamp-2 leading-relaxed">{quiz.description}</p>
 
                     <div className="flex flex-wrap items-center gap-3 mb-8">

@@ -89,7 +89,7 @@ export default function EditorialPolicy() {
                                         {item.step}
                                     </div>
                                     <div>
-                                        <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h3>
+                                        <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h3>
                                         <p className="text-slate-500 dark:text-slate-400 font-bold">{item.desc}</p>
                                     </div>
                                 </div>

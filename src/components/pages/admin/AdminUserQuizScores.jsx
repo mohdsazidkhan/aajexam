@@ -145,15 +145,15 @@ const AdminUserQuizScores = ({ userId }) => {
     <AdminMobileAppWrapper title="Student Quiz Scores">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
           
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 lg:mb-12"
+            className="mb-4"
           >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4 lg:mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
@@ -161,7 +161,7 @@ const AdminUserQuizScores = ({ userId }) => {
                    </div>
                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Student Quiz Performance</span>
                 </div>
-                <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   Quiz <span className="text-indigo-600">Scores</span>
                 </h1>
                 <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-2xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
@@ -208,7 +208,7 @@ const AdminUserQuizScores = ({ userId }) => {
           </motion.div>
 
           {/* View Controls */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
              <div className="flex items-center gap-4">
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                    <Zap className="w-5 h-5" />
@@ -256,7 +256,7 @@ const AdminUserQuizScores = ({ userId }) => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600" />
@@ -363,7 +363,7 @@ const AdminUserQuizScores = ({ userId }) => {
                                </div>
                              </div>
 
-                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">
+                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">
                                {score.quiz?.title || 'Quiz ' + serialNumber}
                              </h3>
                              <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Category: {score.quiz?.category || 'General'}</div>
