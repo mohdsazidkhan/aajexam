@@ -205,13 +205,13 @@ const AdminGovtExamPatterns = () => {
                   <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
                     <Binary className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Governance // Pattern Management</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / EXAM PATTERNS</span>
                 </div>
                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   Exam Patterns
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                  Configure structural templates for exam tests.
+                  Set up exam patterns with sections and marking schemes.
                 </p>
               </div>
 
@@ -254,7 +254,7 @@ const AdminGovtExamPatterns = () => {
                   onChange={(e) => handleCategoryChange(e.target.value)}
                   className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full"
                 >
-                  <option value="all">All Category Sectors</option>
+                  <option value="all">All Categories</option>
                   {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name}</option>)}
                 </select>
               </div>
@@ -266,7 +266,7 @@ const AdminGovtExamPatterns = () => {
                   onChange={(e) => handleExamChange(e.target.value)}
                   className="bg-transparent text-slate-900 dark:text-white tracking-widest focus:outline-none cursor-pointer w-full"
                 >
-                  <option value="all">All Active Exams</option>
+                  <option value="all">All Exams</option>
                   {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.code} - {exam.name}</option>)}
                 </select>
               </div>
@@ -276,12 +276,12 @@ const AdminGovtExamPatterns = () => {
           {/* Content */}
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Syncing structures..." /></div>
+              <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Loading patterns..." /></div>
             ) : patterns.length === 0 ? (
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
                 <Boxes className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Patterns Found</h3>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Selected exam has no active pattern templates</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Select an exam above or create a new pattern to get started.</p>
               </div>
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -294,7 +294,7 @@ const AdminGovtExamPatterns = () => {
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Duration</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Negative Marks</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Sections</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Operations</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -306,9 +306,9 @@ const AdminGovtExamPatterns = () => {
                                 <Clock className="w-4 h-4 text-primary-500" /> {p.duration} Min
                               </div>
                             </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-rose-500 font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} Per Error</td>
+                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-rose-500 font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                              <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sectors</span>
+                              <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               <div className="flex justify-end gap-3">
@@ -332,16 +332,16 @@ const AdminGovtExamPatterns = () => {
                         <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit">
                            <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-500 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
                            <div className="mb-4 lg:mb-8">
-                             <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-1">Structural Pattern</div>
+                             <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-1">Exam Pattern</div>
                              <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{p.title}</h3>
                            </div>
                            <div className="grid grid-cols-2 gap-4 mb-4 lg:mb-8">
                               <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100">
-                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Latency</p>
+                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Duration</p>
                                 <p className="text-sm font-black text-slate-900 dark:text-white">{p.duration} MIN</p>
                               </div>
                               <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100">
-                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Sectors</p>
+                                <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Sections</p>
                                 <p className="text-sm font-black text-slate-900 dark:text-white">{p.sections?.length || 0}</p>
                               </div>
                            </div>
@@ -373,7 +373,7 @@ const AdminGovtExamPatterns = () => {
                          </div>
                          <div className="flex items-center gap-3">
                             <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-                              <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">Calibrate Tests</motion.button>
+                              <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">View Tests</motion.button>
                             </Link>
                             <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
                             <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
@@ -397,8 +397,8 @@ const AdminGovtExamPatterns = () => {
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500 text-white rounded-2xl shadow-lg"><Binary className="w-6 h-6" /></div>
                     <div>
-                       <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">Pattern <span className="text-primary-500">Configuration</span></h2>
-                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Adjusting Pattern: ${editingPattern.title}` : 'Initializing New Structure'}</p>
+                       <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-500">Pattern</span></h2>
+                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                     </div>
                   </div>
                   <button onClick={() => setShowModal(false)} className="p-3 rounded-xl hover:bg-rose-500/10 hover:text-rose-500 transition-colors"><X className="w-6 h-6" /></button>
@@ -412,17 +412,17 @@ const AdminGovtExamPatterns = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-3 lg:gap-6">
                            <div className="space-y-4">
-                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Global Limit (Min)</label>
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Duration (Min)</label>
                               <input type="number" value={formData.duration} onChange={(e) => setFormData({...formData, duration: parseInt(e.target.value) || 0})} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                            </div>
                            <div className="space-y-4">
-                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-rose-500 pl-3 block ml-2">Negative Matrix</label>
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-rose-500 pl-3 block ml-2">Negative Marking</label>
                               <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({...formData, negativeMarking: parseFloat(e.target.value) || 0})} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-rose-500/30 rounded-2xl text-xs font-black outline-none" />
                            </div>
                         </div>
                         <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
                            <div className="p-6 bg-emerald-500/5 rounded-3xl border-2 border-emerald-500/10 flex justify-between items-center font-outfit">
-                              <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Total Weightage</span>
+                              <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Total Marks</span>
                               <span className="text-2xl font-black text-emerald-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
                            </div>
                            <button type="submit" className="w-full py-5 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center gap-3">
@@ -434,7 +434,7 @@ const AdminGovtExamPatterns = () => {
                   <div className="flex-1 p-3 lg:p-8 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
                      <div className="max-w-2xl mx-auto space-y-10">
                         <div className="space-y-4">
-                           <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-500" /> Structure Sections ({formData.sections.length})</h3>
+                           <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-500" /> Sections ({formData.sections.length})</h3>
                            {formData.sections.map((sec, i) => (
                               <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-white dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
                                  <div className="flex items-center gap-3 lg:gap-6">
@@ -449,7 +449,7 @@ const AdminGovtExamPatterns = () => {
                            ))}
                         </div>
                         <div className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] border-4 border-dashed border-primary-500/20 relative font-outfit">
-                           <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-500 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">Append New Section</div>
+                           <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-500 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">Add Section</div>
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mt-4">
                               <div className="lg:col-span-2 space-y-2">
                                  <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>
@@ -473,7 +473,7 @@ const AdminGovtExamPatterns = () => {
                               </div>
                            </div>
                            <button type="button" onClick={handleAddSection} className="w-full mt-4 lg:mt-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3">
-                              <Plus className="w-5 h-5" /> Push to Architecture
+                              <Plus className="w-5 h-5" /> Add Section
                            </button>
                         </div>
                      </div>

@@ -160,7 +160,7 @@ const Sidebar = () => {
 
 
       {/* --- Main Navigation Area --- */}
-      <nav className="flex-1 overflow-y-auto py-8 px-6 space-y-12 scrollbar-premium relative z-10">
+      <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx} className="space-y-5">
             <div className="flex items-center gap-3 px-4">

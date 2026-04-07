@@ -732,13 +732,13 @@ const DashboardAnalytics = () => {
                    <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl">
                      <BarChart3 className="w-6 h-6" />
                    </div>
-                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">ADMIN // ANALYTICS</span>
+                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Admin / Analytics</span>
                  </div>
                  <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                   PERFORMANCE <span className="text-indigo-600">INTELLIGENCE</span>
+                   Analytics <span className="text-indigo-600">Overview</span>
                  </h1>
                  <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
-                   High-fidelity data orchestration and behavioral insights.
+                   Monitor platform performance metrics and trends.
                  </p>
                </div>
              </div>
@@ -748,13 +748,13 @@ const DashboardAnalytics = () => {
            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
              {[
                {
-                 label: 'ENUMERATED USERS',
+                 label: 'Total Users',
                  icon: <Users />,
                  value: data.overview?.totalUsers,
                  gradient: 'text-indigo-600 bg-indigo-600/10 border-indigo-600/20'
                },
                {
-                 label: 'ASSESSMENT MODULES',
+                 label: 'Total Quizzes',
                  icon: <BarChart3 />,
                  value: data.overview?.totalQuizzes,
                  gradient: 'text-emerald-600 bg-emerald-600/10 border-emerald-600/20'
@@ -766,19 +766,19 @@ const DashboardAnalytics = () => {
                  gradient: 'text-amber-600 bg-amber-600/10 border-amber-600/20'
                },
                {
-                 label: 'ACTIVE PROXIES',
+                 label: 'Active Users',
                  icon: <Trophy />,
                  value: data.overview?.activeUsers,
                  gradient: 'text-purple-600 bg-purple-600/10 border-purple-600/20'
                },
                {
-                 label: 'ENGAGEMENT CYCLES',
+                 label: 'Total Attempts',
                  icon: <Clock />,
                  value: data.overview?.totalAttempts,
                  gradient: 'text-rose-600 bg-rose-600/10 border-rose-600/20'
                },
                {
-                 label: 'ALLOCATED TIERS',
+                 label: 'Subscriptions',
                  icon: <Star />,
                  value: data.overview?.totalSubscriptions,
                  gradient: 'text-blue-600 bg-blue-600/10 border-blue-600/20'
@@ -837,7 +837,7 @@ const DashboardAnalytics = () => {
                   </div>
                   <div>
                     <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Recent Activity</h3>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Latest platform engagements</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Latest quiz attempts and scores</p>
                   </div>
                 </div>
 
@@ -870,7 +870,7 @@ const DashboardAnalytics = () => {
                       Top Performers
                     </h2>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">
-                      {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} high-yield accounts
+                      {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} top-performing users
                     </p>
                   </div>
                 </div>

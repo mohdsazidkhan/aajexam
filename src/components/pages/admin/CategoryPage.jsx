@@ -373,7 +373,7 @@ const CategoryPage = () => {
     <AdminMobileAppWrapper title="Categories">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
+        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit ">
 
           {/* Header Section */}
           <motion.div
@@ -391,7 +391,7 @@ const CategoryPage = () => {
                   MANAGE <span className="text-indigo-500">CATEGORIES</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-                  Organize your exam content within a professional hierarchical structure.
+                  Group your exams into categories for easy navigation and management.
                 </p>
               </div>
 
@@ -544,7 +544,7 @@ const CategoryPage = () => {
           <div className="relative min-h-[400px]">
             {loading ? (
               <div className="flex flex-col items-center justify-center h-96 space-y-4">
-                <Loading size="lg" color="indigo" message="Loading Categories..." />
+                <Loading size="lg" color="indigo" message="Loading categories..." />
               </div>
             ) : categories.length === 0 ? (
               <motion.div
@@ -559,7 +559,7 @@ const CategoryPage = () => {
                   No Categories Found
                 </h3>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                  {searchTerm ? 'Zero matches found in existing data' : 'Add your first category to get started.'}
+                  {searchTerm ? 'No categories match your search. Try different keywords.' : 'Create your first category to start organizing exams.'}
                 </p>
               </motion.div>
             ) : (

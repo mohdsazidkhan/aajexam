@@ -362,7 +362,7 @@ const SubcategoryPage = () => {
 
             <div className="flex items-center justify-between lg:justify-end gap-3 lg:gap-8 pt-4 lg:pt-0 border-t-2 lg:border-t-0 border-slate-50 dark:border-white/5">
               <div className="space-y-1">
-                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">EVALUATION</p>
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">QUIZZES</p>
                 <div className="flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-emerald-500" />
                   <span className="text-sm font-black text-slate-900 dark:text-white uppercase">{sub.quizCount || 0} QUIZZES</span>
@@ -397,7 +397,7 @@ const SubcategoryPage = () => {
     <AdminMobileAppWrapper title="Subcategories">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
+        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit ">
 
           {/* Header Section */}
           <motion.div
@@ -415,7 +415,7 @@ const SubcategoryPage = () => {
                   MANAGE <span className="text-primary-500">SUB-CATEGORIES</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-                  Define specific sub-topics to organize your exam questions effectively.
+                  Break down categories into specific topics for better quiz organization.
                 </p>
               </div>
 
@@ -586,7 +586,7 @@ const SubcategoryPage = () => {
           <div className="relative min-h-[400px]">
             {loading ? (
               <div className="flex flex-col items-center justify-center h-96 space-y-4">
-                <Loading size="lg" color="primary" message="Loading Sub-Categories..." />
+                <Loading size="lg" color="primary" message="Loading sub-categories..." />
               </div>
             ) : subcategories.length === 0 ? (
               <motion.div
@@ -601,7 +601,7 @@ const SubcategoryPage = () => {
                   No Sub-Categories Found
                 </h3>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                  {searchTerm ? 'Zero matches found in existing data' : 'Add your first sub-category to get started.'}
+                  {searchTerm ? 'No sub-categories match your search. Try different keywords.' : 'Create your first sub-category to start organizing topics.'}
                 </p>
               </motion.div>
             ) : (

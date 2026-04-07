@@ -404,13 +404,12 @@ export default function AdminBankDetails() {
                   </h1>
 
                   <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-                    Review and verify banking credentials for user withdrawal requests. 
-                    Manage the integrity of the capital distribution registry.
+                    View bank account details submitted by students for processing withdrawals.
                   </p>
                 </div>
 
                 <div className="flex flex-col items-end gap-2 text-right">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL RECORDS</span>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL ENTRIES</span>
                   <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
                     <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                     {pagination.total || 0}
@@ -472,24 +471,24 @@ export default function AdminBankDetails() {
             {/* Content */}
             {loading ? (
               <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="yellow" message="" />
+                <Loading size="lg" color="yellow" message="Loading bank details..." />
               </div>
             ) : error ? (
               <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
                 <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Data</h3>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
                 <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
               </div>
             ) : bankDetails.length === 0 ? (
               <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">
                 <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO RECORDS FOUND</h3>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">No Bank Details Found</h3>
                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
                   {searchTerm
-                    ? "No records match your search."
-                    : "No bank details have been added yet."}
+                    ? "No bank details match your search."
+                    : "No students have submitted their bank details yet."}
                 </p>
               </div>
             ) : (

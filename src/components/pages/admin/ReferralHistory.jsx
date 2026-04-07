@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Sidebar from "../../Sidebar";
 import { useSelector } from "react-redux";
@@ -114,10 +114,10 @@ export default function ReferralHistory() {
 
   const getRewardTypeLabel = (type) => {
     const labels = {
-      'registration': 'Initial Link',
-      'plan9': '₹9 Expansion',
-      'plan49': '₹49 Expansion',
-      'plan99': '₹99 Expansion',
+      'registration': 'Registration Reward',
+      'plan9': '₹9 Plan Reward',
+      'plan49': '₹49 Plan Reward',
+      'plan99': '₹99 Plan Reward',
     };
     return labels[type] || type.toUpperCase();
   };
@@ -154,7 +154,7 @@ export default function ReferralHistory() {
             />
             <History className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Reconstructing Transaction Chronicle...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral history...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -164,7 +164,7 @@ export default function ReferralHistory() {
     <AdminMobileAppWrapper title="Referral History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
           
           {/* Header Section */}
           <motion.div
@@ -178,12 +178,12 @@ export default function ReferralHistory() {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <History className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN_HUB // TRANSACTION_CHRONICLE</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / REFERRAL HISTORY</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   REFERRAL <span className="text-primary-500">HISTORY</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Full audit log of reward distributions, network expansions, and capital transfers.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View all referral reward transactions and payouts.</p>
               </div>
 
                <div className="flex flex-col sm:flex-row gap-4">
@@ -194,11 +194,11 @@ export default function ReferralHistory() {
                         onChange={handleFilterChange}
                         className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                      >
-                        <option value="all">ALL_TRANSMISSION_TYPES</option>
+                        <option value="all">All Reward Types</option>
                         <option value="registration">Registration Reward (₹10)</option>
-                        <option value="plan9">PLAN_9_COEFF (₹3)</option>
-                        <option value="plan49">PLAN_49_COEFF (₹15)</option>
-                        <option value="plan99">PLAN_99_COEFF (₹33)</option>
+                        <option value="plan9">Plan 9 Reward (₹3)</option>
+                        <option value="plan49">Plan 49 Reward (₹15)</option>
+                        <option value="plan99">Plan 99 Reward (₹33)</option>
                      </select>
                      <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                   </div>
@@ -211,15 +211,15 @@ export default function ReferralHistory() {
                </div>
             </div>
 
-            {/* Tactical Summary Cards */}
+            {/* Summary Cards */}
             {summary && (
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-4 lg:mb-12">
                 {[
                   { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
-                  { label: "REG_PROTO", value: summary.registrationRewards, icon: UserPlus, color: "bg-primary-500 text-white shadow-primary-500/20" },
-                  { label: "PLAN_9", value: summary.plan9Rewards, icon: Zap, color: "bg-emerald-500 text-white shadow-emerald-500/20" },
-                  { label: "PLAN_49", value: summary.plan49Rewards, icon: Briefcase, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
-                  { label: "PLAN_99", value: summary.plan99Rewards, icon: Award, color: "bg-rose-500 text-white shadow-rose-500/20" }
+                  { label: "REGISTRATION", value: summary.registrationRewards, icon: UserPlus, color: "bg-primary-500 text-white shadow-primary-500/20" },
+                  { label: "PLAN 9", value: summary.plan9Rewards, icon: Zap, color: "bg-emerald-500 text-white shadow-emerald-500/20" },
+                  { label: "PLAN 49", value: summary.plan49Rewards, icon: Briefcase, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
+                  { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-rose-500 text-white shadow-rose-500/20" }
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -239,7 +239,7 @@ export default function ReferralHistory() {
             )}
           </motion.div>
 
-          {/* Chronicle Table */}
+          {/* Transaction Table */}
           <AnimatePresence mode="wait">
              {transactions.length === 0 ? (
                <motion.div
@@ -249,8 +249,8 @@ export default function ReferralHistory() {
                  className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <History className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_EVENTS_RECOVERED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded transaction events detected for the current tactical filter.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS FOUND</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No referral transactions found for the selected filter. Try a different filter.</p>
                </motion.div>
              ) : (
                <motion.div
@@ -294,7 +294,7 @@ export default function ReferralHistory() {
                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-500 transition-colors flex items-center gap-2">
                                            {tx.inviter?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                                         </div>
-                                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.inviter?.email || 'OFFLINE'}</div>
+                                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.inviter?.email || 'No email'}</div>
                                      </div>
                                   </div>
                                </Link>
@@ -307,7 +307,7 @@ export default function ReferralHistory() {
                                      </div>
                                      <div>
                                         <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.invitee.name || 'Unknown'}</div>
-                                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.invitee.email || 'OFFLINE'}</div>
+                                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.invitee.email || 'No email'}</div>
                                      </div>
                                   </div>
                                ) : (
@@ -322,7 +322,7 @@ export default function ReferralHistory() {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
-                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">YIELD_ADJUSTMENT</div>
+                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Reward Earned</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
                                ₹{tx.balance?.toLocaleString() || 0}
@@ -335,7 +335,7 @@ export default function ReferralHistory() {
                </motion.div>
              )}
 
-             {/* Pagination Segment */}
+             {/* Pagination */}
              {pagination.totalPages > 1 && (
                <div className="flex justify-center pt-16">
                  <Pagination

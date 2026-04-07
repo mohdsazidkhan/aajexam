@@ -136,7 +136,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                         />
                         <Trophy className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
                     </div>
-                    <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Retrieving Yield Metadata...</div>
+                    <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading rewards history...</div>
                 </div>
             </AdminMobileAppWrapper>
         );
@@ -146,7 +146,7 @@ export default function UserQuizRewardsHistory({ userId }) {
         <AdminMobileAppWrapper title="Quiz Reward History">
             <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
                 {isMounted && <Sidebar />}
-                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
                     {/* Header Section */}
                     <motion.div
@@ -163,7 +163,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                     <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / QUIZ REWARD HISTORY</span>
                                 </div>
                                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                    REWARD <span className="text-emerald-500">SCHEMATICS</span>
+                                    QUIZ <span className="text-emerald-500">REWARDS</span> HISTORY
                                 </h1>
                                 {userInfo && (
                                     <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
@@ -183,7 +183,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                     onClick={() => router.push('/admin/quiz-rewards-history')}
                                     className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                                 >
-                                    <ArrowLeft className="w-4 h-4 text-emerald-500" /> EXIT_TO_MAIN_TREASURY
+                                    <ArrowLeft className="w-4 h-4 text-emerald-500" /> Back to All Quiz Rewards
                                 </button>
                             </div>
                         </div>
@@ -192,10 +192,10 @@ export default function UserQuizRewardsHistory({ userId }) {
                         {summary && (
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                                 {[
-                                    { label: 'Cumulative Reward', value: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Wallet, color: 'emerald' },
-                                    { label: 'Transaction Volume', value: summary.totalTransactions || 0, icon: Activity, color: 'indigo' },
-                                    { label: 'Peak Yield', value: `₹${transactions.length > 0 ? Math.max(...transactions.map(t => t.amount || 0)) : 0}`, icon: Crown, color: 'amber' },
-                                    { label: 'Average Payout', value: `₹${summary.totalTransactions > 0 ? (summary.totalRewards / summary.totalTransactions).toFixed(1) : 0}`, icon: Zap, color: 'rose' }
+                                    { label: 'Total Rewards', value: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Wallet, color: 'emerald' },
+                                    { label: 'Total Payouts', value: summary.totalTransactions || 0, icon: Activity, color: 'indigo' },
+                                    { label: 'Highest Reward', value: `₹${transactions.length > 0 ? Math.max(...transactions.map(t => t.amount || 0)) : 0}`, icon: Crown, color: 'amber' },
+                                    { label: 'Average Reward', value: `₹${summary.totalTransactions > 0 ? (summary.totalRewards / summary.totalTransactions).toFixed(1) : 0}`, icon: Zap, color: 'rose' }
                                 ].map((stat, i) => (
                                     <div
                                         key={stat.label}
@@ -219,17 +219,17 @@ export default function UserQuizRewardsHistory({ userId }) {
                                 <Filter className="w-5 h-5" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</span>
-                                <span className="text-sm italic uppercase tracking-tighter">Scholastic Yield Index</span>
+                                <span className="text-slate-400 uppercase tracking-widest mb-1">Filters</span>
+                                <span className="text-sm italic uppercase tracking-tighter">Search and View Options</span>
                             </div>
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4">
                             <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                                 {[
-                                    { icon: TableIcon, id: 'table', label: 'Tabular' },
-                                    { icon: List, id: 'list', label: 'Linear' },
-                                    { icon: LayoutGrid, id: 'grid', label: 'Spectral' }
+                                    { icon: TableIcon, id: 'table', label: 'Table' },
+                                    { icon: List, id: 'list', label: 'List' },
+                                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
                                 ].map((mode) => (
                                     <button
                                         key={mode.id}
@@ -263,8 +263,8 @@ export default function UserQuizRewardsHistory({ userId }) {
                                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                                     <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                                 </div>
-                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_MATCHES_LOCATED</h3>
-                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded yield dissemination detected for the selected scholastic parameters.</p>
+                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Rewards Found</h3>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This student has no quiz reward payouts yet. Rewards will appear here after completing quizzes.</p>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -278,11 +278,11 @@ export default function UserQuizRewardsHistory({ userId }) {
                                         <table className="w-full">
                                             <thead>
                                                 <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Temporal_Stamp</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Identified_Recipient</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Scholastic_Description</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Payout</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Description</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Amount</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Balance After</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -387,7 +387,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                                 <div className="flex-1 space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
                                                         <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-emerald-500 transition-colors uppercase">{tx.description || 'Quiz Reward'}</h3>
-                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">YIELD_TRANSACTION</div>
+                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">Reward Payout</div>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                                                         <div className="flex items-center gap-2">
@@ -396,7 +396,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                                                         </div>
                                                         <div className="flex items-center gap-2">
                                                             <Target className="w-4 h-4 text-indigo-500/50" />
-                                                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">RESULT_BALANCE: ₹{tx.balance?.toLocaleString() || 0}</span>
+                                                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Balance After: ₹{tx.balance?.toLocaleString() || 0}</span>
                                                         </div>
                                                         <div className="flex items-center gap-2">
                                                             <Clock className="w-4 h-4 text-slate-400/50" />

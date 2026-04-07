@@ -31,7 +31,10 @@ import {
   Star,
   Settings,
   Lock,
-  Unlock
+  Unlock,
+  Hash,
+  Info,
+  Fingerprint
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
@@ -237,7 +240,7 @@ const LevelsPage = () => {
     <AdminMobileAppWrapper title="Levels">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
+        <div className="adminContent p-4 lg:p-8 w-full text-slate-900 dark:text-white font-outfit ">
 
           {/* Status Messages */}
           <AnimatePresence>
@@ -292,7 +295,7 @@ const LevelsPage = () => {
                   MANAGE <span className="text-amber-500">LEVELS</span>
                 </h1>
                 <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-                  Configure difficulty growth stages and quiz requirements for your students.
+                  Set up progression levels and quiz requirements for student advancement.
                 </p>
               </div>
 

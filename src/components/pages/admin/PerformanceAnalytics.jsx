@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import API from '../../../lib/api';
 import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
+import Sidebar from '../../Sidebar';
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement
@@ -67,11 +68,11 @@ const PerformanceAnalytics = () => {
     API.getPerformanceAnalytics({ ...filters, limit: config.QUIZ_CONFIG.ADMIN_TOP_PERFORMERS_USERS })
       .then((res) => {
         if (res.success) setData(res.data);
-        else setError(res.message || "Data loading failure");
+        else setError(res.message || "Failed to load data. Please try again.");
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message || "Data unavailable");
+        setError(err.message || "Failed to load data. Please try again.");
         setLoading(false);
       });
   }, [filters, validateTokenBeforeRequest]);
@@ -138,13 +139,13 @@ const PerformanceAnalytics = () => {
                   <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
                     <BarChart3 className="w-6 h-6" />
                   </div>
-                   <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN // PERFORMANCE ANALYTICS</span>
+                   <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Admin / Performance Analytics</span>
                  </div>
                  <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    Performance Analytics
                  </h1>
                  <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                   Detailed analysis of student performance and progression.
+                   Track student performance, scores, and progression over time.
                  </p>
               </div>
 
@@ -173,14 +174,14 @@ const PerformanceAnalytics = () => {
           <AnimatePresence mode="wait">
             {loading ? (
               <div className="flex flex-col items-center justify-center py-32 space-y-3 lg:space-y-6">
-                <Loading size="md" color="blue" message="Compiling performance data..." />
+                <Loading size="md" color="blue" message="Loading performance data..." />
               </div>
             ) : error ? (
                <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">
                  <ZapOff className="w-20 h-20 text-rose-300 mx-auto mb-4 lg:mb-8 opacity-40" />
-                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">Connection Interrupted</h3>
+                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">Failed to load data</h3>
                  <p className="text-rose-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
-                 <button onClick={() => window.location.reload()} className="mt-4 lg:mt-8 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest">Retry Connection</button>
+                 <button onClick={() => window.location.reload()} className="mt-4 lg:mt-8 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest">Try Again</button>
                </div>
             ) : (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 lg:space-y-12">
@@ -211,7 +212,7 @@ const PerformanceAnalytics = () => {
                      <div className="relative z-10 space-y-3 lg:space-y-6 text-center lg:text-left">
                         <div className="flex items-center justify-center lg:justify-start gap-4">
                            <div className="p-3 bg-primary-500 text-white rounded-2xl"><Award className="w-8 h-8" /></div>
-                           <h2 className="text-3xl lg:text-4xl font-black text-white dark:text-slate-900 uppercase italic tracking-tighter leading-none">Session Performance <span className="text-primary-500 block">Lead Distribution</span></h2>
+                           <h2 className="text-3xl lg:text-4xl font-black text-white dark:text-slate-900 uppercase italic tracking-tighter leading-none">Top Performers <span className="text-primary-500 block">Leaderboard</span></h2>
                         </div>
                         <div className="flex flex-wrap justify-center lg:justify-start gap-3 lg:gap-6">
                            {[
@@ -270,8 +271,8 @@ const PerformanceAnalytics = () => {
                                 <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
                                     <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
                                     <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Profile</th>
-                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Progression</th>
-                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Efficiency</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Level</th>
+                                   <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Accuracy</th>
                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Engagement</th>
                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Net Score</th>
                                 </tr>
@@ -292,7 +293,7 @@ const PerformanceAnalytics = () => {
                                         </div>
                                      </td>
                                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                        <div className="text-xs font-black text-primary-500 uppercase tracking-widest mb-1">LVL_{p.level?.currentLevel}</div>
+                                        <div className="text-xs font-black text-primary-500 uppercase tracking-widest mb-1">Level {p.level?.currentLevel}</div>
                                         <div className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase inline-block ${p.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500' : 'bg-slate-500/10 text-slate-500'}`}>{p.subscriptionStatus}</div>
                                      </td>
                                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
@@ -320,7 +321,7 @@ const PerformanceAnalytics = () => {
                                <div className="flex justify-between items-start mb-4 lg:mb-8">
                                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic text-xs ${idx < 3 ? 'bg-amber-500 text-white shadow-lg' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                   <div className="flex flex-col items-end">
-                                     <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">LVL_{p.level?.currentLevel}</div>
+                                     <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">Level {p.level?.currentLevel}</div>
                                      <div className={`text-[8px] font-black uppercase opacity-40`}>{p.subscriptionStatus}</div>
                                   </div>
                                </div>
@@ -331,11 +332,11 @@ const PerformanceAnalytics = () => {
                                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center mb-4 lg:mb-8 truncate">{p.email || 'N/A'}</div>
                                <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mt-auto">
                                   <div className="flex justify-between items-center mb-4">
-                                     <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Efficiency</div>
+                                     <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Accuracy</div>
                                      <div className="text-md font-black text-emerald-500 tabular-nums">{p.level?.accuracy}%</div>
                                   </div>
                                   <div className="flex justify-between items-center">
-                                     <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Victories</div>
+                                     <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">High Scores</div>
                                      <div className="text-md font-black text-primary-500 tabular-nums">{p.level?.highScoreQuizzes || 0}</div>
                                   </div>
                                </div>
@@ -358,7 +359,7 @@ const PerformanceAnalytics = () => {
                                </div>
                                <div className="flex flex-wrap items-center gap-3 lg:gap-8 border-t md:border-t-0 pt-4 md:pt-0">
                                   {[
-                                    { l: 'Efficiency', v: `${p.level?.accuracy}%`, c: 'text-emerald-500' },
+                                    { l: 'Accuracy', v: `${p.level?.accuracy}%`, c: 'text-emerald-500' },
                                     { l: 'Engagement', v: p.level?.quizzesPlayed, c: 'text-indigo-500' },
                                     { l: 'Net Score', v: p.level?.totalScore?.toFixed(0), c: 'text-primary-500' }
                                   ].map((s, i) => (
@@ -384,7 +385,7 @@ const PerformanceAnalytics = () => {
                             <span className="text-[10px] font-black text-purple-500 uppercase tracking-[0.3em]">Analysis // Success Rate by Category</span>
                            </div>
                            <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">Category Performance</h2>
-                           <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">Analyzing engagement volume across active exam categories.</p>
+                           <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">Quiz attempt volume and scores by exam category.</p>
                         </div>
                         <div className="bg-white/50 dark:bg-white/5 backdrop-blur-2xl p-4 rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-xl flex items-center gap-3 lg:gap-6">
                            <div className="border-r border-slate-100 dark:border-white/10 pr-6">
@@ -392,7 +393,7 @@ const PerformanceAnalytics = () => {
                               <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">{data?.categoryPerformance?.length || 0}</div>
                            </div>
                            <div>
-                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Aggregate Attempts</div>
+                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Attempts</div>
                               <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">{data?.categoryPerformance?.reduce((s, c) => s + (c.attemptCount || 0), 0).toLocaleString() || 0}</div>
                            </div>
                         </div>
@@ -424,7 +425,7 @@ const PerformanceAnalytics = () => {
                                    <td className="px-4 lg:px-8 py-3 lg:py-6 text-center text-lg font-black text-indigo-500 tabular-nums tracking-tighter">{cat.avgScore.toFixed(1)}%</td>
                                    <td className="px-4 lg:px-8 py-3 lg:py-6">
                                       <div className="w-32 mx-auto">
-                                         <div className="flex justify-between text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1"><span>Target Completion</span><span>{(cat.completionRate*100).toFixed(0)}%</span></div>
+                                         <div className="flex justify-between text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1"><span>Completion</span><span>{(cat.completionRate*100).toFixed(0)}%</span></div>
                                          <div className="h-1.5 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden"><motion.div initial={{width:0}} animate={{width:`${cat.completionRate * 100}%`}} className="h-full bg-gradient-to-r from-purple-500 to-indigo-500" /></div>
                                       </div>
                                    </td>

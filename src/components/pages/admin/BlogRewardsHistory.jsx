@@ -128,9 +128,9 @@ export default function BlogRewardsHistory() {
 
   const getRewardTierLabel = (tier) => {
     const labels = {
-      'normal': 'Standard Yield',
-      'good': 'Enhanced Yield',
-      'high': 'Peak Yield',
+      'normal': 'Standard',
+      'good': 'Good',
+      'high': 'High',
     };
     return labels[tier] || tier.toUpperCase();
   };
@@ -172,7 +172,7 @@ export default function BlogRewardsHistory() {
             />
             <BookOpen className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Intel Provision Logs...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading blog rewards history...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -189,12 +189,12 @@ export default function BlogRewardsHistory() {
           <thead>
             <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
               <th className="px-4 lg:px-8 py-4 lg:py-8">THUMBNAIL</th>
-              <th className="px-4 lg:px-8 py-4 lg:py-8">TIMESTAMP</th>
-              <th className="px-4 lg:px-8 py-4 lg:py-8">INTEL_AUTHOR</th>
-              <th className="px-4 lg:px-8 py-4 lg:py-8">INTEL_PAYLOAD</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">DATE</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">STUDENT</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8">ARTICLE</th>
               <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">REWARD TIER</th>
-              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">VALUATION</th>
-              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">POST_SYNC_BAL</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">AMOUNT</th>
+              <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">BALANCE AFTER</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -210,7 +210,7 @@ export default function BlogRewardsHistory() {
                    <div className="w-16 h-12 rounded-xl overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-105 transition-transform">
                       <img
                         src={tx.article?.featuredImage || '/default_banner.png'}
-                        alt="Intel"
+                        alt="Article thumbnail"
                         className="w-full h-full object-cover"
                         onError={(e) => { e.target.src = '/default_banner.png'; }}
                       />
@@ -226,7 +226,7 @@ export default function BlogRewardsHistory() {
                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-emerald-500 transition-colors flex items-center gap-2">
                           {tx.user?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                        </div>
-                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.user?.email || 'OFFLINE'}</div>
+                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.user?.email || 'N/A'}</div>
                     </Link>
                    ) : (
                     <div>
@@ -255,7 +255,7 @@ export default function BlogRewardsHistory() {
                 </td>
                 <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                    <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
-                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">YIELD_SYNCHRONIZED</div>
+                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Paid</div>
                 </td>
                 <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
                    ₹{tx.balance?.toLocaleString() || 0}
@@ -281,7 +281,7 @@ export default function BlogRewardsHistory() {
           <div className="w-24 h-20 rounded-lg lg:rounded-[2rem] overflow-hidden border-4 border-slate-100 dark:border-white/10 shadow-xl shrink-0 group-hover:scale-105 transition-transform">
              <img
                 src={tx.article?.featuredImage || '/default_banner.png'}
-                alt="Intel"
+                alt="Article thumbnail"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.src = '/default_banner.png'; }}
               />
@@ -297,7 +297,7 @@ export default function BlogRewardsHistory() {
              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-2">
                 <div className="flex items-center gap-2">
                    <User className="w-4 h-4 text-slate-300" />
-                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{tx.user?.name || 'OFFLINE'}</span>
+                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{tx.user?.name || 'Unknown'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                    <Layers className="w-4 h-4 text-slate-300" />
@@ -316,7 +316,7 @@ export default function BlogRewardsHistory() {
                 <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">+₹{tx.amount}</div>
              </div>
              <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
-                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">POST_SYNC_BAL</div>
+                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance After</div>
                 <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">₹{tx.balance?.toLocaleString() || 0}</div>
              </div>
           </div>
@@ -338,7 +338,7 @@ export default function BlogRewardsHistory() {
           <div className="relative mb-6 rounded-lg lg:rounded-[2rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl aspect-video">
              <img
                 src={tx.article?.featuredImage || '/default_banner.png'}
-                alt="Intel"
+                alt="Article thumbnail"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 onError={(e) => { e.target.src = '/default_banner.png'; }}
               />
@@ -360,17 +360,17 @@ export default function BlogRewardsHistory() {
                 </div>
                 <div className="flex-1 overflow-hidden">
                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase truncate">{tx.user?.name || 'Unknown'}</div>
-                   <div className="text-[8px] font-bold text-slate-400 uppercase italic truncate">{tx.user?.email || 'OFFLINE'}</div>
+                   <div className="text-[8px] font-bold text-slate-400 uppercase italic truncate">{tx.user?.email || 'N/A'}</div>
                 </div>
              </div>
 
              <div className="pt-4 border-t-2 border-slate-50 dark:border-white/5 flex items-center justify-between mt-auto">
                 <div className="flex flex-col">
-                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">VALUATION</span>
+                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Amount</span>
                    <span className="text-xl font-black italic text-emerald-500 tabular-nums">+₹{tx.amount}</span>
                 </div>
                 <div className="flex flex-col text-right">
-                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">POST_BAL</span>
+                   <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance After</span>
                    <span className="text-xl font-black italic text-primary-500 tabular-nums">₹{tx.balance?.toLocaleString() || 0}</span>
                 </div>
              </div>
@@ -384,7 +384,7 @@ export default function BlogRewardsHistory() {
     <AdminMobileAppWrapper title="Blog Rewards History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
           
           {/* Header Section */}
           <motion.div
@@ -398,12 +398,12 @@ export default function BlogRewardsHistory() {
                   <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                     <BookOpen className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / BLOG REWARD HISTORY</span>
+                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Blog Rewards Payout History</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  INTEL <span className="text-emerald-500">REWARDS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">HISTORY</span>
+                  BLOG <span className="text-emerald-500">REWARDS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">HISTORY</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of community-generated intelligence provisions and associated reward distributions.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View the history of blog rewards paid to students for their published articles.</p>
               </div>
 
                <div className="flex flex-col sm:flex-row items-center gap-3 lg:gap-6">
@@ -453,9 +453,9 @@ export default function BlogRewardsHistory() {
                 {[
                   { label: "TOTAL BLOGS", value: summary.totalBlogs, icon: BookOpen, color: "bg-slate-900 dark:bg-white/10 text-white" },
                   { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-emerald-600 text-white shadow-emerald-500/20" },
-                  { label: "STANDARD", value: summary.normalRewards, icon: Zap, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
-                  { label: "GOOD", value: summary.goodRewards, icon: Award, color: "bg-primary-500 text-white shadow-primary-500/20" },
-                  { label: "HIGH", value: summary.highRewards, icon: Star, color: "bg-rose-500 text-white shadow-rose-500/20" }
+                  { label: "STANDARD TIER", value: summary.normalRewards, icon: Zap, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
+                  { label: "GOOD TIER", value: summary.goodRewards, icon: Award, color: "bg-primary-500 text-white shadow-primary-500/20" },
+                  { label: "HIGH TIER", value: summary.highRewards, icon: Star, color: "bg-rose-500 text-white shadow-rose-500/20" }
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -487,8 +487,8 @@ export default function BlogRewardsHistory() {
                  className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_PROVISIONS_RECOVERED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded intel reward events detected for the current tactical filter.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Rewards Found</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No blog reward payouts match your current filters. Try adjusting your search or filter settings.</p>
                </motion.div>
              ) : (
                 viewMode === 'table' ? renderTableView() :
@@ -497,7 +497,7 @@ export default function BlogRewardsHistory() {
              )}
           </AnimatePresence>
 
-          {/* Spectral Pagination */}
+          {/* Pagination */}
           {pagination.totalPages > 1 && (
             <div className="flex justify-center pt-16">
               <Pagination

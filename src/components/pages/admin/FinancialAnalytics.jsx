@@ -91,7 +91,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
         </div>
         {sub !== undefined && (
           <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-tight opacity-60">
-            {sub} ACTIVE ENTITIES
+            {sub} active
           </div>
         )}
       </div>
@@ -188,7 +188,7 @@ const FinancialAnalytics = () => {
                   <div className="p-3 bg-emerald-500/20 text-emerald-500 rounded-2xl shadow-sm">
                     <Banknote className="w-6 h-6" />
                   </div>
-                   <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN // FINANCIAL ANALYTICS</span>
+                   <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Admin / Financial Analytics</span>
                  </div>
                  <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    Revenue Analytics
@@ -208,7 +208,7 @@ const FinancialAnalytics = () => {
                     </select>
                   </div>
                    <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
-                     <DownloadCloud className="w-4 h-4" /> EXPORT AUDIT
+                     <DownloadCloud className="w-4 h-4" /> Export CSV
                    </motion.button>
                 </div>
               </div>
@@ -232,7 +232,7 @@ const FinancialAnalytics = () => {
             ) : error ? (
               <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">
                 <Zap className="w-16 h-16 text-rose-500 mx-auto mb-6" />
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Sync Error</h3>
+                <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                 <p className="text-rose-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
               </div>
             ) : (
@@ -260,7 +260,7 @@ const FinancialAnalytics = () => {
 
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
-                       <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Velocity</h3>
+                       <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
                        <BarChart3 className="w-5 h-5 text-emerald-500 opacity-30" />
                     </div>
                     <div className="h-80">
@@ -276,7 +276,7 @@ const FinancialAnalytics = () => {
                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
                         <h3 className="text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1">Plan Performance Breakdown</h3>
-                        <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Analyzing revenue by subscription plan</span>
+                        <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Revenue breakdown by subscription plan</span>
                      </div>
                   </div>
                </div>
@@ -302,17 +302,17 @@ const FinancialAnalytics = () => {
                                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-emerald-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
                                      <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-emerald-500 transition-colors">{p.planName || p._id || 'Unknown'}</div>
-                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Subscription Category</div>
+                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Subscription Plan</div>
                                      </div>
                                   </div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                   <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">{p.count || 0} USERS</div>
-                                  <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Subscribers</div>
+                                  <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Subscribers</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                   <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
-                                  <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Revenue Generated</div>
+                                  <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Revenue</div>
                                </td>
                             </motion.tr>
                           ))}

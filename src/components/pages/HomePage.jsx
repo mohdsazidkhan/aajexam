@@ -31,10 +31,12 @@ import API from "../../lib/api";
 import Image from "next/image";
 import { useAuthStatus } from "../../hooks/useClientSide";
 
+import HomePageSkeleton from "../HomePageSkeleton";
+
 // UI Components
 import Button from "../ui/Button";
 import Card from "../ui/Card";
-import Skeleton from "../Skeleton";
+
 
 const HomePage = () => {
    const router = useRouter();
@@ -69,26 +71,7 @@ const HomePage = () => {
    }, []);
 
    if (!authLoading || loading) {
-      return (
-         <div className="space-y-12 pt-6 font-outfit">
-            <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[2rem] lg:rounded-[3rem] shadow-xl">
-               <Skeleton height="80px" borderRadius="1.5rem" />
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4">
-               <div className="lg:col-span-8"><Skeleton height="320px" borderRadius="3rem" /></div>
-               <div className="lg:col-span-4 space-y-8">
-                  <Skeleton height="150px" borderRadius="2.5rem" />
-                  <Skeleton height="150px" borderRadius="2.5rem" />
-               </div>
-            </div>
-            <div className="px-4">
-               <Skeleton height="120px" borderRadius="3rem" />
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-               {[1, 2, 3, 4].map(i => <Skeleton key={i} height="180px" borderRadius="2.5rem" />)}
-            </div>
-         </div>
-      );
+      return <HomePageSkeleton />;
    }
 
    // --- Extract Performance Data ---

@@ -60,7 +60,7 @@ const AdminUsersAnalytics = () => {
                 setTotalUsers(pag.totalUsers || list.length);
                 setPage(pg);
             } else {
-                setError(res?.message || 'Data loading failure');
+                setError(res?.message || 'Failed to load data. Please try again.');
             }
         } catch (err) {
             setError(err?.message || 'Failed to load student data');
@@ -108,19 +108,19 @@ const AdminUsersAnalytics = () => {
                                     <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
                                         <Users className="w-6 h-6" />
                                     </div>
-                                     <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN // USER ANALYTICS</span>
+                                     <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
                                  </div>
                                  <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                                      User Performance & Earnings
                                  </h1>
                                  <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                                     Detailed analysis of user activity, revenue, and reward distribution.
+                                     Browse user activity, earnings, and subscription details.
                                  </p>
                             </div>
 
                             <div className="flex flex-wrap items-center gap-4">
                                  <motion.button whileHover={{ scale: 1.05 }} onClick={() => router.push('/admin/expenses')} className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
-                                     <Wallet className="w-4 h-4" /> EXPENSE RECORDS
+                                     <Wallet className="w-4 h-4" /> Expenses
                                  </motion.button>
                                 <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
                                     <DownloadCloud className="w-6 h-6" />
@@ -132,10 +132,10 @@ const AdminUsersAnalytics = () => {
                         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                             {[
                                  { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'blue', desc: 'Active Learners' },
-                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'emerald', desc: 'Subscription Flow', isCurrency: true },
-                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'rose', desc: 'User Rewards', isCurrency: true },
-                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'amber', desc: 'Maintenance & Rewards', isCurrency: true },
-                                 { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', desc: 'Platform Performance', isCurrency: true, isNet: true }
+                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'emerald', desc: 'From Subscriptions', isCurrency: true },
+                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'rose', desc: 'Paid to Users', isCurrency: true },
+                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'amber', desc: 'Additional Costs', isCurrency: true },
+                                 { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', desc: 'Overall Balance', isCurrency: true, isNet: true }
                              ].map((stat, i) => (
                                 <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl group hover:border-primary-500/30 transition-all">
                                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><stat.icon className="w-5 h-5" /></div>
@@ -155,7 +155,7 @@ const AdminUsersAnalytics = () => {
                     <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-8 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 font-outfit">
                          <div className="flex-1 relative group w-full lg:max-w-xl">
                             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
-                             <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Filter by User Name or Email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />
+                             <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />
                          </div>
                          <div className="flex flex-wrap items-center gap-4">
                             <div className="relative group">
@@ -183,14 +183,14 @@ const AdminUsersAnalytics = () => {
                         ) : error ? (
                             <div className="text-center py-32">
                                 <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 inline-block text-rose-500 text-2xl lg:text-6xl">!</div>
-                                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Error</h3>
+                                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
                         ) : students.length === 0 ? (
                             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                                 <Globe className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter italic">No Users Found</h3>
-                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust filters to locate participants.</p>
+                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search or filters.</p>
                             </div>
                         ) : (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 lg:space-y-12">
@@ -202,8 +202,8 @@ const AdminUsersAnalytics = () => {
                                                      <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rank</th>
                                                      <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Profile</th>
                                                     <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Tier</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Progression</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Net Yield</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Level</th>
+                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Earnings</th>
                                                     <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -222,7 +222,7 @@ const AdminUsersAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'Free'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">EVO_LEVEL: LVL {s.level?.currentLevel?.number ?? s.level?.currentLevel ?? 0}</span>
+                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">Level {s.level?.currentLevel?.number ?? s.level?.currentLevel ?? 0}</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: `${Math.min((s.level?.currentLevel || 0)*5, 100)}%` }} /></div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
@@ -246,15 +246,15 @@ const AdminUsersAnalytics = () => {
                                                 <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center mb-4 lg:mb-8 truncate">{s.email || 'N/A'}</div>
                                                 <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                                                     <div className="flex justify-between items-center mb-4">
-                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Yield</div>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Earnings</div>
                                                         <div className="text-md font-black text-emerald-500 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     </div>
                                                     <div className="flex justify-between items-center">
-                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Progression</div>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Level</div>
                                                         <span className="text-indigo-500 text-sm italic tracking-tighter">LVL {s.level?.currentLevel?.number ?? s.level?.currentLevel ?? 0}</span>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">Audit Portfolio</button>
+                                                <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Details</button>
                                             </motion.div>
                                         ))}
                                     </div>
@@ -267,17 +267,17 @@ const AdminUsersAnalytics = () => {
                                                 <div className="flex items-center gap-3 lg:gap-6">
                                                     <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-xl shadow-xl shrink-0 italic">{(s.name || 'U')[0]}</div>
                                                     <div>
-                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{s.name || 'Candidate'}</h3>
+                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{s.name || 'User'}</h3>
                                                         <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                                                             <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email?.substring(0, 20)}...</span>
-                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>LVL_{s.level?.currentLevel || 0}</span>
+                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>Level {s.level?.currentLevel || 0}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-3 lg:gap-8 border-t md:border-t-0 pt-4 md:pt-0">
                                                     <div className="text-right">
                                                         <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
-                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Yield</div>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Earnings</div>
                                                     </div>
                                                     <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-2xl shadow-sm"><ArrowUpRight className="w-5 h-5" /></motion.button>
                                                 </div>

@@ -119,7 +119,7 @@ const UserAnalytics = () => {
     }
   };
 
-  const levelLabels = data?.levelDistribution?.map(l => `LVL_${l._id}`) || [];
+  const levelLabels = data?.levelDistribution?.map(l => `Level ${l._id}`) || [];
   const levelCounts = data?.levelDistribution?.map(l => l.count) || [];
   const subscriptionLabels = data?.subscriptionStats?.map(s => s._id?.toUpperCase()) || [];
   const subscriptionCounts = data?.subscriptionStats?.map(s => s.count) || [];
@@ -129,7 +129,7 @@ const UserAnalytics = () => {
   const levelBarData = {
     labels: levelLabels,
     datasets: [{
-      label: 'CANDIDATE_VOLUME',
+      label: 'Users',
       data: levelCounts,
       backgroundColor: 'rgba(79, 70, 229, 0.7)',
       borderColor: 'rgba(79, 70, 229, 1)',
@@ -142,7 +142,7 @@ const UserAnalytics = () => {
   const subscriptionPieData = {
     labels: subscriptionLabels,
     datasets: [{
-      label: 'SUBSCRIPTION_FLUX',
+      label: 'Subscriptions',
       data: subscriptionCounts,
       backgroundColor: [
         'rgba(79, 70, 229, 0.8)',
@@ -159,7 +159,7 @@ const UserAnalytics = () => {
   const userGrowthLineData = {
     labels: userGrowthLabels,
     datasets: [{
-      label: 'GROWTH_TRAJECTORY',
+      label: 'New Users',
       data: userGrowthCounts,
       borderColor: 'rgba(79, 70, 229, 1)',
       backgroundColor: 'rgba(79, 70, 229, 0.1)',
@@ -255,7 +255,7 @@ const UserAnalytics = () => {
             />
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Computing Demographic flux...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user analytics...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -265,7 +265,7 @@ const UserAnalytics = () => {
     <AdminMobileAppWrapper title="User Analytics">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -279,12 +279,12 @@ const UserAnalytics = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Activity className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">CANDIDATE_ANALYTICS // GROWTH_DATA</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  CONSUMER <span className="text-indigo-600">INTEL</span>
+                  User <span className="text-indigo-600">Analytics</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">Detailed insights into candidate behavior, acquisition trends, and scholastic level performance across the ecosystem.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth, level distribution, and subscription trends at a glance.</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -292,7 +292,7 @@ const UserAnalytics = () => {
                   onClick={handleExport}
                   className="px-4 lg:px-8 py-4 bg-indigo-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
                 >
-                  <Download className="w-4 h-4" /> EXPORT_SCHEMATIC_CSV
+                  <Download className="w-4 h-4" /> Export CSV
                 </button>
               </div>
             </div>
@@ -305,8 +305,8 @@ const UserAnalytics = () => {
                 <Filter className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">DATA_FILTERING</div>
-                <div className="text-sm font-black italic uppercase tracking-tighter">Temporal Intelligence Parameters</div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Filters</div>
+                <div className="text-sm font-black italic uppercase tracking-tighter">Filter Options</div>
               </div>
             </div>
 
@@ -319,10 +319,10 @@ const UserAnalytics = () => {
                   onChange={handleFilterChange}
                   className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
                 >
-                  <option value="week">TEMPORAL: 7_DAYS</option>
-                  <option value="month">TEMPORAL: 30_DAYS</option>
-                  <option value="quarter">TEMPORAL: QUARTERLY</option>
-                  <option value="year">TEMPORAL: ANNUAL</option>
+                  <option value="week">Past 7 Days</option>
+                  <option value="month">Past 30 Days</option>
+                  <option value="quarter">Past 90 Days</option>
+                  <option value="year">Full Year</option>
                 </select>
                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
               </div>
@@ -333,7 +333,7 @@ const UserAnalytics = () => {
                   name="level"
                   value={filters.level}
                   onChange={handleFilterChange}
-                  placeholder="FILTER_BY_LEVEL..."
+                  placeholder="Filter by level..."
                   className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
                 />
               </div>
@@ -344,7 +344,7 @@ const UserAnalytics = () => {
                   name="subscription"
                   value={filters.subscription}
                   onChange={handleFilterChange}
-                  placeholder="FILTER_BY_PLAN..."
+                  placeholder="Filter by plan..."
                   className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
                 />
               </div>
@@ -364,7 +364,7 @@ const UserAnalytics = () => {
                     <BarChart3 className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">SCHOLASTIC_SPREAD</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">By Level</div>
                     <div className="text-xl font-black italic uppercase tracking-tighter italic">Level Distribution</div>
                   </div>
                 </div>
@@ -373,7 +373,7 @@ const UserAnalytics = () => {
                 {levelLabels.length > 0 ? <Bar data={levelBarData} options={baseOptions(mode)} /> : (
                   <div className="h-full flex flex-col items-center justify-center text-slate-300">
                      <BarChart3 className="w-16 h-16 mb-4 opacity-20" />
-                     <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                     <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
                   </div>
                 )}
               </div>
@@ -390,7 +390,7 @@ const UserAnalytics = () => {
                     <PieChartIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">ECONOMY_FLUX</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">By Plan</div>
                     <div className="text-xl font-black italic uppercase tracking-tighter italic">Subscription Stats</div>
                   </div>
                 </div>
@@ -399,7 +399,7 @@ const UserAnalytics = () => {
                 {subscriptionLabels.length > 0 ? <Pie data={subscriptionPieData} options={pieOptions(mode)} /> : (
                    <div className="h-full flex flex-col items-center justify-center text-slate-300">
                       <PieChartIcon className="w-16 h-16 mb-4 opacity-20" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
                    </div>
                 )}
               </div>
@@ -417,8 +417,8 @@ const UserAnalytics = () => {
                   <LineChart className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">ACQUISITION_TRENDS</div>
-                  <div className="text-xl font-black italic uppercase tracking-tighter italic">Candidate Growth Curve</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Growth Trend</div>
+                  <div className="text-xl font-black italic uppercase tracking-tighter italic">User Growth Over Time</div>
                 </div>
               </div>
             </div>
@@ -426,7 +426,7 @@ const UserAnalytics = () => {
               {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
                  <div className="h-full flex flex-col items-center justify-center text-slate-300">
                     <LineChart className="w-16 h-16 mb-4 opacity-20" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">ZERO_DATA_MAPPED</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
                  </div>
               )}
             </div>

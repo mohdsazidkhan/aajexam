@@ -71,7 +71,7 @@ export default function AdminQuizRewardsHistory() {
                 setError(res?.message || 'Failed to fetch reward history');
             }
         } catch (err) {
-            setError(err.message || 'Synchronization failure');
+            setError(err.message || 'Failed to load rewards history');
         } finally {
             setLoading(false);
         }
@@ -102,18 +102,18 @@ export default function AdminQuizRewardsHistory() {
                             <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
                               <History className="w-6 h-6" />
                             </div>
-                            <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Treasury // Rewards Disbursement</span>
+                            <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Quiz Rewards Payout History</span>
                           </div>
                           <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                            Payout History
+                            Quiz Rewards History
                           </h1>
                           <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                            Audit trail of quiz rewards and beneficiary settlements.
+                            View the history of quiz rewards paid to students.
                           </p>
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4">
-                          <SearchFilter searchTerm={searchTerm} onSearchChange={handleSearch} placeholder="Filter by user or intent..." />
+                          <SearchFilter searchTerm={searchTerm} onSearchChange={handleSearch} placeholder="Search by student name or email..." />
                           <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                             {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
                               <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
@@ -130,9 +130,9 @@ export default function AdminQuizRewardsHistory() {
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12">
                          {[
                            { label: 'Total Rewards', val: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Trophy, color: 'emerald' },
-                           { label: 'Disbursements', val: summary.totalTransactions || 0, icon: Activity, color: 'blue' },
-                           { label: 'Pending Yield', val: '₹12,450', icon: Clock, color: 'amber' },
-                           { label: 'Global Rank', val: 'TOP 1%', icon: Award, color: 'indigo' }
+                           { label: 'Total Payouts', val: summary.totalTransactions || 0, icon: Activity, color: 'blue' },
+                           { label: 'Pending Rewards', val: '₹12,450', icon: Clock, color: 'amber' },
+                           { label: 'Top Performers', val: 'TOP 1%', icon: Award, color: 'indigo' }
                          ].map((s, i) => (
                            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-lg group hover:border-primary-500/30 transition-all">
                               <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>
@@ -146,18 +146,18 @@ export default function AdminQuizRewardsHistory() {
                     {/* Content */}
                     <AnimatePresence mode="wait">
                       {loading ? (
-                         <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Synchronizing reward buffer..." /></div>
+                         <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Loading rewards history..." /></div>
                       ) : error ? (
                          <div className="text-center py-32">
                             <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block text-rose-500 text-2xl lg:text-6xl">!</div>
-                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Sync Error</h3>
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something Went Wrong</h3>
                             <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                          </div>
                       ) : transactions.length === 0 ? (
                          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                             <Trophy className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                            <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Rewards Logged</h3>
-                            <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No payout transactions found in the treasury buffer.</p>
+                            <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Rewards Found</h3>
+                            <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No quiz reward payouts have been made yet. Rewards will appear here once students complete quizzes.</p>
                          </div>
                       ) : (
                           <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -167,10 +167,10 @@ export default function AdminQuizRewardsHistory() {
                                     <thead>
                                        <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
                                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
-                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Beneficiary</th>
-                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Reason / Description</th>
-                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Yield</th>
-                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Post-Balance</th>
+                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
+                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Description</th>
+                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Amount</th>
+                                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Balance After</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -191,7 +191,7 @@ export default function AdminQuizRewardsHistory() {
                                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                <div className="flex items-center gap-3">
                                                   <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-lg"><FileText className="w-3 h-3" /></div>
-                                                  <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase leading-relaxed tracking-wider">{tx.description || 'General Quiz Yield'}</span>
+                                                  <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase leading-relaxed tracking-wider">{tx.description || 'Quiz Reward'}</span>
                                                </div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -219,22 +219,22 @@ export default function AdminQuizRewardsHistory() {
                                          <div className="flex items-center gap-4">
                                             <div className="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center font-black text-xs uppercase shadow-lg group-hover:scale-110 transition-transform">{tx.user?.name?.[0] || 'U'}</div>
                                             <div className="truncate">
-                                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1 group-hover:text-primary-500 transition-colors truncate">{tx.user?.name || 'Candidate'}</div>
+                                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1 group-hover:text-primary-500 transition-colors truncate">{tx.user?.name || 'Unknown Student'}</div>
                                                <div className="text-[8px] font-black text-slate-400 tracking-widest uppercase truncate">{tx.user?.email || 'N/A'}</div>
                                             </div>
                                          </div>
                                          <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Reason</div>
-                                            <div className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase leading-relaxed line-clamp-2">{tx.description || 'Disbursement'}</div>
+                                            <div className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase leading-relaxed line-clamp-2">{tx.description || 'Quiz Reward'}</div>
                                          </div>
                                       </div>
                                       <div className="mt-4 lg:mt-8 pt-6 border-t border-slate-100 dark:border-white/10 flex justify-between items-end">
                                          <div>
-                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Settlement</div>
+                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Amount</div>
                                             <div className="text-xl font-black text-emerald-600 dark:text-emerald-500 italic">+₹{tx.amount}</div>
                                          </div>
                                          <div className="text-right">
-                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Net Balance</div>
+                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance After</div>
                                             <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">₹{tx.balance || 0}</div>
                                          </div>
                                       </div>
@@ -251,7 +251,7 @@ export default function AdminQuizRewardsHistory() {
                                          <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center font-black text-xl shadow-xl shrink-0 italic">{tx.user?.name?.[0] || 'U'}</div>
                                          <div>
                                             <div className="flex items-center gap-3 mb-1">
-                                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{tx.user?.name || 'Candidate'}</h3>
+                                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{tx.user?.name || 'Unknown Student'}</h3>
                                                <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">+₹{tx.amount}</span>
                                             </div>
                                             <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">

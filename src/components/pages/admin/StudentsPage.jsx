@@ -53,20 +53,20 @@ const StudentsPage = () => {
   const handleCreateSubscription = async (e) => {
     e.preventDefault();
     if (!createFormData.email) {
-      toast.error('Please enter an email');
+      toast.error('Please enter a student email address.');
       return;
     }
 
     try {
       setCreateLoading(true);
       await API.adminCreateSubscription(createFormData);
-      toast.success(`Subscription created for ${createFormData.email}`);
+      toast.success(`Subscription successfully created for ${createFormData.email}`);
       setShowCreateModal(false);
       setCreateFormData({ email: '', planId: 'pro', duration: '1 month' });
       fetchStudents(currentPage, searchTerm, filters);
     } catch (error) {
       console.error('Error creating subscription:', error);
-      toast.error(error.response?.data?.message || 'Failed to create subscription');
+      toast.error(error.response?.data?.message || 'Unable to create subscription. Please try again.');
     } finally {
       setCreateLoading(false);
     }
@@ -103,7 +103,7 @@ const StudentsPage = () => {
       setPagination(response.pagination || {});
     } catch (error) {
       console.error('Error fetching students:', error);
-      toast.error('Failed to fetch students');
+      toast.error('Unable to load students. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -143,23 +143,23 @@ const StudentsPage = () => {
   const handleStatusChange = async (studentId, updateData) => {
     try {
       await API.updateStudent(studentId, updateData);
-      toast.success('Student updated successfully!');
+      toast.success('Student details updated successfully!');
       fetchStudents(currentPage, searchTerm, filters);
     } catch (error) {
       console.error('Error updating student:', error);
-      toast.error('Failed to update student');
+      toast.error('Unable to update student. Please try again.');
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this student?')) {
+    if (window.confirm('This will permanently remove this student account. Are you sure you want to continue?')) {
       try {
         await API.deleteStudent(id);
-        toast.success('Student deleted successfully!');
+        toast.success('Student account has been removed.');
         fetchStudents(currentPage, searchTerm, filters);
       } catch (error) {
         console.error('Error deleting student:', error);
-        toast.error('Failed to delete student');
+        toast.error('Unable to delete student. Please try again.');
       }
     }
   };
@@ -194,7 +194,7 @@ const StudentsPage = () => {
   const columns = [
     {
       key: 'sno',
-      header: 'S.No.',
+      header: '#',
       render: (_, student) => {
         // Calculate serial number based on student's position in the array
         const studentIndex = students?.findIndex(s => s?._id === student?._id);
@@ -233,7 +233,7 @@ const StudentsPage = () => {
     },
     {
       key: 'walletBalance',
-      header: 'Balance',
+      header: 'Wallet Balance',
       render: (_, student) => (
         <div className="text-sm font-semibold text-green-700 dark:text-green-400">
           {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(student.walletBalance || 0)}
@@ -246,7 +246,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div>
           <div className="text-sm text-gray-900 dark:text-white">{student.email}</div>
-          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">{student.phone || 'No phone'}</div>
+          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">{student.phone || 'Not provided'}</div>
         </div>
       )
     },
@@ -266,7 +266,7 @@ const StudentsPage = () => {
     },
     {
       key: 'referralCode',
-      header: 'Ref. Code',
+      header: 'Referral Code',
       render: (_, student) => (
         <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
           {student.referralCode || 'N/A'}
@@ -313,7 +313,7 @@ const StudentsPage = () => {
     },
     {
       key: 'referralCount',
-      header: 'Ref Count',
+      header: 'Referrals',
       render: (_, student) => (
         <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
           {student.referralCount || 0}
@@ -331,7 +331,7 @@ const StudentsPage = () => {
     },
     {
       key: 'joined',
-      header: 'Joined',
+      header: 'Date Joined',
       render: (_, student) => (
         <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
           {formatDate(student.createdAt)}
@@ -353,7 +353,7 @@ const StudentsPage = () => {
         value={student.subscriptionStatus || 'free'}
         onChange={(e) => handleStatusChange(student._id, { subscriptionStatus: e.target.value })}
         className="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
-        title="Change Subscription Status"
+        title="Change subscription plan"
       >
         <option value="free">Free</option>
         <option value="pro">Pro</option>
@@ -368,7 +368,7 @@ const StudentsPage = () => {
           router.push(`/admin/students/${student._id}`);
         }}
         className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 p-1.5 sm:p-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors"
-        title="Edit Student"
+        title="View student details"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
@@ -380,7 +380,7 @@ const StudentsPage = () => {
           handleDelete(student._id);
         }}
         className="text-red-500 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-        title="Delete Student"
+        title="Remove student"
       >
         <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
@@ -394,7 +394,7 @@ const StudentsPage = () => {
        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
-         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10`}>
+         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10`}>
             {/* Student Directory Overview */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -410,10 +410,10 @@ const StudentsPage = () => {
                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">USER MANAGEMENT</span>
                  </div>
                   <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                    STUDENT <span className="text-indigo-600">LIST</span>
+                    STUDENT <span className="text-indigo-600">DIRECTORY</span>
                   </h1>
                   <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">
-                    Manage all registered students.
+                    Browse and manage all registered student accounts.
                   </p>
                </div>
 
@@ -424,7 +424,7 @@ const StudentsPage = () => {
                     icon={UserPlus}
                     className="px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
                   >
-                    ADD SUBSCRIPTION
+                    CREATE SUBSCRIPTION
                   </Button>
               </div>
             </div>
@@ -434,7 +434,7 @@ const StudentsPage = () => {
                  { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'blue' },
                  { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
                  { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'pro').length || 0, icon: Crown, color: 'amber' },
-                 { label: 'New Students', value: students.filter(s => s.level?.currentLevel <= 1).length || 0, icon: Star, color: 'indigo' }
+                 { label: 'New Signups', value: students.filter(s => s.level?.currentLevel <= 1).length || 0, icon: Star, color: 'indigo' }
                ].map((stat, i) => (
                  <div
                    key={stat.label}
@@ -459,7 +459,7 @@ const StudentsPage = () => {
                    type="text"
                    value={searchTerm}
                    onChange={(e) => handleSearch(e.target.value)}
-                   placeholder="Search students..."
+                   placeholder="Search students by name or email..."
                    className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                  />
                </div>
@@ -490,7 +490,7 @@ const StudentsPage = () => {
                      onChange={handleItemsPerPageChange}
                      className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all"
                    >
-                     {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} PER PAGE</option>)}
+                     {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} per page</option>)}
                    </select>
                    <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                  </div>
@@ -516,7 +516,7 @@ const StudentsPage = () => {
                    />
                    <Users className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
                  </div>
-                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading students...</div>
+                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading student accounts...</div>
                </motion.div>
              ) : students.length === 0 ? (
                <motion.div
@@ -528,8 +528,8 @@ const StudentsPage = () => {
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Records Found</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No students found.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Students Found</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No students have registered yet.</p>
                </motion.div>
             ) : (
               <motion.div
@@ -544,12 +544,12 @@ const StudentsPage = () => {
                     <table className="w-full min-w-[700px]">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level & Status</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account State</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet Balance</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account Status</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                         </tr>
                       </thead>
@@ -583,7 +583,7 @@ const StudentsPage = () => {
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="space-y-1">
                                  <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-blue-500/50" /> {student.email}</div>
-                                 <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'No phone'}</div>
+                                 <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'Not provided'}</div>
                               </div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -682,11 +682,11 @@ const StudentsPage = () => {
                         </div>
 
                          <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
-                         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'No username'}</div>
+                         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'No username set'}</div>
 
                         <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                            <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">User Level</div>
+                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Level</div>
                              <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter">{student.level?.currentLevel || 1}</div>
                            </div>
                            <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
@@ -700,7 +700,7 @@ const StudentsPage = () => {
                             whileHover={{ scale: 1.05 }}
                              className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
                            >
-                             VIEW DETAILS
+                             VIEW PROFILE
                            </motion.button>
                           <div className="p-1">
                             {renderStudentActions(student)}
@@ -728,7 +728,7 @@ const StudentsPage = () => {
           </AnimatePresence>
         </div>
 
-         {/* Subscription Provisioning Modal */}
+         {/* Create Subscription Modal */}
          <AnimatePresence>
            {showCreateModal && (
              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
@@ -756,7 +756,7 @@ const StudentsPage = () => {
                           <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Subscription</span>
                         </div>
                          <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                           ADD <span className="text-indigo-600">SUBSCRIPTION</span>
+                           CREATE <span className="text-indigo-600">SUBSCRIPTION</span>
                          </h2>
                       </div>
                    </div>
@@ -782,13 +782,13 @@ const StudentsPage = () => {
                             value={createFormData.email}
                             onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
                             className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-inner"
-                            placeholder="ENTER RECIPIENT EMAIL..."
+                            placeholder="ENTER STUDENT EMAIL ADDRESS..."
                           />
                         </div>
                       </div>
  
                      <div className="space-y-3 lg:space-y-6">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Select Plan</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Choose a Plan</label>
                       <div className="grid grid-cols-1 gap-4">
                          {[
                            { id: 'basic', label: 'Basic Plan', price: '₹9', icon: Shield, color: 'blue' },
@@ -807,7 +807,7 @@ const StudentsPage = () => {
                               </div>
                               <div>
                                  <div className="text-xs font-black uppercase italic tracking-tighter">{tier.label}</div>
-                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tier.id.toUpperCase()}</div>
+                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tier.price}/month</div>
                                </div>
                             </div>
                             <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{tier.price}</div>
@@ -818,7 +818,7 @@ const StudentsPage = () => {
 
                      <div className="flex items-center gap-4 pt-6 text-[10px] font-black uppercase tracking-widest text-slate-400 italic">
                        <Info className="w-4 h-4" />
-                       Subscriptions will be active for the selected duration (standard 30 days).
+                       The subscription will be active for 30 days from the date of creation.
                      </div>
 
                     <div className="flex items-center gap-4 pt-4">
@@ -842,7 +842,7 @@ const StudentsPage = () => {
                            <RefreshCcw className="w-4 h-4 animate-spin" />
                          ) : (
                            <>
-                             <Zap className="w-4 h-4" /> Add Subscription
+                             <Zap className="w-4 h-4" /> Create Subscription
                            </>
                          )}
                        </motion.button>

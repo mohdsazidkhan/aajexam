@@ -113,15 +113,15 @@ const AdminGovtExamCategories = () => {
   };
 
   const handleDelete = async (categoryId) => {
-    if (!confirm("Are you sure you want to neutralized this category node?")) return;
+    if (!confirm("Are you sure you want to delete this category?")) return;
 
     try {
       await API.deleteExamCategory(categoryId);
-      toast.success("Category node neutralized");
+      toast.success("Category deleted");
       fetchCategories();
     } catch (error) {
       console.error("Error deleting category:", error);
-      toast.error(error?.response?.data?.message || "Tactical failure during neutralization");
+      toast.error(error?.response?.data?.message || "Failed to delete category");
     }
   };
 
@@ -131,16 +131,16 @@ const AdminGovtExamCategories = () => {
     try {
       if (editingCategory) {
         await API.updateExamCategory(editingCategory._id, formData);
-        toast.success("Protocol updated successfully");
+        toast.success("Category updated successfully");
       } else {
         await API.createExamCategory(formData);
-        toast.success("New protocol node established");
+        toast.success("Category created successfully");
       }
       setShowModal(false);
       fetchCategories();
     } catch (error) {
       console.error("Error saving category:", error);
-      toast.error(error?.response?.data?.message || "Failed to finalize transmission");
+      toast.error(error?.response?.data?.message || "Failed to save category");
     }
   };
 
@@ -153,10 +153,10 @@ const AdminGovtExamCategories = () => {
   if (!isMounted) return null;
 
   return (
-    <AdminMobileAppWrapper title="Exam Taxonomies">
+    <AdminMobileAppWrapper title="Exam Categories">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -170,12 +170,12 @@ const AdminGovtExamCategories = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Shield className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN_HUB // EXAM_TAXONOMIES</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN / EXAM CATEGORIES</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    GOVT <span className="text-indigo-500">EXAMS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Manage macro-level government examination classifications. Configure spatial and regional parameters.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Organize government exams by category and jurisdiction.</p>
               </div>
 
                <div className="flex items-center gap-4">
@@ -209,7 +209,7 @@ const AdminGovtExamCategories = () => {
           <AnimatePresence mode="wait">
              {loading && categories.length === 0 ? (
                 <div className="flex justify-center py-40">
-                   <Loading size="lg" color="blue" message="" />
+                   <Loading size="lg" color="blue" message="Loading categories..." />
                 </div>
              ) : categories.length === 0 ? (
                <motion.div
@@ -251,7 +251,7 @@ const AdminGovtExamCategories = () => {
                               className="group hover:bg-indigo-500/5 transition-all"
                             >
                               <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight text-lg">
-                                 {category.name} <span className="text-slate-300 text-xs ml-1 tracking-widest">// EXAMS</span>
+                                 {category.name}
                               </td>
                               <td className="px-4 lg:px-8 py-3 lg:py-6">
                                  <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central" 
@@ -262,7 +262,7 @@ const AdminGovtExamCategories = () => {
                                  </div>
                               </td>
                               <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 line-clamp-1 max-w-xs">{category.description || 'GENERIC_SCHEMA'}</p>
+                                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 line-clamp-1 max-w-xs">{category.description || 'No description'}</p>
                               </td>
                               <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-[10px] text-slate-400 uppercase tracking-tighter tabular-nums">
                                  {formatDate(category.createdAt)}
@@ -306,10 +306,10 @@ const AdminGovtExamCategories = () => {
                                      {category.type?.toUpperCase()}
                                   </div>
                                </div>
-                               <p className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-2xl">{category.description || 'GENERIC PROTOCOL SCHEMA FOR GOVERNMENTAL EXAMINATION ASSESSMENT TAXONOMY.'}</p>
+                               <p className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-2xl">{category.description || 'No description provided for this category.'}</p>
                                <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
                                   <Clock className="w-3 h-3 text-slate-300" />
-                                  <span className="text-[9px] font-black text-slate-300 uppercase italic tracking-widest">{formatDate(category.createdAt)} // REF_ID: {category._id?.slice(-8).toUpperCase()}</span>
+                                  <span className="text-[9px] font-black text-slate-300 uppercase italic tracking-widest">{formatDate(category.createdAt)} | ID: {category._id?.slice(-8).toUpperCase()}</span>
                                </div>
                             </div>
 
@@ -399,13 +399,13 @@ const AdminGovtExamCategories = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
-                        placeholder="EXAM_NAME..."
+                        placeholder="Category name..."
                         required
                      />
                   </div>
 
                   <div className="space-y-3">
-                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">JURISDICTION_PARAMETER</label>
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">JURISDICTION TYPE</label>
                      <div className="relative">
                         <select
                           value={formData.type}
@@ -413,21 +413,21 @@ const AdminGovtExamCategories = () => {
                           className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
                           required
                         >
-                          <option value="Central">GLOBAL_CENTRAL</option>
-                          <option value="State">REGIONAL_STATE</option>
+                          <option value="Central">CENTRAL</option>
+                          <option value="State">STATE</option>
                         </select>
                         <ChevronRight className="absolute right-8 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 rotate-90 pointer-events-none" />
                      </div>
                   </div>
 
                   <div className="space-y-3">
-                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">DESCRIPTION_METADATA</label>
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">DESCRIPTION</label>
                      <textarea
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                         rows="4"
                         className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
-                        placeholder="INJECT_DESCRIPTION..."
+                        placeholder="Enter description..."
                      />
                   </div>
 
@@ -437,13 +437,13 @@ const AdminGovtExamCategories = () => {
                         onClick={() => setShowModal(false)}
                         className="flex-1 p-6 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
                      >
-                        ABORT
+                        CANCEL
                      </button>
                      <button
                         type="submit"
                         className="flex-1 p-6 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all outline-none"
                      >
-                        {editingCategory ? "SYNCHRONIZE" : "INITIALIZE"}
+                        {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
                      </button>
                   </div>
                </form>

@@ -130,7 +130,7 @@ const AdminUserAnalyticsDetail = () => {
                                 </div>
 
                                 <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                                    {loading ? 'LOADING_DATA...' : (userData.name || 'USER_PERFORMANCE')}
+                                    {loading ? 'Loading...' : (userData.name || 'User Performance')}
                                 </h1>
 
                                  {!loading && (
@@ -141,7 +141,7 @@ const AdminUserAnalyticsDetail = () => {
                                          </div>
                                          <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
                                              <TrendingUp className="w-4 h-4 text-indigo-500" />
-                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">LVL_{userData.level?.currentLevel ?? 0} // {userData.subscriptionStatus?.toUpperCase() || 'STANDARD'}</span>
+                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">Level {userData.level?.currentLevel ?? 0} / {userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                          </div>
                                      </div>
                                  )}
@@ -155,7 +155,7 @@ const AdminUserAnalyticsDetail = () => {
                                         ${netEarnings >= 0 ? "bg-emerald-500 border-emerald-400/50" : "bg-rose-500 border-rose-400/50"}`}
                                 >
                                      <div className="relative z-10 flex flex-col items-center">
-                                         <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mb-2">{netEarnings >= 0 ? 'NET_SURPLUS' : 'NET_DEFICIT'}</span>
+                                         <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mb-2">{netEarnings >= 0 ? 'Net Earnings' : 'Net Loss'}</span>
                                          <div className="flex items-center gap-2 text-2xl lg:text-5xl font-black text-white tabular-nums tracking-tighter italic">
                                              <IndianRupee className="w-8 h-8 lg:w-10 lg:h-10" />
                                              {Math.abs(netEarnings).toLocaleString('en-IN')}
@@ -192,8 +192,8 @@ const AdminUserAnalyticsDetail = () => {
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">PREPARING_ANALYTICS</div>
-                                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-2">Fetching user metrics...</div>
+                                    <div className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Loading analytics...</div>
+                                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-2">Fetching user data...</div>
                                 </div>
                             </motion.div>
                         ) : error ? (
@@ -206,7 +206,7 @@ const AdminUserAnalyticsDetail = () => {
                                 <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                                     <Zap className="w-10 h-10 text-white" />
                                 </div>
-                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">DATA_LOAD_FAILED</h3>
+                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">Failed to load data. Please try again.</h3>
                                 <p className="text-rose-500 font-bold uppercase text-sm tracking-widest mb-4 lg:mb-12">{error}</p>
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
@@ -214,7 +214,7 @@ const AdminUserAnalyticsDetail = () => {
                                     onClick={() => router.push('/admin/analytics/users-overview')}
                                     className="px-4 lg:px-8 py-4 bg-rose-500 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-rose-500/20"
                                 >
-                                    Back_To_Users
+                                    Back to Users
                                 </motion.button>
                             </motion.div>
                         ) : data && (
@@ -231,16 +231,16 @@ const AdminUserAnalyticsDetail = () => {
                                              <Coins className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">REVENUE & EXPENDITURE</h3>
-                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Aggregate fiscal performance tracking</p>
+                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Revenue & Spending</h3>
+                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Earnings and expenses overview</p>
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="emerald" icon={ArrowUp} label="Agg_Gross_Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="Cumulative_Volume" />
-                                         <MetricCard i={1} color="rose" icon={ArrowDown} label="Disbursement_Vol" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Transaction_Costs" />
-                                         <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net_Variance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "SURPLUS_ALIGNED" : "DEFICIT_ALIGNED"} />
-                                         <MetricCard i={3} color="amber" icon={Book} label="Authoring_Rewards" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="Editorial_Incentives" />
-                                         <MetricCard i={4} color="cyan" icon={Zap} label="Assessment_Rewards" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="Engagement_Incentives" />
+                                         <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
+                                         <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
+                                         <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
+                                         <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
+                                         <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />
                                      </div>
                                  </motion.section>
 
@@ -256,14 +256,14 @@ const AdminUserAnalyticsDetail = () => {
                                              <Trophy className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">ENGAGEMENT & EFFICACY</h3>
-                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Assessment accuracy and cohort positioning</p>
+                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Engagement & Performance</h3>
+                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quiz accuracy and leaderboard standing</p>
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="purple" icon={Star} label="Tier_Positioning" value={totalHighScoreWins.toLocaleString('en-IN')} sub="Leaderboard_Dominance" />
-                                         <MetricCard i={1} color="indigo" icon={TrendingUp} label="Aggregate_Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Protocol_Correctness" />
-                                         <MetricCard i={2} color="cyan" icon={GraduationCap} label="Completed_Ass_Cycles" value={testAttemptsCount.toLocaleString('en-IN')} sub="Registry_Execution" />
+                                         <MetricCard i={0} color="purple" icon={Star} label="High Score Wins" value={totalHighScoreWins.toLocaleString('en-IN')} sub="Leaderboard wins" />
+                                         <MetricCard i={1} color="indigo" icon={TrendingUp} label="Avg. Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Overall correctness" />
+                                         <MetricCard i={2} color="cyan" icon={GraduationCap} label="Quiz Attempts" value={testAttemptsCount.toLocaleString('en-IN')} sub="Total attempts" />
                                      </div>
                                  </motion.section>
 
@@ -279,14 +279,14 @@ const AdminUserAnalyticsDetail = () => {
                                              <Activity className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">TEMPORAL ACTIVITY</h3>
-                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Time-series engagement monitoring</p>
+                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Activity Timeline</h3>
+                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Daily, weekly, and monthly progress</p>
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="rose" icon={Zap} label="Diurnal_Output" value={`${userData.dailyProgress?.highScoreWins || 0} Wins`} sub={`${userData.dailyProgress?.totalQuizAttempts || 0} Att (${userData.dailyProgress?.accuracy || 0}%_ACC)`} />
-                                         <MetricCard i={1} color="indigo" icon={Zap} label="Weekly_Output" value={`${userData.weeklyProgress?.highScoreWins || 0} Wins`} sub={`${userData.weeklyProgress?.totalQuizAttempts || 0} Att (${userData.weeklyProgress?.accuracy || 0}%_ACC)`} />
-                                         <MetricCard i={2} color="indigo" icon={Zap} label="Monthly_Output" value={`${userData.monthlyProgress?.highScoreWins || 0} Wins`} sub={`${userData.monthlyProgress?.totalQuizAttempts || 0} Att (${userData.monthlyProgress?.accuracy || 0}%_ACC)`} />
+                                         <MetricCard i={0} color="rose" icon={Zap} label="Today" value={`${userData.dailyProgress?.highScoreWins || 0} Wins`} sub={`${userData.dailyProgress?.totalQuizAttempts || 0} attempts (${userData.dailyProgress?.accuracy || 0}% accuracy)`} />
+                                         <MetricCard i={1} color="indigo" icon={Zap} label="This Week" value={`${userData.weeklyProgress?.highScoreWins || 0} Wins`} sub={`${userData.weeklyProgress?.totalQuizAttempts || 0} attempts (${userData.weeklyProgress?.accuracy || 0}% accuracy)`} />
+                                         <MetricCard i={2} color="indigo" icon={Zap} label="This Month" value={`${userData.monthlyProgress?.highScoreWins || 0} Wins`} sub={`${userData.monthlyProgress?.totalQuizAttempts || 0} attempts (${userData.monthlyProgress?.accuracy || 0}% accuracy)`} />
                                      </div>
                                  </motion.section>
 
@@ -302,14 +302,14 @@ const AdminUserAnalyticsDetail = () => {
                                              <Users className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">ECOSYSTEM CONNECTIVITY</h3>
-                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Network reach and referral mapping</p>
+                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Referral Network</h3>
+                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Followers, following, and referrals</p>
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="rose" icon={Users} label="Cohort_Reach" value={followersCount.toLocaleString('en-IN')} sub="Follower_Base" />
-                                         <MetricCard i={1} color="cyan" icon={Users} label="Inter_Connectivity" value={followingCount.toLocaleString('en-IN')} sub="Following_Nodes" />
-                                         <MetricCard i={2} color="amber" icon={UserPlus} label="Network_Expansion" value={referralCount.toLocaleString('en-IN')} sub="Inbound_Referrals" />
+                                         <MetricCard i={0} color="rose" icon={Users} label="Followers" value={followersCount.toLocaleString('en-IN')} sub="People following this user" />
+                                         <MetricCard i={1} color="cyan" icon={Users} label="Following" value={followingCount.toLocaleString('en-IN')} sub="People this user follows" />
+                                         <MetricCard i={2} color="amber" icon={UserPlus} label="Referrals" value={referralCount.toLocaleString('en-IN')} sub="Users referred" />
                                      </div>
                                  </motion.section>
 
@@ -325,16 +325,16 @@ const AdminUserAnalyticsDetail = () => {
                                              <Book className="w-6 h-6" />
                                          </div>
                                          <div>
-                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">AUTHORING & CONTRIBUTION</h3>
-                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Platform genesis and metadata expandsion</p>
+                                             <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Content Contributions</h3>
+                                             <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questions, categories, quizzes, and blogs created</p>
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="purple" icon={HelpCircle} label="Knowledge_Units" value={questionsPostedCount.toLocaleString('en-IN')} sub="Inquiry_Assets" />
-                                         <MetricCard i={1} color="rose" icon={Folder} label="Curriculum_Roots" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Classification_Nodes" />
-                                         <MetricCard i={2} color="emerald" icon={Layers} label="Sub_Taxonomy_Nodes" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Granular_Mapping" />
-                                         <MetricCard i={3} color="indigo" icon={Book} label="Assessment_Matrices" value={quizzesCreatedCount.toLocaleString('en-IN')} sub="Module_Structs" />
-                                         <MetricCard i={4} color="amber" icon={Book} label="Editorial_Syncs" value={blogsCreatedCount.toLocaleString('en-IN')} sub="Publication_Registry" />
+                                         <MetricCard i={0} color="purple" icon={HelpCircle} label="Questions" value={questionsPostedCount.toLocaleString('en-IN')} sub="Questions posted" />
+                                         <MetricCard i={1} color="rose" icon={Folder} label="Categories" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Categories created" />
+                                         <MetricCard i={2} color="emerald" icon={Layers} label="Subcategories" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Subcategories created" />
+                                         <MetricCard i={3} color="indigo" icon={Book} label="Quizzes" value={quizzesCreatedCount.toLocaleString('en-IN')} sub="Quizzes created" />
+                                         <MetricCard i={4} color="amber" icon={Book} label="Blog Posts" value={blogsCreatedCount.toLocaleString('en-IN')} sub="Articles published" />
                                      </div>
                                  </motion.section>
                             </div>

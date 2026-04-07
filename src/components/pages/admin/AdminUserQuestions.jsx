@@ -116,10 +116,10 @@ const AdminUserQuestions = () => {
     setUpdating(id);
     try {
       await API.updateUserQuestionStatus(id, newStatus);
-      toast.success(`Protocol ${newStatus.toUpperCase()} executed!`);
+      toast.success(`Question ${newStatus} successfully.`);
       load();
     } catch (err) {
-      toast.error(err?.message || "Protocol failure");
+      toast.error(err?.message || "Failed to update question status.");
     } finally {
       setUpdating(null);
     }
@@ -132,11 +132,11 @@ const AdminUserQuestions = () => {
       case "pending":
         return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "Pending" };
       case "approved":
-        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "AUTHORIZED" };
+        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "Approved" };
       case "rejected":
-        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "REJECT_ACCESS" };
+        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "Rejected" };
       default:
-        return { color: "text-slate-500 bg-slate-500/10 border-slate-500/20", icon: MoreVertical, label: "UNKNOWN_STATE" };
+        return { color: "text-slate-500 bg-slate-500/10 border-slate-500/20", icon: MoreVertical, label: "Unknown" };
     }
   };
 
@@ -173,7 +173,7 @@ const AdminUserQuestions = () => {
             />
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Query Stream...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user questions...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -183,7 +183,7 @@ const AdminUserQuestions = () => {
     <AdminMobileAppWrapper title="User Questions">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -197,16 +197,16 @@ const AdminUserQuestions = () => {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <MessageSquare className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">MODERATION_HUB // USER_QUERIES</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">User Questions</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  QUESTION <span className="text-primary-500">MATRIX</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({total})</span>
+                  User <span className="text-primary-500">Questions</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({total})</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user-generated inquiries. Review, validate, or neutralize content nodes.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Review and approve questions submitted by students.</p>
               </div>
             </div>
 
-            {/* Interface Controller */}
+            {/* Filters and Controls */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
@@ -214,16 +214,16 @@ const AdminUserQuestions = () => {
                       <Filter className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
-                      <div className="text-sm italic uppercase tracking-tighter italic">Moderation Pipeline</div>
+                      <div className="text-slate-400 uppercase tracking-widest mb-1">Filter</div>
+                      <div className="text-sm italic uppercase tracking-tighter italic">Question Review</div>
                     </div>
                  </div>
 
                  <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
-                    { icon: TableIcon, id: 'table', label: 'TABULAR' },
-                    { icon: List, id: 'list', label: 'LINEAR' },
-                    { icon: LayoutGrid, id: 'grid', label: 'SPECTRAL' }
+                    { icon: TableIcon, id: 'table', label: 'Table' },
+                    { icon: List, id: 'list', label: 'List' },
+                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
                   ].map((mode) => (
                     <button
                       key={mode.id}
@@ -285,8 +285,8 @@ const AdminUserQuestions = () => {
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <MessageSquare className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO QUESTIONS FOUND</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No user questions found for the selected filters.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No User Questions</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No questions match your current filters. Try adjusting the status or search term.</p>
               </motion.div>
             ) : (
               <motion.div
@@ -299,12 +299,12 @@ const AdminUserQuestions = () => {
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">QUERY_PAYLOAD</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ORIGIN_IDENT</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">METRICS</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">MODERATION</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Question</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Submitted By</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Stats</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Date</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Status</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -342,7 +342,7 @@ const AdminUserQuestions = () => {
                                    </div>
                                    <div>
                                       <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{q.userId?.name || 'Unknown'}</div>
-                                      <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{q.userId?.email || 'OFFLINE'}</div>
+                                      <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{q.userId?.email || 'No email'}</div>
                                    </div>
                                 </div>
                               </td>
@@ -437,15 +437,15 @@ const AdminUserQuestions = () => {
                               <div className="flex flex-wrap items-center gap-x-10 gap-y-4 pt-4">
                                  <div className="flex items-center gap-3 text-slate-400">
                                     <Eye className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.viewsCount || 0} IMPRESSIONS</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.viewsCount || 0} Views</span>
                                  </div>
                                  <div className="flex items-center gap-3 text-slate-400">
                                     <Heart className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.likesCount || 0} REACTIONS</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{q.likesCount || 0} Likes</span>
                                  </div>
                                  <div className="flex items-center gap-3 text-slate-400">
                                     <MessageCircle className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{(q.answers || []).length} ENGAGEMENTS</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest tabular-nums">{(q.answers || []).length} Answers</span>
                                  </div>
                                  <div className="flex items-center gap-3 text-slate-400 pl-4 border-l-2 border-slate-100 dark:border-white/5">
                                     <Clock className="w-4 h-4" />
@@ -460,13 +460,13 @@ const AdminUserQuestions = () => {
                                   onClick={() => updateStatus(q._id, 'approved')}
                                   className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all"
                                 >
-                                   <ShieldCheck className="w-5 h-5" /> AUTHORIZE
+                                   <ShieldCheck className="w-5 h-5" /> Approve
                                 </button>
                                 <button
                                   onClick={() => updateStatus(q._id, 'rejected')}
                                   className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
                                 >
-                                   <ShieldAlert className="w-5 h-5" /> NEUTRALIZE
+                                   <ShieldAlert className="w-5 h-5" /> Reject
                                 </button>
                              </div>
                            )}
@@ -552,7 +552,7 @@ const AdminUserQuestions = () => {
                   </div>
                 )}
 
-                {/* Spectral Pagination */}
+                {/* Pagination */}
                 {pagination.totalPages > 1 && (
                   <div className="flex justify-center pt-16">
                     <Pagination

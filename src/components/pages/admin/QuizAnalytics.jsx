@@ -196,7 +196,7 @@ const QuizAnalytics = () => {
      labels: difficultyLabels,
      datasets: [
        {
-         label: "Modules",
+         label: "Quizzes",
          data: difficultyCounts,
          backgroundColor: [
            "rgba(79, 70, 229, 0.7)", // Indigo
@@ -274,13 +274,13 @@ const QuizAnalytics = () => {
                    <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl">
                      <BarChart3 className="w-6 h-6" />
                    </div>
-                    <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN // ASSESSMENT ANALYTICS</span>
+                    <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">Admin / Quiz Analytics</span>
                   </div>
                   <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                    ASSESSMENT <span className="text-indigo-600">ANALYTICS</span>
+                    Quiz <span className="text-indigo-600">Analytics</span>
                   </h1>
                   <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
-                    Detailed analysis of quiz engagement, complexity distribution, and cohort performance.
+                    Overview of quiz engagement, difficulty distribution, and performance trends.
                   </p>
                </div>
 
@@ -291,7 +291,7 @@ const QuizAnalytics = () => {
                     onClick={handleExportTop}
                     className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 text-slate-600 dark:text-white border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3"
                   >
-                    <Download className="w-4 h-4" /> EXPORT RESULTS
+                    <Download className="w-4 h-4" /> Export Top Quizzes
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -299,7 +299,7 @@ const QuizAnalytics = () => {
                     onClick={handleExportRecent}
                     className="px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center gap-3"
                   >
-                    <Download className="w-4 h-4" /> EXPORT DATA
+                    <Download className="w-4 h-4" /> Export Recent
                   </motion.button>
               </div>
             </div>
@@ -330,7 +330,7 @@ const QuizAnalytics = () => {
                    name="category"
                    value={filters.category}
                    onChange={handleFilterChange}
-                   placeholder="QUIZ CATEGORY"
+                   placeholder="Search category..."
                    className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                  />
                </div>
@@ -342,7 +342,7 @@ const QuizAnalytics = () => {
                    name="difficulty"
                    value={filters.difficulty}
                    onChange={handleFilterChange}
-                   placeholder="DIFFICULTY LEVEL"
+                   placeholder="Search difficulty..."
                    className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
                  />
                </div>
@@ -386,7 +386,7 @@ const QuizAnalytics = () => {
                  </div>
                  <div>
                    <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Category Distribution</h3>
-                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Modules across categories</p>
+                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quizzes per category</p>
                  </div>
                </div>
                {categoryLabels.length > 0 ? (
@@ -396,7 +396,7 @@ const QuizAnalytics = () => {
                ) : (
                  <div className="h-72 flex flex-col items-center justify-center text-slate-300 space-y-3 lg:space-y-6">
                    <Globe className="w-16 h-16 opacity-10" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Registry Empty</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">No data available</span>
                  </div>
                )}
              </div>
@@ -409,7 +409,7 @@ const QuizAnalytics = () => {
                  </div>
                  <div>
                    <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Difficulty Levels</h3>
-                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Level-based module distribution</p>
+                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quizzes by difficulty level</p>
                  </div>
                </div>
                {levelLabels.length > 0 ? (
@@ -419,7 +419,7 @@ const QuizAnalytics = () => {
                ) : (
                  <div className="h-72 flex flex-col items-center justify-center text-slate-300 space-y-3 lg:space-y-6">
                    <Activity className="w-16 h-16 opacity-10" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Registry Empty</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">No data available</span>
                  </div>
                )}
              </div>
@@ -431,8 +431,8 @@ const QuizAnalytics = () => {
                    <Zap className="w-6 h-6" />
                  </div>
                  <div>
-                   <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Complexity Distribution</h3>
-                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Difficulty tier breakdown</p>
+                   <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Difficulty Breakdown</h3>
+                   <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quiz count by difficulty</p>
                  </div>
                </div>
                {difficultyLabels.length > 0 ? (
@@ -442,7 +442,7 @@ const QuizAnalytics = () => {
                ) : (
                  <div className="h-72 flex flex-col items-center justify-center text-slate-300 space-y-3 lg:space-y-6">
                    <PieChart className="w-16 h-16 opacity-10" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Registry Empty</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">No data available</span>
                  </div>
                )}
              </div>
@@ -463,7 +463,7 @@ const QuizAnalytics = () => {
                    </div>
                    <div>
                      <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Top Performing Quizzes</h3>
-                     <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Most attempted assessment modules</p>
+                     <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Most attempted quizzes by users</p>
                    </div>
                  </div>
                </div>
@@ -526,7 +526,7 @@ const QuizAnalytics = () => {
                    </div>
                    <div>
                      <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1 italic">Recent Quiz Additions</h3>
-                     <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Recently integrated assessment modules</p>
+                     <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Recently added quizzes</p>
                    </div>
                  </div>
                </div>

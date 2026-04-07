@@ -129,7 +129,7 @@ const AdminPrevMonthPlayedUsers = () => {
       }
     } catch (error) {
       console.error('Error fetching users:', error);
-      toast.error('Failed to fetch transmission stream');
+      toast.error('Failed to load quiz players');
       setUsers([]);
     } finally {
       setLoading(false);
@@ -187,7 +187,7 @@ const AdminPrevMonthPlayedUsers = () => {
             />
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Diagnostic Performance Logs...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading quiz activity...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -197,9 +197,9 @@ const AdminPrevMonthPlayedUsers = () => {
     <AdminMobileAppWrapper title="Previous Month Players">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         <Sidebar />
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
           
-          {/* Header & Modulation Tabs */}
+          {/* Header & Period Tabs */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -211,12 +211,12 @@ const AdminPrevMonthPlayedUsers = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Target className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN_HUB // PERFORMANCE_AUDIT</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Quiz Activity History</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  {activeTab} <span className="text-indigo-500">PLAYED</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">USERS</span>
+                  {activeTab} <span className="text-indigo-500">Quiz</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">Players</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of user engagement metrics, accuracy coefficients, and high-score attribution.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View quiz activity from previous months. See scores, accuracy, and top performers.</p>
               </div>
 
                <div className="flex p-2 bg-white dark:bg-white/5 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl">
@@ -235,7 +235,7 @@ const AdminPrevMonthPlayedUsers = () => {
               </div>
             </div>
 
-            {/* Tactical Control Console */}
+            {/* Filter Controls */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
                <div className="flex flex-wrap items-center gap-3 lg:gap-8 flex-1">
                   
@@ -245,7 +245,7 @@ const AdminPrevMonthPlayedUsers = () => {
                          <Calendar className="w-5 h-5" />
                       </div>
                       <div className="space-y-1">
-                        <div className="text-slate-400 uppercase tracking-widest">TEMPORAL_INDEX</div>
+                        <div className="text-slate-400 uppercase tracking-widest">Select Date</div>
                         <DatePicker
                           selected={new Date(preciseDate)}
                           onChange={(date) => setPreciseDate(dayjs(date).format('YYYY-MM-DD'))}
@@ -264,7 +264,7 @@ const AdminPrevMonthPlayedUsers = () => {
                             <Clock className="w-5 h-5" />
                          </div>
                          <div className="space-y-1">
-                            <div className="text-slate-400 uppercase tracking-widest">CYCLE_MONTH</div>
+                            <div className="text-slate-400 uppercase tracking-widest">Select Month</div>
                             <DatePicker
                               selected={dayjs(preciseMonth).toDate()}
                               onChange={(date) => {
@@ -312,7 +312,7 @@ const AdminPrevMonthPlayedUsers = () => {
                          <Filter className="w-5 h-5" />
                       </div>
                       <div className="space-y-1">
-                        <div className="text-slate-400 uppercase tracking-widest">FISCAL_CYCLE</div>
+                        <div className="text-slate-400 uppercase tracking-widest">Select Month</div>
                         <DatePicker
                           selected={dayjs(preciseMonth).toDate()}
                           onChange={(date) => setPreciseMonth(dayjs(date).format('YYYY-MM'))}
@@ -329,9 +329,9 @@ const AdminPrevMonthPlayedUsers = () => {
                <div className="flex items-center gap-4">
                   <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                     {[
-                      { icon: TableIcon, id: 'table', label: 'TAB' },
-                      { icon: List, id: 'list', label: 'LIN' },
-                      { icon: LayoutGrid, id: 'grid', label: 'SPC' }
+                      { icon: TableIcon, id: 'table', label: 'Table' },
+                      { icon: List, id: 'list', label: 'List' },
+                      { icon: LayoutGrid, id: 'grid', label: 'Grid' }
                     ].map((mode) => (
                       <button
                         key={mode.id}
@@ -346,13 +346,13 @@ const AdminPrevMonthPlayedUsers = () => {
                </div>
             </div>
 
-            {/* Metric Summary Modules */}
+            {/* Stats Overview */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12">
                 {[
-                  { label: "CONNECTED_UNITS", value: pagination.total, icon: Users, color: "bg-indigo-500" },
-                  { label: "CURRENT_SEGMENT", value: selectedMonth || 'FULL_SPECTRUM', icon: Calendar, color: "bg-emerald-500" },
-                  { label: "INDEX_PAGE", value: `${pagination.page} / ${pagination.totalPages}`, icon: Zap, color: "bg-rose-500" },
-                  { label: "DIAGNOSTIC_TAB", value: activeTab.toUpperCase(), icon: ShieldCheck, color: "bg-amber-500" }
+                  { label: "Total Students", value: pagination.total, icon: Users, color: "bg-indigo-500" },
+                  { label: "Selected Period", value: selectedMonth || 'All Time', icon: Calendar, color: "bg-emerald-500" },
+                  { label: "Page", value: `${pagination.page} / ${pagination.totalPages}`, icon: Zap, color: "bg-rose-500" },
+                  { label: "View Mode", value: activeTab.toUpperCase(), icon: ShieldCheck, color: "bg-amber-500" }
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -385,8 +385,8 @@ const AdminPrevMonthPlayedUsers = () => {
                   className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                 >
                   <Activity className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_DIAGNOSTIC_DATA</h3>
-                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded performance markers detected for the current tactical segment.</p>
+                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Activity Found</h3>
+                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No students played quizzes during this period. Try selecting a different date range.</p>
                 </motion.div>
              ) : (
                 <motion.div
@@ -402,16 +402,16 @@ const AdminPrevMonthPlayedUsers = () => {
                            <table className="w-full">
                               <thead>
                                 <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center w-20">S.NO</th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8">STUDENT</th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">JOINED ON</th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">LEVEL</th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">SUBSCRIPTION</th>
-                                  <th onClick={() => handleSort('totalQuizzes')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">YIELD_TOTAL <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
-                                  <th onClick={() => handleSort('highScoreQuiz')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-emerald-500 transition-colors">PEAK_SCORE <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
-                                  <th onClick={() => handleSort('accuracy')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">PRECISION <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">VALUATION</th>
-                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">ACTION</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center w-20">#</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8">Student</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">Period</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">Level</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">Plan</th>
+                                  <th onClick={() => handleSort('totalQuizzes')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">Quizzes Taken <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th onClick={() => handleSort('highScoreQuiz')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-emerald-500 transition-colors">Top Score Wins <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th onClick={() => handleSort('accuracy')} className="px-4 lg:px-8 py-4 lg:py-8 text-center cursor-pointer hover:text-primary-500 transition-colors">Accuracy <ArrowUpDown className="w-3 h-3 inline ml-1" /></th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-right">Score</th>
+                                  <th className="px-4 lg:px-8 py-4 lg:py-8 text-center">Action</th>
                                 </tr>
                               </thead>
                               <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -433,15 +433,15 @@ const AdminPrevMonthPlayedUsers = () => {
                                                 </div>
                                                 <div className="overflow-hidden max-w-[150px]">
                                                    <div className="text-slate-900 dark:text-white truncate mb-1">{user.name || 'Unknown'}</div>
-                                                   <div className="text-[8px] opacity-60 truncate italic">{user.email || 'OFFLINE'}</div>
+                                                   <div className="text-[8px] opacity-60 truncate italic">{user.email || 'No email'}</div>
                                                 </div>
                                              </div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center tabular-nums italic text-slate-900 dark:text-white">{user.monthYear}</td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                              <div className="flex flex-col items-center">
-                                                <span className="text-indigo-500 text-sm italic tracking-tighter">LVL_{user.monthlyProgress?.currentLevel || 0}</span>
-                                                <span className="text-[8px] opacity-40">{user.monthlyProgress?.levelName || 'GENESIS'}</span>
+                                                <span className="text-indigo-500 text-sm italic tracking-tighter">Level {user.monthlyProgress?.currentLevel || 0}</span>
+                                                <span className="text-[8px] opacity-40">{user.monthlyProgress?.levelName || 'Starter'}</span>
                                              </div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
@@ -461,7 +461,7 @@ const AdminPrevMonthPlayedUsers = () => {
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                              <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.getScore} / {user.totalScore}</div>
-                                             <div className="text-[8px] opacity-40">YIELD_RATIO</div>
+                                             <div className="text-[8px] opacity-40">Score Ratio</div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                              <button
@@ -501,23 +501,23 @@ const AdminPrevMonthPlayedUsers = () => {
                               </div>
 
                               <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'Unknown'}</h3>
-                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'OFFLINE'}</div>
+                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'No email'}</div>
 
                               <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL REWARDS</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Quizzes Taken</div>
                                     <div className="text-xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PEAK_WINS</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Top Score Wins</div>
                                     <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyProgress?.highScoreWins || 0}</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-indigo-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PRECISION</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Accuracy</div>
                                     <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{user.monthlyProgress?.accuracy || 0}%</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 group-hover:border-rose-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">VALUATION</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Score</div>
                                     <div className="text-xl font-black italic tracking-tighter text-rose-500 tabular-nums">{user.getScore}</div>
                                  </div>
                               </div>
@@ -526,7 +526,7 @@ const AdminPrevMonthPlayedUsers = () => {
                                  onClick={() => handleViewUserDetails(user.originalUserId)}
                                  className="w-full p-5 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-primary-600 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95"
                               >
-                                 <Eye className="w-5 h-5" /> VIEW_PROFILE_INTEL
+                                 <Eye className="w-5 h-5" /> View Quiz Scores
                               </button>
                            </motion.div>
                         ))}
@@ -558,26 +558,26 @@ const AdminPrevMonthPlayedUsers = () => {
                                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-2">
                                     <div className="flex items-center gap-2">
                                        <Mail className="w-4 h-4 text-slate-300" />
-                                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{user.email || 'OFFLINE'}</span>
+                                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{user.email || 'No email'}</span>
                                     </div>
                                     <div className={`flex items-center gap-2 ${activeTab === 'daily' ? 'text-primary-500' : activeTab === 'weekly' ? 'text-purple-500' : 'text-indigo-500'}`}>
                                        <Activity className="w-4 h-4" />
-                                       <span className="text-[10px] font-black uppercase tracking-widest italic">{activeTab.toUpperCase()}_DIAGNOSTIC_CYCLE: {user.monthYear}</span>
+                                       <span className="text-[10px] font-black uppercase tracking-widest italic">{activeTab} period: {user.monthYear}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                        <Award className="w-4 h-4 text-amber-500" />
-                                       <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic">EVO_LEVEL: {user.monthlyProgress?.currentLevel || 0}</span>
+                                       <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic">Level {user.monthlyProgress?.currentLevel || 0}</span>
                                     </div>
                                  </div>
                               </div>
 
                               <div className="flex gap-4">
                                  <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL_ATTEMPTS</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Quizzes Taken</div>
                                     <div className="text-2xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.monthlyProgress?.totalQuizAttempts || 0}</div>
                                  </div>
                                  <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
-                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">PEAK_SUCCESS</div>
+                                    <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Top Score Wins</div>
                                     <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.monthlyProgress?.highScoreWins || 0}</div>
                                  </div>
                               </div>
@@ -596,7 +596,7 @@ const AdminPrevMonthPlayedUsers = () => {
              )}
           </AnimatePresence>
 
-          {/* Spectral Pagination */}
+          {/* Pagination */}
           {pagination.totalPages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-16 text-[10px] font-black uppercase tracking-widest">
               <button
@@ -608,7 +608,7 @@ const AdminPrevMonthPlayedUsers = () => {
               </button>
               
               <div className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] shadow-2xl italic tracking-tighter">
-                 DIAGNOSTIC_INDEX: {pagination.page} <span className="text-slate-500 mx-2">//</span> TOTAL_UNITS: {pagination.totalPages}
+                 Page {pagination.page} <span className="text-slate-500 mx-2">of</span> {pagination.totalPages}
               </div>
 
               <button

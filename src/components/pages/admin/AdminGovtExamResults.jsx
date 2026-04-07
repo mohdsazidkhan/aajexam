@@ -266,13 +266,13 @@ const AdminGovtExamResults = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl shadow-inner">
                     <BarChart3 className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN // PERFORMANCE ANALYTICS</span>
+                  <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN / EXAM RESULTS</span>
                 </div>
                 <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  ASSESSMENT <span className="text-indigo-600">METRICS</span>
+                  EXAM <span className="text-indigo-600">RESULTS</span>
                 </h1>
                 <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
-                  Track candidate outcomes and assessment milestones.
+                  View student exam results and performance.
                 </p>
               </div>
 
@@ -293,7 +293,7 @@ const AdminGovtExamResults = () => {
                   onClick={handleExportCSV}
                   className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center gap-3"
                 >
-                  <Download className="w-4 h-4" /> Export Analytics
+                  <Download className="w-4 h-4" /> Export CSV
                 </motion.button>
               </div>
             </div>
@@ -305,28 +305,28 @@ const AdminGovtExamResults = () => {
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                 <Compass className="w-4 h-4 text-indigo-600" />
                 <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
-                  <option value="all">MAJOR CATEGORY</option>
+                  <option value="all">ALL CATEGORIES</option>
                   {categories.map(c => <option key={c._id} value={c._id}>{c.name.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                 <Activity className="w-4 h-4 text-indigo-600" />
                 <select value={selectedExam} onChange={(e) => handleExamChange(e.target.value)} disabled={selectedCategory === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedCategory === 'all' ? 'opacity-30' : ''}`}>
-                  <option value="all">LIVE ASSESSMENT</option>
+                  <option value="all">ALL EXAMS</option>
                   {exams.map(e => <option key={e._id} value={e._id}>{e.name.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                 <Binary className="w-4 h-4 text-indigo-600" />
                 <select value={selectedPattern} onChange={(e) => handlePatternChange(e.target.value)} disabled={selectedExam === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedExam === 'all' ? 'opacity-30' : ''}`}>
-                  <option value="all">SYLLABUS FRAMEWORK</option>
+                  <option value="all">ALL PATTERNS</option>
                   {patterns.map(p => <option key={p._id} value={p._id}>{p.title.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                 <FileText className="w-4 h-4 text-indigo-600" />
                 <select value={selectedTest} onChange={(e) => setSelectedTest(e.target.value)} disabled={selectedPattern === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedPattern === 'all' ? 'opacity-30' : ''}`}>
-                  <option value="all">SPECIFIC MODULE</option>
+                  <option value="all">ALL TESTS</option>
                   {tests.map(t => <option key={t._id} value={t._id}>{t.title.toUpperCase()}</option>)}
                 </select>
               </div>
@@ -336,12 +336,12 @@ const AdminGovtExamResults = () => {
           {/* Results Display */}
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Compiling performance data..." /></div>
+              <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Loading results..." /></div>
             ) : attempts.length === 0 ? (
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                 <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Performance Data</h3>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Select relevant categories to filter user attempt metrics</p>
+                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Results Found</h3>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">No student attempts yet. Use the filters above to narrow down results by category, exam, or test.</p>
               </div>
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -350,11 +350,11 @@ const AdminGovtExamResults = () => {
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Global Rank</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">User Details</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Total Score</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Accuracy & Time</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Submission Date</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Rank</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Score</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Details</th>
                         </tr>
                       </thead>
@@ -417,10 +417,10 @@ const AdminGovtExamResults = () => {
                         </div>
                         <div className="flex items-center gap-4 border-t lg:border-t-0 pt-4 lg:pt-0">
                           <div className="flex flex-col text-right">
-                            <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{formatTime(a.totalTime)} ELAPSED</div>
+                            <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{formatTime(a.totalTime)}</div>
                             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}</div>
                           </div>
-                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-indigo-600/20">View Performance</motion.button>
+                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-indigo-600/20">View Details</motion.button>
                         </div>
                       </motion.div>
                     ))}
@@ -441,7 +441,7 @@ const AdminGovtExamResults = () => {
                     <div className="flex items-center gap-3 lg:gap-6">
                       <div className="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/20"><Award className="w-8 h-8" /></div>
                       <div>
-                        <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none animate-pulse">Session <span className="text-indigo-600 text-2xl">Breakdown</span></h2>
+                        <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-indigo-600 text-2xl">Details</span></h2>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-3 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
                       </div>
                     </div>
@@ -451,10 +451,10 @@ const AdminGovtExamResults = () => {
                   <div className="flex-1 overflow-y-auto p-4 lg:p-10 custom-scrollbar space-y-4 lg:space-y-12">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-8">
                       {[
-                        { label: 'Final Score', val: selectedAttempt.score, icon: Target, color: 'primary' },
+                        { label: 'Score', val: selectedAttempt.score, icon: Target, color: 'primary' },
                         { label: 'Accuracy', val: `${selectedAttempt.accuracy?.toFixed(1)}%`, icon: TrendingUp, color: 'emerald' },
                         { label: 'Time Spent', val: formatTime(selectedAttempt.totalTime), icon: Clock, color: 'blue' },
-                        { label: 'Global Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'amber' }
+                        { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'amber' }
                       ].map((s, i) => (
                         <div key={i} className="bg-slate-50 dark:bg-white/5 p-6 rounded-3xl border-2 border-slate-100 dark:border-white/5">
                           <div className={`p-3 bg-${s.color}-500/10 text-${s.color}-500 rounded-xl w-fit mb-3`}><s.icon className="w-4 h-4" /></div>
@@ -467,7 +467,7 @@ const AdminGovtExamResults = () => {
                     <div className="space-y-4 lg:space-y-8">
                       <div className="flex items-center gap-4 mb-4">
                         <Binary className="w-5 h-5 text-primary-500" />
-                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Question Breakdown</h3>
+                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Questions & Answers</h3>
                       </div>
                       <div className="space-y-3 lg:space-y-6">
                         {selectedAttempt.answers?.map((ans, i) => (
@@ -475,7 +475,7 @@ const AdminGovtExamResults = () => {
                             <div className="flex items-start gap-3 lg:gap-8">
                               <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>{i + 1}</div>
                               <div>
-                                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question metadata unavailable'}</p>
+                                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">
                                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Section: {ans.question?.section || 'General'}</span>
                                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Difficulty: {ans.question?.difficulty || 'Medium'}</span>
@@ -485,16 +485,16 @@ const AdminGovtExamResults = () => {
                             <div className="flex flex-col items-end gap-2 shrink-0">
                               <div className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
-                                {ans.isCorrect ? 'Correct Answer' : 'Incorrect Entry'}
+                                {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>
-                              <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mt-1">Selection: OPTION {ans.selectedOption + 1}</div>
+                              <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mt-1">Selected: Option {ans.selectedOption + 1}</div>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all hover:translate-y-[-4px]">Return to List</button>
+                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all hover:translate-y-[-4px]">Close</button>
                   </div>
                 </motion.div>
               </div>

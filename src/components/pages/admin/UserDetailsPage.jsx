@@ -69,7 +69,7 @@ export default function UserDetailsPage() {
       } else {
         setError(res?.message || "Failed to fetch users");
       }
-    } catch (e) { setError("Failed to synchronize user data"); }
+    } catch (e) { setError("Failed to load student data. Please try again."); }
     finally { setLoading(false); }
   };
 
@@ -92,13 +92,13 @@ export default function UserDetailsPage() {
                   <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
                     <Users className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Directory // Community Oversight</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Student Directory</span>
                 </div>
                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                  User Registry
+                  All Students
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                  Manage and monitor all active platform participants.
+                  View complete student profiles and activity. Search and manage all registered students.
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export default function UserDetailsPage() {
                   ))}
                 </div>
                 <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center gap-3">
-                  <DownloadCloud className="w-4 h-4" /> Export Directory
+                  <DownloadCloud className="w-4 h-4" /> Export Students
                 </motion.button>
               </div>
             </div>
@@ -122,8 +122,8 @@ export default function UserDetailsPage() {
             {[
               { label: 'Total Users', val: pagination.total || 0, icon: Users, color: 'blue' },
               { label: 'Pro Members', val: userDetails.filter(u => u.subscriptionStatus === 'pro').length, icon: Crown, color: 'amber' },
-              { label: 'Avg Activity', val: '84%', icon: Activity, color: 'emerald' },
-              { label: 'Verified', val: '92%', icon: UserCheck, color: 'indigo' }
+              { label: 'Avg. Activity', val: '84%', icon: Activity, color: 'emerald' },
+              { label: 'Verified Users', val: '92%', icon: UserCheck, color: 'indigo' }
             ].map((s, i) => (
               <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
                 <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>
@@ -141,7 +141,7 @@ export default function UserDetailsPage() {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
-                  placeholder="Filter by name, email, or handle..."
+                  placeholder="Search by name, email, or username..."
                   className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-xl"
                 />
              </div>
@@ -159,19 +159,19 @@ export default function UserDetailsPage() {
           {/* Content */}
           <AnimatePresence mode="wait">
             {loading ? (
-               <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Fetching community profiles..." /></div>
+               <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Loading students..." /></div>
             ) : error ? (
                <div className="text-center py-32">
                  <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>
                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
-                 <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Retry Sync</button>
+                 <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Try Again</button>
                </div>
             ) : userDetails.length === 0 ? (
                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                  <Users className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Users Found</h3>
-                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust your filters to locate participants.</p>
+                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search to find students.</p>
                </div>
             ) : (
                 <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -182,9 +182,9 @@ export default function UserDetailsPage() {
                              <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Profile</th>
                                 <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
-                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Social Accounts</th>
-                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance (D/W/M)</th>
-                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Membership</th>
+                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Social Links</th>
+                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wins (Daily/Weekly/Monthly)</th>
+                                <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Plan</th>
                              </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -195,7 +195,7 @@ export default function UserDetailsPage() {
                                         <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-lg animate-in">{u.name?.[0] || 'U'}</div>
                                         <div>
                                            <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors tracking-tight">{u.name || 'Anonymous'}</div>
-                                           <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic">{u.username || '@unhandled'}</div>
+                                           <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic">{u.username || '@unknown'}</div>
                                         </div>
                                      </div>
                                   </td>
@@ -216,7 +216,7 @@ export default function UserDetailsPage() {
                                             <a key={idx} href={s.link} target="_blank" className={`p-2 bg-slate-50 dark:bg-white/5 rounded-lg hover:scale-110 transition-all ${s.color}`}><s.icon className="w-4 h-4" /></a>
                                           ) : null
                                         ))}
-                                        {!u.socialLinks && <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest italic">Offline</span>}
+                                        {!u.socialLinks && <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest italic">None linked</span>}
                                      </div>
                                   </td>
                                   <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -305,7 +305,7 @@ export default function UserDetailsPage() {
                                   </div>
                                </div>
                                <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
-                                  <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email data'}</div>
+                                  <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email'}</div>
                                   <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Calendar className="w-4 text-primary-500/50" /> Joined {new Date(u.createdAt).toLocaleDateString()}</div>
                                   <div className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'Free'} Member</div>
                                </div>

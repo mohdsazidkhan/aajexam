@@ -158,7 +158,7 @@ export default function UserBlogRewardsHistory({ userId }) {
             />
             <FileText className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Analyzing Editorial Flux...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading blog rewards history...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -168,7 +168,7 @@ export default function UserBlogRewardsHistory({ userId }) {
     <AdminMobileAppWrapper title="Blog Reward History">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -205,7 +205,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                   onClick={() => router.push('/admin/blog-rewards-history')}
                   className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                 >
-                  <ArrowLeft className="w-4 h-4 text-primary-500" /> EXIT_TO_MAIN_INDEX
+                  <ArrowLeft className="w-4 h-4 text-primary-500" /> Back to All Blog Rewards
                 </button>
               </div>
             </div>
@@ -214,11 +214,11 @@ export default function UserBlogRewardsHistory({ userId }) {
             {summary && (
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                 {[
-                  { label: 'Total Manuscripts', value: summary.totalBlogs || 0, icon: FileText, color: 'blue' },
-                  { label: 'Aggregated Rewards', value: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Wallet, color: 'emerald' },
+                  { label: 'Total Blogs', value: summary.totalBlogs || 0, icon: FileText, color: 'blue' },
+                  { label: 'Total Rewards', value: `₹${summary.totalRewards?.toLocaleString() || 0}`, icon: Wallet, color: 'emerald' },
                   { label: 'Standard Tier', value: `₹${summary.normalRewards?.toLocaleString() || 0}`, icon: Zap, color: 'primary' },
-                  { label: 'Advanced Tier', value: `₹${summary.goodRewards?.toLocaleString() || 0}`, icon: Star, color: 'emerald' },
-                  { label: 'Elite Tier', value: `₹${summary.highRewards?.toLocaleString() || 0}`, icon: Crown, color: 'amber' }
+                  { label: 'Good Tier', value: `₹${summary.goodRewards?.toLocaleString() || 0}`, icon: Star, color: 'emerald' },
+                  { label: 'High Tier', value: `₹${summary.highRewards?.toLocaleString() || 0}`, icon: Crown, color: 'amber' }
                 ].map((stat, i) => (
                   <div
                     key={stat.label}
@@ -242,17 +242,17 @@ export default function UserBlogRewardsHistory({ userId }) {
                 <Filter className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</span>
-                <span className="text-sm italic uppercase tracking-tighter">Content Reward Index</span>
+                <span className="text-slate-400 uppercase tracking-widest mb-1">Filters</span>
+                <span className="text-sm italic uppercase tracking-tighter">Search and View Options</span>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                 {[
-                  { icon: TableIcon, id: 'table', label: 'Tabular' },
-                  { icon: List, id: 'list', label: 'Linear' },
-                  { icon: LayoutGrid, id: 'grid', label: 'Spectral' }
+                  { icon: TableIcon, id: 'table', label: 'Table' },
+                  { icon: List, id: 'list', label: 'List' },
+                  { icon: LayoutGrid, id: 'grid', label: 'Grid' }
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -301,8 +301,8 @@ export default function UserBlogRewardsHistory({ userId }) {
                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                   <FileText className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_MATCHES_LOCATED</h3>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded financial dissemination detected for the selected editorial parameters.</p>
+                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Rewards Found</h3>
+                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This student has no blog reward payouts yet. Rewards will appear here after publishing articles.</p>
               </motion.div>
             ) : (
               <motion.div
@@ -316,12 +316,12 @@ export default function UserBlogRewardsHistory({ userId }) {
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Visual</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Manuscript_Title</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Protocol</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Payout</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Temporal_Stamp</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Thumbnail</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Article Title</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward Tier</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Amount</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Balance After</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Date</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -336,7 +336,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                               <img
                                 src={tx.article?.featuredImage || '/default_banner.png'}
-                                alt="Visual"
+                                alt="Article thumbnail"
                                 className="w-16 h-10 rounded-xl object-cover border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 transition-transform"
                                 onError={(e) => { e.target.src = '/default_banner.png'; }}
                               />
@@ -345,10 +345,10 @@ export default function UserBlogRewardsHistory({ userId }) {
                               {tx.article ? (
                                 <Link href={`/admin/articles/${tx.article._id}/edit`} className="group/link">
                                   <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover/link:text-primary-500 transition-colors">{tx.article.title || 'Untitled'}</div>
-                                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.article.category || 'SYSTEM_CHANNELS'}</div>
+                                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.article.category || 'Uncategorized'}</div>
                                 </Link>
                               ) : (
-                                <span className="text-[10px] font-black text-slate-300 italic">ORPHANED_RELATION</span>
+                                <span className="text-[10px] font-black text-slate-300 italic">Article Deleted</span>
                               )}
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
@@ -388,12 +388,12 @@ export default function UserBlogRewardsHistory({ userId }) {
                         <div className="w-full aspect-video rounded-lg lg:rounded-[2rem] overflow-hidden mb-6 border-2 border-slate-100 dark:border-white/10 shadow-inner group-hover:scale-[1.02] transition-transform relative">
                            <img
                              src={tx.article?.featuredImage || '/default_banner.png'}
-                             alt="Poster"
+                             alt="Article thumbnail"
                              className="w-full h-full object-cover"
                              onError={(e) => { e.target.src = '/default_banner.png'; }}
                            />
                            <div className="absolute top-4 right-4 px-3 py-1 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-full text-[8px] font-black italic">
-                              REWARD: +₹{tx.amount}
+                              +₹{tx.amount}
                            </div>
                         </div>
 
@@ -403,7 +403,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                            </div>
                            <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight limit-text-2">{tx.article?.title || 'Untitled'}</h3>
                            <div className="flex flex-col items-center gap-2 pt-4 border-t-2 border-slate-100 dark:border-white/5">
-                              <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">BALANCE: ₹{tx.balance?.toLocaleString() || 0}</div>
+                              <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">Balance: ₹{tx.balance?.toLocaleString() || 0}</div>
                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatDate(tx.date)}</div>
                            </div>
                         </div>
@@ -425,7 +425,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                         <div className="w-40 h-24 rounded-lg lg:rounded-[2rem] overflow-hidden border-2 border-slate-100 dark:border-white/10 shadow-lg shrink-0 group-hover:scale-105 transition-transform">
                            <img
                              src={tx.article?.featuredImage || '/default_banner.png'}
-                             alt="Poster"
+                             alt="Article thumbnail"
                              className="w-full h-full object-cover"
                              onError={(e) => { e.target.src = '/default_banner.png'; }}
                            />
@@ -445,7 +445,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                               </div>
                               <div className="flex items-center gap-2">
                                  <TrendingUp className="w-4 h-4 text-primary-500/50" />
-                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">YIELD_BALANCE: ₹{tx.balance?.toLocaleString() || 0}</span>
+                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Balance After: ₹{tx.balance?.toLocaleString() || 0}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                  <Clock className="w-4 h-4 text-slate-400/50" />
@@ -462,7 +462,7 @@ export default function UserBlogRewardsHistory({ userId }) {
                   </div>
                 )}
 
-                {/* Spectral Pagination */}
+                {/* Pagination */}
                 {pagination.totalPages > 1 && (
                   <div className="flex justify-center pt-12">
                     <Pagination

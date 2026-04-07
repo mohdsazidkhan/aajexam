@@ -96,7 +96,7 @@ const AdminMonthlyWinners = () => {
       // Don't show toast error on initial load if no data found for current/prev month
       // unless it's an actual API failure (not a 404)
       if (error?.response?.status !== 404) {
-        toast.error('Failed to fetch monthly winners');
+        toast.error('Could not load winners. Please try again.');
       }
       setMonthlyWinners([]);
     } finally {
@@ -128,11 +128,11 @@ const AdminMonthlyWinners = () => {
         const periodLabel = activeType === 'daily' ? preciseDate :
           activeType === 'weekly' ? preciseWeek :
             preciseMonth;
-        toast.success(`Filtered winners for ${periodLabel} (${activeType})`);
+        toast.success(`Showing ${activeType} winners for ${periodLabel}`);
       }
     } catch (error) {
       console.error('Error filtering monthly winners:', error);
-      toast.error('Failed to fetch monthly winners');
+      toast.error('Could not load winners. Please try again.');
     } finally {
       setFilterLoading(false);
     }
@@ -166,9 +166,9 @@ const AdminMonthlyWinners = () => {
                     {activeType} Top Performers
                   </h2>
                   <p className="text-slate-400 dark:text-slate-500 mt-1 text-sm font-medium uppercase tracking-widest leading-none">
-                    {activeType === 'daily' ? 'Analyzing daily consistency and quiz performance.' :
-                      activeType === 'weekly' ? 'Incentivizing weekly high-tier engagement.' :
-                        'Recognizing the high-performance leaders of the platform.'}
+                    {activeType === 'daily' ? 'View top quiz performers for each day.' :
+                      activeType === 'weekly' ? 'See who led the leaderboard each week.' :
+                        'Browse the top winners for each month.'}
                   </p>
                 </div>
               </div>
@@ -257,7 +257,7 @@ const AdminMonthlyWinners = () => {
 
                 {activeType === 'monthly' && !showAllMonths && (
                    <div className="flex items-center gap-3">
-                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest hidden sm:block">Cycle:</label>
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest hidden sm:block">Month:</label>
                      <DatePicker
                        selected={dayjs(preciseMonth).toDate()}
                        onChange={(date) => setPreciseMonth(dayjs(date).format('YYYY-MM'))}
@@ -323,7 +323,7 @@ const AdminMonthlyWinners = () => {
                       ? 'bg-green-600 text-white'
                       : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500'
                       }`}
-                    icon={<Calendar className="text-sm" />}
+                    icon={Calendar}
                   >
                     {showAllMonths ? `Show Specific ${activeType === 'monthly' ? 'Month' : activeType === 'weekly' ? 'Week' : 'Day'}` : `Show All ${activeType === 'monthly' ? 'Months' : activeType === 'weekly' ? 'Weeks' : 'Days'}`}
                   </Button>
@@ -341,18 +341,15 @@ const AdminMonthlyWinners = () => {
               </div>
             ) : monthlyWinners.length === 0 ? (
               <div className="text-center py-12">
-                <div className="text-slate-600 dark:text-gray-400 dark:text-gray-500 text-2xl lg:text-6xl mb-4">ðŸ†</div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 underline capitalize">
-                  {showAllMonths ? `No ${activeType} Winners Available` : `No ${activeType} Winners Found`}
+                <div className="text-slate-600 dark:text-gray-400 dark:text-gray-500 text-2xl lg:text-6xl mb-4">🏆</div>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 capitalize">
+                  {showAllMonths ? `No ${activeType} winners yet` : `No winners for this ${activeType === 'daily' ? 'day' : activeType === 'weekly' ? 'week' : 'month'}`}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
                   {showAllMonths
-                    ? `No ${activeType} winners data is currently available in the system.`
-                    : `No winners found for this period. Try changing the filters above.`
+                    ? `There are no ${activeType} winners recorded yet. Winners will appear here once a competition period ends.`
+                    : `No winners were found for the selected period. Try picking a different ${activeType === 'daily' ? 'date' : activeType === 'weekly' ? 'week' : 'month'} using the filters above.`
                   }
-                </p>
-                <p className="text-sm text-slate-700 dark:text-gray-400">
-                  ðŸ’¡ Tip: {currentMonth === 9 ? 'Currently showing August data by default. ' : ''}Try selecting different months to view available data!
                 </p>
               </div>
             ) : (
@@ -365,7 +362,7 @@ const AdminMonthlyWinners = () => {
                         <Calendar className="w-6 h-6" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2">Total Cycles</p>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2">Total Periods</p>
                         <h3 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
                           {fetchingStats ? '...' : (activeType === 'daily' ? stats?.totalDays : activeType === 'weekly' ? stats?.totalWeeks : stats?.totalMonths) || '0'}
                         </h3>
@@ -379,7 +376,7 @@ const AdminMonthlyWinners = () => {
                         <Users className="w-6 h-6" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2">Avg Reach</p>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2">Avg Winners</p>
                         <h3 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
                           {fetchingStats ? '...' : (activeType === 'daily' ? stats?.avgWinnersPerDay : activeType === 'weekly' ? stats?.avgWinnersPerWeek : stats?.avgWinnersPerMonth) || '0'}
                         </h3>
@@ -393,7 +390,7 @@ const AdminMonthlyWinners = () => {
                         <IndianRupee className="text-2xl" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Total Prize</p>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Total Distributed</p>
                         <h3 className="text-xl lg:text-3xl font-black text-gray-900 dark:text-white tabular-nums">
                           ₹{fetchingStats ? '...' : (activeType === 'daily' ? stats?.totalDistributedDaily : activeType === 'weekly' ? stats?.totalDistributedWeekly : stats?.totalAmountDistributed)?.toLocaleString() || '0'}
                         </h3>
@@ -408,7 +405,7 @@ const AdminMonthlyWinners = () => {
                       </div>
                       <div>
                         <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">
-                          {activeType === 'daily' ? dayjs(preciseDate).format('DD MMM') : activeType === 'weekly' ? `Week ${preciseWeek.split('-W')[1]}` : dayjs(preciseMonth).format('MMM YYYY')} Prize
+                          {activeType === 'daily' ? dayjs(preciseDate).format('DD MMM') : activeType === 'weekly' ? `Week ${preciseWeek.split('-W')[1]}` : dayjs(preciseMonth).format('MMM YYYY')} Prize Pool
                         </p>
                         <h3 className="text-xl lg:text-2xl font-black text-gray-900 dark:text-white tabular-nums">
                           ₹{monthlyWinnersLoading ? '...' : (monthlyWinners[0]?.totalPrizePool || 0)?.toLocaleString()}
@@ -423,7 +420,7 @@ const AdminMonthlyWinners = () => {
                         <Trophy className="text-2xl" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Selected {activeType === 'daily' ? 'Day' : activeType === 'weekly' ? 'Week' : 'Month'}</p>
+                        <p className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest">Viewing {activeType === 'daily' ? 'Day' : activeType === 'weekly' ? 'Week' : 'Month'}</p>
                         <h3 className="text-xl font-black text-gray-900 dark:text-white uppercase truncate">
                           {activeType === 'daily' ? dayjs(preciseDate).format('DD MMM YY') : activeType === 'weekly' ? `Wk ${preciseWeek.split('-W')[1]}` : dayjs(preciseMonth).format('MMM YYYY')}
                         </h3>
@@ -446,7 +443,7 @@ const AdminMonthlyWinners = () => {
                       <Info className="w-8 h-8" />
                     </div>
                     <div>
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-3">Cycle Informatics</h4>
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-3">Eligibility Rules</h4>
                       <div className="flex flex-wrap justify-center lg:justify-start gap-x-10 gap-y-3">
                         <div className="text-xs font-black text-slate-900 dark:text-white flex items-center gap-3 uppercase tracking-widest">
                           <Zap className={`w-4 h-4 ${activeType === 'daily' ? 'text-indigo-500' : 'text-blue-500'}`} />
@@ -454,7 +451,7 @@ const AdminMonthlyWinners = () => {
                         </div>
                         <div className="text-xs font-black text-slate-900 dark:text-white flex items-center gap-3 uppercase tracking-widest">
                           <TrendingUp className={`w-4 h-4 ${activeType === 'daily' ? 'text-indigo-500' : 'text-blue-500'}`} />
-                          LVL {activeType === 'daily' ? `${config.QUIZ_CONFIG.DAILY_USER_LEVEL_REQUIRED}+` : activeType === 'weekly' ? `${config.QUIZ_CONFIG.WEEKLY_USER_LEVEL_REQUIRED}+` : `${config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD}+`}
+                          LEVEL {activeType === 'daily' ? `${config.QUIZ_CONFIG.DAILY_USER_LEVEL_REQUIRED}+` : activeType === 'weekly' ? `${config.QUIZ_CONFIG.WEEKLY_USER_LEVEL_REQUIRED}+` : `${config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD}+`}
                         </div>
                         <div className="text-xs font-black text-slate-900 dark:text-white flex items-center gap-3 uppercase tracking-widest">
                           <Award className={`w-4 h-4 ${activeType === 'daily' ? 'text-indigo-500' : 'text-blue-500'}`} />
@@ -470,7 +467,7 @@ const AdminMonthlyWinners = () => {
                       activeType === 'weekly' ? 'bg-blue-500 text-white shadow-blue-500/20' :
                         'bg-indigo-500 text-white shadow-indigo-500/20'
                       }`}>
-                      ELITE MEMBERSHIP ONLY
+                      PREMIUM MEMBERS ONLY
                     </motion.span>
                   </div>
                 </div>
@@ -523,8 +520,8 @@ const AdminMonthlyWinners = () => {
 
                           <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
                             <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                              <span>Winners: {monthData.totalWinners}</span>
-                              <span>Reset: {new Date(monthData.resetDate).toLocaleDateString()}</span>
+                              <span>{monthData.totalWinners} Winners</span>
+                              <span>Ended: {new Date(monthData.resetDate).toLocaleDateString()}</span>
                             </div>
                           </div>
                         </div>
@@ -586,7 +583,7 @@ const AdminMonthlyWinners = () => {
 
                           <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-600">
                             <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                              <span>Reset Date: {new Date(monthData.resetDate).toLocaleDateString()}</span>
+                              <span>Period ended: {new Date(monthData.resetDate).toLocaleDateString()}</span>
                               <span>Processed by: {monthData.processedBy}</span>
                             </div>
                           </div>
@@ -609,12 +606,12 @@ const AdminMonthlyWinners = () => {
                             <Trophy className="w-8 h-8 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter uppercase whitespace-nowrap">Cycle Leaderboard</h3>
-                            <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mt-1">Settlement Ledger Allocation</p>
+                            <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter uppercase whitespace-nowrap">Winners Leaderboard</h3>
+                            <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mt-1">Prize distribution details</p>
                           </div>
                         </div>
                         <div className="hidden lg:flex flex-col items-end">
-                          <div className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] mb-1">Synchronized Instance</div>
+                          <div className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] mb-1">Last Updated</div>
                           <div className="text-sm font-black tabular-nums tracking-widest">{dayjs().format('HH:mm:ss Z')}</div>
                         </div>
                       </div>
@@ -624,20 +621,20 @@ const AdminMonthlyWinners = () => {
                       <table className="w-full">
                         <thead className="bg-slate-50/50 dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-white/5">
                           <tr>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Acknowledgment</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performer</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Capability</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Cycle ID</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance Matrix</th>
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Disbursement</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Rank</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Winner</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Level</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Period</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Performance</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Prize</th>
                             {activeType === 'monthly' && (
                               <>
-                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Count</th>
-                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Ambassador Status</th>
+                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Referrals</th>
+                                <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Referral Status</th>
                               </>
                             )}
-                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-right text-[10px] font-black text-slate-400 uppercase tracking-widest">Settlement Recorded</th>
+                            <th className="px-4 lg:px-8 py-3 lg:py-6 text-right text-[10px] font-black text-slate-400 uppercase tracking-widest">Awarded On</th>
                           </tr>
                         </thead>
                         <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
@@ -668,7 +665,7 @@ const AdminMonthlyWinners = () => {
                                       {winner?.userId?.name || winner?.userName || 'Unknown'}
                                     </span>
                                     <span className="text-[9px] font-bold text-slate-400 lowercase tracking-widest mt-1 opacity-70">
-                                      {winner?.userId?.email || 'REDACTED_ACCESS'}
+                                      {winner?.userId?.email || 'No email available'}
                                     </span>
                                   </div>
                                 </td>
@@ -710,7 +707,7 @@ const AdminMonthlyWinners = () => {
                                         ? 'bg-green-600 text-white'
                                         : 'bg-red-100 text-red-700'
                                         }`}>
-                                        {winner.referralEligible ? 'Eligible' : 'Not Elite'}
+                                        {winner.referralEligible ? 'Eligible' : 'Not Eligible'}
                                       </span>
                                     </td>
                                   </>

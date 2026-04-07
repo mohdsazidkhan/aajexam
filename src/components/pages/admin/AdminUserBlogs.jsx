@@ -103,11 +103,11 @@ const AdminUserBlogs = () => {
         setBlogs(response.blogs || []);
         setPagination(response.pagination || {});
       } else {
-        setError('Failed to load user blogs');
+        setError('Unable to load blogs. Please try again later.');
       }
     } catch (err) {
       console.error('Error fetching user blogs:', err);
-      setError('Failed to load user blogs');
+      setError('Unable to load blogs. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -167,7 +167,7 @@ const AdminUserBlogs = () => {
       const response = await API.updateArticle(selectedBlog._id, updateData);
 
       if (response?.success) {
-        toast.success('Blog status updated successfully!');
+        toast.success('Blog status updated successfully');
         setShowStatusModal(false);
         setSelectedBlog(null);
         setStatusFormData({ status: '', rewardTier: '' });
@@ -182,14 +182,14 @@ const AdminUserBlogs = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this blog?')) {
+    if (window.confirm('Are you sure you want to permanently delete this blog post? This action cannot be undone.')) {
       try {
         await API.deleteArticle(id);
-        toast.success('Blog deleted successfully');
+        toast.success('Blog post deleted successfully');
         fetchBlogs();
       } catch (err) {
         console.error('Error deleting blog:', err);
-        toast.error('Failed to delete blog');
+        toast.error('Failed to delete blog post. Please try again.');
       }
     }
   };
@@ -236,14 +236,14 @@ const AdminUserBlogs = () => {
         <table className="w-full">
           <thead>
             <tr className="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-white/5">
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Submission</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Blog</th>
               <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Author</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Sector</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Moderation</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Metrics</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Recorded</th>
-              <th className="px-4 lg:px-8 py-3 lg:py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Controls</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Category</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Status</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Views / Likes</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
+              <th className="px-4 lg:px-8 py-3 lg:py-6 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y-2 divide-slate-100 dark:divide-white/5">
@@ -269,17 +269,17 @@ const AdminUserBlogs = () => {
                       <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight line-clamp-1" title={blog.title}>
                         {blog.title}
                       </div>
-                      <div className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">/STUDENT_BLOG</div>
+                      <div className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">Student Blog</div>
                     </div>
                   </div>
                 </td>
                 <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <div className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{blog.author?.name || 'Unknown User'}</div>
-                  <div className="text-[9px] font-bold text-slate-400 tracking-widest">{blog.author?.email || 'PRIVACY_PROTECTED'}</div>
+                  <div className="text-[9px] font-bold text-slate-400 tracking-widest">{blog.author?.email || 'No email'}</div>
                 </td>
                 <td className="px-4 lg:px-8 py-3 lg:py-6">
                   <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-lg text-[9px] font-black uppercase border border-slate-200 dark:border-white/5">
-                    {blog.category?.name || 'GENERAL'}
+                    {blog.category?.name || 'Uncategorized'}
                   </span>
                 </td>
                 <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -288,7 +288,7 @@ const AdminUserBlogs = () => {
                     {getRewardTierBadge(blog.rewardTier)}
                     {blog.rewardCredited && (
                       <span className="p-1 px-2 rounded-lg bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-lg shadow-emerald-500/5">
-                        <Zap className="w-3 h-3 fill-current" /> SETTLED
+                        <Zap className="w-3 h-3 fill-current" /> REWARD PAID
                       </span>
                     )}
                   </div>
@@ -350,11 +350,11 @@ const AdminUserBlogs = () => {
                 <span>â¤ï¸ {blog.likes || 0}</span>
               </div>
               <div className="mt-1 text-xs text-slate-700 dark:text-gray-400">
-                Created: {formatDate(blog.createdAt)} at {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+                Posted on {formatDate(blog.createdAt)} at {new Date(blog.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
               </div>
               <div className="mt-3 flex items-center gap-3">
-                <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View</Button>
-                <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Status</Button>
+                <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View Blog</Button>
+                <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Update Status</Button>
                 <Button onClick={() => handleDelete(blog._id)} variant="danger" size="small">Delete</Button>
               </div>
             </div>
@@ -391,8 +391,8 @@ const AdminUserBlogs = () => {
             <span>â¤ï¸ {blog.likes || 0}</span>
           </div>
           <div className="mt-3 flex items-center gap-3">
-            <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View</Button>
-            <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Status</Button>
+            <Button onClick={() => handleViewContent(blog)} variant="admin" size="small">View Blog</Button>
+            <Button onClick={() => handleStatusChange(blog)} variant="admin" size="small">Update Status</Button>
             <Button onClick={() => handleDelete(blog._id)} variant="danger" size="small">Delete</Button>
           </div>
         </div>
@@ -402,16 +402,16 @@ const AdminUserBlogs = () => {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="Community Submissions">
+      <AdminMobileAppWrapper title="Student Blogs">
         <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505]">
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white mt-4 lg:mt-12 lg:mt-0">
+          <div className="adminContent p-4 lg:p-12 w-full text-slate-900 dark:text-white ">
             <div className="flex flex-col items-center justify-center py-48 space-y-4 lg:space-y-8">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
                 <MessageSquare className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
               </div>
-              <div className="text-center text-slate-400 font-black uppercase tracking-[0.3em] text-xs">Accessing Community Ledger...</div>
+              <div className="text-center text-slate-400 font-black uppercase tracking-[0.3em] text-xs">Loading user blogs...</div>
             </div>
           </div>
         </div>
@@ -420,7 +420,7 @@ const AdminUserBlogs = () => {
   }
 
   return (
-    <AdminMobileAppWrapper title="Community Submissions">
+    <AdminMobileAppWrapper title="Student Blogs">
       <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-outfit selection:bg-indigo-500/30">
         {user?.role === 'admin' && <Sidebar />}
         <div className="adminContent p-4 lg:p-12 w-full max-w-[1600px] mx-auto">
@@ -439,15 +439,15 @@ const AdminUserBlogs = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Users className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">COMMUNITY // MODERATION</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">BLOG MANAGEMENT</span>
                 </div>
 
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                  COMMUNITY <span className="text-indigo-600">SUBMISSIONS</span>
+                  STUDENT <span className="text-indigo-600">BLOGS</span>
                 </h1>
 
                 <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                  Review, approve, and incentivize student-generated content. Standardize the community knowledge base with moderation controls.
+                  Review and manage blog posts written by students. Approve, reward, or reject submissions from one place.
                 </p>
               </div>
 
@@ -464,7 +464,7 @@ const AdminUserBlogs = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 relative z-10">
               <div className="space-y-4">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Search Submissions</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Search Blogs</label>
                 <div className="relative group/field">
                   <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
                   <input
@@ -472,13 +472,13 @@ const AdminUserBlogs = () => {
                     name="search"
                     value={filters.search}
                     onChange={handleFilterChange}
-                    placeholder="QUERY TITLE/AUTHOR..."
+                    placeholder="SEARCH BLOGS..."
                     className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all"
                   />
                 </div>
               </div>
               <div className="space-y-4">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-amber-500 pl-3">Moderation State</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-amber-500 pl-3">Status</label>
                 <div className="relative group/field">
                   <Activity className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-amber-500 transition-colors" />
                   <select
@@ -497,7 +497,7 @@ const AdminUserBlogs = () => {
                 </div>
               </div>
               <div className="space-y-4">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-blue-500 pl-3">Content Sector</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-blue-500 pl-3">Category</label>
                 <div className="relative group/field">
                   <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-blue-500 transition-colors" />
                   <select
@@ -506,7 +506,7 @@ const AdminUserBlogs = () => {
                     onChange={handleFilterChange}
                     className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-blue-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                   >
-                    <option value="">ALL SECTORS</option>
+                    <option value="">ALL CATEGORIES</option>
                     {categories.map(cat => (
                       <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>
                     ))}
@@ -524,9 +524,9 @@ const AdminUserBlogs = () => {
                     className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-emerald-500/20 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                   >
                     <option value="">ALL TIERS</option>
-                    <option value="normal">NORMAL - ₹5</option>
-                    <option value="good">GOOD - ₹10</option>
-                    <option value="high">HIGH - ₹15</option>
+                    <option value="normal">NORMAL — ₹5</option>
+                    <option value="good">GOOD — ₹10</option>
+                    <option value="high">HIGH — ₹15</option>
                   </select>
                 </div>
               </div>
@@ -540,7 +540,7 @@ const AdminUserBlogs = () => {
                   <Ban className="w-8 h-8" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-black text-rose-500 uppercase tracking-tighter">Repository Failure</h4>
+                  <h4 className="text-lg font-black text-rose-500 uppercase tracking-tighter">Something Went Wrong</h4>
                   <p className="text-sm font-bold text-rose-500/70 uppercase tracking-widest">{error}</p>
                 </div>
               </motion.div>
@@ -549,8 +549,8 @@ const AdminUserBlogs = () => {
                 <div className="w-32 h-32 rounded-2xl lg:rounded-[3.5rem] bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-4 lg:mb-8 mx-auto">
                   <FileText className="w-16 h-16 text-slate-300" />
                 </div>
-                <h3 className="text-3xl font-black italic tracking-tighter text-slate-300 uppercase mb-4">No Submissions Found</h3>
-                <p className="max-w-md text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mx-auto">THE COMMUNITY REPOSITORY IS CURRENTLY VOID OF SUBMISSIONS IN THIS SECTOR</p>
+                <h3 className="text-3xl font-black italic tracking-tighter text-slate-300 uppercase mb-4">No User Blogs Found</h3>
+                <p className="max-w-md text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mx-auto">There are no blog posts matching your filters. Try adjusting your search or filters above.</p>
               </motion.div>
             ) : (
               <div className="space-y-4 lg:space-y-12 pb-24">
@@ -589,9 +589,9 @@ const AdminUserBlogs = () => {
               />
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Author:</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Written by</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {selectedBlog.author?.name || 'Unknown'} ({selectedBlog.author?.email || 'N/A'})
+                    {selectedBlog.author?.name || 'Unknown'} ({selectedBlog.author?.email || 'No email provided'})
                   </span>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -617,12 +617,12 @@ const AdminUserBlogs = () => {
               </div>
               {selectedBlog.excerpt && (
                 <div className="mb-4">
-                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Excerpt:</h3>
+                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Summary</h3>
                   <p className="text-gray-600 dark:text-gray-400">{selectedBlog.excerpt}</p>
                 </div>
               )}
               <div className="mb-4">
-                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Content:</h3>
+                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Content</h3>
                 <div
                   className="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-400"
                   dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
@@ -636,7 +636,7 @@ const AdminUserBlogs = () => {
                   }}
                   variant="admin"
                 >
-                  Change Status
+                  Update Status
                 </Button>
                 <Button
                   onClick={() => {
@@ -658,12 +658,12 @@ const AdminUserBlogs = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              Change Blog Status
+              Update Blog Status
             </h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Status *
+                  Status (required)
                 </label>
                 <select
                   value={statusFormData.status}
@@ -679,18 +679,18 @@ const AdminUserBlogs = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Reward Tier {statusFormData.status === 'approved' && '*'}
-                  {statusFormData.status === 'approved' && <span className="text-xs text-slate-700 dark:text-gray-400">(Required for approval)</span>}
+                  Reward Tier {statusFormData.status === 'approved' && '(required)'}
+                  {statusFormData.status === 'approved' && <span className="text-xs text-slate-700 dark:text-gray-400"> — must be set when approving</span>}
                 </label>
                 <select
                   value={statusFormData.rewardTier || ''}
                   onChange={(e) => setStatusFormData(prev => ({ ...prev, rewardTier: e.target.value || '' }))}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
-                  <option value="">Select Reward Tier</option>
-                  <option value="normal">Normal - ₹5</option>
-                  <option value="good">Good - ₹10</option>
-                  <option value="high">High - ₹15</option>
+                  <option value="">Choose a reward tier</option>
+                  <option value="normal">Normal — ₹5</option>
+                  <option value="good">Good — ₹10</option>
+                  <option value="high">High — ₹15</option>
                 </select>
                 {statusFormData.status === 'approved' && !statusFormData.rewardTier && (
                   <p className="mt-1 text-xs text-red-500">Please select a reward tier when approving a blog</p>
@@ -702,7 +702,7 @@ const AdminUserBlogs = () => {
                   variant="admin"
                   fullWidth
                 >
-                  Update Status
+                  Save Changes
                 </Button>
                 <Button
                   onClick={() => {

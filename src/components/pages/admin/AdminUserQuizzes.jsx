@@ -130,7 +130,7 @@ const AdminUserQuizzes = () => {
       }
     } catch (err) {
       console.error("Error fetching data:", err);
-      toast.error("Failed to load data");
+      toast.error("Failed to load data. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -183,12 +183,12 @@ const AdminUserQuizzes = () => {
 
   const handleRejectQuiz = async (id) => {
     if (!adminNotes.trim()) {
-      toast.error("Please provide rejection reason");
+      toast.error("Please provide a reason for rejection");
       return;
     }
     try {
       await API.adminRejectQuiz(id, adminNotes);
-      toast.success("Quiz rejected");
+      toast.success("Quiz has been rejected");
       setShowModal(false);
       setAdminNotes("");
       fetchData();
@@ -200,7 +200,7 @@ const AdminUserQuizzes = () => {
   const handleApproveCategory = async (id) => {
     try {
       await API.adminApproveCategory(id, "");
-      toast.success("Category approved");
+      toast.success("Category has been approved");
       fetchData();
     } catch (err) {
       toast.error(err?.message || "Failed to approve category");
@@ -208,11 +208,11 @@ const AdminUserQuizzes = () => {
   };
 
   const handleRejectCategory = async (id) => {
-    const reason = prompt("Enter rejection reason:");
+    const reason = prompt("Please provide a reason for rejection:");
     if (!reason) return;
     try {
       await API.adminRejectCategory(id, reason);
-      toast.success("Category rejected");
+      toast.success("Category has been rejected");
       fetchData();
     } catch (err) {
       toast.error(err?.message || "Failed to reject category");
@@ -222,7 +222,7 @@ const AdminUserQuizzes = () => {
   const handleApproveSubcategory = async (id) => {
     try {
       await API.adminApproveSubcategory(id, "");
-      toast.success("Subcategory approved");
+      toast.success("Subcategory has been approved");
       fetchData();
     } catch (err) {
       toast.error(err?.message || "Failed to approve subcategory");
@@ -230,11 +230,11 @@ const AdminUserQuizzes = () => {
   };
 
   const handleRejectSubcategory = async (id) => {
-    const reason = prompt("Enter rejection reason:");
+    const reason = prompt("Please provide a reason for rejection:");
     if (!reason) return;
     try {
       await API.adminRejectSubcategory(id, reason);
-      toast.success("Subcategory rejected");
+      toast.success("Subcategory has been rejected");
       fetchData();
     } catch (err) {
       toast.error(err?.message || "Failed to reject subcategory");
@@ -244,11 +244,11 @@ const AdminUserQuizzes = () => {
   const getStatusConfig = (status) => {
     switch (status) {
       case "pending":
-        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "PENDING_MODERATION" };
+        return { color: "text-amber-500 bg-amber-500/10 border-amber-500/20", icon: Clock, label: "PENDING REVIEW" };
       case "approved":
-        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "PUBLISHED" };
+        return { color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2, label: "APPROVED" };
       case "rejected":
-        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "DENIED" };
+        return { color: "text-rose-500 bg-rose-500/10 border-rose-500/20", icon: XCircle, label: "REJECTED" };
       default:
         return { color: "text-slate-500 bg-slate-500/10 border-slate-500/20", icon: MoreVertical, label: "UNKNOWN" };
     }
@@ -266,7 +266,7 @@ const AdminUserQuizzes = () => {
             />
             <Trophy className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing User Content Stream...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user quizzes...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -276,7 +276,7 @@ const AdminUserQuizzes = () => {
     <AdminMobileAppWrapper title="User Quizzes">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -290,12 +290,12 @@ const AdminUserQuizzes = () => {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <Trophy className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / USER QUIZZES</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / STUDENT QUIZZES</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  USER <span className="text-primary-500">CURATION</span>
+                  STUDENT <span className="text-primary-500">QUIZZES</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Review and manage quizzes, categories, and subcategories created by users.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Review and manage quizzes submitted by students.</p>
               </div>
             </div>
 
@@ -328,8 +328,8 @@ const AdminUserQuizzes = () => {
                   <Filter className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
-                  <div className="text-sm italic uppercase tracking-tighter">Content Curation Parameters</div>
+                  <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
+                  <div className="text-sm italic uppercase tracking-tighter">Search and Filter Content</div>
                 </div>
               </div>
 
@@ -354,7 +354,7 @@ const AdminUserQuizzes = () => {
                   <input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search..."
+                    placeholder="Search by title or author..."
                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-80 placeholder:text-slate-400"
                   />
                 </div>
@@ -381,7 +381,8 @@ const AdminUserQuizzes = () => {
                        {quizzes.length === 0 ? (
                           <div className="lg:col-span-2 flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner">
                             <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_QUIZZES_LOCATED</h3>
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">No Quizzes Found</h3>
+                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-4">No student quizzes match your current filters. Try adjusting your search or status filter.</p>
                           </div>
                        ) : (
                          quizzes.map((quiz, i) => {
@@ -397,7 +398,7 @@ const AdminUserQuizzes = () => {
                                 <div className="flex justify-between items-start mb-4 lg:mb-8 text-[10px] font-black uppercase tracking-widest">
                                    <div className="flex items-center gap-3">
                                       <div className={`w-3 h-3 rounded-full ${quiz.status === 'approved' ? 'bg-emerald-500 animate-pulse' : quiz.status === 'rejected' ? 'bg-rose-500' : 'bg-amber-500 animate-bounce'}`} />
-                                      {quiz.category?.name || "UNCATEGORIZED"} // {quiz.difficulty?.toUpperCase()}
+                                      {quiz.category?.name || "Uncategorized"} / {quiz.difficulty?.toUpperCase()}
                                    </div>
                                    <div className={`px-4 py-1 rounded-full border ${statusCfg.color} flex items-center gap-2 italic`}>
                                       <statusCfg.icon className="w-3 h-3" />
@@ -411,15 +412,15 @@ const AdminUserQuizzes = () => {
                                 <div className="grid grid-cols-3 gap-3 lg:gap-6 mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="space-y-1">
                                       <div className="text-slate-400">Questions</div>
-                                      <div className="text-sm italic">{quiz.questionCount || 0}_UNITS</div>
+                                      <div className="text-sm italic">{quiz.questionCount || 0}</div>
                                    </div>
                                    <div className="space-y-1">
-                                      <div className="text-slate-400">Yield_Potential</div>
-                                      <div className="text-sm italic text-emerald-500">₹{quiz.rewardAmount || 0}_INR</div>
+                                      <div className="text-slate-400">Reward</div>
+                                      <div className="text-sm italic text-emerald-500">{quiz.rewardAmount || 0} INR</div>
                                    </div>
                                    <div className="space-y-1">
-                                      <div className="text-slate-400">Engagements</div>
-                                      <div className="text-sm italic">{quiz.viewsCount || 0}_VIEWS</div>
+                                      <div className="text-slate-400">Views</div>
+                                      <div className="text-sm italic">{quiz.viewsCount || 0}</div>
                                    </div>
                                 </div>
 
@@ -437,7 +438,7 @@ const AdminUserQuizzes = () => {
                                       onClick={() => handleViewQuiz(quiz)}
                                       className="p-4 bg-primary-600 text-white rounded-2xl shadow-duo-primary hover:scale-105 active:scale-95 transition-all text-[8px] font-black uppercase tracking-widest flex items-center gap-3"
                                    >
-                                      REVIEW_MOD <ArrowRight className="w-4 h-4" />
+                                      REVIEW <ArrowRight className="w-4 h-4" />
                                    </button>
                                 </div>
                              </motion.div>
@@ -453,7 +454,8 @@ const AdminUserQuizzes = () => {
                        {categories.length === 0 ? (
                          <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
                             <Layers className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_TAXONOMIES_LOCATED</h3>
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">No Categories Found</h3>
+                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-4">No categories match your current filters. Try adjusting your search or status filter.</p>
                          </div>
                        ) : (
                          categories.map((cat, i) => {
@@ -476,22 +478,22 @@ const AdminUserQuizzes = () => {
 
                                 <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                      <div className="text-slate-400 mb-1">Micro_Channels</div>
+                                      <div className="text-slate-400 mb-1">Subcategories</div>
                                       <div className="text-sm italic tabular-nums">{cat.subcategoryCount || 0}</div>
                                    </div>
                                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                      <div className="text-slate-400 mb-1">Identity</div>
-                                      <div className="text-sm italic truncate">{cat.createdBy?.email?.split('@')[0] || 'ADMIN'}</div>
+                                      <div className="text-slate-400 mb-1">Created By</div>
+                                      <div className="text-sm italic truncate">{cat.createdBy?.email?.split('@')[0] || 'Admin'}</div>
                                    </div>
                                 </div>
 
                                 {cat.status === 'pending' && (
                                   <div className="flex gap-4 w-full">
                                      <button onClick={() => handleApproveCategory(cat._id)} className="flex-1 p-4 bg-emerald-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all outline-none">
-                                        AUTHORIZE
+                                        APPROVE
                                      </button>
                                      <button onClick={() => handleRejectCategory(cat._id)} className="flex-1 p-4 bg-rose-500 text-white rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all outline-none">
-                                        DENY
+                                        REJECT
                                      </button>
                                   </div>
                                 )}
@@ -508,7 +510,8 @@ const AdminUserQuizzes = () => {
                        {subcategories.length === 0 ? (
                          <div className="lg:col-span-3 flex flex-col items-center justify-center py-40">
                             <LayoutGrid className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">ZERO_CHANNELS_LOCATED</h3>
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">No Subcategories Found</h3>
+                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-4">No subcategories match your current filters. Try adjusting your search or status filter.</p>
                          </div>
                        ) : (
                          subcategories.map((sub, i) => {
@@ -525,16 +528,16 @@ const AdminUserQuizzes = () => {
                                    <LayoutGrid className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{sub.name}</h3>
-                                <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{sub.category?.name || 'GENERIC_PHASE'}</div>
+                                <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{sub.category?.name || 'Uncategorized'}</div>
 
                                 <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                      <div className="text-slate-400 mb-1">Modules</div>
+                                      <div className="text-slate-400 mb-1">Quizzes</div>
                                       <div className="text-sm italic tabular-nums">{sub.quizCount || 0}</div>
                                    </div>
                                    <div className={`p-4 rounded-2xl border shadow-inner ${statusCfg.color}`}>
-                                      <div className="text-slate-400 mb-1">Protocol</div>
-                                      <div className="text-sm italic truncate tracking-tight">{statusCfg.label.split('_')[0]}</div>
+                                      <div className="text-slate-400 mb-1">Status</div>
+                                      <div className="text-sm italic truncate tracking-tight">{statusCfg.label}</div>
                                    </div>
                                 </div>
 
@@ -579,7 +582,7 @@ const AdminUserQuizzes = () => {
                            <Crown className="w-8 h-8" />
                         </div>
                         <div>
-                           <div className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em] mb-2">SCHEMATIC_INSPECTION // MOD_09</div>
+                           <div className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em] mb-2">QUIZ REVIEW</div>
                            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{selectedQuiz.title}</h2>
                         </div>
                      </div>
@@ -595,10 +598,10 @@ const AdminUserQuizzes = () => {
                      {/* Metadata Grid */}
                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8">
                         {[
-                           { icon: Layers, label: "Macros", value: `${selectedQuiz.category?.name} / ${selectedQuiz.subcategory?.name}` },
-                           { icon: Target, label: "Intensity", value: selectedQuiz.difficulty?.toUpperCase() },
-                           { icon: Zap, label: "Clearance", value: `LEVEL_${selectedQuiz.requiredLevel}` },
-                           { icon: Clock, label: "Temporal", value: `${selectedQuiz.timeLimit}_MIN` }
+                           { icon: Layers, label: "Category", value: `${selectedQuiz.category?.name} / ${selectedQuiz.subcategory?.name}` },
+                           { icon: Target, label: "Difficulty", value: selectedQuiz.difficulty?.toUpperCase() },
+                           { icon: Zap, label: "Required Level", value: `Level ${selectedQuiz.requiredLevel}` },
+                           { icon: Clock, label: "Time Limit", value: `${selectedQuiz.timeLimit} min` }
                         ].map(item => (
                            <div key={item.label} className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5">
                               <item.icon className="w-5 h-5 text-primary-500 mb-4" />
@@ -611,18 +614,18 @@ const AdminUserQuizzes = () => {
                      {/* Synopsis */}
                      <div className="space-y-4">
                         <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest flex items-center gap-2">
-                           <FileText className="w-4 h-4" /> SYNOPSIS_PAYLOAD
+                           <FileText className="w-4 h-4" /> DESCRIPTION
                         </div>
                         <p className="text-slate-500 dark:text-slate-400 font-medium text-lg border-l-4 border-primary-500/20 pl-8 italic">
-                           {selectedQuiz.description || "No metadata synchronization detected for this objective synopsis."}
+                           {selectedQuiz.description || "No description provided for this quiz."}
                         </p>
                      </div>
 
                      {/* Query Matrix */}
                      <div className="space-y-4 lg:space-y-8">
                         <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest flex items-center justify-between">
-                           <div className="flex items-center gap-2"><HelpCircle className="w-4 h-4" /> QUERY_MATRIX_DEPLOYMENT</div>
-                           <span className="bg-primary-500/10 px-4 py-1 rounded-full">{selectedQuiz.questions?.length || 0}_UNITS</span>
+                           <div className="flex items-center gap-2"><HelpCircle className="w-4 h-4" /> QUESTIONS</div>
+                           <span className="bg-primary-500/10 px-4 py-1 rounded-full">{selectedQuiz.questions?.length || 0} questions</span>
                         </div>
                         <div className="grid grid-cols-1 gap-3 lg:gap-6">
                            {selectedQuiz.questions?.map((q, i) => (
@@ -663,14 +666,14 @@ const AdminUserQuizzes = () => {
                      <div className="flex flex-col lg:flex-row gap-10">
                         <div className="flex-1 space-y-4">
                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                              <MessageSquare className="w-4 h-4" /> MODERATION_REMARKS
+                              <MessageSquare className="w-4 h-4" /> ADMIN NOTES
                            </div>
                            <textarea
                              value={adminNotes}
                              onChange={(e) => setAdminNotes(e.target.value)}
                              className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-inner placeholder:text-slate-300 dark:placeholder:text-slate-700"
                              rows={3}
-                             placeholder="Inject editorial feedback here (MANDATORY_FOR_REJECTION)..."
+                             placeholder="Add your feedback here (required for rejection)..."
                            />
                         </div>
                         <div className="flex flex-col lg:w-80 gap-4">
@@ -680,13 +683,13 @@ const AdminUserQuizzes = () => {
                                  onClick={() => handleApproveQuiz(selectedQuiz._id)}
                                  className="flex-1 p-3 lg:p-8 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-emerald hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                >
-                                  <ShieldCheck className="w-6 h-6" /> AUTHORIZE_UNIT
+                                  <ShieldCheck className="w-6 h-6" /> APPROVE QUIZ
                                </button>
                                <button
                                  onClick={() => handleRejectQuiz(selectedQuiz._id)}
                                  className="flex-1 p-3 lg:p-8 bg-rose-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                >
-                                  <ShieldAlert className="w-6 h-6" /> REJECT
+                                  <ShieldAlert className="w-6 h-6" /> REJECT QUIZ
                                </button>
                              </>
                            ) : (
@@ -694,7 +697,7 @@ const AdminUserQuizzes = () => {
                                onClick={() => setShowModal(false)}
                                className="flex-1 p-3 lg:p-8 bg-slate-900 text-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-3"
                              >
-                                <ArrowLeft className="w-6 h-6" /> EXIT_INSPECTION
+                                <ArrowLeft className="w-6 h-6" /> CLOSE
                              </button>
                            )}
                         </div>

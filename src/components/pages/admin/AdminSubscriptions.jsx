@@ -141,10 +141,10 @@ const AdminSubscriptions = () => {
         });
         setSummary(response.data.summary || {});
       } else {
-        setError(response.message || 'Failed to fetch subscriptions');
+        setError(response.message || 'Unable to load subscriptions. Please try again.');
       }
     } catch (err) {
-      setError('Error fetching subscriptions: ' + err.message);
+      setError('Unable to load subscriptions: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -251,7 +251,7 @@ const AdminSubscriptions = () => {
 
   const handleExtendSubscription = async () => {
     if (!selectedSubscription || !extendForm.plan || !extendForm.duration) {
-      setError('Please select both plan and duration');
+      setError('Please select a plan and duration before extending.');
       return;
     }
 
@@ -269,12 +269,12 @@ const AdminSubscriptions = () => {
         await fetchSubscriptions();
         await fetchSummary();
         closeExtendModal();
-        alert(`Subscription ${response.data.isExtension ? 'extended' : 'created'} successfully!`);
+        alert(`Subscription ${response.data.isExtension ? 'extended' : 'created'} successfully.`);
       } else {
-        setError(response.message || 'Failed to extend subscription');
+        setError(response.message || 'Unable to extend subscription. Please try again.');
       }
     } catch (err) {
-      setError('Error extending subscription: ' + err.message);
+      setError('Unable to extend subscription: ' + err.message);
     } finally {
       setExtending(false);
     }
@@ -298,9 +298,9 @@ const AdminSubscriptions = () => {
   };
 
   const formatDate = (dateString, includeTime = false) => {
-    if (!dateString) return 'N/A';
+    if (!dateString) return 'Not Available';
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return 'ERR_DATE';
+    if (isNaN(date.getTime())) return 'Invalid Date';
 
     const day = date.getDate().toString().padStart(2, '0');
     const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -310,7 +310,7 @@ const AdminSubscriptions = () => {
     if (!includeTime) return `${day}-${month}-${year}`;
 
     const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-    return `${day}-${month}-${year} // ${time}`;
+    return `${day}-${month}-${year} at ${time}`;
   };
 
   const getPlanIcon = (planName) => {
@@ -426,19 +426,20 @@ const AdminSubscriptions = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                     <Layers className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN // SUBSCRIPTIONS</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN / SUBSCRIPTIONS</span>
                 </div>
 
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   MANAGE <span className="text-indigo-600">SUBSCRIPTIONS</span>
                 </h1>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
 
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="relative group/search">
                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
                     <input
                       type="text"
-                      placeholder="Search subscriptions..."
+                      placeholder="Search by name, email, or plan..."
                       value={filters.search}
                       onChange={(e) => handleFilterChange('search', e.target.value)}
                       className="pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
@@ -470,13 +471,13 @@ const AdminSubscriptions = () => {
                     className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
                   >
                     <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">EXPORT CSV</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
                   </motion.button>
                 </div>
               </div>
 
               <div className="flex flex-col items-end gap-2 text-right">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL REVENUE</span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ALL-TIME REVENUE</span>
                 <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-indigo-600 tabular-nums tracking-tighter">
                   <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                   {(summary.totalRevenue || 0).toLocaleString('en-IN')}
@@ -487,12 +488,12 @@ const AdminSubscriptions = () => {
 
           {/* Stats Matrix */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4 lg:mb-12">
-            <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBS" value={summary.totalSubscriptions || 0} sub="GRAND TOTAL" />
-            <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE PLANS" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
-            <StatsCard i={2} color="rose" icon={Zap} label="PAID PLANS" value={summary.paidSubscriptions || 0} sub="PREMIUM MEMBERS" />
-            <StatsCard i={3} color="secondary" icon={Clock} label="FREE PLANS" value={summary.freeSubscriptions || 0} sub="NON-PAID MEMBERS" />
-            <StatsCard i={4} color="purple" icon={TrendingUp} label="TOTAL REVENUE" value={formatCurrency(summary.totalRevenue || 0)} sub="NET GROWTH" />
-            <StatsCard i={5} color="amber" icon={Calendar} label="MONTHLY REVENUE" value={formatCurrency(summary.periodRevenue || 0)} sub="CURRENT MONTH" />
+            <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBSCRIPTIONS" value={summary.totalSubscriptions || 0} sub="ALL STUDENTS" />
+            <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
+            <StatsCard i={2} color="rose" icon={Zap} label="PAID MEMBERS" value={summary.paidSubscriptions || 0} sub="PAID PLANS" />
+            <StatsCard i={3} color="secondary" icon={Clock} label="FREE MEMBERS" value={summary.freeSubscriptions || 0} sub="FREE PLANS" />
+            <StatsCard i={4} color="purple" icon={TrendingUp} label="TOTAL REVENUE" value={formatCurrency(summary.totalRevenue || 0)} sub="ALL TIME" />
+            <StatsCard i={5} color="amber" icon={Calendar} label="THIS MONTH" value={formatCurrency(summary.periodRevenue || 0)} sub="MONTHLY REVENUE" />
           </div>
 
 
@@ -506,7 +507,7 @@ const AdminSubscriptions = () => {
             <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
               <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
                 <Filter className="w-4 h-4 text-indigo-500" />
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">REFINE RESULTS</span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
@@ -515,9 +516,9 @@ const AdminSubscriptions = () => {
                   onChange={(e) => handleFilterChange('plan', e.target.value)}
                   className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
-                  <option value="all">Plan: ALL PLANS</option>
+                  <option value="all">All Plans</option>
                   {filterOptions.plans.map(plan => (
-                    <option key={plan} value={plan}>Plan: {plan.toUpperCase()}</option>
+                    <option key={plan} value={plan}>{plan}</option>
                   ))}
                 </select>
 
@@ -526,9 +527,9 @@ const AdminSubscriptions = () => {
                   onChange={(e) => handleFilterChange('status', e.target.value)}
                   className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
-                  <option value="all">Status: ALL STATUS</option>
+                  <option value="all">All Statuses</option>
                   {filterOptions.statuses.slice(1).map(status => (
-                    <option key={status} value={status}>Status: {status.toUpperCase()}</option>
+                    <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
                   ))}
                 </select>
 
@@ -537,9 +538,9 @@ const AdminSubscriptions = () => {
                   onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
                   className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
-                  <option value="">Year: ALL YEARS</option>
+                  <option value="">All Years</option>
                   {filterOptions.years.map(year => (
-                    <option key={year} value={year}>Year: {year}</option>
+                    <option key={year} value={year}>{year}</option>
                   ))}
                 </select>
 
@@ -548,10 +549,10 @@ const AdminSubscriptions = () => {
                   onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
                   className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
-                  <option value={0}>Month: ALL MONTHS</option>
+                  <option value={0}>All Months</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
                     <option key={month} value={month}>
-                      Month: {new Date(0, month - 1).toLocaleString('default', { month: 'long' }).toUpperCase()}
+                      {new Date(0, month - 1).toLocaleString('default', { month: 'long' })}
                     </option>
                   ))}
                 </select>
@@ -561,13 +562,13 @@ const AdminSubscriptions = () => {
                   onChange={(e) => handlePageSizeChange(e.target.value)}
                   className="bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
                 >
-                  {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show: {v} rows</option>)}
+                  {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
                 </select>
               </div>
             </div>
           </motion.div>
 
-          {/* Registry View Matrix */}
+          {/* Subscription List */}
           <AnimatePresence mode="wait">
             {error ? (
               <motion.div
@@ -579,7 +580,7 @@ const AdminSubscriptions = () => {
                 <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">FAILED TO LOAD DATA</h3>
+                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
                 <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
               </motion.div>
             ) : subscriptions.length === 0 ? (
@@ -591,7 +592,7 @@ const AdminSubscriptions = () => {
               >
                 <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                 <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
-                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No active subscriptions detected in the current filter.</p>
+                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No subscriptions match your current filters. Try adjusting your search or filter criteria.</p>
               </motion.div>
             ) : (
               <motion.div
@@ -608,14 +609,14 @@ const AdminSubscriptions = () => {
                       <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                         <thead>
                           <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                            <th className="px-3 lg:px-6 py-4">S.No.</th>
+                            <th className="px-3 lg:px-6 py-4">#</th>
                             <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
-                              <div className="flex items-center gap-2 group-hover:text-indigo-500 transition-colors">CREATED AT <SortIcon field="createdAt" /></div>
+                              <div className="flex items-center gap-2 group-hover:text-indigo-500 transition-colors">DATE <SortIcon field="createdAt" /></div>
                             </th>
-                            <th className="px-3 lg:px-6 py-4">USER</th>
+                            <th className="px-3 lg:px-6 py-4">STUDENT</th>
                             <th className="px-3 lg:px-6 py-4">PLAN</th>
                             <th className="px-3 lg:px-6 py-4">STATUS</th>
-                            <th className="px-3 lg:px-6 py-4">VALIDITY</th>
+                            <th className="px-3 lg:px-6 py-4">VALID PERIOD</th>
                             <th className="px-3 lg:px-6 py-4 text-right">AMOUNT</th>
                             <th className="px-3 lg:px-6 py-4 text-right">ACTIONS</th>
                           </tr>
@@ -673,7 +674,7 @@ const AdminSubscriptions = () => {
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                                    <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'INDEFINITE'}</span>
+                                    <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
                                   </div>
                                 </div>
                               </td>
@@ -766,7 +767,7 @@ const AdminSubscriptions = () => {
 
                           <div className="pt-4 flex items-center justify-between">
                             <div className="flex flex-col">
-                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">REFERENCE ID</span>
+                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SUBSCRIPTION ID</span>
                               <span className="text-[10px] font-black text-indigo-500 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
                             </div>
                             <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
@@ -804,7 +805,7 @@ const AdminSubscriptions = () => {
 
                         <div className="flex flex-wrap items-center gap-4">
                           <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                            {subscription.planName || 'FREE_LEVEL'}
+                            {subscription.planName || 'FREE'}
                           </div>
                           <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
                             {subscription.status || 'UNKNOWN'}
@@ -813,7 +814,7 @@ const AdminSubscriptions = () => {
 
                         <div className="flex items-center gap-12">
                           <div className="flex flex-col">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">STAMP_SYNC</span>
+                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">CREATED ON</span>
                             <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(subscription.createdAt)}</span>
                           </div>
                           <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
@@ -835,7 +836,7 @@ const AdminSubscriptions = () => {
                   </div>
                 )}
 
-                {/* Tactical Pagination Orchestrator */}
+                {/* Pagination */}
                 {pagination.totalPages > 1 && (
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -843,7 +844,7 @@ const AdminSubscriptions = () => {
                     className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
                   >
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 lg:px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
-                      Showing {((pagination.currentPage - 1) * pagination.limit) + 1} // {Math.min(pagination.currentPage * pagination.limit, pagination.total)} OF {pagination.total} ENTRIES_ACTIVE
+                      Showing {((pagination.currentPage - 1) * pagination.limit) + 1} to {Math.min(pagination.currentPage * pagination.limit, pagination.total)} of {pagination.total} subscriptions
                     </div>
 
                     <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
@@ -890,7 +891,7 @@ const AdminSubscriptions = () => {
             )}
           </AnimatePresence>
 
-          {/* Tactical Extend Registry Modal */}
+          {/* Extend Subscription Modal */}
           <AnimatePresence>
             {showExtendModal && (
               <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
@@ -919,38 +920,38 @@ const AdminSubscriptions = () => {
                         <Layers className="w-8 h-8" />
                       </div>
                       <div className="flex flex-col">
-                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND PLAN</h3>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} / {selectedSubscription?.user?.email || 'N/A'}</span>
+                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} &mdash; {selectedSubscription?.user?.email || 'N/A'}</span>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-12 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                       <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">START DATE</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
                         <select
                           value={extendForm.plan}
                           onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
                           className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                         >
-                          <option value="free">Free_Node</option>
-                          <option value="basic">Basic_Logic</option>
-                          <option value="premium">Premium_Matrix</option>
-                          <option value="pro">Pro_Engine</option>
+                          <option value="free">Free</option>
+                          <option value="basic">Basic</option>
+                          <option value="premium">Premium</option>
+                          <option value="pro">Pro</option>
                         </select>
                       </div>
                       <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">TEMPORAL_DURATION</label>
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
                         <select
                           value={extendForm.duration}
                           onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
                           className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                         >
-                          <option value="1 month">01_Month_Cycle</option>
-                          <option value="2 months">02_Month_Cycle</option>
-                          <option value="3 months">03_Month_Cycle</option>
-                          <option value="6 months">06_Month_Cycle</option>
-                          <option value="1 year">12_Month_Phase</option>
-                          <option value="2 years">24_Month_Phase</option>
+                          <option value="1 month">1 Month</option>
+                          <option value="2 months">2 Months</option>
+                          <option value="3 months">3 Months</option>
+                          <option value="6 months">6 Months</option>
+                          <option value="1 year">1 Year</option>
+                          <option value="2 years">2 Years</option>
                         </select>
                       </div>
                     </div>
@@ -978,7 +979,7 @@ const AdminSubscriptions = () => {
                         disabled={extending}
                       >
                         {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                        {extending ? 'Saving...' : 'EXTEND PLAN'}
+                        {extending ? 'SAVING...' : 'EXTEND SUBSCRIPTION'}
                       </motion.button>
                     </div>
                   </div>

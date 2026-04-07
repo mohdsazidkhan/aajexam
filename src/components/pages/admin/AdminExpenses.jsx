@@ -148,10 +148,10 @@ const AdminExpenses = () => {
 
     const expenseCategories = [
         { id: 'ads', label: 'Advertising', color: 'indigo' },
-        { id: 'server', label: 'Cloud Infrastructure', color: 'slate' },
-        { id: 'maintenance', label: 'Platform Maintenance', color: 'amber' },
-        { id: 'marketing', label: 'Growth Marketing', color: 'emerald' },
-        { id: 'other', label: 'Miscellaneous', color: 'rose' }
+        { id: 'server', label: 'Hosting & Servers', color: 'slate' },
+        { id: 'maintenance', label: 'Maintenance', color: 'amber' },
+        { id: 'marketing', label: 'Marketing', color: 'emerald' },
+        { id: 'other', label: 'Other', color: 'rose' }
     ];
 
     return (
@@ -176,7 +176,7 @@ const AdminExpenses = () => {
                                     <div className="p-3 bg-red-500/10 text-red-500 rounded-2xl">
                                         <TrendingDown className="w-6 h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em]">ADMIN // OPERATIONS</span>
+                                    <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em]">ADMIN // EXPENSES</span>
                                 </div>
 
                                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
@@ -184,7 +184,7 @@ const AdminExpenses = () => {
                                 </h1>
 
                                 <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                                    Monitor and manage manual platform expenditures including advertising, infrastructure, and maintenance costs.
+                                    Track and record platform expenses like advertising, hosting, and maintenance.
                                 </p>
                             </div>
 
@@ -214,7 +214,7 @@ const AdminExpenses = () => {
                             <div className="text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2">
                                 {formatAmount(summary.totalAmount)}
                             </div>
-                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">TOTAL DISBURSEMENTS</div>
+                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">TOTAL EXPENSES</div>
                         </motion.div>
 
                         {summary?.categories?.map((cat, i) => (
@@ -257,7 +257,7 @@ const AdminExpenses = () => {
                                 onChange={e => setCategory(e.target.value)}
                                 className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
                             >
-                                <option value="">ALL EXPENDITURES</option>
+                                <option value="">ALL CATEGORIES</option>
                                 {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                             </select>
                         </div>
@@ -274,12 +274,12 @@ const AdminExpenses = () => {
                     {/* List Table */}
                     <AnimatePresence mode="wait">
                         {loading ? (
-                            <div className="p-32 flex justify-center"><Loading size="md" color="yellow" message="Syncing expense ledger..." /></div>
+                            <div className="p-32 flex justify-center"><Loading size="md" color="yellow" message="Loading expenses..." /></div>
                         ) : expenses.length === 0 ? (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-2xl">
                                 <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">Financial Void</h3>
-                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">No expenditures recorded for this sector</p>
+                                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Expenses Recorded</h3>
+                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Start by adding your first expense to track platform spending.</p>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -291,11 +291,11 @@ const AdminExpenses = () => {
                                     <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                                         <thead>
                                             <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                                                <th className="px-3 lg:px-6 py-4">Expenditure Details</th>
-                                                <th className="px-3 lg:px-6 py-4 text-center">Classification</th>
-                                                <th className="px-3 lg:px-6 py-4 text-right">Value</th>
-                                                <th className="px-3 lg:px-6 py-4">Recorded Date</th>
-                                                <th className="px-3 lg:px-6 py-4 text-center">Controls</th>
+                                                <th className="px-3 lg:px-6 py-4">Expense</th>
+                                                <th className="px-3 lg:px-6 py-4 text-center">Category</th>
+                                                <th className="px-3 lg:px-6 py-4 text-right">Amount</th>
+                                                <th className="px-3 lg:px-6 py-4">Date</th>
+                                                <th className="px-3 lg:px-6 py-4 text-center">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -309,7 +309,7 @@ const AdminExpenses = () => {
                                                 >
                                                     <td className="px-3 lg:px-6 py-3 lg:py-6 border-l-4 border-transparent group-hover:border-indigo-500 first:rounded-l-[2rem]">
                                                         <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors leading-none mb-2">{expense.title}</div>
-                                                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No detailed metadata recorded'}</div>
+                                                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
                                                     </td>
                                                     <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
                                                         <span className="px-4 py-1.5 rounded-xl bg-indigo-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-indigo-500/20">
@@ -399,8 +399,8 @@ const AdminExpenses = () => {
                                     <Receipt className="w-24 h-24 rotate-12" />
                                 </div>
                                 <div className="relative z-10">
-                                    <h2 className="text-3xl font-black uppercase tracking-tighter italic mb-1 font-outfit leading-none">{isEditing ? 'REVISE' : 'RECORD'} EXPENDITURE</h2>
-                                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Update manual platform disbursements</p>
+                                    <h2 className="text-3xl font-black uppercase tracking-tighter italic mb-1 font-outfit leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
+                                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Enter the expense details below</p>
                                 </div>
                                 <button onClick={() => setShowModal(false)} className="absolute top-8 right-8 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
                                     <X className="w-5 h-5" />
@@ -409,7 +409,7 @@ const AdminExpenses = () => {
 
                             <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8">
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Expenditure Metadata</label>
+                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                     <div className="relative group/field">
                                         <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
                                         <input
@@ -425,7 +425,7 @@ const AdminExpenses = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-8">
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Currency Value</label>
+                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Amount</label>
                                         <div className="relative group/field">
                                             <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
                                             <input
@@ -439,7 +439,7 @@ const AdminExpenses = () => {
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Disbursement Date</label>
+                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Date</label>
                                         <div className="relative group/field">
                                             <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
                                             <input
@@ -454,7 +454,7 @@ const AdminExpenses = () => {
                                 </div>
 
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Expenditure Sector</label>
+                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Category</label>
                                     <select
                                         value={formData.category}
                                         onChange={e => setFormData({ ...formData, category: e.target.value })}
@@ -465,13 +465,13 @@ const AdminExpenses = () => {
                                 </div>
 
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Detailed Notes</label>
+                                    <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Description</label>
                                     <textarea
                                         value={formData.description}
                                         onChange={e => setFormData({ ...formData, description: e.target.value })}
                                         rows="3"
                                         className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
-                                        placeholder="RECORD ADDITIONAL TRANSACTION DATA..."
+                                        placeholder="ADD A NOTE ABOUT THIS EXPENSE..."
                                     />
                                 </div>
 
@@ -482,7 +482,7 @@ const AdminExpenses = () => {
                                         onClick={() => setShowModal(false)}
                                         className="flex-1 py-5 rounded-lg lg:rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
                                     >
-                                        DISCARD
+                                        CANCEL
                                     </motion.button>
                                     <motion.button
                                         whileHover={{ x: 5 }}
@@ -490,7 +490,7 @@ const AdminExpenses = () => {
                                         disabled={formLoading}
                                         className="flex-1 py-5 rounded-lg lg:rounded-[2rem] bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl disabled:opacity-50"
                                     >
-                                        {formLoading ? 'COMMITING...' : (isEditing ? 'REVISE ENTRY' : 'COMMIT RECORD')}
+                                        {formLoading ? 'SAVING...' : (isEditing ? 'SAVE CHANGES' : 'ADD EXPENSE')}
                                     </motion.button>
                                 </div>
                             </form>

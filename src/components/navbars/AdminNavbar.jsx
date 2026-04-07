@@ -115,7 +115,7 @@ const AdminNavbar = () => {
              <div className="text-right hidden xl:block">
                 <p className="text-[8px] font-black text-primary-500 uppercase tracking-widest leading-none mb-1">ROLE: ADMIN</p>
                <p className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none tracking-tight">
-                 {user?.name?.split(' ')[0] || 'ADMIN'}
+                 {user?.name || 'ADMIN'}
                </p>
              </div>
              <button

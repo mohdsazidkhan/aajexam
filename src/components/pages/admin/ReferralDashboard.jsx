@@ -87,10 +87,10 @@ export default function ReferralDashboard() {
 
   const getRewardTypeLabel = (type) => {
     const labels = {
-      'registration': 'Friend Registration',
-      'plan9': '₹9 Expansion',
-      'plan49': '₹49 Expansion',
-      'plan99': '₹99 Expansion',
+      'registration': 'Registration Reward',
+      'plan9': '₹9 Plan Reward',
+      'plan49': '₹49 Plan Reward',
+      'plan99': '₹99 Plan Reward',
     };
     return labels[type] || type.toUpperCase();
   };
@@ -107,7 +107,7 @@ export default function ReferralDashboard() {
             />
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Network Yield Data...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral data...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -117,7 +117,7 @@ export default function ReferralDashboard() {
     <AdminMobileAppWrapper title="Referral Dashboard">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
           
           {/* Header Section */}
           <motion.div
@@ -131,16 +131,16 @@ export default function ReferralDashboard() {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <UserPlus className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN_HUB // NETWORK_DASHBOARD</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">ADMIN / REFERRAL DASHBOARD</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  YIELD <span className="text-primary-500">DASHBOARD</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
+                  REFERRAL <span className="text-primary-500">DASHBOARD</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Consolidated overview of multi-tier network expansion and reward transaction matrices.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral program performance and user referral activity.</p>
               </div>
             </div>
 
-            {/* Tactical Control Panel */}
+            {/* Search and Filter */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
@@ -148,8 +148,8 @@ export default function ReferralDashboard() {
                       <Filter className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
-                      <div className="text-sm italic uppercase tracking-tighter italic">Network Segment Index</div>
+                      <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
+                      <div className="text-sm italic uppercase tracking-tighter italic">Search and Filter Users</div>
                     </div>
                  </div>
               </div>
@@ -165,7 +165,7 @@ export default function ReferralDashboard() {
             </div>
           </motion.div>
 
-          {/* Content Stream */}
+          {/* Referral Table */}
           <AnimatePresence mode="wait">
             {referrals.length === 0 ? (
               <motion.div
@@ -175,8 +175,8 @@ export default function ReferralDashboard() {
                 className="flex flex-col items-center justify-center py-40 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_ATTRIBUTION_FOUND</h3>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded referral attribution detected for the current network slice.</p>
+                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO REFERRALS FOUND</h3>
+                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No users with referral activity were found. Try adjusting your search.</p>
               </motion.div>
             ) : (
               <motion.div
@@ -222,11 +222,11 @@ export default function ReferralDashboard() {
                              </div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'DIRECT_ENTRY'}</span>
+                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'Direct Signup'}</span>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                              <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">₹{u.walletBalance || 0}</div>
-                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">ACTIVE_LIQUIDITY</div>
+                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                              <div className="flex flex-col gap-2">
@@ -239,7 +239,7 @@ export default function ReferralDashboard() {
                                       </div>
                                     ))}
                                     {u.referralRewards.length > 2 && (
-                                      <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest pl-5">+ {u.referralRewards.length - 2} ADDITIONAL_TRANSFERS</span>
+                                      <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest pl-5">+ {u.referralRewards.length - 2} more rewards</span>
                                     )}
                                   </>
                                 ) : (
@@ -255,7 +255,7 @@ export default function ReferralDashboard() {
               </motion.div>
             )}
 
-            {/* Pagination Segment */}
+            {/* Pagination */}
             {pagination.totalPages > 1 && (
               <div className="flex justify-center pt-16">
                 <Pagination

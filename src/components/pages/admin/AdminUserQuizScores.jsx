@@ -105,7 +105,7 @@ const AdminUserQuizScores = ({ userId }) => {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="Academic Records">
+      <AdminMobileAppWrapper title="Student Quiz Scores">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
            <div className="relative">
              <motion.div
@@ -115,7 +115,7 @@ const AdminUserQuizScores = ({ userId }) => {
              />
              <BookOpen className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
            </div>
-           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Retrieving Scholastic Integrity...</div>
+           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading quiz scores...</div>
         </div>
       </AdminMobileAppWrapper>
     );
@@ -123,18 +123,18 @@ const AdminUserQuizScores = ({ userId }) => {
 
   if (!user) {
     return (
-      <AdminMobileAppWrapper title="Academic Records">
+      <AdminMobileAppWrapper title="Student Quiz Scores">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans flex flex-col items-center justify-center p-3 lg:p-8">
            <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
              <Target className="w-16 h-16 text-slate-200 dark:text-slate-700" />
            </div>
-           <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">STUDENT NOT FOUND</h3>
-           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">The student you are looking for does not exist.</p>
+           <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">Student Not Found</h3>
+           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">We couldn't find this student. They may have been removed or the link is incorrect.</p>
            <button
              onClick={() => router.push('/admin/students')}
              className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"
            >
-             <ArrowLeft className="w-4 h-4" /> RETURN TO DIRECTORY
+             <ArrowLeft className="w-4 h-4" /> Back to Students
            </button>
         </div>
       </AdminMobileAppWrapper>
@@ -142,10 +142,10 @@ const AdminUserQuizScores = ({ userId }) => {
   }
 
   return (
-    <AdminMobileAppWrapper title="Academic Records">
+    <AdminMobileAppWrapper title="Student Quiz Scores">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
           
           {/* Header Section */}
           <motion.div
@@ -159,10 +159,10 @@ const AdminUserQuizScores = ({ userId }) => {
                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                      <Trophy className="w-6 h-6" />
                    </div>
-                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">SCHOLASTIC PERFORMANCE // AUDIT</span>
+                   <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Student Quiz Performance</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  QUIZ <span className="text-indigo-600">SCHEMATICS</span>
+                  Quiz <span className="text-indigo-600">Scores</span>
                 </h1>
                 <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-2xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
                    <div className="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-black text-sm shadow-lg">
@@ -180,7 +180,7 @@ const AdminUserQuizScores = ({ userId }) => {
                    onClick={() => router.push('/admin/students')}
                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                  >
-                   <ArrowLeft className="w-4 h-4 text-indigo-500" /> BACK TO DIRECTORY
+                   <ArrowLeft className="w-4 h-4 text-indigo-500" /> Back to Students
                  </button>
               </div>
             </div>
@@ -188,10 +188,10 @@ const AdminUserQuizScores = ({ userId }) => {
             {/* Metric Overview */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
               {[
-                { label: 'Cumulative Volume', value: pagination.total, icon: BookOpen, color: 'blue' },
-                { label: 'Peak Performance', value: user?.monthlyProgress?.highScoreWins || 0, icon: Trophy, color: 'emerald' },
-                { label: 'Precision Rating', value: `${user?.monthlyProgress?.accuracy || 0}%`, icon: Target, color: 'amber' },
-                { label: 'Aggregated Score', value: user?.getScore || 0, icon: Activity, color: 'indigo' }
+                { label: 'Total Quizzes', value: pagination.total, icon: BookOpen, color: 'blue' },
+                { label: 'Top Score Wins', value: user?.monthlyProgress?.highScoreWins || 0, icon: Trophy, color: 'emerald' },
+                { label: 'Accuracy', value: `${user?.monthlyProgress?.accuracy || 0}%`, icon: Target, color: 'amber' },
+                { label: 'Overall Score', value: user?.getScore || 0, icon: Activity, color: 'indigo' }
               ].map((stat, i) => (
                 <div
                   key={stat.label}
@@ -207,24 +207,24 @@ const AdminUserQuizScores = ({ userId }) => {
             </div>
           </motion.div>
 
-          {/* Controller Bar */}
+          {/* View Controls */}
           <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
              <div className="flex items-center gap-4">
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
                    <Zap className="w-5 h-5" />
                 </div>
                 <div>
-                   <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">DATA_FILTERING</div>
-                   <div className="text-sm font-black italic uppercase tracking-tighter">Scholastic Results Index</div>
+                   <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">View Options</div>
+                   <div className="text-sm font-black italic uppercase tracking-tighter">Quiz Score Results</div>
                 </div>
              </div>
 
              <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
-                    { icon: TableIcon, id: 'table', label: 'Tabular' },
-                    { icon: List, id: 'list', label: 'Linear' },
-                    { icon: LayoutGrid, id: 'grid', label: 'Spectral' }
+                    { icon: TableIcon, id: 'table', label: 'Table' },
+                    { icon: List, id: 'list', label: 'List' },
+                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
                   ].map((mode) => (
                     <button
                       key={mode.id}
@@ -242,14 +242,14 @@ const AdminUserQuizScores = ({ userId }) => {
                   <select
                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
                   >
-                    <option>20 ITEMS PER_PAGE</option>
+                    <option>20 per page</option>
                   </select>
                   <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                 </div>
              </div>
           </div>
 
-          {/* Results Visualization */}
+          {/* Quiz Score Results */}
           <AnimatePresence mode="wait">
              {quizScores.length === 0 ? (
                <motion.div
@@ -261,8 +261,8 @@ const AdminUserQuizScores = ({ userId }) => {
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <BookOpen className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_ENTRIES_LOCATED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This candidate has no recorded participation metrics for the specified term.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Quiz Scores Yet</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This student hasn't taken any quizzes yet.</p>
                </motion.div>
              ) : (
                <motion.div
@@ -276,12 +276,12 @@ const AdminUserQuizScores = ({ userId }) => {
                      <table className="w-full">
                        <thead>
                          <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">S.No.</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Assessment Module</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Optimum Score</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Precision %</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Benchmark</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Last Interaction</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Quiz Name</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Best Score</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Accuracy</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">High Score</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Last Attempt</th>
                          </tr>
                        </thead>
                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -303,7 +303,7 @@ const AdminUserQuizScores = ({ userId }) => {
                                      </div>
                                      <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{score.quiz?.title || 'Quiz ' + (((page - 1) * 20) + i + 1)}</div>
-                                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{score.quiz?.category || 'SYSTEM_MODULE'}</div>
+                                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{score.quiz?.category || 'General'}</div>
                                      </div>
                                   </div>
                                </td>
@@ -319,10 +319,10 @@ const AdminUserQuizScores = ({ userId }) => {
                                   {score.isHighScore ? (
                                     <div className="flex items-center justify-center gap-2 text-emerald-500 animate-pulse">
                                        <Award className="w-4 h-4" />
-                                       <span className="text-[9px] font-black uppercase tracking-widest">RECORD_PEAK</span>
+                                       <span className="text-[9px] font-black uppercase tracking-widest">Top Score</span>
                                     </div>
                                   ) : (
-                                    <div className="text-slate-300 dark:text-slate-600 text-[9px] font-black uppercase tracking-widest">SUB_PEAK</div>
+                                    <div className="text-slate-300 dark:text-slate-600 text-[9px] font-black uppercase tracking-widest">--</div>
                                   )}
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
@@ -366,15 +366,15 @@ const AdminUserQuizScores = ({ userId }) => {
                              <h3 className="text-md lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">
                                {score.quiz?.title || 'Quiz ' + serialNumber}
                              </h3>
-                             <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Module: {score.quiz?.category || 'General'}</div>
+                             <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Category: {score.quiz?.category || 'General'}</div>
 
                              <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Peak Score</div>
+                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Best Score</div>
                                    <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter italic">{score.bestScore || 0}</div>
                                 </div>
                                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Precision</div>
+                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Accuracy</div>
                                    <div className={`text-sm font-black tabular-nums tracking-tighter italic ${percentage >= 75 ? 'text-emerald-500' : 'text-primary-500'}`}>{percentage}%</div>
                                 </div>
                              </div>
@@ -386,7 +386,7 @@ const AdminUserQuizScores = ({ userId }) => {
                                 </div>
                                 {score.isHighScore && (
                                   <div className="px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[8px] font-black uppercase tracking-widest">
-                                     TOP_AUDIT
+                                     Top Score
                                   </div>
                                 )}
                              </div>
@@ -420,11 +420,11 @@ const AdminUserQuizScores = ({ userId }) => {
                                  <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                                      <div className="flex items-center gap-2">
                                        <Award className="w-4 h-4 text-emerald-500/50" />
-                                       <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">RECORD_SCORE: {score.bestScore || 0}</span>
+                                       <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Best Score: {score.bestScore || 0}</span>
                                      </div>
                                      <div className="flex items-center gap-2">
                                        <Target className="w-4 h-4 text-blue-500/50" />
-                                       <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">PRECISION: {percentage}%</span>
+                                       <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Accuracy: {percentage}%</span>
                                      </div>
                                      <div className="flex items-center gap-2">
                                        <Clock className="w-4 h-4 text-primary-500/50" />
@@ -446,7 +446,7 @@ const AdminUserQuizScores = ({ userId }) => {
                     </div>
                  )}
 
-                 {/* System-level Pagination */}
+                 {/* Pagination */}
                  {pagination.totalPages > 1 && (
                    <div className="flex justify-center pt-12">
                      <Pagination

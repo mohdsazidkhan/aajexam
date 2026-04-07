@@ -62,9 +62,9 @@ const AdminUserWallets = () => {
   const formatAmount = (n) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(n || 0);
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
+    if (!dateString) return 'Not available';
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return 'Invalid Date';
+    if (isNaN(date.getTime())) return 'Invalid date';
     const day = date.getDate().toString().padStart(2, '0');
     const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     const month = monthNames[date.getMonth()];
@@ -78,7 +78,7 @@ const AdminUserWallets = () => {
   };
 
   const handleResetClaimableRewards = async () => {
-    if (!confirm('Are you sure you want to reset all claimableRewards to 0 for users where claimableRewards > 0? This action cannot be undone.')) {
+    if (!confirm('Are you sure you want to reset all pending rewards to 0 for every student who has unclaimed rewards? This action cannot be undone.')) {
       return;
     }
 
@@ -86,14 +86,14 @@ const AdminUserWallets = () => {
     try {
       const res = await API.resetClaimableRewards();
       if (res?.success) {
-        alert(`Successfully reset claimableRewards to 0 for ${res.modifiedCount || 0} users`);
+        alert(`Successfully reset pending rewards for ${res.modifiedCount || 0} students.`);
         load(); // Refresh the data
       } else {
-        alert('Failed to reset claimableRewards: ' + (res?.message || 'Unknown error'));
+        alert('Failed to reset rewards: ' + (res?.message || 'Unknown error'));
       }
     } catch (e) {
-      console.error('Failed to reset claimableRewards', e);
-      alert('Failed to reset claimableRewards: ' + (e.response?.data?.message || e.message || 'Unknown error'));
+      console.error('Failed to reset rewards', e);
+      alert('Failed to reset rewards: ' + (e.response?.data?.message || e.message || 'Unknown error'));
     } finally {
       setResetting(false);
     }
@@ -118,15 +118,15 @@ const AdminUserWallets = () => {
                 <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
                   <Wallet className="w-6 h-6" />
                 </div>
-                <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN // TREASURY</span>
+                <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">ADMIN // WALLETS</span>
               </div>
 
               <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                USER <span className="text-indigo-600">WALLETS</span>
+                STUDENT <span className="text-indigo-600">WALLETS</span>
               </h1>
 
               <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                Monitor and manage user portal balances, rewards, and transaction history.
+                View student wallet balances and earning history.
               </p>
             </div>
 
@@ -139,7 +139,7 @@ const AdminUserWallets = () => {
                 className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl shadow-xl shadow-rose-500/20 group/btn disabled:opacity-50"
               >
                 <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : 'group-hover/btn:rotate-180 transition-transform'}`} />
-                <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET REWARDS'}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET ALL REWARDS'}</span>
               </motion.button>
             </div>
           </div>
@@ -154,7 +154,7 @@ const AdminUserWallets = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
-              placeholder="Search by name, email, phone..."
+              placeholder="Search by username..."
               className="w-full pl-14 pr-8 py-4 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
             />
           </div>
@@ -178,7 +178,7 @@ const AdminUserWallets = () => {
           </div>
 
           <div className="flex items-center gap-4 ml-auto">
-            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SHOW ROWS</span>
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ROWS PER PAGE</span>
             <select
               value={itemsPerPage}
               onChange={handleItemsPerPageChange}
@@ -191,7 +191,13 @@ const AdminUserWallets = () => {
 
         {loading ? (
           <div className="flex items-center justify-center h-96">
-            <Loading size="md" color="yellow" message="Loading treasury data..." />
+            <Loading size="md" color="yellow" message="Loading wallets..." />
+          </div>
+        ) : items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl">
+            <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-6" />
+            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">No Wallet Records Found</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md text-center">There are no student wallets matching your search. Try adjusting your filters or check back later.</p>
           </div>
         ) : (
           <>
@@ -201,13 +207,13 @@ const AdminUserWallets = () => {
                   <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                     <thead>
                       <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                        <th className="px-3 lg:px-6 py-4">S.No.</th>
-                        <th className="px-3 lg:px-6 py-4">User Details</th>
-                        <th className="px-3 lg:px-6 py-4">Contact</th>
-                        <th className="px-3 lg:px-6 py-4 text-right">Wallet Amount</th>
-                        <th className="px-3 lg:px-6 py-4 text-center">Claimable</th>
-                        <th className="px-3 lg:px-6 py-4">Questions Track</th>
-                        <th className="px-3 lg:px-6 py-4">Join Date</th>
+                        <th className="px-3 lg:px-6 py-4">#</th>
+                        <th className="px-3 lg:px-6 py-4">Student</th>
+                        <th className="px-3 lg:px-6 py-4">Contact Info</th>
+                        <th className="px-3 lg:px-6 py-4 text-right">Balance</th>
+                        <th className="px-3 lg:px-6 py-4 text-center">Pending Rewards</th>
+                        <th className="px-3 lg:px-6 py-4">Questions</th>
+                        <th className="px-3 lg:px-6 py-4">Joined</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
@@ -263,7 +269,7 @@ const AdminUserWallets = () => {
                                 <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-[8px] font-black text-emerald-500 uppercase">APPV</span>
+                                <span className="text-[8px] font-black text-emerald-500 uppercase">APPROVED</span>
                                 <span className="text-xs font-black text-emerald-500 tabular-nums">{row.questionCounts?.approved || 0}</span>
                               </div>
                             </div>
@@ -309,14 +315,14 @@ const AdminUserWallets = () => {
 
                     <div className="flex flex-wrap items-center gap-3 lg:gap-6 lg:justify-end">
                       <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">CLAIMABLE</span>
+                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">PENDING REWARDS</span>
                         <div className={`text-md font-black italic tracking-tighter ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>
                           {row.claimableRewards || 0} REWARDS
                         </div>
                       </div>
                       <div className="w-[2px] h-8 bg-slate-100 dark:bg-white/5 hidden lg:block" />
                       <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">WALLET BALANCE</span>
+                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">BALANCE</span>
                         <div className="text-xl font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter tabular-nums">
                           {formatAmount(row.amount || row.walletBalance)}
                         </div>
@@ -359,17 +365,17 @@ const AdminUserWallets = () => {
 
                     <div className="space-y-4 mb-4 lg:mb-8">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">CLAIMABLE</span>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">PENDING REWARDS</span>
                         <span className={`text-sm font-black italic tabular-nums ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>{row.claimableRewards || 0} REWARDS</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">JOIN DATE</span>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">JOINED</span>
                         <span className="text-[10px] font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(row.createdAt)}</span>
                       </div>
                     </div>
 
                     <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/5">
-                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 block">WALLET BALANCE</span>
+                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 block">BALANCE</span>
                       <div className="text-3xl font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
                     </div>
                   </motion.div>
@@ -396,7 +402,7 @@ const AdminUserWallets = () => {
   );
 
   return (
-    <AdminMobileAppWrapper title="User Wallets">
+    <AdminMobileAppWrapper title="Student Wallets">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent  w-full text-gray-900 dark:text-white">

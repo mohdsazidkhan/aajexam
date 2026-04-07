@@ -126,7 +126,7 @@ const AdminNotificationsPage = () => {
 
   if (loading && items.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Signal Relay">
+      <AdminMobileAppWrapper title="Notifications">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
@@ -136,17 +136,17 @@ const AdminNotificationsPage = () => {
             />
             <Bell className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-rose-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Signal Waveforms...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading notifications...</div>
         </div>
       </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Signal Relay">
+    <AdminMobileAppWrapper title="Notifications">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -160,12 +160,12 @@ const AdminNotificationsPage = () => {
                   <div className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl">
                     <Bell className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-rose-500 uppercase tracking-[0.3em]">SIGNAL_HUB // EVENT_LOGS</span>
+                  <span className="text-[10px] font-black text-rose-500 uppercase tracking-[0.3em]">Notification Center</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  SIGNAL <span className="text-rose-500">RELAY</span>
+                  NOTIFI<span className="text-rose-500">CATIONS</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of operational events, user actions, and scholastic achievements.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View and manage system notifications and user activity alerts.</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -177,7 +177,7 @@ const AdminNotificationsPage = () => {
                       className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
                     >
                       {[10, 20, 50, 100].map((n) => (
-                        <option key={n} value={n}>{n}_PAGES</option>
+                        <option key={n} value={n}>{n} per page</option>
                       ))}
                     </select>
                  </div>
@@ -185,13 +185,13 @@ const AdminNotificationsPage = () => {
                     onClick={handleClearAll}
                     className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-rose-500 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-rose-500 hover:text-white transition-all flex items-center gap-3 active:scale-95"
                  >
-                   <Trash2 className="w-4 h-4" /> NEUTRALIZE_ALL
+                   <Trash2 className="w-4 h-4" /> Clear All
                  </button>
               </div>
             </div>
           </motion.div>
 
-          {/* Signal Stream */}
+          {/* Notification List */}
           <AnimatePresence mode="wait">
              {items.length === 0 ? (
                <motion.div
@@ -203,8 +203,8 @@ const AdminNotificationsPage = () => {
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_SIGNALS_DETECTED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Operational landscape is currently silent. No active signals extracted.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Notifications</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No notifications yet. They will appear here as users interact with the platform.</p>
                </motion.div>
              ) : (
                <motion.div
@@ -271,7 +271,7 @@ const AdminNotificationsPage = () => {
              )}
           </AnimatePresence>
 
-          {/* Pagination Spectrum */}
+          {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-16 text-[10px] font-black uppercase tracking-widest">
               <button
@@ -283,7 +283,7 @@ const AdminNotificationsPage = () => {
               </button>
               
               <div className="px-4 lg:px-8 py-4 bg-slate-900 text-white rounded-lg lg:rounded-[2rem] shadow-2xl italic tracking-tighter">
-                 PAGE_IDENT: {page} <span className="text-slate-500 ml-2">//</span> TOTAL: {totalPages}
+                 Page {page} <span className="text-slate-500 ml-2">of</span> {totalPages}
               </div>
 
               <button

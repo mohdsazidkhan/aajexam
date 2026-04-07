@@ -488,7 +488,7 @@ const AdminArticles = () => {
       <AdminMobileAppWrapper title="Articles">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && <Sidebar />}
-          <div className="adminContent p-4 w-full text-gray-900 dark:text-white mt-4 lg:mt-12 lg:mt-0">
+          <div className="adminContent p-4 w-full text-gray-900 dark:text-white ">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading articles..." />
             </div>
@@ -502,7 +502,7 @@ const AdminArticles = () => {
     <AdminMobileAppWrapper title="Articles">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && <Sidebar />}
-        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
+        <div className="adminContent p-4 w-full text-gray-900 dark:text-white font-outfit ">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -519,14 +519,14 @@ const AdminArticles = () => {
                   <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-lg">
                     <FileText className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500/80">CONTENT MANAGEMENT</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500/80">ARTICLE MANAGEMENT</span>
                 </motion.div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                  ARTICLES & <span className="text-indigo-500">CONTENT</span>
+                  ARTICLES & <span className="text-indigo-500">RESOURCES</span>
                 </h1>
                 <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
                   <Globe className="w-4 h-4" />
-                  Manage and curate educational content for the platform.
+                  Create and manage educational articles for the platform.
                 </p>
               </div>
 
@@ -535,7 +535,7 @@ const AdminArticles = () => {
                   { label: 'Total Articles', value: articleStats.total, icon: FileText, color: 'indigo' },
                   { label: 'Published', value: articleStats.published, icon: Zap, color: 'emerald' },
                   { label: 'Featured', value: articleStats.featured, icon: Star, color: 'indigo' },
-                  { label: 'Avg Views', value: articleStats.avgViews, icon: Eye, color: 'blue' }
+                  { label: 'Avg. Views', value: articleStats.avgViews, icon: Eye, color: 'blue' }
                 ].map((stat, idx) => (
                   <div key={idx} className="px-3 lg:px-6 py-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-white/5 shadow-sm">
                     <stat.icon className={`w-4 h-4 text-${stat.color}-500 mb-2`} />
@@ -559,7 +559,7 @@ const AdminArticles = () => {
                 icon={Plus}
                 className="w-full lg:w-auto px-4 lg:px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo-primary bg-indigo-500 hover:bg-indigo-600 border-none"
               >
-                CREATE ARTICLE
+                CREATE NEW ARTICLE
               </Button>
             </div>
           </motion.div>
@@ -570,7 +570,7 @@ const AdminArticles = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-8 relative z-10">
               <div className="lg:col-span-2 space-y-2">
-                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Search Articles</label>
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Search</label>
                 <div className="relative">
                   <SearchIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                   <input
@@ -578,14 +578,14 @@ const AdminArticles = () => {
                     name="search"
                     value={filters.search}
                     onChange={handleFilterChange}
-                    placeholder="Search by title..."
+                    placeholder="Search articles..."
                     className="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-indigo-500 rounded-2xl text-xs font-black uppercase outline-none transition-all placeholder:text-slate-400"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Article Status</label>
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Status</label>
                 <div className="relative">
                   <Activity className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <select
@@ -606,7 +606,7 @@ const AdminArticles = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Article Category</label>
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Category</label>
                 <div className="relative">
                   <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <select
@@ -615,7 +615,7 @@ const AdminArticles = () => {
                     onChange={handleFilterChange}
                     className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
                   >
-                    <option value="">ALL CATEGORIES</option>
+                    <option value="">All Categories</option>
                     {categories.map(category => (
                       <option key={category._id} value={category._id}>
                         {category.name.toUpperCase()}
@@ -626,7 +626,7 @@ const AdminArticles = () => {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Featured Status</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-indigo-500 pl-3">Featured</label>
                 <div className="relative">
                   <Star className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <select
@@ -635,15 +635,15 @@ const AdminArticles = () => {
                     onChange={handleFilterChange}
                     className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
                   >
-                    <option value="">ALL TYPES</option>
-                    <option value="true">FEATURED ONLY</option>
-                    <option value="false">REGULAR ONLY</option>
+                    <option value="">All</option>
+                    <option value="true">Featured Only</option>
+                    <option value="false">Not Featured</option>
                   </select>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-slate-400 pl-3">Items Per Page</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-slate-400 pl-3">Per Page</label>
                 <div className="relative">
                   <Box className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <select
@@ -655,14 +655,14 @@ const AdminArticles = () => {
                     }}
                     className="w-full pl-14 pr-10 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-slate-400/30 rounded-2xl text-xs font-black uppercase outline-none transition-all appearance-none cursor-pointer"
                   >
-                    {[10, 20, 50, 100].map(v => <option key={v} value={v}>{v} ITEMS</option>)}
+                    {[10, 20, 50, 100].map(v => <option key={v} value={v}>{v} items</option>)}
                   </select>
                 </div>
               </div>
             </div>
           </Card>
 
-          {/* Insight Content Matrix */}
+          {/* Article List */}
           <div className="relative min-h-[400px]">
             <AnimatePresence mode="wait">
               {loading ? (
@@ -677,7 +677,7 @@ const AdminArticles = () => {
                     <div className="w-24 h-24 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
                     <Database className="w-10 h-10 absolute inset-0 m-auto text-indigo-500 animate-pulse" />
                   </div>
-                  <div className="text-center text-slate-400 font-bold uppercase tracking-widest text-sm">Loading Content Repository...</div>
+                  <div className="text-center text-slate-400 font-bold uppercase tracking-widest text-sm">Loading articles...</div>
                 </motion.div>
               ) : articles.length === 0 ? (
                 <motion.div
@@ -693,7 +693,7 @@ const AdminArticles = () => {
                     No Articles Found
                   </h3>
                   <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed px-4 lg:px-8">
-                    There are no articles matching your current filter criteria. Try adjusting your search or category selection.
+                    No articles match your current filters. Try adjusting your search terms, status, or category to find what you're looking for.
                   </p>
                 </motion.div>
               ) : (
@@ -708,7 +708,7 @@ const AdminArticles = () => {
                       <table className="w-full">
                         <thead>
                     <tr className="border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/50 uppercase">
-                      {['Article', 'Category', 'Status', 'Rewards', 'Engagement', 'Created On', 'Actions'].map((head) => (
+                      {['Article', 'Category', 'Status', 'Reward', 'Views & Likes', 'Date Created', 'Actions'].map((head) => (
                         <th key={head} className="px-4 lg:px-8 py-3 lg:py-6 text-left text-[9px] font-black text-slate-400 uppercase tracking-widest">{head}</th>
                       ))}
                     </tr>
@@ -730,7 +730,7 @@ const AdminArticles = () => {
                                   </div>
                                   <div className="max-w-[250px]">
                                     <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight line-clamp-1">{article.title}</h4>
-                                    <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">By {article.author?.name?.toUpperCase() || 'UNKNOWN'}</p>
+                                    <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mt-1 italic">By {article.author?.name?.toUpperCase() || 'UNKNOWN AUTHOR'}</p>
                                   </div>
                                 </div>
                               </td>
@@ -816,7 +816,7 @@ const AdminArticles = () => {
 
                           <div className="p-3 lg:p-8 flex-1 flex flex-col">
                             <div className="flex items-center gap-3 mb-4">
-                              <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest px-3 py-1 bg-indigo-500/10 rounded-lg border border-indigo-500/10">{article.category?.name || 'UNSECTORED'}</span>
+                              <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest px-3 py-1 bg-indigo-500/10 rounded-lg border border-indigo-500/10">{article.category?.name || 'UNCATEGORIZED'}</span>
                               <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{formatDate(article.createdAt)}</span>
                             </div>
 
@@ -827,11 +827,11 @@ const AdminArticles = () => {
                                 <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center text-[10px] font-black text-white dark:text-slate-900 uppercase italic">
                                   {article.author?.name?.substring(0, 1) || '?'}
                                 </div>
-                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">{article.author?.name || 'S_CORE'}</span>
+                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">{article.author?.name || 'Unknown'}</span>
                               </div>
                               <div className="flex items-center gap-4">
                                 <div className="flex flex-col items-end">
-                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Gaze_Index</span>
+                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Views</span>
                                   <span className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{article.views || 0}</span>
                                 </div>
                               </div>
@@ -844,7 +844,7 @@ const AdminArticles = () => {
                                 onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
                                 className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
                               >
-                                TUNING_PROC
+                                EDIT ARTICLE
                               </motion.button>
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
@@ -881,23 +881,23 @@ const AdminArticles = () => {
 
                           <div className="flex-1 space-y-3">
                             <div className="flex items-center gap-4">
-                              <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{article.category?.name || 'GENERAL'} MATRIX</span>
+                              <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{article.category?.name || 'GENERAL'}</span>
                               <div className="h-1 w-1 bg-slate-300 dark:bg-white/10 rounded-full" />
-                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SYNC_DATE: {formatDate(article.createdAt)}</span>
+                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{formatDate(article.createdAt)}</span>
                             </div>
                             <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight group-hover:text-indigo-500 transition-colors">{article.title}</h3>
                             <div className="flex flex-wrap items-center gap-3 lg:gap-6 pt-2">
                               <div className="flex items-center gap-2">
                                 <Users className="w-4 h-4 text-slate-400" />
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">AUTHOR: {article.author?.name || 'S_CORE'}</span>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">By {article.author?.name || 'Unknown'}</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <Eye className="w-4 h-4 text-blue-500/50" />
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.views || 0} READ_CYCLES</span>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.views || 0} Views</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <Heart className="w-4 h-4 text-rose-500/50" />
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.likes || 0} CORE_RESONANCE</span>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{article.likes || 0} Likes</span>
                               </div>
                             </div>
                           </div>
@@ -908,7 +908,7 @@ const AdminArticles = () => {
                               onClick={() => router.push(`/admin/articles/${article._id}/edit`)}
                               className="px-4 lg:px-10 py-5 bg-white dark:bg-white/5 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest border-2 border-slate-100 dark:border-white/10 hover:border-indigo-500/30 shadow-lg transition-all"
                             >
-                              EXEC_TUNING
+                              EDIT ARTICLE
                             </motion.button>
 
                             <div className="relative">
@@ -957,7 +957,7 @@ const AdminArticles = () => {
                 <Ban className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-black text-rose-500 uppercase tracking-widest">Matrix_Sync_Fault</h4>
+                <h4 className="text-sm font-black text-rose-500 uppercase tracking-widest">Something Went Wrong</h4>
                 <p className="text-xs font-bold text-rose-500/70 uppercase">{error}</p>
               </div>
             </motion.div>

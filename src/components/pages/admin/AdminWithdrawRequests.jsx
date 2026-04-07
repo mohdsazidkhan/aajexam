@@ -53,7 +53,7 @@ const AdminWithdrawRequests = () => {
     try {
       const res = await API.getAdminWithdrawRequests({ page: 1, limit: 1000 });
       if (res?.success) setAllItems(res.data || []);
-    } catch (err) { toast.error(err?.message || 'Failed to load requests'); }
+    } catch (err) { toast.error(err?.message || 'Failed to load withdrawal requests'); }
     finally { setLoading(false); }
   };
 
@@ -81,15 +81,15 @@ const AdminWithdrawRequests = () => {
     setUpdating(id);
     try {
       await API.updateWithdrawRequestStatus(id, newStatus);
-      toast.success(`Request ${newStatus} successfully!`);
+      toast.success(`Request ${newStatus === 'approved' ? 'approved' : newStatus === 'rejected' ? 'rejected' : newStatus === 'paid' ? 'marked as paid' : newStatus} successfully!`);
       setAllItems(prev => prev.map(item => item._id === id ? { ...item, status: newStatus } : item));
-    } catch (err) { toast.error(err?.message || 'Update failed'); }
+    } catch (err) { toast.error(err?.message || 'Failed to update request status'); }
     finally { setUpdating(null); }
   };
 
   const statusOptions = [
     { value: 'all', label: 'All Requests', icon: Layers, color: 'indigo' },
-    { value: 'pending', label: 'Pending Review', icon: Clock, color: 'amber' },
+    { value: 'pending', label: 'Pending', icon: Clock, color: 'amber' },
     { value: 'approved', label: 'Approved', icon: CheckCircle2, color: 'emerald' },
     { value: 'rejected', label: 'Rejected', icon: XCircle, color: 'rose' },
     { value: 'paid', label: 'Paid', icon: CreditCard, color: 'indigo' }
@@ -102,7 +102,7 @@ const AdminWithdrawRequests = () => {
   };
 
   const columns = [
-    { key: 'user', header: 'User', render: (_, req) => (
+    { key: 'user', header: 'Student', render: (_, req) => (
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 bg-indigo-500/10 text-indigo-500 rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
         <div>
@@ -111,13 +111,13 @@ const AdminWithdrawRequests = () => {
         </div>
       </div>
     )},
-    { key: 'amount', header: 'Payout Amount', render: (_, req) => (
+    { key: 'amount', header: 'Amount', render: (_, req) => (
       <div className="flex flex-col">
         <span className="text-lg font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
-        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} Wallet</span>
+        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
       </div>
     )},
-    { key: 'payout', header: 'Payout Account', render: (_, req) => (
+    { key: 'payout', header: 'Payment Details', render: (_, req) => (
       <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest space-y-1">
         {req.upi ? (
           <div className="flex items-center gap-2 p-2 bg-indigo-500/5 rounded-lg border border-indigo-500/10">
@@ -130,7 +130,7 @@ const AdminWithdrawRequests = () => {
             <div className="font-mono text-[10px] text-slate-600 dark:text-slate-300">{req.bankDetail.accountNumber}</div>
             <div className="font-mono text-[8px] opacity-70">IFSC: {req.bankDetail.ifscCode}</div>
           </div>
-        ) : <span className="italic opacity-50">No data found</span>}
+        ) : <span className="italic opacity-50">No payment details provided</span>}
       </div>
     )},
     { key: 'status', header: 'Status', render: (_, req) => (
@@ -145,7 +145,7 @@ const AdminWithdrawRequests = () => {
           {req.status === 'approved' && <CheckCircle2 className="w-3 h-3" />}
           {req.status === 'rejected' && <XCircle className="w-3 h-3" />}
           {req.status === 'paid' && <CreditCard className="w-3 h-3" />}
-          {req.status}
+          {req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}
         </div>
         {req.status === 'pending' && (
           <div className="flex gap-2">
@@ -165,7 +165,7 @@ const AdminWithdrawRequests = () => {
   if (!isMounted) return null;
 
   return (
-    <AdminMobileAppWrapper title="Withdrawal Payouts">
+    <AdminMobileAppWrapper title="Withdrawal Requests">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden pt-12 lg:pt-8 font-outfit">
@@ -178,18 +178,18 @@ const AdminWithdrawRequests = () => {
                   <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl shadow-sm">
                     <Wallet className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Treasury // Manage Withdrawals</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Withdrawal Management</span>
                 </div>
                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
                   Withdrawal Requests
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                  Review and authorize user payout requests.
+                  Review and process student withdrawal requests.
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <SearchFilter onSearch={handleSearch} placeholder="Search user..." className="w-full sm:w-64" />
+                <SearchFilter onSearch={setSearchTerm} placeholder="Search requests..." className="w-full sm:w-64" />
                 <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                   {[{ icon: Table, id: 'table' }, { icon: List, id: 'list' }].map((mode) => (
                     <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all ${viewMode === mode.id ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}>
@@ -217,7 +217,7 @@ const AdminWithdrawRequests = () => {
                  <div className="text-left">
                    <div className={`text-[10px] font-black uppercase tracking-widest leading-none mb-1 ${status === opt.value ? 'text-indigo-600 dark:text-white' : 'text-slate-400'}`}>{opt.label}</div>
                    <div className={`text-xs font-black italic tracking-tighter leading-none ${status === opt.value ? 'text-slate-900 dark:text-white' : 'text-slate-300'}`}>
-                     {allItems.filter(i => opt.value === 'all' ? true : i.status === opt.value).length} ENTRIES
+                     {allItems.filter(i => opt.value === 'all' ? true : i.status === opt.value).length} requests
                    </div>
                  </div>
                </button>
@@ -227,12 +227,12 @@ const AdminWithdrawRequests = () => {
           {/* Table / List */}
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Loading requests..." /></div>
+              <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Loading withdrawal requests..." /></div>
             ) : items.length === 0 ? (
                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                   <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Requests Found</h3>
-                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">The withdrawal list is currently empty.</p>
+                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
+                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No pending withdrawal requests at this time.</p>
                </div>
             ) : (
                 <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -250,14 +250,14 @@ const AdminWithdrawRequests = () => {
                                   <div className="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg text-xs">{req.userId?.name?.[0] || 'U'}</div>
                                   <div>
                                      <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{req.userId?.name || 'N/A'}</h3>
-                                     <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} WALLET</div>
+                                     <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
                                   </div>
                                </div>
-                               <div className={`px-3 py-1 rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>{req.status}</div>
+                               <div className={`px-3 py-1 rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                             </div>
                             
                             <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border-2 border-slate-100 dark:border-white/5">
-                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Payout Amount</div>
+                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Withdrawal Amount</div>
                                <div className="text-3xl font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
                                <div className="pt-4 border-t-2 border-slate-100 dark:border-white/5">
                                   {req.upi ? (
@@ -267,7 +267,7 @@ const AdminWithdrawRequests = () => {
                                        <div className="flex items-center gap-3 text-[10px] font-black text-blue-500"><Landmark className="w-4 h-4" /> {req.bankDetail.bankName}</div>
                                        <div className="text-xs font-black font-mono text-slate-600 dark:text-slate-300 pl-7">{req.bankDetail.accountNumber}</div>
                                     </div>
-                                  ) : <span className="text-[10px] italic opacity-40">No payout data</span>}
+                                  ) : <span className="text-[10px] italic opacity-40">No payment details provided</span>}
                                </div>
                             </div>
 

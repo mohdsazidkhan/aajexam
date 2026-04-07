@@ -161,10 +161,10 @@ const AdminGovtExams = () => {
                    <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em]">ADMIN / GOVT EXAMS</span>
                  </div>
                  <h1 className="text-3xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                   ASSESSMENT <span className="text-indigo-600">INVENTORY</span>
+                   GOVT <span className="text-indigo-600">EXAMS</span>
                  </h1>
                  <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
-                   Centrally manage and audit official assessment definitions.
+                   Create and manage government exam content.
                  </p>
               </div>
 
@@ -190,7 +190,7 @@ const AdminGovtExams = () => {
                    onClick={handleCreate}
                    className="px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center gap-3"
                  >
-                   <Plus className="w-4 h-4" /> REGISTER ASSESSMENT
+                   <Plus className="w-4 h-4" /> ADD EXAM
                  </motion.button>
               </div>
             </div>
@@ -199,10 +199,10 @@ const AdminGovtExams = () => {
           {/* Stats Bar */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12">
              {[
-               { label: 'ENUMERATED ASSESSMENTS', val: exams.length, icon: Building2, color: 'indigo' },
-               { label: 'LIVE MODULES', val: exams.filter(e => e.isActive).length, icon: Zap, color: 'emerald' },
-               { label: 'MAJOR CATEGORIES', val: categories.length, icon: Layers, color: 'amber' },
-               { label: 'SYSTEM RELIABILITY', val: 'OPTIMAL', icon: Activity, color: 'rose' }
+               { label: 'TOTAL EXAMS', val: exams.length, icon: Building2, color: 'indigo' },
+               { label: 'ACTIVE EXAMS', val: exams.filter(e => e.isActive).length, icon: Zap, color: 'emerald' },
+               { label: 'CATEGORIES', val: categories.length, icon: Layers, color: 'amber' },
+               { label: 'COMPLETION RATE', val: 'OPTIMAL', icon: Activity, color: 'rose' }
              ].map((stat, i) => (
                <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
                  <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-inner`}>
@@ -221,7 +221,7 @@ const AdminGovtExams = () => {
                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
                  <input
                    type="text"
-                   placeholder="QUERY DESIGNATION OR IDENTIFIER..."
+                   placeholder="Search by exam name or code..."
                    value={searchTerm}
                    onChange={(e) => setSearchTerm(e.target.value)}
                    className="w-full pl-14 pr-8 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-lg"
@@ -235,7 +235,7 @@ const AdminGovtExams = () => {
                    onChange={(e) => setSelectedCategory(e.target.value)}
                    className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full outline-none"
                  >
-                   <option value="all">MAJOR CATEGORIES</option>
+                   <option value="all">ALL CATEGORIES</option>
                    {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
                  </select>
                </div>
@@ -245,12 +245,12 @@ const AdminGovtExams = () => {
           {/* Content */}
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Syncing records..." /></div>
+              <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Loading exams..." /></div>
             ) : filteredExams.length === 0 ? (
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
                 <Building2 className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Records Found</h3>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust filters to locate exam data</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No exams match your filters. Try adjusting your search or category.</p>
               </div>
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -259,11 +259,11 @@ const AdminGovtExams = () => {
                     <table className="w-full border-collapse">
                        <thead>
                          <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Registry ID</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Assessment Name</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Syllabus Category</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">ID</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Exam Name</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Category</th>
                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Status</th>
-                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Operations</th>
+                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                          </tr>
                        </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -318,7 +318,7 @@ const AdminGovtExams = () => {
                              <Building2 className="w-8 h-8" />
                            </div>
                            <div>
-                             <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">{exam.code} Registry</div>
+                             <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">{exam.code}</div>
                              <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{exam.name}</h3>
                            </div>
                         </div>
@@ -327,7 +327,7 @@ const AdminGovtExams = () => {
                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Category</span>
                              <span className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">{exam.category?.name}</span>
                            </div>
-                           <p className="text-[10px] font-bold text-slate-500 line-clamp-2 uppercase tracking-widest leading-none mb-2">{exam.description || 'No description provided for this entry.'}</p>
+                           <p className="text-[10px] font-bold text-slate-500 line-clamp-2 uppercase tracking-widest leading-none mb-2">{exam.description || 'No description provided.'}</p>
                         </div>
                         <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                             <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`} className="flex-1">
@@ -350,7 +350,7 @@ const AdminGovtExams = () => {
                           <div>
                             <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{exam.name}</h3>
                             <div className="flex items-center gap-4">
-                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{exam.category?.name} Sector</div>
+                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{exam.category?.name}</div>
                               <div className="flex items-center gap-2">
                                 <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
@@ -387,8 +387,8 @@ const AdminGovtExams = () => {
                     <Settings className="w-6 h-6" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">Exam <span className="text-primary-500">Configuration</span></h2>
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing Record: ${editingExam.name}` : 'Initializing New Entry'}</p>
+                    <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-500">Exam</span></h2>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                   </div>
                 </div>
                 <button onClick={() => setShowModal(false)} className="p-3 rounded-xl hover:bg-rose-500/10 hover:text-rose-500 transition-colors"><X className="w-6 h-6" /></button>
@@ -396,7 +396,7 @@ const AdminGovtExams = () => {
               <form onSubmit={handleSubmit} className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
                 <div className="space-y-4 lg:space-y-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Exam Category Sector</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Category</label>
                     <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                       <option value="">Select Category...</option>
                       {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
@@ -417,14 +417,14 @@ const AdminGovtExams = () => {
                     <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none shadow-inner resize-none" />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Logo Resource URL</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Logo URL</label>
                     <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-inner" />
                   </div>
                   <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                     <div className="flex items-center gap-4">
                        <div className={`p-3 rounded-xl ${formData.isActive ? 'bg-emerald-500/10 text-emerald-500' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
                        <div>
-                         <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Visibility Status</p>
+                         <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
                          <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
                        </div>
                     </div>

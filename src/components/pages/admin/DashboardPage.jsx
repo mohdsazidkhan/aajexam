@@ -129,7 +129,7 @@ const DashboardPage = () => {
       gradientTo: 'to-primary-200',
       darkGradientFrom: 'dark:from-indigo-700',
       darkGradientTo: 'dark:to-primary-800',
-      subtitle: 'PRO users with valid plan',
+      subtitle: 'Currently subscribed PRO users',
       link: '#'
     },
     {
@@ -144,7 +144,7 @@ const DashboardPage = () => {
       gradientTo: 'to-amber-200',
       darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-amber-800',
-      subtitle: `Active Pro users Ã— ₹${stats.prizePerPro || 95}`,
+      subtitle: `Active Pro users × ₹${stats.prizePerPro || 95}`,
       link: '#'
     },
     {
@@ -159,7 +159,7 @@ const DashboardPage = () => {
       gradientTo: 'to-emerald-200',
       darkGradientFrom: 'dark:from-green-700',
       darkGradientTo: 'dark:to-emerald-800',
-      subtitle: 'All platform users',
+      subtitle: 'Registered on platform',
       link: '#'
     },
     {
@@ -174,7 +174,7 @@ const DashboardPage = () => {
       gradientTo: 'to-rose-200',
       darkGradientFrom: 'dark:from-red-700',
       darkGradientTo: 'dark:to-rose-800',
-      subtitle: 'Users active this month',
+      subtitle: 'Logged in this month',
       link: '#'
     },
     {
@@ -248,7 +248,7 @@ const DashboardPage = () => {
       gradientTo: 'to-fuchsia-200',
       darkGradientFrom: 'dark:from-pink-700',
       darkGradientTo: 'dark:to-fuchsia-800',
-      subtitle: 'Submitted by students'
+      subtitle: 'Created by students'
     },
     {
       title: 'Questions',
@@ -277,7 +277,7 @@ const DashboardPage = () => {
       gradientTo: 'to-pink-200',
       darkGradientFrom: 'dark:from-purple-700',
       darkGradientTo: 'dark:to-pink-800',
-      subtitle: 'Questions from students'
+      subtitle: 'Submitted by students'
     },
     {
       title: 'User Blogs',
@@ -292,7 +292,7 @@ const DashboardPage = () => {
       gradientTo: 'to-cyan-200',
       darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-cyan-800',
-      subtitle: 'Student articles'
+      subtitle: 'Published by students'
     },
     {
       title: 'Approved Questions',
@@ -323,7 +323,7 @@ const DashboardPage = () => {
       gradientTo: 'to-emerald-200',
       darkGradientFrom: 'dark:from-green-700',
       darkGradientTo: 'dark:to-emerald-800',
-      subtitle: 'Pending approval'
+      subtitle: 'Awaiting review'
     },
     {
       title: 'Students',
@@ -411,7 +411,7 @@ const DashboardPage = () => {
       gradientTo: 'to-gray-200',
       darkGradientFrom: 'dark:from-slate-700',
       darkGradientTo: 'dark:to-gray-800',
-      subtitle: 'Free plan users'
+      subtitle: 'Users on free plan'
     },
     {
       title: 'Paid Subscriptions',
@@ -426,7 +426,7 @@ const DashboardPage = () => {
       gradientTo: 'to-primary-200',
       darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-primary-800',
-      subtitle: 'Premium student plans'
+      subtitle: 'Users on paid plan'
     },
     {
       title: 'Total Quizzes Attempted',
@@ -441,7 +441,7 @@ const DashboardPage = () => {
       gradientTo: 'to-sky-200',
       darkGradientFrom: 'dark:from-cyan-700',
       darkGradientTo: 'dark:to-sky-800',
-      subtitle: 'All quiz attempts'
+      subtitle: 'Total attempts by students'
     },
     // Article Cards
     {
@@ -487,7 +487,7 @@ const DashboardPage = () => {
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
           <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
             <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading dashboard statistics..." />
+              <Loading size="md" color="yellow" message="Loading your dashboard..." />
             </div>
           </div>
         </div>
@@ -517,7 +517,7 @@ const DashboardPage = () => {
     <AdminMobileAppWrapper title="Dashboard">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit mt-4 lg:mt-12 lg:mt-0">
+        <div className="adminContent w-full text-gray-900 dark:text-white font-outfit ">
            {/* Header */}
            <motion.div
              initial={{ opacity: 0, y: -20 }}
@@ -532,7 +532,7 @@ const DashboardPage = () => {
                ADMIN <span className="text-indigo-600">DASHBOARD</span>
              </h1>
              <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
-               Overview of all key stats and quick links for the AajExam platform.
+               Your complete overview of platform activity, revenue, and content at a glance.
              </p>
            </motion.div>
 
@@ -558,7 +558,7 @@ const DashboardPage = () => {
                    onClick={() => router.push(card.link)}
                    className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] overflow-hidden group"
                  >
-                   <div className="p-6 lg:p-10 flex flex-col h-full relative">
+                   <div className="p-3 lg:p-6 flex flex-col h-full relative">
                      <div className="flex items-center justify-between mb-4 lg:mb-12">
                        <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
                          <card.icon className="w-6 h-6 lg:w-8 lg:h-8" />
@@ -588,10 +588,10 @@ const DashboardPage = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4 lg:mb-12"
             >
               {[
-               { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Total collected amount', icon: Banknote, color: 'emerald' },
-               { label: 'PAYMENT SUCCESS', value: `${stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%`, subtitle: `${stats.completedPaymentOrders || 0} / ${stats.paymentOrders || 0} successful`, icon: BarChart3, color: 'blue' },
-               { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of total`, icon: TrendingUp, color: 'purple' },
-               { label: 'FREE vs PAID', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Free vs Paid plans', icon: Sparkles, color: 'rose' }
+               { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Lifetime earnings from payments', icon: Banknote, color: 'emerald' },
+               { label: 'PAYMENT SUCCESS', value: `${stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%`, subtitle: `${stats.completedPaymentOrders || 0} of ${stats.paymentOrders || 0} payments completed`, icon: BarChart3, color: 'blue' },
+               { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of all subscriptions`, icon: TrendingUp, color: 'purple' },
+               { label: 'FREE vs PAID', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Plan distribution breakdown', icon: Sparkles, color: 'rose' }
              ].map((item, idx) => (
                <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
                  <div className="flex items-center justify-between relative z-10">
@@ -616,7 +616,7 @@ const DashboardPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl border-none relative overflow-hidden"
+              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 shadow-2xl border-none relative overflow-hidden"
             >
              <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-12 px-3 lg:px-6">
                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
@@ -632,18 +632,18 @@ const DashboardPage = () => {
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10 px-4 lg:px-0">
                  {[
-                   { href: "/admin/categories", label: "Categories", desc: "Manage exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subcategories", label: "Subcategories", desc: "Add exam sub-topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/levels", label: "Levels", desc: "Set up user levels", icon: Trophy, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/quizzes", label: "Quizzes", desc: "Create new quizzes", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/questions", label: "Questions", desc: "Add questions to the bank", icon: HelpCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/articles", label: "Articles", desc: "Write and manage articles", icon: FileText, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions", label: "User Questions", desc: "View questions asked by students", icon: MessageCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions?status=pending", label: "Pending Review", desc: "Questions waiting for approval", icon: Clock, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Handle payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/students", label: "Students", desc: "View all registered students", icon: Users, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/payment-transactions", label: "Payments", desc: "View all payments", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subscriptions", label: "Subscriptions", desc: "Manage student plans", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/categories", label: "Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/subcategories", label: "Subcategories", desc: "Break down categories into topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/levels", label: "Levels", desc: "Configure difficulty levels and progression", icon: Trophy, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/quizzes", label: "Quizzes", desc: "Create and manage quiz content", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/questions", label: "Questions", desc: "Add and edit quiz questions", icon: HelpCircle, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/articles", label: "Articles", desc: "Publish educational articles", icon: FileText, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/user-questions", label: "User Questions", desc: "Review student-submitted questions", icon: MessageCircle, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/user-questions?status=pending", label: "Pending Review", desc: "Questions awaiting your approval", icon: Clock, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Process student payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/students", label: "Students", desc: "Browse and manage student accounts", icon: Users, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/payment-transactions", label: "Payments", desc: "Track all payment transactions", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/subscriptions", label: "Subscriptions", desc: "Manage PRO subscription plans", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
                  ].map((action, i) => (
                    <motion.div
                      key={i}

@@ -36,7 +36,8 @@ import {
   ArrowRight,
   ChevronRight,
   Calendar,
-  AlertCircle
+  AlertCircle,
+  BookOpen
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
@@ -89,7 +90,7 @@ const QuestionPage = () => {
       setPagination(response.pagination || {});
     } catch (error) {
       console.error('Error fetching questions:', error);
-      toast.error('Failed to fetch questions');
+      toast.error('Could not load questions. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -118,7 +119,7 @@ const QuestionPage = () => {
     e.preventDefault();
 
     if (options.some(option => !option.trim())) {
-      toast.error('All options must be filled');
+      toast.error('Please fill in all answer choices.');
       return;
     }
 
@@ -133,11 +134,11 @@ const QuestionPage = () => {
     try {
       if (editingId) {
         await API.updateQuestion(editingId, payload);
-        toast.success('Question updated successfully!');
+        toast.success('Question updated!');
         setEditingId(null);
       } else {
         await API.createQuestion(payload);
-        toast.success('Question created successfully!');
+        toast.success('Question added!');
       }
       resetForm();
       setShowForm(false);
@@ -147,7 +148,7 @@ const QuestionPage = () => {
       const scrollTop = isMobile ? 200 : 0;
       window.scrollTo({ top: scrollTop, behavior: 'smooth' });
     } catch (err) {
-      toast.error(err.message || 'Failed to save question');
+      toast.error(err.message || 'Could not save question. Please try again.');
     }
   };
 
@@ -190,11 +191,11 @@ const QuestionPage = () => {
     if (window.confirm('Are you sure you want to delete this question?')) {
       try {
         await API.deleteQuestion(id);
-        toast.success('Question deleted successfully!');
+        toast.success('Question deleted.');
         fetchQuestions(currentPage, searchTerm, filters);
       } catch (error) {
         console.error('Error deleting question:', error);
-        toast.error('Failed to delete question');
+        toast.error('Could not delete question. Please try again.');
       }
     }
   };
@@ -245,12 +246,12 @@ const QuestionPage = () => {
           <thead>
             <tr className="border-b-2 border-slate-100 dark:border-white/5">
               {[
-                { label: 'S.NO', icon: Hash },
+                { label: 'NO.', icon: Hash },
                 { label: 'QUESTION', icon: HelpCircle },
                 { label: 'QUIZ', icon: BookOpen },
-                { label: 'ANSWER', icon: CheckCircle2 },
-                { label: 'TIME', icon: Clock },
-                { label: 'CREATED', icon: Calendar },
+                { label: 'CORRECT ANSWER', icon: CheckCircle2 },
+                { label: 'TIME LIMIT', icon: Clock },
+                { label: 'DATE ADDED', icon: Calendar },
                 { label: 'ACTIONS', icon: ArrowRight, align: 'text-right' }
               ].map((head, i) => (
                 <th key={i} className={`px-4 lg:px-8 py-4 lg:py-8 ${head.align || 'text-left'}`}>
@@ -419,7 +420,7 @@ const QuestionPage = () => {
             <div className="pt-6 border-t-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-500" />
-                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">{question.timeLimit || 15}S LIMIT</span>
+                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">{question.timeLimit || 15}S</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-slate-400" />
@@ -458,7 +459,7 @@ const QuestionPage = () => {
                   </div>
                   <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span className="text-[10px] font-black tracking-widest uppercase">VERIFIED</span>
+                    <span className="text-[10px] font-black tracking-widest uppercase">ACTIVE</span>
                   </div>
                 </div>
                 <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic leading-tight">
@@ -484,8 +485,8 @@ const QuestionPage = () => {
                 <div className="flex flex-wrap items-center gap-3 lg:gap-6 pt-2">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-amber-500" />
-                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Constraint:</span>
-                     <span className="text-xs font-black text-slate-900 dark:text-white uppercase italic">{question.timeLimit || 15}S LIMIT</span>
+                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Time Limit:</span>
+                     <span className="text-xs font-black text-slate-900 dark:text-white uppercase italic">{question.timeLimit || 15}S</span>
                    </div>
                    <div className="flex items-center gap-2">
                      <Calendar className="w-4 h-4 text-indigo-500" />
@@ -526,7 +527,7 @@ const QuestionPage = () => {
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent p-4 w-full text-gray-900 dark:text-white">
           <div className="mx-auto">
-            {/* Tactical Command Header */}
+            {/* Page Header */}
             <div className="relative mb-4 lg:mb-12">
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 pb-8 border-b-4 border-slate-100 dark:border-white/5 relative overflow-hidden">
                 <motion.div
@@ -538,13 +539,13 @@ const QuestionPage = () => {
                     <div className="p-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
                       <HelpCircle className="w-8 h-8 text-primary-500" />
                     </div>
-                    <span className="text-[10px] font-black tracking-[0.4em] text-primary-500 uppercase">QUESTION BANK</span>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-primary-500 uppercase">QUESTION MANAGEMENT</span>
                   </div>
                    <h1 className="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none mb-4 italic">
-                     QUESTION <span className="text-indigo-600 whitespace-nowrap">REPOSITORY</span>
+                     ALL <span className="text-indigo-600 whitespace-nowrap">QUESTIONS</span>
                    </h1>
                   <p className="max-w-xl text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.1em] text-[10px] leading-relaxed">
-                    Total Questions: {pagination.total || 0} | Active Quizzes: {quizzes.length}
+                    Add and manage questions for your quizzes. {pagination.total || 0} questions across {quizzes.length} quizzes.
                   </p>
                 </motion.div>
 
@@ -579,9 +580,9 @@ const QuestionPage = () => {
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:mt-10">
                 {[
                   { label: 'Total Questions', value: pagination.total || 0, icon: Target, color: 'primary' },
-                  { label: 'Time Limit', value: '15s', icon: Clock, color: 'amber' },
+                  { label: 'Default Time', value: '15s', icon: Clock, color: 'amber' },
                   { label: 'Active Quizzes', value: quizzes.length, icon: BookOpen, color: 'emerald' },
-                  { label: 'Page Total', value: pagination.totalPages || 0, icon: Database, color: 'purple' }
+                  { label: 'Total Pages', value: pagination.totalPages || 0, icon: Database, color: 'purple' }
                 ].map((stat, i) => (
                   <Card key={i} className="p-6 border-none shadow-sm flex items-center gap-4 bg-white dark:bg-slate-900">
                     <div className={`p-3 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-500`}>
@@ -626,7 +627,7 @@ const QuestionPage = () => {
                         onChange={(e) => handleFilterChange('quiz', e.target.value)}
                         className="w-full pl-16 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                       >
-                        <option value="">Filter by Quiz</option>
+                        <option value="">All Quizzes</option>
                         {quizzes.map(q => <option key={q._id} value={q._id}>{q.title}</option>)}
                       </select>
                     </div>
@@ -636,7 +637,7 @@ const QuestionPage = () => {
                         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
                         className="w-full px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer text-center"
                       >
-                        {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} ITEMS</option>)}
+                        {[10, 20, 50, 100].map(val => <option key={val} value={val}>{val} per page</option>)}
                       </select>
                     </div>
                     <motion.button
@@ -652,7 +653,7 @@ const QuestionPage = () => {
               </div>
             </motion.div>
 
-            {/* Question Calibration Modal */}
+            {/* Question Form Modal */}
             <AnimatePresence>
               {showForm && (
                 <div className="fixed inset-0 flex items-center justify-center z-[100] p-4 lg:p-8">
@@ -675,10 +676,10 @@ const QuestionPage = () => {
                         <div>
                           <div className="flex items-center gap-3 mb-2">
                             <BrainCircuit className="w-5 h-5 text-indigo-500 animate-pulse" />
-                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500/80">QUESTION EDITOR</span>
+                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500/80">{editingId ? 'EDIT QUESTION' : 'NEW QUESTION'}</span>
                            </div>
                            <h2 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-none italic">
-                             {editingId ? 'Edit' : 'Create'} <span className="text-indigo-600">Question</span>
+                             {editingId ? 'Edit' : 'Add'} <span className="text-indigo-600">Question</span>
                            </h2>
                         </div>
                         <motion.button
@@ -694,9 +695,9 @@ const QuestionPage = () => {
                       <form onSubmit={handleSubmit} className="gap-12">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                           <div className="space-y-4 lg:space-y-8">
-                            {/* Strata Selection */}
+                            {/* Quiz Selection */}
                             <div className="space-y-3">
-                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">SELECT QUIZ</label>
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">QUIZ</label>
                               <div className="relative group">
                                 <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
                                   <Layers className="w-5 h-5" />
@@ -707,7 +708,7 @@ const QuestionPage = () => {
                                   required
                                   className="w-full pl-14 pr-10 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-2xl text-sm font-black uppercase tracking-widest outline-none transition-all appearance-none cursor-pointer"
                                 >
-                                  <option value="">SELECT QUIZ</option>
+                                  <option value="">Choose a quiz...</option>
                                   {quizzes.map((q) => <option key={q._id} value={q._id}>{q.title.toUpperCase()}</option>)}
                                 </select>
                               </div>
@@ -715,13 +716,13 @@ const QuestionPage = () => {
 
                             {/* Question Text */}
                             <div className="space-y-3">
-                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">QUESTION CONTENT</label>
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">QUESTION TEXT</label>
                               <div className="relative group">
                                 <textarea
                                   value={questionText}
                                   onChange={(e) => setQuestionText(e.target.value)}
                                   required
-                                  placeholder="Enter question text..."
+                                  placeholder="Type your question here..."
                                   rows="4"
                                   className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary-500 rounded-2xl text-sm font-bold transition-all outline-none resize-none"
                                 />
@@ -730,7 +731,7 @@ const QuestionPage = () => {
 
                             {/* Time Limit */}
                             <div className="space-y-3">
-                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">TIME LIMIT (SECONDS)</label>
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">TIME LIMIT (SEC)</label>
                               <div className="relative group">
                                 <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
                                   <Clock className="w-5 h-5" />
@@ -747,7 +748,7 @@ const QuestionPage = () => {
                           </div>
 
                           <div className="space-y-3 lg:space-y-6">
-                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 block mb-2">ANSWER OPTIONS</label>
+                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 block mb-2">ANSWER CHOICES</label>
                             {options.map((option, index) => (
                               <motion.div
                                 key={index}
@@ -778,7 +779,7 @@ const QuestionPage = () => {
                                   value={option}
                                   onChange={(e) => handleOptionChange(index, e.target.value)}
                                   required
-                                   placeholder={`OPTION ${String.fromCharCode(65 + index)}...`}
+                                   placeholder={`Enter option ${String.fromCharCode(65 + index)}...`}
                                    className="flex-1 bg-transparent px-2 py-3 text-sm font-bold outline-none text-slate-900 dark:text-white placeholder:text-slate-400"
                                  />
                                 {correctAnswerIndex === index && (
@@ -799,7 +800,7 @@ const QuestionPage = () => {
                             onClick={() => { setShowForm(false); setEditingId(null); resetForm(); }}
                             className="flex-1 py-5 px-4 lg:px-8 rounded-2xl border-2 border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:bg-rose-500 hover:text-white hover:border-transparent transition-all"
                           >
-                            DISCARD CHANGES
+                            CANCEL
                           </motion.button>
                           <motion.button
                             type="submit"
@@ -807,7 +808,7 @@ const QuestionPage = () => {
                             whileTap={{ scale: 0.98 }}
                             className="flex-[2] py-5 px-4 lg:px-8 rounded-2xl bg-indigo-500 text-white shadow-xl shadow-indigo-500/20 text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3"
                           >
-                             <Save className="w-5 h-5" /> {editingId ? 'UPDATE QUESTION DATA' : 'FINALIZE NEW QUESTION'}
+                             <Save className="w-5 h-5" /> {editingId ? 'SAVE CHANGES' : 'ADD QUESTION'}
                           </motion.button>
                         </div>
                       </form>
@@ -817,7 +818,7 @@ const QuestionPage = () => {
               )}
             </AnimatePresence>
 
-            {/* Content Display Zone */}
+            {/* Question List */}
             <div className="relative min-h-[400px]">
               <AnimatePresence mode="wait">
                 {loading ? (
@@ -833,8 +834,8 @@ const QuestionPage = () => {
                       <BrainCircuit className="absolute inset-0 m-auto w-10 h-10 text-indigo-500 animate-pulse" />
                     </div>
                     <div className="text-center">
-                      <p className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.5em] mb-2 animate-pulse">Processing Question Data</p>
-                      <p className="text-sm font-bold text-slate-400 uppercase tracking-widest italic">Updating repository records...</p>
+                      <p className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.5em] mb-2 animate-pulse">Loading Questions</p>
+                      <p className="text-sm font-bold text-slate-400 uppercase tracking-widest italic">Please wait...</p>
                     </div>
                   </motion.div>
                 ) : questions.length === 0 ? (
@@ -849,10 +850,10 @@ const QuestionPage = () => {
                       <HelpCircle className="w-16 h-16 text-slate-300 dark:text-slate-600 relative z-10" />
                     </div>
                     <h3 className="text-xl lg:text-3xl font-black italic tracking-tighter text-slate-300 dark:text-slate-700 uppercase mb-4">
-                      {searchTerm ? 'Search returned zero matches. Refine your query or expand parameters.' : 'Question repository is empty. Initialize your first entry to begin population.'}
+                      {searchTerm ? 'No Questions Found' : 'No Questions Yet'}
                     </h3>
                     <p className="max-w-md text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed">
-                      {searchTerm ? 'Refine your search criteria to locate specific records.' : 'The database is currently empty. Add your first question to begin building your assessment library.'}
+                      {searchTerm ? 'Try a different search term or adjust your filters.' : 'Add your first question to get started.'}
                     </p>
                     {searchTerm && (
                       <motion.button
@@ -861,7 +862,7 @@ const QuestionPage = () => {
                         onClick={handleClearFilters}
                         className="mt-4 lg:mt-8 px-4 lg:px-8 py-4 bg-indigo-500/10 text-indigo-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all border-2 border-indigo-500/20"
                       >
-                        Reset Neural Filters
+                        Clear Filters
                       </motion.button>
                     )}
                   </motion.div>

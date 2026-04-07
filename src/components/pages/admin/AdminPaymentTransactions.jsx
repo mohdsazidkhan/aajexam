@@ -84,10 +84,10 @@ const AdminPaymentTransactions = () => {
           hasPrev: false
         });
       } else {
-        setError(response.message || 'Failed to fetch transactions');
+        setError(response.message || 'Unable to load transactions. Please try again.');
       }
     } catch (err) {
-      setError('Error fetching transactions: ' + err.message);
+      setError('Something went wrong while loading transactions. ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -219,11 +219,11 @@ const AdminPaymentTransactions = () => {
 
   if (loading && transactions.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Transaction History">
+      <AdminMobileAppWrapper title="Payment Transactions">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
           <div className="adminContent p-4 w-full flex items-center justify-center min-h-[60vh]">
-            <Loading size="md" color="yellow" message="Syncing ledger data..." />
+            <Loading size="md" color="yellow" message="Loading transactions..." />
           </div>
         </div>
       </AdminMobileAppWrapper>
@@ -231,7 +231,7 @@ const AdminPaymentTransactions = () => {
   }
 
   return (
-    <AdminMobileAppWrapper title="Financial Records">
+    <AdminMobileAppWrapper title="Payment Transactions">
       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent p-4 lg:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden">
@@ -244,13 +244,13 @@ const AdminPaymentTransactions = () => {
                   <div className="p-3 bg-indigo-500/20 text-indigo-500 rounded-2xl">
                     <ReceiptText className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Financials // Revenue & Payments</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin // Payment Transactions</span>
                 </div>
                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                  Payment History
+                  Payment Transactions
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                  Review and manage student subscription payments.
+                  Track and manage all payment transactions on the platform.
                 </p>
               </div>
 
@@ -276,7 +276,7 @@ const AdminPaymentTransactions = () => {
                   onClick={exportToCSV}
                   className="px-4 lg:px-8 py-4 bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3"
                 >
-                  <Download className="w-4 h-4" /> Export records
+                  <Download className="w-4 h-4" /> Export CSV
                 </motion.button>
               </div>
             </div>
@@ -286,8 +286,8 @@ const AdminPaymentTransactions = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-12">
             {[
               { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, color: 'emerald', isCurrency: true },
-              { label: 'Period Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'indigo', isCurrency: true },
-              { label: 'Transactions', val: summary.totalTransactions || 0, icon: ReceiptText, color: 'purple' },
+              { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'indigo', isCurrency: true },
+              { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: ReceiptText, color: 'purple' },
               { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users, color: 'rose' }
             ].map((stat, i) => (
               <motion.div
@@ -315,7 +315,7 @@ const AdminPaymentTransactions = () => {
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                 <input
                   type="text"
-                  placeholder="SEARCH BY ORDER ID OR USER NAME..."
+                  placeholder="Search by order ID or username..."
                   value={filters.search}
                   onChange={(e) => handleFilterChange('search', e.target.value)}
                   className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-lg"
@@ -326,7 +326,7 @@ const AdminPaymentTransactions = () => {
                 {[
                   { icon: Calendar, val: filters.year, options: Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i), key: 'year' },
                   { icon: Calendar, val: filters.month, options: [{ l: 'All Months', v: 'all' }, ...Array.from({ length: 12 }, (_, i) => ({ l: new Date(0, i).toLocaleString('default', { month: 'long' }), v: i + 1 }))], key: 'month' },
-                  { icon: Activity, val: filters.status, options: [{ l: 'All Status', v: 'all' }, ...filterOptions.statuses.slice(1).map(s => ({ l: s.charAt(0).toUpperCase() + s.slice(1), v: s }))], key: 'status' },
+                  { icon: Activity, val: filters.status, options: [{ l: 'All Statuses', v: 'all' }, ...filterOptions.statuses.slice(1).map(s => ({ l: s.charAt(0).toUpperCase() + s.slice(1), v: s }))], key: 'status' },
                   { icon: PieChart, val: filters.plan, options: [{ l: 'All Plans', v: 'all' }, ...filterOptions.plans.map(p => ({ l: p, v: p }))], key: 'plan' }
                 ].map((f, i) => (
                   <div key={i} className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
@@ -356,8 +356,8 @@ const AdminPaymentTransactions = () => {
             ) : transactions.length === 0 ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-2xl">
                 <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 lg:mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Records Found</h3>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Adjust filters to sync payment data</p>
+                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
               </motion.div>
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -366,12 +366,12 @@ const AdminPaymentTransactions = () => {
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest uppercase tracking-widest">S.No.</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
                           <th onClick={() => handleSort('createdAt')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-indigo-500 transition-colors">
-                            <div className="flex items-center gap-2">Transaction Date <SortIcon field="createdAt" /></div>
+                            <div className="flex items-center gap-2">Date <SortIcon field="createdAt" /></div>
                           </th>
                           <th onClick={() => handleSort('user.name')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-indigo-500 transition-colors">
-                            <div className="flex items-center gap-2">Student <SortIcon field="user.name" /></div>
+                            <div className="flex items-center gap-2">User <SortIcon field="user.name" /></div>
                           </th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Plan</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Amount</th>
@@ -388,7 +388,7 @@ const AdminPaymentTransactions = () => {
                               <div className="text-[9px] font-bold text-slate-400 uppercase">{new Date(t.createdAt).toLocaleTimeString()}</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'UNKNOWN USER'}</div>
+                              <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'Unknown User'}</div>
                               <div className="text-[9px] font-bold text-slate-400 uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -431,7 +431,7 @@ const AdminPaymentTransactions = () => {
                         </div>
                         <div className="space-y-3 lg:space-y-6 flex-1">
                           <div>
-                            <div className="text-lg font-black text-slate-900 dark:text-white uppercase truncate">{t.user?.name || 'UNKNOWN USER'}</div>
+                            <div className="text-lg font-black text-slate-900 dark:text-white uppercase truncate">{t.user?.name || 'Unknown User'}</div>
                             <div className="text-[10px] font-black text-slate-400 uppercase truncate">{t.user?.email || 'N/A'}</div>
                           </div>
                           <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/10 flex justify-between items-center">
@@ -444,7 +444,7 @@ const AdminPaymentTransactions = () => {
                         </div>
                         <div className="mt-4 lg:mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between text-[9px] font-black text-slate-400 uppercase">
                           <div className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" />{formatDate(t.createdAt)}</div>
-                          <div className="flex items-center gap-2"><Wallet className="w-3.5 h-3.5" />{t.paymentMethod || 'PAYMENT GATEWAY'}</div>
+                          <div className="flex items-center gap-2"><Wallet className="w-3.5 h-3.5" />{t.paymentMethod || 'Online Payment'}</div>
                         </div>
                       </motion.div>
                     ))}
@@ -458,17 +458,17 @@ const AdminPaymentTransactions = () => {
                         <div className="flex items-center gap-3 lg:gap-6">
                           <div className={`p-4 rounded-2xl border-2 ${getStatusColor(t.payuStatus || t.status)} shadow-sm`}>{getStatusIcon(t.payuStatus || t.status)}</div>
                           <div>
-                            <div className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{t.user?.name || 'UNKNOWN USER'}</div>
+                            <div className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{t.user?.name || 'Unknown User'}</div>
                             <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{formatDateTime(t.createdAt)}</div>
                           </div>
                         </div>
                         <div className="flex flex-wrap items-center gap-3 lg:gap-8">
                           <div className="text-right">
-                            <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Plan Identification</div>
+                            <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Plan</div>
                             <div className="text-sm font-black text-primary-500 uppercase tracking-widest tracking-widest">{t.planId || 'N/A'}</div>
                           </div>
                           <div className="text-right min-w-[120px]">
-                            <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Record Settlement</div>
+                            <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount Paid</div>
                             <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatCurrency(t.amount)}</div>
                           </div>
                           <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl">

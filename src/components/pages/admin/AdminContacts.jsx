@@ -79,18 +79,18 @@ export default function AdminContacts() {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to neutralized this signal node?')) {
+    if (window.confirm('Are you sure you want to delete this message?')) {
       try {
         const res = await API.deleteContact(id);
         if (res.ok) {
-          toast.success('Signal node neutralized!');
+          toast.success('Message deleted successfully!');
           fetchContacts(page, itemsPerPage, searchTerm);
         } else {
-          toast.error('Failed to neutralize signal');
+          toast.error('Failed to delete message');
         }
       } catch (error) {
         console.error('Error deleting contact:', error);
-        toast.error('Interference detected during neutralization');
+        toast.error('An error occurred while deleting the message');
       }
     }
   };
@@ -117,7 +117,7 @@ export default function AdminContacts() {
 
   if (loading && contacts.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Correspondence Stream">
+      <AdminMobileAppWrapper title="Contact Messages">
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
@@ -127,17 +127,17 @@ export default function AdminContacts() {
             />
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Extracting Transmission Metadata...</div>
+          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading messages...</div>
         </div>
       </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Correspondence Stream">
+    <AdminMobileAppWrapper title="Contact Messages">
       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+        <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
           {/* Header Section */}
           <motion.div
@@ -151,16 +151,16 @@ export default function AdminContacts() {
                   <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                     <MessageSquare className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">CORRESPONDENCE_HUB // SIGNAL_AUDIT</span>
+                  <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Contact Messages</span>
                 </div>
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  TRANSMISSION <span className="text-primary-500">LOGS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
+                  CONTACT <span className="text-primary-500">MESSAGES</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">System-wide audit of external correspondence signals. Maintain protocol integrity and response efficiency.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View and manage messages submitted through the contact form.</p>
               </div>
             </div>
 
-            {/* Interface Controller */}
+            {/* Filters and Controls */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 lg:mb-12 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                  <div className="flex items-center gap-4">
@@ -168,16 +168,16 @@ export default function AdminContacts() {
                       <Filter className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-slate-400 uppercase tracking-widest mb-1">DATA_FILTERING</div>
-                      <div className="text-sm italic uppercase tracking-tighter italic">Signal Spectrum Index</div>
+                      <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
+                      <div className="text-sm italic uppercase tracking-tighter italic">Message List</div>
                     </div>
                  </div>
 
                  <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
                   {[
-                    { icon: TableIcon, id: 'table', label: 'TABULAR' },
-                    { icon: List, id: 'list', label: 'LINEAR' },
-                    { icon: LayoutGrid, id: 'grid', label: 'SPECTRAL' }
+                    { icon: TableIcon, id: 'table', label: 'TABLE' },
+                    { icon: List, id: 'list', label: 'LIST' },
+                    { icon: LayoutGrid, id: 'grid', label: 'GRID' }
                   ].map((mode) => (
                     <button
                       key={mode.id}
@@ -213,7 +213,7 @@ export default function AdminContacts() {
             </div>
           </motion.div>
 
-          {/* Results Stream */}
+          {/* Results */}
           <AnimatePresence mode="wait">
              {contacts.length === 0 ? (
                <motion.div
@@ -225,8 +225,8 @@ export default function AdminContacts() {
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_SIGNALS_RECOVERED</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded correspondence detected for the selected tactical parameters.</p>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No contact messages yet. Messages will appear here when users submit the contact form.</p>
                </motion.div>
              ) : (
                <motion.div
@@ -240,12 +240,12 @@ export default function AdminContacts() {
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#REF</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-24">UNIT</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">TRANSMITTER_IDENT</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">SIGNAL_PAYLOAD</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TIMESTAMP</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTION_MODULE</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-24">USER</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">EMAIL</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">MESSAGE</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">DATE</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTIONS</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -267,7 +267,7 @@ export default function AdminContacts() {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
-                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{contact.email || 'OFFLINE'}</div>
+                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>
@@ -310,7 +310,7 @@ export default function AdminContacts() {
                           </div>
                           
                           <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{contact.name || 'Unknown'}</h3>
-                          <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{contact.email || 'OFFLINE'}</div>
+                          <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{contact.email || 'No email'}</div>
                           
                           <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-4 lg:mb-8 relative">
                              <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed text-slate-400 line-clamp-4">{contact.message}</p>
@@ -352,7 +352,7 @@ export default function AdminContacts() {
                          <div className="flex-1 space-y-4">
                             <div className="flex flex-wrap items-center gap-4">
                                <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{contact.name || 'Unknown'}</h3>
-                               <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'OFFLINE'}</div>
+                               <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</div>
                             </div>
                             <p className="text-[11px] lg:text-sm font-black uppercase tracking-widest leading-relaxed text-slate-500">{contact.message}</p>
                             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -362,7 +362,7 @@ export default function AdminContacts() {
                                </div>
                                <div className="flex items-center gap-2">
                                   <ShieldCheck className="w-4 h-4 text-emerald-500/50" />
-                                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ENCRYPTED_SIGNAL_STREAM</span>
+                                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Verified</span>
                                </div>
                             </div>
                          </div>
@@ -372,13 +372,13 @@ export default function AdminContacts() {
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
                                className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all"
                             >
-                               <Send className="w-5 h-5" /> RESPOND
+                               <Send className="w-5 h-5" /> Reply
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
                                className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
                             >
-                               <Trash2 className="w-5 h-5" /> NEUTRALIZE
+                               <Trash2 className="w-5 h-5" /> Delete
                             </button>
                          </div>
                       </motion.div>
@@ -386,7 +386,7 @@ export default function AdminContacts() {
                   </div>
                 )}
 
-                {/* Spectral Pagination */}
+                {/* Pagination */}
                 {pagination.totalPages > 1 && (
                   <div className="flex justify-center pt-16">
                     <Pagination

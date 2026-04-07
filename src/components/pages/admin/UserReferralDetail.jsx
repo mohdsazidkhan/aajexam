@@ -115,10 +115,10 @@ export default function UserReferralDetail() {
 
     const getRewardTypeLabel = (type) => {
         const labels = {
-            'registration': 'Identity Activation',
-            'plan9': 'Basic Payout',
-            'plan49': 'Premium Payout',
-            'plan99': 'Elite Payout',
+            'registration': 'Registration Reward',
+            'plan9': '₹9 Plan Reward',
+            'plan49': '₹49 Plan Reward',
+            'plan99': '₹99 Plan Reward',
         };
         return labels[type] || type.toUpperCase();
     };
@@ -145,7 +145,7 @@ export default function UserReferralDetail() {
                         />
                         <Wallet className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
                     </div>
-                    <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Syncing Treasury Logs...</div>
+                    <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral details...</div>
                 </div>
             </AdminMobileAppWrapper>
         );
@@ -158,13 +158,13 @@ export default function UserReferralDetail() {
                     <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                         <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                     </div>
-                    <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'ACCESS_DENIED' : 'IDENTIFIER_MISSING'}</h3>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">{error || 'The requested referral stream could not be localized.'}</p>
+                    <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'Error' : 'User Not Found'}</h3>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">{error || 'No user ID was provided. Please go back and select a user.'}</p>
                     <button
                         onClick={() => router.push('/admin/referral-history')}
                         className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl flex items-center gap-3 transition-transform hover:scale-105"
                     >
-                        <ArrowLeft className="w-4 h-4" /> RETURN_COLLECTOR
+                        <ArrowLeft className="w-4 h-4" /> Back to History
                     </button>
                 </div>
             </AdminMobileAppWrapper>
@@ -175,7 +175,7 @@ export default function UserReferralDetail() {
         <AdminMobileAppWrapper title="Referral Detail">
             <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
                 {isMounted && <Sidebar />}
-                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-80' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
+                <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-24'} p-4 lg:p-10 pt-16 lg:pt-10`}>
 
                     {/* Header Section */}
                     <motion.div
@@ -189,10 +189,10 @@ export default function UserReferralDetail() {
                                     <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
                                         <TrendingUp className="w-6 h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">FINANCIAL INSTRUMENTS // REFERRAL STREAM</span>
+                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / USER REFERRAL DETAIL</span>
                                 </div>
                                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                    PROFITS <span className="text-emerald-500">SCHEMATIC</span>
+                                    REFERRAL <span className="text-emerald-500">DETAIL</span>
                                 </h1>
                                 <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
                                     <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
@@ -201,7 +201,7 @@ export default function UserReferralDetail() {
                                     <div>
                                         <div className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">{user?.name}</div>
                                         <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">{user?.email}</div>
-                                        <div className="text-[8px] font-black text-indigo-500 uppercase tracking-[0.2em] mt-2">REF_CODE: {user?.referralCode}</div>
+                                        <div className="text-[8px] font-black text-indigo-500 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ export default function UserReferralDetail() {
                                     onClick={() => router.push('/admin/referral-history')}
                                     className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                                 >
-                                    <ArrowLeft className="w-4 h-4 text-emerald-500" /> EXIT_TO_HISTORY
+                                    <ArrowLeft className="w-4 h-4 text-emerald-500" /> Back to History
                                 </button>
                             </div>
                         </div>
@@ -219,10 +219,10 @@ export default function UserReferralDetail() {
                         {/* Metric Overview */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                             {[
-                                { label: 'Liquid Assets', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
-                                { label: 'Affiliate Network', value: user?.referralCount || 0, icon: Users, color: 'indigo' },
-                                { label: 'Accumulated Rewards', value: user?.referralRewards?.length || 0, icon: Award, color: 'amber' },
-                                { label: 'Upline Identifier', value: user?.referredBy || 'SYSTEM', icon: Zap, color: 'rose' }
+                                { label: 'Total Earnings', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
+                                { label: 'People Referred', value: user?.referralCount || 0, icon: Users, color: 'indigo' },
+                                { label: 'Total Rewards', value: user?.referralRewards?.length || 0, icon: Award, color: 'amber' },
+                                { label: 'Referred By', value: user?.referredBy || 'Direct Signup', icon: Zap, color: 'rose' }
                             ].map((stat, i) => (
                                 <div
                                     key={stat.label}
@@ -238,13 +238,13 @@ export default function UserReferralDetail() {
                         </div>
                     </motion.div>
 
-                    {/* Earnings Breakdown Spectral */}
+                    {/* Earnings Breakdown */}
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 lg:mb-12">
                         {[
-                            { id: 'total', label: 'GROSS VOLUME', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
-                            { id: 'registration', label: 'ACTIVATE_TX', amount: user?.referralRewards?.filter(r => r.type === 'registration').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'registration').length || 0, icon: CheckCircle2, color: 'primary' },
-                            { id: 'plan9', label: 'BASIC_STREAM', amount: user?.referralRewards?.filter(r => r.type === 'plan9').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan9').length || 0, icon: Star, color: 'emerald' },
-                            { id: 'plan49', label: 'PREMIUM_OPS', amount: user?.referralRewards?.filter(r => r.type === 'plan49').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan49').length || 0, icon: Crown, color: 'indigo' },
+                            { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
+                            { id: 'registration', label: 'Registration', amount: user?.referralRewards?.filter(r => r.type === 'registration').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'registration').length || 0, icon: CheckCircle2, color: 'primary' },
+                            { id: 'plan9', label: 'Plan 9', amount: user?.referralRewards?.filter(r => r.type === 'plan9').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan9').length || 0, icon: Star, color: 'emerald' },
+                            { id: 'plan49', label: 'Plan 49', amount: user?.referralRewards?.filter(r => r.type === 'plan49').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan49').length || 0, icon: Crown, color: 'indigo' },
                             { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                         ].map((tier) => (
                             <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
@@ -253,7 +253,7 @@ export default function UserReferralDetail() {
                                 </div>
                                 <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
                                 <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
-                                <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest opacity-60 italic">{tier.count} UNITS</div>
+                                <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                             </div>
                         ))}
                     </div>
@@ -265,8 +265,8 @@ export default function UserReferralDetail() {
                                 <Zap className="w-5 h-5" />
                             </div>
                             <div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">TRANSACTION_FLUX</div>
-                                <div className="text-sm font-black italic uppercase tracking-tighter">Affiliate Disbursement Ledger</div>
+                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">TRANSACTIONS</div>
+                                <div className="text-sm font-black italic uppercase tracking-tighter">Referral Reward History</div>
                             </div>
                         </div>
 
@@ -276,7 +276,7 @@ export default function UserReferralDetail() {
                                 <select
                                     className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
                                 >
-                                    <option>FILTER_BY_TIMELINE</option>
+                                    <option>Filter by Date</option>
                                 </select>
                                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                             </div>
@@ -295,8 +295,8 @@ export default function UserReferralDetail() {
                                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                                     <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                                 </div>
-                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">ZERO_TRANSACTIONS</h3>
-                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No Recorded financial dissemination detected in current stream.</p>
+                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS YET</h3>
+                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This user has no referral reward transactions yet.</p>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -308,11 +308,11 @@ export default function UserReferralDetail() {
                                 <table className="w-full">
                                     <thead>
                                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Temporal_Stamp</th>
-                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Recipient_Identification</th>
-                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Reward_Category</th>
-                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Disbursement</th>
-                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Aggregate_Balance</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DATE</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">REFERRED USER</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">REWARD TYPE</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">AMOUNT</th>
+                                            <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">BALANCE</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -364,7 +364,7 @@ export default function UserReferralDetail() {
                         )}
                     </AnimatePresence>
 
-                    {/* Spectral Pagination */}
+                    {/* Pagination */}
                     {pagination.totalPages > 1 && (
                         <div className="flex justify-center pt-12">
                             <Pagination
