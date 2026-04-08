@@ -498,26 +498,6 @@ const DashboardAnalytics = () => {
              ))}
            </div>
 
-          {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-8">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
-              <h3 className="text-lg font-semibold mb-4">Level Distribution</h3>
-              {levelLabels.length > 0 ? (
-                <Bar data={levelBarData} options={chartOptions} />
-              ) : (
-                <div className="h-64 flex items-center justify-center text-slate-600 dark:text-gray-400">No data available</div>
-              )}
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
-              <h3 className="text-lg font-semibold mb-4">Subscription Distribution</h3>
-              {subscriptionLabels.length > 0 ? (
-                <Pie data={subscriptionPieData} options={pieOptions} />
-              ) : (
-                <div className="h-64 flex items-center justify-center text-slate-600 dark:text-gray-400">No data available</div>
-              )}
-            </div>
-          </div>
 
           {/* Tables */}
           <div className="grid grid-cols-1 gap-4">

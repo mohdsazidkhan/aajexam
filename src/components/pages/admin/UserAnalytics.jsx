@@ -284,7 +284,7 @@ const UserAnalytics = () => {
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   User <span className="text-indigo-600">Analytics</span>
                 </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth, level distribution, and subscription trends at a glance.</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth and subscription trends at a glance.</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -351,60 +351,6 @@ const UserAnalytics = () => {
             </div>
           </div>
 
-          {/* Visualizations Spectrum */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 lg:mb-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
-                    <BarChart3 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">By Level</div>
-                    <div className="text-xl font-black italic uppercase tracking-tighter italic">Level Distribution</div>
-                  </div>
-                </div>
-              </div>
-              <div className="h-[400px]">
-                {levelLabels.length > 0 ? <Bar data={levelBarData} options={baseOptions(mode)} /> : (
-                  <div className="h-full flex flex-col items-center justify-center text-slate-300">
-                     <BarChart3 className="w-16 h-16 mb-4 opacity-20" />
-                     <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl">
-                    <PieChartIcon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">By Plan</div>
-                    <div className="text-xl font-black italic uppercase tracking-tighter italic">Subscription Stats</div>
-                  </div>
-                </div>
-              </div>
-              <div className="h-[400px]">
-                {subscriptionLabels.length > 0 ? <Pie data={subscriptionPieData} options={pieOptions(mode)} /> : (
-                   <div className="h-full flex flex-col items-center justify-center text-slate-300">
-                      <PieChartIcon className="w-16 h-16 mb-4 opacity-20" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
-                   </div>
-                )}
-              </div>
-            </motion.div>
-          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -418,7 +364,7 @@ const UserAnalytics = () => {
                 </div>
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Growth Trend</div>
-                  <div className="text-xl font-black italic uppercase tracking-tighter italic">User Growth Over Time</div>
+                  <div className="text-xl font-black uppercase tracking-tighter italic">User Growth Over Time</div>
                 </div>
               </div>
             </div>
