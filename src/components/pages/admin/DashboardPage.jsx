@@ -3,25 +3,15 @@
   Crown,
   Zap,
   BookOpen,
-  HelpCircle,
-  Trophy,
   Target,
   Layers,
   Wallet,
   Banknote,
   CreditCard,
   TrendingUp,
-  Eye,
-  ThumbsUp,
   CheckCircle,
-  LayoutDashboard,
-  ShieldCheck,
   FileText,
   Activity,
-  Flame,
-  Gem,
-  Award,
-  FlaskConical,
   Building,
   BarChart3,
   Sparkles,
@@ -43,27 +33,22 @@ import API from '../../../lib/api';
 const DashboardPage = () => {
   const { isMounted, isRouterReady, router } = useSSR();
   const [stats, setStats] = useState({
-    categories: 0,
-    subcategories: 0,
-    quizzes: 0,
-    questions: 0,
     students: 0,
+    activeUsersCurrentMonth: 0,
+    exams: 0,
+    activeExams: 0,
+    examCategories: 0,
+    examPatterns: 0,
+    practiceTests: 0,
+    freePracticeTests: 0,
+    testAttempts: 0,
+    completedAttempts: 0,
     bankDetails: 0,
-    totalQuizAttempts: 0,
+    paymentOrders: 0,
+    withdrawRequests: 0,
     subscriptions: 0,
     activeSubscriptions: 0,
-    freeSubscriptions: 0,
-    paidSubscriptions: 0,
-    paymentOrders: 0,
-    completedPaymentOrders: 0,
     totalRevenue: 0,
-    // Withdraw requests stats
-    withdrawRequests: 0,
-    pendingWithdrawRequests: 0,
-    // Levels stats
-    totalLevels: 0,
-    activeLevels: 0,
-    inactiveLevels: 0,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -98,40 +83,10 @@ const DashboardPage = () => {
   }, []);
 
   const cards = [
-    // New cards for top
     {
-      title: 'Active PRO Users',
-      count: stats.currentMonthActiveProUsers || 0,
-      icon: Crown,
-      color: 'bg-indigo-500',
-      textColor: 'text-indigo-900',
-      bgColor: 'bg-indigo-100',
-      darkBgColor: 'dark:bg-indigo-900/20',
-      gradientFrom: 'from-indigo-200',
-      gradientTo: 'to-primary-200',
-      darkGradientFrom: 'dark:from-indigo-700',
-      darkGradientTo: 'dark:to-primary-800',
-      subtitle: 'Currently subscribed PRO users',
-      link: '#'
-    },
-    {
-      title: 'Total Subscriptions',
-      count: stats.subscriptions || 0,
-      icon: Gem,
-      color: 'bg-primary-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-primary-100',
-      darkBgColor: 'dark:bg-primary-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-amber-800',
-      subtitle: 'Active paid subscriptions',
-      link: '#'
-    },
-    {
-      title: 'Total Users',
-      count: stats.totalNonAdminUsers || 0,
+      title: 'Total Students',
+      count: stats.students || 0,
+      link: '/admin/students',
       icon: Users,
       color: 'bg-green-500',
       textColor: 'text-green-900',
@@ -141,8 +96,7 @@ const DashboardPage = () => {
       gradientTo: 'to-emerald-200',
       darkGradientFrom: 'dark:from-green-700',
       darkGradientTo: 'dark:to-emerald-800',
-      subtitle: 'Registered on platform',
-      link: '#'
+      subtitle: 'Registered on platform'
     },
     {
       title: 'Active Users (Today)',
@@ -156,14 +110,44 @@ const DashboardPage = () => {
       gradientTo: 'to-rose-200',
       darkGradientFrom: 'dark:from-red-700',
       darkGradientTo: 'dark:to-rose-800',
-      subtitle: 'Logged in this month',
+      subtitle: 'Logged in today',
       link: '#'
     },
     {
-      title: 'Levels',
-      count: stats.totalLevels || 0,
-      link: '/admin/levels',
-      icon: Trophy,
+      title: 'Exam Categories',
+      count: stats.examCategories || 0,
+      link: '/admin/govt-exams',
+      icon: Layers,
+      color: 'bg-indigo-500',
+      textColor: 'text-indigo-900',
+      bgColor: 'bg-indigo-100',
+      darkBgColor: 'dark:bg-indigo-900/20',
+      gradientFrom: 'from-indigo-200',
+      gradientTo: 'to-primary-200',
+      darkGradientFrom: 'dark:from-indigo-700',
+      darkGradientTo: 'dark:to-primary-800',
+      subtitle: 'Central & State exams'
+    },
+    {
+      title: 'Exams',
+      count: stats.exams || 0,
+      link: '/admin/govt-exams/exams',
+      icon: BookOpen,
+      color: 'bg-purple-500',
+      textColor: 'text-purple-900',
+      bgColor: 'bg-purple-100',
+      darkBgColor: 'dark:bg-purple-900/20',
+      gradientFrom: 'from-purple-200',
+      gradientTo: 'to-fuchsia-200',
+      darkGradientFrom: 'dark:from-purple-700',
+      darkGradientTo: 'dark:to-fuchsia-800',
+      subtitle: `${stats.activeExams || 0} active`
+    },
+    {
+      title: 'Exam Patterns',
+      count: stats.examPatterns || 0,
+      link: '/admin/govt-exams/exams',
+      icon: FileText,
       color: 'bg-teal-500',
       textColor: 'text-teal-900',
       bgColor: 'bg-teal-100',
@@ -172,28 +156,28 @@ const DashboardPage = () => {
       gradientTo: 'to-cyan-200',
       darkGradientFrom: 'dark:from-teal-700',
       darkGradientTo: 'dark:to-cyan-800',
-      subtitle: `${stats.activeLevels || 0} active`
-    },
-
-    {
-      title: 'Quizzes',
-      count: stats.quizzes,
-      link: '/admin/quizzes',
-      icon: BookOpen,
-      color: 'bg-red-500',
-      textColor: 'text-red-900',
-      bgColor: 'bg-red-100',
-      darkBgColor: 'dark:bg-red-900/20',
-      gradientFrom: 'from-red-200',
-      gradientTo: 'to-rose-200',
-      darkGradientFrom: 'dark:from-red-700',
-      darkGradientTo: 'dark:to-rose-800'
+      subtitle: 'Defined patterns'
     },
     {
-      title: 'User Quizzes',
-      count: stats.userQuizzes || 0,
-      link: '/admin/user-quizzes',
-      icon: FlaskConical,
+      title: 'Practice Tests',
+      count: stats.practiceTests || 0,
+      link: '/admin/govt-exams/tests',
+      icon: Target,
+      color: 'bg-primary-500',
+      textColor: 'text-primary-900',
+      bgColor: 'bg-primary-100',
+      darkBgColor: 'dark:bg-primary-900/20',
+      gradientFrom: 'from-primary-200',
+      gradientTo: 'to-amber-200',
+      darkGradientFrom: 'dark:from-primary-700',
+      darkGradientTo: 'dark:to-amber-800',
+      subtitle: `${stats.freePracticeTests || 0} free`
+    },
+    {
+      title: 'Test Attempts',
+      count: stats.testAttempts || 0,
+      link: '#',
+      icon: BarChart3,
       color: 'bg-pink-500',
       textColor: 'text-pink-900',
       bgColor: 'bg-pink-100',
@@ -202,26 +186,8 @@ const DashboardPage = () => {
       gradientTo: 'to-fuchsia-200',
       darkGradientFrom: 'dark:from-pink-700',
       darkGradientTo: 'dark:to-fuchsia-800',
-      subtitle: 'Created by students'
+      subtitle: `${stats.completedAttempts || 0} completed`
     },
-    {
-      title: 'Questions',
-      count: stats.questions,
-      link: '/admin/questions',
-      icon: HelpCircle,
-      color: 'bg-primary-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-primary-100',
-      darkBgColor: 'dark:bg-primary-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-amber-800'
-    },
-    {
-      subtitle: 'Verified by admin'
-    },
-
     {
       title: 'Withdraw Requests',
       count: stats.withdrawRequests || 0,
@@ -235,25 +201,11 @@ const DashboardPage = () => {
       gradientTo: 'to-emerald-200',
       darkGradientFrom: 'dark:from-green-700',
       darkGradientTo: 'dark:to-emerald-800',
-      subtitle: 'Awaiting review'
-    },
-    {
-      title: 'Students',
-      count: stats.students,
-      link: '/admin/students',
-      icon: Users,
-      color: 'bg-red-500',
-      textColor: 'text-red-900',
-      bgColor: 'bg-red-100',
-      darkBgColor: 'dark:bg-red-900/20',
-      gradientFrom: 'from-rose-200',
-      gradientTo: 'to-pink-200',
-      darkGradientFrom: 'dark:from-rose-700',
-      darkGradientTo: 'dark:to-pink-800'
+      subtitle: 'Pending review'
     },
     {
       title: 'Bank Details',
-      count: stats.bankDetails,
+      count: stats.bankDetails || 0,
       link: '/admin/bank-details',
       icon: Building,
       color: 'bg-primary-500',
@@ -263,36 +215,37 @@ const DashboardPage = () => {
       gradientFrom: 'from-primary-200',
       gradientTo: 'to-amber-200',
       darkGradientFrom: 'dark:from-primary-600',
-      darkGradientTo: 'dark:to-amber-700'
+      darkGradientTo: 'dark:to-amber-700',
+      subtitle: 'Student bank accounts'
     },
     {
       title: 'Payment Orders',
       count: stats.paymentOrders || 0,
       link: '/admin/payment-transactions',
       icon: CreditCard,
-      color: 'bg-green-500',
-      textColor: 'text-green-900',
-      bgColor: 'bg-green-100',
-      darkBgColor: 'dark:bg-green-900/20',
+      color: 'bg-emerald-500',
+      textColor: 'text-emerald-900',
+      bgColor: 'bg-emerald-100',
+      darkBgColor: 'dark:bg-emerald-900/20',
       gradientFrom: 'from-emerald-200',
       gradientTo: 'to-teal-200',
       darkGradientFrom: 'dark:from-emerald-700',
       darkGradientTo: 'dark:to-teal-800',
-      subtitle: `${stats.completedPaymentOrders || 0} completed`
+      subtitle: 'Successful payments'
     },
     {
-      title: 'Total Subscriptions',
+      title: 'Subscriptions',
       count: stats.subscriptions || 0,
       link: '/admin/subscriptions',
       icon: Crown,
-      color: 'bg-purple-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-purple-100',
-      darkBgColor: 'dark:bg-purple-900/20',
-      gradientFrom: 'from-purple-200',
-      gradientTo: 'to-fuchsia-200',
-      darkGradientFrom: 'dark:from-purple-700',
-      darkGradientTo: 'dark:to-fuchsia-800',
+      color: 'bg-indigo-500',
+      textColor: 'text-indigo-900',
+      bgColor: 'bg-indigo-100',
+      darkBgColor: 'dark:bg-indigo-900/20',
+      gradientFrom: 'from-indigo-200',
+      gradientTo: 'to-primary-200',
+      darkGradientFrom: 'dark:from-indigo-700',
+      darkGradientTo: 'dark:to-primary-800',
       subtitle: `${stats.activeSubscriptions || 0} active`
     },
     {
@@ -309,51 +262,6 @@ const DashboardPage = () => {
       darkGradientFrom: 'dark:from-green-700',
       darkGradientTo: 'dark:to-emerald-800',
       subtitle: 'From completed payments'
-    },
-    {
-      title: 'Free Subscriptions',
-      count: stats.freeSubscriptions || 0,
-      link: '/admin/subscriptions',
-      icon: Zap,
-      color: 'bg-gray-500',
-      textColor: 'text-slate-900',
-      bgColor: 'bg-slate-100',
-      darkBgColor: 'dark:bg-gray-900/20',
-      gradientFrom: 'from-slate-200',
-      gradientTo: 'to-gray-200',
-      darkGradientFrom: 'dark:from-slate-700',
-      darkGradientTo: 'dark:to-gray-800',
-      subtitle: 'Users on free plan'
-    },
-    {
-      title: 'Paid Subscriptions',
-      count: stats.paidSubscriptions || 0,
-      link: '/admin/subscriptions',
-      icon: Gem,
-      color: 'bg-indigo-500',
-      textColor: 'text-red-900',
-      bgColor: 'bg-indigo-100',
-      darkBgColor: 'dark:bg-indigo-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-primary-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-primary-800',
-      subtitle: 'Users on paid plan'
-    },
-    {
-      title: 'Total Quizzes Attempted',
-      count: stats.totalQuizAttempts,
-      link: '/admin/performance-analytics',
-      icon: BarChart3,
-      color: 'bg-indigo-500',
-      textColor: 'text-red-900',
-      bgColor: 'bg-indigo-100',
-      darkBgColor: 'dark:bg-indigo-900/20',
-      gradientFrom: 'from-cyan-200',
-      gradientTo: 'to-sky-200',
-      darkGradientFrom: 'dark:from-cyan-700',
-      darkGradientTo: 'dark:to-sky-800',
-      subtitle: 'Total attempts by students'
     },
   ];
 
@@ -466,9 +374,9 @@ const DashboardPage = () => {
             >
               {[
                { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Lifetime earnings from payments', icon: Banknote, color: 'emerald' },
-               { label: 'PAYMENT SUCCESS', value: `${stats.paymentOrders > 0 ? Math.round((stats.completedPaymentOrders / stats.paymentOrders) * 100) : 0}%`, subtitle: `${stats.completedPaymentOrders || 0} of ${stats.paymentOrders || 0} payments completed`, icon: BarChart3, color: 'blue' },
+               { label: 'PAYMENT ORDERS', value: stats.paymentOrders || 0, subtitle: 'Successful payment transactions', icon: BarChart3, color: 'blue' },
                { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of all subscriptions`, icon: TrendingUp, color: 'purple' },
-               { label: 'FREE vs PAID', value: `${stats.freeSubscriptions || 0} / ${stats.paidSubscriptions || 0}`, subtitle: 'Plan distribution breakdown', icon: Sparkles, color: 'rose' }
+               { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts completed`, icon: Sparkles, color: 'rose' }
              ].map((item, idx) => (
                <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
                  <div className="flex items-center justify-between relative z-10">
