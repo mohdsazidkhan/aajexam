@@ -31,7 +31,9 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
   const operationalLinks = [
     { name: 'Home', href: '/', icon: Compass },
+    { name: 'Govt Exams', href: '/govt-exams', icon: Layers },
     { name: 'How It Works', href: '/how-it-works', icon: Info },
+    { name: 'Contact Us', href: legalLinks.CONTACT, icon: MessageSquare },
   ];
 
   const legalLinksMap = [
@@ -39,7 +41,6 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
     { name: 'Terms of Service', path: legalLinks.TERMS, icon: Scale },
     { name: 'Refund Policy', path: legalLinks.REFUND_POLICY, icon: FileText },
     { name: 'Disclaimer', path: legalLinks.DISCLAIMER, icon: Info },
-    { name: 'Contact Us', path: legalLinks.CONTACT, icon: MessageSquare }
   ];
 
   const socialLinks = [
