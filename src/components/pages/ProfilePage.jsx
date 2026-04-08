@@ -71,7 +71,6 @@ const ProfilePage = () => {
     toast.success('Logged out successfully.');
   };
 
-  const levelInfo = student?.levelInfo?.currentLevel || { name: 'Starter', number: 1, description: 'Start practicing to unlock your next level.' };
   const quickStats = useMemo(
     () => [
       {
@@ -113,18 +112,18 @@ const ProfilePage = () => {
   ];
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-background-page"><Loading size="lg" /></div>;
+    return <div className="min-h-screen flex items-center justify-center "><Loading size="lg" /></div>;
   }
 
   return (
-    <div className="min-h-screen bg-background-page animate-fade-in pb-24 selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen animate-fade-in pb-24 selection:bg-primary-500 selection:text-white">
       <Head>
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-5 lg:space-y-12">
+      <div className="container mx-auto space-y-4 lg:space-y-8 mt-0">
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
-          <Card className="lg:col-span-8 p-5 lg:p-10 relative overflow-hidden border-none shadow-2xl rounded-[2rem] lg:rounded-[4rem] bg-background-surface">
+          <Card className="lg:col-span-8 px-0 relative overflow-hidden border-none shadow-2xl rounded-[2rem] lg:rounded-[4rem] bg-background-surface">
             <div className="flex flex-col lg:flex-row items-center gap-5 lg:gap-10 relative z-10">
               <div className="flex-1 space-y-4 lg:space-y-6 text-center lg:text-left">
                 <div className="space-y-2 lg:space-y-3">
@@ -139,16 +138,13 @@ const ProfilePage = () => {
                   <p className="text-lg font-semibold text-content-secondary">
                     @{student?.username || 'guest'}
                   </p>
-                  <p className="text-base font-medium text-content-secondary max-w-2xl">
-                    Level {levelInfo.number} - {levelInfo.name}. {levelInfo.description || 'Keep practicing to unlock more levels and win rewards.'}
-                  </p>
                 </div>
 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                  <Button variant="primary" size="lg" className="px-8 py-4 rounded-2xl text-sm font-black shadow-duo-primary" onClick={() => router.push('/edit-profile')}>
+                  <Button variant="primary" size="lg" className="px-8 py-4 rounded-xl lg:rounded-2xl text-sm font-black shadow-duo-primary" onClick={() => router.push('/edit-profile')}>
                     Edit profile
                   </Button>
-                  <Button variant="ghost" size="lg" icon={Settings} className="px-8 py-4 rounded-2xl border-2 border-border-primary text-sm font-semibold bg-background-surface" onClick={() => router.push('/settings')}>
+                  <Button variant="ghost" size="lg" icon={Settings} className="px-8 py-4 rounded-xl lg:rounded-2xl border-2 border-border-primary text-sm font-semibold bg-background-surface" onClick={() => router.push('/settings')}>
                     Account settings
                   </Button>
                 </div>
@@ -158,7 +154,7 @@ const ProfilePage = () => {
             <Sparkles className="absolute -top-8 -right-8 w-24 lg:w-48 h-24 lg:h-48 text-primary-600/10 pointer-events-none" />
           </Card>
 
-          <Card className="lg:col-span-4 bg-slate-900 border-none shadow-2xl p-5 lg:p-8 text-white rounded-[2rem] lg:rounded-[4rem] overflow-hidden relative">
+          <Card className="lg:col-span-4 bg-slate-900 border-none shadow-2xl px-0 text-white rounded-[2rem] lg:rounded-[4rem] overflow-hidden relative">
             <div className="relative z-10 space-y-6">
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-primary-300">Current level</p>
@@ -182,7 +178,7 @@ const ProfilePage = () => {
         </section>
 
         {/* --- Sub-Tab Navigation (Mobile-First) --- */}
-        <section className="px-4 lg:px-0 !mt-0">
+        <section className="px-0 !mt-0">
           <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit mx-auto lg:mx-0 border border-border-primary/50 shadow-sm relative z-20 max-w-full">
             {[
               { id: 'profile', label: 'My Profile', icon: User },
@@ -236,7 +232,7 @@ const ProfilePage = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {accountDetails.map((item) => (
-                    <div key={item.label} className="flex items-center gap-4 p-5 bg-background-page rounded-[2rem] border border-border-primary">
+                    <div key={item.label} className="flex items-center gap-4 p-5  rounded-[2rem] border border-border-primary">
                       <div className="p-3 bg-background-surface rounded-2xl shadow-sm text-content-secondary">
                         <item.icon className="w-5 h-5" />
                       </div>
@@ -286,7 +282,7 @@ const ProfilePage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-6 lg:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] lg:rounded-[3rem] text-center space-y-5 bg-background-page relative z-10">
+                  <div className="p-6 lg:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] lg:rounded-[3rem] text-center space-y-5  relative z-10">
                     <div className="w-20 h-20 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto opacity-70">
                       <CreditCard className="w-10 h-10 text-content-secondary" />
                     </div>
@@ -330,7 +326,7 @@ const ProfilePage = () => {
                     <button
                       key={item.label}
                       onClick={item.onClick}
-                      className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-background-page border border-border-primary text-left hover:border-primary-500/30 transition-colors"
+                      className="w-full flex items-center justify-between px-5 py-4 rounded-2xl  border border-border-primary text-left hover:border-primary-500/30 transition-colors"
                     >
                       <span className="text-sm font-semibold text-content-primary">{item.label}</span>
                       <ArrowRight className="w-4 h-4 text-slate-400" />

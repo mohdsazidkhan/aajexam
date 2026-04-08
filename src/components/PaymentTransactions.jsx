@@ -208,7 +208,7 @@ const PaymentTransactions = () => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl border-2 border-b-8 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
       {/* Header */}
-      <div className="bg-primary-500 p-10 lg:p-14 text-white shadow-duo-primary border-b-8 border-white/20 relative overflow-hidden group">
+      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-duo-primary border-b-8 border-white/20 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 relative z-10">
           <div>

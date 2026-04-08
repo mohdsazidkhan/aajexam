@@ -50,7 +50,6 @@ const SubscriptionPage = () => {
       const parsedUserInfo = JSON.parse(userInfoStr);
       setUserInfo(parsedUserInfo);
       const res = await API.getSubscriptionStatus(parsedUserInfo._id);
-
       if (res.success) {
         setSubscription(res.data);
       }
@@ -73,28 +72,28 @@ const SubscriptionPage = () => {
       ...plan,
       icon: isPro ? Crown : Rocket,
       tone: isPro ? 'primary' : 'secondary',
-      eyebrow: isPro ? 'Most popular' : 'Great for beginners',
+      eyebrow: isPro ? 'Most popular' : 'Start practicing',
       features: isPro
         ? [
-          "Use all levels (0 to 10)",
-          "Enter daily, weekly, and monthly prize draws",
-          "See full details of your quiz results",
-          "Get faster help from our team",
-          "Get special badges on your profile",
-          "No ads while you study",
+          "Access all free + pro practice tests",
+          "Unlimited mock tests for all exam boards",
+          "Detailed score analysis and reports",
+          "Section-wise performance tracking",
+          "Ad-free exam practice",
+          "Pro badge on your profile",
         ]
         : [
-          "Use levels 0 to 9",
-          "See basic quiz results",
-          "Study with other students",
-          "Get help from our team",
+          "Access free practice tests for all exams",
+          "View exam patterns and stages",
+          "Basic performance analytics",
+          "Community support",
         ],
     };
   });
 
   if (loading) {
     return (
-      <div className="space-y-12 py-10 px-4 mx-auto mt-16">
+      <div className="space-y-8 mx-auto">
         <Skeleton height="200px" borderRadius="2.5rem" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Skeleton height="500px" borderRadius="2rem" />
@@ -110,9 +109,9 @@ const SubscriptionPage = () => {
         <title>Subscription | AajExam</title>
       </Head>
 
-      <div className="space-y-8 lg:space-y-16 animate-fade-in px-2 lg:px-10 mx-auto">
+      <div className="space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-4">
         {subscription && (
-          <Card variant="dark" depth={false} className={`p-5 lg:p-8 border-none overflow-hidden relative rounded-[2rem] lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-slate-950 shadow-2xl'}`}>
+          <Card variant="dark" depth={false} className={`p-4 border-none overflow-hidden relative rounded-[2rem] lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-slate-950 shadow-2xl'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
               <div className="flex items-start gap-6">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
@@ -120,28 +119,27 @@ const SubscriptionPage = () => {
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm font-semibold opacity-80">Your current plan</p>
-                  <h1 className="text-xl lg:text-3xl font-black font-outfit leading-tight">
-                    {subscription.status === 'active' ? `${subscription.planName} plan is active` : 'You do not have an active plan'}
+                  <h1 className="text-xl lg:text-3xl font-black font-outfit leading-tight capitalize">
+                    {subscription.planName} plan is active
                   </h1>
                   <p className="text-base font-medium opacity-90">
                     {subscription.expiryDate
                       ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
-                      : 'Pick a plan below to unlock more quizzes and prizes.'}
+                      : subscription.planName?.toLowerCase() === 'free'
+                        ? 'Upgrade to Pro to unlock all practice tests and detailed analytics.'
+                        : 'Pick a plan below to unlock all exam practice tests.'}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                <Button variant="ghost" className="border-2 border-white/20 text-white rounded-2xl px-8 py-4" onClick={() => router.push('/levels')}>
-                  View levels
-                </Button>
-                {subscription.status !== 'active' && (
+                {subscription.planName?.toLowerCase() === 'free' && (
                   <Button
                     variant="secondary"
-                    className="bg-white text-slate-900 border-none rounded-2xl px-8 py-4"
+                    className="w-full lg:w-auto bg-white text-slate-900 border-none rounded-2xl px-8 py-4"
                     onClick={() => setSelectedPlan(plans.find((plan) => plan.key.toLowerCase() === 'pro')?.key || plans[0]?.key || null)}
                   >
-                    Choose a plan
+                    Upgrade to Pro
                   </Button>
                 )}
               </div>
@@ -152,9 +150,9 @@ const SubscriptionPage = () => {
 
         <section className="space-y-10">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
-            <h2 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Pick a plan that works for you</h2>
+            <h2 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
             <p className="text-base lg:text-lg font-medium text-content-secondary">
-              Upgrade to unlock more levels, see detailed results, and join the monthly prize pool. You can use the free plan anytime.
+              Practice free tests on the Free plan, or upgrade to Pro for full access to all practice tests, mock exams, and detailed performance reports.
             </p>
           </div>
 

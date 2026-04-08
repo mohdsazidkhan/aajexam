@@ -113,7 +113,7 @@ const SearchPage = () => {
    const results = getFilteredResults();
 
    return (
-      <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
          <Head>
             <title>Search | AajExam</title>
          </Head>

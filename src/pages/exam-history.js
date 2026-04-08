@@ -95,10 +95,10 @@ const ExamHistoryPage = () => {
                </div>
 
                {history.length === 0 ? (
-                  <div className="py-32 text-center space-y-6">
+                  <div className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50"><History className="w-10 h-10 text-gray-400" /></div>
                      <h3 className="text-xl lg:text-2xl font-black font-outfit">No exams yet</h3>
-                     <Button variant="primary" onClick={() => router.push('/govt-exams')}>Try Your First Exam</Button>
+                     <Button variant="primary" className='mx-auto' onClick={() => router.push('/govt-exams')}>Try Your First Exam</Button>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">

@@ -164,7 +164,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
 
       {/* --- Section 3: Sticky Filters & Exam Categories --- */}
       <section className="space-y-8">
-        <div className="sticky top-16 lg:top-20 z-20 bg-background-page/80 backdrop-blur-xl py-6 -mx-4 px-4 border-b border-border-primary/50">
+        <div className="sticky top-16 lg:top-20 z-20 /80 backdrop-blur-xl py-6 -mx-4 px-4 border-b border-border-primary/50">
           <div className="flex gap-3 overflow-x-auto no-scrollbar">
             {filters.map((f) => (
               <button
@@ -174,7 +174,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
                   flex items-center gap-2 px-6 py-3 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all shadow-duo border-b-4 active:translate-y-1 active:border-b-0
                   ${activeFilter === f.id
                     ? 'bg-primary-500 text-white border-primary-600 border-b-4'
-                    : 'bg-background-surface text-content-secondary border-border-primary hover:bg-background-page'}
+                    : 'bg-background-surface text-content-secondary border-border-primary hover:'}
                 `}
               >
                 <f.icon className="w-4 h-4" />
@@ -192,7 +192,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
               onClick={() => router.push(`/govt-exams/category/${cat._id}`)}
               className="group p-5 lg:p-8 flex flex-col md:flex-row items-start gap-4 lg:gap-6 border-border-primary hover:border-primary-500 transition-all rounded-[2rem] lg:rounded-[2.5rem] bg-background-surface shadow-xl"
             >
-              <div className="mb-2 w-20 h-20 bg-background-page rounded-[1.5rem] flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform shadow-duo border-2 border-border-primary/50">
+              <div className="mb-2 w-20 h-20  rounded-[1.5rem] flex items-center justify-center text-primary-500 group-hover:scale-110 transition-transform shadow-duo border-2 border-border-primary/50">
                 {cat.type === 'central' ? <Building className="w-10 h-10" /> : <MapPin className="w-10 h-10" />}
               </div>
               <div className="flex-1 space-y-3">

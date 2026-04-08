@@ -143,13 +143,13 @@ const HomePage = () => {
                      </div>
 
                      <div className="flex flex-wrap justify-center lg:justify-start gap-2 lg:gap-4 pt-0 lg:pt-4">
-                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em]  px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
                            <BookOpen className="w-3 h-3 lg:w-4 lg:h-4 text-primary-600" /> Tests Attempted: <span className="text-content-primary">{mockTestsAttempted}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em]  px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
                            <Target className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-500" /> Readiness: <span className="text-content-primary">{overallReadiness}%</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em]  px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
                            <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" /> Avg Score: <span className="text-content-primary">{averageMockScore}%</span>
                         </div>
                      </div>
@@ -189,7 +189,7 @@ const HomePage = () => {
                                     <span className="text-[10px] font-black text-content-muted uppercase tracking-widest">Confidence Index</span>
                                     <span className="text-xl lg:text-2xl font-black text-primary-600 font-outfit">{overallReadiness}%</span>
                                  </div>
-                                 <div className="h-4 lg:h-6 bg-background-page rounded-full p-1 border-2 border-border-primary shadow-inner">
+                                 <div className="h-4 lg:h-6  rounded-full p-1 border-2 border-border-primary shadow-inner">
                                     <motion.div
                                        initial={{ width: 0 }}
                                        animate={{ width: `${overallReadiness}%` }}
@@ -200,12 +200,12 @@ const HomePage = () => {
                            </div>
 
                            <div className="grid grid-cols-2 gap-4">
-                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-emerald-500/20 transition-all">
+                              <div className="p-4 lg:p-8  rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-emerald-500/20 transition-all">
                                  <TrendingUp className="w-6 h-6 text-emerald-500 mb-2" />
                                  <p className="text-[9px] font-black text-content-muted uppercase mb-1">Mock Average</p>
                                  <h3 className="text-xl lg:text-3xl font-black text-content-primary font-outfit">{averageMockScore}</h3>
                               </div>
-                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-amber-500/20 transition-all">
+                              <div className="p-4 lg:p-8  rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary shadow-xl group-hover:border-amber-500/20 transition-all">
                                  <Flame className="w-6 h-6 text-orange-500 mb-2 fill-orange-500" />
                                  <p className="text-[9px] font-black text-content-muted uppercase mb-1">Streak</p>
                                  <h3 className="text-xl lg:text-3xl font-black text-content-primary font-outfit">{streakCount}D</h3>

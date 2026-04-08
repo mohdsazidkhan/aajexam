@@ -39,10 +39,10 @@ const config = {
       price: 0,
       duration: '1 month',
       features: [
-        'Unlimited Quiz Access (Levels 0-9)',
-        'Community Access',
-        'Basic Analytics',
-        'Email Support'
+        'Access free practice tests for all exams',
+        'View exam patterns and stages',
+        'Basic performance analytics',
+        'Community support'
       ]
     },
     PRO: {
@@ -50,15 +50,14 @@ const config = {
       price: parseInt(process.env.NEXT_PUBLIC_PLAN_PRICE_PRO) || 99,
       duration: '1 month',
       features: [
-        'Unlock Reward Withdrawals (Earn Free, Withdraw with PRO)',
-        'Unlimited Quiz Access (All Levels 0-10)',
-        'Community Access',
-        'Advanced Analytics',
-        'Priority Support',
-        'Exclusive Badges',
-        'Advanced Reports',
-        'Data Export',
-        'All PRO Features'
+        'Access all free + pro practice tests',
+        'Unlimited mock tests for all exam boards',
+        'Detailed score analysis and reports',
+        'Section-wise performance tracking',
+        'Priority support',
+        'Ad-free exam practice',
+        'Pro badge on your profile',
+        'Export your results and progress'
       ]
     }
   },

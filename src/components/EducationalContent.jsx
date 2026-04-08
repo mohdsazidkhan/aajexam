@@ -69,7 +69,7 @@ const EducationalContent = ({ content }) => {
     };
 
     return (
-        <section className="font-outfit overflow-hidden py-24 px-4 bg-background-page dark:bg-background-page">
+        <section className="font-outfit overflow-hidden py-24 px-4  dark:">
             <div className="mx-auto space-y-24">
 
                 {/* Header Section */}

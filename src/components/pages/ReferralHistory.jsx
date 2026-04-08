@@ -87,9 +87,9 @@ export default function ReferralHistory() {
    };
 
    return (
-      <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
 
-         <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-6 lg:space-y-12">
+         <div className="container mx-auto mt-0 space-y-4 lg:space-y-8">
 
             {/* --- Header Section --- */}
             <section className="relative py-4 lg:py-6 text-center space-y-4 lg:space-y-8">
@@ -104,13 +104,13 @@ export default function ReferralHistory() {
                {/* Referral Link Card */}
                {user && (
                   <Card className="max-w-xl mx-auto p-2 bg-background-surface/80 backdrop-blur-xl border-none shadow-2xl rounded-[2.5rem] mt-12">
-                     <div className="flex items-center gap-2 p-1 pl-6">
+                     <div className="flex items-center gap-2 p-2">
                         <div className="flex-1 text-left min-w-0">
                            <p className="text-[8px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Your Invite Code</p>
                            <p className="text-sm font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
                         </div>
                         <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-duo-primary" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
-                           <Copy className="w-4 h-4 mr-2" /> COPY LINK
+                           <Copy className="w-4 h-4 mx-auto" /> COPY LINK
                         </Button>
                      </div>
                   </Card>
@@ -193,13 +193,13 @@ export default function ReferralHistory() {
                      {loading ? (
                         <div className="py-24 flex justify-center"><Loading size="lg" /></div>
                      ) : transactions.length === 0 ? (
-                        <Card className="py-32 text-center space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[4rem]">
+                        <Card className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[4rem]">
                            <Users className="w-16 h-16 text-slate-200 mx-auto" />
                            <div className="space-y-2">
                               <h3 className="text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
                               <p className="text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
                            </div>
-                           <Button variant="primary" className="rounded-full px-8 py-3 text-[10px] font-black uppercase tracking-widest" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                           <Button variant="primary" className="rounded-full mx-auto px-8 py-3 text-[10px] font-black uppercase tracking-widest" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                               COPY LINK
                            </Button>
                         </Card>
@@ -208,7 +208,7 @@ export default function ReferralHistory() {
                            <Card className="overflow-hidden border-none shadow-xl bg-white dark:bg-slate-800/80 rounded-[3rem]">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
-                                    <thead className="bg-background-page/50">
+                                    <thead className="/50">
                                        <tr>
                                           <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Student</th>
                                           <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Reward Type</th>

@@ -109,7 +109,7 @@ const NotificationsPage = () => {
         <Card className="p-2 lg:p-4 overflow-hidden">
           <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-32 text-center space-y-6">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
                 <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                   <Inbox className="w-10 h-10 text-gray-400" />
                 </div>
