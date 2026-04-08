@@ -156,7 +156,7 @@ const AdminExpenses = () => {
 
     return (
         <AdminMobileAppWrapper title="Expense Management">
-            <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
+            <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
                 {userInfo?.role === 'admin' && <Sidebar />}
 
                 <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
@@ -387,22 +387,22 @@ const AdminExpenses = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative bg-white dark:bg-slate-900 w-full max-w-xl rounded-xl lg:rounded-[3rem] shadow-2xl overflow-hidden border-4 border-slate-100 dark:border-white/10"
+                            className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-xl lg:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col border-4 border-slate-100 dark:border-white/10"
                         >
                             <div className="bg-slate-900 p-4 lg:p-10 text-white relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">
                                     <Receipt className="w-24 h-24 rotate-12" />
                                 </div>
                                 <div className="relative z-10">
-                                    <h2 className="text-3xl font-black uppercase tracking-tighter italic mb-1 font-outfit leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
+                                    <h2 className="text-xl lg:text-2xl font-black uppercase tracking-tighter italic mb-1 font-outfit leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
                                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Enter the expense details below</p>
                                 </div>
-                                <button onClick={() => setShowModal(false)} className="absolute top-8 right-8 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                                <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
                                     <X className="w-5 h-5" />
                                 </button>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8">
+                            <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8 overflow-y-auto">
                                 <div className="space-y-4">
                                     <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                     <div className="relative group/field">

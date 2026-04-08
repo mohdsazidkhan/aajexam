@@ -391,7 +391,7 @@ const StudentsPage = () => {
 
   return (
      <AdminMobileAppWrapper title="User Directory">
-       <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-sans text-slate-900 dark:text-white pb-20">
+       <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
          <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-16'} p-4 lg:p-10`}>
@@ -739,7 +739,7 @@ const StudentsPage = () => {
                  initial={{ opacity: 0, scale: 0.95, y: 40 }}
                  animate={{ opacity: 1, scale: 1, y: 0 }}
                  exit={{ opacity: 0, scale: 0.95, y: 40 }}
-                 className="relative w-full max-w-2xl bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
+                 className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
                >
                  <div className="p-4 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                    <div className="flex items-center gap-3 lg:gap-6">
@@ -750,7 +750,7 @@ const StudentsPage = () => {
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Subscription</span>
                         </div>
-                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
+                         <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
                            CREATE <span className="text-indigo-600">SUBSCRIPTION</span>
                          </h2>
                       </div>
@@ -765,7 +765,7 @@ const StudentsPage = () => {
                   </motion.button>
                 </div>
 
-                <div className="p-4 lg:p-10">
+                <div className="p-4 lg:p-10 overflow-y-auto">
                   <form onSubmit={handleCreateSubscription} className="space-y-4 lg:space-y-8">
                      <div className="space-y-4">
                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Student Email</label>

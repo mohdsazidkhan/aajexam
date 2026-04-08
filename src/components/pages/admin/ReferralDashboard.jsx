@@ -98,7 +98,7 @@ export default function ReferralDashboard() {
   if (loading && referrals.length === 0) {
     return (
       <AdminMobileAppWrapper title="Referral Dashboard">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
+        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -115,7 +115,7 @@ export default function ReferralDashboard() {
 
   return (
     <AdminMobileAppWrapper title="Referral Dashboard">
-      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
+      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === "admin" && isAdminRoute && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
           

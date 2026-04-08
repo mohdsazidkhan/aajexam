@@ -29,7 +29,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto transition-all duration-500 transform border-2 border-b-8 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-b-8 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
         <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-duo-primary border-b-4 border-white/20">
@@ -39,7 +39,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 <FaGraduationCap className="text-3xl text-primary-700 dark:text-primary-500" />
               </div>
               <div>
-                <h2 className="text-2xl lg:text-3xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
+                <h2 className="text-xl lg:text-2xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
                 <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">Dedicated Exam Preparation Platform</p>
               </div>
             </div>

@@ -414,13 +414,13 @@ const AdminGovtExamTests = () => {
             {showModal && (
                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
-                  <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[95vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
+                  <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[75vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
 
                      <div className="p-3 lg:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                         <div className="flex items-center gap-4">
                            <div className="p-3 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-600/20"><Settings className="w-6 h-6" /></div>
                            <div>
-                              <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{editingTest ? 'Edit' : 'Add'} <span className="text-indigo-600">Test</span></h2>
+                              <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-indigo-600">Test</span></h2>
                               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
                            </div>
                         </div>

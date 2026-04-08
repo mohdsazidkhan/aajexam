@@ -457,7 +457,7 @@ const TestStart = () => {
         {showPalette && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[3rem] p-8 z-50 max-h-[80vh] overflow-y-auto">
+            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[3rem] p-8 z-50 max-h-[75vh] overflow-y-auto">
               <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-8" />
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase mb-6">Question Map</h3>
               <div className="grid grid-cols-5 gap-3">
@@ -481,11 +481,11 @@ const TestStart = () => {
         {showSubmitModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full shadow-2xl border-2 border-primary-500/20">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full max-h-[75vh] overflow-y-auto shadow-2xl border-2 border-primary-500/20">
               <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CircleAlert className="w-10 h-10" />
               </div>
-              <h2 className="text-xl lg:text-3xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
+              <h2 className="text-xl lg:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
               <p className="text-center text-slate-500 mb-8 font-bold leading-relaxed px-4">
                 You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>

@@ -127,7 +127,7 @@ const Modal = ({
                     </div>
                   )}
                   <div className="space-y-1 text-left">
-                    {title && <h2 className={`text-xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
+                    {title && <h2 className={`text-xl lg:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
                     {subtitle && <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-400">{subtitle}</p>}
                   </div>
                 </div>
@@ -145,7 +145,7 @@ const Modal = ({
             )}
 
             {/* Modal Content */}
-            <div className={`p-10 lg:p-14 pt-8 lg:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[70vh]'}`}>
+            <div className={`p-10 lg:p-14 pt-8 lg:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[75vh]'}`}>
               {children}
             </div>
 

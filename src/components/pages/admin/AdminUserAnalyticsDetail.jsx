@@ -97,7 +97,7 @@ const AdminUserAnalyticsDetail = () => {
 
     return (
         <AdminMobileAppWrapper title="User Analytics">
-            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
+            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}  text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
                 {user?.role === 'admin' && isAdminRoute && <Sidebar />}
 
                 <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">

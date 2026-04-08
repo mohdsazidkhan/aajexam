@@ -154,7 +154,7 @@ const AdminGovtExamCategories = () => {
 
   return (
     <AdminMobileAppWrapper title="Exam Categories">
-      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
+      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
 
@@ -370,14 +370,14 @@ const AdminGovtExamCategories = () => {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full overflow-hidden shadow-2xl"
+              className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full max-h-[75vh] overflow-hidden flex flex-col shadow-2xl"
             >
                <div className="p-4 lg:p-10 border-b-4 border-slate-50 dark:border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                      <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                         <Settings className="w-6 h-6" />
                      </div>
-                     <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
+                     <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
                        {editingCategory ? "UPDATE CATEGORY" : "NEW CATEGORY"}
                      </h2>
                   </div>
@@ -386,7 +386,7 @@ const AdminGovtExamCategories = () => {
                   </button>
                </div>
 
-               <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8">
+               <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8 overflow-y-auto">
                   <div className="space-y-3">
                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                      <input

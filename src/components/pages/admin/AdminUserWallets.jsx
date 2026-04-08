@@ -100,7 +100,7 @@ const AdminUserWallets = () => {
   };
 
   const content = (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
       <div className="max-w-[1600px] mx-auto p-4 lg:p-12">
         {/* Header */}
         <motion.div

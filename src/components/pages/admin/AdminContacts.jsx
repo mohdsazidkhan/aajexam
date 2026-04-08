@@ -118,7 +118,7 @@ export default function AdminContacts() {
   if (loading && contacts.length === 0) {
     return (
       <AdminMobileAppWrapper title="Contact Messages">
-        <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] flex flex-col items-center justify-center p-3 lg:p-8">
+        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -135,7 +135,7 @@ export default function AdminContacts() {
 
   return (
     <AdminMobileAppWrapper title="Contact Messages">
-      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060813] font-outfit text-slate-900 dark:text-white pb-20">
+      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
         <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
 

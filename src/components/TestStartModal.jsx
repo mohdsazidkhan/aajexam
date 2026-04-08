@@ -42,14 +42,14 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-center justify-center z-[9999] p-4 font-outfit">
-      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-b-8 border-border-primary max-h-[90vh] overflow-y-auto scrollbar-none animate-bounce-in">
+      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-b-8 border-border-primary max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
           <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-duo-secondary border-4 border-white dark:border-slate-700">
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
-          <h2 className="text-md md:text-xl lg:text-3xl font-black text-content-primary mb-3 lg:mb-6 uppercase tracking-tighter">
+          <h2 className="text-md md:text-xl lg:text-2xl font-black text-content-primary mb-3 lg:mb-6 uppercase tracking-tighter">
             Exam <span className="text-primary-600">Practice</span>
           </h2>
 

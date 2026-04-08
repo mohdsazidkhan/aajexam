@@ -407,7 +407,7 @@ const AdminSubscriptions = () => {
 
   return (
     <AdminMobileAppWrapper title="Subscriptions">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'} bg-[#fafafa] dark:bg-[#050505] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
+      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}  text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
         <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {/* Header */}
@@ -901,7 +901,7 @@ const AdminSubscriptions = () => {
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
+                  className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
                 >
                   <div className="absolute top-0 right-0 p-3 lg:p-8">
                     <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
@@ -909,13 +909,13 @@ const AdminSubscriptions = () => {
                     </motion.button>
                   </div>
 
-                  <div className="p-4 lg:p-12">
+                  <div className="p-4 lg:p-12 overflow-y-auto">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
                         <Layers className="w-8 h-8" />
                       </div>
                       <div className="flex flex-col">
-                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
+                        <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} &mdash; {selectedSubscription?.user?.email || 'N/A'}</span>
                       </div>
                     </div>
