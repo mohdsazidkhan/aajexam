@@ -125,7 +125,7 @@ const LoginPage = () => {
           <Rocket className="absolute -bottom-10 -right-10 w-96 h-96 opacity-5 rotate-45" />
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-3 lg:p-6 bg-white dark:bg-slate-900">
+        <div className="flex-1 flex items-center justify-center">
           <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl space-y-8 rounded-[3rem]">
             <div className="text-center space-y-3">
               <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Welcome back</h2>

@@ -395,7 +395,7 @@ const AdminSubscriptions = () => {
       <AdminMobileAppWrapper title="Subscriptions">
         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
           {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit ">
+          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading subscriptions..." />
             </div>
