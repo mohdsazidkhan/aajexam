@@ -108,8 +108,8 @@ const StudentSidebar = () => {
             {initials}
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-bold text-content-primary truncate">{user.name || user.username}</p>
-            <p className="text-[10px] font-semibold text-content-muted truncate">
+            <p className="text-sm font-bold text-content-primary truncate uppercase">{user.name || user.username}</p>
+            <p className="text-[10px] font-semibold text-content-muted truncate uppercase">
               {user.subscriptionStatus === 'pro' ? 'Pro Member' : 'Free Plan'}
             </p>
           </div>
@@ -137,7 +137,7 @@ const StudentSidebar = () => {
                       )}
                       <div className="flex items-center gap-3 relative z-10">
                         <item.icon className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                        <span className="text-[11px] font-bold tracking-wide">{item.label}</span>
+                        <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
                       {item.badge && (
                         <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold relative z-10 ${active ? 'bg-white/20 text-white' : 'bg-emerald-500 text-white'
@@ -160,7 +160,7 @@ const StudentSidebar = () => {
           onClick={() => secureLogout(router)}
           className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
         >
-          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> Log out
+          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>
       </div>
     </motion.div>

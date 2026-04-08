@@ -110,8 +110,8 @@ const Sidebar = () => {
             A
           </div>
           <div>
-            <p className="text-xs font-bold text-content-primary">Admin Panel</p>
-            <p className="text-[10px] font-semibold text-content-muted">Manage platform</p>
+            <p className="text-xs font-bold text-content-primary uppercase">Admin Panel</p>
+            <p className="text-[10px] font-semibold text-content-muted uppercase">Manage platform</p>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ const Sidebar = () => {
                         <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl" />
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                      <span className="text-[11px] font-bold tracking-wide relative z-10">{item.label}</span>
+                      <span className="text-[11px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
                     </button>
                   </Link>
                 );
@@ -152,7 +152,7 @@ const Sidebar = () => {
           onClick={() => secureLogout(router)}
           className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
         >
-          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> Log out
+          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>
       </div>
     </div>
