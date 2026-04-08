@@ -109,7 +109,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         <title>{seo?.title || 'Practice Quests'}</title>
       </Head>
 
-      <section className="flex items-center justify-between">
+      <section className="flex items-center justify-end">
         <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           GO BACK

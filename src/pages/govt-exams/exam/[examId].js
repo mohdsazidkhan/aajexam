@@ -78,7 +78,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
       </Head>
 
       {/* --- Breadcrumbs & Back --- */}
-      <section className="flex items-center justify-between">
+      <section className="flex items-center justify-end">
         <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           GO BACK
@@ -126,7 +126,7 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
                   </div>
 
                   {/* Right: Content */}
-                  <div className="flex-1 p-3 lg:p-6 space-y-4">
+                  <div className="flex-1 p-5 lg:p-6 space-y-4">
                     <div className="flex justify-between items-start">
                       <div>
                         <h3 className="text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase">{pattern.title}</h3>

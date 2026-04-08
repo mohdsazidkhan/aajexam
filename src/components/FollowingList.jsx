@@ -85,7 +85,7 @@ const FollowingList = ({ username: usernameProp }) => {
     <>
       <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-white dark:bg-slate-900 min-h-screen font-outfit">
         {/* Content */}
-        <div className="p-2">
+        <div >
           {loading ? (
             <div className="flex flex-col items-center justify-center py-24">
               <div className="w-16 h-16 border-4 border-slate-100 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin mb-6"></div>

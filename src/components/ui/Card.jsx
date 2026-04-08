@@ -34,11 +34,11 @@ const Card = ({
   };
 
   const radii = {
-    xl: 'rounded-[1.5rem]',
-    '2xl': 'rounded-[2rem]',
-    '3xl': 'rounded-[2.5rem]',
-    '4xl': 'rounded-[3.5rem]',
-    '5xl': 'rounded-[4.5rem]',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    '4xl': 'rounded-[2.5rem]',
+    '5xl': 'rounded-[3.5rem]',
   };
 
   const Container = hoverable ? motion.div : 'div';
@@ -55,7 +55,7 @@ const Card = ({
         ${radii[radius]}
         ${noBorder ? 'border-none' : 'border-2'} 
         ${depth && !noBorder && variant !== 'glass' && !variant.includes('glass-') ? 'border-b-8' : ''}
-        ${padded ? 'p-2 lg:p-4' : ''} 
+        ${padded ? 'p-4 lg:p-6' : ''}
         ${hoverable ? 'cursor-pointer group' : ''} 
         ${glow ? 'glow-border' : ''}
         transition-all duration-300 font-outfit relative overflow-hidden

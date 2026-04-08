@@ -97,7 +97,7 @@ function AppContent({ Component, pageProps }) {
         <ClientOnly>
            <PublicNavbar />
         </ClientOnly>
-        <div className="appContainer px-4">
+        <div className="appContainer p-4">
           <PageWrapper route={router.asPath}>
             {Component && <Component {...pageProps} />}
           </PageWrapper>

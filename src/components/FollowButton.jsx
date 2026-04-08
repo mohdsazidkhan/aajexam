@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
@@ -22,7 +22,6 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
       };
 
       if (isFollowing) {
-        // Unfollow
         await axios.delete(
           `${process.env.NEXT_PUBLIC_API_URL}/api/users/unfollow/${userId}`,
           config
@@ -30,7 +29,6 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
         setIsFollowing(false);
         onFollowChange && onFollowChange(false);
       } else {
-        // Follow
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/users/follow/${userId}`,
           {},
@@ -50,10 +48,10 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
   return (
     <button
       className={`
-        px-10 py-5 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 min-w-[180px] inline-flex items-center justify-center border-4
+        px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all duration-200 inline-flex items-center justify-center gap-1.5
         ${isFollowing
-          ? 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 shadow-duo border-b-4 translate-y-1 active:translate-y-2 active:border-b-0 opacity-80'
-          : 'bg-primary-500 hover:bg-primary-600 text-white border-white/20 shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 hover:-translate-y-1'
+          ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/30'
+          : 'bg-primary-500 hover:bg-primary-600 text-white border-2 border-b-4 border-primary-700 active:translate-y-0.5 active:border-b-2'
         }
         disabled:opacity-60 disabled:cursor-not-allowed
       `}
@@ -61,14 +59,14 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
       disabled={loading}
     >
       {loading ? (
-        <div className="w-5 h-5 border-4 border-current border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+      ) : isFollowing ? (
+        'Following'
       ) : (
-        isFollowing ? 'âœ“ Active Rival' : 'Add Rival'
+        'Follow'
       )}
     </button>
   );
 };
 
 export default FollowButton;
-
-

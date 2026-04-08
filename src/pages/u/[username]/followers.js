@@ -29,7 +29,7 @@ export default function FollowersListPage() {
 
       // First get user ID from username
       const profileRes = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}//users/profile/${username}`,
+        `/api/users/profile/${username}`,
         config
       );
 
@@ -38,7 +38,7 @@ export default function FollowersListPage() {
 
         // Then fetch followers
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/users/${userId}/followers?page=${page}&limit=20`,
+          `/api/users/followers/${userId}?page=${page}&limit=20`,
           config
         );
 
@@ -62,7 +62,7 @@ export default function FollowersListPage() {
 
   return (
     <MobileAppWrapper title={`Followers - @${username}`}>
-      <div className="container mx-auto py-0 lg:py-6 px-4 lg:px-10 bg-white dark:bg-slate-950 min-h-screen font-outfit">
+      <div className="container mx-auto bg-white dark:bg-slate-950 min-h-screen font-outfit">
         <Head>
           <title>Followers - @{username} - AajExam Platform</title>
           <meta name="description" content={`View @${username}'s followers on AajExam. See who follows this user and explore their profiles.`} />
@@ -76,7 +76,7 @@ export default function FollowersListPage() {
         </Head>
 
         {/* Content */}
-        <div className="p-2">
+        <div >
           {loading ? (
             <div className="flex items-center justify-center py-20">
               <Loading size="md" color="gray" message="Finding users..." />
@@ -84,7 +84,7 @@ export default function FollowersListPage() {
           ) : followers.length === 0 ? (
             <div className="text-center py-20 bg-slate-50 dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
               <div className="text-4xl mb-4">👥</div>
-              <p className="text-lg font-black text-slate-400 uppercase tracking-tight">No followers yet</p>
+              <p className="text-sm lg:text-lg font-black text-slate-400 uppercase tracking-tight">No followers yet</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -92,7 +92,7 @@ export default function FollowersListPage() {
                 <div
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center gap-6 p-6 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-b-8 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
+                  className="flex items-center gap-3 lg:gap-6 p-3 lg:p-6 bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem]  border-2 border-b-8 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
                 >
                   {user.profilePicture ? (
                     <img
@@ -101,15 +101,15 @@ export default function FollowersListPage() {
                       className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 dark:border-slate-800"
                     />
                   ) : (
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white text-xl lg:text-2xl font-black shadow-lg">
+                    <div className="w-12 lg:w-16 h-12 lg:h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white text-md lg:text-xl font-black shadow-lg">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
 
                   <div className="flex-1">
-                    <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
+                    <h3 className="text-md lg:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
                     {user.username && (
-                      <p className="text-xs font-black uppercase tracking-widest text-primary-500 mt-1">@{user.username}</p>
+                      <p className="text-xs font-black tracking-widest text-primary-500 mt-1">@{user.username}</p>
                     )}
                   </div>
 
