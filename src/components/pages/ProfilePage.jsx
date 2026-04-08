@@ -156,13 +156,6 @@ const ProfilePage = () => {
 
           <Card className="lg:col-span-4 bg-slate-900 border-none shadow-2xl px-0 text-white rounded-[2rem] lg:rounded-[4rem] overflow-hidden relative">
             <div className="relative z-10 space-y-6">
-              <div className="space-y-2">
-                <p className="text-sm font-semibold text-primary-300">Current level</p>
-                <h2 className="text-4xl font-black font-outfit tracking-tight">
-                  {levelInfo.name} <span className="text-primary-400">Lv. {levelInfo.number}</span>
-                </h2>
-              </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                 {performanceStats.map((item) => (
                   <div key={item.label} className="rounded-[2rem] bg-white/5 border border-white/10 p-5">

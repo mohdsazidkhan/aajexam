@@ -83,7 +83,7 @@ const HowItWorks = () => {
    ];
 
    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-fade-in selection:bg-primary-500 selection:text-white">
 
          <div className="container mx-auto px-6 py-4 lg:py-12 max-w-5xl space-y-20 mt-0">
 

@@ -55,7 +55,7 @@ const AboutUs = () => {
    ];
 
    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-fade-in selection:bg-primary-500 selection:text-white">
          <Head>
             <title>About Us - Our Mission | AajExam</title>
             <link rel="canonical" href={canonicalUrl} />

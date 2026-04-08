@@ -60,7 +60,7 @@ const TermsAndConditions = () => {
             />
          </Head>
 
-         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
             <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/20">

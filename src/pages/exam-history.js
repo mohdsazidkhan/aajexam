@@ -59,11 +59,11 @@ const ExamHistoryPage = () => {
       return { label: 'C', color: 'slate' };
    };
 
-   if (loading && history.length === 0) return <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center"><Loading size="md" /></div>;
+   if (loading && history.length === 0) return <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><Loading size="md" /></div>;
 
    return (
       <MobileAppWrapper title="Exam History">
-         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
             <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-6 lg:space-y-12 mt-0">
