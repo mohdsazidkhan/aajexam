@@ -11,10 +11,8 @@ import {
   Layers,
   ShieldCheck,
   Zap,
-  Menu,
-  X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { useClientSide } from '../../hooks/useClientSide';
 import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
@@ -25,7 +23,6 @@ const PublicNavbar = () => {
   const dispatch = useDispatch();
   const isClient = useClientSide();
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -49,7 +46,7 @@ const PublicNavbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
           ? 'py-2.5 bg-white/95 dark:bg-slate-950/95 backdrop-blur-2xl border-b border-slate-200 dark:border-slate-800 shadow-xl'
-          : 'py-4 bg-transparent border-b border-white/5'
+          : 'py-2 lg:py-4 bg-transparent border-b border-white/5 shadow-sm'
           }`}
       >
         <div className="container mx-auto px-3 lg:px-6 pointer-events-auto">
@@ -93,55 +90,14 @@ const PublicNavbar = () => {
                 {darkMode ? <Sun className="w-5" /> : <Moon className="w-5" />}
               </button>
 
-              <Link href="/login" className="hidden sm:block">
-                <Button variant="primary" size="sm" className="px-6 py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs">Get Started</Button>
+              <Link href="/login">
+                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs">Join</Button>
               </Link>
-
-              {/* Mobile Toggle */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800/50"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="lg:hidden absolute top-full left-0 right-0 p-4 pt-2 pointer-events-auto"
-            >
-              <div className="bg-white/95 dark:bg-slate-950/95 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden p-3 pt-6">
-                <div className="grid grid-cols-2 gap-2">
-                  {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-                      <div className={`flex flex-col items-start gap-4 p-5 rounded-3xl font-black tracking-[0.08em] text-sm transition-all ${router.pathname === link.href ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-700/50'}`}>
-                        <link.icon className="w-5 h-5 mb-1" />
-                        {link.label}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div className="mt-4 p-4">
-                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="primary" fullWidth className="py-5 rounded-3xl font-black uppercase tracking-widest text-sm">Join AajExam</Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
-
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[80] bg-slate-900/10 dark:bg-black/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-      )}
     </>
   );
 };

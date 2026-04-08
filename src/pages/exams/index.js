@@ -41,7 +41,7 @@ export default function ExamsPage({ exams, pagination }) {
                                 <FaGraduationCap className="text-3xl text-primary-600 dark:text-primary-400" />
                             </div>
                         </div>
-                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
+                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
                             Government Exams
                         </h1>
                         <p className="text-lg lg:text-xl lg:text-3xl font-black text-slate-600 dark:text-slate-400 max-w-3xl mx-auto uppercase tracking-widest text-xs">

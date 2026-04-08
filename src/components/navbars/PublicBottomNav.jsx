@@ -23,7 +23,7 @@ const PublicBottomNav = () => {
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-18 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border-t border-slate-200/50 dark:border-slate-800/50 flex items-center justify-around px-4 z-50 shadow-2xl">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border-t border-slate-200/50 dark:border-slate-800/50 flex items-center justify-around px-4 z-50 shadow-2xl">
       {navItems.map((item) => {
         const isActive = currentPath === item.path;
         return (

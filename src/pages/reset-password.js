@@ -56,8 +56,8 @@ const ResetPasswordPage = () => {
 
   return (
     <MobileAppWrapper showHeader={true} title="Reset Password">
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
-        <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden py-32">
+      <div className="h-auto lg:min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
+        <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 right-20 opacity-5 rotate-12 hidden lg:block"><ShieldCheck className="w-64 h-64" /></div>
           <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden lg:block"><Rocket className="w-64 h-64 text-primary-500" /></div>

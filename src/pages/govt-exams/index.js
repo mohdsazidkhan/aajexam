@@ -111,7 +111,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
               <h1 className="text-2xl lg:text-6xl font-black font-outfit uppercase leading-tight text-white tracking-tighter drop-shadow-lg">
                 Exams Hub
               </h1>
-              <p className="text-lg lg:text-xl font-bold text-white/90 max-w-md leading-relaxed">
+              <p className="text-md lg:text-xl font-bold text-white/90 max-w-md leading-relaxed">
                 What would you like to master today?
               </p>
             </div>

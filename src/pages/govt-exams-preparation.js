@@ -27,21 +27,21 @@ export default function GovtExamsPreparation({ initialData }) {
                 <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
             </Head>
 
-            <div className="py-20 lg:py-24 min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
+            <div className="py-4 lg:py-8 h-auto lg:min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto px-4 lg:px-8 xl:px-8 relative z-10">
-                    <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-white dark:border-slate-800 mb-6">
+                <div className="container mx-auto relative z-10">
+                    <div className="text-center mb-4 lg:mb-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-white dark:border-slate-800 mb-3 lg:mb-6">
                             <FaQuestionCircle className="w-4 h-4" />
                             <span>{pagination.totalExams || 0} Exams Available</span>
                         </div>
-                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
+                        <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
                             Government Exams <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-600">Preparation</span>
                         </h1>
-                        <p className="text-lg lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                             Master your competitive exams with our structured quiz modules and real-time performance tracking.
                         </p>
                     </div>
@@ -55,7 +55,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-b-8 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem] p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-b-8 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
                                                 <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center mb-6 shadow-duo border-2 border-white dark:border-slate-800 overflow-hidden">
                                                     {exam.logo ? (
@@ -138,10 +138,10 @@ export default function GovtExamsPreparation({ initialData }) {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
-                        <h2 className="text-2xl lg:text-5xl font-black mb-6 uppercase tracking-tighter relative z-10">
+                        <h2 className="text-2xl lg:text-5xl font-black mb-3 lg:mb-6 uppercase tracking-tighter relative z-10">
                             Ready to <span className="text-primary-400">Ace</span> Your Exam?
                         </h2>
-                        <p className="text-lg lg:text-xl font-bold opacity-80 mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
+                        <p className="text-md lg:text-xl font-bold opacity-80 mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
                             Join thousands of students who are already using AajExam to improve their scores and time management.
                         </p>
                         <button

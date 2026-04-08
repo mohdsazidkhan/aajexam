@@ -12,7 +12,7 @@ const PracticeTestsEducational = ({ levels }) => {
                             <FaTrophy className="text-4xl text-white" />
                         </div>
                     </div>
-                    <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter">
+                    <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
                         Practice <span className="text-primary-700 dark:text-primary-500">Missions</span>
                     </h1>
                     <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed">
@@ -95,7 +95,7 @@ const PracticeTestsEducational = ({ levels }) => {
                 {/* Preparation Tips Section */}
                 <div className="bg-white dark:bg-slate-800 rounded-[3rem] p-4 md:p-8 lg:p-12 border-4 border-b-[16px] border-slate-100 dark:border-slate-700 shadow-2xl relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 2px, transparent 2px)', backgroundSize: '32px 32px' }}></div>
-                    <div className="text-center mb-16 relative z-10">
+                    <div className="text-center mb-4 lg:mb-8 relative z-10">
                         <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                             Student <span className="text-primary-700 dark:text-primary-500">Playbook</span>
                         </h2>

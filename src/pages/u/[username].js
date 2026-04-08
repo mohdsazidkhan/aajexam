@@ -305,7 +305,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* Categories */}
               {contributions.categories.total > 0 && (
                 <div className="mb-12">
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-widest flex items-center gap-2">
                     📚 Categories
                   </h3>
                   <div className="space-y-4">
@@ -327,7 +327,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* Subcategories */}
               {contributions.subcategories.total > 0 && (
                 <div className="mb-12">
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-widest flex items-center gap-2">
                     📑 Subcategories
                   </h3>
                   <div className="space-y-4">
@@ -354,7 +354,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* Quizzes */}
               {contributions.quizzes.total > 0 && (
                 <div className="mb-12">
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-widest flex items-center gap-2">
                     🎯 Quizzes
                   </h3>
                   <div className="space-y-4">
@@ -390,7 +390,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* User Questions */}
               {contributions.userQuestions?.items && contributions.userQuestions.items.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-widest flex items-center gap-2">
                     💭 Community Questions
                   </h3>
                   <div className="space-y-4">

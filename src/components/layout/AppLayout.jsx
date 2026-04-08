@@ -87,8 +87,8 @@ const AppLayout = ({ children }) => {
       {/* --- Main Content Area --- */}
       <main className={`transition-all duration-500 min-h-screen
         ${showAppNav ?
-          (isSidebarOpen ? 'lg:ml-80 pt-20 pb-20 lg:pb-12' : 'ml-0 pt-20 px-0 pb-20') :
-          (isQuestPage ? 'p-0 m-0 w-full overflow-hidden' : 'pt-20')
+          (isSidebarOpen ? 'lg:ml-80 pt-16 pb-16 lg:pb-12' : 'ml-0 pt-16 px-0 pb-16') :
+          (isQuestPage ? 'p-0 m-0 w-full overflow-hidden' : 'pt-16')
         }`}
       >
         <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'px-4' : (isQuestPage ? 'max-w-full px-0' : 'px-0 md:px-6')}`}>

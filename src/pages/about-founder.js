@@ -58,7 +58,7 @@ export default function AboutAuthor() {
                             <div className="w-2 h-10 bg-primary-500 rounded-full" />
                             About the Founder
                         </h2>
-                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md lg:text-xl font-bold leading-relaxed">
                             <p>
                                 Mohd Sazid Khan is the founder and driving force behind AajExam, India&apos;s innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.
                             </p>
@@ -160,7 +160,7 @@ export default function AboutAuthor() {
                     <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-b-[12px] border-slate-800 shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-8 uppercase tracking-tight relative z-10">Educational Philosophy</h2>
-                        <div className="space-y-6 text-slate-400 text-lg lg:text-xl font-bold leading-relaxed relative z-10">
+                        <div className="space-y-6 text-slate-400 text-md lg:text-xl font-bold leading-relaxed relative z-10">
                             <p>
                                 Sazid believes that effective exam preparation requires more than just access to questionsâ€”it requires a structured, progressive learning path that builds confidence and competence systematically.
                             </p>

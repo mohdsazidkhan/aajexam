@@ -58,7 +58,7 @@ export default function EditorialPolicy() {
                             <div className="w-2 h-10 bg-primary-500 rounded-full" />
                             Our Mission
                         </h2>
-                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg lg:text-xl font-bold leading-relaxed">
+                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md lg:text-xl font-bold leading-relaxed">
                             <p>
                                 AajExam is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
                             </p>

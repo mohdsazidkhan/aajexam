@@ -5,24 +5,20 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Head from "next/head";
 import {
    Search,
-   BookOpen,
-   Trophy,
    FileText,
-   User,
-   Layers,
    Compass,
    Sparkles,
    History,
    Zap,
    Clock,
-   Eye,
    ShieldCheck,
    ChevronLeft,
    ChevronRight,
-   Users
+   User,
+   Users,
+   Trophy,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from "next/image";
 
 import API from '../../lib/api';
 import TestStartModal from "../TestStartModal";
@@ -35,10 +31,6 @@ const SearchPage = () => {
    const router = useRouter();
    const searchParams = useSearchParams();
    const [query, setQuery] = useState("");
-   const [quizzes, setQuizzes] = useState([]);
-   const [categories, setCategories] = useState([]);
-   const [subcategories, setSubcategories] = useState([]);
-   const [blogs, setBlogs] = useState([]);
    const [users, setUsers] = useState([]);
    const [govtExamCategories, setGovtExamCategories] = useState([]);
    const [govtExams, setGovtExams] = useState([]);
@@ -57,7 +49,7 @@ const SearchPage = () => {
 
    const fetchData = useCallback(async (searchQuery, pageNum = currentPage) => {
       if (isSearchingRef.current) return;
-      const trimmedQuery = searchQuery?.trim();
+      const trimmedQuery = searchQuery?.trim()?.toLowerCase();
       if (!trimmedQuery) {
          clearResults();
          return;
@@ -67,10 +59,6 @@ const SearchPage = () => {
          setLoading(true);
          const res = await API.searchAll({ query: trimmedQuery, page: pageNum, limit });
          if (res.success) {
-            setQuizzes(res.quizzes || []);
-            setCategories(res.categories || []);
-            setSubcategories(res.subcategories || []);
-            setBlogs(res.blogs || []);
             setUsers(res.users || []);
             setGovtExamCategories(res.govtExamCategories || []);
             setGovtExams(res.govtExams || []);
@@ -83,7 +71,7 @@ const SearchPage = () => {
    }, [currentPage]);
 
    const clearResults = () => {
-      setQuizzes([]); setCategories([]); setSubcategories([]); setBlogs([]); setUsers([]);
+      setUsers([]);
       setGovtExamCategories([]); setGovtExams([]); setExamPatterns([]); setPracticeTests([]);
       setTotalPages(1);
    };
@@ -107,22 +95,16 @@ const SearchPage = () => {
 
    const tabs = [
       { key: 'all', label: 'All Results', icon: Compass },
-      { key: 'quiz', label: 'Quizzes', icon: Trophy },
       { key: 'exam', label: 'Govt Exams', icon: ShieldCheck },
       { key: 'test', label: 'Practice Tests', icon: FileText },
-      { key: 'category', label: 'Categories', icon: Layers },
-      { key: 'blog', label: 'Articles', icon: BookOpen },
-      { key: 'user', label: 'Students', icon: User }
+      { key: 'user', label: 'Students', icon: User },
    ];
 
    const getFilteredResults = () => {
       switch (activeTab) {
-         case 'all': return [...categories, ...subcategories, ...quizzes, ...blogs, ...users, ...govtExamCategories, ...govtExams, ...examPatterns, ...practiceTests];
-         case 'quiz': return quizzes;
-         case 'exam': return [...govtExams, ...govtExamCategories];
+         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...users];
+         case 'exam': return [...govtExams, ...govtExamCategories, ...examPatterns];
          case 'test': return practiceTests;
-         case 'category': return [...categories, ...subcategories];
-         case 'blog': return blogs;
          case 'user': return users;
          default: return [];
       }
@@ -136,23 +118,20 @@ const SearchPage = () => {
             <title>Search | AajExam</title>
          </Head>
 
-         <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-6 lg:space-y-12">
+         <div className="container mx-auto px-4 lg:px-8 py-4 lg:py-8 space-y-4 lg:space-y-8 mt-0">
 
             {/* --- Search Bar Section --- */}
             <section className="relative text-center space-y-6 lg:space-y-8">
-               <div className="space-y-4">
-                  <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight leading-none px-4">Search <span className="text-primary-600">anything</span></h1>
-                  <p className="text-sm lg:text-base font-semibold text-content-secondary max-w-2xl mx-auto px-6">Type to find quizzes, topics, exams, and articles.</p>
-               </div>
+               
 
-               <Card className="max-w-3xl mx-auto p-1.5 lg:p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-none shadow-2xl rounded-2xl lg:rounded-[3rem] mx-4 lg:mx-auto">
+               <Card className="max-w-3xl p-1.5 lg:p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-none shadow-2xl rounded-2xl lg:rounded-[3rem]">
                   <form onSubmit={handleSearch} className="flex items-center gap-2">
                      <div className="flex-1 relative group">
                         <Search className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 w-5 h-5 lg:w-6 lg:h-6 text-slate-300 group-focus-within:text-primary-600 transition-colors" />
                         <input
                            type="text"
                            className="w-full bg-transparent border-none focus:ring-0 py-4 lg:py-6 pl-12 lg:pl-16 pr-4 lg:pr-6 text-base lg:text-xl font-bold placeholder:text-slate-300 outline-none"
-                           placeholder="Search quizzes, topics, exams, or articles..."
+                           placeholder="Search exams, practice tests, students..."
                            value={query}
                            onChange={(e) => {
                               setQuery(e.target.value);
@@ -171,8 +150,8 @@ const SearchPage = () => {
                   </form>
                </Card>
 
-               <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 px-4 lg:justify-center pb-2">
-                  {['UPSC', 'SSC', 'Current Affairs', 'Practice Test', 'Quiz', 'Tech', 'AI'].map((tag, i) => (
+               <div className="flex flex-nowrap overflow-x-auto no-scrollbar p-1 gap-2 lg:justify-center">
+                  {['UPSC', 'SSC', 'Railway', 'Banking', 'Police', 'Current Affairs'].map((tag, i) => (
                      <button key={i} onClick={() => { setQuery(tag); fetchData(tag, 1); }} className="flex-shrink-0 whitespace-nowrap px-5 py-2 bg-background-surface-secondary hover:bg-primary-500/10 hover:text-primary-600 rounded-full text-sm font-semibold transition-all">
                         {tag}
                      </button>
@@ -190,7 +169,7 @@ const SearchPage = () => {
                         className={`flex items-center gap-3 px-2 lg:px-4 py-2 lg:py-4 rounded-xl lg:rounded-2xl text-sm font-semibold transition-all whitespace-nowrap ${activeTab === tab.key ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'bg-background-surface text-content-secondary hover:text-primary-600 hover:bg-primary-50'}`}
                      >
                         <tab.icon className={`w-3.5 h-3.5 lg:w-4 lg:h-4 ${activeTab === tab.key ? 'text-white' : 'text-primary-500'}`} />
-                        {tab.label}
+                        {tab.label?.toUpperCase()}
                      </button>
                   ))}
                </div>
@@ -208,11 +187,11 @@ const SearchPage = () => {
                      </div>
                      <div className="flex flex-wrap justify-center gap-4 opacity-70">
                         <span className="flex items-center gap-2 text-xs font-black uppercase text-primary-600 bg-primary-100 dark:bg-primary-900/30 px-4 py-2 rounded-full"><Zap className="w-3 h-3" /> Quick access</span>
-                        <span className="flex items-center gap-2 text-xs font-black uppercase text-amber-600 bg-amber-100 dark:bg-amber-900/30 px-4 py-2 rounded-full"><Trophy className="w-3 h-3" /> Top Quizzes</span>
+                        <span className="flex items-center gap-2 text-xs font-black uppercase text-amber-600 bg-amber-100 dark:bg-amber-900/30 px-4 py-2 rounded-full"><Trophy className="w-3 h-3" /> Top Exams</span>
                      </div>
                   </motion.div>
                ) : results.length === 0 && query ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center space-y-8">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 lg:py-8 text-center space-y-4 lg:space-y-8">
                      <div className="w-20 lg:w-32 h-20 lg:h-32 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto opacity-50">
                         <History className="w-16 h-16 text-slate-300" />
                      </div>
@@ -220,27 +199,27 @@ const SearchPage = () => {
                         <h3 className="text-xl lg:text-2xl font-black font-outfit">Nothing found</h3>
                         <p className="text-sm font-medium text-content-secondary">We could not find results for "{query}". Try a different word.</p>
                      </div>
-                     <Button variant="ghost" onClick={() => { setQuery(""); clearResults(); }} className="text-sm font-semibold">Clear search</Button>
+                     <Button variant="ghost" onClick={() => { setQuery(""); clearResults(); }} className="mx-auto text-sm font-semibold">Clear search</Button>
                   </motion.div>
                ) : (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-8">
                      {results.map((item, idx) => (
                         <motion.div key={item._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (idx % 12) * 0.05 }}>
 
-                           {item.type === 'quiz' && (
-                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-primary-500/10 hover:border-primary-500/30 transition-all overflow-hidden relative rounded-[3rem]">
-                                 <div className="space-y-4">
-                                    <div className="flex justify-between items-start">
-                                       <div className="p-3 bg-primary-500/10 text-primary-600 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-all">
-                                          <Trophy className="w-5 h-5" />
-                                       </div>
-                                       <div className="text-xs font-semibold text-content-secondary bg-background-surface-secondary px-3 py-1 rounded-full">Quiz</div>
+                           {item.type === 'user' && (
+                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-border-primary hover:border-pink-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => item.username && router.push(`/u/${item.username}`)}>
+                                 <div className="flex items-center gap-4">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-white font-black text-2xl shadow-duo-secondary group-hover:scale-110 transition-transform">
+                                       {(item.name || item.username || 'S').charAt(0).toUpperCase()}
                                     </div>
-                                    <h3 className="text-lg font-black font-outfit leading-tight group-hover:text-primary-600 transition-colors line-clamp-2">{item.title}</h3>
-                                    <p className="text-sm font-medium text-content-secondary">{item.category?.name || 'Education'}</p>
+                                    <div className="min-w-0">
+                                       <h3 className="text-lg font-black font-outfit truncate">{item.name || item.username}</h3>
+                                       <p className="text-sm font-medium text-content-secondary">Student</p>
+                                    </div>
                                  </div>
-                                 <Button variant="secondary" fullWidth className="mt-6 py-4 text-sm font-black shadow-duo-secondary rounded-2xl" onClick={() => { setSelectedQuiz(item); setShowQuizModal(true); }}>Start quiz</Button>
-                                 <Zap className="absolute -bottom-6 -right-6 w-24 h-24 text-primary-600/5 group-hover:text-primary-600/10 transition-colors pointer-events-none" />
+                                 <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl mt-6 border border-border-primary">
+                                    <p className="text-sm font-medium text-content-secondary flex items-center gap-2"><Users className="w-3 h-3" /> {item.followersCount || 0} followers</p>
+                                 </div>
                               </Card>
                            )}
 
@@ -282,62 +261,6 @@ const SearchPage = () => {
                               </Card>
                            )}
 
-                           {item.type === 'blog' && (
-                              <Card className="h-full overflow-hidden flex flex-col group border-2 border-border-primary hover:border-indigo-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => router.push(`/articles/${item.slug || item._id}`)}>
-                                 <div className="h-40 overflow-hidden relative">
-                                    <Image
-                                       src={item.featuredImage || "/default_banner.png"}
-                                       alt={item.title}
-                                       fill
-                                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                    <div className="absolute top-3 left-3 px-3 py-1 bg-indigo-500 text-white text-xs font-semibold rounded-full z-10">Article</div>
-                                 </div>
-                                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                                    <h3 className="text-base font-black font-outfit leading-tight group-hover:text-indigo-500 transition-colors line-clamp-2">{item.title}</h3>
-                                    <div className="flex items-center justify-between text-sm font-medium text-content-secondary">
-                                       <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {item.views || 0}</span>
-                                       <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {item.readingTime || 5} min read</span>
-                                    </div>
-                                 </div>
-                              </Card>
-                           )}
-
-                           {(item.type === 'category' || item.type === 'subcategory') && (
-                              <Card className="p-6 h-full group flex flex-col justify-between border-2 border-border-primary hover:border-slate-300 transition-all cursor-pointer rounded-[3rem]" onClick={() => router.push(`/${item.type}/${item._id}`)}>
-                                 <div className="space-y-4">
-                                    <div className="flex justify-between items-start">
-                                       <div className="p-3 bg-background-surface-secondary text-content-secondary rounded-2xl group-hover:bg-slate-900 group-hover:text-white transition-all">
-                                          <Layers className="w-5 h-5" />
-                                       </div>
-                                       <div className="text-xs font-semibold text-content-secondary">{item.type === 'subcategory' ? 'Topic' : 'Category'}</div>
-                                    </div>
-                                    <h3 className="text-xl font-black font-outfit leading-tight group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{item.name}</h3>
-                                    <p className="text-sm font-medium text-content-secondary line-clamp-2">{item.description || 'Explore this area to find more topics, quizzes, and study material.'}</p>
-                                 </div>
-                                 <div className="flex items-center gap-2 text-content-secondary pt-6">
-                                    <span className="text-sm font-semibold">Open {item.type === 'subcategory' ? 'topic' : 'category'}</span>
-                                    <ChevronRight className="w-3 h-3" />
-                                 </div>
-                              </Card>
-                           )}
-
-                           {item.type === 'user' && (
-                              <Card className="p-6 h-full flex flex-col justify-between group border-2 border-border-primary hover:border-pink-500/30 transition-all cursor-pointer rounded-[3rem]" onClick={() => item.username && router.push(`/u/${item.username}`)}>
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-white font-black text-2xl shadow-duo-secondary group-hover:scale-110 transition-transform">
-                                       {(item.name || item.username || 'S').charAt(0).toUpperCase()}
-                                    </div>
-                                    <div className="min-w-0">
-                                       <h3 className="text-lg font-black font-outfit truncate">{item.name || item.username}</h3>
-                                       <p className="text-sm font-medium text-content-secondary">Student</p>
-                                    </div>
-                                 </div>
-                                 <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl mt-6 border border-border-primary">
-                                    <p className="text-sm font-medium text-content-secondary flex items-center gap-2"><Users className="w-3 h-3" /> {item.followersCount || 0} followers</p>
-                                 </div>
-                              </Card>
-                           )}
 
                         </motion.div>
                      ))}

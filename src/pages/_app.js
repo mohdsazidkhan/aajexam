@@ -45,6 +45,7 @@ const globalStyles = `
 import AppLayout from '../components/layout/AppLayout';
 import PublicNavbar from '../components/navbars/PublicNavbar';
 import PublicBottomNav from '../components/navbars/PublicBottomNav';
+import { useAuthStatus } from '../hooks/useClientSide';
 
 function PageWrapper({ children, route }) {
   return (
@@ -76,38 +77,35 @@ function AppContent({ Component, pageProps }) {
     return () => router.events.off('routeChangeComplete', handleRouteChange);
   }, [router.events, router.asPath]);
 
-  const renderContent = () => {
-    const isPublicRoute = router.pathname === '/' ||
-                          router.pathname.startsWith('/exams') ||
-                          router.pathname.startsWith('/login') ||
-                          router.pathname.startsWith('/register');
+  const { isAuthenticated, isClient } = useAuthStatus();
 
-    if (isPublicRoute) {
+  const renderContent = () => {
+    if (isClient && isAuthenticated) {
       return (
-        <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
-          <ClientOnly>
-             <PublicNavbar />
-          </ClientOnly>
-          <div className="appContainer">
+        <ClientOnly>
+          <AppLayout>
             <PageWrapper route={router.asPath}>
               {Component && <Component {...pageProps} />}
             </PageWrapper>
-          </div>
-          <ClientOnly>
-            <PublicBottomNav />
-          </ClientOnly>
-        </main>
+          </AppLayout>
+        </ClientOnly>
       );
-    } 
-    
+    }
+
     return (
-      <ClientOnly>
-        <AppLayout>
+      <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
+        <ClientOnly>
+           <PublicNavbar />
+        </ClientOnly>
+        <div className="appContainer px-4">
           <PageWrapper route={router.asPath}>
             {Component && <Component {...pageProps} />}
           </PageWrapper>
-        </AppLayout>
-      </ClientOnly>
+        </div>
+        <ClientOnly>
+          <PublicBottomNav />
+        </ClientOnly>
+      </main>
     );
   };
 

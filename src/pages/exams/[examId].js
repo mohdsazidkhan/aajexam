@@ -46,12 +46,12 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
     return (
         <MobileAppWrapper title={examTitle}>
 
-            <div className="py-20 lg:py-24 min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
+            <div className="py-4 lg:py-8 h-auto lg:min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto px-4 lg:px-8 xl:px-8 relative z-10">
+                <div className="container mx-auto relative z-10">
                     {/* Breadcrumb */}
                     <div className="mb-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
                         <Link href="/exams">
@@ -71,7 +71,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                                 {examTitle}
                             </h1>
                         </div>
-                        <p className="text-lg lg:text-xl font-bold text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-4xl">
+                        <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-4xl">
                             {exam.description}
                         </p>
 

@@ -42,8 +42,8 @@ const ForgotPasswordPage = () => {
 
   return (
     <MobileAppWrapper showHeader={true} title="Account Recovery">
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
-        <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden py-32">
+      <div className="h-auto lg:min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
+        <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden lg:block"><ShieldQuestion className="w-64 h-64" /></div>
           <div className="absolute bottom-20 right-20 opacity-5 -rotate-12 hidden lg:block"><Lock className="w-64 h-64" /></div>
@@ -78,7 +78,7 @@ const ForgotPasswordPage = () => {
                   onSubmit={handleSubmit} className="space-y-6"
                 >
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Academy Email</label>
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Recovery Email</label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
                       <input

@@ -49,13 +49,13 @@ const TestStartModal = ({
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
-          <h2 className="text-md md:text-xl lg:text-3xl font-black text-content-primary mb-6 uppercase tracking-tighter">
+          <h2 className="text-md md:text-xl lg:text-3xl font-black text-content-primary mb-3 lg:mb-6 uppercase tracking-tighter">
             Exam <span className="text-primary-600">Practice</span>
           </h2>
 
           {/* Test Info */}
           <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-border-primary/50 shadow-inner">
-            <h3 className="text-content-primary text-sm lg:text-md mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
+            <h3 className="text-content-primary text-sm lg:text-md mb-3 lg:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
               {testTitle}
             </h3>
             <div className="grid grid-cols-2 gap-6">

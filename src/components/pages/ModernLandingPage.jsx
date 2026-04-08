@@ -64,7 +64,7 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title="Home">
-         <section className="relative pt-12 pb-8 lg:pt-16 lg:pb-20 overflow-hidden">
+         <section className="relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
                <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
@@ -186,7 +186,7 @@ const ModernLandingPage = () => {
                            <Trophy className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl lg:text-5xl font-black font-outfit uppercase leading-[0.9]">See your progress</h3>
-                        <p className="text-base lg:text-lg lg:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every exam and move up as you improve.</p>
+                        <p className="text-base lg:text-md lg:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every exam and move up as you improve.</p>
                         <div className="pt-4 lg:pt-8">
                            <Button variant="ghost" size="lg" className="bg-white text-primary-700 hover:bg-slate-100 rounded-[1.5rem] lg:rounded-[2rem] px-6 lg:px-8 font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Check your progress
