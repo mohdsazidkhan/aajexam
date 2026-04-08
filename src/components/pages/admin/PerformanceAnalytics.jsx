@@ -135,12 +135,7 @@ const PerformanceAnalytics = () => {
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
-                    <BarChart3 className="w-6 h-6" />
-                  </div>
-                   <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Admin / Performance Analytics</span>
-                 </div>
+                
                  <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    Performance Analytics
                  </h1>

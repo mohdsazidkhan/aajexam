@@ -20,7 +20,7 @@ const AdminBottomNav = () => {
     { name: 'DASHBOARD', path: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'NOTIFS', path: '/admin/notifications', icon: Bell },
     { name: 'USERS', path: '/admin/users', icon: Users },
-    { name: 'REPORTS', path: '/admin/reports', icon: BarChart2 },
+    { name: 'ANALYTICS', path: '/admin/analytics/dashboard', icon: BarChart2 },
   ];
 
   return (

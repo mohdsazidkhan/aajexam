@@ -156,12 +156,7 @@ export default function UserQuizRewardsHistory({ userId }) {
                     >
                         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                             <div className="space-y-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
-                                        <Award className="w-6 h-6" />
-                                    </div>
-                                    <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">ADMIN / QUIZ REWARD HISTORY</span>
-                                </div>
+                                
                                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                                     QUIZ <span className="text-emerald-500">REWARDS</span> HISTORY
                                 </h1>

@@ -172,12 +172,7 @@ const AdminExpenses = () => {
 
                         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
                             <div className="space-y-3 lg:space-y-6">
-                                <div className="flex items-center gap-3">
-                                    <div className="p-3 bg-red-500/10 text-red-500 rounded-2xl">
-                                        <TrendingDown className="w-6 h-6" />
-                                    </div>
-                                    <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em]">ADMIN // EXPENSES</span>
-                                </div>
+      
 
                                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                                     PLATFORM <span className="text-indigo-600">EXPENSES</span>

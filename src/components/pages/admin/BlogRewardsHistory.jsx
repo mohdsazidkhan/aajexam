@@ -395,12 +395,7 @@ export default function BlogRewardsHistory() {
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl">
-                    <BookOpen className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Blog Rewards Payout History</span>
-                </div>
+      
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   BLOG <span className="text-emerald-500">REWARDS</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">HISTORY</span>
                 </h1>

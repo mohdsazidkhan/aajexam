@@ -35,6 +35,13 @@ const TopPerformers = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(true);
    const [selectedDate, setSelectedDate] = useState(() => dayjs().format('YYYY-MM-DD'));
+   const [selectedWeek, setSelectedWeek] = useState(() => {
+      const d = dayjs();
+      const oneJan = dayjs(d).startOf('year');
+      const numberOfDays = d.diff(oneJan, 'day');
+      const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
+      return `${d.format('YYYY')}-W${weekNum}`;
+   });
    const [selectedMonth, setSelectedMonth] = useState(() => dayjs().format('YYYY-MM'));
 
    const router = useRouter();
@@ -53,6 +60,7 @@ const TopPerformers = () => {
          setLoading(true);
          const filters = {};
          if (activeTab === 'daily') filters.date = selectedDate;
+         if (activeTab === 'weekly') filters.week = selectedWeek;
          if (activeTab === 'monthly') filters.date = selectedMonth;
 
          const res = await API.getPublicCompetitionLeaderboard(activeTab, 1, 20, {
@@ -72,7 +80,7 @@ const TopPerformers = () => {
       } finally {
          setLoading(false);
       }
-   }, [activeTab, selectedDate, selectedMonth, userInfo?._id]);
+   }, [activeTab, selectedDate, selectedWeek, selectedMonth, userInfo?._id]);
 
    useEffect(() => { fetchLeaders(); }, [fetchLeaders]);
 
@@ -115,15 +123,61 @@ const TopPerformers = () => {
 
             <div className="flex items-center gap-4">
                <Filter className="text-slate-600 dark:text-slate-400 w-5 h-5" />
-               <div className="relative">
-                  <DatePicker
-                     selected={activeTab === 'daily' ? new Date(selectedDate) : new Date(selectedMonth)}
-                     onChange={(date) => activeTab === 'daily' ? setSelectedDate(dayjs(date).format('YYYY-MM-DD')) : setSelectedMonth(dayjs(date).format('YYYY-MM'))}
-                     dateFormat={activeTab === 'daily' ? "yyyy-MM-dd" : "MMMM yyyy"}
-                     showMonthYearPicker={activeTab === 'monthly'}
-                     className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-6 py-2.5 text-sm font-black uppercase tracking-tight focus:ring-2 focus:ring-primary-500 outline-none"
-                  />
-               </div>
+               {activeTab === 'daily' && (
+                  <div className="relative">
+                     <DatePicker
+                        selected={new Date(selectedDate)}
+                        onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
+                        dateFormat="yyyy-MM-dd"
+                        maxDate={new Date()}
+                        className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-6 py-2.5 text-sm font-black uppercase tracking-tight focus:ring-2 focus:ring-primary-500 outline-none"
+                     />
+                  </div>
+               )}
+               {activeTab === 'weekly' && (
+                  <div className="flex items-center gap-3">
+                     <div className="relative">
+                        <DatePicker
+                           selected={dayjs(selectedWeek.split('-W')[0] + '-' + selectedMonth.split('-')[1]).toDate()}
+                           onChange={(date) => {
+                              setSelectedMonth(dayjs(date).format('YYYY-MM'));
+                              const d = dayjs(date);
+                              const oneJan = dayjs(d).startOf('year');
+                              const numberOfDays = d.diff(oneJan, 'day');
+                              const weekNum = Math.ceil((numberOfDays + oneJan.day() + 1) / 7);
+                              setSelectedWeek(`${d.format('YYYY')}-W${weekNum}`);
+                           }}
+                           dateFormat="MMMM yyyy"
+                           showMonthYearPicker
+                           maxDate={new Date()}
+                           className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-6 py-2.5 text-sm font-black uppercase tracking-tight focus:ring-2 focus:ring-primary-500 outline-none"
+                        />
+                     </div>
+                     <div className="flex gap-2">
+                        {[1, 2, 3, 4].map(w => (
+                           <button
+                              key={w}
+                              onClick={() => setSelectedWeek(`${dayjs(selectedMonth).format('YYYY')}-W${w}`)}
+                              className={`w-12 h-12 flex items-center justify-center rounded-2xl text-xs font-black transition-all ${selectedWeek.endsWith(`-W${w}`) ? 'bg-primary-500 text-white shadow-duo-primary' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+                           >
+                              W{w}
+                           </button>
+                        ))}
+                     </div>
+                  </div>
+               )}
+               {activeTab === 'monthly' && (
+                  <div className="relative">
+                     <DatePicker
+                        selected={new Date(selectedMonth)}
+                        onChange={(date) => setSelectedMonth(dayjs(date).format('YYYY-MM'))}
+                        dateFormat="MMMM yyyy"
+                        showMonthYearPicker
+                        maxDate={new Date()}
+                        className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-6 py-2.5 text-sm font-black uppercase tracking-tight focus:ring-2 focus:ring-primary-500 outline-none"
+                     />
+                  </div>
+               )}
             </div>
          </section>
 

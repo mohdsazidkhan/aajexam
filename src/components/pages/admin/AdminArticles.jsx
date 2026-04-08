@@ -510,17 +510,6 @@ const AdminArticles = () => {
           >
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
               <div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="flex items-center gap-3 mb-4"
-                >
-                  <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-lg">
-                    <FileText className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500/80">ARTICLE MANAGEMENT</span>
-                </motion.div>
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                   ARTICLES & <span className="text-indigo-500">RESOURCES</span>
                 </h1>

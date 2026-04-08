@@ -133,7 +133,7 @@ const Sidebar = () => {
         { path: '/admin/analytics/users-overview', icon: TrendingUp, label: 'Growth Stats', key: 'analytics-users-overview' },
         { path: '/admin/analytics/quizzes', icon: BookOpen, label: 'Quiz Stats', key: 'analytics-quizzes' },
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Payment Stats', key: 'analytics-financial' },
-        { path: '/admin/analytics/performance', icon: Activity, label: 'Performance', key: 'analytics-performance' },
+        { path: '/admin/analytics/performance', icon: Activity, label: 'Performance Stats', key: 'analytics-performance' },
       ]
     },
     {
@@ -152,7 +152,7 @@ const Sidebar = () => {
   if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
-    <div className={`fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-80' : '-translate-x-full w-0 opacity-0'}`}>
+    <div className={`fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
 
       {/* Decorative Background Glows */}
       <div className="absolute top-0 -left-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />

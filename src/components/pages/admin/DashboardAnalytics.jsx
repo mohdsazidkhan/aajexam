@@ -728,12 +728,7 @@ const DashboardAnalytics = () => {
            <div className="mb-4">
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
-                 <div className="flex items-center gap-3">
-                   <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-2xl">
-                     <BarChart3 className="w-6 h-6" />
-                   </div>
-                   <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Admin / Analytics</span>
-                 </div>
+                 
                  <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
                    Analytics <span className="text-indigo-600">Overview</span>
                  </h1>
@@ -791,7 +786,7 @@ const DashboardAnalytics = () => {
                  transition={{ delay: i * 0.05 }}
                  className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-indigo-600/30 transition-all hover:scale-[1.02]"
                >
-                 <div className="flex items-center justify-between mb-6">
+                 <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
                      {React.cloneElement(stat.icon, { className: 'w-6 h-6' })}
                    </div>
@@ -830,7 +825,7 @@ const DashboardAnalytics = () => {
           <div className="grid grid-cols-1 gap-4">
             {/* Recent Activity */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center">
                     <BarChart3 className="w-6 h-6 text-indigo-500" />

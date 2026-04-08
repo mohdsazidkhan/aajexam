@@ -522,7 +522,7 @@ const DashboardPage = () => {
            <motion.div
              initial={{ opacity: 0, y: -20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="mb-4 px-4 lg:px-0"
+             className="mb-4"
            >
              <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
                ADMIN <span className="text-indigo-600">DASHBOARD</span>
@@ -612,9 +612,9 @@ const DashboardPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-4 shadow-2xl border-none relative overflow-hidden"
+              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
             >
-             <div className="flex items-center gap-3 lg:gap-6 mb-4 px-3 lg:px-6">
+             <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
                  <Zap className="w-7 h-7 fill-current" />
                </div>
@@ -626,7 +626,7 @@ const DashboardPage = () => {
                </div>
              </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10 px-4 lg:px-0">
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10">
                  {[
                    { href: "/admin/categories", label: "Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
                    { href: "/admin/subcategories", label: "Subcategories", desc: "Break down categories into topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
