@@ -142,24 +142,7 @@ userSchema.index({ createdAt: -1 });
 
 // Get level config from database (MANDATORY)
 userSchema.statics.getLevelConfig = async function (useCache = true) {
-  try {
-    // Attempt to get from Level model if registered
-    const LevelModel = mongoose.models.Level || (mongoose.modelNames().includes('Level') ? mongoose.model('Level') : null);
-
-    if (LevelModel && typeof LevelModel.getLevelConfig === 'function') {
-      const levelConfig = await LevelModel.getLevelConfig();
-      if (levelConfig && Object.keys(levelConfig).length > 0) {
-        return levelConfig;
-      }
-    }
-
-    // Fallback if model not ready or no levels in DB
-    console.warn('⚠️ Using static LEVEL_CONFIG fallback');
-    return this.LEVEL_CONFIG;
-  } catch (error) {
-    console.warn('⚠️ Failed to fetch levels from database, using fallback:', error.message);
-    return this.LEVEL_CONFIG;
-  }
+  return this.LEVEL_CONFIG;
 };
 
 // Static level thresholds for synchronous lookup (Must match database!)

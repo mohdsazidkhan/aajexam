@@ -18,7 +18,6 @@ const walletTransactionSchema = new mongoose.Schema({
   status: { type: String, enum: ['pending', 'completed', 'failed', 'cancelled'], default: 'completed' },
   reference: { type: String },
   subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' },
-  questionId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserQuestions' },
   metadata: { type: mongoose.Schema.Types.Mixed },
   processedAt: { type: Date, default: Date.now },
 

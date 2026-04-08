@@ -8,7 +8,6 @@ const paymentOrderSchema = new mongoose.Schema({
   status: { type: String, enum: ['created', 'authorized', 'paid', 'failed', 'refunded'], default: 'created' },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' }, // associated subscription (optional)
-  quizId: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' }, // associated quiz (optional)
   planId: { type: String }, // for subscription orders
   paymentMethod: { type: String, enum: ['payu'], default: 'payu' },
   // PayU fields
