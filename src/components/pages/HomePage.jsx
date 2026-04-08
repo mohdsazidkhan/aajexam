@@ -13,7 +13,6 @@ import {
    Gamepad2,
    Award,
    Star,
-   Clock,
    User,
    TrendingUp,
    Sparkles,
@@ -28,7 +27,6 @@ import {
 import { motion } from "framer-motion";
 
 import API from "../../lib/api";
-import Image from "next/image";
 import { useAuthStatus } from "../../hooks/useClientSide";
 
 import HomePageSkeleton from "../HomePageSkeleton";
@@ -42,7 +40,6 @@ const HomePage = () => {
    const router = useRouter();
    const { user, isClient: authLoading } = useAuthStatus();
    const [dailyDose, setDailyDose] = useState(null);
-   const [articles, setArticles] = useState([]);
    const [performanceReport, setPerformanceReport] = useState(null);
    const [loading, setLoading] = useState(true);
 
@@ -50,15 +47,13 @@ const HomePage = () => {
       const fetchData = async () => {
          setLoading(true);
          try {
-            const [dailyRes, performanceRes, articlesRes] = await Promise.all([
+            const [dailyRes, performanceRes] = await Promise.all([
                API.getDailyDose(),
                API.getAnalyticsReport(),
-               API.getPublishedArticles({ limit: 3 }),
             ]);
 
             if (dailyRes?.success) setDailyDose(dailyRes.data);
             if (performanceRes?.success) setPerformanceReport(performanceRes.data);
-            if (articlesRes?.success) setArticles(articlesRes.data.articles || []);
          } catch (err) {
             console.error("Error loading data:", err);
          } finally {
@@ -80,6 +75,7 @@ const HomePage = () => {
    const overallReadiness = examStats.overallReadiness ?? 0;
    const averageMockScore = examStats.averageMockScore ?? 0;
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
+   const streakCount = examStats.streakCount ?? 0;
 
    const coinsEarned = user?.coins || 0;
 
@@ -304,71 +300,6 @@ const HomePage = () => {
                   </motion.div>
                ))}
             </div>
-
-            {/* --- Study Articles --- */}
-            <motion.section variants={itemVariants} className="space-y-5 lg:space-y-10 relative z-10 px-2 lg:px-4">
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 border-b-4 border-border-primary pb-5 lg:pb-10 px-2 lg:px-4">
-                  <div className="space-y-2 text-center lg:text-left">
-                     <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-primary-500/10 rounded-full border-2 border-primary-500/10 mb-2">
-                        <Activity className="w-3.5 h-3.5 text-primary-500" />
-                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Live Updates</span>
-                     </div>
-                     <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter flex items-center justify-center lg:justify-start gap-4 text-content-primary leading-none">
-                        Study <span className="text-primary-600">Articles</span>
-                     </h2>
-                     <p className="text-sm font-black text-content-secondary tracking-[0.08em] lg:max-w-2xl leading-relaxed">
-                        {dailyDose?.factOfDay || "Learn something useful every day."}
-                     </p>
-                  </div>
-                  <Button
-                     variant="ghost"
-                     onClick={() => router.push('/articles')}
-                     icon={ArrowRight}
-                     iconPosition="right"
-                     className="text-sm font-black tracking-[0.08em] hover:text-primary-600 group transition-colors font-outfit"
-                  >
-                     See all articles
-                  </Button>
-               </div>
-
-               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
-                  {articles?.slice(0, 3).map((dose, idx) => (
-                     <motion.div key={idx} variants={itemVariants}>
-                        <Card
-                           padded={false}
-                           className="overflow-hidden flex flex-col border-2 border-border-primary bg-white dark:bg-slate-800 rounded-[2rem] lg:rounded-[4rem] hover:shadow-duo-primary transition-all shadow-xl h-full group"
-                           onClick={() => router.push(`/articles/${dose.slug || ''}`)}
-                        >
-                           <div className="h-44 lg:h-64 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
-                              <div className="absolute top-6 left-6 z-10 px-5 py-2.5 bg-white/95 dark:bg-slate-800/95 rounded-[1.25rem] text-[9px] font-black text-primary-600 shadow-xl uppercase tracking-[0.3em] border-2 border-slate-50 dark:border-slate-700">
-                                 {dose.category?.name || 'ARTICLE'}
-                              </div>
-                              <Image
-                                 src={dose.featuredImage || "/default_banner.png"}
-                                 alt={dose.title}
-                                 fill
-                                 className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
-                              />
-                           </div>
-                           <div className="p-4 lg:p-8 space-y-4 lg:space-y-6 flex-grow flex flex-col justify-between">
-                              <h3 className="font-black text-base lg:text-2xl text-content-primary line-clamp-2 leading-tight uppercase font-outfit group-hover:text-primary-600 transition-colors">
-                                 {dose.title}
-                              </h3>
-                              <div className="flex items-center justify-between pt-6 border-t-2 border-border-primary">
-                                 <div className="flex items-center gap-3 text-[9px] font-black text-content-secondary uppercase tracking-widest">
-                                    <Clock className="w-4 h-4 text-primary-600" />
-                                    {new Date(dose.publishedAt || dose.createdAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
-                                 </div>
-                                 <div className="w-10 h-10 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center group-hover:bg-primary-500 group-hover:text-white transition-all shadow-sm">
-                                    <ArrowRight className="w-5 h-5" />
-                                 </div>
-                              </div>
-                           </div>
-                        </Card>
-                     </motion.div>
-                  ))}
-               </div>
-            </motion.section>
 
             {/* --- Monthly Showcase --- */}
             <motion.div variants={itemVariants} className="relative z-10 px-0 py-2 lg:py-4">

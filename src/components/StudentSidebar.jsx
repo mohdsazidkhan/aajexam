@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
@@ -89,76 +89,82 @@ const StudentSidebar = () => {
 
   if (!isMounted || !authenticated || !user) return null;
 
+  const initials = (user.name || user.username || 'U').charAt(0).toUpperCase();
+
   return (
-    <>
-      {/* Main Sidebar Container Ã¢â‚¬â€ No internal overlay, handled by AppLayout */}
-      <motion.div
-        initial={false}
-        animate={{
-          x: isOpen ? 0 : -320,
-          width: isOpen ? 320 : 0,
-          opacity: isOpen ? 1 : 0
-        }}
-        className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
-      >
-        <div className="absolute top-0 -left-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-20 w-40 h-40 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <nav className="flex-1 overflow-y-auto py-2 px-2 space-y-2 scrollbar-premium relative z-10">
-          {sidebarSections.map((section, idx) => (
-            <div key={idx} className="space-y-2">
-              <div className="flex items-center gap-3 px-4">
-                <h3 className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] whitespace-nowrap">
-                  {section.title}
-                </h3>
-              </div>
-              <div className="space-y-1 lg:space-y-1.5 px-1">
-                {section.items.map((item, itemIdx) => {
-                  const active = isActiveRoute(item.path);
-                  return (
-                    <Link key={itemIdx} href={item.path} onClick={handleNavClick}>
-                      <button className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
-                        ? 'text-white'
-                        : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
-                        }`}>
-                        {active && (
-                          <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl border-t border-white/20" />
-                        )}
-                        {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
-                        <div className="flex items-center gap-4 relative z-10">
-                          <item.icon className="w-4.5 h-4.5 flex-shrink-0 transition-transform group-hover:scale-110" />
-                          <span className="text-[10px] font-black tracking-[0.15em] uppercase truncate">{item.label}</span>
-                        </div>
-                        {item.badge && (
-                          <span className={`px-2.5 py-1 rounded-lg text-[8px] font-black relative z-10 shadow-sm border border-white/10 ${active ? 'bg-white/20 text-white' : item.badgeColor === 'emerald' ? 'bg-emerald-500 text-white' : 'bg-primary-500 text-white'
-                            }`}>
-                            {item.badge}
-                          </span>
-                        )}
-                      </button>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </nav>
-
-        <div className="p-8 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-950 relative z-20">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => secureLogout(router)}
-            className="w-full py-5 rounded-[1.75rem] bg-rose-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-red hover:bg-rose-600 transition-all flex items-center justify-center gap-3 border-t border-white/20 group"
-          >
-            <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> LOG OUT
-          </motion.button>
+    <motion.div
+      initial={false}
+      animate={{
+        x: isOpen ? 0 : -320,
+        width: isOpen ? 320 : 0,
+        opacity: isOpen ? 1 : 0
+      }}
+      className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
+    >
+      {/* User greeting */}
+      <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center text-white text-sm font-black shadow-duo-primary flex-shrink-0">
+            {initials}
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-bold text-content-primary truncate">{user.name || user.username}</p>
+            <p className="text-[10px] font-semibold text-content-muted truncate">
+              {user.subscriptionStatus === 'pro' ? 'Pro Member' : 'Free Plan'}
+            </p>
+          </div>
         </div>
-      </motion.div>
-    </>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-4 scrollbar-premium">
+        {sidebarSections.map((section, idx) => (
+          <div key={idx}>
+            <h3 className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] px-3 mb-2">
+              {section.title}
+            </h3>
+            <div className="space-y-0.5">
+              {section.items.map((item, itemIdx) => {
+                const active = isActiveRoute(item.path);
+                return (
+                  <Link key={itemIdx} href={item.path} onClick={handleNavClick}>
+                    <button className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                      ? 'text-white'
+                      : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      }`}>
+                      {active && (
+                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl" />
+                      )}
+                      <div className="flex items-center gap-3 relative z-10">
+                        <item.icon className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
+                        <span className="text-[11px] font-bold tracking-wide">{item.label}</span>
+                      </div>
+                      {item.badge && (
+                        <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold relative z-10 ${active ? 'bg-white/20 text-white' : 'bg-emerald-500 text-white'
+                          }`}>
+                          {item.badge}
+                        </span>
+                      )}
+                    </button>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </nav>
+
+      {/* Logout */}
+      <div className="p-4 border-t border-slate-100 dark:border-white/5">
+        <button
+          onClick={() => secureLogout(router)}
+          className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
+        >
+          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> Log out
+        </button>
+      </div>
+    </motion.div>
   );
 };
 
 export default StudentSidebar;
-
-
