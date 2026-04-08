@@ -1,8 +1,7 @@
 ﻿'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Home,
@@ -12,11 +11,12 @@ import {
   TrendingUp,
   User,
   LogOut,
-  ChevronDown,
   Globe,
-  ShieldCheck
+  ShieldCheck,
+  History,
+  Settings
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
 import { secureLogout, getCurrentUser, isAuthenticated } from '../lib/utils/authUtils';
 import { useSSR } from '../hooks/useSSR';
@@ -50,12 +50,6 @@ const StudentSidebar = () => {
     }
   }, [authenticated, isMounted]);
 
-  const [expandedMenus, setExpandedMenus] = useState({});
-
-  const toggleMenu = (menu) => {
-    setExpandedMenus(prev => ({ ...prev, [menu]: !prev[menu] }));
-  };
-
   const isActiveRoute = (path) => {
     if (!router?.pathname) return false;
     return path === '/home' ? router.pathname === '/home' || router.pathname === '/' : router.pathname.startsWith(path);
@@ -65,49 +59,30 @@ const StudentSidebar = () => {
     if (window.innerWidth < 768) dispatch(toggleSidebar());
   };
 
-  const getProfileChildren = useMemo(() => {
-    const username = user?.username;
-    const children = [
-      { path: '/profile', label: 'My Profile' },
-    ];
-    if (username) {
-      children.push(
-        { path: `/profile/${username}/followers`, label: 'Followers' },
-        { path: `/profile/${username}/following`, label: 'Following' }
-      );
-    }
-    children.push({ path: '/exam-history', label: 'Exam History' });
-    children.push({ path: '/settings', label: 'Settings' });
-    return children;
-  }, [user]);
-
   const sidebarSections = [
     {
-      title: 'NAVIGATION',
+      title: 'MAIN',
       items: [
         { path: '/home', icon: Home, label: 'Home' },
         { path: '/search', icon: Search, label: 'Search' },
-      ]
-    },
-    {
-      title: 'STUDY CENTER',
-      items: [
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
       ]
     },
     {
-      title: 'MY ACCOUNT',
+      title: 'PROGRESS',
       items: [
-        { path: '/profile', icon: User, label: 'Profile', hasChildren: true, children: getProfileChildren },
-        { path: '/pro/wallet', icon: Wallet, label: 'Wallet', badge: walletBalance > 0 ? `₹${walletBalance}` : null, badgeColor: 'emerald' },
-        { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
+        { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
+        { path: '/exam-history', icon: History, label: 'Exam History' },
+        { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
     },
     {
-      title: 'MY PROGRESS',
+      title: 'ACCOUNT',
       items: [
-        { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
-        { path: '/referral-history', icon: Globe, label: 'Referrals' },
+        { path: '/profile', icon: User, label: 'Profile' },
+        { path: '/pro/wallet', icon: Wallet, label: 'Wallet', badge: walletBalance > 0 ? `₹${walletBalance}` : null, badgeColor: 'emerald' },
+        { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
+        { path: '/settings', icon: Settings, label: 'Settings' },
       ]
     }
   ];
@@ -139,77 +114,29 @@ const StudentSidebar = () => {
               </div>
               <div className="space-y-1 lg:space-y-1.5 px-1">
                 {section.items.map((item, itemIdx) => {
-                  const isExpanded = expandedMenus[item.label] || false;
                   const active = isActiveRoute(item.path);
-
                   return (
-                    <div key={itemIdx} className="relative">
-                      {item.hasChildren ? (
-                        <div className="space-y-1.5">
-                          <button
-                            onClick={() => toggleMenu(item.label)}
-                            className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
-                              ? 'text-primary-700 dark:text-primary-500'
-                              : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
-                              }`}
-                          >
-                            {active && (
-                              <motion.div layoutId="sidebar-active-glow" className="absolute inset-0 bg-primary-500/5 dark:bg-primary-500/10 border border-primary-500/20 shadow-[0_0_20px_rgba(88,204,2,0.05)] rounded-2xl" />
-                            )}
-                            {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
-
-                            <div className="flex items-center gap-4 relative z-10">
-                              <item.icon className={`w-4.5 h-4.5 transition-transform group-hover:scale-110 ${active ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}`} />
-                              <span className="text-[10px] font-black tracking-[0.15em] uppercase">{item.label}</span>
-                            </div>
-                            <ChevronDown className={`w-3.5 h-3.5 text-slate-600 dark:text-slate-400 transition-transform duration-500 relative z-10 ${isExpanded ? 'rotate-180 text-primary-700 dark:text-primary-500' : ''}`} />
-                          </button>
-                          <AnimatePresence>
-                            {isExpanded && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                className="pl-14 space-y-1 overflow-hidden"
-                              >
-                                {item.children.map((child, childIdx) => (
-                                  <Link key={childIdx} href={child.path} onClick={handleNavClick}>
-                                    <button className={`w-full text-left py-3 text-[9px] font-black uppercase tracking-[0.2em] transition-all relative group flex items-center gap-3 ${isActiveRoute(child.path) ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-400 hover:text-slate-300'
-                                      }`}>
-                                      <div className={`w-1 h-1 rounded-full ${isActiveRoute(child.path) ? 'bg-primary-500 shadow-duo-primary' : 'bg-slate-700'}`} />
-                                      <span className="group-hover:translate-x-1 transition-transform">{child.label}</span>
-                                    </button>
-                                  </Link>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                    <Link key={itemIdx} href={item.path} onClick={handleNavClick}>
+                      <button className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
+                        ? 'text-white'
+                        : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
+                        }`}>
+                        {active && (
+                          <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl border-t border-white/20" />
+                        )}
+                        {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
+                        <div className="flex items-center gap-4 relative z-10">
+                          <item.icon className="w-4.5 h-4.5 flex-shrink-0 transition-transform group-hover:scale-110" />
+                          <span className="text-[10px] font-black tracking-[0.15em] uppercase truncate">{item.label}</span>
                         </div>
-                      ) : (
-                        <Link href={item.path} onClick={handleNavClick}>
-                          <button className={`w-full flex items-center justify-between px-2 lg:px-4 py-2 lg:py-4 rounded-2xl transition-all duration-300 relative group overflow-hidden ${active
-                            ? 'text-white'
-                            : darkMode ? 'text-slate-600 dark:text-slate-400 hover:text-white' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900'
+                        {item.badge && (
+                          <span className={`px-2.5 py-1 rounded-lg text-[8px] font-black relative z-10 shadow-sm border border-white/10 ${active ? 'bg-white/20 text-white' : item.badgeColor === 'emerald' ? 'bg-emerald-500 text-white' : 'bg-primary-500 text-white'
                             }`}>
-                            {active && (
-                              <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-2xl border-t border-white/20" />
-                            )}
-                            {!active && <div className="absolute inset-0 bg-slate-500/0 group-hover:bg-slate-500/5 transition-colors" />}
-
-                            <div className="flex items-center gap-4 relative z-10">
-                              <item.icon className="w-4.5 h-4.5 flex-shrink-0 transition-transform group-hover:scale-110" />
-                              <span className="text-[10px] font-black tracking-[0.15em] uppercase truncate">{item.label}</span>
-                            </div>
-                            {item.badge && (
-                              <span className={`px-2.5 py-1 rounded-lg text-[8px] font-black relative z-10 shadow-sm border border-white/10 ${active ? 'bg-white/20 text-white' : item.badgeColor === 'emerald' ? 'bg-emerald-500 text-white' : 'bg-primary-500 text-white'
-                                }`}>
-                                {item.badge}
-                              </span>
-                            )}
-                          </button>
-                        </Link>
-                      )}
-                    </div>
+                            {item.badge}
+                          </span>
+                        )}
+                      </button>
+                    </Link>
                   );
                 })}
               </div>
