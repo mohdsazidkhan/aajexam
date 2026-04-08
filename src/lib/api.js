@@ -338,6 +338,10 @@ class ApiService {
 
   // ===== ADMIN ENDPOINTS =====
 
+  async getAdminStats() {
+    return this.request('/api/admin/stats');
+  }
+
   // Admin Notifications
   async getAdminLatestNotifications(limit = 10, { unreadOnly = true } = {}) {
     const u = unreadOnly ? '1' : '0';
