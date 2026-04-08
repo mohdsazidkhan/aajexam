@@ -92,7 +92,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .rich-text-editor .toolbar {

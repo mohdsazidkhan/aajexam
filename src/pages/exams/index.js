@@ -28,7 +28,7 @@ export default function ExamsPage({ exams, pagination }) {
                 <meta name="robots" content="index, follow" />
             </Head>
 
-            <div className="min-h-screen bg-white dark:bg-slate-950 py-20 lg:py-24 px-4 font-outfit relative overflow-hidden">
+            <div className="min-h-screen  py-20 lg:py-24 px-4 font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />

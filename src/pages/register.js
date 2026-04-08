@@ -12,8 +12,8 @@ export default function Register() {
   return (
     <>
       <Seo
-        title="Register - AajExam Reward Platform"
-        description="Create your free AajExam account today! Join thousands of users testing their knowledge, competing in quizzes, and earning Daily, Weekly, and Monthly Rewards."
+        title="Register - AajExam Exam Preparation Platform"
+        description="Create your free AajExam account today! Join thousands of students preparing for government exams, practicing tests, and earning Daily, Weekly, and Monthly Rewards."
         noIndex={true}
       />
       <Suspense fallback={<div>Loading...</div>}>

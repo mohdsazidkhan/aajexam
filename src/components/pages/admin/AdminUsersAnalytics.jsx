@@ -222,7 +222,7 @@ const AdminUsersAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'Free'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">Level 0</span>
+                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">Student</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: '0%' }} /></div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
@@ -250,8 +250,8 @@ const AdminUsersAnalytics = () => {
                                                         <div className="text-md font-black text-emerald-500 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     </div>
                                                     <div className="flex justify-between items-center">
-                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Level</div>
-                                                        <span className="text-indigo-500 text-sm italic tracking-tighter">LVL 0</span>
+                                                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Status</div>
+                                                        <span className="text-indigo-500 text-sm italic tracking-tighter">Student</span>
                                                     </div>
                                                 </div>
                                                 <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Details</button>
@@ -270,7 +270,7 @@ const AdminUsersAnalytics = () => {
                                                         <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{s.name || 'User'}</h3>
                                                         <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                                                             <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email?.substring(0, 20)}...</span>
-                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>Level 0</span>
+                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>Student</span>
                                                         </div>
                                                     </div>
                                                 </div>

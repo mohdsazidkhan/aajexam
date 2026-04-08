@@ -24,7 +24,7 @@ const AuthorBio = () => {
                         href="/about-founder"
                         className="inline-flex items-center gap-3 px-8 py-4 bg-slate-50 dark:bg-slate-900 text-primary-700 dark:text-primary-500 font-black uppercase tracking-widest text-[10px] rounded-2xl border-2 border-b-4 border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:translate-y-1 shadow-sm"
                     >
-                        Meet the Founder<span className="text-xl leading-none">â†’</span>
+                        Meet the Founder
                     </Link>
                 </div>
             </div>

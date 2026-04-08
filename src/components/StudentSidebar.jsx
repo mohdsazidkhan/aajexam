@@ -98,7 +98,7 @@ const StudentSidebar = () => {
         width: isOpen ? 240 : 0,
         opacity: isOpen ? 1 : 0
       }}
-      className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col border-r border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
+      className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
     >
       {/* User greeting */}
       <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5">

@@ -45,6 +45,7 @@ const globalStyles = `
 import AppLayout from '../components/layout/AppLayout';
 import PublicNavbar from '../components/navbars/PublicNavbar';
 import PublicBottomNav from '../components/navbars/PublicBottomNav';
+import UnifiedFooter from '../components/UnifiedFooter';
 import { useAuthStatus } from '../hooks/useClientSide';
 
 function PageWrapper({ children, route }) {
@@ -102,6 +103,7 @@ function AppContent({ Component, pageProps }) {
             {Component && <Component {...pageProps} />}
           </PageWrapper>
         </div>
+        <UnifiedFooter />
         <ClientOnly>
           <PublicBottomNav />
         </ClientOnly>

@@ -59,7 +59,7 @@ const AdminNavbar = () => {
   const handleLogout = () => secureLogout(router);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[150] h-16 lg:h-20 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl border-b border-slate-200/50 dark:border-white/5 shadow-xl flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-[150] h-16 lg:h-20 bg-white dark:bg-slate-950 border-b border-slate-200/50 dark:border-white/5 shadow-xl flex items-center">
       <div className="max-w-[1920px] mx-auto w-full px-4 lg:px-8 flex items-center justify-between gap-4">
 
         {/* --- Left: Admin Logo & Brand --- */}

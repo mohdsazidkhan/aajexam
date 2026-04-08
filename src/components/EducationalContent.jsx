@@ -19,10 +19,10 @@ import { motion } from 'framer-motion';
 
 const EducationalContent = ({ content }) => {
     const defaultContent = {
-        platformPurpose: "AajExam is India's premier online platform for government exam preparation, offering comprehensive practice tests and quizzes designed specifically for aspirants preparing for competitive examinations. Our platform combines cutting-edge technology with expert-curated content to provide an unparalleled learning experience.",
+        platformPurpose: "AajExam is India's premier online platform for government exam preparation, offering comprehensive practice tests designed specifically for aspirants preparing for competitive examinations. Our platform combines cutting-edge technology with expert-curated content to provide an unparalleled learning experience.",
         targetAudience: "Our platform is designed for students and professionals preparing for various government competitive exams including SSC, UPSC, Banking exams, Railway Recruitment Board (RRB), State Public Service Commissions, and other central and state government recruitment examinations.",
-        educationalBenefits: "Regular practice through our quiz platform offers numerous educational benefits that directly impact your exam performance. Our scientifically designed quizzes help improve knowledge retention through spaced repetition and enhance time management skills.",
-        learningMethodology: "AajExam employs a unique 10-level progression system that mirrors the journey from beginner to expert. Each level is carefully calibrated to match your growing competence, with quizzes becoming progressively more challenging as you advance."
+        educationalBenefits: "Regular practice through our exam platform offers numerous educational benefits that directly impact your exam performance. Our scientifically designed tests help improve knowledge retention through spaced repetition and enhance time management skills.",
+        learningMethodology: "AajExam employs a structured preparation methodology that mirrors the journey from beginner to expert. Each stage is carefully calibrated to match your growing competence, with tests becoming progressively more challenging as you advance."
     };
 
     const data = content || defaultContent;
@@ -30,8 +30,8 @@ const EducationalContent = ({ content }) => {
     const features = [
         {
             icon: Rocket,
-            title: "Phase Progression",
-            description: "Advance through 10 tactical levels from Recruit to Elite Commander.",
+            title: "Exam Preparation",
+            description: "Structured preparation path for SSC, UPSC, Banking & Railway exams.",
             color: "text-primary-600",
             bg: "bg-primary-50 dark:bg-primary-900/10"
         },
@@ -99,7 +99,7 @@ const EducationalContent = ({ content }) => {
                         { title: "Mission Objective", content: data.platformPurpose, icon: Target, color: "primary" },
                         { title: "Target Users", content: data.targetAudience, icon: Users, color: "secondary" },
                         { title: "Tactical Benefits", content: data.educationalBenefits, icon: Sparkles, color: "emerald" },
-                        { title: "Level Methodology", content: data.learningMethodology, icon: ShieldCheck, color: "purple" }
+                        { title: "Study Methodology", content: data.learningMethodology, icon: ShieldCheck, color: "purple" }
                     ].map((card, i) => (
                         <motion.div
                             key={i}

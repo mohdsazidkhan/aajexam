@@ -13,7 +13,7 @@ export default function Login() {
     <>
       <Seo
         title="Login - AajExam Platform"
-        description="Login to your AajExam account to access quizzes, track your progress, compete on leaderboards, and earn rewards."
+        description="Login to your AajExam account to access practice tests, track your progress, compete on leaderboards, and earn rewards."
         noIndex={true}
       />
       <Suspense fallback={<div>Loading...</div>}>

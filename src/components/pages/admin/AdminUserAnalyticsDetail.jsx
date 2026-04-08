@@ -141,7 +141,7 @@ const AdminUserAnalyticsDetail = () => {
                                          </div>
                                          <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
                                              <TrendingUp className="w-4 h-4 text-indigo-500" />
-                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">Level 0 / {userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
+                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                          </div>
                                      </div>
                                  )}
@@ -284,8 +284,8 @@ const AdminUserAnalyticsDetail = () => {
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="rose" icon={Zap} label="Level" value={`Level 0`} sub={'Student'} />
-                                         <MetricCard i={1} color="indigo" icon={Zap} label="Quizzes Played" value={`0`} sub="Total quizzes completed" />
+                                         <MetricCard i={0} color="rose" icon={Zap} label="Status" value={`Student`} sub={'Active'} />
+                                         <MetricCard i={1} color="indigo" icon={Zap} label="Tests Taken" value={`0`} sub="Total tests completed" />
                                          <MetricCard i={2} color="indigo" icon={Zap} label="Average Score" value={`0%`} sub="Overall accuracy" />
                                      </div>
                                  </motion.section>

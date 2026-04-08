@@ -436,8 +436,8 @@ const AdminPrevMonthPlayedUsers = () => {
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center tabular-nums italic text-slate-900 dark:text-white">{user.monthYear}</td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                              <div className="flex flex-col items-center">
-                                                <span className="text-indigo-500 text-sm italic tracking-tighter">Level 0</span>
-                                                <span className="text-[8px] opacity-40">{'Student'}</span>
+                                                <span className="text-indigo-500 text-sm italic tracking-tighter">Student</span>
+                                                <span className="text-[8px] opacity-40">{'Active'}</span>
                                              </div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">

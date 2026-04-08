@@ -32,8 +32,8 @@ export default function EditorialPolicy() {
                 />
             </Head>
 
-            <div className="min-h-screen bg-white dark:bg-slate-950">
-                <div className="container mx-auto px-4 lg:px-10 py-8">
+            <div className="min-h-screen ">
+                <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
                         <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">

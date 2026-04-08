@@ -136,7 +136,7 @@ const TestResult = () => {
                 {isGreat ? 'Epic Achievement!' : 'Good Effort!'}
               </h1>
               <p className="text-xl font-bold opacity-80 uppercase tracking-widest">
-                Quiz: {result?.testTitle}
+                Test: {result?.testTitle}
               </p>
             </motion.div>
 

@@ -16,7 +16,7 @@ const PracticeTestsEducational = ({ levels }) => {
                         Practice <span className="text-primary-700 dark:text-primary-500">Missions</span>
                     </h1>
                     <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed">
-                        Master your exams with our unique 10-level progression system designed for focused students.
+                        Master your government exams with our structured preparation system designed for focused students.
                     </p>
                 </div>
 
@@ -35,10 +35,10 @@ const PracticeTestsEducational = ({ levels }) => {
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
                                     <p>
-                                        AajExam represents a revolutionary approach to government exam preparation, designed for students targeting competitive examinations. Our 10-level progression ensures you develop the skill set required to excel.
+                                        AajExam represents a revolutionary approach to government exam preparation, designed for students targeting competitive examinations. Our structured test system ensures you develop the skill set required to excel.
                                     </p>
                                     <p>
-                                        The foundation lies in progressive difficulty. Our level-based approach ensures a strong foundation before advancing to more complex topics.
+                                        The foundation lies in progressive difficulty. Our structured approach ensures a strong foundation before advancing to more complex topics.
                                     </p>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@ const PracticeTestsEducational = ({ levels }) => {
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
                                     <p>
-                                        The AajExam system is built on three pillars: consistent practice, deep analytics, and social competition. We encourage daily engagement through portioned quiz sets.
+                                        The AajExam system is built on three pillars: consistent practice, deep analytics, and social competition. We encourage daily engagement through structured test sets.
                                     </p>
                                     <p>
                                         Performance analytics provide insights into your weaknesses. Our system monitors accuracy and speed, enabling data-driven decisions.

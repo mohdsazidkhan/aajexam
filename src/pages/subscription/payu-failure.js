@@ -112,7 +112,7 @@ const PayuFailure = () => {
     return (
       <MobileAppWrapper title="Checking payment">
         <Seo title="Checking Payment Status - AajExam" description="We are checking your failed payment attempt." noIndex={true} />
-        <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center p-6">
+        <div className="min-h-screen  flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
             <div className="w-20 h-20 rounded-[2rem] bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
@@ -136,7 +136,7 @@ const PayuFailure = () => {
         description="Your payment attempt was not successful. Please try again or contact support."
         noIndex={true}
       />
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4">
+      <div className="min-h-screen  py-8 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
             <div className="text-center space-y-4">

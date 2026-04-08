@@ -11,7 +11,7 @@ const config = {
   // Application Configuration
   APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'AajExam',
   APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0',
-  APP_DESCRIPTION: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Quiz Platform',
+  APP_DESCRIPTION: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Government Exam Preparation Platform',
   APP_AUTHOR: process.env.NEXT_PUBLIC_APP_AUTHOR || 'AajExam TEAM',
   APP_DEVELOPER_URL: process.env.NEXT_PUBLIC_DEVELOPER_URL || 'https://mohdsazidkhan.com',
 
@@ -108,7 +108,6 @@ const config = {
     ANALYTICS: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true',
     LEADERBOARD: process.env.NEXT_PUBLIC_ENABLE_LEADERBOARD === 'true',
     BADGES: process.env.NEXT_PUBLIC_ENABLE_BADGES === 'true',
-    LEVELS: process.env.NEXT_PUBLIC_ENABLE_LEVELS === 'true',
     WALLET: process.env.NEXT_PUBLIC_ENABLE_WALLET === 'true',
     SUBSCRIPTIONS: process.env.NEXT_PUBLIC_ENABLE_SUBSCRIPTIONS === 'true'
   },

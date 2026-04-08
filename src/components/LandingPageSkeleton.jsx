@@ -3,7 +3,7 @@ import Skeleton from './Skeleton';
 
 const LandingPageSkeleton = () => {
     return (
-        <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300 pt-12 sm:pt-0">
+        <div className="min-h-screen  transition-colors duration-300 pt-12 sm:pt-0">
             {/* Navbar Skeleton */}
             <header className="fixed z-[99] w-full bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 top-0">
                 <div className="container mx-auto px-6 lg:px-12">

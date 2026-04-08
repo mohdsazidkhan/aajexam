@@ -57,7 +57,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white dark:bg-slate-950 px-4 font-outfit">
+      <div className="flex flex-col items-center justify-center min-h-screen text-center  px-4 font-outfit">
         <h2 className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
@@ -74,7 +74,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   return (
     <MobileAppWrapper title={profile.name || 'Profile'}>
-      <div className="max-w-full mx-auto bg-white dark:bg-slate-950 min-h-screen font-outfit">
+      <div className="max-w-full mx-auto  min-h-screen font-outfit">
         <Head>
           <title>{seo?.title || 'Profile - AajExam'}</title>
           {seo?.description && <meta name="description" content={seo.description} />}
@@ -207,14 +207,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
-                Quiz Statistics
+                Exam Statistics
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
                     {0}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Quizzes</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-emerald-600">
@@ -280,7 +280,7 @@ export async function getStaticProps({ params }) {
   const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
   const description = profile?.bio || `${name}'s profile on AajExam.`;
   const image = profile?.profilePicture || '/logo.png';
-  const keywords = `${name}, profile, quizzes`;
+  const keywords = `${name}, profile, exams`;
   const url = baseUrl ? `${baseUrl}/u/${encodeURIComponent(username)}` : undefined;
 
   return {

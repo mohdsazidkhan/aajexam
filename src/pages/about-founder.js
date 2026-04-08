@@ -32,8 +32,8 @@ export default function AboutAuthor() {
                 />
             </Head>
 
-            <div className="min-h-screen bg-white dark:bg-slate-950">
-                <div className="container mx-auto px-4 lg:px-10 py-8">
+            <div className="min-h-screen ">
+                <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
                         <div className="w-24 h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -66,7 +66,7 @@ export default function AboutAuthor() {
                                 As a UDYAM registered entrepreneur, Sazid combines technical expertise with business acumen to create scalable, user-friendly educational solutions. His vision is to democratize access to high-quality government exam preparation resources, ensuring that students from all backgrounds have the tools they need to succeed in competitive examinations.
                             </p>
                             <p>
-                                Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform&apos;s unique 10-level progression system and comprehensive quiz database reflect his commitment to structured, effective learning methodologies.
+                                Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform&apos;s comprehensive exam preparation system and extensive test database reflect his commitment to structured, effective learning methodologies.
                             </p>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ export default function AboutAuthor() {
                             {[
                                 { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-500' },
                                 { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-green-500' },
-                                { title: 'Content Curation', desc: 'Curated 2000+ quiz questions across multiple subjects.', color: 'bg-purple-500' },
+                                { title: 'Content Curation', desc: 'Curated thousands of exam questions across multiple subjects.', color: 'bg-purple-500' },
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">

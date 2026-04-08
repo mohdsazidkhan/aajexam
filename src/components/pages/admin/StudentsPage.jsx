@@ -252,14 +252,14 @@ const StudentsPage = () => {
     },
     {
       key: 'level',
-      header: 'Level',
+      header: 'Status',
       render: (_, student) => (
         <div>
           <div className="text-sm text-gray-900 dark:text-white">
-            Level 0
+            Student
           </div>
           <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
-            {'Student'}
+            {'Active'}
           </div>
         </div>
       )
@@ -583,8 +583,8 @@ const StudentsPage = () => {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex flex-col">
-                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Level 0</div>
-                                 <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{'Student'}</div>
+                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Student</div>
+                                 <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{'Active'}</div>
                                </div>
                              </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">

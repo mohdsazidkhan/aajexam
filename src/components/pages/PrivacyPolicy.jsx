@@ -64,10 +64,10 @@ const PrivacyPolicy = () => {
             />
          </Head>
 
-         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/20">
+            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 ">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ scale: 0.8, opacity: 0 }}
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
                <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             </div>
 
-            <div className="container mx-auto px-6 lg:px-10 py-16 max-w-7xl">
+            <div className="container mx-auto max-w-7xl">
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                   {/* --- Sidebar Index --- */}
@@ -127,14 +127,14 @@ const PrivacyPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-10 lg:p-16 rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <Info className="w-8 h-8" />
                               </div>
                               <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
                            </div>
-                           <p className="text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic border-l-8 border-primary-500/20 pl-2 lg:pl-8">
+                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic border-l-8 border-primary-500/20 pl-2 lg:pl-8">
                               This Privacy Policy explains how <strong>AajExam</strong> collects, uses, stores, and protects your information when you use our platform. By using AajExam, you agree to the practices described below.
                            </p>
                         </div>

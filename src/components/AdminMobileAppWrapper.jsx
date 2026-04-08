@@ -33,7 +33,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   }, [isMounted, dispatch]);
 
   if (!isMounted) {
-    return <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-pulse" />;
+    return <div className="min-h-screen animate-pulse" />;
   }
 
   const toggleTheme = () => dispatch(toggleDarkMode());

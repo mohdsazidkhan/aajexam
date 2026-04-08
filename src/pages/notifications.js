@@ -72,12 +72,11 @@ const NotificationsPage = () => {
     } catch (e) { }
   };
 
-  if (loading) return <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
 
   const getIcon = (type) => {
     switch (type) {
-      case 'quiz_completed': return <Target className="w-5 h-5 text-green-500" />;
-      case 'level_up': return <Zap className="w-5 h-5 text-primary-500" />;
+      case 'test_completed': return <Target className="w-5 h-5 text-green-500" />;
       case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-500" />;
       case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-red-500" />;
       default: return <Info className="w-5 h-5 text-blue-500" />;
@@ -88,7 +87,7 @@ const NotificationsPage = () => {
 
   return (
     <MobileAppWrapper title="Notifications">
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
       <div className="container mx-auto px-6 py-12 max-w-4xl space-y-10 mt-0">

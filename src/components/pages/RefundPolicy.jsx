@@ -39,10 +39,10 @@ const RefundPolicy = () => {
 
    return (
       <MobileAppWrapper title="Refund Policy">
-         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/20">
+            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 ">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ y: 20, opacity: 0 }}
@@ -64,7 +64,7 @@ const RefundPolicy = () => {
                <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             </div>
 
-            <div className="container mx-auto px-6 lg:px-10 py-16 max-w-7xl">
+            <div className="container mx-auto max-w-7xl">
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                   {/* --- Sidebar Index --- */}
@@ -101,16 +101,16 @@ const RefundPolicy = () => {
                   <main className="lg:col-span-8 space-y-12">
 
                      {/* Introduction */}
-                     <section id="intro" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-10 lg:p-16 rounded-[4rem] shadow-duo-secondary border-none relative overflow-hidden text-center">
-                           <p className="text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic">
+                     <section id="intro" className="group mt-4">
+                        <div className="bg-white dark:bg-slate-800 p-4  lg:p-8 rounded-[2rem]  lg:rounded-[4rem] shadow-duo-secondary border-none relative overflow-hidden text-center">
+                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic">
                               Thank you for using <strong>AajExam</strong>. Please read this policy before buying a plan. By paying for a plan, you agree to the rules below.
                            </p>
                         </div>
                      </section>
 
                      {/* 1. General Policy */}
-                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
+                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
                         <div className="flex items-center gap-6">
                            <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-rose-500/10">
                               <Ban className="w-8 h-8" />
@@ -127,18 +127,18 @@ const RefundPolicy = () => {
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                               <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h4>
-                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Access to the platform is provided regardless of your quiz performance or leaderboard rank.</p>
+                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
                               </div>
                               <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h4>
-                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Subscription fees cover access to study materials and quizzes, not guaranteed rewards.</p>
+                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
                               </div>
                            </div>
                         </div>
                      </section>
 
                      {/* 2. Subscriptions */}
-                     <section id="subscriptions" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
+                     <section id="subscriptions" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
                         <div className="flex items-center gap-6 relative z-10">
                            <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                               <CreditCard className="w-8 h-8" />
@@ -148,7 +148,7 @@ const RefundPolicy = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                            {[
-                              { title: 'Plan Access', body: 'Provides access to all levels and quiz features for your plan.', icon: Zap, color: 'secondary' },
+                              { title: 'Plan Access', body: 'Provides access to all exam preparation features for your plan.', icon: Zap, color: 'secondary' },
                               { title: 'Plan Duration', body: 'Prepaid plans remain active until the expiration date.', icon: Clock, color: 'emerald' },
                               { title: 'Auto-Renewal', body: 'Your plan will automatically renew unless you cancel it.', icon: CircleCheck, color: 'primary' },
                               { title: 'Plan Upgrades', body: 'New pricing applies immediately when you upgrade your plan.', icon: ShieldCheck, color: 'indigo' }

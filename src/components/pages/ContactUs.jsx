@@ -232,7 +232,7 @@ const ContactUs = ({ contactInfo = {
                      { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'secondary' },
                      { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'blue' }
                   ].map((f, i) => (
-                     <Card key={i} className="p-6 lg:p-8 text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] bg-white dark:bg-slate-950/40 hover:shadow-xl transition-all group relative overflow-hidden">
+                     <Card key={i} className="p-6 lg:p-8 text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-xl transition-all group relative overflow-hidden">
                         <div className={`p-4 bg-${f.color === 'primary' ? 'primary' : f.color}-500/25 text-${f.color === 'primary' ? 'primary' : f.color}-500 rounded-2xl w-fit mx-auto border-2 border-transparent group-hover:border-current transition-all shadow-sm`}>
                            <f.icon className="w-6 h-6" />
                         </div>

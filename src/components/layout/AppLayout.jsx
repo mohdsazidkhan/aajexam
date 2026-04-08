@@ -34,6 +34,7 @@ import StudentBottomNav from '../navbars/StudentBottomNav';
 import AdminBottomNav from '../navbars/AdminBottomNav';
 import StudentSidebar from '../StudentSidebar';
 import Sidebar from '../Sidebar';
+import UnifiedFooter from '../UnifiedFooter';
 
 /**
  * AppLayout - The core layout wrapper for the gamified experience.
@@ -104,6 +105,7 @@ const AppLayout = ({ children }) => {
             </motion.div>
           </AnimatePresence>
         </div>
+        <UnifiedFooter />
       </main>
 
       {/* --- Bottom Nav (Mobile/Tablet Small) --- */}

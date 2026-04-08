@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
 	const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
 	const description = profile?.bio || `${name}'s profile on AajExam.`;
 	const image = profile?.profilePicture || '/logo.png';
-	const keywords = `${name}, profile, quizzes`;
+	const keywords = `${name}, profile, exams`;
 	const url = baseUrl ? `${baseUrl}/profile/${encodeURIComponent(username)}` : undefined;
 
 	return {

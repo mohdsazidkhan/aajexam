@@ -23,12 +23,12 @@ export default function HalalDisclaimer() {
                 <meta name="robots" content="index, follow" />
             </Head>
 
-            <div className="min-h-screen bg-white dark:bg-slate-950 font-outfit relative overflow-hidden">
+            <div className="min-h-screen  font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto px-4 lg:px-0 relative z-10 mt-4">
+                <div className="container mx-auto relative z-10 my-4">
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl p-4 md:p-8 lg:p-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 

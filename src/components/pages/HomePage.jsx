@@ -234,7 +234,7 @@ const HomePage = () => {
                      </div>
                      <div className="space-y-0.5 relative z-10 pt-2 lg:pt-8">
                         <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-[0.2em] lg:tracking-[0.3em]">PRACTICE</p>
-                        <h4 className="text-lg lg:text-4xl font-black font-outfit uppercase leading-none tracking-tighter text-content-primary">START <span className="block text-emerald-500 font-black">QUIZ</span></h4>
+                        <h4 className="text-lg lg:text-4xl font-black font-outfit uppercase leading-none tracking-tighter text-content-primary">START <span className="block text-emerald-500 font-black">TEST</span></h4>
                      </div>
                      <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-emerald-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
                   </Card>
@@ -277,9 +277,9 @@ const HomePage = () => {
             {/* --- Quick Actions --- */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 relative z-10 px-2 lg:px-4">
                {[
-                  { label: 'Start Quiz', path: '/search', icon: Gamepad2, cardClass: 'bg-primary-500 border-none shadow-duo-secondary text-white' },
+                  { label: 'Start Test', path: '/search', icon: Gamepad2, cardClass: 'bg-primary-500 border-none shadow-duo-secondary text-white' },
                   { label: 'All Tests', path: '/govt-exams', icon: Target, cardClass: 'bg-primary-500 border-none shadow-duo-primary text-white' },
-                  { label: 'Find Quizzes', path: '/search', icon: Search, cardClass: 'bg-indigo-500 border-none text-white shadow-[0_18px_35px_rgba(99,102,241,0.35)]' },
+                  { label: 'Find Tests', path: '/search', icon: Search, cardClass: 'bg-indigo-500 border-none text-white shadow-[0_18px_35px_rgba(99,102,241,0.35)]' },
                   { label: 'Support', path: '/contact', icon: MessageSquare, cardClass: 'bg-emerald-500 border-none shadow-duo-emerald text-white' }
                ].map((item, idx) => (
                   <motion.div key={idx} variants={itemVariants}>

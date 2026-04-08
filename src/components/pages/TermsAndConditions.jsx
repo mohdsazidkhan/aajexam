@@ -60,10 +60,10 @@ const TermsAndConditions = () => {
             />
          </Head>
 
-         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/20">
+            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 ">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ rotate: -10, opacity: 0 }}
@@ -85,7 +85,7 @@ const TermsAndConditions = () => {
                <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#6366f1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             </div>
 
-            <div className="container mx-auto px-6 lg:px-10 py-16 max-w-7xl">
+            <div className="container mx-auto max-w-7xl">
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                   {/* --- Sidebar Index --- */}
@@ -123,7 +123,7 @@ const TermsAndConditions = () => {
 
                      {/* 1. Acceptance of Terms */}
                      <section id="acceptance" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-10 lg:p-16 rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <CircleCheck className="w-8 h-8" />
@@ -142,7 +142,7 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 2. User Eligibility */}
-                     <section id="eligibility" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
+                     <section id="eligibility" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
                         <div className="flex items-center gap-6 relative z-10">
                            <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                               <UserCheck className="w-8 h-8" />
@@ -234,7 +234,7 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 5. Prohibited Activities */}
-                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
+                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
                         <div className="flex items-center gap-6">
                            <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-rose-500/10">
                               <Ban className="w-8 h-8" />

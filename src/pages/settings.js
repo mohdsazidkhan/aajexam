@@ -95,12 +95,12 @@ const SettingsPage = () => {
   ];
 
   if (loading) {
-    return <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><Loading size="md" /></div>;
+    return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
   }
 
   return (
     <MobileAppWrapper title="Account Settings">
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
         <div className="container mx-auto mt-4 max-w-5xl space-y-6 lg:space-y-12">

@@ -23,7 +23,7 @@ export default function Custom404() {
         <meta name="description" content="The page you're looking for doesn't exist" />
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center px-4 font-outfit relative overflow-hidden">
+      <div className="min-h-screen  flex items-center justify-center px-4 font-outfit relative overflow-hidden">
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />

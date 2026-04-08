@@ -10,11 +10,11 @@ export async function GET() {
         const defaultData = {
             platformPurpose: "AajExam is India's premier online platform for government exam preparation...",
             targetAudience: "Our platform is designed for students and professionals preparing for SSC, UPSC, Banking...",
-            educationalBenefits: "Regular practice through our quiz platform offers numerous educational benefits...",
-            learningMethodology: "AajExam employs a unique 10-level progression system...",
+            educationalBenefits: "Regular practice through our exam platform offers numerous educational benefits...",
+            learningMethodology: "AajExam employs a structured preparation methodology...",
             keyFeatures: [
-                { title: 'Level-Based Progression', description: '10 carefully designed levels...', icon: 'level' },
-                { title: 'Comprehensive Coverage', description: 'Quizzes covering all major government exam patterns...', icon: 'coverage' }
+                { title: 'Exam Preparation', description: 'Structured preparation for all major government exams...', icon: 'exam' },
+                { title: 'Comprehensive Coverage', description: 'Tests covering all major government exam patterns...', icon: 'coverage' }
             ],
             successStories: [],
             isActive: true,

@@ -27,7 +27,7 @@ export default function GovtExamsPreparation({ initialData }) {
                 <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
             </Head>
 
-            <div className="py-4 lg:py-8 h-auto lg:min-h-screen bg-white dark:bg-slate-950 px-4 font-outfit relative overflow-hidden">
+            <div className="py-4 lg:py-8 h-auto lg:min-h-screen  px-4 font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />

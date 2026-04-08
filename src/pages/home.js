@@ -15,11 +15,11 @@ export default function Home() {
     <>
       <Seo
         title="Home - AajExam Platform"
-        description="Welcome to AajExam! Explore trending quizzes, track your progress, climb the leaderboard, and challenge yourself with knowledge-based quizzes."
+        description="Welcome to AajExam! Explore practice tests, track your progress, climb the leaderboard, and prepare for government exams."
         noIndex={true}
       />
       <Head>
-        <meta name="keywords" content="home, quiz platform, trending quizzes, leaderboard, knowledge test" />
+        <meta name="keywords" content="home, exam platform, practice tests, leaderboard, government exam preparation" />
       </Head>
       <Suspense fallback={<HomePageSkeleton />}>
         <HomePage />

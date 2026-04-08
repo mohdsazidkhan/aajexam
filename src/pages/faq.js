@@ -5,7 +5,6 @@ import MobileAppWrapper from '../components/MobileAppWrapper';
 import AuthorBio from '../components/AuthorBio';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
 import { getCanonicalUrl } from '../utils/seo';
-import config from '../lib/config/appConfig';
 
 const FAQ = () => {
     const router = useRouter();
@@ -18,7 +17,7 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'What is AajExam?',
-                    a: 'AajExam is India\'s premier government exam preparation platform offering comprehensive practice tests for SSC, UPSC, Banking, Railway, and state-level competitive examinations. We provide 2000+ quizzes with a unique 10-level progression system designed to systematically improve your exam readiness.'
+                    a: 'AajExam is India\'s premier government exam preparation platform offering comprehensive practice tests for SSC, UPSC, Banking, Railway, and state-level competitive examinations. We provide thousands of practice tests designed to systematically improve your exam readiness.'
                 },
                 {
                     q: 'Who can use AajExam?',
@@ -26,7 +25,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'Is AajExam free to use?',
-                    a: 'Yes! We offer a Free plan that provides access to Levels 0-3 with hundreds of practice quizzes. For advanced levels and additional features, we offer Basic, Premium, and Pro subscription plans.'
+                    a: 'Yes! We offer a Free plan that provides access to hundreds of practice tests. For additional features and premium content, we offer Pro subscription plans.'
                 },
                 {
                     q: 'What exams does AajExam cover?',
@@ -35,24 +34,20 @@ const FAQ = () => {
             ]
         },
         {
-            category: 'Learning System',
+            category: 'Exam Preparation',
             icon: FaGraduationCap,
             questions: [
                 {
-                    q: 'How does the 10-level progression system work?',
-                    a: `Our platform features a structured ${config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD || 10}-level system (Starter to Legend) that gradually increases in difficulty. You progress through levels by completing quizzes and achieving minimum accuracy thresholds. Each level requires a specific number of quiz attempts (Level 1 requires 5 quizzes, Level 10 requires ${config.QUIZ_CONFIG.LEVEL_10_QUIZ_REQUIREMENT} quizzes). This ensures you build a strong foundation before advancing to complex topics.`
+                    q: 'How does the exam preparation system work?',
+                    a: 'Our platform offers structured practice tests that cover the full syllabus of major government exams. Tests are organized by exam type, subject, and difficulty. You can track your progress through detailed analytics and improve systematically.'
                 },
                 {
-                    q: 'What is a "high-score quiz"?',
-                    a: `A high-score quiz is any quiz where you achieve ${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% or higher accuracy. These quizzes count toward your monthly performance metrics and eligibility for the monthly recognition program.`
+                    q: 'Can I retake tests?',
+                    a: 'Yes! You can retake tests to improve your understanding and scores. However, only your first attempt counts toward leaderboard rankings to maintain fairness.'
                 },
                 {
-                    q: 'Can I retake quizzes?',
-                    a: 'Yes! You can retake quizzes to improve your understanding and scores. However, only your first attempt counts toward level progression and leaderboard rankings to maintain fairness.'
-                },
-                {
-                    q: 'How are quizzes structured?',
-                    a: 'Each quiz contains multiple-choice questions covering specific topics or exam patterns. Quizzes are timed to simulate real exam conditions. After completion, you receive detailed performance analytics including accuracy rate, time management, topic-wise breakdown, and comparative rankings.'
+                    q: 'How are practice tests structured?',
+                    a: 'Each practice test contains multiple-choice questions covering specific topics or exam patterns. Tests are timed to simulate real exam conditions. After completion, you receive detailed performance analytics including accuracy rate, time management, topic-wise breakdown, and comparative rankings.'
                 }
             ]
         },
@@ -62,7 +57,7 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'What are the different subscription plans?',
-                    a: 'We offer 4 plans: Free (Levels 0-3), Basic (Levels 0-6), Premium (Levels 0-9), and Pro (All Levels 0-10). Each higher tier unlocks more advanced content and features. Visit our pricing page for current rates and detailed feature comparisons.'
+                    a: 'We offer Free and Pro plans. The Free plan gives access to free practice tests for all exams. The Pro plan unlocks all premium tests, detailed score analysis, section-wise tracking, and additional features. Visit our pricing page for current rates.'
                 },
                 {
                     q: 'Are subscription fees refundable?',
@@ -70,7 +65,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'How do I upgrade my subscription?',
-                    a: 'You can upgrade your subscription anytime through your account dashboard. The upgrade takes effect immediately, and you\'ll gain access to higher-level content right away.'
+                    a: 'You can upgrade your subscription anytime through your account dashboard. The upgrade takes effect immediately, and you\'ll gain access to premium content right away.'
                 },
                 {
                     q: 'What payment methods do you accept?',
@@ -84,7 +79,7 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'How does the monthly recognition program work?',
-                    a: `Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. We reward the Top ${config.QUIZ_CONFIG.DAILY_WINNER_COUNT || 1} for Daily, Top ${config.QUIZ_CONFIG.WEEKLY_WINNER_COUNT || 3} for Weekly, and Top ${config.QUIZ_CONFIG.MONTHLY_WINNER_COUNT || 5} for Monthly eligible PRO users who win prizes from a dynamic prize pool. Eligibility requires: an active PRO subscription and completing ${config.QUIZ_CONFIG.MONTHLY_REWARD_QUIZ_REQUIREMENT} high-score quizzes (â‰¥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy) in the current month. Referral count is NOT required to qualify.`
+                    a: 'Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. Eligible PRO users who achieve top scores win prizes from a dynamic prize pool. Eligibility requires an active PRO subscription and consistent high-accuracy performance in the current month.'
                 },
                 {
                     q: 'When are monthly recognitions distributed?',
@@ -92,7 +87,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'Do my achievements carry over to the next month?',
-                    a: 'No. All monthly progress metrics reset on the 1st of each month. Each month is an independent recognition period. However, your overall level progression and total quiz count are permanent.'
+                    a: 'No. All monthly progress metrics reset on the 1st of each month. Each month is an independent recognition period. However, your overall progress and total test count are permanent.'
                 },
                 {
                     q: 'Can I be disqualified from recognition?',
@@ -128,15 +123,15 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'What analytics do I get access to?',
-                    a: 'You receive comprehensive analytics including: overall accuracy trends, time management metrics, subject-wise performance breakdown, comparative rankings with peers, level progression tracking, monthly performance reports, and detailed quiz-by-quiz analysis.'
+                    a: 'You receive comprehensive analytics including: overall accuracy trends, time management metrics, subject-wise performance breakdown, comparative rankings with peers, monthly performance reports, and detailed test-by-test analysis.'
                 },
                 {
                     q: 'How is my leaderboard rank calculated?',
-                    a: `Leaderboard rankings are based on multiple factors: number of high-score quizzes (â‰¥${config.QUIZ_CONFIG.QUIZ_HIGH_SCORE_PERCENTAGE || 60}% accuracy), overall accuracy percentage, total quizzes completed, and consistency of performance. The algorithm prioritizes quality (accuracy) over quantity.`
+                    a: 'Leaderboard rankings are based on multiple factors: number of high-score tests, overall accuracy percentage, total tests completed, and consistency of performance. The algorithm prioritizes quality (accuracy) over quantity.'
                 },
                 {
                     q: 'Can I see my performance history?',
-                    a: 'Yes! Your dashboard provides complete performance history including all quiz attempts, scores, time taken, and progress over time with visual charts and graphs.'
+                    a: 'Yes! Your dashboard provides complete performance history including all test attempts, scores, time taken, and progress over time with visual charts and graphs.'
                 }
             ]
         },
@@ -157,8 +152,8 @@ const FAQ = () => {
                     a: 'First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at support@mohdsazidkhan.com with details about the problem, your device, and browser information.'
                 },
                 {
-                    q: 'How do I report a quiz error or incorrect answer?',
-                    a: 'If you encounter an error in a quiz question or believe an answer is incorrect, please report it through the feedback option available after quiz completion, or email us at support@mohdsazidkhan.com with the quiz name and question details.'
+                    q: 'How do I report a test error or incorrect answer?',
+                    a: 'If you encounter an error in a test question or believe an answer is incorrect, please report it through the feedback option available after test completion, or email us at support@mohdsazidkhan.com with the test name and question details.'
                 }
             ]
         }
@@ -168,7 +163,6 @@ const FAQ = () => {
         category.questions.map(q => ({ question: q.q, answer: q.a }))
     );
 
-    const faqSchema = generateFAQSchema(allFAQs);
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
         { name: 'FAQ' }
@@ -178,7 +172,7 @@ const FAQ = () => {
         <MobileAppWrapper title="Frequently Asked Questions">
             <Head>
                 <title>Common Questions & Help Center | AajExam</title>
-                <meta name="description" content="Find answers to common questions about AajExam's 10-level government exam preparation system, monthly rewards, and subscription plans." />
+                <meta name="description" content="Find answers to common questions about AajExam's government exam preparation platform, monthly rewards, and subscription plans." />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content="FAQ - Help Center | AajExam" />
                 <meta property="og:description" content="Have questions about preparing for SSC, UPSC, or Banking exams? Check our frequently asked questions." />
@@ -199,8 +193,8 @@ const FAQ = () => {
                 />
             </Head>
 
-            <div className="min-h-screen bg-white dark:bg-slate-950">
-                <div className="container mx-auto px-4 lg:px-10 py-8 mt-0">
+            <div className="min-h-screen ">
+                <div className="container mx-auto mt-0">
                     {/* Hero Section */}
                     <div className="text-center mb-8 lg:mb-12">
                         <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
