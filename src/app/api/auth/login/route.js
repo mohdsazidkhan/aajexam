@@ -80,7 +80,6 @@ export async function POST(req) {
             await user.save();
         }
 
-        const levelInfo = await user.getLevelInfo();
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
         return successResponse({
@@ -97,8 +96,7 @@ export async function POST(req) {
                 subscriptionExpiry: user.subscriptionExpiry,
                 currentSubscription: user.currentSubscription,
                 badges: user.badges,
-                level: levelInfo?.currentLevel?.number || 0,
-                levelDetails: levelInfo,
+                level: user.globalLevel || 0,
                 profileCompletion: updatedProfileDetails,
                 walletBalance: user.walletBalance || 0
             }
