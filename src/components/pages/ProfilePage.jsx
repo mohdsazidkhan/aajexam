@@ -324,7 +324,6 @@ const ProfilePage = () => {
 
                 <div className="space-y-3">
                   {[
-                    { label: 'Open rewards', onClick: () => router.push('/rewards') },
                     { label: 'Manage subscription', onClick: () => router.push('/subscription') },
                     { label: 'Review account settings', onClick: () => router.push('/settings') },
                   ].map((item) => (

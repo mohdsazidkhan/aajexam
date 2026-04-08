@@ -243,22 +243,6 @@ const HomePage = () => {
                      <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-emerald-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
                   </Card>
 
-                  <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto" onClick={() => router.push('/rewards')}>
-                     <div className="flex justify-between items-start relative z-10">
-                        <div className="p-2 lg:p-5 bg-amber-50 dark:bg-amber-900/20 rounded-xl lg:rounded-2xl border-2 border-amber-100 dark:border-amber-800 shadow-inner">
-                           <Trophy className="w-5 h-5 lg:w-10 lg:h-10 text-amber-500 fill-amber-500" />
-                        </div>
-                        <motion.div whileHover={{ x: 5 }} className="hidden sm:block p-2 lg:p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
-                           <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-amber-600" />
-                        </motion.div>
-                     </div>
-                     <div className="space-y-0.5 relative z-10 pt-2 lg:pt-8">
-                        <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-[0.2em] lg:tracking-[0.3em]">WALLET</p>
-                        <h4 className="text-lg lg:text-4xl font-black font-outfit uppercase leading-none tracking-tighter text-content-primary">₹{user?.walletBalance || 0} <span className="block text-amber-500 text-[10px] lg:text-2xl font-black uppercase tracking-widest mt-0.5 lg:mt-2">Balance</span></h4>
-                     </div>
-                     <div className="absolute -bottom-4 -right-4 w-24 lg:w-32 h-24 lg:h-32 bg-amber-500/5 rounded-full blur-2xl lg:blur-3xl opacity-50" />
-                  </Card>
-
                   <Card variant="white" className="border-2 border-border-primary shadow-duo text-content-primary p-3 lg:p-10 flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-all rounded-[1.5rem] lg:rounded-[3.5rem] relative overflow-hidden h-36 lg:h-auto lg:col-span-1" onClick={() => router.push('/govt-exams')}>
                      <div className="flex justify-between items-start relative z-10">
                         <div className="p-2 lg:p-5 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl lg:rounded-2xl border-2 border-indigo-100 dark:border-indigo-800 shadow-inner">

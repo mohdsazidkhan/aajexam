@@ -7,26 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Home,
   Search,
-  HelpCircle,
-  BookOpen,
   GraduationCap,
-  PlusCircle,
-  Layout,
   Wallet,
-  CreditCard,
   TrendingUp,
   User,
-  Settings,
   LogOut,
   ChevronDown,
-  Award,
   Globe,
-  Zap,
-  Target,
-  History,
-  MessageSquare,
-  ShieldCheck,
-  X
+  ShieldCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -81,8 +69,6 @@ const StudentSidebar = () => {
     const username = user?.username;
     const children = [
       { path: '/profile', label: 'My Profile' },
-      { path: '/pro/questions/mine', label: 'My Questions' },
-      { path: '/pro/my-blogs', label: 'My Articles' },
     ];
     if (username) {
       children.push(
@@ -106,21 +92,7 @@ const StudentSidebar = () => {
     {
       title: 'STUDY CENTER',
       items: [
-        { path: '/questions/public', icon: HelpCircle, label: 'Questions' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
-      ]
-    },
-    {
-      title: 'REWARDS',
-      items: [
-        { path: '/rewards', icon: Award, label: 'Rewards' },
-      ]
-    },
-    {
-      title: 'CREATION',
-      items: [
-        { path: '/pro/questions/new', icon: PlusCircle, label: 'Add Question' },
-        { path: '/pro/create-blog', icon: MessageSquare, label: 'Write Article' },
       ]
     },
     {

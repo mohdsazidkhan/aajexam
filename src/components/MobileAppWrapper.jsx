@@ -51,7 +51,6 @@ const MobileAppWrapper = ({ children, title, showHeader = true }) => {
       '/reset-password': 'Reset Password',
       '/home': 'Home',
       '/search': 'Search',
-      '/rewards': 'Rewards',
       '/subscription': 'Subscription',
       '/profile': 'Profile',
       '/levels': 'Levels',
