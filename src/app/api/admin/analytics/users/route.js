@@ -33,12 +33,6 @@ export async function GET(req) {
             { $sort: { '_id.year': 1, '_id.month': 1, '_id.day': 1 } }
         ]);
 
-        const levelDistribution = await User.aggregate([
-            { $match: { role: 'student' } },
-            { $group: { _id: '$level.currentLevel', count: { $sum: 1 } } },
-            { $sort: { _id: 1 } }
-        ]);
-
         const subscriptionStats = await User.aggregate([
             { $match: { role: 'student' } },
             { $group: { _id: '$subscriptionStatus', count: { $sum: 1 } } }
@@ -49,7 +43,6 @@ export async function GET(req) {
             data: {
                 period: `${days} days`,
                 userGrowth,
-                levelDistribution,
                 subscriptionStats
             }
         });

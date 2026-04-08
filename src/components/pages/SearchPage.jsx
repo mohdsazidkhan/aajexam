@@ -330,7 +330,7 @@ const SearchPage = () => {
                                     </div>
                                     <div className="min-w-0">
                                        <h3 className="text-lg font-black font-outfit truncate">{item.name || item.username}</h3>
-                                       <p className="text-sm font-medium text-content-secondary">Level {item.level?.currentLevel || 1} student</p>
+                                       <p className="text-sm font-medium text-content-secondary">Student</p>
                                     </div>
                                  </div>
                                  <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl mt-6 border border-border-primary">

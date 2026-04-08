@@ -41,14 +41,6 @@ export async function POST(req) {
             }, { status: 400 });
         }
 
-        // Check if user is Top Performer
-        if (!user.isTopPerformer) {
-            return NextResponse.json({
-                success: false,
-                message: 'You must be a Top Performer in the previous month to withdraw'
-            }, { status: 403 });
-        }
-
         // Check if user already has a pending withdrawal request
         const existingPendingRequest = await WithdrawRequest.findOne({
             userId: user._id,
@@ -72,8 +64,7 @@ export async function POST(req) {
             requestedAt: new Date(),
             metadata: {
                 type: 'referral_historical_reward',
-                walletBalance: user.walletBalance,
-                isTopPerformer: user.isTopPerformer
+                walletBalance: user.walletBalance
             }
         });
 

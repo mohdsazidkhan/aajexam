@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
         const skip = (page - 1) * limit;
 
         const followers = await Follow.find({ following: id, status: 'active' })
-            .populate('follower', 'name username profilePicture level.currentLevel level.levelName followersCount followingCount')
+            .populate('follower', 'name username profilePicture followersCount followingCount')
             .skip(skip).limit(limit).sort({ createdAt: -1 });
 
         const total = await Follow.countDocuments({ following: id, status: 'active' });

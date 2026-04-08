@@ -221,14 +221,14 @@ export default function UserDetailsPage() {
                                   </td>
                                   <td className="px-4 lg:px-8 py-3 lg:py-6">
                                      <div className="text-center">
-                                        <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">Level {u.level?.currentLevel || 0}</div>
-                                        <div className="text-[8px] font-black text-slate-400 uppercase">{u.level?.levelName || 'Starter'}</div>
+                                        <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">Level {0}</div>
+                                        <div className="text-[8px] font-black text-slate-400 uppercase">{'Student'}</div>
                                      </div>
                                   </td>
                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                      <div className="flex flex-col items-end gap-1">
                                         <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'Free'}</div>
-                                        <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest">Level {u.level?.currentLevel || 1}</div>
+                                        <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest">Level {0}</div>
                                      </div>
                                   </td>
                                </motion.tr>
@@ -253,9 +253,9 @@ export default function UserDetailsPage() {
                             <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border border-slate-100 dark:border-white/10">
                                <div className="flex justify-between items-end gap-3 text-center">
                                   <div className="flex-1">
-                                     <div className="text-sm font-black text-slate-900 dark:text-white">Level {u.level?.currentLevel || 0}</div>
+                                     <div className="text-sm font-black text-slate-900 dark:text-white">Level {0}</div>
                                      <div className="h-1 w-full rounded-full bg-primary-500 my-1 opacity-50" />
-                                     <div className="text-[8px] font-black text-slate-400 uppercase">{u.level?.levelName || 'Starter'}</div>
+                                     <div className="text-[8px] font-black text-slate-400 uppercase">{'Student'}</div>
                                   </div>
                                </div>
                             </div>
@@ -282,13 +282,13 @@ export default function UserDetailsPage() {
                                      <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{u.name || 'Anonymous'}</h3>
                                      <div className="flex items-center gap-3">
                                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">@{u.username || 'unknown'}</span>
-                                        <span className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase border border-primary-500/20 text-primary-500`}>Level {u.level?.currentLevel || 1}</span>
+                                        <span className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase border border-primary-500/20 text-primary-500`}>Level {0}</span>
                                      </div>
                                   </div>
                                   <div className="flex gap-3 lg:gap-8">
                                      <div className="text-center">
-                                        <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">Level {u.level?.currentLevel || 0}</div>
-                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{u.level?.levelName || 'Starter'}</div>
+                                        <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">Level {0}</div>
+                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{'Student'}</div>
                                      </div>
                                   </div>
                                </div>

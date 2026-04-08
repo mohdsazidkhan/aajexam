@@ -101,8 +101,8 @@ const UserAnalytics = () => {
     if (!data?.topPerformers?.length) return;
     const rows = data.topPerformers.map(u => ({
       Name: u.name || 'Unknown',
-      Level: u.level?.currentLevel || 0,
-      'High Score Quizzes': u.level?.highScoreQuizzes || 0,
+      Level: 0,
+      'High Score Quizzes': 0,
       Subscription: u.subscriptionStatus || 'free'
     }));
     exportCSV(rows, 'top_performers.csv');

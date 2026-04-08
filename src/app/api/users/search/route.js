@@ -15,7 +15,7 @@ export async function GET(req) {
 
         const searchRegex = new RegExp(query.trim(), 'i');
         const users = await User.find({ $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' })
-            .select('name username profilePicture level.currentLevel level.levelName followersCount followingCount bio')
+            .select('name username profilePicture followersCount followingCount bio')
             .skip(skip).limit(limit).sort({ followersCount: -1 });
 
         const total = await User.countDocuments({ $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' });

@@ -256,10 +256,10 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div>
           <div className="text-sm text-gray-900 dark:text-white">
-            Level {student.level?.currentLevel || 1}
+            Level 0
           </div>
           <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
-            {getLevelName(student.level?.currentLevel || 1)}
+            {'Student'}
           </div>
         </div>
       )
@@ -429,7 +429,7 @@ const StudentsPage = () => {
                  { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'blue' },
                  { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
                  { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'pro').length || 0, icon: Crown, color: 'amber' },
-                 { label: 'New Signups', value: students.filter(s => s.level?.currentLevel <= 1).length || 0, icon: Star, color: 'indigo' }
+                 { label: 'New Signups', value: students.length || 0, icon: Star, color: 'indigo' }
                ].map((stat, i) => (
                  <div
                    key={stat.label}
@@ -583,8 +583,8 @@ const StudentsPage = () => {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex flex-col">
-                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Level {student.level?.currentLevel || 1}</div>
-                                 <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{getLevelName(student.level?.currentLevel || 1)}</div>
+                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Level 0</div>
+                                 <div className="text-[8px] font-bold text-indigo-500 uppercase tracking-[0.2em]">{'Student'}</div>
                                </div>
                              </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -640,7 +640,7 @@ const StudentsPage = () => {
                             </div>
                              <div className="flex items-center gap-2">
                                <Crown className="w-4 h-4 text-amber-500/50" />
-                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Level {student.level?.currentLevel || 1} - {getLevelName(student.level?.currentLevel || 1)}</span>
+                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Student</span>
                              </div>
                           </div>
                         </div>
@@ -682,7 +682,7 @@ const StudentsPage = () => {
                         <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                            <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Level</div>
-                             <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter">{student.level?.currentLevel || 1}</div>
+                             <div className="text-sm font-black text-indigo-500 tabular-nums tracking-tighter">{0}</div>
                            </div>
                            <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                              <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>

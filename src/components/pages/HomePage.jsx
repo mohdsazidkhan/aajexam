@@ -76,13 +76,10 @@ const HomePage = () => {
    // --- Extract Performance Data ---
    const metrics = performanceReport?.performanceMetrics || {};
    const examStats = metrics.examStats || {};
-   const rewardStats = metrics.rewardStats || {};
 
    const overallReadiness = examStats.overallReadiness ?? 0;
    const averageMockScore = examStats.averageMockScore ?? 0;
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
-   const streakCount = rewardStats.participationStreak ?? user?.streak ?? 0;
-   const totalWon = rewardStats.totalWon ?? 0;
 
    const coinsEarned = user?.coins || 0;
 
@@ -157,7 +154,7 @@ const HomePage = () => {
                            <Target className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-500" /> Readiness: <span className="text-content-primary">{overallReadiness}%</span>
                         </div>
                         <div className="flex items-center gap-1.5 text-[10px] lg:text-xs font-black text-content-secondary tracking-[0.08em] bg-background-page px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 border-border-primary">
-                           <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" /> Total Rewards Won: <span className="text-content-primary">{totalWon}</span>
+                           <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" /> Avg Score: <span className="text-content-primary">{averageMockScore}%</span>
                         </div>
                      </div>
                   </div>

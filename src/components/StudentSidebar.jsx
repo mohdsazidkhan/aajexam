@@ -43,7 +43,6 @@ const StudentSidebar = () => {
   const authenticated = isAuthenticated();
 
   const [walletBalance, setWalletBalance] = useState(0);
-  const [claimableRewards, setClaimableRewards] = useState(0);
   const fetchRef = useRef(false);
 
   useEffect(() => {
@@ -53,7 +52,6 @@ const StudentSidebar = () => {
           const res = await API.getWalletData();
           if (res?.success && res.data) {
             setWalletBalance(res.data.walletBalance || 0);
-            setClaimableRewards(res.data.claimableRewards || 0);
           }
         } catch (err) { console.error('Wallet Stats offline'); }
       }
@@ -115,7 +113,7 @@ const StudentSidebar = () => {
     {
       title: 'REWARDS',
       items: [
-        { path: '/rewards', icon: Award, label: 'Rewards', badge: claimableRewards > 0 ? `₹${claimableRewards}` : null, badgeColor: 'primary' },
+        { path: '/rewards', icon: Award, label: 'Rewards' },
       ]
     },
     {

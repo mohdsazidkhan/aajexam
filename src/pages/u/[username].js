@@ -198,8 +198,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             </h2>
             <div className="flex flex-wrap items-center gap-8">
               <div className="flex flex-col items-center px-10 py-6 bg-primary-500 rounded-3xl text-white shadow-duo-primary border-b-8 border-primary-700">
-                <span className="text-5xl font-black leading-none">{profile.level?.currentLevel?.number || 0}</span>
-                <span className="text-[10px] font-black uppercase tracking-widest mt-3">{profile.level?.currentLevel?.name || 'Starter'}</span>
+                <span className="text-5xl font-black leading-none">{0}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest mt-3">{'Student'}</span>
               </div>
               {profile.badges && profile.badges.length > 0 && (
                 <div className="flex flex-wrap gap-4">
@@ -227,19 +227,19 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
                   <span className="text-4xl font-black text-primary-600 group-hover:scale-110 transition-transform">
-                    {profile.level?.progress?.quizzesPlayed || 0}
+                    {0}
                   </span>
                   <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">Total Quizzes</span>
                 </div>
                 <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
                   <span className="text-4xl font-black text-emerald-600 group-hover:scale-110 transition-transform">
-                    {profile.level?.stats?.highScoreRate || 0}%
+                    {0}%
                   </span>
                   <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">High Score Rate</span>
                 </div>
                 <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 group hover:shadow-lg transition-all">
                   <span className="text-4xl font-black text-orange-600 group-hover:scale-110 transition-transform">
-                    {profile.level?.stats?.averageScore || 0}%
+                    {0}%
                   </span>
                   <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-4 text-center">Average Score</span>
                 </div>

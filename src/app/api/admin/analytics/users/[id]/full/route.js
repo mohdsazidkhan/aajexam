@@ -79,7 +79,6 @@ export async function GET(req, { params }) {
                     _id: userDoc._id,
                     name: userDoc.name,
                     email: userDoc.email,
-                    level: userDoc.level,
                     subscriptionStatus: userDoc.subscriptionStatus,
                     createdAt: userDoc.createdAt
                 },

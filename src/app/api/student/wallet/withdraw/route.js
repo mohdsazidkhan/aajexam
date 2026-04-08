@@ -23,7 +23,6 @@ export async function POST(req) {
 
         if (amount < MIN_WITHDRAW_AMOUNT) return NextResponse.json({ success: false, message: `Min withdrawal ₹${MIN_WITHDRAW_AMOUNT}` }, { status: 400 });
         if ((user.walletBalance || 0) < amount) return NextResponse.json({ success: false, message: 'Insufficient balance' }, { status: 400 });
-        if (!user.isTopPerformer) return NextResponse.json({ success: false, message: 'Top Performer status required' }, { status: 403 });
 
         const existingPending = await WithdrawRequest.findOne({ userId, status: 'pending' });
         if (existingPending) return NextResponse.json({ success: false, message: 'Pending request exists' }, { status: 400 });

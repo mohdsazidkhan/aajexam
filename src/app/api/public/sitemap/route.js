@@ -11,7 +11,7 @@ export async function GET() {
         await dbConnect();
 
         const [users, examCategories, exams, patterns, tests] = await Promise.all([
-            User.find({ role: 'student', status: 'active' }).select('username').limit(1000).sort({ 'level.totalScore': -1 }).lean(),
+            User.find({ role: 'student', status: 'active' }).select('username').limit(1000).sort({ createdAt: -1 }).lean(),
             ExamCategory.find({}).select('name type').lean(),
             Exam.find({ isActive: true }).select('name code').lean(),
             ExamPattern.find({}).select('title').lean(),

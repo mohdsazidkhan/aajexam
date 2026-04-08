@@ -14,7 +14,7 @@ export async function GET(req) {
         if (!auth.authenticated) return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
 
         const userId = auth.user.id;
-        const user = await User.findById(userId).select('walletBalance referralRewards referralCode referredBy isTopPerformer referralCount');
+        const user = await User.findById(userId).select('walletBalance referralRewards referralCode referredBy referralCount subscriptionStatus');
 
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
@@ -46,11 +46,10 @@ export async function GET(req) {
                 walletBalance: user.walletBalance || 0,
                 referralCode: user.referralCode,
                 referredBy: user.referredBy,
-                isTopPerformer: user.isTopPerformer || false,
                 referralRewards: user.referralRewards || [],
                 referralCount: user.referralCount || 0,
                 transactions: transactions,
-                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && (user.isTopPerformer || false),
+                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && user.subscriptionStatus === 'pro',
                 hasPendingRequest: !!pendingRequest,
                 pendingRequest: pendingRequest,
                 withdrawalRequests: withdrawalRequests || []

@@ -40,7 +40,7 @@ export async function GET(req) {
         
         const [bankDetails, userStates] = await Promise.all([
             BankDetail.find({ user: { $in: userIds } }).lean(),
-            User.find({ _id: { $in: userIds } }).select('walletBalance isTopPerformer').lean()
+            User.find({ _id: { $in: userIds } }).select('walletBalance subscriptionStatus').lean()
         ]);
 
         const bankDetailsMap = bankDetails.reduce((acc, bd) => {
@@ -57,14 +57,11 @@ export async function GET(req) {
             const userIdStr = item.userId?._id?.toString();
             const bankDetail = userIdStr ? bankDetailsMap[userIdStr] : null;
             const userState = userIdStr ? usersMap[userIdStr] : null;
-            const isReferralWithdrawal = item.metadata?.isTopPerformer !== undefined;
-
             return {
                 ...item,
                 bankDetail,
                 userWalletBalance: userState?.walletBalance || 0,
-                userIsTopPerformer: userState?.isTopPerformer || false,
-                requestType: isReferralWithdrawal ? 'referral' : 'pro'
+                userIsPro: userState?.subscriptionStatus === 'pro'
             };
         });
 

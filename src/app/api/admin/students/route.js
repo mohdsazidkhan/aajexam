@@ -15,21 +15,16 @@ export async function GET(req) {
         const page = parseInt(searchParams.get('page'));
         const limit = parseInt(searchParams.get('limit'));
         const search = searchParams.get('search');
-        const level = searchParams.get('level');
 
         let query = { role: 'student' };
         if (search && search.trim()) {
             const regex = new RegExp(search.trim(), 'i');
             query.$or = [{ name: regex }, { email: regex }, { phone: regex }];
         }
-        if (level) {
-            query['level.currentLevel'] = parseInt(level);
-        }
-
         if (!isNaN(page) && !isNaN(limit)) {
             const skip = (page - 1) * limit;
             const students = await User.find(query)
-                .select('name email phone username walletBalance role level subscriptionStatus referralCode status isBlocked socialLinks createdAt')
+                .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
                 .sort({ createdAt: -1 })
                 .skip(skip)
                 .limit(limit);
@@ -44,7 +39,7 @@ export async function GET(req) {
             });
         } else {
             const students = await User.find(query)
-                .select('name email phone username walletBalance role level subscriptionStatus referralCode status isBlocked socialLinks createdAt')
+                .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
                 .sort({ createdAt: -1 });
 
             return NextResponse.json({ success: true, students });

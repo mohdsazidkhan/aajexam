@@ -35,9 +35,6 @@ export async function GET(req, { params }) {
                 username: user.username,
                 bio: user.bio,
                 profilePicture: user.profilePicture,
-                level: user.level,
-                currentLevel: user.level?.currentLevel || 0,
-                levelName: user.level?.levelName || 'Starter',
                 badges: user.badges,
                 followersCount,
                 followingCount,
@@ -47,12 +44,7 @@ export async function GET(req, { params }) {
             },
             isFollowing: !!isFollowing,
             isOwnProfile,
-            stats: {
-                totalQuizzes: 0,
-                highScoreQuizzes: 0,
-                averageScore: 0,
-                topQuizzes: []
-            }
+            stats: {}
         });
     } catch (error) {
         return errorResponse(error);

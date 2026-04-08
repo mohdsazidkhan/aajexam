@@ -161,17 +161,17 @@ const AdminPrevMonthPlayedUsers = () => {
   const sortedUsers = [...users].sort((a, b) => {
     let aValue, bValue;
     if (sortBy === 'highScoreQuiz') {
-      aValue = (a.level?.highScoreQuizzes || 0);
-      bValue = (b.level?.highScoreQuizzes || 0);
+      aValue = 0;
+      bValue = 0;
     } else if (sortBy === 'accuracy') {
-      aValue = (a.level?.averageScore || 0);
-      bValue = (b.level?.averageScore || 0);
+      aValue = 0;
+      bValue = 0;
     } else if (sortBy === 'score') {
       aValue = (a.getScore || 0);
       bValue = (b.getScore || 0);
     } else if (sortBy === 'totalQuizzes') {
-      aValue = (a.level?.quizzesPlayed || 0);
-      bValue = (b.level?.quizzesPlayed || 0);
+      aValue = 0;
+      bValue = 0;
     } else return 0;
     return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
   });
@@ -436,8 +436,8 @@ const AdminPrevMonthPlayedUsers = () => {
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center tabular-nums italic text-slate-900 dark:text-white">{user.monthYear}</td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                              <div className="flex flex-col items-center">
-                                                <span className="text-indigo-500 text-sm italic tracking-tighter">Level {user.level?.currentLevel || 0}</span>
-                                                <span className="text-[8px] opacity-40">{user.level?.levelName || 'Starter'}</span>
+                                                <span className="text-indigo-500 text-sm italic tracking-tighter">Level 0</span>
+                                                <span className="text-[8px] opacity-40">{'Student'}</span>
                                              </div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
@@ -445,15 +445,15 @@ const AdminPrevMonthPlayedUsers = () => {
                                                 {user.subscriptionStatus?.toUpperCase() || 'FREE'}
                                              </div>
                                           </td>
-                                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-center text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.level?.quizzesPlayed || 0}</td>
+                                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-center text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{0}</td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                              <div className="flex items-center justify-center gap-2 text-emerald-500">
                                                 <Trophy className="w-3 h-3" />
-                                                <span className="text-sm italic tracking-tighter tabular-nums">{user.level?.highScoreQuizzes || 0}</span>
+                                                <span className="text-sm italic tracking-tighter tabular-nums">{0}</span>
                                              </div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                             <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.level?.averageScore || 0}%</div>
+                                             <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{0}%</div>
                                           </td>
                                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                              <div className="text-sm italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.getScore} / {user.totalScore}</div>
@@ -502,15 +502,15 @@ const AdminPrevMonthPlayedUsers = () => {
                               <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Quizzes Taken</div>
-                                    <div className="text-xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.level?.quizzesPlayed || 0}</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{0}</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-emerald-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Top Score Wins</div>
-                                    <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.level?.highScoreQuizzes || 0}</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{0}</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-indigo-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Accuracy</div>
-                                    <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{user.level?.averageScore || 0}%</div>
+                                    <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{0}%</div>
                                  </div>
                                  <div className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 group-hover:border-rose-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Score</div>
@@ -562,7 +562,7 @@ const AdminPrevMonthPlayedUsers = () => {
                                     </div>
                                     <div className="flex items-center gap-2">
                                        <Award className="w-4 h-4 text-amber-500" />
-                                       <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic">Level {user.level?.currentLevel || 0}</span>
+                                       <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic">Level {0}</span>
                                     </div>
                                  </div>
                               </div>
@@ -570,11 +570,11 @@ const AdminPrevMonthPlayedUsers = () => {
                               <div className="flex gap-4">
                                  <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Quizzes Taken</div>
-                                    <div className="text-2xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{user.level?.quizzesPlayed || 0}</div>
+                                    <div className="text-2xl font-black italic tracking-tighter text-slate-900 dark:text-white tabular-nums">{0}</div>
                                  </div>
                                  <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-emerald-500/20 transition-all">
                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Top Score Wins</div>
-                                    <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{user.level?.highScoreQuizzes || 0}</div>
+                                    <div className="text-2xl font-black italic tracking-tighter text-emerald-500 tabular-nums">{0}</div>
                                  </div>
                               </div>
 

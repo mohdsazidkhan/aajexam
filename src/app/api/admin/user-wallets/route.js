@@ -37,7 +37,7 @@ export async function GET(req) {
         }
 
         const students = await User.find({ ...query, role: 'student' })
-            .select('name email phone walletBalance referralCount referralEarnings level status subscriptionStatus claimableRewards createdAt')
+            .select('name email phone walletBalance referralCount referralEarnings status subscriptionStatus createdAt')
             .sort({ [sortField]: sortOrder })
             .skip(skip)
             .limit(limit);

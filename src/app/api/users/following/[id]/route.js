@@ -21,7 +21,7 @@ export async function GET(req, { params }) {
         }
 
         const following = await Follow.find({ follower: userId, status: 'active' })
-            .populate('following', 'name username profilePicture level.currentLevel level.levelName followersCount followingCount')
+            .populate('following', 'name username profilePicture followersCount followingCount')
             .skip(skip)
             .limit(limit)
             .sort({ createdAt: -1 });

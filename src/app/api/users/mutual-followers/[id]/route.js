@@ -41,7 +41,7 @@ export async function GET(req, { params }) {
         const mutual = mutualIds.filter(id => targetFollowerIdStrings.includes(id.toString()));
 
         const mutualUsers = await User.find({ _id: { $in: mutual } })
-            .select('name username profilePicture level.currentLevel level.levelName');
+            .select('name username profilePicture');
 
         return NextResponse.json({
             success: true,

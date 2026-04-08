@@ -15,7 +15,7 @@ export async function GET(req) {
         
         // Fetch only the performanceMetrics and primaryTargetExam fields for maximum speed
         const user = await User.findById(userId)
-            .select('performanceMetrics primaryTargetExam name')
+            .select('performanceMetrics.examStats primaryTargetExam name')
             .lean();
 
         if (!user) {

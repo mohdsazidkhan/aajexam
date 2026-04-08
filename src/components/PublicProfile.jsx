@@ -141,7 +141,7 @@ const PublicProfile = ({ username }) => {
                     className="w-24 lg:w-48 h-24 lg:h-48 lg:w-56 lg:h-56 rounded-[3.2rem] border-[10px] border-white dark:border-slate-800 shadow-2xl object-cover relative z-10 transition-transform group-hover:scale-110"
                   />
                   <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
-                    <span className="text-xl font-black uppercase tracking-widest">PHASE {profile.level?.currentLevel?.number || 0}</span>
+                    <span className="text-xl font-black uppercase tracking-widest">{profile.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
               ) : (
@@ -149,7 +149,7 @@ const PublicProfile = ({ username }) => {
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                   <span className="relative z-10">{profile.name?.charAt(0)?.toUpperCase() || 'U'}</span>
                   <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
-                    <span className="text-xl font-black uppercase tracking-widest">PHASE {profile.level?.currentLevel?.number || 0}</span>
+                    <span className="text-xl font-black uppercase tracking-widest">{profile.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
               )}
@@ -227,8 +227,8 @@ const PublicProfile = ({ username }) => {
             <div className="flex flex-col sm:flex-row items-center gap-12">
               <div className="flex flex-col items-center justify-center p-10 bg-primary-500 rounded-[2.5rem] text-white min-w-[200px] shadow-duo-primary border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-0 transition-transform">
                 <span className="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Phase</span>
-                <span className="text-6xl font-black my-1 uppercase tracking-tighter">{profile.level?.currentLevel?.number || 0}</span>
-                <span className="text-xs font-black uppercase tracking-[0.2em]">{profile.level?.currentLevel?.name || 'Initiate'}</span>
+                <span className="text-6xl font-black my-1 uppercase tracking-tighter">{0}</span>
+                <span className="text-xs font-black uppercase tracking-[0.2em]">{'Student'}</span>
               </div>
               <div className="flex-1">
                 {profile.badges && profile.badges.length > 0 ? (
@@ -259,19 +259,19 @@ const PublicProfile = ({ username }) => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
                   <span className="text-5xl font-black text-primary-700 dark:text-primary-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
-                    {profile.level?.progress?.quizzesPlayed || 0}
+                    {0}
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Ops Completed</span>
                 </div>
                 <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
                   <span className="text-5xl font-black text-primary-700 dark:text-primary-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
-                    {profile.level?.stats?.highScoreRate || 0}%
+                    {0}%
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Strike Accuracy</span>
                 </div>
                 <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-purple-500 transition-all">
                   <span className="text-5xl font-black text-purple-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
-                    {profile.level?.stats?.averageScore || 0}%
+                    {0}%
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Core Mean</span>
                 </div>

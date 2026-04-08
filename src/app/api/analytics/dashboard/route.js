@@ -29,15 +29,9 @@ export async function GET(req) {
             { $group: { _id: '$subscriptionStatus', count: { $sum: 1 } } }
         ]);
 
-        const levelDistribution = await User.aggregate([
-            { $match: { role: 'student' } },
-            { $group: { _id: '$level.currentLevel', count: { $sum: 1 } } },
-            { $sort: { _id: 1 } }
-        ]);
-
         const topUsers = await User.find({ role: 'student' })
-            .select('name level subscriptionStatus')
-            .sort({ 'level.currentLevel': -1 })
+            .select('name subscriptionStatus')
+            .sort({ createdAt: -1 })
             .limit(limit).lean();
 
         return NextResponse.json({
@@ -48,7 +42,7 @@ export async function GET(req) {
                     totalSubscriptions,
                     currentMonthActiveProUsers: activeProUsers
                 },
-                subscriptionDistribution, levelDistribution, topUsers
+                subscriptionDistribution, topUsers
             }
         });
     } catch (error) {

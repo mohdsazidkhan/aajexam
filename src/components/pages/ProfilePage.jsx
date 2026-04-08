@@ -87,24 +87,18 @@ const ProfilePage = () => {
         tone: 'bg-emerald-500/10 text-emerald-500',
       },
       {
-        label: 'Rewards to claim',
-        value: formatCurrency(student?.claimableRewards || 0),
-        icon: Trophy,
-        tone: 'bg-primary-500/10 text-primary-600',
-      },
-      {
         label: 'Referrals',
         value: student?.referralCount || 0,
         icon: User,
         tone: 'bg-primary-500/10 text-primary-700 dark:text-primary-500',
       },
     ],
-    [student?.claimableRewards, student?.referralCount, student?.streak, student?.walletBalance]
+    [student?.referralCount, student?.streak, student?.walletBalance]
   );
 
   const performanceStats = [
-    { label: 'Current Level', value: student?.level?.currentLevel || 0 },
-    { label: 'Level Name', value: student?.level?.levelName || 'Starter' },
+    { label: 'Tests Attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
+    { label: 'Avg Score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
   ];
 
   const accountDetails = [

@@ -27,37 +27,28 @@ export async function PATCH(req, { params }) {
             return NextResponse.json({ message: 'Withdraw request not found' }, { status: 404 });
         }
 
-        const isReferralWithdrawal = wr.metadata?.isTopPerformer !== undefined;
         wr.status = status;
 
         if (status === 'approved' || status === 'rejected' || status === 'paid') {
-            if (isReferralWithdrawal) {
-                const user = await User.findById(wr.userId);
-                if (!user) {
-                    return NextResponse.json({ message: 'User not found' }, { status: 404 });
-                }
-
-                const currentBalance = user.walletBalance || 0;
-                await User.findByIdAndUpdate(wr.userId, { $set: { walletBalance: 0 } });
-
-                await WalletTransaction.create({
-                    user: wr.userId,
-                    type: 'debit',
-                    amount: currentBalance,
-                    balance: 0,
-                    description: `Withdrawal ${status} - ₹${currentBalance}`,
-                    category: 'withdrawal',
-                    status: (status === 'approved' || status === 'paid') ? 'completed' : 'cancelled',
-                    reference: wr._id.toString(),
-                    metadata: { withdrawRequestId: wr._id, requestStatus: status, originalAmount: wr.amount }
-                });
-            } else {
-                const wallet = await UserWallet.findOne({ userId: wr.userId });
-                if (wallet) {
-                    wallet.balance = 0;
-                    await wallet.save();
-                }
+            const user = await User.findById(wr.userId);
+            if (!user) {
+                return NextResponse.json({ message: 'User not found' }, { status: 404 });
             }
+
+            const currentBalance = user.walletBalance || 0;
+            await User.findByIdAndUpdate(wr.userId, { $set: { walletBalance: 0 } });
+
+            await WalletTransaction.create({
+                user: wr.userId,
+                type: 'debit',
+                amount: currentBalance,
+                balance: 0,
+                description: `Withdrawal ${status} - ₹${currentBalance}`,
+                category: 'withdrawal',
+                status: (status === 'approved' || status === 'paid') ? 'completed' : 'cancelled',
+                reference: wr._id.toString(),
+                metadata: { withdrawRequestId: wr._id, requestStatus: status, originalAmount: wr.amount }
+            });
 
             if (status === 'paid') {
                 wr.processedAt = new Date();

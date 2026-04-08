@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
-import config, { getConfig } from '../lib/config/appConfig';
 import './Subscription'; // Ensure Subscription model is registered
 
 const userSchema = new mongoose.Schema({
@@ -59,13 +58,6 @@ const userSchema = new mongoose.Schema({
     purchasedAt: { type: Date, default: Date.now },
     firstTime: { type: Boolean, default: true }
   }],
-  isTopPerformer: { type: Boolean, default: false },
-
-  // Phase 3: Lifetime level — NEVER resets between competitions.
-  // Computed from total all-time quiz attempts.
-  // Replaces the per-period currentLevel for all permanent UI displays.
-  globalLevel: { type: Number, default: 0, min: 0 },
-  globalLevelName: { type: String, default: 'Starter' },
 
   // Subscription related fields
   currentSubscription: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' },
@@ -77,12 +69,6 @@ const userSchema = new mongoose.Schema({
   subscriptionExpiry: { type: Date },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
-
-  // Monthly rewards tracking
-  claimableRewards: {
-    type: Number,
-    default: 0
-  },
 
   // Profile completion tracking
   profileCompleted: { type: Boolean, default: false },
@@ -98,22 +84,9 @@ const userSchema = new mongoose.Schema({
   statusChangedAt: { type: Date, default: Date.now },
   statusChangedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null }, // Admin who changed status
 
-  // Quiz creation milestone tracking
-  quizMilestones: [{
-    count: Number,           // 9, 49, or 99
-    tier: String,            // 'pro'
-    achievedAt: Date,
-    extended: Boolean        // true if subscription was extended, false if new
-  }],
-
   // AajExam Transformation Fields
   primaryTargetExam: { type: String, default: 'General' }, // e.g. SSC-CHSL, UPSC-CSE
   performanceMetrics: {
-    rewardStats: {
-      totalWon: { type: Number, default: 0 },
-      bestRank: { type: Number, default: null },
-      participationStreak: { type: Number, default: 0 }
-    },
     examStats: {
       overallReadiness: { type: Number, default: 0 }, // 0-100 scale
       subjectAccuracy: {
@@ -136,59 +109,24 @@ userSchema.index({ username: 1 }, { unique: true, sparse: true });
 userSchema.index({ referralCode: 1 }, { unique: true });
 userSchema.index({ referredBy: 1 });
 userSchema.index({ subscriptionStatus: 1, subscriptionExpiry: 1 });
-userSchema.index({ isTopPerformer: 1 });
 userSchema.index({ status: 1 });
 userSchema.index({ createdAt: -1 });
 
-// Get level config from database (MANDATORY)
-userSchema.statics.getLevelConfig = async function (useCache = true) {
-  return this.LEVEL_CONFIG;
-};
-
-// Static level thresholds for synchronous lookup (Must match database!)
-userSchema.statics.LEVEL_CONFIG = {
-  0: { name: 'Starter', quizzesRequired: 0, description: 'Start your journey!' },
-  1: { name: 'Rookie', quizzesRequired: 5, description: 'Begin your quiz journey' },
-  2: { name: 'Explorer', quizzesRequired: 10, description: 'Discover new challenges' },
-  3: { name: 'Thinker', quizzesRequired: 15, description: 'Develop critical thinking' },
-  4: { name: 'Strategist', quizzesRequired: 20, description: 'Master quiz strategies' },
-  5: { name: 'Achiever', quizzesRequired: 25, description: 'Reach new heights' },
-  6: { name: 'Mastermind', quizzesRequired: 30, description: 'Become a quiz expert' },
-  7: { name: 'Champion', quizzesRequired: 35, description: 'Compete with the best' },
-  8: { name: 'Prodigy', quizzesRequired: 40, description: 'Show exceptional talent' },
-  9: { name: 'Wizard', quizzesRequired: 45, description: 'Complex questions across categories' },
-  10: { name: 'Legend', quizzesRequired: 50, description: 'Ultimate quiz mastery' }
-};
-
-
-
-// Method to update performance metrics for the AajExam "Exam Prep" track
+// Method to update exam performance metrics
 userSchema.methods.updatePerformanceMetrics = function (quiz, scorePercentage) {
   try {
-    const isHighScore = scorePercentage >= (config.QUIZ_CONFIG?.QUIZ_HIGH_SCORE_PERCENTAGE || 60);
     const subject = quiz.subject || 'General';
 
-    // 1. Update Reward Stats
-    if (isHighScore) {
-      if (!this.performanceMetrics.rewardStats) {
-        this.performanceMetrics.rewardStats = { totalWon: 0, participationStreak: 0 };
-      }
-      this.performanceMetrics.rewardStats.totalWon += 1;
-    }
-
-    // 2. Update Exam Stats
     if (!this.performanceMetrics.examStats) {
       this.performanceMetrics.examStats = { mockTestsAttempted: 0, averageMockScore: 0, overallReadiness: 0, subjectAccuracy: new Map() };
     }
 
     this.performanceMetrics.examStats.mockTestsAttempted += 1;
 
-    // Running average for Mock Score
     const totalAttempts = this.performanceMetrics.examStats.mockTestsAttempted;
     const currentAvg = this.performanceMetrics.examStats.averageMockScore || 0;
     this.performanceMetrics.examStats.averageMockScore = Math.round(((currentAvg * (totalAttempts - 1)) + scorePercentage) / totalAttempts);
 
-    // Subject-wise accuracy (standard weighted average)
     if (!this.performanceMetrics.examStats.subjectAccuracy) {
       this.performanceMetrics.examStats.subjectAccuracy = new Map();
     }
@@ -197,10 +135,8 @@ userSchema.methods.updatePerformanceMetrics = function (quiz, scorePercentage) {
     const newAccuracy = currentSubjectAccuracy === 0 ? scorePercentage : Math.round((currentSubjectAccuracy + scorePercentage) / 2);
     this.performanceMetrics.examStats.subjectAccuracy.set(subject, newAccuracy);
 
-    // Overall Readiness calculation (Simple average of subject accuracies)
     const accuracies = Array.from(this.performanceMetrics.examStats.subjectAccuracy.values());
     const avgAccuracy = accuracies.reduce((a, b) => a + b, 0) / (accuracies.length || 1);
-
     this.performanceMetrics.examStats.overallReadiness = Math.round(avgAccuracy);
 
     return true;
@@ -208,51 +144,6 @@ userSchema.methods.updatePerformanceMetrics = function (quiz, scorePercentage) {
     console.error('Error updating performance metrics:', error);
     return false;
   }
-};
-
-// Method to check subscription access for levels
-userSchema.methods.canAccessLevel = function (levelNumber) {
-  // Admin users have access to all levels (0-10) regardless of subscription
-  if (this.role === 'admin') {
-    return {
-      canAccess: true,
-      userPlan: 'admin',
-      accessibleLevels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      requiredPlan: 'admin'
-    };
-  }
-
-  const requiredLevel = getConfig('QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD') || 0;
-
-  // Regular users follow subscription-based access
-  const subscriptionAccess = {
-    'none': Array.from({ length: requiredLevel }, (_, i) => i), // 0 to requiredLevel-1
-    'free': Array.from({ length: requiredLevel }, (_, i) => i),
-    'pro': Array.from({ length: 11 }, (_, i) => i) // 0 to 10
-  };
-
-  const userPlan = this.subscriptionStatus || 'free';
-  const accessibleLevels = subscriptionAccess[userPlan] || [0, 1, 2, 3];
-
-  return {
-    canAccess: accessibleLevels.includes(levelNumber),
-    userPlan: userPlan,
-    accessibleLevels: accessibleLevels,
-    requiredPlan: this.getRequiredPlanForLevel(levelNumber)
-  };
-};
-
-// Method to get required plan for a specific level
-userSchema.methods.getRequiredPlanForLevel = function (levelNumber) {
-  // Admin users don't need any specific plan - they have access to all levels
-  if (this.role === 'admin') {
-    return 'admin';
-  }
-
-  // Regular users follow subscription-based requirements
-  const requiredLevel = getConfig('QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD') || 10;
-  if (levelNumber < requiredLevel) return 'free';
-  return 'pro';
 };
 
 // Method to check if user profile is complete
@@ -411,13 +302,10 @@ const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 // Hot reloading fix: ensure methods are updated on the registered model
 if (User) {
-  User.getLevelConfig = userSchema.statics.getLevelConfig;
   User.findActive = userSchema.statics.findActive;
   User.getUserStatsByStatus = userSchema.statics.getUserStatsByStatus;
 
-  // Update instance methods as well
-  User.prototype.canAccessLevel = userSchema.methods.canAccessLevel;
-  User.prototype.getRequiredPlanForLevel = userSchema.methods.getRequiredPlanForLevel;
+  User.prototype.updatePerformanceMetrics = userSchema.methods.updatePerformanceMetrics;
   User.prototype.isProfileComplete = userSchema.methods.isProfileComplete;
   User.prototype.getProfileCompletionPercentage = userSchema.methods.getProfileCompletionPercentage;
   User.prototype.getProfileCompletionDetails = userSchema.methods.getProfileCompletionDetails;

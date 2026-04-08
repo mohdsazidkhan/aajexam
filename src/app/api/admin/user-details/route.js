@@ -17,7 +17,7 @@ export async function GET(req) {
         const userId = searchParams.get('userId');
         if (userId) {
             const user = await User.findById(userId)
-                .select('name email phone username role level subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt');
+                .select('name email phone username role subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt');
 
             if (!user) {
                 return NextResponse.json({
@@ -28,11 +28,7 @@ export async function GET(req) {
 
             return NextResponse.json({
                 success: true,
-                user: {
-                    ...user.toObject(),
-                    currentLevel: user.level?.currentLevel || 0,
-                    levelName: user.level?.levelName || 'Starter'
-                }
+                user: user.toObject()
             });
         }
 
@@ -53,18 +49,12 @@ export async function GET(req) {
         }
 
         const users = await User.find(query)
-            .select('name email phone username role level subscriptionStatus socialLinks createdAt')
+            .select('name email phone username role subscriptionStatus socialLinks createdAt')
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 
-        const mappedUsers = users.map((user) => {
-            return {
-                ...user.toObject(),
-                currentLevel: user.level?.currentLevel || 0,
-                levelName: user.level?.levelName || 'Starter'
-            };
-        });
+        const mappedUsers = users.map((user) => user.toObject());
 
         const total = await User.countDocuments(query);
         const totalPages = Math.ceil(total / limit);

@@ -14,8 +14,7 @@ export async function GET(req) {
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
         const user = await User.findById(auth.user.id).select(
-            'walletBalance referralRewards referralCode referredBy ' +
-            'isTopPerformer subscriptionStatus'
+            'walletBalance referralRewards referralCode referredBy subscriptionStatus'
         );
         if (!user) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
@@ -93,10 +92,8 @@ export async function GET(req) {
                 availableBalance,
                 lockedBalance,
                 rewardBreakdown, // Added breakdown
-                claimableRewards: 0,
                 referralCode:    user.referralCode,
                 referredBy:      user.referredBy,
-                isTopPerformer:  user.isTopPerformer || false,
                 referralRewards: user.referralRewards || [],
                 transactions,
                 // Withdrawal fields

@@ -29,9 +29,7 @@ export async function GET(req) {
         const user = await User.findById(userId).select('-password').populate('currentSubscription');
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-        const levelInfo = user.level || { currentLevel: 0, levelName: 'Starter' };
-
-        // Get profile completion details (same as aajexam-backend)
+        // Get profile completion details
         const profileCompletion = user.getProfileCompletionDetails();
 
         // Get bank details for the user (same as aajexam-backend)
@@ -44,7 +42,6 @@ export async function GET(req) {
             success: true,
             user: {
                 ...user.toObject(),
-                levelInfo,
                 profileCompletion,
                 bankDetail: bankDetail || null,
                 // Add unified wallet fields

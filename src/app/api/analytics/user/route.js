@@ -23,7 +23,7 @@ export async function GET(req) {
         const startDate = new Date();
         startDate.setDate(startDate.getDate() - days);
 
-        const [userGrowth, levelDistribution, subscriptionStats] = await Promise.all([
+        const [userGrowth, subscriptionStats] = await Promise.all([
             User.aggregate([
                 { $match: { role: 'student', createdAt: { $gte: startDate } } },
                 {
@@ -36,18 +36,13 @@ export async function GET(req) {
             ]),
             User.aggregate([
                 { $match: { role: 'student' } },
-                { $group: { _id: '$level.currentLevel', count: { $sum: 1 } } },
-                { $sort: { _id: 1 } }
-            ]),
-            User.aggregate([
-                { $match: { role: 'student' } },
                 { $group: { _id: '$subscriptionStatus', count: { $sum: 1 } } }
             ])
         ]);
 
         return NextResponse.json({
             success: true,
-            data: { period: `${days} days`, userGrowth, levelDistribution, subscriptionStats }
+            data: { period: `${days} days`, userGrowth, subscriptionStats }
         });
     } catch (error) {
         return NextResponse.json({ message: error.message }, { status: 500 });

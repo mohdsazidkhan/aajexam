@@ -96,7 +96,6 @@ export async function POST(req) {
                 subscriptionExpiry: user.subscriptionExpiry,
                 currentSubscription: user.currentSubscription,
                 badges: user.badges,
-                level: user.globalLevel || 0,
                 profileCompletion: updatedProfileDetails,
                 walletBalance: user.walletBalance || 0
             }

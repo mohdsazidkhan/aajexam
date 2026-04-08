@@ -77,7 +77,7 @@ const PerformanceAnalytics = () => {
   const handleExport = () => {
     if (!data?.topPerformers?.length) return;
     const rows = data.topPerformers.map(p => ({
-      Name: p.name, Level: p.level?.currentLevel, LevelName: p.level?.levelName
+      Name: p.name, Level: 0, LevelName: 'Student'
     }));
     exportCSV(rows, "performance_report.csv");
   };

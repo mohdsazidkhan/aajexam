@@ -235,7 +235,7 @@ const AdminUserWallets = () => {
                               <div className="flex flex-col">
                                 <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
                                 <div className="flex items-center gap-2 mt-1">
-                                  <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{row.user?.level?.levelName || row.level?.levelName || 'Starter'}</span>
+                                  <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'PRO' : 'FREE'}</span>
                                   {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' && <Crown className="w-3 h-3 text-amber-500" />}
                                 </div>
                               </div>
@@ -251,13 +251,7 @@ const AdminUserWallets = () => {
                             </div>
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
-                            {row.claimableRewards > 0 ? (
-                              <span className="inline-flex items-center px-4 py-1 rounded-full text-[10px] font-black bg-indigo-500 text-white shadow-lg shadow-indigo-500/20 uppercase tracking-widest">
-                                {row.claimableRewards} REWARDS
-                              </span>
-                            ) : (
-                              <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">NONE</span>
-                            )}
+                              <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">-</span>
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="grid grid-cols-2 gap-2 max-w-[150px]">
@@ -312,9 +306,9 @@ const AdminUserWallets = () => {
 
                     <div className="flex flex-wrap items-center gap-3 lg:gap-6 lg:justify-end">
                       <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">PENDING REWARDS</span>
-                        <div className={`text-md font-black italic tracking-tighter ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>
-                          {row.claimableRewards || 0} REWARDS
+                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">STATUS</span>
+                        <div className="text-md font-black italic tracking-tighter text-slate-400">
+                          {row.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}
                         </div>
                       </div>
                       <div className="w-[2px] h-8 bg-slate-100 dark:bg-white/5 hidden lg:block" />
@@ -354,7 +348,7 @@ const AdminUserWallets = () => {
                       <div className="flex flex-col">
                         <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{row.user?.level?.levelName || row.level?.levelName || 'Starter'}</span>
+                          <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' ? 'PRO' : 'FREE'}</span>
                           {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'pro' && <Crown className="w-3 h-3 text-amber-500" />}
                         </div>
                       </div>
@@ -362,8 +356,8 @@ const AdminUserWallets = () => {
 
                     <div className="space-y-4 mb-4 lg:mb-8">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">PENDING REWARDS</span>
-                        <span className={`text-sm font-black italic tabular-nums ${row.claimableRewards > 0 ? 'text-indigo-500' : 'text-slate-400'}`}>{row.claimableRewards || 0} REWARDS</span>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">STATUS</span>
+                        <span className="text-sm font-black italic tabular-nums text-slate-400">{row.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">JOINED</span>
