@@ -130,9 +130,9 @@ const FollowersList = ({ username: usernameProp }) => {
                     {user.username && (
                       <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mt-1">@{user.username}</p>
                     )}
-                    {user.monthlyProgress && (
+                    {user.level && (
                       <div className="inline-flex mt-4 px-4 py-2 bg-primary-500 text-white rounded-xl shadow-duo-primary border-2 border-white dark:border-slate-700">
-                        <p className="text-[8px] font-black uppercase tracking-widest">{user.monthlyProgress?.levelName}</p>
+                        <p className="text-[8px] font-black uppercase tracking-widest">{user.level?.levelName || 'Starter'}</p>
                       </div>
                     )}
                   </div>

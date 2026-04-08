@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserWallet from '@/models/UserWallet';
-import UserQuestions from '@/models/UserQuestions';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect, proOnly } from '@/middleware/auth';
 
-const MIN_APPROVED_QUESTIONS = parseInt(process.env.MIN_APPROVED_QUESTIONS || '100', 10);
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
 export async function POST(req) {
@@ -33,11 +31,6 @@ export async function POST(req) {
             { upsert: true, new: true }
         );
 
-        const approvedCount = await UserQuestions.countDocuments({ userId, status: 'approved' });
-        if (approvedCount < MIN_APPROVED_QUESTIONS) {
-            return NextResponse.json({ success: false, message: `At least ${MIN_APPROVED_QUESTIONS} approved questions required` }, { status: 403 });
-        }
-
         if (wallet.balance < amount) {
             return NextResponse.json({ success: false, message: 'Insufficient balance' }, { status: 400 });
         }
@@ -56,8 +49,7 @@ export async function POST(req) {
             status: 'pending',
             requestedAt: new Date(),
             metadata: {
-                type: 'pro_questions_reward',
-                approvedCount
+                type: 'pro_questions_reward'
             }
         });
 

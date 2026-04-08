@@ -9,7 +9,7 @@ const walletTransactionSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: [
-      'question_reward', 'quiz_reward', 'blog_reward',
+      'question_reward', 'blog_reward',
       'subscription_payment', 'refund', 'bonus',
       'withdrawal', 'admin_subscription_adjustment', 'other'
     ],
@@ -17,7 +17,6 @@ const walletTransactionSchema = new mongoose.Schema({
   },
   status: { type: String, enum: ['pending', 'completed', 'failed', 'cancelled'], default: 'completed' },
   reference: { type: String },
-  quizId: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' },
   subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' },
   questionId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserQuestions' },
   metadata: { type: mongoose.Schema.Types.Mixed },

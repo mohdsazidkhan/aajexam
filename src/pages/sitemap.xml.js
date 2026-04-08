@@ -1,5 +1,4 @@
 import dbConnect from '../lib/db';
-import Article from '../models/Article';
 import Exam from '../models/Exam';
 
 let EXTERNAL_DATA_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
@@ -10,7 +9,6 @@ if (EXTERNAL_DATA_URL.includes('localhost') || EXTERNAL_DATA_URL.includes('127.0
 }
 
 function generateSiteMap({
-    articles = [],
     exams = []
 }) {
     const currentDate = new Date().toISOString();
@@ -49,21 +47,6 @@ function generateSiteMap({
             })
             .join('')}
 
-     <!-- Articles -->
-     ${articles
-            .map(({ slug, updatedAt, createdAt }) => {
-                if (!slug) return ''; // Skip articles without slugs
-                return `
-       <url>
-           <loc>${`${EXTERNAL_DATA_URL}/articles/${slug}`}</loc>
-           <lastmod>${(updatedAt || createdAt || new Date()).toISOString()}</lastmod>
-           <changefreq>weekly</changefreq>
-           <priority>0.9</priority>
-       </url>
-     `;
-            })
-            .join('')}
-
      <!-- Government Exam Pages (if available) -->
      ${exams
             .map((exam) => {
@@ -92,13 +75,9 @@ export async function getServerSideProps({ res }) {
         await dbConnect();
 
         // Fetch data directly from the database
-        const [articles, exams] = await Promise.all([
-            Article.find({ status: 'published' }).select('slug updatedAt createdAt').lean(),
-            Exam.find({ isActive: true }).select('_id updatedAt createdAt').lean()
-        ]);
+        const exams = await Exam.find({ isActive: true }).select('_id updatedAt createdAt').lean();
 
         const sitemap = generateSiteMap({
-            articles,
             exams
         });
 

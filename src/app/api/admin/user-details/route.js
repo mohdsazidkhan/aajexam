@@ -13,16 +13,11 @@ export async function GET(req) {
 
         await dbConnect();
         const { searchParams } = new URL(req.url);
-        const type = searchParams.get('type') || 'monthly';
-        const date = searchParams.get('date');
-        const week = searchParams.get('week');
-        const filterValue = type === 'daily' ? date : (type === 'weekly' ? week : null);
-
         // If userId is provided, return single user
         const userId = searchParams.get('userId');
         if (userId) {
             const user = await User.findById(userId)
-                .select('name email phone username role level subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt dailyProgress weeklyProgress monthlyProgress');
+                .select('name email phone username role level subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt');
 
             if (!user) {
                 return NextResponse.json({
@@ -31,14 +26,12 @@ export async function GET(req) {
                 }, { status: 404 });
             }
 
-            const levelInfo = await User.getHistoricalCompetitionLevel(userId, type, filterValue);
-
             return NextResponse.json({
                 success: true,
                 user: {
                     ...user.toObject(),
-                    currentLevel: levelInfo.currentLevel,
-                    levelName: levelInfo.levelName
+                    currentLevel: user.level?.currentLevel || 0,
+                    levelName: user.level?.levelName || 'Starter'
                 }
             });
         }
@@ -60,19 +53,18 @@ export async function GET(req) {
         }
 
         const users = await User.find(query)
-            .select('name email phone username role level subscriptionStatus socialLinks createdAt dailyProgress weeklyProgress monthlyProgress')
+            .select('name email phone username role level subscriptionStatus socialLinks createdAt')
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 
-        const mappedUsers = await Promise.all(users.map(async (user) => {
-            const levelInfo = await User.getHistoricalCompetitionLevel(user._id, type, filterValue);
+        const mappedUsers = users.map((user) => {
             return {
                 ...user.toObject(),
-                currentLevel: levelInfo.currentLevel,
-                levelName: levelInfo.levelName
+                currentLevel: user.level?.currentLevel || 0,
+                levelName: user.level?.levelName || 'Starter'
             };
-        }));
+        });
 
         const total = await User.countDocuments(query);
         const totalPages = Math.ceil(total / limit);

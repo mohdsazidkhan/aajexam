@@ -220,36 +220,12 @@ class ApiService {
   }
 
   // ===== PUBLIC ENDPOINTS =====
-  async getPublicCategories() {
-    return this.request('/api/public/categories');
-  }
-
-  async getPublicTopPerformers(limit = 10) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/top-performers?${queryString}`);
-  }
-
-  async getPublicTopPerformersMonthly(limit = 10, userId = null) {
-    const params = new URLSearchParams({ limit });
-    if (userId) params.append('userId', userId);
-    return this.request(`/api/public/top-performers-monthly?${params}`);
-  }
-
   async getPublicLandingStats() {
     return this.request('/api/public/landing-stats');
   }
 
   async getPublicLevels() {
     return this.request('/api/public/levels');
-  }
-
-  async getPublicCategoriesEnhanced() {
-    return this.request('/api/public/categories-enhanced');
-  }
-
-  async getPublicLandingTopPerformers(limit = 10) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/landing-top-performers?${queryString}`);
   }
 
   // ===== ANALYTICS ENDPOINTS =====
@@ -272,12 +248,6 @@ class ApiService {
     return this.request(`/api/analytics/performance?${queryString}`);
   }
 
-  async getMonthlyProgressAnalytics(month = null) {
-    const params = month ? { month } : {};
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/analytics/monthly-progress?${queryString}`);
-  }
-
   async getIndividualUserAnalytics(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/analytics/individual-user/${userId}?${queryString}`);
@@ -294,58 +264,6 @@ class ApiService {
       console.error('❌ getAdminStats error:', error);
       throw error;
     }
-  }
-
-  // Categories
-  async getAdminCategories(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/categories?${queryString}`);
-  }
-
-  async createCategory(categoryData) {
-    return this.request('/api/admin/categories', {
-      method: 'POST',
-      body: JSON.stringify(categoryData)
-    });
-  }
-
-  async updateCategory(id, categoryData) {
-    return this.request(`/api/admin/categories/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(categoryData)
-    });
-  }
-
-  async deleteCategory(id) {
-    return this.request(`/api/admin/categories/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Subcategories
-  async getAdminSubcategories(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/subcategories?${queryString}`);
-  }
-
-  async createSubcategory(subcategoryData) {
-    return this.request('/api/admin/subcategories', {
-      method: 'POST',
-      body: JSON.stringify(subcategoryData)
-    });
-  }
-
-  async updateSubcategory(id, subcategoryData) {
-    return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(subcategoryData)
-    });
-  }
-
-  async deleteSubcategory(id) {
-    return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'DELETE'
-    });
   }
 
   // Students
@@ -423,123 +341,6 @@ class ApiService {
     return this.request('/api/admin/subscriptions/filter-options');
   }
 
-  // ===== ADMIN ARTICLES =====
-  async getAdminArticles(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/articles?${queryString}`);
-  }
-
-  async getAdminArticle(id) {
-    return this.request(`/api/admin/articles/${id}`);
-  }
-
-  async createArticle(articleData) {
-    const form = new FormData();
-    Object.entries(articleData).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-      if (key === 'tags' && Array.isArray(value)) {
-        value.forEach(tag => form.append('tags[]', tag));
-      } else {
-        form.append(key, value);
-      }
-    });
-    return this.request('/api/admin/articles', {
-      method: 'POST',
-      body: form
-    });
-  }
-
-  async updateArticle(id, articleData) {
-    const form = new FormData();
-    Object.entries(articleData).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-      if (key === 'tags' && Array.isArray(value)) {
-        value.forEach(tag => form.append('tags[]', tag));
-      } else {
-        form.append(key, value);
-      }
-    });
-    return this.request(`/api/admin/articles/${id}`, {
-      method: 'PUT',
-      body: form
-    });
-  }
-
-  async deleteArticle(id) {
-    return this.request(`/api/admin/articles/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  async publishArticle(id) {
-    return this.request(`/api/admin/articles/${id}/publish`, {
-      method: 'PATCH'
-    });
-  }
-
-  async unpublishArticle(id) {
-    return this.request(`/api/admin/articles/${id}/unpublish`, {
-      method: 'PATCH'
-    });
-  }
-
-  async toggleFeatured(id) {
-    return this.request(`/api/admin/articles/${id}/toggle-featured`, {
-      method: 'PATCH'
-    });
-  }
-
-  async togglePinned(id) {
-    return this.request(`/api/admin/articles/${id}/toggle-pinned`, {
-      method: 'PATCH'
-    });
-  }
-
-  async getArticleStats() {
-    return this.request('/api/admin/articles-stats');
-  }
-
-  // ===== PUBLIC ARTICLES =====
-  async getPublishedArticles(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles?${queryString}`);
-  }
-
-  async getFeaturedArticles(limit = 5) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/articles/featured?${queryString}`);
-  }
-
-  async getArticleBySlug(slug) {
-    return this.request(`/api/public/articles/${slug}`);
-  }
-
-  async getArticlesByCategory(categoryId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles/category/${categoryId}?${queryString}`);
-  }
-
-  async getArticlesByTag(tag, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles/tag/${encodeURIComponent(tag)}?${queryString}`);
-  }
-
-  async searchArticles(query, params = {}) {
-    const searchParams = new URLSearchParams({ q: query, ...params }).toString();
-    return this.request(`/api/public/articles/search?${searchParams}`);
-  }
-
-  async incrementArticleViews(id) {
-    return this.request(`/api/public/articles/${id}/view`, {
-      method: 'POST'
-    });
-  }
-
-  async incrementArticleLikes(id) {
-    return this.request(`/api/public/articles/${id}/like`, {
-      method: 'POST'
-    });
-  }
 }
 
 const API = new ApiService();

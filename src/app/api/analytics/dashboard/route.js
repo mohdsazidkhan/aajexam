@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, adminOnly } from '@/middleware/auth';
-import config from '@/lib/config/appConfig';
 
 export async function GET(req) {
     try {
@@ -22,9 +21,7 @@ export async function GET(req) {
             role: 'student', subscriptionStatus: 'pro', subscriptionExpiry: { $gte: now }, status: 'active'
         });
 
-        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
-        const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
-        const totalRevenue = 0; // PaymentOrder not always available
+        const totalRevenue = 0;
         const totalSubscriptions = await User.countDocuments({ role: 'student', subscriptionStatus: { $in: ['basic', 'premium', 'pro'] } });
 
         const subscriptionDistribution = await User.aggregate([
@@ -38,10 +35,9 @@ export async function GET(req) {
             { $sort: { _id: 1 } }
         ]);
 
-        const currentMonth = new Date().toISOString().slice(0, 7);
-        const topUsers = await User.find({ role: 'student', 'monthlyProgress.month': currentMonth })
-            .select('name level monthlyProgress')
-            .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        const topUsers = await User.find({ role: 'student' })
+            .select('name level subscriptionStatus')
+            .sort({ 'level.currentLevel': -1 })
             .limit(limit).lean();
 
         return NextResponse.json({
@@ -50,9 +46,7 @@ export async function GET(req) {
                 overview: {
                     totalUsers, totalNonAdminUsers: totalUsers, totalRevenue,
                     totalSubscriptions,
-                    currentMonthActiveProUsers: activeProUsers,
-                    dynamicPrizePool: Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL),
-                    prizePerPro: PRIZE_PER_PRO
+                    currentMonthActiveProUsers: activeProUsers
                 },
                 subscriptionDistribution, levelDistribution, topUsers
             }

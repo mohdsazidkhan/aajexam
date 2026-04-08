@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, adminOnly } from '@/middleware/auth';
-import config from '@/lib/config/appConfig';
 
 export async function GET(req) {
     try {
@@ -12,8 +11,6 @@ export async function GET(req) {
         }
 
         await dbConnect();
-        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
-        const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
 
         const now = new Date();
         const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -36,8 +33,7 @@ export async function GET(req) {
             data: {
                 overview: {
                     totalPaidUsers, monthlyPaidUsers,
-                    currentMonthPrizePool: Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL),
-                    activeProUsers, prizePerPro: PRIZE_PER_PRO
+                    activeProUsers
                 },
                 subscriptionBreakdown
             }

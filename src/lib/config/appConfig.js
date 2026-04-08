@@ -63,44 +63,10 @@ const config = {
     }
   },
 
-  // Quiz Configuration
+  // Rewards & Referral Configuration (quiz-specific settings removed)
   QUIZ_CONFIG: {
-    DEFAULT_TIME_LIMIT: parseInt(process.env.NEXT_PUBLIC_DEFAULT_QUIZ_TIME_LIMIT) || 5, // minutes
-    MAX_QUESTIONS_PER_QUIZ: parseInt(process.env.NEXT_PUBLIC_MAX_QUESTIONS_PER_QUIZ) || 5,
-    MIN_QUESTIONS_PER_QUIZ: parseInt(process.env.NEXT_PUBLIC_MIN_QUESTIONS_PER_QUIZ) || 5,
-    PASSING_SCORE: parseInt(process.env.NEXT_PUBLIC_PASSING_SCORE) || 60, // percentage
-    TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_TOP_PERFORMERS_USERS) || 5, // top users
-    ADMIN_TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_ADMIN_TOP_PERFORMERS_USERS) || 20, // top users
-    QUIZ_HIGH_SCORE_PERCENTAGE: parseInt(process.env.NEXT_PUBLIC_QUIZ_HIGH_SCORE_PERCENTAGE) || 60, // percentage — reduced from 70 to 60 for growth
-    MONTHLY_MINIMUM_ACCURACY: parseInt(process.env.NEXT_PUBLIC_MONTHLY_MINIMUM_ACCURACY) || parseInt(process.env.MONTHLY_MINIMUM_ACCURACY) || 60,
-    DAILY_MINIMUM_ACCURACY: parseInt(process.env.NEXT_PUBLIC_DAILY_MINIMUM_ACCURACY) || parseInt(process.env.DAILY_MINIMUM_ACCURACY) || 60,
-    WEEKLY_MINIMUM_ACCURACY: parseInt(process.env.NEXT_PUBLIC_WEEKLY_MINIMUM_ACCURACY) || parseInt(process.env.WEEKLY_MINIMUM_ACCURACY) || 60,
-    SHOW_RESULTS_IMMEDIATELY: process.env.NEXT_PUBLIC_SHOW_RESULTS_IMMEDIATELY === 'true',
-    ALLOW_RETAKES: process.env.NEXT_PUBLIC_ALLOW_RETAKES === 'true',
-    MAX_RETAKES: parseInt(process.env.NEXT_PUBLIC_MAX_RETAKES) || 1,
-    LEVEL_10_QUIZ_REQUIREMENT: parseInt(process.env.NEXT_PUBLIC_LEVEL_10_QUIZ_REQUIREMENT) || 50, // Total quizzes required for Level 10
-    // Lowered from 12/42/110 to 5/20/50 — removes entry barrier, drives engagement
-    DAILY_REWARD_QUIZ_REQUIREMENT: parseInt(process.env.NEXT_PUBLIC_DAILY_REWARD_QUIZ_REQUIREMENT) || parseInt(process.env.MIN_DAILY_REWARD_QUIZ_REQUIREMENT) || 5,
-    WEEKLY_REWARD_QUIZ_REQUIREMENT: parseInt(process.env.NEXT_PUBLIC_WEEKLY_REWARD_QUIZ_REQUIREMENT) || parseInt(process.env.MIN_WEEKLY_REWARD_QUIZ_REQUIREMENT) || 20,
-    MONTHLY_REWARD_QUIZ_REQUIREMENT: parseInt(process.env.NEXT_PUBLIC_MONTHLY_REWARD_QUIZ_REQUIREMENT) || parseInt(process.env.MIN_MONTHLY_QUIZ_REQUIRED) || 50,
-    MONTHLY_REWARD_PRIZE_POOL: 0, // Deprecated: prize pool is now dynamic (activeProUsers × PRIZE_PER_PRO). Use API value.
-    PRIZE_PER_PRO: parseInt(process.env.NEXT_PUBLIC_PRIZE_PER_PRO) || parseInt(process.env.PRIZE_PER_PRO) || 95, // Prize amount per active PRO user for monthly pool
-    DAILY_POOL_MULTIPLIER: 10,  // (activeUsers * 10) / 30
-    WEEKLY_POOL_MULTIPLIER: 30, // (activeUsers * 30) / 4
-    MONTHLY_POOL_MULTIPLIER: 50, // activeUsers * 50
-    MONTHLY_USER_REFERRAL_REQUIRED: parseInt(process.env.NEXT_PUBLIC_MONTHLY_USER_REFERRAL_REQUIRED) || 3, // Referral rewards system only
-    MINIMUM_REFERRALS_FOR_MONTHLY_REWARD: 0, // Deprecated
-    DAILY_USER_LEVEL_REQUIRED: parseInt(process.env.NEXT_PUBLIC_DAILY_USER_LEVEL_REQUIRED) || parseInt(process.env.DAILY_USER_LEVEL_REQUIRED) || 0,
-    WEEKLY_USER_LEVEL_REQUIRED: parseInt(process.env.NEXT_PUBLIC_WEEKLY_USER_LEVEL_REQUIRED) || parseInt(process.env.WEEKLY_USER_LEVEL_REQUIRED) || 0,
-    USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD: parseInt(process.env.NEXT_PUBLIC_USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD) || parseInt(process.env.MONTHLY_USER_LEVEL_REQUIRED) || 0,
-    // Winner counts: Daily=1, Weekly=3, Monthly=5
-    DAILY_WINNER_COUNT: parseInt(process.env.NEXT_PUBLIC_DAILY_WINNER_COUNT) || 1,
-    WEEKLY_WINNER_COUNT: parseInt(process.env.NEXT_PUBLIC_WEEKLY_WINNER_COUNT) || 3,
-    MONTHLY_WINNER_COUNT: parseInt(process.env.NEXT_PUBLIC_MONTHLY_WINNER_COUNT) || 5,
-    MIN_DAILY_POOL: parseInt(process.env.NEXT_PUBLIC_MIN_DAILY_POOL) || 5,
-    MIN_WEEKLY_POOL: parseInt(process.env.NEXT_PUBLIC_MIN_WEEKLY_POOL) || 50,
-    MIN_MONTHLY_POOL: parseInt(process.env.NEXT_PUBLIC_MIN_MONTHLY_POOL) || 650,
-    TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_TOP_PERFORMERS_USERS) || 5, // global top-performers = monthly winners
+    TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_TOP_PERFORMERS_USERS) || 5,
+    ADMIN_TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_ADMIN_TOP_PERFORMERS_USERS) || 20,
     REFERRAL_REWARD_REGISTRATION: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_REGISTRATION) || 10,
     REFERRAL_REWARD_PRO: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_PRO) || 33
   },

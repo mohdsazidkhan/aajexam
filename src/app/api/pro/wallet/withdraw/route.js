@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserWallet from '@/models/UserWallet';
-import UserQuestions from '@/models/UserQuestions';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
 import { createNotification } from '@/utils/notifications';
 
-const MIN_APPROVED_QUESTIONS = parseInt(process.env.MIN_APPROVED_QUESTIONS || '100', 10);
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
 export async function POST(req) {
@@ -23,9 +21,6 @@ export async function POST(req) {
 
         const wallet = await UserWallet.findOne({ userId });
         if (!wallet || wallet.balance < amount) return NextResponse.json({ message: 'Insufficient balance' }, { status: 400 });
-
-        const approvedCount = await UserQuestions.countDocuments({ userId, status: 'approved' });
-        if (approvedCount < MIN_APPROVED_QUESTIONS) return NextResponse.json({ message: `Need ${MIN_APPROVED_QUESTIONS} approved questions` }, { status: 403 });
 
         const existingPending = await WithdrawRequest.findOne({ userId, status: 'pending' });
         if (existingPending) return NextResponse.json({ message: 'Pending request exists' }, { status: 400 });

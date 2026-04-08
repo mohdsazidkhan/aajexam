@@ -2,11 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import WalletTransaction from '@/models/WalletTransaction';
-import Article from '@/models/Article';
-import UserQuestions from '@/models/UserQuestions';
 import PaymentOrder from '@/models/PaymentOrder';
-import Category from '@/models/Category';
-import Subcategory from '@/models/Subcategory';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect } from '@/middleware/auth';
 import mongoose from 'mongoose';
@@ -47,17 +43,7 @@ export async function GET(req) {
         const netEarnings = totalEarnings - totalExpenses;
 
         // 5. Counts
-        const blogsCreatedCount = await Article.countDocuments({ author: userIdObj });
-        const blogsApprovedCount = await Article.countDocuments({
-            author: userIdObj,
-            status: 'approved',
-            rewardCredited: true
-        });
-
         const testAttemptsCount = await UserTestAttempt.countDocuments({ user: userIdObj });
-        const questionsPostedCount = await UserQuestions.countDocuments({ userId: userIdObj });
-        const categoriesCreatedCount = await Category.countDocuments({ createdBy: userIdObj });
-        const subcategoriesCreatedCount = await Subcategory.countDocuments({ createdBy: userIdObj });
 
         return NextResponse.json({
             success: true,
@@ -70,12 +56,7 @@ export async function GET(req) {
                 followersCount: user?.followersCount || 0,
                 followingCount: user?.followingCount || 0,
                 referralCount: user?.referralCount || 0,
-                testAttemptsCount,
-                questionsPostedCount,
-                categoriesCreatedCount,
-                subcategoriesCreatedCount,
-                blogsCreatedCount,
-                blogsApprovedCount
+                testAttemptsCount
             }
         });
     } catch (error) {

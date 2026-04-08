@@ -284,9 +284,9 @@ const AdminUserAnalyticsDetail = () => {
                                          </div>
                                      </div>
                                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
-                                         <MetricCard i={0} color="rose" icon={Zap} label="Today" value={`${userData.dailyProgress?.highScoreWins || 0} Wins`} sub={`${userData.dailyProgress?.totalQuizAttempts || 0} attempts (${userData.dailyProgress?.accuracy || 0}% accuracy)`} />
-                                         <MetricCard i={1} color="indigo" icon={Zap} label="This Week" value={`${userData.weeklyProgress?.highScoreWins || 0} Wins`} sub={`${userData.weeklyProgress?.totalQuizAttempts || 0} attempts (${userData.weeklyProgress?.accuracy || 0}% accuracy)`} />
-                                         <MetricCard i={2} color="indigo" icon={Zap} label="This Month" value={`${userData.monthlyProgress?.highScoreWins || 0} Wins`} sub={`${userData.monthlyProgress?.totalQuizAttempts || 0} attempts (${userData.monthlyProgress?.accuracy || 0}% accuracy)`} />
+                                         <MetricCard i={0} color="rose" icon={Zap} label="Level" value={`Level ${userData.level?.currentLevel || 0}`} sub={userData.level?.levelName || 'Starter'} />
+                                         <MetricCard i={1} color="indigo" icon={Zap} label="Quizzes Played" value={`${userData.level?.quizzesPlayed || 0}`} sub="Total quizzes completed" />
+                                         <MetricCard i={2} color="indigo" icon={Zap} label="Average Score" value={`${userData.level?.averageScore || 0}%`} sub="Overall accuracy" />
                                      </div>
                                  </motion.section>
 

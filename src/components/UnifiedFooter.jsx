@@ -31,8 +31,6 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
   const operationalLinks = [
     { name: 'Home', href: '/', icon: Compass },
-    { name: 'Categories', href: '/categories', icon: Layers },
-    { name: 'Articles', href: '/articles', icon: Zap },
     { name: 'How It Works', href: '/how-it-works', icon: Info },
   ];
 

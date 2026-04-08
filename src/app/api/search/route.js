@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import Category from '@/models/Category';
-import Subcategory from '@/models/Subcategory';
 import User from '@/models/User';
-import Article from '@/models/Article';
 import ExamCategory from '@/models/ExamCategory';
 import Exam from '@/models/Exam';
 import ExamPattern from '@/models/ExamPattern';
@@ -27,13 +24,8 @@ export async function GET(req) {
         const user = await User.findById(auth.user.id);
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-        // categories, subcategories, articles, users
-        const [categories, subcategories, articles, users] = await Promise.all([
-            Category.find({ $or: [{ name: regex }, { description: regex }] }).select('_id name description').lean(),
-            Subcategory.find({ $or: [{ name: regex }, { description: regex }] }).populate('category', 'name').select('_id name category description').lean(),
-            Article.find({ status: 'published', $or: [{ title: regex }, { content: regex }, { excerpt: regex }, { tags: { $in: [regex] } }] }).populate('category', 'name').populate('author', 'name').select('_id title excerpt slug featuredImage category author publishedAt').sort({ publishedAt: -1 }).lean(),
-            User.find({ $or: [{ name: regex }, { username: regex }, { email: regex }] }).select('_id name username profilePicture level').lean()
-        ]);
+        // users
+        const users = await User.find({ $or: [{ name: regex }, { username: regex }, { email: regex }] }).select('_id name username profilePicture level').lean();
 
         // govt exams
         const [govtExamCategories, govtExams, examPatterns, practiceTests] = await Promise.all([
@@ -46,9 +38,6 @@ export async function GET(req) {
         return NextResponse.json({
             success: true,
             page, limit,
-            categories: categories.map(c => ({ ...c, type: 'category' })),
-            subcategories: subcategories.map(s => ({ ...s, type: 'subcategory' })),
-            blogs: articles.map(a => ({ ...a, type: 'blog' })),
             users: users.map(u => ({ ...u, type: 'user' })),
             govtExamCategories: govtExamCategories.map(c => ({ ...c, type: 'examCategory' })),
             govtExams: govtExams.map(e => ({ ...e, type: 'exam' })),

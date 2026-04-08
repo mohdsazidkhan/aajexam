@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserWallet from '@/models/UserWallet';
-import UserQuestions from '@/models/UserQuestions';
 import { protect } from '@/middleware/auth';
 
 export async function GET(req) {
@@ -18,11 +17,9 @@ export async function GET(req) {
             { upsert: true, new: true }
         );
 
-        const approvedCount = await UserQuestions.countDocuments({ userId, status: 'approved' });
-
         return NextResponse.json({
             success: true,
-            data: { balance: wallet.balance, totalEarned: wallet.totalEarned, approvedCount }
+            data: { balance: wallet.balance, totalEarned: wallet.totalEarned }
         });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

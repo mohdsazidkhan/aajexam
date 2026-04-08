@@ -24,7 +24,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { handleAuthError } from '../../lib/utils/authUtils';
-import { useRewards } from '../../hooks/useRewards';
 import Loading from '../Loading';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -38,8 +37,6 @@ const ProfilePage = () => {
   const [bankDetails, setBankDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeSubTab, setActiveSubTab] = useState('profile'); // 'profile', 'bank', 'settings'
-  const { rewards: rewardsData } = useRewards();
-
   const fetchProfile = useCallback(async () => {
     try {
       setLoading(true);
@@ -75,7 +72,6 @@ const ProfilePage = () => {
   };
 
   const levelInfo = student?.levelInfo?.currentLevel || { name: 'Starter', number: 1, description: 'Start practicing to unlock your next level.' };
-  const monthlyProgress = student?.monthlyProgress || {};
   const quickStats = useMemo(
     () => [
       {
@@ -92,7 +88,7 @@ const ProfilePage = () => {
       },
       {
         label: 'Rewards to claim',
-        value: formatCurrency(rewardsData?.claimableRewards || student?.claimableRewards || 0),
+        value: formatCurrency(student?.claimableRewards || 0),
         icon: Trophy,
         tone: 'bg-primary-500/10 text-primary-600',
       },
@@ -103,13 +99,12 @@ const ProfilePage = () => {
         tone: 'bg-primary-500/10 text-primary-700 dark:text-primary-500',
       },
     ],
-    [rewardsData?.claimableRewards, student?.claimableRewards, student?.referralCount, student?.streak, student?.walletBalance]
+    [student?.claimableRewards, student?.referralCount, student?.streak, student?.walletBalance]
   );
 
   const performanceStats = [
-    { label: 'High-score quizzes this month', value: monthlyProgress?.highScoreWins || 0 },
-    { label: 'Total quizzes tried', value: monthlyProgress?.totalQuizAttempts || 0 },
-    { label: 'Accuracy', value: `${monthlyProgress?.accuracy || 0}%` },
+    { label: 'Current Level', value: student?.level?.currentLevel || 0 },
+    { label: 'Level Name', value: student?.level?.levelName || 'Starter' },
   ];
 
   const accountDetails = [

@@ -4,10 +4,6 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
 import WalletTransaction from '@/models/WalletTransaction';
-import UserQuestions from '@/models/UserQuestions';
-import Category from '@/models/Category';
-import Subcategory from '@/models/Subcategory';
-import Article from '@/models/Article';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect, admin } from '@/middleware/auth';
 
@@ -74,13 +70,7 @@ export async function GET(req, { params }) {
         // Content & Activity stats
         const UserTestAttemptModel = mongoose.models.UserTestAttempt;
 
-        const [testAttemptsCount, questionsPostedCount, categoriesCreatedCount, subcategoriesCreatedCount, blogsCreatedCount] = await Promise.all([
-            UserTestAttemptModel ? UserTestAttemptModel.countDocuments({ user: userIdObj }) : Promise.resolve(0),
-            UserQuestions.countDocuments({ userId: userIdObj }),
-            Category.countDocuments({ createdBy: userIdObj }),
-            Subcategory.countDocuments({ createdBy: userIdObj }),
-            Article.countDocuments({ author: userIdObj })
-        ]);
+        const testAttemptsCount = UserTestAttemptModel ? await UserTestAttemptModel.countDocuments({ user: userIdObj }) : 0;
 
         return NextResponse.json({
             success: true,
@@ -101,11 +91,7 @@ export async function GET(req, { params }) {
                 followersCount: userDoc.followersCount || 0,
                 followingCount: userDoc.followingCount || 0,
                 referralCount: userDoc.referralCount || 0,
-                testAttemptsCount: testAttemptsCount || 0,
-                questionsPostedCount: questionsPostedCount || 0,
-                categoriesCreatedCount: categoriesCreatedCount || 0,
-                subcategoriesCreatedCount: subcategoriesCreatedCount || 0,
-                blogsCreatedCount: blogsCreatedCount || 0
+                testAttemptsCount: testAttemptsCount || 0
             }
         });
 

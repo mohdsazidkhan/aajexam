@@ -191,13 +191,6 @@ export const getAdminNavigationItems = () => {
   }
 
 
-  if (hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_CATEGORIES)) {
-    items.push({
-      name: 'Categories',
-      href: '/admin/categories',
-      icon: 'MdCategory'
-    });
-  }
 
   if (hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_SUBSCRIPTIONS)) {
     items.push({

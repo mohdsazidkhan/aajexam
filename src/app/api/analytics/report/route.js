@@ -15,7 +15,7 @@ export async function GET(req) {
         
         // Fetch only the performanceMetrics and primaryTargetExam fields for maximum speed
         const user = await User.findById(userId)
-            .select('performanceMetrics primaryTargetExam name dailyProgress weeklyProgress monthlyProgress')
+            .select('performanceMetrics primaryTargetExam name')
             .lean();
 
         if (!user) {
@@ -27,14 +27,8 @@ export async function GET(req) {
             data: {
                 name: user.name,
                 primaryTargetExam: user.primaryTargetExam,
-                // New Pre-computed Metrics (The "AajExam" track)
                 performanceMetrics: user.performanceMetrics,
-                // Legacy Progress (The "Reward" track) - kept for backward compatibility
-                legacyProgress: {
-                    daily: user.dailyProgress,
-                    weekly: user.weeklyProgress,
-                    monthly: user.monthlyProgress
-                }
+                legacyProgress: {}
             }
         });
 

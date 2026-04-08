@@ -22,13 +22,8 @@ import {
   User,
   BookOpen,
   Calendar,
-  Medal,
-  Crown,
-  Award,
   FileText,
-  Zap,
-  TrendingUp,
-  Layout
+  TrendingUp
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -55,22 +50,12 @@ const DashboardAnalytics = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [recentActivityViewMode, setRecentActivityViewMode] = useState(isMobile ? 'list' : 'table');
-  const [topUsersViewMode, setTopUsersViewMode] = useState(isMobile ? 'list' : 'table');
-  const [activeTab, setActiveTab] = useState('monthly');
-  const [topPerformers, setTopPerformers] = useState([]);
-  const [topPerformersLoading, setTopPerformersLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     API.getAnalyticsDashboard()
       .then(res => {
         if (res.success) {
-          console.log('Dashboard Data:', res.data);
-          console.log('Top Users:', res.data?.topUsers);
-          console.log('Top Users Monthly Progress:', res.data?.topUsers?.map(u => ({
-            name: u.name,
-            monthlyProgress: u.monthlyProgress
-          })));
           setData(res.data);
         } else {
           setError(res.message || 'Failed to load dashboard analytics');
@@ -83,21 +68,6 @@ const DashboardAnalytics = () => {
         setLoading(false);
       });
   }, []);
-
-  useEffect(() => {
-    setTopPerformersLoading(true);
-    API.getAdminTopPerformers({ type: activeTab, limit: 10 })
-      .then(res => {
-        if (res.success) {
-          setTopPerformers(res.data);
-        }
-        setTopPerformersLoading(false);
-      })
-      .catch(err => {
-        console.error('Top Performers Error:', err);
-        setTopPerformersLoading(false);
-      });
-  }, [activeTab]);
 
   const isDark = document.documentElement.classList.contains('dark');
 
@@ -432,278 +402,6 @@ const DashboardAnalytics = () => {
     </div>
   );
 
-  // Top Users View Components
-  const TopUsersTableView = () => (
-    <div className="overflow-x-auto relative">
-      <table className="w-full min-w-full table-auto text-sm lg:text-base">
-        <thead>
-          <tr className="border-b-2 border-slate-100 dark:border-white/5">
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[10%]">
-              <div className="flex items-center gap-2">
-                <Medal className="w-4 h-4 text-indigo-500" />
-                Rank
-              </div>
-            </th>
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[25%]">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-indigo-500" />
-                User
-              </div>
-            </th>
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[20%]">
-              <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-indigo-500" />
-                Level
-              </div>
-            </th>
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
-              <div className="flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-indigo-500" />
-                Quizzes
-              </div>
-            </th>
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-indigo-500" />
-                High Scores
-              </div>
-            </th>
-            <th className="text-left py-4 px-3 font-bold text-xs uppercase tracking-widest text-slate-400 w-[15%]">
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-indigo-500" />
-                Accuracy
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {topPerformers?.length > 0 ? (
-            topPerformers.map((u, i) => (
-              <tr
-                key={i}
-                className={`border-b transition-all duration-200 border-gray-200 group ${i === 0 ? "bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20" :
-                  i === 1 ? "bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20" :
-                    i === 2 ? "bg-gradient-to-r from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20" : ""
-                  }`}
-              >
-                <td className="py-3 px-2">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-8 h-8 text-xs flex items-center justify-center rounded-xl font-bold ${i === 0 ? "bg-amber-500 text-white shadow-lg" :
-                      i === 1 ? "bg-slate-400 text-white shadow-md" :
-                        i === 2 ? "bg-orange-400 text-white shadow-md" :
-                          "bg-slate-100 dark:bg-slate-800 text-slate-500"
-                      }`}>
-                      {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-3 px-2">
-                  <span className="font-semibold text-gray-900 dark:text-white text-sm">
-                    {u.name || 'Unknown'}
-                  </span>
-                </td>
-                <td className="py-3 px-2">
-                  <div>
-                    <div className="font-semibold text-gray-900 dark:text-white text-sm">
-                      {u.level?.levelName || 'No Level'}
-                    </div>
-                    <div className="text-xs text-slate-700 dark:text-gray-400">
-                      Level {u.level?.currentLevel || 0}
-                    </div>
-                  </div>
-                </td>
-                <td className="py-3 px-2">
-                  <div className="bg-primary-100 dark:bg-primary-900/30 px-2 py-1 rounded-lg">
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-primary-800 dark:text-primary-200">
-                        {u.progress?.totalQuizAttempts || 0}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="py-3 px-2">
-                  <div className="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-lg">
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-green-800 dark:text-green-200">
-                        {u.progress?.highScoreWins || 0}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="py-3 px-2">
-                  <div className="bg-primary-100 dark:bg-primary-900/30 px-2 py-1 rounded-lg">
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-primary-800 dark:text-primary-200">
-                        {u.progress?.accuracy || 0}%
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="6" className="text-center py-10 text-slate-700 dark:text-gray-400">
-                {topPerformersLoading ? 'Loading...' : 'No data available'}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
-
-  const TopUsersCardView = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
-      {topPerformers?.length > 0 ? (
-        topPerformers.map((u, i) => (
-          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-lg transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
-            i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
-              i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
-                "from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border-primary-200 dark:border-primary-700"
-            }`}>
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
-                  i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                    i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-primary-400 to-indigo-500 text-white"
-                  }`}>
-                  {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
-                </span>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
-                    {u.name || 'Unknown'}
-                  </h4>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Rank #{i + 1}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                  <Trophy className="w-3.5 h-3.5 text-indigo-500" />
-                </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                  <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
-                </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  {u.progress?.totalQuizAttempts || 0} Total Quizzes
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                  <Award className="w-3.5 h-3.5 text-emerald-500" />
-                </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  {u.progress?.highScoreWins || 0} High Scores
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-gradient-to-r from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 rounded-md flex items-center justify-center">
-                  <Star className="w-3.5 h-3.5 text-teal-500" />
-                </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  {u.progress?.accuracy || 0}% Accuracy
-                </span>
-              </div>
-            </div>
-          </div>
-        ))
-      ) : (
-        <div className="col-span-full text-center py-0 lg:py-4 xl:py-6 text-slate-700 dark:text-gray-400">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl">ðŸ‘¥</span>
-            <span>No users found</span>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-
-  const TopUsersListView = () => (
-    <div className="space-y-3">
-      {topPerformers?.length > 0 ? (
-        topPerformers.map((u, i) => (
-          <div key={i} className={`bg-gradient-to-r border rounded-lg p-4 hover:shadow-md transition-all duration-200 ${i === 0 ? "from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border-primary-200 dark:border-primary-700" :
-            i === 1 ? "from-gray-50 to-slate-50 dark:from-gray-900/20 dark:to-slate-900/20 border-gray-200 dark:border-gray-700" :
-              i === 2 ? "from-primary-50 to-amber-50 dark:from-primary-900/20 dark:to-amber-900/20 border-primary-200 dark:border-primary-700" :
-                "from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border-primary-200 dark:border-primary-700"
-            }`}>
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <span className={`w-10 h-10 text-sm flex items-center justify-center rounded-full font-bold ${i === 0 ? "bg-gradient-to-r from-primary-400 to-primary-500 text-white shadow-lg" :
-                  i === 1 ? "bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-md" :
-                    i === 2 ? "bg-gradient-to-r from-primary-400 to-amber-500 text-white shadow-md" :
-                      "bg-gradient-to-r from-primary-400 to-indigo-500 text-white"
-                  }`}>
-                  {i === 0 ? <Crown className="w-4 h-4" /> : i + 1}
-                </span>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
-                    {u.name || 'Unknown'}
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Rank #{i + 1}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <Trophy className="w-3.5 h-3.5 text-indigo-500" />
-                  </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    {u.level?.levelName || 'No Level'} (Level {u.level?.currentLevel || 0})
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary-100 to-amber-100 dark:from-primary-900/30 dark:to-amber-900/30 rounded-md flex items-center justify-center">
-                    <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
-                  </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    {u.progress?.totalQuizAttempts || 0} Total Quizzes
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                    <Award className="w-3.5 h-3.5 text-emerald-500" />
-                  </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    {u.progress?.highScoreWins || 0} High Scores
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gradient-to-r from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 rounded-md flex items-center justify-center">
-                    <Star className="w-3.5 h-3.5 text-teal-500" />
-                  </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    {u.progress?.accuracy || 0}% Accuracy
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))
-      ) : (
-        <div className="text-center py-10 text-slate-700 dark:text-gray-400">
-          {topPerformersLoading ? 'Loading...' : 'No data available'}
-        </div>
-      )}
-    </div>
-  );
-
   if (loading) return <Loading fullScreen={true} size="lg" color="yellow" message="" />;
 
   if (error) return (
@@ -848,70 +546,6 @@ const DashboardAnalytics = () => {
               {recentActivityViewMode === 'list' && <RecentActivityListView />}
             </div>
 
-            {/* Top Users Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-3 lg:p-6 mb-4 lg:mb-6 relative overflow-hidden">
-              {topPerformersLoading && (
-                <div className="absolute inset-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm z-10 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-                </div>
-              )}
-              <div className="flex flex-col lg:flex-row items-center justify-between mb-6 gap-4">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-12 lg:w-16 h-12 lg:h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center`}>
-                    <Crown className="text-indigo-500 w-8 h-8" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                      Top Performers
-                    </h2>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">
-                      {activeTab === 'daily' ? 'Daily' : activeTab === 'weekly' ? 'Weekly' : 'Monthly'} top-performing users
-                    </p>
-                  </div>
-                </div>
-
-                {/* Competition Tabs */}
-                <div className="inline-flex p-1 bg-slate-100 dark:bg-white/5 rounded-2xl shadow-inner border border-slate-200 dark:border-white/5">
-                  <button
-                    onClick={() => setActiveTab('daily')}
-                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'daily'
-                      ? "bg-indigo-600 text-white shadow-xl"
-                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
-                      }`}
-                  >
-                    <Clock className="w-3.5 h-3.5" /> Daily
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('weekly')}
-                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'weekly'
-                      ? "bg-indigo-600 text-white shadow-xl"
-                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
-                      }`}
-                  >
-                    <Calendar className="w-3.5 h-3.5" /> Weekly
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('monthly')}
-                    className={`px-3 lg:px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${activeTab === 'monthly'
-                      ? "bg-indigo-600 text-white shadow-xl"
-                      : "text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-white dark:hover:bg-white/5"
-                      }`}
-                  >
-                    <Trophy className="w-3.5 h-3.5" /> Monthly
-                  </button>
-                </div>
-
-                <ViewToggle
-                  currentView={topUsersViewMode}
-                  onViewChange={setTopUsersViewMode}
-                  views={['table', 'grid', 'list']}
-                />
-              </div>
-
-              {topUsersViewMode === 'table' && <TopUsersTableView />}
-              {topUsersViewMode === 'grid' && <TopUsersCardView />}
-              {topUsersViewMode === 'list' && <TopUsersListView />}
-            </div>
           </div>
         </div>
       </div>

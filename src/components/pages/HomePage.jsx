@@ -44,7 +44,6 @@ const HomePage = () => {
    const [dailyDose, setDailyDose] = useState(null);
    const [articles, setArticles] = useState([]);
    const [performanceReport, setPerformanceReport] = useState(null);
-   const [activePeriod, setActivePeriod] = useState('daily');
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
@@ -78,22 +77,12 @@ const HomePage = () => {
    const metrics = performanceReport?.performanceMetrics || {};
    const examStats = metrics.examStats || {};
    const rewardStats = metrics.rewardStats || {};
-   const legacyProgress = performanceReport?.legacyProgress || {};
-
-   // Period Data
-   const periodData = legacyProgress[activePeriod] || {};
 
    const overallReadiness = examStats.overallReadiness ?? 0;
    const averageMockScore = examStats.averageMockScore ?? 0;
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
    const streakCount = rewardStats.participationStreak ?? user?.streak ?? 0;
    const totalWon = rewardStats.totalWon ?? 0;
-
-   // Display values for active period
-   const periodQuizAttempts = periodData.totalQuizAttempts ?? 0;
-   const periodAccuracy = periodData.accuracy ?? 0;
-   const periodLevel = periodData.currentLevel ?? 0;
-   const periodLevelName = periodData.levelName ?? 'Starter';
 
    const coinsEarned = user?.coins || 0;
 
@@ -231,51 +220,6 @@ const HomePage = () => {
                            </div>
                         </div>
 
-                        {/* Quiz Status Tabs (Daily, Weekly, Monthly) */}
-                        <div className="space-y-6 pt-6 border-t-2 border-border-primary/50">
-                           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                              <div className="flex items-center gap-3">
-                                 <div className="p-3 bg-indigo-500/10 rounded-xl">
-                                    <Activity className="w-5 h-5 text-indigo-500" />
-                                 </div>
-                                 <h3 className="text-lg lg:text-2xl font-black text-content-primary uppercase tracking-tighter">Quiz Performance Status</h3>
-                              </div>
-                              <div className="flex p-1.5 bg-background-page rounded-2xl border-2 border-border-primary shadow-inner">
-                                 {['daily', 'weekly', 'monthly'].map((tab) => (
-                                    <button
-                                       key={tab}
-                                       onClick={() => setActivePeriod(tab)}
-                                       className={`px-4 lg:px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activePeriod === tab
-                                          ? 'bg-primary-500 text-white shadow-lg scale-105'
-                                          : 'text-content-muted hover:text-content-primary'
-                                          }`}
-                                    >
-                                       {tab}
-                                    </button>
-                                 ))}
-                              </div>
-                           </div>
-
-                           <div className="grid grid-cols-3 gap-3 lg:gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
-                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Quiz Played</p>
-                                 <div className="text-lg lg:text-3xl font-black text-content-primary font-outfit">{periodData.highScoreWins || 0} / {periodData.totalQuizAttempts || 0}</div>
-                                 <p className="text-[8px] font-black text-primary-500 uppercase mt-1">H-Wins / Attempts</p>
-                              </div>
-                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
-                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Accuracy</p>
-                                 <div className="text-lg lg:text-3xl font-black text-emerald-500 font-outfit">{periodAccuracy}%</div>
-                                 <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
-                                    <motion.div initial={{ width: 0 }} animate={{ width: `${periodAccuracy}%` }} className="h-full bg-emerald-500" />
-                                 </div>
-                              </div>
-                              <div className="p-4 lg:p-8 bg-background-page rounded-[1.5rem] lg:rounded-[2.5rem] border-2 border-border-primary text-center">
-                                 <p className="text-[8px] lg:text-[10px] font-black text-content-muted uppercase tracking-widest mb-2">Evolution</p>
-                                 <div className="text-lg lg:text-3xl font-black text-indigo-500 font-outfit uppercase">LVL {periodLevel}</div>
-                                 <p className="text-[8px] font-black text-indigo-400 uppercase mt-1">{periodLevelName}</p>
-                              </div>
-                           </div>
-                        </div>
                      </div>
 
                      <div className="absolute -bottom-10 -right-10 p-10 opacity-5 group-hover:opacity-10 transition-opacity rotate-12 group-hover:rotate-0 duration-700">

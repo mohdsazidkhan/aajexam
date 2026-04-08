@@ -56,7 +56,6 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
       'questions': 'Questions',
       'contacts': 'Contacts',
       'bank-details': 'Bank Details',
-      'monthly-winners': 'Monthly Winners',
       'financial': 'Financial',
       'performance': 'Performance'
     };

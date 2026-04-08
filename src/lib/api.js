@@ -186,12 +186,6 @@ class ApiService {
   }
 
   // ===== STUDENT ENDPOINTS =====
-  async claimRewards() {
-    return this.request('/api/wallet/claim', {
-      method: 'POST'
-    });
-  }
-
   async getProfile() {
     return this.request('/api/student/profile');
   }
@@ -290,16 +284,8 @@ class ApiService {
   }
 
   // ===== PUBLIC ENDPOINTS =====
-  async getPublicCategories() {
-    return this.request('/api/public/categories');
-  }
-
   async getPublicLandingStats() {
     return this.request('/api/public/landing-stats');
-  }
-
-  async getPublicCategoriesEnhanced() {
-    return this.request('/api/public/categories-enhanced');
   }
 
   async getPublicSitemapData() {
@@ -336,20 +322,9 @@ class ApiService {
     return this.request(`/api/admin/analytics/performance?${queryString}`);
   }
 
-  async getMonthlyProgressAnalytics(month = null) {
-    const params = month ? { month } : {};
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/analytics/monthly-progress?${queryString}`);
-  }
-
   async getIndividualUserAnalytics(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/analytics/users/${userId}/full?${queryString}`);
-  }
-
-  async getAdminTopPerformers(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/analytics/top-performers?${queryString}`);
   }
 
   async getAdminAllUsersSummary() {
@@ -393,197 +368,6 @@ class ApiService {
     });
   }
 
-  // Categories
-  async getAdminCategories(params = {}) {
-    const queryString = this.buildQuery(params);
-    return this.request(`/api/admin/categories?${queryString}`);
-  }
-
-  async createCategory(categoryData) {
-    return this.request('/api/admin/categories', {
-      method: 'POST',
-      body: JSON.stringify(categoryData)
-    });
-  }
-
-  async updateCategory(id, categoryData) {
-    return this.request(`/api/admin/categories/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(categoryData)
-    });
-  }
-
-  async deleteCategory(id) {
-    return this.request(`/api/admin/categories/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Subcategories
-  async getAdminSubcategories(params = {}) {
-    const queryString = this.buildQuery(params);
-    return this.request(`/api/admin/subcategories?${queryString}`);
-  }
-
-  async createSubcategory(subcategoryData) {
-    return this.request('/api/admin/subcategories', {
-      method: 'POST',
-      body: JSON.stringify(subcategoryData)
-    });
-  }
-
-  async updateSubcategory(id, subcategoryData) {
-    return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(subcategoryData)
-    });
-  }
-
-  async deleteSubcategory(id) {
-    return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Questions
-  async getAdminQuestions(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/questions?${queryString}`);
-  }
-
-  async createQuestion(questionData) {
-    return this.request('/api/admin/questions', {
-      method: 'POST',
-      body: JSON.stringify(questionData)
-    });
-  }
-
-  // ===== PRO USER QUESTIONS =====
-  async createUserQuestion(payload) {
-    return this.request('/api/userQuestions/create', {
-      method: 'POST',
-      body: JSON.stringify(payload)
-    });
-  }
-
-  async getCurrentMonthQuestionCount(userId) {
-    return this.request(`/api/userQuestions/monthly-count/${userId}`);
-  }
-
-  async getCurrentDayQuestionCount(userId) {
-    return this.request(`/api/userQuestions/daily-count/${userId}`);
-  }
-
-  async getMyUserQuestions(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/userQuestions/mine/list?${queryString}`);
-  }
-
-  // ===== BLOG =====
-  async createBlog(blogData) {
-    const form = new FormData();
-    Object.entries(blogData).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-      if (key === 'tags' && Array.isArray(value)) {
-        if (value.length > 0) {
-          value.forEach(tag => form.append('tags[]', tag));
-        }
-      } else if (key === 'featuredImageFile' && value instanceof File) {
-        form.append('featuredImageFile', value);
-      } else {
-        form.append(key, value);
-      }
-    });
-
-    return this.request('/api/blog', {
-      method: 'POST',
-      body: form
-    });
-  }
-
-  async getCurrentMonthBlogCount() {
-    return this.request('/api/blog/monthly-count');
-  }
-
-  async getMyBlogs(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/blog/my${queryString ? `?${queryString}` : ''}`);
-  }
-
-  async getMyBlog(id) {
-    return this.request(`/api/blog/my/${id}`);
-  }
-
-  async updateBlog(id, blogData) {
-    const formData = new FormData();
-    Object.keys(blogData).forEach(key => {
-      if (key !== 'featuredImageFile' && blogData[key] !== null && blogData[key] !== undefined) {
-        if (Array.isArray(blogData[key])) {
-          formData.append(key, JSON.stringify(blogData[key]));
-        } else {
-          formData.append(key, blogData[key]);
-        }
-      }
-    });
-    if (blogData.featuredImageFile) {
-      formData.append('featuredImageFile', blogData.featuredImageFile);
-    }
-    return this.request(`/api/blog/my/${id}`, {
-      method: 'PUT',
-      body: formData
-    });
-  }
-
-  async deleteBlog(id) {
-    return this.request(`/api/blog/my/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  async getPublicUserQuestions(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/userQuestions/public/list?${queryString}`);
-  }
-
-  async answerUserQuestion(id, selectedOptionIndex) {
-    return this.request(`/api/userQuestions/${id}/answer`, {
-      method: 'POST',
-      body: JSON.stringify({ selectedOptionIndex })
-    });
-  }
-
-  async likeUserQuestion(id) {
-    return this.request(`/api/userQuestions/${id}/like`, {
-      method: 'POST'
-    });
-  }
-
-  async shareUserQuestion(id) {
-    return this.request(`/api/userQuestions/${id}/share`, {
-      method: 'POST'
-    });
-  }
-
-  async incrementUserQuestionView(id) {
-    return this.request(`/api/userQuestions/${id}/view`, { method: 'POST' });
-  }
-
-  async getUserQuestionById(id) {
-    return this.request(`/api/userQuestions/${id}`);
-  }
-
-  async updateQuestion(id, questionData) {
-    return this.request(`/api/admin/questions/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(questionData)
-    });
-  }
-
-  async deleteQuestion(id) {
-    return this.request(`/api/admin/questions/${id}`, {
-      method: 'DELETE'
-    });
-  }
 
   // Students
   async getAdminStudents(params = {}) {
@@ -669,11 +453,6 @@ class ApiService {
     return this.request(`/api/admin/referral-history?${queryString}`);
   }
 
-  async getAdminBlogRewardsHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/blog-rewards-history?${queryString}`);
-  }
-
   async getReferralWithdrawRequests(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/referral-withdraw-requests?${queryString}`);
@@ -683,13 +462,6 @@ class ApiService {
     return this.request(`/api/admin/referral-withdraw-requests/${id}/status`, {
       method: 'PUT',
       body: JSON.stringify({ status }),
-    });
-  }
-
-  async toggleTopPerformer(userId, isTopPerformer) {
-    return this.request(`/api/admin/users/${userId}/top-performer`, {
-      method: 'PUT',
-      body: JSON.stringify({ isTopPerformer }),
     });
   }
 
@@ -712,140 +484,6 @@ class ApiService {
     return this.request(`/api/admin/subscriptions/${userId}/extend`, {
       method: 'POST',
       body: JSON.stringify(data)
-    });
-  }
-
-  // ===== ADMIN ARTICLES =====
-  async getAdminArticles(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/articles?${queryString}`);
-  }
-
-  async getAdminArticle(id) {
-    return this.request(`/api/admin/articles/${id}`);
-  }
-
-  async getAdminUserBlogs(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/user-blogs?${queryString}`);
-  }
-
-  async createArticle(articleData) {
-    const form = new FormData();
-    Object.entries(articleData).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-      if (key === 'tags' && Array.isArray(value)) {
-        value.forEach(tag => form.append('tags[]', tag));
-      } else {
-        form.append(key, value);
-      }
-    });
-    return this.request('/api/admin/articles', {
-      method: 'POST',
-      body: form
-    });
-  }
-
-  async updateArticle(id, articleData) {
-    const form = new FormData();
-    Object.entries(articleData).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-      if (key === 'tags' && Array.isArray(value)) {
-        value.forEach(tag => form.append('tags[]', tag));
-      } else {
-        form.append(key, value);
-      }
-    });
-    return this.request(`/api/admin/articles/${id}`, {
-      method: 'PUT',
-      body: form
-    });
-  }
-
-  async deleteArticle(id) {
-    return this.request(`/api/admin/articles/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  async publishArticle(id) {
-    return this.request(`/api/admin/articles/${id}/publish`, {
-      method: 'PATCH'
-    });
-  }
-
-  async unpublishArticle(id) {
-    return this.request(`/api/admin/articles/${id}/unpublish`, {
-      method: 'PATCH'
-    });
-  }
-
-  async toggleFeatured(id) {
-    return this.request(`/api/admin/articles/${id}/toggle-featured`, {
-      method: 'PATCH'
-    });
-  }
-
-  async togglePinned(id) {
-    return this.request(`/api/admin/articles/${id}/toggle-pinned`, {
-      method: 'PATCH'
-    });
-  }
-
-  async getArticleStats() {
-    return this.request('/api/admin/articles-stats');
-  }
-
-  // ===== PUBLIC ARTICLES =====
-  async getPublishedArticles(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles?${queryString}`);
-  }
-
-  async getFeaturedArticles(limit = 5) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/articles/featured?${queryString}`);
-  }
-
-  async getArticleBySlug(slug) {
-    return this.request(`/api/public/articles/${slug}`);
-  }
-
-  async getArticlesByCategory(categoryId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles/category/${categoryId}?${queryString}`);
-  }
-
-  async getArticlesByTag(tag, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/articles/tag/${encodeURIComponent(tag)}?${queryString}`);
-  }
-
-  async searchArticles(query, params = {}) {
-    const searchParams = new URLSearchParams({ q: query, ...params }).toString();
-    return this.request(`/api/public/articles/search?${searchParams}`);
-  }
-
-  async incrementArticleViews(id) {
-    return this.request(`/api/public/articles/${id}/view`, {
-      method: 'POST'
-    });
-  }
-
-  async incrementArticleLikes(id) {
-    return this.request(`/api/public/articles/${id}/like`, {
-      method: 'POST'
-    });
-  }
-
-  // Student Rewards
-  async getStudentRewards(userId) {
-    return this.request(`/api/student/rewards/${userId}`);
-  }
-
-  async claimReward(rewardId) {
-    return this.request(`/api/student/rewards/${rewardId}/claim`, {
-      method: 'POST'
     });
   }
 
@@ -888,17 +526,6 @@ class ApiService {
     return this.request(`/api/wallet/referral-history${queryString ? `?${queryString}` : ''}`);
   }
 
-  async getBlogRewardsHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/wallet/blog-rewards-history${queryString ? `?${queryString}` : ''}`);
-  }
-
-  // Question Rewards History (User)
-  async getQuestionRewardsHistory(params) {
-    const query = this.buildQuery(params);
-    return this.request(`/api/proUser/question/rewards-history${query ? `?${query}` : ''}`);
-  }
-
   async getWithdrawalHistory(params) {
     const query = this.buildQuery(params);
     return this.request(`/api/proUser/withdraw-history${query ? `?${query}` : ''}`);
@@ -926,19 +553,6 @@ class ApiService {
 
   async updateWithdrawRequestStatus(id, status) {
     return this.request(`/api/admin/withdrawRequests/${id}/status`, {
-      method: 'PATCH',
-      body: JSON.stringify({ status })
-    });
-  }
-
-  // ===== ADMIN USER QUESTIONS =====
-  async getAdminUserQuestions(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/userQuestions?${queryString}`);
-  }
-
-  async updateUserQuestionStatus(id, status) {
-    return this.request(`/api/admin/userQuestions/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status })
     });

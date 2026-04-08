@@ -13,10 +13,6 @@ export async function GET(req) {
         const authResult = await protect(req);
         const { searchParams } = new URL(req.url);
         const userIdFromQuery = searchParams.get('userId');
-        const competitionType = searchParams.get('type') || 'monthly';
-        const date = searchParams.get('date');
-        const week = searchParams.get('week');
-
         let userId;
 
         if (authResult.authenticated) {
@@ -33,13 +29,7 @@ export async function GET(req) {
         const user = await User.findById(userId).select('-password').populate('currentSubscription');
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-        // Get level information (supports historical data)
-        const filterValue = competitionType === 'daily' ? date : (competitionType === 'weekly' ? week : null);
-        const levelInfo = await User.getHistoricalLevelInfo(userId, competitionType, filterValue);
-
-        if (!levelInfo && filterValue) {
-            return NextResponse.json({ error: `No historical data found for ${competitionType} ${filterValue}` }, { status: 404 });
-        }
+        const levelInfo = user.level || { currentLevel: 0, levelName: 'Starter' };
 
         // Get profile completion details (same as aajexam-backend)
         const profileCompletion = user.getProfileCompletionDetails();

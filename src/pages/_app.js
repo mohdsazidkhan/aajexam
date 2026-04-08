@@ -78,10 +78,7 @@ function AppContent({ Component, pageProps }) {
 
   const renderContent = () => {
     const isPublicRoute = router.pathname === '/' ||
-                          router.pathname.startsWith('/categories') ||
-                          router.pathname.startsWith('/subcategories') ||
                           router.pathname.startsWith('/exams') ||
-                          router.pathname.startsWith('/articles') ||
                           router.pathname.startsWith('/login') ||
                           router.pathname.startsWith('/register');
 

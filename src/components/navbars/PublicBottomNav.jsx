@@ -18,7 +18,6 @@ const PublicBottomNav = () => {
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
-    { name: 'Categories', path: '/categories', icon: Layers },
     { name: 'Search', path: '/search', icon: Search },
     { name: 'Login', path: '/profile', icon: User },
   ];

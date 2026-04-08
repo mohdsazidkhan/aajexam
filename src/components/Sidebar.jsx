@@ -6,9 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   LayoutDashboard,
   Bell,
-  Layers,
-  Puzzle,
-  HelpCircle,
   GraduationCap,
   Users,
   User,
@@ -27,7 +24,6 @@ import {
   Zap,
   Globe,
   Contact2,
-  Flame,
   Activity,
   X
 } from 'lucide-react';
@@ -68,19 +64,6 @@ const Sidebar = () => {
       ]
     },
     {
-      title: 'ORGANIZATION',
-      items: [
-        { path: '/admin/categories', icon: Layers, label: 'Categories', key: 'categories' },
-        { path: '/admin/subcategories', icon: Puzzle, label: 'Subcategories', key: 'subcategories' },
-      ]
-    },
-    {
-      title: 'MANAGE CONTENT',
-      items: [
-        { path: '/admin/articles', icon: Zap, label: 'Articles', key: 'articles' },
-      ]
-    },
-    {
       title: 'GOVT EXAMS',
       items: [
         { path: '/admin/govt-exams', icon: ShieldCheck, label: 'Exam Categories', key: 'govt-exams-categories' },
@@ -93,8 +76,6 @@ const Sidebar = () => {
     {
       title: 'USER SUBMISSIONS',
       items: [
-        { path: '/admin/user-questions', icon: HelpCircle, label: 'User Questions', key: 'user-questions' },
-        { path: '/admin/user-blogs', icon: Zap, label: 'User Articles', key: 'user-blogs' },
       ]
     },
     {
@@ -111,7 +92,6 @@ const Sidebar = () => {
       items: [
         { path: '/admin/referral-history', icon: Globe, label: 'Referral History', key: 'referral-history' },
         { path: '/admin/referral-analytics', icon: BarChart3, label: 'Referral Stats', key: 'referral-analytics' },
-        { path: '/admin/blog-rewards-history', icon: Flame, label: 'Article Rewards', key: 'blog-rewards' },
       ]
     },
     {

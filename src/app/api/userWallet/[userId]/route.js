@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserWallet from '@/models/UserWallet';
-import UserQuestions from '@/models/UserQuestions';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
 
@@ -25,8 +24,6 @@ export async function GET(req, { params }) {
             { upsert: true, new: true }
         );
 
-        const approvedCount = await UserQuestions.countDocuments({ userId, status: 'approved' });
-
         const pendingRequest = await WithdrawRequest.findOne({
             userId,
             status: 'pending'
@@ -37,14 +34,12 @@ export async function GET(req, { params }) {
             data: {
                 balance: wallet.balance,
                 totalEarned: wallet.totalEarned,
-                approvedCount,
                 hasPendingRequest: !!pendingRequest,
                 pendingRequest: pendingRequest ? {
                     amount: pendingRequest.amount,
                     requestedAt: pendingRequest.requestedAt,
                     status: pendingRequest.status
-                } : null,
-                totalQuestions: await UserQuestions.countDocuments({ userId })
+                } : null
             }
         });
     } catch (error) {

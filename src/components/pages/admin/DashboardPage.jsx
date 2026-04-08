@@ -14,7 +14,6 @@
   Eye,
   ThumbsUp,
   CheckCircle,
-  Clock,
   LayoutDashboard,
   ShieldCheck,
   FileText,
@@ -23,7 +22,6 @@
   Gem,
   Award,
   FlaskConical,
-  MessageCircle,
   Building,
   BarChart3,
   Sparkles,
@@ -59,25 +57,13 @@ const DashboardPage = () => {
     paymentOrders: 0,
     completedPaymentOrders: 0,
     totalRevenue: 0,
-    // Article stats
-    totalArticles: 0,
-    publishedArticles: 0,
-    draftArticles: 0,
-    pinnedArticles: 0,
-    totalArticleViews: 0,
-    totalArticleLikes: 0,
     // Withdraw requests stats
     withdrawRequests: 0,
     pendingWithdrawRequests: 0,
-    // Detailed user questions stats
-    approvedUserQuestions: 0,
-    rejectedUserQuestions: 0,
     // Levels stats
     totalLevels: 0,
     activeLevels: 0,
     inactiveLevels: 0,
-    // User Blogs stats
-    userBlogs: 0
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -89,18 +75,14 @@ const DashboardPage = () => {
         setLoading(true);
         setError(null);
         // Fetch both analytics dashboard and admin stats
-        const [analytics, adminStats, articleStats] = await Promise.all([
+        const [analytics, adminStats] = await Promise.all([
           API.getAnalyticsDashboard(),
-          API.getAdminStats(),
-          API.getArticleStats()
+          API.getAdminStats()
         ]);
         const overview = analytics?.data?.overview || {};
         setStats({
           ...adminStats,
-          ...overview,
-          ...articleStats.stats,
-          totalArticleViews: articleStats.stats.totalViews || 0,
-          totalArticleLikes: articleStats.stats.totalLikes || 0
+          ...overview
         });
       } catch (err) {
         console.error('Error fetching stats:', err);
@@ -133,8 +115,8 @@ const DashboardPage = () => {
       link: '#'
     },
     {
-      title: 'Dynamic Prize Pool',
-      count: `₹${(stats.dynamicPrizePool || 0).toLocaleString()}`,
+      title: 'Total Subscriptions',
+      count: stats.subscriptions || 0,
       icon: Gem,
       color: 'bg-primary-500',
       textColor: 'text-primary-900',
@@ -144,7 +126,7 @@ const DashboardPage = () => {
       gradientTo: 'to-amber-200',
       darkGradientFrom: 'dark:from-primary-700',
       darkGradientTo: 'dark:to-amber-800',
-      subtitle: `Active Pro users × ₹${stats.prizePerPro || 95}`,
+      subtitle: 'Active paid subscriptions',
       link: '#'
     },
     {
@@ -176,34 +158,6 @@ const DashboardPage = () => {
       darkGradientTo: 'dark:to-rose-800',
       subtitle: 'Logged in this month',
       link: '#'
-    },
-    {
-      title: 'Categories',
-      count: stats.categories,
-      link: '/admin/categories',
-      icon: Layers,
-      color: 'bg-primary-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-primary-100',
-      darkBgColor: 'dark:bg-primary-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-amber-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-amber-800'
-    },
-    {
-      title: 'Subcategories',
-      count: stats.subcategories,
-      link: '/admin/subcategories',
-      icon: Target,
-      color: 'bg-green-500',
-      textColor: 'text-green-900',
-      bgColor: 'bg-green-100',
-      darkBgColor: 'dark:bg-green-900/20',
-      gradientFrom: 'from-green-200',
-      gradientTo: 'to-emerald-200',
-      darkGradientFrom: 'dark:from-green-700',
-      darkGradientTo: 'dark:to-emerald-800'
     },
     {
       title: 'Levels',
@@ -265,48 +219,6 @@ const DashboardPage = () => {
       darkGradientTo: 'dark:to-amber-800'
     },
     {
-      title: 'User Questions',
-      count: stats.userQuestions || 0,
-      link: '/admin/user-questions',
-      icon: MessageCircle,
-      color: 'bg-purple-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-purple-100',
-      darkBgColor: 'dark:bg-purple-900/20',
-      gradientFrom: 'from-purple-200',
-      gradientTo: 'to-pink-200',
-      darkGradientFrom: 'dark:from-purple-700',
-      darkGradientTo: 'dark:to-pink-800',
-      subtitle: 'Submitted by students'
-    },
-    {
-      title: 'User Blogs',
-      count: stats.userBlogs || 0,
-      link: '/admin/user-blogs',
-      icon: FileText,
-      color: 'bg-primary-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-primary-100',
-      darkBgColor: 'dark:bg-primary-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-cyan-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-cyan-800',
-      subtitle: 'Published by students'
-    },
-    {
-      title: 'Approved Questions',
-      count: stats.approvedUserQuestions || 0,
-      link: '/admin/user-questions?status=approved',
-      icon: CheckCircle,
-      color: 'bg-green-500',
-      textColor: 'text-green-900',
-      bgColor: 'bg-green-100',
-      darkBgColor: 'dark:bg-green-900/20',
-      gradientFrom: 'from-green-200',
-      gradientTo: 'to-emerald-200',
-      darkGradientFrom: 'dark:from-green-700',
-      darkGradientTo: 'dark:to-emerald-800',
       subtitle: 'Verified by admin'
     },
 
@@ -442,37 +354,6 @@ const DashboardPage = () => {
       darkGradientFrom: 'dark:from-cyan-700',
       darkGradientTo: 'dark:to-sky-800',
       subtitle: 'Total attempts by students'
-    },
-    // Article Cards
-    {
-      title: 'Total Articles',
-      count: stats.totalArticles || 0,
-      link: '/admin/articles',
-      icon: FileText,
-      color: 'bg-primary-500',
-      textColor: 'text-primary-900',
-      bgColor: 'bg-primary-50',
-      darkBgColor: 'dark:bg-primary-900/20',
-      gradientFrom: 'from-primary-200',
-      gradientTo: 'to-sky-200',
-      darkGradientFrom: 'dark:from-primary-700',
-      darkGradientTo: 'dark:to-sky-800',
-      subtitle: `${stats.publishedArticles || 0} published`
-    },
-    {
-      title: 'Article Views',
-      count: stats.totalArticleViews || 0,
-      link: '/admin/articles',
-      icon: Eye,
-      color: 'bg-green-500',
-      textColor: 'text-green-900',
-      bgColor: 'bg-green-100',
-      darkBgColor: 'dark:bg-green-900/20',
-      gradientFrom: 'from-emerald-200',
-      gradientTo: 'to-teal-200',
-      darkGradientFrom: 'dark:from-emerald-700',
-      darkGradientTo: 'dark:to-teal-800',
-      subtitle: `${stats.totalArticleLikes || 0} likes`
     },
   ];
 
@@ -628,14 +509,9 @@ const DashboardPage = () => {
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10">
                  {[
-                   { href: "/admin/categories", label: "Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subcategories", label: "Subcategories", desc: "Break down categories into topics", icon: Target, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/levels", label: "Levels", desc: "Configure difficulty levels and progression", icon: Trophy, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/quizzes", label: "Quizzes", desc: "Create and manage quiz content", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/questions", label: "Questions", desc: "Add and edit quiz questions", icon: HelpCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/articles", label: "Articles", desc: "Publish educational articles", icon: FileText, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions", label: "User Questions", desc: "Review student-submitted questions", icon: MessageCircle, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/user-questions?status=pending", label: "Pending Review", desc: "Questions awaiting your approval", icon: Clock, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/govt-exams", label: "Exam Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/govt-exams/exams", label: "Practice Exams", desc: "Manage practice exams", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
+                   { href: "/admin/govt-exams/tests", label: "Practice Tests", desc: "Create and manage practice tests", icon: Target, color: "bg-indigo-100 text-indigo-600" },
                    { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Process student payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
                    { href: "/admin/students", label: "Students", desc: "Browse and manage student accounts", icon: Users, color: "bg-indigo-100 text-indigo-600" },
                    { href: "/admin/payment-transactions", label: "Payments", desc: "Track all payment transactions", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },

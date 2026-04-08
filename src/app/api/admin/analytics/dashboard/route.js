@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
-import config from '@/lib/config/appConfig';
 
 const calculateTotalRevenue = async () => {
     const revenueSummary = await PaymentOrder.aggregate([
@@ -33,10 +32,6 @@ export async function GET(req) {
             status: 'active'
         });
 
-        const PRIZE_PER_PRO = config.QUIZ_CONFIG.PRIZE_PER_PRO || 95;
-        const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
-        const dynamicPrizePool = Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL);
-
         const totalRevenue = await calculateTotalRevenue();
 
         const totalSubscriptions = await User.countDocuments({
@@ -55,13 +50,9 @@ export async function GET(req) {
             { $sort: { _id: 1 } }
         ]);
 
-        const currentMonth = new Date().toISOString().slice(0, 7);
-        const topUsers = await User.find({
-            role: 'student',
-            'monthlyProgress.month': currentMonth
-        })
-            .select('name level monthlyProgress')
-            .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        const topUsers = await User.find({ role: 'student' })
+            .select('name level')
+            .sort({ 'level.currentLevel': -1 })
             .limit(limit)
             .lean();
 
@@ -73,9 +64,7 @@ export async function GET(req) {
                     totalNonAdminUsers: totalUsers,
                     totalRevenue,
                     totalSubscriptions,
-                    currentMonthActiveProUsers: activeProUsers,
-                    dynamicPrizePool,
-                    prizePerPro: PRIZE_PER_PRO
+                    currentMonthActiveProUsers: activeProUsers
                 },
                 subscriptionDistribution,
                 levelDistribution,

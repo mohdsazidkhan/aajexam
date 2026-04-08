@@ -180,18 +180,6 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                     )}
 
                     {/* Category */}
-                    {exam.category && (
-                        <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
-                            <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center">
-                                Category
-                            </h2>
-                            <Link href={`/categories/${exam.category._id}`}>
-                                <span className="inline-block px-8 py-4 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-2xl text-xs font-black uppercase tracking-widest shadow-duo border-b-4 border-primary-200 dark:border-primary-800 active:translate-y-1 active:border-b-0 transition-all cursor-pointer">
-                                    {exam.category.name}
-                                </span>
-                            </Link>
-                        </div>
-                    )}
                 </div>
             </div>
         </MobileAppWrapper>

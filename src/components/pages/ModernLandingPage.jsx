@@ -31,7 +31,7 @@ import Card from '../ui/Card';
 const ModernLandingPage = () => {
    const [stats, setStats] = useState({
       activeStudents: "250+",
-      totalQuizzes: "2K+",
+      totalExams: "2K+",
       totalQuestions: "12K+",
       monthlyPrizePool: "650"
    });
@@ -53,7 +53,7 @@ const ModernLandingPage = () => {
             const formatNum = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K+` : `${n}`);
             setStats({
                activeStudents: formatNum(res.data?.activeStudents || 250),
-               totalQuizzes: formatNum(res.data?.totalQuizzes || 2400),
+               totalExams: formatNum(res.data?.totalExams || 2400),
                totalQuestions: formatNum(res.data?.totalQuestions || 12500),
                monthlyPrizePool: formatNum(res.data?.monthlyPrizePool || 650)
             });
@@ -99,7 +99,7 @@ const ModernLandingPage = () => {
                         transition={{ delay: 0.2, duration: 0.8 }}
                         className="text-base lg:text-xl lg:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 lg:px-4"
                      >
-                        Practice daily quizzes for government exams, see how you are improving, and earn rewards for your hard work.
+                        Practice daily for government exams, see how you are improving, and earn rewards for your hard work.
                      </motion.p>
                   </div>
 
@@ -125,9 +125,9 @@ const ModernLandingPage = () => {
                         icon={Zap}
                         iconPosition="right"
                         className="w-full sm:w-auto bg-white dark:bg-slate-800/30 border-2 border-slate-200 dark:border-white/5 shadow-sm font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
-                        onClick={() => router.push('/categories')}
+                        onClick={() => router.push('/govt-exams-preparation')}
                      >
-                        Browse categories
+                        Browse exams
                      </Button>
                   </motion.div>
 
@@ -156,7 +156,7 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-12">
                   {[
                      { label: 'Students Learning', val: stats.activeStudents, icon: Users, color: 'text-primary-700 dark:text-primary-500' },
-                     { label: 'Interactive Quizzes', val: stats.totalQuizzes, icon: Target, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Practice Exams', val: stats.totalExams, icon: Target, color: 'text-primary-700 dark:text-primary-500' },
                      { label: 'Study Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-700 dark:text-primary-500' },
                      { label: 'Monthly Prize Pool', val: `₹${stats.monthlyPrizePool}`, icon: Coins, color: 'text-primary-700 dark:text-primary-500' }
                   ].map((stat, index) => (
@@ -186,7 +186,7 @@ const ModernLandingPage = () => {
                            <Trophy className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl lg:text-5xl font-black font-outfit uppercase leading-[0.9]">See your progress</h3>
-                        <p className="text-base lg:text-lg lg:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every quiz and move up as you improve.</p>
+                        <p className="text-base lg:text-lg lg:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every exam and move up as you improve.</p>
                         <div className="pt-4 lg:pt-8">
                            <Button variant="ghost" size="lg" className="bg-white text-primary-700 hover:bg-slate-100 rounded-[1.5rem] lg:rounded-[2rem] px-6 lg:px-8 font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Check your progress

@@ -46,8 +46,7 @@ const AdminNotificationsPage = () => {
   const isOpen = useSelector((state) => state.sidebar.isOpen);
 
   const typeToPath = {
-    question: '/admin/user-questions',
-    quiz: '/admin/user-quizzes',
+    quiz: '/admin/govt-exams/tests',
     withdraw: '/admin/withdraw-requests',
     contact: '/admin/contacts',
     bank: '/admin/bank-details',

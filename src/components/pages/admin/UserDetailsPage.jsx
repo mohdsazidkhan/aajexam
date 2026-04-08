@@ -220,13 +220,9 @@ export default function UserDetailsPage() {
                                      </div>
                                   </td>
                                   <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                     <div className="flex gap-3 lg:gap-6">
-                                        {[u.dailyProgress?.highScoreWins, u.weeklyProgress?.highScoreWins, u.monthlyProgress?.highScoreWins].map((v, idx) => (
-                                          <div key={idx} className="text-center">
-                                             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{v || 0}</div>
-                                             <div className="text-[8px] font-black text-slate-400 uppercase">{['D','W','M'][idx]}</div>
-                                          </div>
-                                        ))}
+                                     <div className="text-center">
+                                        <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">Level {u.level?.currentLevel || 0}</div>
+                                        <div className="text-[8px] font-black text-slate-400 uppercase">{u.level?.levelName || 'Starter'}</div>
                                      </div>
                                   </td>
                                   <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
@@ -256,17 +252,11 @@ export default function UserDetailsPage() {
                             
                             <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border border-slate-100 dark:border-white/10">
                                <div className="flex justify-between items-end gap-3 text-center">
-                                  {[
-                                    { l: 'Daily', v: u.dailyProgress?.highScoreWins, c: 'bg-rose-500' },
-                                    { l: 'Weekly', v: u.weeklyProgress?.highScoreWins, c: 'bg-blue-500' },
-                                    { l: 'Monthly', v: u.monthlyProgress?.highScoreWins, c: 'bg-emerald-500' }
-                                  ].map((s) => (
-                                    <div key={s.l} className="flex-1">
-                                       <div className="text-sm font-black text-slate-900 dark:text-white">{s.v || 0}</div>
-                                       <div className={`h-1 w-full rounded-full ${s.c} my-1 opacity-50`} />
-                                       <div className="text-[8px] font-black text-slate-400 uppercase">{s.l}</div>
-                                    </div>
-                                  ))}
+                                  <div className="flex-1">
+                                     <div className="text-sm font-black text-slate-900 dark:text-white">Level {u.level?.currentLevel || 0}</div>
+                                     <div className="h-1 w-full rounded-full bg-primary-500 my-1 opacity-50" />
+                                     <div className="text-[8px] font-black text-slate-400 uppercase">{u.level?.levelName || 'Starter'}</div>
+                                  </div>
                                </div>
                             </div>
 
@@ -296,12 +286,10 @@ export default function UserDetailsPage() {
                                      </div>
                                   </div>
                                   <div className="flex gap-3 lg:gap-8">
-                                     {['Daily', 'Weekly', 'Monthly'].map((l, idx) => (
-                                       <div key={l} className="text-center">
-                                          <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">{[u.dailyProgress?.highScoreWins, u.weeklyProgress?.highScoreWins, u.monthlyProgress?.highScoreWins][idx] || 0}</div>
-                                          <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{l} Wins</div>
-                                       </div>
-                                     ))}
+                                     <div className="text-center">
+                                        <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">Level {u.level?.currentLevel || 0}</div>
+                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{u.level?.levelName || 'Starter'}</div>
+                                     </div>
                                   </div>
                                </div>
                                <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
