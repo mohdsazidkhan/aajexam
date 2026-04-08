@@ -1,7 +1,7 @@
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Subscription from '@/models/Subscription';
-import MonthlyUserReferral from '@/models/MonthlyUserReferral';
+
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
@@ -125,10 +125,6 @@ export async function POST(req) {
                     }
 
                     await referrer.save();
-                    const currentMonth = new Date().toISOString().slice(0, 7);
-                    try {
-                        await MonthlyUserReferral.incrementReferralCount(referrer._id, currentMonth);
-                    } catch (mErr) { console.error('Monthly ref error:', mErr); }
                 }
             }
 

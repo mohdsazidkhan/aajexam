@@ -1,6 +1,5 @@
 import dbConnect from '../lib/db';
 import Article from '../models/Article';
-import Level from '../models/Level';
 import Exam from '../models/Exam';
 
 let EXTERNAL_DATA_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
@@ -12,7 +11,6 @@ if (EXTERNAL_DATA_URL.includes('localhost') || EXTERNAL_DATA_URL.includes('127.0
 
 function generateSiteMap({
     articles = [],
-    levels = [],
     exams = []
 }) {
     const currentDate = new Date().toISOString();
@@ -28,13 +26,9 @@ function generateSiteMap({
         '/faq',
         '/editorial-policy',
         '/about-founder',
-        '/levels',
-        '/how-it-works',
         '/govt-exams-preparation',
         '/disclaimer',
         '/halal-disclaimer',
-        '/leaderboard',
-        '/monthly-winners',
         '/search',
         '/refund'
     ];
@@ -70,16 +64,6 @@ function generateSiteMap({
             })
             .join('')}
 
-     <!-- Level Pages -->
-     ${levels && levels.length > 0 ? levels.map((lvl) => `
-       <url>
-           <loc>${`${EXTERNAL_DATA_URL}/levels/${lvl.levelNumber}`}</loc>
-           <lastmod>${currentDate}</lastmod>
-           <changefreq>monthly</changefreq>
-           <priority>0.8</priority>
-       </url>
-     `).join('') : ''}
-
      <!-- Government Exam Pages (if available) -->
      ${exams
             .map((exam) => {
@@ -108,15 +92,13 @@ export async function getServerSideProps({ res }) {
         await dbConnect();
 
         // Fetch data directly from the database
-        const [articles, levels, exams] = await Promise.all([
+        const [articles, exams] = await Promise.all([
             Article.find({ status: 'published' }).select('slug updatedAt createdAt').lean(),
-            Level.find({ isActive: true }).select('levelNumber').lean(),
             Exam.find({ isActive: true }).select('_id updatedAt createdAt').lean()
         ]);
 
         const sitemap = generateSiteMap({
             articles,
-            levels,
             exams
         });
 
@@ -140,4 +122,3 @@ export async function getServerSideProps({ res }) {
 }
 
 export default SiteMap;
-

@@ -24,10 +24,6 @@ const StudentLayout = ({ children }) => {
   // Check if current page should hide sidebar
   const shouldHideSidebar = (() => {
     const pathname = router?.pathname || '';
-    // Hide on attempt quiz pages
-    if (pathname?.startsWith('/attempt-quiz')) {
-      return true;
-    }
     // Hide only on test start pages (/govt-exams/test/[testId]/start), not on /govt-exams/test listing
     if (pathname?.startsWith('/govt-exams/test/') && pathname?.includes('/start')) {
       return true;
@@ -55,8 +51,7 @@ const StudentLayout = ({ children }) => {
         const isMobile = currentWidth < 768;
         const pathname = router?.pathname || '';
         const currentShouldHideSidebar =
-          pathname.startsWith('/attempt-quiz') ||
-          (pathname.startsWith('/govt-exams/test/') && pathname.includes('/start'));
+          pathname.startsWith('/govt-exams/test/') && pathname.includes('/start');
 
         if (isMobile || currentShouldHideSidebar) {
           dispatch(closeSidebar());

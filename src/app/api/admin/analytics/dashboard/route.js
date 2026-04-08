@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
-import Quiz from '@/models/Quiz';
-import QuizAttempt from '@/models/QuizAttempt';
 import PaymentOrder from '@/models/PaymentOrder';
 import config from '@/lib/config/appConfig';
 
@@ -26,14 +24,6 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit') || '20');
 
         const totalUsers = await User.countDocuments({ role: 'student' });
-        const totalQuizzes = await Quiz.countDocuments();
-        const totalAttempts = await QuizAttempt.countDocuments();
-
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        const activeUsersCount = (await QuizAttempt.distinct('user', {
-            attemptedAt: { $gte: thirtyDaysAgo }
-        })).length;
 
         const now = new Date();
         const activeProUsers = await User.countDocuments({
@@ -53,13 +43,6 @@ export async function GET(req) {
             role: 'student',
             subscriptionStatus: { $in: ['basic', 'premium', 'pro'] }
         });
-
-        const recentActivity = await QuizAttempt.find()
-            .populate('user', 'name')
-            .populate('quiz', 'title')
-            .sort({ attemptedAt: -1 })
-            .limit(limit)
-            .select('score scorePercentage attemptedAt');
 
         const subscriptionDistribution = await User.aggregate([
             { $match: { role: 'student' } },
@@ -88,17 +71,12 @@ export async function GET(req) {
                 overview: {
                     totalUsers,
                     totalNonAdminUsers: totalUsers,
-                    totalQuizzes,
-                    totalAttempts,
                     totalRevenue,
-                    activeUsers: activeUsersCount,
-                    activeUsersCurrentMonth: activeUsersCount,
                     totalSubscriptions,
                     currentMonthActiveProUsers: activeProUsers,
                     dynamicPrizePool,
                     prizePerPro: PRIZE_PER_PRO
                 },
-                recentActivity,
                 subscriptionDistribution,
                 levelDistribution,
                 topUsers

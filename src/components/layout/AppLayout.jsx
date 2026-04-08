@@ -49,14 +49,12 @@ const AppLayout = ({ children }) => {
   const navItems = [
     { name: 'HOME', path: '/home', icon: Home },
     { name: 'EXAMS', path: '/govt-exams', icon: BookOpen },
-    { name: 'LEVELS', path: '/quiz-levels', icon: Layers },
     { name: 'SEARCH', path: '/search', icon: Search },
     { name: 'ANALYTICS', path: '/my-analytics', icon: BarChart2 },
     { name: 'PROFILE', path: '/profile', icon: User },
   ];
 
-  const isQuestPage = (router.pathname.includes('/govt-exams/test/') && router.pathname.endsWith('/start')) ||
-    router.pathname.startsWith('/attempt-quiz');
+  const isQuestPage = (router.pathname.includes('/govt-exams/test/') && router.pathname.endsWith('/start'));
   const showAppNav = isAuthenticated && isClient && !isQuestPage;
   const isUserAdmin = isAdmin();
 

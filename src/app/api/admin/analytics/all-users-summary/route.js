@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
-import MonthlyWinners from '@/models/MonthlyWinners';
 import Expense from '@/models/Expense';
 import { protect, admin } from '@/middleware/auth';
 
@@ -25,13 +24,6 @@ export async function GET(req) {
         ]);
         const totalRevenue = revenue[0]?.total || 0;
 
-        // User Payouts (Monthly Winners Prizes actual rewards)
-        const monthlyWinnerAgg = await MonthlyWinners.aggregate([
-            { $unwind: '$winners' },
-            { $group: { _id: null, total: { $sum: '$winners.rewardAmount' } } }
-        ]);
-        const totalMonthlyPrizes = monthlyWinnerAgg[0]?.total || 0;
-
         // Referral Earnings
         const referralAgg = await User.aggregate([
             { $unwind: { path: '$referralRewards', preserveNullAndEmptyArrays: false } },
@@ -40,7 +32,7 @@ export async function GET(req) {
         const totalReferralEarnings = referralAgg[0]?.total || 0;
 
         // Total earnings paid out to users
-        const totalEarnings = totalMonthlyPrizes + totalReferralEarnings;
+        const totalEarnings = totalReferralEarnings;
 
         // Other Expenses (Manual Entries)
         const expensesSummary = await Expense.aggregate([

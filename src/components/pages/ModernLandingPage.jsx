@@ -27,7 +27,6 @@ import config from '../../lib/config/appConfig';
 import API from '../../lib/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
-import MonthlyWinnersDisplay from "../MonthlyWinnersDisplay";
 
 const ModernLandingPage = () => {
    const [stats, setStats] = useState({
@@ -248,7 +247,7 @@ const ModernLandingPage = () => {
                         <h3 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Student leaderboard</h3>
                         <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">See where you stand among all students. Students who study the most win prizes every month.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-xl rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/monthly-winners')}>
+                           <Button variant="primary" size="lg" className="shadow-xl rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/govt-exams')}>
                               See top students
                            </Button>
                         </div>
@@ -290,7 +289,6 @@ const ModernLandingPage = () => {
 
                   <div className="relative w-full mx-auto px-0 lg:px-4 lg:px-0">
                      <div className="absolute -inset-20 bg-primary-500/10 blur-[120px] rounded-full opacity-50" />
-                     <MonthlyWinnersDisplay />
                   </div>
                </div>
             </div>

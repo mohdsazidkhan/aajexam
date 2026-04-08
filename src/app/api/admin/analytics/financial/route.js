@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PaymentOrder from '@/models/PaymentOrder';
-import MonthlyWinners from '@/models/MonthlyWinners';
 import { protect, admin } from '@/middleware/auth';
 
 export async function GET(req) {

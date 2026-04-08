@@ -23,7 +23,7 @@ import '../styles/responsive.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
 
-// Global styles for quiz page mobile optimization
+// Global styles for mobile optimization
 const globalStyles = `
   /* Mobile Viewport and Touch Scrolling Fixes */
   html, body {
@@ -38,41 +38,6 @@ const globalStyles = `
     min-height: 100vh;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-  }
-
-  /* Fullscreen Mode Scroll Fixes */
-  body.quiz-fullscreen-mode {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    height: auto !important;
-    min-height: 100vh !important;
-  }
-
-  body.quiz-fullscreen-mode html {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  /* Ensure fullscreen content is scrollable */
-  body.quiz-fullscreen-mode .min-h-screen {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    height: auto !important;
-    min-height: 100vh !important;
-  }
-
-  /* Mobile Spacing Reductions for Quiz Page */
-  @media (max-width: 767px) {
-    .space-y-3 > * + * { margin-top: 0.5rem !important; }
-    .space-y-4 > * + * { margin-top: 0.75rem !important; }
-    .space-y-6 > * + * { margin-top: 1rem !important; }
-    .space-y-8 > * + * { margin-top: 1.25rem !important; }
-    .mb-4 { margin-bottom: 0.75rem !important; }
-    .mb-6 { margin-bottom: 1rem !important; }
-    .mb-8 { margin-bottom: 1.25rem !important; }
-    .py-4 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
-    .py-6 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-    .py-8 { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; }
   }
 `;
 
@@ -112,11 +77,10 @@ function AppContent({ Component, pageProps }) {
   }, [router.events, router.asPath]);
 
   const renderContent = () => {
-    const isPublicRoute = router.pathname === '/' || 
-                          router.pathname.startsWith('/categories') || 
-                          router.pathname.startsWith('/subcategories') || 
-                          router.pathname.startsWith('/exams') || 
-                          router.pathname.startsWith('/levels') ||
+    const isPublicRoute = router.pathname === '/' ||
+                          router.pathname.startsWith('/categories') ||
+                          router.pathname.startsWith('/subcategories') ||
+                          router.pathname.startsWith('/exams') ||
                           router.pathname.startsWith('/articles') ||
                           router.pathname.startsWith('/login') ||
                           router.pathname.startsWith('/register');

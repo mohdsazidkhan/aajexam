@@ -9,8 +9,6 @@ import {
   Moon,
   Compass,
   Layers,
-  Trophy,
-  BookOpen,
   ShieldCheck,
   Zap,
   Menu,
@@ -44,8 +42,6 @@ const PublicNavbar = () => {
   const navLinks = [
     { label: 'Home', href: '/', icon: Compass },
     { label: 'Categories', href: '/categories', icon: Layers },
-    { label: 'Levels', href: '/levels', icon: Trophy },
-    { label: 'Quizzes', href: '/quizzes', icon: BookOpen },
     { label: 'Govt Exams', href: '/govt-exams-preparation', icon: ShieldCheck },
     { label: 'Articles', href: '/articles', icon: Zap },
   ];

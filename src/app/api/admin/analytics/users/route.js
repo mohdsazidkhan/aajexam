@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
-import QuizAttempt from '@/models/QuizAttempt';
 
 export async function GET(req) {
     try {

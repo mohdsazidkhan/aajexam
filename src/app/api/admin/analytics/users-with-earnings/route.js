@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
-import MonthlyWinners from '@/models/MonthlyWinners';
 import WalletTransaction from '@/models/WalletTransaction';
 import { protect, admin } from '@/middleware/auth';
 
@@ -36,16 +35,7 @@ export async function GET(req) {
         const userIds = allUsers.map(u => u._id);
         const total = allUsers.length;
 
-        // Step 2: Monthly winner prizes per user
-        const monthlyAgg = await MonthlyWinners.aggregate([
-            { $unwind: '$winners' },
-            { $match: { 'winners.userId': { $in: userIds } } },
-            { $group: { _id: '$winners.userId', total: { $sum: '$winners.rewardAmount' } } }
-        ]);
-        const monthlyMap = {};
-        monthlyAgg.forEach(r => { monthlyMap[r._id.toString()] = r.total; });
-
-        // Step 3: Blog + Quiz wallet earnings per user
+        // Step 2: Blog + Quiz wallet earnings per user
         const walletAgg = await WalletTransaction.aggregate([
             {
                 $match: {
@@ -59,15 +49,14 @@ export async function GET(req) {
         const walletMap = {};
         walletAgg.forEach(r => { walletMap[r._id.toString()] = r.total; });
 
-        // Step 4: Compute total earnings for each user
+        // Step 3: Compute total earnings for each user
         const usersWithEarnings = allUsers.map(u => {
             const uid = u._id.toString();
-            const monthlyPrizes = monthlyMap[uid] || 0;
             const referralEarnings = Array.isArray(u.referralRewards)
                 ? u.referralRewards.reduce((s, r) => s + (r.amount || 0), 0)
                 : 0;
             const walletEarnings = walletMap[uid] || 0;
-            const totalEarnings = monthlyPrizes + referralEarnings + walletEarnings;
+            const totalEarnings = referralEarnings + walletEarnings;
 
             // Format for frontend compatibility
             return {
@@ -82,11 +71,11 @@ export async function GET(req) {
                 joinedAt: u.createdAt,
                 createdAt: u.createdAt,
                 totalEarnings,
-                earningsBreakdown: { monthlyPrizes, referralEarnings, walletEarnings }
+                earningsBreakdown: { referralEarnings, walletEarnings }
             };
         });
 
-        // Step 5: Sort by totalEarnings descending, then paginate
+        // Step 4: Sort by totalEarnings descending, then paginate
         usersWithEarnings.sort((a, b) => b.totalEarnings - a.totalEarnings);
         const paginated = usersWithEarnings.slice(skip, skip + limit);
         const totalPages = Math.ceil(total / limit);

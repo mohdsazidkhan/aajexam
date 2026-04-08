@@ -10,10 +10,7 @@ import {
   HelpCircle,
   BookOpen,
   GraduationCap,
-  Trophy,
-  Crown,
   PlusCircle,
-  Edit3,
   Layout,
   Wallet,
   CreditCard,
@@ -22,7 +19,6 @@ import {
   Settings,
   LogOut,
   ChevronDown,
-  Layers,
   Award,
   Globe,
   Zap,
@@ -87,7 +83,6 @@ const StudentSidebar = () => {
     const username = user?.username;
     const children = [
       { path: '/profile', label: 'My Profile' },
-      { path: '/pro/quizzes/mine', label: 'My Quizzes' },
       { path: '/pro/questions/mine', label: 'My Questions' },
       { path: '/pro/my-blogs', label: 'My Articles' },
     ];
@@ -98,7 +93,6 @@ const StudentSidebar = () => {
       );
     }
     children.push({ path: '/exam-history', label: 'Exam History' });
-    children.push({ path: '/quiz-history', label: 'Quiz History' });
     children.push({ path: '/settings', label: 'Settings' });
     return children;
   }, [user]);
@@ -116,14 +110,11 @@ const StudentSidebar = () => {
       items: [
         { path: '/questions/public', icon: HelpCircle, label: 'Questions' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
-        { path: '/quiz-levels', icon: Layers, label: 'Levels' },
       ]
     },
     {
-      title: 'RANKING & REWARDS',
+      title: 'REWARDS',
       items: [
-        { path: '/leaderboard', icon: Crown, label: 'Leaderboard' },
-        { path: '/monthly-winners', icon: Trophy, label: 'Monthly Winners' },
         { path: '/rewards', icon: Award, label: 'Rewards', badge: claimableRewards > 0 ? `₹${claimableRewards}` : null, badgeColor: 'primary' },
       ]
     },
@@ -131,7 +122,6 @@ const StudentSidebar = () => {
       title: 'CREATION',
       items: [
         { path: '/pro/questions/new', icon: PlusCircle, label: 'Add Question' },
-        { path: '/pro/quiz/create', icon: Edit3, label: 'Create Quiz' },
         { path: '/pro/create-blog', icon: MessageSquare, label: 'Write Article' },
       ]
     },

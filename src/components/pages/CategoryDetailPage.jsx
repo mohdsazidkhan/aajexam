@@ -18,7 +18,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 import API from '../../lib/api';
-import QuizStartModal from '../QuizStartModal';
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
 import Card from '../ui/Card';
@@ -262,12 +261,6 @@ const CategoryDetailPage = () => {
             </section>
          </div>
 
-         <QuizStartModal
-            isOpen={showQuizModal}
-            onClose={() => setShowQuizModal(false)}
-            onConfirm={handleConfirmQuizStart}
-            quiz={selectedQuiz}
-         />
 
          <UnifiedFooter />
       </div>

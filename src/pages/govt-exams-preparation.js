@@ -145,7 +145,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             Join thousands of students who are already using AajExam to improve their scores and time management.
                         </p>
                         <button
-                            onClick={() => router.push('/quizzes')}
+                            onClick={() => router.push('/govt-exams')}
                             className="bg-primary-500 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all relative z-10"
                         >
                             Get Started Now

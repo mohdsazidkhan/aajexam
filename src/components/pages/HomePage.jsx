@@ -465,8 +465,8 @@ const HomePage = () => {
                         <p className="text-white/90 font-bold text-sm lg:text-xl max-w-2xl opacity-80 tracking-[0.04em] leading-relaxed">Top students win prizes every month.</p>
                      </div>
                      <div className="shrink-0 relative z-10">
-                        <Button variant="white" onClick={() => router.push('/monthly-winners')} className="px-6 py-3 lg:px-14 lg:py-8 rounded-[1.5rem] lg:rounded-[2.5rem] font-black tracking-[0.08em] shadow-2xl hover:scale-105 active:scale-95 transition-all text-sm font-outfit">
-                           View winners
+                        <Button variant="white" onClick={() => router.push('/govt-exams')} className="px-6 py-3 lg:px-14 lg:py-8 rounded-[1.5rem] lg:rounded-[2.5rem] font-black tracking-[0.08em] shadow-2xl hover:scale-105 active:scale-95 transition-all text-sm font-outfit">
+                           Browse Exams
                         </Button>
                      </div>
                   </div>

@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Category from '@/models/Category';
 import Subcategory from '@/models/Subcategory';
-import Quiz from '@/models/Quiz';
 import { protect, admin } from '@/middleware/auth';
 
 export async function POST(req, { params }) {
@@ -12,12 +11,12 @@ export async function POST(req, { params }) {
 
         await dbConnect();
         const { id } = params;
-        const { type, action, adminNotes } = await req.json(); // type: quiz/category/subcategory, action: approve/reject
+        const { type, action, adminNotes } = await req.json(); // type: category/subcategory, action: approve/reject
 
         let Model;
         if (type === 'category') Model = Category;
         else if (type === 'subcategory') Model = Subcategory;
-        else Model = Quiz;
+        else return NextResponse.json({ message: 'Invalid type' }, { status: 400 });
 
         const doc = await Model.findOne({ _id: id, createdType: 'user', status: 'pending' });
         if (!doc) return NextResponse.json({ message: 'Not found or processed' }, { status: 404 });

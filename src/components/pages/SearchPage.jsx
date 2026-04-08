@@ -25,7 +25,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from "next/image";
 
 import API from '../../lib/api';
-import QuizStartModal from "../QuizStartModal";
 import TestStartModal from "../TestStartModal";
 import UnifiedFooter from '../UnifiedFooter';
 import Loading from '../Loading';
@@ -49,8 +48,6 @@ const SearchPage = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [totalPages, setTotalPages] = useState(1);
    const [loading, setLoading] = useState(false);
-   const [showQuizModal, setShowQuizModal] = useState(false);
-   const [selectedQuiz, setSelectedQuiz] = useState(null);
    const [showTestModal, setShowTestModal] = useState(false);
    const [selectedTest, setSelectedTest] = useState(null);
    const isSearchingRef = useRef(false);
@@ -394,7 +391,6 @@ const SearchPage = () => {
             )}
 
             {/* --- Modals --- */}
-            {showQuizModal && <QuizStartModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} onConfirm={(type) => { setShowQuizModal(false); if (selectedQuiz) { localStorage.setItem('quizNavigationData', JSON.stringify({ fromPage: 'search', searchQuery: query, quizData: selectedQuiz, competitionType: type })); router.push(`/attempt-quiz/${selectedQuiz._id}`); } }} quiz={selectedQuiz} />}
             {showTestModal && selectedTest && <TestStartModal isOpen={showTestModal} onClose={() => setShowTestModal(false)} onConfirm={() => { setShowTestModal(false); if (selectedTest) { localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'search', searchQuery: query, testData: selectedTest })); router.push(`/govt-exams/test/${selectedTest._id}/start`); } }} test={selectedTest} pattern={selectedTest.examPattern} exam={selectedTest.examPattern?.exam} category={selectedTest.examPattern?.exam?.category} />}
          </div>
 

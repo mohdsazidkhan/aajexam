@@ -19,8 +19,6 @@ import {
   Heart,
   Layers,
   Compass,
-  Trophy,
-  Phone,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -34,7 +32,6 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const operationalLinks = [
     { name: 'Home', href: '/', icon: Compass },
     { name: 'Categories', href: '/categories', icon: Layers },
-    { name: 'Levels', href: '/levels', icon: Trophy },
     { name: 'Articles', href: '/articles', icon: Zap },
     { name: 'How It Works', href: '/how-it-works', icon: Info },
   ];

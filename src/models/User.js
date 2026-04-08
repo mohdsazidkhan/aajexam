@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import config, { getConfig } from '../lib/config/appConfig';
-import './Level'; // Ensure Level model is registered
 import './Subscription'; // Ensure Subscription model is registered
 
 const userSchema = new mongoose.Schema({

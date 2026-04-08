@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
-import MonthlyUserReferral from '@/models/MonthlyUserReferral';
 import { protect, adminOnly } from '@/middleware/auth';
 
 export async function GET(req) {
@@ -11,21 +10,20 @@ export async function GET(req) {
         if (!adminOnly(auth.user)) return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
 
         await dbConnect();
-        
+
         const { searchParams } = new URL(req.url);
-        const monthYear = searchParams.get('monthYear') || new Date().toISOString().slice(0, 7);
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
         const [items, total] = await Promise.all([
-            MonthlyUserReferral.find({ monthYear })
-                .populate('userId', 'name email username phone')
+            User.find({ referralCount: { $gt: 0 } })
+                .select('name email username phone referralCode referralCount')
                 .sort({ referralCount: -1 })
                 .skip(skip)
                 .limit(limit)
                 .lean(),
-            MonthlyUserReferral.countDocuments({ monthYear })
+            User.countDocuments({ referralCount: { $gt: 0 } })
         ]);
 
         return NextResponse.json({

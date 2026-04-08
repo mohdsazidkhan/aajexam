@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
-import Quiz from '@/models/Quiz';
-import QuizAttempt from '@/models/QuizAttempt';
 import { protect, adminOnly } from '@/middleware/auth';
 import config from '@/lib/config/appConfig';
 
@@ -17,15 +15,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const limit = parseInt(searchParams.get('limit') || '20');
 
-        const [totalUsers, totalQuizzes, totalAttempts] = await Promise.all([
-            User.countDocuments({ role: 'student' }),
-            Quiz.countDocuments(),
-            QuizAttempt.countDocuments()
-        ]);
-
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        const activeUsersCount = (await QuizAttempt.distinct('user', { attemptedAt: { $gte: thirtyDaysAgo } })).length;
+        const totalUsers = await User.countDocuments({ role: 'student' });
 
         const now = new Date();
         const activeProUsers = await User.countDocuments({
@@ -36,10 +26,6 @@ export async function GET(req) {
         const MIN_POOL = config.QUIZ_CONFIG.MIN_MONTHLY_POOL || 650;
         const totalRevenue = 0; // PaymentOrder not always available
         const totalSubscriptions = await User.countDocuments({ role: 'student', subscriptionStatus: { $in: ['basic', 'premium', 'pro'] } });
-
-        const recentActivity = await QuizAttempt.find()
-            .populate('user', 'name').populate('quiz', 'title')
-            .sort({ attemptedAt: -1 }).limit(limit).select('score scorePercentage attemptedAt');
 
         const subscriptionDistribution = await User.aggregate([
             { $match: { role: 'student' } },
@@ -62,13 +48,13 @@ export async function GET(req) {
             success: true,
             data: {
                 overview: {
-                    totalUsers, totalNonAdminUsers: totalUsers, totalQuizzes, totalAttempts, totalRevenue,
-                    activeUsers: activeUsersCount, totalSubscriptions,
+                    totalUsers, totalNonAdminUsers: totalUsers, totalRevenue,
+                    totalSubscriptions,
                     currentMonthActiveProUsers: activeProUsers,
                     dynamicPrizePool: Math.max(activeProUsers * PRIZE_PER_PRO, MIN_POOL),
                     prizePerPro: PRIZE_PER_PRO
                 },
-                recentActivity, subscriptionDistribution, levelDistribution, topUsers
+                subscriptionDistribution, levelDistribution, topUsers
             }
         });
     } catch (error) {

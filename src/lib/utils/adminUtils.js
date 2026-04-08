@@ -10,7 +10,7 @@ export const ADMIN_ROLES = {
 // Admin permissions
 export const ADMIN_PERMISSIONS = {
   MANAGE_USERS: 'manage_users',
-  MANAGE_QUIZZES: 'manage_quizzes',
+  MANAGE_EXAMS: 'manage_exams',
   MANAGE_CATEGORIES: 'manage_categories',
   VIEW_ANALYTICS: 'view_analytics',
   MANAGE_SUBSCRIPTIONS: 'manage_subscriptions',
@@ -132,7 +132,7 @@ export const validateAdminAccess = (resource, action = 'read') => {
 export const getAdminStatsPermissions = () => {
   return {
     canViewUserStats: hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_USERS),
-    canViewQuizStats: hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_QUIZZES),
+    canViewExamStats: hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_EXAMS),
     canViewPaymentStats: hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_PAYMENTS),
     canViewSystemStats: hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_SYSTEM)
   };
@@ -146,9 +146,9 @@ export const formatAdminAction = (action, details = {}) => {
     delete_user: 'Deleted user account',
     ban_user: 'Banned user account',
     unban_user: 'Unbanned user account',
-    create_quiz: 'Created quiz',
-    update_quiz: 'Updated quiz',
-    delete_quiz: 'Deleted quiz',
+    create_exam: 'Created exam',
+    update_exam: 'Updated exam',
+    delete_exam: 'Deleted exam',
     create_category: 'Created category',
     update_category: 'Updated category',
     delete_category: 'Deleted category',
@@ -190,13 +190,6 @@ export const getAdminNavigationItems = () => {
     });
   }
 
-  if (hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_QUIZZES)) {
-    items.push({
-      name: 'Quizzes',
-      href: '/admin/quizzes',
-      icon: 'MdQuiz'
-    });
-  }
 
   if (hasAdminPermission(ADMIN_PERMISSIONS.MANAGE_CATEGORIES)) {
     items.push({

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Subcategory from '@/models/Subcategory';
-import Quiz from '@/models/Quiz';
 import { protect, admin, proOnly } from '@/middleware/auth';
 
 export async function GET(req) {
@@ -30,24 +29,11 @@ export async function GET(req) {
             .skip(skip)
             .limit(limit);
 
-        const subcategoryIds = subcategories.map(sc => sc._id);
-        const quizCounts = await Quiz.aggregate([
-            { $match: { subcategory: { $in: subcategoryIds } } },
-            { $group: { _id: '$subcategory', count: { $sum: 1 } } }
-        ]);
-        const quizCountMap = {};
-        quizCounts.forEach(qc => { quizCountMap[qc._id.toString()] = qc.count; });
-
-        const subcategoriesWithCounts = subcategories.map(sc => ({
-            ...sc.toObject(),
-            quizCount: quizCountMap[sc._id.toString()] || 0
-        }));
-
         const total = await Subcategory.countDocuments(query);
         const totalPages = Math.ceil(total / limit);
 
         return NextResponse.json({
-            subcategories: subcategoriesWithCounts,
+            subcategories,
             pagination: { page, limit, total, totalPages, hasNext: page < totalPages, hasPrev: page > 1 }
         });
     } catch (error) {
@@ -79,11 +65,10 @@ export async function POST(req) {
         });
         await subcategory.save();
 
-        const message = isUser ? 'Subcategory submitted for admin approval!' : '🎉 Subcategory Created Successfully!';
+        const message = isUser ? 'Subcategory submitted for admin approval!' : 'Subcategory Created Successfully!';
         return NextResponse.json({ success: true, message, subcategory }, { status: 201 });
     } catch (error) {
         console.error('Admin create subcategory error:', error);
         return NextResponse.json({ error: 'Failed to create subcategory' }, { status: 500 });
     }
 }
-

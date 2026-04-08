@@ -8,10 +8,8 @@ import {
   Bell,
   Layers,
   Puzzle,
-  BookOpen,
   HelpCircle,
   GraduationCap,
-  Trophy,
   Users,
   User,
   History,
@@ -27,12 +25,10 @@ import {
   Menu,
   FileText,
   Zap,
-  RotateCcw,
   Globe,
   Contact2,
   Flame,
   Activity,
-  Crown,
   X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -76,14 +72,11 @@ const Sidebar = () => {
       items: [
         { path: '/admin/categories', icon: Layers, label: 'Categories', key: 'categories' },
         { path: '/admin/subcategories', icon: Puzzle, label: 'Subcategories', key: 'subcategories' },
-        { path: '/admin/levels', icon: Trophy, label: 'Levels', key: 'levels' },
       ]
     },
     {
       title: 'MANAGE CONTENT',
       items: [
-        { path: '/admin/quizzes', icon: BookOpen, label: 'Quizzes', key: 'quizzes' },
-        { path: '/admin/questions', icon: HelpCircle, label: 'Questions', key: 'questions' },
         { path: '/admin/articles', icon: Zap, label: 'Articles', key: 'articles' },
       ]
     },
@@ -101,7 +94,6 @@ const Sidebar = () => {
       title: 'USER SUBMISSIONS',
       items: [
         { path: '/admin/user-questions', icon: HelpCircle, label: 'User Questions', key: 'user-questions' },
-        { path: '/admin/user-quizzes', icon: BookOpen, label: 'User Quizzes', key: 'user-quizzes' },
         { path: '/admin/user-blogs', icon: Zap, label: 'User Articles', key: 'user-blogs' },
       ]
     },
@@ -120,9 +112,6 @@ const Sidebar = () => {
         { path: '/admin/referral-history', icon: Globe, label: 'Referral History', key: 'referral-history' },
         { path: '/admin/referral-analytics', icon: BarChart3, label: 'Referral Stats', key: 'referral-analytics' },
         { path: '/admin/blog-rewards-history', icon: Flame, label: 'Article Rewards', key: 'blog-rewards' },
-        { path: '/admin/quiz-rewards-history', icon: Trophy, label: 'Quiz Rewards', key: 'quiz-rewards' },
-        { path: '/admin/monthly-winners', icon: Crown, label: 'Monthly Winners', key: 'monthly-winners' },
-        { path: '/admin/competition-resets', icon: RotateCcw, label: 'Reset History', key: 'competition-resets' },
       ]
     },
     {
@@ -131,7 +120,6 @@ const Sidebar = () => {
         { path: '/admin/analytics/dashboard', icon: BarChart3, label: 'General Stats', key: 'analytics-dashboard' },
         { path: '/admin/analytics/users', icon: Users, label: 'User Stats', key: 'analytics-users' },
         { path: '/admin/analytics/users-overview', icon: TrendingUp, label: 'Growth Stats', key: 'analytics-users-overview' },
-        { path: '/admin/analytics/quizzes', icon: BookOpen, label: 'Quiz Stats', key: 'analytics-quizzes' },
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Payment Stats', key: 'analytics-financial' },
         { path: '/admin/analytics/performance', icon: Activity, label: 'Performance Stats', key: 'analytics-performance' },
       ]

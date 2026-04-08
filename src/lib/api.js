@@ -213,103 +213,6 @@ class ApiService {
     return this.request(`/api/study-materials${query ? `?${query}` : ''}`);
   }
 
-  // ===== PUBLIC / SHARED ENDPOINTS =====
-  async getPrizePools() {
-    return this.request('/api/prizepool');
-  }
-
-  async getCompetitionLeaderboard(type, page = 1, limit = 10, filters = {}) {
-    const query = this.buildQuery({ page, limit, ...filters });
-    return this.request(`/api/leaderboard/${type}${query ? `?${query}` : ''}`);
-  }
-
-  async getPublicCompetitionLeaderboard(type, page = 1, limit = 10, filters = {}) {
-    const query = this.buildQuery({ type, page, limit, ...filters });
-    return this.request(`/api/public/leaderboard${query ? `?${query}` : ''}`);
-  }
-
-  async getQuizLeaderboard(quizId) {
-    // Check if user is authenticated
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-
-    // Use public endpoint if no token, otherwise use authenticated endpoint
-    const endpoint = token
-      ? `/api/student/leaderboard/quiz/${quizId}`
-      : `/api/public/leaderboard/quiz/${quizId}`;
-
-    return this.request(endpoint);
-  }
-
-  // ===== QUIZ ENDPOINTS =====
-  async getCategories() {
-    return this.request('/api/student/categories');
-  }
-
-  async getSubcategories(categoryId) {
-    return this.request(`/api/student/subcategories?category=${categoryId}`);
-  }
-
-  // Get top subcategories (optimized for home page - no category required)
-  async getTopSubcategories(limit = 6) {
-    return this.request(`/api/public/quiz/top-subcategories?limit=${limit}`);
-  }
-
-  async getQuizById(id) {
-    // Check if user is authenticated
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-
-    // Use public endpoint if no token, otherwise use authenticated endpoint
-    const endpoint = token
-      ? `/api/student/quizzes/${id}`
-      : `/api/public/quizzes/${id}`;
-
-    return this.request(endpoint);
-  }
-
-  async submitQuiz(quizId, answers, competitionType) {
-    return this.request(`/api/student/quizzes/${quizId}/attempt`, {
-      method: 'POST',
-      body: JSON.stringify({ answers, competitionType })
-    });
-  }
-
-  async getQuizResult(quizId) {
-    return this.request(`/api/student/quizzes/${quizId}/result`);
-  }
-
-  // ===== LEVEL-BASED QUIZ ENDPOINTS =====
-  async getHomePageData() {
-    return this.request('/api/student/homepage-data');
-  }
-
-  async getLevelQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/levels/quizzes?${queryString}`);
-  }
-
-  async getAllLevels() {
-    return this.request('/api/levels/all-with-quiz-count');
-  }
-
-  async getLevelBasedQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/student/quizzes/level-based?${queryString}`);
-  }
-
-  async getQuizHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/levels/history${queryString ? `?${queryString}` : ''}`);
-  }
-
-  async getMonthlyRewardInfo() {
-    return this.request('/api/levels/monthly-rewards');
-  }
-
-  async getPrizePools() {
-    return this.request('/api/prizepool');
-  }
-
-
   // ===== SEARCH ENDPOINTS =====
   async searchAll({ query = '', page = 1, limit = 12 }) {
     const searchQuery = new URLSearchParams({ query, page, limit }).toString();
@@ -391,73 +294,16 @@ class ApiService {
     return this.request('/api/public/categories');
   }
 
-  async getPublicTopPerformers(limit = 10) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/top-performers?${queryString}`);
-  }
-
-  async getPublicTopPerformersMonthly(limit = 10, userId = null, filters = {}) {
-    const queryString = this.buildQuery({ limit, userId, ...filters });
-    return this.request(`/api/public/top-performers-monthly${queryString ? `?${queryString}` : ''}`);
-  }
-
-  async getPublicMonthlyLeaderboard(limit = 3) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/monthly-leaderboard?${queryString}`);
-  }
-
   async getPublicLandingStats() {
     return this.request('/api/public/landing-stats');
-  }
-
-  async getPublicLevels() {
-    return this.request('/api/public/levels');
   }
 
   async getPublicCategoriesEnhanced() {
     return this.request('/api/public/categories-enhanced');
   }
 
-  async getPublicLandingTopPerformers(limit = 10) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/landing-top-performers?${queryString}`);
-  }
-
   async getPublicSitemapData() {
     return this.request('/api/public/sitemap-data');
-  }
-
-  // ===== NEW PUBLIC ENDPOINTS FOR FULL PAGE ACCESS =====
-
-  // Levels - Detailed
-  async getDetailedLevels() {
-    return this.request('/api/public/levels/detailed');
-  }
-
-  // Quizzes - Public
-  async getQuizzesByLevel(levelId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/quizzes/level/${levelId}${queryString ? `?${queryString}` : ''}`);
-  }
-
-  async getQuizPreview(quizId) {
-    return this.request(`/api/public/quizzes/${quizId}/preview`);
-  }
-
-  // Categories - Detailed
-  async getDetailedCategories() {
-    return this.request('/api/public/categories/detailed');
-  }
-
-  async getCategoryDetailed(categoryId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/categories/${categoryId}/detailed${queryString ? `?${queryString}` : ''}`);
-  }
-
-  // Subcategories - Public
-  async getSubcategoryQuizzes(subcategoryId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/public/subcategories/${subcategoryId}/quizzes${queryString ? `?${queryString}` : ''}`);
   }
 
   // Exams - Public
@@ -470,38 +316,6 @@ class ApiService {
     return this.request(`/api/public/exams/${examId}/preview`);
   }
 
-  // Get all quizzes publicly with pagination
-  async getPublicQuizzes(params = {}) {
-    const queryString = this.buildQuery(params);
-    return this.request(`/api/public/quizzes${queryString ? `?${queryString}` : ''}`);
-  }
-
-  // ===== MONTHLY WINNERS ENDPOINTS =====
-  async getMonthlyWinners(monthYear = null, type = 'monthly', filters = {}) {
-    const query = this.buildQuery({ type, ...filters });
-
-    const baseUrl = monthYear
-      ? `/api/monthly-winners/month/${monthYear}`
-      : '/api/monthly-winners/current';
-
-    const endpoint = `${baseUrl}${query ? `?${query}` : ''}`;
-
-    return this.request(endpoint);
-  }
-
-  async getRecentMonthlyWinners(limit = 10, monthYear = null, type = 'monthly', filters = {}) {
-    const query = this.buildQuery({ limit, monthYear, type, ...filters });
-    return this.request(`/api/monthly-winners/recent?${query}`);
-  }
-
-  async getMonthlyWinnersStats() {
-    return this.request('/api/monthly-winners/stats');
-  }
-
-  async getUserWinningHistory(userId) {
-    return this.request(`/api/monthly-winners/user/${userId}/history`);
-  }
-
   // ===== ANALYTICS ENDPOINTS =====
   async getAnalyticsDashboard() {
     return this.request('/api/admin/analytics/dashboard');
@@ -510,11 +324,6 @@ class ApiService {
   async getUserAnalytics(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/analytics/users?${queryString}`);
-  }
-
-  async getQuizAnalytics(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/analytics/quizzes?${queryString}`);
   }
 
   async getFinancialAnalytics(params = {}) {
@@ -553,9 +362,6 @@ class ApiService {
   }
 
   // ===== ADMIN ENDPOINTS =====
-  async getAdminStats() {
-    return this.request('/api/admin/stats');
-  }
 
   // Admin Notifications
   async getAdminLatestNotifications(limit = 10, { unreadOnly = true } = {}) {
@@ -635,37 +441,6 @@ class ApiService {
 
   async deleteSubcategory(id) {
     return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Quizzes
-  async getAdminQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/quizzes?${queryString}`);
-  }
-
-  async getAdminAllQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/allquizzes?${queryString}`);
-  }
-
-  async createQuiz(quizData) {
-    return this.request('/api/admin/quizzes', {
-      method: 'POST',
-      body: JSON.stringify(quizData)
-    });
-  }
-
-  async updateQuiz(id, quizData) {
-    return this.request(`/api/admin/quizzes/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(quizData)
-    });
-  }
-
-  async deleteQuiz(id) {
-    return this.request(`/api/admin/quizzes/${id}`, {
       method: 'DELETE'
     });
   }
@@ -940,94 +715,6 @@ class ApiService {
     });
   }
 
-  // ===== PREV MONTH PLAYED USERS =====
-  async getAllPrevMonthPlayedUsers(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/prev-month-played-users?${queryString}`);
-  }
-
-  async getPrevMonthPlayedUsersByMonth(monthYear) {
-    return this.request(`/api/admin/prev-month-played-users/month/${monthYear}`);
-  }
-
-  async getPrevMonthPlayedUserById(id) {
-    return this.request(`/api/admin/prev-month-played-users/user/${id}`);
-  }
-
-  async getUserQuizBestScores(userId, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/prev-month-played-users/user/${userId}/quiz-scores?${queryString}`);
-  }
-
-  async getAvailablePrevMonthPlayedUsersMonths(type = 'monthly') {
-    return this.request(`/api/admin/prev-month-played-users/months?type=${type}`);
-  }
-
-  // ===== ADMIN USER QUIZ MODULE =====
-  // Pending lists
-  async adminGetPendingQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/userQuiz/quiz/pending?${queryString}`);
-  }
-  async adminGetPendingQuizDetails(id) {
-    return this.request(`/api/admin/userQuiz/quiz/${id}/details`);
-  }
-  async adminGetPendingCategories(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/userQuiz/category/pending?${queryString}`);
-  }
-  async adminGetPendingSubcategories(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/userQuiz/subcategory/pending?${queryString}`);
-  }
-  // Approvals
-  async adminApproveQuiz(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/quiz/${id}/approve`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  async adminRejectQuiz(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/quiz/${id}/reject`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  async adminApproveCategory(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/category/${id}/approve`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  async adminRejectCategory(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/category/${id}/reject`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  async adminApproveSubcategory(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/subcategory/${id}/approve`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  async adminRejectSubcategory(id, adminNotes) {
-    return this.request(`/api/admin/userQuiz/subcategory/${id}/reject`, {
-      method: 'POST',
-      body: JSON.stringify({ adminNotes })
-    });
-  }
-  // All user quizzes with filters/search
-  async adminGetAllUserQuizzes(params = {}) {
-    const query = new URLSearchParams();
-    if (params.page) query.set('page', params.page);
-    if (params.limit) query.set('limit', params.limit);
-    if (params.status) query.set('status', params.status);
-    if (params.userId) query.set('userId', params.userId);
-    if (params.search) query.set('search', params.search);
-    const qs = query.toString();
-    return this.request(`/api/admin/userQuiz/quiz/all${qs ? `?${qs}` : ''}`);
-  }
   // ===== ADMIN ARTICLES =====
   async getAdminArticles(params = {}) {
     const queryString = new URLSearchParams(params).toString();
@@ -1162,12 +849,6 @@ class ApiService {
     });
   }
 
-  // Student Quiz History
-  async getStudentQuizHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/student/quiz-history?${queryString}`);
-  }
-
   // Student Notifications
   async getStudentNotifications() {
     return this.request('/api/student/notifications');
@@ -1212,12 +893,6 @@ class ApiService {
     return this.request(`/api/wallet/blog-rewards-history${queryString ? `?${queryString}` : ''}`);
   }
 
-  // Quiz Rewards History (User)
-  async getQuizRewardsHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/proUser/quiz/rewards-history?${queryString}`);
-  }
-
   // Question Rewards History (User)
   async getQuestionRewardsHistory(params) {
     const query = this.buildQuery(params);
@@ -1227,12 +902,6 @@ class ApiService {
   async getWithdrawalHistory(params) {
     const query = this.buildQuery(params);
     return this.request(`/api/proUser/withdraw-history${query ? `?${query}` : ''}`);
-  }
-
-  // Admin Quiz Rewards History
-  async getAdminQuizRewardsHistory(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/userQuiz/quiz/rewards-history?${queryString}`);
   }
 
   async createReferralWithdrawRequest(payload) {
@@ -1272,130 +941,6 @@ class ApiService {
     return this.request(`/api/admin/userQuestions/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status })
-    });
-  }
-
-  // ===== ADMIN LEVELS =====
-  async getAdminLevels(params = {}) {
-    const queryParams = new URLSearchParams();
-    if (params.page) queryParams.set('page', params.page);
-    if (params.limit) queryParams.set('limit', params.limit);
-    if (params.isActive !== undefined) queryParams.set('isActive', params.isActive);
-    if (params.search) queryParams.set('search', params.search);
-
-    const queryString = queryParams.toString();
-    return this.request(`/api/admin/levels${queryString ? `?${queryString}` : ''}`);
-  }
-
-  async getAdminLevelById(id) {
-    return this.request(`/api/admin/levels/${id}`);
-  }
-
-  async createAdminLevel(levelData) {
-    return this.request('/api/admin/levels', {
-      method: 'POST',
-      body: JSON.stringify(levelData)
-    });
-  }
-
-  async updateAdminLevel(id, levelData) {
-    return this.request(`/api/admin/levels/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(levelData)
-    });
-  }
-
-  async deleteAdminLevel(id) {
-    return this.request(`/api/admin/levels/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  async getAdminLevelStats(levelNumber) {
-    return this.request(`/api/admin/levels/stats/${levelNumber}`);
-  }
-
-  // ===== PUBLIC LEVELS (No auth required) =====
-  async getPublicLevels() {
-    return this.request('/api/public/levels');
-  }
-
-  async getPublicLevelByNumber(levelNumber) {
-    return this.request(`/api/public/levels/${levelNumber}`);
-  }
-
-  async getPublicLevelRoadmap() {
-    return this.request('/api/public/levels/roadmap');
-  }
-
-  async getPublicLevelsStats() {
-    return this.request('/api/public/levels/stats');
-  }
-
-  async getUserLevelInfo() {
-    return this.request('/api/public/levels/user/info');
-  }
-
-  // Pro User Quiz Statistics
-  async getQuizCreationStats() {
-    return this.request('/api/proUser/stats/creation');
-  }
-
-  async getMonthlyQuizCount() {
-    return this.request('/api/proUser/stats/monthly-count');
-  }
-
-  // Pro User Categories & Subcategories
-  async getApprovedCategories() {
-    return this.request('/api/proUser/category/approved');
-  }
-
-  async getApprovedSubcategories(categoryId) {
-    return this.request(`/api/proUser/subcategory/approved?categoryId=${categoryId}`);
-  }
-
-  // Pro User Quiz Management
-  async createUserQuiz(data) {
-    return this.request('/api/proUser/quiz/create', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  }
-
-  async getUserQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/proUser/quiz/mine${queryString ? `?${queryString}` : ''}`);
-  }
-
-  // Alias for components expecting getMyQuizzes()
-  async getMyQuizzes(params = {}) {
-    return this.getUserQuizzes(params);
-  }
-
-  async getUserQuizDetails(id) {
-    return this.request(`/api/proUser/public/quiz/${id}`);
-  }
-
-  async getMyQuiz(id) {
-    return this.request(`/api/proUser/quiz/${id}`);
-  }
-
-  async updateUserQuiz(id, data) {
-    return this.request(`/api/proUser/quiz/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  }
-
-  async deleteUserQuiz(id) {
-    return this.request(`/api/proUser/quiz/${id}`, {
-      method: 'DELETE'
     });
   }
 

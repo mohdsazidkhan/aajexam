@@ -3,7 +3,7 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Subscription from '@/models/Subscription';
 import WalletTransaction from '@/models/WalletTransaction';
-import MonthlyUserReferral from '@/models/MonthlyUserReferral';
+
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
@@ -126,13 +126,6 @@ export async function POST(req) {
             const referrer = await User.findOne({ referralCode: referredBy });
             if (referrer) {
                 await User.findByIdAndUpdate(referrer._id, { $inc: { referralCount: 1 } });
-                const currentMonth = new Date().toISOString().slice(0, 7);
-                try {
-                    await MonthlyUserReferral.incrementReferralCount(referrer._id, currentMonth);
-                } catch (monthlyRefError) {
-                    console.error('Failed to update monthly referral count:', monthlyRefError);
-                }
-
                 createNotification({
                     userId: null,
                     type: 'referral_registration',

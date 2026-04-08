@@ -316,9 +316,9 @@ const RewardsDashboard = () => {
                 size="lg"
                 fullWidth
                 className="py-10 rounded-[2rem] text-sm font-black shadow-duo-secondary tracking-[0.3em] font-outfit"
-                onClick={() => window.location.href = '/leaderboard'}
+                onClick={() => window.location.href = '/govt-exams'}
               >
-                VIEW LEADERBOARD
+                BROWSE EXAMS
               </Button>
             </div>
           </div>

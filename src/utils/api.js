@@ -147,57 +147,6 @@ class ApiService {
     return this.request('/api/student/profile');
   }
 
-  async getQuizLeaderboard(quizId) {
-    return this.request(`/api/student/leaderboard/quiz/${quizId}`);
-  }
-
-  // ===== QUIZ ENDPOINTS =====
-  async getCategories() {
-    return this.request('/api/student/categories');
-  }
-
-  async getSubcategories(categoryId) {
-    return this.request(`/api/student/subcategories?category=${categoryId}`);
-  }
-
-  async getQuizById(id) {
-    return this.request(`/api/student/quizzes/${id}`);
-  }
-
-  async submitQuiz(quizId, answers, competitionType) {
-    return this.request(`/api/student/quizzes/${quizId}/attempt`, {
-      method: 'POST',
-      body: JSON.stringify({ answers, competitionType })
-    });
-  }
-
-  async getQuizResult(quizId) {
-    return this.request(`/api/student/quizzes/${quizId}/result`);
-  }
-
-  // ===== LEVEL-BASED QUIZ ENDPOINTS =====
-  async getHomePageData() {
-    return this.request('/api/student/homepage-data');
-  }
-
-  async getLevelQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/levels/quizzes?${queryString}`);
-  }
-
-  async getAllLevels() {
-    return this.request('/api/levels/all-with-quiz-count');
-  }
-
-  async getLevelBasedQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/student/quizzes/level-based?${queryString}`);
-  }
-
-  async getQuizHistory(params = {}) {
-    return this.request('/api/levels/history', { params });
-  }
-
   // ===== SEARCH ENDPOINTS =====
   async searchAll({ query = '', page = 1, limit = 12 }) {
     const searchQuery = new URLSearchParams({ query, page, limit }).toString();
@@ -286,11 +235,6 @@ class ApiService {
     return this.request(`/api/public/top-performers-monthly?${params}`);
   }
 
-  async getPublicMonthlyLeaderboard(limit = 3) {
-    const queryString = new URLSearchParams({ limit }).toString();
-    return this.request(`/api/public/monthly-leaderboard?${queryString}`);
-  }
-
   async getPublicLandingStats() {
     return this.request('/api/public/landing-stats');
   }
@@ -308,31 +252,6 @@ class ApiService {
     return this.request(`/api/public/landing-top-performers?${queryString}`);
   }
 
-  // ===== MONTHLY WINNERS ENDPOINTS =====
-  async getMonthlyWinners(monthYear = null) {
-    const endpoint = monthYear
-      ? `/api/monthly-winners/month/${monthYear}`
-      : '/api/monthly-winners/current';
-    return this.request(endpoint);
-  }
-
-  async getRecentMonthlyWinners(limit = 12, monthYear = null) {
-    const params = { limit };
-    if (monthYear) {
-      params.monthYear = monthYear;
-    }
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/monthly-winners/recent?${queryString}`);
-  }
-
-  async getMonthlyWinnersStats() {
-    return this.request('/api/monthly-winners/stats');
-  }
-
-  async getUserWinningHistory(userId) {
-    return this.request(`/api/monthly-winners/user/${userId}/history`);
-  }
-
   // ===== ANALYTICS ENDPOINTS =====
   async getAnalyticsDashboard() {
     return this.request('/api/analytics/dashboard');
@@ -341,11 +260,6 @@ class ApiService {
   async getUserAnalytics(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/analytics/users?${queryString}`);
-  }
-
-  async getQuizAnalytics(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/analytics/quizzes?${queryString}`);
   }
 
   async getFinancialAnalytics(params = {}) {
@@ -430,63 +344,6 @@ class ApiService {
 
   async deleteSubcategory(id) {
     return this.request(`/api/admin/subcategories/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Quizzes
-  async getAdminQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/quizzes?${queryString}`);
-  }
-
-  async getAdminAllQuizzes(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/allquizzes?${queryString}`);
-  }
-
-  async createQuiz(quizData) {
-    return this.request('/api/admin/quizzes', {
-      method: 'POST',
-      body: JSON.stringify(quizData)
-    });
-  }
-
-  async updateQuiz(id, quizData) {
-    return this.request(`/api/admin/quizzes/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(quizData)
-    });
-  }
-
-  async deleteQuiz(id) {
-    return this.request(`/api/admin/quizzes/${id}`, {
-      method: 'DELETE'
-    });
-  }
-
-  // Questions
-  async getAdminQuestions(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/questions?${queryString}`);
-  }
-
-  async createQuestion(questionData) {
-    return this.request('/api/admin/questions', {
-      method: 'POST',
-      body: JSON.stringify(questionData)
-    });
-  }
-
-  async updateQuestion(id, questionData) {
-    return this.request(`/api/admin/questions/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(questionData)
-    });
-  }
-
-  async deleteQuestion(id) {
-    return this.request(`/api/admin/questions/${id}`, {
       method: 'DELETE'
     });
   }

@@ -5,12 +5,10 @@ import '@/models/ExamPattern';
 import '@/models/PracticeTest';
 import '@/models/UserTestAttempt';
 import '@/models/User';
-import '@/models/Quiz';
 import '@/models/Question';
 import '@/models/Category';
 import '@/models/Subcategory';
 import '@/models/Article';
-import '@/models/QuizAttempt';
 import '@/models/StudyMaterial';
 
 const MONGODB_URI = process.env.MONGO_URI;
