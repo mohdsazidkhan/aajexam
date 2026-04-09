@@ -6,9 +6,9 @@ import { useRouter } from 'next/router';
 import {
   Home,
   BookOpen,
-  BarChart2,
+  Search,
   User,
-  Search
+  MessageSquarePlus
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -19,8 +19,8 @@ const StudentBottomNav = () => {
   const navItems = [
     { name: 'HOME', path: '/home', icon: Home },
     { name: 'EXAMS', path: '/govt-exams', icon: BookOpen },
+    { name: 'ASK', path: '/community-questions/ask', icon: MessageSquarePlus },
     { name: 'SEARCH', path: '/search', icon: Search },
-    { name: 'ANALYTICS', path: '/my-analytics', icon: BarChart2 },
     { name: 'PROFILE', path: '/profile', icon: User },
   ];
 

@@ -889,6 +889,40 @@ class ApiService {
       method: 'POST'
     });
   }
+
+  // ===== COMMUNITY QUESTIONS =====
+  async getCommunityQuestions(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/community-questions${query ? `?${query}` : ''}`);
+  }
+
+  async getMyCommunityQuestions(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/community-questions/my${query ? `?${query}` : ''}`);
+  }
+
+  async getCommunityQuestion(id) {
+    return this.request(`/api/community-questions/${id}`);
+  }
+
+  async createCommunityQuestion(data) {
+    return this.request('/api/community-questions', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+  }
+
+  async deleteCommunityQuestion(id) {
+    return this.request(`/api/community-questions/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async toggleCommunityQuestionLike(id) {
+    return this.request(`/api/community-questions/${id}/like`, {
+      method: 'POST'
+    });
+  }
 }
 
 const API = new ApiService();
