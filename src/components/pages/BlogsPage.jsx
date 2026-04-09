@@ -53,8 +53,8 @@ const BlogsPage = () => {
 
   const fetchExams = async () => {
     try {
-      const response = await API.getAdminExams();
-      setExams(response.data || []);
+      const response = await API.getPublicExams({ limit: 500 });
+      setExams(response.data?.exams || response.data || []);
     } catch (err) {
       console.error('Error fetching exams:', err);
     }

@@ -39,6 +39,7 @@ const PublicNavbar = () => {
   const navLinks = [
     { label: 'Home', href: '/', icon: Compass },
     { label: 'Govt Exams', href: '/govt-exams-preparation', icon: ShieldCheck },
+    { label: 'Blog', href: '/blog', icon: Layers },
   ];
 
   return (
