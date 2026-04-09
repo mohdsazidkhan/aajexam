@@ -14,7 +14,8 @@ import {
   Globe,
   ShieldCheck,
   History,
-  Settings
+  Settings,
+  PenSquare
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -66,6 +67,7 @@ const StudentSidebar = () => {
         { path: '/home', icon: Home, label: 'Home' },
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
+        { path: '/blog', icon: PenSquare, label: 'Blog' },
       ]
     },
     {

@@ -1,4 +1,4 @@
-﻿import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const CustomEditor = ({
   value = '',
@@ -128,7 +128,7 @@ const CustomEditor = ({
         { type: 'separator' },
         { type: 'heading', title: 'Heading' },
         { type: 'separator' },
-        { type: 'bulletList', label: 'â€¢ List', title: 'Bullet List' },
+        { type: 'bulletList', label: '\u2022 List', title: 'Bullet List' },
         { type: 'numberedList', label: '1. List', title: 'Numbered List' }
       ],
       minimal: [
@@ -145,20 +145,20 @@ const CustomEditor = ({
         { type: 'separator' },
         { type: 'heading', title: 'Heading' },
         { type: 'separator' },
-        { type: 'bulletList', label: 'â€¢ List', title: 'Bullet List' },
+        { type: 'bulletList', label: '\u2022 List', title: 'Bullet List' },
         { type: 'numberedList', label: '1. List', title: 'Numbered List' },
         { type: 'separator' },
-        { type: 'link', label: 'ðŸ”— Link', title: 'Insert Link' },
-        { type: 'image', label: 'ðŸ–¼ï¸ Image', title: 'Insert Image' },
-        { type: 'table', label: 'ðŸ“Š Table', title: 'Insert Table' },
+        { type: 'link', label: '\uD83D\uDD17 Link', title: 'Insert Link' },
+        { type: 'image', label: '\uD83D\uDDBC\uFE0F Image', title: 'Insert Image' },
+        { type: 'table', label: '\uD83D\uDCCA Table', title: 'Insert Table' },
         { type: 'separator' },
-        { type: 'alignLeft', label: 'â†', title: 'Align Left' },
-        { type: 'alignCenter', label: 'â†”', title: 'Align Center' },
-        { type: 'alignRight', label: 'â†’', title: 'Align Right' },
+        { type: 'alignLeft', label: '\u2190', title: 'Align Left' },
+        { type: 'alignCenter', label: '\u2194', title: 'Align Center' },
+        { type: 'alignRight', label: '\u2192', title: 'Align Right' },
         { type: 'separator' },
         { type: 'removeFormat', label: 'Clear', title: 'Remove Formatting' },
         { type: 'separator' },
-        { type: 'fullscreen', label: isFullscreen ? 'â¤“ Exit' : 'â¤¢ Fullscreen', title: isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen' }
+        { type: 'fullscreen', label: isFullscreen ? '\u2716 Exit' : '\u26F6 Fullscreen', title: isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen' }
       ]
     };
 
@@ -228,7 +228,7 @@ const CustomEditor = ({
           {getToolbarButtons().map(renderToolbarButton)}
         </div>
       )}
-      
+
       <div
         ref={editorRef}
         contentEditable={!disabled}
@@ -259,4 +259,3 @@ const CustomEditor = ({
 };
 
 export default CustomEditor;
-

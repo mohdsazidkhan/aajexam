@@ -752,6 +752,124 @@ class ApiService {
     return this.request('/api/expenses/summary');
   }
 
+  // ===== BLOG ENDPOINTS (Admin) =====
+  async getAdminBlogs(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/admin/blogs${query ? `?${query}` : ''}`);
+  }
+
+  async getAdminBlog(id) {
+    return this.request(`/api/admin/blogs/${id}`);
+  }
+
+  async createBlog(blogData) {
+    if (blogData.featuredImageFile) {
+      const formData = new FormData();
+      Object.entries(blogData).forEach(([key, value]) => {
+        if (key === 'tags' && Array.isArray(value)) {
+          value.forEach(tag => formData.append('tags[]', tag));
+        } else if (key === 'featuredImageFile') {
+          formData.append('featuredImageFile', value);
+        } else if (value !== undefined && value !== null) {
+          formData.append(key, String(value));
+        }
+      });
+      return this.request('/api/admin/blogs', { method: 'POST', body: formData });
+    }
+    return this.request('/api/admin/blogs', {
+      method: 'POST',
+      body: JSON.stringify(blogData)
+    });
+  }
+
+  async updateBlog(id, blogData) {
+    if (blogData.featuredImageFile) {
+      const formData = new FormData();
+      Object.entries(blogData).forEach(([key, value]) => {
+        if (key === 'tags' && Array.isArray(value)) {
+          value.forEach(tag => formData.append('tags[]', tag));
+        } else if (key === 'featuredImageFile') {
+          formData.append('featuredImageFile', value);
+        } else if (value !== undefined && value !== null) {
+          formData.append(key, String(value));
+        }
+      });
+      return this.request(`/api/admin/blogs/${id}`, { method: 'PUT', body: formData });
+    }
+    return this.request(`/api/admin/blogs/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(blogData)
+    });
+  }
+
+  async deleteBlog(id) {
+    return this.request(`/api/admin/blogs/${id}`, { method: 'DELETE' });
+  }
+
+  async publishBlog(id) {
+    return this.request(`/api/admin/blogs/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ status: 'published' })
+    });
+  }
+
+  async unpublishBlog(id) {
+    return this.request(`/api/admin/blogs/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ status: 'draft' })
+    });
+  }
+
+  async toggleBlogFeatured(id) {
+    const res = await this.request(`/api/admin/blogs/${id}`);
+    const blog = res.blog;
+    return this.request(`/api/admin/blogs/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ isFeatured: !blog.isFeatured })
+    });
+  }
+
+  async toggleBlogPinned(id) {
+    const res = await this.request(`/api/admin/blogs/${id}`);
+    const blog = res.blog;
+    return this.request(`/api/admin/blogs/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ isPinned: !blog.isPinned })
+    });
+  }
+
+  // ===== BLOG ENDPOINTS (Public) =====
+  async getPublishedBlogs(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/public/blogs${query ? `?${query}` : ''}`);
+  }
+
+  async getFeaturedBlogs(limit = 5) {
+    return this.request(`/api/public/blogs/featured?limit=${limit}`);
+  }
+
+  async getBlogBySlug(slug) {
+    return this.request(`/api/public/blogs/${slug}`);
+  }
+
+  async getBlogsByExam(examId, params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/public/blogs/exam/${examId}${query ? `?${query}` : ''}`);
+  }
+
+  async searchBlogs(q, params = {}) {
+    const query = this.buildQuery({ q, ...params });
+    return this.request(`/api/public/blogs/search?${query}`);
+  }
+
+  async incrementBlogViews(id) {
+    return this.request(`/api/public/blogs/${id}`, { method: 'POST' });
+  }
+
+  async incrementBlogLikes(id) {
+    return this.request(`/api/public/blogs/${id}/like`, { method: 'POST' });
+  }
+
   // ===== WALLET & REWARDS ENDPOINTS =====
   async getWalletData() {
     if (this._walletFetchPromise) return this._walletFetchPromise;

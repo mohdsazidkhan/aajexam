@@ -21,6 +21,7 @@ import {
   Globe,
   Contact2,
   Activity,
+  PenSquare,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -62,6 +63,12 @@ const Sidebar = () => {
         { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Patterns', key: 'govt-exams-patterns' },
         { path: '/admin/govt-exams/tests', icon: FileText, label: 'Tests', key: 'govt-exams-tests' },
         { path: '/admin/govt-exams/results', icon: Activity, label: 'Results', key: 'govt-exams-results' },
+      ]
+    },
+    {
+      title: 'CONTENT',
+      items: [
+        { path: '/admin/blogs', icon: PenSquare, label: 'Blog', key: 'blogs' },
       ]
     },
     {

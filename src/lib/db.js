@@ -6,6 +6,7 @@ import '@/models/PracticeTest';
 import '@/models/UserTestAttempt';
 import '@/models/User';
 import '@/models/StudyMaterial';
+import '@/models/Blog';
 
 const MONGODB_URI = process.env.MONGO_URI;
 
