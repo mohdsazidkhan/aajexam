@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   Home,
-  Layers,
   Search,
   User,
-  Compass
+  MessageSquarePlus,
+  GraduationCap,
+  PenSquare
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -18,7 +19,9 @@ const PublicBottomNav = () => {
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
-    { name: 'Search', path: '/search', icon: Search },
+    { name: 'Exams', path: '/govt-exams-preparation', icon: GraduationCap },
+    { name: 'Community', path: '/community-questions', icon: MessageSquarePlus },
+    { name: 'Blog', path: '/blog', icon: PenSquare },
     { name: 'Login', path: '/profile', icon: User },
   ];
 

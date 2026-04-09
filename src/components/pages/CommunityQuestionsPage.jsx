@@ -139,7 +139,7 @@ const CommunityQuestionsPage = () => {
 
   return (
     <div className="min-h-screen bg-background-primary">
-      <div className="max-w-4xl mx-auto px-4 py-6 lg:py-8">
+      <div className="container mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div>
@@ -216,7 +216,7 @@ const CommunityQuestionsPage = () => {
             )}
           </Card>
         ) : (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-8">
             {questions.map((q) => (
               <Card key={q._id} radius="2xl" hoverable className="group">
                 {/* Author & Meta */}
@@ -356,7 +356,7 @@ const CommunityQuestionsPage = () => {
               Login to post your own questions and like others!
             </p>
             <Link href="/login">
-              <Button variant="white" size="sm">
+              <Button variant="white" size="sm" className='mx-auto'>
                 Login Now
               </Button>
             </Link>

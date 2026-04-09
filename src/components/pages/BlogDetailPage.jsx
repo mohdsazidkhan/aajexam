@@ -94,7 +94,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 lg:px-10 py-6 lg:py-8 text-gray-900 dark:text-white">
+      <div className="container mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-6">
           <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

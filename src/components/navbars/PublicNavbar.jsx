@@ -11,6 +11,7 @@ import {
   Layers,
   ShieldCheck,
   Zap,
+  MessageSquarePlus,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -40,6 +41,7 @@ const PublicNavbar = () => {
     { label: 'Home', href: '/', icon: Compass },
     { label: 'Govt Exams', href: '/govt-exams-preparation', icon: ShieldCheck },
     { label: 'Blog', href: '/blog', icon: Layers },
+    { label: 'Community', href: '/community-questions', icon: MessageSquarePlus },
   ];
 
   return (

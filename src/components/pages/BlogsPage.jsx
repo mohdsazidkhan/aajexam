@@ -177,7 +177,7 @@ const BlogsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 lg:px-10 py-6 lg:py-8 text-gray-900 dark:text-white">
+      <div className="container mx-auto">
         {/* Header & Filters */}
         <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between mb-6 gap-4">
           <div>
