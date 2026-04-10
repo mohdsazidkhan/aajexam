@@ -22,6 +22,8 @@ import {
   Contact2,
   Activity,
   PenSquare,
+  Flame,
+  Zap,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -69,6 +71,14 @@ const Sidebar = () => {
       title: 'CONTENT',
       items: [
         { path: '/admin/blogs', icon: PenSquare, label: 'Blog', key: 'blogs' },
+      ]
+    },
+    {
+      title: 'REELS',
+      items: [
+        { path: '/admin/reels', icon: Flame, label: 'All Reels', key: 'reels' },
+        { path: '/admin/reels/create', icon: Zap, label: 'Create Reel', key: 'reels-create' },
+        { path: '/admin/reels/analytics', icon: BarChart3, label: 'Reel Analytics', key: 'reels-analytics' },
       ]
     },
     {

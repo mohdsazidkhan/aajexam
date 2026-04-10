@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StudentNavbar from './navbars/StudentNavbar';
 import StudentSidebar from './StudentSidebar';
@@ -30,6 +30,9 @@ const StudentLayout = ({ children }) => {
     }
     return false;
   })();
+
+  // Full-screen immersive pages — hide navbar, sidebar, bottom nav
+  const isImmersivePage = pathname === '/reels';
 
   useEffect(() => {
     if (isMounted) {
@@ -85,6 +88,11 @@ const StudentLayout = ({ children }) => {
     return <>{children}</>;
   }
 
+  // Full-screen immersive pages — no layout wrapper
+  if (isImmersivePage) {
+    return <>{children}</>;
+  }
+
   // Don't show student layout on admin pages
   if (router?.pathname?.startsWith('/admin')) {
     return <>{children}</>;
@@ -98,7 +106,7 @@ const StudentLayout = ({ children }) => {
       <ClientOnly>
         <StudentNavbar />
       </ClientOnly>
-      <div className="student-layout-content" style={{ marginTop: isStartPage ? "0" : '64px' }}>
+      <div className="student-layout-content" style={isStartPage ? { marginTop: 0 } : undefined}>
         {/* Mobile Overlay */}
         {isOpen && (
           <div

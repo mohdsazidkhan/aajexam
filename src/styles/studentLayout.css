@@ -64,8 +64,8 @@
 }
 
 .student-main-content.sidebar-open {
-  margin-left: 260px;
-  width: calc(100% - 260px);
+  margin-left: 240px;
+  width: calc(100% - 240px);
 }
 
 .student-main-content.sidebar-closed {
@@ -141,6 +141,28 @@
   .student-main-content {
     margin-left: 0;
     width: 100%;
+  }
+
+  .student-main-content.sidebar-open {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+  }
+
+  .student-main-content.sidebar-closed {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Desktop Styles (LG+) - navbar is 80px tall */
+@media (min-width: 1025px) {
+  .student-layout-content {
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+
+  .student-main-content {
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
   }
 
   .student-main-content.sidebar-open {

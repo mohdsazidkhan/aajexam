@@ -194,14 +194,14 @@ const ResponsiveTable = ({
 
   // --- Grid View (Hero Player Cards) ---
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 px-4 sm:px-0">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 px-0">
       {currentData.map((row, rowIndex) => (
         <motion.div
           key={rowIndex}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ y: -10, scale: 1.02 }}
-          className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-800 p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden ${onRowClick ? 'cursor-pointer' : ''}`}
+          className={`relative bg-white dark:bg-slate-900 rounded-md lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-800 p-4 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden ${onRowClick ? 'cursor-pointer' : ''}`}
           onClick={() => onRowClick?.(row)}
         >
           {/* Card Decorations */}

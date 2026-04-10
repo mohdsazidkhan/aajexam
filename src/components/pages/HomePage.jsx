@@ -23,6 +23,8 @@ import {
    Activity,
    Radar,
    Library,
+   PlayCircle,
+   Play,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -300,6 +302,75 @@ const HomePage = () => {
                   </motion.div>
                ))}
             </div>
+
+            {/* --- Latest Reels Section --- */}
+            <motion.section variants={itemVariants} className="relative z-10 px-2 lg:px-4">
+               <div className="space-y-4 lg:space-y-6">
+                  {/* Header */}
+                  <div className="flex items-center justify-between">
+                     <div className="flex items-center gap-3">
+                        <div className="p-2 lg:p-3 bg-rose-500/10 rounded-xl lg:rounded-2xl border-2 border-rose-500/20">
+                           <PlayCircle className="w-5 h-5 lg:w-6 lg:h-6 text-rose-500" />
+                        </div>
+                        <div>
+                           <p className="text-[9px] lg:text-[10px] font-black text-content-muted uppercase tracking-[0.3em]">Short Videos</p>
+                           <h2 className="text-lg lg:text-2xl font-black text-content-primary uppercase tracking-tight leading-none">Latest <span className="text-rose-500">Reels</span></h2>
+                        </div>
+                     </div>
+                     <button
+                        onClick={() => router.push('/reels')}
+                        className="flex items-center gap-1.5 px-4 py-2 bg-rose-500 text-white text-[10px] lg:text-xs font-black uppercase tracking-widest rounded-xl hover:bg-rose-600 active:scale-95 transition-all shadow-lg"
+                     >
+                        View All <ChevronRight className="w-3 h-3" />
+                     </button>
+                  </div>
+
+                  {/* Reel Cards */}
+                  <div className="grid grid-cols-4 gap-3 lg:gap-5">
+                     {[
+                        { title: 'Math Shortcuts', subject: 'Mathematics', duration: '0:45', color: 'from-rose-500 to-pink-600' },
+                        { title: 'GK Facts 2024', subject: 'General Knowledge', duration: '1:12', color: 'from-violet-500 to-purple-600' },
+                        { title: 'Reasoning Tricks', subject: 'Logical Reasoning', duration: '0:58', color: 'from-cyan-500 to-blue-600' },
+                        { title: 'English Grammar', subject: 'English', duration: '1:05', color: 'from-emerald-500 to-teal-600' },
+                     ].map((reel, idx) => (
+                        <motion.div
+                           key={idx}
+                           whileHover={{ y: -4, scale: 1.02 }}
+                           onClick={() => router.push('/reels')}
+                           className="relative cursor-pointer rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden aspect-[9/16] group shadow-xl border-2 border-border-primary"
+                        >
+                           {/* Background gradient */}
+                           <div className={`absolute inset-0 bg-gradient-to-b ${reel.color} opacity-90`} />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
+
+                           {/* Play button */}
+                           <div className="absolute inset-0 flex items-center justify-center">
+                              <motion.div
+                                 whileHover={{ scale: 1.2 }}
+                                 className="w-10 h-10 lg:w-14 lg:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 shadow-2xl group-hover:bg-white/30 transition-all"
+                              >
+                                 <Play className="w-4 h-4 lg:w-6 lg:h-6 text-white fill-white ml-0.5" />
+                              </motion.div>
+                           </div>
+
+                           {/* Duration badge */}
+                           <div className="absolute top-2 right-2 lg:top-3 lg:right-3 px-2 py-0.5 bg-black/50 backdrop-blur-sm rounded-lg text-white text-[9px] lg:text-[10px] font-black tracking-wide border border-white/10">
+                              {reel.duration}
+                           </div>
+
+                           {/* Bottom info */}
+                           <div className="absolute bottom-0 left-0 right-0 p-2 lg:p-3">
+                              <p className="text-[8px] lg:text-[9px] font-black text-white/70 uppercase tracking-widest">{reel.subject}</p>
+                              <p className="text-[10px] lg:text-xs font-black text-white leading-tight truncate">{reel.title}</p>
+                           </div>
+
+                           {/* Hover overlay */}
+                           <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all rounded-[1.5rem] lg:rounded-[2.5rem]" />
+                        </motion.div>
+                     ))}
+                  </div>
+               </div>
+            </motion.section>
 
             {/* --- Monthly Showcase --- */}
             <motion.div variants={itemVariants} className="relative z-10 px-0 py-2 lg:py-4">

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -25,9 +25,13 @@ import { motion } from 'framer-motion';
 import config from '../lib/config/appConfig';
 import Card from './ui/Card';
 import { FaEnvelope } from 'react-icons/fa';
+import { isAdmin } from '../lib/utils/adminUtils';
 
 const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
+  const isUserAdmin = isAdmin();
   const legalLinks = config.LEGAL;
+
+  if (isUserAdmin) return null;
 
   const operationalLinks = [
     { name: 'Home', href: '/', icon: Compass },

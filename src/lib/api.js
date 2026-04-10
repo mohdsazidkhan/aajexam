@@ -918,6 +918,95 @@ class ApiService {
       method: 'POST'
     });
   }
+
+  // ===== REELS - PUBLIC/USER =====
+  async getReelsFeed(params = {}) {
+    const queryString = this.buildQuery(params);
+    return this.request(`/api/reels/feed${queryString ? `?${queryString}` : ''}`);
+  }
+
+  async getReelById(id) {
+    return this.request(`/api/reels/${id}`);
+  }
+
+  async createReel(reelData) {
+    return this.request('/api/reels/create', {
+      method: 'POST',
+      body: JSON.stringify(reelData)
+    });
+  }
+
+  async likeReel(id) {
+    return this.request(`/api/reels/${id}/like`, { method: 'POST' });
+  }
+
+  async bookmarkReel(id) {
+    return this.request(`/api/reels/${id}/bookmark`, { method: 'POST' });
+  }
+
+  async answerReel(id, selectedOptionIndex) {
+    return this.request(`/api/reels/${id}/answer`, {
+      method: 'POST',
+      body: JSON.stringify({ selectedOptionIndex })
+    });
+  }
+
+  async viewReel(id, timeSpentSeconds = 0) {
+    return this.request(`/api/reels/${id}/view`, {
+      method: 'POST',
+      body: JSON.stringify({ timeSpentSeconds })
+    });
+  }
+
+  async shareReel(id) {
+    return this.request(`/api/reels/${id}/share`, { method: 'POST' });
+  }
+
+  async voteReelPoll(id, optionIndex) {
+    return this.request(`/api/reels/${id}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ optionIndex })
+    });
+  }
+
+  async getBookmarkedReels(params = {}) {
+    const queryString = this.buildQuery(params);
+    return this.request(`/api/reels/bookmarked${queryString ? `?${queryString}` : ''}`);
+  }
+
+  async getTrendingReels(limit = 20) {
+    return this.request(`/api/reels/trending?limit=${limit}`);
+  }
+
+  async getMyReels(params = {}) {
+    const queryString = this.buildQuery(params);
+    return this.request(`/api/reels/mine${queryString ? `?${queryString}` : ''}`);
+  }
+
+  async getReelsFilterOptions() {
+    return this.request('/api/reels/stats');
+  }
+
+  // ===== REELS - ADMIN =====
+  async getAdminReels(params = {}) {
+    const queryString = this.buildQuery(params);
+    return this.request(`/api/admin/reels${queryString ? `?${queryString}` : ''}`);
+  }
+
+  async updateAdminReel(id, data) {
+    return this.request(`/api/admin/reels/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data)
+    });
+  }
+
+  async deleteAdminReel(id) {
+    return this.request(`/api/admin/reels/${id}`, { method: 'DELETE' });
+  }
+
+  async getAdminReelsAnalytics() {
+    return this.request('/api/admin/reels/analytics');
+  }
 }
 
 const API = new ApiService();

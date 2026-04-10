@@ -737,6 +737,11 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   padding-top: 0;
 }
 
+.adminPanel.showPanel {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+}
+
 .adminPanel.hidePanel {
   width: 100%;
   margin-left: 0;
@@ -850,6 +855,7 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   .adminContent {
     height: auto;
   }
+
   .adminContent {
     padding: 0.5rem;
   }

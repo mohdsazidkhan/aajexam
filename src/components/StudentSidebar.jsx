@@ -16,7 +16,8 @@ import {
   History,
   Settings,
   PenSquare,
-  MessageSquarePlus
+  MessageSquarePlus,
+  PlayCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -67,6 +68,7 @@ const StudentSidebar = () => {
       items: [
         { path: '/home', icon: Home, label: 'Home' },
         { path: '/search', icon: Search, label: 'Search' },
+        { path: '/reels', icon: PlayCircle, label: 'Reels', badge: 'NEW' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
         { path: '/community-questions', icon: MessageSquarePlus, label: 'Community Q&A' },
@@ -95,17 +97,13 @@ const StudentSidebar = () => {
   const initials = (user.name || user.username || 'U').charAt(0).toUpperCase();
 
   return (
-    <motion.div
-      initial={false}
-      animate={{
-        x: isOpen ? 0 : -240,
-        width: isOpen ? 240 : 0,
-        opacity: isOpen ? 1 : 0
-      }}
-      className="fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden"
+    <div
+      className={`fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${
+        isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      }`}
     >
       {/* User greeting */}
-      <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5">
+      <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5 min-w-[240px]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center text-white text-sm font-black shadow-duo-primary flex-shrink-0">
             {initials}
@@ -120,7 +118,7 @@ const StudentSidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-4 scrollbar-premium">
+      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] px-3 mb-2">
@@ -131,7 +129,7 @@ const StudentSidebar = () => {
                 const active = isActiveRoute(item.path);
                 return (
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick}>
-                    <button className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                    <button className={`w-full flex items-center justify-between px-3 py-2 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
@@ -139,7 +137,7 @@ const StudentSidebar = () => {
                         <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl" />
                       )}
                       <div className="flex items-center gap-3 relative z-10">
-                        <item.icon className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
+                        <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                         <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
                       {item.badge && (
@@ -158,7 +156,7 @@ const StudentSidebar = () => {
       </nav>
 
       {/* Logout */}
-      <div className="p-4 border-t border-slate-100 dark:border-white/5">
+      <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
           className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
@@ -166,7 +164,7 @@ const StudentSidebar = () => {
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

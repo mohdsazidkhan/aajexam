@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import {
   BookOpen,
   Search,
   User,
-  MessageSquarePlus
+  PlayCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -19,7 +19,7 @@ const StudentBottomNav = () => {
   const navItems = [
     { name: 'HOME', path: '/home', icon: Home },
     { name: 'EXAMS', path: '/govt-exams', icon: BookOpen },
-    { name: 'ASK', path: '/community-questions/ask', icon: MessageSquarePlus },
+    { name: 'REELS', path: '/reels', icon: PlayCircle },
     { name: 'SEARCH', path: '/search', icon: Search },
     { name: 'PROFILE', path: '/profile', icon: User },
   ];

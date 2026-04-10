@@ -9,7 +9,8 @@ import {
   User,
   MessageSquarePlus,
   GraduationCap,
-  PenSquare
+  PenSquare,
+  PlayCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 

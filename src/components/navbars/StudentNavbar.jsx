@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -17,7 +17,8 @@ import {
   Award,
   Menu,
   IndianRupee,
-  X
+  X,
+  PlayCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -123,6 +124,12 @@ const StudentNavbar = () => {
                     <Link href="/profile" onClick={() => setShowProfileMenu(false)}>
                       <button className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-black text-content-secondary hover:bg-primary-500/10 hover:text-primary-600 dark:hover:text-primary-500 transition-all group uppercase">
                         <User className="w-4 h-4 group-hover:scale-110" /> Profile
+                      </button>
+                    </Link>
+
+                    <Link href="/reels" onClick={() => setShowProfileMenu(false)}>
+                      <button className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-black text-content-secondary hover:bg-primary-500/10 hover:text-primary-600 dark:hover:text-primary-500 transition-all group uppercase">
+                        <PlayCircle className="w-4 h-4 group-hover:scale-110" /> Reels
                       </button>
                     </Link>
 
