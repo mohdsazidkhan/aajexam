@@ -72,7 +72,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
-               <div className="max-w-5xl mx-auto text-center space-y-12 mt-8 lg:mt-0">
+               <div className="max-w-5xl mx-auto text-center space-y-12 mt-8 lg:mt-0 py-4 lg:py-12">
                   <motion.div
                      initial={{ opacity: 0, scale: 0.9 }}
                      animate={{ opacity: 1, scale: 1 }}

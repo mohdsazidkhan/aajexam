@@ -43,8 +43,8 @@ const ContactUs = ({ contactInfo = {
       setLoading(true);
       setStatus(null);
       try {
-         const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-         const response = await fetch(`${API_BASE_URL}/api/contacts`, {
+         const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+         const response = await fetch(`${API_BASE_URL}/contacts`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
