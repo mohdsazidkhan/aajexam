@@ -183,7 +183,6 @@ export async function POST(req) {
             }
         }
 
-        const levelInfo = await user.getLevelInfo();
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
         return successResponse({
@@ -192,7 +191,7 @@ export async function POST(req) {
                 _id: user._id, name: user.name, email: user.email, username: user.username,
                 role: user.role, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: user.currentSubscription,
-                badges: user.badges, level: levelInfo, profileCompletion: updatedProfileDetails,
+                badges: user.badges, profileCompletion: updatedProfileDetails,
                 walletBalance: user.walletBalance || 0
             }
         }, '🎉 Login Successful!');

@@ -150,10 +150,9 @@ export async function POST(req) {
             category: 'subscription_payment', description: `Free ${subscriptionDuration} subscription - ${levelAccess} access`
         });
 
-        const levelInfo = await user.getLevelInfo();
         const successMessage = isAdmin
-            ? '🎉 Admin Registered Successfully! You have lifetime free access to all levels (0-10)!'
-            : '🎉 Registered Successfully! You have 1 month free access to levels 0-3!';
+            ? '🎉 Admin Registered Successfully!'
+            : '🎉 Registered Successfully!';
 
         createNotification({
             userId: user._id, type: 'registration', title: 'New user registered',
@@ -167,7 +166,7 @@ export async function POST(req) {
                 _id: user._id, name: user.name, email: user.email, username: user.username,
                 role: user.role, referralCode: user.referralCode, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: freeSubscription,
-                badges: user.badges, level: levelInfo,
+                badges: user.badges,
                 walletBalance: user.walletBalance || 0
             }
         }, { status: 201 });
