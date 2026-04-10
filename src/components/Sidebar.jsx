@@ -76,7 +76,6 @@ const Sidebar = () => {
       items: [
         { path: '/admin/students', icon: Users, label: 'Students', key: 'students' },
         { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
-        { path: '/admin/prev-month-played-users', icon: History, label: 'Activity Logs', key: 'prev-month-users' },
         { path: '/admin/contacts', icon: Contact2, label: 'Contact Requests', key: 'contacts' },
       ]
     },
@@ -87,7 +86,6 @@ const Sidebar = () => {
         { path: '/admin/analytics/users', icon: Users, label: 'User Stats', key: 'analytics-users' },
         { path: '/admin/analytics/users-overview', icon: TrendingUp, label: 'Growth', key: 'analytics-users-overview' },
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Financial', key: 'analytics-financial' },
-        { path: '/admin/analytics/performance', icon: Activity, label: 'Performance', key: 'analytics-performance' },
         { path: '/admin/referral-analytics', icon: Globe, label: 'Referrals', key: 'referral-analytics' },
       ]
     },
@@ -109,20 +107,6 @@ const Sidebar = () => {
 
   return (
     <div className={`fixed left-0 top-16 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
-
-      {/* Admin badge */}
-      <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-rose-500 flex items-center justify-center text-white text-xs font-black shadow-sm flex-shrink-0">
-            A
-          </div>
-          <div>
-            <p className="text-xs font-bold text-content-primary uppercase">Admin Panel</p>
-            <p className="text-[10px] font-semibold text-content-muted uppercase">Manage platform</p>
-          </div>
-        </div>
-      </div>
-
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (

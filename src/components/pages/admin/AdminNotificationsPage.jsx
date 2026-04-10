@@ -52,7 +52,7 @@ const AdminNotificationsPage = () => {
     bank: '/admin/bank-details',
     subscription: '/admin/subscriptions',
     registration: '/admin/students',
-    quiz_attempt: '/admin/analytics/performance',
+    quiz_attempt: '/admin/analytics/dashboard',
     exam_attempt: '/admin/govt-exams/results',
     blog: '/admin/user-blogs',
     referral_registration: '/admin/referral-history',

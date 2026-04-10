@@ -317,11 +317,6 @@ class ApiService {
     return this.request(`/api/admin/analytics/financial?${queryString}`);
   }
 
-  async getPerformanceAnalytics(params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    return this.request(`/api/admin/analytics/performance?${queryString}`);
-  }
-
   async getIndividualUserAnalytics(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/analytics/users/${userId}/full?${queryString}`);
