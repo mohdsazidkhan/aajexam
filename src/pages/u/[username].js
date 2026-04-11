@@ -202,6 +202,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Following</span>
                 </div>
                 <div>
+                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white">{profile.reelsCount || 0}</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Reels</span>
+                </div>
+                <div>
                   <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white">{profile.profileViews || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Views</span>
                 </div>
@@ -259,6 +263,72 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Average</span>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Reels Grid — Instagram style */}
+          {reels.length > 0 && (
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
+              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+                <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
+                <PlayCircle className="w-5 h-5" />
+                Reels
+                <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
+              </h2>
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+                {reels.map((reel) => {
+                  const typeConfig = {
+                    question: { icon: FileText, gradient: 'from-blue-600 to-indigo-700', label: 'Q' },
+                    fact: { icon: Lightbulb, gradient: 'from-purple-600 to-pink-600', label: 'F' },
+                    tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600', label: 'T' },
+                    current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700', label: 'CA' },
+                    poll: { icon: BarChart3, gradient: 'from-green-500 to-emerald-700', label: 'P' },
+                  };
+                  const config = typeConfig[reel.type] || typeConfig.question;
+                  const Icon = config.icon;
+                  const displayTitle = reel.type === 'question' ? reel.questionText : reel.type === 'poll' ? reel.pollQuestion : reel.title;
+
+                  return (
+                    <Link href="/reels" key={reel._id}>
+                      <div className={`relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br ${config.gradient} group cursor-pointer`}>
+                        {/* Content preview */}
+                        <div className="absolute inset-0 p-2.5 sm:p-3 flex flex-col justify-between">
+                          {/* Type badge */}
+                          <div className="flex items-center gap-1">
+                            <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/80" />
+                            <span className="text-[8px] sm:text-[9px] font-black text-white/70 uppercase tracking-wider">{config.label}</span>
+                          </div>
+                          {/* Title */}
+                          <p className="text-[10px] sm:text-xs font-bold text-white leading-tight line-clamp-3">
+                            {displayTitle || 'Untitled'}
+                          </p>
+                        </div>
+                        {/* Bottom overlay with views */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2.5 pb-2 pt-6">
+                          <div className="flex items-center gap-1">
+                            <Eye className="w-3 h-3 text-white/90" />
+                            <span className="text-[10px] sm:text-[11px] font-bold text-white/90">
+                              {reel.viewsCount >= 1000 ? `${(reel.viewsCount / 1000).toFixed(1)}K` : reel.viewsCount || 0}
+                            </span>
+                          </div>
+                        </div>
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              {/* Load more */}
+              {hasMoreReels && (
+                <button
+                  onClick={() => fetchReels(reelsPage + 1)}
+                  disabled={reelsLoading}
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-400 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                >
+                  {reelsLoading ? 'Loading...' : 'Load More Reels'}
+                </button>
+              )}
             </div>
           )}
 
