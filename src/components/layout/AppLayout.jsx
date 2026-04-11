@@ -36,10 +36,6 @@ import StudentSidebar from '../StudentSidebar';
 import Sidebar from '../Sidebar';
 import UnifiedFooter from '../UnifiedFooter';
 
-/**
- * AppLayout - The core layout wrapper for the gamified experience.
- * Handles Sidebar (Desktop), Top Navbar (Global), and Bottom Nav (Mobile).
- */
 const AppLayout = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -47,19 +43,10 @@ const AppLayout = ({ children }) => {
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
 
-  const navItems = [
-    { name: 'HOME', path: '/home', icon: Home },
-    { name: 'EXAMS', path: '/govt-exams', icon: BookOpen },
-    { name: 'SEARCH', path: '/search', icon: Search },
-    { name: 'ANALYTICS', path: '/my-analytics', icon: BarChart2 },
-    { name: 'PROFILE', path: '/profile', icon: User },
-  ];
-
   const isQuestPage = (router.pathname.includes('/govt-exams/test/') && router.pathname.endsWith('/start'));
   const showAppNav = isAuthenticated && isClient && !isQuestPage;
   const isUserAdmin = isAdmin();
 
-  // Only shift content on desktop (lg = 1024px+). Mobile sidebar is overlay.
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 1024);
@@ -69,9 +56,10 @@ const AppLayout = ({ children }) => {
   }, []);
 
   const isReelsPage = router.pathname === '/reels';
+  const isSearchPage = router.pathname === '/search';
   const shouldShiftContent = showAppNav && !isUserAdmin && isSidebarOpen && isDesktop;
 
-  // Lock body scroll on Reels page for true fullscreen
+  // Lock body scroll on Reels page
   useEffect(() => {
     if (isReelsPage) {
       document.documentElement.style.overflow = 'hidden';
@@ -87,6 +75,16 @@ const AppLayout = ({ children }) => {
     }
   }, [isReelsPage]);
 
+  // ── Search: hide header, keep bottom nav ──
+  if (isSearchPage) {
+    return (
+      <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} font-nunito`}>
+        {children}
+        {showAppNav && !isUserAdmin && <StudentBottomNav />}
+      </div>
+    );
+  }
+
   // ── Reels: fully immersive fixed layout ──
   if (isReelsPage) {
     return (
@@ -94,7 +92,6 @@ const AppLayout = ({ children }) => {
         <div style={{ height: '100%', overflow: 'hidden' }}>
           {children}
         </div>
-        {/* Bottom Nav */}
         {showAppNav && !isUserAdmin && (
           <div className="fixed bottom-0 left-0 right-0 z-50">
             <StudentBottomNav />
@@ -107,25 +104,25 @@ const AppLayout = ({ children }) => {
   return (
     <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} transition-colors duration-500 font-nunito selection:bg-primary-500 selection:text-white`}>
 
-      {/* --- Top Navbar (Global for Authenticated Users) --- */}
+      {/* --- Top Navbar --- */}
       {showAppNav && (
         isUserAdmin ? <AdminNavbar /> : <StudentNavbar />
       )}
 
-      {/* --- Mobile Sidebar Overlay --- */}
+      {/* --- Sidebar Overlay (mobile) --- */}
       <AnimatePresence>
-        {showAppNav && isSidebarOpen && (
+        {showAppNav && isSidebarOpen && !isDesktop && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => dispatch(closeSidebar())}
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[130] lg:hidden"
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[130]"
           />
         )}
       </AnimatePresence>
 
-      {/* --- Sidebar (Desktop/Mobile) --- */}
+      {/* --- Sidebar --- */}
       {showAppNav && (
         isUserAdmin ? <Sidebar /> : <StudentSidebar />
       )}
@@ -139,35 +136,32 @@ const AppLayout = ({ children }) => {
         }}
         className={`min-h-screen
           ${showAppNav ?
-            (isSidebarOpen ? 'pt-16 pb-16 lg:pb-12' : 'pt-16 pb-16') :
-            (isQuestPage ? 'p-0 m-0 overflow-hidden' : 'pt-16')
+            'pt-12 pb-20 lg:pt-20 lg:pb-12' :
+            (isQuestPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-20')
           }`}
       >
-        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'px-4' : (isQuestPage ? 'max-w-full px-0' : 'px-0 md:px-6')}`}>
+        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'px-4' : (isQuestPage ? 'max-w-full px-0' : 'px-4 md:px-6')}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={router.pathname}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               {children}
             </motion.div>
           </AnimatePresence>
         </div>
-        {!isUserAdmin && <UnifiedFooter />}
+        {!isUserAdmin && isDesktop && <UnifiedFooter />}
       </main>
 
-      {/* --- Bottom Nav (Mobile/Tablet Small) --- */}
+      {/* --- Bottom Nav (Mobile only) --- */}
       {showAppNav && (
-        <>
-          {isUserAdmin ? <AdminBottomNav /> : <StudentBottomNav />}
-        </>
+        isUserAdmin ? <AdminBottomNav /> : <StudentBottomNav />
       )}
     </div>
   );
 };
 
 export default AppLayout;
-

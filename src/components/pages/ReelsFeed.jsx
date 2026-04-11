@@ -9,7 +9,7 @@ import Loading from '../Loading';
 import MobileAppWrapper from '../MobileAppWrapper';
 import { isAuthenticated } from '../../lib/auth';
 import {
-  Heart, Bookmark, Share2, ChevronUp, ChevronDown, Filter, X,
+  Heart, Bookmark, Share2, ChevronUp, ChevronDown, Filter, X, Search,
   CheckCircle2, XCircle, Flame, Zap, BookOpen, Newspaper, BarChart3,
   HelpCircle, ArrowLeft, Plus, TrendingUp, BookmarkCheck, Lightbulb
 } from 'lucide-react';
@@ -460,6 +460,7 @@ const ReelsFeed = () => {
   const [followLoading, setFollowLoading] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [showAllTags, setShowAllTags] = useState(false);
+  const [showCreateDrawer, setShowCreateDrawer] = useState(false);
   const containerRef = useRef(null);
   const touchStartY = useRef(0);
 
@@ -726,6 +727,12 @@ const ReelsFeed = () => {
                 )}
               </div>
               <div className="flex items-center gap-1">
+                <Link href="/search" className="p-2">
+                  <Search className="w-5 h-5 text-white" />
+                </Link>
+                <button onClick={() => setShowCreateDrawer(true)} className="p-2">
+                  <Plus className="w-5 h-5 text-white" />
+                </button>
                 <button onClick={() => setShowFilters(!showFilters)} className="p-2">
                   <Filter className="w-5 h-5 text-white" />
                 </button>
@@ -1039,6 +1046,65 @@ const ReelsFeed = () => {
           <p className="text-xs font-bold text-white/50 uppercase tracking-widest">Loading reels...</p>
         </div>
       )}
+
+      {/* ── Create Reel Bottom Drawer ── */}
+      <AnimatePresence>
+        {showCreateDrawer && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowCreateDrawer(false)}
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm z-[60]"
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="absolute bottom-0 left-0 right-0 z-[70] max-h-[85%] overflow-y-auto rounded-t-3xl bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
+              style={{ scrollbarWidth: 'none' }}
+            >
+              <div className="flex justify-center pt-3 pb-2">
+                <div className="w-10 h-1 rounded-full bg-white/20" />
+              </div>
+              <div className="px-5 pb-24 pt-2">
+                <div className="flex items-center justify-between mb-5">
+                  <h3 className="text-sm font-black text-white uppercase tracking-wider">Create Reel</h3>
+                  <button onClick={() => setShowCreateDrawer(false)} className="p-1.5 rounded-full bg-white/10">
+                    <X className="w-4 h-4 text-white/60" />
+                  </button>
+                </div>
+                <div className="space-y-2.5">
+                  {[
+                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-blue-500 to-indigo-600', desc: 'MCQ with explanation' },
+                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-purple-500 to-pink-600', desc: 'Quick fact or one-liner' },
+                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-yellow-500 to-orange-600', desc: 'Shortcut or formula' },
+                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-red-500 to-rose-600', desc: 'Daily CA card' },
+                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-green-500 to-emerald-600', desc: 'Community poll' },
+                  ].map((type) => (
+                    <Link
+                      key={type.value}
+                      href={`/reels/create?type=${type.value}`}
+                      onClick={() => setShowCreateDrawer(false)}
+                      className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border border-white/10 hover:border-white/20 transition-all active:bg-white/5"
+                    >
+                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
+                        <type.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-sm font-black text-white">{type.label}</p>
+                        <p className="text-[11px] text-white/50 font-medium">{type.desc}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -28,6 +28,15 @@ const ReelCreate = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('');
+
+  // Pre-select type from query param
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const preType = params.get('type');
+    if (preType && ['question', 'fact', 'tip', 'current_affairs', 'poll'].includes(preType)) {
+      setType(preType);
+    }
+  }, []);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [subject, setSubject] = useState('');
