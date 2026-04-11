@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { PlayCircle, Eye, Heart, FileText, Lightbulb, Zap, Newspaper, BarChart3 } from 'lucide-react';
 import API from '../../lib/api';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
@@ -40,6 +42,34 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
       setLoading(false);
     }
   };
+
+  // Reels
+  const [reels, setReels] = useState([]);
+  const [reelsPage, setReelsPage] = useState(1);
+  const [reelsTotal, setReelsTotal] = useState(0);
+  const [reelsLoading, setReelsLoading] = useState(false);
+  const [hasMoreReels, setHasMoreReels] = useState(false);
+
+  const fetchReels = useCallback(async (page = 1) => {
+    try {
+      setReelsLoading(true);
+      const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}/reels?page=${page}&limit=12`);
+      if (res?.success) {
+        setReels(prev => page === 1 ? res.reels : [...prev, ...res.reels]);
+        setReelsTotal(res.pagination.total);
+        setHasMoreReels(page < res.pagination.totalPages);
+        setReelsPage(page);
+      }
+    } catch (e) {
+      console.error('Failed to load reels:', e);
+    } finally {
+      setReelsLoading(false);
+    }
+  }, [username]);
+
+  useEffect(() => {
+    if (username) fetchReels(1);
+  }, [username, fetchReels]);
 
   const handleFollowChange = (newFollowStatus) => {
     setIsFollowing(newFollowStatus);

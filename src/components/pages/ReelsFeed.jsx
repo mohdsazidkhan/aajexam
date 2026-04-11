@@ -100,9 +100,6 @@ const QuestionReelCard = ({ reel, onAnswer }) => {
           )}
         </div>
 
-        {/* Thin gradient divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4 sm:mb-6" />
-
         {/* Question text */}
         <h2 className="text-base sm:text-xl font-bold text-white leading-relaxed mb-4 sm:mb-6">
           {reel.questionText}
@@ -139,7 +136,7 @@ const QuestionReelCard = ({ reel, onAnswer }) => {
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
                 {answered ? (i === result?.correctAnswerIndex ? '✓' : i === selected && !result?.isCorrect ? '✗' : String.fromCharCode(65 + i)) : String.fromCharCode(65 + i)}
               </span>
-              <span className="text-xs sm:text-sm font-medium text-white/90">{opt}</span>
+              <span className="text-xs sm:text-sm font-bold text-white/90">{opt}</span>
             </motion.button>
           );
         })}
@@ -157,36 +154,25 @@ const QuestionReelCard = ({ reel, onAnswer }) => {
 
 // ──── Fact Card ────
 const FactReelCard = ({ reel }) => (
-  <div className="flex flex-col h-full px-5 py-4 justify-center">
-    <div className="flex items-center gap-2 mb-4">
+  <div className="flex flex-col h-full pl-4 pb-4 justify-center">
+    <div className="flex items-center gap-2 mb-2 sm:mb-4">
       <span className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white/70">{reel.subject}</span>
       {reel.topic && <span className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">{reel.topic}</span>}
     </div>
-    <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" />
+    <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-2 sm:mb-4" />
 
-    <h2 className="text-xl sm:text-2xl font-bold text-white mb-4">{reel.title}</h2>
+    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
     {reel.highlightText && (
-      <div className="text-center my-6">
-        <p className="text-3xl sm:text-4xl font-black text-white/90 leading-tight">{reel.highlightText}</p>
+      <div className="pb-3 sm:my-6">
+        <p className="text-md sm:text-lg md:text-xl lg:text-2xl font-black text-white/90 leading-tight">{reel.highlightText}</p>
       </div>
     )}
 
-    {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-4">{reel.content}</p>}
-
-    {reel.keyPoints?.length > 0 && (
-      <div className="p-4 rounded-2xl bg-white/10 border border-white/10 space-y-2">
-        {reel.keyPoints.map((point, i) => (
-          <div key={i} className="flex items-start gap-2">
-            <span className="text-white/40 text-xs mt-0.5">•</span>
-            <p className="text-sm text-white/80">{point}</p>
-          </div>
-        ))}
-      </div>
-    )}
+    {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-2 sm:mb-4">{reel.content}</p>}
 
     {reel.tags?.length > 0 && (
-      <div className="flex flex-wrap gap-2 mt-4">
+      <div className="flex flex-wrap gap-2 mt-2 sm:mt-4">
         {reel.tags.map((tag, i) => (
           <span key={i} className="px-2.5 py-1 rounded-lg bg-white/5 text-[10px] font-medium text-white/50">🏷️ {tag}</span>
         ))}
@@ -197,7 +183,7 @@ const FactReelCard = ({ reel }) => (
 
 // ──── Tip/Trick Card ────
 const TipReelCard = ({ reel }) => (
-  <div className="flex flex-col h-full px-5 py-4 justify-center">
+  <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-4">
       <Zap className="w-4 h-4 text-yellow-400" />
       <span className="text-[10px] font-bold uppercase tracking-widest text-yellow-400/80">Quick Trick</span>
@@ -205,70 +191,42 @@ const TipReelCard = ({ reel }) => (
     </div>
     <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent mb-5" />
 
-    <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">{reel.title}</h2>
+    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
     {reel.formula && (
-      <div className="p-4 rounded-2xl bg-white/10 border border-white/10 mb-4 font-mono text-center">
-        <p className="text-lg font-bold text-yellow-300">{reel.formula}</p>
-      </div>
-    )}
-
-    {reel.steps?.length > 0 && (
-      <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3 mb-4 font-mono">
-        {reel.steps.map((step, i) => (
-          <div key={i} className="flex items-start gap-3">
-            <span className="text-xs font-bold text-white/40 w-14 shrink-0">Step {i + 1}</span>
-            <p className="text-sm text-white/80">{step}</p>
-          </div>
-        ))}
+      <div className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
+        <p className="text-md sm:text-lg font-bold text-yellow-300">{reel.formula}</p>
       </div>
     )}
 
     {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-4">{reel.content}</p>}
-
-    {reel.tryYourself?.length > 0 && (
-      <div className="space-y-1 mt-2">
-        <p className="text-xs font-bold text-white/40 uppercase tracking-wider">Try yourself:</p>
-        {reel.tryYourself.map((ex, i) => (
-          <p key={i} className="text-sm text-white/60 font-mono">{ex}</p>
-        ))}
-      </div>
-    )}
   </div>
 );
 
 // ──── Current Affairs Card ────
 const CAReelCard = ({ reel }) => (
-  <div className="flex flex-col h-full px-5 py-4 justify-center">
+  <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-2">
       <Newspaper className="w-4 h-4 text-red-400" />
       <span className="text-[10px] font-bold uppercase tracking-widest text-red-400/80">Current Affairs</span>
     </div>
-    <p className="text-xs text-white/40 mb-4">
+    <p className="text-xs text-white/40 mb-2 ms:mb-4">
       📅 {reel.caDate ? new Date(reel.caDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
       {reel.caCategory && ` · ${reel.caCategory}`}
     </p>
-    <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent mb-5" />
+    {/* <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent mb-5" /> */}
+    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
-    <h2 className="text-xl sm:text-2xl font-extrabold text-white mb-4">{reel.title}</h2>
-
-    {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-4">{reel.content}</p>}
+    {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-2 sm:mb-4">{reel.content}</p>}
 
     {reel.tableData?.length > 0 && (
-      <div className="rounded-2xl overflow-hidden border border-white/10 mb-4">
+      <div className="rounded-2xl overflow-hidden border border-white/10 mb-2 sm:mb-4">
         {reel.tableData.map((row, i) => (
-          <div key={i} className={`flex justify-between items-center p-3 ${i % 2 === 0 ? 'bg-white/5' : 'bg-white/[0.02]'}`}>
+          <div key={i} className={`flex justify-between items-center p-1 sm:p-3 ${i % 2 === 0 ? 'bg-white/5' : 'bg-white/[0.02]'}`}>
             <span className="text-sm text-white/60">{row.key}</span>
             <span className="text-sm font-bold text-white/90">{row.value}</span>
           </div>
         ))}
-      </div>
-    )}
-
-    {reel.keyTakeaway && (
-      <div className="p-4 rounded-2xl border-l-4 border-red-400/50 bg-red-500/10">
-        <p className="text-xs font-bold text-red-400/60 mb-1">Key Takeaway</p>
-        <p className="text-sm text-white/80 italic">"{reel.keyTakeaway}"</p>
       </div>
     )}
   </div>
@@ -306,14 +264,14 @@ const PollReelCard = ({ reel, onVote }) => {
   };
 
   return (
-    <div className="flex flex-col h-full px-5 py-4 justify-center">
-      <div className="flex items-center gap-2 mb-4">
+    <div className="flex flex-col h-full px-4 pb-4 justify-center">
+      <div className="flex items-center gap-2 mb-2 sm:mb-4">
         <BarChart3 className="w-4 h-4 text-green-400" />
         <span className="text-[10px] font-bold uppercase tracking-widest text-green-400/80">Community Poll</span>
       </div>
       <div className="h-px bg-gradient-to-r from-transparent via-green-400/30 to-transparent mb-5" />
 
-      <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">{reel.pollQuestion}</h2>
+      <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.pollQuestion}</h2>
 
       <div className="space-y-3">
         {pollData.map((opt, i) => {
@@ -324,7 +282,7 @@ const PollReelCard = ({ reel, onVote }) => {
               whileTap={!voted ? { scale: 0.97 } : {}}
               onClick={() => handleVote(i)}
               disabled={voted}
-              className="w-full text-left relative overflow-hidden rounded-2xl border border-white/10 p-3.5"
+              className="w-full text-left relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3.5"
             >
               {voted && (
                 <motion.div
@@ -335,7 +293,7 @@ const PollReelCard = ({ reel, onVote }) => {
                 />
               )}
               <div className="relative flex justify-between items-center">
-                <span className="text-sm font-medium text-white/90">{opt.text}</span>
+                <span className="text-sm font-bold text-white/90">{opt.text}</span>
                 {voted && <span className="text-sm font-bold text-white/70">{pct}%</span>}
               </div>
             </motion.button>
@@ -407,7 +365,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
     animate={{ y: 0 }}
     exit={{ y: '100%' }}
     transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-    className="absolute bottom-0 left-0 right-0 z-30 max-h-[70%] overflow-y-auto rounded-t-3xl bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
+    className="absolute bottom-0 left-0 right-0 z-30 max-h-[90%] overflow-y-auto rounded-t-3xl bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
     style={{ scrollbarWidth: 'none' }}
   >
     {/* Handle bar */}
@@ -415,7 +373,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
       <div className="w-10 h-1 rounded-full bg-white/20" />
     </div>
 
-    <div className="px-5 pb-6 space-y-5">
+    <div className="px-5 pb-20 space-y-5">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Filter className="w-5 h-5 text-white/70" />
@@ -501,6 +459,7 @@ const ReelsFeed = () => {
   const [followMap, setFollowMap] = useState({});
   const [followLoading, setFollowLoading] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [showAllTags, setShowAllTags] = useState(false);
   const containerRef = useRef(null);
   const touchStartY = useRef(0);
 
@@ -617,6 +576,7 @@ const ReelsFeed = () => {
   // Navigation
   const goNext = () => {
     setShowExplanation(false);
+    setShowAllTags(false);
     if (currentIndex < reels.length - 1) {
       setCurrentIndex(i => i + 1);
     } else if (hasMore && !loadingMore) {
@@ -625,6 +585,7 @@ const ReelsFeed = () => {
   };
   const goPrev = () => {
     setShowExplanation(false);
+    setShowAllTags(false);
     if (currentIndex > 0) setCurrentIndex(i => i - 1);
   };
 
@@ -698,7 +659,7 @@ const ReelsFeed = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-slate-950">
+      <div className="h-full flex items-center justify-center bg-slate-950">
         <Loading />
       </div>
     );
@@ -722,7 +683,8 @@ const ReelsFeed = () => {
       ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="h-[100dvh] w-full overflow-hidden relative select-none bg-black pb-[72px] lg:pb-0"
+      className="w-full overflow-hidden relative select-none bg-black pb-[72px] lg:pb-0"
+      style={{ height: '100dvh', position: 'fixed', inset: 0 }}
     >
       {/* Filter Panel — overlay */}
       <AnimatePresence>
@@ -783,11 +745,13 @@ const ReelsFeed = () => {
             <div className="absolute right-3 bottom-16 flex flex-col items-center gap-5 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
               {/* Profile avatar + follow */}
               <div className="relative">
-                <div className="w-9 h-9 rounded-full bg-primary-500 p-[2px]">
-                  <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-black uppercase">
-                    {(currentReel.createdBy?.name || 'A').charAt(0)}
+                <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
+                  <div className="w-9 h-9 rounded-full bg-primary-500 p-[2px]">
+                    <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-black uppercase">
+                      {(currentReel.createdBy?.username || 'A').charAt(0)}
+                    </div>
                   </div>
-                </div>
+                </Link>
                 {currentReel.createdBy?._id && (
                   <button
                     onClick={() => handleFollowToggle(currentReel.createdBy._id)}
@@ -809,7 +773,7 @@ const ReelsFeed = () => {
                 onLike={handleLike}
                 onBookmark={handleBookmark}
                 onShare={handleShare}
-                showExplanationIcon={currentReel.type === 'question' && (currentReel.explanation || currentReel.shortcutTrick)}
+                showExplanationIcon={true}
                 onExplanation={() => setShowExplanation(!showExplanation)}
               />
             </div>
@@ -819,14 +783,20 @@ const ReelsFeed = () => {
               <div className="px-4 pb-3 pt-12 pointer-events-auto">
                 {/* Creator row */}
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-primary-500 p-[1.5px] shrink-0">
-                    <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-[10px] font-black uppercase">
-                      {(currentReel.createdBy?.name || 'A').charAt(0)}
+                  <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`} className="shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-primary-500 p-[1.5px]">
+                      <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-[10px] font-black uppercase">
+                        {(currentReel.createdBy?.username || 'A').charAt(0)}
+                      </div>
                     </div>
-                  </div>
-                  <span className="text-[13px] font-extrabold text-white" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
-                    {currentReel.createdBy?.name || 'AajExam'}
-                  </span>
+                  </Link>
+                  <Link
+                    href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}
+                    className="text-[13px] font-extrabold text-white hover:underline"
+                    style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}
+                  >
+                    @{currentReel.createdBy?.username || 'aajexam'}
+                  </Link>
                   {currentReel.createdBy?._id && !followMap[currentReel.createdBy._id] && (
                     <button
                       onClick={() => handleFollowToggle(currentReel.createdBy._id)}
@@ -850,7 +820,7 @@ const ReelsFeed = () => {
                 {/* Hashtags */}
                 {currentReel.tags?.length > 0 && (
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    {currentReel.tags.map((tag, i) => (
+                    {(showAllTags ? currentReel.tags : currentReel.tags.slice(0, 2)).map((tag, i) => (
                       <button
                         key={i}
                         onClick={() => {
@@ -864,24 +834,33 @@ const ReelsFeed = () => {
                         #{tag}
                       </button>
                     ))}
+                    {currentReel.tags.length > 2 && (
+                      <button
+                        onClick={() => setShowAllTags(prev => !prev)}
+                        className="text-[12px] font-bold text-white/50 hover:text-white transition-colors"
+                        style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
+                      >
+                        {showAllTags ? 'less' : '...more'}
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
             </div>
 
-            {/* ── Explanation bottom sheet ── */}
+            {/* ── Explanation / Detail bottom sheet (all reel types) ── */}
             <AnimatePresence>
-              {showExplanation && currentReel.type === 'question' && (
+              {showExplanation && (
                 <motion.div
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   exit={{ y: '100%' }}
                   transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                  className="absolute bottom-0 left-0 right-0 z-30 max-h-[60%] overflow-y-auto rounded-t-3xl bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
+                  className="absolute bottom-0 left-0 right-0 z-30 max-h-[80%] overflow-y-auto rounded-t-3xl bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
                   style={{ scrollbarWidth: 'none' }}
                 >
                   {/* Handle bar */}
-                  <div className="flex justify-center pt-3 pb-2 sticky top-0 bg-slate-900/95">
+                  <div className="flex justify-center pt-3 pb-2 sticky top-0 bg-slate-900/95 z-10">
                     <div className="w-10 h-1 rounded-full bg-white/20" />
                   </div>
 
@@ -890,41 +869,148 @@ const ReelsFeed = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Lightbulb className="w-5 h-5 text-yellow-400" />
-                        <span className="text-sm font-black text-white uppercase tracking-wider">Explanation</span>
+                        <span className="text-sm font-black text-white uppercase tracking-wider">
+                          {currentReel.type === 'question' ? 'Explanation' : 'More Details'}
+                        </span>
                       </div>
                       <button onClick={() => setShowExplanation(false)} className="p-1.5 rounded-full bg-white/10">
                         <X className="w-4 h-4 text-white/60" />
                       </button>
                     </div>
 
-                    {/* Explanation content */}
-                    {currentReel.explanation && (
-                      <div className="space-y-1.5">
-                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Answer Explanation</p>
-                        <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.explanation}</p>
-                      </div>
+                    {/* ── Question type ── */}
+                    {currentReel.type === 'question' && (
+                      <>
+                        {currentReel.explanation && (
+                          <div className="space-y-1.5">
+                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Answer Explanation</p>
+                            <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.explanation}</p>
+                          </div>
+                        )}
+                        {currentReel.shortcutTrick && (
+                          <div className="p-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 space-y-1.5">
+                            <p className="text-[10px] font-bold text-yellow-400/80 uppercase tracking-widest flex items-center gap-1.5">
+                              <Zap className="w-3.5 h-3.5" /> Quick Trick
+                            </p>
+                            <p className="text-[13px] text-yellow-100/90 leading-relaxed">{currentReel.shortcutTrick}</p>
+                          </div>
+                        )}
+                        {currentReel.answeredCount > 0 && (
+                          <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+                            <span className="text-[11px] text-white/40">👥 {currentReel.answeredCount} attempted</span>
+                            <span className="text-[11px] text-primary-500 font-bold">{Math.round((currentReel.correctCount / currentReel.answeredCount) * 100)}% correct</span>
+                          </div>
+                        )}
+                        {!currentReel.explanation && !currentReel.shortcutTrick && (
+                          <p className="text-sm text-white/40 text-center py-4">No explanation available for this question</p>
+                        )}
+                      </>
                     )}
 
-                    {/* Trick */}
-                    {currentReel.shortcutTrick && (
-                      <div className="p-4 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 space-y-1.5">
-                        <p className="text-[10px] font-bold text-yellow-400/80 uppercase tracking-widest flex items-center gap-1.5">
-                          <Zap className="w-3.5 h-3.5" /> Quick Trick
-                        </p>
-                        <p className="text-[13px] text-yellow-100/90 leading-relaxed">{currentReel.shortcutTrick}</p>
-                      </div>
+                    {/* ── Fact type ── */}
+                    {currentReel.type === 'fact' && (
+                      <>
+                        {currentReel.highlightText && (
+                          <div className="py-3">
+                            <p className="text-lg font-black text-white/90 leading-tight">{currentReel.highlightText}</p>
+                          </div>
+                        )}
+                        {currentReel.content && (
+                          <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
+                        )}
+                        {currentReel.keyPoints?.length > 0 && (
+                          <div className="p-3 rounded-2xl bg-white/10 border border-white/10 space-y-2">
+                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Key Points</p>
+                            {currentReel.keyPoints.map((point, i) => (
+                              <div key={i} className="flex items-start gap-2">
+                                <span className="text-white/40 text-xs mt-0.5">•</span>
+                                <p className="text-[13px] text-white/80">{point}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </>
                     )}
 
-                    {/* Stats */}
-                    {currentReel.answeredCount > 0 && (
-                      <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-                        <span className="text-[11px] text-white/40">👥 {currentReel.answeredCount} attempted</span>
-                        <span className="text-[11px] text-primary-500 font-bold">{Math.round((currentReel.correctCount / currentReel.answeredCount) * 100)}% correct</span>
-                      </div>
+                    {/* ── Tip type ── */}
+                    {currentReel.type === 'tip' && (
+                      <>
+                        {currentReel.content && (
+                          <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
+                        )}
+                        {currentReel.formula && (
+                          <div className="p-3 rounded-2xl bg-white/10 border border-white/10 font-mono text-center">
+                            <p className="text-lg font-bold text-yellow-300">{currentReel.formula}</p>
+                          </div>
+                        )}
+                        {currentReel.steps?.length > 0 && (
+                          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Steps</p>
+                            {currentReel.steps.map((step, i) => (
+                              <div key={i} className="flex items-start gap-3">
+                                <span className="text-xs font-bold text-yellow-400/60 w-14 shrink-0">Step {i + 1}</span>
+                                <p className="text-[13px] text-white/80">{step}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {currentReel.shortcutTrick && (
+                          <div className="p-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 space-y-1.5">
+                            <p className="text-[10px] font-bold text-yellow-400/80 uppercase tracking-widest flex items-center gap-1.5">
+                              <Zap className="w-3.5 h-3.5" /> Quick Trick
+                            </p>
+                            <p className="text-[13px] text-yellow-100/90 leading-relaxed">{currentReel.shortcutTrick}</p>
+                          </div>
+                        )}
+                        {currentReel.tryYourself?.length > 0 && (
+                          <div className="space-y-2">
+                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Try Yourself</p>
+                            {currentReel.tryYourself.map((ex, i) => (
+                              <p key={i} className="text-[13px] text-white/60 font-mono">{ex}</p>
+                            ))}
+                          </div>
+                        )}
+                      </>
                     )}
 
-                    {!currentReel.explanation && !currentReel.shortcutTrick && (
-                      <p className="text-sm text-white/40 text-center py-4">No explanation available for this question</p>
+                    {/* ── Current Affairs type ── */}
+                    {currentReel.type === 'current_affairs' && (
+                      <>
+                        {currentReel.content && (
+                          <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
+                        )}
+                        {currentReel.tableData?.length > 0 && (
+                          <div className="rounded-2xl overflow-hidden border border-white/10">
+                            {currentReel.tableData.map((row, i) => (
+                              <div key={i} className={`flex justify-between items-center p-3 ${i % 2 === 0 ? 'bg-white/5' : 'bg-white/[0.02]'}`}>
+                                <span className="text-[13px] text-white/60">{row.key}</span>
+                                <span className="text-[13px] font-bold text-white/90">{row.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {currentReel.keyTakeaway && (
+                          <div className="p-3 rounded-2xl border-l-4 border-red-400/50 bg-red-500/10">
+                            <p className="text-[10px] font-bold text-red-400/60 uppercase tracking-widest mb-1">Key Takeaway</p>
+                            <p className="text-[13px] text-white/80 italic">"{currentReel.keyTakeaway}"</p>
+                          </div>
+                        )}
+                      </>
+                    )}
+
+                    {/* ── Poll type ── */}
+                    {currentReel.type === 'poll' && (
+                      <>
+                        {currentReel.content && (
+                          <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
+                        )}
+                        {currentReel.explanation && (
+                          <div className="space-y-1.5">
+                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Context</p>
+                            <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.explanation}</p>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 </motion.div>

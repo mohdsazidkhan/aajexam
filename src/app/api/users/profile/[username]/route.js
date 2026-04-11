@@ -1,6 +1,7 @@
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
+import Reel from '@/models/Reel';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 
@@ -19,8 +20,11 @@ export async function GET(req, { params }) {
             await User.findByIdAndUpdate(user._id, { $inc: { profileViews: 1 }, lastProfileView: new Date() });
         }
 
-        const followersCount = await Follow.countDocuments({ following: user._id, status: 'active' });
-        const followingCount = await Follow.countDocuments({ follower: user._id, status: 'active' });
+        const [followersCount, followingCount, reelsCount] = await Promise.all([
+            Follow.countDocuments({ following: user._id, status: 'active' }),
+            Follow.countDocuments({ follower: user._id, status: 'active' }),
+            Reel.countDocuments({ createdBy: user._id, status: 'published' })
+        ]);
 
         let isFollowing = false;
         const isOwnProfile = auth.authenticated && auth.user.id === user._id.toString();
@@ -38,6 +42,7 @@ export async function GET(req, { params }) {
                 badges: user.badges,
                 followersCount,
                 followingCount,
+                reelsCount,
                 profileViews: user.profileViews || 0,
                 isPublicProfile: user.isPublicProfile,
                 createdAt: user.createdAt
