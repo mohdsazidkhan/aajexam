@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from "react";
 
@@ -17,6 +17,8 @@ import useDebounce from "../../../hooks/useDebounce";
 import Loading from "../../Loading";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSSR } from '../../../hooks/useSSR';
+import Sidebar from "../../Sidebar";
+
 
 const PAGE_LIMIT = 10;
 
@@ -207,6 +209,7 @@ export default function AdminBankDetails() {
           </tbody>
         </table>
       </div>
+    </div>
   );
 
   const CardView = () => (
@@ -367,140 +370,144 @@ export default function AdminBankDetails() {
     </div>
   );
 
-  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-          <div className="mx-auto">
-            {/* Header section with Stats & Actions */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-2xl relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
-                <University className="w-64 h-64 text-primary-500" />
+  return (
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+
+    <div className="mx-auto">
+      {/* Header section with Stats & Actions */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-2xl relative overflow-hidden group"
+      >
+        <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
+          <University className="w-64 h-64 text-primary-500" />
+        </div>
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+          <div className="space-y-3 lg:space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
+                <University className="w-6 h-6" />
               </div>
-
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-                <div className="space-y-3 lg:space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
-                      <University className="w-6 h-6" />
-                    </div>
-                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
-                  </div>
-
-                  <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                    BANK <span className="text-primary-500">DETAILS</span>
-                  </h1>
-
-                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-                    View bank account details submitted by students for processing withdrawals.
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-end gap-2 text-right">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL ENTRIES</span>
-                  <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
-                    <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
-                    {pagination.total || 0}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Controls Bar */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
-              <div className="lg:col-span-2">
-                <div className="relative group/search">
-                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
-                  <input
-                    type="text"
-                    placeholder="Search by name, email, or bank details..."
-                    value={searchTerm}
-                    onChange={(e) => handleSearch(e.target.value)}
-                    className="w-full pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-                {[
-                  { mode: 'table', icon: TableIcon },
-                  { mode: 'grid', icon: LayoutGrid },
-                  { mode: 'list', icon: List }
-                ].map(({ mode, icon: Icon }) => (
-                  <motion.button
-                    key={mode}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setViewMode(mode)}
-                    className={`flex-1 p-3 rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </motion.button>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-                <Settings className="w-4 h-4 text-slate-400" />
-                <select
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    const newItemsPerPage = Number(e.target.value);
-                    setItemsPerPage(newItemsPerPage);
-                    setLimit(newItemsPerPage);
-                    setPage(1);
-                  }}
-                  className="w-full lg:w-auto bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
-                >
-                  {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} items</option>)}
-                </select>
-              </div>
+              <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
             </div>
 
-            {/* Content */}
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
-                <Loading size="lg" color="yellow" message="Loading bank details..." />
-              </div>
-            ) : error ? (
-              <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
-                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
-                  <Zap className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
-                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
-              </div>
-            ) : bankDetails.length === 0 ? (
-              <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">
-                <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">No Bank Details Found</h3>
-                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
-                  {searchTerm
-                    ? "No bank details match your search."
-                    : "No students have submitted their bank details yet."}
-                </p>
-              </div>
-            ) : (
-              <>
-                {viewMode === "table" && <TableView />}
-                {viewMode === "grid" && <CardView />}
-                {viewMode === "list" && <ListView />}
-              </>
-            )}
+            <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+              BANK <span className="text-primary-500">DETAILS</span>
+            </h1>
 
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
-              <Pagination
-                currentPage={pagination.currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={handlePageChange}
-                totalItems={pagination.total}
-                itemsPerPage={itemsPerPage}
-              />
-            )}
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
+              View bank account details submitted by students for processing withdrawals.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-end gap-2 text-right">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL ENTRIES</span>
+            <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
+              <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
+              {pagination.total || 0}
+            </div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Controls Bar */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+        <div className="lg:col-span-2">
+          <div className="relative group/search">
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
+            <input
+              type="text"
+              placeholder="Search by name, email, or bank details..."
+              value={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="w-full pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
+          {[
+            { mode: 'table', icon: TableIcon },
+            { mode: 'grid', icon: LayoutGrid },
+            { mode: 'list', icon: List }
+          ].map(({ mode, icon: Icon }) => (
+            <motion.button
+              key={mode}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setViewMode(mode)}
+              className={`flex-1 p-3 rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
+            >
+              <Icon className="w-4 h-4" />
+            </motion.button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
+          <Settings className="w-4 h-4 text-slate-400" />
+          <select
+            value={itemsPerPage}
+            onChange={(e) => {
+              const newItemsPerPage = Number(e.target.value);
+              setItemsPerPage(newItemsPerPage);
+              setLimit(newItemsPerPage);
+              setPage(1);
+            }}
+            className="w-full lg:w-auto bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
+          >
+            {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} items</option>)}
+          </select>
+        </div>
       </div>
+
+      {/* Content */}
+      {loading ? (
+        <div className="flex items-center justify-center h-64">
+          <Loading size="lg" color="yellow" message="Loading bank details..." />
+        </div>
+      ) : error ? (
+        <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
+          <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
+            <Zap className="w-10 h-10 text-white" />
+          </div>
+          <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
+          <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
+        </div>
+      ) : bankDetails.length === 0 ? (
+        <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">
+          <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
+          <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">No Bank Details Found</h3>
+          <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
+            {searchTerm
+              ? "No bank details match your search."
+              : "No students have submitted their bank details yet."}
+          </p>
+        </div>
+      ) : (
+        <>
+          {viewMode === "table" && <TableView />}
+          {viewMode === "grid" && <CardView />}
+          {viewMode === "list" && <ListView />}
+        </>
+      )}
+
+      {/* Pagination */}
+      {pagination.totalPages > 1 && (
+        <Pagination
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+          onPageChange={handlePageChange}
+          totalItems={pagination.total}
+          itemsPerPage={itemsPerPage}
+        />
+      )}
+      </div>
+    </div>
+  </div>
   );
 }
 

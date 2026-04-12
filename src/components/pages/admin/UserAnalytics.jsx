@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import { Bar, Pie, Line } from 'react-chartjs-2';
@@ -36,6 +36,8 @@ import API from '../../../lib/api';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import Sidebar from '../../Sidebar';
+
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement,
@@ -241,135 +243,136 @@ const UserAnalytics = () => {
   if (loading) {
     return (
       <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
-          <div className="relative">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
-            />
-            <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
-          </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user analytics...</div>
+        <div className="relative">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
+          />
+          <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
+        </div>
+        <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user analytics...</div>
+      </div>
     );
   }
 
   return (
     <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
-        {isMounted && <Sidebar />}
-        <div className="transition-all duration-500 p-4 lg:p-8">
+      {isMounted && <Sidebar />}
+      <div className="transition-all duration-500 p-4 lg:p-8">
 
-          {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
-                    <Activity className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4"
+        >
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                  <Activity className="w-6 h-6" />
                 </div>
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  User <span className="text-indigo-600">Analytics</span>
-                </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth and subscription trends at a glance.</p>
+                <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
               </div>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <button
-                  onClick={handleExport}
-                  className="px-4 lg:px-8 py-4 bg-indigo-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
-                >
-                  <Download className="w-4 h-4" /> Export CSV
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Controller Bar */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
-                <Filter className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Filters</div>
-                <div className="text-sm font-black italic uppercase tracking-tighter">Filter Options</div>
-              </div>
+              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                User <span className="text-indigo-600">Analytics</span>
+              </h1>
+              <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth and subscription trends at a glance.</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <div className="relative group">
-                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <select
-                  name="period"
-                  value={filters.period}
-                  onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
-                >
-                  <option value="week">Past 7 Days</option>
-                  <option value="month">Past 30 Days</option>
-                  <option value="quarter">Past 90 Days</option>
-                  <option value="year">Full Year</option>
-                </select>
-                <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
-              </div>
+              <button
+                onClick={handleExport}
+                className="px-4 lg:px-8 py-4 bg-indigo-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
+              >
+                <Download className="w-4 h-4" /> Export CSV
+              </button>
+            </div>
+          </div>
+        </motion.div>
 
-              <div className="relative">
-                <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  name="level"
-                  value={filters.level}
-                  onChange={handleFilterChange}
-                  placeholder="Filter by level..."
-                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
-                />
-              </div>
-
-              <div className="relative">
-                <ShieldCheck className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  name="subscription"
-                  value={filters.subscription}
-                  onChange={handleFilterChange}
-                  placeholder="Filter by plan..."
-                  className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
-                />
-              </div>
+        {/* Controller Bar */}
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
+              <Filter className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Filters</div>
+              <div className="text-sm font-black italic uppercase tracking-tighter">Filter Options</div>
             </div>
           </div>
 
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="relative group">
+              <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <select
+                name="period"
+                value={filters.period}
+                onChange={handleFilterChange}
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
+              >
+                <option value="week">Past 7 Days</option>
+                <option value="month">Past 30 Days</option>
+                <option value="quarter">Past 90 Days</option>
+                <option value="year">Full Year</option>
+              </select>
+              <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
-                  <LineChart className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Growth Trend</div>
-                  <div className="text-xl font-black uppercase tracking-tighter italic">User Growth Over Time</div>
-                </div>
+            <div className="relative">
+              <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                name="level"
+                value={filters.level}
+                onChange={handleFilterChange}
+                placeholder="Filter by level..."
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+              />
+            </div>
+
+            <div className="relative">
+              <ShieldCheck className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                name="subscription"
+                value={filters.subscription}
+                onChange={handleFilterChange}
+                placeholder="Filter by plan..."
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl">
+                <LineChart className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Growth Trend</div>
+                <div className="text-xl font-black uppercase tracking-tighter italic">User Growth Over Time</div>
               </div>
             </div>
-            <div className="h-[400px] w-full">
-              {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
-                 <div className="h-full flex flex-col items-center justify-center text-slate-300">
-                    <LineChart className="w-16 h-16 mb-4 opacity-20" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
-                 </div>
-              )}
-            </div>
-          </motion.div>
-        </div>
+          </div>
+          <div className="h-[400px] w-full">
+            {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
+              <div className="h-full flex flex-col items-center justify-center text-slate-300">
+                <LineChart className="w-16 h-16 mb-4 opacity-20" />
+                <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
+              </div>
+            )}
+          </div>
+        </motion.div>
       </div>
+    </div>
   );
 };
 

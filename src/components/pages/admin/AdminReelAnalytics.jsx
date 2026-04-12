@@ -5,6 +5,8 @@ import API from '../../../lib/api';
 import { toast } from "react-toastify";
 import Loading from '../../Loading';
 import { motion } from 'framer-motion';
+import Sidebar from "../../Sidebar";
+
 import { Flame, Eye, Heart, MessageCircle, BarChart3, CheckCircle2, TrendingUp } from 'lucide-react';
 
 const StatCard = ({ icon: Icon, label, value, color, delay = 0 }) => (
@@ -45,7 +47,8 @@ const AdminReelAnalytics = () => {
 
   return (
     <div className="flex min-h-screen">
-        <main className="flex-1 transition-all duration-300">
+      <Sidebar />
+      <main className="flex-1 transition-all duration-300 adminContent">
           <div className="px-3 py-4 sm:p-6 max-w-7xl mx-auto">
 
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 mb-5 sm:mb-6 uppercase tracking-tight">
@@ -84,9 +87,7 @@ const AdminReelAnalytics = () => {
                               <span>{item.likes} likes</span>
                             </div>
                           </div>
-                          <div className="h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                            <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }} className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" />
-                          </div>
+                        </div>
                       );
                     })}
                   </div>

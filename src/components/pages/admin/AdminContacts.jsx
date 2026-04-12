@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -34,6 +34,8 @@ import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import Sidebar from '../../Sidebar';
+
 
 export default function AdminContacts() {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -107,6 +109,7 @@ export default function AdminContacts() {
     return new Date(dateString).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
   };
 
+
   if (loading && contacts.length === 0) {
     return (
       <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
@@ -119,6 +122,7 @@ export default function AdminContacts() {
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading messages...</div>
+      </div>
     );
   }
 

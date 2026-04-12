@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import {
@@ -15,6 +15,8 @@ import API from '../../../lib/api';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import Sidebar from "../../Sidebar";
+
 
 // â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
@@ -385,591 +387,594 @@ const AdminSubscriptions = () => {
   };
 
   if (loading) {
-    return (<div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
-            <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading subscriptions..." />
-            </div>
-          </div>
+    return (
+      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30">
+        <div className="flex items-center justify-center py-12">
+          <Loading size="md" color="yellow" message="" />
+        </div>
+      </div>
     );
   }
 
   return (
-    <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-              <Layers className="w-64 h-64 text-indigo-500 -rotate-12" />
-            </div>
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-              <div className="space-y-3 lg:space-y-6">
-                
-
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                  MANAGE <span className="text-indigo-600">SUBSCRIPTIONS</span>
-                </h1>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
-
-                <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                  <div className="relative group/search w-full lg:w-auto">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
-                    <input
-                      type="text"
-                      placeholder="Search by name, email, or plan..."
-                      value={filters.search}
-                      onChange={(e) => handleFilterChange('search', e.target.value)}
-                      className="pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
-                    />
-                  </div>
-
-                  <div className="flex bg-slate-100 dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
-                    {[
-                      { mode: 'table', icon: Table },
-                      { mode: 'grid', icon: LayoutGrid },
-                      { mode: 'list', icon: List }
-                    ].map(({ mode, icon: Icon }) => (
-                      <motion.button
-                        key={mode}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setViewMode(mode)}
-                        className={`p-3 rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-indigo-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
-                      >
-                        <Icon className="w-4 h-4" />
-                      </motion.button>
-                    ))}
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={exportToCSV}
-                    className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
-                  >
-                    <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
-                  </motion.button>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-end gap-2 text-right">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ALL-TIME REVENUE</span>
-                <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-indigo-600 tabular-nums tracking-tighter">
-                  <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
-                  {(summary.totalRevenue || 0).toLocaleString('en-IN')}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Stats Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
-            <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBSCRIPTIONS" value={summary.totalSubscriptions || 0} sub="ALL STUDENTS" />
-            <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
-            <StatsCard i={2} color="rose" icon={Zap} label="PAID MEMBERS" value={summary.paidSubscriptions || 0} sub="PAID PLANS" />
-            <StatsCard i={3} color="secondary" icon={Clock} label="FREE MEMBERS" value={summary.freeSubscriptions || 0} sub="FREE PLANS" />
-            <StatsCard i={4} color="purple" icon={TrendingUp} label="TOTAL REVENUE" value={formatCurrency(summary.totalRevenue || 0)} sub="ALL TIME" />
-            <StatsCard i={5} color="amber" icon={Calendar} label="THIS MONTH" value={formatCurrency(summary.periodRevenue || 0)} sub="MONTHLY REVENUE" />
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
+        >
+          <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <Layers className="w-64 h-64 text-indigo-500 -rotate-12" />
           </div>
 
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+            <div className="space-y-3 lg:space-y-6">
 
-          {/* Filter Controller */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
-          >
-            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-                <Filter className="w-4 h-4 text-indigo-500" />
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
-                <select
-                  value={filters.plan}
-                  onChange={(e) => handleFilterChange('plan', e.target.value)}
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
-                >
-                  <option value="all">All Plans</option>
-                  {filterOptions.plans.map(plan => (
-                    <option key={plan} value={plan}>{plan}</option>
+              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                MANAGE <span className="text-indigo-600">SUBSCRIPTIONS</span>
+              </h1>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
+
+              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                <div className="relative group/search w-full lg:w-auto">
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
+                  <input
+                    type="text"
+                    placeholder="Search by name, email, or plan..."
+                    value={filters.search}
+                    onChange={(e) => handleFilterChange('search', e.target.value)}
+                    className="pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
+                  />
+                </div>
+
+                <div className="flex bg-slate-100 dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+                  {[
+                    { mode: 'table', icon: Table },
+                    { mode: 'grid', icon: LayoutGrid },
+                    { mode: 'list', icon: List }
+                  ].map(({ mode, icon: Icon }) => (
+                    <motion.button
+                      key={mode}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setViewMode(mode)}
+                      className={`p-3 rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-indigo-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </motion.button>
                   ))}
-                </select>
+                </div>
 
-                <select
-                  value={filters.status}
-                  onChange={(e) => handleFilterChange('status', e.target.value)}
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={exportToCSV}
+                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-xl shadow-indigo-500/20 group/btn"
                 >
-                  <option value="all">All Statuses</option>
-                  {filterOptions.statuses.slice(1).map(status => (
-                    <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
-                  ))}
-                </select>
-
-                <select
-                  value={filters.year}
-                  onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
-                >
-                  <option value="">All Years</option>
-                  {filterOptions.years.map(year => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
-
-                <select
-                  value={filters.month}
-                  onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
-                >
-                  <option value={0}>All Months</option>
-                  {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
-                    <option key={month} value={month}>
-                      {new Date(0, month - 1).toLocaleString('default', { month: 'long' })}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  value={filters.limit}
-                  onChange={(e) => handlePageSizeChange(e.target.value)}
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
-                >
-                  {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
-                </select>
+                  <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
+                </motion.button>
               </div>
             </div>
-          </motion.div>
 
-          {/* Subscription List */}
-          <AnimatePresence mode="wait">
-            {error ? (
-              <motion.div
-                key="error"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
-              >
-                <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
-                  <Zap className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
-                <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
-              </motion.div>
-            ) : subscriptions.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl"
-              >
-                <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-                <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
-                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No subscriptions match your current filters. Try adjusting your search or filter criteria.</p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key={viewMode}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="space-y-4 lg:space-y-12"
-              >
-                {/* Table View */}
-                {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                    <div className="overflow-x-auto selection:bg-indigo-500/30">
-                      <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
-                        <thead>
-                          <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                            <th className="px-3 lg:px-6 py-4">#</th>
-                            <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
-                              <div className="flex items-center gap-2 group-hover:text-indigo-500 transition-colors">DATE <SortIcon field="createdAt" /></div>
-                            </th>
-                            <th className="px-3 lg:px-6 py-4">STUDENT</th>
-                            <th className="px-3 lg:px-6 py-4">PLAN</th>
-                            <th className="px-3 lg:px-6 py-4">STATUS</th>
-                            <th className="px-3 lg:px-6 py-4">VALID PERIOD</th>
-                            <th className="px-3 lg:px-6 py-4 text-right">AMOUNT</th>
-                            <th className="px-3 lg:px-6 py-4 text-right">ACTIONS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {subscriptions.map((subscription, index) => (
-                            <motion.tr
-                              key={subscription._id}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.03 }}
-                              className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
-                            >
-                              <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
-                                <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((pagination.currentPage - 1) * filters.limit) + index + 1}</span>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                <div className="flex flex-col">
-                                  <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">
-                                    {formatDate(subscription.createdAt || subscription.created_at || subscription.startDate)}
-                                  </span>
-                                  <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">ID: {subscription._id?.slice(-6).toUpperCase()}</span>
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                <div className="flex items-center gap-4">
-                                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-                                    <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-indigo-500">
-                                      {subscription.user?.name?.charAt(0) || 'U'}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-col">
-                                    <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1 line-clamp-1">{subscription.user?.email || 'N/A'}</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                                  {getPlanIcon(subscription.planName)}
-                                  {subscription.planName || 'FREE'}
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
-                                  {getStatusIcon(subscription.status)}
-                                  {subscription.status || 'UNKNOWN'}
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
-                                  <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                    <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
-                                  </div>
-                                  <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                                    <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
-                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                                  {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
-                                </div>
-                              </td>
-                              <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem] text-right">
-                                <div className="flex items-center justify-end gap-2">
-                                  <motion.button
-                                    whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
-                                    whileTap={{ scale: 0.9 }}
-                                    onClick={() => toggleSubscriptionDetails(subscription._id)}
-                                    className="p-3 text-indigo-500 rounded-xl"
-                                  >
-                                    {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                                  </motion.button>
-                                  <motion.button
-                                    whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-                                    whileTap={{ scale: 0.9 }}
-                                    onClick={() => openExtendModal(subscription)}
-                                    className="p-3 text-emerald-500 rounded-xl"
-                                  >
-                                    <Plus className="w-4 h-4" />
-                                  </motion.button>
-                                </div>
-                              </td>
-                            </motion.tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
+            <div className="flex flex-col items-end gap-2 text-right">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ALL-TIME REVENUE</span>
+              <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-indigo-600 tabular-nums tracking-tighter">
+                <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
+                {(summary.totalRevenue || 0).toLocaleString('en-IN')}
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
-                {/* Grid View */}
-                {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
-                    {subscriptions.map((subscription, index) => (
-                      <motion.div
-                        key={subscription._id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
-                      >
-                        <div className="flex items-center justify-between mb-4 lg:mb-8">
-                          <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                            {subscription.planName || 'FREE'}
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <motion.button
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={() => openExtendModal(subscription)}
-                              className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl border-2 border-emerald-500/20"
-                            >
-                              <Plus className="w-4 h-4" />
-                            </motion.button>
-                            <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
-                              {subscription.status || 'UNKNOWN'}
-                            </div>
-                          </div>
-                        </div>
+        {/* Stats Matrix */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
+          <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBSCRIPTIONS" value={summary.totalSubscriptions || 0} sub="ALL STUDENTS" />
+          <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
+          <StatsCard i={2} color="rose" icon={Zap} label="PAID MEMBERS" value={summary.paidSubscriptions || 0} sub="PAID PLANS" />
+          <StatsCard i={3} color="secondary" icon={Clock} label="FREE MEMBERS" value={summary.freeSubscriptions || 0} sub="FREE PLANS" />
+          <StatsCard i={4} color="purple" icon={TrendingUp} label="TOTAL REVENUE" value={formatCurrency(summary.totalRevenue || 0)} sub="ALL TIME" />
+          <StatsCard i={5} color="amber" icon={Calendar} label="THIS MONTH" value={formatCurrency(summary.periodRevenue || 0)} sub="MONTHLY REVENUE" />
+        </div>
 
-                        <div className="space-y-3 lg:space-y-6">
-                          <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
-                            <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[3px] shadow-xl">
-                              <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-indigo-500">
-                                {subscription.user?.name?.charAt(0) || 'U'}
+
+        {/* Filter Controller */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
+        >
+          <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
+            <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
+              <Filter className="w-4 h-4 text-indigo-500" />
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
+              <select
+                value={filters.plan}
+                onChange={(e) => handleFilterChange('plan', e.target.value)}
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+              >
+                <option value="all">All Plans</option>
+                {filterOptions.plans.map(plan => (
+                  <option key={plan} value={plan}>{plan}</option>
+                ))}
+              </select>
+
+              <select
+                value={filters.status}
+                onChange={(e) => handleFilterChange('status', e.target.value)}
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+              >
+                <option value="all">All Statuses</option>
+                {filterOptions.statuses.slice(1).map(status => (
+                  <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
+                ))}
+              </select>
+
+              <select
+                value={filters.year}
+                onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+              >
+                <option value="">All Years</option>
+                {filterOptions.years.map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
+
+              <select
+                value={filters.month}
+                onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+              >
+                <option value={0}>All Months</option>
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
+                  <option key={month} value={month}>
+                    {new Date(0, month - 1).toLocaleString('default', { month: 'long' })}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={filters.limit}
+                onChange={(e) => handlePageSizeChange(e.target.value)}
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+              >
+                {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
+              </select>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Subscription List */}
+        <AnimatePresence mode="wait">
+          {error ? (
+            <motion.div
+              key="error"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
+            >
+              <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
+                <Zap className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
+              <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
+            </motion.div>
+          ) : subscriptions.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl"
+            >
+              <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
+              <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
+              <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No subscriptions match your current filters. Try adjusting your search or filter criteria.</p>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={viewMode}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-4 lg:space-y-12"
+            >
+              {/* Table View */}
+              {viewMode === 'table' && (
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+                  <div className="overflow-x-auto selection:bg-indigo-500/30">
+                    <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
+                      <thead>
+                        <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
+                          <th className="px-3 lg:px-6 py-4">#</th>
+                          <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
+                            <div className="flex items-center gap-2 group-hover:text-indigo-500 transition-colors">DATE <SortIcon field="createdAt" /></div>
+                          </th>
+                          <th className="px-3 lg:px-6 py-4">STUDENT</th>
+                          <th className="px-3 lg:px-6 py-4">PLAN</th>
+                          <th className="px-3 lg:px-6 py-4">STATUS</th>
+                          <th className="px-3 lg:px-6 py-4">VALID PERIOD</th>
+                          <th className="px-3 lg:px-6 py-4 text-right">AMOUNT</th>
+                          <th className="px-3 lg:px-6 py-4 text-right">ACTIONS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {subscriptions.map((subscription, index) => (
+                          <motion.tr
+                            key={subscription._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.03 }}
+                            className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
+                          >
+                            <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
+                              <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((pagination.currentPage - 1) * filters.limit) + index + 1}</span>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6">
+                              <div className="flex flex-col">
+                                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">
+                                  {formatDate(subscription.createdAt || subscription.created_at || subscription.startDate)}
+                                </span>
+                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">ID: {subscription._id?.slice(-6).toUpperCase()}</span>
                               </div>
-                            </div>
-                            <div className="flex flex-col">
-                              <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
-                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
-                            </div>
-                          </div>
-
-                          <div className="grid grid-cols-2 gap-3 lg:gap-6">
-                            <div className="space-y-1">
-                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">START DATE</span>
-                              <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatDate(subscription.startDate || subscription.createdAt)}</div>
-                            </div>
-                            <div className="space-y-1">
-                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">EXPIRY DATE</span>
-                              <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{subscription.expiryDate ? formatDate(subscription.expiryDate) : "INDEFINITE"}</div>
-                            </div>
-                          </div>
-
-                          <div className="pt-4 flex items-center justify-between">
-                            <div className="flex flex-col">
-                              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SUBSCRIPTION ID</span>
-                              <span className="text-[10px] font-black text-indigo-500 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
-                            </div>
-                            <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
-                              {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                                  <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-indigo-500">
+                                    {subscription.user?.name?.charAt(0) || 'U'}
+                                  </div>
+                                </div>
+                                <div className="flex flex-col">
+                                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
+                                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1 line-clamp-1">{subscription.user?.email || 'N/A'}</span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6">
+                              <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
+                                {getPlanIcon(subscription.planName)}
+                                {subscription.planName || 'FREE'}
+                              </div>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6">
+                              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
+                                {getStatusIcon(subscription.status)}
+                                {subscription.status || 'UNKNOWN'}
+                              </div>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6">
+                              <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                  <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                                  <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
+                              <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
+                                {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
+                              </div>
+                            </td>
+                            <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem] text-right">
+                              <div className="flex items-center justify-end gap-2">
+                                <motion.button
+                                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
+                                  whileTap={{ scale: 0.9 }}
+                                  onClick={() => toggleSubscriptionDetails(subscription._id)}
+                                  className="p-3 text-indigo-500 rounded-xl"
+                                >
+                                  {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                </motion.button>
+                                <motion.button
+                                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
+                                  whileTap={{ scale: 0.9 }}
+                                  onClick={() => openExtendModal(subscription)}
+                                  className="p-3 text-emerald-500 rounded-xl"
+                                >
+                                  <Plus className="w-4 h-4" />
+                                </motion.button>
+                              </div>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
-                )}
+                </div>
+              )}
 
-                {/* List View */}
-                {viewMode === 'list' && (
-                  <div className="space-y-3 lg:space-y-6">
-                    {subscriptions.map((subscription, index) => (
-                      <motion.div
-                        key={subscription._id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
-                      >
-                        <div className="flex items-center gap-3 lg:gap-6">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg">
-                            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-indigo-500">
-                              {subscription.user?.name?.charAt(0) || 'U'}
-                            </div>
-                          </div>
-                          <div className="flex flex-col">
-                            <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
-                          </div>
+              {/* Grid View */}
+              {viewMode === 'grid' && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
+                  {subscriptions.map((subscription, index) => (
+                    <motion.div
+                      key={subscription._id}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
+                    >
+                      <div className="flex items-center justify-between mb-4 lg:mb-8">
+                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
+                          {subscription.planName || 'FREE'}
                         </div>
-
-                        <div className="flex flex-wrap items-center gap-4">
-                          <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                            {subscription.planName || 'FREE'}
-                          </div>
+                        <div className="flex items-center gap-2">
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => openExtendModal(subscription)}
+                            className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl border-2 border-emerald-500/20"
+                          >
+                            <Plus className="w-4 h-4" />
+                          </motion.button>
                           <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
                             {subscription.status || 'UNKNOWN'}
                           </div>
                         </div>
-
-                        <div className="flex items-center gap-12">
-                          <div className="flex flex-col">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">CREATED ON</span>
-                            <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(subscription.createdAt)}</span>
-                          </div>
-                          <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                            {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <motion.button
-                              whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={() => openExtendModal(subscription)}
-                              className="p-4 bg-emerald-500/10 text-emerald-500 rounded-2xl border-2 border-emerald-500/20"
-                            >
-                              <Plus className="w-5 h-5" />
-                            </motion.button>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Pagination */}
-                {pagination.totalPages > 1 && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
-                  >
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 lg:px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
-                      Showing {((pagination.currentPage - 1) * pagination.limit) + 1} to {Math.min(pagination.currentPage * pagination.limit, pagination.total)} of {pagination.total} subscriptions
-                    </div>
-
-                    <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
-                      <motion.button
-                        whileHover={{ scale: 1.1, x: -3 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => handlePageChange(pagination.currentPage - 1)}
-                        disabled={pagination.currentPage === 1}
-                        className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </motion.button>
-
-                      <div className="flex items-center px-4 gap-4">
-                        {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                          const page = i + 1;
-                          return (
-                            <motion.button
-                              key={page}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={() => handlePageChange(page)}
-                              className={`w-10 h-10 rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
-                            >
-                              {page}
-                            </motion.button>
-                          );
-                        })}
                       </div>
 
-                      <motion.button
-                        whileHover={{ scale: 1.1, x: 3 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => handlePageChange(pagination.currentPage + 1)}
-                        disabled={pagination.currentPage === pagination.totalPages}
-                        className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                      <div className="space-y-3 lg:space-y-6">
+                        <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
+                          <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[3px] shadow-xl">
+                            <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-indigo-500">
+                              {subscription.user?.name?.charAt(0) || 'U'}
+                            </div>
+                          </div>
+                          <div className="flex flex-col">
+                            <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
+                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
+                          </div>
+                        </div>
 
-          {/* Extend Subscription Modal */}
-          <AnimatePresence>
-            {showExtendModal && (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                        <div className="grid grid-cols-2 gap-3 lg:gap-6">
+                          <div className="space-y-1">
+                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">START DATE</span>
+                            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatDate(subscription.startDate || subscription.createdAt)}</div>
+                          </div>
+                          <div className="space-y-1">
+                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">EXPIRY DATE</span>
+                            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{subscription.expiryDate ? formatDate(subscription.expiryDate) : "INDEFINITE"}</div>
+                          </div>
+                        </div>
+
+                        <div className="pt-4 flex items-center justify-between">
+                          <div className="flex flex-col">
+                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SUBSCRIPTION ID</span>
+                            <span className="text-[10px] font-black text-indigo-500 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
+                          </div>
+                          <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
+                            {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* List View */}
+              {viewMode === 'list' && (
+                <div className="space-y-3 lg:space-y-6">
+                  {subscriptions.map((subscription, index) => (
+                    <motion.div
+                      key={subscription._id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                    >
+                      <div className="flex items-center gap-3 lg:gap-6">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg">
+                          <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-indigo-500">
+                            {subscription.user?.name?.charAt(0) || 'U'}
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-4">
+                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
+                          {subscription.planName || 'FREE'}
+                        </div>
+                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
+                          {subscription.status || 'UNKNOWN'}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-12">
+                        <div className="flex flex-col">
+                          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">CREATED ON</span>
+                          <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(subscription.createdAt)}</span>
+                        </div>
+                        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
+                          {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <motion.button
+                            whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => openExtendModal(subscription)}
+                            className="p-4 bg-emerald-500/10 text-emerald-500 rounded-2xl border-2 border-emerald-500/20"
+                          >
+                            <Plus className="w-5 h-5" />
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Pagination */}
+              {pagination.totalPages > 1 && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={closeExtendModal}
-                  className="absolute inset-0 bg-[#fafafa]/80 dark:bg-[#050505]/80 backdrop-blur-xl"
-                />
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                  className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
                 >
-                  <div className="absolute top-0 right-0 p-3 lg:p-8">
-                    <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
-                      <X className="w-6 h-6" />
+                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 lg:px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
+                    Showing {((pagination.currentPage - 1) * pagination.limit) + 1} to {Math.min(pagination.currentPage * pagination.limit, pagination.total)} of {pagination.total} subscriptions
+                  </div>
+
+                  <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <motion.button
+                      whileHover={{ scale: 1.1, x: -3 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => handlePageChange(pagination.currentPage - 1)}
+                      disabled={pagination.currentPage === 1}
+                      className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </motion.button>
+
+                    <div className="flex items-center px-4 gap-4">
+                      {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
+                        const page = i + 1;
+                        return (
+                          <motion.button
+                            key={page}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => handlePageChange(page)}
+                            className={`w-10 h-10 rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
+                          >
+                            {page}
+                          </motion.button>
+                        );
+                      })}
+                    </div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.1, x: 3 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => handlePageChange(pagination.currentPage + 1)}
+                      disabled={pagination.currentPage === pagination.totalPages}
+                      className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
+                    >
+                      <ChevronRight className="w-5 h-5" />
                     </motion.button>
                   </div>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-                  <div className="p-4 lg:p-12 overflow-y-auto">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
-                        <Layers className="w-8 h-8" />
-                      </div>
-                      <div className="flex flex-col">
-                        <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} &mdash; {selectedSubscription?.user?.email || 'N/A'}</span>
-                      </div>
+        {/* Extend Subscription Modal */}
+        <AnimatePresence>
+          {showExtendModal && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeExtendModal}
+                className="absolute inset-0 bg-[#fafafa]/80 dark:bg-[#050505]/80 backdrop-blur-xl"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+              >
+                <div className="absolute top-0 right-0 p-3 lg:p-8">
+                  <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
+                    <X className="w-6 h-6" />
+                  </motion.button>
+                </div>
+
+                <div className="p-4 lg:p-12 overflow-y-auto">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
+                      <Layers className="w-8 h-8" />
                     </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
-                        <select
-                          value={extendForm.plan}
-                          onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
-                        >
-                          <option value="free">Free</option>
-                          <option value="basic">Basic</option>
-                          <option value="premium">Premium</option>
-                          <option value="pro">Pro</option>
-                        </select>
-                      </div>
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
-                        <select
-                          value={extendForm.duration}
-                          onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                          className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
-                        >
-                          <option value="1 month">1 Month</option>
-                          <option value="2 months">2 Months</option>
-                          <option value="3 months">3 Months</option>
-                          <option value="6 months">6 Months</option>
-                          <option value="1 year">1 Year</option>
-                          <option value="2 years">2 Years</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {error && (
-                      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl text-[10px] font-black text-rose-500 uppercase tracking-widest text-center">
-                        {error}
-                      </motion.div>
-                    )}
-
-                    <div className="flex gap-4">
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={closeExtendModal}
-                        className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400 font-black uppercase tracking-widest rounded-2xl text-[10px]"
-                      >
-                        CANCEL
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={handleExtendSubscription}
-                        className="flex-[2] py-5 bg-emerald-500 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-emerald-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
-                        disabled={extending}
-                      >
-                        {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                        {extending ? 'SAVING...' : 'EXTEND SUBSCRIPTION'}
-                      </motion.button>
+                    <div className="flex flex-col">
+                      <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} &mdash; {selectedSubscription?.user?.email || 'N/A'}</span>
                     </div>
                   </div>
-                </motion.div>
-              </div>
-            )}
-          </AnimatePresence>
-        </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
+                      <select
+                        value={extendForm.plan}
+                        onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
+                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                      >
+                        <option value="free">Free</option>
+                        <option value="basic">Basic</option>
+                        <option value="premium">Premium</option>
+                        <option value="pro">Pro</option>
+                      </select>
+                    </div>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
+                      <select
+                        value={extendForm.duration}
+                        onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
+                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                      >
+                        <option value="1 month">1 Month</option>
+                        <option value="2 months">2 Months</option>
+                        <option value="3 months">3 Months</option>
+                        <option value="6 months">6 Months</option>
+                        <option value="1 year">1 Year</option>
+                        <option value="2 years">2 Years</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {error && (
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl text-[10px] font-black text-rose-500 uppercase tracking-widest text-center">
+                      {error}
+                    </motion.div>
+                  )}
+
+                  <div className="flex gap-4">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={closeExtendModal}
+                      className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-400 font-black uppercase tracking-widest rounded-2xl text-[10px]"
+                    >
+                      CANCEL
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={handleExtendSubscription}
+                      className="flex-[2] py-5 bg-emerald-500 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-emerald-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
+                      disabled={extending}
+                    >
+                      {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
+                      {extending ? 'SAVING...' : 'EXTEND SUBSCRIPTION'}
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
+    </div>
   );
 };
 

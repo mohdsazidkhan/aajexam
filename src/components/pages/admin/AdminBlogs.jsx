@@ -11,6 +11,7 @@ import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-toastify';
 import { Plus, Eye, Heart, Pin, Star, Trash2, Edit3 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Sidebar from "../../Sidebar";
 
 const AdminBlogs = () => {
   const { isMounted, router } = useSSR();
@@ -215,6 +216,7 @@ const AdminBlogs = () => {
           </tbody>
         </table>
       </div>
+    </div>
   );
 
   const renderGridView = () => (
@@ -289,128 +291,132 @@ const AdminBlogs = () => {
 
   if (!isMounted) return null;
 
-  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
-          {/* Header */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
-              <div className="space-y-4">
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  BLOG <span className="text-indigo-600">POSTS</span>
-                </h1>
-                <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                  Create and manage blog posts for exam preparation.
-                </p>
-              </div>
-              <div className="flex flex-col lg:flex-row items-center gap-3">
-                <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
-                <motion.button
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                  onClick={() => router.push('/admin/blogs/create')}
-                  className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center justify-center gap-3"
-                >
-                  <Plus className="w-4 h-4" /> NEW BLOG
-                </motion.button>
-              </div>
+
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
+            <div className="space-y-4">
+              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+                BLOG <span className="text-indigo-600">POSTS</span>
+              </h1>
+              <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                Create and manage blog posts for exam preparation.
+              </p>
             </div>
-          </motion.div>
-
-          {/* Filters */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4 shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Search</label>
-                <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
-                <select name="status" value={filters.status} onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
-                  <option value="">All Status</option>
-                  <option value="published">Published</option>
-                  <option value="draft">Draft</option>
-                  <option value="archived">Archived</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam</label>
-                <select name="exam" value={filters.exam} onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
-                  <option value="">All Exams</option>
-                  {exams.map(exam => (
-                    <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Featured</label>
-                <select name="isFeatured" value={filters.isFeatured} onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
-                  <option value="">All</option>
-                  <option value="true">Featured</option>
-                  <option value="false">Not Featured</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Pinned</label>
-                <select name="isPinned" value={filters.isPinned} onChange={handleFilterChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
-                  <option value="">All</option>
-                  <option value="true">Pinned</option>
-                  <option value="false">Not Pinned</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Per Page</label>
-                <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                </select>
-              </div>
+            <div className="flex flex-col lg:flex-row items-center gap-3">
+              <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
+              <motion.button
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                onClick={() => router.push('/admin/blogs/create')}
+                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center justify-center gap-3"
+              >
+                <Plus className="w-4 h-4" /> NEW BLOG
+              </motion.button>
             </div>
           </div>
+        </motion.div>
 
-          {/* Content */}
-          {loading ? (
-            <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading blogs..." />
+        {/* Filters */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Search</label>
+              <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" />
             </div>
-          ) : blogs.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-lg font-medium text-gray-500 dark:text-gray-400">No blogs found</p>
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
+              <select name="status" value={filters.status} onChange={handleFilterChange}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                <option value="">All Status</option>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
             </div>
-          ) : (
-            <>
-              {viewMode === 'table' && renderTableView()}
-              {viewMode === 'list' && renderListView()}
-              {viewMode === 'grid' && renderGridView()}
-            </>
-          )}
-
-          {/* Pagination */}
-          {pagination.totalPages > 1 && (
-            <div className="mt-6">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={(page) => setCurrentPage(page)}
-                totalItems={pagination.total}
-                itemsPerPage={itemsPerPage}
-              />
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam</label>
+              <select name="exam" value={filters.exam} onChange={handleFilterChange}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                <option value="">All Exams</option>
+                {exams.map(exam => (
+                  <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
+                ))}
+              </select>
             </div>
-          )}
-
-          {error && (
-            <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-              <p className="text-red-800 dark:text-red-200">{error}</p>
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Featured</label>
+              <select name="isFeatured" value={filters.isFeatured} onChange={handleFilterChange}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                <option value="">All</option>
+                <option value="true">Featured</option>
+                <option value="false">Not Featured</option>
+              </select>
             </div>
-          )}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Pinned</label>
+              <select name="isPinned" value={filters.isPinned} onChange={handleFilterChange}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                <option value="">All</option>
+                <option value="true">Pinned</option>
+                <option value="false">Not Pinned</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Per Page</label>
+              <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
+            </div>
+          </div>
         </div>
+
+        {/* Content */}
+        {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <Loading size="md" color="yellow" message="Loading blogs..." />
+          </div>
+        ) : blogs.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-lg font-medium text-gray-500 dark:text-gray-400">No blogs found</p>
+          </div>
+        ) : (
+          <>
+            {viewMode === 'table' && renderTableView()}
+            {viewMode === 'list' && renderListView()}
+            {viewMode === 'grid' && renderGridView()}
+          </>
+        )}
+
+        {/* Pagination */}
+        {pagination.totalPages > 1 && (
+          <div className="mt-6">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={pagination.totalPages}
+              onPageChange={(page) => setCurrentPage(page)}
+              totalItems={pagination.total}
+              itemsPerPage={itemsPerPage}
+            />
+          </div>
+        )}
+
+        {error && (
+          <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
+            <p className="text-red-800 dark:text-red-200">{error}</p>
+          </div>
+        )}
       </div>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
@@ -8,6 +8,8 @@ import useDebounce from "../../../hooks/useDebounce";
 import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import Sidebar from "../../Sidebar";
+
 import {
   Users,
   Search,
@@ -89,7 +91,7 @@ export default function ReferralDashboard() {
 
   if (loading && referrals.length === 0) {
     return (
-      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+      <div className="min-h-screen flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -99,12 +101,15 @@ export default function ReferralDashboard() {
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral data...</div>
+      </div>
     );
   }
 
   return (
-    <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
-<div className="transition-all duration-500 p-4 lg:p-8">
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+        <div className="transition-all duration-500 p-4 lg:p-8">
           
           {/* Header Section */}
           <motion.div
@@ -114,7 +119,6 @@ export default function ReferralDashboard() {
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
-                
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   REFERRAL <span className="text-primary-500">DASHBOARD</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
                 </h1>
@@ -125,15 +129,15 @@ export default function ReferralDashboard() {
             {/* Search and Filter */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex flex-wrap items-center gap-3 lg:gap-6">
-                 <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
-                      <Filter className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
-                      <div className="text-sm italic uppercase tracking-tighter italic">Search and Filter Users</div>
-                    </div>
-                 </div>
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
+                    <Filter className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
+                    <div className="text-sm italic uppercase tracking-tighter italic">Search and Filter Users</div>
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 w-full xl:w-auto">
@@ -188,46 +192,46 @@ export default function ReferralDashboard() {
                           className="group hover:bg-primary-500/5 transition-all"
                         >
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
-                             <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
-                                    {u.name?.[0]?.toUpperCase() || 'U'}
-                                </div>
-                                <div>
-                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'Unknown'}</div>
-                                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{u.email}</div>
-                                </div>
-                             </div>
+                            <div className="flex items-center gap-4">
+                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
+                                {u.name?.[0]?.toUpperCase() || 'U'}
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'Unknown'}</div>
+                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{u.email}</div>
+                              </div>
+                            </div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                             <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-500 italic inline-flex items-center gap-2 tabular-nums">
-                                <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
-                             </div>
+                            <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-500 italic inline-flex items-center gap-2 tabular-nums">
+                              <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
+                            </div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'Direct Signup'}</span>
+                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'Direct Signup'}</span>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                             <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">₹{u.walletBalance || 0}</div>
-                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
+                            <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">₹{u.walletBalance || 0}</div>
+                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
-                             <div className="flex flex-col gap-2">
-                                {u.referralRewards?.length > 0 ? (
-                                  <>
-                                    {u.referralRewards.slice(0, 2).map((reward, idx) => (
-                                      <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg shadow-inner">
-                                        <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-                                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-emerald-500">₹{reward.amount}</span></span>
-                                      </div>
-                                    ))}
-                                    {u.referralRewards.length > 2 && (
-                                      <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest pl-5">+ {u.referralRewards.length - 2} more rewards</span>
-                                    )}
-                                  </>
-                                ) : (
-                                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-30 italic">No rewards yet</span>
-                                )}
-                             </div>
+                            <div className="flex flex-col gap-2">
+                              {u.referralRewards?.length > 0 ? (
+                                <>
+                                  {u.referralRewards.slice(0, 2).map((reward, idx) => (
+                                    <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg shadow-inner">
+                                      <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
+                                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-emerald-500">₹{reward.amount}</span></span>
+                                    </div>
+                                  ))}
+                                  {u.referralRewards.length > 2 && (
+                                    <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest pl-5">+ {u.referralRewards.length - 2} more rewards</span>
+                                  )}
+                                </>
+                              ) : (
+                                <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-30 italic">No rewards yet</span>
+                              )}
+                            </div>
                           </td>
                         </motion.tr>
                       ))}
@@ -252,6 +256,6 @@ export default function ReferralDashboard() {
           </AnimatePresence>
         </div>
       </div>
+    </div>
   );
 }
-
