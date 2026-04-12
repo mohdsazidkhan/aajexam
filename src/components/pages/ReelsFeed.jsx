@@ -701,7 +701,7 @@ const ReelsFeed = () => {
       ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="w-full overflow-hidden relative select-none bg-black pb-[72px] lg:pb-0"
+      className="w-full overflow-hidden relative select-none bg-black pb-[70px] lg:pb-0"
       style={{ height: '100dvh', position: 'fixed', inset: 0 }}
     >
       {/* Filter Panel — overlay */}
