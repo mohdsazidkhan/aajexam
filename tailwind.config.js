@@ -10,8 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        nunito: ['Nunito', 'sans-serif'],
+        outfit: ['var(--font-outfit)', 'Outfit', 'sans-serif'],
+        nunito: ['var(--font-nunito)', 'Nunito', 'sans-serif'],
       },
       colors: {
         primary: {

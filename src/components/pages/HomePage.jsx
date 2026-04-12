@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import {
@@ -43,30 +43,54 @@ const HomePage = () => {
    const [dailyDose, setDailyDose] = useState(null);
    const [performanceReport, setPerformanceReport] = useState(null);
    const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(false);
+   const fetchedRef = useRef(false);
+
+   const fetchData = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+         const [dailyRes, performanceRes] = await Promise.all([
+            API.getDailyDose(),
+            API.getAnalyticsReport(),
+         ]);
+
+         if (dailyRes?.success) setDailyDose(dailyRes.data);
+         if (performanceRes?.success) setPerformanceReport(performanceRes.data);
+      } catch (err) {
+         console.error("Error loading data:", err);
+         setError(true);
+      } finally {
+         setLoading(false);
+      }
+   };
 
    useEffect(() => {
-      const fetchData = async () => {
-         setLoading(true);
-         try {
-            const [dailyRes, performanceRes] = await Promise.all([
-               API.getDailyDose(),
-               API.getAnalyticsReport(),
-            ]);
-
-            if (dailyRes?.success) setDailyDose(dailyRes.data);
-            if (performanceRes?.success) setPerformanceReport(performanceRes.data);
-         } catch (err) {
-            console.error("Error loading data:", err);
-         } finally {
-            setLoading(false);
-         }
-      };
-
+      if (fetchedRef.current) return;
+      fetchedRef.current = true;
       fetchData();
    }, []);
 
    if (!authLoading || loading) {
       return <HomePageSkeleton />;
+   }
+
+   if (error && !performanceReport) {
+      return (
+         <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-rose-500/10 flex items-center justify-center mb-4">
+               <Activity className="w-7 h-7 text-rose-500" />
+            </div>
+            <h2 className="text-lg font-black text-slate-900 dark:text-white mb-1">Something went wrong</h2>
+            <p className="text-sm text-slate-400 mb-6">Could not load your dashboard data</p>
+            <button
+               onClick={fetchData}
+               className="px-6 py-3 bg-primary-500 text-white text-sm font-bold rounded-xl active:scale-95 transition-transform"
+            >
+               Try Again
+            </button>
+         </div>
+      );
    }
 
    const metrics = performanceReport?.performanceMetrics || {};
@@ -83,13 +107,13 @@ const HomePage = () => {
             <title>AajExam | Home</title>
          </Head>
 
-         <div className="space-y-3 lg:space-y-10">
+         <div className="space-y-4 md:space-y-6 lg:space-y-10">
 
             {/* ── Greeting + Stats ── */}
             <section className="px-0 lg:px-4 pt-2 lg:pt-4">
                <div className="flex items-center justify-between mb-3 lg:mb-6">
                   <div>
-                     <h1 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
+                     <h1 className="text-xl md:text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
                         Hi, <span className="text-primary-600">{user?.name?.split(' ')[0] || 'Student'}</span>
                      </h1>
                      <p className="text-xs lg:text-sm text-slate-400 font-medium mt-0.5">What would you like to practice?</p>
@@ -97,67 +121,67 @@ const HomePage = () => {
                   {streakCount > 0 && (
                      <div className="flex items-center gap-1 px-2.5 py-1.5 bg-orange-500/10 rounded-xl">
                         <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
-                        <span className="text-xs font-black text-orange-600">{streakCount}</span>
+                        <span className="text-xs font-black text-orange-600 dark:text-orange-400">{streakCount}</span>
                      </div>
                   )}
                </div>
 
                {/* Quick Stats Row */}
-               <div className="grid grid-cols-3 gap-2 lg:gap-4">
+               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mb-1.5" />
-                     <p className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
-                     <p className="text-[9px] lg:text-[10px] font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <Target className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-500 mb-1.5" />
-                     <p className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
-                     <p className="text-[9px] lg:text-[10px] font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 mb-1.5" />
-                     <p className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
-                     <p className="text-[9px] lg:text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tests</p>
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
                   </div>
                </div>
             </section>
 
             {/* ── Quick Actions ── */}
             <section className="px-0 lg:px-4">
-               <div className="grid grid-cols-2 gap-2 lg:gap-4">
+               <div className="grid grid-cols-2 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/search')}
-                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
+                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-5 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
                   >
-                     <Zap className="w-6 h-6 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
-                     <p className="text-white text-sm lg:text-xl font-black leading-tight">Start<br/>Test</p>
+                     <Zap className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
+                     <p className="text-white text-sm md:text-base lg:text-xl font-black leading-tight">Start<br/>Test</p>
                      <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full" />
                   </button>
 
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-indigo-500 rounded-2xl lg:rounded-3xl p-4 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
+                     className="bg-indigo-500 rounded-2xl lg:rounded-3xl p-5 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
                   >
-                     <ShieldCheck className="w-6 h-6 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
-                     <p className="text-white text-sm lg:text-xl font-black leading-tight">Govt.<br/>Exams</p>
+                     <ShieldCheck className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
+                     <p className="text-white text-sm md:text-base lg:text-xl font-black leading-tight">Govt.<br/>Exams</p>
                      <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full" />
                   </button>
 
                   <button
                      onClick={() => router.push('/reels')}
-                     className="bg-rose-500 rounded-2xl lg:rounded-3xl p-4 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
+                     className="bg-rose-500 rounded-2xl lg:rounded-3xl p-5 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
                   >
-                     <PlayCircle className="w-6 h-6 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
-                     <p className="text-white text-sm lg:text-xl font-black leading-tight">Watch<br/>Reels</p>
+                     <PlayCircle className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
+                     <p className="text-white text-sm md:text-base lg:text-xl font-black leading-tight">Watch<br/>Reels</p>
                      <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full" />
                   </button>
 
                   <button
                      onClick={() => router.push('/search')}
-                     className="bg-emerald-500 rounded-2xl lg:rounded-3xl p-4 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
+                     className="bg-emerald-500 rounded-2xl lg:rounded-3xl p-5 lg:p-8 text-left active:scale-[0.98] transition-transform relative overflow-hidden"
                   >
-                     <Search className="w-6 h-6 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
-                     <p className="text-white text-sm lg:text-xl font-black leading-tight">Find<br/>Tests</p>
+                     <Search className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white/90 mb-2 lg:mb-4" />
+                     <p className="text-white text-sm md:text-base lg:text-xl font-black leading-tight">Find<br/>Tests</p>
                      <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full" />
                   </button>
                </div>
@@ -178,7 +202,7 @@ const HomePage = () => {
                   </button>
                </div>
 
-               <div className="grid grid-cols-4 gap-1.5 lg:gap-3">
+               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 lg:gap-3">
                   {[
                      { title: 'Math Shortcuts', color: 'from-rose-500 to-pink-600' },
                      { title: 'GK Facts', color: 'from-violet-500 to-purple-600' },
@@ -197,7 +221,7 @@ const HomePage = () => {
                            </div>
                         </div>
                         <div className="absolute bottom-0 left-0 right-0 p-2">
-                           <p className="text-[8px] lg:text-[10px] font-bold text-white leading-tight">{reel.title}</p>
+                           <p className="text-[11px] lg:text-xs font-bold text-white leading-tight">{reel.title}</p>
                         </div>
                      </div>
                   ))}

@@ -45,7 +45,7 @@ const Sidebar = () => {
 
   const isActiveRoute = (path) => {
     if (router?.pathname === path) return true;
-    if (path === '/admin/dashboard' || path === '/admin/govt-exams') return false;
+    if (path === '/admin/dashboard' || path === '/admin/govt-exams' || path === '/admin/reels') return false;
     return router?.pathname?.startsWith(path + '/');
   };
 
@@ -121,7 +121,7 @@ const Sidebar = () => {
       <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
-            <h3 className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] px-3 mb-2">
+            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
               {section.title}
             </h3>
             <div className="space-y-0.5">

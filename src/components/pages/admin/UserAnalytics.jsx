@@ -32,10 +32,7 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -68,8 +65,6 @@ function exportCSV(data, filename) {
 const UserAnalytics = () => {
   const { isMounted, isRouterReady, router } = useSSR();
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -245,8 +240,7 @@ const UserAnalytics = () => {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="User Analytics">
-        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -256,16 +250,13 @@ const UserAnalytics = () => {
             <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user analytics...</div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="User Analytics">
-      <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+        <div className="transition-all duration-500 p-4 lg:p-8">
 
           {/* Header Section */}
           <motion.div
@@ -379,7 +370,6 @@ const UserAnalytics = () => {
           </motion.div>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

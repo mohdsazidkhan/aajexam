@@ -4,9 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
-import { useSelector } from "react-redux";
-import Sidebar from "../../Sidebar";
 import { getCurrentUser } from "../../../utils/authUtils";
 import Loading from "../../Loading";
 import {
@@ -64,9 +61,6 @@ const AdminGovtExamPatterns = () => {
   });
 
   const user = getCurrentUser();
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = typeof window !== "undefined" ? window.location.pathname.startsWith("/admin") : false;
-
   useEffect(() => {
     loadCategories();
     // Check for examId in URL params
@@ -191,11 +185,7 @@ const AdminGovtExamPatterns = () => {
 
   const calculateTotalMarks = () => formData.sections.reduce((sum, sec) => sum + (sec.totalQuestions * sec.marksPerQuestion), 0);
 
-  return (
-    <AdminMobileAppWrapper title="Exam Patterns">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -483,7 +473,6 @@ const AdminGovtExamPatterns = () => {
           </div>
         )}
       </AnimatePresence>
-    </AdminMobileAppWrapper>
   );
 };
 

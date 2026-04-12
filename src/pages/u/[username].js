@@ -275,14 +275,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 Reels
                 <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
               </h2>
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
-                    question: { icon: FileText, gradient: 'from-blue-600 to-indigo-700', label: 'Q' },
-                    fact: { icon: Lightbulb, gradient: 'from-purple-600 to-pink-600', label: 'F' },
-                    tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600', label: 'T' },
-                    current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700', label: 'CA' },
-                    poll: { icon: BarChart3, gradient: 'from-green-500 to-emerald-700', label: 'P' },
+                    question: { icon: FileText, gradient: 'from-blue-600 to-indigo-700', label: 'Question' },
+                    fact: { icon: Lightbulb, gradient: 'from-purple-600 to-pink-600', label: 'Fact' },
+                    tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600', label: 'Tip' },
+                    current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700', label: 'Current Affairs' },
+                    poll: { icon: BarChart3, gradient: 'from-green-500 to-emerald-700', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;
@@ -292,7 +292,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     <Link href="/reels" key={reel._id}>
                       <div className={`relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br ${config.gradient} group cursor-pointer`}>
                         {/* Content preview */}
-                        <div className="absolute inset-0 p-2.5 sm:p-3 flex flex-col justify-between">
+                        <div className="absolute inset-0 p-2.5 sm:p-3 pb-8 sm:pb-9 flex flex-col justify-between">
                           {/* Type badge */}
                           <div className="flex items-center gap-1">
                             <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/80" />

@@ -13,8 +13,6 @@ import {
 import API from '../../../lib/api';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import Sidebar from '../../Sidebar';
-import { useSelector } from 'react-redux';
 import { safeLocalStorage } from '../../../lib/utils/storage';
 import { toast } from 'react-toastify';
 import ResponsiveTable from '../../ResponsiveTable';
@@ -23,7 +21,6 @@ import ViewToggle from '../../ViewToggle';
 import SearchFilter from '../../SearchFilter';
 import { isMobile } from 'react-device-detect';
 import useDebounce from "../../../hooks/useDebounce";
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
@@ -86,9 +83,6 @@ const StudentsPage = () => {
     const time = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
     return `${day} ${month} ${year} at ${time}`;
   };
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const fetchStudents = useCallback(async (page = 1, search = '', filterParams = {}) => {
     try {
       setLoading(true);
@@ -390,11 +384,8 @@ const StudentsPage = () => {
 
 
   return (
-     <AdminMobileAppWrapper title="User Directory">
-       <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-
-         <div className={`transition-all duration-500 ${isOpen ? 'lg:pl-0' : 'lg:pl-16'} p-4 lg:p-10`}>
+     <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
+<div className="transition-all duration-500 p-4 lg:p-10">
             {/* Student Directory Overview */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -849,7 +840,6 @@ const StudentsPage = () => {
           )}
         </AnimatePresence>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

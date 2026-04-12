@@ -4,11 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
-import Sidebar from '../../Sidebar';
 import CustomEditor from '../../CustomEditor';
 import Loading from '../../Loading';
-import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-toastify';
@@ -38,9 +35,6 @@ const AdminBlogForm = () => {
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
   const user = getCurrentUser();
 
   useEffect(() => {
@@ -159,25 +153,15 @@ const AdminBlogForm = () => {
   };
 
   if (loading && isEdit) {
-    return (
-      <AdminMobileAppWrapper title={isEdit ? 'Edit Blog' : 'Create Blog'}>
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full mx-auto p-4">
+    return (<div className="adminContent w-full mx-auto p-4">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading blog..." />
             </div>
           </div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
-  return (
-    <AdminMobileAppWrapper title={isEdit ? 'Edit Blog' : 'Create Blog'}>
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
@@ -343,7 +327,6 @@ const AdminBlogForm = () => {
           </form>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

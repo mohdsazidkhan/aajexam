@@ -24,10 +24,7 @@ import {
   ShieldCheck, Banknote, History, BarChart3
 } from "lucide-react";
 
-import { useSelector } from "react-redux";
-import Sidebar from "../../Sidebar";
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -102,9 +99,6 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
 
 const FinancialAnalytics = () => {
   const { isMounted, isRouterReady, router } = useSSR();
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -174,11 +168,7 @@ const FinancialAnalytics = () => {
     }
   };
 
-  return (
-    <AdminMobileAppWrapper title="Revenue Analytics">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -325,8 +315,6 @@ const FinancialAnalytics = () => {
             )}
           </AnimatePresence>
         </div>
-      </div>
-    </AdminMobileAppWrapper>
   );
 };
 

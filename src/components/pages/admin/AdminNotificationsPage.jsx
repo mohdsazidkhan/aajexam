@@ -1,9 +1,6 @@
 ﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import API from '../../../lib/api';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
@@ -42,9 +39,6 @@ const AdminNotificationsPage = () => {
   const [loading, setLoading] = useState(false);
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const typeToPath = {
     quiz: '/admin/govt-exams/tests',
     withdraw: '/admin/withdraw-requests',
@@ -125,8 +119,7 @@ const AdminNotificationsPage = () => {
 
   if (loading && items.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Notifications">
-        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -136,16 +129,14 @@ const AdminNotificationsPage = () => {
             <Bell className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-rose-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading notifications...</div>
-        </div>
-      </AdminMobileAppWrapper>
+      </div>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Notifications">
-      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
-        {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+    <>
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+        <div className="transition-all duration-500 p-4 lg:p-8">
 
           {/* Header Section */}
           <motion.div
@@ -300,7 +291,7 @@ const AdminNotificationsPage = () => {
           100% { border-color: rgba(79, 70, 229, 0.3); box-shadow: 0 0 20px rgba(79, 70, 229, 0.1); }
         }
       `}</style>
-    </AdminMobileAppWrapper>
+    </>
   );
 };
 

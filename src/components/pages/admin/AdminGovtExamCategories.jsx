@@ -3,9 +3,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
-import { useSelector } from "react-redux";
-import Sidebar from "../../Sidebar";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getCurrentUser } from "../../../utils/authUtils";
@@ -54,9 +51,6 @@ const AdminGovtExamCategories = () => {
     type: "Central",
     description: ""
   });
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
   const user = getCurrentUser();
 
   useEffect(() => {
@@ -153,10 +147,8 @@ const AdminGovtExamCategories = () => {
   if (!isMounted) return null;
 
   return (
-    <AdminMobileAppWrapper title="Exam Categories">
-      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+    <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
+<div className="transition-all duration-500 p-4 lg:p-8">
 
           {/* Header Section */}
           <motion.div
@@ -446,7 +438,6 @@ const AdminGovtExamCategories = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </AdminMobileAppWrapper>
   );
 };
 

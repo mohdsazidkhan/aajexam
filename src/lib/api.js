@@ -102,6 +102,16 @@ class ApiService {
           }
         }
 
+        // Handle 401 Unauthorized — clear auth and redirect to login
+        if (response.status === 401 && typeof window !== 'undefined') {
+          const authKeys = ['token', 'refreshToken', 'authToken', 'userInfo', 'userData'];
+          authKeys.forEach(key => localStorage.removeItem(key));
+          if (window.location.pathname !== '/login') {
+            window.location.href = '/login';
+          }
+          return { success: false, message: 'Session expired' };
+        }
+
         const error = new Error();
         error.response = { status: response.status, data };
         const dataObj = typeof data === 'object' && data !== null ? data : {};
@@ -195,11 +205,27 @@ class ApiService {
   }
 
   async getAnalyticsReport() {
-    return this.request('/api/analytics/report');
+    if (this._analyticsReportPromise) return this._analyticsReportPromise;
+
+    this._analyticsReportPromise = this.request('/api/analytics/report').finally(() => {
+      setTimeout(() => {
+        this._analyticsReportPromise = null;
+      }, 2000);
+    });
+
+    return this._analyticsReportPromise;
   }
 
   async getDailyDose() {
-    return this.request('/api/daily-dose');
+    if (this._dailyDosePromise) return this._dailyDosePromise;
+
+    this._dailyDosePromise = this.request('/api/daily-dose').finally(() => {
+      setTimeout(() => {
+        this._dailyDosePromise = null;
+      }, 2000);
+    });
+
+    return this._dailyDosePromise;
   }
 
   async getStudyMaterials(params = {}) {

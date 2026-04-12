@@ -3,9 +3,6 @@
 import React, { useState } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Sidebar from '../../Sidebar';
-import { useSelector } from "react-redux";
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -35,7 +32,6 @@ const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-3
 
 const AdminReelCreate = () => {
   const router = useRouter();
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('');
 
@@ -146,10 +142,8 @@ const AdminReelCreate = () => {
   };
 
   return (
-    <AdminMobileAppWrapper>
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <main className={`flex-1 transition-all duration-300 ${isOpen ?  'lg:ml-60' : 'lg:ml-0'}`}>
+    <div className="flex min-h-screen">
+        <main className="flex-1 transition-all duration-300">
           <div className="p-0 lg:p-6 max-w-full mx-auto mt-4 lg:mt-2">
 
             {/* Header */}
@@ -417,7 +411,6 @@ const AdminReelCreate = () => {
           </div>
         </main>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

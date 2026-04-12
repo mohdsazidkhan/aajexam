@@ -53,13 +53,15 @@ const StudentNavbar = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-20 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/50 flex items-center">
-        <div className="w-full px-3 lg:px-8 max-w-[1920px] mx-auto flex items-center justify-between">
+        <div className="w-full mx-auto px-4 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-2 w-10 lg:w-auto">
             {/* Hamburger — mobile: only on specific pages, desktop: always */}
             <button
               onClick={() => dispatch(toggleSidebar())}
+              aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isSidebarOpen}
               className={`w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
                 showHamburger ? 'flex' : 'hidden lg:flex'
               } ${isSidebarOpen
@@ -88,7 +90,7 @@ const StudentNavbar = () => {
           {/* Right */}
           <div className="flex items-center gap-1.5 lg:gap-4">
             {/* Wallet — desktop only in navbar */}
-            <div className="hidden lg:flex items-center gap-1 px-4 py-2 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-600 dark:text-amber-500">
+            <div className="hidden lg:flex items-center gap-1 px-4 py-2 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-600 dark:text-amber-400">
               <IndianRupee className="w-4 h-4" />
               <span className="text-sm font-black">{user.walletBalance || 0}</span>
             </div>
@@ -96,6 +98,7 @@ const StudentNavbar = () => {
             {/* Theme toggle — desktop only */}
             <button
               onClick={toggleTheme}
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               className="hidden lg:flex w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-500 transition-all"
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -104,11 +107,13 @@ const StudentNavbar = () => {
             {/* Profile avatar */}
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
+              aria-label="Profile menu"
+              aria-expanded={showProfileMenu}
               className="p-0.5 rounded-full"
             >
-              <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-pink-500 p-[2px]">
+              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-pink-500 p-[2px]">
                 {user.profilePicture ? (
-                  <Image src={user.profilePicture} alt="User" width={36} height={36} className="w-full h-full rounded-full object-cover" />
+                  <Image src={user.profilePicture} alt={user.name || 'Profile'} width={36} height={36} className="w-full h-full rounded-full object-cover" />
                 ) : (
                   <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase">
                     {user.name?.charAt(0)}
@@ -129,6 +134,7 @@ const StudentNavbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
+              role="menu"
               className="fixed top-12 lg:top-20 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
             >
               {/* User info */}

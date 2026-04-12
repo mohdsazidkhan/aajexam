@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
 import { useSSR } from '../../../hooks/useSSR';
-import Sidebar from '../../Sidebar';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import API from '../../../lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -60,10 +57,7 @@ const AdminUserAnalyticsDetail = () => {
     const router = useRouter();
     const { id: userId } = router.query;
     const { isMounted, isRouterReady } = useSSR();
-    const isOpen = useSelector(state => state.sidebar.isOpen);
     const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-    const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -96,11 +90,8 @@ const AdminUserAnalyticsDetail = () => {
     const userData = d.user || {};
 
     return (
-        <AdminMobileAppWrapper title="User Analytics">
-            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}  text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
-                {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-
-                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+        <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -341,8 +332,6 @@ const AdminUserAnalyticsDetail = () => {
                         )}
                     </AnimatePresence>
                 </div>
-            </div>
-        </AdminMobileAppWrapper>
     );
 };
 

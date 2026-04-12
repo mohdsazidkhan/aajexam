@@ -3,9 +3,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Sidebar from '../../Sidebar';
-import { useSelector } from "react-redux";
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { getCurrentUser } from "../../../utils/authUtils";
 import Pagination from '../../Pagination';
@@ -49,8 +46,6 @@ const AdminReels = () => {
   const [itemsPerPage] = useState(20);
   const [actionLoading, setActionLoading] = useState(null);
   const [viewMode, setViewMode] = useState('table');
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -139,10 +134,8 @@ const AdminReels = () => {
   };
 
   return (
-    <AdminMobileAppWrapper>
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <main className={`flex-1 transition-all duration-300 ${isOpen ? 'lg:ml-60' : 'lg:ml-0'}`}>
+    <div className="flex min-h-screen">
+        <main className="flex-1 transition-all duration-300">
           <div className="p-0 lg:p-6 max-w-full mx-auto mt-4 lg:mt-2">
 
             {/* Header */}
@@ -308,8 +301,8 @@ const AdminReels = () => {
                   {items.map((item, i) => {
                     const Icon = TYPE_ICONS[item.type] || HelpCircle;
                     return (
-                      <motion.div key={item._id} whileTap={{ scale: 0.98 }} className={`relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden`}>
-                        <div className={`absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-slate-500/5 to-transparent rounded-bl-[2rem] -z-0`} />
+                      <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden">
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-slate-500/5 to-transparent rounded-bl-[2rem] -z-0" />
 
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-duo ${TYPE_COLORS[item.type]}`}>
                           <Icon className="w-5 h-5" />
@@ -362,7 +355,6 @@ const AdminReels = () => {
           </div>
         </main>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

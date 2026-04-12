@@ -66,7 +66,7 @@ const ModernLandingPage = () => {
       <MobileAppWrapper showHeader={true} title="Home">
          <section className="relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
                <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
                <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/15 rounded-full blur-[100px]" />
             </div>

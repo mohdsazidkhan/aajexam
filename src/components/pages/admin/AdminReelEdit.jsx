@@ -3,9 +3,6 @@
 import React, { useState, useEffect } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Sidebar from '../../Sidebar';
-import { useSelector } from "react-redux";
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/router';
@@ -37,8 +34,6 @@ const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-3
 const AdminReelEdit = () => {
   const router = useRouter();
   const reelId = router.query?.id;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [type, setType] = useState('');
@@ -173,22 +168,17 @@ const AdminReelEdit = () => {
 
   if (loading) {
     return (
-      <AdminMobileAppWrapper>
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className={`flex-1 transition-all duration-300 ${isOpen ? 'lg:ml-60' : ''}`}>
+      <div className="flex min-h-screen">
+          <main className="flex-1 transition-all duration-300">
             <div className="p-6 flex items-center justify-center min-h-screen"><Loading /></div>
           </main>
         </div>
-      </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper>
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <main className={`flex-1 transition-all duration-300 ${isOpen ? 'lg:ml-60' : ''}`}>
+    <div className="flex min-h-screen">
+        <main className="flex-1 transition-all duration-300">
           <div className="p-0 lg:p-6 max-w-4xl mx-auto mt-4 lg:mt-2">
 
             {/* Header */}
@@ -455,7 +445,6 @@ const AdminReelEdit = () => {
           </div>
         </main>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

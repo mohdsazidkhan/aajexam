@@ -2,13 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Sidebar from "../../Sidebar";
-import { useSelector } from "react-redux";
 import Pagination from "../../Pagination";
 import SearchFilter from "../../SearchFilter";
 import API from '../../../lib/api';
 import useDebounce from "../../../hooks/useDebounce";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,11 +44,6 @@ export default function ReferralHistory() {
   const [filterType, setFilterType] = useState("all");
   const [pagination, setPagination] = useState({});
   const [summary, setSummary] = useState(null);
-
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const debouncedSearch = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
@@ -144,8 +136,7 @@ export default function ReferralHistory() {
 
   if (loading && transactions.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Referral History">
-        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -155,16 +146,12 @@ export default function ReferralHistory() {
             <History className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral history...</div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Referral History">
-      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+    <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
+<div className="transition-all duration-500 p-4 lg:p-8">
           
           {/* Header Section */}
           <motion.div
@@ -345,7 +332,6 @@ export default function ReferralHistory() {
           </AnimatePresence>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 }
 

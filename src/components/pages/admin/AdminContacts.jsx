@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import Sidebar from '../../Sidebar';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
@@ -32,7 +30,6 @@ import {
 } from 'lucide-react';
 import useDebounce from '../../../hooks/useDebounce';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
@@ -48,11 +45,6 @@ export default function AdminContacts() {
   const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const debouncedSearch = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
@@ -117,8 +109,7 @@ export default function AdminContacts() {
 
   if (loading && contacts.length === 0) {
     return (
-      <AdminMobileAppWrapper title="Contact Messages">
-        <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
           <div className="relative">
             <motion.div
               animate={{ rotate: 360 }}
@@ -128,16 +119,13 @@ export default function AdminContacts() {
             <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
           </div>
           <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading messages...</div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Contact Messages">
-      <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
-        <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+        <div className="transition-all duration-500 p-4 lg:p-8">
 
           {/* Header Section */}
           <motion.div
@@ -398,7 +386,6 @@ export default function AdminContacts() {
           </AnimatePresence>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 }
 

@@ -8,9 +8,6 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../../lib/api';
-import Sidebar from '../../Sidebar';
-import { useSelector } from 'react-redux';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getCurrentUser } from '../../../utils/authUtils';
@@ -28,9 +25,6 @@ const AdminUserWallets = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [resetting, setResetting] = useState(false);
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
   const user = getCurrentUser();
 
   const load = useCallback(async () => {
@@ -389,18 +383,12 @@ const AdminUserWallets = () => {
           </>
         )}
       </div>
-    </div>
   );
 
-  return (
-    <AdminMobileAppWrapper title="Student Wallets">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {content}
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

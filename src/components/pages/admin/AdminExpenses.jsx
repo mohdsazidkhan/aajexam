@@ -1,11 +1,8 @@
 ﻿'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
-import Sidebar from '../../Sidebar';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import API from '../../../lib/api';
 import {
@@ -17,7 +14,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const AdminExpenses = () => {
     const { isMounted } = useSSR();
-    const isOpen = useSelector(state => state.sidebar.isOpen);
     const userInfo = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
     const router = useRouter();
 
@@ -155,8 +151,7 @@ const AdminExpenses = () => {
     ];
 
     return (
-        <AdminMobileAppWrapper title="Expense Management">
-            <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
+        <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
                 {userInfo?.role === 'admin' && <Sidebar />}
 
                 <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
@@ -493,7 +488,6 @@ const AdminExpenses = () => {
                     </div>
                 )}
             </AnimatePresence>
-        </AdminMobileAppWrapper>
     );
 };
 

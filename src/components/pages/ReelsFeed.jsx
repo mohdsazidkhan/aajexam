@@ -336,21 +336,21 @@ const ActionBar = ({ reel, onLike, onBookmark, onShare, onExplanation, showExpla
 
   return (
     <>
-      <motion.button whileTap={{ scale: 1.2 }} onClick={handleLike} className="flex flex-col items-center gap-0.5">
+      <motion.button whileTap={{ scale: 1.2 }} onClick={handleLike} aria-label={liked ? 'Unlike' : 'Like'} className="flex flex-col items-center gap-0.5 p-2">
         <Heart className={`w-7 h-7 transition-all ${liked ? 'fill-primary-500 text-primary-500' : 'text-white'}`} />
         <span className="text-[11px] font-semibold text-white">{likeCount || ''}</span>
       </motion.button>
 
-      <motion.button whileTap={{ scale: 1.2 }} onClick={handleBookmark} className="flex flex-col items-center">
+      <motion.button whileTap={{ scale: 1.2 }} onClick={handleBookmark} aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark'} className="flex flex-col items-center p-2">
         <Bookmark className={`w-7 h-7 transition-all ${bookmarked ? 'fill-white text-white' : 'text-white'}`} />
       </motion.button>
 
-      <motion.button whileTap={{ scale: 1.2 }} onClick={handleShare} className="flex flex-col items-center">
+      <motion.button whileTap={{ scale: 1.2 }} onClick={handleShare} aria-label="Share" className="flex flex-col items-center p-2">
         <Share2 className="w-7 h-7 text-white" />
       </motion.button>
 
       {showExplanationIcon && (
-        <motion.button whileTap={{ scale: 1.2 }} onClick={onExplanation} className="flex flex-col items-center">
+        <motion.button whileTap={{ scale: 1.2 }} onClick={onExplanation} aria-label="Show explanation" className="flex flex-col items-center p-2">
           <Lightbulb className="w-7 h-7 text-yellow-400" />
         </motion.button>
       )}
@@ -660,8 +660,25 @@ const ReelsFeed = () => {
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center bg-slate-950">
-        <Loading />
+      <div className="h-full flex flex-col items-center justify-center bg-slate-950 px-6" style={{ height: '100dvh' }}>
+        <div className="w-full max-w-sm space-y-4 animate-pulse">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-full bg-slate-800" />
+            <div className="space-y-2 flex-1">
+              <div className="h-3 bg-slate-800 rounded-full w-24" />
+              <div className="h-2 bg-slate-800/60 rounded-full w-16" />
+            </div>
+          </div>
+          <div className="h-4 bg-slate-800 rounded-full w-3/4" />
+          <div className="h-4 bg-slate-800 rounded-full w-1/2" />
+          <div className="space-y-3 mt-6">
+            <div className="h-12 bg-slate-800/50 rounded-2xl" />
+            <div className="h-12 bg-slate-800/50 rounded-2xl" />
+            <div className="h-12 bg-slate-800/50 rounded-2xl" />
+            <div className="h-12 bg-slate-800/50 rounded-2xl" />
+          </div>
+        </div>
+        <p className="text-xs font-bold text-white/30 uppercase tracking-widest mt-8">Loading reels...</p>
       </div>
     );
   }

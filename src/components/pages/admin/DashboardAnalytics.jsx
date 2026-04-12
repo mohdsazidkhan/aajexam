@@ -27,12 +27,9 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
 import ViewToggle from '../../ViewToggle';
 import { isMobile } from 'react-device-detect';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -43,9 +40,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
 const DashboardAnalytics = () => {
   const { isMounted, isRouterReady, router } = useSSR();
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -409,7 +403,7 @@ const DashboardAnalytics = () => {
       <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-red-100 border border-red-400 px-4 py-3 rounded">
         {error}
       </div>
-    </div>
+      </div>
   );
 
   if (!data) return (
@@ -419,10 +413,8 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <AdminMobileAppWrapper title="Analytics Overview">
-       <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}  text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
-         {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-         <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
            <div className="mb-4">
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
@@ -529,7 +521,6 @@ const DashboardAnalytics = () => {
           </div>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

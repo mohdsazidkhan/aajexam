@@ -9,10 +9,7 @@ import store from '../store';
 import { initializeDarkMode } from '../store/darkModeSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
-import StudentLayout from '../components/StudentLayout';
 import { useRouter } from 'next/router';
-import { isAdmin, hasAdminPrivileges } from '../lib/utils/adminUtils';
-import Sidebar from '../components/Sidebar';
 import ClientOnly from '../components/ClientOnly';
 import CookieConsent from '../components/CookieConsent';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,6 +19,19 @@ import '../styles/darkMode.css';
 import '../styles/responsive.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
+import { Outfit, Nunito } from 'next/font/google';
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+  display: 'swap',
+});
 
 // Global styles for mobile optimization
 const globalStyles = `
@@ -138,9 +148,11 @@ function AppContent({ Component, pageProps }) {
       ) : null}
 
       <ErrorBoundary>
-        <AnimatePresence mode="wait" initial={false}>
-          {renderContent()}
-        </AnimatePresence>
+        <div className={`${outfit.variable} ${nunito.variable}`}>
+          <AnimatePresence mode="wait" initial={false}>
+            {renderContent()}
+          </AnimatePresence>
+        </div>
       </ErrorBoundary>
     </>
   );

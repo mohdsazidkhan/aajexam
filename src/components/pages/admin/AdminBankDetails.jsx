@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import Sidebar from "../../Sidebar";
-import { useSelector } from "react-redux";
 import Pagination from "../../Pagination";
 import ViewToggle from "../../ViewToggle";
 import SearchFilter from "../../SearchFilter";
@@ -16,7 +14,6 @@ import {
   TrendingUp, Activity, Hash, Info, Zap, Settings, ArrowRight
 } from "lucide-react";
 import useDebounce from "../../../hooks/useDebounce";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSSR } from '../../../hooks/useSSR';
@@ -37,9 +34,6 @@ export default function AdminBankDetails() {
   const [pagination, setPagination] = useState({});
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const debouncedSearch = useDebounce(searchTerm, 1000); // 1s delay
 
   useEffect(() => {
@@ -213,7 +207,6 @@ export default function AdminBankDetails() {
           </tbody>
         </table>
       </div>
-    </div>
   );
 
   const CardView = () => (
@@ -374,11 +367,7 @@ export default function AdminBankDetails() {
     </div>
   );
 
-  return (
-    <AdminMobileAppWrapper title="Bank Details">
-      <div className={`adminPanel ${isOpen ? "showPanel" : "hidePanel"}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           <div className="mx-auto">
             {/* Header section with Stats & Actions */}
             <motion.div
@@ -512,7 +501,6 @@ export default function AdminBankDetails() {
           </div>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 }
 

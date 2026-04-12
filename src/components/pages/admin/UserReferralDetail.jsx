@@ -2,11 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import Sidebar from "../../Sidebar";
-import { useSelector } from "react-redux";
 import Pagination from "../../Pagination";
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 import Link from 'next/link';
@@ -49,9 +46,6 @@ export default function UserReferralDetail() {
     const [summary, setSummary] = useState(null);
 
     const userInfo = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
-    const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
-    const isOpen = useSelector((state) => state.sidebar.isOpen);
-
     useEffect(() => {
         if (userId) {
             fetchUserDetails();
@@ -136,8 +130,7 @@ export default function UserReferralDetail() {
 
     if (loading) {
         return (
-            <AdminMobileAppWrapper title="Referral Detail">
-                <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+            <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
                     <div className="relative">
                         <motion.div
                             animate={{ rotate: 360 }}
@@ -147,15 +140,12 @@ export default function UserReferralDetail() {
                         <Wallet className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
                     </div>
                     <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral details...</div>
-                </div>
-            </AdminMobileAppWrapper>
         );
     }
 
     if (!userId || error) {
         return (
-            <AdminMobileAppWrapper title="Referral Detail">
-                <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+            <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
                     <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-xl lg:rounded-[3rem] shadow-xl border-b-8 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                         <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                     </div>
@@ -168,15 +158,13 @@ export default function UserReferralDetail() {
                         <ArrowLeft className="w-4 h-4" /> Back to History
                     </button>
                 </div>
-            </AdminMobileAppWrapper>
         );
     }
 
     return (
-        <AdminMobileAppWrapper title="Referral Detail">
-            <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
+        <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
                 {isMounted && <Sidebar />}
-                <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+                <div className="transition-all duration-500 p-4 lg:p-8">
 
                     {/* Header Section */}
                     <motion.div
@@ -244,7 +232,7 @@ export default function UserReferralDetail() {
                             { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                         ].map((tier) => (
                             <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
-                                <div className={`p-3 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit`}>
+                                <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit">
                                     <tier.icon className="w-5 h-5" />
                                 </div>
                                 <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
@@ -374,7 +362,6 @@ export default function UserReferralDetail() {
                     )}
                 </div>
             </div>
-        </AdminMobileAppWrapper>
     );
 }
 

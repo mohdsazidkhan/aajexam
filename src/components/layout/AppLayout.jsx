@@ -57,7 +57,7 @@ const AppLayout = ({ children }) => {
 
   const isReelsPage = router.pathname === '/reels';
   const isSearchPage = router.pathname === '/search';
-  const shouldShiftContent = showAppNav && !isUserAdmin && isSidebarOpen && isDesktop;
+  const shouldShiftContent = showAppNav && isSidebarOpen && isDesktop;
 
   // Lock body scroll on Reels page
   useEffect(() => {
@@ -136,11 +136,11 @@ const AppLayout = ({ children }) => {
         }}
         className={`min-h-screen
           ${showAppNav ?
-            'pt-12 pb-20 lg:pt-20 lg:pb-12' :
+            'pt-16 lg:pt-20 pb-10 lg:pb-0 px-4 lg:px-0' :
             (isQuestPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-20')
           }`}
       >
-        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'px-4' : (isQuestPage ? 'max-w-full px-0' : 'px-4 md:px-6')}`}>
+        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'max-w-[1200px]' : (isQuestPage ? 'max-w-full px-0' : 'px-4 md:px-6 max-w-[1200px]')}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={router.pathname}

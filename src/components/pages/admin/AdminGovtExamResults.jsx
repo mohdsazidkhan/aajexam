@@ -3,9 +3,6 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
-import { useSelector } from "react-redux";
-import Sidebar from "../../Sidebar";
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import Loading from "../../Loading";
@@ -116,9 +113,6 @@ const AdminGovtExamResults = () => {
       rank: attempt?._id ? rankMap.get(attempt._id) : (attempt?.rank ?? null),
     }));
   }, []);
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
   const user = getCurrentUser();
 
   const getExamsForCategory = useCallback(async (categoryId) => {
@@ -252,11 +246,7 @@ const AdminGovtExamResults = () => {
 
   if (!isMounted) return null;
 
-  return (
-    <AdminMobileAppWrapper title="Exam Results Dashboard">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -496,8 +486,6 @@ const AdminGovtExamResults = () => {
             )}
           </AnimatePresence>
         </div>
-      </div>
-    </AdminMobileAppWrapper>
   );
 };
 

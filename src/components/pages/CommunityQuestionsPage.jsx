@@ -143,7 +143,7 @@ const CommunityQuestionsPage = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">
+            <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
               Community Questions
             </h1>
             <p className="text-sm text-content-muted mt-1">
@@ -152,7 +152,7 @@ const CommunityQuestionsPage = () => {
           </div>
           {authenticated && (
             <Link href="/community-questions/ask">
-              <Button variant="primary" size="sm" icon={MessageSquarePlus}>
+              <Button className='mx-auto' variant="primary" size="sm" icon={MessageSquarePlus}>
                 Post Question
               </Button>
             </Link>
@@ -160,7 +160,7 @@ const CommunityQuestionsPage = () => {
         </div>
 
         {/* Filters */}
-        <Card className="mb-6" radius="2xl">
+        <Card className="mb-0 lg:mb-6" radius="2xl">
           <div className="flex items-center gap-2 mb-3">
             <Filter className="w-4 h-4 text-content-muted" />
             <span className="text-xs font-bold text-content-muted uppercase tracking-wider">Filters</span>
@@ -196,14 +196,14 @@ const CommunityQuestionsPage = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
           </div>
         ) : error ? (
-          <Card className="text-center py-12">
+          <Card className="text-center py-4 lg:py-8">
             <p className="text-content-muted text-sm">{error}</p>
-            <button onClick={fetchQuestions} className="mt-3 text-primary-500 text-sm font-bold hover:underline">
+            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-500 text-sm font-bold hover:underline">
               Try Again
             </button>
           </Card>
         ) : questions.length === 0 ? (
-          <Card className="text-center py-16">
+          <Card className="text-center py-4 lg:py-8">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
             <h3 className="text-lg font-bold text-content-primary mb-1">No Questions Yet</h3>
             <p className="text-sm text-content-muted mb-4">Be the first to share a question with the community!</p>
@@ -216,7 +216,7 @@ const CommunityQuestionsPage = () => {
             )}
           </Card>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-4 lg:py-8">
             {questions.map((q) => (
               <Card key={q._id} radius="2xl" hoverable className="group">
                 {/* Author & Meta */}

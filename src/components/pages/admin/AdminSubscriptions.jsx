@@ -11,10 +11,7 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -61,9 +58,6 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
 const AdminSubscriptions = () => {
   const { isMounted, isRouterReady, router } = useSSR();
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const [subscriptions, setSubscriptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -391,25 +385,17 @@ const AdminSubscriptions = () => {
   };
 
   if (loading) {
-    return (
-      <AdminMobileAppWrapper title="Subscriptions">
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
+    return (<div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
             <div className="flex items-center justify-center h-64">
               <Loading size="md" color="yellow" message="Loading subscriptions..." />
             </div>
           </div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Subscriptions">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}  text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+    <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -984,7 +970,6 @@ const AdminSubscriptions = () => {
           </AnimatePresence>
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

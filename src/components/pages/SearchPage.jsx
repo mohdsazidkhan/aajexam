@@ -166,7 +166,7 @@ const SearchPage = () => {
             <div className="px-3 lg:px-8 pt-3 lg:pt-4 pb-2">
                <form onSubmit={handleSearch} className="flex items-center gap-2">
                   {hasSearched && (
-                     <button type="button" onClick={() => { setQuery(''); clearResults(); hasInitialSearchedRef.current = false; }} className="p-1 shrink-0">
+                     <button type="button" aria-label="Clear search" onClick={() => { setQuery(''); clearResults(); hasInitialSearchedRef.current = false; }} className="p-2 shrink-0 -ml-1">
                         <ArrowLeft className="w-5 h-5 text-slate-900 dark:text-white" />
                      </button>
                   )}
@@ -204,7 +204,7 @@ const SearchPage = () => {
                <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 lg:gap-2">
                   {['UPSC', 'SSC', 'Railway', 'Banking', 'Police', 'Current Affairs'].map((tag, i) => (
                      <button key={i} onClick={() => { setQuery(tag); setCurrentPage(1); hasInitialSearchedRef.current = true; fetchData(tag, 1); }}
-                        className="flex-shrink-0 whitespace-nowrap px-3 lg:px-4 py-1 lg:py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-primary-500/10 hover:text-primary-600 rounded-full text-[11px] lg:text-xs font-bold text-slate-600 dark:text-slate-400 transition-all">
+                        className="flex-shrink-0 whitespace-nowrap px-4 lg:px-5 py-2 lg:py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-primary-500/10 hover:text-primary-600 rounded-full text-xs font-bold text-slate-600 dark:text-slate-400 transition-all">
                         {tag}
                      </button>
                   ))}

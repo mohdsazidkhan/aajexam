@@ -9,21 +9,15 @@ import {
     Zap, Target, ExternalLink, Cpu, Globe, ArrowRight, ArrowUpRight, ArrowDownRight, Layers,
     DownloadCloud, UserCheck, Star, Award, Trophy, Info
 } from 'lucide-react';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
-import Sidebar from '../../Sidebar';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import API from '../../../lib/api';
 
 const AdminUsersAnalytics = () => {
     const { isMounted } = useSSR();
-    const isOpen = useSelector(state => state.sidebar.isOpen);
     const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
     const router = useRouter();
-    const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -93,12 +87,7 @@ const AdminUsersAnalytics = () => {
 
     if (!isMounted) return null;
 
-    return (
-        <AdminMobileAppWrapper title="User Analytics">
-            <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-                {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-
-                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+    return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
                     
                     {/* Header */}
                     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -305,8 +294,6 @@ const AdminUsersAnalytics = () => {
                         )}
                     </AnimatePresence>
                 </div>
-            </div>
-        </AdminMobileAppWrapper>
     );
 };
 

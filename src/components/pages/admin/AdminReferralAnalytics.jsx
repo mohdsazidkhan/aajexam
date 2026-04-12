@@ -1,8 +1,6 @@
 ﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
 import { toast } from 'react-toastify';
 import { 
@@ -27,7 +25,6 @@ import {
   ShieldCheck,
   Hash
 } from 'lucide-react';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { isMobile } from 'react-device-detect';
 import Button from '../../ui/Button';
@@ -59,9 +56,6 @@ const AdminReferralAnalytics = () => {
         totalReferralsSum: 0,
         monthlyReferralsSum: 0
     });
-
-    const isOpen = useSelector((state) => state.sidebar.isOpen);
-
     const availableYears = [];
     for (let i = 0; i < 6; i++) {
         availableYears.push(currentYear - i);
@@ -162,8 +156,7 @@ const AdminReferralAnalytics = () => {
 
     if (loading && analytics.length === 0) {
         return (
-          <AdminMobileAppWrapper title="Referral Analytics">
-            <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
+          <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
               <div className="relative">
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -173,16 +166,12 @@ const AdminReferralAnalytics = () => {
                 <TrendingUp className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
               </div>
               <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral analytics...</div>
-            </div>
-          </AdminMobileAppWrapper>
         );
     }
 
     return (
-        <AdminMobileAppWrapper title="Referral Analytics">
-            <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
-                <Sidebar />
-                <div className={`transition-all duration-500 ${isOpen ? 'p-4 lg:p-8' : 'p-4 lg:p-8'}`}>
+        <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
+                <div className="transition-all duration-500 p-4 lg:p-8">
                     
                     {/* Header Section */}
                     <motion.div
@@ -504,7 +493,6 @@ const AdminReferralAnalytics = () => {
                     </AnimatePresence>
                 </div>
             </div>
-        </AdminMobileAppWrapper>
     );
 };
 

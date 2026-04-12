@@ -3,9 +3,6 @@
 import React, { useEffect, useState } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Sidebar from '../../Sidebar';
-import { useSelector } from "react-redux";
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import { motion } from 'framer-motion';
 import { Flame, Eye, Heart, MessageCircle, BarChart3, CheckCircle2, TrendingUp } from 'lucide-react';
@@ -32,8 +29,6 @@ const StatCard = ({ icon: Icon, label, value, color, delay = 0 }) => (
 const AdminReelAnalytics = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   useEffect(() => {
     const load = async () => {
       try {
@@ -49,10 +44,8 @@ const AdminReelAnalytics = () => {
   }, []);
 
   return (
-    <AdminMobileAppWrapper>
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <main className={`flex-1 transition-all duration-300 ${isOpen ? 'lg:ml-60' : 'lg:ml-0'}`}>
+    <div className="flex min-h-screen">
+        <main className="flex-1 transition-all duration-300">
           <div className="px-3 py-4 sm:p-6 max-w-7xl mx-auto">
 
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 mb-5 sm:mb-6 uppercase tracking-tight">
@@ -94,7 +87,6 @@ const AdminReelAnalytics = () => {
                           <div className="h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                             <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }} className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" />
                           </div>
-                        </div>
                       );
                     })}
                   </div>
@@ -146,7 +138,6 @@ const AdminReelAnalytics = () => {
           </div>
         </main>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

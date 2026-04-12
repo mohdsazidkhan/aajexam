@@ -49,7 +49,7 @@ const StudentSidebar = () => {
     };
     if (authenticated && isMounted && !fetchRef.current) {
       fetchRef.current = true;
-      fetchWallet();
+      fetchWallet().catch(() => { fetchRef.current = false; });
     }
   }, [authenticated, isMounted]);
 
@@ -102,33 +102,19 @@ const StudentSidebar = () => {
         isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
       }`}
     >
-      {/* User greeting */}
-      <div className="p-4 border-b border-slate-100 dark:border-white/5 min-w-[240px]">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center text-white text-sm font-black shadow-duo-primary flex-shrink-0">
-            {initials}
-          </div>
-          <div className="min-w-0">
-            <p className="text-sm font-bold text-content-primary truncate uppercase">{user.name || user.username}</p>
-            <p className="text-[10px] font-semibold text-content-muted truncate uppercase">
-              {user.subscriptionStatus === 'pro' ? 'Pro Member' : 'Free Plan'}
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
-            <h3 className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] px-3 mb-2">
+            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
               {section.title}
             </h3>
             <div className="space-y-0.5">
               {section.items.map((item, itemIdx) => {
                 const active = isActiveRoute(item.path);
                 return (
-                  <Link key={itemIdx} href={item.path} onClick={handleNavClick}>
+                  <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined}>
                     <button className={`w-full flex items-center justify-between px-3 py-2 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -159,7 +145,7 @@ const StudentSidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/15 text-rose-600 dark:text-rose-300 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/25 transition-colors flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

@@ -1,4 +1,4 @@
-﻿import {
+import {
   Users,
   Crown,
   Zap,
@@ -18,14 +18,10 @@
   ChevronRight
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import Sidebar from '../../Sidebar';
 import { motion, AnimatePresence } from 'framer-motion';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Card from '../../ui/Card';
-import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 
@@ -265,191 +261,170 @@ const DashboardPage = () => {
     },
   ];
 
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   if (loading) {
     return (
-      <AdminMobileAppWrapper title="Dashboard">
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
-            <div className="flex items-center justify-center h-64">
-              <Loading size="md" color="yellow" message="Loading..." />
-            </div>
-          </div>
+      <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+        <div className="flex items-center justify-center h-64">
+          <Loading size="md" color="yellow" message="Loading..." />
         </div>
-      </AdminMobileAppWrapper>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <AdminMobileAppWrapper title="Dashboard">
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
-            <div className="flex items-center justify-center h-64">
-              <div className="text-center">
-                <div className="text-2xl lg:text-6xl mb-4">âš ï¸</div>
-                <div className="text-lg text-primary-700 dark:text-primary-500 dark:text-red-400">{error}</div>
-              </div>
-            </div>
+      <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="text-2xl lg:text-6xl mb-4">⚠️</div>
+            <div className="text-lg text-primary-700 dark:text-primary-500 dark:text-red-400">{error}</div>
           </div>
         </div>
-      </AdminMobileAppWrapper>
+      </div>
     );
   }
 
   return (
-    <AdminMobileAppWrapper title="Dashboard">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full max-auto text-slate-900 dark:text-white font-outfit my-4">
-           {/* Header */}
-           <motion.div
-             initial={{ opacity: 0, y: -20 }}
-             animate={{ opacity: 1, y: 0 }}
-             className="mb-4"
-           >
-             <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
-               ADMIN <span className="text-indigo-600">DASHBOARD</span>
-             </h1>
-             <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
-               Your complete overview of platform activity, revenue, and content at a glance.
-             </p>
-           </motion.div>
+    <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+       {/* Header */}
+       <motion.div
+         initial={{ opacity: 0, y: -20 }}
+         animate={{ opacity: 1, y: 0 }}
+         className="mb-4"
+       >
+         <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
+           ADMIN <span className="text-indigo-600">DASHBOARD</span>
+         </h1>
+         <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
+           Your complete overview of platform activity, revenue, and content at a glance.
+         </p>
+       </motion.div>
 
+      <motion.div
+        variants={{
+          show: { transition: { staggerChildren: 0.05 } }
+        }}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-4"
+      >
+        {cards.map((card, idx) => (
           <motion.div
+            key={card.title}
             variants={{
-              show: { transition: { staggerChildren: 0.05 } }
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0 }
             }}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8 mb-4"
           >
-            {cards.map((card, idx) => (
-              <motion.div
-                key={card.title}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-              >
-                 <Card
-                   hoverable
-                   padded={false}
-                   onClick={() => router.push(card.link)}
-                   className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] overflow-hidden group"
-                 >
-                   <div className="p-3 lg:p-6 flex flex-col h-full relative">
-                     <div className="flex items-center justify-between mb-4">
-                       <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
-                         <card.icon className="w-6 h-6 lg:w-8 lg:h-8" />
-                       </div>
-                       <div className="text-md lg:text-2xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400 tabular-nums italic">
-                         {card.count}
-                       </div>
-                     </div>
-                     <div className="mt-auto">
-                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
-                       <h2 className="text-sm lg:text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none">
-                         {card.title}
-                       </h2>
-                     </div>
-                     <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-all" />
+             <Card
+               hoverable
+               padded={false}
+               onClick={() => router.push(card.link)}
+               className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] overflow-hidden group"
+             >
+               <div className="p-3 lg:p-6 flex flex-col h-full relative">
+                 <div className="flex items-center justify-between mb-4">
+                   <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
+                     <card.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                    </div>
-                 </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-
-            {/* Financial Summary */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4"
-            >
-              {[
-               { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Lifetime earnings from payments', icon: Banknote, color: 'emerald' },
-               { label: 'PAYMENT ORDERS', value: stats.paymentOrders || 0, subtitle: 'Successful payment transactions', icon: BarChart3, color: 'blue' },
-               { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of all subscriptions`, icon: TrendingUp, color: 'purple' },
-               { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts completed`, icon: Sparkles, color: 'rose' }
-             ].map((item, idx) => (
-               <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
-                 <div className="flex items-center justify-between relative z-10">
-                   <div>
-                     <p className={`text-${item.color}-600 dark:text-${item.color}-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2`}>{item.label}</p>
-                     <p className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none italic">{item.value}</p>
-                     <p className="text-slate-500 text-[9px] font-black uppercase tracking-widest mt-6 flex items-center gap-2">
-                       <CheckCircle className={`w-3.5 h-3.5 text-${item.color}-500`} /> {item.subtitle}
-                     </p>
-                   </div>
-                   <div className={`p-5 rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-inner`}>
-                     <item.icon className="w-8 h-8 lg:w-10 lg:h-10" />
+                   <div className="text-md lg:text-2xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400 tabular-nums italic">
+                     {card.count}
                    </div>
                  </div>
-                 <div className={`absolute -bottom-6 -left-6 w-24 h-24 bg-${item.color}-500/5 rounded-full blur-3xl`} />
-               </Card>
-             ))}
-            </motion.div>
-            {/* Actions */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
-            >
-             <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
-               <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
-                 <Zap className="w-7 h-7 fill-current" />
+                 <div className="mt-auto">
+                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
+                   <h2 className="text-sm lg:text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none">
+                     {card.title}
+                   </h2>
+                 </div>
+                 <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-all" />
                </div>
+             </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+        {/* Financial Summary */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4"
+        >
+          {[
+           { label: 'TOTAL REVENUE', value: `₹${(stats.totalRevenue || 0).toLocaleString()}`, subtitle: 'Lifetime earnings from payments', icon: Banknote, color: 'emerald' },
+           { label: 'PAYMENT ORDERS', value: stats.paymentOrders || 0, subtitle: 'Successful payment transactions', icon: BarChart3, color: 'blue' },
+           { label: 'ACTIVE PLANS', value: stats.activeSubscriptions || 0, subtitle: `${stats.subscriptions > 0 ? Math.round((stats.activeSubscriptions / stats.subscriptions) * 100) : 0}% of all subscriptions`, icon: TrendingUp, color: 'purple' },
+           { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts completed`, icon: Sparkles, color: 'rose' }
+         ].map((item, idx) => (
+           <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-indigo-600/30 transition-all overflow-hidden relative">
+             <div className="flex items-center justify-between relative z-10">
                <div>
-                 <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
-                 <h2 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                   QUICK <span className="text-indigo-600">LINKS</span>
-                 </h2>
+                 <p className={`text-${item.color}-600 dark:text-${item.color}-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2`}>{item.label}</p>
+                 <p className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none italic">{item.value}</p>
+                 <p className="text-slate-500 text-[9px] font-black uppercase tracking-widest mt-6 flex items-center gap-2">
+                   <CheckCircle className={`w-3.5 h-3.5 text-${item.color}-500`} /> {item.subtitle}
+                 </p>
+               </div>
+               <div className={`p-5 rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-inner`}>
+                 <item.icon className="w-8 h-8 lg:w-10 lg:h-10" />
                </div>
              </div>
+             <div className={`absolute -bottom-6 -left-6 w-24 h-24 bg-${item.color}-500/5 rounded-full blur-3xl`} />
+           </Card>
+         ))}
+        </motion.div>
+        {/* Actions */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
+        >
+         <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
+           <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 shadow-xl border border-indigo-500/20">
+             <Zap className="w-7 h-7 fill-current" />
+           </div>
+           <div>
+             <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
+             <h2 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
+               QUICK <span className="text-indigo-600">LINKS</span>
+             </h2>
+           </div>
+         </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10">
-                 {[
-                   { href: "/admin/govt-exams", label: "Exam Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/govt-exams/exams", label: "Practice Exams", desc: "Manage practice exams", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/govt-exams/tests", label: "Practice Tests", desc: "Create and manage practice tests", icon: Target, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Process student payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/students", label: "Students", desc: "Browse and manage student accounts", icon: Users, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/payment-transactions", label: "Payments", desc: "Track all payment transactions", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
-                   { href: "/admin/subscriptions", label: "Subscriptions", desc: "Manage PRO subscription plans", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
-                 ].map((action, i) => (
-                   <motion.div
-                     key={i}
-                     whileHover={{ x: 10 }}
-                     whileTap={{ scale: 0.98 }}
-                   >
-                     <Link href={action.href} className="flex items-center p-3 lg:p-8 rounded-xl lg:rounded-[3rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
-                       <div className={`w-16 h-16 ${action.color} rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mr-6 shadow-inner group-hover:rotate-6 transition-transform shrink-0`}>
-                         <action.icon className="w-8 h-8" />
-                       </div>
-                       <div>
-                         <h3 className="font-black uppercase text-[10px] tracking-[0.2em] text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none mb-2">{action.label}</h3>
-                         <p className="text-[9px] font-bold uppercase text-slate-400 dark:text-slate-500 leading-relaxed">{action.desc}</p>
-                       </div>
-                       <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-2 transition-all" />
-                     </Link>
-                   </motion.div>
-                 ))}
-               </div>
-            </motion.div>
-          </div>
-        </div>
-      </AdminMobileAppWrapper>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10">
+             {[
+               { href: "/admin/govt-exams", label: "Exam Categories", desc: "Create and organize exam categories", icon: Layers, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/govt-exams/exams", label: "Practice Exams", desc: "Manage practice exams", icon: BookOpen, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/govt-exams/tests", label: "Practice Tests", desc: "Create and manage practice tests", icon: Target, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/withdraw-requests", label: "Withdraw Requests", desc: "Process student payout requests", icon: Wallet, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/students", label: "Students", desc: "Browse and manage student accounts", icon: Users, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/payment-transactions", label: "Payments", desc: "Track all payment transactions", icon: CreditCard, color: "bg-indigo-100 text-indigo-600" },
+               { href: "/admin/subscriptions", label: "Subscriptions", desc: "Manage PRO subscription plans", icon: Crown, color: "bg-indigo-100 text-indigo-600" },
+             ].map((action, i) => (
+               <motion.div
+                 key={i}
+                 whileHover={{ x: 10 }}
+                 whileTap={{ scale: 0.98 }}
+               >
+                 <Link href={action.href} className="flex items-center p-3 lg:p-8 rounded-xl lg:rounded-[3rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
+                   <div className={`w-16 h-16 ${action.color} rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mr-6 shadow-inner group-hover:rotate-6 transition-transform shrink-0`}>
+                     <action.icon className="w-8 h-8" />
+                   </div>
+                   <div>
+                     <h3 className="font-black uppercase text-[10px] tracking-[0.2em] text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors leading-none mb-2">{action.label}</h3>
+                     <p className="text-[9px] font-bold uppercase text-slate-400 dark:text-slate-500 leading-relaxed">{action.desc}</p>
+                   </div>
+                   <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-2 transition-all" />
+                 </Link>
+               </motion.div>
+             ))}
+           </div>
+        </motion.div>
+      </div>
   );
 };
 
 export default DashboardPage;
-
-

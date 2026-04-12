@@ -10,15 +10,12 @@ import {
   UserCheck, Users, Download, DownloadCloud
 } from "lucide-react";
 
-import Sidebar from "../../Sidebar";
-import { useSelector } from "react-redux";
 import Pagination from "../../Pagination";
 import ViewToggle from "../../ViewToggle";
 import SearchFilter from "../../SearchFilter";
 import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
 import useDebounce from "../../../hooks/useDebounce";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
 import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 
@@ -35,11 +32,6 @@ export default function UserDetailsPage() {
   const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
-
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const debouncedSearch = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
@@ -78,11 +70,7 @@ export default function UserDetailsPage() {
 
   if (!isMounted) return null;
 
-  return (
-    <AdminMobileAppWrapper title="User Management">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === "admin" && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -314,8 +302,6 @@ export default function UserDetailsPage() {
             )}
           </AnimatePresence>
         </div>
-      </div>
-    </AdminMobileAppWrapper>
   );
 }
 

@@ -3,12 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
-import Sidebar from '../../Sidebar';
 import Loading from '../../Loading';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
-import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-toastify';
@@ -37,9 +34,6 @@ const AdminBlogs = () => {
     } catch (e) { }
     return 'table';
   });
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
   const user = getCurrentUser();
 
   useEffect(() => {
@@ -221,7 +215,6 @@ const AdminBlogs = () => {
           </tbody>
         </table>
       </div>
-    </div>
   );
 
   const renderGridView = () => (
@@ -296,11 +289,7 @@ const AdminBlogs = () => {
 
   if (!isMounted) return null;
 
-  return (
-    <AdminMobileAppWrapper title="Blog Management">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -422,7 +411,6 @@ const AdminBlogs = () => {
           )}
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

@@ -121,7 +121,7 @@ const ProfilePage = () => {
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto space-y-4 lg:space-y-8 mt-0">
+      <div className="container mx-auto space-y-4 lg:space-y-8 mt-0 mb-4 lg:mb-4">
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
           <Card className="lg:col-span-8 px-0 relative overflow-hidden border-none shadow-2xl rounded-[2rem] lg:rounded-[4rem] bg-background-surface">
             <div className="flex flex-col lg:flex-row items-center gap-5 lg:gap-10 relative z-10">

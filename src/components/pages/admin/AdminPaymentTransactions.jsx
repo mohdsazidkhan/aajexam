@@ -10,11 +10,8 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
-import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
@@ -22,9 +19,6 @@ import { useSSR } from '../../../hooks/useSSR';
 const AdminPaymentTransactions = () => {
   const { isMounted, isRouterReady, router } = useSSR();
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -218,23 +212,13 @@ const AdminPaymentTransactions = () => {
   };
 
   if (loading && transactions.length === 0) {
-    return (
-      <AdminMobileAppWrapper title="Payment Transactions">
-        <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-          {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-          <div className="adminContent w-full flex items-center justify-center">
+    return (<div className="adminContent w-full flex items-center justify-center">
             <Loading size="md" color="yellow" message="Loading Transactions..." />
           </div>
-        </div>
-      </AdminMobileAppWrapper>
     );
   }
 
-  return (
-    <AdminMobileAppWrapper title="Payment Transactions">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header Section */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -518,7 +502,6 @@ const AdminPaymentTransactions = () => {
           )}
         </div>
       </div>
-    </AdminMobileAppWrapper>
   );
 };
 

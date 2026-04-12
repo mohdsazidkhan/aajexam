@@ -12,10 +12,7 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import Sidebar from '../../Sidebar';
 import API from '../../../lib/api';
-import AdminMobileAppWrapper from '../../AdminMobileAppWrapper';
 import Loading from '../../Loading';
 import Pagination from '../../Pagination';
 import ResponsiveTable from '../../ResponsiveTable';
@@ -39,9 +36,6 @@ const AdminWithdrawRequests = () => {
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [pagination, setPagination] = useState({ page: 1, limit: 20, total: 0, totalPages: 1 });
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
-
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const isAdminRoute = router?.pathname?.startsWith('/admin') || false;
   const user = getCurrentUser();
 
   useEffect(() => {
@@ -164,11 +158,7 @@ const AdminWithdrawRequests = () => {
 
   if (!isMounted) return null;
 
-  return (
-    <AdminMobileAppWrapper title="Withdrawal Requests">
-      <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-        {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
           
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -298,8 +288,6 @@ const AdminWithdrawRequests = () => {
              </div>
           )}
         </div>
-      </div>
-    </AdminMobileAppWrapper>
   );
 };
 

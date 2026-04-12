@@ -3,9 +3,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
-import AdminMobileAppWrapper from "../../AdminMobileAppWrapper";
-import { useSelector } from "react-redux";
-import Sidebar from "../../Sidebar";
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import Loading from "../../Loading";
@@ -54,9 +51,6 @@ const AdminGovtExamTests = () => {
       tags: [],
       difficulty: "medium"
    });
-
-   const isOpen = useSelector((state) => state.sidebar.isOpen);
-   const isAdminRoute = router?.pathname?.startsWith("/admin") || false;
    const user = getCurrentUser();
 
    const testStats = {
@@ -201,11 +195,7 @@ const AdminGovtExamTests = () => {
       } catch (e) { toast.error("Failed to save"); }
    };
 
-   return (
-      <AdminMobileAppWrapper title="Practice Tests">
-         <div className={`adminPanel ${isOpen ? 'showPanel' : 'hidePanel'}`}>
-            {user?.role === 'admin' && isAdminRoute && <Sidebar />}
-            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+   return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
                {/* Header */}
                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
@@ -450,7 +440,7 @@ const AdminGovtExamTests = () => {
                               </div>
                            </div>
                         ) : (
-                           <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1400px] mx-auto">
+                           <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1200px] mx-auto">
                               <div className="space-y-10">
                                  <section className="space-y-3 lg:space-y-6">
                                     <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-500 pl-3 block">Test Details</h3>
@@ -569,7 +559,6 @@ const AdminGovtExamTests = () => {
                </div>
             )}
          </AnimatePresence>
-      </AdminMobileAppWrapper>
    );
 };
 

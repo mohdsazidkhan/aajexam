@@ -103,15 +103,16 @@ const StudentBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t border-slate-200/50 dark:border-slate-800/50 flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] z-50">
+      <nav aria-label="Main navigation" className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t border-slate-200/50 dark:border-slate-800/50 flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Center Plus button
           if (item.name === 'CREATE') {
             return (
               <button
                 key="create"
+                aria-label="Create new reel"
                 onClick={() => setShowCreate(true)}
-                className="flex items-center justify-center -mt-3 px-1"
+                className="flex items-center justify-center -mt-3 px-2"
               >
                 <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30">
                   <Plus className="w-6 h-6 text-white" />
@@ -122,12 +123,12 @@ const StudentBottomNav = () => {
 
           const isActive = currentPath === item.path || currentPath.startsWith(item.path + '/');
           return (
-            <Link key={item.path} href={item.path} className="px-1">
-              <div className={`flex flex-col items-center justify-center pt-2 pb-1.5 transition-all ${
+            <Link key={item.path} href={item.path} className="flex-1 min-w-0" aria-current={isActive ? 'page' : undefined}>
+              <div className={`flex flex-col items-center justify-center min-h-[44px] pt-2 pb-1.5 transition-all ${
                 isActive ? 'text-slate-900 dark:text-white' : 'text-slate-400 dark:text-slate-500'
               }`}>
-                <item.icon className={`w-[22px] h-[22px] ${isActive ? '' : ''}`} strokeWidth={isActive ? 2.5 : 1.8} />
-                <span className={`text-[9px] mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
+                <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
+                <span className={`text-[11px] mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
               </div>
             </Link>
           );
