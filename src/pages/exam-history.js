@@ -66,7 +66,7 @@ const ExamHistoryPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
-            <div className="container mx-auto px-4 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-6 lg:space-y-12 mt-0">
+            <div className="container mx-auto px-0 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 space-y-6 lg:space-y-12 mt-0">
                <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                   <div className="space-y-2 text-center lg:text-left">
                      <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Exam History</h1>

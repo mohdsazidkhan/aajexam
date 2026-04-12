@@ -27,8 +27,8 @@ import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import Image from "next/image";
 
-// Pages that show hamburger menu on mobile
-const HAMBURGER_PAGES = ['/home', '/govt-exams', '/profile', '/community-questions'];
+// Pages that hide hamburger menu on mobile
+const HIDE_HAMBURGER_PAGES = ['/search', '/reels'];
 
 const StudentNavbar = () => {
   const router = useRouter();
@@ -39,7 +39,7 @@ const StudentNavbar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-  const showHamburger = HAMBURGER_PAGES.some(p => router.pathname === p || router.pathname.startsWith(p + '/'));
+  const showHamburger = !HIDE_HAMBURGER_PAGES.includes(router.pathname);
 
   useEffect(() => {
     if (isClient) dispatch(initializeDarkMode());
@@ -148,7 +148,6 @@ const StudentNavbar = () => {
 
               {[
                 { label: 'Profile', icon: User, path: '/profile' },
-                { label: 'Reels', icon: PlayCircle, path: '/reels' },
                 { label: 'Settings', icon: Settings, path: '/settings' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>

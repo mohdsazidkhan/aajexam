@@ -103,7 +103,7 @@ const StudentSidebar = () => {
       }`}
     >
       {/* User greeting */}
-      <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-white/5 min-w-[240px]">
+      <div className="p-4 border-b border-slate-100 dark:border-white/5 min-w-[240px]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center text-white text-sm font-black shadow-duo-primary flex-shrink-0">
             {initials}
