@@ -914,7 +914,7 @@ const ReelsFeed = () => {
             </div>
 
             {/* ── Right: profile + actions (exact Instagram Reels style) ── */}
-            <div className="absolute right-3 bottom-10 flex flex-col items-center gap-5 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
+            <div className="absolute right-3 bottom-5 flex flex-col items-center gap-3 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
               {/* Profile avatar + follow */}
               <div className="relative">
                 <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
