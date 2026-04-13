@@ -5,40 +5,208 @@ import ExamCategory from '@/models/ExamCategory';
 import Exam from '@/models/Exam';
 import ExamPattern from '@/models/ExamPattern';
 import PracticeTest from '@/models/PracticeTest';
+import Blog from '@/models/Blog';
+import Reel from '@/models/Reel';
+import ReelInteraction from '@/models/ReelInteraction';
+import { protect } from '@/middleware/auth';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
-    try {
-        await dbConnect();
+	try {
+		await dbConnect();
 
-        const { searchParams } = new URL(req.url);
-        const query = searchParams.get('query') || '';
-        const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 10;
-        const skip = (page - 1) * limit;
-        const regex = new RegExp(query, 'i');
+		const { searchParams } = new URL(req.url);
+		const rawQuery = (searchParams.get('query') || '').trim();
+		const page = parseInt(searchParams.get('page')) || 1;
+		const limit = parseInt(searchParams.get('limit')) || 12;
+		const skip = (page - 1) * limit;
 
-        // users
-        const users = await User.find({ $or: [{ name: regex }, { username: regex }, { email: regex }] }).select('_id name username profilePicture level').lean();
+		if (!rawQuery) {
+			return NextResponse.json({
+				success: true, page, limit,
+				users: [], govtExamCategories: [], govtExams: [],
+				examPatterns: [], practiceTests: [], blogs: [], reels: [],
+			});
+		}
 
-        // govt exams
-        const [govtExamCategories, govtExams, examPatterns, practiceTests] = await Promise.all([
-            ExamCategory.find({ $or: [{ name: regex }, { description: regex }] }).lean(),
-            Exam.find({ isActive: true, $or: [{ name: regex }, { code: regex }] }).populate('category', 'name').lean(),
-            ExamPattern.find({ $or: [{ title: regex }] }).populate('exam', 'name').lean(),
-            PracticeTest.find({ $or: [{ title: regex }] }).populate('examPattern', 'title').lean()
-        ]);
+		// Strip # prefix for clean search
+		const cleanQuery = rawQuery.replace(/^#/, '').trim();
+		const regex = new RegExp(cleanQuery, 'i');
 
-        return NextResponse.json({
-            success: true,
-            page, limit,
-            users: users.map(u => ({ ...u, type: 'user' })),
-            govtExamCategories: govtExamCategories.map(c => ({ ...c, type: 'examCategory' })),
-            govtExams: govtExams.map(e => ({ ...e, type: 'exam' })),
-            examPatterns: examPatterns.map(p => ({ ...p, type: 'pattern' })),
-            practiceTests: practiceTests.map(t => ({ ...t, type: 'test' }))
-        });
-    } catch (error) {
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-    }
+		// ── Run all searches in parallel ──
+		const [
+			users,
+			govtExamCategories,
+			govtExams,
+			examPatterns,
+			practiceTests,
+			blogs,
+			reelResults,
+		] = await Promise.all([
+
+			// ── Users: username, name, email ──
+			User.find({
+				$or: [
+					{ username: regex },
+					{ name: regex },
+					{ email: regex },
+				]
+			})
+				.select('_id name username email profilePicture level followersCount')
+				.limit(limit)
+				.lean(),
+
+			// ── ExamCategories: name, type, description ──
+			ExamCategory.find({
+				$or: [
+					{ name: regex },
+					{ type: regex },
+					{ description: regex },
+				]
+			})
+				.limit(limit)
+				.lean(),
+
+			// ── Exams: name, code, description ──
+			Exam.find({
+				isActive: true,
+				$or: [
+					{ name: regex },
+					{ code: regex },
+					{ description: regex },
+				]
+			})
+				.populate('category', 'name type')
+				.limit(limit)
+				.lean(),
+
+			// ── ExamPatterns: title, sections[].name ──
+			ExamPattern.find({
+				$or: [
+					{ title: regex },
+					{ 'sections.name': regex },
+				]
+			})
+				.populate('exam', 'name')
+				.limit(limit)
+				.lean(),
+
+			// ── PracticeTests: title, questions.questionText, questions.explanation,
+			//    questions.section, questions.difficulty, questions.tags[] ──
+			PracticeTest.find({
+				$or: [
+					{ title: regex },
+					{ 'questions.questionText': regex },
+					{ 'questions.explanation': regex },
+					{ 'questions.section': regex },
+					{ 'questions.difficulty': regex },
+					{ 'questions.tags': regex },
+				]
+			})
+				.select('_id title totalMarks duration isFree examPattern publishedAt')
+				.populate({ path: 'examPattern', select: 'title exam', populate: { path: 'exam', select: 'name category', populate: { path: 'category', select: 'name type' } } })
+				.limit(limit)
+				.lean(),
+
+			// ── Blogs: title, content, excerpt, featuredImageAlt, metaTitle,
+			//    metaDescription, tags[] ──
+			Blog.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ content: regex },
+					{ excerpt: regex },
+					{ featuredImageAlt: regex },
+					{ metaTitle: regex },
+					{ metaDescription: regex },
+					{ tags: regex },
+				]
+			})
+				.select('_id title slug excerpt featuredImage tags views likes readingTime author authorName exam createdAt')
+				.populate('exam', 'name')
+				.limit(limit)
+				.lean(),
+
+			// ── Reels: tags first, then full-text fallback ──
+			(async () => {
+				const baseFilter = { status: 'published' };
+
+				// Step 1: Search tags first
+				const tagFilter = {
+					...baseFilter,
+					tags: { $elemMatch: { $regex: cleanQuery, $options: 'i' } }
+				};
+				let reels = await Reel.find(tagFilter)
+					.sort({ publishedAt: -1 })
+					.limit(limit)
+					.populate('createdBy', 'name username profilePicture')
+					.lean();
+
+				// Step 2: If no tag results, search all content fields
+				if (reels.length === 0) {
+					const fullFilter = {
+						...baseFilter,
+						$or: [
+							{ type: regex },
+							{ title: regex },
+							{ content: regex },
+							{ caCategory: regex },
+							{ keyTakeaway: regex },
+							{ pollQuestion: regex },
+							{ keyPoints: regex },
+							{ steps: regex },
+							{ tryYourself: regex },
+							{ questionText: regex },
+							{ explanation: regex },
+							{ shortcutTrick: regex },
+							{ formula: regex },
+							{ subject: regex },
+							{ topic: regex },
+							{ examType: regex },
+							{ difficulty: regex },
+						]
+					};
+					reels = await Reel.find(fullFilter)
+						.sort({ publishedAt: -1 })
+						.limit(limit)
+						.populate('createdBy', 'name username profilePicture')
+						.lean();
+				}
+
+				return reels;
+			})(),
+		]);
+
+		// ── Attach reel interactions if user is logged in ──
+		let reelsWithInteraction = reelResults;
+		const auth = await protect(req);
+		if (auth.authenticated && reelResults.length > 0) {
+			const reelIds = reelResults.map(r => r._id);
+			const interactions = await ReelInteraction.find({
+				userId: auth.user._id,
+				reelId: { $in: reelIds }
+			}).lean();
+			const interactionMap = {};
+			interactions.forEach(i => { interactionMap[i.reelId.toString()] = i; });
+			reelsWithInteraction = reelResults.map(r => ({
+				...r,
+				userInteraction: interactionMap[r._id.toString()] || null
+			}));
+		}
+
+		return NextResponse.json({
+			success: true,
+			page, limit,
+			users: users.map(u => ({ ...u, type: 'user' })),
+			govtExamCategories: govtExamCategories.map(c => ({ ...c, type: 'examCategory' })),
+			govtExams: govtExams.map(e => ({ ...e, type: 'exam' })),
+			examPatterns: examPatterns.map(p => ({ ...p, type: 'pattern' })),
+			practiceTests: practiceTests.map(t => ({ ...t, type: 'test' })),
+			blogs: blogs.map(b => ({ ...b, type: 'blog' })),
+			reels: reelsWithInteraction.map(r => ({ ...r, type: 'reel' })),
+		});
+	} catch (error) {
+		console.error('Global search error:', error);
+		return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+	}
 }

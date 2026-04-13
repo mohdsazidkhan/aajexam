@@ -951,6 +951,11 @@ class ApiService {
     return this.request(`/api/reels/feed${queryString ? `?${queryString}` : ''}`);
   }
 
+  async searchReels({ query = '', page = 1, limit = 20 } = {}) {
+    const queryString = this.buildQuery({ query, page, limit });
+    return this.request(`/api/reels/search${queryString ? `?${queryString}` : ''}`);
+  }
+
   async getReelById(id) {
     return this.request(`/api/reels/${id}`);
   }
@@ -1000,7 +1005,7 @@ class ApiService {
     return this.request(`/api/reels/bookmarked${queryString ? `?${queryString}` : ''}`);
   }
 
-  async getTrendingReels(limit = 20) {
+  async getTrendingReels(limit = 12) {
     return this.request(`/api/reels/trending?limit=${limit}`);
   }
 

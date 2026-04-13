@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import API from '../../lib/api';
 import Loading from '../Loading';
 import MobileAppWrapper from '../MobileAppWrapper';
@@ -47,8 +48,20 @@ const DIFFICULTY_STYLES = {
   hard: 'bg-red-500/20 text-red-300 border-red-500/30',
 };
 
+// ──── Clickable Tag ────
+const ClickableTag = ({ text, className, children, onPress }) => (
+  <button
+    onClick={(e) => { e.stopPropagation(); onPress(text); }}
+    onTouchEnd={(e) => { e.stopPropagation(); }}
+    onPointerUp={(e) => { e.stopPropagation(); }}
+    className={`cursor-pointer hover:opacity-80 active:scale-95 transition-all relative z-10 ${className}`}
+  >
+    {children || `#${text}`}
+  </button>
+);
+
 // ──── Question Card ────
-const QuestionReelCard = ({ reel, onAnswer }) => {
+const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
   const [selected, setSelected] = useState(null);
   const [answered, setAnswered] = useState(false);
   const [result, setResult] = useState(null);
@@ -84,20 +97,20 @@ const QuestionReelCard = ({ reel, onAnswer }) => {
 
     return (
       <div className="flex flex-col h-full px-4 sm:px-6 py-4 justify-center">
-        {/* Subject & Topic tags */}
+        {/* Subject & Topic tags — clickable */}
         <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
-          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/30 uppercase tracking-wide">
-            {reel.subject}
-          </span>
+          <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/30 uppercase tracking-wide">
+            #{reel.subject}
+          </ClickableTag>
           {reel.topic && (
-            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-purple-500/20 text-purple-300 border-purple-500/30">
-              {reel.topic}
-            </span>
+            <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-purple-500/20 text-purple-300 border-purple-500/30">
+              #{reel.topic}
+            </ClickableTag>
           )}
           {reel.difficulty && (
-            <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold border ${DIFFICULTY_STYLES[reel.difficulty]}`}>
-              {reel.difficulty}
-            </span>
+            <ClickableTag text={reel.difficulty} onPress={onTagPress} className={`px-2 py-0.5 rounded-md text-[9px] font-bold border ${DIFFICULTY_STYLES[reel.difficulty]}`}>
+              #{reel.difficulty}
+            </ClickableTag>
           )}
         </div>
 
@@ -154,11 +167,11 @@ const QuestionReelCard = ({ reel, onAnswer }) => {
 };
 
 // ──── Fact Card ────
-const FactReelCard = ({ reel }) => (
+const FactReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-2 sm:mb-4">
-      <span className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white/70">{reel.subject}</span>
-      {reel.topic && <span className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">{reel.topic}</span>}
+      <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white/70">#{reel.subject}</ClickableTag>
+      {reel.topic && <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.topic}</ClickableTag>}
     </div>
     <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-2 sm:mb-4" />
 
@@ -175,7 +188,7 @@ const FactReelCard = ({ reel }) => (
     {reel.tags?.length > 0 && (
       <div className="flex flex-wrap gap-2 mt-2 sm:mt-4">
         {reel.tags.map((tag, i) => (
-          <span key={i} className="px-2.5 py-1 rounded-lg bg-white/5 text-[10px] font-medium text-white/50">🏷️ {tag}</span>
+          <ClickableTag key={i} text={tag} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/5 text-[10px] font-medium text-white/50">#{tag}</ClickableTag>
         ))}
       </div>
     )}
@@ -183,12 +196,12 @@ const FactReelCard = ({ reel }) => (
 );
 
 // ──── Tip/Trick Card ────
-const TipReelCard = ({ reel }) => (
+const TipReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-4">
       <Zap className="w-4 h-4 text-yellow-400" />
       <span className="text-[10px] font-bold uppercase tracking-widest text-yellow-400/80">Quick Trick</span>
-      {reel.subject && <span className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">{reel.subject}</span>}
+      {reel.subject && <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.subject}</ClickableTag>}
     </div>
     <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent mb-5" />
 
@@ -205,16 +218,16 @@ const TipReelCard = ({ reel }) => (
 );
 
 // ──── Current Affairs Card ────
-const CAReelCard = ({ reel }) => (
+const CAReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-2">
       <Newspaper className="w-4 h-4 text-red-400" />
       <span className="text-[10px] font-bold uppercase tracking-widest text-red-400/80">Current Affairs</span>
     </div>
-    <p className="text-xs text-white/40 mb-2 ms:mb-4">
-      📅 {reel.caDate ? new Date(reel.caDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
-      {reel.caCategory && ` · ${reel.caCategory}`}
-    </p>
+    <div className="flex items-center gap-2 text-xs text-white/40 mb-2 ms:mb-4">
+      <span>📅 {reel.caDate ? new Date(reel.caDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span>
+      {reel.caCategory && <ClickableTag text={reel.caCategory} onPress={onTagPress} className="text-xs text-red-400/60 hover:text-red-300">#{reel.caCategory}</ClickableTag>}
+    </div>
     {/* <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent mb-5" /> */}
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
@@ -448,6 +461,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
 
 // ──── Main Feed Component ────
 const ReelsFeed = () => {
+  const router = useRouter();
   const [reels, setReels] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -700,9 +714,12 @@ const ReelsFeed = () => {
     if (currentIndex > 0) setCurrentIndex(i => i - 1);
   };
 
-  // Touch handling for swipe
+  // Touch handling for swipe — skip if user tapped on an interactive element (button/a/input)
   const handleTouchStart = (e) => { touchStartY.current = e.touches[0].clientY; };
   const handleTouchEnd = (e) => {
+    // Don't hijack taps on interactive elements like tag buttons, links, etc.
+    const tag = e.target?.closest?.('button, a, input, [role="button"]');
+    if (tag) return;
     const diff = touchStartY.current - e.changedTouches[0].clientY;
     if (Math.abs(diff) > 50) {
       if (diff > 0) goNext(); else goPrev();
@@ -760,6 +777,11 @@ const ReelsFeed = () => {
   const handleFilterChange = (newFilters) => {
     setSelectedFilters(newFilters);
     setShowFilters(false);
+  };
+
+  // Navigate to search with hashtag — use window.location for reliable redirect from fixed overlay
+  const handleTagPress = (tagText) => {
+    window.location.href = `/search?q=${encodeURIComponent('#' + tagText)}`;
   };
 
   const currentReel = reels[currentIndex];
@@ -905,11 +927,11 @@ const ReelsFeed = () => {
             </AnimatePresence>
 
             {/* ── Center: scrollable content ── */}
-            <div className="absolute inset-0 overflow-y-auto pt-12 pb-24 pr-[50px]" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
-              {currentReel.type === 'question' && <QuestionReelCard reel={currentReel} onAnswer={handleAnswer} />}
-              {currentReel.type === 'fact' && <FactReelCard reel={currentReel} />}
-              {currentReel.type === 'tip' && <TipReelCard reel={currentReel} />}
-              {currentReel.type === 'current_affairs' && <CAReelCard reel={currentReel} />}
+            <div className="absolute inset-0 overflow-y-auto pt-12 pb-24 pr-[50px] z-[5]" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+              {currentReel.type === 'question' && <QuestionReelCard reel={currentReel} onAnswer={handleAnswer} onTagPress={handleTagPress} />}
+              {currentReel.type === 'fact' && <FactReelCard reel={currentReel} onTagPress={handleTagPress} />}
+              {currentReel.type === 'tip' && <TipReelCard reel={currentReel} onTagPress={handleTagPress} />}
+              {currentReel.type === 'current_affairs' && <CAReelCard reel={currentReel} onTagPress={handleTagPress} />}
               {currentReel.type === 'poll' && <PollReelCard reel={currentReel} onVote={handleVote} />}
             </div>
 
@@ -998,28 +1020,39 @@ const ReelsFeed = () => {
                     </button>
                   )}
                 </div>
-                {/* Caption / exam info */}
+                {/* Caption / exam info — click to filter reels */}
                 <div className="flex items-center gap-2 flex-wrap mb-1">
                   {currentReel.examType && currentReel.examType !== 'General' && (
-                    <span className="text-[12px] font-semibold text-white/90" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>{currentReel.examType}</span>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setSelectedFilters(prev => ({ ...prev, examType: currentReel.examType })); }}
+                      onTouchEnd={(e) => { e.stopPropagation(); }}
+                      className="text-[12px] font-semibold text-white/90 hover:text-white active:text-primary-400 active:scale-95 transition-all"
+                      style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
+                    >
+                      {currentReel.examType}
+                    </button>
                   )}
                   {currentReel.subject && currentReel.subject !== 'General' && (
-                    <span className="text-[12px] text-white/70">· {currentReel.subject}</span>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setSelectedFilters(prev => ({ ...prev, subject: currentReel.subject })); }}
+                      onTouchEnd={(e) => { e.stopPropagation(); }}
+                      className="text-[12px] text-white/70 hover:text-white active:text-primary-400 active:scale-95 transition-all"
+                      style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
+                    >
+                      · {currentReel.subject}
+                    </button>
                   )}
                   <span className="text-[11px] text-white/50">{currentIndex + 1}/{reels.length}</span>
                 </div>
-                {/* Hashtags */}
+                {/* Hashtags — click redirects to search page */}
                 {currentReel.tags?.length > 0 && (
                   <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
                     {(showAllTags ? currentReel.tags : currentReel.tags.slice(0, 2)).map((tag, i) => (
                       <button
                         key={i}
-                        onClick={() => {
-                          setSelectedFilters(prev => ({ ...prev, type: '', subject: '', examType: '', difficulty: '' }));
-                          setSelectedFilters(prev => ({ ...prev, tag }));
-                          setShowFilters(false);
-                        }}
-                        className="text-[12px] font-bold text-white/80 hover:text-white active:text-primary-400 transition-colors"
+                        onClick={(e) => { e.stopPropagation(); handleTagPress(tag); }}
+                        onTouchEnd={(e) => { e.stopPropagation(); }}
+                        className="text-[12px] font-bold text-white/80 hover:text-white active:text-primary-400 active:scale-95 transition-all"
                         style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
                       >
                         #{tag}
