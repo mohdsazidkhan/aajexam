@@ -233,6 +233,48 @@ class ApiService {
     return this.request(`/api/study-materials${query ? `?${query}` : ''}`);
   }
 
+  // ===== QUIZ ENDPOINTS =====
+  async getQuizzes(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/quizzes${query ? `?${query}` : ''}`);
+  }
+
+  async getQuizById(id) {
+    return this.request(`/api/quiz/quizzes/${id}`);
+  }
+
+  async startQuiz(quizId) {
+    return this.request(`/api/quiz/quizzes/${quizId}/start`, { method: 'POST' });
+  }
+
+  async submitQuiz(quizId, { attemptId, answers, totalTime }) {
+    return this.request(`/api/quiz/quizzes/${quizId}/submit`, {
+      method: 'POST',
+      body: JSON.stringify({ attemptId, answers, totalTime })
+    });
+  }
+
+  async getQuizLeaderboard(quizId, limit = 20) {
+    return this.request(`/api/quiz/quizzes/${quizId}/leaderboard?limit=${limit}`);
+  }
+
+  async getMyQuizAttempts(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/my-attempts${query ? `?${query}` : ''}`);
+  }
+
+  async getQuizAttemptDetail(attemptId) {
+    return this.request(`/api/quiz/my-attempts/${attemptId}`);
+  }
+
+  async getSubjectsForExam(examId) {
+    return this.request(`/api/quiz/subjects?exam=${examId}`);
+  }
+
+  async getTopicsForSubject(subjectId) {
+    return this.request(`/api/quiz/topics?subject=${subjectId}`);
+  }
+
   // ===== SEARCH ENDPOINTS =====
   async searchAll({ query = '', page = 1, limit = 12 }) {
     const searchQuery = new URLSearchParams({ query, page, limit }).toString();

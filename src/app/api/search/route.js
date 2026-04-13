@@ -8,6 +8,7 @@ import PracticeTest from '@/models/PracticeTest';
 import Blog from '@/models/Blog';
 import Reel from '@/models/Reel';
 import ReelInteraction from '@/models/ReelInteraction';
+import Quiz from '@/models/Quiz';
 import { protect } from '@/middleware/auth';
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +26,7 @@ export async function GET(req) {
 			return NextResponse.json({
 				success: true, page, limit,
 				users: [], govtExamCategories: [], govtExams: [],
-				examPatterns: [], practiceTests: [], blogs: [], reels: [],
+				examPatterns: [], practiceTests: [], blogs: [], reels: [], quizzes: [],
 			});
 		}
 
@@ -42,6 +43,7 @@ export async function GET(req) {
 			practiceTests,
 			blogs,
 			reelResults,
+			quizResults,
 		] = await Promise.all([
 
 			// ── Users: username, name, email ──
@@ -175,6 +177,23 @@ export async function GET(req) {
 
 				return reels;
 			})(),
+
+			// ── Quizzes: title, description, tags ──
+			Quiz.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ description: regex },
+					{ tags: regex },
+				]
+			})
+				.select('_id title description difficulty type duration totalMarks isFree totalAttempts avgScore tags publishedAt')
+				.populate('exam', 'name code')
+				.populate('subject', 'name')
+				.populate('topic', 'name')
+				.sort({ publishedAt: -1 })
+				.limit(limit)
+				.lean(),
 		]);
 
 		// ── Attach reel interactions if user is logged in ──
@@ -204,6 +223,7 @@ export async function GET(req) {
 			practiceTests: practiceTests.map(t => ({ ...t, type: 'test' })),
 			blogs: blogs.map(b => ({ ...b, type: 'blog' })),
 			reels: reelsWithInteraction.map(r => ({ ...r, type: 'reel' })),
+			quizzes: quizResults.map(q => ({ ...q, type: 'quiz' })),
 		});
 	} catch (error) {
 		console.error('Global search error:', error);

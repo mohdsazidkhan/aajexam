@@ -26,7 +26,8 @@ import {
    Newspaper,
    BarChart3,
    Play,
-   ArrowLeft
+   ArrowLeft,
+   BrainCircuit
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -58,9 +59,10 @@ const SearchPage = () => {
    const isSearchingRef = useRef(false);
    const hasInitialSearchedRef = useRef(false);
 
-   // Reels & Blogs from global search
+   // Reels, Blogs & Quizzes from global search
    const [searchReels, setSearchReels] = useState([]);
    const [blogs, setBlogs] = useState([]);
+   const [quizzes, setQuizzes] = useState([]);
 
    // Follow state
    const [followMap, setFollowMap] = useState({});
@@ -104,6 +106,7 @@ const SearchPage = () => {
             setExamPatterns(res.examPatterns || []);
             setPracticeTests(res.practiceTests || []);
             setBlogs(res.blogs || []);
+            setQuizzes(res.quizzes || []);
             setSearchReels(res.reels || []);
             setTotalPages(res.totalPages || 1);
             checkFollowStatuses(usersList);
@@ -115,7 +118,7 @@ const SearchPage = () => {
    const clearResults = () => {
       setUsers([]);
       setGovtExamCategories([]); setGovtExams([]); setExamPatterns([]); setPracticeTests([]);
-      setBlogs([]); setSearchReels([]);
+      setBlogs([]); setQuizzes([]); setSearchReels([]);
       setTotalPages(1);
    };
 
@@ -180,6 +183,7 @@ const SearchPage = () => {
    const tabs = [
       { key: 'all', label: 'All', icon: Compass },
       { key: 'reels', label: 'Reels', icon: Play },
+      { key: 'quiz', label: 'Quiz', icon: BrainCircuit },
       { key: 'exam', label: 'Exams', icon: ShieldCheck },
       { key: 'test', label: 'Tests', icon: FileText },
       { key: 'blog', label: 'Blogs', icon: BookOpen },
@@ -188,8 +192,9 @@ const SearchPage = () => {
 
    const getFilteredResults = () => {
       switch (activeTab) {
-         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...blogs, ...users];
+         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...quizzes, ...blogs, ...users];
          case 'reels': return []; // reels rendered separately via grid
+         case 'quiz': return quizzes;
          case 'exam': return [...govtExams, ...govtExamCategories, ...examPatterns];
          case 'test': return practiceTests;
          case 'blog': return blogs;
@@ -199,7 +204,7 @@ const SearchPage = () => {
    };
 
    const results = getFilteredResults();
-   const hasSearched = results.length > 0 || searchReels.length > 0 || (query && hasInitialSearchedRef.current);
+   const hasSearched = results.length > 0 || searchReels.length > 0 || quizzes.length > 0 || (query && hasInitialSearchedRef.current);
 
    const REEL_TYPE_CONFIG = {
       question: { icon: HelpCircle, gradient: 'from-blue-600 to-indigo-700' },
@@ -399,6 +404,39 @@ const SearchPage = () => {
                            </div>
                         )}
 
+                        {/* ── Quizzes Section ── */}
+                        {quizzes.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <BrainCircuit className="w-4 h-4 text-emerald-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Quizzes</h3>
+                              </div>
+                              {quizzes.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/quiz/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0">
+                                       <BrainCircuit className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                       <p className="text-xs text-slate-400">
+                                          {item.subject?.name || ''}{item.topic?.name ? ` · ${item.topic.name}` : ''} · {item.duration} min · {item.totalMarks} marks
+                                       </p>
+                                    </div>
+                                    <div className="flex flex-col items-end gap-0.5 shrink-0">
+                                       <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">PLAY</span>
+                                       {item.totalAttempts > 0 && (
+                                          <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
+                                       )}
+                                    </div>
+                                 </div>
+                              ))}
+                              {quizzes.length > 4 && (
+                                 <button onClick={() => setActiveTab('quiz')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all quizzes →</button>
+                              )}
+                           </div>
+                        )}
+
                         {/* ── Blogs Section ── */}
                         {blogs.length > 0 && (
                            <div className="px-4">
@@ -465,7 +503,7 @@ const SearchPage = () => {
                         )}
 
                         {/* No results at all */}
-                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && blogs.length === 0 && users.length === 0 && (
+                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && quizzes.length === 0 && blogs.length === 0 && users.length === 0 && (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
                                  <Search className="w-7 h-7 text-slate-300" />
@@ -568,6 +606,24 @@ const SearchPage = () => {
                                              <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
                                           </div>
                                           <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Quiz */}
+                                    {item.type === 'quiz' && (
+                                       <div onClick={() => router.push(`/quiz/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                             <p className="text-xs text-slate-400">
+                                                {item.subject?.name || ''}{item.topic?.name ? ` · ${item.topic.name}` : ''} · {item.duration} min · {item.totalMarks} marks
+                                             </p>
+                                          </div>
+                                          <div className="flex flex-col items-end gap-0.5 shrink-0">
+                                             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">PLAY</span>
+                                             {item.totalAttempts > 0 && (
+                                                <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
+                                             )}
+                                          </div>
                                        </div>
                                     )}
                                     {/* Blog */}
