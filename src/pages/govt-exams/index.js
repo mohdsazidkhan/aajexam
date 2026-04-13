@@ -104,7 +104,7 @@ const GovernmentExamsLanding = ({ initialCategories = [], initialError = '', seo
               className="inline-flex items-center gap-2 bg-white/20 dark:bg-primary-500/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30 dark:border-primary-500/30"
             >
               <TrendingUp className="w-3.5 h-3.5" />
-              Trending: SSC GL 2026
+              Trending: SSC CGL 2026
             </motion.div>
 
             <div className="space-y-2">
