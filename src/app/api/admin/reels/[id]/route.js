@@ -29,6 +29,7 @@ export async function PUT(req, { params }) {
 			'caDate', 'caCategory', 'tableData', 'keyTakeaway',
 			'pollQuestion', 'pollOptions',
 			'subject', 'topic', 'examType', 'difficulty', 'tags',
+			'audioFile', 'duration',
 			'status', 'adminNotes'
 		];
 

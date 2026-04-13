@@ -74,6 +74,10 @@ const reelSchema = new mongoose.Schema({
 	answeredCount: { type: Number, default: 0 },
 	correctCount: { type: Number, default: 0 },
 
+	// ──── Audio & Duration ────
+	audioFile: { type: String, trim: true, default: '' }, // filename from /reel_audio/
+	duration: { type: Number, default: 0, min: 0 }, // seconds
+
 	// ──── Creator ────
 	createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 	creatorRole: { type: String, enum: ['admin', 'user'], default: 'user' },
@@ -100,5 +104,9 @@ reelSchema.pre('save', function (next) {
 	next();
 });
 
-const Reel = mongoose.models.Reel || mongoose.model('Reel', reelSchema);
+// Re-register model with latest schema (handles HMR in dev mode)
+if (mongoose.models.Reel) delete mongoose.models.Reel;
+if (mongoose.connection?.models?.Reel) delete mongoose.connection.models.Reel;
+if (mongoose.modelSchemas?.Reel) delete mongoose.modelSchemas.Reel;
+const Reel = mongoose.model('Reel', reelSchema);
 export default Reel;

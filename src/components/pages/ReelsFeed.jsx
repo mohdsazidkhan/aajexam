@@ -11,7 +11,8 @@ import { isAuthenticated } from '../../lib/auth';
 import {
   Heart, Bookmark, Share2, ChevronUp, ChevronDown, Filter, X, Search,
   CheckCircle2, XCircle, Flame, Zap, BookOpen, Newspaper, BarChart3,
-  HelpCircle, ArrowLeft, Plus, TrendingUp, BookmarkCheck, Lightbulb
+  HelpCircle, ArrowLeft, Plus, TrendingUp, BookmarkCheck, Lightbulb,
+  Music, Volume2, VolumeX, Disc3
 } from 'lucide-react';
 
 // ──── Gradient config per subject ────
@@ -464,6 +465,113 @@ const ReelsFeed = () => {
   const containerRef = useRef(null);
   const touchStartY = useRef(0);
 
+  // Audio & Timer state
+  const audioRef = useRef(null);
+  const timerIntervalRef = useRef(null);
+  const goNextRef = useRef(null);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+  const [totalDuration, setTotalDuration] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [showMuteIcon, setShowMuteIcon] = useState(false);
+  const muteTimeoutRef = useRef(null);
+
+  // Generate readable label from any audio filename
+  const getAudioLabel = (filename) => {
+    if (!filename) return '';
+    const name = filename.replace(/\.(mp3|wav|ogg)$/, '');
+    return name.split('-').slice(0, -1).join(' ').replace(/\b\w/g, c => c.toUpperCase()) || name;
+  };
+
+  // Audio playback & countdown timer per reel
+  useEffect(() => {
+    // Cleanup previous audio & timer
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    if (timerIntervalRef.current) {
+      clearInterval(timerIntervalRef.current);
+      timerIntervalRef.current = null;
+    }
+    setTimeRemaining(0);
+    setTotalDuration(0);
+    setIsAudioPlaying(false);
+
+    const reel = reels[currentIndex];
+    if (!reel || !reel.audioFile || !reel.duration || reel.duration <= 0) return;
+
+    const dur = reel.duration;
+    setTimeRemaining(dur);
+    setTotalDuration(dur);
+
+    // Create and play audio
+    const audio = new Audio(`/reel_audio/${reel.audioFile}`);
+    audio.loop = true;
+    audio.volume = isMuted ? 0 : 0.5;
+    audioRef.current = audio;
+
+    audio.play().then(() => {
+      setIsAudioPlaying(true);
+    }).catch(() => {
+      setIsAudioPlaying(false);
+    });
+
+    // Countdown timer — auto-scroll on end
+    let remaining = dur;
+    timerIntervalRef.current = setInterval(() => {
+      remaining -= 1;
+      setTimeRemaining(remaining);
+      if (remaining <= 0) {
+        clearInterval(timerIntervalRef.current);
+        timerIntervalRef.current = null;
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current = null;
+        }
+        setIsAudioPlaying(false);
+        // Auto scroll to next reel after duration ends
+        setTimeout(() => {
+          if (goNextRef.current) goNextRef.current();
+        }, 500);
+      }
+    }, 1000);
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if (timerIntervalRef.current) {
+        clearInterval(timerIntervalRef.current);
+        timerIntervalRef.current = null;
+      }
+    };
+  }, [currentIndex, reels]);
+
+  // Sync mute state
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = isMuted ? 0 : 0.5;
+    }
+  }, [isMuted]);
+
+  const toggleMute = () => {
+    setIsMuted(prev => !prev);
+    // Show mute/unmute icon in center briefly (Instagram style)
+    setShowMuteIcon(true);
+    if (muteTimeoutRef.current) clearTimeout(muteTimeoutRef.current);
+    muteTimeoutRef.current = setTimeout(() => setShowMuteIcon(false), 800);
+  };
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const audioProgress = totalDuration > 0 ? ((totalDuration - timeRemaining) / totalDuration) * 100 : 0;
+
   // Load filter options
   useEffect(() => {
     API.getReelsFilterOptions().then(res => {
@@ -584,6 +692,8 @@ const ReelsFeed = () => {
       loadNextBatch();
     }
   };
+  // Keep ref in sync for auto-scroll timer callback
+  goNextRef.current = goNext;
   const goPrev = () => {
     setShowExplanation(false);
     setShowAllTags(false);
@@ -756,6 +866,44 @@ const ReelsFeed = () => {
               </div>
             </div>
 
+            {/* ── Audio Progress Bar (top, like Instagram stories) ── */}
+            {currentReel.audioFile && currentReel.duration > 0 && (
+              <div className="absolute top-0 left-0 right-0 z-30 h-[3px] bg-white/10">
+                <motion.div
+                  className="h-full bg-white/80 rounded-r-full"
+                  initial={{ width: '0%' }}
+                  animate={{ width: `${audioProgress}%` }}
+                  transition={{ duration: 0.3, ease: 'linear' }}
+                />
+              </div>
+            )}
+
+            {/* ── Audio Timer (top center pill) ── */}
+            {currentReel.audioFile && currentReel.duration > 0 && timeRemaining > 0 && (
+              <div className="absolute top-[18px] left-1/2 -translate-x-1/2 z-30">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm">
+                  <span className="text-[10px] font-bold text-white/70 tabular-nums">{formatTime(timeRemaining)}</span>
+                </div>
+              </div>
+            )}
+
+            {/* ── Mute/Unmute center feedback (Instagram style) ── */}
+            <AnimatePresence>
+              {showMuteIcon && currentReel.audioFile && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none"
+                >
+                  <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
+                    {isMuted ? <VolumeX className="w-8 h-8 text-white" /> : <Volume2 className="w-8 h-8 text-white" />}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* ── Center: scrollable content ── */}
             <div className="absolute inset-0 overflow-y-auto pt-12 pb-24 pr-[50px]" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
               {currentReel.type === 'question' && <QuestionReelCard reel={currentReel} onAnswer={handleAnswer} />}
@@ -766,7 +914,7 @@ const ReelsFeed = () => {
             </div>
 
             {/* ── Right: profile + actions (exact Instagram Reels style) ── */}
-            <div className="absolute right-3 bottom-16 flex flex-col items-center gap-5 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
+            <div className="absolute right-3 bottom-10 flex flex-col items-center gap-5 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
               {/* Profile avatar + follow */}
               <div className="relative">
                 <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
@@ -800,6 +948,25 @@ const ReelsFeed = () => {
                 showExplanationIcon={true}
                 onExplanation={() => setShowExplanation(!showExplanation)}
               />
+
+              {/* ── Spinning Vinyl Disc (Instagram audio disc) ── */}
+              {currentReel.audioFile && currentReel.duration > 0 && (
+                <button onClick={toggleMute} className="relative w-10 h-10">
+                  <div
+                    className="w-full h-full rounded-full border-2 border-white/20 bg-gradient-to-br from-slate-800 via-slate-900 to-black flex items-center justify-center"
+                    style={{
+                      animation: isAudioPlaying && !isMuted ? 'spin 3s linear infinite' : 'none',
+                    }}
+                  >
+                    <div className="w-3.5 h-3.5 rounded-full bg-white/20 border border-white/30" />
+                    <Music className="w-3 h-3 text-white/60 absolute" />
+                  </div>
+                  {/* Outer ring glow when playing */}
+                  {isAudioPlaying && !isMuted && (
+                    <div className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-20" />
+                  )}
+                </button>
+              )}
             </div>
 
             {/* ── Bottom: info bar (exact Instagram gradient) ── */}
@@ -843,7 +1010,7 @@ const ReelsFeed = () => {
                 </div>
                 {/* Hashtags */}
                 {currentReel.tags?.length > 0 && (
-                  <div className="flex items-center gap-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
                     {(showAllTags ? currentReel.tags : currentReel.tags.slice(0, 2)).map((tag, i) => (
                       <button
                         key={i}
@@ -867,6 +1034,27 @@ const ReelsFeed = () => {
                         {showAllTags ? 'less' : '...more'}
                       </button>
                     )}
+                  </div>
+                )}
+
+                {/* ── Audio Marquee (Instagram style) ── */}
+                {currentReel.audioFile && currentReel.duration > 0 && (
+                  <div className="flex items-center gap-2 mr-12">
+                    <Music className="w-3 h-3 text-white shrink-0" />
+                    <div className="overflow-hidden flex-1">
+                      <div
+                        className="whitespace-nowrap"
+                        style={{
+                          animation: isAudioPlaying ? 'marquee 8s linear infinite' : 'none',
+                        }}
+                      >
+                        <span className="text-[12px] font-semibold text-white/90" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                          {getAudioLabel(currentReel.audioFile)}
+                          &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;
+                          {getAudioLabel(currentReel.audioFile)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

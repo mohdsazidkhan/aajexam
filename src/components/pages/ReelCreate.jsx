@@ -10,7 +10,8 @@ import MobileAppWrapper from '../MobileAppWrapper';
 import Button from '../ui/Button';
 import { isAuthenticated } from '../../lib/auth';
 import {
-  ArrowLeft, Flame, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Plus, Trash2
+  ArrowLeft, Flame, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Plus, Trash2,
+  Music, Clock, Play, Pause, Search, Volume2, VolumeX
 } from 'lucide-react';
 
 const TYPES = [
@@ -64,6 +65,89 @@ const ReelCreate = () => {
   const [pollQuestion, setPollQuestion] = useState('');
   const [pollOptions, setPollOptions] = useState([{ text: '' }, { text: '' }]);
 
+  // Audio & Duration
+  const [audioList, setAudioList] = useState([]);
+  const [audioFile, setAudioFile] = useState('');
+  const [duration, setDuration] = useState('');
+  const [audioSearch, setAudioSearch] = useState('');
+  const [audioPlaying, setAudioPlaying] = useState(null);
+  const [audioMuted, setAudioMuted] = useState(false);
+  const audioPreviewRef = React.useRef(null);
+
+  // Fetch audio files from server + load durations
+  useEffect(() => {
+    API.getReelAudioList().then(res => {
+      if (res?.success) {
+        const list = res.data.map(a => ({ ...a, audioDuration: null }));
+        setAudioList(list);
+        // Load duration for each audio file
+        list.forEach((item, i) => {
+          const audio = new Audio(`/reel_audio/${item.value}`);
+          audio.addEventListener('loadedmetadata', () => {
+            setAudioList(prev => {
+              const updated = [...prev];
+              if (updated[i]) updated[i] = { ...updated[i], audioDuration: Math.round(audio.duration) };
+              return updated;
+            });
+          });
+        });
+      }
+    });
+  }, []);
+
+  const formatAudioDuration = (sec) => {
+    if (!sec) return '';
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const filteredAudios = audioList.filter(a =>
+    a.label.toLowerCase().includes(audioSearch.toLowerCase()) ||
+    a.artist.toLowerCase().includes(audioSearch.toLowerCase())
+  );
+
+  const handleAudioPlayPause = (file) => {
+    // If same file is playing, pause it
+    if (audioPlaying === file && audioPreviewRef.current) {
+      audioPreviewRef.current.pause();
+      audioPreviewRef.current = null;
+      setAudioPlaying(null);
+      return;
+    }
+    // Stop any existing
+    if (audioPreviewRef.current) {
+      audioPreviewRef.current.pause();
+      audioPreviewRef.current = null;
+    }
+    const audio = new Audio(`/reel_audio/${file}`);
+    audio.volume = audioMuted ? 0 : 0.5;
+    audio.loop = true;
+    audio.play();
+    audioPreviewRef.current = audio;
+    setAudioPlaying(file);
+    audio.addEventListener('error', () => { setAudioPlaying(null); });
+  };
+
+  const handleAudioSelect = (file) => {
+    setAudioFile(file);
+    // Auto play selected
+    if (audioPlaying !== file) handleAudioPlayPause(file);
+  };
+
+  const toggleAudioMute = () => {
+    setAudioMuted(prev => {
+      const next = !prev;
+      if (audioPreviewRef.current) audioPreviewRef.current.volume = next ? 0 : 0.5;
+      return next;
+    });
+  };
+
+  // Cleanup audio on unmount
+  React.useEffect(() => {
+    return () => { if (audioPreviewRef.current) { audioPreviewRef.current.pause(); } };
+  }, []);
+
   if (!isAuthenticated()) {
     return (
       <MobileAppWrapper>
@@ -82,7 +166,7 @@ const ReelCreate = () => {
     if (!type) { toast.error('Select card type'); return; }
     setLoading(true);
     try {
-      const data = { type, title, content, subject, topic, examType, difficulty, tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [] };
+      const data = { type, title, content, subject, topic, examType, difficulty, tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [], audioFile, duration: duration ? parseInt(duration) : 0 };
 
       if (type === 'question') Object.assign(data, { questionText, options, correctAnswerIndex, explanation, shortcutTrick });
       if (type === 'fact') Object.assign(data, { highlightText, keyPoints: keyPoints.filter(Boolean) });
@@ -98,7 +182,7 @@ const ReelCreate = () => {
 
   return (
     <MobileAppWrapper>
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen">
         <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div className="flex items-center gap-3 max-w-2xl mx-auto">
             <Link href="/reels" className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
@@ -110,7 +194,7 @@ const ReelCreate = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto p-4 sm:p-6">
+        <div className="max-w-2xl mx-auto p-0 sm:p-6">
           {!type ? (
             <div className="space-y-4">
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
@@ -230,6 +314,86 @@ const ReelCreate = () => {
                   <div><label className={labelClass}>Content *</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
+
+              {/* Audio & Duration — Instagram Style */}
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                    <Music className="w-4 h-4 text-pink-500" /> Add Audio
+                  </h3>
+                  {audioFile && (
+                    <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
+                      className="text-[10px] font-bold text-red-500 uppercase tracking-wider">Remove</button>
+                  )}
+                </div>
+
+                {/* Search */}
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`${inputClass} pl-9`} />
+                </div>
+
+                {/* Audio List */}
+                <div className="space-y-1.5 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+                  {filteredAudios.map(a => (
+                    <div key={a.value}
+                      onClick={() => handleAudioSelect(a.value)}
+                      className={`flex items-center gap-3 p-2.5 rounded-xl cursor-pointer transition-all ${audioFile === a.value
+                        ? 'bg-pink-50 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-700'
+                        : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
+                    >
+                      {/* Play/Pause */}
+                      <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
+                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
+                          ? 'bg-pink-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                        {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+                      </button>
+                      {/* Info */}
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-pink-600 dark:text-pink-400' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-[10px] text-slate-400 truncate">{a.artist}</p>
+                          {a.audioDuration && (
+                            <span className="text-[10px] font-medium text-slate-400 tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
+                          )}
+                        </div>
+                      </div>
+                      {/* Selected check */}
+                      {audioFile === a.value && (
+                        <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
+                          <span className="text-white text-[10px] font-bold">✓</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  {filteredAudios.length === 0 && (
+                    <p className="text-xs text-slate-400 text-center py-3">No audio found</p>
+                  )}
+                </div>
+
+                {/* Mute toggle (when playing) */}
+                {audioPlaying && (
+                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
+                    </div>
+                    <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-pink-500" />}
+                    </button>
+                  </div>
+                )}
+
+                {/* Duration */}
+                <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <label className={labelClass}>Duration (seconds)</label>
+                  <div className="relative">
+                    <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 15" min="5" max="120" className={inputClass} />
+                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
+                  <p className="text-[10px] text-slate-400 mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
+                </div>
+              </div>
 
               <Button type="submit" disabled={loading} className="w-full">{loading ? 'Submitting...' : 'Submit Reel'}</Button>
             </form>

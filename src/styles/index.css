@@ -7,6 +7,16 @@
 /* Import dark mode variables/utilities */
 @import './darkMode.css';
 
+/* ── Reel Audio Animations ── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @layer base {
   :root {
     /* Central Theme Tokens - Light Mode */

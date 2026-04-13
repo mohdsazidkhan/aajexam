@@ -14,7 +14,8 @@ import {
   Flame, Plus, CheckCircle2, XCircle, Clock, Filter, LayoutGrid, List,
   Table as TableIcon, Search, Eye, Heart, Bookmark, MessageCircle,
   MoreVertical, ShieldCheck, Trash2, Edit3, ChevronDown, Activity,
-  PieChart, HelpCircle, Info, FileText, ChevronRight, User as UserIcon
+  PieChart, HelpCircle, Info, FileText, ChevronRight, User as UserIcon,
+  Music, Timer
 } from 'lucide-react';
 import ViewToggle from '../../ViewToggle';
 
@@ -254,6 +255,15 @@ const AdminReels = () => {
                                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
                                     <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
                                   </div>
+                                  {item.audioFile && (
+                                    <div className="flex items-center gap-1.5 mt-1.5">
+                                      <Music className="w-3 h-3 text-pink-500" />
+                                      <span className="text-[10px] font-semibold text-pink-500/80 truncate max-w-[180px]">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                                      {item.duration > 0 && (
+                                        <span className="text-[10px] font-bold text-slate-400 flex items-center gap-0.5"><Timer className="w-3 h-3" />{item.duration}s</span>
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             </td>
@@ -311,6 +321,15 @@ const AdminReels = () => {
                         <div className="flex-1 min-w-0 mb-3">
                           <p className="text-[11px] font-black text-content-primary line-clamp-3 uppercase italic leading-tight mb-1">{getPreviewText(item)}</p>
                           <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{item.subject}</p>
+                          {item.audioFile && (
+                            <div className="flex items-center gap-1.5 mt-1.5">
+                              <Music className="w-3 h-3 text-pink-500 shrink-0" />
+                              <span className="text-[9px] font-semibold text-pink-500/80 truncate">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                              {item.duration > 0 && (
+                                <span className="text-[9px] font-bold text-slate-400 shrink-0">{item.duration}s</span>
+                              )}
+                            </div>
+                          )}
                         </div>
 
                         <div className="flex flex-col gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-800/50">

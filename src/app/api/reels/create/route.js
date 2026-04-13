@@ -15,7 +15,8 @@ export async function POST(req) {
 		const { type, title, content, questionText, options, correctAnswerIndex, explanation,
 			shortcutTrick, keyPoints, highlightText, steps, tryYourself, formula,
 			caDate, caCategory, tableData, keyTakeaway, pollQuestion, pollOptions,
-			subject, topic, examType, difficulty, tags, backgroundColor } = body;
+			subject, topic, examType, difficulty, tags, backgroundColor,
+			audioFile, duration } = body;
 
 		if (!type) {
 			return NextResponse.json({ success: false, message: 'Card type is required' }, { status: 400 });
@@ -66,6 +67,8 @@ export async function POST(req) {
 			examType: examType?.trim() || 'General',
 			difficulty: difficulty || 'medium',
 			tags: tags?.map(t => t.toLowerCase().trim()) || [],
+			audioFile: audioFile?.trim() || '',
+			duration: duration ? parseInt(duration) : 0,
 			createdBy: auth.user._id,
 			creatorRole: isAdmin ? 'admin' : 'user',
 			status: isAdmin ? 'published' : 'pending'

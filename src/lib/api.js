@@ -1013,6 +1013,10 @@ class ApiService {
     return this.request('/api/reels/stats');
   }
 
+  async getReelAudioList() {
+    return this.request('/api/reels/audio');
+  }
+
   // ===== REELS - ADMIN =====
   async getAdminReels(params = {}) {
     const queryString = this.buildQuery(params);
