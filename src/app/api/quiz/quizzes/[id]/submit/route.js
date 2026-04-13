@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
 import Question from '@/models/Question';
@@ -89,10 +90,18 @@ export async function POST(req, { params }) {
         // compute rank
         const rank = await recomputeRanksForQuiz(id, attempt._id);
 
+        // populate answers.question for review
+        const populated = await QuizAttempt.findById(attempt._id)
+            .populate({
+                path: 'answers.question',
+                select: 'questionText options explanation difficulty image'
+            })
+            .lean();
+
         return NextResponse.json({
             success: true,
             data: {
-                ...attempt.toObject(),
+                ...populated,
                 rank: rank.rank,
                 percentile: rank.percentile
             }
@@ -104,7 +113,7 @@ export async function POST(req, { params }) {
 
 async function getAvgScore(quizId) {
     const result = await QuizAttempt.aggregate([
-        { $match: { quiz: quizId, status: 'Completed' } },
+        { $match: { quiz: new mongoose.Types.ObjectId(quizId), status: 'Completed' } },
         { $group: { _id: null, avg: { $avg: '$percentage' } } }
     ]);
     return result[0]?.avg || 0;

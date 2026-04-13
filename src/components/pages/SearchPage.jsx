@@ -27,7 +27,10 @@ import {
    BarChart3,
    Play,
    ArrowLeft,
-   BrainCircuit
+   BrainCircuit,
+   BookMarked,
+   Layers,
+   Hash
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -59,10 +62,13 @@ const SearchPage = () => {
    const isSearchingRef = useRef(false);
    const hasInitialSearchedRef = useRef(false);
 
-   // Reels, Blogs & Quizzes from global search
+   // Reels, Blogs, Quizzes, Subjects, Topics, Hashtags from global search
    const [searchReels, setSearchReels] = useState([]);
    const [blogs, setBlogs] = useState([]);
    const [quizzes, setQuizzes] = useState([]);
+   const [subjects, setSubjects] = useState([]);
+   const [topics, setTopics] = useState([]);
+   const [hashtags, setHashtags] = useState([]);
 
    // Follow state
    const [followMap, setFollowMap] = useState({});
@@ -107,6 +113,9 @@ const SearchPage = () => {
             setPracticeTests(res.practiceTests || []);
             setBlogs(res.blogs || []);
             setQuizzes(res.quizzes || []);
+            setSubjects(res.subjects || []);
+            setTopics(res.topics || []);
+            setHashtags(res.hashtags || []);
             setSearchReels(res.reels || []);
             setTotalPages(res.totalPages || 1);
             checkFollowStatuses(usersList);
@@ -118,7 +127,7 @@ const SearchPage = () => {
    const clearResults = () => {
       setUsers([]);
       setGovtExamCategories([]); setGovtExams([]); setExamPatterns([]); setPracticeTests([]);
-      setBlogs([]); setQuizzes([]); setSearchReels([]);
+      setBlogs([]); setQuizzes([]); setSubjects([]); setTopics([]); setHashtags([]); setSearchReels([]);
       setTotalPages(1);
    };
 
@@ -184,6 +193,9 @@ const SearchPage = () => {
       { key: 'all', label: 'All', icon: Compass },
       { key: 'reels', label: 'Reels', icon: Play },
       { key: 'quiz', label: 'Quiz', icon: BrainCircuit },
+      { key: 'subject', label: 'Subjects', icon: BookMarked },
+      { key: 'topic', label: 'Topics', icon: Layers },
+      { key: 'hashtag', label: 'Hashtags', icon: Hash },
       { key: 'exam', label: 'Exams', icon: ShieldCheck },
       { key: 'test', label: 'Tests', icon: FileText },
       { key: 'blog', label: 'Blogs', icon: BookOpen },
@@ -192,9 +204,12 @@ const SearchPage = () => {
 
    const getFilteredResults = () => {
       switch (activeTab) {
-         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...quizzes, ...blogs, ...users];
+         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...quizzes, ...subjects.map(s => ({...s, type: 'subject'})), ...topics.map(t => ({...t, type: 'topic'})), ...blogs, ...users];
          case 'reels': return []; // reels rendered separately via grid
          case 'quiz': return quizzes;
+         case 'subject': return subjects.map(s => ({...s, type: 'subject'}));
+         case 'topic': return topics.map(t => ({...t, type: 'topic'}));
+         case 'hashtag': return hashtags.map(h => ({...h, type: 'hashtag'}));
          case 'exam': return [...govtExams, ...govtExamCategories, ...examPatterns];
          case 'test': return practiceTests;
          case 'blog': return blogs;
@@ -437,6 +452,79 @@ const SearchPage = () => {
                            </div>
                         )}
 
+                        {/* ── Subjects Section ── */}
+                        {subjects.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <BookMarked className="w-4 h-4 text-indigo-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Subjects</h3>
+                              </div>
+                              {subjects.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/subjects/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0">
+                                       <BookMarked className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
+                                       <p className="text-xs text-slate-400">{item.exam?.name || 'General'}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {subjects.length > 4 && (
+                                 <button onClick={() => setActiveTab('subject')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all subjects →</button>
+                              )}
+                           </div>
+                        )}
+
+                        {/* ── Topics Section ── */}
+                        {topics.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Layers className="w-4 h-4 text-cyan-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Topics</h3>
+                              </div>
+                              {topics.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/topics/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0">
+                                       <Layers className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
+                                       <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.subject?.exam?.name ? ` · ${item.subject.exam.name}` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {topics.length > 4 && (
+                                 <button onClick={() => setActiveTab('topic')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all topics →</button>
+                              )}
+                           </div>
+                        )}
+
+                        {/* ── Hashtags Section ── */}
+                        {hashtags.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Hash className="w-4 h-4 text-rose-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Hashtags</h3>
+                              </div>
+                              <div className="flex flex-wrap gap-2">
+                                 {hashtags.slice(0, 12).map((item, i) => (
+                                    <button key={i} onClick={() => { setQuery(item.tag); fetchData(item.tag, 1); }}
+                                       className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-full text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-rose-600 transition-all">
+                                       #{item.tag} <span className="text-[10px] text-slate-400 ml-1">{item.count}</span>
+                                    </button>
+                                 ))}
+                              </div>
+                              {hashtags.length > 12 && (
+                                 <button onClick={() => setActiveTab('hashtag')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2 mt-1">See all hashtags →</button>
+                              )}
+                           </div>
+                        )}
+
                         {/* ── Blogs Section ── */}
                         {blogs.length > 0 && (
                            <div className="px-4">
@@ -503,7 +591,7 @@ const SearchPage = () => {
                         )}
 
                         {/* No results at all */}
-                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && quizzes.length === 0 && blogs.length === 0 && users.length === 0 && (
+                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && quizzes.length === 0 && subjects.length === 0 && topics.length === 0 && hashtags.length === 0 && blogs.length === 0 && users.length === 0 && (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
                                  <Search className="w-7 h-7 text-slate-300" />
@@ -624,6 +712,39 @@ const SearchPage = () => {
                                                 <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
                                              )}
                                           </div>
+                                       </div>
+                                    )}
+                                    {/* Subject */}
+                                    {item.type === 'subject' && (
+                                       <div onClick={() => router.push(`/subjects/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
+                                             <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Topic */}
+                                    {item.type === 'topic' && (
+                                       <div onClick={() => router.push(`/topics/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
+                                             <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.subject?.exam?.name ? ` · ${item.subject.exam.name}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Hashtag */}
+                                    {item.type === 'hashtag' && (
+                                       <div onClick={() => { setQuery(item.tag); fetchData(item.tag, 1); }} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
+                                             <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                                        </div>
                                     )}
                                     {/* Blog */}

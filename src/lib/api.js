@@ -275,6 +275,24 @@ class ApiService {
     return this.request(`/api/quiz/topics?subject=${subjectId}`);
   }
 
+  async getAllSubjects(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/subjects/all${query ? `?${query}` : ''}`);
+  }
+
+  async getSubjectDetail(id) {
+    return this.request(`/api/quiz/subjects/${id}/detail`);
+  }
+
+  async getAllTopics(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/topics/all${query ? `?${query}` : ''}`);
+  }
+
+  async getTopicDetail(id) {
+    return this.request(`/api/quiz/topics/${id}/detail`);
+  }
+
   // ===== SEARCH ENDPOINTS =====
   async searchAll({ query = '', page = 1, limit = 12 }) {
     const searchQuery = new URLSearchParams({ query, page, limit }).toString();
@@ -655,6 +673,15 @@ class ApiService {
   // Categories
   async getRealExamCategories() {
     return this.request('/api/real-exams/categories');
+  }
+
+  async getAllExams() {
+    return this.request('/api/real-exams/all-exams');
+  }
+
+  async getPracticeTestsByExam(examId, params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/real-exams/exams/${examId}/practice-tests${query ? `?${query}` : ''}`);
   }
 
   async createExamCategory(categoryData) {

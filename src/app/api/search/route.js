@@ -9,6 +9,9 @@ import Blog from '@/models/Blog';
 import Reel from '@/models/Reel';
 import ReelInteraction from '@/models/ReelInteraction';
 import Quiz from '@/models/Quiz';
+import Subject from '@/models/Subject';
+import Topic from '@/models/Topic';
+import Question from '@/models/Question';
 import { protect } from '@/middleware/auth';
 export const dynamic = 'force-dynamic';
 
@@ -27,6 +30,7 @@ export async function GET(req) {
 				success: true, page, limit,
 				users: [], govtExamCategories: [], govtExams: [],
 				examPatterns: [], practiceTests: [], blogs: [], reels: [], quizzes: [],
+				subjects: [], topics: [], hashtags: [],
 			});
 		}
 
@@ -44,6 +48,9 @@ export async function GET(req) {
 			blogs,
 			reelResults,
 			quizResults,
+			subjectResults,
+			topicResults,
+			hashtagResults,
 		] = await Promise.all([
 
 			// ── Users: username, name, email ──
@@ -194,6 +201,43 @@ export async function GET(req) {
 				.sort({ publishedAt: -1 })
 				.limit(limit)
 				.lean(),
+
+			// ── Subjects: name, description ──
+			Subject.find({
+				isActive: true,
+				$or: [
+					{ name: regex },
+					{ description: regex },
+				]
+			})
+				.populate('exam', 'name code')
+				.sort({ order: 1, name: 1 })
+				.limit(limit)
+				.lean(),
+
+			// ── Topics: name, description ──
+			Topic.find({
+				isActive: true,
+				$or: [
+					{ name: regex },
+					{ description: regex },
+				]
+			})
+				.populate({ path: 'subject', select: 'name exam', populate: { path: 'exam', select: 'name code' } })
+				.sort({ order: 1, name: 1 })
+				.limit(limit)
+				.lean(),
+
+			// ── Hashtags: unique tags from Questions matching search ──
+			Question.aggregate([
+				{ $match: { isActive: true, tags: { $elemMatch: { $regex: cleanQuery, $options: 'i' } } } },
+				{ $unwind: '$tags' },
+				{ $match: { tags: { $regex: cleanQuery, $options: 'i' } } },
+				{ $group: { _id: '$tags', count: { $sum: 1 } } },
+				{ $sort: { count: -1 } },
+				{ $limit: limit },
+				{ $project: { _id: 0, tag: '$_id', count: 1 } }
+			]),
 		]);
 
 		// ── Attach reel interactions if user is logged in ──
@@ -224,6 +268,9 @@ export async function GET(req) {
 			blogs: blogs.map(b => ({ ...b, type: 'blog' })),
 			reels: reelsWithInteraction.map(r => ({ ...r, type: 'reel' })),
 			quizzes: quizResults.map(q => ({ ...q, type: 'quiz' })),
+			subjects: subjectResults.map(s => ({ ...s, type: 'subject' })),
+			topics: topicResults.map(t => ({ ...t, type: 'topic' })),
+			hashtags: hashtagResults.map(h => ({ ...h, type: 'hashtag' })),
 		});
 	} catch (error) {
 		console.error('Global search error:', error);

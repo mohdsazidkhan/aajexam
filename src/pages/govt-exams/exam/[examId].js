@@ -4,42 +4,41 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
-  ArrowLeft,
-  Clock,
-  Trophy,
-  List,
-  Bookmark,
-  CircleCheck,
-  ChevronRight,
-  ShieldCheck,
-  Target
+  ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
+  ChevronRight, Play, Eye, Lock, Unlock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import API from '../../../lib/api';
+import { isAuthenticated } from '../../../lib/auth';
 import Button from '../../../components/ui/Button';
 import Card from '../../../components/ui/Card';
-import ProgressBar from '../../../components/ui/ProgressBar';
 import Skeleton from '../../../components/Skeleton';
+import TestStartModal from '../../../components/TestStartModal';
 
-const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = '', seo, examId }) => {
+const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQuizzes = [], initialError = '', seo, examId }) => {
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
-  const [patterns, setPatterns] = useState(initialPatterns);
-  const [loading, setLoading] = useState(!initialPatterns.length && !initialError);
+  const [activeTab, setActiveTab] = useState('tests');
+  const [practiceTests, setPracticeTests] = useState(initialPracticeTests);
+  const [quizzes, setQuizzes] = useState(initialQuizzes);
+  const [loading, setLoading] = useState(!initialExam && !initialError);
   const [error, setError] = useState(initialError);
+  const [showTestModal, setShowTestModal] = useState(false);
+  const [selectedTest, setSelectedTest] = useState(null);
 
-  const fetchExamAndPatterns = useCallback(async () => {
+  const fetchData = useCallback(async () => {
     if (!examId) return;
     try {
       setLoading(true);
-      const res = await API.getPatternsByExam(examId);
-      if (res?.success) {
-        setPatterns(res.data || []);
-        if (res.exam) setExam(res.exam);
-      } else {
-        setError('Failed to load patterns.');
-      }
+      const [ptRes, qzRes, patternsRes] = await Promise.all([
+        API.getPracticeTestsByExam(examId, { limit: 50 }),
+        API.getQuizzes({ exam: examId, limit: 50 }),
+        API.getPatternsByExam(examId)
+      ]);
+      if (ptRes?.success) setPracticeTests(ptRes.data || []);
+      if (qzRes?.success) setQuizzes(qzRes.data || []);
+      if (patternsRes?.exam) setExam(patternsRes.exam);
     } catch (err) {
       console.error('Error:', err);
       setError('An error occurred.');
@@ -49,8 +48,8 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
   }, [examId]);
 
   useEffect(() => {
-    if (!initialPatterns.length && !initialError) fetchExamAndPatterns();
-  }, [initialPatterns.length, initialError, fetchExamAndPatterns]);
+    if (!initialExam && !initialError) fetchData();
+  }, [initialExam, initialError, fetchData]);
 
   const formatDuration = (minutes) => {
     const hrs = Math.floor(minutes / 60);
@@ -60,122 +59,181 @@ const ExamDetails = ({ initialExam = null, initialPatterns = [], initialError = 
 
   if (loading) {
     return (
-      <div className="space-y-8 animate-fade-in py-10">
-        <Skeleton height="150px" borderRadius="1.5rem" />
+      <div className="space-y-6 animate-fade-in py-10">
+        <Skeleton height="120px" borderRadius="1.5rem" />
         <div className="space-y-4">
-          {[1, 2, 3].map(i => <Skeleton key={i} height="100px" borderRadius="1.5rem" />)}
+          {[1, 2, 3].map(i => <Skeleton key={i} height="80px" borderRadius="1.5rem" />)}
         </div>
       </div>
     );
   }
 
   const examName = exam?.name || 'Government Exam';
+  const tabs = [
+    { key: 'tests', label: 'Practice Tests', icon: FileText, count: practiceTests.length },
+    { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
+  ];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-6 animate-fade-in pb-24">
       <Head>
-        <title>{seo?.title || `${examName} - Patterns | AajExam`}</title>
+        <title>{seo?.title || `${examName} | AajExam`}</title>
       </Head>
 
-      {/* --- Breadcrumbs & Back --- */}
+      {/* Back */}
       <section className="flex items-center justify-end">
         <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
-          <ArrowLeft className="w-5 h-5" />
-          GO BACK
+          <ArrowLeft className="w-5 h-5" /> GO BACK
         </Button>
       </section>
 
-      {/* --- Exam Hero Card --- */}
+      {/* Exam Hero */}
       <Card className="bg-gradient-to-br from-primary-500 to-indigo-600 text-white border-none shadow-duo-primary overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
-            <ShieldCheck className="w-4 h-4" />
-            Verified Exam Board
+            <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
-          <h1 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight">{examName}</h1>
-          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80 decoration-primary-300 underline-offset-4">Board Code: {exam.code}</p>}
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-black uppercase tracking-tight">{examName}</h1>
+          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">Code: {exam.code}</p>}
+          <div className="flex gap-3 pt-2">
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <FileText className="w-3.5 h-3.5" /> {practiceTests.length} Tests
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <BrainCircuit className="w-3.5 h-3.5" /> {quizzes.length} Quizzes
+            </span>
+          </div>
         </div>
         <Target className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/10 -rotate-12" />
       </Card>
 
-      {/* --- Patterns Overview --- */}
-      <section className="space-y-6">
-        <div className="flex justify-between items-center px-1">
-          <h2 className="text-lg md:text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase tracking-wide">Exam Stages</h2>
-          <span className="bg-primary-100 dark:bg-primary-900/30 px-4 py-1 rounded-full text-sm font-black text-primary-600 dark:text-primary-400">
-            {patterns.length} MODULES
-          </span>
+      {/* Tabs */}
+      <div className="flex gap-2 sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800/50">
+        {tabs.map(tab => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 ${
+              activeTab === tab.key
+                ? 'bg-primary-500 text-white border-primary-600'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700'
+            }`}
+          >
+            <tab.icon className="w-3.5 h-3.5" />
+            {tab.label}
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>
+              {tab.count}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      {activeTab === 'tests' && (
+        <div className="space-y-3">
+          {practiceTests.length === 0 ? (
+            <div className="py-16 text-center space-y-3">
+              <FileText className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
+              <p className="text-sm font-bold text-slate-400">No practice tests available yet</p>
+            </div>
+          ) : (
+            practiceTests.map((test, idx) => {
+              const isCompleted = test.userAttempt?.status === 'Completed';
+              return (
+                <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                  <Card className={`group border-2 transition-all p-4 overflow-hidden ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                        {isCompleted ? <Trophy className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{test.title}</h3>
+                        <p className="text-xs font-bold text-content-muted">
+                          {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
+                          {test.examPattern?.title ? ` · ${test.examPattern.title}` : ''}
+                        </p>
+                        {isCompleted && test.userAttempt && (
+                          <p className="text-xs font-bold text-primary-600 mt-1">
+                            Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex gap-2 shrink-0">
+                        {isCompleted && (
+                          <button onClick={() => router.push(`/govt-exams/test/${test._id}/result?attempt=${test.userAttempt._id}`)}
+                            className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                            Results
+                          </button>
+                        )}
+                        <button onClick={() => { setSelectedTest(test); setShowTestModal(true); }}
+                          className={`text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
+                          {isCompleted ? 'Retake' : 'Start'}
+                        </button>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              );
+            })
+          )}
         </div>
+      )}
 
-        <div className="space-y-4">
-          {patterns.map((pattern, idx) => (
-            <motion.div
-              key={pattern._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <Card className="group border-2 hover:border-primary-500 transition-all p-0 overflow-hidden shadow-md">
-                <div className="flex flex-col lg:flex-row">
-                  {/* Left: Info Indicator */}
-                  <div className="w-full lg:w-48 bg-gray-50 dark:bg-slate-700/50 p-6 flex flex-col items-center justify-center border-r-0 lg:border-r border-gray-100 dark:border-slate-700 gap-2">
-                    <div className="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-primary-500 shadow-sm border border-gray-100 dark:border-slate-600">
-                      <CircleCheck className="w-8 h-8" />
-                    </div>
-                    <span className="font-black text-xs text-gray-400 uppercase tracking-widest">Stage {idx + 1}</span>
-                  </div>
-
-                  {/* Right: Content */}
-                  <div className="flex-1 p-5 lg:p-6 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase">{pattern.title}</h3>
-                        <p className="text-gray-500 dark:text-gray-400 font-bold text-sm">{pattern.description || 'Complete this stage to unlock advanced modules.'}</p>
+      {activeTab === 'quizzes' && (
+        <div className="space-y-3">
+          {quizzes.length === 0 ? (
+            <div className="py-16 text-center space-y-3">
+              <BrainCircuit className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
+              <p className="text-sm font-bold text-slate-400">No quizzes available yet</p>
+            </div>
+          ) : (
+            quizzes.map((quiz, idx) => {
+              const diffColor = quiz.difficulty === 'easy' ? 'text-green-600 bg-green-50' : quiz.difficulty === 'hard' ? 'text-red-600 bg-red-50' : 'text-yellow-600 bg-yellow-50';
+              return (
+                <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                  <Card
+                    hoverable
+                    onClick={() => router.push(`/quiz/${quiz._id}`)}
+                    className="group border-2 border-border-primary hover:border-emerald-500 transition-all p-4"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
+                        <BrainCircuit className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex gap-2">
-                        <div className="flex items-center gap-1 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase leading-none">
-                          <Clock className="w-3 h-3" />
-                          {formatDuration(pattern.duration || 60)}
-                        </div>
-                        <div className="flex items-center gap-1 bg-accent-orange/10 px-3 py-1 rounded-full text-[10px] font-black text-accent-orange uppercase leading-none">
-                          <Trophy className="w-3 h-3" />
-                          {pattern.totalMarks || 100} Marks
-                        </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{quiz.title}</h3>
+                        <p className="text-xs font-bold text-content-muted">
+                          {quiz.subject?.name || ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''} · {quiz.duration} min · {quiz.totalMarks} marks
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
+                        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Play</span>
                       </div>
                     </div>
-
-                    {/* Sections Preview */}
-                    {pattern.sections && pattern.sections.length > 0 && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-                        {pattern.sections.slice(0, 4).map((section, sidx) => (
-                          <div key={sidx} className="bg-gray-50 dark:bg-slate-900/50 px-3 py-2 rounded-xl flex items-center justify-between border border-gray-100 dark:border-slate-800">
-                            <span className="text-[10px] font-black text-gray-500 uppercase truncate">{section.name || 'Module'}</span>
-                            <span className="text-[10px] font-black text-primary-500">{section.totalQuestions}Q</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="pt-2 flex items-center justify-between gap-4">
-                      <div className="flex-1">
-                        <ProgressBar progress={0} color="primary" height="h-2" />
-                      </div>
-                      <Button
-                        variant="primary"
-                        size="md"
-                        onClick={() => router.push(`/govt-exams/pattern/${pattern._id}/tests`)}
-                        className="whitespace-nowrap px-8"
-                      >
-                        PRACTICE <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                  </Card>
+                </motion.div>
+              );
+            })
+          )}
         </div>
-      </section>
+      )}
+
+      {/* Test Start Modal */}
+      {showTestModal && selectedTest && (
+        <TestStartModal
+          isOpen={showTestModal}
+          onClose={() => setShowTestModal(false)}
+          onConfirm={() => {
+            setShowTestModal(false);
+            localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'exam-detail', testData: selectedTest }));
+            router.push(`/govt-exams/test/${selectedTest._id}/start`);
+          }}
+          test={selectedTest}
+          pattern={selectedTest.examPattern}
+          exam={exam}
+        />
+      )}
     </div>
   );
 };
@@ -186,6 +244,7 @@ import dbConnect from '../../../lib/db';
 import Exam from '../../../models/Exam';
 import ExamPattern from '../../../models/ExamPattern';
 import PracticeTest from '../../../models/PracticeTest';
+import Quiz from '../../../models/Quiz';
 
 export async function getServerSideProps({ params }) {
   const examId = params?.examId;
@@ -193,33 +252,45 @@ export async function getServerSideProps({ params }) {
 
   try {
     await dbConnect();
-    const patternsDocs = await ExamPattern.find({ exam: examId }).populate('exam', 'name code description').sort({ title: 1 }).lean();
-    const patternIds = patternsDocs.map(p => p._id);
 
-    let patterns = [];
-    let exam = null;
+    const [exam, patternIds, quizDocs] = await Promise.all([
+      Exam.findById(examId).populate('category', 'name type').lean(),
+      ExamPattern.find({ exam: examId }).select('_id').lean(),
+      Quiz.find({ exam: examId, status: 'published' })
+        .populate('subject', 'name')
+        .populate('topic', 'name')
+        .select('-questions')
+        .sort({ publishedAt: -1 })
+        .lean()
+    ]);
 
-    if (patternIds.length > 0) {
-      const testCounts = await PracticeTest.aggregate([
-        { $match: { examPattern: { $in: patternIds } } },
-        { $group: { _id: '$examPattern', total: { $sum: 1 } } }
-      ]);
-      const testMap = Object.fromEntries(testCounts.map(i => [i._id.toString(), i.total]));
+    if (!exam) return { notFound: true };
 
-      patterns = patternsDocs.map(p => ({
-        ...JSON.parse(JSON.stringify(p)),
-        testCount: testMap[p._id.toString()] || 0
-      }));
-      exam = patterns[0]?.exam || null;
-    } else {
-      exam = JSON.parse(JSON.stringify(await Exam.findById(examId).lean()));
-    }
+    const pIds = patternIds.map(p => p._id);
+    const testDocs = pIds.length > 0
+      ? await PracticeTest.find({ examPattern: { $in: pIds } })
+          .populate('examPattern', 'title duration totalMarks sections negativeMarking')
+          .select('-questions.correctAnswerIndex')
+          .sort({ publishedAt: -1 })
+          .lean()
+      : [];
 
-    if (!exam && patterns.length === 0) return { notFound: true };
+    const practiceTests = testDocs.map(t => ({
+      ...JSON.parse(JSON.stringify(t)),
+      questionCount: t.questions?.length || 0
+    }));
 
-    return { props: { examId, initialExam: exam, initialPatterns: patterns } };
+    return {
+      props: {
+        examId,
+        initialExam: JSON.parse(JSON.stringify(exam)),
+        initialPracticeTests: practiceTests,
+        initialQuizzes: JSON.parse(JSON.stringify(quizDocs)),
+        seo: { title: `${exam.name} - Practice | AajExam` }
+      }
+    };
   } catch (error) {
-    console.error('Data pre-render error:', error);
-    return { props: { initialError: 'Failed to load data.' } };
+    console.error('Error:', error);
+    return { props: { examId, initialError: 'Failed to load data.' } };
   }
 }
