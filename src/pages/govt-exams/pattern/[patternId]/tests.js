@@ -219,11 +219,10 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
 export default PatternTests;
 
-import dbConnect from '../../../../lib/db';
-import PracticeTest from '../../../../models/PracticeTest';
-import ExamPattern from '../../../../models/ExamPattern';
-
 export async function getServerSideProps({ params, query }) {
+  const dbConnect = (await import('../../../../lib/db')).default;
+  const PracticeTest = (await import('../../../../models/PracticeTest')).default;
+  const ExamPattern = (await import('../../../../models/ExamPattern')).default;
   const patternId = params?.patternId;
   const page = parseInt(query.page) || 1;
   const limit = 10;

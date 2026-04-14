@@ -197,13 +197,11 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
 export default GovernmentExamsLanding;
 
-import dbConnect from '../../lib/db';
-import Exam from '../../models/Exam';
-import ExamPattern from '../../models/ExamPattern';
-import PracticeTest from '../../models/PracticeTest';
-import Quiz from '../../models/Quiz';
-
 export async function getServerSideProps() {
+  const dbConnect = (await import('../../lib/db')).default;
+  const Exam = (await import('../../models/Exam')).default;
+  const PracticeTest = (await import('../../models/PracticeTest')).default;
+  const Quiz = (await import('../../models/Quiz')).default;
   try {
     await dbConnect();
 

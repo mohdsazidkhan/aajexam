@@ -166,13 +166,12 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
 export default CategoryExams;
 
-import dbConnect from '../../../lib/db';
-import Exam from '../../../models/Exam';
-import ExamCategory from '../../../models/ExamCategory';
-import ExamPattern from '../../../models/ExamPattern';
-import PracticeTest from '../../../models/PracticeTest';
-
 export async function getServerSideProps({ params }) {
+  const dbConnect = (await import('../../../lib/db')).default;
+  const Exam = (await import('../../../models/Exam')).default;
+  const ExamCategory = (await import('../../../models/ExamCategory')).default;
+  const ExamPattern = (await import('../../../models/ExamPattern')).default;
+  const PracticeTest = (await import('../../../models/PracticeTest')).default;
   const categoryId = params?.categoryId;
   if (!categoryId) return { notFound: true };
 

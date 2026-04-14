@@ -240,13 +240,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
 
 export default ExamDetails;
 
-import dbConnect from '../../../lib/db';
-import Exam from '../../../models/Exam';
-import ExamPattern from '../../../models/ExamPattern';
-import PracticeTest from '../../../models/PracticeTest';
-import Quiz from '../../../models/Quiz';
-
 export async function getServerSideProps({ params }) {
+  const dbConnect = (await import('../../../lib/db')).default;
+  const Exam = (await import('../../../models/Exam')).default;
+  const ExamPattern = (await import('../../../models/ExamPattern')).default;
+  const PracticeTest = (await import('../../../models/PracticeTest')).default;
+  const Quiz = (await import('../../../models/Quiz')).default;
   const examId = params?.examId;
   if (!examId) return { notFound: true };
 
