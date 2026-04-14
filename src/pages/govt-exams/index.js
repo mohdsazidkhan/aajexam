@@ -91,17 +91,25 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-500 dark:from-slate-900 dark:via-primary-900/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="space-y-4">
+          <div className="space-y-4 mx-auto text-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
               className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
               <TrendingUp className="w-3.5 h-3.5" /> {exams.length} Exams Available
             </motion.div>
             <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Exams Hub</h1>
-            <p className="text-md lg:text-lg font-bold text-white/90 max-w-md">Select an exam to start practicing</p>
+           <div className="flex-1 min-w-[300px] lg:min-w-[600px]">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search exams..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none"
+                />
+              </div>
+            </div>
           </div>
-          <Button variant="white" size="md" onClick={() => router.push('/search')} className="rounded-2xl px-10 py-5 font-black uppercase tracking-widest text-xs md:w-fit">
-            <Search className="w-4 h-4 mr-2" /> Search <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
         <GraduationCap className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
       </section>
@@ -119,18 +127,6 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                   <f.icon className="w-3.5 h-3.5" /> {f.label}
                 </button>
               ))}
-            </div>
-            <div className="flex-1 min-w-[150px]">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search exams..."
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none"
-                />
-              </div>
             </div>
           </div>
         </div>
