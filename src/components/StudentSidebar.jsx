@@ -17,7 +17,10 @@ import {
   Settings,
   PenSquare,
   MessageSquarePlus,
-  PlayCircle
+  PlayCircle,
+  BrainCircuit,
+  BookMarked,
+  Layers
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -70,6 +73,8 @@ const StudentSidebar = () => {
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels', badge: 'NEW' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
+        { path: '/subjects', icon: BookMarked, label: 'Subjects' },
+        { path: '/topics', icon: Layers, label: 'Topics' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
         { path: '/community-questions', icon: MessageSquarePlus, label: 'Community Q&A' },
       ]

@@ -210,7 +210,6 @@ export async function GET(req) {
 					{ description: regex },
 				]
 			})
-				.populate('exam', 'name code')
 				.sort({ order: 1, name: 1 })
 				.limit(limit)
 				.lean(),
@@ -223,7 +222,7 @@ export async function GET(req) {
 					{ description: regex },
 				]
 			})
-				.populate({ path: 'subject', select: 'name exam', populate: { path: 'exam', select: 'name code' } })
+				.populate('subject', 'name')
 				.sort({ order: 1, name: 1 })
 				.limit(limit)
 				.lean(),

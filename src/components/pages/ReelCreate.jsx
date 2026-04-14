@@ -38,6 +38,25 @@ const ReelCreate = () => {
       setType(preType);
     }
   }, []);
+  // Dropdown data
+  const [examsList, setExamsList] = useState([]);
+  const [subjectsList, setSubjectsList] = useState([]);
+  const [topicsList, setTopicsList] = useState([]);
+
+  useEffect(() => {
+    const fetchDropdowns = async () => {
+      try {
+        const [exRes, subRes, topRes] = await Promise.all([
+          API.getAllExams(), API.getAllSubjects(), API.getAllTopics()
+        ]);
+        if (exRes?.success) setExamsList(exRes.data || []);
+        if (subRes?.success) setSubjectsList(subRes.data || []);
+        if (topRes?.success) setTopicsList(topRes.data || []);
+      } catch (e) { console.error('Failed to load dropdowns:', e); }
+    };
+    fetchDropdowns();
+  }, []);
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [subject, setSubject] = useState('');
@@ -222,9 +241,24 @@ const ReelCreate = () => {
               {/* Common */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <div><label className={labelClass}>Subject</label><input value={subject} onChange={e => setSubject(e.target.value)} placeholder="e.g. Quantitative" className={inputClass} /></div>
-                  <div><label className={labelClass}>Topic</label><input value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g. Profit & Loss" className={inputClass} /></div>
-                  <div><label className={labelClass}>Exam</label><input value={examType} onChange={e => setExamType(e.target.value)} placeholder="e.g. SSC" className={inputClass} /></div>
+                  <div><label className={labelClass}>Exam</label>
+                    <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
+                      <option value="">Select Exam</option>
+                      {examsList.map(ex => <option key={ex._id} value={ex.name}>{ex.name}</option>)}
+                    </select>
+                  </div>
+                  <div><label className={labelClass}>Subject</label>
+                    <select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
+                      <option value="">Select Subject</option>
+                      {subjectsList.map(s => <option key={s._id} value={s.name}>{s.name}</option>)}
+                    </select>
+                  </div>
+                  <div><label className={labelClass}>Topic</label>
+                    <select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
+                      <option value="">Select Topic</option>
+                      {topicsList.filter(t => !subject || t.subject?.name === subject).map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
+                    </select>
+                  </div>
                   <div><label className={labelClass}>Difficulty</label>
                     <select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
                       <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>

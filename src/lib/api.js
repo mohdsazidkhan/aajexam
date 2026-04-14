@@ -293,6 +293,43 @@ class ApiService {
     return this.request(`/api/quiz/topics/${id}/detail`);
   }
 
+  // ===== ADMIN QUIZ ENDPOINTS =====
+  async getAdminSubjects(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/admin/subjects${query ? `?${query}` : ''}`);
+  }
+  async createSubject(data) { return this.request('/api/quiz/admin/subjects', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateSubject(id, data) { return this.request(`/api/quiz/admin/subjects/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteSubject(id) { return this.request(`/api/quiz/admin/subjects/${id}`, { method: 'DELETE' }); }
+
+  async getAdminTopics(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/admin/topics${query ? `?${query}` : ''}`);
+  }
+  async createTopic(data) { return this.request('/api/quiz/admin/topics', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateTopic(id, data) { return this.request(`/api/quiz/admin/topics/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteTopic(id) { return this.request(`/api/quiz/admin/topics/${id}`, { method: 'DELETE' }); }
+
+  async getAdminQuestions(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/admin/questions${query ? `?${query}` : ''}`);
+  }
+  async createQuestion(data) { return this.request('/api/quiz/admin/questions', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateQuestion(id, data) { return this.request(`/api/quiz/admin/questions/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteQuestion(id) { return this.request(`/api/quiz/admin/questions/${id}`, { method: 'DELETE' }); }
+
+  async getAdminQuizzes(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/quiz/admin/quizzes${query ? `?${query}` : ''}`);
+  }
+  async createQuiz(data) { return this.request('/api/quiz/admin/quizzes', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateQuiz(id, data) { return this.request(`/api/quiz/admin/quizzes/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteQuiz(id) { return this.request(`/api/quiz/admin/quizzes/${id}`, { method: 'DELETE' }); }
+  async publishQuiz(id) { return this.request(`/api/quiz/admin/quizzes/${id}/publish`, { method: 'PATCH' }); }
+  async addQuestionsToQuiz(id, questionIds) { return this.request(`/api/quiz/admin/quizzes/${id}/add-questions`, { method: 'PATCH', body: JSON.stringify({ questionIds }) }); }
+  async seedSubjectsTopics(examId) { return this.request('/api/quiz/admin/seed', { method: 'POST', body: JSON.stringify(examId ? { examId } : {}) }); }
+  async seedQuizzes() { return this.request('/api/quiz/admin/seed-quizzes', { method: 'POST', body: JSON.stringify({}) }); }
+
   // ===== SEARCH ENDPOINTS =====
   async searchAll({ query = '', page = 1, limit = 12 }) {
     const searchQuery = new URLSearchParams({ query, page, limit }).toString();

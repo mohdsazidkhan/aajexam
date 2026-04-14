@@ -16,7 +16,7 @@ const SubjectListPage = () => {
   }, []);
 
   const filtered = search.trim()
-    ? subjects.filter(s => s.name.toLowerCase().includes(search.trim().toLowerCase()) || s.exam?.name?.toLowerCase().includes(search.trim().toLowerCase()))
+    ? subjects.filter(s => s.name.toLowerCase().includes(search.trim().toLowerCase()))
     : subjects;
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
@@ -44,7 +44,7 @@ const SubjectListPage = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{sub.name}</p>
-                <p className="text-xs text-slate-400">{sub.exam?.name || 'General'}</p>
+                {sub.description && <p className="text-xs text-slate-400 truncate">{sub.description}</p>}
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">{sub.quizCount || 0} Quiz</span>

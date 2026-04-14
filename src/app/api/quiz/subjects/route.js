@@ -2,16 +2,12 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Subject from '@/models/Subject';
 
-// GET - public: list active subjects for an exam
-export async function GET(req) {
+// GET - public: list active subjects
+export async function GET() {
     try {
         await dbConnect();
 
-        const { searchParams } = new URL(req.url);
-        const exam = searchParams.get('exam');
-        if (!exam) return NextResponse.json({ message: 'exam query param is required' }, { status: 400 });
-
-        const subjects = await Subject.find({ exam, isActive: true })
+        const subjects = await Subject.find({ isActive: true })
             .select('name description icon order')
             .sort({ order: 1, name: 1 });
 

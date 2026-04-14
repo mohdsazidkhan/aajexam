@@ -38,6 +38,25 @@ const AdminReelEdit = () => {
   const [saving, setSaving] = useState(false);
   const [type, setType] = useState('');
 
+  // Dropdown data
+  const [examsList, setExamsList] = useState([]);
+  const [subjectsList, setSubjectsList] = useState([]);
+  const [topicsList, setTopicsList] = useState([]);
+
+  useEffect(() => {
+    const fetchDropdowns = async () => {
+      try {
+        const [exRes, subRes, topRes] = await Promise.all([
+          API.getAllExams(), API.getAdminSubjects(), API.getAdminTopics()
+        ]);
+        if (exRes?.success) setExamsList(exRes.data || []);
+        if (subRes?.success) setSubjectsList(subRes.data || []);
+        if (topRes?.success) setTopicsList(topRes.data || []);
+      } catch (e) { console.error('Failed to load dropdowns:', e); }
+    };
+    fetchDropdowns();
+  }, []);
+
   // Common fields
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -306,16 +325,25 @@ const AdminReelEdit = () => {
                     <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Card title" className={inputClass} />
                   </div>
                   <div>
+                    <label className={labelClass}>Exam Type</label>
+                    <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
+                      <option value="">Select Exam</option>
+                      {examsList.map(ex => <option key={ex._id} value={ex.name}>{ex.name}{ex.code ? ` (${ex.code})` : ''}</option>)}
+                    </select>
+                  </div>
+                  <div>
                     <label className={labelClass}>Subject</label>
-                    <input type="text" value={subject} onChange={e => setSubject(e.target.value)} placeholder="e.g. Quantitative" className={inputClass} />
+                    <select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
+                      <option value="">Select Subject</option>
+                      {subjectsList.map(s => <option key={s._id} value={s.name}>{s.name}</option>)}
+                    </select>
                   </div>
                   <div>
                     <label className={labelClass}>Topic</label>
-                    <input type="text" value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g. Profit & Loss" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Exam Type</label>
-                    <input type="text" value={examType} onChange={e => setExamType(e.target.value)} placeholder="e.g. SSC, Banking" className={inputClass} />
+                    <select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
+                      <option value="">Select Topic</option>
+                      {topicsList.filter(t => !subject || t.subject?.name === subject).map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
+                    </select>
                   </div>
                   <div className="sm:col-span-2">
                     <label className={labelClass}>Tags (comma separated)</label>

@@ -24,6 +24,10 @@ import {
   PenSquare,
   Flame,
   Zap,
+  BrainCircuit,
+  BookMarked,
+  Layers,
+  HelpCircle,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -65,6 +69,15 @@ const Sidebar = () => {
         { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Patterns', key: 'govt-exams-patterns' },
         { path: '/admin/govt-exams/tests', icon: FileText, label: 'Tests', key: 'govt-exams-tests' },
         { path: '/admin/govt-exams/results', icon: Activity, label: 'Results', key: 'govt-exams-results' },
+      ]
+    },
+    {
+      title: 'QUIZZES',
+      items: [
+        { path: '/admin/quiz/subjects', icon: BookMarked, label: 'Subjects', key: 'quiz-subjects' },
+        { path: '/admin/quiz/topics', icon: Layers, label: 'Topics', key: 'quiz-topics' },
+        { path: '/admin/quiz/quizzes', icon: BrainCircuit, label: 'Quizzes', key: 'quiz-quizzes' },
+        { path: '/admin/quiz/questions', icon: HelpCircle, label: 'Questions', key: 'quiz-questions' },
       ]
     },
     {

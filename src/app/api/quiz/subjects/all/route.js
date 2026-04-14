@@ -4,17 +4,11 @@ import Subject from '@/models/Subject';
 import Question from '@/models/Question';
 import Quiz from '@/models/Quiz';
 
-export async function GET(req) {
+export async function GET() {
     try {
         await dbConnect();
-        const { searchParams } = new URL(req.url);
-        const exam = searchParams.get('exam');
 
-        const filter = { isActive: true };
-        if (exam) filter.exam = exam;
-
-        const subjects = await Subject.find(filter)
-            .populate('exam', 'name code')
+        const subjects = await Subject.find({ isActive: true })
             .sort({ order: 1, name: 1 })
             .lean();
 
