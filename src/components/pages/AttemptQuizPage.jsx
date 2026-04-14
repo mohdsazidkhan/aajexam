@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { useRouter } from 'next/router';
 import {
   Clock, ArrowLeft, ArrowRight, Brain, CheckCircle, XCircle, Trophy, Star,
@@ -94,27 +94,44 @@ const AttemptQuizPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
-  // Timer - total quiz duration
+  // Refs to avoid stale closures
+  const answersRef = useRef(answers);
+  const timeTakenRef = useRef(timeTaken);
+  const currentQuestionIndexRef = useRef(currentQuestionIndex);
+  const handleSubmitRef = useRef(null);
+
+  useEffect(() => { answersRef.current = answers; }, [answers]);
+  useEffect(() => { timeTakenRef.current = timeTaken; }, [timeTaken]);
+  useEffect(() => { currentQuestionIndexRef.current = currentQuestionIndex; }, [currentQuestionIndex]);
+
+  // Timer - uses ref to avoid stale closure
   useEffect(() => {
-    let interval = null;
-    if (isTimerRunning && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            handleSubmit();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
+    if (!quiz) return;
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          if (handleSubmitRef.current) handleSubmitRef.current();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
     return () => clearInterval(interval);
-  }, [isTimerRunning, timeLeft]);
+  }, [quiz]);
 
   // Track time per question
   useEffect(() => {
     setQuestionStartTime(Date.now());
   }, [currentQuestionIndex]);
+
+  const recordTime = useCallback(() => {
+    const updated = [...timeTakenRef.current];
+    const idx = currentQuestionIndexRef.current;
+    updated[idx] = (updated[idx] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
+    setTimeTaken(updated);
+    timeTakenRef.current = updated;
+    return updated;
+  }, [questionStartTime]);
 
   const handleSubmit = useCallback(async () => {
     if (submitting) return;
@@ -123,19 +140,16 @@ const AttemptQuizPage = () => {
       setIsTimerRunning(false);
       setSubmitted(true);
 
-      // Record time for current question
-      const updatedTime = [...timeTaken];
-      updatedTime[currentQuestionIndex] = (updatedTime[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
-
+      const updatedTime = recordTime();
       const totalTime = updatedTime.reduce((a, b) => a + (b || 0), 0);
-      const actualQuizId = quizId;
+      const currentAnswers = answersRef.current;
 
-      const formattedAnswers = answers.map((ans, i) => ({
+      const formattedAnswers = currentAnswers.map((ans, i) => ({
         selectedOptionIndex: ans === null || ans === undefined ? -1 : ans,
         timeTaken: updatedTime[i] || 0
       }));
 
-      const res = await API.submitQuiz(actualQuizId, {
+      const res = await API.submitQuiz(quizId, {
         attemptId,
         answers: formattedAnswers,
         totalTime
@@ -153,7 +167,7 @@ const AttemptQuizPage = () => {
       }
 
       try {
-        const lbRes = await API.getQuizLeaderboard(actualQuizId);
+        const lbRes = await API.getQuizLeaderboard(quizId);
         if (lbRes.success) setLeaderboard(lbRes.data || []);
       } catch (e) {
         console.log('Leaderboard not available');
@@ -165,7 +179,10 @@ const AttemptQuizPage = () => {
     } finally {
       setSubmitting(false);
     }
-  }, [quizId, answers, attemptId, timeTaken, currentQuestionIndex, questionStartTime, submitting]);
+  }, [quizId, attemptId, submitting, recordTime]);
+
+  // Keep submit ref in sync
+  useEffect(() => { handleSubmitRef.current = handleSubmit; }, [handleSubmit]);
 
   // Fetch quiz and start attempt
   useEffect(() => {
@@ -241,38 +258,23 @@ const AttemptQuizPage = () => {
   };
 
   const handleNextQuestion = () => {
-    // Record time for this question
-    const updated = [...timeTaken];
-    updated[currentQuestionIndex] = (updated[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
-    setTimeTaken(updated);
-
+    recordTime();
     if (currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
-    } else {
-      handleSubmit();
     }
   };
 
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      const updated = [...timeTaken];
-      updated[currentQuestionIndex] = (updated[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
-      setTimeTaken(updated);
+      recordTime();
       setCurrentQuestionIndex(prev => prev - 1);
     }
-  };
-
-  const handleSkipQuestion = () => {
-    const updated = [...answers];
-    updated[currentQuestionIndex] = null;
-    setAnswers(updated);
-    handleNextQuestion();
   };
 
   const handleExitConfirm = (confirmed) => {
     setShowExitConfirm(false);
     if (confirmed) {
-      handleSubmit();
+      if (handleSubmitRef.current) handleSubmitRef.current();
     }
   };
 
@@ -505,6 +507,32 @@ const AttemptQuizPage = () => {
           </div>
         </div>
 
+        {/* Question Navigation Dots - Top */}
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 mb-3 border border-white/20">
+          <div className="flex flex-wrap gap-1.5 justify-center">
+            {quiz.questions.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  const updated = [...timeTaken];
+                  updated[currentQuestionIndex] = (updated[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
+                  setTimeTaken(updated);
+                  setCurrentQuestionIndex(idx);
+                }}
+                className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${
+                  idx === currentQuestionIndex
+                    ? 'bg-emerald-500 text-white shadow-md scale-110'
+                    : answers[idx] !== null
+                      ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
+                      : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
+                }`}
+              >
+                {idx + 1}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Question Card */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-3">
           <div className="flex items-start gap-3 mb-5">
@@ -548,54 +576,32 @@ const AttemptQuizPage = () => {
           </div>
         </div>
 
-        {/* Question Navigation Dots */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 mb-3 border border-white/20">
-          <div className="flex flex-wrap gap-1.5 justify-center">
-            {quiz.questions.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  const updated = [...timeTaken];
-                  updated[currentQuestionIndex] = (updated[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
-                  setTimeTaken(updated);
-                  setCurrentQuestionIndex(idx);
-                }}
-                className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${
-                  idx === currentQuestionIndex
-                    ? 'bg-emerald-500 text-white shadow-md scale-110'
-                    : answers[idx] !== null
-                      ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
-                      : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
-                }`}
-              >
-                {idx + 1}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Buttons */}
+        {/* Navigation Buttons - Fixed Bottom */}
         <div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200 dark:border-slate-700 p-3 z-40">
-          <div className="flex gap-2 max-w-4xl mx-auto">
+          <div className="flex gap-3 max-w-4xl mx-auto">
             <button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-30 transition-all"
+              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-30 transition-all"
             >
               <ArrowLeft className="w-4 h-4" /> Prev
             </button>
-            <button
-              onClick={handleSkipQuestion}
-              className="px-4 py-3 rounded-xl font-semibold text-sm bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700 transition-all"
-            >
-              <SkipForward className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNextQuestion}
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md transition-all"
-            >
-              {currentQuestionIndex === quiz.questions.length - 1 ? 'Submit' : 'Next'} <ArrowRight className="w-4 h-4" />
-            </button>
+            {currentQuestionIndex === quiz.questions.length - 1 ? (
+              <button
+                onClick={handleSubmit}
+                disabled={submitting}
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md transition-all disabled:opacity-50"
+              >
+                {submitting ? 'Submitting...' : 'Submit Quiz'}
+              </button>
+            ) : (
+              <button
+                onClick={handleNextQuestion}
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md transition-all"
+              >
+                Next <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
           </div>
         </div>
       </div>

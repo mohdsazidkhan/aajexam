@@ -208,7 +208,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Play</span>
+                        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Start</span>
                       </div>
                     </div>
                   </Card>

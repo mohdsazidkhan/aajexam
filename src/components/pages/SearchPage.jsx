@@ -439,7 +439,7 @@ const SearchPage = () => {
                                        </p>
                                     </div>
                                     <div className="flex flex-col items-end gap-0.5 shrink-0">
-                                       <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">PLAY</span>
+                                       <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">START</span>
                                        {item.totalAttempts > 0 && (
                                           <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
                                        )}
@@ -707,7 +707,7 @@ const SearchPage = () => {
                                              </p>
                                           </div>
                                           <div className="flex flex-col items-end gap-0.5 shrink-0">
-                                             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">PLAY</span>
+                                             <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">START</span>
                                              {item.totalAttempts > 0 && (
                                                 <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
                                              )}

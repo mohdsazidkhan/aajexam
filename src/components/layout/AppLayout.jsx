@@ -44,7 +44,9 @@ const AppLayout = ({ children }) => {
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
 
   const isQuestPage = (router.pathname.includes('/govt-exams/test/') && router.pathname.endsWith('/start'));
-  const showAppNav = isAuthenticated && isClient && !isQuestPage;
+  const isQuizAttemptPage = router.pathname.includes('/quiz/') && router.pathname.endsWith('/attempt');
+  const isFullscreenPage = isQuestPage || isQuizAttemptPage;
+  const showAppNav = isAuthenticated && isClient && !isFullscreenPage;
   const isUserAdmin = isAdmin();
 
   const [isDesktop, setIsDesktop] = useState(false);

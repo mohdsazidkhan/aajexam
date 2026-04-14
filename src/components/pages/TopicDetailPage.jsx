@@ -73,7 +73,7 @@ const TopicDetailPage = () => {
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                   <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
                 </div>
-                <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg uppercase">Play</span>
+                <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg uppercase">Start</span>
               </motion.div>
             ))}
           </div>
