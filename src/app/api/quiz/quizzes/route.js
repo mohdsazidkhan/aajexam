@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
+import Subject from '@/models/Subject';
+import Topic from '@/models/Topic';
+import Exam from '@/models/Exam';
 
 // GET - public: list published quizzes with filters
 export async function GET(req) {

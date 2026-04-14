@@ -29,8 +29,8 @@ const QuizListPage = () => {
   if (loading && page === 1) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24">
-      <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="min-h-screen pb-24">
+      <div className="max-w-[1200px] mx-auto py-4 lg:py-6">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase">Quizzes</h1>
           <span className="text-xs font-bold text-slate-400">{filtered.length} quizzes</span>
@@ -45,9 +45,9 @@ const QuizListPage = () => {
         <div className="space-y-3">
           {filtered.map(quiz => (
             <div key={quiz._id} onClick={() => router.push(`/quiz/${quiz._id}`)}
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
-                <BrainCircuit className="w-6 h-6 text-white" />
+              className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all shadow-sm">
+              <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
+                <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>

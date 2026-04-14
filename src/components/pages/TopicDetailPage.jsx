@@ -36,8 +36,8 @@ const TopicDetailPage = () => {
   const fmtDur = (m) => { const h = Math.floor(m / 60); const min = m % 60; return h > 0 ? `${h}h${min > 0 ? ` ${min}m` : ''}` : `${min}m`; };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24">
-      <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="min-h-screen pb-24">
+      <div className="max-w-[1200px] mx-auto py-4 lg:py-6">
         <button onClick={() => router.back()} className="flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
@@ -67,7 +67,7 @@ const TopicDetailPage = () => {
             {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes</p></div> : quizzes.map((quiz, idx) => (
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz._id}`)}
-                className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all">
+                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
@@ -86,7 +86,7 @@ const TopicDetailPage = () => {
               const done = test.userAttempt?.status === 'Completed';
               return (
                 <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
-                  className={`flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border ${done ? 'border-cyan-200' : 'border-slate-200 dark:border-slate-700'}`}>
+                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-xl border ${done ? 'border-cyan-200' : 'border-slate-200 dark:border-slate-700'}`}>
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-cyan-100 text-cyan-600' : 'bg-slate-100 text-slate-400'}`}>
                     {done ? <Trophy className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   </div>

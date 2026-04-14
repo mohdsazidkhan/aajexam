@@ -105,8 +105,8 @@ const QuizPreviewPage = () => {
         {/* Quiz Header Card */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-xl mb-6 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center mr-4 shrink-0">
-              <BrainCircuit className="w-6 h-6 text-white" />
+            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center mr-4 shrink-0">
+              <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
             </div>
             <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white">{quiz.title}</h1>
           </div>

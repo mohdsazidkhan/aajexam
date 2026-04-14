@@ -9,6 +9,11 @@ import '@/models/StudyMaterial';
 import '@/models/Blog';
 import '@/models/Reel';
 import '@/models/ReelInteraction';
+import '@/models/Subject';
+import '@/models/Topic';
+import '@/models/Question';
+import '@/models/Quiz';
+import '@/models/QuizAttempt';
 
 const MONGODB_URI = process.env.MONGO_URI;
 

@@ -14,7 +14,7 @@ export async function GET(req) {
         if (subject) filter.subject = subject;
 
         const topics = await Topic.find(filter)
-            .populate({ path: 'subject', select: 'name exam', populate: { path: 'exam', select: 'name code' } })
+            .populate('subject', 'name')
             .sort({ order: 1, name: 1 })
             .lean();
 

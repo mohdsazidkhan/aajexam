@@ -15,7 +15,8 @@ import {
   Zap,
   Newspaper,
   BarChart3,
-  MessageCircle
+  MessageCircle,
+  BrainCircuit
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -37,7 +38,7 @@ const StudentBottomNav = () => {
     { name: 'Reels', path: '/reels', icon: PlayCircle },
     { name: 'Exams', path: '/govt-exams', icon: BookOpen },
     { name: 'CREATE', path: null, icon: Plus },
-    { name: 'Q&A', path: '/community-questions', icon: MessageCircle },
+    { name: 'Quizzes', path: '/quizzes', icon: BrainCircuit },
     { name: 'Search', path: '/search', icon: Search },
     { name: 'Profile', path: '/profile', icon: User },
   ];
