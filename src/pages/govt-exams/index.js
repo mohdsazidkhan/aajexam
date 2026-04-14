@@ -97,7 +97,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <TrendingUp className="w-3.5 h-3.5" /> {exams.length} Exams Available
             </motion.div>
             <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Exams Hub</h1>
-           <div className="flex-1 min-w-[300px] lg:min-w-[600px]">
+           <div className="flex-1 min-w-[260px] lg:min-w-[520px]">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
