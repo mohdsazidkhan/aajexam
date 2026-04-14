@@ -73,6 +73,7 @@ const StudentSidebar = () => {
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels', badge: 'NEW' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
+        { path: '/quizzes', icon: BrainCircuit, label: 'Quizzes' },
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
         { path: '/topics', icon: Layers, label: 'Topics' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
