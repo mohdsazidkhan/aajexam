@@ -85,6 +85,7 @@ const StudentSidebar = () => {
       items: [
         { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
         { path: '/exam-history', icon: History, label: 'Exam History' },
+        { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History' },
         { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
     },
