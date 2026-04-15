@@ -20,7 +20,8 @@ import {
   PlayCircle,
   BrainCircuit,
   BookMarked,
-  Layers
+  Layers,
+  CreditCard
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -85,6 +86,7 @@ const StudentSidebar = () => {
       items: [
         { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
         { path: '/exam-history', icon: History, label: 'Exam History' },
+        { path: '/payment-history', icon: CreditCard, label: 'Payment History' },
         { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History' },
         { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
