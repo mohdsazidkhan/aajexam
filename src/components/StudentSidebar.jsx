@@ -21,7 +21,9 @@ import {
   BrainCircuit,
   BookMarked,
   Layers,
-  CreditCard
+  CreditCard,
+  PlusCircle,
+  Bookmark
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -73,12 +75,17 @@ const StudentSidebar = () => {
         { path: '/home', icon: Home, label: 'Home' },
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels' },
+        { path: '/reels/create', icon: PlusCircle, label: 'Create Reel' },
+        { path: '/my-reels', icon: PlayCircle, label: 'My Reels' },
+        { path: '/bookmarks', icon: Bookmark, label: 'Bookmarks' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
         { path: '/quizzes', icon: BrainCircuit, label: 'Quizzes' },
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
         { path: '/topics', icon: Layers, label: 'Topics' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
         { path: '/community-questions', icon: MessageSquarePlus, label: 'Community Q&A' },
+        { path: '/community-questions/ask', icon: PlusCircle, label: 'Create Q&A' },
+        { path: '/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
       ]
     },
     {
