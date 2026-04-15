@@ -77,21 +77,57 @@ const AppLayout = ({ children }) => {
     }
   }, [isReelsPage]);
 
-  // ── Search: hide header, keep bottom nav ──
+  // ── Search: hide header on mobile, show on desktop, keep bottom nav ──
   if (isSearchPage) {
     return (
       <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} font-nunito`}>
-        {children}
+        {showAppNav && !isUserAdmin && (
+          <div className="hidden lg:block">
+            <StudentNavbar />
+          </div>
+        )}
+        <AnimatePresence>
+          {showAppNav && isSidebarOpen && !isDesktop && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => dispatch(closeSidebar())}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[130]"
+            />
+          )}
+        </AnimatePresence>
+        {showAppNav && !isUserAdmin && <StudentSidebar />}
+        <div className="lg:pt-20">
+          {children}
+        </div>
         {showAppNav && !isUserAdmin && <StudentBottomNav />}
       </div>
     );
   }
 
-  // ── Reels: fully immersive fixed layout ──
+  // ── Reels: fully immersive fixed layout, navbar on desktop ──
   if (isReelsPage) {
     return (
       <div className={`fixed inset-0 ${darkMode ? 'dark' : ''} font-nunito`} style={{ overflow: 'hidden', height: '100dvh', touchAction: 'none' }}>
-        <div style={{ height: '100%', overflow: 'hidden' }}>
+        {showAppNav && !isUserAdmin && (
+          <div className="hidden lg:block">
+            <StudentNavbar />
+          </div>
+        )}
+        <AnimatePresence>
+          {showAppNav && isSidebarOpen && !isDesktop && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => dispatch(closeSidebar())}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[130]"
+            />
+          )}
+        </AnimatePresence>
+        {showAppNav && !isUserAdmin && <StudentSidebar />}
+        <div className="h-full lg:pt-20" style={{ overflow: 'hidden' }}>
           {children}
         </div>
         {showAppNav && !isUserAdmin && (

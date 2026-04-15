@@ -71,7 +71,7 @@ const StudentSidebar = () => {
       items: [
         { path: '/home', icon: Home, label: 'Home' },
         { path: '/search', icon: Search, label: 'Search' },
-        { path: '/reels', icon: PlayCircle, label: 'Reels', badge: 'NEW' },
+        { path: '/reels', icon: PlayCircle, label: 'Reels' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
         { path: '/quizzes', icon: BrainCircuit, label: 'Quizzes' },
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
@@ -133,12 +133,6 @@ const StudentSidebar = () => {
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                         <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
-                      {item.badge && (
-                        <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold relative z-10 ${active ? 'bg-white/20 text-white' : 'bg-emerald-500 text-white'
-                          }`}>
-                          {item.badge}
-                        </span>
-                      )}
                     </button>
                   </Link>
                 );
