@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { FaGraduationCap, FaPlay, FaClock, FaTrophy, FaCalendar, FaCheckCircle, FaUsers, FaChartLine } from 'react-icons/fa';
 import { requireAuthForAction } from '../../lib/auth';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
+import { generateQuizSchema, generateBreadcrumbSchema, renderSchemas } from '../../utils/schema';
+import { getCanonicalUrl } from '../../utils/seo';
 import dbConnect from '../../lib/db';
 import Exam from '../../models/Exam';
 import mongoose from 'mongoose';
@@ -42,9 +44,49 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
     }
 
     const examTitle = exam.name || exam.title || exam.description || 'Untitled Exam';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
+    const canonicalUrl = getCanonicalUrl(router.asPath);
+    const examDescription = exam.description || `Practice ${examTitle} exam on AajExam - Government exam preparation platform with comprehensive practice tests.`;
+
+    const quizSchema = generateQuizSchema({
+        title: examTitle,
+        description: examDescription,
+        educationalDescription: exam.description,
+        categoryName: exam.category?.name,
+        timeLimit: exam.duration
+    });
+
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Exams', url: '/exams' },
+        { name: examTitle }
+    ]);
 
     return (
         <MobileAppWrapper title={examTitle}>
+            <Head>
+                <title>{examTitle} - Practice Test | AajExam</title>
+                <meta name="description" content={examDescription.slice(0, 160)} />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta name="robots" content={robotsMeta || 'index, follow'} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="AajExam" />
+                <meta property="og:title" content={`${examTitle} - Practice Test | AajExam`} />
+                <meta property="og:description" content={examDescription.slice(0, 160)} />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:image" content={`${siteUrl}/logo.png`} />
+                <meta property="og:image:width" content="512" />
+                <meta property="og:image:height" content="512" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@AajExam" />
+                <meta name="twitter:title" content={`${examTitle} - Practice Test`} />
+                <meta name="twitter:description" content={examDescription.slice(0, 160)} />
+                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
+
+                {renderSchemas([quizSchema, breadcrumbSchema])}
+            </Head>
 
             <div className="py-4 lg:py-8 h-auto lg:min-h-screen  px-4 font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}

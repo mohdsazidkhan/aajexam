@@ -3,14 +3,21 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import { FaGraduationCap, FaChartLine, FaChevronLeft, FaChevronRight, FaQuestionCircle } from 'react-icons/fa';
+import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
 
 export default function GovtExamsPreparation({ initialData }) {
     const router = useRouter();
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
     const exams = initialData?.exams || [];
     const pagination = initialData?.pagination || {};
     const [loading, setLoading] = useState(false);
+
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Government Exams Preparation' }
+    ]);
 
     const handlePageChange = async (newPage) => {
         setLoading(true);
@@ -25,6 +32,21 @@ export default function GovtExamsPreparation({ initialData }) {
             <Head>
                 <title>Govt Exams Preparation Guide - AajExam</title>
                 <meta name="description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
+                <link rel="canonical" href={`${siteUrl}/govt-exams-preparation`} />
+                <meta property="og:title" content="Govt Exams Preparation Guide - AajExam" />
+                <meta property="og:description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams. Prepare with experts at AajExam." />
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="AajExam" />
+                <meta property="og:url" content={`${siteUrl}/govt-exams-preparation`} />
+                <meta property="og:image" content={`${siteUrl}/logo.png`} />
+                <meta property="og:locale" content="en_IN" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@AajExam" />
+                <meta name="twitter:title" content="Govt Exams Preparation Guide - AajExam" />
+                <meta name="twitter:description" content="Comprehensive guide and practice quizzes for SSC, UPSC, Banking, and Railway exams." />
+                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
+                <meta name="robots" content="index, follow" />
+                {renderSchema(breadcrumbSchema)}
             </Head>
 
             <div className="py-4 lg:py-8 h-auto lg:min-h-screen  px-4 font-outfit relative overflow-hidden">

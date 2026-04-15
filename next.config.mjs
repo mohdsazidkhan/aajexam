@@ -45,11 +45,19 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
           {
             key: 'Permissions-Policy',
             value:
               'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(self "https://secure.payu.in" "https://test.payu.in" "https://www.payu.in"), usb=(), fullscreen=(self)',
           },
+        ],
+      },
+      // Cache static assets aggressively for better Core Web Vitals
+      {
+        source: '/(.*)\\.(jpg|jpeg|png|gif|ico|svg|webp|woff|woff2)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {

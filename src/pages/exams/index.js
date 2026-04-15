@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaGraduationCap, FaClock, FaTrophy, FaCalendar, FaChevronRight } from 'react-icons/fa';
-// UnifiedNavbar removed
+import MobileAppWrapper from '../../components/MobileAppWrapper';
 import UnifiedFooter from '../../components/UnifiedFooter';
+import { generateBreadcrumbSchema, renderSchema } from '../../utils/schema';
+import { getCanonicalUrl, getPaginationRobotsMeta, getPaginationUrls } from '../../utils/seo';
 import dbConnect from '../../lib/db';
 import Exam from '../../models/Exam';
 
@@ -16,16 +18,29 @@ export default function ExamsPage({ exams, pagination }) {
     return (
         <MobileAppWrapper showHeader={true} title="Government Exams">
             <Head>
-                <title>Government Exams - Practice Tests | AajExam</title>
+                <title>{pagination?.page > 1 ? `Government Exams - Page ${pagination.page} | AajExam` : 'Government Exams - Practice Tests | AajExam'}</title>
                 <meta name="description" content="Practice for real government exams including SSC, UPSC, Banking, Railway and other competitive examinations. Full-length mock tests with detailed solutions." />
-                <meta name="keywords" content="government exams, SSC exam, UPSC exam, banking exam, railway exam, mock tests, practice exams" />
+                <meta name="keywords" content="government exams, SSC exam, UPSC exam, banking exam, railway exam, mock tests, practice exams, competitive exam preparation" />
+                <link rel="canonical" href={getCanonicalUrl('/exams')} />
+                <meta name="robots" content={getPaginationRobotsMeta(pagination?.page || 1)} />
+                {pagination?.page > 1 && <link rel="prev" href={getPaginationUrls('/exams', pagination.page, pagination.totalPages).prevUrl} />}
+                {pagination?.hasNext && <link rel="next" href={getPaginationUrls('/exams', pagination.page, pagination.totalPages).nextUrl} />}
                 <meta property="og:title" content="Government Exams - Practice Tests | AajExam" />
                 <meta property="og:description" content="Practice for real government competitive exams with full-length mock tests." />
                 <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="AajExam" />
+                <meta property="og:url" content={getCanonicalUrl('/exams')} />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com'}/logo.png`} />
+                <meta property="og:locale" content="en_IN" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@AajExam" />
                 <meta name="twitter:title" content="Government Exams - AajExam" />
-                <meta name="twitter:description" content="Practice for government competitive exams." />
-                <meta name="robots" content="index, follow" />
+                <meta name="twitter:description" content="Practice for government competitive exams with full-length mock tests." />
+                <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com'}/logo.png`} />
+                {renderSchema(generateBreadcrumbSchema([
+                  { name: 'Home', url: '/' },
+                  { name: 'Government Exams' }
+                ]))}
             </Head>
 
             <div className="min-h-screen  py-20 lg:py-24 px-4 font-outfit relative overflow-hidden">

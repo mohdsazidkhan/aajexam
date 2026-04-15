@@ -1,7 +1,25 @@
+import Head from 'next/head';
 import BlogDetailPage from '../../components/pages/BlogDetailPage';
 import Seo from '../../components/Seo';
+import { generateArticleSchema, generateBreadcrumbSchema, renderSchemas } from '../../utils/schema';
 
 export default function BlogDetail({ blog, slug, seo }) {
+  const articleSchema = blog ? generateArticleSchema({
+    title: blog.title,
+    description: seo?.description,
+    image: seo?.image,
+    publishedAt: blog.publishedAt,
+    createdAt: blog.createdAt,
+    updatedAt: blog.publishedAt,
+    authorName: blog.author?.name
+  }) : null;
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: blog?.title || 'Article' }
+  ]);
+
   return (
     <>
       <Seo
@@ -10,6 +28,9 @@ export default function BlogDetail({ blog, slug, seo }) {
         image={seo?.image}
         type="article"
       />
+      <Head>
+        {renderSchemas([articleSchema, breadcrumbSchema].filter(Boolean))}
+      </Head>
       <BlogDetailPage blog={blog} slug={slug} />
     </>
   );

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Seo from '../../components/Seo';
+import { generateBreadcrumbSchema, renderSchema } from '../../utils/schema';
 
 const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   ssr: false,
@@ -14,6 +15,13 @@ export default function Blog() {
         title="Blog - AajExam | Exam Preparation Tips & Guides"
         description="Read exam preparation tips, study guides, and expert insights for government exams. Stay updated with the latest exam strategies and resources."
       />
+      <Head>
+        <meta name="keywords" content="exam preparation tips, study guides, government exam blog, SSC tips, UPSC preparation, banking exam guides" />
+        {renderSchema(generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Blog' }
+        ]))}
+      </Head>
       <BlogsPage />
     </>
   );

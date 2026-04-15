@@ -3,11 +3,12 @@ import Head from 'next/head';
 import { FaShieldAlt, FaCheckCircle, FaUserGraduate, FaBook, FaAward, FaHandshake } from 'react-icons/fa';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
-import { generateBreadcrumbSchema } from '../utils/schema';
+import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
 import { getCanonicalUrl } from '../utils/seo';
 
 export default function EditorialPolicy() {
     const router = useRouter();
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
     const canonicalUrl = getCanonicalUrl(router.asPath);
 
     const breadcrumbSchema = generateBreadcrumbSchema([
@@ -24,12 +25,18 @@ export default function EditorialPolicy() {
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content="Editorial Policy - AajExam" />
                 <meta property="og:description" content="Our commitment to delivering accurate, high-quality government exam preparation content through rigorous editorial standards." />
-                <meta property="og:image" content="https://aajexam.com/logo.png" />
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="AajExam" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:image" content={`${siteUrl}/logo.png`} />
+                <meta property="og:locale" content="en_IN" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@AajExam" />
+                <meta name="twitter:title" content="Editorial Policy - AajExam" />
+                <meta name="twitter:description" content="Our commitment to delivering accurate, high-quality government exam preparation content through rigorous editorial standards." />
+                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
                 <meta name="robots" content="index, follow" />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-                />
+                {renderSchema(breadcrumbSchema)}
             </Head>
 
             <div className="min-h-screen ">

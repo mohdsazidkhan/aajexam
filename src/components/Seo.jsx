@@ -6,13 +6,18 @@ import config from '../lib/config/appConfig';
 const Seo = ({
   title = config.APP_NAME,
   description = config.APP_DESCRIPTION,
-  image = '/logo.png',
+  image,
   type = 'website',
   noIndex = false
 }) => {
   const router = useRouter();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
-  const url = `${siteUrl}${router.asPath || ''}`;
+  const cleanPath = (router.asPath || '').split('?')[0].split('#')[0];
+  const url = `${siteUrl}${cleanPath}`;
+  const dynamicOgImage = `${siteUrl}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description || '')}&type=${type === 'article' ? 'blog' : 'page'}`;
+  const absoluteImage = image
+    ? (image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? image : `/${image}`}`)
+    : dynamicOgImage;
 
   return (
     <Head>
@@ -29,8 +34,12 @@ const Seo = ({
       <meta property="og:site_name" content={config.APP_NAME} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={absoluteImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:url" content={url} />
+      <meta property="og:locale" content="en_IN" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +47,7 @@ const Seo = ({
       <meta name="twitter:creator" content="@AajExam" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={absoluteImage} />
 
       {noIndex && <meta name="robots" content="noindex,nofollow" />}
       <link rel="canonical" href={url} />
