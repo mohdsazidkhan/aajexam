@@ -8,7 +8,8 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { id } = await params;
         const mentor = await MentorProfile.findOne({ _id: id, status: 'active' })
-            .populate('user', 'name username profilePicture bio followersCount');
+            .populate('user', 'name username profilePicture bio followersCount')
+            .populate('amaThreads.askedBy', 'name username');
 
         if (!mentor) return NextResponse.json({ message: 'Mentor not found' }, { status: 404 });
 

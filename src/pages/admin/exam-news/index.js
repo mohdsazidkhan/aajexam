@@ -53,7 +53,7 @@ const AdminExamNews = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage Exam News - Admin</title></Head>
-        <div className="container mx-auto py-0 lg:py-6">
+        <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Megaphone className="w-6 h-6 text-primary-500" /> Exam News</h1>
             <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-500 text-white'}`}>

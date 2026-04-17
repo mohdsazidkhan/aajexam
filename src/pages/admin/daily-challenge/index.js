@@ -39,7 +39,7 @@ const AdminDailyChallenge = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Daily Challenges - Admin</title></Head>
-        <div className="container mx-auto py-0 lg:py-6">
+        <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
           <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Target className="w-6 h-6 text-primary-500" /> Daily Challenges</h1>
 
           <Card className="p-4 space-y-3">

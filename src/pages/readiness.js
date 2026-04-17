@@ -39,7 +39,7 @@ const ReadinessPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Exam Readiness - AajExam</title></Head>
-      <div className="max-w-3xl container mx-auto py-0 lg:py-6">
+      <div className="max-w-3xl container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="space-y-1">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Target className="w-6 h-6 text-primary-500" /> Exam Readiness</h1>
           <p className="text-sm font-bold text-slate-400">How prepared are you?</p>

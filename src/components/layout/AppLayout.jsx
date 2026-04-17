@@ -177,7 +177,7 @@ const AppLayout = ({ children }) => {
             'pt-12 lg:pt-20 pb-10 lg:pb-0 px-4 lg:px-0' :
             (isQuestPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-20')
           }`}>
-        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'container' : (isQuestPage ? 'max-w-full px-0' : 'px-4 md:px-6 container')}`}>
+        <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'container px-0 lg:px-4' : (isQuestPage ? 'max-w-full px-0' : 'px-4 md:px-6 container')}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={router.pathname}

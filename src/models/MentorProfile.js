@@ -23,7 +23,7 @@ const mentorProfileSchema = new mongoose.Schema({
     helpedStudents: { type: Number, default: 0 },
     amaThreads: [{
         question: { type: String, required: true, maxlength: 1000 },
-        answer: { type: String, required: true, maxlength: 3000 },
+        answer: { type: String, default: '', maxlength: 3000 },
         askedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         askedAt: { type: Date, default: Date.now },
         answeredAt: { type: Date },

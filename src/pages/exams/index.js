@@ -37,7 +37,7 @@ export default function ExamsPage({ exams, pagination }) {
             </Head>
 
             <div className="min-h-screen pb-24">
-                <div className="container mx-auto py-0 lg:py-6">
+                <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase">Exams</h1>
                         <span className="text-xs font-bold text-slate-400">{pagination?.totalExams || filtered.length} exams</span>

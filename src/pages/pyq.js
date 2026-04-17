@@ -35,7 +35,7 @@ const PYQPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Previous Year Questions (PYQ) - AajExam</title></Head>
-      <div className="container mx-auto py-0 lg:py-6">
+      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> Previous Year Papers</h1>

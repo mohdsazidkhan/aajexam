@@ -33,7 +33,7 @@ const MentorsPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Mentors - AajExam</title></Head>
-      <div className="container mx-auto py-0 lg:py-6">
+      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>

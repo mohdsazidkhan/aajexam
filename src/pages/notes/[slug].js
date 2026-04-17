@@ -40,7 +40,7 @@ const NoteDetailPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>{note.title} - Notes | AajExam</title></Head>
-      <div className="container mx-auto py-0 lg:py-6">
+      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
 
         <div className="flex items-start justify-between gap-4">
