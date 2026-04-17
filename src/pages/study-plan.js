@@ -89,7 +89,7 @@ const StudyPlanPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>AI Study Planner - AajExam</title></Head>
-      <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
+      <div className="container mx-auto py-0 lg:py-6">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-500" /> Study Planner</h1>

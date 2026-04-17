@@ -42,15 +42,15 @@ const PublicNavbar = () => {
   const toggleTheme = () => dispatch(toggleDarkMode());
 
   const navLinks = [
-    { label: 'Home', href: '/', icon: Compass },
-    { label: 'Exams', href: '/exams', icon: GraduationCap },
-    { label: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
-    { label: 'Subjects', href: '/subjects', icon: BookOpen },
-    { label: 'Topics', href: '/topics', icon: FolderOpen },
-    { label: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
-    { label: 'News', href: '/exam-news', icon: Newspaper },
-    { label: 'Notes', href: '/notes', icon: Layers },
-    { label: 'Blog', href: '/blog', icon: Layers },
+    { label: 'Home', title: 'Home', href: '/', icon: Compass },
+    { label: 'Exams', title: 'Exams', href: '/exams', icon: GraduationCap },
+    { label: 'Quizzes', title: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
+    { label: 'Subjects', title: 'Subjects', href: '/subjects', icon: BookOpen },
+    { label: 'Topics', title: 'Topics', href: '/topics', icon: FolderOpen },
+    { label: 'CA', title: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
+    { label: 'News', title: 'News', href: '/exam-news', icon: Newspaper },
+    { label: 'Notes', title: 'Notes', href: '/notes', icon: Layers },
+    { label: 'Blog', title: 'Blog', href: '/blog', icon: Layers },
   ];
 
   return (
@@ -61,7 +61,7 @@ const PublicNavbar = () => {
           : 'py-2 lg:py-4 bg-white dark:bg-slate-950 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm'
           }`}
       >
-        <div className="container mx-auto px-3 lg:px-6 pointer-events-auto">
+        <div className="container mx-auto px-3 lg:px-0 pointer-events-auto">
           <div className="flex items-center justify-between">
 
             {/* --- Logo --- */}
@@ -78,7 +78,7 @@ const PublicNavbar = () => {
                 {navLinks.map((link) => {
                   const isActive = router.pathname === link.href;
                   return (
-                    <Link key={link.href} href={link.href}>
+                    <Link title={link.title} key={link.href} href={link.href}>
                       <button className={`relative px-5 py-2.5 rounded-xl text-sm font-black tracking-[0.08em] transition-all group ${isActive ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-400'}`}>
                         {isActive && (
                           <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200/50 dark:border-slate-700/50" />

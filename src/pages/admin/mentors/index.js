@@ -39,7 +39,7 @@ const AdminMentors = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage Mentors - Admin</title></Head>
-        <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
+        <div className="container mx-auto py-0 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>
             <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 outline-none">

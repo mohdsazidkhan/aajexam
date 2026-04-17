@@ -23,7 +23,7 @@ const SubjectListPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto py-4 lg:py-6">
+      <div className="container mx-auto py-0 lg:py-6">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase">Subjects</h1>
           <span className="text-xs font-bold text-slate-400">{filtered.length} subjects</span>

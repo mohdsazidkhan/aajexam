@@ -37,10 +37,10 @@ export default function ExamsPage({ exams, pagination }) {
             </Head>
 
             <div className="min-h-screen pb-24">
-                <div className="container mx-auto py-4 lg:py-6">
+                <div className="container mx-auto py-0 lg:py-6">
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase">Exams</h1>
-                        <span className="text-xs font-bold text-slate-400">{filtered.length} exams</span>
+                        <span className="text-xs font-bold text-slate-400">{pagination?.totalExams || filtered.length} exams</span>
                     </div>
 
                     {/* Search */}
@@ -51,9 +51,9 @@ export default function ExamsPage({ exams, pagination }) {
                     </div>
 
                     {/* Exams List */}
-                    <div className="space-y-3">
+                    <div className="flex flex-col gap-1.5 lg:gap-3">
                         {filtered.map(exam => (
-                            <Link key={exam._id} href={`/exams/${exam._id}`}>
+                            <Link key={exam._id} href={`/exams/${exam._id}`} className="block">
                                 <div className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-500 transition-all shadow-sm">
                                     <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shrink-0">
                                         <GraduationCap className="w-4 lg:w-6 h-4 lg:h-6 text-white" />

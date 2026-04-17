@@ -31,7 +31,7 @@ const CurrentAffairDetail = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>{affair.title} - Current Affairs | AajExam</title></Head>
-      <div className="max-w-3xl container mx-auto py-4 lg:py-8 px-4 space-y-6">
+      <div className="max-w-3xl container mx-auto py-0 lg:py-6">
         <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         <div className="space-y-2">

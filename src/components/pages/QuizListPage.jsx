@@ -12,11 +12,12 @@ const QuizListPage = () => {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     setLoading(true);
     API.getQuizzes({ page, limit: 20 }).then(res => {
-      if (res.success) { setQuizzes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
+      if (res.success) { setQuizzes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalCount(res.pagination?.total || res.data?.length || 0); }
     }).finally(() => setLoading(false));
   }, [page]);
 
@@ -30,10 +31,10 @@ const QuizListPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto py-4 lg:py-6">
+      <div className="container mx-auto py-0 lg:py-6">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase">Quizzes</h1>
-          <span className="text-xs font-bold text-slate-400">{filtered.length} quizzes</span>
+          <span className="text-xs font-bold text-slate-400">{totalCount} quizzes</span>
         </div>
 
         <div className="relative mb-5">
@@ -42,7 +43,7 @@ const QuizListPage = () => {
             className="w-full bg-white dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700" />
         </div>
 
-        <div className="space-y-3">
+        <div className="flex flex-col gap-1.5 lg:gap-3">
           {filtered.map(quiz => (
             <div key={quiz._id} onClick={() => router.push(`/quiz/${quiz._id}`)}
               className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all shadow-sm">

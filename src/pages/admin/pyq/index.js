@@ -38,7 +38,7 @@ const AdminPYQ = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage PYQ Papers - Admin</title></Head>
-        <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
+        <div className="container mx-auto py-0 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> PYQ Papers</h1>
             <p className="text-xs text-slate-400 font-bold">Create PYQ via Govt Exams &gt; Tests (mark as PYQ)</p>

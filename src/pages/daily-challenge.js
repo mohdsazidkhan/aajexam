@@ -90,7 +90,7 @@ const DailyChallengePage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Daily Challenge - AajExam</title></Head>
-      <div className="max-w-3xl container mx-auto py-4 lg:py-8 px-4 space-y-6">
+      <div className="max-w-3xl container mx-auto py-0 lg:py-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">

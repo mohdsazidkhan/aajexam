@@ -38,13 +38,13 @@ const NotesPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Notes & Formulas - AajExam</title></Head>
-      <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
+      <div className="container mx-auto py-0 lg:py-6">
         <div className="space-y-1">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-500" /> Notes & Formulas</h1>
           <p className="text-sm font-bold text-slate-400">Quick revision notes for all subjects</p>
         </div>
 
-        <div className="flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2">
+        <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2">
           <Search className="w-4 h-4 text-slate-400" />
           <input type="text" placeholder="Search notes..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
             className="flex-1 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />

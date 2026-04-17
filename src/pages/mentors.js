@@ -33,7 +33,7 @@ const MentorsPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Mentors - AajExam</title></Head>
-      <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
+      <div className="container mx-auto py-0 lg:py-6">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>
@@ -42,7 +42,7 @@ const MentorsPage = () => {
           <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-500 text-white rounded-xl text-xs font-bold">Become Mentor</button>
         </div>
 
-        <div className="flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2">
+        <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2">
           <Search className="w-4 h-4 text-slate-400" />
           <input type="text" placeholder="Search by exam name..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
             className="flex-1 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
