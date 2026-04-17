@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const ReferralDashboard = dynamic(() => import('../../components/pages/admin/ReferralDashboard'), {
@@ -14,9 +13,7 @@ export default function ReferralsPage() {
         <title>Referral Dashboard - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ReferralDashboard />
-      </Suspense>
+      <ReferralDashboard />
     </>
   );
 }

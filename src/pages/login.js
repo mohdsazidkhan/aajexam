@@ -1,6 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import Head from 'next/head';
 import Seo from '../components/Seo';
 
 const LoginPage = dynamic(() => import('../components/pages/LoginPage'), {
@@ -16,9 +14,7 @@ export default function Login() {
         description="Login to your AajExam account to access practice tests, track your progress, compete on leaderboards, and earn rewards."
         noIndex={true}
       />
-      <Suspense fallback={<div>Loading...</div>}>
-        <LoginPage />
-      </Suspense>
+      <LoginPage />
     </>
   );
 }

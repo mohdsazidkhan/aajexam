@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const AdminPaymentTransactions = dynamic(() => import('../../components/pages/admin/AdminPaymentTransactions'), {
@@ -14,9 +13,7 @@ export default function PaymentTransactions() {
         <title>Admin Payment Transactions - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AdminPaymentTransactions />
-      </Suspense>
+      <AdminPaymentTransactions />
     </>
   );
 }

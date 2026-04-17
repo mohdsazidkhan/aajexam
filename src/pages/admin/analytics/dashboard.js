@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const DashboardAnalytics = dynamic(() => import('../../../components/pages/admin/DashboardAnalytics'), {
@@ -14,9 +13,7 @@ export default function AnalyticsDashboardPage() {
         <title>Admin Analytics - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <DashboardAnalytics />
-      </Suspense>
+      <DashboardAnalytics />
     </>
   );
 }

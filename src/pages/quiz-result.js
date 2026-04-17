@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const QuizResultPage = dynamic(() => import('../components/pages/QuizResultPage'), {
@@ -14,9 +13,7 @@ export default function QuizResult() {
         <title>Quiz Result - AajExam</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <QuizResultPage />
-      </Suspense>
+      <QuizResultPage />
     </>
   );
 }

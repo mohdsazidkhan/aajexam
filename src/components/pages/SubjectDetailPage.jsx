@@ -25,7 +25,7 @@ const SubjectDetailPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="max-w-[1200px] mx-auto py-4 lg:py-6">
+      <div className="container mx-auto py-4 lg:py-6">
         <button onClick={() => router.back()} className="flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}

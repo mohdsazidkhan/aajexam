@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const SearchPage = dynamic(() => import('../components/pages/SearchPage'), {
@@ -21,9 +20,7 @@ export default function Search() {
         <meta name="twitter:title" content="Search - AajExam" />
         <meta name="twitter:description" content="Search for content on AajExam Platform." />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <SearchPage />
-      </Suspense>
+      <SearchPage />
     </>
   );
 }

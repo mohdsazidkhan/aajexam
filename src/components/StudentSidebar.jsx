@@ -23,7 +23,17 @@ import {
   Layers,
   CreditCard,
   PlusCircle,
-  Bookmark
+  Bookmark,
+  Flame,
+  Target,
+  RotateCcw,
+  Newspaper,
+  Megaphone,
+  FileText,
+  StickyNote,
+  CalendarDays,
+  Users,
+  MessageCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -89,9 +99,29 @@ const StudentSidebar = () => {
       ]
     },
     {
+      title: 'DAILY',
+      items: [
+        { path: '/daily-challenge', icon: Target, label: 'Daily Challenge' },
+        { path: '/streak', icon: Flame, label: 'Streak' },
+        { path: '/current-affairs', icon: Newspaper, label: 'Current Affairs' },
+        { path: '/exam-news', icon: Megaphone, label: 'Exam News' },
+      ]
+    },
+    {
+      title: 'STUDY',
+      items: [
+        { path: '/pyq', icon: FileText, label: 'Previous Year Q' },
+        { path: '/revision', icon: RotateCcw, label: 'Revision Queue' },
+        { path: '/study-plan', icon: CalendarDays, label: 'Study Planner' },
+        { path: '/notes', icon: StickyNote, label: 'Notes & Formulas' },
+        { path: '/mentors', icon: Users, label: 'Mentors' },
+      ]
+    },
+    {
       title: 'PROGRESS',
       items: [
         { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
+        { path: '/readiness', icon: Target, label: 'Exam Readiness' },
         { path: '/exam-history', icon: History, label: 'Exam History' },
         { path: '/payment-history', icon: CreditCard, label: 'Payment History' },
         { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History' },

@@ -9,6 +9,5 @@ const subjectSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 subjectSchema.index({ isActive: 1, order: 1 });
-subjectSchema.index({ name: 1 }, { unique: true });
 
 export default mongoose.models.Subject || mongoose.model('Subject', subjectSchema);

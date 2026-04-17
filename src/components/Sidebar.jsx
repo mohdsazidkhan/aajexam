@@ -28,6 +28,13 @@ import {
   BookMarked,
   Layers,
   HelpCircle,
+  Target,
+  Newspaper,
+  Megaphone,
+  StickyNote,
+  CalendarDays,
+  RotateCcw,
+  MessageCircle,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -84,13 +91,27 @@ const Sidebar = () => {
       title: 'CONTENT',
       items: [
         { path: '/admin/blogs', icon: PenSquare, label: 'Blog', key: 'blogs' },
+        { path: '/admin/current-affairs', icon: Newspaper, label: 'Current Affairs', key: 'current-affairs' },
+        { path: '/admin/exam-news', icon: Megaphone, label: 'Exam News', key: 'exam-news' },
+        { path: '/admin/notes', icon: StickyNote, label: 'Notes & Formulas', key: 'notes' },
+        { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq' },
       ]
     },
     {
-      title: 'REELS',
+      title: 'ENGAGEMENT',
       items: [
-        { path: '/admin/reels', icon: Flame, label: 'All Reels', key: 'reels' },
-        { path: '/admin/reels/create', icon: Zap, label: 'Create Reel', key: 'reels-create' },
+        { path: '/admin/daily-challenge', icon: Target, label: 'Daily Challenge', key: 'daily-challenge' },
+        { path: '/admin/streak', icon: Flame, label: 'Streaks', key: 'streak' },
+        { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision' },
+        { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Planner', key: 'study-plan' },
+      ]
+    },
+    {
+      title: 'COMMUNITY',
+      items: [
+        { path: '/admin/mentors', icon: Users, label: 'Mentors', key: 'mentors' },
+        { path: '/admin/reels', icon: Zap, label: 'Reels', key: 'reels' },
+        { path: '/admin/reels/create', icon: Flame, label: 'Create Reel', key: 'reels-create' },
         { path: '/admin/reels/analytics', icon: BarChart3, label: 'Reel Analytics', key: 'reels-analytics' },
       ]
     },

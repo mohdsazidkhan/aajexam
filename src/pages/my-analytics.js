@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 import Seo from '../components/Seo';
 
@@ -16,9 +15,7 @@ export default function MyAnalytics() {
         description="View your comprehensive analytics on AajExam Platform. Track your earnings, expenses, performance metrics, and content creation statistics."
         noIndex={true}
       />
-      <Suspense fallback={<div>Loading...</div>}>
-        <MyAnalyticsPage />
-      </Suspense>
+      <MyAnalyticsPage />
     </>
   );
 }

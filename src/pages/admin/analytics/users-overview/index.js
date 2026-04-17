@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const AdminUsersAnalytics = dynamic(() => import('../../../../components/pages/admin/AdminUsersAnalytics'), {
@@ -14,9 +13,7 @@ export default function UsersOverviewPage() {
                 <title>All Users Analytics - SUBG Admin</title>
                 <meta name="robots" content="noindex,nofollow" />
             </Head>
-            <Suspense fallback={<div>Loading...</div>}>
-                <AdminUsersAnalytics />
-            </Suspense>
+            <AdminUsersAnalytics />
         </>
     );
 }

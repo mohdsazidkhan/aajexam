@@ -93,7 +93,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto relative z-10">
+                <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
                     {/* Breadcrumb */}
                     <div className="mb-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
                         <Link href="/exams">

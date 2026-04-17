@@ -14,6 +14,16 @@ import '@/models/Topic';
 import '@/models/Question';
 import '@/models/Quiz';
 import '@/models/QuizAttempt';
+import '@/models/UserStreak';
+import '@/models/DailyChallenge';
+import '@/models/DailyChallengeAttempt';
+import '@/models/RevisionQueue';
+import '@/models/CurrentAffair';
+import '@/models/ExamNews';
+import '@/models/QuestionDiscussion';
+import '@/models/StudyNote';
+import '@/models/StudyPlan';
+import '@/models/MentorProfile';
 
 const MONGODB_URI = process.env.MONGO_URI;
 

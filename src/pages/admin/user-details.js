@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const UserDetailsPage = dynamic(() => import('../../components/pages/admin/UserDetailsPage'), {
@@ -14,9 +13,7 @@ export default function UserDetailsPageRoute() {
         <title>User Details - AajExam Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <UserDetailsPage />
-      </Suspense>
+      <UserDetailsPage />
     </>
   );
 }

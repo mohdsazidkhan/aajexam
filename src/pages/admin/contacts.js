@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 const AdminContacts = dynamic(() => import('../../components/pages/admin/AdminContacts'), {
@@ -14,9 +13,7 @@ export default function AdminContactsPage() {
         <title>Admin Contacts - SUBG</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AdminContacts />
-      </Suspense>
+      <AdminContacts />
     </>
   );
 }

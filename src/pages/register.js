@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 import Seo from '../components/Seo';
 
@@ -16,9 +15,7 @@ export default function Register() {
         description="Create your free AajExam account today! Join thousands of students preparing for government exams, practicing tests, and earning Daily, Weekly, and Monthly Rewards."
         noIndex={true}
       />
-      <Suspense fallback={<div>Loading...</div>}>
-        <RegisterPage />
-      </Suspense>
+      <RegisterPage />
     </>
   );
 }

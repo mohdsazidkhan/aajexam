@@ -54,7 +54,7 @@ export default function GovtExamsPreparation({ initialData }) {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="container mx-auto relative z-10">
+                <div className="container mx-auto py-4 lg:py-8 px-4 space-y-6">
                     <div className="text-center mb-4 lg:mb-8">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-white dark:border-slate-800 mb-3 lg:mb-6">
                             <FaQuestionCircle className="w-4 h-4" />

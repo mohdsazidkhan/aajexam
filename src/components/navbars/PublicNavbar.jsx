@@ -10,9 +10,12 @@ import {
   Compass,
   Layers,
   ShieldCheck,
-  Zap,
   MessageSquarePlus,
-  PlayCircle,
+  BookOpen,
+  Newspaper,
+  GraduationCap,
+  Gamepad2,
+  FolderOpen,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -40,9 +43,14 @@ const PublicNavbar = () => {
 
   const navLinks = [
     { label: 'Home', href: '/', icon: Compass },
-    { label: 'Govt Exams', href: '/govt-exams-preparation', icon: ShieldCheck },
+    { label: 'Exams', href: '/exams', icon: GraduationCap },
+    { label: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
+    { label: 'Subjects', href: '/subjects', icon: BookOpen },
+    { label: 'Topics', href: '/topics', icon: FolderOpen },
+    { label: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
+    { label: 'News', href: '/exam-news', icon: Newspaper },
+    { label: 'Notes', href: '/notes', icon: Layers },
     { label: 'Blog', href: '/blog', icon: Layers },
-    { label: 'Community', href: '/community-questions', icon: MessageSquarePlus },
   ];
 
   return (

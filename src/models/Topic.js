@@ -10,6 +10,5 @@ const topicSchema = new mongoose.Schema({
 
 topicSchema.index({ isActive: 1, order: 1 });
 topicSchema.index({ subject: 1 });
-topicSchema.index({ name: 1 }, { unique: true });
 
 export default mongoose.models.Topic || mongoose.model('Topic', topicSchema);

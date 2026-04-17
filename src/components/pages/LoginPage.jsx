@@ -109,8 +109,8 @@ const LoginPage = () => {
             <div className="space-y-4 pt-8">
               {[
                 { icon: CircleCheck, text: 'Continue where you left off' },
-                { icon: Brain, text: 'Check your progress and daily streak' },
-                { icon: Sparkles, text: 'Get your daily quiz and rewards' }
+                { icon: Brain, text: 'Check your progress and complete daily challenge' },
+                { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
                   <div className="p-2 bg-primary-500/10 rounded-xl">

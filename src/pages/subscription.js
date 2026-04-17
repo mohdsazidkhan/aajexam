@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getCanonicalUrl } from '../utils/seo';
@@ -38,9 +37,7 @@ export default function Subscription() {
           { name: 'Subscription Plans' }
         ]))}
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <SubscriptionPage />
-      </Suspense>
+      <SubscriptionPage />
     </>
   );
 }

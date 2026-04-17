@@ -64,7 +64,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="container mx-auto py-4 lg:py-8 px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 lg:mb-20">
           <div className="lg:col-span-1 space-y-8">
             <div className="space-y-4">

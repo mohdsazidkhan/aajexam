@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition, startTransition } from 'react';
 
 /**
  * Hook to safely handle client-side only operations
@@ -8,7 +8,9 @@ export const useClientSide = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    startTransition(() => {
+      setIsClient(true);
+    });
   }, []);
 
   return isClient;
@@ -77,8 +79,10 @@ export const useAuthStatus = () => {
         }
       };
 
-      // Check auth status immediately
-      checkAuthStatus();
+      // Check auth status immediately (wrapped in transition to avoid hydration interruption)
+      startTransition(() => {
+        checkAuthStatus();
+      });
 
       // Listen for storage changes (login/logout from other tabs)
       const handleStorageChange = (e) => {

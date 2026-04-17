@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
@@ -25,9 +24,7 @@ export default function FollowingListPage() {
         <meta name="twitter:title" content="Following - AajExam" />
         <meta name="twitter:description" content="View following list on AajExam Platform." />
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <FollowingList username={username} />
-      </Suspense>
+      <FollowingList username={username} />
     </>
   );
 }

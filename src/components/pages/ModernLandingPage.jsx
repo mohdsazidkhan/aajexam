@@ -16,7 +16,9 @@ import {
    Sparkles,
    Rocket,
    Medal,
-   Coins,
+   BookOpen,
+   Layers,
+   Gamepad2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -31,9 +33,11 @@ import Card from '../ui/Card';
 const ModernLandingPage = () => {
    const [stats, setStats] = useState({
       activeStudents: "250+",
-      totalExams: "2K+",
-      totalQuestions: "12K+",
-      monthlyPrizePool: "650"
+      totalExams: "10+",
+      totalQuizzes: "50+",
+      totalSubjects: "10+",
+      totalTopics: "50+",
+      totalQuestions: "12K+"
    });
    const router = useRouter();
 
@@ -50,12 +54,14 @@ const ModernLandingPage = () => {
       try {
          const res = await API.getPublicLandingStats();
          if (res.success) {
-            const formatNum = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K+` : `${n}`);
+            const formatNum = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K+` : `${n}+`);
             setStats({
                activeStudents: formatNum(res.data?.activeStudents || 250),
-               totalExams: formatNum(res.data?.totalExams || 2400),
-               totalQuestions: formatNum(res.data?.totalQuestions || 12500),
-               monthlyPrizePool: formatNum(res.data?.monthlyPrizePool || 650)
+               totalExams: formatNum(res.data?.totalExams || 10),
+               totalQuizzes: formatNum(res.data?.totalQuizzes || 50),
+               totalSubjects: formatNum(res.data?.totalSubjects || 10),
+               totalTopics: formatNum(res.data?.totalTopics || 50),
+               totalQuestions: formatNum(res.data?.totalQuestions || 12500)
             });
          }
       } catch (e) {
@@ -66,7 +72,7 @@ const ModernLandingPage = () => {
       <MobileAppWrapper showHeader={true} title="Home">
          <section className="relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
                <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
                <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/15 rounded-full blur-[100px]" />
             </div>
@@ -144,7 +150,7 @@ const ModernLandingPage = () => {
                         <Flame className="w-5 h-5 text-primary-700 dark:text-primary-500" /> Thousands of questions
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <Trophy className="w-5 h-5 text-amber-500" /> Win prizes every month
+                        <Trophy className="w-5 h-5 text-amber-500" /> Practice with topic-wise quizzes
                      </div>
                   </motion.div>
                </div>
@@ -153,12 +159,14 @@ const ModernLandingPage = () => {
 
          <section className="py-8 lg:py-20 bg-white dark:bg-slate-900 border-y-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-6">
-               <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-12">
+               <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
-                     { label: 'Students Learning', val: stats.activeStudents, icon: Users, color: 'text-primary-700 dark:text-primary-500' },
-                     { label: 'Practice Exams', val: stats.totalExams, icon: Target, color: 'text-primary-700 dark:text-primary-500' },
-                     { label: 'Study Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-700 dark:text-primary-500' },
-                     { label: 'Monthly Prize Pool', val: `₹${stats.monthlyPrizePool}`, icon: Coins, color: 'text-primary-700 dark:text-primary-500' }
+                     { label: 'Students', val: stats.activeStudents, icon: Users, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Exams', val: stats.totalExams, icon: Target, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Topics', val: stats.totalTopics, icon: Layers, color: 'text-primary-700 dark:text-primary-500' },
+                     { label: 'Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-700 dark:text-primary-500' }
                   ].map((stat, index) => (
                      <div key={index} className="flex flex-col items-center text-center group">
                         <div className={`p-3 lg:p-4 rounded-2xl lg:rounded-3xl bg-slate-50 dark:bg-slate-800 mb-3 lg:mb-4 group-hover:scale-110 transition-transform ${stat.color} border-2 border-transparent group-hover:border-current/10`}>

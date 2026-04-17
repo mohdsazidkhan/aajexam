@@ -12,7 +12,7 @@ export const useGlobalError = () => {
   return context
 }
 
-export default function GlobalErrorProvider({ children }) {
+export function GlobalErrorProvider({ children }) {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 

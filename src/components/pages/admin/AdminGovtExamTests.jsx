@@ -444,7 +444,7 @@ const AdminGovtExamTests = () => {
                                  </div>
                               </div>
                            ) : (
-                              <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1200px] mx-auto">
+                              <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12 container mx-auto">
                                  <div className="space-y-10">
                                     <section className="space-y-3 lg:space-y-6">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-500 pl-3 block">Test Details</h3>

@@ -51,7 +51,7 @@ const QuizHistoryPage = () => {
       <div className="min-h-screen pb-24">
          <Head><title>Quiz History - AajExam</title></Head>
 
-         <div className="max-w-[1200px] mx-auto py-4 lg:py-8 space-y-6">
+         <div className="container mx-auto py-4 lg:py-8 space-y-6">
             {/* Header */}
             <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
                <div className="space-y-1 text-center lg:text-left">

@@ -35,15 +35,15 @@ function Error({ statusCode }) {
           </div>
 
           <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
-            {statusCode ? `Error ${statusCode}` : 'Anomaly Detected'}
+            {statusCode ? `Error ${statusCode}` : 'Something Went Wrong'}
           </h1>
 
           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
             {statusCode === 404
-              ? "The destination coordinates are invalid or restricted."
+              ? "Sorry, this page does not exist or has been moved."
               : statusCode === 500
-                ? "Core systems are experiencing a synchronized failure."
-                : "An unexpected temporal rift has occurred in the system."
+                ? "Our server ran into a problem. Please try again later."
+                : "Something unexpected happened. Please try again."
             }
           </p>
 
@@ -52,21 +52,21 @@ function Error({ statusCode }) {
               onClick={handleGoHome}
               className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
-              Return to Base
+              Go to Home
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoBack}
                 className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-duo border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
               >
-                Back
+                Go Back
               </button>
               {statusCode !== 404 && (
                 <button
                   onClick={() => window.location.reload()}
                   className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-duo border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
                 >
-                  Sync
+                  Try Again
                 </button>
               )}
             </div>

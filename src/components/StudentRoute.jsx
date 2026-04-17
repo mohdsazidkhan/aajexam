@@ -39,17 +39,17 @@ export default function StudentRoute({ children }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h2 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
-            Access Denied
+          <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
+            Students Only
           </h2>
           <p className="text-slate-600 dark:text-slate-400 uppercase tracking-widest text-[10px] font-black leading-relaxed mb-8">
-            This sector is restricted to student Users only. Please verify your credentials.
+            This page is only for students. Please log in with a student account.
           </p>
           <button
             onClick={() => router.push('/home')}
             className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
-            Return to Base
+            Go to Home
           </button>
         </div>
       </div>

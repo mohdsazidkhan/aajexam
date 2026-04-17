@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
@@ -27,9 +26,7 @@ export default function PublicProfilePage({ username, profile, seo }) {
 				{seo?.image && <meta name="twitter:image" content={seo.image} />}
 				{seo?.url && <link rel="canonical" href={seo.url} />}
 			</Head>
-      <Suspense fallback={<div>Loading...</div>}>
-				<PublicProfile />
-      </Suspense>
+      <PublicProfile />
     </>
   );
 }

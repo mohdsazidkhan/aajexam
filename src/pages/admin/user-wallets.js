@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 
 const AdminUserWallets = dynamic(() => import('../../components/pages/admin/AdminUserWallets'), {
   ssr: false,
@@ -8,8 +7,6 @@ const AdminUserWallets = dynamic(() => import('../../components/pages/admin/Admi
 
 export default function AdminUserWalletsPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <AdminUserWallets />
-    </Suspense>
+    <AdminUserWallets />
   );
 }

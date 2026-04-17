@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import Head from 'next/head';
 
 import Seo from '../components/Seo';
@@ -21,9 +20,7 @@ export default function Home() {
       <Head>
         <meta name="keywords" content="home, exam platform, practice tests, leaderboard, government exam preparation" />
       </Head>
-      <Suspense fallback={<HomePageSkeleton />}>
-        <HomePage />
-      </Suspense>
+      <HomePage />
     </>
   );
 }
