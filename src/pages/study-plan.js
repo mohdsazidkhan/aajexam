@@ -89,20 +89,20 @@ const StudyPlanPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>AI Study Planner - AajExam</title></Head>
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+        <div className="flex items-center justify-between gap-3">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-500" /> Study Planner</h1>
             <p className="text-sm font-bold text-slate-400 flex items-center gap-1"><Sparkles className="w-3 h-3" /> AI-powered personalized plans</p>
           </div>
-          <button onClick={() => setShowForm(!showForm)} className="px-4 py-2 bg-primary-500 text-white rounded-xl text-xs font-bold hover:bg-primary-600">
+          <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-500 text-white rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
             <Plus className="w-3 h-3 inline mr-1" /> New Plan
           </button>
         </div>
 
         {/* Create Form */}
         {showForm && (
-          <Card className="p-6 space-y-4">
+          <Card className="p-5 lg:p-6 space-y-5">
             <h2 className="text-sm font-black text-slate-900 dark:text-white">Generate Study Plan</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
@@ -134,7 +134,7 @@ const StudyPlanPage = () => {
                   className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none" />
               </div>
             </div>
-            <button onClick={generatePlan} disabled={generating} className="px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 disabled:opacity-50">
+            <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {generating ? <><Sparkles className="w-4 h-4 inline mr-1 animate-spin" /> Generating...</> : <><Sparkles className="w-4 h-4 inline mr-1" /> Generate Plan</>}
             </button>
           </Card>
@@ -173,14 +173,14 @@ const StudyPlanPage = () => {
 
         {/* Active Plan Detail */}
         {activePlan && (
-          <div className="space-y-4">
+          <div className="space-y-5">
             <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-500 hover:underline">Back to Plans</button>
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{activePlan.exam?.name} - Weekly Schedule</h2>
             {activePlan.weeklySchedule?.map((week, wi) => (
-              <Card key={wi} className="p-4 space-y-2">
-                <h3 className="text-xs font-black text-slate-500 uppercase">Week {week.week}</h3>
+              <Card key={wi} className="p-4 lg:p-5 space-y-3">
+                <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">Week {week.week}</h3>
                 {week.tasks?.map((task, ti) => (
-                  <div key={ti} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${task.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
+                  <div key={ti} className={`flex items-center gap-3 px-3 py-3 rounded-lg ${task.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
                     <button onClick={() => completeTask(activePlan._id, wi, ti)}
                       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${task.isCompleted ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300'}`}>
                       {task.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}

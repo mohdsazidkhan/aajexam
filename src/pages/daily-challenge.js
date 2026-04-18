@@ -90,7 +90,7 @@ const DailyChallengePage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Daily Challenge - AajExam</title></Head>
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">
@@ -123,9 +123,9 @@ const DailyChallengePage = () => {
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
             </div>
-            <Card className="p-6 space-y-4">
-              <h3 className="text-base font-black text-slate-900 dark:text-white">{challenge.questions[currentQ].questionText}</h3>
-              <div className="space-y-2">
+            <Card className="p-5 lg:p-6 space-y-4">
+              <h3 className="text-base lg:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{challenge.questions[currentQ].questionText}</h3>
+              <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
                   <button key={i} onClick={() => selectOption(i)}
                     className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all border-2 ${answers[currentQ]?.selectedOptionIndex === i
@@ -137,10 +137,10 @@ const DailyChallengePage = () => {
               </div>
             </Card>
             <div className="flex justify-between">
-              <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-2 text-sm font-bold text-slate-500 disabled:opacity-30">Previous</button>
+              <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-2.5 text-sm font-bold text-slate-500 disabled:opacity-30 disabled:cursor-not-allowed">Previous</button>
               {currentQ < challenge.questions.length - 1
-                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold">Next</button>
-                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2 bg-emerald-500 text-white rounded-xl text-sm font-bold">{submitting ? 'Submitting...' : 'Submit'}</button>
+                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
+                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-emerald-500 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
               }
             </div>
           </div>

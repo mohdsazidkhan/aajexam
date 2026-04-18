@@ -41,7 +41,7 @@ const StreakPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Streak - AajExam</title></Head>
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center gap-2">
             <Flame className="w-8 h-8 text-orange-500" /> Your Streak
@@ -88,7 +88,7 @@ const StreakPage = () => {
               <h3 className="text-sm font-black text-slate-900 dark:text-white">Use Streak Freeze</h3>
               <p className="text-[10px] text-slate-400">Skip today without breaking streak (Pro only)</p>
             </div>
-            <button onClick={useFreeze} className="px-4 py-2 bg-blue-500 text-white rounded-xl text-xs font-bold hover:bg-blue-600">
+            <button onClick={useFreeze} className="px-4 py-2 bg-blue-500 text-white rounded-xl text-xs font-bold hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               <Snowflake className="w-3 h-3 inline mr-1" /> Use Freeze
             </button>
           </Card>
@@ -96,11 +96,11 @@ const StreakPage = () => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <Card className="p-4 space-y-3">
+          <Card className="p-5 lg:p-6 space-y-4">
             <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2"><TrendingUp className="w-4 h-4 text-primary-500" /> Streak Leaderboard</h3>
             <div className="space-y-2">
               {leaderboard.map((entry, i) => (
-                <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+                <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
                   <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
                   <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
                   <span className="text-sm font-black text-orange-500 flex items-center gap-1"><Flame className="w-3 h-3" />{entry.currentStreak}</span>
