@@ -77,26 +77,33 @@ const RevisionPage = () => {
               <span className="text-[10px] font-bold text-slate-400">Reviews: {currentItem.totalReviews || 0}</span>
             </div>
 
-            <h3 className="text-base font-black text-slate-900 dark:text-white">{currentItem.question?.questionText}</h3>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300">{(currentItem.source || '').replace('_', ' ')}</span>
+              {currentItem.sourceTitle && <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate max-w-[70%]">{currentItem.sourceTitle}</span>}
+            </div>
+            <h3 className="text-base font-black text-slate-900 dark:text-white">{currentItem.questionSnapshot?.questionText}</h3>
 
             {!showAnswer ? (
               <div className="space-y-2">
-                {currentItem.question?.options?.map((opt, i) => (
+                {currentItem.questionSnapshot?.options?.map((opt, i) => (
                   <div key={i} className="px-4 py-3 rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                    <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt.text}
+                    <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt}
                   </div>
                 ))}
                 <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-500 text-white rounded-xl text-sm font-bold mt-4">Show Answer</button>
               </div>
             ) : (
               <div className="space-y-3">
-                {currentItem.question?.options?.map((opt, i) => (
-                  <div key={i} className={`px-4 py-3 rounded-xl text-sm font-bold border-2 ${opt.isCorrect ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
-                    <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt.text} {opt.isCorrect && <CheckCircle className="w-4 h-4 inline text-emerald-500 ml-2" />}
-                  </div>
-                ))}
-                {currentItem.question?.explanation && (
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-xs text-blue-700 dark:text-blue-300">{currentItem.question.explanation}</div>
+                {currentItem.questionSnapshot?.options?.map((opt, i) => {
+                  const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
+                  return (
+                    <div key={i} className={`px-4 py-3 rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
+                      <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-emerald-500 ml-2" />}
+                    </div>
+                  );
+                })}
+                {currentItem.questionSnapshot?.explanation && (
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-xs text-blue-700 dark:text-blue-300">{currentItem.questionSnapshot.explanation}</div>
                 )}
                 <div className="space-y-2 pt-2">
                   <p className="text-[10px] font-black text-slate-400 uppercase text-center">How well did you know this?</p>
@@ -113,7 +120,7 @@ const RevisionPage = () => {
           <Card className="p-8 text-center space-y-4">
             <Zap className="w-12 h-12 text-emerald-500 mx-auto" />
             <h2 className="text-xl font-black text-slate-900 dark:text-white">All Caught Up!</h2>
-            <p className="text-sm text-slate-400">No reviews due right now. Questions you get wrong in quizzes will appear here automatically.</p>
+            <p className="text-sm text-slate-400">No reviews due right now. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.</p>
           </Card>
         )}
       </div>

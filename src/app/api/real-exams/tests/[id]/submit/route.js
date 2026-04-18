@@ -6,6 +6,7 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect } from '@/middleware/auth';
 import { normalizeSubmittedAnswers, evaluateAnswers, recomputeRanksForTest } from '../../../helpers';
 import { createNotification } from '@/utils/notifications';
+import { addManyWrongAnswersToRevision, snapshotFromPracticeTestQuestion } from '@/utils/revision';
 
 export async function POST(req, { params }) {
     try {
@@ -44,6 +45,21 @@ export async function POST(req, { params }) {
         attempt.submittedAt = new Date();
         attempt.status = 'Completed';
         await attempt.save();
+
+        const wrongRevisionItems = evaluation.answerDetails
+            .map((ans, i) => ({ ans, q: test.questions[i] }))
+            .filter(({ ans, q }) => q && !ans.isCorrect && ans.selectedIndex !== -1)
+            .map(({ q }) => ({
+                userId: auth.user.id,
+                source: 'practice_test',
+                sourceId: testId,
+                sourceTitle: test.title || '',
+                sourceQuestionId: q._id,
+                snapshot: snapshotFromPracticeTestQuestion(q)
+            }));
+        if (wrongRevisionItems.length) {
+            addManyWrongAnswersToRevision(wrongRevisionItems).catch(() => {});
+        }
 
         const { rank, percentile } = await recomputeRanksForTest(testId, attempt._id);
         attempt.rank = rank;

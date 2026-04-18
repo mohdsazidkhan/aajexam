@@ -4,6 +4,7 @@ import DailyChallenge from '@/models/DailyChallenge';
 import DailyChallengeAttempt from '@/models/DailyChallengeAttempt';
 import UserStreak from '@/models/UserStreak';
 import { protect } from '@/middleware/auth';
+import { addManyWrongAnswersToRevision, snapshotFromDailyChallengeQuestion } from '@/utils/revision';
 
 // POST - Submit daily challenge
 export async function POST(req) {
@@ -58,6 +59,24 @@ export async function POST(req) {
             accuracy,
             totalTime: totalTime || 0
         });
+
+        const wrongRevisionItems = processedAnswers
+            .filter(a => !a.isCorrect && a.selectedOptionIndex !== -1)
+            .map(a => {
+                const q = challenge.questions[a.questionIndex];
+                return q ? {
+                    userId: auth.user._id,
+                    source: 'daily_challenge',
+                    sourceId: challengeId,
+                    sourceTitle: challenge.date ? new Date(challenge.date).toISOString().slice(0, 10) : '',
+                    sourceQuestionId: q._id,
+                    snapshot: snapshotFromDailyChallengeQuestion(q)
+                } : null;
+            })
+            .filter(Boolean);
+        if (wrongRevisionItems.length) {
+            addManyWrongAnswersToRevision(wrongRevisionItems).catch(() => {});
+        }
 
         // Update challenge stats
         challenge.totalAttempts += 1;

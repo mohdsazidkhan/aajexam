@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import Reel from '@/models/Reel';
 import ReelInteraction from '@/models/ReelInteraction';
 import { protect } from '@/middleware/auth';
+import { addWrongAnswerToRevision, snapshotFromReel } from '@/utils/revision';
 
 export async function POST(req, { params }) {
 	try {
@@ -59,6 +60,17 @@ export async function POST(req, { params }) {
 		await Reel.findByIdAndUpdate(id, {
 			$inc: { answeredCount: 1, ...(isCorrect ? { correctCount: 1 } : {}) }
 		});
+
+		if (!isCorrect) {
+			addWrongAnswerToRevision({
+				userId: auth.user._id,
+				source: 'reel',
+				sourceId: reel._id,
+				sourceTitle: reel.title || '',
+				sourceQuestionId: reel._id,
+				snapshot: snapshotFromReel(reel)
+			}).catch((e) => console.error('Revision (reel) error:', e?.message));
+		}
 
 		return NextResponse.json({
 			success: true,

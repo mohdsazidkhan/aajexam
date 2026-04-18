@@ -5,6 +5,7 @@ import Quiz from '@/models/Quiz';
 import Question from '@/models/Question';
 import QuizAttempt from '@/models/QuizAttempt';
 import { protect } from '@/middleware/auth';
+import { addManyWrongAnswersToRevision, snapshotFromQuestionDoc } from '@/utils/revision';
 
 // POST - submit quiz attempt
 export async function POST(req, { params }) {
@@ -30,6 +31,7 @@ export async function POST(req, { params }) {
 
         let score = 0, correctCount = 0, wrongCount = 0, skippedCount = 0;
         const evaluatedAnswers = [];
+        const wrongRevisionItems = [];
 
         quiz.questions.forEach((qId, index) => {
             const question = questionMap.get(qId.toString());
@@ -54,6 +56,15 @@ export async function POST(req, { params }) {
             } else {
                 wrongCount++;
                 score -= quiz.negativeMarking;
+                wrongRevisionItems.push({
+                    userId: auth.user._id,
+                    source: 'quiz',
+                    sourceId: id,
+                    sourceTitle: quiz.title || '',
+                    sourceQuestionId: question._id,
+                    questionRef: question._id,
+                    snapshot: snapshotFromQuestionDoc(question)
+                });
             }
 
             evaluatedAnswers.push({
@@ -86,6 +97,10 @@ export async function POST(req, { params }) {
             $inc: { totalAttempts: 1 },
             $set: { avgScore: await getAvgScore(id) }
         });
+
+        if (wrongRevisionItems.length) {
+            addManyWrongAnswersToRevision(wrongRevisionItems).catch(() => {});
+        }
 
         // compute rank
         const rank = await recomputeRanksForQuiz(id, attempt._id);
