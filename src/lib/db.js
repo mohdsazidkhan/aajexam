@@ -19,7 +19,6 @@ import '@/models/DailyChallengeAttempt';
 import '@/models/RevisionQueue';
 import '@/models/CurrentAffair';
 import '@/models/ExamNews';
-import '@/models/QuestionDiscussion';
 import '@/models/StudyNote';
 import '@/models/StudyPlan';
 import '@/models/MentorProfile';
