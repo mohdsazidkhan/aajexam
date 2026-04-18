@@ -228,11 +228,6 @@ class ApiService {
     return this._dailyDosePromise;
   }
 
-  async getStudyMaterials(params = {}) {
-    const query = this.buildQuery(params);
-    return this.request(`/api/study-materials${query ? `?${query}` : ''}`);
-  }
-
   // ===== QUIZ ENDPOINTS =====
   async getQuizzes(params = {}) {
     const query = this.buildQuery(params);

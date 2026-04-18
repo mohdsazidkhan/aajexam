@@ -5,7 +5,6 @@ import '@/models/ExamPattern';
 import '@/models/PracticeTest';
 import '@/models/UserTestAttempt';
 import '@/models/User';
-import '@/models/StudyMaterial';
 import '@/models/Blog';
 import '@/models/Reel';
 import '@/models/ReelInteraction';
