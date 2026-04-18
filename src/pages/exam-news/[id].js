@@ -31,7 +31,7 @@ const ExamNewsDetail = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>{news.title} - Exam News | AajExam</title></Head>
-      <div className="max-w-3xl container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <button onClick={() => router.push('/exam-news')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         <div className="space-y-2">

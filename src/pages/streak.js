@@ -41,7 +41,7 @@ const StreakPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Head><title>Streak - AajExam</title></Head>
-      <div className="max-w-3xl container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center gap-2">
             <Flame className="w-8 h-8 text-orange-500" /> Your Streak
