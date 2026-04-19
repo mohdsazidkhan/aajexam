@@ -25,7 +25,9 @@ export async function GET(req, { params }) {
         const safeQuestions = test.questions.map(q => ({
             _id: q._id,
             questionText: q.questionText,
+            questionImage: q.questionImage || '',
             options: q.options,
+            optionImages: q.optionImages || [],
             explanation: q.explanation,
             section: q.section,
             tags: q.tags,

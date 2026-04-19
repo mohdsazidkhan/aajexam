@@ -13,7 +13,9 @@ const practiceTestSchema = new mongoose.Schema({
     publishedAt: { type: Date, default: Date.now },
     questions: [{
         questionText: { type: String, required: true },
+        questionImage: { type: String, default: '' },
         options: [{ type: String, required: true }],
+        optionImages: [{ type: String, default: '' }],
         correctAnswerIndex: { type: Number, required: true, min: 0 },
         explanation: { type: String, trim: true },
         section: { type: String, required: true, trim: true },

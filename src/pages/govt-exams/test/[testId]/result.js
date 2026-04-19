@@ -290,28 +290,35 @@ const TestResult = () => {
                         <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-green-500' : isSkipped ? 'text-gray-400' : 'text-accent-red'}`}>
                           {isCorrect ? 'PERFECT' : isSkipped ? 'SKIPPED' : 'INCORRECT'}
                         </span>
-                        <h4 className="text-lg font-bold leading-tight">{q.questionText}</h4>
+                        <h4 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h4>
                       </div>
                       {isCorrect ? <CircleCheck className="text-green-500 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-accent-red w-8 h-8" />}
                     </div>
 
                     <div className="p-3 lg:p-6 space-y-4">
+                      {q.questionImage && (
+                        <img src={q.questionImage} alt="" className="max-h-72 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                      )}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                         {q.options.map((opt, oIdx) => {
                           const isSelected = attempt?.selectedIndex === oIdx;
                           const isAnswer = q.correctAnswerIndex === oIdx;
+                          const optImg = q.optionImages?.[oIdx] || '';
 
                           return (
                             <div key={oIdx} className={`
-                                  p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
+                                  p-3 rounded-2xl flex items-start gap-3 border-2 text-sm
                                   ${isAnswer ? 'bg-green-100 border-green-500 text-green-700' :
                                 isSelected ? 'bg-accent-red/10 border-accent-red text-accent-red' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black ${isAnswer ? 'bg-green-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-green-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
-                              <span className="font-bold">{opt}</span>
+                              <div className="flex-1 flex flex-col gap-2">
+                                {opt && <span className="font-bold">{opt}</span>}
+                                {optImg && <img src={optImg} alt="" className="max-h-32 rounded-lg object-contain bg-white" />}
+                              </div>
                             </div>
                           );
                         })}

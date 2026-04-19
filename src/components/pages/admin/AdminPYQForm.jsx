@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Save, ArrowLeft, FileText } from 'lucide-react';
+import { Plus, Trash2, Save, ArrowLeft, FileText, Upload, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import API from '../../../lib/api';
@@ -12,13 +12,30 @@ const DIFFICULTIES = ['easy', 'medium', 'hard'];
 
 const emptyQuestion = () => ({
     questionText: '',
+    questionImage: '',
     options: ['', '', '', ''],
+    optionImages: ['', '', '', ''],
     correctAnswerIndex: 0,
     explanation: '',
     section: '',
     difficulty: 'medium',
     tags: []
 });
+
+async function uploadImageFile(file) {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('folder', 'aajexam/pyq');
+    const token = (typeof window !== 'undefined' && localStorage.getItem('token')) || '';
+    const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        body: fd
+    });
+    const data = await res.json();
+    if (!res.ok || !data?.url) throw new Error(data?.message || data?.error || 'Upload failed');
+    return data.url;
+}
 
 export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
     const router = useRouter();
@@ -67,15 +84,21 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                         duration: d.duration || 60,
                         totalMarks: d.totalMarks || 100,
                         isFree: d.isFree ?? true,
-                        questions: (d.questions || []).map(q => ({
-                            questionText: q.questionText || '',
-                            options: q.options?.length ? [...q.options] : ['', '', '', ''],
-                            correctAnswerIndex: q.correctAnswerIndex ?? 0,
-                            explanation: q.explanation || '',
-                            section: q.section || '',
-                            difficulty: q.difficulty || 'medium',
-                            tags: q.tags || []
-                        }))
+                        questions: (d.questions || []).map(q => {
+                            const opts = q.options?.length ? [...q.options] : ['', '', '', ''];
+                            const optImgs = Array.from({ length: opts.length }, (_, i) => q.optionImages?.[i] || '');
+                            return {
+                                questionText: q.questionText || '',
+                                questionImage: q.questionImage || '',
+                                options: opts,
+                                optionImages: optImgs,
+                                correctAnswerIndex: q.correctAnswerIndex ?? 0,
+                                explanation: q.explanation || '',
+                                section: q.section || '',
+                                difficulty: q.difficulty || 'medium',
+                                tags: q.tags || []
+                            };
+                        })
                     });
                     setSelectedExam(d.examPattern?.exam?._id || '');
                 }
@@ -120,19 +143,51 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
     const addOption = (qi) => setForm(f => {
         const qs = [...f.questions];
-        qs[qi] = { ...qs[qi], options: [...qs[qi].options, ''] };
+        qs[qi] = {
+            ...qs[qi],
+            options: [...qs[qi].options, ''],
+            optionImages: [...(qs[qi].optionImages || []), '']
+        };
         return { ...f, questions: qs };
     });
 
     const removeOption = (qi, oi) => setForm(f => {
         const qs = [...f.questions];
         const opts = qs[qi].options.filter((_, idx) => idx !== oi);
+        const optImgs = (qs[qi].optionImages || []).filter((_, idx) => idx !== oi);
         let correctIdx = qs[qi].correctAnswerIndex;
         if (correctIdx === oi) correctIdx = 0;
         else if (correctIdx > oi) correctIdx -= 1;
-        qs[qi] = { ...qs[qi], options: opts, correctAnswerIndex: correctIdx };
+        qs[qi] = { ...qs[qi], options: opts, optionImages: optImgs, correctAnswerIndex: correctIdx };
         return { ...f, questions: qs };
     });
+
+    const updateOptionImage = (qi, oi, url) => setForm(f => {
+        const qs = [...f.questions];
+        const optImgs = [...(qs[qi].optionImages || [])];
+        while (optImgs.length < qs[qi].options.length) optImgs.push('');
+        optImgs[oi] = url;
+        qs[qi] = { ...qs[qi], optionImages: optImgs };
+        return { ...f, questions: qs };
+    });
+
+    const handleQuestionImageUpload = async (qi, file) => {
+        if (!file) return;
+        try {
+            const url = await uploadImageFile(file);
+            updateQuestion(qi, { questionImage: url });
+            toast.success('Image uploaded');
+        } catch (e) { toast.error(e.message || 'Upload failed'); }
+    };
+
+    const handleOptionImageUpload = async (qi, oi, file) => {
+        if (!file) return;
+        try {
+            const url = await uploadImageFile(file);
+            updateOptionImage(qi, oi, url);
+            toast.success('Image uploaded');
+        } catch (e) { toast.error(e.message || 'Upload failed'); }
+    };
 
     const addQuestion = () => setForm(f => ({ ...f, questions: [...f.questions, emptyQuestion()] }));
     const removeQuestion = (i) => setForm(f => ({ ...f, questions: f.questions.filter((_, idx) => idx !== i) }));
@@ -187,7 +242,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
     return (
         <div className="min-h-screen pb-24">
-            <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6 max-w-4xl">
+            <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                         <button onClick={() => router.push('/admin/pyq')} className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>
@@ -289,10 +344,32 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                         className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-primary-500"
                                         placeholder="Question text..." />
 
+                                    {/* Question image */}
+                                    <div className="flex items-center gap-3 flex-wrap">
+                                        {q.questionImage ? (
+                                            <div className="relative inline-block">
+                                                <img src={q.questionImage} alt="" className="h-20 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                                                <button type="button" onClick={() => updateQuestion(qi, { questionImage: '' })}
+                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600">
+                                                    <X className="w-3 h-3" />
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                                                <Upload className="w-3 h-3" /> Question Image
+                                                <input type="file" accept="image/*" className="hidden"
+                                                    onChange={e => handleQuestionImageUpload(qi, e.target.files?.[0])} />
+                                            </label>
+                                        )}
+                                    </div>
+
                                     <div className="space-y-2">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Options (click circle to mark correct)</p>
-                                        {q.options.map((opt, oi) => (
-                                            <div key={oi} className="flex items-center gap-2">
+                                        {q.options.map((opt, oi) => {
+                                            const optImg = q.optionImages?.[oi] || '';
+                                            return (
+                                            <div key={oi} className="space-y-1.5">
+                                            <div className="flex items-center gap-2">
                                                 <button type="button" onClick={() => updateQuestion(qi, { correctAnswerIndex: oi })}
                                                     className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 text-slate-400'}`}>
                                                     {String.fromCharCode(65 + oi)}
@@ -300,11 +377,27 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                                 <input type="text" value={opt} onChange={e => updateOption(qi, oi, e.target.value)}
                                                     className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500"
                                                     placeholder={`Option ${String.fromCharCode(65 + oi)}`} />
+                                                {optImg ? (
+                                                    <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-red-50 rounded-lg" title="Remove image">
+                                                        <X className="w-3.5 h-3.5 text-red-400" />
+                                                    </button>
+                                                ) : (
+                                                    <label className="cursor-pointer p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" title="Upload option image">
+                                                        <Upload className="w-3.5 h-3.5 text-slate-400" />
+                                                        <input type="file" accept="image/*" className="hidden"
+                                                            onChange={e => handleOptionImageUpload(qi, oi, e.target.files?.[0])} />
+                                                    </label>
+                                                )}
                                                 {q.options.length > 2 && (
                                                     <button type="button" onClick={() => removeOption(qi, oi)} className="p-1.5 hover:bg-red-50 rounded-lg"><Trash2 className="w-3.5 h-3.5 text-red-400" /></button>
                                                 )}
                                             </div>
-                                        ))}
+                                            {optImg && (
+                                                <img src={optImg} alt="" className="ml-8 h-16 rounded border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                                            )}
+                                            </div>
+                                            );
+                                        })}
                                         {q.options.length < 6 && (
                                             <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-500 hover:underline">+ Add option</button>
                                         )}

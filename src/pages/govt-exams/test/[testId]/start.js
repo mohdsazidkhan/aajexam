@@ -345,14 +345,19 @@ const TestStart = () => {
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
-                <h2 className="text-lg lg:text-xl font-black font-outfit leading-tight text-slate-800 dark:text-white">
+                <h2 className="text-lg lg:text-xl font-black font-outfit leading-tight text-slate-800 dark:text-white whitespace-pre-wrap">
                   {currentQ.questionText}
                 </h2>
               </div>
 
+              {currentQ.questionImage && (
+                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+              )}
+
               <div className="grid grid-cols-1 gap-4">
                 {currentQ.options.map((opt, idx) => {
                   const isSelected = answers[currentQ._id] === idx;
+                  const optImg = currentQ.optionImages?.[idx] || '';
                   return (
                     <button
                       key={idx}
@@ -370,7 +375,10 @@ const TestStart = () => {
                          `}>
                         {String.fromCharCode(65 + idx)}
                       </div>
-                      <span className="text-base font-bold leading-tight flex-1">{opt}</span>
+                      <div className="flex-1 flex flex-col gap-2 items-start">
+                        {opt && <span className="text-base font-bold leading-tight">{opt}</span>}
+                        {optImg && <img src={optImg} alt="" className="max-h-32 rounded-lg object-contain bg-white" />}
+                      </div>
                       {isSelected && <CircleCheck className="w-8 h-8 text-white animate-pop-in" />}
                     </button>
                   );

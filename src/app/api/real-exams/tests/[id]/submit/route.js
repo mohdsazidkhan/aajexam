@@ -79,7 +79,9 @@ export async function POST(req, { params }) {
         const responseQuestions = test.questions.map(q => ({
             _id: q._id,
             questionText: q.questionText,
+            questionImage: q.questionImage || '',
             options: q.options,
+            optionImages: q.optionImages || [],
             correctAnswerIndex: q.correctAnswerIndex,
             explanation: q.explanation,
             section: q.section
