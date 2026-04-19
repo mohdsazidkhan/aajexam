@@ -190,7 +190,7 @@ const AppLayout = ({ children }) => {
             </motion.div>
           </AnimatePresence>
         </div>
-        {!isUserAdmin && isDesktop && <UnifiedFooter />}
+        {!isUserAdmin && isDesktop && !isFullscreenPage && <UnifiedFooter />}
       </main>
 
       {/* --- Bottom Nav (Mobile only) --- */}
