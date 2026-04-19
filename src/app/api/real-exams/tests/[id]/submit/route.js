@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
 import ExamPattern from '@/models/ExamPattern';
 import UserTestAttempt from '@/models/UserTestAttempt';
+import User from '@/models/User';
 import { protect } from '@/middleware/auth';
 import { normalizeSubmittedAnswers, evaluateAnswers, recomputeRanksForTest } from '../../../helpers';
 import { createNotification } from '@/utils/notifications';
@@ -65,6 +66,19 @@ export async function POST(req, { params }) {
         attempt.rank = rank;
         attempt.percentile = percentile;
         await attempt.save();
+
+        // Update aggregate user performance (Readiness / Avg Score / Tests on Home)
+        try {
+            const user = await User.findById(auth.user.id);
+            if (user) {
+                const totalMarks = test.totalMarks || 0;
+                const scorePct = totalMarks > 0 ? (Math.max(evaluation.totalScore, 0) / totalMarks) * 100 : 0;
+                const subjectKey = String(test.examPattern?.exam || test.examPattern?._id || 'Mock');
+                user.updatePerformanceMetrics({ subject: subjectKey }, Math.round(scorePct));
+                user.markModified('performanceMetrics.examStats.subjectAccuracy');
+                await user.save();
+            }
+        } catch (e) { console.error('updatePerformanceMetrics (test) failed:', e); }
 
         try {
             await createNotification({

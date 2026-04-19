@@ -4,6 +4,7 @@ import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
 import Question from '@/models/Question';
 import QuizAttempt from '@/models/QuizAttempt';
+import User from '@/models/User';
 import { protect } from '@/middleware/auth';
 import { addManyWrongAnswersToRevision, snapshotFromQuestionDoc } from '@/utils/revision';
 
@@ -101,6 +102,17 @@ export async function POST(req, { params }) {
         if (wrongRevisionItems.length) {
             addManyWrongAnswersToRevision(wrongRevisionItems).catch(() => {});
         }
+
+        // Update aggregate user performance (Readiness / Avg Score / Tests on Home)
+        try {
+            const user = await User.findById(auth.user._id);
+            if (user) {
+                const subjectKey = String(quiz.subject || 'General');
+                user.updatePerformanceMetrics({ subject: subjectKey }, Math.round(percentage));
+                user.markModified('performanceMetrics.examStats.subjectAccuracy');
+                await user.save();
+            }
+        } catch (e) { console.error('updatePerformanceMetrics (quiz) failed:', e); }
 
         // compute rank
         const rank = await recomputeRanksForQuiz(id, attempt._id);
