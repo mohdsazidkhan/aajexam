@@ -11,7 +11,7 @@ export async function GET(req, { params }) {
         const { id: testId } = await params;
         const auth = await protect(req);
 
-        const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections').lean();
+        const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections negativeMarking').lean();
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
 
         let attempt = null;
