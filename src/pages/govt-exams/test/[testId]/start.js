@@ -438,7 +438,7 @@ const TestStart = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="max-w-5xl mx-auto space-y-4"
+              className="mx-auto space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 dark:text-primary-400 uppercase shrink-0">
