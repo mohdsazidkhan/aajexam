@@ -1091,6 +1091,57 @@ class ApiService {
     });
   }
 
+  async getDiscussionsFeed({ sort = 'trending', exam, page = 1, limit = 20 } = {}) {
+    const query = this.buildQuery({ sort, exam, page, limit });
+    return this.request(`/api/discussions/feed${query ? `?${query}` : ''}`);
+  }
+
+  async getDiscussionByQuestion(questionId) {
+    return this.request(`/api/discussions/question/${questionId}`);
+  }
+
+  // ===== COMMUNITY ANSWERS (Quora-style Q&A) =====
+  async getCommunityAnswers(questionId, { sort = 'top', page = 1, limit = 20 } = {}) {
+    const query = this.buildQuery({ sort, page, limit });
+    return this.request(`/api/community-questions/${questionId}/answers${query ? `?${query}` : ''}`);
+  }
+
+  async postCommunityAnswer(questionId, { body, parentId, image } = {}) {
+    return this.request(`/api/community-questions/${questionId}/answers`, {
+      method: 'POST',
+      body: JSON.stringify({ body, parentId, image })
+    });
+  }
+
+  async updateCommunityAnswer(id, data) {
+    return this.request(`/api/community-answers/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data)
+    });
+  }
+
+  async deleteCommunityAnswer(id) {
+    return this.request(`/api/community-answers/${id}`, { method: 'DELETE' });
+  }
+
+  async voteCommunityAnswer(id, action) {
+    return this.request(`/api/community-answers/${id}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ action })
+    });
+  }
+
+  async flagCommunityAnswer(id, reason = '') {
+    return this.request(`/api/community-answers/${id}/flag`, {
+      method: 'POST',
+      body: JSON.stringify({ reason })
+    });
+  }
+
+  async acceptCommunityAnswer(id) {
+    return this.request(`/api/community-answers/${id}/accept`, { method: 'POST' });
+  }
+
   // ===== REELS - PUBLIC/USER =====
   async getReelsFeed(params = {}) {
     const queryString = this.buildQuery(params);

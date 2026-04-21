@@ -47,6 +47,19 @@ const communityQuestionSchema = new mongoose.Schema({
   views: {
     type: Number,
     default: 0
+  },
+  answerCount: {
+    type: Number,
+    default: 0
+  },
+  lastAnswerAt: {
+    type: Date,
+    default: null
+  },
+  acceptedAnswer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'CommunityAnswer',
+    default: null
   }
 }, {
   timestamps: true

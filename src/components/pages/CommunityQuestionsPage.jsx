@@ -15,7 +15,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Calendar,
-  Trash2
+  Trash2,
+  MessageCircle,
+  ArrowRight
 } from 'lucide-react';
 
 const CommunityQuestionsPage = () => {
@@ -262,17 +264,13 @@ const CommunityQuestionsPage = () => {
                   </div>
                 )}
 
-                {/* Options */}
-                {q.options && q.options.length > 0 && (
+                {/* Options (preview only — no correct highlight, explanation hidden) */}
+                {q.options && q.options.filter(o => o.text?.trim()).length > 0 && (
                   <div className="space-y-2 mb-3">
-                    {q.options.map((opt, i) => (
+                    {q.options.filter(o => o.text?.trim()).map((opt, i) => (
                       <div
                         key={i}
-                        className={`px-3 py-2 rounded-xl border-2 text-sm font-semibold transition-colors ${
-                          opt.isCorrect
-                            ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
-                            : 'border-border-primary bg-background-surface text-content-secondary'
-                        }`}
+                        className="px-3 py-2 rounded-xl border-2 border-border-primary bg-background-surface text-content-secondary text-sm font-semibold"
                       >
                         <span className="font-black mr-2 text-xs">{String.fromCharCode(65 + i)}.</span>
                         {opt.text}
@@ -281,13 +279,16 @@ const CommunityQuestionsPage = () => {
                   </div>
                 )}
 
-                {/* Explanation */}
-                {q.explanation && (
-                  <div className="px-3 py-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 border-2 border-blue-200 dark:border-blue-500/20 mb-3">
-                    <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase mb-1">Explanation</p>
-                    <p className="text-sm text-blue-800 dark:text-blue-300">{q.explanation}</p>
-                  </div>
-                )}
+                {/* Open to answer CTA */}
+                <Link
+                  href={`/community-questions/${q._id}`}
+                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
+                >
+                  <span className="text-xs font-bold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
+                    Attempt & See Explanation
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-primary-600 dark:text-primary-400 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
 
                 {/* Actions */}
                 <div className="flex items-center justify-between pt-2 border-t border-border-primary">
@@ -303,6 +304,10 @@ const CommunityQuestionsPage = () => {
                       <Heart className={`w-4 h-4 ${isLikedByMe(q) ? 'fill-current' : ''}`} />
                       {q.likes || 0}
                     </button>
+                    <Link href={`/community-questions/${q._id}`} className="flex items-center gap-1.5 text-xs font-bold text-content-muted hover:text-primary-500 transition-colors">
+                      <MessageCircle className="w-4 h-4" />
+                      {q.answerCount || 0}
+                    </Link>
                     <span className="flex items-center gap-1.5 text-xs font-bold text-content-muted">
                       <Eye className="w-4 h-4" />
                       {q.views || 0}

@@ -91,6 +91,14 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 text-xs">
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || 'User'}</span>
+            {item.author?.username && (
+              <a
+                href={`/u/${item.author.username}`}
+                className="text-[11px] font-semibold text-primary-600 dark:text-primary-400 hover:underline"
+              >
+                @{item.author.username}
+              </a>
+            )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
               <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 rounded">
