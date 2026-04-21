@@ -106,7 +106,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
   return (
     <div className="space-y-8 animate-fade-in pb-24">
       <Head>
-        <title>{seo?.title || 'Practice Quests'}</title>
+        <title>{seo?.title || 'Practice Tests'}</title>
       </Head>
 
       <section className="flex items-center justify-end">
@@ -121,7 +121,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <Zap className="w-4 h-4" />
-            Practice Quests
+            Practice Tests
           </div>
           <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase leading-tight">{pattern?.title || 'Exam Pattern'}</h1>
           <div className="flex gap-4">

@@ -249,7 +249,7 @@ const TestStart = () => {
   if (loading) return (
     <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
-      <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Prepping Mission Briefing...</p>
+      <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>
   );
 
@@ -305,7 +305,7 @@ const TestStart = () => {
           {/* Left: Spacer or Placeholder */}
           <div className="flex-1 lg:flex-none" />
 
-          {/* Center: Mission Progress (Minimalist) */}
+          {/* Center: Test Progress (Minimalist) */}
           <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-8 py-4 shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
@@ -345,7 +345,7 @@ const TestStart = () => {
             <button
               onClick={() => setShowSubmitModal(true)}
               className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-accent-red rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
-              title="Abort Quest"
+              title="Exit Test"
             >
               <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
             </button>

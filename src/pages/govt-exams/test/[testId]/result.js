@@ -149,7 +149,7 @@ const TestResult = () => {
               className="space-y-2"
             >
               <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">
-                {isGreat ? 'Epic Achievement!' : 'Good Effort!'}
+                {isGreat ? 'Excellent Result!' : 'Good Effort!'}
               </h1>
               <p className="text-xl font-bold opacity-80 uppercase tracking-widest">
                 Test: {result?.testTitle}
@@ -171,7 +171,7 @@ const TestResult = () => {
             <div className="max-w-md mx-auto">
               <ProgressBar progress={accuracy} color="white" height="h-4" />
               <p className="mt-4 text-sm font-black uppercase tracking-widest opacity-80">
-                {accuracy >= 90 ? 'Master Level Reached' : accuracy >= 80 ? 'Expert Level' : 'Keep Practicing'}
+                {accuracy >= 90 ? 'Outstanding Performance' : accuracy >= 80 ? 'Strong Performance' : 'Keep Practicing'}
               </p>
             </div>
 
@@ -464,7 +464,7 @@ const TestResult = () => {
           onClick={() => router.push(`/govt-exams/test/${testId}/start`)}
           className="lg:w-auto px-12 py-6 text-xl"
         >
-          <RotateCcw className="w-6 h-6 mr-2" /> RETAKE QUEST
+          <RotateCcw className="w-6 h-6 mr-2" /> RETAKE TEST
         </Button>
         <Button
           variant="ghost"
@@ -473,7 +473,7 @@ const TestResult = () => {
           onClick={() => router.push('/govt-exams')}
           className="lg:w-auto px-12 py-6 text-xl border-2"
         >
-          <Home className="w-6 h-6 mr-2" /> STUDY HUB
+          <Home className="w-6 h-6 mr-2" /> BACK TO TESTS
         </Button>
       </section>
     </div>

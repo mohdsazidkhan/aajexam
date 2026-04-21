@@ -38,7 +38,7 @@ const TestStartModal = ({
 
   const examTitle = exam?.name || 'Exam';
   const categoryName = category?.name || 'Category';
-  const testTitle = test?.title || 'Practice Quest';
+  const testTitle = test?.title || 'Practice Test';
   const sections = pattern?.sections || [];
 
   return (
@@ -166,7 +166,7 @@ const TestStartModal = ({
           {/* Test Rules */}
           <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-border-primary/50 shadow-inner">
             <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
-              Mission Directives
+              Test Instructions
             </h4>
             <ul className="text-[10px] font-black text-content-secondary dark:text-slate-500 uppercase tracking-widest space-y-3 text-left">
               {[
@@ -197,7 +197,7 @@ const TestStartModal = ({
                 )}
               </div>
               <span className="text-[11px] lg:text-xs font-black text-content-primary uppercase tracking-widest text-left leading-relaxed">
-                I agree to follow the quest directives
+                I have read and agree to the test instructions
               </span>
             </label>
           </div>
@@ -218,13 +218,13 @@ const TestStartModal = ({
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >
-              Start Quest
+              Start Test
             </button>
           </div>
 
           {!acceptedRules && (
             <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.1em] mt-6 text-center">
-              Authorization required to proceed
+              Please accept the instructions to continue
             </p>
           )}
         </div>
