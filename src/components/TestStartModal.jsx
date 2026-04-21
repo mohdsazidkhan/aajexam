@@ -28,6 +28,7 @@ const TestStartModal = ({
   category = {}
 }) => {
   const [acceptedRules, setAcceptedRules] = useState(false);
+  const [language, setLanguage] = useState('en');
 
   if (!isOpen) return null;
 
@@ -114,6 +115,35 @@ const TestStartModal = ({
             </div>
           )}
 
+          {/* Language Selection */}
+          <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-border-primary/50 shadow-inner">
+            <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
+              Choose Your Language
+            </h4>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`py-3 lg:py-4 px-4 rounded-[1.25rem] text-xs font-black uppercase tracking-widest border-2 transition-all active:translate-y-0.5 ${language === 'en'
+                  ? 'bg-primary-500 text-white border-primary-700 border-b-[6px] shadow-duo-primary'
+                  : 'bg-white dark:bg-slate-800 text-content-secondary border-slate-200 dark:border-slate-700 hover:border-primary-300'
+                  }`}
+              >
+                English
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('hi')}
+                className={`py-3 lg:py-4 px-4 rounded-[1.25rem] text-xs font-black uppercase tracking-widest border-2 transition-all active:translate-y-0.5 ${language === 'hi'
+                  ? 'bg-primary-500 text-white border-primary-700 border-b-[6px] shadow-duo-primary'
+                  : 'bg-white dark:bg-slate-800 text-content-secondary border-slate-200 dark:border-slate-700 hover:border-primary-300'
+                  }`}
+              >
+                हिंदी
+              </button>
+            </div>
+          </div>
+
           {/* Test Rules */}
           <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-border-primary/50 shadow-inner">
             <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
@@ -162,7 +192,7 @@ const TestStartModal = ({
               Cancel
             </button>
             <button
-              onClick={onConfirm}
+              onClick={() => onConfirm(language)}
               disabled={!acceptedRules}
               className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-4 ${acceptedRules
                 ? 'bg-primary-500 text-white border-white/20 shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'

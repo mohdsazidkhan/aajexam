@@ -811,6 +811,13 @@ class ApiService {
     });
   }
 
+  async translateBatch(target, items) {
+    return this.request('/api/translate', {
+      method: 'POST',
+      body: JSON.stringify({ target, items })
+    });
+  }
+
   async getUserTestResults(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/real-exams/user/${userId}/results${queryString ? `?${queryString}` : ''}`);

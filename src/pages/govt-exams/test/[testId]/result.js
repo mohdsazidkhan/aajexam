@@ -27,15 +27,20 @@ import Button from '../../../../components/ui/Button';
 import Card from '../../../../components/ui/Card';
 import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
+import ShareComponent from '../../../../components/ShareComponent';
 
 const TestResult = () => {
   const router = useRouter();
   const { testId, attempt } = router.query;
   const user = getCurrentUser();
 
+  const [mounted, setMounted] = useState(false);
   const [result, setResult] = useState(null);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [lbStats, setLbStats] = useState({ totalParticipants: 0, topScore: 0, avgScore: 0, avgAccuracy: 0 });
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => { setMounted(true); }, []);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('summary'); // summary, review
   const [attemptDetail, setAttemptDetail] = useState(null);
@@ -52,7 +57,10 @@ const TestResult = () => {
           API.getTestAttemptDetail(testId, attempt)
         ]);
 
-        if (lbRes?.success) setLeaderboard(lbRes.data || []);
+        if (lbRes?.success) {
+          setLeaderboard(lbRes.data || []);
+          if (lbRes.stats) setLbStats(lbRes.stats);
+        }
         if (attemptRes?.success) {
           setAttemptDetail(attemptRes.data.attempt);
           setDetailedTest(attemptRes.data.test);
@@ -103,6 +111,14 @@ const TestResult = () => {
 
   const accuracy = result?.accuracy || 0;
   const isGreat = accuracy >= 80;
+  const percentile = Number(result?.percentile || 0);
+  const percentileBand = percentile >= 99 ? 'Top 1%'
+    : percentile >= 95 ? 'Top 5%'
+    : percentile >= 90 ? 'Top 10%'
+    : percentile >= 75 ? 'Top 25%'
+    : percentile >= 50 ? 'Top Half'
+    : 'Keep Pushing';
+  const beatPct = percentile > 0 ? percentile.toFixed(1) : '0';
 
   return (
     <div className="space-y-6 lg:space-y-10 animate-fade-in pb-24 max-w-5xl mx-auto">
@@ -158,6 +174,23 @@ const TestResult = () => {
                 {accuracy >= 90 ? 'Master Level Reached' : accuracy >= 80 ? 'Expert Level' : 'Keep Practicing'}
               </p>
             </div>
+
+            {lbStats.totalParticipants > 0 && result?.rank && (
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm"
+              >
+                <span className="text-base lg:text-lg font-black tracking-wide">
+                  All India Rank <span className="text-yellow-300">#{result.rank}</span> of {lbStats.totalParticipants.toLocaleString('en-IN')}
+                </span>
+                <span className="hidden sm:inline h-5 w-px bg-white/30" />
+                <span className="text-xs lg:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-yellow-300 text-yellow-900">
+                  {percentileBand} · Beat {beatPct}% candidates
+                </span>
+              </motion.div>
+            )}
           </div>
 
           {/* Animated Background Elements */}
@@ -170,17 +203,42 @@ const TestResult = () => {
       {/* --- Key Metrics Grid --- */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Rank', value: result?.rank ? `#${result.rank}` : 'N/A', icon: Award, color: 'text-yellow-500' },
-          { label: 'Percentile', value: `${result?.percentile?.toFixed(1) || 0}`, icon: TrendingUp, color: 'text-primary-500' },
-          { label: 'Correct', value: result?.correctCount, icon: CircleCheck, color: 'text-green-500' },
-          { label: 'Time', value: formatTime(result?.totalTime), icon: Clock, color: 'text-purple-500' }
+          {
+            label: 'All India Rank',
+            value: result?.rank ? `#${result.rank}` : 'N/A',
+            sub: lbStats.totalParticipants > 0 ? `of ${lbStats.totalParticipants.toLocaleString('en-IN')}` : null,
+            icon: Award,
+            color: 'text-yellow-500'
+          },
+          {
+            label: 'Percentile',
+            value: result?.percentile != null ? `${percentile.toFixed(1)}` : 'N/A',
+            sub: result?.percentile != null ? `Beat ${beatPct}%` : null,
+            icon: TrendingUp,
+            color: 'text-primary-500'
+          },
+          {
+            label: 'Top Score',
+            value: lbStats.topScore ? lbStats.topScore : '—',
+            sub: result?.score != null ? `You: ${result.score}` : null,
+            icon: Crown,
+            color: 'text-amber-500'
+          },
+          {
+            label: 'Time',
+            value: formatTime(result?.totalTime),
+            sub: `Avg: ${formatTime(lbStats.avgTime)}`,
+            icon: Clock,
+            color: 'text-purple-500'
+          }
         ].map((item, idx) => (
-          <Card key={idx} className="flex flex-col items-center text-center p-6 gap-2 border-2 hover:border-primary-500 transition-colors">
+          <Card key={idx} className="flex flex-col items-center text-center p-6 gap-1.5 border-2 hover:border-primary-500 transition-colors">
             <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
               <item.icon className="w-6 h-6 lg:w-7 lg:h-7" />
             </div>
             <span className="text-xl lg:text-2xl font-black font-outfit">{item.value}</span>
             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
+            {item.sub && <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400">{item.sub}</span>}
           </Card>
         ))}
       </section>
@@ -213,7 +271,14 @@ const TestResult = () => {
             >
               {/* Leaderboard */}
               <div className="space-y-4">
-                <h3 className="text-xl font-black font-outfit uppercase px-2">Leaderboard</h3>
+                <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
+                  <h3 className="text-xl font-black font-outfit uppercase">Leaderboard</h3>
+                  {lbStats.totalParticipants > 0 && (
+                    <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">
+                      {lbStats.totalParticipants.toLocaleString('en-IN')} candidates · Top {Math.min(leaderboard.length, lbStats.totalParticipants)}
+                    </span>
+                  )}
+                </div>
                 <Card className="p-0 overflow-hidden border-2">
                   <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-slate-800/50 text-xs font-black uppercase text-gray-400 border-b">
@@ -226,22 +291,39 @@ const TestResult = () => {
                     <tbody>
                       {leaderboard.map((entry, idx) => {
                         const isUser = entry.user?._id === user?.id;
+                        const displayRank = entry.rank || idx + 1;
                         return (
                           <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? 'bg-primary-500/10' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${idx === 0 ? 'bg-yellow-400 text-yellow-900' : 'bg-gray-100 dark:bg-slate-700'}`}>
-                                  {idx === 0 ? <Crown className="w-4 h-4" /> : idx + 1}
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ? 'bg-yellow-400 text-yellow-900' : 'bg-gray-100 dark:bg-slate-700'}`}>
+                                  {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
                                 <span className="font-bold text-sm">{entry.user?.name || 'Anonymous Player'}</span>
                                 {isUser && <span className="text-[10px] bg-primary-500 text-white px-2 py-0.5 rounded-full font-black uppercase">YOU</span>}
                               </div>
                             </td>
                             <td className="px-6 py-4 text-center font-black">{entry.score}</td>
-                            <td className="px-6 py-4 text-right font-bold text-gray-400">#{idx + 1}</td>
+                            <td className="px-6 py-4 text-right font-bold text-gray-400">#{displayRank}</td>
                           </tr>
                         );
                       })}
+
+                      {result?.rank && result.rank > leaderboard.length && (
+                        <tr className="border-t-2 border-primary-500/30 bg-primary-500/10">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs bg-primary-500 text-white">
+                                {result.rank}
+                              </div>
+                              <span className="font-bold text-sm">{user?.name || 'You'}</span>
+                              <span className="text-[10px] bg-primary-500 text-white px-2 py-0.5 rounded-full font-black uppercase">YOUR POSITION</span>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 text-center font-black">{result.score}</td>
+                          <td className="px-6 py-4 text-right font-bold text-primary-600">#{result.rank}</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </Card>
@@ -338,6 +420,40 @@ const TestResult = () => {
           )}
         </AnimatePresence>
       </section>
+
+      {/* --- Share Result --- */}
+      {mounted && result && (
+        <section className="pt-4">
+          <Card className="p-6 lg:p-8 border-2 bg-gradient-to-br from-primary-50 to-indigo-50 dark:from-slate-800 dark:to-indigo-950/40">
+            <div className="text-center space-y-2 mb-4">
+              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+                {result.rank && lbStats.totalParticipants > 0
+                  ? `Share your All India Rank #${result.rank} of ${lbStats.totalParticipants.toLocaleString('en-IN')} with friends`
+                  : 'Share your score and challenge friends to beat it'}
+              </p>
+            </div>
+            <ShareComponent
+              url={(() => {
+                const p = new URLSearchParams();
+                if (result.rank) p.set('rank', String(result.rank));
+                if (lbStats.totalParticipants) p.set('total', String(lbStats.totalParticipants));
+                if (result.percentile != null) p.set('pct', String(result.percentile));
+                if (result.score != null) p.set('score', String(result.score));
+                if (result.accuracy != null) p.set('accuracy', String(result.accuracy));
+                if (result.testTitle) p.set('testTitle', result.testTitle);
+                if (user?.name) p.set('user', user.name);
+                return `${window.location.origin}/share/result?${p.toString()}`;
+              })()}
+              text={
+                result.rank && lbStats.totalParticipants > 0
+                  ? `I scored All India Rank #${result.rank} of ${lbStats.totalParticipants.toLocaleString('en-IN')} in ${result.testTitle} on AajExam. Think you can beat me?`
+                  : `I scored ${result.score} in ${result.testTitle} on AajExam. Think you can beat me?`
+              }
+            />
+          </Card>
+        </section>
+      )}
 
       {/* --- Action Bar --- */}
       <section className="flex flex-col lg:flex-row justify-center items-center gap-4 pt-8">

@@ -53,6 +53,8 @@ const TestStart = () => {
   const [translationMap, setTranslationMap] = useState({});
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [started, setStarted] = useState(false);
+  const [language, setLanguage] = useState('en');
+  const [translatingQ, setTranslatingQ] = useState(false);
 
   const timerRef = useRef(null);
   const autoSaveRef = useRef(null);
@@ -143,7 +145,8 @@ const TestStart = () => {
     setAnswers(prev => ({ ...prev, [qId]: idx }));
   };
 
-  const onStartQuest = () => {
+  const onStartQuest = (selectedLanguage = 'en') => {
+    setLanguage(selectedLanguage);
     if (!startedAt) {
       const duration = test?.examPattern?.duration || test?.duration || 60;
       setTimeLeft(duration * 60);
@@ -152,6 +155,48 @@ const TestStart = () => {
     enterFullscreen();
     setStarted(true);
   };
+
+  // Per-question on-demand translation
+  useEffect(() => {
+    if (!started || language === 'en') return;
+    const q = questions[currentQIndex];
+    if (!q || translationMap[q._id]) return;
+
+    let cancelled = false;
+    const run = async () => {
+      try {
+        setTranslatingQ(true);
+        const items = [];
+        if (q.questionText) items.push({ id: 'q', text: q.questionText });
+        if (q.explanation) items.push({ id: 'e', text: q.explanation });
+        (q.options || []).forEach((opt, i) => {
+          if (opt) items.push({ id: `o${i}`, text: opt });
+        });
+        if (items.length === 0) {
+          setTranslationMap(prev => ({ ...prev, [q._id]: {} }));
+          return;
+        }
+        const res = await API.translateBatch(language, items);
+        if (cancelled || !res?.results) return;
+        const out = { questionText: q.questionText, explanation: q.explanation, options: [...(q.options || [])] };
+        res.results.forEach(r => {
+          if (r.id === 'q') out.questionText = r.translated;
+          else if (r.id === 'e') out.explanation = r.translated;
+          else if (r.id?.startsWith('o')) {
+            const idx = parseInt(r.id.slice(1));
+            if (!isNaN(idx)) out.options[idx] = r.translated;
+          }
+        });
+        setTranslationMap(prev => ({ ...prev, [q._id]: out }));
+      } catch (err) {
+        console.error('Question translate failed:', err);
+      } finally {
+        if (!cancelled) setTranslatingQ(false);
+      }
+    };
+    run();
+    return () => { cancelled = true; };
+  }, [currentQIndex, language, started, questions, translationMap]);
 
   // --- Fullscreen Experience ---
   const enterFullscreen = useCallback(async () => {
@@ -224,9 +269,17 @@ const TestStart = () => {
     );
   }
 
-  const currentQ = questions[currentQIndex];
+  const rawQ = questions[currentQIndex];
+  const tr = rawQ ? translationMap[rawQ._id] : null;
+  const currentQ = rawQ ? {
+    ...rawQ,
+    questionText: (language !== 'en' && tr?.questionText) ? tr.questionText : rawQ.questionText,
+    options: (language !== 'en' && tr?.options) ? tr.options : rawQ.options,
+    explanation: (language !== 'en' && tr?.explanation) ? tr.explanation : rawQ.explanation
+  } : null;
   const progressPercent = ((currentQIndex + 1) / questions.length) * 100;
   const answeredCount = Object.keys(answers).length;
+  const isShowingOriginalDuringTranslate = started && language !== 'en' && !tr;
 
   return (
     <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col">
@@ -364,6 +417,13 @@ const TestStart = () => {
                   {currentQ.questionText}
                 </h2>
               </div>
+
+              {translatingQ && isShowingOriginalDuringTranslate && (
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[11px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">
+                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                  Translating to {language === 'hi' ? 'हिंदी' : language.toUpperCase()}…
+                </div>
+              )}
 
               {currentQ.questionImage && (
                 <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
