@@ -54,6 +54,9 @@ function isRetryableError(err) {
     if (status === 429 || status === 408 || status === 503 || status === 502 || status >= 500) return true;
     const msg = (err?.message || '').toLowerCase();
     if (msg.includes('rate') || msg.includes('timeout') || msg.includes('unavailable') || msg.includes('quota')) return true;
+    // OpenRouter's "Provider returned error" (status 400) means the upstream model/provider failed.
+    // These are per-model problems — fall through to the next model in the chain.
+    if (status === 400 && (msg.includes('provider') || msg.includes('upstream'))) return true;
     return false;
 }
 
