@@ -1,11 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { RotateCcw, Brain, CheckCircle, XCircle, BarChart3, ArrowRight, Zap } from 'lucide-react';
+import { RotateCcw, Brain, CheckCircle, XCircle, BarChart3, ArrowRight, Zap, BookOpen, FileText, Target, Film, Layers } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+
+const SOURCE_TABS = [
+  { key: 'all',             label: 'All',              icon: Layers },
+  { key: 'quiz',            label: 'Quizzes',          icon: BookOpen },
+  { key: 'practice_test',   label: 'Tests',            icon: FileText },
+  { key: 'daily_challenge', label: 'Daily Challenges', icon: Target },
+  { key: 'reel',            label: 'Reels',            icon: Film }
+];
 
 const RevisionPage = () => {
   const [dueItems, setDueItems] = useState([]);
@@ -14,20 +22,26 @@ const RevisionPage = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [reviewing, setReviewing] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchItems = async () => {
       try {
+        const url = activeTab === 'all' ? '/api/revision?limit=50' : `/api/revision?limit=50&source=${activeTab}`;
         const [queueRes, statsRes] = await Promise.all([
-          API.request('/api/revision?limit=50'),
+          API.request(url),
           API.request('/api/revision/stats')
         ]);
-        if (queueRes?.success) setDueItems(queueRes.data.dueItems || []);
+        if (queueRes?.success) {
+          setDueItems(queueRes.data.dueItems || []);
+          setCurrentIdx(0);
+          setShowAnswer(false);
+        }
         if (statsRes?.success) setStats(statsRes.data);
       } catch (e) { } finally { setLoading(false); }
     };
-    fetchData();
-  }, []);
+    fetchItems();
+  }, [activeTab]);
 
   const submitReview = async (quality) => {
     if (reviewing || !dueItems[currentIdx]) return;
@@ -68,6 +82,23 @@ const RevisionPage = () => {
             <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
           </div>
         )}
+
+        {/* Source tabs */}
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1">
+          {SOURCE_TABS.map(tab => {
+            const Icon = tab.icon;
+            const count = tab.key === 'all' ? (stats?.totalItems || 0) : (stats?.bySource?.[tab.key] ?? 0);
+            const isActive = activeTab === tab.key;
+            return (
+              <button key={tab.key} onClick={() => setActiveTab(tab.key)}
+                className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black transition ${isActive ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                <Icon className="w-3.5 h-3.5" />
+                <span>{tab.label}</span>
+                <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
 
         {/* Review Card */}
         {currentItem ? (
@@ -121,8 +152,12 @@ const RevisionPage = () => {
         ) : (
           <Card className="p-8 text-center space-y-4">
             <Zap className="w-12 h-12 text-emerald-500 mx-auto" />
-            <h2 className="text-xl font-black text-slate-900 dark:text-white">All Caught Up!</h2>
-            <p className="text-sm text-slate-400 leading-relaxed">No reviews due right now. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.</p>
+            <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? 'All Caught Up!' : 'Koi item nahi'}</h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              {activeTab === 'all'
+                ? 'No reviews pending. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.'
+                : `Is category (${SOURCE_TABS.find(t => t.key === activeTab)?.label}) me abhi koi wrong answer nahi hai.`}
+            </p>
           </Card>
         )}
       </div>

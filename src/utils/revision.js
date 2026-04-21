@@ -57,7 +57,8 @@ export function snapshotFromReel(reel) {
 export async function addWrongAnswerToRevision({ userId, source, sourceId, sourceTitle = '', sourceQuestionId, questionRef = null, snapshot }) {
     if (!userId || !source || !sourceId || !sourceQuestionId || !snapshot) return null;
 
-    const nextReviewDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    // Available for review immediately so newly-wrong answers show up instantly in the queue
+    const nextReviewDate = new Date();
 
     const existing = await RevisionQueue.findOne({ user: userId, source, sourceQuestionId });
     if (existing) {

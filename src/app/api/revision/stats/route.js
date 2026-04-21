@@ -47,6 +47,13 @@ export async function GET(req) {
             nextReviewDate: { $lte: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000) }
         });
 
+        const bySourceAgg = await RevisionQueue.aggregate([
+            { $match: { user: userId, status: 'active' } },
+            { $group: { _id: '$source', count: { $sum: 1 } } }
+        ]);
+        const bySource = { quiz: 0, practice_test: 0, daily_challenge: 0, reel: 0 };
+        bySourceAgg.forEach(c => { bySource[c._id] = c.count; });
+
         return NextResponse.json({
             success: true,
             data: {
@@ -55,7 +62,8 @@ export async function GET(req) {
                 accuracy: stats?.totalReviews > 0 ? Math.round((stats.totalCorrect / stats.totalReviews) * 100) : 0,
                 statuses: stats?.statuses || [],
                 dueToday,
-                upcoming7Days
+                upcoming7Days,
+                bySource
             }
         });
     } catch (error) {
