@@ -86,6 +86,25 @@ const TestStartModal = ({
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
                 </div>
               )}
+              {pattern?.negativeMarking > 0 ? (
+                <div className="flex flex-col items-center gap-2 col-span-2">
+                  <div className="w-10 h-10 bg-red-50 dark:bg-red-900/30 rounded-xl flex items-center justify-center text-red-600 shadow-sm">
+                    <Info className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black text-red-600 dark:text-red-400 uppercase tracking-widest text-center">
+                    Negative Marking: -{pattern.negativeMarking} per wrong answer
+                  </span>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-2 col-span-2">
+                  <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest text-center">
+                    No Negative Marking
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
