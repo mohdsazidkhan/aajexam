@@ -199,22 +199,22 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-8 text-center border-2 border-slate-100 dark:border-slate-800">
                                     <FaUsers className="text-3xl text-primary-600 mx-auto mb-4" />
-                                    <div className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.totalAttempts}</div>
+                                    <div className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.totalAttempts}</div>
                                     <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Total Attempts</div>
                                 </div>
                                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-8 text-center border-2 border-slate-100 dark:border-slate-800">
                                     <FaChartLine className="text-3xl text-emerald-600 mx-auto mb-4" />
-                                    <div className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.averageScore}%</div>
+                                    <div className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.averageScore}%</div>
                                     <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Average Score</div>
                                 </div>
                                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-8 text-center border-2 border-slate-100 dark:border-slate-800">
                                     <FaTrophy className="text-3xl text-orange-600 mx-auto mb-4" />
-                                    <div className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.highestScore}%</div>
+                                    <div className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.highestScore}%</div>
                                     <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Highest Score</div>
                                 </div>
                                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-8 text-center border-2 border-slate-100 dark:border-slate-800">
                                     <FaCheckCircle className="text-3xl text-primary-600 mx-auto mb-4" />
-                                    <div className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.passRate}%</div>
+                                    <div className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{exam.stats.passRate}%</div>
                                     <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Pass Rate</div>
                                 </div>
                             </div>

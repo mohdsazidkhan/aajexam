@@ -126,7 +126,7 @@ const EducationalContent = ({ content }) => {
                 {/* Features Matrix */}
                 <div className="space-y-12">
                     <div className="text-center">
-                        <h2 className="text-xl lg:text-xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">Platform Sub-Systems</h2>
+                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">Platform Sub-Systems</h2>
                     </div>
 
                     <motion.div

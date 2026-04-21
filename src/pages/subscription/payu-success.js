@@ -171,7 +171,7 @@ const PayuSuccess = () => {
                 {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}
               </div>
               <div className="space-y-2">
-                <h1 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">
+                <h1 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">
                   {success ? 'Payment successful' : 'We could not confirm the payment'}
                 </h1>
                 <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">

@@ -64,7 +64,7 @@ const ReferralBanner = ({ user }) => {
         <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-inner border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
           <Target className="w-10 h-10 text-primary-500" />
         </div>
-        <h3 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
           Invite <span className="text-primary-700 dark:text-primary-500">& Earn!</span>
         </h3>
         <p className="text-slate-700 dark:text-gray-400 text-sm font-bold uppercase tracking-widest">

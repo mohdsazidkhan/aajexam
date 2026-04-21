@@ -144,7 +144,7 @@ const PayuFailure = () => {
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">
-                <h1 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
+                <h1 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
                 <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
                   {error || 'The payment could not be completed. Please try again or use a different payment method.'}
                 </p>

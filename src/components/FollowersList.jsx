@@ -134,7 +134,7 @@ const FollowersList = ({ username: usernameProp }) => {
 
                   <div className="hidden lg:block text-right">
                     <div className="bg-slate-100 dark:bg-slate-800/50 px-8 py-5 rounded-[2rem] border-4 border-slate-200/50 dark:border-slate-700/30 shadow-inner group-hover:border-primary-500 transition-colors">
-                      <p className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
+                      <p className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
                         {user.followersCount || 0}
                       </p>
                       <p className="text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-1">Agents</p>
