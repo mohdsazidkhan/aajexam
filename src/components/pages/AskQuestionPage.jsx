@@ -177,7 +177,7 @@ const AskQuestionPage = () => {
 
   return (
     <div className="min-h-screen bg-background-primary">
-      <div className="max-w-2xl mx-auto px-4 py-6 lg:py-8">
+      <div className="mx-auto px-4 py-6 lg:py-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <Link href="/community-questions">

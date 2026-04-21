@@ -94,7 +94,7 @@ const HowItWorks = () => {
                </motion.div>
                <div className="space-y-4">
                   <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-700 dark:text-primary-500">Works</span></h1>
-                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] max-w-2xl mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and win rewards.</p>
+                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and win rewards.</p>
                </div>
             </section>
 
