@@ -318,6 +318,15 @@ const TestStart = () => {
             </div>
 
             <button
+              onClick={() => setLanguage(prev => prev === 'en' ? 'hi' : 'en')}
+              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-500 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              title={language === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+            >
+              {translatingQ && language !== 'en' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />}
+              <span>{language === 'en' ? 'EN' : 'हिं'}</span>
+            </button>
+
+            <button
               onClick={toggleFullscreen}
               className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-500 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
               title="Toggle Focus Mode"
