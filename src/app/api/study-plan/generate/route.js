@@ -27,11 +27,18 @@ export async function POST(req) {
         if (!exam) return NextResponse.json({ message: 'Exam not found' }, { status: 404 });
 
         const user = await User.findById(auth.user._id);
-        const daysRemaining = Math.ceil((new Date(examDate) - new Date()) / (1000 * 60 * 60 * 24));
+
+        const startDate = new Date();
+        startDate.setHours(0, 0, 0, 0);
+        const targetDate = new Date(examDate);
+        targetDate.setHours(0, 0, 0, 0);
+        const daysRemaining = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
 
         if (daysRemaining < 1) {
             return NextResponse.json({ message: 'Exam date must be in the future' }, { status: 400 });
         }
+
+        const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
 
         // Deactivate existing plans for same exam
         await StudyPlan.updateMany(
@@ -52,7 +59,8 @@ export async function POST(req) {
                     strongSubjects,
                     currentReadiness: user.performanceMetrics?.examStats?.overallReadiness || 0,
                     subjectAccuracy: user.performanceMetrics?.examStats?.subjectAccuracy || {},
-                    daysRemaining
+                    daysRemaining,
+                    startDate: `${startDate.getFullYear()}-${String(startDate.getMonth() + 1).padStart(2, '0')}-${String(startDate.getDate()).padStart(2, '0')}`
                 });
 
                 const aiResponse = await generateCompletion(prompt, [
@@ -86,9 +94,10 @@ export async function POST(req) {
             const allSubjects = [...weakSubjects, ...strongSubjects];
             if (allSubjects.length === 0) allSubjects.push('General Studies', 'Quantitative Aptitude', 'English', 'Reasoning');
 
-            for (let w = 1; w <= Math.min(totalWeeks, 12); w++) {
+            for (let w = 1; w <= totalWeeks; w++) {
                 const tasks = [];
-                for (let d = 1; d <= 7; d++) {
+                const daysInWeek = Math.min(7, daysRemaining - (w - 1) * 7);
+                for (let d = 1; d <= daysInWeek; d++) {
                     const subjectIndex = (w * 7 + d) % allSubjects.length;
                     const isRevisionWeek = w > totalWeeks - 2;
                     tasks.push({
@@ -104,6 +113,28 @@ export async function POST(req) {
             }
         }
 
+        // Attach exact dates: week startDate/endDate and per-day date; also build dailyTasks[]
+        const dailyTasksMap = new Map();
+        weeklySchedule = weeklySchedule.map((week, wIdx) => {
+            const wStart = addDays(startDate, wIdx * 7);
+            const wEnd = addDays(wStart, Math.min(6, daysRemaining - wIdx * 7 - 1));
+            const tasks = (week.tasks || []).map(t => {
+                const dayDate = addDays(wStart, (t.day || 1) - 1);
+                const key = `${dayDate.getFullYear()}-${String(dayDate.getMonth() + 1).padStart(2, '0')}-${String(dayDate.getDate()).padStart(2, '0')}`;
+                if (!dailyTasksMap.has(key)) dailyTasksMap.set(key, { date: dayDate, tasks: [] });
+                dailyTasksMap.get(key).tasks.push({
+                    subject: t.subject,
+                    topic: t.topic,
+                    duration: t.duration,
+                    taskType: t.taskType || 'study',
+                    description: t.description || ''
+                });
+                return { ...t, date: dayDate };
+            });
+            return { week: week.week || wIdx + 1, startDate: wStart, endDate: wEnd, tasks };
+        });
+        const dailyTasks = Array.from(dailyTasksMap.values()).sort((a, b) => a.date - b.date);
+
         const plan = new StudyPlan({
             user: auth.user._id,
             exam: examId,
@@ -113,6 +144,7 @@ export async function POST(req) {
             strongSubjects,
             totalDays: daysRemaining,
             weeklySchedule,
+            dailyTasks,
             generatedBy: aiModel ? 'ai' : 'template',
             aiModel,
             isActive: true,

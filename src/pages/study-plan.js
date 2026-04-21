@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play, Pause } from 'lucide-react';
+import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play, Pause, Calendar, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -16,7 +16,23 @@ const StudyPlanPage = () => {
   const [exams, setExams] = useState([]);
   const [form, setForm] = useState({ examId: '', examDate: '', dailyHours: 4, weakSubjects: '', strongSubjects: '' });
   const [activePlan, setActivePlan] = useState(null);
+  const [viewMode, setViewMode] = useState('weekly');
   const router = useRouter();
+
+  const todayStr = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; })();
+
+  const durationPreview = (() => {
+    if (!form.examDate) return null;
+    const start = new Date(); start.setHours(0, 0, 0, 0);
+    const end = new Date(form.examDate); end.setHours(0, 0, 0, 0);
+    const days = Math.ceil((end - start) / 86400000);
+    if (days < 1) return { invalid: true };
+    return { days, weeks: Math.floor(days / 7), extra: days % 7 };
+  })();
+
+  const fmtDate = (d) => new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  const fmtShort = (d) => new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+  const dayName = (d) => new Date(d).toLocaleDateString('en-IN', { weekday: 'short' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,8 +131,17 @@ const StudyPlanPage = () => {
               </div>
               <div>
                 <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Exam Date *</label>
-                <input type="date" value={form.examDate} onChange={e => setForm({ ...form, examDate: e.target.value })}
+                <input type="date" value={form.examDate} min={todayStr} onChange={e => setForm({ ...form, examDate: e.target.value })}
                   className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none" />
+                {durationPreview && (
+                  durationPreview.invalid
+                    ? <p className="text-[10px] font-bold text-red-500 mt-1">Date past me hai</p>
+                    : <p className="text-[10px] font-bold text-primary-500 mt-1">
+                        <Calendar className="w-3 h-3 inline mr-0.5" />
+                        {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{durationPreview.days} din</b>
+                        {' '}({durationPreview.weeks} hafte{durationPreview.extra ? ` + ${durationPreview.extra} din` : ''})
+                      </p>
+                )}
               </div>
               <div>
                 <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Daily Hours *</label>
@@ -175,10 +200,34 @@ const StudyPlanPage = () => {
         {activePlan && (
           <div className="space-y-5">
             <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-500 hover:underline">Back to Plans</button>
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{activePlan.exam?.name} - Weekly Schedule</h2>
-            {activePlan.weeklySchedule?.map((week, wi) => (
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div>
+                <h2 className="text-lg font-black text-slate-900 dark:text-white">{activePlan.exam?.name}</h2>
+                <p className="text-[11px] font-bold text-slate-400 mt-0.5">
+                  {activePlan.weeklySchedule?.[0]?.startDate && <>Start: <b>{fmtDate(activePlan.weeklySchedule[0].startDate)}</b> · </>}
+                  Exam: <b>{fmtDate(activePlan.examDate)}</b> · {activePlan.totalDays} din
+                </p>
+              </div>
+              <div className="inline-flex rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
+                <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-500 shadow-sm' : 'text-slate-500'}`}>
+                  <LayoutGrid className="w-3 h-3" /> Weekly
+                </button>
+                <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'calendar' ? 'bg-white dark:bg-slate-700 text-primary-500 shadow-sm' : 'text-slate-500'}`}>
+                  <Calendar className="w-3 h-3" /> Calendar
+                </button>
+              </div>
+            </div>
+
+            {viewMode === 'weekly' && activePlan.weeklySchedule?.map((week, wi) => (
               <Card key={wi} className="p-4 lg:p-5 space-y-3">
-                <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">Week {week.week}</h3>
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">Week {week.week}</h3>
+                  {week.startDate && (
+                    <span className="text-[10px] font-black text-primary-500 bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-full">
+                      {fmtShort(week.startDate)} → {fmtShort(week.endDate)}
+                    </span>
+                  )}
+                </div>
                 {week.tasks?.map((task, ti) => (
                   <div key={ti} className={`flex items-center gap-3 px-3 py-3 rounded-lg ${task.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
                     <button onClick={() => completeTask(activePlan._id, wi, ti)}
@@ -187,7 +236,7 @@ const StudyPlanPage = () => {
                     </button>
                     <div className="flex-1">
                       <span className={`text-xs font-bold ${task.isCompleted ? 'line-through text-slate-400' : 'text-slate-700 dark:text-slate-300'}`}>
-                        Day {task.day}: {task.subject} - {task.topic}
+                        {task.date ? <>{dayName(task.date)}, {fmtShort(task.date)}</> : <>Day {task.day}</>}: {task.subject} - {task.topic}
                       </span>
                       {task.description && <p className="text-[10px] text-slate-400">{task.description}</p>}
                     </div>
@@ -196,6 +245,36 @@ const StudyPlanPage = () => {
                 ))}
               </Card>
             ))}
+
+            {viewMode === 'calendar' && (
+              (activePlan.dailyTasks?.length > 0 ? activePlan.dailyTasks : []).map((d, di) => (
+                <Card key={di} className="p-4 lg:p-5 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-primary-500" />
+                    <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
+                  </div>
+                  {d.tasks?.map((t, ti) => (
+                    <div key={ti} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${t.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${t.isCompleted ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300'}`}>
+                        {t.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
+                      </div>
+                      <div className="flex-1">
+                        <span className={`text-xs font-bold ${t.isCompleted ? 'line-through text-slate-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                          {t.subject} - {t.topic}
+                        </span>
+                        {t.description && <p className="text-[10px] text-slate-400">{t.description}</p>}
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-400 uppercase">{t.duration}h · {t.taskType?.replace('_', ' ')}</span>
+                    </div>
+                  ))}
+                </Card>
+              ))
+            )}
+            {viewMode === 'calendar' && (!activePlan.dailyTasks || activePlan.dailyTasks.length === 0) && (
+              <Card className="p-6 text-center text-sm font-bold text-slate-400">
+                Calendar view purane plans ke liye available nahi hai. Naya plan generate karo date-wise view ke liye.
+              </Card>
+            )}
           </div>
         )}
 
