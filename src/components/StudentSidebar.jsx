@@ -70,8 +70,15 @@ const StudentSidebar = () => {
   }, [authenticated, isMounted]);
 
   const isActiveRoute = (path) => {
-    if (!router?.pathname) return false;
-    return path === '/home' ? router.pathname === '/home' || router.pathname === '/' : router.pathname.startsWith(path);
+    const pathname = router?.pathname;
+    if (!pathname) return false;
+    if (path === '/home') return pathname === '/home' || pathname === '/';
+    if (pathname === path) return true;
+    if (!pathname.startsWith(path + '/')) return false;
+    // Sibling-aware: if any other sidebar path is a longer prefix of pathname, this parent is NOT active
+    const allPaths = sidebarSections.flatMap(s => s.items.map(i => i.path));
+    const longerMatch = allPaths.some(p => p !== path && p.length > path.length && (pathname === p || pathname.startsWith(p + '/')));
+    return !longerMatch;
   };
 
   const handleNavClick = () => {
