@@ -106,10 +106,11 @@ const AttemptQuizPage = () => {
 
   // Timer - uses ref to avoid stale closure
   useEffect(() => {
-    if (!quiz) return;
+    if (!quiz || submitted) return;
     const interval = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
+          clearInterval(interval);
           if (handleSubmitRef.current) handleSubmitRef.current();
           return 0;
         }
@@ -117,7 +118,7 @@ const AttemptQuizPage = () => {
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, [quiz]);
+  }, [quiz, submitted]);
 
   // Track time per question
   useEffect(() => {
