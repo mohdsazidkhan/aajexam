@@ -269,6 +269,14 @@ const TestStart = () => {
     );
   }
 
+  const sectionGroups = questions.reduce((acc, q, idx) => {
+    const sec = q.section || 'General';
+    if (!acc[sec]) acc[sec] = [];
+    acc[sec].push({ q, idx });
+    return acc;
+  }, {});
+  const sectionNames = Object.keys(sectionGroups);
+
   const rawQ = questions[currentQIndex];
   const tr = rawQ ? translationMap[rawQ._id] : null;
   const currentQ = rawQ ? {
@@ -371,31 +379,46 @@ const TestStart = () => {
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-4">
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Question Map</h3>
-              <div className="grid grid-cols-5 gap-2">
-                {questions.map((q, idx) => {
-                  const isAnswered = answers[q._id] !== undefined;
-                  const isMarked = marked.has(q._id);
-                  const isCurrent = currentQIndex === idx;
-
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentQIndex(idx)}
-                      className={`
-                            h-10 rounded-xl font-black text-xs transition-all border-b-4
-                            ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
-                          isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
-                            isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
-                              'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
-                          `}
-                    >
-                      {idx + 1}
-                    </button>
-                  );
-                })}
-              </div>
+              {sectionNames.map((secName) => {
+                const group = sectionGroups[secName];
+                const answeredInSec = group.filter(({ q }) => answers[q._id] !== undefined).length;
+                return (
+                  <div key={secName} className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest truncate">
+                        {secName}
+                      </span>
+                      <span className="text-[10px] font-black text-primary-500 shrink-0">
+                        {answeredInSec}/{group.length}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-5 gap-2">
+                      {group.map(({ q, idx }) => {
+                        const isAnswered = answers[q._id] !== undefined;
+                        const isMarked = marked.has(q._id);
+                        const isCurrent = currentQIndex === idx;
+                        return (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentQIndex(idx)}
+                            className={`
+                              h-10 rounded-xl font-black text-xs transition-all border-b-4
+                              ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
+                                isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
+                                    'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
+                            `}
+                          >
+                            {idx + 1}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </aside>
@@ -552,16 +575,42 @@ const TestStart = () => {
             <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[3rem] p-8 z-50 max-h-[75vh] overflow-y-auto">
               <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-8" />
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase mb-6">Question Map</h3>
-              <div className="grid grid-cols-5 gap-3">
-                {questions.map((q, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                    className={`h-14 rounded-2xl font-black border-b-4 ${currentQIndex === idx ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-800'}`}
-                  >
-                    {idx + 1}
-                  </button>
-                ))}
+              <div className="space-y-5">
+                {sectionNames.map((secName) => {
+                  const group = sectionGroups[secName];
+                  const answeredInSec = group.filter(({ q }) => answers[q._id] !== undefined).length;
+                  return (
+                    <div key={secName} className="space-y-3">
+                      <div className="flex items-center justify-between gap-2 px-1">
+                        <span className="text-xs font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest truncate">
+                          {secName}
+                        </span>
+                        <span className="text-[11px] font-black text-primary-500 shrink-0">
+                          {answeredInSec}/{group.length}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-5 gap-3">
+                        {group.map(({ q, idx }) => {
+                          const isAnswered = answers[q._id] !== undefined;
+                          const isMarked = marked.has(q._id);
+                          const isCurrent = currentQIndex === idx;
+                          return (
+                            <button
+                              key={idx}
+                              onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
+                              className={`h-14 rounded-2xl font-black border-b-4 ${isCurrent ? 'bg-primary-500 text-white border-primary-700' :
+                                isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
+                                    'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
+                            >
+                              {idx + 1}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </>
