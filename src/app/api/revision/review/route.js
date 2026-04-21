@@ -45,10 +45,9 @@ export async function POST(req) {
         item.lastReviewedAt = new Date();
         item.nextReviewDate = new Date(Date.now() + item.interval * 24 * 60 * 60 * 1000);
 
-        // Mark as mastered if interval > 30 days and accuracy > 80%
-        if (item.interval > 30 && item.totalReviews > 3 && (item.correctReviews / item.totalReviews) > 0.8) {
-            item.status = 'mastered';
-        }
+        // User's rule: once an item is reviewed, don't show it again in the revision queue.
+        // We mark it 'suspended' so it is permanently excluded from the active due list.
+        item.status = 'suspended';
 
         await item.save();
 

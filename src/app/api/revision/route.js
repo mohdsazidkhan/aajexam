@@ -3,11 +3,13 @@ import dbConnect from '@/lib/db';
 import RevisionQueue from '@/models/RevisionQueue';
 import { protect } from '@/middleware/auth';
 
-// GET - Get user's revision queue, optionally filtered by source
+// GET - Get user's revision queue (only items currently due for review)
+// Once a user reviews an item, SM-2 pushes its nextReviewDate into the future,
+// so it is automatically excluded from this list until it is due again.
 // Query params:
 //   status   - active | mastered | suspended (default: active)
 //   source   - quiz | practice_test | daily_challenge | reel (optional)
-//   due      - 'true' to only return items whose nextReviewDate <= now (SRS mode)
+//   all      - 'true' to include not-yet-due items (debug/admin use)
 //   limit    - max items (default 50)
 export async function GET(req) {
     try {
@@ -19,24 +21,24 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 50;
         const status = searchParams.get('status') || 'active';
         const source = searchParams.get('source');
-        const dueOnly = searchParams.get('due') === 'true';
+        const includeAll = searchParams.get('all') === 'true';
 
+        const now = new Date();
         const filter = { user: auth.user._id, status };
         if (source) filter.source = source;
-        if (dueOnly) filter.nextReviewDate = { $lte: new Date() };
+        if (!includeAll) filter.nextReviewDate = { $lte: now };
 
         const items = await RevisionQueue.find(filter)
-            .sort({ createdAt: -1 })
+            .sort({ nextReviewDate: 1, createdAt: -1 })
             .limit(limit)
             .lean();
 
-        const now = new Date();
         const [totalDue, totalItems, mastered, countsBySource] = await Promise.all([
             RevisionQueue.countDocuments({ user: auth.user._id, status: 'active', nextReviewDate: { $lte: now } }),
             RevisionQueue.countDocuments({ user: auth.user._id, status: 'active' }),
             RevisionQueue.countDocuments({ user: auth.user._id, status: 'mastered' }),
             RevisionQueue.aggregate([
-                { $match: { user: auth.user._id, status: 'active' } },
+                { $match: { user: auth.user._id, status: 'active', nextReviewDate: { $lte: now } } },
                 { $group: { _id: '$source', count: { $sum: 1 } } }
             ])
         ]);

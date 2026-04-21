@@ -87,7 +87,7 @@ const RevisionPage = () => {
         <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1">
           {SOURCE_TABS.map(tab => {
             const Icon = tab.icon;
-            const count = tab.key === 'all' ? (stats?.totalItems || 0) : (stats?.bySource?.[tab.key] ?? 0);
+            const count = tab.key === 'all' ? (stats?.dueToday || 0) : (stats?.bySource?.[tab.key] ?? 0);
             const isActive = activeTab === tab.key;
             return (
               <button key={tab.key} onClick={() => setActiveTab(tab.key)}

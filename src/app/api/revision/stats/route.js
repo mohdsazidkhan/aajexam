@@ -48,7 +48,7 @@ export async function GET(req) {
         });
 
         const bySourceAgg = await RevisionQueue.aggregate([
-            { $match: { user: userId, status: 'active' } },
+            { $match: { user: userId, status: 'active', nextReviewDate: { $lte: now } } },
             { $group: { _id: '$source', count: { $sum: 1 } } }
         ]);
         const bySource = { quiz: 0, practice_test: 0, daily_challenge: 0, reel: 0 };
