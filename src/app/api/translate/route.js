@@ -20,14 +20,23 @@ function getModelChain() {
     return chain;
 }
 
-const openrouter = new OpenAI({
-    apiKey: process.env.OPENROUTER_API_KEY,
-    baseURL: 'https://openrouter.ai/api/v1',
-    defaultHeaders: {
-        'HTTP-Referer': SITE_URL,
-        'X-Title': 'AajExam'
-    }
-});
+function getApiKey() {
+    return process.env.OPENROUTER_API_KEY || process.env.OPEN_ROUTER_API_KEY || process.env.OPENROUTER_KEY || '';
+}
+
+let _openrouter = null;
+function getClient() {
+    if (_openrouter) return _openrouter;
+    _openrouter = new OpenAI({
+        apiKey: getApiKey(),
+        baseURL: 'https://openrouter.ai/api/v1',
+        defaultHeaders: {
+            'HTTP-Referer': SITE_URL,
+            'X-Title': 'AajExam'
+        }
+    });
+    return _openrouter;
+}
 
 const LANGUAGE_MAP = {
     'en': 'English', 'hi': 'Hindi', 'mr': 'Marathi', 'gu': 'Gujarati', 'bn': 'Bengali',
@@ -54,7 +63,7 @@ async function translateOne(text, targetLangName) {
     let modelUsed = null;
     for (const model of chain) {
         try {
-            const completion = await openrouter.chat.completions.create({
+            const completion = await getClient().chat.completions.create({
                 model,
                 messages: [
                     {
@@ -90,7 +99,17 @@ export async function POST(req) {
         const targetCode = (target || '').toLowerCase();
         const targetLangName = LANGUAGE_MAP[targetCode];
         if (!targetLangName) return NextResponse.json({ error: 'Invalid language' }, { status: 400 });
-        if (!process.env.OPENROUTER_API_KEY) return NextResponse.json({ error: 'OpenRouter key missing' }, { status: 500 });
+
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            const detected = Object.keys(process.env).filter(k => /openrouter|ai_model/i.test(k));
+            console.error('OpenRouter key missing. Env keys detected matching pattern:', detected);
+            return NextResponse.json({
+                error: 'OpenRouter key missing on server',
+                detectedEnvKeys: detected,
+                hint: 'Ensure OPENROUTER_API_KEY is set in Vercel Production env and redeploy.'
+            }, { status: 500 });
+        }
 
         await dbConnect();
 
