@@ -61,7 +61,7 @@ const PublicNavbar = () => {
           : 'py-2 lg:py-4 bg-white dark:bg-slate-950 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm'
           }`}
       >
-        <div className="container mx-auto px-3 lg:px-0 pointer-events-auto">
+        <div className="container mx-auto px-4 pointer-events-auto">
           <div className="flex items-center justify-between">
 
             {/* --- Logo --- */}
