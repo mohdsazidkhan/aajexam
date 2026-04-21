@@ -292,7 +292,7 @@ const TestStart = () => {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed top-6 left-6 right-6 z-[60] flex items-center justify-between gap-6 pointer-events-none"
+          className="fixed top-6 right-6 z-[60] flex items-center justify-between gap-6 pointer-events-none"
         >
           {/* Left: Spacer or Placeholder */}
           <div className="flex-1 lg:flex-none" />
