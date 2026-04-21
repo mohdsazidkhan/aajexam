@@ -16,8 +16,8 @@ export default function Subscription() {
   return (
     <>
       <Head>
-        <title>Subscription Plans - AajExam Reward Platform</title>
-        <meta name="description" content="Explore AajExam subscription plans. Get Pro access to earn Daily, Weekly, and Monthly rewards. Choose the plan that's right for you." />
+        <title>Subscription Plans - AajExam</title>
+        <meta name="description" content="Explore AajExam subscription plans. Upgrade to PRO for unlimited quizzes, all levels, and eligibility for referral rewards. Choose the plan that's right for you." />
         <meta name="keywords" content="subscription plans, pro plan, premium features, AajExam pricing, government exam subscription" />
         <link rel="canonical" href={getCanonicalUrl(router.asPath)} />
         <meta property="og:title" content="Subscription Plans - AajExam Platform" />

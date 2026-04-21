@@ -67,18 +67,18 @@ const HowItWorks = () => {
       },
       {
          id: 5,
-         title: 'Earn Rewards',
-         desc: 'Students who score the highest get rewarded every month. The better you do, the more you can win.',
+         title: 'Refer & Earn',
+         desc: 'Invite your friends to AajExam. When a friend upgrades to PRO, you get a cash reward in your account.',
          icon: Gift,
          color: 'primary',
          badge: 'Step 5',
-         metrics: ['Daily Results', 'Weekly Rankings', 'Monthly Prizes']
+         metrics: ['Share Your Code', 'Friend Joins', 'Friend Upgrades to PRO']
       }
    ];
 
    const features = [
       { title: 'Only Your Knowledge Counts', desc: 'You win by knowing more, not by luck. Hard work and study is all that matters.', icon: ShieldCheck, color: 'primary' },
-      { title: 'Top Students Get Rewarded', desc: 'The best students earn real rewards every month. Your effort is recognised.', icon: Trophy, color: 'secondary' },
+      { title: 'Earn With Referrals', desc: 'Invite friends and earn real cash rewards when they upgrade to PRO.', icon: Trophy, color: 'secondary' },
       { title: 'Get Better as You Study', desc: 'As your score improves, you unlock harder questions and new levels.', icon: Zap, color: 'blue' }
    ];
 
@@ -94,7 +94,7 @@ const HowItWorks = () => {
                </motion.div>
                <div className="space-y-4">
                   <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-700 dark:text-primary-500">Works</span></h1>
-                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and win rewards.</p>
+                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
                </div>
             </section>
 
@@ -204,7 +204,7 @@ const HowItWorks = () => {
 
                   <div className="relative z-10 space-y-10">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter">Get Started <span className="text-primary-400">Today</span></h2>
-                     <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and winning rewards. Join them today.</p>
+                     <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
                         className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"

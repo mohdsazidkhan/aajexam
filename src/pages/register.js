@@ -12,7 +12,7 @@ export default function Register() {
     <>
       <Seo
         title="Register - AajExam Exam Preparation Platform"
-        description="Create your free AajExam account today! Join thousands of students preparing for government exams, practicing tests, and earning Daily, Weekly, and Monthly Rewards."
+        description="Create your free AajExam account today! Join thousands of students preparing for government exams, practicing tests, and earning cash rewards by referring friends to PRO."
         noIndex={true}
       />
       <RegisterPage />

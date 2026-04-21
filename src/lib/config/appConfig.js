@@ -62,11 +62,8 @@ const config = {
     }
   },
 
-  // Rewards & Referral Configuration (quiz-specific settings removed)
+  // Referral Rewards Configuration
   QUIZ_CONFIG: {
-    TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_TOP_PERFORMERS_USERS) || 5,
-    ADMIN_TOP_PERFORMERS_USERS: parseInt(process.env.NEXT_PUBLIC_ADMIN_TOP_PERFORMERS_USERS) || 20,
-    REFERRAL_REWARD_REGISTRATION: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_REGISTRATION) || 10,
     REFERRAL_REWARD_PRO: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_PRO) || 33
   },
 

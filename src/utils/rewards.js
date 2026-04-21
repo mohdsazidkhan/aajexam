@@ -4,7 +4,7 @@ import WalletTransaction from '@/models/WalletTransaction';
 export async function applyReferralRewards(user, planId, planPrice) {
     try {
         const rewardMap = {
-            'pro': { type: 'plan99', inviterReward: parseInt(process.env.REFERRAL_REWARD_PRO) || 33, price: 99 }
+            'pro': { type: 'plan99', inviterReward: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_PRO) || 33, price: 99 }
         };
 
         const reward = rewardMap[planId];

@@ -168,7 +168,7 @@ export const getUpgradeRecommendation = () => {
     return {
       recommended: SUBSCRIPTION_PLANS.PRO,
       reason: 'Unlimited access to all features and rewards',
-      benefits: ['Unlimited quizzes', 'All levels unlocked', 'Monthly Rewards', 'Priority support']
+      benefits: ['Unlimited quizzes', 'All levels unlocked', 'Referral rewards', 'Priority support']
     };
   }
 

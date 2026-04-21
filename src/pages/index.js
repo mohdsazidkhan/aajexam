@@ -24,12 +24,12 @@ export default function Index({ educationalContent, isAuthenticated }) {
   return (
     <>
       <Seo
-        title="AajExam - Government Exam Preparation & Reward Platform | Practice Tests"
-        description="India's premier government exam preparation platform. Practice tests for SSC, UPSC, Banking, Railway exams. Earn Daily, Weekly, and Monthly Rewards."
+        title="AajExam - Government Exam Preparation Platform | Practice Tests & Refer to Earn"
+        description="India's premier government exam preparation platform. Practice tests for SSC, UPSC, Banking, Railway exams. Refer friends and earn cash rewards when they upgrade to PRO."
       />
 
       <Head>
-        <meta name="keywords" content="government exam preparation, SSC preparation, UPSC practice tests, banking exam practice, railway exam preparation, competitive exam practice, online exam platform, daily rewards, weekly rewards, monthly rewards" />
+        <meta name="keywords" content="government exam preparation, SSC preparation, UPSC practice tests, banking exam practice, railway exam preparation, competitive exam practice, online exam platform, refer and earn, referral rewards" />
 
         {/* JSON-LD Structured Data */}
         <script

@@ -51,7 +51,7 @@ const AboutUs = () => {
       { title: 'Questions by Experts', desc: 'All questions are made by top teachers and subject experts in India.', icon: GraduationCap, color: 'blue' },
       { title: 'One App, Many Exams', desc: 'Prepare for UPSC, SSC, Banking, and Railways - all in one place.', icon: Target, color: 'primary' },
       { title: 'Unlimited Practice', desc: 'Practice as many tests as you want with full step-by-step answers.', icon: Star, color: 'secondary' },
-      { title: 'Win Rewards', desc: 'Top students get special rewards and prizes every month.', icon: Trophy, color: 'blue' }
+      { title: 'Refer & Earn', desc: 'Invite your friends to AajExam and earn cash rewards when they upgrade to PRO.', icon: Trophy, color: 'blue' }
    ];
 
    return (
@@ -178,7 +178,7 @@ const AboutUs = () => {
                <Card className="p-12 text-center bg-gradient-to-r from-primary-500 to-primary-500 border-none text-white shadow-duo-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
-                     <p className="text-lg font-bold opacity-90 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed">Join thousands of students who are already passing exams and winning rewards with AajExam.</p>
+                     <p className="text-lg font-bold opacity-90 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>
                      <Button onClick={() => router.push('/')} variant="white" size="lg" className="px-12 py-6 text-sm font-black text-primary-700 dark:text-primary-500 shadow-xl">START LEARNING FOR FREE</Button>
                   </div>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/10" />

@@ -252,15 +252,14 @@ const ModernLandingPage = () => {
                         <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 dark:text-primary-400 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-duo-primary border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
-                        <h3 className="text-xl lg:text-xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Student leaderboard</h3>
-                        <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">See where you stand among all students. Students who study the most win prizes every month.</p>
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
+                        <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-xl rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/govt-exams')}>
-                              See top students
+                           <Button variant="primary" size="lg" className="shadow-xl rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                              Start referring
                            </Button>
                         </div>
                      </div>
-                     <div className="w-full lg:w-1/2 h-48 lg:h-64 lg:h-80 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] lg:rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 relative shadow-inner group-hover:scale-[1.02] transition-transform duration-700" />
                   </Card>
                </div>
             </div>
@@ -282,7 +281,7 @@ const ModernLandingPage = () => {
                         {[
                            { title: "Daily Goals", desc: "Set a small goal for each day and complete it. Small steps lead to big results.", icon: Target },
                            { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
-                           { title: "Get Rewarded", desc: "Your hard work is rewarded. Top students win real prizes every month.", icon: Trophy }
+                           { title: "Refer & Earn", desc: "Invite friends to AajExam. Earn cash rewards when they upgrade to PRO.", icon: Trophy }
                         ].map((item, index) => (
                            <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl group hover:-translate-y-2 transition-all">
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 dark:text-primary-500 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">

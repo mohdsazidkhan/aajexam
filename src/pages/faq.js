@@ -74,24 +74,24 @@ const FAQ = () => {
             ]
         },
         {
-            category: 'Monthly Recognition Program',
+            category: 'Refer & Earn Program',
             icon: FaTrophy,
             questions: [
                 {
-                    q: 'How does the monthly recognition program work?',
-                    a: 'Our monthly program recognizes top performers who demonstrate exceptional dedication and accuracy. Eligible PRO users who achieve top scores win prizes from a dynamic prize pool. Eligibility requires an active PRO subscription and consistent high-accuracy performance in the current month.'
+                    q: 'How do I earn rewards on AajExam?',
+                    a: 'AajExam runs a Refer & Earn program. Share your unique referral code with friends. When a friend signs up and upgrades to a paid PRO subscription for the first time, a cash reward is credited to your wallet.'
                 },
                 {
-                    q: 'When are monthly recognitions distributed?',
-                    a: 'Recognition is processed within 7 business days after the month ends. Winners are notified via email and must provide verified bank details for payout processing.'
+                    q: 'Where do I find my referral code?',
+                    a: 'Your referral code appears on your dashboard and profile page. You can copy it or share a pre-filled invite message directly from the app.'
                 },
                 {
-                    q: 'Do my achievements carry over to the next month?',
-                    a: 'No. All monthly progress metrics reset on the 1st of each month. Each month is an independent recognition period. However, your overall progress and total test count are permanent.'
+                    q: 'When do I receive my referral reward?',
+                    a: 'Rewards are credited automatically to your in-app wallet as soon as your referred friend completes their first PRO payment. You can withdraw the balance to your bank account after adding your bank details.'
                 },
                 {
-                    q: 'Can I be disqualified from recognition?',
-                    a: 'Yes. We maintain strict anti-fraud measures. Any attempt to cheat, use automated tools, create multiple accounts, or manipulate the system will result in immediate disqualification and permanent account suspension.'
+                    q: 'Are there any limits or anti-fraud rules?',
+                    a: 'Yes. Self-referrals, fake accounts, and any attempt to manipulate the program will result in forfeiture of rewards and permanent account suspension. Only genuine first-time PRO upgrades qualify.'
                 }
             ]
         },
@@ -172,7 +172,7 @@ const FAQ = () => {
         <MobileAppWrapper title="Frequently Asked Questions">
             <Head>
                 <title>Common Questions & Help Center | AajExam</title>
-                <meta name="description" content="Find answers to common questions about AajExam's government exam preparation platform, monthly rewards, and subscription plans." />
+                <meta name="description" content="Find answers to common questions about AajExam's government exam preparation platform, referral rewards, and subscription plans." />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta property="og:title" content="FAQ - Help Center | AajExam" />
                 <meta property="og:description" content="Have questions about preparing for SSC, UPSC, or Banking exams? Check our frequently asked questions." />

@@ -46,7 +46,7 @@ export default function HalalDisclaimer() {
                             </p>
 
                             <section className="bg-slate-50 dark:bg-slate-800/50 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800">
-                                <h2 className="text-md md:text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                                <h2 className="text-md md:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
                                     <div className="w-2 h-10 bg-emerald-500 rounded-full" />
                                     Why AajExam is Halal
                                 </h2>
@@ -64,14 +64,14 @@ export default function HalalDisclaimer() {
                                             desc: 'Users pay for educational access. We provide real, structured value in return â€” not speculative or deceptive gains.'
                                         },
                                         {
-                                            title: '3. Rewards Based on Merit',
+                                            title: '3. Rewards Based on Effort',
                                             evidence: '"And that there is not for man except that [good] for which he strives." (Surah An-Najm 53:39)',
-                                            desc: 'Prizes are only awarded based on quiz performance, time taken, and number of quizzes played. This reflects Islamic justice.'
+                                            desc: 'Referral rewards are earned by genuinely inviting friends who benefit from AajExam and choose to upgrade to PRO. Compensation is tied to real effort, not chance.'
                                         },
                                         {
                                             title: '4. No Gharar (Uncertainty)',
                                             evidence: null,
-                                            desc: 'All subscription plans, access levels, and prize conditions are clearly stated. No user is misled about what theyâ€™re paying for.'
+                                            desc: 'All subscription plans, access levels, and referral reward conditions are clearly stated. No user is misled about what they are paying for or what they will earn.'
                                         }
                                     ].map((item, idx) => (
                                         <div key={idx} className="relative pl-8 border-l-4 border-emerald-500/20">
@@ -91,7 +91,7 @@ export default function HalalDisclaimer() {
                             </section>
 
                             <section className="text-center pt-8 border-t border-slate-100 dark:border-slate-800">
-                                <h2 className="text-xl lg:text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Conclusion</h2>
+                                <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Conclusion</h2>
                                 <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed mb-8">
                                     The AajExam model is designed to be educational, rewarding, and fully Halal, offering transparency and merit-based rewards.
                                 </p>

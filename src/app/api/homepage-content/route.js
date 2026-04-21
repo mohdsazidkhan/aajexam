@@ -19,7 +19,7 @@ export async function GET() {
                         { title: 'Exam Preparation', description: 'Structured preparation for all major government exams...', icon: 'exam' },
                         { title: 'Comprehensive Coverage', description: 'Tests covering all major government exam patterns...', icon: 'coverage' },
                         { title: 'Performance Analytics', description: 'Detailed insights into your strengths and weaknesses...', icon: 'analytics' },
-                        { title: 'Monthly Rewards', description: 'Compete for monthly prizes and recognition...', icon: 'rewards' }
+                        { title: 'Refer & Earn', description: 'Invite friends and earn cash rewards when they upgrade to PRO.', icon: 'rewards' }
                     ],
                     successStories: [],
                     isActive: true,

@@ -26,7 +26,6 @@ import {
 import { motion } from 'framer-motion';
 
 import MobileAppWrapper from '../MobileAppWrapper';
-import config from '../../lib/config/appConfig';
 import UnifiedFooter from '../UnifiedFooter';
 import AuthorBio from '../AuthorBio';
 import { generateBreadcrumbSchema } from '../../utils/schema';
@@ -188,7 +187,7 @@ const PrivacyPolicy = () => {
                            {[
                               "To manage your account and keep it secure.",
                               "To calculate rankings and update leaderboards.",
-                              "To process your daily, weekly, and monthly rewards."
+                              "To process referral rewards when friends you invite upgrade to PRO."
                            ].map((text, i) => (
                               <div key={i} className="flex gap-6 group">
                                  <div className="w-1 h-12 bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors rounded-full" />
@@ -199,10 +198,10 @@ const PrivacyPolicy = () => {
                            <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem]  lg:rounded-[3rem] border-l-8 border-emerald-500 space-y-6">
                               <div className="flex items-center gap-4 text-emerald-500">
                                  <Zap className="w-6 h-6" />
-                                 <h4 className="text-sm font-black uppercase tracking-widest">Monthly Rewards</h4>
+                                 <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
                               </div>
                               <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
-                                 Top {config.QUIZ_CONFIG.TOP_PERFORMERS_USERS} Pro users at Level {config.QUIZ_CONFIG.USER_LEVEL_REQUIRED_FOR_MONTHLY_REWARD} who complete {process.env.NEXT_PUBLIC_MONTHLY_REWARD_QUIZ_REQUIREMENT || 50} quizzes accurately will be eligible for monthly rewards.
+                                 Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your wallet and can be withdrawn to your bank account.
                               </p>
                            </div>
                         </div>

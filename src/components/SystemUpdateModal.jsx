@@ -102,18 +102,6 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* QUIZ REDIRECT */}
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-yellow-800 dark:text-yellow-200 mb-2 uppercase tracking-tight">
-              📢 Looking for Quiz Competitions?
-            </h3>
-            <p className="text-sm text-yellow-700 dark:text-yellow-300 font-medium">
-              Daily, Weekly & Monthly quiz competitions with prize pools have moved to
-              <a href="https://subgquiz.com" target="_blank" rel="noopener noreferrer" className="font-bold text-primary-600 hover:underline ml-1">SubgQuiz.com</a>.
-              Your account works on both platforms!
-            </p>
-          </div>
-
           {/* DATA SAFE NOTICE */}
           <div className="bg-primary-500 text-white rounded-[2rem] p-6 shadow-duo-secondary border-2 border-white dark:border-slate-700">
             <h3 className="text-sm lg:text-lg font-black mb-2 flex items-center uppercase tracking-tight">

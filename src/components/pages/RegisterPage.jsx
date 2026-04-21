@@ -97,13 +97,13 @@ const RegisterPage = () => {
                 Join the <span className="text-primary-400">community</span>.
               </h1>
               <p className="text-xl font-bold text-slate-300 max-w-md leading-relaxed">
-                Join thousands of students who study every day, improve their scores, and win real rewards.
+                Join thousands of students who study every day, improve their scores, and earn cash by referring friends.
               </p>
             </div>
 
             <div className="space-y-4 pt-8">
               {[
-                { icon: Trophy, text: 'Win prizes every month' },
+                { icon: Trophy, text: 'Earn cash when friends you refer upgrade to PRO' },
                 { icon: Brain, text: 'Learn step by step from beginner to champion' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (

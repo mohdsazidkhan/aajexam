@@ -390,7 +390,7 @@ export const SUBSCRIPTION_PLANS = {
     duration: '1 month',
     features: [
       'Access to all quizzes (Levels 0-10)',
-      'Monthly Rewards eligibility',
+      'Referral rewards eligibility',
       'Priority support',
       'Advanced analytics',
       'Exclusive content',
