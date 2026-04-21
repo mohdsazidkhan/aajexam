@@ -7,6 +7,7 @@ import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+import DiscussionThread from '../components/discussions/DiscussionThread';
 
 const DailyChallengePage = () => {
   const [challenge, setChallenge] = useState(null);
@@ -166,6 +167,60 @@ const DailyChallengePage = () => {
                 </div>
               </div>
             </Card>
+
+            {/* Per-question review + discussion */}
+            {challenge?.questions?.length > 0 && (
+              <Card className="p-4 lg:p-5 space-y-4">
+                <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Target className="w-4 h-4 text-primary-500" /> Question Review & Discussion
+                </h3>
+                <div className="space-y-4">
+                  {challenge.questions.map((q, idx) => {
+                    const ans = attemptData?.answers?.[idx];
+                    const correctIdx = q.options?.findIndex(o => o.isCorrect);
+                    const isSkipped = !ans || ans.selectedOptionIndex === -1;
+                    const isCorrect = ans?.isCorrect;
+                    return (
+                      <div key={q._id || idx} className={`rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                        <div className="flex items-start gap-2 mb-2">
+                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-red-500'}`}>{idx + 1}</div>
+                          <p className="text-sm font-medium text-slate-800 dark:text-white">{q.questionText}</p>
+                        </div>
+                        <div className="space-y-1 ml-8">
+                          {q.options?.map((opt, oi) => {
+                            const isSel = ans?.selectedOptionIndex === oi;
+                            const isRight = oi === correctIdx;
+                            let cls = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
+                            if (isRight) cls = 'bg-emerald-100 dark:bg-emerald-900/30 border-emerald-400';
+                            if (isSel && !isCorrect) cls = 'bg-red-100 dark:bg-red-900/30 border-red-400';
+                            return (
+                              <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
+                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />}
+                                {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
+                                {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
+                                <span className="text-slate-700 dark:text-slate-300">{opt.text || opt}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {q.explanation && (
+                          <div className="ml-8 mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <p className="text-[11px] text-blue-700 dark:text-blue-300"><span className="font-semibold">Explanation:</span> {q.explanation}</p>
+                          </div>
+                        )}
+                        <div className="ml-8">
+                          <DiscussionThread
+                            questionId={q._id}
+                            sourceType="daily_challenge"
+                            sourceId={challenge._id}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+            )}
 
             {/* Leaderboard */}
             {leaderboard.length > 0 && (

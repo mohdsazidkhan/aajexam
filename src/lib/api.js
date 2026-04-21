@@ -1053,6 +1053,44 @@ class ApiService {
     });
   }
 
+  // ===== QUESTION DISCUSSIONS =====
+  async getDiscussions({ questionId, sort = 'top', page = 1, limit = 20 } = {}) {
+    const query = this.buildQuery({ questionId, sort, page, limit });
+    return this.request(`/api/discussions${query ? `?${query}` : ''}`);
+  }
+
+  async createDiscussion({ questionId, body, sourceType, sourceId, parentId, image } = {}) {
+    return this.request('/api/discussions', {
+      method: 'POST',
+      body: JSON.stringify({ questionId, body, sourceType, sourceId, parentId, image })
+    });
+  }
+
+  async updateDiscussion(id, data) {
+    return this.request(`/api/discussions/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data)
+    });
+  }
+
+  async deleteDiscussion(id) {
+    return this.request(`/api/discussions/${id}`, { method: 'DELETE' });
+  }
+
+  async voteDiscussion(id, action) {
+    return this.request(`/api/discussions/${id}/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ action })
+    });
+  }
+
+  async flagDiscussion(id, reason = '') {
+    return this.request(`/api/discussions/${id}/flag`, {
+      method: 'POST',
+      body: JSON.stringify({ reason })
+    });
+  }
+
   // ===== REELS - PUBLIC/USER =====
   async getReelsFeed(params = {}) {
     const queryString = this.buildQuery(params);

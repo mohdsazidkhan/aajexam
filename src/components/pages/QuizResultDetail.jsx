@@ -8,6 +8,7 @@ import {
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Loading from '../Loading';
+import DiscussionThread from '../discussions/DiscussionThread';
 
 const QuizResultDetail = () => {
   const router = useRouter();
@@ -138,6 +139,14 @@ const QuizResultDetail = () => {
                       <p className="text-xs text-blue-700 dark:text-blue-300"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                     </div>
                   )}
+
+                  <div className="ml-11">
+                    <DiscussionThread
+                      questionId={question._id}
+                      sourceType="quiz"
+                      sourceId={quiz?._id || quiz}
+                    />
+                  </div>
                 </div>
               );
             })}

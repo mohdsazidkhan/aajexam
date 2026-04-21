@@ -28,6 +28,7 @@ import Card from '../../../../components/ui/Card';
 import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
 import ShareComponent from '../../../../components/ShareComponent';
+import DiscussionThread from '../../../../components/discussions/DiscussionThread';
 
 const TestResult = () => {
   const router = useRouter();
@@ -412,6 +413,12 @@ const TestResult = () => {
                           <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>
                         </div>
                       )}
+
+                      <DiscussionThread
+                        questionId={q._id}
+                        sourceType="govt_exam_test"
+                        sourceId={testId}
+                      />
                     </div>
                   </Card>
                 );
