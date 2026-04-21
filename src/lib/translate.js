@@ -42,8 +42,10 @@ export function hashSource(source, target) {
 function isRetryableError(err) {
     const status = err?.status || err?.response?.status;
     if (status === 429 || status === 408 || status === 503 || status === 502 || status >= 500) return true;
+    if (status === 404) return true;
     const msg = (err?.message || '').toLowerCase();
     if (msg.includes('rate') || msg.includes('timeout') || msg.includes('unavailable') || msg.includes('quota')) return true;
+    if (msg.includes('no endpoints') || msg.includes('not found') || msg.includes('does not exist')) return true;
     if (status === 400 && (msg.includes('provider') || msg.includes('upstream'))) return true;
     return false;
 }
