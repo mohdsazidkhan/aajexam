@@ -82,10 +82,10 @@ const QuizPreviewPage = () => {
           <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:underline">
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
-          {quiz.exam && (
+          {quiz.applicableExams?.length > 0 && (
             <>
               <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{quiz.exam.name}</span>
+              <span className="text-slate-500 dark:text-slate-400">{quiz.applicableExams.map(e => e.name).join(', ')}</span>
             </>
           )}
           {quiz.subject && (

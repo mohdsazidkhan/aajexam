@@ -99,7 +99,7 @@ export async function POST(req) {
                 await Quiz.create({
                     title: `${topicObj.name} Quiz`,
                     description: `Practice quiz on ${topicObj.name} (${subjectName}). ${questionIds.length} questions.`,
-                    exam: defaultExam._id,
+                    applicableExams: [defaultExam._id],
                     subject: subjectId,
                     topic: topicObj._id,
                     questions: questionIds,

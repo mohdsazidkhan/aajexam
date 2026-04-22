@@ -28,7 +28,7 @@ export async function GET(req) {
 
         const [quizzes, total] = await Promise.all([
             Quiz.find(filter)
-                .populate('exam', 'name code')
+                .populate('applicableExams', 'name code')
                 .populate('subject', 'name')
                 .populate('topic', 'name')
                 .select('-questions')

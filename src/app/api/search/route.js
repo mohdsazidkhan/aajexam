@@ -195,7 +195,7 @@ export async function GET(req) {
 				]
 			})
 				.select('_id title description difficulty type duration totalMarks isFree totalAttempts avgScore tags publishedAt')
-				.populate('exam', 'name code')
+				.populate('applicableExams', 'name code')
 				.populate('subject', 'name')
 				.populate('topic', 'name')
 				.sort({ publishedAt: -1 })

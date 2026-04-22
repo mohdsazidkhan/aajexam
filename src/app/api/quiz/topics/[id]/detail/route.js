@@ -16,7 +16,7 @@ export async function GET(req, { params }) {
         // Quizzes for this topic
         const quizzes = await Quiz.find({ topic: id, status: 'published' })
             .populate('subject', 'name')
-            .populate('exam', 'name code')
+            .populate('applicableExams', 'name code')
             .select('-questions')
             .sort({ publishedAt: -1 })
             .lean();

@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
 
         const { id } = await params;
         const quiz = await Quiz.findOne({ _id: id, status: 'published' })
-            .populate('exam', 'name code')
+            .populate('applicableExams', 'name code')
             .populate('subject', 'name')
             .populate('topic', 'name')
             .populate({

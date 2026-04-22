@@ -21,7 +21,7 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
 
         const filter = {};
-        if (exam) filter.exam = exam;
+        if (exam) filter.applicableExams = exam;
         if (subject) filter.subject = subject;
         if (topic) filter.topic = topic;
         if (status) filter.status = status;
@@ -29,7 +29,7 @@ export async function GET(req) {
 
         const [quizzes, total] = await Promise.all([
             Quiz.find(filter)
-                .populate('exam', 'name code')
+                .populate('applicableExams', 'name code')
                 .populate('subject', 'name')
                 .populate('topic', 'name')
                 .sort({ createdAt: -1 })
@@ -56,10 +56,15 @@ export async function POST(req) {
         await dbConnect();
 
         const body = await req.json();
-        const { title, exam, subject, topic, questions, duration, marksPerQuestion, negativeMarking, difficulty, type, tags, isFree } = body;
+        const { title, exam, applicableExams, subject, topic, questions, duration, marksPerQuestion, negativeMarking, difficulty, type, tags, isFree } = body;
 
-        if (!title || !exam || !subject || !duration) {
-            return NextResponse.json({ message: 'title, exam, subject, and duration are required' }, { status: 400 });
+        // Accept either a single `exam` (legacy clients) or `applicableExams` array.
+        const examIds = Array.isArray(applicableExams) && applicableExams.length
+            ? applicableExams
+            : (exam ? [exam] : []);
+
+        if (!title || !examIds.length || !subject || !duration) {
+            return NextResponse.json({ message: 'title, applicableExams (or exam), subject, and duration are required' }, { status: 400 });
         }
 
         // validate that all question IDs exist
@@ -74,7 +79,7 @@ export async function POST(req) {
         const totalMarks = (questions?.length || 0) * mPerQ;
 
         const quiz = await Quiz.create({
-            title, exam, subject, topic, questions: questions || [],
+            title, applicableExams: examIds, subject, topic, questions: questions || [],
             duration, totalMarks, marksPerQuestion: mPerQ, negativeMarking: negativeMarking || 0,
             difficulty: difficulty || 'mixed', type: type || 'topic_practice',
             tags: tags || [], isFree: isFree !== false,

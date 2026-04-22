@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
 
         const { id } = await params;
         const quiz = await Quiz.findById(id)
-            .populate('exam', 'name code')
+            .populate('applicableExams', 'name code')
             .populate('subject', 'name')
             .populate('topic', 'name')
             .populate('questions');
@@ -33,6 +33,12 @@ export async function PUT(req, { params }) {
 
         const { id } = await params;
         const body = await req.json();
+
+        // Normalize legacy `exam` → applicableExams[] on update
+        if (body.exam && !body.applicableExams) {
+            body.applicableExams = Array.isArray(body.exam) ? body.exam : [body.exam];
+            delete body.exam;
+        }
 
         // validate questions if being updated
         if (body.questions?.length) {

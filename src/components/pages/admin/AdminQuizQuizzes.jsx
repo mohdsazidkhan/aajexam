@@ -82,7 +82,7 @@ const AdminQuizQuizzes = () => {
 
   const openEdit = (q) => {
     setEditing(q);
-    setForm({ title: q.title, description: q.description || "", exam: q.exam?._id || q.exam, subject: q.subject?._id || q.subject, topic: q.topic?._id || q.topic || "", duration: q.duration, marksPerQuestion: q.marksPerQuestion || 1, negativeMarking: q.negativeMarking || 0, difficulty: q.difficulty || "mixed", type: q.type || "topic_practice", tags: (q.tags || []).join(", "), isFree: q.isFree !== false });
+    setForm({ title: q.title, description: q.description || "", exam: q.applicableExams?.[0]?._id || q.applicableExams?.[0] || "", subject: q.subject?._id || q.subject, topic: q.topic?._id || q.topic || "", duration: q.duration, marksPerQuestion: q.marksPerQuestion || 1, negativeMarking: q.negativeMarking || 0, difficulty: q.difficulty || "mixed", type: q.type || "topic_practice", tags: (q.tags || []).join(", "), isFree: q.isFree !== false });
     setShowModal(true);
   };
 
@@ -98,7 +98,7 @@ const AdminQuizQuizzes = () => {
     setQFilters({ subject: quiz.subject?._id || "", topic: quiz.topic?._id || "" });
     try {
       const params = { limit: 100 };
-      if (quiz.exam?._id) params.exam = quiz.exam._id;
+      if (quiz.applicableExams?.[0]?._id) params.exam = quiz.applicableExams[0]._id;
       if (quiz.subject?._id) params.subject = quiz.subject._id;
       if (quiz.topic?._id) params.topic = quiz.topic._id;
       const res = await API.getAdminQuestions(params);
@@ -155,7 +155,7 @@ const AdminQuizQuizzes = () => {
                     <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase">{q.title}</h3>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span>
                   </div>
-                  <p className="text-xs text-slate-400 mb-2">{q.exam?.name} · {q.subject?.name}{q.topic?.name ? ` · ${q.topic.name}` : ''} · {q.duration}min · {q.totalMarks} marks · {q.questions?.length || 0} Q</p>
+                  <p className="text-xs text-slate-400 mb-2">{q.applicableExams?.map(e => e.name).join(', ') || '—'} · {q.subject?.name}{q.topic?.name ? ` · ${q.topic.name}` : ''} · {q.duration}min · {q.totalMarks} marks · {q.questions?.length || 0} Q</p>
                   <div className="flex flex-wrap gap-1">
                     {q.tags?.map((tag, i) => <span key={i} className="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded-full text-slate-500">#{tag}</span>)}
                   </div>

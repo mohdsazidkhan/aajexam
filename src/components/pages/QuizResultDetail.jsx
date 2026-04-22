@@ -59,7 +59,7 @@ const QuizResultDetail = () => {
               </div>
             </div>
             {quiz && <h2 className="text-lg lg:text-xl font-bold text-slate-800 dark:text-white mb-1">{quiz.title || 'Quiz'}</h2>}
-            {quiz?.subject && <p className="text-sm text-slate-500 mb-4">{quiz.exam?.name || ''}{quiz.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
+            {quiz?.subject && <p className="text-sm text-slate-500 mb-4">{quiz.applicableExams?.map(e => e.name).join(', ') || ''}{quiz.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-xl p-3 border border-white/20">

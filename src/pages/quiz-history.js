@@ -109,7 +109,7 @@ const QuizHistoryPage = () => {
                                  <div className="space-y-1">
                                     <h4 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{quiz?.title || 'Quiz'}</h4>
                                     <p className="text-[10px] font-bold text-slate-400">
-                                       {quiz?.exam?.name || ''}{quiz?.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz?.topic?.name ? ` · ${quiz.topic.name}` : ''}
+                                       {quiz?.applicableExams?.map(e => e.name).join(', ') || ''}{quiz?.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz?.topic?.name ? ` · ${quiz.topic.name}` : ''}
                                     </p>
                                  </div>
 
