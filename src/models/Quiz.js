@@ -4,6 +4,7 @@ const quizSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
     description: { type: String, trim: true, default: '' },
     exam: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam', required: true },
+    applicableExams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam' }],
     subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },
     topic: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic' },
     questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
@@ -24,6 +25,8 @@ const quizSchema = new mongoose.Schema({
 
 quizSchema.index({ exam: 1, subject: 1, status: 1 });
 quizSchema.index({ exam: 1, subject: 1, topic: 1, status: 1 });
+quizSchema.index({ applicableExams: 1, subject: 1, status: 1 });
+quizSchema.index({ applicableExams: 1, subject: 1, topic: 1, status: 1 });
 quizSchema.index({ status: 1, publishedAt: -1 });
 quizSchema.index({ type: 1, status: 1 });
 quizSchema.index({ tags: 1 });
