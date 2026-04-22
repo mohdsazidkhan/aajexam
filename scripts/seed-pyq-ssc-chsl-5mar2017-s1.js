@@ -219,18 +219,18 @@ async function seed() {
     console.log(`Found ExamCategory: Central (${category._id})`);
   }
 
-  let exam = await Exam.findOne({ code: 'SSC-CHSL' });
+  let exam = await Exam.findOne({ code: 'SSC-CHSL-T1' });
   if (!exam) {
     exam = await Exam.create({
       category: category._id,
-      name: 'SSC CHSL',
-      code: 'SSC-CHSL',
-      description: 'Staff Selection Commission - Combined Higher Secondary Level',
+      name: 'SSC CHSL Tier-I',
+      code: 'SSC-CHSL-T1',
+      description: 'Staff Selection Commission - Combined Higher Secondary Level (Tier-I)',
       isActive: true
     });
-    console.log(`Created Exam: SSC CHSL (${exam._id})`);
+    console.log(`Created Exam: SSC CHSL Tier-I (${exam._id})`);
   } else {
-    console.log(`Found Exam: SSC CHSL (${exam._id})`);
+    console.log(`Found Exam: SSC CHSL Tier-I (${exam._id})`);
   }
 
   let pattern = await ExamPattern.findOne({ exam: exam._id, title: 'SSC CHSL Tier-I' });
@@ -253,8 +253,10 @@ async function seed() {
     console.log(`Found ExamPattern: SSC CHSL Tier-I (${pattern._id})`);
   }
 
+  // Match on examPattern + title only: pyqShift string varied historically
+  // ("Shift 1" vs "Shift-1") and would cause false-negative duplicates.
   const existing = await PracticeTest.findOne({
-    examPattern: pattern._id, isPYQ: true, pyqYear: 2017, pyqShift: 'Shift-1',
+    examPattern: pattern._id,
     title: { $regex: /5 March 2017/i }
   });
   if (existing) {
