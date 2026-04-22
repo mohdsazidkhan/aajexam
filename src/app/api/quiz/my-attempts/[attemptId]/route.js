@@ -14,9 +14,9 @@ export async function GET(req, { params }) {
         const attempt = await QuizAttempt.findOne({ _id: attemptId, user: auth.user._id })
             .populate({
                 path: 'quiz',
-                select: 'title exam subject topic type difficulty duration totalMarks marksPerQuestion negativeMarking',
+                select: 'title applicableExams subject topic type difficulty duration totalMarks marksPerQuestion negativeMarking',
                 populate: [
-                    { path: 'exam', select: 'name code' },
+                    { path: 'applicableExams', select: 'name code' },
                     { path: 'subject', select: 'name' },
                     { path: 'topic', select: 'name' }
                 ]
