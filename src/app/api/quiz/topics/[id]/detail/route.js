@@ -10,6 +10,7 @@ export async function GET(req, { params }) {
 
         const topic = await Topic.findById(id)
             .populate('subject', 'name')
+            .populate('exams', 'name code')
             .lean();
         if (!topic) return NextResponse.json({ success: false, message: 'Topic not found' }, { status: 404 });
 

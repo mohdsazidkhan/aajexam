@@ -15,6 +15,7 @@ export async function GET(req) {
 
         const topics = await Topic.find(filter)
             .populate('subject', 'name')
+            .populate('exams', 'name code')
             .sort({ order: 1, name: 1 })
             .lean();
 

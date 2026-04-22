@@ -44,7 +44,7 @@ const TopicListPage = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{topic.name}</p>
-                <p className="text-xs text-slate-400">{topic.subject?.name || ''}{topic.subject?.exam?.name ? ` · ${topic.subject.exam.name}` : ''}</p>
+                <p className="text-xs text-slate-400">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">{topic.quizCount || 0} Quiz</span>

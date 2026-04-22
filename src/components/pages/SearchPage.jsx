@@ -30,7 +30,13 @@ import {
    BrainCircuit,
    BookMarked,
    Layers,
-   Hash
+   Hash,
+   StickyNote,
+   Target,
+   RotateCcw,
+   Globe,
+   MessageSquare,
+   Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -69,6 +75,13 @@ const SearchPage = () => {
    const [subjects, setSubjects] = useState([]);
    const [topics, setTopics] = useState([]);
    const [hashtags, setHashtags] = useState([]);
+   const [notes, setNotes] = useState([]);
+   const [dailyChallenges, setDailyChallenges] = useState([]);
+   const [revision, setRevision] = useState([]);
+   const [examNews, setExamNews] = useState([]);
+   const [currentAffairs, setCurrentAffairs] = useState([]);
+   const [communityQuestions, setCommunityQuestions] = useState([]);
+   const [mentors, setMentors] = useState([]);
 
    // Follow state
    const [followMap, setFollowMap] = useState({});
@@ -117,6 +130,13 @@ const SearchPage = () => {
             setTopics(res.topics || []);
             setHashtags(res.hashtags || []);
             setSearchReels(res.reels || []);
+            setNotes(res.notes || []);
+            setDailyChallenges(res.dailyChallenges || []);
+            setRevision(res.revision || []);
+            setExamNews(res.examNews || []);
+            setCurrentAffairs(res.currentAffairs || []);
+            setCommunityQuestions(res.communityQuestions || []);
+            setMentors(res.mentors || []);
             setTotalPages(res.totalPages || 1);
             checkFollowStatuses(usersList);
          }
@@ -128,6 +148,8 @@ const SearchPage = () => {
       setUsers([]);
       setGovtExamCategories([]); setGovtExams([]); setExamPatterns([]); setPracticeTests([]);
       setBlogs([]); setQuizzes([]); setSubjects([]); setTopics([]); setHashtags([]); setSearchReels([]);
+      setNotes([]); setDailyChallenges([]); setRevision([]); setExamNews([]);
+      setCurrentAffairs([]); setCommunityQuestions([]); setMentors([]);
       setTotalPages(1);
    };
 
@@ -191,20 +213,34 @@ const SearchPage = () => {
 
    const tabs = [
       { key: 'all', label: 'All', icon: Compass },
+      { key: 'exam', label: 'Exams', icon: ShieldCheck },
       { key: 'reels', label: 'Reels', icon: Play },
-      { key: 'quiz', label: 'Quiz', icon: BrainCircuit },
       { key: 'subject', label: 'Subjects', icon: BookMarked },
       { key: 'topic', label: 'Topics', icon: Layers },
+      { key: 'quiz', label: 'Quizzes', icon: BrainCircuit },
+      { key: 'test', label: 'Practice Tests', icon: FileText },
+      { key: 'user', label: 'Users', icon: User },
       { key: 'hashtag', label: 'Hashtags', icon: Hash },
-      { key: 'exam', label: 'Exams', icon: ShieldCheck },
-      { key: 'test', label: 'Tests', icon: FileText },
       { key: 'blog', label: 'Blogs', icon: BookOpen },
-      { key: 'user', label: 'People', icon: User },
+      { key: 'note', label: 'Notes', icon: StickyNote },
+      { key: 'dailyChallenge', label: 'Daily Challenge', icon: Target },
+      { key: 'revision', label: 'Revision', icon: RotateCcw },
+      { key: 'examNews', label: 'Exam News', icon: Newspaper },
+      { key: 'currentAffair', label: 'Current Affairs', icon: Globe },
+      { key: 'communityQuestion', label: 'Community Question', icon: MessageSquare },
+      { key: 'mentor', label: 'Mentors', icon: Award },
    ];
 
    const getFilteredResults = () => {
       switch (activeTab) {
-         case 'all': return [...govtExams, ...govtExamCategories, ...examPatterns, ...practiceTests, ...quizzes, ...subjects.map(s => ({...s, type: 'subject'})), ...topics.map(t => ({...t, type: 'topic'})), ...blogs, ...users];
+         case 'all': return [
+            ...govtExams, ...govtExamCategories, ...examPatterns,
+            ...practiceTests, ...quizzes,
+            ...subjects.map(s => ({...s, type: 'subject'})),
+            ...topics.map(t => ({...t, type: 'topic'})),
+            ...blogs, ...users, ...notes, ...dailyChallenges, ...revision,
+            ...examNews, ...currentAffairs, ...communityQuestions, ...mentors,
+         ];
          case 'reels': return []; // reels rendered separately via grid
          case 'quiz': return quizzes;
          case 'subject': return subjects.map(s => ({...s, type: 'subject'}));
@@ -214,6 +250,13 @@ const SearchPage = () => {
          case 'test': return practiceTests;
          case 'blog': return blogs;
          case 'user': return users;
+         case 'note': return notes;
+         case 'dailyChallenge': return dailyChallenges;
+         case 'revision': return revision;
+         case 'examNews': return examNews;
+         case 'currentAffair': return currentAffairs;
+         case 'communityQuestion': return communityQuestions;
+         case 'mentor': return mentors;
          default: return [];
       }
    };
@@ -493,7 +536,7 @@ const SearchPage = () => {
                                     </div>
                                     <div className="min-w-0 flex-1">
                                        <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
-                                       <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.subject?.exam?.name ? ` · ${item.subject.exam.name}` : ''}</p>
+                                       <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
                                     </div>
                                     <ChevronRight className="w-4 h-4 text-slate-300" />
                                  </div>
@@ -551,6 +594,174 @@ const SearchPage = () => {
                            </div>
                         )}
 
+                        {/* ── Notes Section ── */}
+                        {notes.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <StickyNote className="w-4 h-4 text-amber-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Notes</h3>
+                              </div>
+                              {notes.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/notes/${item.slug || item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0">
+                                       <StickyNote className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                       <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {notes.length > 4 && <button onClick={() => setActiveTab('note')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all notes →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Daily Challenges Section ── */}
+                        {dailyChallenges.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Target className="w-4 h-4 text-red-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Daily Challenges</h3>
+                              </div>
+                              {dailyChallenges.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/daily-challenge`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-rose-700 flex items-center justify-center shrink-0">
+                                       <Target className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                       <p className="text-xs text-slate-400 truncate">{item.date ? new Date(item.date).toLocaleDateString() : ''}{item.totalMarks ? ` · ${item.totalMarks} marks` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {dailyChallenges.length > 4 && <button onClick={() => setActiveTab('dailyChallenge')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all daily challenges →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Revision Section ── */}
+                        {revision.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <RotateCcw className="w-4 h-4 text-teal-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Revision Queue</h3>
+                              </div>
+                              {revision.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/revision`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center shrink-0">
+                                       <RotateCcw className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.questionSnapshot?.questionText || item.sourceTitle || 'Revision item'}</p>
+                                       <p className="text-xs text-slate-400 truncate">{(item.source || '').replace('_', ' ')}{item.totalReviews ? ` · ${item.totalReviews} reviews` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {revision.length > 4 && <button onClick={() => setActiveTab('revision')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all revision items →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Exam News Section ── */}
+                        {examNews.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Newspaper className="w-4 h-4 text-sky-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Exam News</h3>
+                              </div>
+                              {examNews.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/exam-news/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0">
+                                       <Newspaper className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                       <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {examNews.length > 4 && <button onClick={() => setActiveTab('examNews')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all exam news →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Current Affairs Section ── */}
+                        {currentAffairs.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Globe className="w-4 h-4 text-fuchsia-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Current Affairs</h3>
+                              </div>
+                              {currentAffairs.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/current-affairs/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0">
+                                       <Globe className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                       <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {currentAffairs.length > 4 && <button onClick={() => setActiveTab('currentAffair')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all current affairs →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Community Questions Section ── */}
+                        {communityQuestions.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <MessageSquare className="w-4 h-4 text-lime-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Community Questions</h3>
+                              </div>
+                              {communityQuestions.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/community-questions/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-lime-500 to-green-700 flex items-center justify-center shrink-0">
+                                       <MessageSquare className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.question}</p>
+                                       <p className="text-xs text-slate-400 truncate">{item.author?.name || item.author?.username || 'Anon'}{item.exam?.name ? ` · ${item.exam.name}` : ''}{item.answerCount ? ` · ${item.answerCount} answers` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {communityQuestions.length > 4 && <button onClick={() => setActiveTab('communityQuestion')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all community questions →</button>}
+                           </div>
+                        )}
+
+                        {/* ── Mentors Section ── */}
+                        {mentors.length > 0 && (
+                           <div className="px-4">
+                              <div className="flex items-center gap-1.5 mb-2">
+                                 <Award className="w-4 h-4 text-yellow-500" />
+                                 <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Mentors</h3>
+                              </div>
+                              {mentors.slice(0, 4).map(item => (
+                                 <div key={item._id} onClick={() => router.push(`/mentor/${item._id}`)}
+                                    className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shrink-0">
+                                       <Award className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                       <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.user?.name || item.user?.username || 'Mentor'}</p>
+                                       <p className="text-xs text-slate-400 truncate">{(item.specialization || []).join(', ')}{item.rating ? ` · ★ ${item.rating.toFixed(1)}` : ''}</p>
+                                    </div>
+                                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                                 </div>
+                              ))}
+                              {mentors.length > 4 && <button onClick={() => setActiveTab('mentor')} className="text-[11px] font-bold text-primary-600 dark:text-primary-400 px-1 py-2">See all mentors →</button>}
+                           </div>
+                        )}
+
                         {/* ── People Section ── */}
                         {users.length > 0 && (
                            <div className="px-4">
@@ -591,7 +802,7 @@ const SearchPage = () => {
                         )}
 
                         {/* No results at all */}
-                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && quizzes.length === 0 && subjects.length === 0 && topics.length === 0 && hashtags.length === 0 && blogs.length === 0 && users.length === 0 && (
+                        {searchReels.length === 0 && [...govtExams, ...govtExamCategories, ...examPatterns].length === 0 && practiceTests.length === 0 && quizzes.length === 0 && subjects.length === 0 && topics.length === 0 && hashtags.length === 0 && blogs.length === 0 && users.length === 0 && notes.length === 0 && dailyChallenges.length === 0 && revision.length === 0 && examNews.length === 0 && currentAffairs.length === 0 && communityQuestions.length === 0 && mentors.length === 0 && (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
                                  <Search className="w-7 h-7 text-slate-300" />
@@ -731,7 +942,7 @@ const SearchPage = () => {
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
-                                             <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.subject?.exam?.name ? ` · ${item.subject.exam.name}` : ''}</p>
+                                             <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
                                           </div>
                                           <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                                        </div>
@@ -754,6 +965,83 @@ const SearchPage = () => {
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                                              <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Note */}
+                                    {item.type === 'note' && (
+                                       <div onClick={() => router.push(`/notes/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                             <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Daily Challenge */}
+                                    {item.type === 'dailyChallenge' && (
+                                       <div onClick={() => router.push(`/daily-challenge`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-red-500 to-rose-700 flex items-center justify-center shrink-0"><Target className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                             <p className="text-xs text-slate-400 truncate">{item.date ? new Date(item.date).toLocaleDateString() : ''}{item.totalMarks ? ` · ${item.totalMarks} marks` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Revision */}
+                                    {item.type === 'revision' && (
+                                       <div onClick={() => router.push(`/revision`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center shrink-0"><RotateCcw className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.questionSnapshot?.questionText || item.sourceTitle || 'Revision item'}</p>
+                                             <p className="text-xs text-slate-400 truncate">{(item.source || '').replace('_', ' ')}{item.totalReviews ? ` · ${item.totalReviews} reviews` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Exam News */}
+                                    {item.type === 'examNews' && (
+                                       <div onClick={() => router.push(`/exam-news/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                             <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Current Affair */}
+                                    {item.type === 'currentAffair' && (
+                                       <div onClick={() => router.push(`/current-affairs/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                                             <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Community Question */}
+                                    {item.type === 'communityQuestion' && (
+                                       <div onClick={() => router.push(`/community-questions/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-lime-500 to-green-700 flex items-center justify-center shrink-0"><MessageSquare className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.question}</p>
+                                             <p className="text-xs text-slate-400 truncate">{item.author?.name || item.author?.username || 'Anon'}{item.exam?.name ? ` · ${item.exam.name}` : ''}{item.answerCount ? ` · ${item.answerCount} answers` : ''}</p>
+                                          </div>
+                                          <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                                       </div>
+                                    )}
+                                    {/* Mentor */}
+                                    {item.type === 'mentor' && (
+                                       <div onClick={() => router.push(`/mentor/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                          <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shrink-0"><Award className="w-5 h-5 text-white" /></div>
+                                          <div className="min-w-0 flex-1">
+                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.user?.name || item.user?.username || 'Mentor'}</p>
+                                             <p className="text-xs text-slate-400 truncate">{(item.specialization || []).join(', ')}{item.rating ? ` · ★ ${item.rating.toFixed(1)}` : ''}{item.helpedStudents ? ` · ${item.helpedStudents} helped` : ''}</p>
                                           </div>
                                           <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                                        </div>

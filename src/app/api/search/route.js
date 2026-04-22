@@ -12,6 +12,13 @@ import Quiz from '@/models/Quiz';
 import Subject from '@/models/Subject';
 import Topic from '@/models/Topic';
 import Question from '@/models/Question';
+import StudyNote from '@/models/StudyNote';
+import DailyChallenge from '@/models/DailyChallenge';
+import RevisionQueue from '@/models/RevisionQueue';
+import ExamNews from '@/models/ExamNews';
+import CurrentAffair from '@/models/CurrentAffair';
+import CommunityQuestion from '@/models/CommunityQuestion';
+import MentorProfile from '@/models/MentorProfile';
 import { protect } from '@/middleware/auth';
 export const dynamic = 'force-dynamic';
 
@@ -31,12 +38,17 @@ export async function GET(req) {
 				users: [], govtExamCategories: [], govtExams: [],
 				examPatterns: [], practiceTests: [], blogs: [], reels: [], quizzes: [],
 				subjects: [], topics: [], hashtags: [],
+				notes: [], dailyChallenges: [], revision: [], examNews: [],
+				currentAffairs: [], communityQuestions: [], mentors: [],
 			});
 		}
 
 		// Strip # prefix for clean search
 		const cleanQuery = rawQuery.replace(/^#/, '').trim();
 		const regex = new RegExp(cleanQuery, 'i');
+
+		// Auth (needed for user-scoped revision queue; also for reel interactions)
+		const auth = await protect(req);
 
 		// ── Run all searches in parallel ──
 		const [
@@ -51,6 +63,13 @@ export async function GET(req) {
 			subjectResults,
 			topicResults,
 			hashtagResults,
+			noteResults,
+			dailyChallengeResults,
+			revisionResults,
+			examNewsResults,
+			currentAffairResults,
+			communityQuestionResults,
+			mentorResults,
 		] = await Promise.all([
 
 			// ── Users: username, name, email ──
@@ -210,6 +229,7 @@ export async function GET(req) {
 					{ description: regex },
 				]
 			})
+				.populate('exams', 'name code')
 				.sort({ order: 1, name: 1 })
 				.limit(limit)
 				.lean(),
@@ -223,6 +243,7 @@ export async function GET(req) {
 				]
 			})
 				.populate('subject', 'name')
+				.populate('exams', 'name code')
 				.sort({ order: 1, name: 1 })
 				.limit(limit)
 				.lean(),
@@ -237,11 +258,126 @@ export async function GET(req) {
 				{ $limit: limit },
 				{ $project: { _id: 0, tag: '$_id', count: 1 } }
 			]),
+
+			// ── StudyNotes: title, content, tags ──
+			StudyNote.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ content: regex },
+					{ tags: regex },
+				]
+			})
+				.select('_id title slug noteType difficulty views bookmarks subject topic exam tags createdAt')
+				.populate('subject', 'name')
+				.populate('topic', 'name')
+				.populate('exam', 'name code')
+				.sort({ createdAt: -1 })
+				.limit(limit)
+				.lean(),
+
+			// ── DailyChallenges: title, questions.questionText ──
+			DailyChallenge.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ 'questions.questionText': regex },
+					{ 'questions.explanation': regex },
+				]
+			})
+				.select('_id title date duration totalMarks totalAttempts avgScore exam')
+				.populate('exam', 'name code')
+				.sort({ date: -1 })
+				.limit(limit)
+				.lean(),
+
+			// ── Revision queue (user-scoped, only if logged in) ──
+			(async () => {
+				if (!auth.authenticated) return [];
+				return RevisionQueue.find({
+					user: auth.user._id,
+					$or: [
+						{ 'questionSnapshot.questionText': regex },
+						{ 'questionSnapshot.explanation': regex },
+						{ 'questionSnapshot.subject': regex },
+						{ 'questionSnapshot.topic': regex },
+						{ sourceTitle: regex },
+					]
+				})
+					.select('_id source sourceTitle questionSnapshot nextReviewDate status totalReviews correctReviews')
+					.sort({ nextReviewDate: 1 })
+					.limit(limit)
+					.lean();
+			})(),
+
+			// ── ExamNews: title, content, tags ──
+			ExamNews.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ content: regex },
+					{ examName: regex },
+					{ tags: regex },
+				]
+			})
+				.select('_id title type examName exam isPinned views tags createdAt')
+				.populate('exam', 'name code')
+				.sort({ isPinned: -1, createdAt: -1 })
+				.limit(limit)
+				.lean(),
+
+			// ── CurrentAffairs: title, content, keyPoints, tags ──
+			CurrentAffair.find({
+				status: 'published',
+				$or: [
+					{ title: regex },
+					{ content: regex },
+					{ keyPoints: regex },
+					{ tags: regex },
+					{ category: regex },
+				]
+			})
+				.select('_id title category date views tags exam')
+				.populate('exam', 'name code')
+				.sort({ date: -1 })
+				.limit(limit)
+				.lean(),
+
+			// ── CommunityQuestions: question, explanation ──
+			CommunityQuestion.find({
+				status: 'approved',
+				$or: [
+					{ question: regex },
+					{ explanation: regex },
+				]
+			})
+				.select('_id question explanation author exam likes views answerCount createdAt')
+				.populate('author', 'name username profilePicture')
+				.populate('exam', 'name code')
+				.sort({ createdAt: -1 })
+				.limit(limit)
+				.lean(),
+
+			// ── Mentors: strategy, tips, specialization, examsCleared.examName ──
+			MentorProfile.find({
+				status: 'active',
+				$or: [
+					{ strategy: regex },
+					{ tips: regex },
+					{ specialization: regex },
+					{ 'examsCleared.examName': regex },
+					{ booksRecommended: regex },
+				]
+			})
+				.select('_id user specialization examsCleared rating totalRatings helpedStudents isVerified preparationMonths')
+				.populate('user', 'name username profilePicture')
+				.sort({ isVerified: -1, rating: -1 })
+				.limit(limit)
+				.lean(),
 		]);
 
 		// ── Attach reel interactions if user is logged in ──
 		let reelsWithInteraction = reelResults;
-		const auth = await protect(req);
 		if (auth.authenticated && reelResults.length > 0) {
 			const reelIds = reelResults.map(r => r._id);
 			const interactions = await ReelInteraction.find({
@@ -270,6 +406,13 @@ export async function GET(req) {
 			subjects: subjectResults.map(s => ({ ...s, type: 'subject' })),
 			topics: topicResults.map(t => ({ ...t, type: 'topic' })),
 			hashtags: hashtagResults.map(h => ({ ...h, type: 'hashtag' })),
+			notes: noteResults.map(n => ({ ...n, type: 'note' })),
+			dailyChallenges: dailyChallengeResults.map(d => ({ ...d, type: 'dailyChallenge' })),
+			revision: revisionResults.map(r => ({ ...r, type: 'revision' })),
+			examNews: examNewsResults.map(e => ({ ...e, type: 'examNews' })),
+			currentAffairs: currentAffairResults.map(c => ({ ...c, type: 'currentAffair' })),
+			communityQuestions: communityQuestionResults.map(q => ({ ...q, type: 'communityQuestion' })),
+			mentors: mentorResults.map(m => ({ ...m, type: 'mentor' })),
 		});
 	} catch (error) {
 		console.error('Global search error:', error);

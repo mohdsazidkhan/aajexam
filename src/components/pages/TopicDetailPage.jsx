@@ -44,7 +44,7 @@ const TopicDetailPage = () => {
         <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 text-white mb-5">
           <Layers className="w-8 h-8 mb-2" />
           <h1 className="text-xl lg:text-3xl font-black uppercase">{topic.name}</h1>
-          <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.subject?.exam?.name ? ` · ${topic.subject.exam.name}` : ''}</p>
+          <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
           <div className="flex gap-3 mt-3">
             <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{quizzes.length} Quizzes</span>
             <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{practiceTests.length} Tests</span>

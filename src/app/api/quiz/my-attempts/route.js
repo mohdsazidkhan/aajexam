@@ -22,9 +22,9 @@ export async function GET(req) {
             QuizAttempt.find(filter)
                 .populate({
                     path: 'quiz',
-                    select: 'title exam subject topic type difficulty duration totalMarks',
+                    select: 'title applicableExams subject topic type difficulty duration totalMarks',
                     populate: [
-                        { path: 'exam', select: 'name code' },
+                        { path: 'applicableExams', select: 'name code' },
                         { path: 'subject', select: 'name' },
                         { path: 'topic', select: 'name' }
                     ]
