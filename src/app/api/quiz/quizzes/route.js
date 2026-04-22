@@ -20,7 +20,7 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
 
         const filter = { status: 'published' };
-        if (exam) filter.exam = exam;
+        if (exam) filter.applicableExams = exam;
         if (subject) filter.subject = subject;
         if (topic) filter.topic = topic;
         if (type) filter.type = type;

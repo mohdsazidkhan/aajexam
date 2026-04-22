@@ -17,8 +17,8 @@ export async function GET(req, { params }) {
         const { examId } = await params;
         const userId = auth.user._id;
 
-        // Get quiz attempts for this exam
-        const quizzes = await Quiz.find({ exam: examId }).select('_id subject');
+        // Get quiz attempts for this exam (curated via applicableExams)
+        const quizzes = await Quiz.find({ applicableExams: examId }).select('_id subject');
         const quizIds = quizzes.map(q => q._id);
 
         const quizAttempts = await QuizAttempt.find({

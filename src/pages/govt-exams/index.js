@@ -209,8 +209,9 @@ export async function getServerSideProps() {
         { $group: { _id: '$pattern.exam', total: { $sum: 1 } } }
       ]),
       Quiz.aggregate([
-        { $match: { status: 'published' } },
-        { $group: { _id: '$exam', total: { $sum: 1 } } }
+        { $match: { status: 'published', applicableExams: { $exists: true, $ne: [] } } },
+        { $unwind: '$applicableExams' },
+        { $group: { _id: '$applicableExams', total: { $sum: 1 } } }
       ])
     ]);
 

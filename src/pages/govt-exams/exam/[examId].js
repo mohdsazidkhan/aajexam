@@ -255,7 +255,7 @@ export async function getServerSideProps({ params }) {
     const [exam, patternIds, quizDocs] = await Promise.all([
       Exam.findById(examId).populate('category', 'name type').lean(),
       ExamPattern.find({ exam: examId }).select('_id').lean(),
-      Quiz.find({ exam: examId, status: 'published' })
+      Quiz.find({ applicableExams: examId, status: 'published' })
         .populate('subject', 'name')
         .populate('topic', 'name')
         .select('-questions')
