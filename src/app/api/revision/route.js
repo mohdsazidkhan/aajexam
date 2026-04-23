@@ -17,6 +17,15 @@ export async function GET(req) {
         if (!auth.authenticated) return NextResponse.json({ message: 'Login required' }, { status: 401 });
         await dbConnect();
 
+        // PRO CHECK: Revision Queue is a PRO feature
+        if (auth.user.subscriptionStatus !== 'pro' && auth.user.role !== 'admin') {
+            return NextResponse.json({
+                success: false,
+                message: 'Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition!',
+                isLocked: true
+            }, { status: 403 });
+        }
+
         const { searchParams } = new URL(req.url);
         const limit = parseInt(searchParams.get('limit')) || 50;
         const status = searchParams.get('status') || 'active';

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState, useCallback } from "react";
 import {
@@ -73,16 +73,10 @@ export default function ReferralHistory() {
    if (!isMounted) return null;
 
    const rewardLabels = {
-      'registration': 'STUDENT REGISTERED',
-      'plan9': '₹9 PLAN ACTIVATED',
-      'plan49': '₹49 PLAN ACTIVATED',
       'plan99': '₹99 PLAN ACTIVATED',
    };
 
    const rewardColors = {
-      'registration': 'primary',
-      'plan9': 'secondary',
-      'plan49': 'amber',
       'plan99': 'emerald',
    };
 
@@ -98,7 +92,7 @@ export default function ReferralHistory() {
                </motion.div>
                <div className="space-y-4">
                   <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">History</span></h1>
-                  <p className="text-sm font-bold text-content-secondary uppercase tracking-[0.3em] max-w-2xl mx-auto">Share your link with friends. When they join and buy a plan, you earn money.</p>
+                  <p className="text-sm font-bold text-content-secondary uppercase tracking-[0.3em] max-w-2xl mx-auto">Share your link with friends. When they buy the PRO plan (first time), you earn ₹33.</p>
                </div>
 
                {/* Referral Link Card */}
@@ -152,9 +146,6 @@ export default function ReferralHistory() {
 
                   <div className="space-y-4">
                      {[
-                        { label: 'When Friend Signs Up', type: 'registration', color: 'primary' },
-                        { label: 'Friend Buys ₹9 Plan', type: 'plan9', color: 'secondary' },
-                        { label: 'Friend Buys ₹49 Plan', type: 'plan49', color: 'amber' },
                         { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'emerald' }
                      ].map((b, i) => {
                         const amount = user?.referralRewards?.filter(r => r.type === b.type).reduce((s, r) => s + (r.amount || 0), 0) || 0;
@@ -208,7 +199,7 @@ export default function ReferralHistory() {
                            <Card className="overflow-hidden border-none shadow-xl bg-white dark:bg-slate-800/80 rounded-[3rem]">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
-                                    <thead className="/50">
+                                    <thead className="bg-slate-50/50 dark:bg-slate-900/50">
                                        <tr>
                                           <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Student</th>
                                           <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Reward Type</th>

@@ -44,7 +44,7 @@ const StudentsPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [createFormData, setCreateFormData] = useState({
     email: '',
-    planId: 'pro',
+    planId: 'PRO',
     duration: '1 month'
   });
   const [createLoading, setCreateLoading] = useState(false);
@@ -61,7 +61,7 @@ const StudentsPage = () => {
       await API.adminCreateSubscription(createFormData);
       toast.success(`Subscription successfully created for ${createFormData.email}`);
       setShowCreateModal(false);
-      setCreateFormData({ email: '', planId: 'pro', duration: '1 month' });
+      setCreateFormData({ email: '', planId: 'PRO', duration: '1 month' });
       fetchStudents(currentPage, searchTerm, filters);
     } catch (error) {
       console.error('Error creating subscription:', error);
@@ -170,8 +170,8 @@ const StudentsPage = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      free: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
-      pro: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
+      FREE: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
+      PRO: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
     };
     return statusConfig[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
   };
@@ -321,7 +321,7 @@ const StudentsPage = () => {
       header: 'Subscription',
       render: (_, student) => (
         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusBadge(student.subscriptionStatus)}`}>
-          {student.subscriptionStatus || 'free'}
+          {student.subscriptionStatus || 'FREE'}
         </span>
       )
     },
@@ -346,13 +346,13 @@ const StudentsPage = () => {
     <div className="flex items-center space-x-2">
       {/* Subscription Status Dropdown */}
       <select
-        value={student.subscriptionStatus || 'free'}
+        value={student.subscriptionStatus || 'FREE'}
         onChange={(e) => handleStatusChange(student._id, { subscriptionStatus: e.target.value })}
         className="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
         title="Change subscription plan"
       >
-        <option value="free">Free</option>
-        <option value="pro">Pro</option>
+        <option value="FREE">FREE</option>
+        <option value="PRO">PRO</option>
       </select>
 
       {/* Edit Button */}
@@ -424,7 +424,7 @@ const StudentsPage = () => {
               {[
                 { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'blue' },
                 { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
-                { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'pro').length || 0, icon: Crown, color: 'amber' },
+                { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'PRO').length || 0, icon: Crown, color: 'amber' },
                 { label: 'New Signups', value: students.length || 0, icon: Star, color: 'indigo' }
               ].map((stat, i) => (
                 <div
@@ -620,8 +620,8 @@ const StudentsPage = () => {
                         <div className="flex-1 space-y-4">
                           <div className="flex flex-wrap items-center gap-4">
                             <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{student.name}</h3>
-                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 ${student.subscriptionStatus === 'pro' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
-                              {student.subscriptionStatus || 'free'}
+                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 ${student.subscriptionStatus === 'PRO' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
+                              {student.subscriptionStatus || 'FREE'}
                             </div>
                           </div>
 
@@ -668,7 +668,7 @@ const StudentsPage = () => {
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
-                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'pro' ? 'text-amber-500' : 'text-slate-300'}`} />
+                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-amber-500' : 'text-slate-300'}`} />
                           </div>
                         </div>
 
@@ -782,9 +782,7 @@ const StudentsPage = () => {
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Choose a Plan</label>
                       <div className="grid grid-cols-1 gap-4">
                         {[
-                          { id: 'basic', label: 'Basic Plan', price: '₹9', icon: Shield, color: 'blue' },
-                          { id: 'premium', label: 'Premium Plan', price: '₹49', icon: Star, color: 'emerald' },
-                          { id: 'pro', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'amber' }
+                          { id: 'PRO', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'amber' }
                         ].map((tier) => (
                           <motion.div
                             key={tier.id}

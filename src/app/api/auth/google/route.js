@@ -47,7 +47,7 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
 
         return await Subscription.create({
             user: userId,
-            plan: 'free',
+            plan: 'FREE',
             status: 'active',
             startDate,
             endDate,
@@ -89,41 +89,6 @@ export async function POST(req) {
                 if (referrer) {
                     referredBy = referrer._id;
                     referrer.referralCount = (referrer.referralCount || 0) + 1;
-
-                    // Milestones
-                    if (referrer.referralCount === 2) {
-                        if (!referrer.badges.includes('Referral Starter')) referrer.badges.push('Referral Starter');
-                        if (referrer.subscriptionStatus === 'free') {
-                            const now = new Date();
-                            const endDate = new Date(now);
-                            endDate.setDate(endDate.getDate() + 30);
-                            const sub = await Subscription.create({
-                                user: referrer._id, plan: 'basic', status: 'active',
-                                startDate: now, endDate, amount: 9, currency: 'INR',
-                                metadata: { referralMilestone: 2, referralReward: true }
-                            });
-                            referrer.currentSubscription = sub._id;
-                            referrer.subscriptionStatus = 'basic';
-                            referrer.subscriptionExpiry = endDate;
-                        }
-                    } else if (referrer.referralCount === 5) {
-                        if (!referrer.badges.includes('Referral Master')) referrer.badges.push('Referral Master');
-                        const planHierarchy = { 'free': 0, 'basic': 1, 'premium': 2, 'pro': 3 };
-                        if ((planHierarchy[referrer.subscriptionStatus] || 0) < 2) {
-                            const now = new Date();
-                            const endDate = new Date(now);
-                            endDate.setDate(endDate.getDate() + 30);
-                            const sub = await Subscription.create({
-                                user: referrer._id, plan: 'premium', status: 'active',
-                                startDate: now, endDate, amount: 49, currency: 'INR',
-                                metadata: { referralMilestone: 5, referralReward: true }
-                            });
-                            referrer.currentSubscription = sub._id;
-                            referrer.subscriptionStatus = 'premium';
-                            referrer.subscriptionExpiry = endDate;
-                        }
-                    }
-
                     await referrer.save();
                 }
             }
@@ -131,7 +96,7 @@ export async function POST(req) {
             const username = await generateUniqueUsername(email);
             user = new User({
                 name, email, googleId, profilePicture: picture, username,
-                role: 'student', subscriptionStatus: 'free', referralCode: newReferralCode,
+                role: 'student', subscriptionStatus: 'FREE', referralCode: newReferralCode,
                 referredBy: referredBy, phone: undefined
             });
 
@@ -164,18 +129,18 @@ export async function POST(req) {
         const profileDetails = user.getProfileCompletionDetails();
         if (profileDetails.isComplete && !user.profileCompleted) {
             user.profileCompleted = true;
-            if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+            if (!user.profileCompletionReward && user.subscriptionStatus === 'FREE') {
                 try {
                     const now = new Date();
                     const endDate = new Date(now);
                     endDate.setDate(endDate.getDate() + 30);
                     const sub = await Subscription.create({
-                        user: user._id, plan: 'basic', status: 'active',
+                        user: user._id, plan: 'PRO', status: 'active',
                         startDate: now, endDate, amount: 9, currency: 'INR',
                         metadata: { profileCompletionReward: true }
                     });
                     user.currentSubscription = sub._id;
-                    user.subscriptionStatus = 'basic';
+                    user.subscriptionStatus = 'PRO';
                     user.subscriptionExpiry = endDate;
                     user.profileCompletionReward = true;
                     await user.save();

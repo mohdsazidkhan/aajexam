@@ -151,9 +151,8 @@ const AdminUsersAnalytics = () => {
                                 <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                 <select value={subscription} onChange={e => setSubscription(e.target.value)} className="w-full lg:w-auto pl-12 pr-10 py-4 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                                     <option value="">All Tiers</option>
-                                    <option value="free">Free Access</option>
-                                    <option value="basic">Standard</option>
-                                    <option value="pro">Pro Status</option>
+                                    <option value="FREE">FREE ACCESS</option>
+                                    <option value="PRO">PRO STATUS</option>
                                 </select>
                             </div>
                             <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
@@ -209,7 +208,7 @@ const AdminUsersAnalytics = () => {
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'pro' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'Free'}</span></td>
+                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">Student</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: '0%' }} /></div>
@@ -227,7 +226,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                                         {students.map((s, idx) => (
                                             <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative flex flex-col group overflow-hidden">
-                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'pro' ? 'bg-amber-400' : 'bg-primary-500'}`} />
+                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-amber-400' : 'bg-primary-500'}`} />
                                                 <div className="mb-6 mx-auto">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
                                                 </div>

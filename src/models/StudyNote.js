@@ -10,6 +10,7 @@ const studyNoteSchema = new mongoose.Schema({
     noteType: { type: String, enum: ['notes', 'formulas', 'shortcuts', 'important_points', 'tables', 'mnemonics'], required: true },
     tags: [{ type: String, trim: true, lowercase: true }],
     difficulty: { type: String, enum: ['beginner', 'intermediate', 'advanced'], default: 'intermediate' },
+    accessLevel: { type: String, enum: ['free', 'pro'], default: 'free' },
     views: { type: Number, default: 0 },
     bookmarks: { type: Number, default: 0 },
     bookmarkedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -18,7 +19,7 @@ const studyNoteSchema = new mongoose.Schema({
     status: { type: String, enum: ['draft', 'published', 'archived'], default: 'published' }
 }, { timestamps: true });
 
-studyNoteSchema.index({ subject: 1, noteType: 1, status: 1 });
+studyNoteSchema.index({ subject: 1, noteType: 1, accessLevel: 1, status: 1 });
 studyNoteSchema.index({ topic: 1, status: 1 });
 studyNoteSchema.index({ exam: 1, status: 1 });
 studyNoteSchema.index({ title: 'text', content: 'text', tags: 'text' });

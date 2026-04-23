@@ -60,7 +60,7 @@ export async function GET(req) {
 
         // Plan filtering
         if (plan && plan !== 'all') {
-            filterQuery.subscriptionStatus = plan.toLowerCase();
+            filterQuery.subscriptionStatus = plan.toUpperCase();
         }
 
         // Search filtering
@@ -88,7 +88,7 @@ export async function GET(req) {
 
         // Transform users to subscription format expected by frontend
         const subscriptions = users.map(user => {
-            const isSubscriptionActive = user.subscriptionStatus === 'free' ||
+            const isSubscriptionActive = user.subscriptionStatus === 'FREE' ||
                 (user.subscriptionStatus && user.subscriptionExpiry && new Date() < new Date(user.subscriptionExpiry));
 
             return {
@@ -99,11 +99,11 @@ export async function GET(req) {
                     email: user.email,
                     phone: user.phone
                 },
-                planName: user.subscriptionStatus ? user.subscriptionStatus.charAt(0).toUpperCase() + user.subscriptionStatus.slice(1) : 'Free',
+                planName: user.subscriptionStatus || 'FREE',
                 status: isSubscriptionActive ? 'active' : (user.subscriptionExpiry && new Date() > new Date(user.subscriptionExpiry) ? 'expired' : 'inactive'),
                 startDate: user.createdAt,
                 expiryDate: user.subscriptionExpiry,
-                amount: user.subscriptionStatus === 'basic' ? 9 : user.subscriptionStatus === 'premium' ? 49 : user.subscriptionStatus === 'pro' ? 99 : 0,
+                amount: user.subscriptionStatus === 'PRO' ? 99 : 0,
                 paymentMethod: 'payu',
                 createdAt: user.createdAt
             };

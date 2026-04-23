@@ -10,15 +10,51 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { id: testId } = await params;
         const auth = await protect(req);
+        if (!auth.authenticated) return NextResponse.json({ message: 'Login required' }, { status: 401 });
 
         const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections negativeMarking').lean();
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
 
-        let attempt = null;
-        if (auth.authenticated) {
-            attempt = await UserTestAttempt.findOne({ user: auth.user.id, practiceTest: testId, status: 'InProgress' });
-            if (!attempt) {
-                attempt = await UserTestAttempt.create({ user: auth.user.id, practiceTest: testId, startedAt: new Date(), status: 'InProgress' });
+        const user = auth.user;
+
+        // TIERED ACCESS CHECK
+        const currentStatus = (user.subscriptionStatus || 'FREE').toUpperCase();
+        
+        if (test.isPYQ) {
+            // Find max year for this pattern to check if it's "Last Year"
+            const maxYearDoc = await PracticeTest.findOne({ examPattern: test.examPattern?._id || test.examPattern, isPYQ: true })
+                .sort({ pyqYear: -1 })
+                .select('pyqYear')
+                .lean();
+            
+            const isLastYear = test.pyqYear && maxYearDoc && test.pyqYear === maxYearDoc.pyqYear;
+            
+            if (!isLastYear && currentStatus !== 'PRO' && user.role !== 'admin') {
+                return NextResponse.json({
+                    success: false,
+                    message: 'Only last year\'s PYQs are FREE. Upgrade to PRO to unlock all previous year papers!'
+                }, { status: 403 });
+            }
+        } else {
+            // 2. Full Mocks (non-PYQ): First one is FREE, rest are PRO
+            if (currentStatus !== 'PRO' && user.role !== 'admin') {
+                if ((user.fullMockAttemptCount || 0) >= 1) {
+                    return NextResponse.json({
+                        success: false,
+                        message: 'First Mock was free. Upgrade to PRO for unlimited mocks!'
+                    }, { status: 403 });
+                }
+            }
+        }
+
+        let attempt = await UserTestAttempt.findOne({ user: user.id, practiceTest: testId, status: 'InProgress' });
+        if (!attempt) {
+            attempt = await UserTestAttempt.create({ user: user.id, practiceTest: testId, startedAt: new Date(), status: 'InProgress' });
+
+            // Increment count for first attempt of a mock
+            if (!test.isPYQ && (user.subscriptionStatus !== 'pro')) {
+                user.fullMockAttemptCount = (user.fullMockAttemptCount || 0) + 1;
+                await user.save();
             }
         }
 

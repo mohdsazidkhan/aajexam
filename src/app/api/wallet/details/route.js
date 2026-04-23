@@ -49,7 +49,7 @@ export async function GET(req) {
                 referralRewards: user.referralRewards || [],
                 referralCount: user.referralCount || 0,
                 transactions: transactions,
-                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && user.subscriptionStatus === 'pro',
+                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && user.subscriptionStatus === 'PRO',
                 hasPendingRequest: !!pendingRequest,
                 pendingRequest: pendingRequest,
                 withdrawalRequests: withdrawalRequests || []

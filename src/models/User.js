@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
   referralCount: { type: Number, default: 0 },
   walletBalance: { type: Number, default: 0 },
   referralRewards: [{
-    type: { type: String, enum: ['registration', 'plan99'] },
+    type: { type: String, enum: ['plan99'] },
     amount: { type: Number },
     date: { type: Date, default: Date.now }
   }],
@@ -63,10 +63,15 @@ const userSchema = new mongoose.Schema({
   currentSubscription: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' },
   subscriptionStatus: {
     type: String,
-    enum: ['free', 'pro'],
-    default: 'free'
+    enum: ['FREE', 'PRO'],
+    default: 'FREE'
   },
   subscriptionExpiry: { type: Date },
+
+  // Usage tracking for tiers
+  dailySubjectTestCount: { type: Number, default: 0 },
+  fullMockAttemptCount: { type: Number, default: 0 },
+  lastTestResetDate: { type: Date, default: Date.now },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
 

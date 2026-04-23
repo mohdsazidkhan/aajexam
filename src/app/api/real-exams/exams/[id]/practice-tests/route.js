@@ -5,6 +5,7 @@ import ExamPattern from '@/models/ExamPattern';
 import PracticeTest from '@/models/PracticeTest';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect } from '@/middleware/auth';
+import { markPyqAccess } from '@/lib/subscription';
 
 export async function GET(req, { params }) {
     try {
@@ -22,16 +23,17 @@ export async function GET(req, { params }) {
             return NextResponse.json({ success: true, data: [], pagination: { page, limit, total: 0, pages: 0 } });
         }
 
-        const [tests, total] = await Promise.all([
+        const [testsRaw, total] = await Promise.all([
             PracticeTest.find({ examPattern: { $in: patternIds } })
                 .populate({ path: 'examPattern', select: 'title duration totalMarks sections negativeMarking' })
                 .select('-questions.correctAnswerIndex')
                 .sort({ publishedAt: -1 })
                 .skip(skip)
-                .limit(limit)
-                .lean(),
+                .limit(limit),
             PracticeTest.countDocuments({ examPattern: { $in: patternIds } })
         ]);
+
+        const tests = await markPyqAccess(testsRaw);
 
         // Attach user attempt if logged in
         let data = tests;

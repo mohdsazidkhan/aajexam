@@ -1,4 +1,6 @@
 export { default as Button } from './Button';
+export { default as Skeleton } from './Skeleton';
+export { default as ProBadge } from './ProBadge';
 export { default as Card } from './Card';
 export { default as Input } from './Input';
 export { default as Badge } from './Badge';

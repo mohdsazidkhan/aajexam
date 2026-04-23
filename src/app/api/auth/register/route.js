@@ -48,7 +48,7 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
 
         return await Subscription.create({
             user: userId,
-            plan: 'free',
+            plan: 'FREE',
             status: 'active',
             startDate,
             endDate,
@@ -92,7 +92,7 @@ export async function POST(req) {
 
         const user = new User({
             name, email, phone, password: hashedPassword, username, role,
-            subscriptionStatus: 'free', referredBy: referredBy || null, referralCode
+            subscriptionStatus: 'FREE', referredBy: referredBy || null, referralCode
         });
 
         await user.save();
@@ -101,18 +101,18 @@ export async function POST(req) {
         const profileDetails = user.getProfileCompletionDetails();
         if (profileDetails.isComplete && !user.profileCompleted) {
             user.profileCompleted = true;
-            if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+            if (!user.profileCompletionReward && user.subscriptionStatus === 'FREE') {
                 try {
                     const now = new Date();
                     const endDate = new Date(now);
                     endDate.setDate(endDate.getDate() + 30);
                     const subscription = await Subscription.create({
-                        user: user._id, plan: 'basic', status: 'active',
+                        user: user._id, plan: 'PRO', status: 'active',
                         startDate: now, endDate, amount: 9, currency: 'INR',
                         metadata: { profileCompletionReward: true }
                     });
                     user.currentSubscription = subscription._id;
-                    user.subscriptionStatus = 'basic';
+                    user.subscriptionStatus = 'PRO';
                     user.subscriptionExpiry = endDate;
                     user.profileCompletionReward = true;
                 } catch (subError) {
@@ -147,7 +147,7 @@ export async function POST(req) {
         const levelAccess = isAdmin ? 'all levels (0-10)' : 'levels 0-3';
         await WalletTransaction.create({
             user: user._id, type: 'credit', amount: 0, balance: 0,
-            category: 'subscription_payment', description: `Free ${subscriptionDuration} subscription - ${levelAccess} access`
+            category: 'subscription_payment', description: `FREE ${subscriptionDuration} subscription - ${levelAccess} access`
         });
 
         const successMessage = isAdmin

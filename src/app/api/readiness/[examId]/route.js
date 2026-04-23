@@ -17,6 +17,15 @@ export async function GET(req, { params }) {
         const { examId } = await params;
         const userId = auth.user._id;
 
+        // PRO CHECK: Readiness Score is a PRO feature
+        if (auth.user.subscriptionStatus !== 'pro' && auth.user.role !== 'admin') {
+            return NextResponse.json({
+                success: false,
+                message: 'Readiness Score is a PRO feature. Upgrade to unlock deep insights!',
+                isLocked: true
+            }, { status: 403 });
+        }
+
         // Get quiz attempts for this exam (curated via applicableExams)
         const quizzes = await Quiz.find({ applicableExams: examId }).select('_id subject');
         const quizIds = quizzes.map(q => q._id);

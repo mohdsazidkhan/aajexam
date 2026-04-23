@@ -4,24 +4,20 @@ import config from '../config/appConfig';
 import { useState, useEffect } from 'react';
 
 /**
- * Check if user has active subscription
+ * Check if user has active subscription (any tier)
  * @returns {boolean}
  */
 export const hasActiveSubscription = () => {
   try {
-    // Check if we're in browser environment
     if (typeof window === 'undefined') return false;
-
     const userInfo = localStorage.getItem('userInfo');
     if (!userInfo) return false;
-
     const user = JSON.parse(userInfo);
-
-    // Check if user has subscriptionStatus
-    if (!user.subscriptionStatus) return false;
-
+    
+    const status = (user.subscriptionStatus || 'FREE').toUpperCase();
+    
     // For free users, they have access to basic features
-    if (user.subscriptionStatus === 'free') return true;
+    if (status === 'FREE') return true;
 
     // For paid subscriptions, check expiry
     if (user.subscriptionExpiry) {
@@ -30,14 +26,37 @@ export const hasActiveSubscription = () => {
       return expiryDate > now;
     }
 
-    // Check currentSubscription object if available
-    if (user.currentSubscription) {
-      return user.currentSubscription.status === 'active';
+    return false;
+  } catch (error) {
+    console.error('Error checking subscription status:', error);
+    return false;
+  }
+};
+
+/**
+ * Check if user has PRO subscription
+ * @returns {boolean}
+ */
+export const hasProSubscription = () => {
+  try {
+    if (typeof window === 'undefined') return false;
+    const userInfo = localStorage.getItem('userInfo');
+    if (!userInfo) return false;
+    const user = JSON.parse(userInfo);
+    
+    if (user.role === 'admin') return true;
+    
+    const status = (user.subscriptionStatus || '').toUpperCase();
+    if (status !== 'PRO') return false;
+
+    if (user.subscriptionExpiry) {
+      const now = new Date();
+      const expiryDate = new Date(user.subscriptionExpiry);
+      return expiryDate > now;
     }
 
     return false;
   } catch (error) {
-    console.error('Error checking subscription status:', error);
     return false;
   }
 };
@@ -212,9 +231,10 @@ export const getCurrentTheme = () => {
 };
 
 const getSubscriptionText = (subscriptionStatus) => {
-  if (subscriptionStatus === "free") {
+  const status = (subscriptionStatus || 'FREE').toUpperCase();
+  if (status === "FREE") {
     return "FREE"
-  } else if (subscriptionStatus === "pro") {
+  } else if (status === "PRO") {
     return "PRO"
   } else {
     return "NO SUBSCRIPTION"
@@ -251,13 +271,15 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     }
 
     const user = JSON.parse(userInfo);
-    if (!user.subscription || user.subscription.status === 'free') {
+    const subStatus = (user.subscription?.status || 'FREE').toUpperCase();
+    
+    if (!user.subscription || subStatus === 'FREE') {
       return {
         text: getSubscriptionText(subscriptionStatus),
         textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-600',
         bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
         borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
-        icon: 'ðŸ†“'
+        icon: '🆓'
       };
     }
 
@@ -272,7 +294,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
           textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
           bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
           borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
-          icon: 'â°'
+          icon: '⌛'
         };
       }
 
@@ -282,7 +304,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
           textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-600',
           bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
           borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
-          icon: 'âš ï¸'
+          icon: '⚠️'
         };
       }
 
@@ -291,7 +313,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
         textColor: currentTheme === 'dark' ? 'text-green-400' : 'text-green-600',
         bgColor: currentTheme === 'dark' ? 'bg-green-900/30' : 'bg-green-50',
         borderColor: currentTheme === 'dark' ? 'border-green-700' : 'border-green-200',
-        icon: 'âœ…'
+        icon: '✅'
       };
     }
 
@@ -301,7 +323,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
       bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
       borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
-      icon: 'âŒ'
+      icon: '❌'
     };
   } catch (error) {
     console.error('Error getting subscription status text with theme:', error);
@@ -310,7 +332,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       textColor: 'text-gray-500',
       bgColor: 'bg-gray-100',
       borderColor: 'border-gray-300',
-      icon: 'â“'
+      icon: '❓'
     };
   }
 };
@@ -330,7 +352,8 @@ export const getSubscriptionStatusText = () => {
     const user = JSON.parse(userInfo);
     if (!user.subscription) return 'No Subscription';
 
-    if (user.subscription.status === 'active') {
+    const subStatus = (user.subscription.status || '').toUpperCase();
+    if (subStatus === 'ACTIVE' || subStatus === 'PRO') {
       const expiryDate = new Date(user.subscription.expiryDate);
       const now = new Date();
       const daysLeft = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
@@ -362,7 +385,8 @@ export const getSubscriptionStatusColor = () => {
     const user = JSON.parse(userInfo);
     if (!user.subscription) return 'gray';
 
-    if (user.subscription.status === 'active') {
+    const subStatus = (user.subscription.status || '').toUpperCase();
+    if (subStatus === 'ACTIVE' || subStatus === 'PRO') {
       const expiryDate = new Date(user.subscription.expiryDate);
       const now = new Date();
       const daysLeft = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
@@ -415,15 +439,15 @@ export const canAccessFeature = (feature) => {
     case 'basic_quizzes':
       return true; // All users can access basic quizzes
     case 'premium_quizzes':
-      return ['premium', 'pro'].includes(subscription.planName?.toLowerCase());
+      return subscription.planName?.toUpperCase() === 'PRO';
     case 'pro_features':
-      return subscription.planName?.toLowerCase() === 'pro';
+      return subscription.planName?.toUpperCase() === 'PRO';
     case 'unlimited_quizzes':
-      return ['premium', 'pro'].includes(subscription.planName?.toLowerCase());
+      return subscription.planName?.toUpperCase() === 'PRO';
     case 'advanced_analytics':
-      return ['premium', 'pro'].includes(subscription.planName?.toLowerCase());
+      return subscription.planName?.toUpperCase() === 'PRO';
     case 'priority_support':
-      return ['premium', 'pro'].includes(subscription.planName?.toLowerCase());
+      return subscription.planName?.toUpperCase() === 'PRO';
     default:
       return false;
   }

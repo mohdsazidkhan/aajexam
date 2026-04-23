@@ -61,7 +61,7 @@ export async function GET(req) {
                 ...item,
                 bankDetail,
                 userWalletBalance: userState?.walletBalance || 0,
-                userIsPro: userState?.subscriptionStatus === 'pro'
+                userIsPro: userState?.subscriptionStatus === 'PRO'
             };
         });
 

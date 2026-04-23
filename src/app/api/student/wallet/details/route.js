@@ -40,7 +40,7 @@ export async function GET(req) {
                 referredBy: user.referredBy,
                 referralRewards: user.referralRewards || [],
                 transactions,
-                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && user.subscriptionStatus === 'pro',
+                canWithdraw: (user.walletBalance || 0) >= MIN_WITHDRAW_AMOUNT && user.subscriptionStatus === 'PRO',
                 hasPendingRequest: !!pendingRequest,
                 pendingRequest: pendingRequest ? {
                     amount: pendingRequest.amount,

@@ -1,7 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
-import { Target, Copy, Share2, Smartphone, Send, User, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { Target, Copy, Share2, Smartphone, Send, User, Lightbulb } from 'lucide-react';
 import config from '../lib/config/appConfig';
 
 const ReferralBanner = ({ user }) => {
@@ -11,12 +11,12 @@ const ReferralBanner = ({ user }) => {
   const referralCount = user?.referralCount || 0;
 
   const message =
-    "ðŸ”¥ Invite Your Friends & Earn Study Rewards! ðŸ’°ðŸ”¥\n\n" +
-    "Invite your friends to AajExam and earn real rewards you can use anytime! ðŸš€\n\n" +
+    "🔥 Invite Your Friends & Earn Cash Rewards! 💰🔥\n\n" +
+    "Invite your friends to AajExam and earn real rewards you can withdraw anytime! 🚀\n\n" +
     "Here's what you earn:\n\n" +
-    `ðŸ’° ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend gets the Premium ₹${config.SUBSCRIPTION_PLANS.PRO.price} plan (first-time)\n\n` +
+    `💰 ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the PRO ₹${config.SUBSCRIPTION_PLANS.PRO.price} plan (first-time)\n\n` +
     `ðŸŽ Your Invitation Code: ${referralCode}\n\n` +
-    "ðŸ”— Join here:\n\n" +
+    "🔗 Join here:\n\n" +
     "https://aajexam.com/register";
 
   const copyReferralCode = () => {
@@ -47,12 +47,6 @@ const ReferralBanner = ({ user }) => {
     window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.origin)}&text=${telegramMessage}`, '_blank');
   };
 
-  const getNextMilestone = () => {
-    return { target: 10, reward: `₹${config.SUBSCRIPTION_PLANS.PRO.price} PREMIUM plan`, color: 'from-primary-400 to-primary-500' };
-  };
-
-  const nextMilestone = getNextMilestone();
-  const progressPercentage = Math.min((referralCount / nextMilestone.target) * 100, 100);
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
@@ -72,32 +66,13 @@ const ReferralBanner = ({ user }) => {
         </p>
       </div>
 
-      {/* Progress Section */}
       <div className="bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700">
-        <div className="text-center mb-6">
+        <div className="text-center">
           <div className="text-5xl font-black text-primary-700 dark:text-primary-500 mb-1">
             {referralCount}
           </div>
           <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">
             Friends Joined
-          </div>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest">
-              Next Goal: {nextMilestone.reward}
-            </span>
-            <span className="text-xs font-black text-primary-700 dark:text-primary-500 uppercase">
-              {referralCount} / {nextMilestone.target}
-            </span>
-          </div>
-          <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-5 overflow-hidden shadow-inner border border-slate-300 dark:border-slate-600">
-            <div
-              className={`bg-primary-500 h-full rounded-full transition-all duration-1000 ease-out shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]`}
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
           </div>
         </div>
       </div>
@@ -124,19 +99,6 @@ const ReferralBanner = ({ user }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 mb-6">
-        {/* Pro Milestone */}
-        <div
-          className={`bg-gradient-to-br ${referralCount >= 10
-            ? 'from-primary-400 to-primary-500 text-white'
-            : 'from-gray-200 to-gray-300 text-black dark:from-gray-700 dark:to-gray-600 dark:text-white'
-            } rounded-3xl p-6 text-center border-2 border-white/20 shadow-lg`}
-        >
-          <div className="font-black text-xl mb-1 uppercase tracking-tighter">10 Invites</div>
-          <div className="text-sm font-bold uppercase tracking-widest opacity-90">FREE PREMIUM PLAN</div>
-          {referralCount >= 10 && <div className="text-xs font-black uppercase tracking-widest mt-2 bg-white/20 py-1 rounded-full flex items-center justify-center gap-2"><CheckCircle2 className="w-3 h-3" /> ACHIEVED</div>}
-        </div>
-      </div>
 
       {/* Share Buttons */}
       <div className="space-y-4">

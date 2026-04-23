@@ -42,6 +42,7 @@ import { useSSR } from '../hooks/useSSR';
 import { isAdmin, hasAdminPrivileges, logAdminAction } from '../lib/utils/adminUtils';
 import { secureLogout } from '../lib/utils/authUtils';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
+import { ProBadge } from './ui';
 
 const Sidebar = () => {
   const { isMounted, router } = useSSR();
@@ -94,7 +95,7 @@ const Sidebar = () => {
         { path: '/admin/current-affairs', icon: Newspaper, label: 'Current Affairs', key: 'current-affairs' },
         { path: '/admin/exam-news', icon: Megaphone, label: 'Exam News', key: 'exam-news' },
         { path: '/admin/notes', icon: StickyNote, label: 'Notes & Formulas', key: 'notes' },
-        { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq' },
+        { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq', isPro: true },
       ]
     },
     {
@@ -102,14 +103,14 @@ const Sidebar = () => {
       items: [
         { path: '/admin/daily-challenge', icon: Target, label: 'Daily Challenge', key: 'daily-challenge' },
         { path: '/admin/streak', icon: Flame, label: 'Streaks', key: 'streak' },
-        { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision' },
-        { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Planner', key: 'study-plan' },
+        { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision', isPro: true },
+        { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Planner', key: 'study-plan', isPro: true },
       ]
     },
     {
       title: 'COMMUNITY',
       items: [
-        { path: '/admin/mentors', icon: Users, label: 'Mentors', key: 'mentors' },
+        { path: '/admin/mentors', icon: Users, label: 'Mentors', key: 'mentors', isPro: true },
         { path: '/admin/reels', icon: Zap, label: 'Reels', key: 'reels' },
         { path: '/admin/reels/create', icon: Flame, label: 'Create Reel', key: 'reels-create' },
         { path: '/admin/reels/analytics', icon: BarChart3, label: 'Reel Analytics', key: 'reels-analytics' },
@@ -172,6 +173,9 @@ const Sidebar = () => {
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                       <span className="text-[11px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
+                      {item.isPro && (
+                        <ProBadge size="xs" className="relative z-10 ml-auto" />
+                      )}
                     </button>
                   </Link>
                 );

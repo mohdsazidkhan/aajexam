@@ -12,20 +12,8 @@ import Sidebar from "../../Sidebar";
 
 import {
   Users,
-  Search,
-  ArrowRight,
-  Clock,
-  ChevronRight,
-  Wallet,
-  Award,
-  ShieldCheck,
-  TrendingUp,
-  UserPlus,
-  Mail,
   Zap,
   Filter,
-  CheckCircle2,
-  MoreVertical,
   Activity
 } from 'lucide-react';
 
@@ -81,9 +69,6 @@ export default function ReferralDashboard() {
 
   const getRewardTypeLabel = (type) => {
     const labels = {
-      'registration': 'Registration Reward',
-      'plan9': '₹9 Plan Reward',
-      'plan49': '₹49 Plan Reward',
       'plan99': '₹99 Plan Reward',
     };
     return labels[type] || type.toUpperCase();

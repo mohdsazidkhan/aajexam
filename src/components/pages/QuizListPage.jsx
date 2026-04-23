@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { BrainCircuit, Search } from 'lucide-react';
 import API from '../../lib/api';
 import Loading from '../Loading';
+import { ProBadge } from '../ui';
 
 const QuizListPage = () => {
   const router = useRouter();
@@ -55,6 +56,7 @@ const QuizListPage = () => {
                 <p className="text-xs text-slate-400">{quiz.subject?.name || ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
+                {quiz.accessLevel === 'pro' && <ProBadge size="xs" />}
                 <span className={`text-[10px] font-bold px-2 py-1 rounded-lg capitalize ${diffColor(quiz.difficulty)}`}>{quiz.difficulty}</span>
                 <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-lg uppercase">Start</span>
               </div>

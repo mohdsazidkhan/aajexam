@@ -35,7 +35,7 @@ export async function GET(req) {
         // Get bank details for the user (same as aajexam-backend)
         const bankDetail = await BankDetail.findOne({ user: userId });
 
-        const isPro = user.subscriptionStatus === 'pro';
+        const isPro = user.subscriptionStatus === 'PRO';
         const walletBalance = user.walletBalance || 0;
 
         return NextResponse.json({

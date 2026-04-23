@@ -91,9 +91,6 @@ export async function GET(req) {
         const summary = {
             totalRewards: summaryAggr.reduce((sum, item) => sum + item.totalAmount, 0),
             totalTransactions: summaryAggr.reduce((sum, item) => sum + item.count, 0),
-            registrationRewards: summaryAggr.find(s => s._id === 'registration')?.totalAmount || 0,
-            plan9Rewards: summaryAggr.find(s => s._id === 'plan9')?.totalAmount || 0,
-            plan49Rewards: summaryAggr.find(s => s._id === 'plan49')?.totalAmount || 0,
             plan99Rewards: summaryAggr.find(s => s._id === 'plan99')?.totalAmount || 0,
         };
 

@@ -12,22 +12,13 @@ import Sidebar from '../../Sidebar';
 
 import {
     ArrowLeft,
-    TrendingUp,
     Users,
     Wallet,
     Award,
     Zap,
-    Search,
     ChevronRight,
-    Smartphone,
-    Landmark,
     Clock,
-    CheckCircle2,
     ShieldCheck,
-    CreditCard,
-    Star,
-    Crown,
-    Mail,
     PieChart
 } from 'lucide-react';
 
@@ -112,9 +103,6 @@ export default function UserReferralDetail() {
 
     const getRewardTypeLabel = (type) => {
         const labels = {
-            'registration': 'Registration Reward',
-            'plan9': '₹9 Plan Reward',
-            'plan49': '₹49 Plan Reward',
             'plan99': '₹99 Plan Reward',
         };
         return labels[type] || type.toUpperCase();
@@ -122,9 +110,6 @@ export default function UserReferralDetail() {
 
     const getRewardTypeColor = (type) => {
         const colors = {
-            'registration': 'text-primary-500 bg-primary-500/10 border-primary-500/20',
-            'plan9': 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
-            'plan49': 'text-indigo-500 bg-indigo-500/10 border-indigo-500/20',
             'plan99': 'text-amber-500 bg-amber-500/10 border-amber-500/20',
         };
         return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
@@ -229,9 +214,6 @@ export default function UserReferralDetail() {
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4">
                     {[
                         { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
-                        { id: 'registration', label: 'Registration', amount: user?.referralRewards?.filter(r => r.type === 'registration').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'registration').length || 0, icon: CheckCircle2, color: 'primary' },
-                        { id: 'plan9', label: 'Plan 9', amount: user?.referralRewards?.filter(r => r.type === 'plan9').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan9').length || 0, icon: Star, color: 'emerald' },
-                        { id: 'plan49', label: 'Plan 49', amount: user?.referralRewards?.filter(r => r.type === 'plan49').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan49').length || 0, icon: Crown, color: 'indigo' },
                         { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                     ].map((tier) => (
                         <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">

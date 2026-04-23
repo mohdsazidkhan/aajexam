@@ -18,7 +18,7 @@ export async function GET(req) {
         );
         if (!user) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
-        const isPro = user.subscriptionStatus === 'pro';
+        const isPro = (user.subscriptionStatus || '').toUpperCase() === 'PRO';
 
         const [transactions, pendingRequest, withdrawalRequests] = await Promise.all([
             WalletTransaction.find({ user: auth.user.id }).sort({ createdAt: -1 }).limit(50).lean(),
@@ -135,7 +135,8 @@ export async function POST(req) {
         const user = await User.findById(auth.user.id);
         if (!user) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
-        if (user.subscriptionStatus !== 'pro') {
+        const currentStatus = (user.subscriptionStatus || '').toUpperCase();
+        if (currentStatus !== 'PRO') {
             return NextResponse.json({
                 message: `Upgrade to PRO to withdraw your ₹${user.walletBalance} earnings. PRO plan is just ₹99/month!`,
                 upgradeRequired: true,

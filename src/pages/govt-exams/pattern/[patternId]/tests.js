@@ -25,6 +25,7 @@ import Button from '../../../../components/ui/Button';
 import Card from '../../../../components/ui/Card';
 import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
+import { ProBadge } from '../../../../components/ui';
 
 const PatternTests = ({ patternId, initialPattern = null, initialTests = [], initialPagination = null, initialError = '', seo }) => {
   const router = useRouter();
@@ -82,7 +83,18 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       router.push('/login?redirect=' + encodeURIComponent(router.asPath));
       return;
     }
-    if (!test.isFree && !user.hasSubscription) {
+    // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
+    const isPro = user?.subscriptionStatus === 'pro' || user?.role === 'admin';
+    let isLocked = false;
+    if (!isPro) {
+      if (test.isPYQ) {
+        isLocked = true;
+      } else if ((user?.fullMockAttemptCount || 0) >= 1) {
+        isLocked = true;
+      }
+    }
+
+    if (isLocked) {
       router.push('/subscription');
       return;
     }
@@ -143,7 +155,17 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         <div className="space-y-4">
           {tests.map((test, idx) => {
             const isCompleted = test.userAttempt?.status === 'Completed';
-            const isLocked = !test.isFree && !user?.hasSubscription;
+            const isPro = user?.subscriptionStatus === 'pro' || user?.role === 'admin';
+            
+            // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
+            let isLocked = false;
+            if (!isPro) {
+              if (test.isPYQ) {
+                isLocked = true;
+              } else if ((user?.fullMockAttemptCount || 0) >= 1) {
+                isLocked = true;
+              }
+            }
 
             return (
               <motion.div
@@ -165,7 +187,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                       <div className="flex-1 text-center sm:text-left space-y-1">
                         <div className="flex items-center justify-center sm:justify-start gap-2">
                           <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{test.title}</h3>
-                          {isLocked ? <Lock className="w-4 h-4 text-accent-red" /> : <Unlock className="w-4 h-4 text-primary-500" />}
+                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-500" />}
                         </div>
                         <p className="text-xs font-bold text-gray-400 uppercase">
                           {test.questionCount || 0} Questions • {test.totalMarks || 100} Marks

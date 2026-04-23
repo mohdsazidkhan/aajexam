@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
@@ -103,7 +103,7 @@ const ProfilePage = () => {
   const accountDetails = [
     { label: 'Email', value: student?.email || 'Not added', icon: Mail },
     { label: 'Phone', value: student?.phone || 'Not added', icon: Phone },
-    { label: 'Membership', value: student?.subscriptionStatus === 'pro' ? 'PRO' : 'FREE', icon: ShieldCheck },
+    { label: 'Membership', value: student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE', icon: ShieldCheck },
     {
       label: 'Joined',
       value: student?.createdAt ? new Date(student.createdAt).toLocaleDateString() : 'Unknown',
@@ -131,8 +131,8 @@ const ProfilePage = () => {
                     <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight leading-none text-content-primary">
                       {student?.name || 'Student'}
                     </h1>
-                    <span className={`px-4 py-1.5 rounded-full text-xs font-semibold ${student?.subscriptionStatus === 'pro' ? 'bg-amber-500 text-white shadow-duo-amber' : 'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
-                      {student?.subscriptionStatus === 'pro' ? 'PRO' : 'Free plan'}
+                    <span className={`px-4 py-1.5 rounded-full text-xs font-semibold ${student?.subscriptionStatus === 'PRO' ? 'bg-amber-500 text-white shadow-duo-amber' : 'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                      {student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE PLAN'}
                     </span>
                   </div>
                   <p className="text-lg font-semibold text-content-secondary">

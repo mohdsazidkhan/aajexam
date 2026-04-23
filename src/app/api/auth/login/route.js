@@ -59,18 +59,18 @@ export async function POST(req) {
         const profileDetails = user.getProfileCompletionDetails();
         if (profileDetails.isComplete && !user.profileCompleted) {
             user.profileCompleted = true;
-            if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+            if (!user.profileCompletionReward && user.subscriptionStatus === 'FREE') {
                 try {
                     const now = new Date();
                     const endDate = new Date(now);
                     endDate.setDate(endDate.getDate() + 30);
                     const subscription = await Subscription.create({
-                        user: user._id, plan: 'basic', status: 'active',
+                        user: user._id, plan: 'PRO', status: 'active',
                         startDate: now, endDate, amount: 9, currency: 'INR',
                         metadata: { profileCompletionReward: true }
                     });
                     user.currentSubscription = subscription._id;
-                    user.subscriptionStatus = 'basic';
+                    user.subscriptionStatus = 'PRO';
                     user.subscriptionExpiry = endDate;
                     user.profileCompletionReward = true;
                 } catch (subError) {

@@ -1,5 +1,5 @@
-﻿import Link from 'next/link';
-import { hasActiveSubscription, getSubscriptionStatusTextWithTheme } from '../lib/utils/subscriptionUtils';
+import Link from 'next/link';
+import { hasProSubscription, getSubscriptionStatusTextWithTheme } from '../lib/utils/subscriptionUtils';
 
 /**
  * Component that shows subscription prompt for non-subscribed users
@@ -10,19 +10,19 @@ import { hasActiveSubscription, getSubscriptionStatusTextWithTheme } from '../li
  */
 const SubscriptionGuard = ({ 
   children, 
-  message = "This feature requires a subscription to access.", 
+  message = "This feature requires a PRO subscription to access.", 
   showUpgradeButton = true 
 }) => {
-  if (hasActiveSubscription()) {
+  if (hasProSubscription()) {
     return children;
   }
 
   const statusInfo = getSubscriptionStatusTextWithTheme();
-  console.log(message, 'message')
+  
   return (
     <div className="flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
       <div className="text-center">
-        <div className="text-6xl mb-4">Ã°Å¸â€â€™</div>
+        <div className="text-6xl mb-4">🔒</div>
         <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
           Subscription Required
         </h3>
@@ -44,7 +44,7 @@ const SubscriptionGuard = ({
             href="/subscription"
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
-            <span className="mr-2">Ã°Å¸â€™Â³</span>
+            <span className="mr-2">💳</span>
             Upgrade to Premium
           </Link>
         )}

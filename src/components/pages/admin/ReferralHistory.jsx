@@ -13,23 +13,13 @@ import Sidebar from "../../Sidebar";
 
 import {
   History,
-  Search,
-  ArrowRight,
   Clock,
   ChevronRight,
   Wallet,
   Award,
-  ShieldCheck,
-  TrendingUp,
-  UserPlus,
-  Mail,
-  Zap,
   Filter,
-  CheckCircle2,
-  Calendar,
   ExternalLink,
   DollarSign,
-  Briefcase,
   User
 } from 'lucide-react';
 
@@ -108,9 +98,6 @@ export default function ReferralHistory() {
 
   const getRewardTypeLabel = (type) => {
     const labels = {
-      'registration': 'Registration Reward',
-      'plan9': '₹9 Plan Reward',
-      'plan49': '₹49 Plan Reward',
       'plan99': '₹99 Plan Reward',
     };
     return labels[type] || type.toUpperCase();
@@ -118,9 +105,6 @@ export default function ReferralHistory() {
 
   const getRewardTypeIcon = (type) => {
     switch (type) {
-      case 'registration': return UserPlus;
-      case 'plan9': return Zap;
-      case 'plan49': return Briefcase;
       case 'plan99': return Award;
       default: return DollarSign;
     }
@@ -128,9 +112,6 @@ export default function ReferralHistory() {
 
   const getRewardTypeColor = (type) => {
     const colors = {
-      'registration': 'text-primary-500 bg-primary-500/10 border-primary-500/20',
-      'plan9': 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
-      'plan49': 'text-indigo-500 bg-indigo-500/10 border-indigo-500/20',
       'plan99': 'text-rose-500 bg-rose-500/10 border-rose-500/20',
     };
     return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
@@ -183,9 +164,6 @@ export default function ReferralHistory() {
                   className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                 >
                   <option value="all">All Reward Types</option>
-                  <option value="registration">Registration Reward (₹10)</option>
-                  <option value="plan9">Plan 9 Reward (₹3)</option>
-                  <option value="plan49">Plan 49 Reward (₹15)</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>
                 </select>
                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
@@ -201,12 +179,9 @@ export default function ReferralHistory() {
 
           {/* Summary Cards */}
           {summary && (
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-4">
+            <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mb-4">
               {[
                 { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
-                { label: "REGISTRATION", value: summary.registrationRewards, icon: UserPlus, color: "bg-primary-500 text-white shadow-primary-500/20" },
-                { label: "PLAN 9", value: summary.plan9Rewards, icon: Zap, color: "bg-emerald-500 text-white shadow-emerald-500/20" },
-                { label: "PLAN 49", value: summary.plan49Rewards, icon: Briefcase, color: "bg-indigo-500 text-white shadow-indigo-500/20" },
                 { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-rose-500 text-white shadow-rose-500/20" }
               ].map((stat, i) => (
                 <motion.div

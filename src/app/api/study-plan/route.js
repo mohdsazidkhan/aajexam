@@ -12,6 +12,15 @@ export async function GET(req) {
         }
         await dbConnect();
 
+        // PRO CHECK: Study Plan is a PRO feature
+        if (auth.user.subscriptionStatus !== 'pro' && auth.user.role !== 'admin') {
+            return NextResponse.json({
+                success: false,
+                message: 'AI Study Plan is a PRO feature. Upgrade to get a customized roadmap!',
+                isLocked: true
+            }, { status: 403 });
+        }
+
         const plans = await StudyPlan.find({ user: auth.user._id })
             .populate('exam', 'name code')
             .sort({ createdAt: -1 });

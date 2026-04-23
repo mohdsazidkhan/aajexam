@@ -89,7 +89,7 @@ const AdminSubscriptions = () => {
     periodRevenue: 0
   });
   const [filterOptions, setFilterOptions] = useState({
-    plans: ['Free', 'Basic', 'Premium', 'Pro'],
+    plans: ['FREE', 'PRO'],
     statuses: ['all', 'active', 'inactive', 'expired', 'cancelled'],
     years: [],
     months: []
@@ -108,7 +108,7 @@ const AdminSubscriptions = () => {
   const [showExtendModal, setShowExtendModal] = useState(false);
   const [selectedSubscription, setSelectedSubscription] = useState(null);
   const [extendForm, setExtendForm] = useState({
-    plan: 'basic',
+    plan: 'PRO',
     duration: '1 month'
   });
   const [extending, setExtending] = useState(false);
@@ -230,7 +230,7 @@ const AdminSubscriptions = () => {
   const openExtendModal = (subscription) => {
     setSelectedSubscription(subscription);
     setExtendForm({
-      plan: subscription.planName?.toLowerCase() || 'basic',
+      plan: subscription.planName?.toUpperCase() || 'PRO',
       duration: '1 month'
     });
     setShowExtendModal(true);
@@ -240,7 +240,7 @@ const AdminSubscriptions = () => {
     setShowExtendModal(false);
     setSelectedSubscription(null);
     setExtendForm({
-      plan: 'basic',
+      plan: 'PRO',
       duration: '1 month'
     });
   };
@@ -310,19 +310,17 @@ const AdminSubscriptions = () => {
   };
 
   const getPlanIcon = (planName) => {
-    switch (planName?.toLowerCase()) {
-      case 'pro': return <Crown className="w-4 h-4 text-amber-500" />;
-      case 'premium': return <Gem className="w-4 h-4 text-indigo-500" />;
-      case 'basic': return <Star className="w-4 h-4 text-indigo-500" />;
+    switch (planName?.toUpperCase()) {
+      case 'PRO': return <Crown className="w-4 h-4 text-amber-500" />;
+      case 'FREE': return <Rocket className="w-4 h-4 text-slate-400" />;
       default: return <Rocket className="w-4 h-4 text-slate-400" />;
     }
   };
 
   const getPlanColor = (planName) => {
-    switch (planName?.toLowerCase()) {
-      case 'pro': return "text-amber-500 bg-amber-500/10 border-amber-500/20";
-      case 'premium': return "text-indigo-500 bg-indigo-500/10 border-indigo-500/20";
-      case 'basic': return "text-indigo-500 bg-indigo-500/10 border-indigo-500/20";
+    switch (planName?.toUpperCase()) {
+      case 'PRO': return "text-amber-500 bg-amber-500/10 border-amber-500/20";
+      case 'FREE': return "text-slate-500 bg-slate-500/10 border-slate-500/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
     }
   };

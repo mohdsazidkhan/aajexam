@@ -40,6 +40,7 @@ import { toggleSidebar } from '../lib/store/sidebarSlice';
 import { secureLogout, getCurrentUser, isAuthenticated } from '../lib/utils/authUtils';
 import { useSSR } from '../hooks/useSSR';
 import API from '../lib/api';
+import { ProBadge } from './ui';
 
 const StudentSidebar = () => {
   const { isMounted, router } = useSSR();
@@ -117,21 +118,21 @@ const StudentSidebar = () => {
     {
       title: 'STUDY',
       items: [
-        { path: '/pyq', icon: FileText, label: 'Previous Year Q' },
-        { path: '/revision', icon: RotateCcw, label: 'Revision Queue' },
-        { path: '/study-plan', icon: CalendarDays, label: 'Study Planner' },
+        { path: '/pyq', icon: FileText, label: 'Previous Year Q', isPro: true },
+        { path: '/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
+        { path: '/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
         { path: '/notes', icon: StickyNote, label: 'Notes & Formulas' },
-        { path: '/mentors', icon: Users, label: 'Mentors' },
+        { path: '/mentors', icon: Users, label: 'Mentors', isPro: true },
       ]
     },
     {
       title: 'PROGRESS',
       items: [
-        { path: '/my-analytics', icon: TrendingUp, label: 'Performance' },
-        { path: '/readiness', icon: Target, label: 'Exam Readiness' },
-        { path: '/exam-history', icon: History, label: 'Exam History' },
+        { path: '/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
+        { path: '/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
+        { path: '/exam-history', icon: History, label: 'Exam History', isPro: true },
         { path: '/payment-history', icon: CreditCard, label: 'Payment History' },
-        { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History' },
+        { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History', isPro: true },
         { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
     },
@@ -179,6 +180,9 @@ const StudentSidebar = () => {
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                         <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
+                      {item.isPro && (
+                        <ProBadge size="xs" className="relative z-10" />
+                      )}
                     </button>
                   </Link>
                 );

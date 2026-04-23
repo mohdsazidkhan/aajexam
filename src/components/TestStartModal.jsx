@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import {
   FaPlay,
   FaDesktop,
@@ -15,8 +15,12 @@ import {
   CheckCircle2,
   Zap,
   Info,
-  Calendar
+  Calendar,
+  Lock,
+  Crown
 } from 'lucide-react';
+import { getCurrentUser } from '../lib/utils/authUtils';
+import { ProBadge } from './ui';
 
 const TestStartModal = ({
   isOpen,
@@ -57,8 +61,29 @@ const TestStartModal = ({
           {/* Test Info */}
           <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-border-primary/50 shadow-inner">
             <h3 className="text-content-primary text-sm lg:text-md mb-3 lg:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
-              {testTitle}
             </h3>
+
+            {/* Subscription Info */}
+            <div className="mb-4">
+              {test.isPYQ ? (
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <ProBadge size="sm" />
+                  <span className="text-[10px] font-black text-amber-600 uppercase tracking-widest">
+                    {(test.isLastYear || test.isFree || (test.accessLevel || '').toUpperCase() === 'FREE') ? "FREE PAPER" : "PRO ONLY PAPERS"}
+                  </span>
+                </div>
+              ) : (test.accessLevel === 'pro' || test.type === 'full_mock') && (
+                <div className="flex flex-col items-center gap-2 mb-2">
+                   <div className="flex items-center gap-2">
+                     <ProBadge size="sm" />
+                     <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                       {getCurrentUser()?.fullMockAttemptCount === 0 ? "FIRST MOCK IS FREE!" : "PRO ONLY TEST"}
+                     </span>
+                   </div>
+                </div>
+              )}
+            </div>
+
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center text-primary-600 shadow-sm">

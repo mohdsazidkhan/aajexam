@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import FollowButton from './FollowButton';
@@ -141,7 +141,7 @@ const PublicProfile = ({ username }) => {
                     className="w-24 lg:w-48 h-24 lg:h-48 lg:w-56 lg:h-56 rounded-[3.2rem] border-[10px] border-white dark:border-slate-800 shadow-2xl object-cover relative z-10 transition-transform group-hover:scale-110"
                   />
                   <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
-                    <span className="text-xl font-black uppercase tracking-widest">{profile.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}</span>
+                    <span className="text-xl font-black uppercase tracking-widest">{(profile.subscriptionStatus || 'FREE').toUpperCase() === 'PRO' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
               ) : (
@@ -149,7 +149,7 @@ const PublicProfile = ({ username }) => {
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                   <span className="relative z-10">{profile.name?.charAt(0)?.toUpperCase() || 'U'}</span>
                   <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
-                    <span className="text-xl font-black uppercase tracking-widest">{profile.subscriptionStatus === 'pro' ? 'PRO' : 'FREE'}</span>
+                    <span className="text-xl font-black uppercase tracking-widest">{(profile.subscriptionStatus || 'FREE').toUpperCase() === 'PRO' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
               )}

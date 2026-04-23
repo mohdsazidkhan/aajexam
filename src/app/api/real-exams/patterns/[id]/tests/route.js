@@ -5,7 +5,7 @@ import ExamPattern from '@/models/ExamPattern';
 import Exam from '@/models/Exam';
 import ExamCategory from '@/models/ExamCategory';
 import UserTestAttempt from '@/models/UserTestAttempt';
-import { protect } from '@/middleware/auth';
+import { markPyqAccess } from '@/lib/subscription';
 
 export async function GET(req, { params }) {
     try {
@@ -18,15 +18,16 @@ export async function GET(req, { params }) {
 
         const auth = await protect(req);
 
-        const [tests, total, pattern] = await Promise.all([
+        const [testsRaw, total, pattern] = await Promise.all([
             PracticeTest.find({ examPattern: id })
                 .populate('examPattern', 'title duration totalMarks sections')
                 .select('-questions.correctAnswerIndex')
-                .sort({ publishedAt: -1 }).skip(skip).limit(limit).lean(),
+                .sort({ publishedAt: -1 }).skip(skip).limit(limit),
             PracticeTest.countDocuments({ examPattern: id }),
             ExamPattern.findById(id).populate({ path: 'exam', populate: { path: 'category', select: 'name type' } }).lean()
         ]);
 
+        const tests = await markPyqAccess(testsRaw);
         let data = tests;
         if (auth.authenticated && tests.length) {
             const attempts = await UserTestAttempt.find({

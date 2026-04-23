@@ -44,13 +44,13 @@ export async function POST(req, { params }) {
             currentExpiry.setFullYear(currentExpiry.getFullYear() + durationValue);
         }
 
-        student.subscriptionStatus = plan.toLowerCase();
+        student.subscriptionStatus = plan.toUpperCase();
         student.subscriptionExpiry = currentExpiry;
         await student.save();
 
         return NextResponse.json({
             success: true,
-            message: `Subscription ${student.subscriptionStatus === 'free' ? 'removed' : 'extended'} successfully`,
+            message: `Subscription ${student.subscriptionStatus === 'FREE' ? 'removed' : 'extended'} successfully`,
             data: {
                 subscriptionStatus: student.subscriptionStatus,
                 subscriptionExpiry: student.subscriptionExpiry

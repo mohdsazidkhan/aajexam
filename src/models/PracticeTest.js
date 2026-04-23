@@ -5,7 +5,7 @@ const practiceTestSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
     totalMarks: { type: Number, required: true, min: 0 },
     duration: { type: Number, required: true, min: 1 },
-    isFree: { type: Boolean, default: false },
+    accessLevel: { type: String, enum: ['FREE', 'PRO'], default: 'FREE' },
     isPYQ: { type: Boolean, default: false },
     pyqYear: { type: Number, default: null },
     pyqShift: { type: String, default: null, trim: true },
@@ -25,7 +25,7 @@ const practiceTestSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 practiceTestSchema.index({ examPattern: 1 });
-practiceTestSchema.index({ isFree: 1 });
+practiceTestSchema.index({ accessLevel: 1 });
 practiceTestSchema.index({ publishedAt: -1 });
 practiceTestSchema.index({ isPYQ: 1, pyqYear: -1 });
 practiceTestSchema.index({ isPYQ: 1, examPattern: 1, pyqYear: -1 });

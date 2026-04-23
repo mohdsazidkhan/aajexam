@@ -124,7 +124,7 @@ export async function POST(req) {
         }
 
         // Pro users get 2 freezes per week
-        if (auth.user.subscriptionStatus === 'pro') {
+        if (auth.user.subscriptionStatus === 'PRO') {
             const weekStart = new Date(today);
             weekStart.setDate(weekStart.getDate() - weekStart.getDay());
             const freezesThisWeek = streak.streakHistory.filter(h => {

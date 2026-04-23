@@ -35,5 +35,5 @@ export const adminOnly = admin;
 export const proOnly = (user) => {
     if (!user) return false;
     if (user.role === 'admin') return true;
-    return user.subscriptionStatus === 'pro' && user.status === 'active' && new Date(user.subscriptionExpiry) > new Date();
+    return user.subscriptionStatus === 'PRO' && user.status === 'active' && new Date(user.subscriptionExpiry) > new Date();
 };

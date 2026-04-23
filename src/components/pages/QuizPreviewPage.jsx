@@ -9,7 +9,10 @@ import {
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { requireAuthForAction } from '../../lib/auth';
+import { getCurrentUser } from '../../lib/utils/authUtils';
 import Loading from '../Loading';
+import { ProBadge } from '../ui';
+import { Lock } from 'lucide-react';
 
 const QuizPreviewPage = () => {
   const router = useRouter();
@@ -40,7 +43,23 @@ const QuizPreviewPage = () => {
     fetchQuiz();
   }, [id]);
 
+  const currentUser = getCurrentUser();
+  const isPro = currentUser?.subscriptionStatus === 'pro' || currentUser?.role === 'admin';
+
+  // Determine if this quiz is locked for the user
+  const isLocked = !isPro && (
+    (quiz?.accessLevel === 'pro' && !(quiz.type === 'full_mock' && (currentUser?.fullMockAttemptCount || 0) === 0)) ||
+    (quiz?.type === 'full_mock' && (currentUser?.fullMockAttemptCount || 0) >= 1) ||
+    (quiz?.type === 'subject_test' && (currentUser?.dailySubjectTestCount || 0) >= 2 && new Date(currentUser?.lastTestResetDate || 0).toDateString() === new Date().toDateString())
+  );
+
   const handleStartQuiz = () => {
+    if (isLocked) {
+      toast.error('This is a PRO feature. Upgrade to unlock!');
+      router.push('/subscription');
+      return;
+    }
+
     if (requireAuthForAction(router, `/quiz/${id}/attempt`)) {
       localStorage.setItem('quizNavigationData', JSON.stringify({
         quizData: quiz,
@@ -108,7 +127,10 @@ const QuizPreviewPage = () => {
             <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center mr-4 shrink-0">
               <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
             </div>
-            <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white">{quiz.title}</h1>
+            <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+              {quiz.title}
+              {quiz.accessLevel === 'pro' && <ProBadge />}
+            </h1>
           </div>
           {quiz.description && (
             <p className="text-slate-600 dark:text-slate-300 mb-6 text-base">{quiz.description}</p>
@@ -155,9 +177,21 @@ const QuizPreviewPage = () => {
           {/* Start Button */}
           <button
             onClick={handleStartQuiz}
-            className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all font-bold text-lg flex items-center justify-center shadow-lg"
+            className={`w-full px-8 py-4 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
+              isLocked
+                ? 'bg-gradient-to-r from-amber-500 to-amber-700 text-white hover:from-amber-600 hover:to-amber-800'
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700'
+            }`}
           >
-            <Play className="w-5 h-5 mr-3" /> Start Quiz Now
+            {isLocked ? (
+              <>
+                <Lock className="w-5 h-5 mr-3" /> UNLOCK WITH PRO
+              </>
+            ) : (
+              <>
+                <Play className="w-5 h-5 mr-3" /> Start Quiz Now
+              </>
+            )}
           </button>
         </div>
 

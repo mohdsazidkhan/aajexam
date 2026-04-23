@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
@@ -75,17 +75,22 @@ const SubscriptionPage = () => {
       eyebrow: isPro ? 'Most popular' : 'Start practicing',
       features: isPro
         ? [
-          "Access all free + pro practice tests",
+          "Access all FREE + PRO practice tests",
           "Unlimited mock tests for all exam boards",
-          "Detailed score analysis and reports",
+          "AI-powered personalized Study Planner",
+          "Revision Queue (Spaced Repetition)",
+          "Exam Readiness Score & deep insights",
+          "Personalized Mentors guidance",
+          "Quiz & Exam attempt history",
+          "Advanced performance analytics",
           "Section-wise performance tracking",
           "Ad-free exam practice",
-          "Pro badge on your profile",
+          "PRO badge on your profile",
         ]
         : [
-          "Access free practice tests for all exams",
+          "Access FREE practice tests for all exams",
+          "Last Year PYQ Papers are FREE",
           "View exam patterns and stages",
-          "Basic performance analytics",
           "Community support",
         ],
     };
@@ -119,27 +124,27 @@ const SubscriptionPage = () => {
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm font-semibold opacity-80">Your current plan</p>
-                  <h1 className="text-xl lg:text-3xl font-black font-outfit leading-tight capitalize">
+                  <h1 className="text-xl lg:text-3xl font-black font-outfit leading-tight uppercase">
                     {subscription.planName} plan is active
                   </h1>
                   <p className="text-base font-medium opacity-90">
                     {subscription.expiryDate
                       ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
-                      : subscription.planName?.toLowerCase() === 'free'
-                        ? 'Upgrade to Pro to unlock all practice tests and detailed analytics.'
+                      : (subscription.planName || '').toUpperCase() === 'FREE'
+                        ? 'Upgrade to PRO to unlock all practice tests and detailed analytics.'
                         : 'Pick a plan below to unlock all exam practice tests.'}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                {subscription.planName?.toLowerCase() === 'free' && (
+                {(subscription.planName || '').toUpperCase() === 'FREE' && (
                   <Button
                     variant="secondary"
                     className="w-full lg:w-auto bg-white text-slate-900 border-none rounded-2xl px-8 py-4"
-                    onClick={() => setSelectedPlan(plans.find((plan) => plan.key.toLowerCase() === 'pro')?.key || plans[0]?.key || null)}
+                    onClick={() => setSelectedPlan(plans.find((plan) => plan.key.toUpperCase() === 'PRO')?.key || plans[0]?.key || null)}
                   >
-                    Upgrade to Pro
+                    Upgrade to PRO
                   </Button>
                 )}
               </div>
@@ -152,14 +157,14 @@ const SubscriptionPage = () => {
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <h2 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
             <p className="text-base lg:text-lg font-medium text-content-secondary">
-              Practice free tests on the Free plan, or upgrade to Pro for full access to all practice tests, mock exams, and detailed performance reports.
+              Practice FREE tests on the FREE plan, or upgrade to PRO for full access to all practice tests, mock exams, and detailed performance reports.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-6">
             {plans.map((plan) => {
               const theme = PLAN_THEMES[plan.tone];
-              const isCurrent = subscription?.planName?.toLowerCase() === plan.key.toLowerCase() && subscription.status === 'active';
+              const isCurrent = (subscription?.planName || '').toUpperCase() === (plan.key || '').toUpperCase() && subscription.status === 'active';
               const isSelected = selectedPlan === plan.key;
 
               return (
