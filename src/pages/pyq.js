@@ -14,6 +14,8 @@ const PYQPage = () => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [year, setYear] = useState('');
+  const [examId, setExamId] = useState('');
+  const [exams, setExams] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
@@ -21,17 +23,24 @@ const PYQPage = () => {
   const years = Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i);
 
   useEffect(() => {
+    API.request('/api/public/exams?limit=100').then(res => {
+      if (res?.success) setExams(res.data.exams || []);
+    }).catch(() => {});
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const params = new URLSearchParams({ page, limit: 20 });
         if (year) params.set('year', year);
+        if (examId) params.set('examId', examId);
         const res = await API.request(`/api/pyq?${params}`);
         if (res?.success) { setTests(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [year, page]);
+  }, [year, examId, page]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
 
@@ -44,11 +53,18 @@ const PYQPage = () => {
               <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> Previous Year Papers</h1>
               <p className="text-sm font-bold text-slate-400">Practice with real exam questions</p>
             </div>
-            <select value={year} onChange={(e) => { setYear(e.target.value); setPage(1); }}
-              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none">
-              <option value="">All Years</option>
-              {years.map(y => <option key={y} value={y}>{y}</option>)}
-            </select>
+            <div className="flex gap-2">
+              <select value={examId} onChange={(e) => { setExamId(e.target.value); setPage(1); }}
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none">
+                <option value="">All Exams</option>
+                {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
+              </select>
+              <select value={year} onChange={(e) => { setYear(e.target.value); setPage(1); }}
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none">
+                <option value="">All Years</option>
+                {years.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
