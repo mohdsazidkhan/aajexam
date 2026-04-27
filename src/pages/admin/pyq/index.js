@@ -12,6 +12,7 @@ import AdminRoute from '../../../components/AdminRoute';
 const AdminPYQ = () => {
   const router = useRouter();
   const [tests, setTests] = useState([]);
+  const [maxYearByExam, setMaxYearByExam] = useState({});
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -20,7 +21,11 @@ const AdminPYQ = () => {
     try {
       setLoading(true);
       const testsRes = await API.request(`/api/admin/pyq?page=${page}&limit=20`);
-      if (testsRes?.success) { setTests(testsRes.data || []); setTotalPages(testsRes.pagination?.totalPages || 1); }
+      if (testsRes?.success) {
+        setTests(testsRes.data || []);
+        setMaxYearByExam(testsRes.maxYearByExam || {});
+        setTotalPages(testsRes.pagination?.totalPages || 1);
+      }
     } catch (e) { } finally { setLoading(false); }
   };
   useEffect(() => { fetchData(); }, [page]);
@@ -56,8 +61,9 @@ const AdminPYQ = () => {
           ) : (
             <div className="space-y-3">
               {tests.map((t, i) => {
-                const lastYear = new Date().getFullYear() - 1;
-                const isFree = Number(t.pyqYear) === lastYear;
+                const examId = t.examPattern?.exam?._id ? String(t.examPattern.exam._id) : null;
+                const maxYear = examId ? maxYearByExam[examId] : null;
+                const isFree = maxYear != null && Number(t.pyqYear) === Number(maxYear);
                 return (
                 <Card key={t._id || i} className="p-4 lg:p-5 flex items-center gap-4">
                   <div className="flex-1 min-w-0 space-y-1.5">

@@ -16,18 +16,28 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
-        const [tests, total] = await Promise.all([
+        const [tests, total, maxYears] = await Promise.all([
             PracticeTest.find({ isPYQ: true })
                 .populate({ path: 'examPattern', populate: { path: 'exam', select: 'name code' } })
                 .sort({ pyqYear: -1, createdAt: -1 })
                 .skip(skip)
                 .limit(limit),
-            PracticeTest.countDocuments({ isPYQ: true })
+            PracticeTest.countDocuments({ isPYQ: true }),
+            PracticeTest.aggregate([
+                { $match: { isPYQ: true, pyqYear: { $ne: null } } },
+                { $lookup: { from: 'exampatterns', localField: 'examPattern', foreignField: '_id', as: 'ep' } },
+                { $unwind: '$ep' },
+                { $group: { _id: '$ep.exam', maxYear: { $max: '$pyqYear' } } }
+            ])
         ]);
+
+        const maxYearByExam = {};
+        for (const m of maxYears) if (m._id) maxYearByExam[String(m._id)] = m.maxYear;
 
         return NextResponse.json({
             success: true,
             data: tests,
+            maxYearByExam,
             pagination: { page, limit, total, totalPages: Math.ceil(total / limit) }
         });
     } catch (error) {
