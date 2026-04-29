@@ -44,12 +44,11 @@ const SubscriptionPage = () => {
   const handleBuy = async (plan) => {
     if (buyingPlan) return;
     setBuyingPlan(plan.key);
-    const res = await launchPayuCheckout({ plan, userInfo });
+    // Same-tab navigation: launchPayuCheckout submits to PayU in this tab,
+    // so the page is about to unload. The success / failure routes will
+    // navigate the user back to /subscription with a fresh fetch.
+    await launchPayuCheckout({ plan, userInfo });
     setBuyingPlan(null);
-    if (res?.success) {
-      // Refresh after a short delay so the user's plan flips once PayU posts back.
-      setTimeout(fetchSubscriptionData, 5000);
-    }
   };
 
   const fetchSubscriptionData = async () => {
@@ -163,7 +162,7 @@ const SubscriptionPage = () => {
                       {isBuying ? (
                         <>
                           <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                          Opening PayU…
+                          Redirecting to PayU…
                         </>
                       ) : (
                         `Buy PRO ₹${proPlan.price} Plan`
@@ -251,7 +250,7 @@ const SubscriptionPage = () => {
                         {isBuying ? (
                           <>
                             <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                            Opening PayU…
+                            Redirecting to PayU…
                           </>
                         ) : (
                           <>

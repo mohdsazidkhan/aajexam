@@ -44,7 +44,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
         <div className="flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 shrink-0 text-primary-700 dark:text-primary-500 mt-0.5" />
           <p className="font-medium">
-            A secure PayU window opens in a new tab. Keep this page open until your payment is completed.
+            You will be redirected to the secure PayU payment page. Once your payment is complete you will be brought back here automatically.
           </p>
         </div>
       </div>
