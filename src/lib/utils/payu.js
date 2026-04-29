@@ -1,20 +1,21 @@
 // Centralised PayU launcher. Builds the order, persists txnid for the
 // success/failure landing pages, and submits the PayU form.
 //
-// Default behaviour is SAME-TAB navigation (target: 'self'). This is what
-// every major payment gateway (Razorpay, Stripe, PayU's own demos) does
-// in production because:
-//   - It bypasses popup blockers entirely (critical on mobile, where
-//     Chrome/Safari aggressively block target=_blank from async handlers).
-//   - It preserves the user's click gesture across the order-create API
-//     await, so the first click always works without a "blank tab then
-//     refresh" workaround.
-//   - The payu-success / payu-failure routes already handle returning
-//     the user to /subscription, so there's no UX regression.
+// Default behaviour is NEW-TAB ({ newTab: true }) so the subscription
+// page stays open behind the PayU checkout. To avoid the "blank tab on
+// first click then works after refresh" race that a plain target="_blank"
+// form-submit has (the order-create API is async, so the user-gesture
+// context is gone by the time we submit), we:
+//   1. Synchronously open a placeholder tab with a styled spinner the
+//      moment the user clicks (still inside the user-gesture, so the
+//      popup blocker stays out of the way).
+//   2. Await the order API.
+//   3. Write the auto-submit PayU form straight into that already-open
+//      tab's document, which navigates it to PayU without losing the
+//      gesture or showing a blank screen.
 //
-// Opt-in to a new tab via { newTab: true }. We then pre-open the popup
-// synchronously (with a placeholder) so the popup blocker doesn't fire,
-// then write the auto-submit form into that tab once the API resolves.
+// Pass { newTab: false } if you ever want to redirect the current tab
+// instead.
 
 import { toast } from 'react-hot-toast';
 
@@ -119,7 +120,7 @@ const submitForm = ({ paymentUrl, paymentParams, targetWindow }) => {
     return true;
 };
 
-export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = false } = {}) => {
+export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = true } = {}) => {
     const resolvedUser = resolveCurrentUser(userInfo);
     if (!resolvedUser?._id) {
         toast.error('Please log in to continue with payment.');
