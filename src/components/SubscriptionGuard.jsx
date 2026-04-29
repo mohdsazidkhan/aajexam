@@ -45,7 +45,7 @@ const SubscriptionGuard = ({
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
             <span className="mr-2">💳</span>
-            Upgrade to Premium
+            Upgrade to PRO
           </Link>
         )}
 
