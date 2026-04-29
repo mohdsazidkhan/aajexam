@@ -104,23 +104,38 @@ const StudentNavbar = () => {
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            {/* Profile avatar */}
-            <button
-              onClick={() => setShowProfileMenu(!showProfileMenu)}
-              aria-label="Profile menu"
-              aria-expanded={showProfileMenu}
-              className="p-0.5 rounded-full"
-            >
-              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-pink-500 p-[2px]">
-                {user.profilePicture ? (
-                  <Image src={user.profilePicture} alt={user.name || 'Profile'} width={36} height={36} className="w-full h-full rounded-full object-cover" />
-                ) : (
-                  <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase">
-                    {user.name?.charAt(0)}
+            {/* Profile avatar — colour-codes the plan: PRO = gold ring +
+                gold avatar; FREE = green ring + green avatar. The user's
+                first initial sits inside in white. */}
+            {(() => {
+              const plan = (user.subscriptionStatus || 'FREE').toUpperCase();
+              const isPro = plan === 'PRO';
+              const ringClass = isPro
+                ? 'bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600'
+                : 'bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600';
+              const innerClass = isPro
+                ? 'bg-gradient-to-br from-amber-500 to-yellow-600'
+                : 'bg-gradient-to-br from-emerald-500 to-emerald-600';
+              return (
+                <button
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                  aria-label={`${plan} plan – Profile menu`}
+                  aria-expanded={showProfileMenu}
+                  title={`${plan} plan`}
+                  className="p-0.5 rounded-full"
+                >
+                  <div className={`w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden p-[2px] ${ringClass}`}>
+                    {user.profilePicture ? (
+                      <Image src={user.profilePicture} alt={user.name || 'Profile'} width={36} height={36} className="w-full h-full rounded-full object-cover" />
+                    ) : (
+                      <div className={`w-full h-full rounded-full flex items-center justify-center text-white text-xs font-black uppercase ${innerClass}`}>
+                        {user.name?.charAt(0)}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </button>
+                </button>
+              );
+            })()}
           </div>
         </div>
       </header>
@@ -139,7 +154,22 @@ const StudentNavbar = () => {
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
+                  {(() => {
+                    const plan = (user.subscriptionStatus || 'FREE').toUpperCase();
+                    const isPro = plan === 'PRO';
+                    return (
+                      <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full text-white shrink-0 ${
+                        isPro
+                          ? 'bg-gradient-to-r from-amber-500 to-yellow-600'
+                          : 'bg-gradient-to-r from-emerald-500 to-emerald-600'
+                      }`}>
+                        {plan}
+                      </span>
+                    );
+                  })()}
+                </div>
                 <p className="text-[10px] text-slate-400 truncate">{user.email}</p>
               </div>
 
