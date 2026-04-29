@@ -70,6 +70,16 @@ const DailyChallengePage = () => {
         setAttempted(true);
         setAttemptData(res.data.attempt);
         toast.success(`Score: ${res.data.attempt.score}/${challenge.questions.length} | Streak: ${res.data.streak.currentStreak} days`);
+
+        // Refetch the challenge so option.isCorrect is now populated for the
+        // review section. The /today endpoint strips isCorrect when attempted
+        // is false, so the initial challenge state has options without it.
+        try {
+          const todayRes = await API.request('/api/daily-challenge/today');
+          if (todayRes?.success && todayRes.data?.challenge) {
+            setChallenge(todayRes.data.challenge);
+          }
+        } catch (_) { /* keep existing challenge state if refetch fails */ }
       }
     } catch (e) { toast.error('Submit failed'); } finally { setSubmitting(false); }
   };
