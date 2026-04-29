@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+import { attachSlugHook } from '../lib/utils/slug';
 
 const quizSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
+    slug: { type: String, lowercase: true, trim: true, index: true },
     description: { type: String, trim: true, default: '' },
     applicableExams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam', required: true }],
     subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },
@@ -28,5 +30,8 @@ quizSchema.index({ status: 1, publishedAt: -1 });
 quizSchema.index({ type: 1, status: 1 });
 quizSchema.index({ tags: 1 });
 quizSchema.index({ accessLevel: 1, status: 1 });
+quizSchema.index({ slug: 1 }, { unique: true, sparse: true });
+
+attachSlugHook(quizSchema, { sourceField: 'title' });
 
 export default mongoose.models.Quiz || mongoose.model('Quiz', quizSchema);
