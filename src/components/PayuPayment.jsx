@@ -1,103 +1,17 @@
-﻿import React, { useMemo, useState } from 'react';
-import { toast } from 'react-hot-toast';
+import React, { useState } from 'react';
 import { CheckCircle2, CreditCard, LoaderCircle, ShieldCheck } from 'lucide-react';
 
-import API from '../lib/api';
-
-const safeLocalStorage = {
-  setItem: (key, value) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(key, value);
-    }
-  },
-  getItem: (key) => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(key);
-    }
-    return null;
-  },
-};
+import { launchPayuCheckout } from '../lib/utils/payu';
 
 const PayuPayment = ({ plan, userInfo, onError }) => {
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
 
-  const resolvedUser = useMemo(() => {
-    if (userInfo?._id) {
-      return userInfo;
-    }
-
-    const storedUser = safeLocalStorage.getItem('userInfo');
-    if (!storedUser) {
-      return null;
-    }
-
-    try {
-      return JSON.parse(storedUser);
-    } catch {
-      return null;
-    }
-  }, [userInfo]);
-
   const handlePayuPayment = async () => {
-    try {
-      setLoading(true);
-
-      if (!resolvedUser?._id) {
-        toast.error('Please log in to continue with payment.');
-        return;
-      }
-
-      const orderRes = await API.createPayuSubscriptionOrder({
-        planId: (plan?.key || '').toLowerCase(),
-        userId: resolvedUser._id,
-      });
-
-      if (!orderRes?.success) {
-        throw new Error(orderRes?.message || 'Failed to create the payment order.');
-      }
-
-      setPaymentData(orderRes.paymentParams);
-
-      const txnid = orderRes.paymentParams?.txnid;
-      if (txnid) {
-        safeLocalStorage.setItem('payu_txnid', txnid);
-        safeLocalStorage.setItem('payu_txnid_timestamp', Date.now().toString());
-      }
-
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = orderRes.paymentUrl;
-      form.target = '_blank';
-
-      Object.entries(orderRes.paymentParams || {}).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      });
-
-      document.body.appendChild(form);
-      form.submit();
-      document.body.removeChild(form);
-
-      toast.success('Opening the secure payment page...');
-    } catch (error) {
-      if (error?.message?.includes('User not found')) {
-        toast.error('Your session expired. Please log in again.');
-      } else if (error?.message?.includes('Invalid plan')) {
-        toast.error('That plan is not available right now.');
-      } else if (error?.message?.includes('PayU payment gateway not configured')) {
-        toast.error('Payments are temporarily unavailable. Please try again later.');
-      } else {
-        toast.error(error?.message || 'Failed to start the payment.');
-      }
-
-      onError?.(error);
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    const res = await launchPayuCheckout({ plan, userInfo, onError });
+    if (res?.success && res.txnid) setPaymentData({ txnid: res.txnid });
+    setLoading(false);
   };
 
   return (
@@ -153,5 +67,3 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
 };
 
 export default PayuPayment;
-
-

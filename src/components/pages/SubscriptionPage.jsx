@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import { toast } from "react-hot-toast";
-import { ArrowRight, CircleCheck, Crown, Rocket, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CircleCheck, Crown, LoaderCircle, Rocket, ShieldCheck, Sparkles } from 'lucide-react';
 
 import API from '../../lib/api';
 import config from '../../lib/config/appConfig';
@@ -12,8 +12,8 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
 import Skeleton from '../Skeleton';
-import PayuPayment from "../PayuPayment";
 import PaymentTransactions from "../PaymentTransactions";
+import { launchPayuCheckout } from '../../lib/utils/payu';
 
 const PLAN_THEMES = {
   primary: {
@@ -38,8 +38,19 @@ const SubscriptionPage = () => {
   const router = useRouter();
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [buyingPlan, setBuyingPlan] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+
+  const handleBuy = async (plan) => {
+    if (buyingPlan) return;
+    setBuyingPlan(plan.key);
+    const res = await launchPayuCheckout({ plan, userInfo });
+    setBuyingPlan(null);
+    if (res?.success) {
+      // Refresh after a short delay so the user's plan flips once PayU posts back.
+      setTimeout(fetchSubscriptionData, 5000);
+    }
+  };
 
   const fetchSubscriptionData = async () => {
     try {
@@ -138,15 +149,28 @@ const SubscriptionPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                {(subscription.planName || '').toUpperCase() === 'FREE' && (
-                  <Button
-                    variant="secondary"
-                    className="w-full lg:w-auto bg-white text-slate-900 border-none rounded-2xl px-8 py-4"
-                    onClick={() => setSelectedPlan(plans.find((plan) => plan.key.toUpperCase() === 'PRO')?.key || plans[0]?.key || null)}
-                  >
-                    Upgrade to PRO
-                  </Button>
-                )}
+                {(subscription.planName || '').toUpperCase() === 'FREE' && (() => {
+                  const proPlan = plans.find((plan) => plan.key.toUpperCase() === 'PRO');
+                  if (!proPlan) return null;
+                  const isBuying = buyingPlan === proPlan.key;
+                  return (
+                    <Button
+                      variant="secondary"
+                      disabled={isBuying}
+                      className="w-full lg:w-auto bg-white text-slate-900 border-none rounded-2xl px-8 py-4"
+                      onClick={() => handleBuy(proPlan)}
+                    >
+                      {isBuying ? (
+                        <>
+                          <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
+                          Opening PayU…
+                        </>
+                      ) : (
+                        'Buy PRO'
+                      )}
+                    </Button>
+                  );
+                })()}
               </div>
             </div>
             <Sparkles className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 opacity-10" />
@@ -165,7 +189,8 @@ const SubscriptionPage = () => {
             {plans.map((plan) => {
               const theme = PLAN_THEMES[plan.tone];
               const isCurrent = (subscription?.planName || '').toUpperCase() === (plan.key || '').toUpperCase() && subscription.status === 'active';
-              const isSelected = selectedPlan === plan.key;
+              const isFree = (plan.key || '').toUpperCase() === 'FREE';
+              const isBuying = buyingPlan === plan.key;
 
               return (
                 <Card key={plan.key} className={`p-6 lg:p-10 flex flex-col justify-between group transition-all duration-300 h-full relative rounded-[2rem] lg:rounded-[3.5rem] border-2 ${theme.card} ${isCurrent ? 'ring-2 ring-primary-500/40' : ''}`}>
@@ -210,30 +235,29 @@ const SubscriptionPage = () => {
                         <CircleCheck className="w-4 h-4" />
                         Current plan
                       </div>
-                    ) : isSelected ? (
-                      <div className="space-y-4 animate-pop-in">
-                        <PayuPayment
-                          plan={plan}
-                          userInfo={userInfo}
-                          onSuccess={() => {
-                            fetchSubscriptionData();
-                            setSelectedPlan(null);
-                          }}
-                          onError={() => setSelectedPlan(null)}
-                        />
-                        <Button variant="ghost" fullWidth onClick={() => setSelectedPlan(null)} className="rounded-2xl py-4">
-                          Cancel
-                        </Button>
+                    ) : isFree ? (
+                      <div className="flex items-center justify-center gap-2 text-content-secondary font-semibold text-sm bg-slate-50 dark:bg-slate-800/50 py-4 rounded-2xl w-full border-2 border-border-primary">
+                        Free for everyone
                       </div>
                     ) : (
                       <Button
                         variant={theme.button}
                         size="lg"
                         fullWidth
+                        disabled={isBuying}
                         className={`py-6 text-sm font-black rounded-2xl ${theme.buttonClass}`}
-                        onClick={() => setSelectedPlan(plan.key)}
+                        onClick={() => handleBuy(plan)}
                       >
-                        Select {plan.name} <ArrowRight className="ml-2 w-4 h-4" />
+                        {isBuying ? (
+                          <>
+                            <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
+                            Opening PayU…
+                          </>
+                        ) : (
+                          <>
+                            Buy {plan.name} <ArrowRight className="ml-2 w-4 h-4" />
+                          </>
+                        )}
                       </Button>
                     )}
                   </div>
