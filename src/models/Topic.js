@@ -4,7 +4,7 @@ import { attachSlugHook } from '../lib/utils/slug';
 const topicSchema = new mongoose.Schema({
     subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject' },
     name: { type: String, required: true, trim: true, unique: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     description: { type: String, trim: true, default: '' },
     exams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam' }],
     isActive: { type: Boolean, default: true },
