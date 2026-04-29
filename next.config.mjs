@@ -25,14 +25,21 @@ const nextConfig = {
     const ContentSecurityPolicy = [
       "default-src 'self'",
       "base-uri 'self'",
-      "form-action 'self' https://secure.payu.in https://www.payu.in",
-      "frame-ancestors 'self' https://secure.payu.in https://www.payu.in",
+      // form-action is intentionally wide-open over HTTPS because PayU's
+      // checkout posts through an unpredictable chain of bank gateways,
+      // OTP screens, and acquirer URLs after the initial submit. CSP
+      // form-action enforcement applies to EVERY hop in that redirect
+      // chain, not just the first POST — so locking it down to specific
+      // origins reliably breaks live payments. Other directives stay
+      // strict; only form posts are relaxed.
+      "form-action 'self' https: http:",
+      "frame-ancestors 'self' https://secure.payu.in https://test.payu.in https://www.payu.in",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com https://apis.google.com https://secure.payu.in https://test.payu.in https://www.payu.in https://www.googletagmanager.com https:",
       "style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com",
       "img-src 'self' https: data: blob:",
       "font-src 'self' https: data: https://fonts.gstatic.com",
-      "connect-src 'self' https://www.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://secure.payu.in https://www.payu.in https: wss:",
-      "frame-src 'self' https://secure.payu.in https://www.payu.in https://accounts.google.com",
+      "connect-src 'self' https://www.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://secure.payu.in https://test.payu.in https://www.payu.in https: wss:",
+      "frame-src 'self' https://secure.payu.in https://test.payu.in https://www.payu.in https://accounts.google.com",
       "object-src 'none'",
       "upgrade-insecure-requests",
     ].join('; ');
