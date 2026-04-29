@@ -64,12 +64,11 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isSidebarOpen}
-              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
-                showHamburger ? 'flex' : 'hidden lg:flex'
-              } ${isSidebarOpen
-                ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-duo-primary lg:hover:scale-105'
-              }`}
+              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${showHamburger ? 'flex' : 'hidden lg:flex'
+                } ${isSidebarOpen
+                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                  : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-duo-primary lg:hover:scale-105'
+                }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
             </button>
@@ -112,12 +111,6 @@ const StudentNavbar = () => {
             {(() => {
               const plan = (user.subscriptionStatus || 'FREE').toUpperCase();
               const isPro = plan === 'PRO';
-              const ringClass = isPro
-                ? 'bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600'
-                : 'bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600';
-              const innerClass = isPro
-                ? 'bg-gradient-to-br from-amber-500 to-yellow-600'
-                : 'bg-gradient-to-br from-emerald-500 to-emerald-600';
               return (
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -126,14 +119,35 @@ const StudentNavbar = () => {
                   title={`${plan} plan`}
                   className="p-0.5 rounded-full"
                 >
-                  <div className={`w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden p-[2px] ${ringClass}`}>
-                    {user.profilePicture ? (
-                      <Image src={user.profilePicture} alt={user.name || 'Profile'} width={36} height={36} className="w-full h-full rounded-full object-cover" />
-                    ) : (
-                      <div className={`w-full h-full rounded-full flex items-center justify-center text-white text-xs font-black uppercase ${innerClass}`}>
-                        {user.name?.charAt(0)}
-                      </div>
-                    )}
+                  <div className="relative w-8 h-8 lg:w-11 lg:h-11">
+                  
+                    {/* Floating Badge */}
+                    <span
+                      className={`absolute -bottom-2 left-0 right-0 z-20 text-[8px] lg:text-[9px] font-black uppercase tracking-widest px-1.5 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${(user.subscriptionStatus || 'FREE').toUpperCase() === 'PRO'
+                        ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500'
+                        : 'bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'
+                      }`}
+                    >
+                      {(user.subscriptionStatus || 'FREE').toUpperCase()}
+                    </span>
+                    {/* Avatar ring and image/initial */}
+                    <div className={`w-full h-full rounded-full overflow-hidden p-[2px]`}>
+                      {user.profilePicture ? (
+                        <Image
+                          src={user.profilePicture}
+                          alt={user.name || 'Profile'}
+                          width={36}
+                          height={36}
+                          className="w-full h-full rounded-full object-cover"
+                        />
+                      ) : (
+                        <div
+                          className={`w-full h-full border border-y-accent-orange rounded-full flex items-center justify-center text-white text-xs font-black uppercase`}
+                        >
+                          {user.name?.charAt(0)}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </button>
               );
@@ -156,22 +170,7 @@ const StudentNavbar = () => {
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
-                  {(() => {
-                    const plan = (user.subscriptionStatus || 'FREE').toUpperCase();
-                    const isPro = plan === 'PRO';
-                    return (
-                      <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full text-white shrink-0 ${
-                        isPro
-                          ? 'bg-gradient-to-r from-amber-500 to-yellow-600'
-                          : 'bg-gradient-to-r from-emerald-500 to-emerald-600'
-                      }`}>
-                        {plan}
-                      </span>
-                    );
-                  })()}
-                </div>
+
                 <p className="text-[10px] text-slate-400 truncate">{user.email}</p>
               </div>
 
