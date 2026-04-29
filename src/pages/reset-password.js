@@ -45,7 +45,7 @@ const ResetPasswordPage = () => {
       const res = await API.resetPassword({ token, newPassword });
       if (res.success) {
         setSuccess(true);
-        toast.success("Master password updated!");
+        toast.success("Password updated successfully.");
         setTimeout(() => router.push('/login'), 2000);
       }
     } catch (err) {
@@ -70,7 +70,7 @@ const ResetPasswordPage = () => {
                 <Lock className="w-8 h-8" />
               </div>
               <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Reset Password</h1>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Update your master academy credentials</p>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Set a new password for your AajExam account</p>
             </div>
 
             <AnimatePresence mode="wait">

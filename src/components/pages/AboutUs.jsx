@@ -120,7 +120,7 @@ const AboutUs = () => {
                      <div className="space-y-2">
                         <div className="p-3 bg-primary-500/10 text-primary-700 dark:text-primary-500 w-fit rounded-xl"><Zap className="w-5 h-5" /></div>
                         <h4 className="font-black uppercase text-sm">10-Level System</h4>
-                        <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide">Start as a beginner and become a champion - a simple path that grows as you improve.</p>
+                        <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide">Start with the basics and progress to advanced – a clear path that grows as you improve.</p>
                      </div>
                      <div className="space-y-2">
                         <div className="p-3 bg-blue-500/10 text-blue-500 w-fit rounded-xl"><Target className="w-5 h-5" /></div>

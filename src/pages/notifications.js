@@ -94,9 +94,9 @@ const NotificationsPage = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center lg:text-left">
             <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center lg:justify-start">
-              Inbox {unreadCount > 0 && <span className="bg-primary-500 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
+              Notifications {unreadCount > 0 && <span className="bg-primary-500 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
             </h1>
-            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Academy and Achievement pings</p>
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Updates and reminders from AajExam</p>
           </div>
 
           <div className="flex gap-2">

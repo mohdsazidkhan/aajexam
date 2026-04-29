@@ -104,7 +104,7 @@ const RegisterPage = () => {
             <div className="space-y-4 pt-8">
               {[
                 { icon: Trophy, text: 'Earn cash when friends you refer upgrade to PRO' },
-                { icon: Brain, text: 'Learn step by step from beginner to champion' },
+                { icon: Brain, text: 'Structured prep – from basics to advanced level' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-300 font-bold">

@@ -98,7 +98,7 @@ const FollowersList = ({ username: usernameProp }) => {
           ) : followers.length === 0 ? (
             <div className="text-center py-32 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">ðŸ‘¥</div>
-              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed">No students have joined your circle yet.<br />Propagate your profile to recruit followers!</p>
+              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed">No followers yet.<br />Share your profile to connect with other aspirants.</p>
             </div>
           ) : (
             <div className="space-y-8">

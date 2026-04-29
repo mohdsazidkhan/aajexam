@@ -80,26 +80,26 @@ const EducationalContent = ({ content }) => {
                         className="inline-flex items-center gap-3 px-6 py-2 bg-background-surface-secondary border-2 border-border-primary"
                     >
                         <Zap className="w-4 h-4 text-primary-600 fill-current" />
-                        <span className="text-[10px] font-black text-content-secondary uppercase tracking-[0.3em]">Operational Briefing</span>
+                        <span className="text-[10px] font-black text-content-secondary uppercase tracking-[0.3em]">How It Works</span>
                     </motion.div>
 
                     <div className="space-y-2">
                         <h1 className="text-xl lg:text-5xl font-black text-content-primary uppercase tracking-tighter leading-none">
-                            Master the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-500">AajExam</span> Matrix
+                            Why Aspirants Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-500">AajExam</span>
                         </h1>
                         <p className="text-sm lg:text-xl font-bold text-content-secondary dark:text-slate-500 max-w-2xl mx-auto uppercase tracking-widest">
-                            High-Precision Preparation for Global Competitive Dominance
+                            Structured preparation for SSC, UPSC, Banking, Railway and State PSC exams
                         </p>
                     </div>
                 </div>
 
-                {/* Core Intel Cards */}
+                {/* Core Cards */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     {[
-                        { title: "Mission Objective", content: data.platformPurpose, icon: Target, color: "primary" },
-                        { title: "Target Users", content: data.targetAudience, icon: Users, color: "secondary" },
-                        { title: "Tactical Benefits", content: data.educationalBenefits, icon: Sparkles, color: "emerald" },
-                        { title: "Study Methodology", content: data.learningMethodology, icon: ShieldCheck, color: "purple" }
+                        { title: "Why AajExam", content: data.platformPurpose, icon: Target, color: "primary" },
+                        { title: "Who It's For", content: data.targetAudience, icon: Users, color: "secondary" },
+                        { title: "What You Get", content: data.educationalBenefits, icon: Sparkles, color: "emerald" },
+                        { title: "How You Learn", content: data.learningMethodology, icon: ShieldCheck, color: "purple" }
                     ].map((card, i) => (
                         <motion.div
                             key={i}
@@ -126,7 +126,7 @@ const EducationalContent = ({ content }) => {
                 {/* Features Matrix */}
                 <div className="space-y-12">
                     <div className="text-center">
-                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">Platform Sub-Systems</h2>
+                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">Key Features</h2>
                     </div>
 
                     <motion.div
@@ -167,13 +167,13 @@ const EducationalContent = ({ content }) => {
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all" />
                     <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
                         <div className="space-y-2">
-                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter">Enlist in the Elite</h2>
+                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter">Start Preparing Free</h2>
                             <p className="text-sm font-bold text-white/80 uppercase tracking-widest max-w-xl">
-                                Join 100,000+ candidates already optimizing their cerebral performance. Your government recruitment mission begins now.
+                                Join 100,000+ aspirants practising for SSC, UPSC, Banking and Railway exams on AajExam. Free to start.
                             </p>
                         </div>
                         <button className="px-10 py-5 bg-white text-primary-600 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo hover:translate-y-1 transition-all flex items-center gap-4">
-                            Access Terminal <ChevronRight className="w-4 h-4" />
+                            Get Started <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>
                 </motion.div>

@@ -245,7 +245,7 @@ const PublicProfile = ({ username }) => {
                   </div>
                 ) : (
                   <div className="text-center sm:text-left p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2rem] border-2 border-dashed border-slate-200 dark:border-slate-700">
-                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">No honors archived. Complete missions to earn badges.</p>
+                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">No badges yet. Complete practice tests and quizzes to earn badges.</p>
                   </div>
                 )}
               </div>

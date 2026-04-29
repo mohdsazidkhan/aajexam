@@ -42,13 +42,13 @@ const CookieConsent = () => {
                     </div>
                     <div className="flex-1">
                         <h3 className="text-sm lg:text-md font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tighter">
-                            Current <span className="text-primary-700 dark:text-primary-500">Data Protocol</span>
+                            We use <span className="text-primary-700 dark:text-primary-500">cookies</span>
                         </h3>
                         <p className="text-[10px] lg:text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide leading-tight">
-                            We use cookies for the best experience.
-                            Agreed? {' '}
+                            Cookies help us remember your login and personalise your experience.
+                            See our {' '}
                             <Link href="/privacy" className="text-primary-700 dark:text-primary-500 hover:underline transition-colors font-black">
-                                PRIVACY RULES
+                                Privacy Policy
                             </Link>
                         </p>
                     </div>

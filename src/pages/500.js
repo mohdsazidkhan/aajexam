@@ -40,11 +40,11 @@ export default function Custom500() {
           </h1>
 
           <h2 className="text-xl lg:text-2xl font-black text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-tight">
-            System Overload
+            Something went wrong
           </h2>
 
           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
-            Internal mission protocols have encountered a critical anomaly.<br />Our core team is currently re-calibrating the matrix.
+            We hit a server error on our end.<br />Our team is looking into it. Please try again in a moment.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -52,14 +52,14 @@ export default function Custom500() {
               onClick={() => window.location.reload()}
               className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
-              Re-Initiate Protocol
+              Try Again
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoHome}
                 className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-duo border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
               >
-                Base
+                Home
               </button>
               <button
                 onClick={handleGoBack}

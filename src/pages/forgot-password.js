@@ -32,10 +32,10 @@ const ForgotPasswordPage = () => {
       const res = await API.forgotPassword({ email });
       if (res.success) {
         setSuccess(true);
-        toast.success("Academy recovery link sent!");
+        toast.success("Password reset link sent to your email.");
       }
     } catch (err) {
-      toast.error("Account recovery failed");
+      toast.error("Could not send reset link. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -55,8 +55,8 @@ const ForgotPasswordPage = () => {
               <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <ShieldQuestion className="w-8 h-8" />
               </div>
-              <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Recover Account</h1>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Regain access to your academy progress</p>
+              <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Get back into your AajExam account</p>
             </div>
 
             <AnimatePresence mode="wait">
@@ -67,7 +67,7 @@ const ForgotPasswordPage = () => {
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-xl font-black uppercase">Link Sent!</h3>
-                    <p className="text-sm font-bold text-gray-500">Check your inbox for instructions to reset your master password.</p>
+                    <p className="text-sm font-bold text-gray-500">Check your inbox for instructions to reset your password.</p>
                   </div>
                   <Link href="/login" className="block">
                     <Button variant="ghost" fullWidth>BACK TO LOGIN</Button>
