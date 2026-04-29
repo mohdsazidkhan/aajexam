@@ -272,10 +272,6 @@ const SubscriptionPage = () => {
         </section>
 
         <section className="space-y-6">
-          <div className="space-y-2">
-            <h3 className="text-xl lg:text-2xl font-black font-outfit tracking-tight">Payment history</h3>
-            <p className="text-sm font-medium text-content-secondary">See all your payments and plan history here.</p>
-          </div>
           <PaymentTransactions />
         </section>
 

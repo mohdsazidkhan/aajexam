@@ -212,8 +212,8 @@ const PaymentTransactions = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 relative z-10">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-black mb-3 uppercase tracking-tighter">Finance <span className="text-primary-100">Portal</span></h2>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-100 opacity-80">Audit your mission investments and rewards</p>
+            <h2 className="text-3xl lg:text-4xl font-black mb-3 uppercase tracking-tighter">Payment <span className="text-primary-100">History</span></h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-100 opacity-80">All your AajExam plan purchases & receipts</p>
           </div>
           <div className="flex items-center space-x-4">
             <button
