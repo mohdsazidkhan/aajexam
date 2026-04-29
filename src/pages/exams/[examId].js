@@ -58,7 +58,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
         { name: 'Exams', url: '/exams' },
-        { name: examTitle, url: `/exams/${exam._id}` }
+        { name: examTitle, url: `/exams/${exam.slug || exam._id}` }
     ]);
 
     return (
@@ -66,7 +66,7 @@ export default function ExamDetailPage({ exam, robotsMeta, robotsReason }) {
             <Seo
                 title={`${examTitle}${examCode} – Free Practice Test | AajExam`}
                 description={seoDescription}
-                canonical={`/exams/${exam._id}`}
+                canonical={`/exams/${exam.slug || exam._id}`}
                 noIndex={robotsMeta?.includes('noindex')}
                 keywords={[
                   `${examTitle} practice test`,
@@ -224,18 +224,26 @@ export async function getServerSideProps({ params }) {
     try {
         await dbConnect();
         const { examId } = params;
+        const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
+
+        // Legacy ObjectId URL → 301 to canonical slug URL.
+        if (isObjectId(examId)) {
+            const idDoc = await Exam.findById(examId).select('slug').lean();
+            if (idDoc?.slug) return slugRedirect(`/exams/${idDoc.slug}`);
+            if (!idDoc) return { notFound: true };
+        }
 
         let query = { isActive: true };
         if (mongoose.Types.ObjectId.isValid(examId)) {
             query._id = examId;
         } else {
-            query.code = examId.toUpperCase();
+            // Slug first, then fall back to legacy uppercase exam code.
+            query.$or = [{ slug: examId }, { code: examId.toUpperCase() }];
         }
 
-        // Get exam details without questions
         const exam = await Exam.findOne(query)
-            .select('name description examDate duration totalMarks passingMarks category instructions syllabus createdAt code')
-            .populate('category', 'name description')
+            .select('name slug description examDate duration totalMarks passingMarks category instructions syllabus createdAt code')
+            .populate('category', 'name description slug')
             .lean();
 
         if (!exam) {

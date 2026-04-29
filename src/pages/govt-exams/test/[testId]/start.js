@@ -31,9 +31,9 @@ import Card from "../../../../components/ui/Card";
 import Skeleton from "../../../../components/Skeleton";
 import TestStartModal from "../../../../components/TestStartModal";
 
-const TestStart = () => {
+const TestStart = ({ resolvedId } = {}) => {
   const router = useRouter();
-  const { testId } = router.query;
+  const testId = resolvedId || router.query.testId;
   const user = getCurrentUser();
   // Language selection hidden as per request
 
@@ -641,3 +641,30 @@ const TestStart = () => {
 };
 
 export default TestStart;
+
+export async function getServerSideProps({ params }) {
+  const dbConnect = (await import('../../../../lib/db')).default;
+  const PracticeTest = (await import('../../../../models/PracticeTest')).default;
+  const { isObjectId, slugRedirect } = await import('../../../../lib/web/slugRouting');
+  const segment = params?.testId;
+  if (!segment) return { notFound: true };
+
+  try {
+    await dbConnect();
+
+    if (isObjectId(segment)) {
+      const idDoc = await PracticeTest.findById(segment).select('slug').lean();
+      if (idDoc?.slug) return slugRedirect(`/govt-exams/test/${idDoc.slug}/start`);
+      if (!idDoc) return { notFound: true };
+      return { props: { resolvedId: segment } };
+    }
+
+    const doc = await PracticeTest.findOne({ slug: segment }).select('_id').lean();
+    if (!doc) return { notFound: true };
+
+    return { props: { resolvedId: String(doc._id) } };
+  } catch (e) {
+    console.error('test start ssr error', e);
+    return { notFound: true };
+  }
+}

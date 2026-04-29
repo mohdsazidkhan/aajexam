@@ -14,24 +14,24 @@ import Loading from '../Loading';
 import { ProBadge } from '../ui';
 import { Lock } from 'lucide-react';
 
-const QuizPreviewPage = () => {
+const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
   const router = useRouter();
-  const { id } = router.query;
+  const lookupId = resolvedId || router.query.id;
 
-  const [quiz, setQuiz] = useState(null);
+  const [quiz, setQuiz] = useState(initialQuiz || null);
   const [loading, setLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!lookupId) return;
     const fetchQuiz = async () => {
       try {
         setLoading(true);
-        const res = await API.getQuizById(id);
+        const res = await API.getQuizById(lookupId);
         if (res.success) setQuiz(res.data);
         else toast.error('Quiz not found');
 
-        const lbRes = await API.getQuizLeaderboard(id, 10);
+        const lbRes = await API.getQuizLeaderboard(lookupId, 10);
         if (lbRes.success) setLeaderboard(lbRes.data || []);
       } catch (err) {
         console.error('Error loading quiz:', err);
@@ -41,7 +41,7 @@ const QuizPreviewPage = () => {
       }
     };
     fetchQuiz();
-  }, [id]);
+  }, [lookupId]);
 
   const currentUser = getCurrentUser();
   const isPro = currentUser?.subscriptionStatus === 'pro' || currentUser?.role === 'admin';
@@ -65,7 +65,7 @@ const QuizPreviewPage = () => {
         quizData: quiz,
         fromPage: document.referrer?.includes('/search') ? 'search' : 'quiz-preview'
       }));
-      router.push(`/quiz/${id}/attempt`);
+      router.push(`/quiz/${quiz?.slug || lookupId}/attempt`);
     }
   };
 

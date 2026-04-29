@@ -37,7 +37,7 @@ const TopicListPage = () => {
 
         <div className="space-y-3">
           {filtered.map(topic => (
-            <div key={topic._id} onClick={() => router.push(`/topics/${topic._id}`)}
+            <div key={topic._id} onClick={() => router.push(`/topics/${topic.slug || topic._id}`)}
               className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-cyan-500 transition-all shadow-sm">
               <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0">
                 <Layers className="w-4 lg:w-6 h-4 lg:h-6 text-white" />

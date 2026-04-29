@@ -6,19 +6,19 @@ import { motion } from 'framer-motion';
 import API from '../../lib/api';
 import Loading from '../Loading';
 
-const SubjectDetailPage = () => {
+const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
   const router = useRouter();
-  const { id } = router.query;
-  const [subject, setSubject] = useState(null);
+  const lookupId = resolvedId || router.query.id;
+  const [subject, setSubject] = useState(initialSubject || null);
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!id) return;
-    API.getSubjectDetail(id).then(res => {
+    if (!lookupId) return;
+    API.getSubjectDetail(lookupId).then(res => {
       if (res.success) { setSubject(res.subject); setQuizzes(res.quizzes || []); }
     }).finally(() => setLoading(false));
-  }, [id]);
+  }, [lookupId]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
   if (!subject) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Subject not found</p></div>;

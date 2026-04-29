@@ -55,18 +55,21 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         { path: '/halal-disclaimer', priority: '0.3', changefreq: 'yearly' }
     ];
 
+    // Always prefer the slug for canonical URLs; fall back to _id only for
+    // legacy records without a slug yet (post-backfill there should be none).
+    const idOrSlug = (d) => d.slug || (d._id && String(d._id));
     const sections = [
         staticPages.map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}${p.path}`, priority: p.priority, changefreq: p.changefreq })).join(''),
-        categoryIds.map(c => c?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/category/${c._id}`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        exams.map(e => e?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/exam/${e._id}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.85' })).filter(Boolean).join(''),
-        publicExams.map(e => e?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exams/${e._id}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        subjects.map(s => s?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/subjects/${s._id}`, lastmod: s.updatedAt || s.createdAt, changefreq: 'monthly', priority: '0.6' })).filter(Boolean).join(''),
-        topics.map(t => t?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/topics/${t._id}`, lastmod: t.updatedAt || t.createdAt, changefreq: 'monthly', priority: '0.55' })).filter(Boolean).join(''),
-        quizzes.map(q => q?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/quiz/${q._id}`, lastmod: q.updatedAt || q.publishedAt || q.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join(''),
+        categoryIds.map(c => idOrSlug(c) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/category/${idOrSlug(c)}`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
+        exams.map(e => idOrSlug(e) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/exam/${idOrSlug(e)}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.85' })).filter(Boolean).join(''),
+        publicExams.map(e => idOrSlug(e) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exams/${idOrSlug(e)}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
+        subjects.map(s => idOrSlug(s) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/subjects/${idOrSlug(s)}`, lastmod: s.updatedAt || s.createdAt, changefreq: 'monthly', priority: '0.6' })).filter(Boolean).join(''),
+        topics.map(t => idOrSlug(t) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/topics/${idOrSlug(t)}`, lastmod: t.updatedAt || t.createdAt, changefreq: 'monthly', priority: '0.55' })).filter(Boolean).join(''),
+        quizzes.map(q => idOrSlug(q) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/quiz/${idOrSlug(q)}`, lastmod: q.updatedAt || q.publishedAt || q.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join(''),
         blogs.map(b => b?.slug && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/blog/${b.slug}`, lastmod: b.updatedAt || b.publishedAt || b.createdAt, changefreq: 'monthly', priority: '0.7' })).filter(Boolean).join(''),
         notes.map(n => n?.slug && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/notes/${n.slug}`, lastmod: n.updatedAt || n.publishedAt || n.createdAt, changefreq: 'monthly', priority: '0.6' })).filter(Boolean).join(''),
-        examNews.map(n => n?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${n._id}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        currentAffairs.map(a => a?._id && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${a._id}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join('')
+        examNews.map(n => idOrSlug(n) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${idOrSlug(n)}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
+        currentAffairs.map(a => idOrSlug(a) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${idOrSlug(a)}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -100,15 +103,15 @@ export async function getServerSideProps({ res }) {
             topics,
             quizzes
         ] = await Promise.all([
-            Exam.find({ isActive: true }).select('_id updatedAt createdAt').lean(),
-            safeFind(() => import('../models/ExamCategory'), '_id updatedAt'),
+            Exam.find({ isActive: true }).select('_id slug updatedAt createdAt').lean(),
+            safeFind(() => import('../models/ExamCategory'), '_id slug updatedAt'),
             safeFind(() => import('../models/Blog'), 'slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 }),
             safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 }),
-            safeFind(() => import('../models/ExamNews'), '_id updatedAt createdAt', {}, 5000, { createdAt: -1 }),
-            safeFind(() => import('../models/CurrentAffair'), '_id updatedAt date createdAt', {}, 5000, { date: -1 }),
-            safeFind(() => import('../models/Subject'), '_id updatedAt createdAt', {}, 5000),
-            safeFind(() => import('../models/Topic'), '_id updatedAt createdAt', {}, 5000),
-            safeFind(() => import('../models/Quiz'), '_id updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 })
+            safeFind(() => import('../models/ExamNews'), '_id slug updatedAt createdAt', {}, 5000, { createdAt: -1 }),
+            safeFind(() => import('../models/CurrentAffair'), '_id slug updatedAt date createdAt', {}, 5000, { date: -1 }),
+            safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', {}, 5000),
+            safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', {}, 5000),
+            safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 })
         ]);
 
         const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, publicExams: exams, quizzes });

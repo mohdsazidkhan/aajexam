@@ -7,10 +7,10 @@ import API from '../../lib/api';
 import Loading from '../Loading';
 import TestStartModal from '../TestStartModal';
 
-const TopicDetailPage = () => {
+const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   const router = useRouter();
-  const { id } = router.query;
-  const [topic, setTopic] = useState(null);
+  const lookupId = resolvedId || router.query.id;
+  const [topic, setTopic] = useState(initialTopic || null);
   const [practiceTests, setPracticeTests] = useState([]);
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,11 +19,11 @@ const TopicDetailPage = () => {
   const [selectedTest, setSelectedTest] = useState(null);
 
   useEffect(() => {
-    if (!id) return;
-    API.getTopicDetail(id).then(res => {
+    if (!lookupId) return;
+    API.getTopicDetail(lookupId).then(res => {
       if (res.success) { setTopic(res.topic); setPracticeTests(res.practiceTests || []); setQuizzes(res.quizzes || []); }
     }).finally(() => setLoading(false));
-  }, [id]);
+  }, [lookupId]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
   if (!topic) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Topic not found</p></div>;
@@ -101,7 +101,7 @@ const TopicDetailPage = () => {
           </div>
         )}
 
-        {showTestModal && selectedTest && <TestStartModal isOpen={showTestModal} onClose={() => setShowTestModal(false)} onConfirm={() => { setShowTestModal(false); router.push(`/govt-exams/test/${selectedTest._id}/start`); }} test={selectedTest} pattern={selectedTest.examPattern} exam={topic.subject?.exam} />}
+        {showTestModal && selectedTest && <TestStartModal isOpen={showTestModal} onClose={() => setShowTestModal(false)} onConfirm={() => { setShowTestModal(false); router.push(`/govt-exams/test/${selectedTest.slug || selectedTest._id}/start`); }} test={selectedTest} pattern={selectedTest.examPattern} exam={topic.subject?.exam} />}
       </div>
     </div>
   );

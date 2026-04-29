@@ -30,9 +30,10 @@ import Skeleton from '../../../../components/Skeleton';
 import ShareComponent from '../../../../components/ShareComponent';
 import DiscussionThread from '../../../../components/discussions/DiscussionThread';
 
-const TestResult = () => {
+const TestResult = ({ resolvedId } = {}) => {
   const router = useRouter();
-  const { testId, attempt } = router.query;
+  const { attempt } = router.query;
+  const testId = resolvedId || router.query.testId;
   const user = getCurrentUser();
 
   const [mounted, setMounted] = useState(false);
@@ -486,3 +487,39 @@ const TestResult = () => {
 };
 
 export default TestResult;
+
+export async function getServerSideProps({ params, query }) {
+  const dbConnect = (await import('../../../../lib/db')).default;
+  const PracticeTest = (await import('../../../../models/PracticeTest')).default;
+  const { isObjectId } = await import('../../../../lib/web/slugRouting');
+  const segment = params?.testId;
+  if (!segment) return { notFound: true };
+
+  // Preserve query string (?attempt=...) across the slug redirect.
+  const qs = Object.entries(query || {})
+    .filter(([k]) => k !== 'testId')
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join('&');
+  const tail = qs ? `?${qs}` : '';
+
+  try {
+    await dbConnect();
+
+    if (isObjectId(segment)) {
+      const idDoc = await PracticeTest.findById(segment).select('slug').lean();
+      if (idDoc?.slug) {
+        return { redirect: { destination: `/govt-exams/test/${idDoc.slug}/result${tail}`, permanent: true } };
+      }
+      if (!idDoc) return { notFound: true };
+      return { props: { resolvedId: segment } };
+    }
+
+    const doc = await PracticeTest.findOne({ slug: segment }).select('_id').lean();
+    if (!doc) return { notFound: true };
+
+    return { props: { resolvedId: String(doc._id) } };
+  } catch (e) {
+    console.error('test result ssr error', e);
+    return { notFound: true };
+  }
+}

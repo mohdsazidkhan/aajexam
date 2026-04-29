@@ -85,7 +85,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     name: 'Government Exam Preparation Hub',
     items: (exams || []).slice(0, 30).map(e => ({
       name: e.name,
-      url: `/govt-exams/exam/${e._id}`
+      url: `/govt-exams/exam/${e.slug || e._id}`
     }))
   }), [exams]);
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -178,7 +178,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
             <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
               <Card
                 hoverable
-                onClick={() => router.push(`/govt-exams/exam/${exam._id}`)}
+                onClick={() => router.push(`/govt-exams/exam/${exam.slug || exam._id}`)}
                 className="group p-5 flex flex-col gap-4 border-border-primary hover:border-primary-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg"
               >
                 <div className="flex items-start justify-between">

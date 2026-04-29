@@ -53,7 +53,7 @@ export default function ExamsPage({ exams, pagination }) {
                   ]),
                   generateItemListSchema({
                     name: 'AajExam Exams Catalogue',
-                    items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/exams/${e._id}` }))
+                    items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/exams/${e.slug || e._id}` }))
                   })
                 ]}
             />
@@ -75,7 +75,7 @@ export default function ExamsPage({ exams, pagination }) {
                     {/* Exams List */}
                     <div className="flex flex-col gap-1.5 lg:gap-3">
                         {filtered.map(exam => (
-                            <Link key={exam._id} href={`/exams/${exam._id}`} className="block">
+                            <Link key={exam._id} href={`/exams/${exam.slug || exam._id}`} className="block">
                                 <div className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-500 transition-all shadow-sm">
                                     <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shrink-0">
                                         <GraduationCap className="w-4 lg:w-6 h-4 lg:h-6 text-white" />

@@ -8,23 +8,23 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
-const ExamNewsDetail = () => {
-  const [news, setNews] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
+  const [news, setNews] = useState(initialNews || null);
+  const [loading, setLoading] = useState(!initialNews);
   const router = useRouter();
-  const { id } = router.query;
+  const lookupId = resolvedId || router.query.id;
 
   useEffect(() => {
-    if (!id) return;
+    if (!lookupId || initialNews) return;
     const fetch = async () => {
       try {
-        const res = await API.request(`/api/exam-news/${id}`);
+        const res = await API.request(`/api/exam-news/${lookupId}`);
         if (res?.success) setNews(res.data);
         else router.push('/exam-news');
       } catch (e) { router.push('/exam-news'); } finally { setLoading(false); }
     };
     fetch();
-  }, [id]);
+  }, [lookupId, initialNews, router]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
   if (!news) return null;
@@ -34,7 +34,7 @@ const ExamNewsDetail = () => {
       <Seo
         title={`${news.title}${news.exam?.name ? ' – ' + news.exam.name : ''} | AajExam Exam News`}
         description={(news.content || `${news.title} – latest ${news.type?.replace('_', ' ') || 'notification'} for ${news.exam?.name || 'government exam'} aspirants on AajExam.`).slice(0, 160)}
-        canonical={`/exam-news/${id}`}
+        canonical={`/exam-news/${news.slug || lookupId}`}
         type="article"
         publishedTime={news.createdAt}
         modifiedTime={news.updatedAt}
@@ -53,12 +53,12 @@ const ExamNewsDetail = () => {
             updatedAt: news.updatedAt || news.createdAt,
             authorName: 'AajExam Team',
             category: news.exam?.name || news.type,
-            url: `/exam-news/${id}`
+            url: `/exam-news/${news.slug || lookupId}`
           }),
           generateBreadcrumbSchema([
             { name: 'Home', url: '/' },
             { name: 'Exam News', url: '/exam-news' },
-            { name: news.title, url: `/exam-news/${id}` }
+            { name: news.title, url: `/exam-news/${news.slug || lookupId}` }
           ])
         ]}
       />
@@ -102,3 +102,36 @@ const ExamNewsDetail = () => {
 };
 
 export default ExamNewsDetail;
+
+export async function getServerSideProps({ params }) {
+  const dbConnect = (await import('../../lib/db')).default;
+  const ExamNews = (await import('../../models/ExamNews')).default;
+  const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
+  const segment = params?.id;
+  if (!segment) return { notFound: true };
+
+  try {
+    await dbConnect();
+
+    if (isObjectId(segment)) {
+      const idDoc = await ExamNews.findById(segment).select('slug').lean();
+      if (idDoc?.slug) return slugRedirect(`/exam-news/${idDoc.slug}`);
+      if (!idDoc) return { notFound: true };
+    }
+
+    const doc = await ExamNews.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment })
+      .populate('exam', 'name code slug')
+      .lean();
+    if (!doc) return { notFound: true };
+
+    return {
+      props: {
+        resolvedId: String(doc._id),
+        initialNews: JSON.parse(JSON.stringify(doc))
+      }
+    };
+  } catch (e) {
+    console.error('exam-news ssr error', e);
+    return { notFound: true };
+  }
+}

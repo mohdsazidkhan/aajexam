@@ -8,23 +8,23 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
-const CurrentAffairDetail = () => {
-  const [affair, setAffair] = useState(null);
-  const [loading, setLoading] = useState(true);
+const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
+  const [affair, setAffair] = useState(initialAffair || null);
+  const [loading, setLoading] = useState(!initialAffair);
   const router = useRouter();
-  const { id } = router.query;
+  const lookupId = resolvedId || router.query.id;
 
   useEffect(() => {
-    if (!id) return;
+    if (!lookupId || initialAffair) return;
     const fetch = async () => {
       try {
-        const res = await API.request(`/api/current-affairs/${id}`);
+        const res = await API.request(`/api/current-affairs/${lookupId}`);
         if (res?.success) setAffair(res.data);
         else router.push('/current-affairs');
       } catch (e) { router.push('/current-affairs'); } finally { setLoading(false); }
     };
     fetch();
-  }, [id]);
+  }, [lookupId, initialAffair, router]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
   if (!affair) return null;
@@ -34,7 +34,7 @@ const CurrentAffairDetail = () => {
       <Seo
         title={`${affair.title} – Current Affairs ${new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} | AajExam`}
         description={(affair.keyPoints?.[0] || affair.content || '').slice(0, 160) || `${affair.title}: daily current affairs for SSC, UPSC, Banking and Railway exam preparation on AajExam.`}
-        canonical={`/current-affairs/${id}`}
+        canonical={`/current-affairs/${affair.slug || lookupId}`}
         type="article"
         publishedTime={affair.date}
         keywords={[
@@ -52,12 +52,12 @@ const CurrentAffairDetail = () => {
             updatedAt: affair.updatedAt || affair.date,
             authorName: 'AajExam Team',
             category: affair.category,
-            url: `/current-affairs/${id}`
+            url: `/current-affairs/${affair.slug || lookupId}`
           }),
           generateBreadcrumbSchema([
             { name: 'Home', url: '/' },
             { name: 'Current Affairs', url: '/current-affairs' },
-            { name: affair.title, url: `/current-affairs/${id}` }
+            { name: affair.title, url: `/current-affairs/${affair.slug || lookupId}` }
           ])
         ]}
       />
@@ -114,3 +114,34 @@ const CurrentAffairDetail = () => {
 };
 
 export default CurrentAffairDetail;
+
+export async function getServerSideProps({ params }) {
+  const dbConnect = (await import('../../lib/db')).default;
+  const CurrentAffair = (await import('../../models/CurrentAffair')).default;
+  const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
+  const segment = params?.id;
+  if (!segment) return { notFound: true };
+
+  try {
+    await dbConnect();
+
+    if (isObjectId(segment)) {
+      const idDoc = await CurrentAffair.findById(segment).select('slug').lean();
+      if (idDoc?.slug) return slugRedirect(`/current-affairs/${idDoc.slug}`);
+      if (!idDoc) return { notFound: true };
+    }
+
+    const doc = await CurrentAffair.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment }).lean();
+    if (!doc) return { notFound: true };
+
+    return {
+      props: {
+        resolvedId: String(doc._id),
+        initialAffair: JSON.parse(JSON.stringify(doc))
+      }
+    };
+  } catch (e) {
+    console.error('current-affair ssr error', e);
+    return { notFound: true };
+  }
+}

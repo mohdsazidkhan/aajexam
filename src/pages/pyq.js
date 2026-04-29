@@ -104,7 +104,7 @@ const PYQPage = () => {
                   className="p-5 hover:shadow-xl transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500"
                   onClick={() => {
                     if (hasAccess) {
-                      router.push(`/govt-exams/test/${test._id}/start`);
+                      router.push(`/govt-exams/test/${test.slug || test._id}/start`);
                     } else {
                       router.push('/subscription');
                     }

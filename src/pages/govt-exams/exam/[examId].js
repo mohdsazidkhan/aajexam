@@ -84,7 +84,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
   ];
 
-  const examUrl = `/govt-exams/exam/${examId}`;
+  const examSlugOrId = exam?.slug || examId;
+  const examUrl = `/govt-exams/exam/${examSlugOrId}`;
   const examCode = exam?.code ? ` (${exam.code})` : '';
   const examCategory = exam?.category?.name;
   const seoTitle = seo?.title || `${examName}${examCode} – Free Practice Tests, PYQs & Quizzes | AajExam`;
@@ -120,7 +121,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     name: `${examName} – Practice Tests & PYQs`,
     items: [...practiceTests, ...pyqs].slice(0, 50).map(t => ({
       name: t.title,
-      url: `/govt-exams/test/${t._id}/start`
+      url: `/govt-exams/test/${t.slug || t._id}/start`
     }))
   }) : null;
   const faqSchema = generateFAQSchema([
@@ -242,7 +243,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                         </div>
                         <div className="flex gap-2 shrink-0">
                           {isCompleted && (
-                            <button onClick={() => router.push(`/govt-exams/test/${test._id}/result?attempt=${test.userAttempt._id}`)}
+                            <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/result?attempt=${test.userAttempt._id}`)}
                               className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
                               Results
                             </button>
@@ -276,7 +277,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                   <Card
                     hoverable
-                    onClick={() => router.push(`/quiz/${quiz._id}`)}
+                    onClick={() => router.push(`/quiz/${quiz.slug || quiz._id}`)}
                     className="group border-2 border-border-primary hover:border-emerald-500 transition-all p-4"
                   >
                     <div className="flex items-center gap-4">
@@ -310,7 +311,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           onConfirm={() => {
             setShowTestModal(false);
             localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'exam-detail', testData: selectedTest }));
-            router.push(`/govt-exams/test/${selectedTest._id}/start`);
+            router.push(`/govt-exams/test/${selectedTest.slug || selectedTest._id}/start`);
           }}
           test={selectedTest}
           pattern={selectedTest.examPattern}
@@ -329,24 +330,35 @@ export async function getServerSideProps({ params }) {
   const ExamPattern = (await import('../../../models/ExamPattern')).default;
   const PracticeTest = (await import('../../../models/PracticeTest')).default;
   const Quiz = (await import('../../../models/Quiz')).default;
-  const examId = params?.examId;
-  if (!examId) return { notFound: true };
+  const { isObjectId, slugRedirect } = await import('../../../lib/web/slugRouting');
+  const segment = params?.examId;
+  if (!segment) return { notFound: true };
 
   try {
     await dbConnect();
 
-    const [exam, patternIds, quizDocs] = await Promise.all([
-      Exam.findById(examId).populate('category', 'name type').lean(),
+    // ObjectId in URL → 301 to canonical slug URL.
+    if (isObjectId(segment)) {
+      const idDoc = await Exam.findById(segment).select('slug').lean();
+      if (idDoc?.slug) return slugRedirect(`/govt-exams/exam/${idDoc.slug}`);
+      if (!idDoc) return { notFound: true };
+      // Doc has no slug yet (shouldn't happen post-backfill); fall through to ID lookup.
+    }
+
+    const examQuery = isObjectId(segment) ? { _id: segment } : { slug: segment };
+    const exam = await Exam.findOne(examQuery).populate('category', 'name type slug').lean();
+    if (!exam) return { notFound: true };
+
+    const examId = exam._id;
+    const [patternIds, quizDocs] = await Promise.all([
       ExamPattern.find({ exam: examId }).select('_id').lean(),
       Quiz.find({ applicableExams: examId, status: 'published' })
-        .populate('subject', 'name')
-        .populate('topic', 'name')
+        .populate('subject', 'name slug')
+        .populate('topic', 'name slug')
         .select('-questions')
         .sort({ publishedAt: -1 })
         .lean()
     ]);
-
-    if (!exam) return { notFound: true };
 
     const pIds = patternIds.map(p => p._id);
     const [ptDocs, pyqDocs] = pIds.length > 0
@@ -373,7 +385,7 @@ export async function getServerSideProps({ params }) {
 
     return {
       props: {
-        examId,
+        examId: String(examId),
         initialExam: JSON.parse(JSON.stringify(exam)),
         initialPracticeTests: practiceTests,
         initialPyqs: pyqs,
@@ -383,6 +395,6 @@ export async function getServerSideProps({ params }) {
     };
   } catch (error) {
     console.error('Error:', error);
-    return { props: { examId, initialError: 'Failed to load data.' } };
+    return { props: { examId: segment, initialError: 'Failed to load data.' } };
   }
 }

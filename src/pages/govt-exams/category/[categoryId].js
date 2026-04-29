@@ -70,7 +70,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
       <Seo
         title={seo?.title || `${categoryName} – Practice Tests, PYQs & Quizzes | AajExam`}
         description={seo?.description || `Browse ${exams.length || ''} ${categoryName} exam preparation hubs on AajExam. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes with detailed solutions.`}
-        canonical={`/govt-exams/category/${categoryId}`}
+        canonical={`/govt-exams/category/${category?.slug || categoryId}`}
         keywords={[
           `${categoryName} exams`,
           `${categoryName} practice test`,
@@ -83,11 +83,11 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           generateBreadcrumbSchema([
             { name: 'Home', url: '/' },
             { name: 'Government Exams', url: '/govt-exams' },
-            { name: categoryName, url: `/govt-exams/category/${categoryId}` }
+            { name: categoryName, url: `/govt-exams/category/${category?.slug || categoryId}` }
           ]),
           generateItemListSchema({
             name: `${categoryName} Exams`,
-            items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e._id}` }))
+            items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug || e._id}` }))
           })
         ]}
       />
@@ -139,7 +139,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
               transition={{ delay: idx * 0.05 }}
             >
               <div
-                onClick={() => router.push(`/govt-exams/exam/${exam._id}`)}
+                onClick={() => router.push(`/govt-exams/exam/${exam.slug || exam._id}`)}
                 className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
                 <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-duo-secondary border-b-8 border-primary-700">
@@ -194,17 +194,27 @@ export async function getServerSideProps({ params }) {
   const ExamCategory = (await import('../../../models/ExamCategory')).default;
   const ExamPattern = (await import('../../../models/ExamPattern')).default;
   const PracticeTest = (await import('../../../models/PracticeTest')).default;
-  const categoryId = params?.categoryId;
-  if (!categoryId) return { notFound: true };
+  const { isObjectId, slugRedirect } = await import('../../../lib/web/slugRouting');
+  const segment = params?.categoryId;
+  if (!segment) return { notFound: true };
 
   try {
     await dbConnect();
+
+    if (isObjectId(segment)) {
+      const idDoc = await ExamCategory.findById(segment).select('slug').lean();
+      if (idDoc?.slug) return slugRedirect(`/govt-exams/category/${idDoc.slug}`);
+      if (!idDoc) return { notFound: true };
+    }
+
+    const categoryDoc = await ExamCategory.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment }).lean();
+    if (!categoryDoc) return { notFound: true };
+    const categoryId = categoryDoc._id;
+
     const examsDocs = await Exam.find({ category: categoryId, isActive: true }).sort({ name: 1 }).lean();
     const examIds = examsDocs.map(e => e._id);
 
     let exams = [];
-    let category = null;
-
     if (examIds.length > 0) {
       const [patterns, tests] = await Promise.all([
         ExamPattern.aggregate([{ $match: { exam: { $in: examIds } } }, { $group: { _id: '$exam', total: { $sum: 1 } } }]),
@@ -224,15 +234,15 @@ export async function getServerSideProps({ params }) {
         patternCount: patternMap[e._id.toString()] || 0,
         testCount: testMap[e._id.toString()] || 0
       }));
-
-      category = JSON.parse(JSON.stringify(await ExamCategory.findById(categoryId).lean()));
-    } else {
-      category = JSON.parse(JSON.stringify(await ExamCategory.findById(categoryId).lean()));
     }
 
-    if (!category && exams.length === 0) return { notFound: true };
-
-    return { props: { categoryId, initialCategory: category, initialExams: exams } };
+    return {
+      props: {
+        categoryId: String(categoryId),
+        initialCategory: JSON.parse(JSON.stringify(categoryDoc)),
+        initialExams: exams
+      }
+    };
   } catch (error) {
     console.error('Data pre-render error:', error);
     return { props: { initialError: 'Failed to load data.' } };
