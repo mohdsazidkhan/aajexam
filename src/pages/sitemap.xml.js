@@ -55,21 +55,21 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         { path: '/halal-disclaimer', priority: '0.3', changefreq: 'yearly' }
     ];
 
-    // Always prefer the slug for canonical URLs; fall back to _id only for
-    // legacy records without a slug yet (post-backfill there should be none).
-    const idOrSlug = (d) => d.slug || (d._id && String(d._id));
+    // Sitemap is slug-only by design — every record has a slug post-backfill,
+    // and any future record without one is skipped here so we never expose a
+    // legacy ObjectId URL to Google.
     const sections = [
         staticPages.map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}${p.path}`, priority: p.priority, changefreq: p.changefreq })).join(''),
-        categoryIds.map(c => idOrSlug(c) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/category/${idOrSlug(c)}`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        exams.map(e => idOrSlug(e) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/exam/${idOrSlug(e)}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.85' })).filter(Boolean).join(''),
-        publicExams.map(e => idOrSlug(e) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exams/${idOrSlug(e)}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        subjects.map(s => idOrSlug(s) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/subjects/${idOrSlug(s)}`, lastmod: s.updatedAt || s.createdAt, changefreq: 'monthly', priority: '0.6' })).filter(Boolean).join(''),
-        topics.map(t => idOrSlug(t) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/topics/${idOrSlug(t)}`, lastmod: t.updatedAt || t.createdAt, changefreq: 'monthly', priority: '0.55' })).filter(Boolean).join(''),
-        quizzes.map(q => idOrSlug(q) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/quiz/${idOrSlug(q)}`, lastmod: q.updatedAt || q.publishedAt || q.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join(''),
-        blogs.map(b => b?.slug && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/blog/${b.slug}`, lastmod: b.updatedAt || b.publishedAt || b.createdAt, changefreq: 'monthly', priority: '0.7' })).filter(Boolean).join(''),
-        notes.map(n => n?.slug && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/notes/${n.slug}`, lastmod: n.updatedAt || n.publishedAt || n.createdAt, changefreq: 'monthly', priority: '0.6' })).filter(Boolean).join(''),
-        examNews.map(n => idOrSlug(n) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${idOrSlug(n)}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).filter(Boolean).join(''),
-        currentAffairs.map(a => idOrSlug(a) && xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${idOrSlug(a)}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).filter(Boolean).join('')
+        categoryIds.filter(c => c?.slug).map(c => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/category/${c.slug}`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.7' })).join(''),
+        exams.filter(e => e?.slug).map(e => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/exam/${e.slug}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.85' })).join(''),
+        publicExams.filter(e => e?.slug).map(e => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exams/${e.slug}`, lastmod: e.updatedAt || e.createdAt, changefreq: 'weekly', priority: '0.7' })).join(''),
+        subjects.filter(s => s?.slug).map(s => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/subjects/${s.slug}`, lastmod: s.updatedAt || s.createdAt, changefreq: 'monthly', priority: '0.6' })).join(''),
+        topics.filter(t => t?.slug).map(t => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/topics/${t.slug}`, lastmod: t.updatedAt || t.createdAt, changefreq: 'monthly', priority: '0.55' })).join(''),
+        quizzes.filter(q => q?.slug).map(q => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/quiz/${q.slug}`, lastmod: q.updatedAt || q.publishedAt || q.createdAt, changefreq: 'weekly', priority: '0.65' })).join(''),
+        blogs.filter(b => b?.slug).map(b => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/blog/${b.slug}`, lastmod: b.updatedAt || b.publishedAt || b.createdAt, changefreq: 'monthly', priority: '0.7' })).join(''),
+        notes.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/notes/${n.slug}`, lastmod: n.updatedAt || n.publishedAt || n.createdAt, changefreq: 'monthly', priority: '0.6' })).join(''),
+        examNews.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${n.slug}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).join(''),
+        currentAffairs.filter(a => a?.slug).map(a => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${a.slug}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
