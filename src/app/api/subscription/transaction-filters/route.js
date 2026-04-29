@@ -11,8 +11,11 @@ export async function GET(req) {
         await dbConnect();
         const userId = auth.user.id;
 
+        // Aggregate across ALL of the user's payment orders (success, failed,
+        // pending, refunded) so the date dropdown reflects every month they've
+        // ever had any payment activity — not just successful ones.
         const dates = await PaymentOrder.aggregate([
-            { $match: { user: userId, payuStatus: 'success' } },
+            { $match: { user: userId } },
             { $group: { _id: { year: { $year: '$createdAt' }, month: { $month: '$createdAt' } } } },
             { $sort: { '_id.year': -1, '_id.month': -1 } }
         ]);
