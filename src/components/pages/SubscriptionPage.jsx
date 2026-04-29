@@ -166,7 +166,7 @@ const SubscriptionPage = () => {
                           Opening PayU…
                         </>
                       ) : (
-                        'Buy PRO'
+                        `Buy PRO ₹${proPlan.price} Plan`
                       )}
                     </Button>
                   );
