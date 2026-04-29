@@ -247,7 +247,7 @@ const PaymentTransactions = () => {
             <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3">Mission Ops</p>
+                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3">Total Transactions</p>
                   <p className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 dark:text-primary-500 transition-colors">
                     {summary.totalTransactions || 0}
                   </p>
@@ -446,7 +446,7 @@ const PaymentTransactions = () => {
                       <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-inner">
                         <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
                           <FaReceipt className="text-primary-700 dark:text-primary-500" />
-                          Mission Data
+                          Transaction Details
                         </h4>
                         <div className="space-y-4">
                           <div className="flex justify-between items-center text-[10px] uppercase font-black tracking-widest">
@@ -454,7 +454,7 @@ const PaymentTransactions = () => {
                             <span className="text-slate-800 dark:text-white">{transaction.type}</span>
                           </div>
                           <div className="flex justify-between items-center text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">Vault ID</span>
+                            <span className="text-slate-600 dark:text-slate-400">Order ID</span>
                             <span className="text-slate-800 dark:text-white font-mono">{transaction.orderId?.slice(0, 8)}...</span>
                           </div>
                         </div>

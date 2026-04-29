@@ -13,10 +13,10 @@ const PracticeTestsEducational = ({ levels }) => {
                         </div>
                     </div>
                     <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
-                        Practice <span className="text-primary-700 dark:text-primary-500">Missions</span>
+                        Practice <span className="text-primary-700 dark:text-primary-500">Tests</span>
                     </h1>
                     <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed">
-                        Master your government exams with our structured preparation system designed for focused students.
+                        Prepare for your government exams with a structured practice system built for serious aspirants.
                     </p>
                 </div>
 
@@ -31,7 +31,7 @@ const PracticeTestsEducational = ({ levels }) => {
                             </div>
                             <div className="flex-1 text-center lg:text-left">
                                 <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700 dark:text-primary-500">
-                                    The Academy Protocol
+                                    How AajExam Works
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
                                     <p>
@@ -97,13 +97,13 @@ const PracticeTestsEducational = ({ levels }) => {
                     <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 2px, transparent 2px)', backgroundSize: '32px 32px' }}></div>
                     <div className="text-center mb-4 lg:mb-8 relative z-10">
                         <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                            Student <span className="text-primary-700 dark:text-primary-500">Playbook</span>
+                            Aspirant <span className="text-primary-700 dark:text-primary-500">Tips</span>
                         </h2>
                         <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mt-4">Essential Strategies for Success</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10">
                         {[
-                            { title: "Daily Mission", text: "Attempt missions daily to build consistency and momentum.", color: "primary" },
+                            { title: "Practise Daily", text: "Attempt at least one test daily to build consistency and momentum.", color: "primary" },
                             { title: "Review Mistakes", text: "Analyze every attempt to understand concepts better.", color: "secondary" },
                             { title: "Accuracy First", text: "Prioritize accuracy over speed initially.", color: "green" },
                             { title: "Watch Progress", text: "Use analytics to identify weak spots.", color: "purple" },
