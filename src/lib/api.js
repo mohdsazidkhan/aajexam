@@ -716,6 +716,11 @@ class ApiService {
     return this.request(`/api/real-exams/exams/${examId}/practice-tests${query ? `?${query}` : ''}`);
   }
 
+  // Web-only: split practice tests / PYQs / quizzes for the exam-detail page
+  async getWebExamContent(examId) {
+    return this.request(`/api/real-exams/web/exams/${examId}/content`);
+  }
+
   async createExamCategory(categoryData) {
     return this.request('/api/real-exams/categories', {
       method: 'POST',

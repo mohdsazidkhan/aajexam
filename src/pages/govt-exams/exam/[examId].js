@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
-  ChevronRight, Play, Eye, Lock, Unlock
+  ChevronRight, Play, Eye, Lock, Unlock, History
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -16,11 +16,12 @@ import Card from '../../../components/ui/Card';
 import Skeleton from '../../../components/Skeleton';
 import TestStartModal from '../../../components/TestStartModal';
 
-const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQuizzes = [], initialError = '', seo, examId }) => {
+const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialError = '', seo, examId }) => {
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
   const [activeTab, setActiveTab] = useState('tests');
   const [practiceTests, setPracticeTests] = useState(initialPracticeTests);
+  const [pyqs, setPyqs] = useState(initialPyqs);
   const [quizzes, setQuizzes] = useState(initialQuizzes);
   const [loading, setLoading] = useState(!initialExam && !initialError);
   const [error, setError] = useState(initialError);
@@ -31,13 +32,15 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
     if (!examId) return;
     try {
       setLoading(true);
-      const [ptRes, qzRes, patternsRes] = await Promise.all([
-        API.getPracticeTestsByExam(examId, { limit: 50 }),
-        API.getQuizzes({ exam: examId, limit: 50 }),
+      const [contentRes, patternsRes] = await Promise.all([
+        API.getWebExamContent(examId),
         API.getPatternsByExam(examId)
       ]);
-      if (ptRes?.success) setPracticeTests(ptRes.data || []);
-      if (qzRes?.success) setQuizzes(qzRes.data || []);
+      if (contentRes?.success) {
+        setPracticeTests(contentRes.practiceTests || []);
+        setPyqs(contentRes.pyqs || []);
+        setQuizzes(contentRes.quizzes || []);
+      }
       if (patternsRes?.exam) setExam(patternsRes.exam);
     } catch (err) {
       console.error('Error:', err);
@@ -71,6 +74,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
   const examName = exam?.name || 'Government Exam';
   const tabs = [
     { key: 'tests', label: 'Practice Tests', icon: FileText, count: practiceTests.length },
+    { key: 'pyqs', label: "PYQ's", icon: History, count: pyqs.length },
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
   ];
 
@@ -95,9 +99,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
           </div>
           <h1 className="text-xl md:text-2xl lg:text-4xl font-black uppercase tracking-tight">{examName}</h1>
           {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">Code: {exam.code}</p>}
-          <div className="flex gap-3 pt-2">
+          <div className="flex flex-wrap gap-2 pt-2">
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
               <FileText className="w-3.5 h-3.5" /> {practiceTests.length} Tests
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <History className="w-3.5 h-3.5" /> {pyqs.length} PYQ&apos;s
             </span>
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
               <BrainCircuit className="w-3.5 h-3.5" /> {quizzes.length} Quizzes
@@ -129,55 +136,67 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialQui
       </div>
 
       {/* Tab Content */}
-      {activeTab === 'tests' && (
-        <div className="space-y-3">
-          {practiceTests.length === 0 ? (
-            <div className="py-16 text-center space-y-3">
-              <FileText className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">No practice tests available yet</p>
-            </div>
-          ) : (
-            practiceTests.map((test, idx) => {
-              const isCompleted = test.userAttempt?.status === 'Completed';
-              return (
-                <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                  <Card className={`group border-2 transition-all p-4 overflow-hidden ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
-                    <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
-                        {isCompleted ? <Trophy className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{test.title}</h3>
-                        <p className="text-xs font-bold text-content-muted">
-                          {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
-                          {test.examPattern?.title ? ` · ${test.examPattern.title}` : ''}
-                        </p>
-                        {isCompleted && test.userAttempt && (
-                          <p className="text-xs font-bold text-primary-600 mt-1">
-                            Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+      {(activeTab === 'tests' || activeTab === 'pyqs') && (() => {
+        const isPyqTab = activeTab === 'pyqs';
+        const list = isPyqTab ? pyqs : practiceTests;
+        const EmptyIcon = isPyqTab ? History : FileText;
+        const emptyText = isPyqTab ? "No PYQ's available yet" : 'No practice tests available yet';
+        return (
+          <div className="space-y-3">
+            {list.length === 0 ? (
+              <div className="py-16 text-center space-y-3">
+                <EmptyIcon className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
+                <p className="text-sm font-bold text-slate-400">{emptyText}</p>
+              </div>
+            ) : (
+              list.map((test, idx) => {
+                const isCompleted = test.userAttempt?.status === 'Completed';
+                const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
+                return (
+                  <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                    <Card className={`group border-2 transition-all p-4 overflow-hidden ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                          {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{test.title}</h3>
+                          <p className="text-xs font-bold text-content-muted">
+                            {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
+                            {test.examPattern?.title ? ` · ${test.examPattern.title}` : ''}
                           </p>
-                        )}
-                      </div>
-                      <div className="flex gap-2 shrink-0">
-                        {isCompleted && (
-                          <button onClick={() => router.push(`/govt-exams/test/${test._id}/result?attempt=${test.userAttempt._id}`)}
-                            className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
-                            Results
+                          {pyqMeta && (
+                            <p className="text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 uppercase">
+                              {[test.pyqExamName, test.pyqYear, test.pyqShift].filter(Boolean).join(' · ')}
+                            </p>
+                          )}
+                          {isCompleted && test.userAttempt && (
+                            <p className="text-xs font-bold text-primary-600 mt-1">
+                              Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex gap-2 shrink-0">
+                          {isCompleted && (
+                            <button onClick={() => router.push(`/govt-exams/test/${test._id}/result?attempt=${test.userAttempt._id}`)}
+                              className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                              Results
+                            </button>
+                          )}
+                          <button onClick={() => { setSelectedTest(test); setShowTestModal(true); }}
+                            className={`text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
+                            {isCompleted ? 'Retake' : 'Start'}
                           </button>
-                        )}
-                        <button onClick={() => { setSelectedTest(test); setShowTestModal(true); }}
-                          className={`text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
-                          {isCompleted ? 'Retake' : 'Start'}
-                        </button>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              );
-            })
-          )}
-        </div>
-      )}
+                    </Card>
+                  </motion.div>
+                );
+              })
+            )}
+          </div>
+        );
+      })()}
 
       {activeTab === 'quizzes' && (
         <div className="space-y-3">
@@ -266,24 +285,34 @@ export async function getServerSideProps({ params }) {
     if (!exam) return { notFound: true };
 
     const pIds = patternIds.map(p => p._id);
-    const testDocs = pIds.length > 0
-      ? await PracticeTest.find({ examPattern: { $in: pIds } })
-          .populate('examPattern', 'title duration totalMarks sections negativeMarking')
-          .select('-questions.correctAnswerIndex')
-          .sort({ publishedAt: -1 })
-          .lean()
-      : [];
+    const [ptDocs, pyqDocs] = pIds.length > 0
+      ? await Promise.all([
+          PracticeTest.find({ examPattern: { $in: pIds }, isPYQ: { $ne: true } })
+            .populate('examPattern', 'title duration totalMarks sections negativeMarking')
+            .select('-questions.correctAnswerIndex')
+            .sort({ publishedAt: -1 })
+            .lean(),
+          PracticeTest.find({ examPattern: { $in: pIds }, isPYQ: true })
+            .populate('examPattern', 'title duration totalMarks sections negativeMarking')
+            .select('-questions.correctAnswerIndex')
+            .sort({ pyqYear: -1, publishedAt: -1 })
+            .lean()
+        ])
+      : [[], []];
 
-    const practiceTests = testDocs.map(t => ({
+    const decorate = (t) => ({
       ...JSON.parse(JSON.stringify(t)),
       questionCount: t.questions?.length || 0
-    }));
+    });
+    const practiceTests = ptDocs.map(decorate);
+    const pyqs = pyqDocs.map(decorate);
 
     return {
       props: {
         examId,
         initialExam: JSON.parse(JSON.stringify(exam)),
         initialPracticeTests: practiceTests,
+        initialPyqs: pyqs,
         initialQuizzes: JSON.parse(JSON.stringify(quizDocs)),
         seo: { title: `${exam.name} - Practice | AajExam` }
       }

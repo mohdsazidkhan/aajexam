@@ -14,7 +14,8 @@ import {
   FileText,
   BrainCircuit,
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  History
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -164,12 +165,16 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                 </div>
 
                 {/* Counts */}
-                <div className="flex items-center gap-3 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-3 py-1.5 rounded-xl border border-primary-100 dark:border-primary-800/50">
+                <div className="flex items-center flex-wrap gap-2 pt-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <FileText className="w-3 h-3" />
                     {exam.practiceTestCount || 0} Tests
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1.5 rounded-xl border border-emerald-100 dark:border-emerald-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-xl border border-amber-100 dark:border-amber-800/50">
+                    <History className="w-3 h-3" />
+                    {exam.pyqCount || 0} PYQs
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1.5 rounded-xl border border-emerald-100 dark:border-emerald-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {exam.quizCount || 0} Quizzes
                   </div>
@@ -201,12 +206,18 @@ export async function getServerSideProps() {
   try {
     await dbConnect();
 
-    const [examDocs, practiceTestCounts, quizCounts] = await Promise.all([
+    const [examDocs, testCounts, quizCounts] = await Promise.all([
       Exam.find({ isActive: true }).populate('category', 'name type').sort({ name: 1 }).lean(),
       PracticeTest.aggregate([
         { $lookup: { from: 'exampatterns', localField: 'examPattern', foreignField: '_id', as: 'pattern' } },
         { $unwind: '$pattern' },
-        { $group: { _id: '$pattern.exam', total: { $sum: 1 } } }
+        {
+          $group: {
+            _id: '$pattern.exam',
+            pyq: { $sum: { $cond: [{ $eq: ['$isPYQ', true] }, 1, 0] } },
+            practice: { $sum: { $cond: [{ $eq: ['$isPYQ', true] }, 0, 1] } }
+          }
+        }
       ]),
       Quiz.aggregate([
         { $match: { status: 'published', applicableExams: { $exists: true, $ne: [] } } },
@@ -215,14 +226,18 @@ export async function getServerSideProps() {
       ])
     ]);
 
-    const ptMap = Object.fromEntries(practiceTestCounts.map(i => [i._id?.toString(), i.total]));
+    const ptMap = Object.fromEntries(testCounts.map(i => [i._id?.toString(), i]));
     const qzMap = Object.fromEntries(quizCounts.map(i => [i._id?.toString(), i.total]));
 
-    const exams = examDocs.map(e => ({
-      ...JSON.parse(JSON.stringify(e)),
-      practiceTestCount: ptMap[e._id.toString()] || 0,
-      quizCount: qzMap[e._id.toString()] || 0,
-    }));
+    const exams = examDocs.map(e => {
+      const counts = ptMap[e._id.toString()] || { practice: 0, pyq: 0 };
+      return {
+        ...JSON.parse(JSON.stringify(e)),
+        practiceTestCount: counts.practice || 0,
+        pyqCount: counts.pyq || 0,
+        quizCount: qzMap[e._id.toString()] || 0,
+      };
+    });
 
     return { props: { initialExams: exams, seo: { title: 'Exams Hub - AajExam' } } };
   } catch (error) {
