@@ -44,7 +44,14 @@ const dateSegment = (d) => {
 // composers in src/models/*.
 const targets = [
     { name: 'exams', collection: 'exams', source: (d) => d.name },
-    { name: 'examcategories', collection: 'examcategories', source: (d) => `${d.name || ''}${d.type ? ' ' + d.type : ''}` },
+    { name: 'examcategories', collection: 'examcategories', source: (d) => {
+        const name = (d.name || '').trim();
+        const type = (d.type || '').trim();
+        if (!type) return name;
+        if (name.toLowerCase() === type.toLowerCase()) return name;
+        if (name.toLowerCase().includes(type.toLowerCase())) return name;
+        return `${name} ${type}`;
+    } },
     { name: 'subjects', collection: 'subjects', source: (d) => d.name },
     { name: 'topics', collection: 'topics', source: (d) => d.name },
     { name: 'quizzes', collection: 'quizzes', source: (d) => d.title },
