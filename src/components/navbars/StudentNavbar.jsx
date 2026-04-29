@@ -27,8 +27,10 @@ import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import Image from "next/image";
 
-// Pages that hide hamburger menu on mobile
-const HIDE_HAMBURGER_PAGES = ['/search', '/reels'];
+// Pages that hide the hamburger menu. Empty by default — every page
+// (including /search and /reels) now keeps the hamburger so the user
+// can always toggle the desktop sidebar without leaving the page.
+const HIDE_HAMBURGER_PAGES = [];
 
 const StudentNavbar = () => {
   const router = useRouter();

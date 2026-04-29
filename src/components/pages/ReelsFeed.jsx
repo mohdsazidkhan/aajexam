@@ -833,8 +833,13 @@ const ReelsFeed = () => {
       ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="w-full overflow-hidden relative select-none bg-black pb-[70px] lg:pb-0"
-      style={{ height: '100dvh', position: 'fixed', inset: 0 }}
+      // Mobile: full-screen TikTok-style canvas (fixed, covers viewport).
+      // z-[180] stacks above the z-150 navbar and z-135 bottom-nav so
+      // the feed feels truly immersive on phones.
+      // Desktop: render inside StudentLayout's main column so it respects
+      // the sidebar offset and navbar like every other page. Height is
+      // viewport minus the 80px desktop navbar.
+      className="w-full overflow-hidden select-none bg-black fixed inset-0 h-[100dvh] z-[180] lg:static lg:inset-auto lg:h-[calc(100vh-80px)] lg:z-auto"
     >
       {/* Filter Panel — overlay */}
       <AnimatePresence>

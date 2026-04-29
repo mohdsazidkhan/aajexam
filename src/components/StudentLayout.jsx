@@ -31,8 +31,12 @@ const StudentLayout = ({ children }) => {
     return false;
   })();
 
-  // Full-screen immersive pages — hide navbar, sidebar, bottom nav
-  const isImmersivePage = pathname === '/reels';
+  // No pages bypass the layout anymore. Reels and search both render
+  // through StudentLayout so the desktop sidebar offset works the same
+  // as on the home page. Reels keeps its TikTok-style fixed full-screen
+  // canvas only on mobile (handled in ReelsFeed via Tailwind responsive
+  // classes); on desktop it shrinks into the layout's main column.
+  const isImmersivePage = false;
 
   useEffect(() => {
     if (isMounted) {
