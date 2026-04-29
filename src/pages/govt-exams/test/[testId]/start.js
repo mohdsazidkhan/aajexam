@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
+import Seo from "../../../../components/Seo";
 import {
   Clock,
   ChevronLeft,
@@ -291,9 +291,7 @@ const TestStart = () => {
 
   return (
     <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col">
-      <Head>
-        <title>{test?.title || "Quiz"} - In Progress</title>
-      </Head>
+      <Seo title={`${test?.title || 'Practice Test'} – In Progress | AajExam`} description="Test in progress on AajExam." noIndex={true} />
 
       {/* --- Immersive Floating Mission Controller --- */}
       <AnimatePresence>

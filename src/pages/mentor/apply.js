@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { Users, Plus, X, Send } from 'lucide-react';
 import API from '../../lib/api';
 import { toast } from 'react-hot-toast';
+import Seo from '../../components/Seo';
 
 export default function MentorApply() {
   const router = useRouter();
@@ -61,7 +61,11 @@ export default function MentorApply() {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Become a Mentor - AajExam</title></Head>
+      <Seo
+        title="Become a Mentor – Help Aspirants on AajExam"
+        description="Cleared a government exam? Apply to become an AajExam mentor and help fellow aspirants with strategy, study plans and doubt-clearing."
+        canonical="/mentor/apply"
+      />
       <div className="max-w-2xl mx-auto py-4 lg:py-8 px-4">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center">

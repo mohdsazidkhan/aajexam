@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, BarChart3, AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import Seo from '../components/Seo';
 
 const ReadinessPage = () => {
   const [exams, setExams] = useState([]);
@@ -39,7 +39,7 @@ const ReadinessPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Exam Readiness - AajExam</title></Head>
+      <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">

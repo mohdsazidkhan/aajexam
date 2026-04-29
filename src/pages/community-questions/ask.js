@@ -10,8 +10,9 @@ export default function AskQuestion() {
   return (
     <>
       <Seo
-        title="Post a Question - AajExam Community"
+        title="Post a Question – AajExam Community"
         description="Share your exam questions with the AajExam community. Help fellow students practice and prepare for government exams."
+        noIndex={true}
       />
       <AskQuestionPage />
     </>

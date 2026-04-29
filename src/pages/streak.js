@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { Flame, Trophy, Calendar, Shield, Snowflake, TrendingUp } from 'lucide-react';
 import { toast } from 'react-hot-toast';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+import Seo from '../components/Seo';
 
 const StreakPage = () => {
   const [streak, setStreak] = useState(null);
@@ -40,7 +40,7 @@ const StreakPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Streak - AajExam</title></Head>
+      <Seo title="Your Streak – AajExam" description="Track your daily AajExam streak." noIndex={true} />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center gap-2">

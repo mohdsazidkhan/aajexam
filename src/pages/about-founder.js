@@ -1,43 +1,51 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { FaUserGraduate, FaTrophy, FaCode, FaChalkboardTeacher, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
-import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
-import { getCanonicalUrl } from '../utils/seo';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
 export default function AboutAuthor() {
     const router = useRouter();
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
-    const canonicalUrl = getCanonicalUrl(router.asPath);
 
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: '/' },
-        { name: 'About the Founder' }
-    ]);
+    const personSchema = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohd Sazid Khan",
+      "url": `${SITE_URL}/about-founder`,
+      "image": `${SITE_URL}/logo.png`,
+      "jobTitle": "Founder & CEO, AajExam",
+      "worksFor": { "@type": "Organization", "name": "AajExam", "url": SITE_URL },
+      "sameAs": [
+        "https://mohdsazidkhan.com",
+        "https://github.com/mohdsazidkhan",
+        "https://www.linkedin.com/in/mohdsazidkhan/"
+      ]
+    };
 
     return (
         <MobileAppWrapper title="About the Founder">
-            <Head>
-                <title>About Mohd Sazid Khan - Founder of AajExam | Educational Technology Expert</title>
-                <meta name="description" content="Meet Mohd Sazid Khan, founder of AajExam. Full-stack developer, UDYAM registered entrepreneur, and educational technology expert dedicated to transforming government exam preparation in India through innovative digital solutions." />
-                <meta name="keywords" content="Mohd Sazid Khan, AajExam founder, educational technology, government exam platform, full-stack developer, UDYAM entrepreneur" />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="About Mohd Sazid Khan - Founder of AajExam" />
-                <meta property="og:description" content="Educational technology expert and full-stack developer transforming government exam preparation in India." />
-                <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="AajExam" />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:image" content={`${siteUrl}/logo.png`} />
-                <meta property="og:locale" content="en_IN" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AajExam" />
-                <meta name="twitter:title" content="About Mohd Sazid Khan - Founder of AajExam" />
-                <meta name="twitter:description" content="Educational technology expert and full-stack developer transforming government exam preparation in India." />
-                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
-                <meta name="robots" content="index, follow" />
-                {renderSchema(breadcrumbSchema)}
-            </Head>
+            <Seo
+                title="Mohd Sazid Khan – Founder of AajExam | EdTech & Full-Stack Developer"
+                description="Meet Mohd Sazid Khan, founder of AajExam. Full-stack developer, UDYAM-registered entrepreneur and educational technology builder making government exam preparation in India accessible and affordable."
+                canonical="/about-founder"
+                keywords={[
+                  'Mohd Sazid Khan',
+                  'AajExam founder',
+                  'edtech founder India',
+                  'full stack developer India',
+                  'UDYAM entrepreneur'
+                ]}
+                schemas={[
+                  personSchema,
+                  generateBreadcrumbSchema([
+                    { name: 'Home', url: '/' },
+                    { name: 'About the Founder', url: '/about-founder' }
+                  ])
+                ]}
+            />
 
             <div className="min-h-screen ">
                 <div className="container mx-auto">

@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 
 import Seo from '../components/Seo';
 import HomePageSkeleton from '../components/HomePageSkeleton';
@@ -17,9 +16,6 @@ export default function Home() {
         description="Welcome to AajExam! Explore practice tests, track your progress, climb the leaderboard, and prepare for government exams."
         noIndex={true}
       />
-      <Head>
-        <meta name="keywords" content="home, exam platform, practice tests, leaderboard, government exam preparation" />
-      </Head>
       <HomePage />
     </>
   );

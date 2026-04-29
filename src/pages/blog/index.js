@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Seo from '../../components/Seo';
-import { generateBreadcrumbSchema, renderSchema } from '../../utils/schema';
+import { generateBreadcrumbSchema } from '../../utils/schema';
 
 const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   ssr: false,
@@ -12,16 +11,23 @@ export default function Blog() {
   return (
     <>
       <Seo
-        title="Blog - AajExam | Exam Preparation Tips & Guides"
-        description="Read exam preparation tips, study guides, and expert insights for government exams. Stay updated with the latest exam strategies and resources."
-      />
-      <Head>
-        <meta name="keywords" content="exam preparation tips, study guides, government exam blog, SSC tips, UPSC preparation, banking exam guides" />
-        {renderSchema(generateBreadcrumbSchema([
+        title="AajExam Blog – Exam Strategy, Study Guides & Government Exam Tips"
+        description="Get expert exam strategy, syllabus break-downs and topic-wise study guides for SSC CHSL, CGL, MTS, UPSC, Banking, Railway and State PSC exams. Updated daily by the AajExam team."
+        canonical="/blog"
+        keywords={[
+          'government exam blog',
+          'SSC preparation tips',
+          'UPSC strategy',
+          'banking exam tips',
+          'railway exam study guide',
+          'previous year question analysis',
+          'aajexam blog'
+        ]}
+        schemas={generateBreadcrumbSchema([
           { name: 'Home', url: '/' },
-          { name: 'Blog' }
-        ]))}
-      </Head>
+          { name: 'Blog', url: '/blog' }
+        ])}
+      />
       <BlogsPage />
     </>
   );

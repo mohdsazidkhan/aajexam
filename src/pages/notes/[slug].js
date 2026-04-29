@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { StickyNote, Bookmark, Eye, ArrowLeft, Tag } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
-import Head from 'next/head';
 import API from '../../lib/api';
 import Card from '../../components/ui/Card';
 import Loading from '../../components/Loading';
+import Seo from '../../components/Seo';
+import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 
 const NoteDetailPage = () => {
   const [note, setNote] = useState(null);
@@ -39,7 +40,36 @@ const NoteDetailPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>{note.title} - Notes | AajExam</title></Head>
+      <Seo
+        title={`${note.title} – ${note.subject?.name ? note.subject.name + ' Notes' : 'Quick Revision Notes'} | AajExam`}
+        description={`${note.title}${note.subject?.name ? ' – ' + note.subject.name : ''}${note.topic?.name ? ' (' + note.topic.name + ')' : ''}. Free quick revision notes, formulas and shortcuts for government exam aspirants on AajExam.`}
+        canonical={`/notes/${slug}`}
+        type="article"
+        author={note.contributor?.name || 'AajExam Team'}
+        keywords={[
+          note.title,
+          note.subject?.name && `${note.subject.name} notes`,
+          note.topic?.name && `${note.topic.name} notes`,
+          ...(note.tags || []),
+          'free study notes',
+          'aajexam notes'
+        ].filter(Boolean)}
+        schemas={[
+          generateBlogPostingSchema({
+            title: note.title,
+            description: `${note.title}${note.subject?.name ? ' – ' + note.subject.name : ''} quick revision notes on AajExam.`,
+            authorName: note.contributor?.name || 'AajExam Team',
+            keywords: note.tags,
+            category: note.subject?.name,
+            url: `/notes/${slug}`
+          }),
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Notes & Formulas', url: '/notes' },
+            { name: note.title, url: `/notes/${slug}` }
+          ])
+        ]}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
 

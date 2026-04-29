@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Megaphone, ArrowLeft, Calendar, ExternalLink, Eye } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../../lib/api';
 import Card from '../../components/ui/Card';
 import Loading from '../../components/Loading';
+import Seo from '../../components/Seo';
+import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
 const ExamNewsDetail = () => {
   const [news, setNews] = useState(null);
@@ -30,7 +31,37 @@ const ExamNewsDetail = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>{news.title} - Exam News | AajExam</title></Head>
+      <Seo
+        title={`${news.title}${news.exam?.name ? ' – ' + news.exam.name : ''} | AajExam Exam News`}
+        description={(news.content || `${news.title} – latest ${news.type?.replace('_', ' ') || 'notification'} for ${news.exam?.name || 'government exam'} aspirants on AajExam.`).slice(0, 160)}
+        canonical={`/exam-news/${id}`}
+        type="article"
+        publishedTime={news.createdAt}
+        modifiedTime={news.updatedAt}
+        keywords={[
+          news.title,
+          news.exam?.name && `${news.exam.name} ${news.type?.replace('_', ' ')}`,
+          news.type?.replace('_', ' '),
+          'sarkari job alert',
+          'aajexam exam news'
+        ].filter(Boolean)}
+        schemas={[
+          generateBlogPostingSchema({
+            title: news.title,
+            description: (news.content || '').slice(0, 160),
+            publishedAt: news.createdAt,
+            updatedAt: news.updatedAt || news.createdAt,
+            authorName: 'AajExam Team',
+            category: news.exam?.name || news.type,
+            url: `/exam-news/${id}`
+          }),
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Exam News', url: '/exam-news' },
+            { name: news.title, url: `/exam-news/${id}` }
+          ])
+        ]}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <button onClick={() => router.push('/exam-news')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 

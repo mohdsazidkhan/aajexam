@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import Seo from '../../../../components/Seo';
+import { generateBreadcrumbSchema } from '../../../../utils/schema';
 import {
   ArrowLeft,
   Clock,
@@ -117,9 +118,16 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
   return (
     <div className="space-y-8 animate-fade-in pb-24">
-      <Head>
-        <title>{seo?.title || 'Practice Tests'}</title>
-      </Head>
+      <Seo
+        title={seo?.title || 'Pattern Practice Tests | AajExam'}
+        description={seo?.description || 'Browse all practice tests under this exam pattern on AajExam – verified questions with detailed solutions and sectional analysis.'}
+        canonical={`/govt-exams/pattern/${patternId}/tests`}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Government Exams', url: '/govt-exams' },
+          { name: 'Pattern Tests' }
+        ])}
+      />
 
       <section className="flex items-center justify-end">
         <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">

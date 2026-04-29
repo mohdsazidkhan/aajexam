@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play, Pause, Calendar, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import Seo from '../components/Seo';
 
 const StudyPlanPage = () => {
   const [plans, setPlans] = useState([]);
@@ -105,7 +105,7 @@ const StudyPlanPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>AI Study Planner - AajExam</title></Head>
+      <Seo title="AI Study Planner – AajExam" description="Generate a personalised AI study plan for your government exam." noIndex={true} />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="AI Study Planner is a PRO feature. Upgrade to get a personalized roadmap and master your exams!">
           <div className="flex items-center justify-between gap-3">

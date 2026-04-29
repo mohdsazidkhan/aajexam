@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../components/datepicker-custom.css';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const categories = ['all', 'national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment'];
 
@@ -59,7 +60,25 @@ const CurrentAffairsPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Current Affairs - AajExam</title></Head>
+      <Seo
+        title="Daily Current Affairs – Free GA & GK for Government Exams | AajExam"
+        description="Daily current affairs for SSC, UPSC, Banking, Railway and State PSC exams. National, International, Economy, Sports, Awards, Appointments, Defence and Environment updates with key points and MCQs on AajExam."
+        canonical="/current-affairs"
+        keywords={[
+          'daily current affairs',
+          'current affairs MCQs',
+          'general awareness',
+          'GK quiz',
+          'SSC current affairs',
+          'banking current affairs',
+          'UPSC current affairs',
+          'aajexam current affairs'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Current Affairs', url: '/current-affairs' }
+        ])}
+      />
       <div className="container mx-auto py-4 lg:py-8 px-4 space-y-5">
         <div className="flex items-center justify-between">
           <div className="space-y-1">

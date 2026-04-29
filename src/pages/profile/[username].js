@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import Seo from '../../components/Seo';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
 
@@ -9,23 +9,28 @@ const PublicProfile = dynamic(() => import('../../components/PublicProfile'), {
 });
 
 export default function PublicProfilePage({ username, profile, seo }) {
+  const personSchema = profile ? {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": profile.name || username,
+    "alternateName": profile.username || username,
+    "description": profile.bio,
+    "image": seo?.image,
+    "url": seo?.url
+  } : null;
+
   return (
     <>
-			<Head>
-				<title>{seo?.title || 'User Profile - AajExam Platform'}</title>
-				{seo?.description && <meta name="description" content={seo.description} />}
-				{seo?.keywords && <meta name="keywords" content={seo.keywords} />}
-				<meta property="og:type" content="profile" />
-				{seo?.title && <meta property="og:title" content={seo.title} />} 
-				{seo?.description && <meta property="og:description" content={seo.description} />}
-				{seo?.image && <meta property="og:image" content={seo.image} />}
-				{seo?.url && <meta property="og:url" content={seo.url} />}
-				<meta name="twitter:card" content="summary_large_image" />
-				{seo?.title && <meta name="twitter:title" content={seo.title} />}
-				{seo?.description && <meta name="twitter:description" content={seo.description} />}
-				{seo?.image && <meta name="twitter:image" content={seo.image} />}
-				{seo?.url && <link rel="canonical" href={seo.url} />}
-			</Head>
+      <Seo
+        title={seo?.title || `${username} – AajExam Profile`}
+        description={seo?.description || `${username}'s public profile on AajExam.`}
+        image={seo?.image}
+        canonical={seo?.url || `/profile/${encodeURIComponent(username)}`}
+        type="profile"
+        keywords={seo?.keywords}
+        noIndex={profile && profile.isPublicProfile === false}
+        schemas={personSchema}
+      />
       <PublicProfile />
     </>
   );

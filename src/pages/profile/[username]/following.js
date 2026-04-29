@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import Seo from '../../../components/Seo';
 
 const FollowingList = dynamic(() => import('../../../components/FollowingList'), {
   ssr: false,
@@ -13,17 +13,11 @@ export default function FollowingListPage() {
 
   return (
     <>
-      <Head>
-        <title>Following - AajExam Platform</title>
-        <meta name="description" content="View who this user is following on AajExam. Explore the profiles they follow and discover new users." />
-        <meta name="keywords" content="following, user following, following list, AajExam following" />
-        <meta property="og:title" content="Following - AajExam Platform" />
-        <meta property="og:description" content="View user's following list on AajExam Platform." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Following - AajExam" />
-        <meta name="twitter:description" content="View following list on AajExam Platform." />
-      </Head>
+      <Seo
+        title={`@${username || 'User'} – Following | AajExam`}
+        description={`Accounts followed by @${username || 'this user'} on AajExam.`}
+        noIndex={true}
+      />
       <FollowingList username={username} />
     </>
   );

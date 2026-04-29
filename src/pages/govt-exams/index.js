@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import {
   GraduationCap,
   Building,
@@ -23,6 +22,11 @@ import API from '../../lib/api';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import Skeleton from '../../components/Skeleton';
+import Seo from '../../components/Seo';
+import {
+  generateBreadcrumbSchema,
+  generateItemListSchema
+} from '../../utils/schema';
 
 const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) => {
   const router = useRouter();
@@ -71,6 +75,24 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     { id: 'state', label: 'State Level', icon: MapPin },
   ];
 
+  const examNamesPreview = useMemo(
+    () => (exams || []).slice(0, 8).map(e => e.name).filter(Boolean).join(', '),
+    [exams]
+  );
+  const seoDescription = seo?.description || `Browse ${exams.length || 20}+ government exam preparation hubs on AajExam${examNamesPreview ? ` – ${examNamesPreview} and more` : ''}. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams.`;
+
+  const itemListSchema = useMemo(() => generateItemListSchema({
+    name: 'Government Exam Preparation Hub',
+    items: (exams || []).slice(0, 30).map(e => ({
+      name: e.name,
+      url: `/govt-exams/exam/${e._id}`
+    }))
+  }), [exams]);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Government Exams', url: '/govt-exams' }
+  ]);
+
   if (loading) {
     return (
       <div className="space-y-8 animate-fade-in py-10">
@@ -84,9 +106,27 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
   return (
     <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
-      <Head>
-        <title>{seo?.title || 'Exams Hub - AajExam'}</title>
-      </Head>
+      <Seo
+        title={seo?.title || 'Government Exam Preparation Hub – Free Practice Tests, PYQs & Quizzes | AajExam'}
+        description={seoDescription}
+        keywords={[
+          'government exam preparation',
+          'free practice tests',
+          'previous year question papers',
+          'PYQ practice',
+          'SSC CHSL',
+          'SSC CGL',
+          'SSC MTS',
+          'SSC GD',
+          'UPSC',
+          'banking exam',
+          'railway exam',
+          'state PSC',
+          'aajexam exams hub'
+        ]}
+        canonical="/govt-exams"
+        schemas={[itemListSchema, breadcrumbSchema]}
+      />
 
       {/* Hero */}
       <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30">

@@ -1,15 +1,12 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import Seo from '../../components/Seo';
 
 const QuizResultDetail = dynamic(() => import('../../components/pages/QuizResultDetail'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export default function QuizResultPage() {
   return (
     <>
-      <Head>
-        <title>Quiz Result - AajExam</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <Seo title="Quiz Result – AajExam" description="Detailed quiz attempt result on AajExam." noIndex={true} />
       <QuizResultDetail />
     </>
   );

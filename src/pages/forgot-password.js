@@ -18,6 +18,7 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import MobileAppWrapper from '../components/MobileAppWrapper';
+import Seo from '../components/Seo';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -42,6 +43,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <MobileAppWrapper showHeader={true} title="Account Recovery">
+      <Seo title="Forgot Password – AajExam" description="Reset your AajExam password securely." noIndex={true} canonical="/forgot-password" />
       <div className="h-auto lg:min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}

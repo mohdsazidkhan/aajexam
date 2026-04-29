@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { StickyNote, Bookmark, Eye, Search, BookOpen, Hash, Sparkles, Calculator } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const noteTypes = ['all', 'notes', 'formulas', 'shortcuts', 'important_points', 'tables', 'mnemonics'];
 const typeIcons = { notes: BookOpen, formulas: Calculator, shortcuts: Sparkles, important_points: Hash, tables: StickyNote, mnemonics: Sparkles };
@@ -37,7 +38,24 @@ const NotesPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Notes & Formulas - AajExam</title></Head>
+      <Seo
+        title="Free Notes & Formulas – Quick Revision for Government Exams | AajExam"
+        description="Quick revision notes, formulas, shortcuts, mnemonics and important points for SSC, UPSC, Banking, Railway and State PSC exam aspirants. Updated regularly on AajExam."
+        canonical="/notes"
+        keywords={[
+          'free notes for government exams',
+          'quick revision notes',
+          'maths formulas',
+          'reasoning shortcuts',
+          'GA important points',
+          'mnemonics',
+          'aajexam notes'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Notes & Formulas', url: '/notes' }
+        ])}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="space-y-1">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-500" /> Notes & Formulas</h1>

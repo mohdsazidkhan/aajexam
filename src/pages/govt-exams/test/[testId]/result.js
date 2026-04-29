@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import Seo from '../../../../components/Seo';
 import {
   Trophy,
   Target,
@@ -123,9 +123,7 @@ const TestResult = () => {
 
   return (
     <div className="space-y-6 lg:space-y-10 animate-fade-in pb-24 max-w-5xl mx-auto">
-      <Head>
-        <title>Result: {result?.testTitle || 'Test'}</title>
-      </Head>
+      <Seo title={`Result – ${result?.testTitle || 'Test'} | AajExam`} description="Your AajExam practice test result." noIndex={true} />
 
       {/* --- Celebration Hero --- */}
       <section className="relative">

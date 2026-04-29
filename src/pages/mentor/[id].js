@@ -1,13 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { Users, Star, Award, Shield, BookOpen, Clock, MessageCircle, ChevronRight, Send, ThumbsUp, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import API from '../../lib/api';
 import Loading from '../../components/Loading';
 import Card from '../../components/ui/Card';
 import { toast } from 'react-hot-toast';
+import Seo from '../../components/Seo';
+import { generateBreadcrumbSchema } from '../../utils/schema';
 
 export default function MentorProfilePage() {
   const router = useRouter();
@@ -113,7 +114,22 @@ export default function MentorProfilePage() {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>{mentor.user?.name || 'Mentor'} - AajExam Mentor</title></Head>
+      <Seo
+        title={`${mentor.user?.name || 'Mentor'} – Government Exam Mentor on AajExam`}
+        description={`Connect with ${mentor.user?.name || 'a verified mentor'} on AajExam for personalised guidance on ${mentor.targetExams?.map(e => e.name).join(', ') || 'government exams'}. Ask questions, get strategy and study plans from a verified topper.`}
+        canonical={`/mentor/${id}`}
+        keywords={[
+          mentor.user?.name && `${mentor.user.name} mentor`,
+          ...(mentor.targetExams || []).map(e => `${e.name} mentor`),
+          'government exam mentor',
+          'aajexam mentor'
+        ].filter(Boolean)}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Mentors', url: '/mentors' },
+          { name: mentor.user?.name || 'Mentor', url: `/mentor/${id}` }
+        ])}
+      />
       <div className="max-w-3xl mx-auto py-4 lg:py-8 px-4 space-y-6">
 
         {/* Profile Header */}

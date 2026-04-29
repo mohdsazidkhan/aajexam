@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { FaQuestionCircle, FaGraduationCap, FaCreditCard, FaTrophy, FaUserShield, FaBook, FaChartLine } from 'react-icons/fa';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import AuthorBio from '../components/AuthorBio';
+import Seo from '../components/Seo';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
-import { getCanonicalUrl } from '../utils/seo';
 
 const FAQ = () => {
     const router = useRouter();
-    const canonicalUrl = getCanonicalUrl(router.asPath);
 
     const faqs = [
         {
@@ -165,33 +163,29 @@ const FAQ = () => {
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
-        { name: 'FAQ' }
+        { name: 'FAQ', url: '/faq' }
     ]);
 
     return (
         <MobileAppWrapper title="Frequently Asked Questions">
-            <Head>
-                <title>Common Questions & Help Center | AajExam</title>
-                <meta name="description" content="Find answers to common questions about AajExam's government exam preparation platform, referral rewards, and subscription plans." />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="FAQ - Help Center | AajExam" />
-                <meta property="og:description" content="Have questions about preparing for SSC, UPSC, or Banking exams? Check our frequently asked questions." />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:image" content="https://aajexam.com/logo.png" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="FAQ - AajExam" />
-                <meta name="twitter:description" content="Frequently asked questions about government exam preparation on AajExam platform." />
-                <meta name="twitter:image" content="https://aajexam.com/logo.png" />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqs.flatMap(cat => cat.questions.map(q => ({ question: q.q, answer: q.a }))))) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-                />
-            </Head>
+            <Seo
+                title="FAQ – Government Exam Preparation Help Center | AajExam"
+                description="Answers to common questions about AajExam: SSC/UPSC/Banking/Railway exam preparation, practice tests, PYQs, subscription plans, payments, refunds and the refer & earn program."
+                canonical="/faq"
+                keywords={[
+                  'aajexam faq',
+                  'government exam preparation help',
+                  'aajexam subscription plans',
+                  'aajexam refer and earn',
+                  'aajexam refund policy',
+                  'how to prepare for SSC',
+                  'how to prepare for UPSC'
+                ]}
+                schemas={[
+                  generateFAQSchema(allFAQs),
+                  breadcrumbSchema
+                ]}
+            />
 
             <div className="min-h-screen ">
                 <div className="container mx-auto mt-0">

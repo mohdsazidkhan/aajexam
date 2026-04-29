@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Megaphone, Calendar, Pin, Eye, ChevronRight, ExternalLink } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const types = ['all', 'notification', 'admit_card', 'result', 'answer_key', 'vacancy', 'date_change'];
 
@@ -36,7 +37,27 @@ const ExamNewsPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Exam News & Job Alerts - AajExam</title></Head>
+      <Seo
+        title="Exam News & Job Alerts – Notifications, Admit Cards, Results | AajExam"
+        description="Stay updated with the latest government exam notifications, admit cards, results, answer keys, vacancies and date changes for SSC, UPSC, Banking, Railway and State PSC exams on AajExam."
+        canonical="/exam-news"
+        keywords={[
+          'government exam news',
+          'sarkari job alert',
+          'SSC notification',
+          'UPSC notification',
+          'banking job alert',
+          'railway recruitment',
+          'admit card',
+          'exam result',
+          'answer key',
+          'aajexam exam news'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Exam News', url: '/exam-news' }
+        ])}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <div className="space-y-1">
           <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Megaphone className="w-6 h-6 text-primary-500" /> Exam News</h1>

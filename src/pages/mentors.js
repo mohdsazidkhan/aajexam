@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Star, Award, MessageCircle, ChevronRight, Shield, Search } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const MentorsPage = () => {
   const [mentors, setMentors] = useState([]);
@@ -33,7 +34,23 @@ const MentorsPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Mentors - AajExam</title></Head>
+      <Seo
+        title="Mentors – Connect with Government Exam Toppers | AajExam"
+        description="Connect with verified mentors who have cracked SSC, UPSC, Banking, Railway and State PSC exams. Get personalised study plans, doubt-clearing and exam strategy guidance on AajExam Pro."
+        canonical="/mentors"
+        keywords={[
+          'government exam mentor',
+          'SSC mentor',
+          'UPSC mentor',
+          'banking exam guidance',
+          'railway exam guidance',
+          'aajexam mentors'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Mentors', url: '/mentors' }
+        ])}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-6">
         <SubscriptionGuard message="Access to Mentors is a PRO feature. Connect with students who have successfully cleared exams to get personalized guidance!">
           <div className="flex items-start justify-between">

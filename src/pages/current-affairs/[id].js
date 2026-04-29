@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Newspaper, ArrowLeft, Tag, Eye, Calendar } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../../lib/api';
 import Card from '../../components/ui/Card';
 import Loading from '../../components/Loading';
+import Seo from '../../components/Seo';
+import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
 const CurrentAffairDetail = () => {
   const [affair, setAffair] = useState(null);
@@ -30,7 +31,36 @@ const CurrentAffairDetail = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>{affair.title} - Current Affairs | AajExam</title></Head>
+      <Seo
+        title={`${affair.title} – Current Affairs ${new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} | AajExam`}
+        description={(affair.keyPoints?.[0] || affair.content || '').slice(0, 160) || `${affair.title}: daily current affairs for SSC, UPSC, Banking and Railway exam preparation on AajExam.`}
+        canonical={`/current-affairs/${id}`}
+        type="article"
+        publishedTime={affair.date}
+        keywords={[
+          affair.title,
+          `${affair.category} current affairs`,
+          'daily GA',
+          'current affairs MCQ',
+          'aajexam current affairs'
+        ]}
+        schemas={[
+          generateBlogPostingSchema({
+            title: affair.title,
+            description: (affair.keyPoints?.[0] || affair.content || '').slice(0, 160),
+            publishedAt: affair.date,
+            updatedAt: affair.updatedAt || affair.date,
+            authorName: 'AajExam Team',
+            category: affair.category,
+            url: `/current-affairs/${id}`
+          }),
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Current Affairs', url: '/current-affairs' },
+            { name: affair.title, url: `/current-affairs/${id}` }
+          ])
+        ]}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
         <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 

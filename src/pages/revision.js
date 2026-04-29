@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { RotateCcw, Brain, CheckCircle, XCircle, BarChart3, ArrowRight, Zap, BookOpen, FileText, Target, Film, Layers } from 'lucide-react';
 import { toast } from 'react-hot-toast';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import Seo from '../components/Seo';
 
 const SOURCE_TABS = [
   { key: 'all', label: 'All', icon: Layers },
@@ -67,7 +67,7 @@ const RevisionPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Revision Queue - AajExam</title></Head>
+      <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
           <div className="space-y-1">

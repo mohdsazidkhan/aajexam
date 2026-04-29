@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const SearchPage = dynamic(() => import('../components/pages/SearchPage'), {
   ssr: false,
@@ -9,17 +10,22 @@ const SearchPage = dynamic(() => import('../components/pages/SearchPage'), {
 export default function Search() {
   return (
     <>
-      <Head>
-        <title>Search - AajExam</title>
-        <meta name="description" content="Search for practice tests, questions, articles, and users on AajExam. Find the content you're looking for and discover new exam preparation areas." />
-        <meta name="keywords" content="search, find tests, search questions, search users, exam search, practice test search" />
-        <meta property="og:title" content="Search - AajExam Platform" />
-        <meta property="og:description" content="Search for practice tests, questions, and more on AajExam." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Search - AajExam" />
-        <meta name="twitter:description" content="Search for content on AajExam Platform." />
-      </Head>
+      <Seo
+        title="Search AajExam – Practice Tests, PYQs, Quizzes & Notes"
+        description="Search across AajExam: practice tests, previous year question papers (PYQs), quizzes, notes, current affairs and exam news for SSC, UPSC, Banking, Railway and State PSC exams."
+        canonical="/search"
+        keywords={[
+          'search government exam content',
+          'find practice tests',
+          'find PYQ',
+          'find quiz',
+          'aajexam search'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Search', url: '/search' }
+        ])}
+      />
       <SearchPage />
     </>
   );

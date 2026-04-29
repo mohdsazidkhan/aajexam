@@ -1,40 +1,23 @@
 import React from 'react';
-import Head from 'next/head';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
 import { FaExclamationTriangle, FaInfoCircle, FaShieldAlt } from 'react-icons/fa';
-import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 export default function Disclaimer() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: '/' },
-        { name: 'Disclaimer' }
-    ]);
-
     return (
         <MobileAppWrapper title="Disclaimer">
-            <Head>
-                <title>Disclaimer - Legal Information | AajExam</title>
-                <meta name="description" content="Read the legal disclaimer for AajExam. Information about accuracy of content, external links, and the educational nature of our platform." />
-                <meta name="keywords" content="disclaimer, legal, AajExam disclaimer, educational disclaimer" />
-                <link rel="canonical" href={`${siteUrl}/disclaimer`} />
-                <meta property="og:title" content="Disclaimer - AajExam" />
-                <meta property="og:description" content="Legal information regarding the accuracy and educational nature of AajExam content." />
-                <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="AajExam" />
-                <meta property="og:url" content={`${siteUrl}/disclaimer`} />
-                <meta property="og:image" content={`${siteUrl}/logo.png`} />
-                <meta property="og:locale" content="en_IN" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AajExam" />
-                <meta name="twitter:title" content="Disclaimer - AajExam" />
-                <meta name="twitter:description" content="Legal disclaimer for the AajExam educational platform." />
-                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
-                <meta name="robots" content="index, follow" />
-                {renderSchema(breadcrumbSchema)}
-            </Head>
+            <Seo
+                title="Disclaimer | AajExam"
+                description="Legal disclaimer for AajExam covering accuracy of content, external links and the educational nature of our practice tests, PYQs and quizzes."
+                canonical="/disclaimer"
+                keywords={['aajexam disclaimer', 'educational disclaimer', 'legal disclaimer']}
+                schemas={generateBreadcrumbSchema([
+                  { name: 'Home', url: '/' },
+                  { name: 'Disclaimer', url: '/disclaimer' }
+                ])}
+            />
 
             <div className="min-h-screen  font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}

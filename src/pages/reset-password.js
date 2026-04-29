@@ -19,6 +19,7 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import MobileAppWrapper from '../components/MobileAppWrapper';
+import Seo from '../components/Seo';
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -56,6 +57,7 @@ const ResetPasswordPage = () => {
 
   return (
     <MobileAppWrapper showHeader={true} title="Reset Password">
+      <Seo title="Reset Password – AajExam" description="Set a new AajExam password securely." noIndex={true} canonical="/reset-password" />
       <div className="h-auto lg:min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}

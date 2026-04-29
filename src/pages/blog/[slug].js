@@ -1,23 +1,26 @@
-import Head from 'next/head';
 import BlogDetailPage from '../../components/pages/BlogDetailPage';
 import Seo from '../../components/Seo';
-import { generateArticleSchema, generateBreadcrumbSchema, renderSchemas } from '../../utils/schema';
+import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
 export default function BlogDetail({ blog, slug, seo }) {
-  const articleSchema = blog ? generateArticleSchema({
+  const articleSchema = blog ? generateBlogPostingSchema({
     title: blog.title,
     description: seo?.description,
     image: seo?.image,
     publishedAt: blog.publishedAt,
     createdAt: blog.createdAt,
     updatedAt: blog.publishedAt,
-    authorName: blog.author?.name
+    authorName: blog.author?.name,
+    keywords: blog.tags,
+    category: blog.exam?.name,
+    url: seo?.url,
+    wordCount: blog.content ? String(blog.content).replace(/<[^>]*>/g, '').split(/\s+/).length : undefined
   }) : null;
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Blog', url: '/blog' },
-    { name: blog?.title || 'Article' }
+    { name: blog?.title || 'Article', url: `/blog/${slug}` }
   ]);
 
   return (
@@ -27,10 +30,13 @@ export default function BlogDetail({ blog, slug, seo }) {
         description={seo?.description || ''}
         image={seo?.image}
         type="article"
+        canonical={`/blog/${slug}`}
+        author={blog?.author?.name}
+        publishedTime={blog?.publishedAt}
+        modifiedTime={blog?.publishedAt}
+        keywords={blog?.tags}
+        schemas={[articleSchema, breadcrumbSchema]}
       />
-      <Head>
-        {renderSchemas([articleSchema, breadcrumbSchema].filter(Boolean))}
-      </Head>
       <BlogDetailPage blog={blog} slug={slug} />
     </>
   );

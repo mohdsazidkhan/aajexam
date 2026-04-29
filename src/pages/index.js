@@ -1,15 +1,11 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import LandingPageSkeleton from '../components/LandingPageSkeleton';
 import { generateOrganizationSchema, generateWebsiteSchema } from '../utils/schema';
-import { getCanonicalUrl } from '../utils/seo';
 
 import Seo from '../components/Seo';
 import dbConnect from '../lib/db';
-// Import any models if needed for direct DB access, though homepage-content might be complex
 
 const LandingPage = dynamic(() => import('../components/pages/ModernLandingPage'), {
   ssr: false,
@@ -17,30 +13,26 @@ const LandingPage = dynamic(() => import('../components/pages/ModernLandingPage'
 });
 
 export default function Index({ educationalContent, isAuthenticated }) {
-  const router = useRouter();
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   return (
     <>
       <Seo
-        title="AajExam - Government Exam Preparation Platform | Practice Tests & Refer to Earn"
-        description="India's premier government exam preparation platform. Practice tests for SSC, UPSC, Banking, Railway exams. Refer friends and earn cash rewards when they upgrade to PRO."
+        title="AajExam – SSC, UPSC, Banking & Railway Exam Practice Tests + PYQs"
+        description="India's all-in-one government exam preparation platform. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC CHSL, CGL, MTS, GD, UPSC, Banking, Railway, State PSC and more."
+        keywords={[
+          'government exam preparation',
+          'SSC CHSL practice test',
+          'SSC CGL mock test',
+          'UPSC practice test',
+          'banking exam practice',
+          'railway exam preparation',
+          'previous year question papers',
+          'PYQ practice',
+          'free mock test',
+          'aajexam',
+          'competitive exam online practice'
+        ]}
+        schemas={[generateOrganizationSchema(), generateWebsiteSchema()]}
       />
-
-      <Head>
-        <meta name="keywords" content="government exam preparation, SSC preparation, UPSC practice tests, banking exam practice, railway exam preparation, competitive exam practice, online exam platform, refer and earn, referral rewards" />
-
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-      </Head>
 
       {/* Show landing page for non-authenticated users */}
       {!isAuthenticated && <LandingPage educationalContent={educationalContent} />}

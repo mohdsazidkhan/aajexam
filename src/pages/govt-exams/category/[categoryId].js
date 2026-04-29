@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import {
   ArrowLeft,
   GraduationCap,
@@ -20,6 +19,8 @@ import Button from '../../../components/ui/Button';
 import Card from '../../../components/ui/Card';
 import ProgressBar from '../../../components/ui/ProgressBar';
 import Skeleton from '../../../components/Skeleton';
+import Seo from '../../../components/Seo';
+import { generateBreadcrumbSchema, generateItemListSchema } from '../../../utils/schema';
 
 const CategoryExams = ({ initialCategory = null, initialExams = [], initialError = '', seo, categoryId }) => {
   const router = useRouter();
@@ -66,9 +67,30 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
   return (
     <div className="space-y-10 animate-fade-in font-outfit">
-      <Head>
-        <title>{seo?.title || `${categoryName} - AajExam`}</title>
-      </Head>
+      <Seo
+        title={seo?.title || `${categoryName} – Practice Tests, PYQs & Quizzes | AajExam`}
+        description={seo?.description || `Browse ${exams.length || ''} ${categoryName} exam preparation hubs on AajExam. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes with detailed solutions.`}
+        canonical={`/govt-exams/category/${categoryId}`}
+        keywords={[
+          `${categoryName} exams`,
+          `${categoryName} practice test`,
+          `${categoryName} PYQ`,
+          `${categoryName} mock test`,
+          'government exam preparation',
+          'aajexam'
+        ]}
+        schemas={[
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Government Exams', url: '/govt-exams' },
+            { name: categoryName, url: `/govt-exams/category/${categoryId}` }
+          ]),
+          generateItemListSchema({
+            name: `${categoryName} Exams`,
+            items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e._id}` }))
+          })
+        ]}
+      />
 
       {/* --- Header Section --- */}
       <section className="space-y-6">

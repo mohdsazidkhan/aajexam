@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Target, Clock, Trophy, CheckCircle, XCircle, SkipForward, Flame, ArrowRight, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import DiscussionThread from '../components/discussions/DiscussionThread';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const DailyChallengePage = () => {
   const [challenge, setChallenge] = useState(null);
@@ -77,7 +78,23 @@ const DailyChallengePage = () => {
 
   if (!challenge) return (
     <div className="min-h-screen flex items-center justify-center">
-      <Head><title>Daily Challenge - AajExam</title></Head>
+      <Seo
+        title="Daily Challenge – Free Daily Quiz for Government Exams | AajExam"
+        description="Attempt a fresh daily challenge quiz on AajExam every day. Climb the leaderboard, build your streak and revise high-yield MCQs for SSC, UPSC, Banking and Railway exam preparation."
+        canonical="/daily-challenge"
+        keywords={[
+          'daily quiz',
+          'daily challenge',
+          'government exam daily quiz',
+          'SSC daily quiz',
+          'banking daily quiz',
+          'aajexam daily challenge'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Daily Challenge', url: '/daily-challenge' }
+        ])}
+      />
       <div className="text-center space-y-4">
         <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto"><Target className="w-10 h-10 text-slate-300" /></div>
         <h2 className="text-2xl font-black text-slate-400">No Challenge Today</h2>
@@ -90,7 +107,23 @@ const DailyChallengePage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Daily Challenge - AajExam</title></Head>
+      <Seo
+        title="Daily Challenge – Free Daily Quiz for Government Exams | AajExam"
+        description="Attempt a fresh daily challenge quiz on AajExam every day. Climb the leaderboard, build your streak and revise high-yield MCQs for SSC, UPSC, Banking and Railway exam preparation."
+        canonical="/daily-challenge"
+        keywords={[
+          'daily quiz',
+          'daily challenge',
+          'government exam daily quiz',
+          'SSC daily quiz',
+          'banking daily quiz',
+          'aajexam daily challenge'
+        ]}
+        schemas={generateBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Daily Challenge', url: '/daily-challenge' }
+        ])}
+      />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">

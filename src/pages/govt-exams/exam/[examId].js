@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
   ChevronRight, Play, Eye, Lock, Unlock, History
@@ -15,6 +14,13 @@ import Button from '../../../components/ui/Button';
 import Card from '../../../components/ui/Card';
 import Skeleton from '../../../components/Skeleton';
 import TestStartModal from '../../../components/TestStartModal';
+import Seo from '../../../components/Seo';
+import {
+  generateBreadcrumbSchema,
+  generateExamCourseSchema,
+  generateFAQSchema,
+  generateItemListSchema
+} from '../../../utils/schema';
 
 const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialError = '', seo, examId }) => {
   const router = useRouter();
@@ -78,11 +84,69 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
   ];
 
+  const examUrl = `/govt-exams/exam/${examId}`;
+  const examCode = exam?.code ? ` (${exam.code})` : '';
+  const examCategory = exam?.category?.name;
+  const seoTitle = seo?.title || `${examName}${examCode} – Free Practice Tests, PYQs & Quizzes | AajExam`;
+  const seoDescription = seo?.description || `Prepare for ${examName}${examCode} with ${practiceTests.length} free practice tests, ${pyqs.length} previous year question papers (PYQs) and ${quizzes.length} topic-wise quizzes on AajExam. Detailed solutions, sectional analysis and ranking included.`;
+  const seoKeywords = [
+    `${examName} preparation`,
+    `${examName} practice test`,
+    `${examName} previous year question paper`,
+    `${examName} PYQ`,
+    `${examName} mock test`,
+    `${examName} free quiz`,
+    exam?.code && `${exam.code} mock test`,
+    exam?.code && `${exam.code} PYQ`,
+    examCategory && `${examCategory} exam practice`
+  ].filter(Boolean);
+
+  const courseSchema = exam ? generateExamCourseSchema({
+    name: examName,
+    code: exam.code,
+    description: seoDescription,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com'}${examUrl}`,
+    category: examCategory,
+    testCount: practiceTests.length,
+    pyqCount: pyqs.length,
+    quizCount: quizzes.length
+  }) : null;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Government Exams', url: '/govt-exams' },
+    { name: examName, url: examUrl }
+  ]);
+  const allTestsItemList = (practiceTests.length || pyqs.length) ? generateItemListSchema({
+    name: `${examName} – Practice Tests & PYQs`,
+    items: [...practiceTests, ...pyqs].slice(0, 50).map(t => ({
+      name: t.title,
+      url: `/govt-exams/test/${t._id}/start`
+    }))
+  }) : null;
+  const faqSchema = generateFAQSchema([
+    {
+      question: `How many practice tests are available for ${examName}?`,
+      answer: `${practiceTests.length} full-length practice tests and ${pyqs.length} previous year question papers (PYQs) are available for ${examName}${examCode} on AajExam, with detailed solutions and sectional analysis.`
+    },
+    {
+      question: `Are ${examName} previous year question papers free?`,
+      answer: `Yes, the latest year ${examName} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.`
+    },
+    {
+      question: `Can I practise ${examName} topic-wise on AajExam?`,
+      answer: `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName}, covering Reasoning, Quantitative Aptitude, English and General Awareness.`
+    }
+  ]);
+
   return (
     <div className="space-y-6 animate-fade-in pb-24">
-      <Head>
-        <title>{seo?.title || `${examName} | AajExam`}</title>
-      </Head>
+      <Seo
+        title={seoTitle}
+        description={seoDescription}
+        keywords={seoKeywords}
+        canonical={examUrl}
+        schemas={[courseSchema, breadcrumbSchema, allTestsItemList, faqSchema]}
+      />
 
       {/* Back */}
       <section className="flex items-center justify-end">

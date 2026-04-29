@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { GraduationCap, Search, ChevronRight } from 'lucide-react';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
-import { generateBreadcrumbSchema, renderSchema } from '../../utils/schema';
-import { getCanonicalUrl, getPaginationRobotsMeta, getPaginationUrls } from '../../utils/seo';
+import Seo from '../../components/Seo';
+import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
+import { getPaginationUrls } from '../../utils/seo';
 import dbConnect from '../../lib/db';
 import Exam from '../../models/Exam';
 
@@ -20,21 +20,43 @@ export default function ExamsPage({ exams, pagination }) {
         )
         : exams;
 
+    const paginationUrls = pagination ? getPaginationUrls('/exams', pagination.page, pagination.totalPages) : {};
+    const seoTitle = pagination?.page > 1
+      ? `Exams – Page ${pagination.page} | AajExam`
+      : `Exams – ${pagination?.totalExams || filtered.length}+ Government Exam Practice Tests | AajExam`;
+    const seoDescription = `Practise ${pagination?.totalExams || filtered.length}+ government exam categories on AajExam – SSC CHSL, CGL, MTS, GD, UPSC, IBPS, SBI, RRB and State PSC. Full-length mock tests, sectional analysis and detailed solutions.`;
+
     return (
         <MobileAppWrapper showHeader={true} title="Exams">
-            <Head>
-                <title>{pagination?.page > 1 ? `Exams - Page ${pagination.page} | AajExam` : 'Exams - Practice Tests | AajExam'}</title>
-                <meta name="description" content="Practice for real government exams including SSC, UPSC, Banking, Railway and other competitive examinations. Full-length mock tests with detailed solutions." />
-                <meta name="keywords" content="government exams, SSC exam, UPSC exam, banking exam, railway exam, mock tests, practice exams, competitive exam preparation" />
-                <link rel="canonical" href={getCanonicalUrl('/exams')} />
-                <meta name="robots" content={getPaginationRobotsMeta(pagination?.page || 1)} />
-                {pagination?.page > 1 && <link rel="prev" href={getPaginationUrls('/exams', pagination.page, pagination.totalPages).prevUrl} />}
-                {pagination?.hasNext && <link rel="next" href={getPaginationUrls('/exams', pagination.page, pagination.totalPages).nextUrl} />}
-                {renderSchema(generateBreadcrumbSchema([
-                  { name: 'Home', url: '/' },
-                  { name: 'Exams' }
-                ]))}
-            </Head>
+            <Seo
+                title={seoTitle}
+                description={seoDescription}
+                canonical={pagination?.page > 1 ? `/exams?page=${pagination.page}` : '/exams'}
+                noIndex={pagination?.page > 1}
+                prev={pagination?.page > 1 ? paginationUrls.prevUrl : null}
+                next={pagination?.hasNext ? paginationUrls.nextUrl : null}
+                keywords={[
+                  'government exams list',
+                  'SSC exam',
+                  'UPSC exam',
+                  'banking exam',
+                  'railway exam',
+                  'mock tests online',
+                  'practice exams',
+                  'competitive exam preparation',
+                  'aajexam exams'
+                ]}
+                schemas={[
+                  generateBreadcrumbSchema([
+                    { name: 'Home', url: '/' },
+                    { name: 'Exams', url: '/exams' }
+                  ]),
+                  generateItemListSchema({
+                    name: 'AajExam Exams Catalogue',
+                    items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/exams/${e._id}` }))
+                  })
+                ]}
+            />
 
             <div className="min-h-screen pb-24">
                 <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">

@@ -1,27 +1,24 @@
 import React from 'react';
-import Head from 'next/head';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
 import { FaMosque, FaCheckCircle, FaBookOpen } from 'react-icons/fa';
 import config from '../lib/config/appConfig';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 export default function HalalDisclaimer() {
     return (
         <MobileAppWrapper title="Halal Disclaimer">
-            <Head>
-                <title>Halal Disclaimer - Ethical Guidelines | AajExam</title>
-                <meta name="description" content="Learn about AajExam's commitment to Halal and ethical educational practices in accordance with Islamic Shariah guidelines." />
-                <meta name="keywords" content="halal disclaimer, ethical education, Islamic Shariah, AajExam ethics" />
-                <meta property="og:title" content="Halal Disclaimer - Ethical Guidelines | AajExam" />
-                <meta property="og:description" content="Our commitment to Halal and ethical educational practices." />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://aajexam.com/logo.png" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Halal Disclaimer - AajExam" />
-                <meta name="twitter:description" content="Ethical and Halal educational guidelines for AajExam." />
-                <meta name="twitter:image" content="https://aajexam.com/logo.png" />
-                <meta name="robots" content="index, follow" />
-            </Head>
+            <Seo
+                title="Halal Disclaimer & Ethical Guidelines | AajExam"
+                description="AajExam's commitment to Halal and ethical educational practices in line with Islamic Shariah guidelines for content, payments and the refer & earn program."
+                canonical="/halal-disclaimer"
+                keywords={['aajexam halal disclaimer', 'halal edtech', 'ethical education', 'islamic shariah education']}
+                schemas={generateBreadcrumbSchema([
+                  { name: 'Home', url: '/' },
+                  { name: 'Halal Disclaimer', url: '/halal-disclaimer' }
+                ])}
+            />
 
             <div className="min-h-screen  font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}

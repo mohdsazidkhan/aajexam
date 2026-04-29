@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import Seo from '../components/Seo';
 
 const QuizResultPage = dynamic(() => import('../components/pages/QuizResultPage'), {
   ssr: false,
@@ -9,10 +9,7 @@ const QuizResultPage = dynamic(() => import('../components/pages/QuizResultPage'
 export default function QuizResult() {
   return (
     <>
-      <Head>
-        <title>Quiz Result - AajExam</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <Seo title="Quiz Result – AajExam" description="Your quiz attempt result on AajExam." noIndex={true} />
       <QuizResultPage />
     </>
   );

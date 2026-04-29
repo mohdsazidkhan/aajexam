@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Clock, Trophy, BookOpen, ChevronRight, Filter } from 'lucide-react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import { ProBadge } from '../components/ui';
 import { hasProSubscription } from '../lib/utils/subscriptionUtils';
 import { Lock } from 'lucide-react';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema, generateFAQSchema } from '../utils/schema';
 
 const PYQPage = () => {
   const [tests, setTests] = useState([]);
@@ -46,7 +47,33 @@ const PYQPage = () => {
 
   return (
     <div className="min-h-screen pb-24">
-      <Head><title>Previous Year Questions (PYQ) - AajExam</title></Head>
+      <Seo
+        title="Previous Year Question Papers (PYQ) – Free Practice for SSC, UPSC, Banking, Railway | AajExam"
+        description="Practise verified previous year question papers (PYQs) for SSC CHSL, CGL, MTS, GD, UPSC, IBPS, SBI, RRB and State PSC exams. Year-wise & shift-wise PYQs with detailed solutions and accuracy analysis on AajExam."
+        canonical="/pyq"
+        keywords={[
+          'previous year question paper',
+          'PYQ',
+          'SSC CHSL previous year paper',
+          'SSC CGL previous year paper',
+          'UPSC previous year paper',
+          'IBPS previous year paper',
+          'RRB previous year paper',
+          'free PYQ download',
+          'aajexam pyq'
+        ]}
+        schemas={[
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Previous Year Papers', url: '/pyq' }
+          ]),
+          generateFAQSchema([
+            { question: 'Are previous year question papers free on AajExam?', answer: 'Yes, the latest year PYQs for every exam are completely free on AajExam. Older shifts are accessible with the AajExam Pro plan.' },
+            { question: 'Do AajExam PYQs include answer keys and explanations?', answer: 'Yes, every PYQ on AajExam includes the verified answer key, detailed explanations and section-wise score analysis after submission.' },
+            { question: 'Which exams have PYQs on AajExam?', answer: 'AajExam covers PYQs for SSC CHSL, SSC CGL, SSC MTS, SSC GD, UPSC, IBPS PO/Clerk, SBI PO/Clerk, RRB NTPC/Group D, and major State PSC exams.' }
+          ])
+        ]}
+      />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-6">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="space-y-1">

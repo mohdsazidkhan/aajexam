@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { getCanonicalUrl } from '../utils/seo';
-import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 const SubscriptionPage = dynamic(() => import('../components/pages/SubscriptionPage'), {
   ssr: false,
@@ -10,33 +8,44 @@ const SubscriptionPage = dynamic(() => import('../components/pages/SubscriptionP
 });
 
 export default function Subscription() {
-  const router = useRouter();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AajExam Pro",
+    "description": "Unlock all premium practice tests, full PYQ archive, advanced analytics and ad-free practice for SSC, UPSC, Banking, Railway and State PSC exams on AajExam Pro.",
+    "brand": { "@type": "Brand", "name": "AajExam" },
+    "image": (process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com') + "/logo.png",
+    "offers": {
+      "@type": "Offer",
+      "price": process.env.NEXT_PUBLIC_PLAN_PRICE_PRO || "99",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": (process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com') + "/subscription"
+    }
+  };
 
   return (
     <>
-      <Head>
-        <title>Subscription Plans - AajExam</title>
-        <meta name="description" content="Explore AajExam subscription plans. Upgrade to PRO for unlimited quizzes, all levels, and eligibility for referral rewards. Choose the plan that's right for you." />
-        <meta name="keywords" content="subscription plans, pro plan, premium features, AajExam pricing, government exam subscription" />
-        <link rel="canonical" href={getCanonicalUrl(router.asPath)} />
-        <meta property="og:title" content="Subscription Plans - AajExam Platform" />
-        <meta property="og:description" content="Explore AajExam subscription plans and unlock PRO features." />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="AajExam" />
-        <meta property="og:url" content={`${siteUrl}/subscription`} />
-        <meta property="og:image" content={`${siteUrl}/logo.png`} />
-        <meta property="og:locale" content="en_IN" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@AajExam" />
-        <meta name="twitter:title" content="Subscription Plans - AajExam" />
-        <meta name="twitter:description" content="Get Pro access and unlock PRO features on AajExam." />
-        <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
-        {renderSchema(generateBreadcrumbSchema([
-          { name: 'Home', url: '/' },
-          { name: 'Subscription Plans' }
-        ]))}
-      </Head>
+      <Seo
+        title="AajExam Pro – Unlock All Practice Tests, PYQs & Analytics"
+        description="Upgrade to AajExam Pro for unlimited practice tests, full PYQ archive, sectional analytics, ad-free practice and Pro mentor access. Affordable monthly plans for SSC, UPSC, Banking, Railway and State PSC aspirants."
+        canonical="/subscription"
+        keywords={[
+          'aajexam pro',
+          'aajexam subscription',
+          'aajexam pricing',
+          'pro plan',
+          'sarkari exam pro plan',
+          'unlimited mock tests'
+        ]}
+        schemas={[
+          productSchema,
+          generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Subscription Plans', url: '/subscription' }
+          ])
+        ]}
+      />
       <SubscriptionPage />
     </>
   );

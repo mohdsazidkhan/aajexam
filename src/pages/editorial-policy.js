@@ -1,43 +1,25 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { FaShieldAlt, FaCheckCircle, FaUserGraduate, FaBook, FaAward, FaHandshake } from 'react-icons/fa';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
-import { generateBreadcrumbSchema, renderSchema } from '../utils/schema';
-import { getCanonicalUrl } from '../utils/seo';
+import Seo from '../components/Seo';
+import { generateBreadcrumbSchema } from '../utils/schema';
 
 export default function EditorialPolicy() {
     const router = useRouter();
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
-    const canonicalUrl = getCanonicalUrl(router.asPath);
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: '/' },
-        { name: 'Editorial Policy' }
-    ]);
 
     return (
         <MobileAppWrapper title="Editorial Policy">
-            <Head>
-                <title>Editorial Policy - Content Quality Standards | AajExam</title>
-                <meta name="description" content="Learn about AajExam's editorial policy, content creation standards, quality assurance processes, and commitment to accurate, high-quality government exam preparation materials for SSC, UPSC, Banking, and Railway exams." />
-                <meta name="keywords" content="editorial policy, content quality, exam preparation standards, educational integrity, AajExam standards" />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="Editorial Policy - AajExam" />
-                <meta property="og:description" content="Our commitment to delivering accurate, high-quality government exam preparation content through rigorous editorial standards." />
-                <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="AajExam" />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:image" content={`${siteUrl}/logo.png`} />
-                <meta property="og:locale" content="en_IN" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AajExam" />
-                <meta name="twitter:title" content="Editorial Policy - AajExam" />
-                <meta name="twitter:description" content="Our commitment to delivering accurate, high-quality government exam preparation content through rigorous editorial standards." />
-                <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
-                <meta name="robots" content="index, follow" />
-                {renderSchema(breadcrumbSchema)}
-            </Head>
+            <Seo
+                title="Editorial Policy & Content Standards | AajExam"
+                description="AajExam's editorial policy: how we research, source, fact-check and verify practice tests, previous year question papers (PYQs), quizzes and study notes for SSC, UPSC, Banking, Railway and State PSC exams."
+                canonical="/editorial-policy"
+                keywords={['aajexam editorial policy', 'content quality', 'fact checking', 'educational integrity']}
+                schemas={generateBreadcrumbSchema([
+                  { name: 'Home', url: '/' },
+                  { name: 'Editorial Policy', url: '/editorial-policy' }
+                ])}
+            />
 
             <div className="min-h-screen ">
                 <div className="container mx-auto">
