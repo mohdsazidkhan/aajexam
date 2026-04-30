@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useGoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import {
   Mail,
   Lock,
@@ -217,5 +217,17 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+const LoginPageWithGoogleAuth = () => {
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+  if (!googleClientId || googleClientId === 'your_google_client_id_here') {
+    return <LoginPage />;
+  }
+  return (
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <LoginPage />
+    </GoogleOAuthProvider>
+  );
+};
+
+export default LoginPageWithGoogleAuth;
 

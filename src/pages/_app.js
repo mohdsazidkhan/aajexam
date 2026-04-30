@@ -1,18 +1,15 @@
 import '../styles/index.css';
 import { Provider, useDispatch } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import store from '../store';
 import { initializeDarkMode } from '../store/darkModeSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { useRouter } from 'next/router';
 import ClientOnly from '../components/ClientOnly';
-import CookieConsent from '../components/CookieConsent';
-import { motion, AnimatePresence } from 'framer-motion';
 import ErrorBoundary from '../components/ErrorBoundary';
 import '../styles/App.css';
 import '../styles/darkMode.css';
@@ -20,6 +17,15 @@ import '../styles/responsive.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
 import { Outfit, Nunito } from 'next/font/google';
+
+const Toaster = dynamic(
+  () => import('react-hot-toast').then((m) => m.Toaster),
+  { ssr: false }
+);
+
+const CookieConsent = dynamic(() => import('../components/CookieConsent'), {
+  ssr: false,
+});
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -58,20 +64,32 @@ import PublicBottomNav from '../components/navbars/PublicBottomNav';
 import UnifiedFooter from '../components/UnifiedFooter';
 import { useAuthStatus } from '../hooks/useClientSide';
 
-function PageWrapper({ children, route }) {
-  return (
-    <motion.div
-      key={route}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="h-full"
-    >
-      {children}
-    </motion.div>
-  );
-}
+const toastOptions = {
+  duration: 5000,
+  className: 'premium-toast',
+  style: {
+    background: 'var(--bg-surface)',
+    color: 'var(--text-primary)',
+    borderRadius: '1.25rem',
+    border: '1px solid var(--border-primary)',
+    backdropFilter: 'blur(16px) saturate(180%)',
+    padding: '12px 20px',
+    fontSize: '12px',
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+    maxWidth: '400px',
+  },
+  success: {
+    iconTheme: { primary: '#58cc02', secondary: '#fff' },
+    style: { borderLeft: '4px solid #58cc02' },
+  },
+  error: {
+    iconTheme: { primary: '#ff4b4b', secondary: '#fff' },
+    style: { borderLeft: '4px solid #ff4b4b' },
+  },
+};
 
 function AppContent({ Component, pageProps }) {
   const router = useRouter();
@@ -95,9 +113,7 @@ function AppContent({ Component, pageProps }) {
       return (
         <ClientOnly>
           <AppLayout>
-            <PageWrapper route={router.asPath}>
-              {Component && <Component {...pageProps} />}
-            </PageWrapper>
+            {Component && <Component {...pageProps} />}
           </AppLayout>
         </ClientOnly>
       );
@@ -109,9 +125,7 @@ function AppContent({ Component, pageProps }) {
            <PublicNavbar />
         </ClientOnly>
         <div className="appContainer p-4">
-          <PageWrapper route={router.asPath}>
-            {Component && <Component {...pageProps} />}
-          </PageWrapper>
+          {Component && <Component {...pageProps} />}
         </div>
         <UnifiedFooter />
         <ClientOnly>
@@ -133,11 +147,11 @@ function AppContent({ Component, pageProps }) {
       </Head>
       {gtag.GA_MEASUREMENT_ID ? (
         <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
-          <Script id="gtag-init" strategy="afterInteractive">
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`} strategy="lazyOnload" />
+          <Script id="gtag-init" strategy="lazyOnload">
             {`
               window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);} 
+              function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${gtag.GA_MEASUREMENT_ID}', {
                 page_path: window.location.pathname,
@@ -149,9 +163,7 @@ function AppContent({ Component, pageProps }) {
 
       <ErrorBoundary>
         <div className={`${outfit.variable} ${nunito.variable}`}>
-          <AnimatePresence mode="wait" initial={false}>
-            {renderContent()}
-          </AnimatePresence>
+          {renderContent()}
         </div>
       </ErrorBoundary>
     </>
@@ -159,91 +171,15 @@ function AppContent({ Component, pageProps }) {
 }
 
 export default function App({ Component, pageProps }) {
-  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-
-  if (!googleClientId || googleClientId === 'your_google_client_id_here') {
-    return (
-      <Provider store={store}>
-        <GlobalErrorProvider>
-          <LanguageProvider>
-            <AppContent Component={Component} pageProps={pageProps} />
-            <CookieConsent />
-          </LanguageProvider>
-          <Toaster
-            position="top-right"
-            containerStyle={{ top: 80 }}
-            toastOptions={{
-              duration: 5000,
-              className: 'premium-toast',
-              style: { 
-                background: 'var(--bg-surface)', 
-                color: 'var(--text-primary)', 
-                borderRadius: '1.25rem', 
-                border: '1px solid var(--border-primary)', 
-                backdropFilter: 'blur(16px) saturate(180%)',
-                padding: '12px 20px',
-                fontSize: '12px',
-                fontWeight: '900',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-                maxWidth: '400px'
-              },
-              success: { 
-                iconTheme: { primary: '#58cc02', secondary: '#fff' },
-                style: { borderLeft: '4px solid #58cc02' }
-              },
-              error: { 
-                iconTheme: { primary: '#ff4b4b', secondary: '#fff' },
-                style: { borderLeft: '4px solid #ff4b4b' }
-              },
-            }}
-          />
-        </GlobalErrorProvider>
-      </Provider>
-    );
-  }
-
   return (
-    <GoogleOAuthProvider clientId={googleClientId}>
-      <Provider store={store}>
-        <GlobalErrorProvider>
-          <LanguageProvider>
-            <AppContent Component={Component} pageProps={pageProps} />
-            <CookieConsent />
-          </LanguageProvider>
-          <Toaster
-            position="top-right"
-            containerStyle={{ top: 80 }}
-            toastOptions={{
-              duration: 5000,
-              className: 'premium-toast',
-              style: { 
-                background: 'var(--bg-surface)', 
-                color: 'var(--text-primary)', 
-                borderRadius: '1.25rem', 
-                border: '1px solid var(--border-primary)', 
-                backdropFilter: 'blur(16px) saturate(180%)',
-                padding: '12px 20px',
-                fontSize: '12px',
-                fontWeight: '900',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-                maxWidth: '400px'
-              },
-              success: { 
-                iconTheme: { primary: '#58cc02', secondary: '#fff' },
-                style: { borderLeft: '4px solid #58cc02' }
-              },
-              error: { 
-                iconTheme: { primary: '#ff4b4b', secondary: '#fff' },
-                style: { borderLeft: '4px solid #ff4b4b' }
-              },
-            }}
-          />
-        </GlobalErrorProvider>
-      </Provider>
-    </GoogleOAuthProvider>
+    <Provider store={store}>
+      <GlobalErrorProvider>
+        <LanguageProvider>
+          <AppContent Component={Component} pageProps={pageProps} />
+          <CookieConsent />
+        </LanguageProvider>
+        <Toaster position="top-right" containerStyle={{ top: 80 }} toastOptions={toastOptions} />
+      </GlobalErrorProvider>
+    </Provider>
   );
 }
