@@ -6,6 +6,7 @@ import Exam from '@/models/Exam';
 import ExamCategory from '@/models/ExamCategory';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { markPyqAccess } from '@/lib/subscription';
+import { protect } from '@/middleware/auth';
 
 export async function GET(req, { params }) {
     try {
