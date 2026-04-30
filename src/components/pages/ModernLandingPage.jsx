@@ -79,40 +79,29 @@ const ModernLandingPage = () => {
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="max-w-5xl mx-auto text-center space-y-12 mt-8 lg:mt-0 py-4 lg:py-12">
-                  <motion.div
-                     initial={{ opacity: 0, scale: 0.9 }}
-                     animate={{ opacity: 1, scale: 1 }}
+                  <div
                      className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 dark:text-primary-500 border-2 border-primary-500/10 shadow-xl"
                   >
                      <Sparkles className="w-4 h-4 text-primary-700 dark:text-primary-500" />
                      Trusted by students across India
-                  </motion.div>
+                  </div>
 
                   <div className="space-y-4 lg:space-y-6">
-                     <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                     <h1
                         className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] text-slate-900 dark:text-white"
                      >
                         Practice for <span className="text-primary-700 dark:text-primary-500">Exams</span>
                         <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-primary-500 to-primary-500 bg-[length:200%_auto] animate-gradient">You Study. You Win.</p>
-                     </motion.h1>
+                     </h1>
 
-                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
+                     <p
                         className="text-base lg:text-xl lg:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 lg:px-4"
                      >
                         Practice daily for government exams, see how you are improving, and earn rewards for your hard work.
-                     </motion.p>
+                     </p>
                   </div>
 
-                  <motion.div
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ delay: 0.4, duration: 0.8 }}
+                  <div
                      className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-0 lg:pt-4"
                   >
                      <Button
@@ -135,12 +124,9 @@ const ModernLandingPage = () => {
                      >
                         Browse exams
                      </Button>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     transition={{ delay: 0.6 }}
+                  <div
                      className="flex flex-wrap items-center justify-center gap-x-6 lg:gap-x-12 gap-y-4 pt-4 lg:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
                   >
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
@@ -152,7 +138,7 @@ const ModernLandingPage = () => {
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
                         <Trophy className="w-5 h-5 text-amber-500" /> Practice with topic-wise quizzes
                      </div>
-                  </motion.div>
+                  </div>
                </div>
             </div>
          </section>
