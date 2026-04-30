@@ -18,8 +18,8 @@ const Button = ({
   iconPosition = 'left'
 }) => {
   const variants = {
-    primary: 'bg-primary-500 shadow-duo-primary border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-primary-500 shadow-duo-secondary border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    primary: 'bg-primary-700 shadow-duo-primary border-primary-800 text-white active:bg-primary-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    secondary: 'bg-primary-700 shadow-duo-secondary border-primary-800 text-white active:bg-primary-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
     emerald: 'bg-emerald-500 shadow-duo-emerald border-emerald-600 text-white active:bg-emerald-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
     amber: 'bg-amber-500 shadow-duo-amber border-amber-600 text-white active:bg-amber-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
     rose: 'bg-rose-500 shadow-duo-rose border-rose-600 text-white active:bg-rose-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',

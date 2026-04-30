@@ -97,6 +97,8 @@ const PublicNavbar = () => {
             <div className="flex items-center gap-3 relative z-10">
               <button
                 onClick={toggleTheme}
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+                title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
                 className="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-700 dark:hover:text-primary-400 border border-slate-200/30 dark:border-slate-700/30 shadow-sm transition-all"
               >
                 {darkMode ? <Sun className="w-5" /> : <Moon className="w-5" />}

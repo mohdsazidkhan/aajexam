@@ -69,7 +69,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="lg:col-span-1 space-y-8">
             <div className="space-y-4">
               <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
-                AAJ<span className="text-primary-500 text-glow-primary">EXAM</span>
+                AAJ<span className="text-primary-700 dark:text-primary-500 text-glow-primary">EXAM</span>
               </h2>
               <div className="h-1 w-12 bg-gradient-to-r from-primary-500 to-transparent rounded-full" />
             </div>
@@ -97,7 +97,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h4 className="text-xs font-black text-primary-700 dark:text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
               Explore
             </h4>
@@ -116,7 +116,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h4 className="text-xs font-black text-primary-700 dark:text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
               Legal
             </h4>
@@ -135,7 +135,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-blue-500 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h4 className="text-xs font-black text-blue-700 dark:text-blue-500 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               Support
             </h4>
@@ -181,7 +181,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-amber-500" />
-                  <span className="text-[11px] font-black text-emerald-500 tracking-[0.08em]">Stable</span>
+                  <span className="text-[11px] font-black text-emerald-700 dark:text-emerald-500 tracking-[0.08em]">Stable</span>
                 </div>
               </div>
             </Card>

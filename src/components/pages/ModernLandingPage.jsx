@@ -287,7 +287,7 @@ const ModernLandingPage = () => {
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 dark:text-primary-500 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
                                  <item.icon className="w-8 h-8" />
                               </div>
-                              <h4 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{item.title}</h4>
+                              <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{item.title}</h3>
                               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs mx-auto text-center px-4">{item.desc}</p>
                            </div>
                         ))}

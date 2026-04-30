@@ -6,8 +6,29 @@ const nextConfig = {
   generateEtags: true,
 
   reactStrictMode: true,
+
+  // Strip console.* (except error/warn) in production to reduce JS payload
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+  },
+
+  // Tree-shake heavy icon/animation libraries so unused exports don't ship.
+  // Cuts the "Reduce unused JavaScript" / "Legacy JavaScript" PageSpeed audits.
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'react-icons',
+      'framer-motion',
+      '@reduxjs/toolkit',
+      'react-redux',
+      'react-hot-toast',
+      'react-toastify',
+    ],
+  },
+
   images: {
     unoptimized: false,
+    formats: ['image/avif', 'image/webp'],
     domains: ['res.cloudinary.com', 'lh3.googleusercontent.com'],
     remotePatterns: [
       {
