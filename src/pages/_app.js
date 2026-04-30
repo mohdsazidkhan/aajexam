@@ -13,7 +13,6 @@ import ClientOnly from '../components/ClientOnly';
 import ErrorBoundary from '../components/ErrorBoundary';
 import '../styles/App.css';
 import '../styles/darkMode.css';
-import '../styles/responsive.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
 import { Outfit, Nunito } from 'next/font/google';

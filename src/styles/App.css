@@ -1,73 +1,28 @@
 .appContainer {
   margin-top: 0px;
-  /* No top margin by default */
   min-height: calc(100vh - 64px);
   transition: margin-left 0.3s ease-in-out;
 }
 
-/* Fix dropdown option colors in dark mode */
+.appContainer.has-sidebar {
+  margin-left: 256px;
+}
+
 .dark select option {
   background-color: #1e293b;
   color: #f1f5f9;
 }
 
-/* Fullscreen Quiz Mode - Hide all navigation elements */
-body.quiz-fullscreen-mode .navbar,
-body.quiz-fullscreen-mode nav,
-body.quiz-fullscreen-mode .mobile-app-header,
-body.quiz-fullscreen-mode .mobile-bottom-nav,
-body.quiz-fullscreen-mode .floating-action-button,
-body.quiz-fullscreen-mode header:not(.quiz-banner),
-body.quiz-fullscreen-mode .fixed.bottom-0,
-body.quiz-fullscreen-mode .fixed.z-50.md\:hidden,
-body.quiz-fullscreen-mode .fixed.z-\[99\] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Keep only the fullscreen quiz banner visible */
-body.quiz-fullscreen-mode .quiz-fullscreen-banner {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-body.quiz-fullscreen-mode .appContainer {
-  margin-top: 0 !important;
-  min-height: 100vh !important;
-}
-
-/* Ensure quiz content fills screen in fullscreen mode */
-body.quiz-fullscreen-mode {
-  overflow: hidden;
-}
-
-/* Quiz fullscreen banner should always be visible */
-body.quiz-fullscreen-mode .fixed.z-50 {
-  display: block !important;
-}
-
-/* Custom Animations for Post User Question Page */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out;
 }
 
-
-/* Rich Text Editor Styles */
+/* Rich Text Editor (admin) */
 .rich-text-editor .editor {
   min-height: 200px;
   font-size: 16px;
@@ -81,18 +36,6 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   content: "Write your article content here...";
   color: #9ca3af;
   font-style: italic;
-}
-
-.scroll-to-top-btn {
-  background-color: #58cc02;
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
 }
 
 .rich-text-editor .toolbar {
@@ -125,112 +68,12 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   border-color: #9ca3af;
 }
 
-.rich-text-editor .toolbar button:active {
-  background-color: #e5e7eb;
-}
-
-.rich-text-editor .toolbar select {
-  height: 32px;
-  padding: 0 8px;
-  border: 1px solid #d1d5db;
-  background-color: white;
-  color: #374151;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.rich-text-editor .toolbar select:hover {
-  border-color: #9ca3af;
-}
-
-/* Dark mode styles for Rich Text Editor */
-.dark .rich-text-editor .toolbar {
-  background-color: #374151;
-  border-color: #4b5563;
-}
-
-.dark .rich-text-editor .toolbar button {
-  background-color: #4b5563;
-  border-color: #6b7280;
-  color: #e5e7eb;
-}
-
-.dark .rich-text-editor .toolbar button:hover {
-  background-color: #6b7280;
-  border-color: #9ca3af;
-}
-
-.dark .rich-text-editor .toolbar select {
-  background-color: #4b5563;
-  border-color: #6b7280;
-  color: #e5e7eb;
-}
-
-.dark .rich-text-editor .toolbar select:hover {
-  border-color: #9ca3af;
-}
-
-.dark .rich-text-editor .editor {
-  background-color: #1f2937;
+.rich-text-editor .toolbar button.active {
+  background-color: #3b82f6;
   color: white;
+  border-color: #3b82f6;
 }
 
-.dark .rich-text-editor .editor:empty:before {
-  color: #9ca3af;
-}
-
-.dark .rich-text-editor .editor h1,
-.dark .rich-text-editor .editor h2,
-.dark .rich-text-editor .editor h3,
-.dark .rich-text-editor .editor h4,
-.dark .rich-text-editor .editor h5,
-.dark .rich-text-editor .editor h6 {
-  color: white;
-}
-
-.dark .rich-text-editor .editor blockquote {
-  border-left: 4px solid #4b5563;
-  color: #d1d5db;
-  padding-left: 16px;
-  margin: 16px 0;
-}
-
-.dark .rich-text-editor .editor code {
-  background-color: #374151;
-  color: #fbbf24;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-family: 'Courier New', monospace;
-}
-
-.rich-text-editor .editor ul,
-.rich-text-editor .editor ol {
-  padding-left: 20px;
-  margin: 8px 0;
-}
-
-.rich-text-editor .editor li {
-  margin: 4px 0;
-}
-
-.rich-text-editor .editor a {
-  color: #3b82f6;
-  text-decoration: underline;
-}
-
-.dark .rich-text-editor .editor a {
-  color: #60a5fa;
-}
-
-.rich-text-editor .editor img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin: 8px 0;
-}
-
-/* Fullscreen Editor Styles */
 .rich-text-editor.fullscreen {
   position: fixed;
   top: 0;
@@ -238,470 +81,60 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   right: 0;
   bottom: 0;
   z-index: 9999;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
+  background: white;
+  border-radius: 0;
+  border: none;
+}
+
+.rich-text-editor.fullscreen .editor {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.dark .rich-text-editor .editor {
+  color: #f1f5f9;
+}
+
+.dark .rich-text-editor .editor:empty:before {
+  color: #64748b;
+}
+
+.dark .rich-text-editor .toolbar {
+  background-color: #0f172a;
+  border-bottom-color: #1e293b;
+}
+
+.dark .rich-text-editor .toolbar button {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+.dark .rich-text-editor .toolbar button:hover {
+  background-color: #334155;
 }
 
 .dark .rich-text-editor.fullscreen {
-  background-color: #131a29;
-}
-
-/* Sticky Toolbar in Fullscreen */
-.rich-text-editor .toolbar.sticky {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background-color: #f9fafb;
-  border-bottom: 2px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.dark .rich-text-editor .toolbar.sticky {
-  background-color: #374151;
-  border-bottom-color: #4b5563;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Fullscreen Editor Content */
-.rich-text-editor.fullscreen .editor {
-  flex: 1;
-  min-height: calc(100vh - 60px);
-  max-height: calc(100vh - 60px);
-  overflow-y: auto;
-  padding: 20px;
-}
-
-/* Fullscreen Button Styles */
-.rich-text-editor .toolbar button[title*="Fullscreen"] {
-  background-color: #3b82f6;
-  color: white;
-  border-color: #2563eb;
-}
-
-.rich-text-editor .toolbar button[title*="Fullscreen"]:hover {
-  background-color: #2563eb;
-  border-color: #1d4ed8;
-}
-
-.dark .rich-text-editor .toolbar button[title*="Fullscreen"] {
-  background-color: #1e40af;
-  color: white;
-  border-color: #1e3a8a;
-}
-
-.dark .rich-text-editor .toolbar button[title*="Fullscreen"]:hover {
-  background-color: #1e3a8a;
-  border-color: #1e3a8a;
-}
-
-/* Exit Fullscreen Button */
-.rich-text-editor .toolbar button[title*="Exit"] {
-  background-color: #ef4444;
-  color: white;
-  border-color: #0060a9;
-}
-
-.rich-text-editor .toolbar button[title*="Exit"]:hover {
-  background-color: #0060a9;
-  border-color: #b91c1c;
-}
-
-.dark .rich-text-editor .toolbar button[title*="Exit"] {
-  background-color: #0060a9;
-  color: white;
-  border-color: #b91c1c;
-}
-
-.dark .rich-text-editor .toolbar button[title*="Exit"]:hover {
-  background-color: #b91c1c;
-  border-color: #991b1b;
-}
-
-/* Smooth transitions */
-.rich-text-editor .toolbar button {
-  transition: all 0.2s ease-in-out;
-}
-
-/* Focus styles for fullscreen */
-.rich-text-editor.fullscreen .editor:focus {
-  outline: none;
-  box-shadow: inset 0 0 0 2px #0060a9;
+  background: #0f172a;
 }
 
 .dark .rich-text-editor.fullscreen .editor:focus {
   box-shadow: inset 0 0 0 2px #60a5fa;
 }
 
-.subscription-name-badge {
-  max-width: 75px;
-  min-width: 75px;
-  border-radius: 4px;
-  text-align: center;
-}
-
-/* Mobile app container adjustments */
-@media (max-width: 768px) {
-
-  .appContainer {
-    margin-top: 0;
-    padding-bottom: 0;
-    /* Space for mobile bottom navigation */
-  }
-
-  .admin-mobile-content,
-  .mobile-content {
-    padding-top: 0px;
-  }
-
-  .quiz-fullscreen-mode .mobile-content {
-    padding-top: 0px;
-  }
-
-  .appContainer.has-navbar {
-    margin-top: 0;
-  }
-}
-
-/* When sidebar is open and user is admin, adjust main content */
-.appContainer.has-sidebar {
-  margin-left: 256px;
-  /* Width of sidebar */
-}
-
-.logo {
-  max-width: 55px;
-}
-
-/* Sidebar toggle button styles */
-.toggleMenu {
+.scroll-to-top-btn {
+  background-color: #58cc02;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 20px auto;
 }
 
-/* Admin route protection styles */
-.admin-access-denied {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  text-align: center;
-  padding: 2rem;
-}
-
-.admin-access-denied h2 {
-  color: #0060a9;
-  margin-bottom: 1rem;
-}
-
-.admin-access-denied p {
-  color: #6b7280;
-  margin-bottom: 1.5rem;
-}
-
-/* Responsive design for admin panel */
-@media (max-width: 768px) {
-  body {
-    padding-bottom: 48px;
-  }
-
-  .appContainer {
-    margin-top: 0;
-  }
-
-  .appContainer.has-sidebar {
-    margin-left: 0;
-  }
-
-  .sidebar {
-    width: 100%;
-    max-width: 280px;
-  }
-}
-
-/* Subscription Page Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(0, 96, 169, 0.3);
-  }
-
-  50% {
-    box-shadow: 0 0 30px rgba(0, 96, 169, 0.6);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-/* Apply animations to subscription page elements */
-.subscription-hero {
-  animation: fadeInUp 1s ease-out;
-}
-
-.subscription-plan {
-  animation: scaleIn 0.6s ease-out;
-}
-
-.subscription-plan:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.subscription-plan:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.subscription-plan:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.subscription-benefit {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-.subscription-benefit:nth-child(even) {
-  animation: slideInRight 0.8s ease-out;
-}
-
-/* Profile Page Animations */
-.profile-hero {
-  animation: fadeInUp 1s ease-out;
-}
-
-.profile-card {
-  animation: scaleIn 0.6s ease-out;
-}
-
-.profile-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.profile-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.profile-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.floating-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-.glow-animation {
-  animation: glow 2s ease-in-out infinite;
-}
-
-.shimmer-effect {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  background-size: 200px 100%;
-  animation: shimmer 2s infinite;
-}
-
-/* Enhanced hover effects */
-.hover-lift {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.hover-scale {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-/* Gradient text animation */
-.gradient-text-animation {
-  background: linear-gradient(-45deg, #4fa03d, #0060a9, #4fa03d, #0060a9);
-  background-size: 400% 400%;
-  animation: gradientShift 3s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Pulse animation for important elements */
-.pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-  }
-
-  50% {
-    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-  }
-}
-
-/* Stagger animation for lists */
-.stagger-item {
-  opacity: 0;
-  animation: staggerFadeIn 0.5s ease-out forwards;
-}
-
-.stagger-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.stagger-item:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.stagger-item:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.stagger-item:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.stagger-item:nth-child(5) {
-  animation-delay: 0.5s;
-}
-
-.stagger-item:nth-child(6) {
-  animation-delay: 0.6s;
-}
-
-@keyframes staggerFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Hero section animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDelay {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out;
-}
-
-.animate-fade-in-delay {
-  animation: fadeInDelay 1.2s ease-out;
-}
-
+/* Admin layout */
 .sidebar {
   width: 240px;
   display: flex;
@@ -714,174 +147,59 @@ body.quiz-fullscreen-mode .fixed.z-50 {
   overflow-x: hidden;
   overflow-y: hidden;
   transition: all ease-in-out 0.3s;
+  height: calc(100vh - 64px);
+  scrollbar-width: thin;
+  scrollbar-color: #4a5568 #2d3748;
 }
 
 .sidebar ul li a {
   padding: 10px 12px;
 }
 
-.authPage,
-.sidebar {
-  height: calc(100vh - 64px);
-}
-
-.adminContent {
-  height: auto;
-}
-
-.adminPanel {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  transition: all ease-in-out .3s;
-  padding-top: 0;
-}
-
-.adminPanel.showPanel {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-}
-
-.adminPanel.hidePanel {
-  width: 100%;
-  margin-left: 0;
-  transition: all ease-in-out .3s;
-}
-
-/* Main Content Styles for HomePage and other pages */
-/* When inside student-main-content, don't add extra margin - let parent handle it */
-.student-main-content .mainContent {
-  width: 100% !important;
-  margin-left: 0 !important;
-}
-
-/* For standalone pages (not in StudentLayout) */
-.mainContent {
-  width: 100%;
-  margin-left: 0;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-.mainContent.showPanel {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-}
-
-.mainContent.hidePanel {
-  margin-left: 0;
-  width: 100%;
-}
-
-/* Tablet styles for mainContent */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .mainContent.showPanel {
-    margin-left: 240px;
-    width: calc(100% - 240px);
-  }
-}
-
-/* Mobile styles for mainContent */
-@media (max-width: 768px) {
-
-  .mainContent.showPanel,
-  .mainContent.hidePanel {
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
-}
-
-/* Apply custom scrollbar styles directly to the .sidebar class */
 .sidebar::-webkit-scrollbar {
   width: 8px;
 }
 
-.adminContent {
-  padding: 1rem;
-}
-
 .sidebar::-webkit-scrollbar-track {
   background: #2d3748;
-  /* Tailwind gray-800 */
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   background-color: #4a5568;
-  /* Tailwind gray-700 */
   border-radius: 4px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
-/* Firefox support */
-.sidebar {
-  scrollbar-width: thin;
-  scrollbar-color: #4a5568 #2d3748;
-}
-
 .sidebar.hideSidebar {
   transform: translateX(-240px);
-  transition: all ease-in-out 0.3s;
 }
 
-.live_now:after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 50%;
-  background-color: #fff;
-  height: 5px;
-  width: 5px;
-  border-radius: 100%;
-  transform: translateY(-50%);
+.adminContent {
+  height: auto;
+  padding: 1rem;
 }
 
-@media (max-width:768px) {
-  .logo {
-    max-width: 50px;
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 48px;
   }
 
   .sidebar {
+    width: 100%;
+    max-width: 280px;
     top: 0;
     bottom: 0;
     z-index: 999;
+    height: auto;
   }
 
   header {
     z-index: 99;
   }
 
-  .authPage,
-  .sidebar,
   .adminContent {
     height: auto;
-  }
-
-  .adminContent {
     padding: 1rem 0rem;
-  }
-
-  .adminPanel {
-    width: calc(100%);
-    margin-left: 0;
-    padding-top: 0;
-  }
-
-  /* Login form responsive styles */
-  .login-form-container {
-    padding: 1rem;
-  }
-
-  .referral-code-input {
-    margin-bottom: 1.5rem;
-  }
-
-  .referral-code-input input {
-    font-size: 16px;
-    /* Prevents zoom on iOS */
-  }
-
-  .referral-code-help-text {
-    font-size: 11px;
-    line-height: 1.4;
   }
 }
