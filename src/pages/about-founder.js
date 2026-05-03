@@ -177,7 +177,7 @@ export default function AboutAuthor() {
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-8 uppercase tracking-tight relative z-10">Educational Philosophy</h2>
                         <div className="space-y-6 text-slate-400 text-md lg:text-xl font-bold leading-relaxed relative z-10">
                             <p>
-                                Sazid believes that effective exam preparation requires more than just access to questionsâ€”it requires a structured, progressive learning path that builds confidence and competence systematically.
+                                Sazid believes that effective exam preparation requires more than just access to questions, it requires a structured, progressive learning path that builds confidence and competence systematically.
                             </p>
                             <p>
                                 He advocates for a balanced approach that combines technology-enabled convenience with pedagogically sound learning principles. He personally oversees the editorial process and ensures all content meets rigorous standards.
