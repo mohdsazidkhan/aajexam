@@ -158,7 +158,7 @@ const QuizHistoryPage = () => {
                                           </button>
                                        ) : (
                                           <button
-                                             onClick={() => router.push(`/quiz/${quiz?._id}/attempt`)}
+                                             onClick={() => router.push(`/quiz/${quiz?.slug}/attempt`)}
                                              className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg"
                                           >
                                              Resume

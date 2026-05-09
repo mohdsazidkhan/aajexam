@@ -4,7 +4,7 @@ import { attachSlugHook } from '../lib/utils/slug';
 const practiceTestSchema = new mongoose.Schema({
     examPattern: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamPattern', required: true },
     title: { type: String, required: true, trim: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     totalMarks: { type: Number, required: true, min: 0 },
     duration: { type: Number, required: true, min: 1 },
     accessLevel: { type: String, enum: ['FREE', 'PRO'], default: 'FREE' },

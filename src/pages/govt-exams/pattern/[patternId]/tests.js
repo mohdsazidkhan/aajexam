@@ -99,12 +99,12 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       router.push('/subscription');
       return;
     }
-    router.push(`/govt-exams/test/${test.slug || test._id}/start`);
+    router.push(`/govt-exams/test/${test.slug}/start`);
   };
 
   const handleViewResult = (test) => {
     if (!test?.userAttempt?._id) return;
-    router.push(`/govt-exams/test/${test.slug || test._id}/result?attempt=${test.userAttempt._id}`);
+    router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`);
   };
 
   if (loading) {

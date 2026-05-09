@@ -3,7 +3,7 @@ import { attachSlugHook } from '../lib/utils/slug';
 
 const examNewsSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     content: { type: String, required: true },
     type: { type: String, enum: ['notification', 'admit_card', 'result', 'answer_key', 'syllabus', 'vacancy', 'date_change', 'other'], required: true },
     exam: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam' },

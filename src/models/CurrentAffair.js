@@ -5,7 +5,7 @@ const currentAffairSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     category: { type: String, enum: ['national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment', 'other'], required: true },
     title: { type: String, required: true, trim: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     content: { type: String, required: true },
     keyPoints: [{ type: String, trim: true }],
     exam: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam' },

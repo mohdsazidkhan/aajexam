@@ -418,7 +418,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Exams</h3>
                               </div>
                               {[...govtExams, ...govtExamCategories, ...examPatterns].slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item._id}`) : item.type === 'examCategory' ? router.push(`/govt-exams`) : router.push(`/govt-exams`)}
+                                 <div key={item._id} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : item.type === 'examCategory' ? router.push(`/govt-exams`) : router.push(`/govt-exams`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0">
                                        <ShieldCheck className="w-4 h-4 text-white" />
@@ -470,7 +470,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Quizzes</h3>
                               </div>
                               {quizzes.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/quiz/${item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/quiz/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0">
                                        <BrainCircuit className="w-4 h-4 text-white" />
@@ -503,7 +503,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Subjects</h3>
                               </div>
                               {subjects.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/subjects/${item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/subjects/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0">
                                        <BookMarked className="w-4 h-4 text-white" />
@@ -529,7 +529,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Topics</h3>
                               </div>
                               {topics.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/topics/${item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/topics/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0">
                                        <Layers className="w-4 h-4 text-white" />
@@ -602,7 +602,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Notes</h3>
                               </div>
                               {notes.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/notes/${item.slug || item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/notes/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0">
                                        <StickyNote className="w-4 h-4 text-white" />
@@ -674,7 +674,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Exam News</h3>
                               </div>
                               {examNews.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/exam-news/${item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/exam-news/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0">
                                        <Newspaper className="w-4 h-4 text-white" />
@@ -698,7 +698,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Current Affairs</h3>
                               </div>
                               {currentAffairs.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/current-affairs/${item._id}`)}
+                                 <div key={item._id} onClick={() => router.push(`/current-affairs/${item.slug}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0">
                                        <Globe className="w-4 h-4 text-white" />
@@ -898,7 +898,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Exam */}
                                     {(item.type === 'exam' || item.type === 'examCategory' || item.type === 'pattern') && (
-                                       <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item._id}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
@@ -909,7 +909,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Quiz */}
                                     {item.type === 'quiz' && (
-                                       <div onClick={() => router.push(`/quiz/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/quiz/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -927,7 +927,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Subject */}
                                     {item.type === 'subject' && (
-                                       <div onClick={() => router.push(`/subjects/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -938,7 +938,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Topic */}
                                     {item.type === 'topic' && (
-                                       <div onClick={() => router.push(`/topics/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -971,7 +971,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Note */}
                                     {item.type === 'note' && (
-                                       <div onClick={() => router.push(`/notes/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -1004,7 +1004,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Exam News */}
                                     {item.type === 'examNews' && (
-                                       <div onClick={() => router.push(`/exam-news/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -1015,7 +1015,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Current Affair */}
                                     {item.type === 'currentAffair' && (
-                                       <div onClick={() => router.push(`/current-affairs/${item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>

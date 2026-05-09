@@ -87,7 +87,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           ]),
           generateItemListSchema({
             name: `${categoryName} Exams`,
-            items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug || e._id}` }))
+            items: (exams || []).filter(e => e?.slug).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug}` }))
           })
         ]}
       />
@@ -139,7 +139,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
               transition={{ delay: idx * 0.05 }}
             >
               <div
-                onClick={() => router.push(`/govt-exams/exam/${exam.slug || exam._id}`)}
+                onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
                 className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
                 <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-duo-secondary border-b-8 border-primary-700">

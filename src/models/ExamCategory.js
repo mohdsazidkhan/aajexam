@@ -4,7 +4,7 @@ import { attachSlugHook } from '../lib/utils/slug';
 const examCategorySchema = new mongoose.Schema({
     name: { type: String, required: true, trim: true },
     type: { type: String, enum: ['Central', 'State'], required: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     description: { type: String, trim: true }
 }, { timestamps: true });
 

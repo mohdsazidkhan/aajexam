@@ -5,7 +5,7 @@ const examSchema = new mongoose.Schema({
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamCategory', required: true },
     name: { type: String, required: true, trim: true },
     code: { type: String, required: true, uppercase: true, trim: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     description: { type: String, trim: true },
     isActive: { type: Boolean, default: true },
     logo: { type: String }

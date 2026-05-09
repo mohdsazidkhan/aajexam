@@ -139,7 +139,7 @@ const CurrentAffairsPage = () => {
         {/* Affairs List */}
         <div className="space-y-3">
           {affairs.map((affair, i) => (
-            <Card key={affair._id || i} className="p-4 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => router.push(`/current-affairs/${affair.slug || affair._id}`)}>
+            <Card key={affair._id || i} className="p-4 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => router.push(`/current-affairs/${affair.slug}`)}>
               <div className="flex items-start gap-3">
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center gap-2">

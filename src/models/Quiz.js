@@ -3,7 +3,7 @@ import { attachSlugHook } from '../lib/utils/slug';
 
 const quizSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
-    slug: { type: String, lowercase: true, trim: true, index: true },
+    slug: { type: String, lowercase: true, trim: true },
     description: { type: String, trim: true, default: '' },
     applicableExams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam', required: true }],
     subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },

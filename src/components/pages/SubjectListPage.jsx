@@ -37,7 +37,7 @@ const SubjectListPage = () => {
 
         <div className="space-y-3">
           {filtered.map(sub => (
-            <div key={sub._id} onClick={() => router.push(`/subjects/${sub.slug || sub._id}`)}
+            <div key={sub._id} onClick={() => router.push(`/subjects/${sub.slug}`)}
               className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-indigo-500 transition-all shadow-sm">
               <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0">
                 <BookMarked className="w-4 lg:w-6 h-4 lg:h-6 text-white" />

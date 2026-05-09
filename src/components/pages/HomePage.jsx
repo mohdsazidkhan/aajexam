@@ -365,7 +365,7 @@ const HomePage = () => {
                            <GovtExamCard
                               key={item._id}
                               item={item}
-                              onClick={() => router.push(`/govt-exams/exam/${item._id}`)}
+                              onClick={() => router.push(`/govt-exams/exam/${item.slug}`)}
                            />
                         ))}
                      </div>
@@ -391,7 +391,7 @@ const HomePage = () => {
                            <QuizCard
                               key={item._id}
                               item={item}
-                              onClick={() => router.push(`/quiz/${item._id}`)}
+                              onClick={() => router.push(`/quiz/${item.slug}`)}
                            />
                         ))}
                      </div>
@@ -417,7 +417,7 @@ const HomePage = () => {
                            <SubjectCard
                               key={item._id}
                               item={item}
-                              onClick={() => router.push(`/subjects/${item._id}`)}
+                              onClick={() => router.push(`/subjects/${item.slug}`)}
                            />
                         ))}
                      </div>
@@ -443,7 +443,7 @@ const HomePage = () => {
                            <TopicCard
                               key={item._id}
                               item={item}
-                              onClick={() => router.push(`/topics/${item._id}`)}
+                              onClick={() => router.push(`/topics/${item.slug}`)}
                            />
                         ))}
                      </div>

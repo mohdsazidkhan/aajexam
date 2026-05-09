@@ -73,7 +73,7 @@ const ExamNewsPage = () => {
 
         <div className="space-y-3">
           {news.map((item, i) => (
-            <Card key={item._id || i} className="p-4 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => router.push(`/exam-news/${item.slug || item._id}`)}>
+            <Card key={item._id || i} className="p-4 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => router.push(`/exam-news/${item.slug}`)}>
               <div className="flex items-start gap-3">
                 {item.isPinned && <Pin className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />}
                 <div className="flex-1 space-y-1">

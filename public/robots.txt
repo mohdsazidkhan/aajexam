@@ -1,27 +1,69 @@
 # https://www.robotstxt.org/robotstxt.html
-# Allow all crawlers to access all content
+# Allow all crawlers to access public content. Login-gated dashboards,
+# admin pages, auth flows, attempt UIs and user-private routes are blocked.
+
 User-agent: *
 Allow: /
+
+# Admin & API
 Disallow: /admin/
 Disallow: /api/
+
+# Auth flows
 Disallow: /login
 Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
+
+# Authenticated user dashboards
 Disallow: /home
 Disallow: /profile
+Disallow: /profile/
 Disallow: /settings
 Disallow: /notifications
 Disallow: /rewards
+Disallow: /bookmarks
+Disallow: /my-questions
+Disallow: /my-reels
+Disallow: /my-analytics
+Disallow: /payment-history
+Disallow: /readiness
+Disallow: /revision
+Disallow: /streak
+Disallow: /study-plan
+
+# History pages (user-private)
 Disallow: /exam-history
 Disallow: /quiz-history
 Disallow: /referral-history
-Disallow: /my-analytics
+
+# Quiz / test attempt + result UIs (login required)
 Disallow: /attempt-quiz
 Disallow: /quiz-result
+Disallow: /quiz/*/attempt
+Disallow: /govt-exams/test/
+
+# Subscription confirmation pages (transactional)
 Disallow: /subscription/payu-success
 Disallow: /subscription/payu-failure
+
+# Internal user profile aliases
 Disallow: /u/
+
+# Share pages (transactional, ephemeral)
+Disallow: /share/
+
+# /exams listing now 301-redirects to /govt-exams (canonical hub).
+# We exclude the sub-tree from crawling to save crawl budget while the
+# 301s propagate.
+Disallow: /exams/
+
+# Search results (low-quality, query-driven, often thin)
+Disallow: /search
+Disallow: /search?
+
+# Misc test/dev pages
+Disallow: /test
 
 # Sitemap location
 Sitemap: https://aajexam.com/sitemap.xml

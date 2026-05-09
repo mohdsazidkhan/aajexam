@@ -43,7 +43,7 @@ export default function GovtExamsPreparation({ initialData }) {
                   ]),
                   generateItemListSchema({
                     name: 'Government Exam Preparation Hub',
-                    items: (exams || []).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug || e._id}` }))
+                    items: (exams || []).filter(e => e?.slug).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug}` }))
                   })
                 ]}
             />
@@ -93,7 +93,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                                 </p>
                                             </div>
                                             <button
-                                                onClick={() => router.push(`/exams/${exam.slug || exam.code || exam._id}`)}
+                                                onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
                                                 className="w-full bg-primary-500 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-duo-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0"
                                             >
                                                 Start Practice <FaChartLine className="ml-2" />
