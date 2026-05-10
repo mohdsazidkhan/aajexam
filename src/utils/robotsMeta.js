@@ -12,9 +12,19 @@ const toBool = (v, def = false) => {
     return def;
 };
 
+// Score is on a 0–1 scale. Operators sometimes set the env var as a percentage
+// (e.g. "60") thinking it means 60% — normalize that to 0.60 so the gate
+// doesn't silently reject every page.
+const normalizeThreshold = (raw) => {
+    const n = parseFloat(raw);
+    if (!Number.isFinite(n)) return 0.5;
+    if (n > 1) return Math.min(1, n / 100);
+    return Math.max(0, n);
+};
+
 const ENV = {
     enabled: toBool(process.env.QUIZ_NOINDEX_ENABLED ?? 'true'),
-    threshold: parseFloat(process.env.QUIZ_CONTENT_SCORE_THRESHOLD ?? '0.5'),
+    threshold: normalizeThreshold(process.env.QUIZ_CONTENT_SCORE_THRESHOLD ?? '0.5'),
     minIntroWords: parseInt(process.env.QUIZ_MIN_INTRO_WORDS ?? '300', 10),
     safeMode: toBool(process.env.QUIZ_SAFE_MODE ?? 'true'),
 };
@@ -88,7 +98,8 @@ function computeContentScore(quiz = {}, opts = {}) {
  */
 function getRobotsMeta(quiz = {}, opts = {}) {
     const enabled = opts.enabled ?? ENV.enabled;
-    const threshold = typeof opts.threshold === 'number' ? opts.threshold : ENV.threshold;
+    const rawThreshold = typeof opts.threshold === 'number' ? opts.threshold : ENV.threshold;
+    const threshold = rawThreshold > 1 ? Math.min(1, rawThreshold / 100) : Math.max(0, rawThreshold);
     const safeMode = opts.safeMode ?? ENV.safeMode;
 
     // Global off
