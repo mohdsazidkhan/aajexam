@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const CustomEditor = ({
   value = '',
@@ -16,6 +17,11 @@ const CustomEditor = ({
 }) => {
   const editorRef = useRef(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Rich text editor functions
   const execCommand = (command, value = null) => {
@@ -107,12 +113,12 @@ const CustomEditor = ({
     onBlur?.(e);
   };
 
-  // Update content when value prop changes
+  // Update content when value prop changes (or when fullscreen toggle re-mounts the editor node)
   useEffect(() => {
     if (editorRef.current && editorRef.current.innerHTML !== value) {
       editorRef.current.innerHTML = value;
     }
-  }, [value]);
+  }, [value, isFullscreen]);
 
   // Define toolbar button configurations
   const getToolbarButtons = () => {
@@ -243,11 +249,17 @@ const CustomEditor = ({
     </>
   );
 
-  if (isFullscreen) {
+  if (isFullscreen && mounted) {
     return (
-      <div className="rich-text-editor fullscreen">
-        {editorContent}
-      </div>
+      <>
+        <div className={`rich-text-editor border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden ${className}`} style={{ minHeight }} />
+        {createPortal(
+          <div className="rich-text-editor fullscreen">
+            {editorContent}
+          </div>,
+          document.body
+        )}
+      </>
     );
   }
 
