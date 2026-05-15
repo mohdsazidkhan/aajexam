@@ -103,7 +103,7 @@ export default function UserReferralDetail() {
 
     const getRewardTypeLabel = (type) => {
         const labels = {
-            'plan99': '₹99 Plan Reward',
+            'plan99': 'â‚¹99 Plan Reward',
         };
         return labels[type] || type.toUpperCase();
     };
@@ -173,7 +173,7 @@ export default function UserReferralDetail() {
                                 <div>
                                     <div className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">{user?.name}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">{user?.email}</div>
-                                    <div className="text-[8px] font-black text-indigo-500 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
+                                    <div className="text-[8px] font-black text-primary-500 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ export default function UserReferralDetail() {
                     {/* Metric Overview */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                         {[
-                            { label: 'Total Earnings', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
+                            { label: 'Total Earnings', value: `â‚¹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
                             { label: 'People Referred', value: user?.referralCount || 0, icon: Users, color: 'indigo' },
                             { label: 'Total Rewards', value: user?.referralRewards?.length || 0, icon: Award, color: 'amber' },
                             { label: 'Referred By', value: user?.referredBy || 'Direct Signup', icon: Zap, color: 'rose' }
@@ -221,7 +221,7 @@ export default function UserReferralDetail() {
                                 <tier.icon className="w-5 h-5" />
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
-                            <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
+                            <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">â‚¹{tier.amount.toLocaleString()}</div>
                             <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                         </div>
                     ))}
@@ -320,10 +320,10 @@ export default function UserReferralDetail() {
                                                 </div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                <div className="text-sm font-black text-emerald-500 tabular-nums italic">+₹{tx.amount}</div>
+                                                <div className="text-sm font-black text-emerald-500 tabular-nums italic">+â‚¹{tx.amount}</div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>
+                                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">â‚¹{tx.balance?.toLocaleString() || 0}</div>
                                             </td>
                                         </motion.tr>
                                     ))}

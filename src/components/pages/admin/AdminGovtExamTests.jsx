@@ -208,7 +208,7 @@ const AdminGovtExamTests = () => {
                   <div className="space-y-4">
 
                      <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                        PRACTICE <span className="text-indigo-600">TESTS</span>
+                        PRACTICE <span className="text-primary-600">TESTS</span>
                      </h1>
                      <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
                         Create and manage practice tests for exam patterns.
@@ -236,7 +236,7 @@ const AdminGovtExamTests = () => {
                         whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                         onClick={handleCreate}
                         disabled={selectedPattern === 'all'}
-                        className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedPattern === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-indigo-600 text-white shadow-indigo-600/20'}`}
+                        className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedPattern === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-600 text-white shadow-primary-600/20'}`}
                      >
                         <Plus className="w-4 h-4" /> ADD TEST
                      </motion.button>
@@ -264,21 +264,21 @@ const AdminGovtExamTests = () => {
             <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 font-outfit text-[10px] font-black uppercase tracking-widest">
                   <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                     <Compass className="w-4 h-4 text-indigo-600" />
+                     <Compass className="w-4 h-4 text-primary-600" />
                      <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL CATEGORIES</option>
                         {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
                      </select>
                   </div>
                   <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                     <Activity className="w-4 h-4 text-indigo-600" />
+                     <Activity className="w-4 h-4 text-primary-600" />
                      <select value={selectedExam} onChange={(e) => handleExamChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL EXAMS</option>
                         {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.name.toUpperCase()}</option>)}
                      </select>
                   </div>
                   <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                     <Binary className="w-4 h-4 text-indigo-600" />
+                     <Binary className="w-4 h-4 text-primary-600" />
                      <select value={selectedPattern} onChange={(e) => handlePatternChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL PATTERNS</option>
                         {patterns.map(p => <option key={p._id} value={p._id}>{p.title.toUpperCase()}</option>)}
@@ -316,7 +316,7 @@ const AdminGovtExamTests = () => {
                                     <motion.tr key={test._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all">
                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
                                           <div className="flex items-center gap-4">
-                                             <div className="p-3 bg-slate-100 dark:bg-white/10 rounded-xl group-hover:bg-indigo-500/10 group-hover:text-indigo-600 transition-colors shadow-inner"><FileText className="w-5 h-5" /></div>
+                                             <div className="p-3 bg-slate-100 dark:bg-white/10 rounded-xl group-hover:bg-primary-500/10 group-hover:text-primary-600 transition-colors shadow-inner"><FileText className="w-5 h-5" /></div>
                                              <div>
                                                 <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{test.title}</div>
                                                 <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">ID: {test._id.slice(-8)}</div>
@@ -326,7 +326,7 @@ const AdminGovtExamTests = () => {
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.questions?.length || 0} Questions</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.duration} Min</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                          <div className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-indigo-500/10 text-indigo-600 border-indigo-500/20'}`}>
+                                          <div className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                                              {test.isFree ? <Zap className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
                                              {test.isFree ? 'Public' : 'Premium'}
                                           </div>
@@ -351,7 +351,7 @@ const AdminGovtExamTests = () => {
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-500" /></div>
-                                    <div className={`px-4 py-1 rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-indigo-500/10 text-indigo-600 border-indigo-500/20'}`}>
+                                    <div className={`px-4 py-1 rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                                        {test.isFree ? 'FREE' : 'PREMIUM'}
                                     </div>
                                  </div>
@@ -412,9 +412,9 @@ const AdminGovtExamTests = () => {
 
                         <div className="p-3 lg:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                            <div className="flex items-center gap-4">
-                              <div className="p-3 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-600/20"><Settings className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-lg shadow-primary-600/20"><Settings className="w-6 h-6" /></div>
                               <div>
-                                 <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-indigo-600">Test</span></h2>
+                                 <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
                               </div>
                            </div>
@@ -464,9 +464,9 @@ const AdminGovtExamTests = () => {
                                              </div>
                                           </div>
                                           <label className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 cursor-pointer transition-all hover:bg-white dark:hover:bg-white/10 group shadow-inner">
-                                             <input type="checkbox" checked={formData.isFree} onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })} className="w-6 h-6 rounded-lg text-indigo-600 border-2 border-slate-300 transition-all cursor-pointer" />
+                                             <input type="checkbox" checked={formData.isFree} onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 border-2 border-slate-300 transition-all cursor-pointer" />
                                              <div>
-                                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest group-hover:text-indigo-600 transition-colors leading-none mb-1">Free Access</div>
+                                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest group-hover:text-primary-600 transition-colors leading-none mb-1">Free Access</div>
                                                 <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none">{formData.isFree ? 'This test is free for all students' : 'Students need a subscription to access'}</div>
                                              </div>
                                           </label>
@@ -501,7 +501,7 @@ const AdminGovtExamTests = () => {
                                  <div className="space-y-10">
                                     <section className="p-3 lg:p-8 bg-slate-50/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 lg:mb-8 flex items-center gap-3">
-                                          <Activity className="w-4 h-4 text-indigo-600" /> Add a Question
+                                          <Activity className="w-4 h-4 text-primary-600" /> Add a Question
                                        </h3>
                                        <div className="space-y-3 lg:space-y-6">
                                           <div className="space-y-2">
@@ -551,7 +551,7 @@ const AdminGovtExamTests = () => {
 
                                     <div className="pt-10 flex gap-3 lg:gap-6">
                                        <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-inner">Cancel</button>
-                                       <button type="submit" className="flex-[2] py-5 bg-indigo-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl shadow-indigo-600/20 flex items-center justify-center gap-3">
+                                       <button type="submit" className="flex-[2] py-5 bg-primary-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl shadow-primary-600/20 flex items-center justify-center gap-3">
                                           <CheckCircle2 className="w-5 h-5" /> {editingTest ? 'Save Changes' : 'Create Test'}
                                        </button>
                                     </div>

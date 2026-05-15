@@ -65,7 +65,7 @@ const AdminReelAnalytics = () => {
                   <StatCard icon={TrendingUp} label="Pending" value={data.overview.pendingReels} delay={0.1} color="bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400" />
                   <StatCard icon={Eye} label="Total Views" value={data.overview.totalViews} delay={0.15} color="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" />
                   <StatCard icon={Heart} label="Total Likes" value={data.overview.totalLikes} delay={0.2} color="bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400" />
-                  <StatCard icon={MessageCircle} label="Total Answers" value={data.overview.totalAnswers} delay={0.25} color="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400" />
+                  <StatCard icon={MessageCircle} label="Total Answers" value={data.overview.totalAnswers} delay={0.25} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
                 </div>
 
                 {/* Type Breakdown */}

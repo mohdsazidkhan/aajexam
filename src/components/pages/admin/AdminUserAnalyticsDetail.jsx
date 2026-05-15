@@ -18,12 +18,12 @@ import {
 // --- Professional Metric Card ---
 function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
     const colors = {
-        primary: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
-        secondary: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
+        primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+        secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
         emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
         amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
         rose: "text-rose-500 bg-rose-500/10 border-rose-500/20",
-        purple: "text-purple-500 bg-purple-500/10 border-purple-500/20",
+        purple: "text-primary-500 bg-primary-500/10 border-primary-500/20",
         cyan: "text-cyan-500 bg-cyan-500/10 border-cyan-500/20",
     };
 
@@ -32,7 +32,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-indigo-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -41,7 +41,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
             </div>
             <div className="space-y-1">
-                <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-indigo-500 transition-colors">
+                <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-500 transition-colors">
                     {value}
                 </div>
                 {sub && (
@@ -50,7 +50,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
                     </div>
                 )}
             </div>
-            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-colors" />
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary-500/5 rounded-full blur-2xl group-hover:bg-primary-500/10 transition-colors" />
         </motion.div>
     );
 }
@@ -92,7 +92,7 @@ const AdminUserAnalyticsDetail = () => {
     const userData = d.user || {};
 
     return (
-        <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
+        <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30">
             <Sidebar />
             <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit adminContent">
 
@@ -102,7 +102,7 @@ const AdminUserAnalyticsDetail = () => {
                     className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <PieChart className="w-64 h-64 text-indigo-500 -rotate-12" />
+                        <PieChart className="w-64 h-64 text-primary-500 -rotate-12" />
                     </div>
 
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
@@ -112,15 +112,15 @@ const AdminUserAnalyticsDetail = () => {
                                     whileHover={{ scale: 1.1, x: -5 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => router.push('/admin/analytics/users-overview')}
-                                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl hover:text-indigo-500 transition-colors"
+                                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl hover:text-primary-500 transition-colors"
                                 >
                                     <ArrowLeft className="w-6 h-6" />
                                 </motion.button>
                                 <div className="flex items-center gap-3">
-                                    <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                                         <LayoutDashboard className="w-6 h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">User Analytics // Performance Analysis</span>
+                                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">User Analytics // Performance Analysis</span>
                                 </div>
                             </div>
 
@@ -134,9 +134,9 @@ const AdminUserAnalyticsDetail = () => {
                                         <Mail className="w-4 h-4 text-slate-400" />
                                         <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{userData.email || 'N/A'}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
-                                        <TrendingUp className="w-4 h-4 text-indigo-500" />
-                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
+                                    <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
+                                        <TrendingUp className="w-4 h-4 text-primary-500" />
+                                        <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                     </div>
                                 </div>
                             )}
@@ -175,15 +175,15 @@ const AdminUserAnalyticsDetail = () => {
                                 <motion.div
                                     animate={{ rotate: 360 }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                    className="w-24 h-24 border-4 border-indigo-500/20 rounded-lg lg:rounded-[2rem]"
+                                    className="w-24 h-24 border-4 border-primary-500/20 rounded-lg lg:rounded-[2rem]"
                                 />
                                 <motion.div
                                     animate={{ rotate: -360 }}
                                     transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                    className="absolute inset-0 border-t-4 border-indigo-500 rounded-lg lg:rounded-[2rem]"
+                                    className="absolute inset-0 border-t-4 border-primary-500 rounded-lg lg:rounded-[2rem]"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <Cpu className="w-8 h-8 text-indigo-500 animate-pulse" />
+                                    <Cpu className="w-8 h-8 text-primary-500 animate-pulse" />
                                 </div>
                             </div>
                             <div className="text-center">
@@ -231,11 +231,11 @@ const AdminUserAnalyticsDetail = () => {
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-6">
-                                    <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
-                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
-                                    <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
-                                    <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
-                                    <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />
+                                    <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`â‚¹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
+                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`â‚¹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
+                                    <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`â‚¹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
+                                    <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`â‚¹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
+                                    <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`â‚¹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />
                                 </div>
                             </motion.section>
 
@@ -247,7 +247,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-indigo-500/10 text-indigo-600 rounded-2xl shadow-inner">
+                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-inner">
                                         <Trophy className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -316,7 +316,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-purple-500/10 text-purple-600 rounded-2xl shadow-inner">
+                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-inner">
                                         <Book className="w-6 h-6" />
                                     </div>
                                     <div>

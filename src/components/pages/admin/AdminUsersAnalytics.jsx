@@ -210,10 +210,10 @@ const AdminUsersAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest italic">Student</span>
+                                                            <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest italic">Student</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: '0%' }} /></div>
                                                         </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
+                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-emerald-500 tabular-nums italic text-sm">â‚¹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right"><motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-xl hover:bg-primary-500 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button></td>
                                                     </motion.tr>
                                                 ))}
@@ -235,11 +235,11 @@ const AdminUsersAnalytics = () => {
                                                 <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                                                     <div className="flex justify-between items-center mb-4">
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Earnings</div>
-                                                        <div className="text-md font-black text-emerald-500 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                        <div className="text-md font-black text-emerald-500 tabular-nums italic">â‚¹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     </div>
                                                     <div className="flex justify-between items-center">
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Status</div>
-                                                        <span className="text-indigo-500 text-sm italic tracking-tighter">Student</span>
+                                                        <span className="text-primary-500 text-sm italic tracking-tighter">Student</span>
                                                     </div>
                                                 </div>
                                                 <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Details</button>
@@ -264,7 +264,7 @@ const AdminUsersAnalytics = () => {
                                                 </div>
                                                 <div className="flex items-center gap-3 lg:gap-8 border-t md:border-t-0 pt-4 md:pt-0">
                                                     <div className="text-right">
-                                                        <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                        <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">â‚¹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Earnings</div>
                                                     </div>
                                                     <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-2xl shadow-sm"><ArrowUpRight className="w-5 h-5" /></motion.button>

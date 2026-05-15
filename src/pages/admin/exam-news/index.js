@@ -44,7 +44,7 @@ const AdminExamNews = () => {
   const typeColor = (t) => {
     if (t === 'result' || t === 'answer_key') return 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
     if (t === 'admit_card') return 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400';
-    if (t === 'vacancy') return 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400';
+    if (t === 'vacancy') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
     if (t === 'date_change') return 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400';
     return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
   };
@@ -129,7 +129,7 @@ const AdminExamNews = () => {
               <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Click &quot;Add New&quot; to create one</p>
             </Card>
           ) : viewMode === 'table' ? (
-            /* ── Table View ── */
+            /* â”€â”€ Table View â”€â”€ */
             <Card className="!p-0 overflow-hidden" padded={false}>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -158,7 +158,7 @@ const AdminExamNews = () => {
                         <td className="px-4 py-3">
                           <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${typeColor(n.type)}`}>{n.type?.replace('_', ' ')}</span>
                         </td>
-                        <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{n.examName || '—'}</td>
+                        <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{n.examName || 'â€”'}</td>
                         <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{new Date(n.createdAt).toLocaleDateString('en-IN')}</td>
                         <td className="px-4 py-3 text-center">
                           <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1"><Eye className="w-3 h-3" />{n.views || 0}</span>
@@ -177,7 +177,7 @@ const AdminExamNews = () => {
               </div>
             </Card>
           ) : viewMode === 'grid' ? (
-            /* ── Grid View ── */
+            /* â”€â”€ Grid View â”€â”€ */
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex flex-col justify-between gap-3">
@@ -208,7 +208,7 @@ const AdminExamNews = () => {
               ))}
             </div>
           ) : (
-            /* ── List View ── */
+            /* â”€â”€ List View â”€â”€ */
             <div className="space-y-2">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex items-center gap-4">

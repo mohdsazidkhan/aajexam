@@ -214,7 +214,7 @@ const AdminReferralAnalytics = () => {
                         {/* Summary Visualization */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4">
                             {[
-                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-indigo-500", shadow: "shadow-indigo-500/20" },
+                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-emerald-500", shadow: "shadow-emerald-500/20" },
                                 { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-rose-500", shadow: "shadow-rose-500/20" },
                                 { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-amber-500", shadow: "shadow-amber-500/20" }
@@ -452,7 +452,7 @@ const AdminReferralAnalytics = () => {
                                                             </div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                            <div className="text-xl font-black italic tracking-tighter text-indigo-500 tabular-nums">{user.totalReferrals}</div>
+                                                            <div className="text-xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.totalReferrals}</div>
                                                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">All Time</div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">

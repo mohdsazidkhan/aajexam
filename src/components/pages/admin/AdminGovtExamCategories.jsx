@@ -162,7 +162,7 @@ const AdminGovtExamCategories = () => {
             <div className="space-y-4">
 
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                GOVT <span className="text-indigo-500">EXAMS</span> <span className="text-slate-300 dark:text-white ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
+                GOVT <span className="text-primary-500">EXAMS</span> <span className="text-slate-300 dark:text-white ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
               </h1>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Organize government exams by category and jurisdiction.</p>
             </div>
@@ -237,14 +237,14 @@ const AdminGovtExamCategories = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          className="group hover:bg-indigo-500/5 transition-all"
+                          className="group hover:bg-primary-500/5 transition-all"
                         >
                           <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight text-lg">
                             {category.name}
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central"
-                              ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20 shadow-indigo-500/10"
+                              ? "bg-primary-500/10 text-primary-500 border-primary-500/20 shadow-primary-500/10"
                               : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-emerald-500/10"}`}>
                               {category.type === "Central" ? <Globe className="w-3 h-3" /> : <Map className="w-3 h-3" />}
                               {category.type?.toUpperCase()}
@@ -282,16 +282,16 @@ const AdminGovtExamCategories = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-indigo-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
                     >
-                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white shadow-indigo-500/20' : 'bg-emerald-500 border-emerald-200 text-white shadow-emerald-500/20'}`}>
+                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20' : 'bg-emerald-500 border-emerald-200 text-white shadow-emerald-500/20'}`}>
                         {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
                       </div>
 
                       <div className="flex-1 text-center lg:text-left space-y-2">
                         <div className="flex flex-col lg:flex-row items-center gap-4">
                           <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{category.name}</h3>
-                          <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500 border-indigo-100 dark:border-indigo-800' : 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500 border-emerald-100 dark:border-emerald-800'}`}>
+                          <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 border-primary-100 dark:border-primary-800' : 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500 border-emerald-100 dark:border-emerald-800'}`}>
                             {category.type?.toUpperCase()}
                           </div>
                         </div>
@@ -326,12 +326,12 @@ const AdminGovtExamCategories = () => {
                       transition={{ delay: i * 0.05 }}
                       className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                     >
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-4 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-indigo-500 border-indigo-200 text-white' : 'bg-emerald-500 border-emerald-200 text-white'}`}>
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-4 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white' : 'bg-emerald-500 border-emerald-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
                       </div>
 
                       <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{category.name}</h3>
-                      <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
+                      <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>
                         {category.type?.toUpperCase()}
                       </div>
 

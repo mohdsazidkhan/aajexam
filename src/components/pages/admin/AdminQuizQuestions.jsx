@@ -145,7 +145,7 @@ const AdminQuizQuestions = () => {
                   </div>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">{q.exam?.name}</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600">{q.subject?.name}</span>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-100 text-primary-600">{q.subject?.name}</span>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-600">{q.topic?.name}</span>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-green-100 text-green-600' : q.difficulty === 'hard' ? 'bg-red-100 text-red-600' : 'bg-yellow-100 text-yellow-600'}`}>{q.difficulty}</span>
                   </div>

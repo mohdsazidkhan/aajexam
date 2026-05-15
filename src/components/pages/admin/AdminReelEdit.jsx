@@ -22,7 +22,7 @@ const TYPE_LABELS = {
 
 const TYPE_COLORS = {
   question: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-  fact: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+  fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
   tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
   poll: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
@@ -394,8 +394,8 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-purple-200 dark:border-purple-800 p-5 space-y-4">
-                  <h3 className="font-bold text-purple-700 dark:text-purple-400">Fact Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-4">
+                  <h3 className="font-bold text-primary-700 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
                     <input type="text" value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} />
@@ -537,7 +537,7 @@ const AdminReelEdit = () => {
                 </div>
               )}
 
-              {/* Audio & Duration — Instagram Style */}
+              {/* Audio & Duration â€” Instagram Style */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -580,7 +580,7 @@ const AdminReelEdit = () => {
                       </div>
                       {audioFile === a.value && (
                         <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
-                          <span className="text-white text-[10px] font-bold">✓</span>
+                          <span className="text-white text-[10px] font-bold">âœ“</span>
                         </div>
                       )}
                     </div>

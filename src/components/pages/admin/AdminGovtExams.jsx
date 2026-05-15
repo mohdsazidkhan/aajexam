@@ -146,7 +146,7 @@ const AdminGovtExams = () => {
         <div className="space-y-4">
 
           <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-            GOVT <span className="text-indigo-600">EXAMS</span>
+            GOVT <span className="text-primary-600">EXAMS</span>
           </h1>
           <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
             Create and manage government exam content.
@@ -173,7 +173,7 @@ const AdminGovtExams = () => {
           <motion.button
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             onClick={handleCreate}
-            className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center justify-center gap-3"
+            className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
           >
             <Plus className="w-4 h-4" /> ADD EXAM
           </motion.button>
@@ -203,18 +203,18 @@ const AdminGovtExams = () => {
     <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
         <div className="flex-1 relative group w-full">
-          <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+          <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
           <input
             type="text"
             placeholder="Search by exam name or code..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-14 pr-8 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-lg"
+            className="w-full pl-14 pr-8 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-lg"
           />
         </div>
 
         <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto lg:min-w-[280px]">
-          <Layers className="w-4 h-4 text-indigo-600" />
+          <Layers className="w-4 h-4 text-primary-600" />
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -270,7 +270,7 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                         <div className="flex justify-end gap-3">
                           <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-indigo-500/10 text-indigo-600 rounded-xl border border-indigo-500/20">
+                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-600 rounded-xl border border-primary-500/20">
                               <Zap className="w-4 h-4" />
                             </motion.button>
                           </Link>
@@ -303,7 +303,7 @@ const AdminGovtExams = () => {
                       <Building2 className="w-8 h-8" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">{exam.code}</div>
+                      <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{exam.code}</div>
                       <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{exam.name}</h3>
                     </div>
                   </div>
@@ -316,7 +316,7 @@ const AdminGovtExams = () => {
                   </div>
                   <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`} className="flex-1">
-                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-indigo-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-indigo-600/10">Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-primary-600/10">Patterns</motion.button>
                     </Link>
                     <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-primary-500 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-xl hover:text-rose-500 transition-colors"><Trash2 className="w-5 h-5" /></motion.button>

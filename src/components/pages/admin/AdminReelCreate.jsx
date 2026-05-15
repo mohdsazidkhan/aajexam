@@ -21,7 +21,7 @@ const TYPES = [
 
 const COLOR_MAP = {
   blue: 'border-blue-500 bg-blue-50 dark:bg-blue-950/30',
-  purple: 'border-purple-500 bg-purple-50 dark:bg-purple-950/30',
+  purple: 'border-primary-500 bg-primary-50 dark:bg-primary-900/30',
   amber: 'border-amber-500 bg-amber-50 dark:bg-amber-950/30',
   red: 'border-red-500 bg-red-50 dark:bg-red-950/30',
   green: 'border-green-500 bg-green-50 dark:bg-green-950/30',
@@ -277,7 +277,7 @@ const AdminReelCreate = () => {
                 <div className="flex items-center gap-3">
                   <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
                     type === 'question' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' :
-                    type === 'fact' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' :
+                    type === 'fact' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400' :
                     type === 'tip' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :
                     type === 'current_affairs' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' :
                     'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
@@ -382,8 +382,8 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'fact' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-purple-200 dark:border-purple-800 p-5 space-y-4">
-                    <h3 className="font-bold text-purple-700 dark:text-purple-400">Fact Details</h3>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-4">
+                    <h3 className="font-bold text-primary-700 dark:text-primary-400">Fact Details</h3>
                     <div>
                       <label className={labelClass}>Highlight Text (big centered text)</label>
                       <input type="text" value={highlightText} onChange={e => setHighlightText(e.target.value)} placeholder="e.g. 5 August 2019" className={inputClass} />
@@ -407,7 +407,7 @@ const AdminReelCreate = () => {
                     <h3 className="font-bold text-amber-700 dark:text-amber-400">Trick / Shortcut Details</h3>
                     <div>
                       <label className={labelClass}>Formula</label>
-                      <input type="text" value={formula} onChange={e => setFormula(e.target.value)} placeholder="e.g. CP × 1.25 = SP" className={inputClass} />
+                      <input type="text" value={formula} onChange={e => setFormula(e.target.value)} placeholder="e.g. CP Ã— 1.25 = SP" className={inputClass} />
                     </div>
                     <div>
                       <label className={labelClass}>Steps</label>
@@ -424,7 +424,7 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Try Yourself Examples</label>
                       {tryYourself.map((t, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45Â² = 2025" className={`flex-1 ${inputClass}`} />
                           <button type="button" onClick={() => removeArrayItem(setTryYourself, tryYourself, i)} className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -500,7 +500,7 @@ const AdminReelCreate = () => {
                   </div>
                 )}
 
-                {/* Audio & Duration — Instagram Style */}
+                {/* Audio & Duration â€” Instagram Style */}
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -543,7 +543,7 @@ const AdminReelCreate = () => {
                         </div>
                         {audioFile === a.value && (
                           <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
-                            <span className="text-white text-[10px] font-bold">✓</span>
+                            <span className="text-white text-[10px] font-bold">âœ“</span>
                           </div>
                         )}
                       </div>

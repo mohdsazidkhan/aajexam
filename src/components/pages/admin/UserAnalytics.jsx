@@ -247,9 +247,9 @@ const UserAnalytics = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="w-28 h-28 border-4 border-indigo-500/10 border-t-indigo-500 rounded-full shadow-2xl"
+            className="w-28 h-28 border-4 border-primary-500/10 border-t-primary-500 rounded-full shadow-2xl"
           />
-          <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-indigo-500" />
+          <Activity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
         </div>
         <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading user analytics...</div>
       </div>
@@ -270,13 +270,13 @@ const UserAnalytics = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl">
+                <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                   <Activity className="w-6 h-6" />
                 </div>
-                <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
+                <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Admin / User Analytics</span>
               </div>
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                User <span className="text-indigo-600">Analytics</span>
+                User <span className="text-primary-600">Analytics</span>
               </h1>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth and subscription trends at a glance.</p>
             </div>
@@ -284,7 +284,7 @@ const UserAnalytics = () => {
             <div className="flex flex-wrap items-center gap-4">
               <button
                 onClick={handleExport}
-                className="px-4 lg:px-8 py-4 bg-indigo-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
+                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
               >
                 <Download className="w-4 h-4" /> Export CSV
               </button>
@@ -295,7 +295,7 @@ const UserAnalytics = () => {
         {/* Controller Bar */}
         <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl">
+            <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
               <Filter className="w-5 h-5" />
             </div>
             <div>
@@ -311,7 +311,7 @@ const UserAnalytics = () => {
                 name="period"
                 value={filters.period}
                 onChange={handleFilterChange}
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-indigo-500/30 transition-all font-outfit"
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
               >
                 <option value="week">Past 7 Days</option>
                 <option value="month">Past 30 Days</option>

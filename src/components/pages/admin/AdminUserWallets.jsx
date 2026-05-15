@@ -94,7 +94,7 @@ const AdminUserWallets = () => {
   };
 
   const content = (
-    <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
       <div className="max-w-[1600px] mx-auto p-4 lg:p-12">
         {/* Header */}
         <motion.div
@@ -103,7 +103,7 @@ const AdminUserWallets = () => {
           className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Wallet className="w-64 h-64 text-indigo-500 -rotate-12" />
+            <Wallet className="w-64 h-64 text-primary-500 -rotate-12" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
@@ -111,7 +111,7 @@ const AdminUserWallets = () => {
               
 
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                STUDENT <span className="text-indigo-600">WALLETS</span>
+                STUDENT <span className="text-primary-600">WALLETS</span>
               </h1>
 
               <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
@@ -137,14 +137,14 @@ const AdminUserWallets = () => {
         {/* Search + Controls */}
         <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
           <div className="relative group/search w-full lg:w-96">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
               placeholder="Search by username..."
-              className="w-full pl-14 pr-8 py-4 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
+              className="w-full pl-14 pr-8 py-4 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
             />
           </div>
 
@@ -160,7 +160,7 @@ const AdminUserWallets = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode(mode.id)}
-                  className={`flex-1 lg:flex-none p-3 rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-indigo-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                  className={`flex-1 lg:flex-none p-3 rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <mode.icon className="w-4 h-4 mx-auto" />
                 </motion.button>
@@ -194,7 +194,7 @@ const AdminUserWallets = () => {
           <>
             {viewMode === 'table' && (
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                <div className="overflow-x-auto selection:bg-indigo-500/30 text-nowrap">
+                <div className="overflow-x-auto selection:bg-primary-500/30 text-nowrap">
                   <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                     <thead>
                       <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
@@ -221,15 +221,15 @@ const AdminUserWallets = () => {
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-                                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-indigo-500">
+                              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
                                   {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                                 </div>
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
+                                <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
                                 <div className="flex items-center gap-2 mt-1">
-                                  <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                                  <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                                   {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-amber-500" />}
                                 </div>
                               </div>
@@ -280,16 +280,16 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-indigo-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
                     <div className="flex items-center gap-3 lg:gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[2px] shadow-lg">
-                        <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-indigo-500">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg">
+                        <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>
                       </div>
                       <div className="flex flex-col">
-                        <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</h4>
+                        <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-3 mt-1">
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{row.user?.email || row.email || 'N/A'}</span>
                           <span className="w-1 h-1 rounded-full bg-slate-300" />
@@ -327,22 +327,22 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-indigo-500/30 transition-all overflow-hidden"
+                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Wallet className="w-24 h-24 text-indigo-500 -rotate-12" />
+                      <Wallet className="w-24 h-24 text-primary-500 -rotate-12" />
                     </div>
 
                     <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
-                      <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-indigo-500 p-[3px] shadow-xl">
-                        <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-indigo-500">
+                      <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[3px] shadow-xl">
+                        <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>
                       </div>
                       <div className="flex flex-col">
                         <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                           {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-amber-500" />}
                         </div>
                       </div>

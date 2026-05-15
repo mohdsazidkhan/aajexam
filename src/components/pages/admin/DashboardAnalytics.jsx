@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
@@ -71,10 +71,10 @@ const DashboardAnalytics = () => {
   // Helper function to convert Tailwind gradient classes to CSS colors
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
-      'from-primary-500 to-indigo-600': '#3b82f6, #4f46e5',
+      'from-primary-500 to-primary-600': '#3b82f6, #4f46e5',
       'from-green-500 to-emerald-600': '#10b981, #059669',
       'from-primary-500 to-primary-600': '#eab308, #ea580c',
-      'from-purple-500 to-pink-600': '#8b5cf6, #db2777',
+      'from-primary-500 to-pink-600': '#8b5cf6, #db2777',
       'from-primary-500 to-primary-600': '#6366f1, #2563eb',
       'from-pink-500 to-rose-600': '#ec4899, #e11d48'
     };
@@ -162,25 +162,25 @@ const DashboardAnalytics = () => {
           <tr className="border-b-2 border-primary-200 dark:border-primary-700">
             <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-indigo-500" />
+                <User className="w-4 h-4 text-primary-500" />
                 User
               </div>
             </th>
             <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-indigo-500" />
+                <BookOpen className="w-4 h-4 text-primary-500" />
                 Quiz
               </div>
             </th>
             <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-indigo-500" />
+                <Trophy className="w-4 h-4 text-primary-500" />
                 Score
               </div>
             </th>
             <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-indigo-500" />
+                <Calendar className="w-4 h-4 text-primary-500" />
                 Attempt Date
               </div>
             </th>
@@ -264,8 +264,8 @@ const DashboardAnalytics = () => {
         recentActivities.map((a, i) => (
           <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-lg transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-indigo-500/10 rounded-lg flex items-center justify-center">
-                <User className="w-5 h-5 text-indigo-500" />
+              <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
+                <User className="w-5 h-5 text-primary-500" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -295,8 +295,8 @@ const DashboardAnalytics = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-indigo-500/10 rounded-md flex items-center justify-center">
-                  <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
+                  <Calendar className="w-3.5 h-3.5 text-primary-500" />
                 </div>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Attempted: {(() => {
@@ -328,11 +328,11 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-primary-50 to-indigo-50 dark:from-primary-900/20 dark:to-indigo-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
+          <div key={i} className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary-100 to-indigo-100 dark:from-primary-900/30 dark:to-indigo-900/30 rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-indigo-500" />
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-lg flex items-center justify-center">
+                  <User className="w-5 h-5 text-primary-500" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -366,8 +366,8 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
-                    <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-pink-100 dark:from-primary-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
+                    <Calendar className="w-3.5 h-3.5 text-primary-500" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attempted: {(() => {
@@ -413,14 +413,14 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-indigo-500/30">
+     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30">
 <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
            <div className="mb-4">
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-4">
                  
                  <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                   Analytics <span className="text-indigo-600">Overview</span>
+                   Analytics <span className="text-primary-600">Overview</span>
                  </h1>
                  <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
                    Monitor platform performance metrics and trends.
@@ -436,7 +436,7 @@ const DashboardAnalytics = () => {
                  label: 'Total Users',
                  icon: <Users />,
                  value: data.overview?.totalUsers,
-                 gradient: 'text-indigo-600 bg-indigo-600/10 border-indigo-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'Total Quizzes',
@@ -454,7 +454,7 @@ const DashboardAnalytics = () => {
                  label: 'Active Users',
                  icon: <Trophy />,
                  value: data.overview?.activeUsers,
-                 gradient: 'text-purple-600 bg-purple-600/10 border-purple-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'Total Attempts',
@@ -474,7 +474,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-indigo-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
@@ -482,10 +482,10 @@ const DashboardAnalytics = () => {
                    </div>
                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
                  </div>
-                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-indigo-600 transition-colors">
+                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-primary-600 transition-colors">
                    {stat.value?.toLocaleString() || 0}
                  </div>
-                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-all" />
+                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-primary-500/5 rounded-full blur-2xl group-hover:bg-primary-500/10 transition-all" />
                </motion.div>
              ))}
            </div>
@@ -497,8 +497,8 @@ const DashboardAnalytics = () => {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6 text-indigo-500" />
+                  <div className="w-12 h-12 bg-primary-500/10 rounded-xl flex items-center justify-center">
+                    <BarChart3 className="w-6 h-6 text-primary-500" />
                   </div>
                   <div>
                     <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Recent Activity</h3>

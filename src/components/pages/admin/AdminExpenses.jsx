@@ -153,7 +153,7 @@ const AdminExpenses = () => {
     ];
 
     return (
-        <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-indigo-500/30">
+        <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
             {userInfo?.role === 'admin' && <Sidebar />}
 
             <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
@@ -164,7 +164,7 @@ const AdminExpenses = () => {
                     className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <Receipt className="w-64 h-64 text-indigo-500 -rotate-12" />
+                        <Receipt className="w-64 h-64 text-primary-500 -rotate-12" />
                     </div>
 
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
@@ -172,7 +172,7 @@ const AdminExpenses = () => {
 
 
                             <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                                PLATFORM <span className="text-indigo-600">EXPENSES</span>
+                                PLATFORM <span className="text-primary-600">EXPENSES</span>
                             </h1>
 
                             <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
@@ -217,8 +217,8 @@ const AdminExpenses = () => {
                             transition={{ delay: i * 0.1 }}
                             className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                         >
-                            <div className="absolute top-0 left-0 w-full h-1 bg-indigo-500" />
-                            <div className="p-4 bg-indigo-500/10 text-indigo-500 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-primary-500" />
+                            <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
                                 {cat._id.charAt(0)}
                             </div>
                             <div className="text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2">
@@ -232,18 +232,18 @@ const AdminExpenses = () => {
                 {/* Filters */}
                 <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 mb-4">
                     <form onSubmit={handleSearch} className="relative group/search w-full lg:w-96">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-indigo-500 transition-colors" />
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
                         <input
                             type="text"
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                             placeholder="SEARCH BY TITLE..."
-                            className="w-full pl-14 pr-8 py-5 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-indigo-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all shadow-xl"
+                            className="w-full pl-14 pr-8 py-5 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all shadow-xl"
                         />
                     </form>
 
                     <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-xl border-4 border-slate-100 dark:border-white/5 w-full lg:w-auto">
-                        <Filter className="w-4 h-4 text-indigo-500" />
+                        <Filter className="w-4 h-4 text-primary-500" />
                         <select
                             value={category}
                             onChange={e => setCategory(e.target.value)}
@@ -257,7 +257,7 @@ const AdminExpenses = () => {
                     <motion.button
                         whileHover={{ rotate: 180 }}
                         onClick={() => { setSearch(''); setCategory(''); fetchExpenses(1); }}
-                        className="w-full lg:w-auto p-4 rounded-full bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-100 dark:border-white/10 shadow-xl hover:text-indigo-500 transition-colors lg:ml-auto"
+                        className="w-full lg:w-auto p-4 rounded-full bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-100 dark:border-white/10 shadow-xl hover:text-primary-500 transition-colors lg:ml-auto"
                     >
                         <RotateCcw className="w-5 h-5 mx-auto" />
                     </motion.button>
@@ -279,7 +279,7 @@ const AdminExpenses = () => {
                             animate={{ opacity: 1 }}
                             className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
                         >
-                            <div className="overflow-x-auto selection:bg-indigo-500/30 text-nowrap">
+                            <div className="overflow-x-auto selection:bg-primary-500/30 text-nowrap">
                                 <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                                     <thead>
                                         <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
@@ -299,12 +299,12 @@ const AdminExpenses = () => {
                                                 transition={{ delay: idx * 0.03 }}
                                                 className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
                                             >
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 border-l-4 border-transparent group-hover:border-indigo-500 first:rounded-l-[2rem]">
-                                                    <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-indigo-500 transition-colors leading-none mb-2">{expense.title}</div>
+                                                <td className="px-3 lg:px-6 py-3 lg:py-6 border-l-4 border-transparent group-hover:border-primary-500 first:rounded-l-[2rem]">
+                                                    <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors leading-none mb-2">{expense.title}</div>
                                                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
                                                 </td>
                                                 <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
-                                                    <span className="px-4 py-1.5 rounded-xl bg-indigo-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-indigo-500/20">
+                                                    <span className="px-4 py-1.5 rounded-xl bg-primary-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-primary-500/20">
                                                         {expense.category}
                                                     </span>
                                                 </td>
@@ -320,7 +320,7 @@ const AdminExpenses = () => {
                                                         <motion.button
                                                             whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleOpenModal(expense)}
-                                                            className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-sm"
+                                                            className="p-3 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-sm"
                                                         >
                                                             <Edit3 className="w-4 h-4" />
                                                         </motion.button>
@@ -353,7 +353,7 @@ const AdminExpenses = () => {
                         >
                             PREV
                         </motion.button>
-                        <div className="px-3 lg:px-6 text-[10px] font-black text-indigo-500 uppercase tracking-widest border-x-2 border-slate-100 dark:border-white/10">
+                        <div className="px-3 lg:px-6 text-[10px] font-black text-primary-500 uppercase tracking-widest border-x-2 border-slate-100 dark:border-white/10">
                             PAGE {page} OF {totalPages}
                         </div>
                         <motion.button
@@ -401,14 +401,14 @@ const AdminExpenses = () => {
                                     <div className="space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                         <div className="relative group/field">
-                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
+                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-500 transition-colors" />
                                             <input
                                                 required
                                                 type="text"
                                                 value={formData.title}
                                                 onChange={e => setFormData({ ...formData, title: e.target.value })}
                                                 placeholder="TITLE E.G. META ADS - AUG 2024"
-                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -417,27 +417,27 @@ const AdminExpenses = () => {
                                         <div className="space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Amount</label>
                                             <div className="relative group/field">
-                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
+                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-500 transition-colors" />
                                                 <input
                                                     required
                                                     type="number"
                                                     value={formData.amount}
                                                     onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                                     placeholder="0.00"
-                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
+                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
                                                 />
                                             </div>
                                         </div>
                                         <div className="space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Date</label>
                                             <div className="relative group/field">
-                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-indigo-500 transition-colors" />
+                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-500 transition-colors" />
                                                 <input
                                                     required
                                                     type="date"
                                                     value={formData.date}
                                                     onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                                 />
                                             </div>
                                         </div>
@@ -448,7 +448,7 @@ const AdminExpenses = () => {
                                         <select
                                             value={formData.category}
                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
+                                            className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
                                         >
                                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                                         </select>
@@ -460,7 +460,7 @@ const AdminExpenses = () => {
                                             value={formData.description}
                                             onChange={e => setFormData({ ...formData, description: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-indigo-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
+                                            className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
                                             placeholder="ADD A NOTE ABOUT THIS EXPENSE..."
                                         />
                                     </div>

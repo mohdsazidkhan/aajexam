@@ -143,7 +143,7 @@ export default function AdminBankDetails() {
               >
                 <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
                       <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
                         {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
                       </div>
@@ -224,7 +224,7 @@ export default function AdminBankDetails() {
         >
           <div className="flex items-center justify-between mb-4 lg:mb-8">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
                 <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
                   {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
                 </div>
@@ -318,7 +318,7 @@ export default function AdminBankDetails() {
           className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
           <div className="flex items-center gap-3 lg:gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
               <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
                 {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
               </div>

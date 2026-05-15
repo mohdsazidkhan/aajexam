@@ -78,7 +78,7 @@ const AdminNavbar = () => {
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
             </button>
 
-            {/* Logo — desktop only */}
+            {/* Logo â€” desktop only */}
             <Link href="/admin/dashboard" className="hidden lg:flex items-center">
               <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">EXAM</span>
@@ -86,7 +86,7 @@ const AdminNavbar = () => {
             </Link>
           </div>
 
-          {/* Center — Logo on mobile */}
+          {/* Center â€” Logo on mobile */}
           <Link href="/admin/dashboard" className="lg:hidden absolute left-1/2 -translate-x-1/2">
             <span className="text-lg font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
               AAJ<span className="text-primary-600">EXAM</span>
@@ -95,7 +95,7 @@ const AdminNavbar = () => {
 
           {/* Right */}
           <div className="flex items-center gap-1.5 lg:gap-4">
-            {/* Theme toggle — desktop only */}
+            {/* Theme toggle â€” desktop only */}
             <button
               onClick={toggleTheme}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -104,7 +104,7 @@ const AdminNavbar = () => {
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            {/* Notification Badge — desktop only */}
+            {/* Notification Badge â€” desktop only */}
             <Link href="/admin/notifications" className="relative hidden lg:block">
               <button className="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-500/10 hover:text-primary-500 transition-all border border-slate-200/50 dark:border-white/5">
                 <Bell className="w-5 h-5" />
@@ -123,7 +123,7 @@ const AdminNavbar = () => {
               aria-expanded={showProfileMenu}
               className="p-0.5 rounded-full"
             >
-              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-indigo-500 p-[2px]">
+              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-primary-500 p-[2px]">
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
@@ -151,13 +151,13 @@ const AdminNavbar = () => {
                 <p className="text-[10px] text-slate-400 truncate">{user?.email || ''}</p>
               </div>
 
-              {/* Admin badge — mobile */}
-              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-900/10 mb-1">
-                <ShieldCheck className="w-4 h-4 text-indigo-500" />
-                <span className="text-sm font-bold text-indigo-700 dark:text-indigo-400">Admin Panel</span>
+              {/* Admin badge â€” mobile */}
+              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-primary-50 dark:bg-primary-900/10 mb-1">
+                <ShieldCheck className="w-4 h-4 text-primary-500" />
+                <span className="text-sm font-bold text-primary-700 dark:text-primary-400">Admin Panel</span>
               </div>
 
-              {/* Notifications — mobile */}
+              {/* Notifications â€” mobile */}
               <Link href="/admin/notifications" onClick={() => setShowProfileMenu(false)} className="lg:hidden">
                 <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                   <Bell className="w-4 h-4 text-slate-400" /> Notifications
@@ -179,7 +179,7 @@ const AdminNavbar = () => {
                 </Link>
               ))}
 
-              {/* Theme toggle — mobile only */}
+              {/* Theme toggle â€” mobile only */}
               <button
                 onClick={() => { toggleTheme(); setShowProfileMenu(false); }}
                 className="lg:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"

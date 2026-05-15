@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import config from '../../../lib/config/appConfig';
 import React, { useEffect, useState } from "react";
@@ -64,7 +64,7 @@ function exportCSV(data, filename) {
 function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    secondary: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
+    secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
     amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
   };
@@ -241,7 +241,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
-                       <PieChart className="w-5 h-5 text-indigo-500 opacity-30" />
+                       <PieChart className="w-5 h-5 text-primary-500 opacity-30" />
                     </div>
                     <div className="h-80">
                       <Pie data={{ labels: planLabels, datasets: [{ data: planCounts, backgroundColor: ['#6366F1','#8B5CF6','#10B981','#F59E0B','#EF4444'], borderWidth: 0 }] }} options={pieOptions} />

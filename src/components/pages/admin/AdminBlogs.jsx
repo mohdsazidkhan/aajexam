@@ -192,7 +192,7 @@ const AdminBlogs = () => {
                 </td>
                 <td className="px-4 py-3 text-sm">
                   <div className="flex items-center gap-2">
-                    <Link href={`/admin/blogs/${blog._id}/edit`} className="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400">
+                    <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 hover:text-primary-800 dark:text-primary-400">
                       <Edit3 className="w-4 h-4" />
                     </Link>
                     {blog.status === 'published' ? (
@@ -235,7 +235,7 @@ const AdminBlogs = () => {
           </div>
           <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</div>
           <div className="mt-3 flex items-center gap-2">
-            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-indigo-600 dark:text-indigo-400 text-xs font-bold">Edit</Link>
+            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
             {blog.status === 'published' ? (
               <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
             ) : (
@@ -275,7 +275,7 @@ const AdminBlogs = () => {
               <span>{formatDate(blog.createdAt)}</span>
             </div>
             <div className="mt-2 flex items-center gap-3">
-              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-indigo-600 dark:text-indigo-400 text-xs font-bold">Edit</Link>
+              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
               {blog.status === 'published' ? (
                 <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
               ) : (
@@ -302,7 +302,7 @@ const AdminBlogs = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
             <div className="space-y-4">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                BLOG <span className="text-indigo-600">POSTS</span>
+                BLOG <span className="text-primary-600">POSTS</span>
               </h1>
               <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 Create and manage blog posts for exam preparation.
@@ -313,7 +313,7 @@ const AdminBlogs = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/admin/blogs/create')}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/20 flex items-center justify-center gap-3"
+                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
               >
                 <Plus className="w-4 h-4" /> NEW BLOG
               </motion.button>
@@ -327,12 +327,12 @@ const AdminBlogs = () => {
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Search</label>
               <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" />
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white" />
             </div>
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
               <select name="status" value={filters.status} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
                 <option value="">All Status</option>
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
@@ -342,7 +342,7 @@ const AdminBlogs = () => {
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam</label>
               <select name="exam" value={filters.exam} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
                 <option value="">All Exams</option>
                 {exams.map(exam => (
                   <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
@@ -352,7 +352,7 @@ const AdminBlogs = () => {
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Featured</label>
               <select name="isFeatured" value={filters.isFeatured} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
                 <option value="">All</option>
                 <option value="true">Featured</option>
                 <option value="false">Not Featured</option>
@@ -361,7 +361,7 @@ const AdminBlogs = () => {
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Pinned</label>
               <select name="isPinned" value={filters.isPinned} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
                 <option value="">All</option>
                 <option value="true">Pinned</option>
                 <option value="false">Not Pinned</option>
@@ -370,7 +370,7 @@ const AdminBlogs = () => {
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Per Page</label>
               <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white">
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
                 <option value={10}>10</option>
                 <option value={20}>20</option>
                 <option value={50}>50</option>
