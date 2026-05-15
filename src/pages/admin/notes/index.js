@@ -7,6 +7,7 @@ import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
 import Loading from '../../../components/Loading';
 import AdminRoute from '../../../components/AdminRoute';
+import CustomEditor from '../../../components/CustomEditor';
 
 const noteTypes = ['notes', 'formulas', 'shortcuts', 'important_points', 'tables', 'mnemonics'];
 
@@ -100,7 +101,13 @@ const AdminNotes = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-red-400">*</span></label>
-                  <textarea placeholder="HTML/Markdown supported..." rows={10} value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} className={`${inputClass} resize-y font-mono`} />
+                  <CustomEditor
+                    value={form.content}
+                    onChange={(content) => setForm({ ...form, content })}
+                    placeholder="Write your note content here..."
+                    minHeight="300px"
+                    toolbarButtons="all"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Tags</label>
