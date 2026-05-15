@@ -9,6 +9,11 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 
+// Module-level dedup: when the auth-state-driven layout switch in _app.js
+// remounts this page during hydration, both mounts await the same in-flight
+// request instead of firing the API (and incrementing views) twice.
+const inflightNoteRequests = new Map();
+
 const NoteDetailPage = () => {
   const [note, setNote] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,14 +23,30 @@ const NoteDetailPage = () => {
 
   useEffect(() => {
     if (!slug) return;
+    let cancelled = false;
+
     const fetchNote = async () => {
+      let promise = inflightNoteRequests.get(slug);
+      if (!promise) {
+        promise = API.request(`/api/notes/${slug}`).finally(() => {
+          if (inflightNoteRequests.get(slug) === promise) inflightNoteRequests.delete(slug);
+        });
+        inflightNoteRequests.set(slug, promise);
+      }
       try {
-        const res = await API.request(`/api/notes/${slug}`);
+        const res = await promise;
+        if (cancelled) return;
         if (res?.success) setNote(res.data);
         else router.push('/notes');
-      } catch (e) { router.push('/notes'); } finally { setLoading(false); }
+      } catch (e) {
+        if (!cancelled) router.push('/notes');
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     };
     fetchNote();
+
+    return () => { cancelled = true; };
   }, [slug]);
 
   const toggleBookmark = async () => {
