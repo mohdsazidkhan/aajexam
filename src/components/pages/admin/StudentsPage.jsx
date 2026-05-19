@@ -632,7 +632,7 @@ const StudentsPage = () => {
                             </div>
                             <div className="flex items-center gap-2">
                               <Wallet className="w-4 h-4 text-emerald-500/50" />
-                              <span className="text-[10px] font-black text-emerald-500 tabular-nums uppercase tracking-widest">â‚¹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                              <span className="text-[10px] font-black text-emerald-500 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Crown className="w-4 h-4 text-amber-500/50" />
@@ -682,7 +682,7 @@ const StudentsPage = () => {
                           </div>
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
-                            <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter">â‚¹{student.walletBalance || 0}</div>
+                            <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
                           </div>
                         </div>
 
@@ -782,7 +782,7 @@ const StudentsPage = () => {
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Choose a Plan</label>
                       <div className="grid grid-cols-1 gap-4">
                         {[
-                          { id: 'PRO', label: 'Pro Plan', price: 'â‚¹99', icon: Crown, color: 'amber' }
+                          { id: 'PRO', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'amber' }
                         ].map((tier) => (
                           <motion.div
                             key={tier.id}

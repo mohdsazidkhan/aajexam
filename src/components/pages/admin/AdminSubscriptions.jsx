@@ -18,7 +18,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 
 
-// Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ Stats Card Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€
+// â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
@@ -664,7 +664,7 @@ const AdminSubscriptions = () => {
                             </td>
                             <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
                               <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                                {subscription.amount ? formatCurrency(subscription.amount) : "â‚¹0.00"}
+                                {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
                               </div>
                             </td>
                             <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem] text-right">
@@ -755,7 +755,7 @@ const AdminSubscriptions = () => {
                             <span className="text-[10px] font-black text-primary-500 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
                           </div>
                           <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
-                            {subscription.amount ? formatCurrency(subscription.amount) : "â‚¹0"}
+                            {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
                           </div>
                         </div>
                       </div>
@@ -802,7 +802,7 @@ const AdminSubscriptions = () => {
                           <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(subscription.createdAt)}</span>
                         </div>
                         <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                          {subscription.amount ? formatCurrency(subscription.amount) : "â‚¹0"}
+                          {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
                         </div>
                         <div className="flex items-center gap-2">
                           <motion.button

@@ -41,7 +41,7 @@ import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 
-const formatINR = (n) => `â‚¹${(n || 0).toLocaleString('en-IN')}`;
+const formatINR = (n) => `₹${(n || 0).toLocaleString('en-IN')}`;
 
 const DashboardPage = () => {
   const { router } = useSSR();
@@ -95,7 +95,7 @@ const DashboardPage = () => {
         { title: 'Exam Categories', count: stats.examCategories || 0, link: '/admin/govt-exams', icon: Layers, subtitle: 'Central & State' },
         { title: 'Exams', count: stats.exams || 0, link: '/admin/govt-exams/exams', icon: BookOpen, subtitle: `${stats.activeExams || 0} active` },
         { title: 'Exam Patterns', count: stats.examPatterns || 0, link: '/admin/govt-exams/patterns', icon: FileText, subtitle: 'Defined patterns' },
-        { title: 'Practice Tests', count: stats.practiceTests || 0, link: '/admin/govt-exams/tests', icon: Target, subtitle: `${stats.freePracticeTests || 0} free â€¢ ${stats.pyqPracticeTests || 0} PYQ` },
+        { title: 'Practice Tests', count: stats.practiceTests || 0, link: '/admin/govt-exams/tests', icon: Target, subtitle: `${stats.freePracticeTests || 0} free • ${stats.pyqPracticeTests || 0} PYQ` },
         { title: 'Test Attempts', count: stats.testAttempts || 0, link: '/admin/govt-exams/results', icon: BarChart3, subtitle: `${stats.completedAttempts || 0} completed` },
       ],
     },
@@ -153,7 +153,7 @@ const DashboardPage = () => {
       <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
-            <div className="text-2xl lg:text-6xl mb-4">âš ï¸</div>
+            <div className="text-2xl lg:text-6xl mb-4">⚠️</div>
             <div className="text-lg text-primary-700 dark:text-red-400">{error}</div>
           </div>
         </div>

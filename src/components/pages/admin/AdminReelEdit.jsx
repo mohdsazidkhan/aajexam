@@ -537,7 +537,7 @@ const AdminReelEdit = () => {
                 </div>
               )}
 
-              {/* Audio & Duration â€” Instagram Style */}
+              {/* Audio & Duration — Instagram Style */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -580,7 +580,7 @@ const AdminReelEdit = () => {
                       </div>
                       {audioFile === a.value && (
                         <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
-                          <span className="text-white text-[10px] font-bold">âœ“</span>
+                          <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
                     </div>

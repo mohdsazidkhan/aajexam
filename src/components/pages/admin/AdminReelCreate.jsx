@@ -407,7 +407,7 @@ const AdminReelCreate = () => {
                     <h3 className="font-bold text-amber-700 dark:text-amber-400">Trick / Shortcut Details</h3>
                     <div>
                       <label className={labelClass}>Formula</label>
-                      <input type="text" value={formula} onChange={e => setFormula(e.target.value)} placeholder="e.g. CP Ã— 1.25 = SP" className={inputClass} />
+                      <input type="text" value={formula} onChange={e => setFormula(e.target.value)} placeholder="e.g. CP × 1.25 = SP" className={inputClass} />
                     </div>
                     <div>
                       <label className={labelClass}>Steps</label>
@@ -424,7 +424,7 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Try Yourself Examples</label>
                       {tryYourself.map((t, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45Â² = 2025" className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 ${inputClass}`} />
                           <button type="button" onClick={() => removeArrayItem(setTryYourself, tryYourself, i)} className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -500,7 +500,7 @@ const AdminReelCreate = () => {
                   </div>
                 )}
 
-                {/* Audio & Duration â€” Instagram Style */}
+                {/* Audio & Duration — Instagram Style */}
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -543,7 +543,7 @@ const AdminReelCreate = () => {
                         </div>
                         {audioFile === a.value && (
                           <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
-                            <span className="text-white text-[10px] font-bold">âœ“</span>
+                            <span className="text-white text-[10px] font-bold">✓</span>
                           </div>
                         )}
                       </div>

@@ -231,11 +231,11 @@ const AdminUserAnalyticsDetail = () => {
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-6">
-                                    <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`â‚¹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
-                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`â‚¹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
-                                    <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`â‚¹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
-                                    <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`â‚¹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
-                                    <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`â‚¹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />
+                                    <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
+                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
+                                    <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
+                                    <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
+                                    <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />
                                 </div>
                             </motion.section>
 

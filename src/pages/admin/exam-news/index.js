@@ -129,7 +129,7 @@ const AdminExamNews = () => {
               <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Click &quot;Add New&quot; to create one</p>
             </Card>
           ) : viewMode === 'table' ? (
-            /* â”€â”€ Table View â”€â”€ */
+            /* ── Table View ── */
             <Card className="!p-0 overflow-hidden" padded={false}>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -158,7 +158,7 @@ const AdminExamNews = () => {
                         <td className="px-4 py-3">
                           <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${typeColor(n.type)}`}>{n.type?.replace('_', ' ')}</span>
                         </td>
-                        <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{n.examName || 'â€”'}</td>
+                        <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{n.examName || '—'}</td>
                         <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{new Date(n.createdAt).toLocaleDateString('en-IN')}</td>
                         <td className="px-4 py-3 text-center">
                           <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1"><Eye className="w-3 h-3" />{n.views || 0}</span>
@@ -177,7 +177,7 @@ const AdminExamNews = () => {
               </div>
             </Card>
           ) : viewMode === 'grid' ? (
-            /* â”€â”€ Grid View â”€â”€ */
+            /* ── Grid View ── */
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex flex-col justify-between gap-3">
@@ -208,7 +208,7 @@ const AdminExamNews = () => {
               ))}
             </div>
           ) : (
-            /* â”€â”€ List View â”€â”€ */
+            /* ── List View ── */
             <div className="space-y-2">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex items-center gap-4">
