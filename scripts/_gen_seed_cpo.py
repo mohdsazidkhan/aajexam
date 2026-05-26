@@ -22,8 +22,16 @@ slug, date_slug, test_title, out_js = sys.argv[1:5]
 with open(f'_questions_{slug}.json', encoding='utf-8') as f:
     qs = json.load(f)
 
-if len(qs) != 200:
-    print(f"WARN: expected 200 questions, got {len(qs)}")
+# Trim/pad to exactly 200 entries
+if len(qs) > 200:
+    print(f"NOTE: trimming {len(qs)} -> 200 entries")
+    qs = qs[:200]
+elif len(qs) < 200:
+    print(f"NOTE: padding {len(qs)} -> 200 entries with placeholders")
+    while len(qs) < 200:
+        n = len(qs) + 1
+        sec = 'General Intelligence and Reasoning' if n <= 50 else 'General Awareness' if n <= 100 else 'Quantitative Aptitude' if n <= 150 else 'English Language'
+        qs.append({'n': n, 'section': sec, 'q': '', 'q_image': '', 'opts': ['', '', '', ''], 'opt_images': ['', '', '', ''], 'answer': 'A', 'sol': ''})
 
 def js_str(s):
     s = s.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
