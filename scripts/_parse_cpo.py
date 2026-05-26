@@ -49,7 +49,9 @@ s_lines = lines[sol_start:]
 # ---------- Section detection ----------
 SECTIONS = {
     'General Intelligence and Reasoning': 'General Intelligence and Reasoning',
+    'General Intelligence & Reasoning': 'General Intelligence and Reasoning',
     'General Knowledge and General Awareness': 'General Awareness',
+    'General Awareness': 'General Awareness',
     'Quantitative Aptitude': 'Quantitative Aptitude',
     'English Comprehension': 'English Language'
 }
