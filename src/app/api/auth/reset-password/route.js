@@ -23,10 +23,15 @@ export async function POST(req) {
 
         // Hash new password
         const hashedPassword = await bcrypt.hash(newPassword, 10);
-        user.password = hashedPassword;
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpires = undefined;
-        await user.save();
+        // Use updateOne to avoid re-validating unrelated fields (e.g. subscriptionStatus)
+        // that may have stale/legacy values in the database
+        await User.updateOne(
+            { _id: user._id },
+            {
+                $set: { password: hashedPassword },
+                $unset: { resetPasswordToken: "", resetPasswordExpires: "" }
+            }
+        );
 
         return NextResponse.json({
             success: true,

@@ -64,7 +64,8 @@ const userSchema = new mongoose.Schema({
   subscriptionStatus: {
     type: String,
     enum: ['FREE', 'PRO'],
-    default: 'FREE'
+    default: 'FREE',
+    uppercase: true
   },
   subscriptionExpiry: { type: Date },
 
