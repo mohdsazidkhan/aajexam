@@ -24,9 +24,18 @@ export async function POST(req) {
 
         // Generate reset token
         const resetToken = crypto.randomBytes(20).toString('hex');
-        user.resetPasswordToken = resetToken;
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-        await user.save();
+
+        // Use updateOne to avoid re-validating unrelated fields (e.g. subscriptionStatus)
+        // that may have stale/legacy values in the database
+        await User.updateOne(
+            { _id: user._id },
+            {
+                $set: {
+                    resetPasswordToken: resetToken,
+                    resetPasswordExpires: Date.now() + 3600000 // 1 hour
+                }
+            }
+        );
 
         // In a real implementation, you would send an email here.
         // For now, we'll return the token in the response for development/testing visibility.

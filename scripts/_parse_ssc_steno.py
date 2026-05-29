@@ -240,14 +240,17 @@ if sol_m:
 # --- Pad/truncate to exactly 200 ---
 while len(questions) < NUM_QS:
     n = len(questions) + 1
-    sec = section_for_pos(0)
     questions.append({
-        'n': n, 'section': sec, 'q': '', 'q_image': '',
+        'n': n, 'section': section_by_n(n), 'q': '', 'q_image': '',
         'opts': [''] * NUM_OPTS, 'opt_images': [''] * NUM_OPTS,
         'answer': chr(ord('A') + ans_map.get(n, 1) - 1),
         'sol': ''
     })
 questions = questions[:NUM_QS]
+
+# Final pass: ensure ALL questions have correct section by Q-num (overrides position-based)
+for q in questions:
+    q['section'] = section_by_n(q['n'])
 
 out_file = f'_questions_{slug}.json'
 with open(out_file, 'w', encoding='utf-8') as f:
