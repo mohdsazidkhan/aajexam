@@ -89,7 +89,20 @@ def parse_option_block(para_idx):
             i += 2
         if len(opt_dict) == 4:
             return [opt_dict[k] for k in [1,2,3,4]], para_idx + 1
-    # Must start with "1." to be a valid option block
+    # Path D: bare-text option 1 followed by `2./3./4.` labels (2-line variant).
+    # E.g., "No improvement\t2. a lot of research" / "3. lots of researches\t4. ..."
+    # Detect by: this line has `\s2\.\s` after some leading text, AND next line has `\s4\.\s`.
+    if re.search(r'\s2\.\s+\S', p) and para_idx + 1 < len(paras):
+        p2 = paras[para_idx + 1]
+        m_d1 = re.match(r'^(.+?)\s+2\.\s*(.+)$', p)
+        m_d2 = re.match(r'^\s*3\.\s*(.+?)\s+4\.\s*(.+)$', p2)
+        if m_d1 and m_d2:
+            opt1 = m_d1.group(1).strip()
+            # Sanity: opt1 should be short (option-like), not a long question
+            if 0 < len(opt1) < 80:
+                return [opt1, m_d1.group(2).strip(),
+                        m_d2.group(1).strip(), m_d2.group(2).strip()], para_idx + 2
+    # Must start with "1." for paths C/B
     if not OPT_LINE_RE.match(p) or not re.match(r'^\s*1\.\s', p):
         return None, para_idx
     # Path C: two-line "1.X 2.Y" / "3.W 4.Z"

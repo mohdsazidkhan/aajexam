@@ -1,0 +1,4002 @@
+[
+  {
+    "n": 1,
+    "section": "General Intelligence and Reasoning",
+    "q": "Find the missing number from the below options 18513231851323351718?351718? 18 5 13 23 18 5 13 23 35 17 18 ? 35 17 18 ?",
+    "q_image": "",
+    "opts": [
+      "27",
+      "52",
+      "44",
+      "67"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "18513231851323 351718?351718? 18 5 13 23 18 5 13 23 35 17 18 ? 35 17 18 ? 3 + 5 = 18 and 18 + 5 = 23 Similarly, 18 + 17 = 35 and 35 + 17 = 52"
+  },
+  {
+    "n": 2,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the Venn diagram that best represents the given set of classes. Bulls, Cows, Hens 1. 2. 3. 4.",
+    "q_image": "image1.png",
+    "opts": [
+      "Four numbers have been given out of which three are alike in",
+      "her right and went 3 km; finally, she turned left and walked 2 km to reach the bank.",
+      "What is the shortest distance between Malini’s office and the",
+      "bank?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Halogens are non-metallic elements. Fluorine is a Halogen. Similarly, Argentum is a metal."
+  },
+  {
+    "n": 3,
+    "section": "General Intelligence and Reasoning",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "3.5 km",
+      "3 km",
+      "4 km",
+      "5 km"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 4,
+    "section": "General Intelligence and Reasoning",
+    "q": "Observe the following randomly drawn figures and choose which of the following figures form a square? 1 2 3 4 5",
+    "q_image": "",
+    "opts": [
+      "3, 4, 2",
+      "1, 4, 5",
+      "2, 4, 5",
+      "1, 4, 2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Table of Alphabetical series (point to remember) Alphabets A B C D E F G H I J K L M Positional value 1 2 3 4 5 6 7 8 9 10 11 12 13 Alphabets Z Y X W V U T S R Q P O N Positional value 26 25 24 23 22 21 20 19 18 17 16 15 14 x + 2 = Z Similarly, G + 2 = I Bulls Cows F +1 = G → (ODD ONE OUT) M + 2 = O Hens Bulls, Cows and Hens are different categories of animals. Hence, they are represented in different diagrams."
+  },
+  {
+    "n": 5,
+    "section": "General Intelligence and Reasoning",
+    "q": "587%@9587%@9From the options, select the cube that can be formed by folding the given sheet. 5",
+    "q_image": "",
+    "opts": [
+      "8",
+      "7",
+      "%",
+      "@"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Option 1 ⇒ 99 ÷ 9 = 11 Option 2 ⇒ 117 ÷ 9 = 13 Option 3 ⇒ 135 ÷ 9 = 15 But option (4) is not divisible by 9. Hence, option 4 is different from all other 3 options."
+  },
+  {
+    "n": 6,
+    "section": "General Intelligence and Reasoning",
+    "q": "758758%@5%@5some manner, while one is different. Choose the odd one. 1. 2. 7",
+    "q_image": "",
+    "opts": [
+      "5",
+      "8",
+      "7",
+      "5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "VIBGYOR is a representation of colours after the splitting of"
+  },
+  {
+    "n": 7,
+    "section": "General Intelligence and Reasoning",
+    "q": "8 % @ 5 % @ 5",
+    "q_image": "",
+    "opts": [
+      "99",
+      "117",
+      "135",
+      "105"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Bank 2 km 3 km 3 km2 kmOffice Bank 2 km 3 km 3 km2 kmOfficeWest Bank 2 km 3 km 3 km 2 km Office Bank 2 km 3 km 3 km 2 km Office North South East Light. VIBGYOR stands for Violet, Indigo, Blue, Green, Yellow, Orange, and Red. Blue, Yellow, and Red are colours in VIBGYOR, whereas pink is not a colour in it. So, pink is the odd one out. yellowyellowkolukolu"
+  },
+  {
+    "n": 8,
+    "section": "General Intelligence and Reasoning",
+    "q": "89%89%97@97@some manner, while one is different. Choose the odd one. 8",
+    "q_image": "",
+    "opts": [
+      "9",
+      "%",
+      "8",
+      "9"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "yellow yellow kolu kolu Hence, the shortest distance = 32  4232  422525 32  42 32  42 25 25 [Using Pythagoras theorem in triangle ABC] = 5 km"
+  },
+  {
+    "n": 9,
+    "section": "General Intelligence and Reasoning",
+    "q": "% 9 7 @ 9 7 @",
+    "q_image": "",
+    "opts": [
+      "Yellow",
+      "Blue",
+      "Pink",
+      "Red"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "kolukoluhonna kump kolu kolu sonson son son sonsonlapi son son man lapi gold rose isis is is yellowyellowisisred and yellow yellow is is 1 2 3 4 5 red So, gold is coded as honna."
+  },
+  {
+    "n": 10,
+    "section": "General Intelligence and Reasoning",
+    "q": "In a code language, honna son kolu means gold is yellow; kump son lapi means rose is red; kolu man lapi mean yellow 3. 4. and red. What is the word for gold in that code language.",
+    "q_image": "",
+    "opts": [
+      "man",
+      "son",
+      "kolu",
+      "honna"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Every time the partition boxes are increasing i.e., 3, then 4, then 5, and so on. Therefore, is the correct answer. coins dollarsrupeescoins dollarsrupees"
+  },
+  {
+    "n": 11,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will come next in the following series.",
+    "q_image": "image7.png",
+    "opts": [
+      "",
+      "",
+      "1.\t2.\t3.\t4.",
+      "The statements below are followed by two conclusion labeled I and II. Assuming that the information in the statements is true, even if it appears to be at variance with generally established facts, decide which conclusion(s) logically and definitely follow(s) from the information given in the statements. Statements:"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "coins dollars rupees coins dollars rupees 243243Square 2 4 3 2 4 3 From figures 3, 4 and 2, we can form a square."
+  },
+  {
+    "n": 12,
+    "section": "General Intelligence and Reasoning",
+    "q": "All rupees are dollar. All dollars are coin. Conclusion I: No coins are rupees. Conclusion II: All rupees are coin. Only conclusion II follows. Only conclusion I follows. Neither conclusion I nor conclusion II follows. Both conclusion I and II follows. Find the odd letter group.",
+    "q_image": "",
+    "opts": [
+      "XZ",
+      "GI",
+      "FG",
+      "MO"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In an open cube, alternate pairs are opposite to each other Opposite pairs are: (5, %) (8,9) (7, @) Hence,"
+  },
+  {
+    "n": 13,
+    "section": "General Intelligence and Reasoning",
+    "q": "Malini went from her office to the bank. She started her journey facing West. First, she went 2 km straight; then she turned to Select the correct option that will fill in the blank and complete the series. B, E, H, K, N, Q, .",
+    "q_image": "",
+    "opts": [
+      "U",
+      "S",
+      "R",
+      "T"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "answer."
+  },
+  {
+    "n": 14,
+    "section": "General Intelligence and Reasoning",
+    "q": "The statement below is followed by two conclusions labeled I and II, You have to assume everything in the statement to be true, and then decide which of the conclusions logically follows for pursuing. Statement: Drinking milk is beneficial for health. Conclusion I: All healthy people drink milk. Conclusion II: Milk is harmful for child. Both conclusions I and II follow. Only conclusion I follows. Only conclusion II follows. Neither conclusion I nor conclusion II follows. Observe the above figures which show the process of cutting a drawing paper. Identify the resultant of it from the following options. 1. 2. 3. 4. If in a code language, BANK is written as AZMJ and TABLE is written as SZAKD, then which letter will be there in seventh place from right after coding COMPUTER in the same way?",
+    "q_image": "image11.png",
+    "opts": [
+      "S",
+      "T",
+      "N",
+      "Q"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "B, E, H, K, N, Q...? No coins are rupees. ⇒ False (This is definitely false) All rupees are coins. ⇒ True (This is definitely True) coins rupeescoins rupees coins rupees coins rupees Hence, only conclusion II follows. B + 3 = E Similarly, E + 3 = H H + 3 = K K + 3 = N N + 3 = Q Therefore, Q + 3 = T"
+  },
+  {
+    "n": 15,
+    "section": "General Intelligence and Reasoning",
+    "q": "The statements below are followed by two conclusions labeled I and II. Assuming that the information in the statements is true, even if it appears to be at variance with generally established facts, decide which conclusion(s) logically and definitely follow(s) from the information given in the statements. Statements: All wheats are barley. All peas are barley. Conclusion I: Some wheat are peas. Conclusion II: No wheats are peas. Only conclusion I follows. Either conclusion I or conclusion II follows. Only conclusion II follows. Both conclusions I and II follows. Choose the correct option that will replace the question mark and continue the given figure series. ?",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Statement : Drinking milk is beneficial for health Conclusion I: All healthy people drink milk. Conclusion II: Milk is harmful for child."
+  },
+  {
+    "n": 16,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that is related to the fourth term in the same way as the first term is related to the second term. Apple : Peach :: ? : Cream",
+    "q_image": "",
+    "opts": [
+      "Butter",
+      "Cookie",
+      "Bread",
+      "Cake"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Follow the pattern and the symmetry. Hence,"
+  },
+  {
+    "n": 17,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. ZCC, XEF, TII, RKK.",
+    "q_image": "",
+    "opts": [
+      "RGG",
+      "SGG",
+      "UGG",
+      "VGG"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Table of Alphabetical series (point to remember)"
+  },
+  {
+    "n": 18,
+    "section": "General Intelligence and Reasoning",
+    "q": "If ‘+’ means ‘+’, ‘–’ means ‘+’, ‘×’ means ‘–’, and ‘+’ means ‘×’ then find the value of (12  4)  2  4 . 2  8  2  25  1",
+    "q_image": "",
+    "opts": [
+      "1",
+      "3",
+      "0",
+      "2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The pattern followed here is Z C C –2 +2 +2 X E E –2 +2 +2 V G G –2+2 +2 T I I –2 +2 +2 R K K Now, BANK is written as AZMJ B A N K Hence, VGG is the correct answer. AlphabetsABCDEFGHIJKLMPositionalvalue12345678910111213AlphabetsZYXWVUTSRQPONPositionalvalue26252423222120191817161514AlphabetsABCDEFGHIJKLMPositionalvalue12345678910111213AlphabetsZYXWVUTSRQPONPositionalvalue26252423222120191817161514"
+  },
+  {
+    "n": 19,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that correctly represents the classes given below: Furniture, Chairs, Beds",
+    "q_image": "image21.png",
+    "opts": [
+      "1.\t2.\t3.\t4.",
+      "Six friends A, B, C, D, E and F are sitting in a circle facing the center. F is to the immediate left of A and B is sitting opposite to E, A and D are sitting opposite to each other. Who is sitting second to the right of F?",
+      "Either B or E\t2. Either B or D",
+      "3. C\t4. D"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Alphabets A B C D E F G H I J K L M Positional value 1 2 3 4 5 6 7 8 9 10 11 12 13 Alphabets Z Y X W V U T S R Q P O N Positional value 26 25 24 23 22 21 20 19 18 17 16 15 14 Alphabets A B C D E F G H I J K L M Positional value 1 2 3 4 5 6 7 8 9 10 11 12 13 Alphabets Z Y X W V U T S R Q P O N Positional value 26 25 24 23 22 21 20 19 18 17 16 15 14 Using BODMAS After replacing the signs according to the question, new expression = (12  4)  2  4 = 2  8  2  25  1  (8)  2  4 16  50  1 –1 –1 –1 –1  4  4  0 17  50 Similarly, A Z M J T A B L E"
+  },
+  {
+    "n": 20,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. 1, 3, 3, 6, 5, 12, 7, 24, 9, 48, 11, .",
+    "q_image": "",
+    "opts": [
+      "95",
+      "69",
+      "59",
+      "96"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Barometer, Hygrometer, Anemometer are instruments, whereas Kilometre is unit of Length."
+  },
+  {
+    "n": 21,
+    "section": "General Intelligence and Reasoning",
+    "q": "In certain code MOONG is written as 1344147 and Lucknow is written as 12531114423, How will marigold be written in that code?",
+    "q_image": "",
+    "opts": [
+      "13118374124",
+      "13118574124",
+      "13118374114",
+      "131189715124"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "–1 –1 –1 –1 –1 Furniture, Chairs, Bed Furniture Chairs Bed Furniture Chairs BedS Z A K D Furniture Chairs Bed Furniture Chairs Bed Therefore, COMPUTER can be written as: C O M P U T E R –1 –1 –1 –1 –1 –1 –1 –1 B N L O T S D Q Hence, the letter which is 7th from the right after coding is N."
+  },
+  {
+    "n": 22,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four words have been given out of which three are alike in some manner, while one is different. Choose the odd one.",
+    "q_image": "",
+    "opts": [
+      "Pen",
+      "Hunter",
+      "Forceps",
+      "Typewriter"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Some wheats are peas. ⇒ False (It is possible but not definite) Chairs and bed are the category of Furniture."
+  },
+  {
+    "n": 23,
+    "section": "General Intelligence and Reasoning",
+    "q": "If $ denotes ‘Addition’, # denotes ‘Subtraction’, % denotes ‘Multiplication’, @ denotes ‘Division’, then the value of 26 # 30 @ 5% 3 $ 2.",
+    "q_image": "",
+    "opts": [
+      "15",
+      "10",
+      "14",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "F is sitting immediate left of A, A and D are sitting opposite to each FFother. F F A barleypeaswheatbarleypeaswheatD barley peas wheat barley peas wheat No wheats are peas. ⇒ False (It is possible but not definite) Hence, either conclusion I or conclusion II follows."
+  },
+  {
+    "n": 24,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. O, G, Z, T, O, .",
+    "q_image": "",
+    "opts": [
+      "K",
+      "J",
+      "H",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "? Follow the logic and the pattern. Hence,"
+  },
+  {
+    "n": 25,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that is related to the third term in the same way as the second term is related to the first term. EP : MX :: AI : ?",
+    "q_image": "",
+    "opts": [
+      "IM",
+      "IQ",
+      "JP",
+      "IJ"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Apple: Peach:: ?:Cream B is sitting opposite to E. FAB/EB/EDCFAB/EB/EDC F A B/E B/E D C F A B/E B/E D C So, either B or E is sitting 2nd to the right of F. Hence, either B or E is sitting second to the right of F."
+  },
+  {
+    "n": 26,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four numbers have been given out of which three are alike in some manner, while one is different. Choose the odd one.",
+    "q_image": "",
+    "opts": [
+      "23",
+      "29",
+      "37",
+      "51"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "1, 3, 3, 6, 5, 12, 7, 24, 9, 48, 11.. The given series is combination of two series. The pattern followed is: +3 +6 +12 +24 +48 Apple and peach are fruits. 1 3 3 6 5 12 7 24 9 48 11 96 Similarly, Cream and Butter are obtained from milk. Hence, Butter is the correct answer. Consecutive odd numbers Hence, 96 is the correct answer."
+  },
+  {
+    "n": 27,
+    "section": "General Intelligence and Reasoning",
+    "q": "Replace the question mark (?) with the suitable option to complete the series. MAC, PDF, S?I, VJL",
+    "q_image": "",
+    "opts": [
+      "E",
+      "G",
+      "H",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "AlphabetsABCDEFGHIJKLMPositional value12345678910111213AlphabetsZYXWVUTSRQPONPositional value26252423222120191817161514AlphabetsABCDEFGHIJKLMPositional value12345678910111213AlphabetsZYXWVUTSRQPONPositional value26252423222120191817161514Table of Alphabetical series (point to remember) Alphabets A B C D E F G H I J K L M Positional value 1 2 3 4 5 6 7 8 9 10 11 12 13 Alphabets Z Y X W V U T S R Q P O N Positional value 26 25 24 23 22 21 20 19 18 17 16 15 14 Alphabets A B C D E F G H I J K L M Positional value 1 2 3 4 5 6 7 8 9 10 11 12 13 Alphabets Z Y X W V U T S R Q P O N Positional value 26 25 24 23 22 21 20 19 18 17 16 15 14 Here,"
+  },
+  {
+    "n": 28,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four words have been given out of which three are alike in some manner, while one is different. Choose the odd one.",
+    "q_image": "",
+    "opts": [
+      "Advisor",
+      "Follower",
+      "Counselor",
+      "Guide"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The pattern is as follows: M A C +3 + 3 + 3 P D F +3 + 3 + 3 S G I +3 + 3 + 3 V J L For consonants positional values are taken and for vowels the values taken are according to the Vowel series. Vowels A E I O U Values according to vowel series 1 2 3 4 5 Now, For MOONG code is 1344147 M O O N G 13 4 4 14 7 LUCKNOW12531114423LUCKNOW12531114423Similarly, LUCKNOW is written as: L U C K N O W 12 5 3 11 14 4 23 L U C K N O W 12 5 3 11 14 4 23 So, the missing term is G."
+  },
+  {
+    "n": 29,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that is related to the third term in the same way as the second term is related to the first term. VRGT : SHJQ :: XCEV : ?",
+    "q_image": "",
+    "opts": [
+      "HSFU",
+      "UFHS",
+      "UHFS",
+      "SHFU"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "‘Follower’ is different from advisor, counsellor, and guide as all roles provides guidance or advice to another person, while follower implies that someone is simply following someone’s advice."
+  },
+  {
+    "n": 30,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. CX, FU, IR, LU, , RU",
+    "q_image": "",
+    "opts": [
+      "OM",
+      "OL",
+      "OK",
+      "OH"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "VEGT: SHJQ:: XCEV: ? The pattern follows is: V E G T –3 +3 +3 –3 Hence, MARIGOLD can be written as: So, S H J Q X C E V –3 +3 +3 –3 U F H S M A R I G O L D 13 1 18 3 7 4 12 4"
+  },
+  {
+    "n": 31,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four words have been given out of which three are alike is some manner, while one is different. Choose the odd one.",
+    "q_image": "",
+    "opts": [
+      "Novel",
+      "Book",
+      "Poem",
+      "Writer"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Pen is an instrument used for writing Forceps is an instrument used for grasping and holding. Typewriter is an instrument used for typing. Whereas, Hunter is not an instrument. Hence, hunter is odd one out."
+  },
+  {
+    "n": 32,
+    "section": "General Intelligence and Reasoning",
+    "q": "Find the missing number from the below options. 3 8 2 222 6 9 1 511 7 5 3 ?",
+    "q_image": "",
+    "opts": [
+      "553",
+      "356",
+      "365",
+      "635"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Replacing all symbols with maths sign as per the question and 26#30@5%3$2 Applying BODMAS: = 26 – 30 ÷ 5 × 3 + 2 = 26 – 6 × 3 + 2 = 26 – 18 + 2 = 28 – 18 = 10"
+  },
+  {
+    "n": 33,
+    "section": "General Intelligence and Reasoning",
+    "q": "If moon is called sea, sea is called water, water is called air, air is called sun and sun is called river, then what do we breathe in?",
+    "q_image": "",
+    "opts": [
+      "River",
+      "Air",
+      "Water",
+      "Sun"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "OGZ26–6T20OK–8–4OGZ26–6T20OK–8–4O, G, Z, T, O, …. O G Z 26 –6 T 20 O K –8 –4 O G Z 26 –6 T 20 O K –8 –4 15157715151111 15 15 7 7 15 15 11 11 So, the missing alphabet is K."
+  },
+  {
+    "n": 34,
+    "section": "General Intelligence and Reasoning",
+    "q": "Which of the following equations will be correct if numbers 3 and 6 and signs + and × are interchanged?",
+    "q_image": "",
+    "opts": [
+      "15 × 6 + 3 = 43",
+      "35 × 3 + 6 = 53",
+      "20 × 3 + 6 = 60",
+      "6 × 3 + 25 = 135"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "EP: MX: AI: ? The pattern followed is: E P A I"
+  },
+  {
+    "n": 35,
+    "section": "General Intelligence and Reasoning",
+    "q": "Find the missing number. 4 3 50 5 7 6 ? 8",
+    "q_image": "",
+    "opts": [
+      "149",
+      "139",
+      "129",
+      "159"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "CX, FU, IR, LU, --- RU The pattern followed is: C X +3 F U –6 +3 I R +3 L U –6 +3 O L +3 R U Hence, the missing term is OL."
+  },
+  {
+    "n": 36,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that is related to the third term in the same way as the second term is related to the first term. 12 : 9 :: 45 : ?",
+    "q_image": "",
+    "opts": [
+      "41",
+      "81",
+      "24",
+      "18"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Writer is one who writes Novels, Books or Poems. Hence, Writer is the odd one out."
+  },
+  {
+    "n": 37,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four pair of numbers have been given out of which three are alike in some manner, while one is different. Choose the odd one.",
+    "q_image": "",
+    "opts": [
+      "13 : 2186",
+      "7 : 336",
+      "11 : 1320",
+      "5 : 120"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The pattern followed is: 382 – 160 = 222 691 – 180 = 511 753 – 200 = 553 Hence, 553 is the correct answer."
+  },
+  {
+    "n": 38,
+    "section": "General Intelligence and Reasoning",
+    "q": "Seven friends P, Q, R, S, T, U and V are watching hockey match in a stadium sitting in a row. P and U are sitting at the extreme ends. S is sitting second to the right of P and between T and R, Q is sitting between U and V, R is sitting immediate left of V. Who is sitting at the extreme right end?",
+    "q_image": "",
+    "opts": [
+      "U",
+      "T",
+      "R",
+      "P"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "We breathe in air and air is called Sun. Hence, Sun is the correct answer."
+  },
+  {
+    "n": 39,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the option that is related to the third term in the same way as the second term is related first term. 3 : 82 :: 4 : ?",
+    "q_image": "",
+    "opts": [
+      "256",
+      "257",
+      "64",
+      "48"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "If numbers 3 and 6 and signs + and x are interchanged then: Considering option 2 35 × 3 + 6 = 53 After interchanging: +8 +8 M X +8 +8 I Q 35 + 6 × 3 = 53 35 + 18 = 53"
+  },
+  {
+    "n": 40,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. ‘hfghf’ 97, 101, 103, 107, 109, .",
+    "q_image": "",
+    "opts": [
+      "113",
+      "123",
+      "111",
+      "133"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "23,29,37 are prime numbers, while 51 is not a prime number. Hence, 51 is different from all three other numbers. 53 = 53 LHS = RHS Hence, option 2 is the correct answer."
+  },
+  {
+    "n": 41,
+    "section": "General Intelligence and Reasoning",
+    "q": "If ‘A’ is replaced by ‘+’; if ‘B’ is replaced by ‘–’; ‘C’ is replaced by ‘+’; and ‘D’ replaced by ‘×’, find the value of the following equation. 27C9A15D3B16",
+    "q_image": "",
+    "opts": [
+      "32",
+      "34",
+      "55",
+      "65"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "In the first row, 42 + 32 + 52 = 50 Similarly, In the second row, 72 + 62 + 8² = 149 Hence, 149 is the correct answer"
+  },
+  {
+    "n": 42,
+    "section": "General Intelligence and Reasoning",
+    "q": "Select the correct option that will fill in the blank and complete the series. 27, 39, 63,",
+    "q_image": "",
+    "opts": [
+      "79",
+      "83",
+      "99",
+      "89"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "12 : 9 :: 45 : ? 1 + 2 = 3 ⇒ 32 = 9 Similarly, 4 + 5 = 9 ⇒ 92 = 81"
+  },
+  {
+    "n": 43,
+    "section": "General Intelligence and Reasoning",
+    "q": "VD Raman’s house is 30 m to the left of a temple, which is 40 m to the north of a church. One day, VD Raman starts from his house and takes the road which is parallel to the temple-church road and walks 50 m before turning to his right. He further walks 20 m and reaches a gym. What is difference between the straight distance between VD Raman’s house and the church and the temple and the gym?",
+    "q_image": "",
+    "opts": [
+      "20.7 m",
+      "37.7 m",
+      "50 m",
+      "70.7 m"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Option 1 → 133 = 2197 2197 – 13 = 2184 not 2186. Option 2 → 73 = 343 343 – 7 = 336. Option 3 → 113 = 1331 1331 – 11 = 1320. Option 4 → 53 = 125 125 – 5 = 120. Hence, 13:2186 is the odd one out."
+  },
+  {
+    "n": 44,
+    "section": "General Intelligence and Reasoning",
+    "q": "Find the missing term in the given analogous pair. 112 : 5, 15 : 4 :: : 7, 10 : 3",
+    "q_image": "",
+    "opts": [
+      "20",
+      "42",
+      "84",
+      "40"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The sitting arrangement is as follows, P and U are sitting at the extreme ends. So, there are two cases. Case 1: P U"
+  },
+  {
+    "n": 45,
+    "section": "General Intelligence and Reasoning",
+    "q": "Four pairs of words have been given, out of which three are alike in some manner, while one is different. Choose out the odd one. Sky : Blue 2. Water : Blue 3. Blood : Red 4. Milk : White General Awareness As on 2018 who was the CEO of National Culture Fund? Anupam Kher 2. Ramesh Sippy 3. Rahul Nath 4. K L Dhingra Name the period in which the Slave dynasty existed in India. AD 899-1000 2. AD 1206-1290 3. AD 189-321 4. AD 1690-1715 International day of the Girl child is observed every year on which day? 11th October 2. 30th November 3. 1st April 4. 18th January 2018 Rajiv Gandhi Khel Ratna award was given to . Hima Das 2. Virat Kohli 3. Chithra P U 4. Neeraj Chopra Name the new kind of painting that was developed in Eastern India (Bengal, Bihar and Orissa) during the Pala kingdom in 9th-10th century A. D. Miniature painting 2. Mural painting 3. Oil painting 4. Tanjore painting Name the first product to get a GI tag in India. Darjeeling Tea 2. Kancheevaram silk 3. Aranmula Kannadi 4. Alphonso Mango How many individuals have achieved the distinction of winning double Noble Prize?",
+    "q_image": "",
+    "opts": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "4350576?84350576?897, 101, 103, 107, 109... 4 3 50 5 7 6 ? 8 4 3 50 5 7 6 ? 8 The logic followed is: All the given number are in an increasing order of consecutive prime number. 97 → next prime number is 101 101 → next prime number is 103 103 → next prime number is 107 107 → next prime number is 109 Similarly, 109 → next prime number is 113."
+  },
+  {
+    "n": 46,
+    "section": "General Intelligence and Reasoning",
+    "q": "The epicenter of the earthquake that caused a tusnami on 26/12/2004 was located in the . Southern Ocean 2. Pacific Ocean 3. Indian Ocean 4. Atlantic Ocean The international Conference on Status and Protection of Coral Reefs (Stapcor – 2018) was held at . Lakshadweep 2. Andaman 3. Goa 4. Diu In which year was the National Culture Fund created as a Trust?",
+    "q_image": "",
+    "opts": [
+      "1996",
+      "1999",
+      "2002",
+      "2010"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "‘A’ is replaced by + ‘B’ is replaced by – C’ is replaced by ÷; and ‘D’ replaced by x’, Then the value of the 27C9A15D3B16 will be: Using BODMAS rule 27 ÷ 9 + 15 × 3 – 16 = 3 + 45 – 16 = 48 – 16 = 32"
+  },
+  {
+    "n": 47,
+    "section": "General Intelligence and Reasoning",
+    "q": "In which language was ‘Tawarikh’ written?",
+    "q_image": "",
+    "opts": [
+      "Tulu",
+      "Persian",
+      "Punjabi",
+      "Urdu"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "27, 39, 63,? 27 + 12 = 39 39 + 24 = 63 63 + 36 = 99"
+  },
+  {
+    "n": 48,
+    "section": "General Intelligence and Reasoning",
+    "q": "What type of process is Corrosion? Mechanical process 2. Electrical process 3. Electrochemical process 4. Manual process Pattachitra style of painting is one of the oldest and most popular art forms of . Karnataka 2. Odisha 3. Kerala 4. Tamil Nadu Basavan was a famous in ancient India.",
+    "q_image": "",
+    "opts": [
+      "Actor",
+      "Musician",
+      "King",
+      "Painter"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "VDRaman’s house50 m30 mTemple 40 mChurchGYM20 mVDRaman’s house50 m30 mTemple 40 mChurchGYM20 mNorth VD Raman’s house 50 m 30 m Temple 40 m Church GYM 20 m VD Raman’s house 50 m 30 m Temple 40 m Church GYM 20 m Case 2: U P S is sitting second right of P and between T and R. Case 2 is incorrect. But again, there are two cases. Case: 1.1 P T S R U West South East Case: 1.2 P R S T U Q is sitting between U and V. Again, two cases. Let's find out the straight distance between VD Raman’s house and the church. Using Pythagoras theorem we get, 302  402302  4022 25002 2500  50 302  402 302  402 2 2500 2 2500 502  502502  5022 50002 5000And, the straight distance between temple and gym 502  502 502  502 2 5000 2 5000 Case 1.1 P T S R V Q U    70.71 Case 1.2 P R S T V Q U R is sitting immediate left of V. Hence, Case 1.2 is incorrect. P T S R V Q U Hence, Finally U is sitting at the extreme right end."
+  },
+  {
+    "n": 49,
+    "section": "General Intelligence and Reasoning",
+    "q": "Damayanti Joshi is a famous . Kathak dancer 2. Bengal poet 3. Carnatic singer 4. Tamil artist What was the per capita income in India at current prices during 2017-18?",
+    "q_image": "",
+    "opts": [
+      "` 1.13 lakh",
+      "` 1.23 lakh",
+      "` 1.03 lakh",
+      "` 1.33 lakh"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "3 : 82 :: 4 : ? 3 × 3 = 9 ⇒ 92 = 81 ⇒ 81 + 1 = 82 Similarly, 4 × 4 = 16 ⇒ 162 = 256 ⇒ 256 + 1 = 257 So, difference between the straight distance between VD Raman’s house and the church and the temple and the gym = 70.71 – 50 = 20.71"
+  },
+  {
+    "n": 50,
+    "section": "General Intelligence and Reasoning",
+    "q": "Which year witnessed the rise of the Rashtrakuta dynasty that ruled the Deccan and surrounding areas?",
+    "q_image": "",
+    "opts": [
+      "AD 987",
+      "AD 1678",
+      "AD 753",
+      "AD 1278"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "112:5, 15: 4 :: _:7, 10:3 The pattern followed is: The first analogy is = 112 × 5 = 560 The second analogy is = 15 × 4 = 60 The third analogy is = X × 7 = 7X The fourth analogy is = 10 × 3 = 30 Here, we get to know that the second analogy is double the fourth analogy. Similarly, the first analogy will be double the third analogy. 7X × 2 = 560 X = 40 Hence, the answer is 40."
+  },
+  {
+    "n": 51,
+    "section": "General Awareness",
+    "q": "The Pullela Gopichand Academy trains . tennis players 2. badminton players 3. wrestlers 4. cricketers What was the total amount of Bank deposit in India as on 31st March 2018? ` 107 lakh crore 2. ` 137 lakh crore 3. ` 127 lakh crore 4. ` 117 lakh crore Name the disinfectant that is used to purify water after it has been Iodine-treated.",
+    "q_image": "",
+    "opts": [
+      "Potassium",
+      "Iron",
+      "Vitamin C",
+      "Calcium"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Sky is blue in colour. Blood is red in colour. Milk is white in colour. But water is not blue in colour. Hence, this one is different from all others."
+  },
+  {
+    "n": 52,
+    "section": "General Awareness",
+    "q": "Apart from Mahatma Gandhi, who was the other prominent personality to protest against untouchability in India? Bhimrao Ambedkar 2. Subhash Chandra Bose 3. Jawaharlal Nehru 4. Bhagat Singh Who won the first battle of Tarain? Raziya Sultan 2. Shivaji 3. Prithviraj Chauhan 4. Rajendra Chole What is the SI unit for electrical resistance?",
+    "q_image": "",
+    "opts": [
+      "Mole",
+      "Kelvin",
+      "Ampere",
+      "Ohm"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "K L Dhingra served as the CEO of the National Culture Fund (NCF) as of 2018. Under the Charitable Endowment Act of 1890, NCF was created as a Trust to serve as a financing source for the arts and culture that was distinct from the country’s pre-existing sources and funding practices. The council, which makes policy decisions under the direction of the Union Minister for Culture, manages and administers it. The Secretary of the Ministry of Culture chairs its Executive Committee, which implements such policies. Mrs. Arvind Manjit Singh is the current CEO of NCF. A former chairman of the Film and Television Institute of India, Anupam Kher is an Indian actor. An Indian producer and director, Ramesh Sippy. Indian actor, writer, dancer/choreographer, and director Rahul Nath."
+  },
+  {
+    "n": 53,
+    "section": "General Awareness",
+    "q": "Which of the following is caused by high-speed winds and air pressure difference?",
+    "q_image": "",
+    "opts": [
+      "Cyclones",
+      "Lightening",
+      "Volcanoes",
+      "Drought"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "A Turkic Mamluk slave general from Central Asia named Qutb- ud-Din Aibak led a slave dynasty into Northern India. Sultan of the Ghurid Empire Muhammad of Ghor was killed in 1206. The Slave Dynasty began when Qutb-ud-Din Aibak assumed the sultanate of Delhi. When a Ghurid superior was killed, Aibak gained authority. He came to control a sovereign nation that later became the Delhi Sultanate, a Mamluk dynasty-ruled state."
+  },
+  {
+    "n": 54,
+    "section": "General Awareness",
+    "q": "The India Constitution states that ‘The total number of Minsters, including the Prime Minister, in the Council of Ministers shall not exceed percent of the total number of members of the House of People’.",
+    "q_image": "",
+    "opts": [
+      "11",
+      "15",
+      "18",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Every year on October 11th, people all around the world mark the International Day of the Girl Child. The day strives to promote girls’ empowerment and the realisation of their human rights while bringing attention to and addressing the problems and difficulties that girls experience. Girl Force: Unscripted and Unstoppable served as the theme for the 2019 celebration of International Day of the Girl Child."
+  },
+  {
+    "n": 55,
+    "section": "General Awareness",
+    "q": "What is the term used to refer to helium atoms that have lost two electrons?",
+    "q_image": "",
+    "opts": [
+      "UV Rays",
+      "Theta Rays",
+      "Alpha Rays",
+      "X Rays"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Virat Kohli is a former captain of the Indian cricket team and a player from India. He received the Rajiv Gandhi Khel Ratna in 2018 in honour of his exceptional batsmanship and leadership abilities. The fastest player to score 8,000, 9,000, 10,000, and 11,000 runs in One Day Internationals (ODIs), Kohli holds several records. He consistently ranks among the top batsmen in international cricket and has been essential to the success of the Indian cricket team."
+  },
+  {
+    "n": 56,
+    "section": "General Awareness",
+    "q": "As per the ranking undertaken by Swachh Survekshan Grameen 2018, which State is the third cleanest in India? Manipur 2. Himachal Pradesh 3. Maharashtra 4. Kerala Sunil Arora assumed office as in December, 2018. Chief Election Commissioner 2. Lok Sabha speaker 3. Governor 4. Vice President Alexander, the Great invaded India in the year .",
+    "q_image": "",
+    "opts": [
+      "263 BC",
+      "326 BC",
+      "236 BC",
+      "362 BC"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In Eastern India (Bengal, Bihar, and Orissa) during the Pala Kingdom in the ninth and tenth centuries A.D., miniature painting was established. With a long history that extends back to the scribes of the mediaeval periods, miniature painting is a genre that concentrates on art (particularly painting, engraving, and sculpture). Miniature paintings, sketches, original prints and etchings, sculptures, and more can be found in collections at the American White House, the Smithsonian American Art Museum, Astolat Dollhouse Castle, and museums all around the world. During the Late Classical era, the Indian subcontinent was ruled by the Pala Empire. Any work of art that is painted or applied directly to a wall, ceiling, or other durable surfaces is referred to as a mural painting. The town of Thanjavur (also known as Tanjore in English) is where the classical South Indian painting style known as Thanjavur painting first emerged. Oil painting is the practice of using pigments and a drying oil substance as a binder."
+  },
+  {
+    "n": 57,
+    "section": "General Awareness",
+    "q": "The first practical light bulb was invented by . Galileo Galilei 2. Alexander Graham Bell 3. Thomas Alva Edison 4. Isaac Newton Water, foam, dry powder and wet chemical are types of . Fire extinguishers 2. Detergents 3. Shampoos 4. Vitamin Supplements Who won Santo Domingo open trophy in doubles category in 2018? Leander Peas 2. Sania Mirza 3. Somdev 4. Rohan Bopanna India is going to build its longest river bridge. Which two places will it connect? Dhubri and Phulbari 2. Cherapunji and Tura 3. Shillong and Tura 4. Shillong and Cherapunji Cobalt Oxide imparts which colour to glass?",
+    "q_image": "",
+    "opts": [
+      "Green",
+      "Purple",
+      "Blue",
+      "White"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The first item in India to bear a Geographical Indication (GI) label is “Darjeeling tea.” Tea from the Darjeeling district of West Bengal is prized for its distinct flavour and high quality. The tea is distinguished from teas produced in other locations by its distinctive features and characteristics, which are linked to its geographic origin, according to the GI tag. Because of the GI tag’s protection, only tea produced in the Darjeeling region by certain requirements may be marketed and sold as “Darjeeling tea.”"
+  },
+  {
+    "n": 58,
+    "section": "General Awareness",
+    "q": "Hemoglobin, the protein inside red blood cells, carries . Oxygen 2. Carbon di-oxide 3. Nitrogen 4. Ozone India is predicted to reach what global ranking by 2024 in the Global Aviation market?",
+    "q_image": "",
+    "opts": [
+      "3",
+      "4",
+      "7",
+      "5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Four people have the distinction of receiving two Nobel Prizes. The Nobel Prize is recognised as the highest distinction in the fields of peace, economics, science, medicine, and literature. The Nobel Prize is the highest honour a scientist can receive, and only four scientists in history—John Bardeen, Marie Curie, Linus Pauling, and Frederick Sanger—have ever received it twice. In 1956, John Bardeen and William B. Shockley shared the Nobel Prize in Physics for this discovery. Together with her husband Pierre and Henri Becquerel, Marie Curie received the inaugural Physics Prize in 1903 for the discovery of radioactivity. Linus Pauling was the only recipient of two Nobel Prizes who did not have to split them with anyone else. Frederick Sanger, a biology enthusiast, was successful in identifying the protein’s amino acid sequence."
+  },
+  {
+    "n": 59,
+    "section": "General Awareness",
+    "q": "What is the position of Rewari district among the districts category in Swachh Survekshan Grameen 2018?",
+    "q_image": "",
+    "opts": [
+      "5",
+      "6",
+      "2",
+      "7"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The Indian Ocean was the location of the earthquake’s epicentre that triggered a tsunami on December 26, 2004. It was an undersea megathrust earthquake that measured 9.1–9.3 Mw and in some places reached a Mercalli rating of IX. An earthquake occurred as a result of a breach along the fault line separating the Indian and Burmese plates. The faulting lasted the longest time ever seen, between eight and ten minutes, and the earthquake was the third- largest ever recorded. The earthquake that occurred is referred to as the Sumatra-Andaman earthquake by scientists. The subsurface seismic activity resulted in a succession of huge tsunami waves that reached heights of up to 30 metres (100 feet)."
+  },
+  {
+    "n": 60,
+    "section": "General Awareness",
+    "q": "In 2018, which of the product from India received the GI tag? Shahi Litchi 2. Payyanur Pavithra ring 3. Solapur Chaddar 4. Chanderi Saree Which of the following is an instrument of the monetary policy of the Reserve Bank of India? Public Debt 2. Tax Rate 3. Government Expenditure 4. Repo Rate Name the minster who is acting as Finance Minister on behalf the current Finance Minister Arun Jaitley who is unwell. Piyush Goyal 2. Suresh Prubhu 3. Ram Vilas Paswan 4. Smriti Irani Which State was awarded for the third maximum citizen’s participation in Swachh Survekshan Grameen 2018? Maharashtra 2. Rajasthan 3. Jammu and Kashmir 4. Sikkim Who among the following won the Commonwealth Association for Public Administration and Management’s International Innovation Award for-2018? Kerala Startup mission Unnayan Banka Confederation of India Industry (CII) Startup Village Which country won 2018 Commonwealth Association for Public Administration and Management Award?",
+    "q_image": "",
+    "opts": [
+      "India",
+      "Singapore",
+      "Sri Lanka",
+      "Malaysia"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Lakshadweep hosted the 2018 International Conference on the Status and Protection of Coral Reefs (STAPCOR-2018). From October 22 through October 24, 2018, Bangaram Island in the Union Territory of Lakshadweep hosted STAPCOR 2018. ‘Reef for Life’ was the conference’s theme. Dr. Harsh Vardhan, the Union Minister for the Environment, Forests, and Climate Change, officially inaugurated it. 2018 was designated as the International Year of the Reef (IYOR 2018) by the International Coral Reef Initiative (ICRI)."
+  },
+  {
+    "n": 61,
+    "section": "General Awareness",
+    "q": "What is the term used to refer to the process of conversion of water vapor back to water? Condensation 2. Evaporation 3. Freezing 4. Sublimation Who along with Virat Kohli is the recipient of Rajiv Gandhi Khel Ratna award in 2018? Tintuluka 2. Jeremy Lalrinnunga 3. Neeraj Chopra 4. Mirabai Chanu Which of the following is the national fruit of India? Mangroov Indica 2. Mangoose Indica 3. Marvelous Indica 4. Mangifera Indica Which of the following states has the highest life expectancy at birth? Andhra Pradesh 2. Jammu and Kashmir 3. Himachal Pradesh 4. Kerala Who was appointed as the new Chief Justice of India in October 2018? Indu Jain 2. Ranjan Gogoi 3. Chelameswar 4. Venugopal Who will replace Mr. Amandeep Gill as the Ambassador of India to the United Nations Conference on Disarmament, Geneva? Ram Kumar Sharma 2. Pankaj Udash 3. Pankaj Sharma 4. Alok Nath Which State was awarded for the second maximum citizens’ participation in Swachh Survekshan Grameen 2018?",
+    "q_image": "",
+    "opts": [
+      "Goa",
+      "Mizoram",
+      "Sikkim",
+      "Gujarat"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "In 1996, a Trust called the National Culture Fund (NCF) was established. Under the Charitable Endowment Act of 1890, NCF was created as a Trust to serve as a financing source for the arts and culture that was distinct from the country’s pre-existing sources and funding practices. The council, which makes policy decisions under the direction of the Union Minister for Culture, manages and administers it. The Secretary of the Ministry of Culture chairs its Executive Committee, which implements such policies. Mrs. Arvind Manjit Singh is the current CEO of NCF."
+  },
+  {
+    "n": 62,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. The secretary gave me the application form. The application form was being given to me by the secretary.",
+    "q_image": "",
+    "opts": [
+      "The application form is given to me by the secretary.",
+      "The application form had been given to me by the secretary.",
+      "The application form was given to me by the secretary.",
+      "Comprehension:"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Tawarikh was written in the Persian language. The Tawarikh was written by scholarly men, secretaries, administrators, poets, and courtiers, who described events and gave advice to kings on how to run their countries, stressing the significance of just government. Tawarikh’s authors seldom ever visited villages because they mostly lived in cities (mostly Delhi). Goals of these writings: In the hopes of receiving great rewards, they frequently penned their history for sultans. They counselled monarchs on the necessity of maintaining an “ideal” social structure based on gender and birthright. Everyone did not agree with their ideals."
+  },
+  {
+    "n": 63,
+    "section": "General Awareness",
+    "q": "In the following passage some words have been deleted. Fill in the blanks with the help of the alternatives given.",
+    "q_image": "",
+    "opts": [
+      "Black Friday, the day following Thanksgiving Day, is widely",
+      "(1) \t as the beginning of the Christmas shopping season. Most (2) \t retailers open early and (3) \t promotional sales to (4) \t the holiday shopping season. Often, the three days following Thanksgiving, are holiday thereby increasing the number of (5) \t shoppers. It has",
+      "(6) \t been the busiest shopping day of the year since 2005. The earliest (7) \t of the use of the phrase Black Friday in a shopping (8) \t\t suggests that it originated in Philadelphia, where it was used to describe the heavy and (9)",
+      "traffic that occurred on the day after Thanksgiving. The usage of the term Black Friday (10) \t back to at least 1961."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Corrosion is an electrochemical process. The surface of impure iron behaves as small electrochemical cell in presence of moisture and air. Pure iron is the anode and impure iron surface is the cathode. The moist air acts as an electrolyte. This leads to the formation of rust, which is basically hydrated oxide."
+  },
+  {
+    "n": 64,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 1.",
+    "q_image": "",
+    "opts": [
+      "noted",
+      "regarded",
+      "judged",
+      "thought"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "One of the most well-known and traditional forms of art in Odisha is the pattachitra style of painting. Traditional cloth-based scroll paintings in the Pattachitra style are painted. It is one of Odisha’s historical masterpieces of art."
+  },
+  {
+    "n": 65,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank 2. Major 2. influential 3. important 4. considerable Select the most appropriate option to fill blank no 3. offer 2. make available 3. come up with 4. put forward Select the most appropriate option to fill blank no 4.",
+    "q_image": "",
+    "opts": [
+      "kick off",
+      "start out",
+      "start over",
+      "set off"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In ancient India, the painter Basawan was well-known. Indian miniature painter Basawan (active between 1580 and 1600) worked in the Mughal style. His use of portraiture in the drawings of Akbarnama, the Mughal Emperor, and Akbar’s Official Biography, as well as his proficiency with colour and profound observation of human nature, earned him a reputation among his contemporaries. He was influenced by Abd al-Samad while working as a court painter for Akbar the Great. One of the earliest Indian artists to be interested in Western techniques was Basawan, who was motivated by the European paintings that Jesuit missionaries brought to Akbar’s court."
+  },
+  {
+    "n": 66,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 5.",
+    "q_image": "",
+    "opts": [
+      "future",
+      "hidden",
+      "potential",
+      "likely"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Indian classical dancer of significance in the Kathak dance style was Damayanti Joshi. In 1970, she was awarded the Padma Shri, and in 1968, she won the Sangeet Natak Akademi Award for Dance. She has continued to serve as director of Lucknow’s U.P. Kathak Kendra. She appeared in the government of India’s Films Division’s 1971 documentary on Kathak. She was the pioneer of the “Saree” as a Kathak dancing attire."
+  },
+  {
+    "n": 67,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 6.",
+    "q_image": "",
+    "opts": [
+      "ordinarily",
+      "routinely",
+      "consistently",
+      "normally"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "At current exchange rates, India’s per capita income in 2017–18 was around 1.13 lakh, which is equal to 113,000 or 1.13 million. The amount shown here is the national average for that fiscal year in India. The per capita income can fluctuate depending on several variables, including the economy, population size, income distribution, and inflation rates. The information presented here is approximate and could differ somewhat depending on the sources and calculations used."
+  },
+  {
+    "n": 68,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 7.",
+    "q_image": "",
+    "opts": [
+      "Suggestion",
+      "sign",
+      "mark",
+      "evidence"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The Rashtrakuta dynasty rose to power in AD 753. The dynasty was founded by Dantidurga, who defeated the Chalukya king Kirtivarman II. The Rashtrakutas ruled the Deccan and surrounding areas for over 200 years, and their empire reached its peak under the rule of Amoghavarsha I. The Rashtrakutas were known for their military prowess, their patronage of the arts and architecture, and their contributions to mathematics and astronomy. The dynasty came to an end in the 10th century, when it was overthrown by the Chalukyas of Kalyani."
+  },
+  {
+    "n": 69,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 8.",
+    "q_image": "",
+    "opts": [
+      "situation",
+      "context",
+      "setting",
+      "background"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Badminton players are trained at the Pullela Gopichand Academy in Hyderabad, Telangana. It serves as a training ground for numerous badminton players, including Saina Nehwal, P. V. Sindhu, Srikanth Kidambi, Parupalli Kashyap, H.S. Prannoy, Sai Praneeth, Sameer Verma, and many more. The 2001 All England Open Badminton Championships were won by Pullela Gopichand. This location served as both a site for the 2009 Indian Open and a training ground for the 2009 BWF World Championships."
+  },
+  {
+    "n": 70,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill blank no 9. disturbing 2. meddling 3. interfering 4. disruptive Select the most appropriate option to fill blank no 10.",
+    "q_image": "",
+    "opts": [
+      "dates",
+      "takes",
+      "occurs",
+      "goes"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "As of March 31st, 2018, India had bank deposits of Rs. 117 lakh crore. The total amount of bank deposits in March 2017 was 109.75 lakh crore. As of March 2018, the shares of savings and term deposits were 32.1% and 58.6%, respectively, while the shares of current deposits were 9.7%."
+  },
+  {
+    "n": 71,
+    "section": "General Awareness",
+    "q": "Select the alternative that will improve the underlined part of the sentence. In case there is no improvement select “No improvement”. They have done lot of researches before making the film.",
+    "q_image": "",
+    "opts": [
+      "No improvement\t2. a lot of research",
+      "3. lots of researches\t4. a lot of researches",
+      "Identify the segment in the sentence which contains the grammatical error.",
+      "Whenever I went to the cinema I bought myself popcorn and coke for a special treat."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "After the water has been treated with iodine, it is purified using vitamin C. Ascorbic acid, or vitamin C, is a nutrient that is present in many foods and is also available as a dietary supplement. Vitamin C was first chemically synthesised in 1933 after being separated in 1928 and found in 1912. Citrus fruits, kiwifruit, broccoli, Brussels sprouts, raw bell peppers, strawberries, and other vegetables and fruits are sources of vitamin C. Foods’ vitamin C levels may be decreased by long-term storage or cooking."
+  },
+  {
+    "n": 72,
+    "section": "General Awareness",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Whenever",
+      "bought",
+      "went",
+      "for"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Bhimrao Ambedkar was the other well-known figure who spoke out against untouchability in India, in addition to Mahatma Gandhi. To aid the disadvantaged class, Gandhi launched three journals: Harijan in English, Harijan Bandu in Gujarati, and Harijan Sevak in Hindi. The Harijan Movement in India resulted from this. Babasaheb further emphasised that the ongoing conflict between Buddhism and Brahmanism was the main issue facing Indian civilization."
+  },
+  {
+    "n": 73,
+    "section": "General Awareness",
+    "q": "Identify the segment in the sentence which contains the grammatical error. Can anyone tell me what did we learn in Mathematics yesterday?",
+    "q_image": "",
+    "opts": [
+      "anyone",
+      "can",
+      "did we learn",
+      "in"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The Rajputs, headed by Prithviraj Chauhan and his allies, engaged the Ghurids, a Turkish tribe, in the first battle of Tarain in 1191. The Rajput soldiers prevailed in the next conflict. The following are the significant occasions that triggered the First Battle of Tarain: Muhammad Ghori marched his troops into India and then took control of Bathinda, a significant fort. The Delhi army reacted as a result of Bathinda’s loss. Prithviraj Chauhan gathered his supporters and commanded his army to engage Muhammad Ghori in combat. Ghurid archers launched a probing attack before the combat, shooting arrows all over the Rajput formation. The Ghurids were caught off guard as Prithvi Raj Chauhan promptly retaliated with an all-out assault. They were not accustomed to the Rajput fighting style, which favoured close-quarters battle. To their credit, the Ghurid army fought well against waves of troops, but the Rajput cavalry soon began to overwhelm the Ghurid flank. Muhammad Ghori knew how advantageous close combat was for the Rajputs. Because they were unable to withstand the attack on their flank, Muhammad’s soldiers dispersed and fled."
+  },
+  {
+    "n": 74,
+    "section": "General Awareness",
+    "q": "Identify the segment in the sentence which contains the grammatical error. Jayan woke up have a sore throat and by evening his voice had disappeared.",
+    "q_image": "",
+    "opts": [
+      "woke up",
+      "by",
+      "had disappeared",
+      "have"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The SI unit for electrical resistance is the ohm (). A measurement of an object’s resistance to the flow of electrical current is called its electrical resistance. An object’s resistance is mostly determined by the substance from which it is formed; for example, rubber- manufactured items typically have very high resistance and low conductivity. The ratio of the voltage applied across an object to the current flowing through it is known as its resistance (R). The SI unit of substance quantity is the mole. The SI temperature unit is called a kelvin. The SI unit for current is the ampere."
+  },
+  {
+    "n": 75,
+    "section": "General Awareness",
+    "q": "Identify the segment in the sentence which contains the grammatical error. I think boys and girls must be learning to do household chores from an early age.",
+    "q_image": "",
+    "opts": [
+      "think",
+      "to do",
+      "from",
+      "be learning"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "High-speed winds and differences in air pressure create cyclones. A cyclone is an expansive air mass that revolves around a potent low- pressure nucleus. Cyclones are characterised by rotating winds that spiral inward around a low-pressure area. Extratropical cyclones, Subtropical cyclones, and Tropical cyclones are the three primary categories of surface-based cyclones. An electrostatic discharge known as lightning happens when two electrically charged regions of the atmosphere come together. A volcano is a fissure in the crust of the earth through which gases, lava, and volcanic ash can escape. A drought is a situation where there is a sustained lack of water, whether it comes from the atmosphere (below-average precipitation), the surface, or the ground."
+  },
+  {
+    "n": 76,
+    "section": "General Awareness",
+    "q": "Identify the segment in the sentence which contains the grammatical error. Some students who are late will not be allowed to enter the examination hall. allowed to enter 2. Some 3. will not be 4. who Select the most appropriate option to fill in the blank. Minu thinks that Salman is a singer than Nitin.",
+    "q_image": "",
+    "opts": [
+      "more better",
+      "Best",
+      "good",
+      "better"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "The Indian Constitution states that no more than 15% of the members of the House of People may serve as Ministers, including the Prime Minister, in the Council of Ministers."
+  },
+  {
+    "n": 77,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. Mr. Zabihullah did not submit the grades on time. The grades are not submitted by Mr. Zabihullah on time. The grades have not been submitted by Mr. Zabihullah on time. The grades were not submitted by Mr. Zabihullah on time. The grades were not being submitted by Mr. Zabihullah on time. Given below are four sentences, three of which, are jumbled. Pick the option that gives the correct order.",
+    "q_image": "",
+    "opts": [
+      "You do buy old books, don’t you?",
+      "People seem to prefer to buy new books nowadays.",
+      "Business is not so good as it used to be.",
+      "I’ll have to see what you have got before I answer your question."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Helium atoms that have lost two electrons are known as ‘alpha rays.’ Alpha particles, also known as alpha rays or alpha radiation, are made up of two protons and two neutrons that are bonded together to form a particle that resembles the nucleus of helium-4. The Greek letter ‘alpha’ serves as the inspiration for the naming of these particles. In reality, alpha ‘rays’ are fast-moving particles. The wavelength of ultraviolet (UV) electromagnetic radiation ranges from 10 nanometers to 400 nanometers; it is shorter than visible light but longer than X-rays. An electroencephalogram (EEG) can display the theta rhythm, a brain rhythmic pattern that is produced by theta waves. X-radiation, a type of high-energy electromagnetic radiation, is made up of X-rays."
+  },
+  {
+    "n": 78,
+    "section": "General Awareness",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "ACBD",
+      "ABCD",
+      "ADCB",
+      "ACDB"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Maharashtra was the third-cleanest state in India according to the Swachh Survekshan Grameen 2018 rankings. Maharashtra was commended for making noteworthy improvements to hygiene and sanitation in rural areas that year."
+  },
+  {
+    "n": 79,
+    "section": "General Awareness",
+    "q": "Given below are four sentences, three of which, are jumbled. Pick the option that gives the correct order. When I returned to my seat, I happened to see a man who was my neighbor years ago. He was a great talker. So I did not wish to meet him now, just as my holiday was about to begin. It used to take hours to get away from him.",
+    "q_image": "",
+    "opts": [
+      "ACDB",
+      "ADBC",
+      "ABCD",
+      "ABDC"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "In December 2018, Sunil Arora began serving as India’s Chief Election Commissioner. The 23rd Chief Election Commissioner of India is Sunil Arora. Additionally, he oversees A-WEB, the Association of World Election Bodies. Additionally, he worked in two ministries as a secretary for the Indian government. He took over for Om Prakash Rawat."
+  },
+  {
+    "n": 80,
+    "section": "General Awareness",
+    "q": "Select the correct indirect form of the give sentence. “I arrived in India last week,” said Sarah.",
+    "q_image": "",
+    "opts": [
+      "Sarah said she had arrived in India the previous week.",
+      "Sarah said she had arrived in India the last week.",
+      "Sarah said she has arrived in India the last week.",
+      "Sarah said she arrived in India the las week."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Alexander invaded India in 326 BC, and after crossing the Indus River, he moved in the direction of Taxila. On the banks of the Jhelum River, which the Greeks called Hydaspes, in the Punjab region, Alexander the Great and King Porus of the Paurava kingdom engaged in battle in 326 BC. Like the other regional leaders he had vanquished, Alexander captured Porus and gave him the freedom to control his domain. The ancient Greek country of Macedon had Alexander the Great as its ruler (basileus)."
+  },
+  {
+    "n": 81,
+    "section": "General Awareness",
+    "q": "Select the correct indirect form of the given sentence. “I will appreciate your support,” the new captain told the team.",
+    "q_image": "",
+    "opts": [
+      "The new captain informed the team that he will be appreciating their support",
+      "The new captain informed the team that he would appreciate their support.",
+      "The new captain informed the team that he will appreciate their support.",
+      "The new captain informed the team that he appreciates their support."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Thomas Alva Edison created the first useful light bulb. America’s greatest inventor, Thomas Alva Edison (February 11, 1847 – October 18, 1931), was an American businessman and inventor. He created numerous innovations in the production of electric power, mass communication, sound recording, and motion pictures. An electric light having a wire filament that has been heated to such a high temperature that it emits visible light (incandescence) is known as an incandescent light bulb globe. A glass or fused quartz bulb that is filled with inert gas or a vacuum shields the filament from oxidation."
+  },
+  {
+    "n": 82,
+    "section": "General Awareness",
+    "q": "Select the correct indirect form of the given sentence. “When will you complete your project?” my teacher asked.",
+    "q_image": "",
+    "opts": [
+      "My teacher asked when I will complete my project.",
+      "My teacher asked when I will be completing my project.",
+      "My teacher asked when I could complete my project.",
+      "My teacher asked when I would complete my project."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Fire extinguishers come in several forms, including water, foam, dry powder, and wet chemical. An agent that can be released to put out a fire is contained in a hand-held cylindrical pressure vessel that serves as a fire extinguisher. Fire extinguishers come in two primary varieties: cartridge-operated and stored-pressure. With dry chemical extinguishers, nitrogen is frequently employed. In stored pressure units, the expellant and the firefighting agent are held in the same chamber. Wet Extinguishers that employ water and foam often use air. Expellant gas is contained in a separate cartridge in cartridge-operated extinguishers; this cartridge is ruptured before discharge, exposing the propellant to the extinguishing agent."
+  },
+  {
+    "n": 83,
+    "section": "General Awareness",
+    "q": "Read the following passage and answer the questions. Tutankhamen was Pharoah of Egypt from 1361 to 1352 BC. He died at the early age of nineteen and was buried in a tomb in the Valley of the Kings, on the west bank of the river Nile. Not much is known about the life of this king or why he died so young. In fact, we would never have heard of him if not for the magnificent treasures found in his tomb. All the other tombs in the Valley of the Kings had been robbed in ancient times. But nobody knew about Tutankhamen’s tomb for hundreds of years. Hence, there was a great deal of excitement when his tomb was discovered by two Englishmen. One of them, Howard Carter, was a professional archaeologist. The other, Lord Carnarvon, was a rich man interested in archaeology and who generously spent his money on excavations. For four years, form 1917 to 1922, they had been excavating in the Valley of th Kings without finding anything new. They were on the verge of giving up when a step appeared as Carter was clearing some stones near a royal tomb. He excavated further and unearthed a breathtaking collection of treasures in a tomb, all buried with Tutankhamen 3274 years ago! However, the story of Tutankhamen did not end there. Some Egyptains believed that according to an ancient curse anyone who",
+    "q_image": "",
+    "opts": [
+      "touched Tutankhamen’s tomb would die. Most people laughed at the idea of the curse coming ture. However, when the last man climbed out of the tomb, a sudden sandstorm blew up and people saw a hawk, the ancient royal symbol of Egypt, fly overhead. Locals took this to mean that the spirit of the dead king had left his tomb, cursing those who had opened it. Five months latter, Lord Carnarvon, died of an infected mosquito bite on his cheek.",
+      "Which ONE of the following statements is TRUE?",
+      "Tutenkhamen died of a mosquito bite.",
+      "Most Egyptians did not believe that there was a curse on those who touched Tutenkhamen’s tomb."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In the doubles division, Leander Paes took home the Santo Domingo Open trophy in 2018. In Santo Domingo, Dominican Republic, Leander Paes and Miguel Angel Reyes-Varela of Mexico won the doubles championship in the $125,000 Challenger tennis competition. Eight doubles and 10 mixed doubles Grand Slam titles were won by Leander Paes. Paes got the Arjuna Award in 1990, the Padma Shri Award in 2001, and the Padma Bhushan, India’s third-highest civilian award, in January 2014. The Rajiv Gandhi Khel Ratna Award is India’s highest sporting distinction."
+  },
+  {
+    "n": 84,
+    "section": "General Awareness",
+    "q": "Very few tombs had not been robbed by raiders. Lord Carnarvon sponsored excavations because he loved archaeology. The phrase on the ‘verge of giving up’ ... means: sacrificing 2. continuing 3. rising 4. surrendering Tutenkhamen is remembered today because: He died very young. He was a famous ruler of Egypt. His tomb contained treasures. He was buried in the Valley of the Kings. The sight of the hawk flying in the skies suggested that: Lord Carnarvon would be bitten by a mosquito. The king’s spirit had escaped from the tomb. The curse was about to come true. A sandstorm was on its way The tomb of Tutenkhamen was discovered in:",
+    "q_image": "",
+    "opts": [
+      "1922 AD",
+      "1352 BC",
+      "1917 AD",
+      "1361 BC"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "The longest river bridge ever constructed in India will link Dhubri and Phulbari. In North-East India, a bridge connecting Assam and Meghalaya over the Brahmaputra River is proposed as the Dhubri- Phulbari Bridge. The Dhubri-Phulbari bridge would stretch more than 19 kilometres and be India’s longest waterway bridge when it is finished in 2026–2027. NHIDCL would carry out this project, which is being supported by the Japan International Cooperation Agency."
+  },
+  {
+    "n": 85,
+    "section": "General Awareness",
+    "q": "Select the most appropriate meaning of the idiom. wash one’s hands off something",
+    "q_image": "",
+    "opts": [
+      "refuse to change one’s mind",
+      "refuse to be responsible for something",
+      "clear all doubts regarding a situation",
+      "claim responsibility for an action"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The glass gets its blue tint from cobalt oxide. The colour of the glass is added during the manufacturing process by mixing oxides, sulphides, salts, and other metal compounds into the molten glass. The glass’ distinctive colouration is also a result of the addition of evenly distributed electrically charged ions during the manufacturing process."
+  },
+  {
+    "n": 86,
+    "section": "General Awareness",
+    "q": "Select the most appropriate synonym of the given word. Scrumptious",
+    "q_image": "",
+    "opts": [
+      "disgusting",
+      "revolting",
+      "horrendous",
+      "delicious"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Human blood contains the pigment haemoglobin, which transports oxygen from the lungs to every area of the body. Haemoglobin, an oxygen-carrying protein, is found in RBCs. Haemoglobin absorbs oxygen in the lungs, giving blood its vivid red colour. Haemoglobin transports oxygen to various body areas as it circulates through the body. An RBC has a lifespan of roughly 4 months. The blood’s haemoglobin transfers oxygen from the respiratory system’s lungs or gills to the body’s tissues. There, oxygen is released to allow aerobic respiration, which produces energy to support an organism’s functions through a process known as metabolism. Every 100 mL of blood in a healthy person has 12 to 20 grams of haemoglobin. In mammals, the chromoprotein makes up roughly 35% of the overall content (including water) and 96% of the dry weight of the red blood cell. In comparison to dissolved oxygen in the blood, haemoglobin has a seventy-fold higher total blood oxygen capacity with a 1.34 mL O2 per gramme oxygen-binding capacity."
+  },
+  {
+    "n": 87,
+    "section": "General Awareness",
+    "q": "Select the most appropriate antonym of the given word. raucous",
+    "q_image": "",
+    "opts": [
+      "subdued",
+      "unruly",
+      "Harsh",
+      "wild"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "By 2024, it is anticipated that India will hold the third position globally in the aviation market. Around 2024, India will surpass the UK to overtake it as the third-largest aviation market in the world. The IATA predicts that by the middle of the 2020s, China would overtake the United States as the world’s largest aviation market. A global increase of 100 million jobs might result from a doubling of air travel in the next 20 years, according to IATA Director General and CEO Alexandre de Juniac."
+  },
+  {
+    "n": 88,
+    "section": "General Awareness",
+    "q": "Identify the segment in the sentence which contains the grammatical error. Even if our main player pull up, we will go ahead with the match as scheduled. go ahead with 2. pull up 3. Even if 4. as Select the most appropriate option to fill in the blank. My sister was angry with me because I her stapler.",
+    "q_image": "",
+    "opts": [
+      "shred",
+      "split",
+      "tore",
+      "damaged"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In the 2018 Swachh Survekshan Survekshan Grameen, the district of Rewari came in second place among districts. Swachh Survekshan Grameen Awards 2018 were presented by Prime Minister Narendra Modi to the top-performing states and districts. The Satara District in Maharashtra was named the finest district, and Haryana was named the greatest state. For encouraging the most citizen participation, Uttar Pradesh received an award. At the Rashtrapati Bhawan Cultural Centre, the awards were presented during the Mahatma Gandhi International Sanitation Convention’s closing session. The National Swachh Survekshan Grameen 2018 report from the Union Ministry of Drinking Water and Sanitation served as the basis for the rankings."
+  },
+  {
+    "n": 89,
+    "section": "General Awareness",
+    "q": "Select the most appropriate meaning of the idiom. give someone the cold shoulder",
+    "q_image": "",
+    "opts": [
+      "make someone cold and uncomfortable",
+      "deliberately ignore someone",
+      "make someone feel welcome and comfortable",
+      "gift someone a dress with cut-off sleeves"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Bihar’s Shahi Litchi was awarded the GI tag in 2018. The tag, given out by the India Patent Office, enables a state or a specific area to lay claim exclusively to a product, provides a guarantee of quality, and is frequently cited as justification for raising production levels. On 38% of the land, the state produces 40% of the litchis grown in India. The fruit joins the distinguished list of Bihar products that also includes the Jardalu mango, Katarni rice, and Magahi paan."
+  },
+  {
+    "n": 90,
+    "section": "General Awareness",
+    "q": "Select the most appropriate synonym of the given word. Cherish",
+    "q_image": "",
+    "opts": [
+      "nurture",
+      "ignore",
+      "destroy",
+      "forsake"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Repo Rate: Under the Liquidity Adjustment Facility (LAF), the Reserve Bank lends overnight funds to banks at a (fixed) interest rate in exchange for the government and other approved securities as collateral."
+  },
+  {
+    "n": 91,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. Sukanya has cooked enough food for twenty people.",
+    "q_image": "",
+    "opts": [
+      "Enough food for twenty people was cooked by Sukanya.",
+      "Enough food for twenty people had been cooked by Sukanya.",
+      "Enough food for twenty people will be cooked by Sukanya.",
+      "Enough food for twenty people has been cooked by Sukanya."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "In place of the ill former finance minister Arun Jaitley, Piyush Goyal served in that capacity. Between 2014 and 2019, Arun Jaitley served as the finance minister of India. Politician Piyush Vedprakash Goyal serves as India’s Minister of Railways and Commerce at the moment. He now serves as the Leader of the Rajya Sabha and is a member of parliament for the state of Maharashtra."
+  },
+  {
+    "n": 92,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. They are setting up a carpet recycling factory.",
+    "q_image": "",
+    "opts": [
+      "A carpet recycling factory was being set up by them.",
+      "A carpet recycling factory has been set up by them.",
+      "A carpet recycling factory is being set up by them.",
+      "A carpet recycling factory was set up by them."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Maharashtra received recognition for having the third-highest number of citizens participating in Swachh Survekshan Grameen 2018. Awards were presented in three categories: State, District, and State with the highest level of citizen participation. The Ministry of Drinking Water and Sanitation presented the prizes. According to the Swachh Survekshan Grameen 2018 rankings, Satara District in Maharashtra was named the best district, and Haryana was named the best State. Gujarat won a prize for having the second-highest level of citizen participation. The Ministry of Jal Shakti absorbed the Ministry of Drinking Water and Sanitation."
+  },
+  {
+    "n": 93,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. Richa hasn’t invited me to the party.",
+    "q_image": "",
+    "opts": [
+      "I had not been invited to the party by Richa.",
+      "I was not invited to the party by Richa.",
+      "I haven’t been invited to the party by Richa.",
+      "I am not invited to the party by Richa."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Unnayan Banka is a district-level programme in Bihar, India, that aims to enhance public administration and governance by using creative methods. It was honoured for its exceptional contribution to public management and administration."
+  },
+  {
+    "n": 94,
+    "section": "General Awareness",
+    "q": "Select the correct indirect form of the give sentence. “I will come tomorrow”, promised Vijaya.",
+    "q_image": "",
+    "opts": [
+      "Vijaya promised that she is coming the next day.",
+      "Vijaya promised that she would come the following day.",
+      "Vijaya promised that she will come the next day.",
+      "Vijaya promised that she would come tomorrow."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The Commonwealth Association for Public Administration and Management (CAPAM) 2018 Award was won by India. The CAPAM has accepted the Department of Administrative Reforms and Public Grievances (DARPG) as an institutional member. This honour was presented on October 23, 2018, in Georgetown, Guyana. Since 1998, CAPAM has announced the winners of its biannual International Innovations Awards (IIA) Programme. Awarded in the category of “Innovation Incubation” is the project called “Unnayan Banka- Reinventing Education” in the Banka District of the State of Bihar."
+  },
+  {
+    "n": 95,
+    "section": "General Awareness",
+    "q": "Select the alternative that will improve the underlined part of the sentence. In case there is no improvement select “No improvement”. The film stays with you long after you are finished watching it. have finished watching 2. had finished watching 3. No improvement 4. are finishing watching Select the most appropriate antonym of the given word. stupendous",
+    "q_image": "",
+    "opts": [
+      "fantastic",
+      "awful",
+      "wonderful",
+      "Amazing"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The process of turning water vapour back into liquid water is called condensation. The opposite of vaporisation, condensation is the transition of matter’s physical condition from the gaseous to the liquid state. Condensation begins when atomic or molecular clusters of that species form within the gaseous volume of the substance—much as how raindrops or snowflakes form within clouds—or when the substance’s gaseous phase makes contact with a liquid or solid surface. A ‘condenser’ is a piece of equipment for compressing and chilling vapour that gathers condensed liquids. A sort of vaporisation called evaporation takes place on the surface of a liquid when it transitions into the gas phase. When a liquid’s temperature drops below its freezing point, a phase transition called freezing occurs, converting it from a liquid to a solid. Without going through the intermediary liquid phase, sublimation is the process by which a substance moves straight from the solid to the gas phase."
+  },
+  {
+    "n": 96,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. I will have finished my work before 6:00 pm. My work will have finished before 6:00 pm. My work will have been finished before 6:00 pm.",
+    "q_image": "",
+    "opts": [
+      "My work will be finished before 6:00 pm.",
+      "My work will finish before 6:00 pm.",
+      "Identify the segment in the sentence which contains the grammatical error.",
+      "The captain of the team was very criticized for the quality of his leadership."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The Rajiv Gandhi Khel Ratna Award was given to Mirabai Chanu and Virat Kohli in 2018. President Ram Nath Kovind presented the Rajiv Gandhi Khel Ratna Award to weightlifter Mirabai Chanu and captain of the Indian men’s cricket team Virat Kohli at the Rashtrapati Bhavan. After Sachin Tendulkar (1997) and MS Dhoni (2007), Virat Kohli is the third cricketer to get the Khel Ratna honour. After Nameirakpam Kunjarani (1996) and Karnam Malleswari (1995), Chanu is the third weightlifter to receive the award."
+  },
+  {
+    "n": 97,
+    "section": "General Awareness",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "his",
+      "the",
+      "for",
+      "very"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The mango is scientifically known as Mangifera Indica. Mangoes are abundantly grown throughout India and have a special position in Indian culture. It is renowned for its flavour, which is sweet, aromatic, and brilliant colours. In Indian cuisine, the mango is utilised in a variety of dishes, drinks, and desserts in addition to being a delicious fruit."
+  },
+  {
+    "n": 98,
+    "section": "General Awareness",
+    "q": "Select the most appropriate synonym of the given word. luxuriant",
+    "q_image": "",
+    "opts": [
+      "plain",
+      "lush",
+      "barren",
+      "meagre"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The longest life expectancy at birth is in Kerala. Assam had the lowest life expectancy among the Indian states, whereas Kerala had the highest. The average number of years a person could anticipate to live is known as life expectancy. Kerala’s life expectancy at birth is 74.9 years, with men’s average of 72 and women’s average of 77.8. Delhi is in second place with a 73.2-year average life expectancy at birth, 72 for men and 74.7 for women."
+  },
+  {
+    "n": 99,
+    "section": "General Awareness",
+    "q": "Select the most appropriate option to fill in the blank. When you went to Amritsar you must have the Golden Temple.",
+    "q_image": "",
+    "opts": [
+      "experienced",
+      "traveled",
+      "visited",
+      "greeted"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "In October 2018, Ranjan Gogoi was chosen to serve as India’s new Chief Justice. Ranjan Gogoi was the 46th Chief Justice of India and an Indian jurist. He succeeded Dipak Misra as Chief Justice of India on October 3, 2018. He presided over a five-judge panel that rendered the decision in the storied and contentious possession of the Ayodhya and Babri Masjid case on November 9, 2019. DY Chandrachud serves as India’s Chief Justice at the moment. R. Venkataramani is a senior attorney at the Indian Supreme Court and a constitutional lawyer from India."
+  },
+  {
+    "n": 100,
+    "section": "General Awareness",
+    "q": "Select the correct passive form of the given sentence. The war will destroy everything.",
+    "q_image": "",
+    "opts": [
+      "Everything will be destroyed by the war.",
+      "Everything will have been destroyed by the war.",
+      "Everything was destroyed by the war.",
+      "Everything is destroyed by the war."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Amandeep Gill will be replaced by Pankaj Sharma as India’s ambassador to the Geneva-based United Nations Conference on Disarmament. In the Ministry of External Affairs, Pankaj Sharma served as the joint secretary for the division of disarmament and international security. Since January 2016, Syed Akbaruddin, an employee of the Indian Foreign Service, has represented India as its permanent representative to the UN."
+  },
+  {
+    "n": 101,
+    "section": "English Language",
+    "q": "Select the correct passive form of the given sentence. The teacher is going to take student on a picnic. The students will be taken on a picnic by the teacher. The students are being taken on a picnic by the teacher.",
+    "q_image": "",
+    "opts": [
+      "The students were being taken on a picnic by the teacher.",
+      "The students are going to be taken on a picnic by the teacher.",
+      "Identify the segment in the sentence which contains the grammatical error.",
+      "The children in the colony fed the dogs by throwing pieces of meat on them."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The Ministry of Drinking Water and Sanitation presented the awards. According to the Swachh Survekshan Grameen 2018 rankings, Satara District in Maharashtra was named the best district, and Haryana was named the best State. Gujarat won a prize for having the second-highest level of citizen participation."
+  },
+  {
+    "n": 102,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "on",
+      "in",
+      "by throwing",
+      "fed"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "To change an active voice into passive voice, first the interchange of subjects and objects take place. The given sentence has the verb in simple past tense, so in passive voice the verb becomes : Object + was/were + Verb [past participle] + by/to /with + Subject. Therefore, correct answer is : The application form was given to me by the secretary."
+  },
+  {
+    "n": 103,
+    "section": "English Language",
+    "q": "Select the most appropriate meaning of the idiom. sail close to the wind",
+    "q_image": "",
+    "opts": [
+      "do something that is dangerous or even illegal",
+      "make attempts to improve a difficult situation",
+      "do something that is legal and acceptable",
+      "sail one’s boat close to the shore"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The idea of Black Friday being observed as the beginning of the Christmas shopping season makes ‘regarded’ (consider or think of in a specified way) the perfect option. Option (3) and (4) are more subjective and personal, thus ruled out."
+  },
+  {
+    "n": 104,
+    "section": "English Language",
+    "q": "Select the most appropriate antonym of the given word. ruined",
+    "q_image": "",
+    "opts": [
+      "lowered",
+      "uninhabited",
+      "mended",
+      "damaged"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Since Black Friday is observed as the beginning of the Christmas shopping season, major / main retailers open early. The appropriateness of ‘influential / considerable / important’ retailers is highly questionable."
+  },
+  {
+    "n": 105,
+    "section": "English Language",
+    "q": "Read the following passing and answer the question. I was so homesick during my first two weeks at St. Peter’s that I devised a way of getting myself sent back home. My idea was that I should all of a sudden develop an attack of acute appendicitis.",
+    "q_image": "",
+    "opts": [
+      "When I reported my sickness to the teacher, I was sent to the Matron. I entered the room clutching my stomach on the right- hand side and staggering pathetically.",
+      "‘What’s the matter with you boy?’ the Matron shouted.",
+      "‘It hurts, Matron,’ I moaned. ‘Oh, it hurts so much! Just here!’ ‘You’ve been over-eating!’ she braked.",
+      "‘I haven’t eaten a thing for days,’ I lied."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Retailers offering sales is better than saying retailers ‘making available/coming up with/putting forward’ promotional sales."
+  },
+  {
+    "n": 106,
+    "section": "English Language",
+    "q": "She began prodding my tummy violently with her figures. I was watching her carefully, and when she hit what I guessed was the appendix place, I let out a yelp that rattled the window- panes. ‘Ow! Ow! Ow!’ I cried out. ‘Don’t Matron, don’t!’ Then I slipped in the clincher. ‘I’ve been sick all morning.’ I moaned. This was the right move. Within an hour, the doctor arrived and as he examined me, I did m yelping at what I thought were the proper times. This Matron returned half an hour later and said, ‘Your mother’s coming to fetch you this afternoon.’ I didn’t answer her. I just lay there trying to look very ill, but my heart was singing all sorts of wonderful songs. As I was taken home on a ferry, I felt so wonderful to leave that dreaded school building that I very nearly forgot I was meant to be ill. The Matron suspected that the boy had appendicitis because: He informed his teacher that he felt unwell. he hadn’t been able to eat anything for days. he staggered into the room clutching his stomach. he screamed when she pressed the right side of his stomach. The boy had been at St. Peter’s for:",
+    "q_image": "",
+    "opts": [
+      "fifteen days",
+      "a week",
+      "a month",
+      "two weeks"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Retailers offering promotional sales ‘kick off’ the holiday shopping season. ‘Kick off’ implies to become full of action and excitement; ‘set off’ means ‘begin a journey.’"
+  },
+  {
+    "n": 107,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. Dan said, “I need a clean shirt.”",
+    "q_image": "",
+    "opts": [
+      "Dan said that he will need a clean shirt",
+      "Dan said that he would need a clean shirt",
+      "Dan said that he needed a clean shirt",
+      "Dan said that he needs a clean shirt"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "The next blank sets in the idea that with the three days following Thanksgiving, it increases the prospect of potential buyers, who are likelier to have gone to their favourite retailers. The adverb ‘likely’ cannot be applied before people."
+  },
+  {
+    "n": 108,
+    "section": "English Language",
+    "q": "Select the most appropriate synonym of the given word. conceited",
+    "q_image": "",
+    "opts": [
+      "smug",
+      "modest",
+      "diffident",
+      "shy"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Black Friday has been reputed to be the busiest shopping day of the year since 2005; this implies that it has been consistently/constantly been hailed as the busiest till today."
+  },
+  {
+    "n": 109,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. “Children are eating the wrong foods,” remarked Mrs. Nair",
+    "q_image": "",
+    "opts": [
+      "Mrs. Nair remarked that children ate the wrong foods.",
+      "Mrs. Nair remarked that children are eating the wrong foods.",
+      "Mrs. Nair remarked that children eat the wrong foods.",
+      "Mrs. Nair remarked that children have been eating the wrong foods."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The sentence claims that the first proof of the phrase ‘Black Friday’ in the context of shopping, relates to its origin. So ‘evidence’ is the correct choice."
+  },
+  {
+    "n": 110,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. “I don’t want to hang this picture here,” Mary said.",
+    "q_image": "",
+    "opts": [
+      "Mary said she didn’t want to hang this picture here.",
+      "Mary said she didn’t want to hang that picture here.",
+      "Mary said she didn’t want to hang this picture there.",
+      "Mary said she didn’t want to hang that picture there."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Context refers to the background of the event or the wider situation. Here, the wider situation is the relation/origin of shopping with Black Friday. So the use of the phrase Black Friday in a shopping context suggests that it originated in Philadelphia."
+  },
+  {
+    "n": 111,
+    "section": "English Language",
+    "q": "Select the most appropriate antonym of the given word. vibrant",
+    "q_image": "",
+    "opts": [
+      "Listless",
+      "brilliant",
+      "bright",
+      "bubbly"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The phrase ‘heavy traffic’ connotes that it must have been a disruptive one (causing disruption). Traffic cannot be attributed as ‘disturbing’ (upsetting)/‘meddling’ (intrusive)/interfering’."
+  },
+  {
+    "n": 112,
+    "section": "English Language",
+    "q": "Select the correct passive form of the given sentence. Our forces had conquered the fort by day-break The fort was being conquered by our forces before day- break. The fort will be conquered by our forces before day-break. The fort had been conquered by our forces before day- break. The fort was conquered by our forces before day-break. Given below are four sentence, three of which, are jumbled pick the option that gives the correct order.",
+    "q_image": "",
+    "opts": [
+      "As the train approached the seaside town, I went into the corridor to stretch legs.",
+      "I had met him earlier on the platform.",
+      "I stayed there for a short while.",
+      "I exchanged a few words with one of the passengers."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "An event can be said to ‘date’ back to a certain day/date. Date back to something means to be made or begun at a particular time in the past."
+  },
+  {
+    "n": 113,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "ABDC",
+      "ACBD",
+      "ACDB",
+      "ADBC"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "They have done lot of research before making the film. It is to be noted that ‘research’ is already a plural noun, so it need not have an ‘s/es’ after it. Therefore ‘a lot of research’ is correct."
+  },
+  {
+    "n": 114,
+    "section": "English Language",
+    "q": "171 Given below are four sentences, three of which, are jumbled. Pick the option that gives the correct order. In the hotel room I rested till dinner time. I had not escaped from my tiresome neighbour after all. I had barely raised the glass to my lips when a familiar voice greeted me. Then I went down and ordered a drink.",
+    "q_image": "",
+    "opts": [
+      "ACBD",
+      "ABDC",
+      "DBCB",
+      "ADCB"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Whenever I went to the cinema, I bought myself popcorn and coke as a special treat. The preposition ‘for’ will be replaced by ‘as’; the latter is used to refer to any object’s function."
+  },
+  {
+    "n": 115,
+    "section": "English Language",
+    "q": "Select the alternative that will improve the underlined part of the sentence. In case there is no improvement select “No improvement”. Rohit is thinking to buy himself a new car.",
+    "q_image": "",
+    "opts": [
+      "buying\t2. to buying",
+      "3. of buying\t4. No improvement",
+      "Identify the segment in the sentence which contains the grammatical error.",
+      "We were woke up in the middle of the night by the sound of bursting crackers."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Can anyone tell me what we learnt in Mathematics yesterday? The sentence has an incorrect usage of ‘did’. It will take simple past/past participle tense. This is so because the sentence has a past phrase of time ‘yesterday’."
+  },
+  {
+    "n": 116,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "by",
+      "in the middle",
+      "woke up",
+      "were"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Jayan woke up having a sore throat and by evening his voice had disappeared. ‘Have’ is replaced by ‘having’ because the action is a continuous one- after waking up he was still having a sore throat…’."
+  },
+  {
+    "n": 117,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill in the blank. The fire fighters have finally managed to get the forest fire . out of control 2. with control 3. under control 4. in control Select the most appropriate option to fill in the blank. I would appreciate it if you do not get into any with your colleagues.",
+    "q_image": "",
+    "opts": [
+      "contest",
+      "context",
+      "conflict",
+      "calamity"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "I think boys and girls must learn to do household chores from an early age; ‘be learning’ is incorrect. The sentence presents an opinion in simple present tense. So ‘must learn’ is appropriate."
+  },
+  {
+    "n": 118,
+    "section": "English Language",
+    "q": "Read the following passage and answer the questions. The Chinese have been drinking tea for health and enjoyment for more than 5000 years. No one knows what drew them to the glossy green leaves of Camellia sinensis, but a popular lengend fills the gap in our knowledge. According to legend, ShenNong, an early emperor required that all drinking water be boiled. One summer day while visiting a distant region of his kingdom, he stopped to rest because he felt very tried. The servants began to boil water for the king and his ministers to drink. Dried leaves from a nearby bush fell into the boiling water, turning it into a brown liquid. The Emperor drank some of the new liquid. He felt fresh and much better after drinking the liquid. And thus, tea was created.",
+    "q_image": "",
+    "opts": [
+      "According to an Indian legend a Buddhist monk, on one of his travels about 2000 years ago, swore not to sleep during the nine years of his journey. However, by the end of the third year, he was so fatigued he almost fell asleep. That is when he accidentally stumbled upon a wild tree and picked a few leaves from its top. He chewed on the leaves and soon recovered. Thanks to these leaves, he was able to stay awake during the next six years of his mission. The Japanese version of this legend is slightly different. The monk had vowed to meditate for 7 years without sleep. One night however, he fell asleep. He was so angry with himself that he cut off his eyelids and threw them to the ground. A few years later, passing by the same spot, he noticed a strange-looking bush. He tasted its leaves, and realized that they gave him the power to keep his eyes open. This story soon spread, and tea bushes are often seen in Buddhist places of worship.",
+      "In all the three legends, the leaves help the person who eat it to recover. This suggests that the leaves:",
+      "are endowed with some magical powers",
+      "can refresh and rejuvenate a person"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Those students who are late will not be allowed to enter the examination hall. Here, distributive pronoun ‘those’ will be used to refer to students who are late, instead of indefinite pronoun ‘some’."
+  },
+  {
+    "n": 119,
+    "section": "English Language",
+    "q": "Select the most appropriate meaning of the idiom. twist someone’s arm",
+    "q_image": "",
+    "opts": [
+      "to force someone to do something by making it hard for them to refuse",
+      "to make someone who is annoyed even angrier",
+      "to persuade someone to do something you want because they like you",
+      "to hurt someone who is injured by twisting their arm"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Minu thinks that Salman is a better singer than Nitin. Since comparison is made between two people – Salman and Nitin, the adjective in the comparative degree must be used."
+  },
+  {
+    "n": 120,
+    "section": "English Language",
+    "q": "Select the alternative that will improve the underlined part of the sentence. In case there is no improvement select “No improvement”. The Western disturbances blowing towards North India are colder as before. are cold as 2. more colder than 3. No improvement 4. are colder than Given below are four sentences, three of which, are jumbled. Pick the option that gives the correct order. Is there a chemist nearby?",
+    "q_image": "",
+    "opts": [
+      "You’ll find a big chemist shop a hundred meters up the road",
+      "on the right hand side.",
+      "Yes Madam, it’s about three minutes walk from here.",
+      "Take the first right turn, then take the second turn to the left."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "For voice change, first the interchange of subjects and objects take place. The given sentence has the verb in simple past tense, so in passive voice the verb becomes : Object + was/were + Verb [past participle] + by/to/with + Subject . The correct sentence is: The grades were not submitted by Mr. Zabihullah on time."
+  },
+  {
+    "n": 121,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "ACDB",
+      "ADCB",
+      "ADBC",
+      "ABDC"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The correct sequence is: ADCB. D gives a clue- ‘before I answer your question’. This signifies that a question has already been posed before the second person. Thus, A precedes D with: You do buy old books, don’t you? The statement - Business is not so good as it used to be gets its validation, in B. the reason behind business not doing well is people seem to prefer to buy new books nowadays."
+  },
+  {
+    "n": 122,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. Alice enquired, “At what time is the taxi coming?” Alice enquired at what time the taxi was coming Alice enquired at what time the taxi is coming.",
+    "q_image": "",
+    "opts": [
+      "Alice enquired at what time the taxi would come.",
+      "Alice enquired at what time the taxi has been coming.",
+      "Identify the segment in the sentence which contains the grammatical error.",
+      "My nephew has been in hospital since four weeks because of mumps."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The correct sequence is: ABDC. The pronoun ‘he’ in B has its antecedent in A (a man who was my neighbour years ago). So AB is a convincing pair. Since this man was a great talker, it used to take hours to get away from him. So logically ABD pair up."
+  },
+  {
+    "n": 123,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "because of",
+      "in",
+      "since",
+      "has been"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The sentence ‘I arrived in India last week,” said Sarah’ when changed to indirect speech, will incorporate changes like: simple past tense ‘arrived’ changes to past perfect ‘had arrived’; last week changes to the previous week."
+  },
+  {
+    "n": 124,
+    "section": "English Language",
+    "q": "Select the correct passive form of the given sentence. Raju sells flowers in the market every Sunday.",
+    "q_image": "",
+    "opts": [
+      "Every Sunday, flowers are sold in the market by Raju.",
+      "Every Sunday, flowers are being sold, in the market by Raju.",
+      "Every Sunday, flowers were sold in the market by Raju.",
+      "Every Sunday, Raju is sold by flowers in the market."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Anshita and I are going to the mall. ‘I’ is preferred over ‘me’, because the former acts as a subject, while the latter is used as an object. The position of pronoun is: 2nd person + 3rd person + 1st person. So, it is Anshita and I."
+  },
+  {
+    "n": 125,
+    "section": "English Language",
+    "q": "Select the most appropriate synonym of the given word. despise",
+    "q_image": "",
+    "opts": [
+      "admire",
+      "approve",
+      "abhor",
+      "appreciate"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Flamboyant is marked by or given to strikingly elaborate or colourful display or behaviour. A strident sound is loud, unpleasant, and rough. The meaning of understated is avoiding obvious emphasis or embellishment. Thus, ‘understated ‘ is the antonym of ‘flamboyant’."
+  },
+  {
+    "n": 126,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. “I have been exercising for many years,” claimed Parvathi.",
+    "q_image": "",
+    "opts": [
+      "Parvathi claimed that she is exercising for many years",
+      "Parvathi claimed that she had been exercising for many years",
+      "Parvathi claimed that she had exercised for many years.",
+      "Parvathi claimed that she has been exercising for many years."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The verb ‘will appreciate’ will change to past form ‘would appreciate’; ‘I’ will change to ‘he’ and ‘your’ changes to ‘their’. The correct sentence is: The new captain informed the team that he would appreciate their support."
+  },
+  {
+    "n": 127,
+    "section": "English Language",
+    "q": "Select the correct indirect form of the given sentence. “When will my parcel arrive?” Madhav asked.",
+    "q_image": "",
+    "opts": [
+      "Madhav asked when his parcel would be arriving",
+      "Madhav asked when his parcel would arrive",
+      "Madhav asked when his parcel arrived",
+      "Madhav asked when his parcel will arrive"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "In the sentence “When will you complete your project?” my teacher asked, the reporting verb changes to asked and ‘will’ changes to ‘would’. The format followed in interrogative sentences is: question word + noun/pronoun + verb + object. My teacher asked when I would complete my project."
+  },
+  {
+    "n": 128,
+    "section": "English Language",
+    "q": "Select the most appropriate meaning of the idiom get down to brass tacks",
+    "q_image": "",
+    "opts": [
+      "to do whatever it takes to achieve something",
+      "to stand at the lowest step or rung of a ladder",
+      "to start talking about the basic facts of a situation",
+      "to tell someone only what they need to know."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The statement ‘Lord Carnarvon, was a rich man interested in archaeology and who generously spent his money on excavations’ reinstates the statement ‘Lord Carnarvon sponsored excavations because he loved archaeology.’ Option B and C are contradictory, while A is incorrect."
+  },
+  {
+    "n": 129,
+    "section": "English Language",
+    "q": "In the following passage some words have been deleted. Fill in the blank with the help of the alternatives given.",
+    "q_image": "",
+    "opts": [
+      "The two (1) \t philosophies of Chinese culture are",
+      "Confucianism and Taoism. Each influenced the (2)",
+      "of Chinese history and the development of the culinary arts. Confucianism concerned itself with the art of cooking and placed (3)\ton the enjoyment of life. Taoism was responsible for the (4)\t\tof the hygienic (5)    of food and cooking. To the Chinese, food and friends are inseparable. A (6)     without food is considered incomplete and (7)",
+      ". Confucius established culinary standards and proper table\t(8). The use of knives at a Chinese dinner is considered “poor taste” and the (9)     of cutting foods into bite size pieces is unique to the Chinese. According to Confucius good cooking depends on the (10)    of various ingredients."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "The phrase on the ‘verge of giving up’ means surrendering. This is corroborated in the line ‘from four years, from 1917 to 1922, they had been excavating in the Valley of the Kings without finding anything new’."
+  },
+  {
+    "n": 130,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 1.",
+    "q_image": "",
+    "opts": [
+      "noticeable",
+      "central",
+      "powerful",
+      "dominant"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The sentence ‘In fact, we would never have heard of him if not for the magnificent treasures found in his tomb’ evinces that Tutenkhamen is remembered today because his tomb contained treasures."
+  },
+  {
+    "n": 131,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 2.",
+    "q_image": "",
+    "opts": [
+      "path",
+      "progress",
+      "course",
+      "passage"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "When the last man climbed out of the tomb, a sudden sandstorm blew up and people saw a hawk; locals took this to mean that the spirit of the dead king had left his tomb, cursing those who had opened it. This clarifies that the sight of the hawk flying in the skies suggested that the king’s spirit had escaped from the tomb."
+  },
+  {
+    "n": 132,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 3.",
+    "q_image": "",
+    "opts": [
+      "significance",
+      "emphasis",
+      "importance",
+      "value"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The tomb of Tutenkhamen was discovered in 1922 AD, because from 1917 to 1922, Howard Carter and Lord Camarvon had been excavating in the Valley of the Kings without finding anything new. It was in 1922 that the tomb of Tutenkhamen was discovered."
+  },
+  {
+    "n": 133,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 4.",
+    "q_image": "",
+    "opts": [
+      "growth",
+      "development",
+      "expansion",
+      "progress"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "You have watched that film before, haven’t you? The question tag ‘haven’t you’ will be used because the sentence has ‘have’ form. It is to be noted that when the sentence is in affirmative, the question tag is negative."
+  },
+  {
+    "n": 134,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 5. features 2. aspects 3. characteristic 4. quality Select the most appropriate option to fill blank no 6.",
+    "q_image": "",
+    "opts": [
+      "meeting",
+      "conference",
+      "gathering",
+      "audience"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The idiom ‘wash one’s hands off something’ means ‘to refuse to acknowledge as one’s own or as one’s responsibility’. Example: When he understood he will be held up for his reckless driving, he tried to wash his hands off."
+  },
+  {
+    "n": 135,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 7.",
+    "q_image": "",
+    "opts": [
+      "unacceptable",
+      "unsuitable",
+      "irregular",
+      "improper"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Scrumptious implies ‘extremely tasty; delicious’."
+  },
+  {
+    "n": 136,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 8.",
+    "q_image": "",
+    "opts": [
+      "decorum",
+      "protocol",
+      "etiquette",
+      "custom"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Raucous is a disturbingly harsh and loud noise. So the antonym is ‘subdued’."
+  },
+  {
+    "n": 137,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 9.",
+    "q_image": "",
+    "opts": [
+      "standard",
+      "habit",
+      "tradition",
+      "routine"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "‘Pull up’ means to stop something; ‘pull out’ is to withdraw. Even if our main players pull out, we will go ahead with the match as scheduled."
+  },
+  {
+    "n": 138,
+    "section": "English Language",
+    "q": "Select the most appropriate option to fill blank no 10.",
+    "q_image": "",
+    "opts": [
+      "stirring",
+      "collaboration",
+      "blending",
+      "merging"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "My sister was angry with me because I damaged her stapler. Other three options are applicable to soft items, not hard objects."
+  },
+  {
+    "n": 139,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 140,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 141,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 142,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 143,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 144,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 145,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 146,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 147,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 148,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 149,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 150,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 151,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 152,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 153,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 154,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 155,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 156,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 157,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 158,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 159,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 160,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 161,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 162,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 163,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 164,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 165,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 166,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 167,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 168,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 169,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 170,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 171,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 172,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 173,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 174,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 175,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 176,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 177,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 178,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 179,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 180,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 181,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 182,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 183,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 184,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 185,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 186,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 187,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 188,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 189,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 190,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 191,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 192,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 193,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 194,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 195,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 196,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 197,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 198,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 199,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 200,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  }
+]

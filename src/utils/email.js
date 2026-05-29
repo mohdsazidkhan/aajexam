@@ -1,27 +1,42 @@
-const SibApiV3Sdk = require('sib-api-v3-sdk');
-
-const client = SibApiV3Sdk.ApiClient.instance;
-const apiKey = client.authentications['api-key'];
-apiKey.apiKey = process.env.BREVO_EMAIL_API_KEY;
-
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
 const sendBrevoEmail = async ({ to, subject, html, sender }) => {
     try {
-        const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-        sendSmtpEmail.subject = subject;
-        sendSmtpEmail.htmlContent = html;
-        sendSmtpEmail.sender = sender || {
-            name: process.env.BREVO_SENDER_NAME || 'AajExam',
-            email: process.env.BREVO_SENDER_EMAIL || 'aajexam.com@gmail.com'
-        };
-        sendSmtpEmail.to = [{ email: to }];
+        const apiKey = process.env.BREVO_EMAIL_API_KEY;
+        if (!apiKey) {
+            console.error('❌ Brevo API Key is missing in environment variables');
+            return false;
+        }
 
-        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
-        console.log('✅ Email sent successfully using Brevo:', data.messageId);
-        return true;
+        const payload = {
+            sender: sender || {
+                name: process.env.BREVO_SENDER_NAME || 'AajExam',
+                email: process.env.BREVO_SENDER_EMAIL || 'aajexam.com@gmail.com'
+            },
+            to: [{ email: to }],
+            subject: subject,
+            htmlContent: html
+        };
+
+        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'api-key': apiKey,
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log('✅ Email sent successfully using Brevo:', data.messageId);
+            return true;
+        } else {
+            console.error('❌ Brevo API error:', data);
+            return false;
+        }
     } catch (error) {
-        console.error('❌ Error sending email through Brevo:', error.response ? error.response.body : error.message);
+        console.error('❌ Error sending email through Brevo:', error.message);
         return false;
     }
 };
