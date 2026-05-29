@@ -1,0 +1,1948 @@
+IBPS PO Pre 2025 Memory Based Paper 24-Aug-2025-1st shiftIBPS PO Pre 2025 Memory Based Paper 24-Aug-2025-1st shift
+IBPS PO Pre 2025 Memory Based Paper 24-Aug-2025-1st shift
+IBPS PO Pre 2025 Memory Based Paper 24-Aug-2025-1st shift
+Directions (1-5): Read the given information carefully and answer the related questions:
+Seven persons A, B, C, D, E, F and G were born on same date and same month of different year – 1947, 1962, 1974, 1981,
+1987, 1998, 2009. They also like different activities – swimming, climbing, reading, running, hiking, drawing, dancing. The given information is not used in the same order as given. Their age is calculated with respect to base year 2025.
+Age of the one who likes dancing is a multiple of 3. Age difference between B and the one who likes dancing is an odd number, B is older here. Four persons were born between B and the one who likes swimming. F’s age is not an odd number. Total age of F and A is a multiple of 5. The one who likes hiking is two persons younger to A. D likes drawing but he is not the youngest person. C was born in even number year and he is older to the one who likes climbing. Three persons were born between G and the one who likes reading.
+Q1. How many persons are younger to the one who likes running?
+None
+Four
+Two
+Three
+One
+Q2. What is the total age of E and A?
+67 years
+78 years
+90 years
+54 years
+None of these
+Q3. Which activity is liked by the one who was born in 1974?
+Drawing
+Dancing
+Reading
+Running
+Climbing
+Q4. Who among the following likes hiking?
+E
+A
+F
+B
+G
+Q5. Four of the following five are similar in a certain manner and related to a group, who among the following is not related to the group?
+B
+F
+G
+E
+D
+Directions (6-10): Read the information carefully and answer the questions given below:
+Eight people –D, L, N, O, E, M, F, K are living in a four-storey building where the ground floor is numbered as 1, just above it is floor 2, then the topmost floor is numbered as 4. Note: Each of the floors has 2 flats in it as flat-P and flat-Q. Note: Flat-P is in the west of flat-Q.
+L lives on an odd numbered floor. D ‘s flat is immediately above L’s flat. No one lives to the west of L. M lives to the east of the person who lives immediately below E’s flat. There are two floors between the floors in which N and F lives. F lives below N. O and F doesn’t live in the same named flat.
+Q6. Who among the following lives in Flat-Q on the 3rd floor?
+D
+E
+N
+K
+L
+Q7. Which of the following pairs live on the same floor?
+L and E
+M and K
+D and K
+N and O
+K and L
+Q8. Who among the following persons lives to the east of M?
+K
+F
+O
+N
+D
+Q9. Which of the following statements is/are definitely true?
+D lives below M.
+Only one floor is there below E’s floor.
+N lives two floors above O.
+Only I
+Both I and II
+Both II and III
+Only III
+Both I and III
+Q10. Who among the following lives to the north west of K?
+L
+M
+D
+F
+None of these
+1	www.sscadda.com	|	Adda247 App
+Directions (11-13): In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions. Study the conclusions based on the given statements and select the appropriate answer:
+Q11. Statements: G = H > K = I ≥ L > M = N ≥ O < P
+Conclusions:
+G ≥ P
+L > O
+If only conclusion I is true
+If only conclusion II is true
+If either conclusion I or II is true
+If both conclusions I and II are true
+If neither conclusion I nor II is true
+Q12. Statements: A = B > C ≥ D < E > O < L ≤ F > G
+Conclusions:
+A > F
+D < G
+If only conclusion I is true
+If only conclusion II is true
+If either conclusion I or II is true
+If both conclusions I and II are true
+If neither conclusion I nor II is true
+Q13. Statements: W < U ≤ V = K ≤ X < Y > Z ≤ T = H
+Conclusions:
+X > W
+U < Z
+If either conclusion I or II is true
+If both conclusions I and II are true
+If neither conclusion I nor II is true
+If only conclusion I is true
+If only conclusion II is true
+Directions (14-16): Study the following information carefully and answer the question given below:
+An uncertain number of people are sitting in a row facing north. Four persons sit between L and D. H sits second to the left of L. As many persons sit between S and D as between D and H. S sits third from one of the extreme ends of the row. Four persons sit between W and S. P sits immediate right of
+W. The number of persons sit between P and S is two more than the number of persons sit to the left of H.
+Q14. Who among the following person sits eight to the left of P?
+H
+D
+W
+P
+L
+Q15. What is the position of D in the row?
+Ninth from the left end of the row
+Seventh from the right end of the row.
+Ninth from the right end of the row
+Eighth from the left end of the row
+Eighth from the right end of the row
+Q16. How many persons sit in the row?
+13
+14
+18
+16
+19
+Q17. Find the odd-one out.
+DFUC
+LNMK
+OQJN
+XZAV
+CEVB
+Directions (18-22): Study the information carefully and answer the questions:
+Six persons – P, Q, R, S, T, and U lives different countries– Singapore, Philippines, England, Vietnam, Finland, Canada. They hold different positions – HRM (Human Resource Manager), CEO (Chief Executive Officer), GM (General Manager), LSP (Lead Specialist), PH (Project Head) and CTO (Chief Technology Officer). HRM is the junior most and the CTO is the senior most designations.
+U lives in England and is just senior to S. R is senior to T who doesn’t live in Philippines. No one designated between the persons who lives in England and Vietnam. P does not live in Singapore. R is just senior to the person who lives in Finland. Only three persons are designated junior to P. Person who lives in Canada is immediately senior to P. There is more than two designations gap between the persons who lives in Canada and Vietnam.
+Q18. Which of the following combination is true?
+U- England
+T- Singapore
+S- Finland
+Both [a] and [b]
+P- Vietnam
+Q19. Who among the following is designated as HRM?
+U
+P
+The one who lives Philippines
+S
+None of these
+Q20. Who among the following person lives in Canada?
+U
+P
+R
+S
+T
+Q21. How many persons are junior to the one who lives Philippines?
+Two
+Four
+Five
+One
+Three
+2
+www.sscadda.com	|	Adda247 App
+Q22. Which of the following statement (s) is/ are not true?
+Three persons are junior to the one who lives in Finland
+R is junior to U
+T is designated GM
+S lives in Vietnam
+U is designated as CEO
+Q23. How many pair of digits are in the number ‘758231265’, each of which have as many digits between them as in number series (both forward and backward direction)?
+Two
+More than four
+Four
+One
+Three
+Directions (24-26): Study the following information carefully and answer the questions given below:
+Point E is 17m east of point D. Point M is 47m north of the point D. Point M is 3m west of point A. Point A is 37m north of Point S. Point X is 23m north of Point E. Point Y is 2m west of Point X. Point W is 5m south of Point Y. Point F is 3m to the west of Point W.
+Q24. In which direction is point A with respect to point X?
+South-east
+North-east
+South-west
+North-west
+East
+Q25. Four of the following five are similar in a certain manner and related to a group, who among the following is not related to the group?
+AE
+MS
+FW
+YE
+MX
+Q26. In which direction is point D with respect to point Y?
+South
+North-east
+South-west
+North-west
+North
+Q27. How many meaningful words can be formed from the first, second, eighth and ninth letter from the left end of the word “REFRIGERATOR”. If no word is formed, then mark the answer as @ and if more than three words are formed, then mark the answer as #, else choose the correct answer from given options?
+1
+2
+3
+#
+@
+Directions (28-32): Study the information carefully and answer the questions carefully:
+Fourteen persons sit in two parallel rows where seven persons in each row. In Row 1- J, K, L, M, N, O and P are seated and face south and in Row-2 R, S, T, U, V, W and X are seated and face north, but not necessarily in the same order. R sits 3rd right to the one who faces the one who sits 2nd to the right of M. K faces one of the immediate neighbors of T. J faces W. No one sits between P and O. Two persons sit between S and X. More than two people sit between X and V. L sits 3rd to the left of N and sits at one of the extreme ends. S faces the one who sits immediate right to N. More than three people sit between M and J. O does not face V and X.
+Q28. Who among the following sits opposite to L?
+R
+The one who sits immediate right of X
+U
+Both [a] and [b]
+S
+Q29. Four of the following five are alike in a certain way so form a group, which of the following does not belong to that group?
+P
+M
+X
+S
+W
+Q30. Which of the following statement is true?
+P sits second to the left of N
+Three persons sit between X and W
+N sits opposite to U
+P sits opposite to the one who sits immediate left of S
+None of these
+Q31. How many persons sit between P and the one who sits opposite to X?
+Two
+Three
+Four
+One
+More than four
+Q32. Which of the following pair of persons sit at extreme ends?
+W, M
+J, U
+L, P
+J, R
+None of these
+Directions (33-35): In each question below some statements are given followed by two conclusions numbered I and II. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the conclusions and then decide which of the given conclusions logically follows from the given statements, disregarding commonly known facts. Give answer-
+3
+www.sscadda.com	|	Adda247 App
+Q33. Statements: Only a few retro is power Some power is fight
+No fight is risky
+Conclusions:
+Some retro being fight is a possibility
+No power is risky
+If only conclusion I follows
+If only conclusion II follows
+If either conclusion I or II follows
+If neither conclusion I nor II follows
+If both conclusions I and II follow
+Q34. Statements: Only a few grey is work All work is good
+No good is food
+Conclusions:
+All work being food is a possibility
+No grey is food
+If only conclusion I follows
+If only conclusion II follows
+If either conclusion I or II follows
+If neither conclusion I nor II follows
+If both conclusions I and II follow
+Q35. Statements: Some regulate is order All order is declare
+Some declare is segment
+Conclusions:
+Some regulate is declare
+No order is segment pmarks: 0.9, nmarks: 0.225
+If only conclusion I follows
+If only conclusion II follows
+If either conclusion I or II follows
+If neither conclusion I nor II follows
+If both conclusions I and II follow
+Directions (36-40): Rearrange the following sentences to form a meaningful paragraph.
+Despite the rumours, Aragon is still widely used in crypto and DeFi circles.
+Many suspected FBI control because the app’s design matched known surveillance tools.
+Moreover, a leaked report tied Aragon’s code to a government project in America.
+Aragon was promoted as a secure, independent platform for encrypted chats.
+Developers denied all claims of FBI involvement or links to any U.S. project.
+The chatting app Aragon became a hit in cryptocurrency communities for its privacy features.
+Q36. Which of the following is the FIRST sentence after the rearrangement?
+(a) A
+(b) F
+(c) C
+(d) D
+(e) E
+Q37. Which of the following is the SECOND sentence after the rearrangement?
+(a) A
+(b) B
+(c) C
+(d) D
+(e) E
+Q38. Which of the following is the THIRD sentence after the rearrangement?
+(a) A
+(b) B
+(c) C
+(d) D
+(e) E
+Q39. Which of the following is the FOURTH sentence after the rearrangement?
+(a) F
+(b) B
+(c) C
+(d) D
+(e) E
+Q40. Which of the following is the FIFTH sentence after the rearrangement?
+A
+B
+F
+D
+E
+Q41. Identify the sentence that is grammatically incorrect.
+She has already finished the assignment ahead of schedule.
+Neither the manager nor the employees were at the meeting.
+I have lived in this neighborhood since five years.
+We are planning a surprise party for her birthday tonight.
+All are correct
+Q42. Identify the sentence that is grammatically incorrect.
+Each of the players have signed the registration form.
+He enjoys listening to classical music in the evenings.
+We have been waiting for the bus for over an hour.
+My sister and I are going hiking this weekend.
+All are incorrect
+Q43. In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The witness gave a/an 	account of the events during the trial which led to the verdict.
+cleared
+fictional
+vivid
+deceptive
+honestly
+Q44. In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The teacher was impressed by the student’s 	 to improve.
+resistance
+determination
+refusal
+wise
+responsive
+Q45. In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The committee postpone (A) to decided (B) the annual meeting because several key members (C) were unable
+(D) to attend on time.
+B-C & A-D
+A-B
+C-D
+A-C & B-D
+No interchange required
+Q46. In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+Despite facing multiple obstacles (A), the young entrepreneur expanding (B) her determination (C) and eventually succeeded in maintained (D) her small business.
+B-C & A-D
+A-C
+B-D
+A-C & B-D
+No interchange required
+COLUMN ICOLUMN IIA. Social media platforms		must	implement	stricter policies to curb		D.	farmers	adopting	sustainable	agricultural practicesB. The education system needs reformsE. to reduce dependence on fossil fuels and cutemissions		C.	The	governmentannounced new subsidies to support		F.	problem-solving	inindustries like healthcare and financeCOLUMN ICOLUMN IIA. Social media platforms		must	implement	stricter policies to curb		D.	farmers	adopting	sustainable	agricultural practicesB. The education system needs reformsE. to reduce dependence on fossil fuels and cutemissions		C.	The	governmentannounced new subsidies to support		F.	problem-solving	inindustries like healthcare and financeQ47. Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. Social media platforms
+must	implement	stricter policies to curb
+D.	farmers	adopting
+sustainable	agricultural practices
+B. The education system needs reforms
+E. to reduce dependence on fossil fuels and cut
+emissions
+C.	The	government
+announced new subsidies to support
+F.	problem-solving	in
+industries like healthcare and finance
+COLUMN I
+COLUMN II
+A. Social media platforms
+must	implement	stricter policies to curb
+D.	farmers	adopting
+sustainable	agricultural practices
+B. The education system needs reforms
+E. to reduce dependence on fossil fuels and cut
+emissions
+C.	The	government
+announced new subsidies to support
+F.	problem-solving	in
+industries like healthcare and finance
+None of these
+B-F
+C-D
+A-E, B-F
+A-F, C-D, B-E
+Q48. Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. Advances in artificial intelligence are enabling
+machines
+D. controlling inflation and stabilize the economy.
+B. Several countries are investing	heavily	in
+renewable energy
+E. forced farmers to migrate to nearby cities in search of
+work
+C.	The	government launched  a  new  digital
+literacy campaign
+F.	to learn and adapt without	explicit
+programming
+None of these
+A-F
+B-D
+A-E, B-F
+A-F, B-D, C-E
+Q49. Identify the sentence that is grammatically correct.
+She don’t like walking in the rain every morning.
+They has been working on the project since last week.
+He go to the gym before work on weekdays.
+I was late because the bus arrived very slowly.
+All are incorrect
+Q50. Identify the sentence that is grammatically correct.
+I seen him at the store just yesterday afternoon.
+He don’t have enough experience for this senior role.
+The cat sleeps peacefully in the sun every afternoon.
+Everyone in the team are excited for the trip.
+All are incorrect
+Q51. A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+After months of practice and dedication, the athlete finally
+achieved his dream of winning the national championship.
+gain
+procured
+shifted
+moved
+No replacement required
+Q52. In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The manager’s 	response to the complaint irritated the already angry customer.
+indifferent
+strong
+prompt
+detailed
+emotional
+Q53. In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The teacher participate (A) the students to encouraged
+(B) actively in the discussion (C), ensuring everyone had an equal opportunity (D) to speak.
+B-C & A-D
+A-B
+C-D
+A-C & B-D
+No interchange required
+Q54. In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The project required (A) a detailed (B) analysis of financial data, followed by a clear presentation (C) of strategies to improve profitability (D).
+B-C & A-D
+B-C
+C-D
+A-B
+No interchange required
+Q55. A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+The fragile storm forced travelers to take shelter in nearby lodges until the weather conditions improved significantly.
+mild
+forecast
+conditioned
+unexpected
+No replacement required
+Q56. A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+The farmer worked tirelessly from dawn to dusk, ensuring the crops received adequate care from the growing season.
+throughout
+under
+through
+of
+No replacement required
+Q57. Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. The company invested in
+D. regulate the functioning
+of digital payment systems
+B. The discovery of new exoplanets has encouraged
+astronomers
+E. to explore the possibility of life beyond Earth
+C. The finance ministry introduced stricter
+F. to monitor deforestation and climate changes
+None of these
+A-F
+C-D
+B-E
+A-F, B-D, C-E
+Directions (58-65): Read the following passage and answer the given questions. Certain words are highlighted to answer some of the questions.
+Language is more than just a tool for communication; it is also a gateway to sharper thinking and wider opportunities. Over the years, researchers have highlighted the benefits of bilingualism as compared to monolingualism. While a monolingual person relies on a single language, a bilingual or multilingual individual manages two or more languages with ease, which significantly boosts cognitive abilities.
+In 2019, a study was conducted that revealed remarkable findings. It was discovered that individuals who were bilingual demonstrated better calculation speed and higher intelligence levels than their monolingual counterparts. This research confirmed what many educators had long believed: bilingualism provides mental agility that monolingualism simply cannot. The ability to switch between languages seems	with the additional
+skill of switching between tasks more efficiently. Later, further investigations reinforced this conclusion, pointing out that bilinguals are exceptional in solving problems and making quicker decisions.
+The advantages of bilingualism also extend to the professional world. In regions where poverty and limited resources prevail, bilingual workers show greater adaptability. They can handle diverse work areas where communication across cultures is essential. In such settings, monolinguals often face a decline in effectiveness, while bilinguals continue to thrive by bridging language barriers and creating smoother interactions.
+Children provide another fascinating example. Kids who grow up in foreign countries, especially those under the age of six, are more likely to develop bilingualism naturally. For instance, children of diplomats often pick up more than one language early in life. These children not only master new languages with surprising ease but also perform outstandingly in academic and social spheres. Their bilingual upbringing grants them a mental flexibility that gives them an edge over monolingual peers.
+Thus, the benefits of bilingualism are far-reaching. From improved intelligence and quicker problem-solving skills to broader job opportunities and cultural adaptability, bilinguals enjoy advantages that monolinguals do not. In a globalized world where cross-cultural understanding is vital, being bilingual or multilingual is not just an added skill—it is a necessity for success.
+Q58. According to the passage, what is the main advantage
+of being bilingual in low-resource professional settings?
+Bilinguals demand lower salaries, making them easier to hire in poor regions.
+Bilinguals can work longer hours without facing language-related fatigue.
+Bilinguals improve communication and adapt better in cross-cultural work environments.
+Bilinguals receive more government support in multilingual workplaces.
+Bilinguals avoid jobs that require technical or specialized training.
+Q59. Which of the following statement(s) is/are incorrect
+as per the passage?
+Bilingualism restricts mental flexibility and slows task- switching.
+Bilingual professionals struggle more in cross-cultural work environments.
+Diplomatic children show poor fluency in new languages due to relocation stress.
+Only I
+Both I and III
+Only II
+II and III
+All I, II, and III
+Q60. Which of the following statement(s) is/are correct
+according to the passage?
+Bilingual individuals switch tasks more efficiently due to enhanced mental control.
+Diplomatic children easily acquire multiple languages through early exposure.
+Bilingualism leads to increased emotional sensitivity and empathetic behavior.
+Only I
+Both I and II
+Only III
+II and III
+All I, II, and III
+Q61. What does the 2019 study mentioned in the passage show?
+Bilinguals read faster but calculate more slowly.
+Monolinguals perform better in creative tasks.
+Bilinguals have better calculation speed and intelligence.
+Bilingualism has no measurable cognitive effect.
+Bilingualism reduces attention span in adults.
+Q62. Choose the best word/phrase to fill the given blank.
+to function
+to come
+to results
+happens
+including
+Q63. Choose the word that is most opposite in meaning to
+“later” as used in the passage.
+When
+Eventually
+Prior
+Upcoming
+Gradually
+Q64. Choose the word that is closest in meaning to
+“decline” as used in the passage:
+Deteriorate
+Rejection
+Downsizing
+Support
+Progress
+Q65. Choose the word that is closest in meaning to
+“benefits” as used in the passage:
+Advantages
+Drawbacks
+Gains
+More
+Conflicts
+Directions (66-70): Read the following bar graph carefully and answer the questions given below. The bar graph shows the total candidates registered and the total candidates who participated in an activity from four different cities.
+[[IMG:image4.png]]
+7	www.sscadda.com	|	Adda247 App
+Q66. Find the ratio of the total candidates registered from C and the total candidates who did not participate from A.
+11:4
+19:5
+13:4
+12:7
+14:9
+Q67. Find the average number of candidates who did not participate from C and D.
+300
+345
+250
+280
+310
+Q68. If the total number of candidates who registered from E is 25% more than that of D and the number of candidates who participated from E is 60% that of C, then find the difference between the number of candidates who did not participate from E and D.
+510
+535
+550
+570
+520
+Q69. If 40% of the candidates who participated from B qualify for semifinals and only 25% of the candidates who qualify for finals, then find the number of candidates who did not qualify for finals from B.
+112
+110
+108
+104
+106
+Q70. The total number of candidates who registered from A is what percentage more or less than the number of candidates who did not participate from C and D together?
+5%
+10%
+20%
+30%
+15%
+Q71. A man invested Rs 12500 in scheme A that offers simple interest at r% p.a. for two years, and the interest received from scheme A is invested in scheme B that offers compound interest at 10% p.a. for two years. If the amount received from scheme B is Rs 3630, then find r.
+12
+14
+18
+10
+15
+Q72. Pipe A can fill 25% of a tank in 6 hours, and pipe B can fill 50% of the tank in 12 hours. Pipe C is an outlet pipe and empties the filled tank in 20 hours. If the tank is already 60% filled, then find the time taken by all the pipes together to fill the remaining tank.
+11 hours
+12 hours
+10 hours
+8 hours
+13 hours
+Q73. Two cars A and B start simultaneously from cities
+P and Q toward each other. The distance between P and
+Q is 480 km. Car A covers the distance in 4 hours, and car B covers the same distance in 6 hours. After how much time from the start will they meet?
+2.1 hours
+2.2 hours
+2.5 hours
+2.6 hours
+2.4 hours
+Directions (74-78): Read the following table carefully and answer the questions given below.
+The table shows the number of males out of total employees (males + females) in four different companies. The table also shows the number of female managers out of the total number of females in these companies.
+Companies
+Males out of total
+employees
+Female	mangers
+out of total females
+A
+260
+60
+B
+340
+90
+C
+220
+70
+D
+390
+140
+Note: (I) Total employees in only companies B and D is more than 510.
+(II) The difference between the number of males and the number of females in each company is 130 (males > females).
+Q74. Find the average number of non-manager female employees in B and A.
+95
+100
+105
+80
+85
+Q75. If the ratio of male manager employees to non- manager male employees in C is 7:3, respectively, then the total non-manager male employees in C is how many more or less than the total female employees in A?
+64
+60
+58
+61
+70
+8	www.sscadda.com	|	Adda247 App
+Q76. The total number of female employees in B is what percentage of the total number of employees in B and D together?
+10%
+12.5%
+17.5%
+16.67%
+8.33%
+Q77. The average number of male managers and female managers in D is 195. Find the difference between the number of non-manager male employees in D and the sum of the female managers in A and B.
+15
+20
+10
+5
+25
+Q78. The total number of employees in E is 3/5th that of B, and the total number of male employees in E is 60% that of A. Find the total number of female employees in E, C, and D together.
+387
+330
+345
+404
+524
+Q79. Sita spends 30% of her monthly salary on regular expenses and 50% on personal expenses. From the remaining amount, she gives a portion of her money to her mother and father in the ratio 3:1. If the difference between the amounts given to her mother and father is Rs 4,000, what is Sita’s monthly salary?
+Rs 32000
+Rs 35500
+Rs 40500
+Rs 44000
+Rs 40000
+Directions (80-84): Read the following information carefully and answer the questions given below. The information about total students who like two activities (art and music) in two schools.
+The number of students who like only music in school B is
+45. The number of students who like only art in school A and school B is in the ratio of 5:3, respectively. The number of students who like both art and music in school A is 40% of the total students who like only art in school A. The number of students who like both art and music together in school B is 15 more tsahan that of school A. The number of students who like art in school B is 65. The number of students who like music in school A is 15 more than the number of students who like only music in school B.
+Q80. Find the difference between the number of students who like art in school A and the number of students who like both art and music together in school B.
+35
+40
+45
+50
+30
+Q81. The number of students who like only music in school A is what percentage of the number of students who like only art in school B?
+122.25%
+133.3%
+166.67%
+108.33%
+132.5%
+Q82. Find the ratio of the number of students who like both art and music together in school A to the number of students who like only music in school B.
+5:9
+3:7
+4:5
+4:9
+2:7
+Q83. Find the number of students who like at least two activities in both schools together.
+55
+45
+65
+75
+35
+Q84. The number of students who like at most one activity in school B is how many more or less than the number of students who like art in school A?
+3
+5
+6
+4
+2
+Directions (85-89): Solve the given equation and mark appropriate option.
+Q85.
+[[IMG:image5.png]]
+x<y
+x>y
+x≤y
+x≥y
+x=y or no relation.
+9	www.sscadda.com	|	Adda247 App
+Q86.
+[[IMG:image6.png]]
+x<y
+x>y
+x≤y
+x≥y
+x=y or no relation.
+Q87.
+[[IMG:image7.png]]
+x<y
+x>y
+x≤y
+x≥y
+x=y or no relation.
+Q88.
+[[IMG:image8.png]]
+x<y
+x>y
+x≤y
+x≥y
+x=y or no relation.
+Q89.
+[[IMG:image9.png]]
+x<y
+x>y
+x≤y
+x≥y
+x=y or no relation.
+Directions (90-94): What approximate value will come in the place of question (?) marks:
+Q90. 31.93% of 750.03 + ?2 = 48.03 % of 1699.98
+24
+22
+18
+26
+28
+Q91. [[IMG:image10.png]]
+48
+12
+24
+18
+6
+Q92. 125.07% of 419.93 + 50.99 = (80% of ?)2
+30
+45
+20
+25
+50
+[[IMG:image11.png]]Q93.
+3
+4
+5
+6
+8
+[[IMG:image12.png]]Q94.
+4
+16
+30
+8
+24
+Q95. A milkman mixed (y+30) liters of water in 150 liters of milk and then again replaced 35 liters of the mixture with milk. If quantity of milk in the final mixture is 160 liters, then find ‘y’?
+45 liters
+40 liters
+35 liters
+30 liters
+25 liters
+Q96. Neeraj and Vivan invested amount in a business which are in the ratio 4 : 7 respectively. Vivan invested for 2 months less than the time that Neeraj invested. If at the end of the year Profit obtained by Neeraj is 28 4/7% less than Profit obtained by Vivan, then find the time for which Vivan invested.
+14 Months
+12 Months
+6 Months
+8 Months
+10 Months
+Q97. A boat covers 105 km in downstream in ‘t’ hours and 90 km upstream in (t + 6) hours. If ratio of speed of boat in still water to the downstream speed of river is 6
+: 7 ,then find out the time taken by boat to cover 35 km to and fro in the river ?
+20h
+24h
+18h
+12h
+28h
+Q98. Shivam bought a table at Rs. X and sold it at Rs Y by earning a profit of 30%. If Shivam would had bought the table at 10% less and sold it at Rs. Rs 44 less, then he would had made a profit of 20%. Then find value of (Y – X) ?
+Rs. 60
+Rs. 40
+Rs. 20
+Rs. 80
+Rs. 120
+Q99. A train ‘P’ running at the speed of 72 km/hr crosses a platform which is half of its length in one minute. Find the time in which train ‘P’ crosses another train ‘Q’ whose length is two times of train ‘P’ and running at the speed of 108 km/hr in opposite direction?
+48 sec.
+54 sec.
+60 sec.
+64 sec.
+40 sec.
+Q100. The sum of the length of a rectangle and the side of a square is 36 meters. If the perimeter of the rectangle is 42 meters and the breadth of the rectangle is 9 meters, then find the measurement of the side of the square (in meters).
+24
+18
+27
+30
+15
+Solutions
+S1. Ans.(d) Sol.
+Year
+Age (years)
+Person
+Activity
+1947
+78
+B
+Reading
+1962
+63
+D
+Drawing
+1974
+51
+A
+Dancing
+1981
+44
+F
+Running
+1987
+38
+G
+Hiking
+1998
+27
+C
+Swimming
+2009
+16
+E
+Climbing
+S2. Ans.(a) Sol.
+Year
+Age (years)
+Person
+Activity
+1947
+78
+B
+Reading
+1962
+63
+D
+Drawing
+1974
+51
+A
+Dancing
+1981
+44
+F
+Running
+1987
+38
+G
+Hiking
+1998
+27
+C
+Swimming
+2009
+16
+E
+Climbing
+S3. Ans.(b) Sol.
+Year
+Age (years)
+Person
+Activity
+1947
+78
+B
+Reading
+1962
+63
+D
+Drawing
+1974
+51
+A
+Dancing
+1981
+44
+F
+Running
+1987
+38
+G
+Hiking
+1998
+27
+C
+Swimming
+2009
+16
+E
+Climbing
+S4. Ans.(e) Sol.
+Year
+Age (years)
+Person
+Activity
+1947
+78
+B
+Reading
+1962
+63
+D
+Drawing
+1974
+51
+A
+Dancing
+1981
+44
+F
+Running
+1987
+38
+G
+Hiking
+1998
+27
+C
+Swimming
+2009
+16
+E
+Climbing
+S5. Ans.(e) Sol.
+Year
+Age (years)
+Person
+Activity
+1947
+78
+B
+Reading
+1962
+63
+D
+Drawing
+1974
+51
+A
+Dancing
+1981
+44
+F
+Running
+1987
+38
+G
+Hiking
+1998
+27
+C
+Swimming
+2009
+16
+E
+Climbing
+S6. Ans.(d)
+Sol. Final Arrangement is here:
+Persons
+Flat P
+Flat Q
+4
+D
+N
+3
+L
+K
+2
+O
+E
+1
+M
+F
+S7. Ans.(e)
+Sol. Final Arrangement is here:
+Persons
+Flat P
+Flat Q
+4
+D
+N
+3
+L
+K
+2
+O
+E
+1
+M
+F
+S8. Ans.(b)
+Sol. Final Arrangement is here:
+Persons
+Flat P
+Flat Q
+4
+D
+N
+3
+L
+K
+2
+O
+E
+1
+M
+F
+S9. Ans.(c)
+Sol. Final Arrangement is here:
+Persons
+Flat P
+Flat Q
+4
+D
+N
+3
+L
+K
+2
+O
+E
+1
+M
+F
+S10. Ans.(c)
+Sol. Final Arrangement is here:
+Persons
+Flat P
+Flat Q
+4
+D
+N
+3
+L
+K
+2
+O
+E
+1
+M
+F
+S11. Ans.(b)
+Sol. I. G ≥ P (False)
+II. L > O (True)
+S12. Ans.(e)
+Sol. I. A > F (False)
+II. D < G (False)
+S13. Ans.(d)
+Sol. I. X > W (True)
+II. U < Z (False)
+S14. Ans.(e)
+Sol.
+Final Arrangement is here:
+[[IMG:image13.png]]
+S15. Ans.(a)
+Sol.
+Final Arrangement is here:
+[[IMG:image13.png]]
+S16. Ans.(c)
+Sol.
+Final Arrangement is here:
+[[IMG:image13.png]]
+S17. Ans.(a)
+Sol. Except XZAV, logic here is:
+[[IMG:image14.jpeg]]
+S18. Ans.(d)
+Sol. The Final arrangement:
+Designations
+Persons
+Country
+CTO
+Q
+Philippines
+PH
+R
+Canada
+LSP
+P
+Finland
+GM
+T
+Singapore
+CEO
+U
+England
+HRM
+S
+Vietnam
+The Final arrangement:
+Designations
+Persons
+Country
+CTO
+Q
+Philippines
+PH
+R
+Canada
+LSP
+P
+Finland
+GM
+T
+Singapore
+CEO
+U
+England
+HRM
+S
+Vietnam
+S20. Ans.(c)
+Sol.
+The Final arrangement:
+Designations
+Persons
+Country
+CTO
+Q
+Philippines
+PH
+R
+Canada
+LSP
+P
+Finland
+GM
+T
+Singapore
+CEO
+U
+England
+HRM
+S
+Vietnam
+S21. Ans.(c)
+Sol.
+The Final arrangement:
+Designations
+Persons
+Country
+CTO
+Q
+Philippines
+PH
+R
+Canada
+LSP
+P
+Finland
+GM
+T
+Singapore
+CEO
+U
+England
+HRM
+S
+Vietnam
+S22. Ans.(b)
+Sol.
+The Final arrangement:
+Designations
+Persons
+Country
+CTO
+Q
+Philippines
+PH
+R
+Canada
+LSP
+P
+Finland
+GM
+T
+Singapore
+CEO
+U
+England
+HRM
+S
+Vietnam
+S23. Ans.(b)
+[[IMG:image15.png]]Sol.
+[[IMG:image16.jpeg]]
+S25. Ans.(c)
+Sol.
+[[IMG:image16.jpeg]]
+S26. Ans.(c)
+Sol.
+[[IMG:image17.jpeg]]
+S27. Ans.(b) Sol. REAR, RARE
+S28. Ans.(d)
+Sol. The final arrangement is:
+[[IMG:image18.jpeg]]
+S29. Ans.(e)
+Sol. The final arrangement is:
+[[IMG:image19.jpeg]]
+S30. Ans.(d)
+[[IMG:image20.jpeg]]Sol. The final arrangement is:
+[[IMG:image20.jpeg]]
+S32. Ans.(d)
+[[IMG:image20.jpeg]]Sol. The final arrangement is:
+S33. Ans.(a)
+Sol.
+[[IMG:image21.jpeg]]
+S34. Ans.(d)
+Sol.
+[[IMG:image22.jpeg]]
+S35. Ans.(a)
+Sol.
+[[IMG:image23.jpeg]]
+S36. Ans.(b)
+Sol. Correct Sequence: F – D – B – C – E – A
+Explanation:
+F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup.
+B shifts to the problem: suspicions arise about FBI control—natural turn to controversy.
+C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C.
+A closes with outcome: despite controversy, usage persists—logical wrap-up.
+S37. Ans.(d)
+Sol. Correct Sequence: F – D – B – C – E – A
+Explanation:
+F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup.
+B shifts to the problem: suspicions arise about FBI control—natural turn to controversy.
+C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C.
+A closes with outcome: despite controversy, usage persists—logical wrap-up.
+S38. Ans.(b)
+Sol. Correct Sequence: F – D – B – C – E – A
+Explanation:
+F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup.
+B shifts to the problem: suspicions arise about FBI control—natural turn to controversy.
+C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C.
+A closes with outcome: despite controversy, usage persists—logical wrap-up.
+S39. Ans.(c)
+Sol. Correct Sequence: F – D – B – C – E – A
+Explanation:
+F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup.
+B shifts to the problem: suspicions arise about FBI control—natural turn to controversy.
+C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C.
+A closes with outcome: despite controversy, usage persists—logical wrap-up.
+S40. Ans.(e)
+Sol. Correct Sequence: F – D – B – C – E – A
+Explanation:
+F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup.
+B shifts to the problem: suspicions arise about FBI control—natural turn to controversy.
+C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C.
+A closes with outcome: despite controversy, usage persists—logical wrap-up.
+S41. Ans.(c)
+Sol. Explanation of the Error:
+(c) Incorrect use of the preposition "since" with a duration. "Since" is used with specific points in time (e.g., since 2020), not durations. The correct version is:
+"I have lived in this neighborhood for five years.
+Analysis of each option:
+"She has already finished the assignment ahead of schedule."
+Correct. The verb tense is proper, and "ahead of schedule" is a standard phrase.
+"Neither the manager nor the employees were at the meeting."
+Correct. With "neither…nor", the verb agrees with the subject nearest to it (employees), so "were" is right.
+"I have lived in this neighborhood since five years."
+Incorrect. "Since" is used for a specific point in time (e.g., since 2018, since last Monday). For a duration, "for" must be used. Correct version: "I have lived in this neighborhood for five years."
+"We are planning a surprise party for her birthday tonight."
+Correct. Present continuous tense is appropriate to show a planned future action.
+"All are correct"
+Incorrect, because (c) has an error.
+S42. Ans.(a)
+Sol. Explanation of the Error:
+(a) The subject "Each" is singular and should take a singular verb. The correct version is:
+"Each of the players has signed the registration form." Analysis of each option:
+"Each of the players have signed the registration form."
+Incorrect. The subject "Each" is singular, so the verb should also be singular. Correct version: "Each of the players has signed the registration form."
+"He enjoys listening to classical music in the evenings."
+Correct. The subject is singular (He) and the verb enjoys agrees. The gerund phrase listening to classical music is used correctly.
+"We have been waiting for the bus for over an hour."
+Correct. Present perfect continuous tense is appropriately used to show an action continuing from the past until now.
+"My sister and I are going hiking this weekend."
+Correct. The subject is plural (My sister and I) and the verb are going is accurate.
+"All are incorrect"
+This is wrong, because only (a) has an error.
+S43. Ans.(c)
+Sol. The sentence indicates that the witness provided a clear and detailed account, so vivid is the most appropriate word. Analysis:
+Option (a) cleared
+English Meaning: Free from doubt, confusion, or obstruction; made plain. Hindi Meaning: स्पष्ट किया हुआ / साफ़ किया हुआ
+Example: The teacher cleared the doubts of all the students before the exam. Why wrong here: "Cleared account" is not a natural phrase to describe testimony. Option (b) fictional
+English Meaning: Made up, imaginary, not based on real events. Hindi Meaning: िाल्पकिि / गढा हुआ
+Example: The movie is based on a fictional story.
+Why wrong here: A witness cannot give an imaginary account in a legal trial.
+Option (c) vivid
+English Meaning: Producing strong, clear, and lifelike images in the mind. Hindi Meaning: जीवंत / स्पष्ट / सजीव
+Example: She gave a vivid description of her childhood memories.
+Why correct here: A vivid account means a clear, detailed, and lifelike description, which fits the context of a trial.
+Option (d) deceptive
+English Meaning: Misleading, intended to make someone believe something false. Hindi Meaning: भ्रामि / छलपर्ूण
+Example: The advertisement was deceptive and misled many customers.
+Why wrong here: A deceptive account would mean a false and misleading statement, which is not contextually appropriate for leading to a verdict.
+Option (e) honestly
+English Meaning: In a truthful and sincere manner. Hindi Meaning: ईमािदारी से
+Example: She answered the interviewer’s questions honestly.
+Why wrong here: Grammatically incorrect because "honestly" is an adverb, and the blank requires an adjective describing "account."
+Final Answer: (c) vivid
+S44. Ans.(b)
+Sol. The teacher being impressed suggests a positive quality; determination to improve fits well. Analysis:
+Option (a) resistance
+English Meaning: The refusal to accept or comply with something. Hindi Meaning: कवरोध / प्रकतरोध
+Example: His resistance to change made progress difficult.
+Why wrong here: "Resistance to improve" would mean the student opposed improvement, which contradicts the context.
+Option (b) determination
+English Meaning: Firmness of purpose; the quality of being resolute. Hindi Meaning: दृढ किश्चय / संिल्प
+Example: Her determination helped her succeed in the competition.
+Why correct here: "Determination to improve" means the student showed strong willpower and effort, which rightly impressed the teacher.
+Option (c) refusal
+English Meaning: The act of declining or rejecting something. Hindi Meaning: इंिार / अस्वीिार
+Example: His refusal to participate upset the organizers.
+Why wrong here: "Refusal to improve" has a negative meaning and does not fit the positive tone of the sentence.
+Option (d) wise
+English Meaning: Having or showing experience, knowledge, and good judgment. Hindi Meaning: बुकिमाि / समझदार
+Example: It was a wise decision to save money for the future.
+Why wrong here: "Wise to improve" is grammatically incorrect and does not convey the intended meaning.
+Option (e) responsive
+English Meaning: Reacting quickly and positively. Hindi Meaning: संवेदिशील / प्रत्युत्तर देिे वाला
+Example: The child was responsive to the teacher’s guidance.
+Why wrong here: While positive, "responsive to improve" is not idiomatic and sounds unnatural compared to "determination to improve."
+Final Answer: (b) determination
+S45. Ans.(b)
+Sol. The committee decided (B) to postpone (A) the annual meeting because several key members (C) were unable (D)
+to attend on time.
+Step-by-step Analysis:
+Word (A) postpone: Used here as "The committee postpone to decided..." → grammatically incorrect. It should be decided. Word (B) decided: Used as "to decided the annual meeting" → incorrect. The correct word here should be postpone ("to postpone the annual meeting").
+Word (C) members: This is correctly placed in "several key members". No change needed. Word (D) unable: Correctly placed in "were unable to attend". No change needed.
+So, the necessary swap is between A (postpone) and B (decided). Corrected sentence:
+The committee decided (B) to postpone (A) the annual meeting because several key members were unable to attend on time.
+Correct Answer: (b) A-B
+S46. Ans.(c)
+Sol. Despite facing multiple obstacles (A), the young entrepreneur maintained (D) her determination (C) and eventually succeeded in expanding (B) her small business.
+Step-by-step Analysis:
+Word (A) obstacles: Correctly placed. "Facing multiple obstacles" is grammatically fine.
+Word (B) expanding: Wrongly placed. The correct form should be maintained determination and succeeded in expanding.
+Word (C) determination: Correctly placed with "maintained determination."
+Word (D) maintained: Wrongly placed after "succeeded in maintained." It should be "succeeded in expanding." So, B (expanding) and D (maintained) need to be interchanged.
+S47. Ans.(c)
+Sol. C-D: The government announced new subsidies to support farmers adopting sustainable agricultural practices.
+Analysis:
+A with E/F/D
+A–E: “policies to curb to reduce…” is clumsy and contextually mismatched for social media. A–F: “curb problem-solving…” is grammatically possible but contextually absurd.
+A–D: “curb farmers adopting sustainable practices” is the opposite of the likely intent.
+B with D/E/F
+B–D: “needs reforms farmers…” is missing a preposition (“for”/“to support”).
+B–E: grammatical (“needs reforms to reduce dependence on fossil fuels…”), but context is weak for “education system” as the direct agent of emissions reduction in this framing.
+B–F: ungrammatical without “to/for,”.
+C with D/E/F
+C–D: perfect grammatically and contextually: “The government announced new subsidies to support farmers adopting sustainable agricultural practices.”
+C–E: “to support to reduce…” is malformed.
+C–F: would be smoother if it were “to support problem-solving initiatives …”; as written it’s less idiomatic compared with C–D.
+Therefore, the only clean, unequivocal match is C–D, so the answer remains (c) C–D.
+S48. Ans.(b)
+Sol. A-F: Advances in artificial intelligence are enabling machines to learn and adapt without explicit programming. Step-by-step analysis
+Advances in artificial intelligence are enabling machines…
+Best match: F (to learn and adapt without explicit programming).
+Sentence: “Advances in artificial intelligence are enabling machines to learn and adapt without explicit programming.” Grammatically and contextually correct.
+Several countries are investing heavily in renewable energy…
+Best match: None of D/E/F fits properly.
+D: “controlling inflation and stabilize the economy” – renewable energy isn’t directly tied to controlling inflation here. E: “forced farmers to migrate…” – unrelated.
+F: already taken by A.
+So B has no valid match.
+The government launched a new digital literacy campaign…
+Check options:
+D: “controlling inflation…” – illogical.
+E: “forced farmers to migrate…” – grammatically possible (“launched a campaign forced farmers…”) but contextually nonsensical.
+F: already used.
+So C also has no valid match.
+S49. Ans.(d)
+Sol. Explanation of Errors:
+She don’t like walking in the rain every morning.
+Incorrect. With She (third-person singular), the correct form is doesn’t like, not “don’t like.”
+They has been working on the project since last week.
+Incorrect. With plural subject They, it should be have been working, not “has been working.”
+He go to the gym before work on weekdays.
+Incorrect. With He (third-person singular), it should be goes to the gym, not “go.”
+I was late because the bus arrived very slowly.
+Grammatically correct. Past tense was late and arrived match. The adverb slowly is also correct in describing how the bus arrived.
+All are incorrect
+Wrong, because option (d) is correct.
+Correct Answer: (d) I was late because the bus arrived very slowly.
+S50. Ans.(c)
+Sol. Explanation of Errors:
+I seen him at the store just yesterday afternoon.
+Incorrect. Past participle seen requires a helping verb (have/has/had). Correct form: I saw him at the store just yesterday afternoon.
+He don’t have enough experience for this senior role.
+Incorrect. With He (third-person singular), the verb should be doesn’t have, not “don’t have.”
+The cat sleeps peacefully in the sun every afternoon.
+Correct. Singular subject The cat takes sleeps (simple present, habitual action). Adverb peacefully is correctly placed, and the sentence is both grammatically and contextually sound.
+Everyone in the team are excited for the trip.
+Incorrect. Everyone is singular, so it should be Everyone in the team is excited for the trip.
+All are incorrect
+Wrong, because option (c) is correct.
+S51. Ans.(e)
+Sol. The word achieved is correct here. It properly conveys the idea of successfully reaching a goal after effort. So the answer is (e) No replacement required.
+Analysis of all options
+gain
+English Meaning: To obtain or secure something desirable. Hindi Meaning: पािा / हाकसल िरिा
+Example: She worked hard to gain the respect of her colleagues.
+Why wrong here: “Gain his dream” is unnatural; we say “achieve a dream,” not “gain a dream.”
+procured
+English Meaning: To obtain something, especially with effort or difficulty. Hindi Meaning: प्राप्त िरिा / हाकसल िरिा
+Example: The manager procured rare materials for the project.
+Why wrong here: “Procured his dream” is awkward; “procure” is used more for tangible items, not abstract goals like dreams.
+shifted
+English Meaning: To move from one place, position, or direction to another. Hindi Meaning: बदलिा / स्थािांतररत िरिा
+Example: They shifted the furniture to the new house.
+Why wrong here: “Shifted his dream” makes no sense in this context.
+moved
+English Meaning: To change position or to cause something to change place. Also, to affect someone emotionally. Hindi Meaning: कहलिा / स्थाि बदलिा / भावुि िरिा
+Example: The speech moved the audience to tears.
+Why wrong here: “Moved his dream” is incorrect; it does not convey achieving a goal.
+No replacement required
+Explanation: The word achieved is already the most appropriate verb here, meaning successfully reached a desired goal. Example: She achieved her ambition of becoming a doctor.
+S52. Ans.(a)
+Sol. The correct answer is indifferent. The sentence suggests that the manager's reaction made the situation worse, implying a lack of concern or care. "Indifferent" fits perfectly here.
+Analysis:
+indifferent
+English Meaning: Showing no concern, interest, or sympathy. Hindi Meaning: उदासीि / लापरवाह
+Example: The teacher’s indifferent attitude upset the students.
+Fit here? Yes. An indifferent response would indeed irritate an already angry customer.
+strong
+English Meaning: Having force, intensity, or firmness. Hindi Meaning: मजबूत / िṣा
+Example: He gave a strong argument against the proposal.
+Fit here? Not the best choice. A “strong response” could either calm or anger, but it’s not precise for this context.
+prompt
+English Meaning: Done quickly without delay. Hindi Meaning: त्वररत / शीघ्र
+Example: The nurse gave a prompt reply to the patient’s request.
+Fit here? A “prompt response” is positive and unlikely to irritate the customer.
+detailed
+English Meaning: Giving a lot of information with attention to facts. Hindi Meaning: कवस्तृत / कवस्तारपूवणि
+Example: She gave a detailed explanation of the project.
+Fit here? A “detailed response” is neutral or positive, not irritating.
+emotional
+English Meaning: Showing strong feelings. Hindi Meaning: भाविात्मि
+Example: His emotional speech touched the audience.
+Fit here? Possible, but less accurate. An “emotional response” may not always irritate; it depends on tone.
+S53. Ans.(b)
+Sol. The teacher encouraged (B) the students to participate (A) actively in the discussion (C), ensuring everyone had an equal opportunity (D) to speak.
+Step-by-step Analysis:
+Word (A) participate: Used as "The teacher participate the students" → incorrect. It should be encouraged the students to participate.
+Word (B) encouraged: Wrongly placed after "to encouraged actively," which is grammatically wrong. Word (C) discussion: Correctly placed. "In the discussion" is proper.
+Word (D) opportunity: Correctly placed. "Equal opportunity to speak" is correct. So, A (participate) and B (encouraged) must be interchanged.
+S54. Ans.(e)
+Sol. The project required (A) a detailed (B) analysis of financial data, followed by a clear presentation (C) of strategies to improve profitability (D).
+Step-by-step Analysis:
+Word (A) required: Correct. "The project required" is grammatically and contextually right. Word (B) detailed: Correct. "A detailed analysis" is the standard usage.
+Word (C) presentation: Correct. "A clear presentation of strategies" makes complete sense. Word (D) profitability: Correct. "Improve profitability" is appropriate.
+No word needs to be swapped; everything is in its correct position.
+S55. Ans.(d)
+Sol. Fragile means easily broken or delicate (Hindi: िाṇुि / िमजोर).
+Context: A storm cannot be “fragile,” because storms are by nature powerful or destructive, not delicate. So fragile is incorrect here.
+Analysis:
+mild
+English Meaning: Not severe, gentle in nature. Hindi Meaning: हल्िा / सौम्य
+Example: He had a mild fever yesterday.
+Fit here? No, because a “mild storm” would not force travelers to take shelter.
+forecast
+English Meaning: A prediction of future events, especially weather. Hindi Meaning: पूवाणिुमाि / भकवष्यवार्ी
+Example: The weather forecast predicted heavy rain.
+Fit here? No, “forecast storm” is grammatically incorrect.
+conditioned
+English Meaning: Influenced or determined by conditions. Hindi Meaning: शतणबि / पररकस्थकतयों पर किभणर
+Example: His behavior is conditioned by his upbringing. Fit here? No, “conditioned storm” is meaningless.
+unexpected
+English Meaning: Not anticipated or predicted. Hindi Meaning: अप्रत्याकशत / अचािि
+Example: The unexpected rainfall caused traffic jams.
+Fit here? Yes. An unexpected storm could force travelers to take shelter. Both grammatically and contextually correct.
+No replacement required Invalid, since “fragile” does not fit. Final Answer
+Correct Answer: (d) unexpected
+S56. Ans.(a)
+Sol. From the growing season is incorrect.
+“From” usually shows starting point (e.g., from Monday, from the village). Here, we need a word that expresses duration or time span.
+Analysis:
+throughout
+English Meaning: During the whole of a period. Hindi Meaning: पूरे समय / हर जगह
+Example: The child was cheerful throughout the day.
+Fit here? Yes. “Care throughout the growing season” is correct and natural.
+under
+English Meaning: Beneath or controlled by something.
+Hindi Meaning: िीचे / अधीि
+Example: The area is under government control.
+Fit here? No. “Care under the growing season” is meaningless.
+through
+English Meaning: From beginning to end of a period. Hindi Meaning: िे दौराि / आर-पार
+Example: He worked hard through the night.
+Fit here? Yes, “care through the growing season” works, but “throughout” is stronger for covering the whole period.
+of
+English Meaning: Expressing belonging/possession. Hindi Meaning: िा / िे / िी
+Example: The color of the flower is red.
+Fit here? No. “Care of the growing season” is ungrammatical in this sense.
+No replacement required
+Wrong, because “from the growing season” is incorrect.
+Most appropriate choice
+The best replacement is (a) throughout, because it expresses care given for the entire duration of the growing season.
+S57. Ans.(d)
+Sol. B-E: The discovery of new exoplanets has encouraged astronomers to explore the possibility of life beyond Earth.
+Step-by-step check
+The company invested in…
+If we pair with F, the sentence reads: “The company invested in to monitor deforestation and climate changes.”
+This is grammatically wrong because “invested in” must be followed by a noun/noun phrase, not “to + verb.” Correct would be: “invested in monitoring…”.
+So A–F is invalid.
+The discovery of new exoplanets has encouraged astronomers…
+With E, it becomes: “has encouraged astronomers to explore the possibility of life beyond Earth.”
+This is grammatically perfect and contextually correct. So B–E is valid.
+The finance ministry introduced stricter…
+With D, it becomes: “introduced stricter regulate the functioning of digital payment systems.”
+This is ungrammatical, because “stricter” must be followed by a noun like “rules/regulations.” It should be: “introduced stricter regulations to regulate the functioning…”.
+So C–D is invalid as given.
+S58. Ans.(c)
+Sol. The passage says: “Bilingual workers show greater adaptability... where communication across cultures is essential... bridging language barriers...”
+This clearly shows that (c) is the major benefit: better communication and adaptability. Options (a), (b), (d), and (e) are not supported or mentioned in the passage.
+Analysis in detail:
+Relevant lines from the passage:
+“In regions where poverty and limited resources prevail, bilingual workers show greater adaptability. They can handle diverse work areas where communication across cultures is essential. In such settings, monolinguals often face a decline in effectiveness, while bilinguals continue to thrive by bridging language barriers and creating smoother interactions.”
+Option Analysis
+Bilinguals demand lower salaries, making them easier to hire in poor regions.
+Not mentioned anywhere in the passage. Incorrect.
+Bilinguals can work longer hours without facing language-related fatigue.
+Not stated. Incorrect.
+Bilinguals improve communication and adapt better in cross-cultural work environments.
+Matches the passage exactly. They “bridge language barriers and create smoother interactions,” showing better adaptability. Correct.
+Bilinguals receive more government support in multilingual workplaces.
+Not mentioned. Incorrect.
+Bilinguals avoid jobs that require technical or specialized training.
+Not mentioned; in fact, the passage says the opposite—they adapt better. Incorrect.
+S59. Ans.(e)
+Sol. All three statements contradict the text:
+Bilingualism restricts mental flexibility and slows task-switching.
+Passage says: “bilingualism provides mental agility… The ability to switch between languages seems connected with the additional skill of switching between tasks more efficiently.”
+This means bilingualism improves flexibility and task-switching. So statement (I) is incorrect.
+Bilingual professionals struggle more in cross-cultural work environments.
+Passage says: “bilingual workers show greater adaptability… thrive by bridging language barriers and creating smoother interactions.”
+So they do better, not worse. Statement (II) is incorrect.
+Diplomatic children show poor fluency in new languages due to relocation stress.
+Passage says: “children of diplomats often pick up more than one language early in life… master new languages with surprising ease.”
+So this is the opposite. Statement (III) is incorrect. Final Answer
+All three statements are incorrect.
+Correct Option: (e) All I, II, and III
+S60. Ans.(b)
+Sol. Analysis:
+Bilingual individuals switch tasks more efficiently due to enhanced mental control.
+Passage: “The ability to switch between languages seems connected with the additional skill of switching between tasks more efficiently.”
+This matches exactly. Statement (I) is correct.
+Diplomatic children easily acquire multiple languages through early exposure.
+Passage: “Children of diplomats often pick up more than one language early in life… master new languages with surprising ease.”
+This matches exactly. Statement (II) is correct.
+Bilingualism leads to increased emotional sensitivity and empathetic behavior.
+Passage talks about cognitive abilities, problem-solving, adaptability, intelligence, communication, but does not mention emotional sensitivity or empathy.
+Statement (III) is not supported by the passage.
+S61. Ans.(c)
+Sol. The passage states:
+“In 2019, a study was conducted that revealed remarkable findings. It was discovered that individuals who were bilingual demonstrated better calculation speed and higher intelligence levels than their monolingual counterparts.”
+→ Supports (c).
+Option Analysis
+Bilinguals read faster but calculate more slowly.
+Opposite of what is given. Incorrect.
+Monolinguals perform better in creative tasks.
+Not mentioned in the passage. Incorrect.
+Bilinguals have better calculation speed and intelligence.
+Matches the passage exactly. Correct.
+Bilingualism has no measurable cognitive effect.
+Contradicts the passage. Incorrect.
+Bilingualism reduces attention span in adults.
+Not mentioned. Incorrect.
+S62. Ans.(b)
+Sol. The only word that is both grammatically correct and contextually accurate is:
+Correct Answer: (b) to come
+Analysis:
+to function
+Sentence: “seems to function with the additional skill…”
+Grammatically awkward and does not fit context.
+to come
+Sentence: “seems to come with the additional skill…”
+Grammatically correct and contextually makes sense: switching languages comes with better task-switching ability.
+to results
+Ungrammatical. “Results” is plural noun; cannot use “to results.”
+happens
+Sentence: “seems happens with the additional skill…”
+Grammatically wrong (requires “to happen”).
+including
+Sentence: “seems including with the additional skill…”
+Grammatically incorrect and illogical.
+S63. Ans.(c)
+Sol. Here, “later” means afterwards, at a subsequent time.
+Meanings of options
+When
+Refers to time but not opposite of “later.”
+Eventually
+Means in the end, after some time → similar to “later,” not opposite.
+Prior
+Means earlier, before something else. This is the direct opposite of “later.”
+Upcoming
+Means about to happen in the near future. Not opposite, just future-oriented.
+Gradually
+Means slowly, step by step. Not opposite of “later.”
+S64. Ans.(a)
+Sol. Here, decline means a reduction or deterioration.
+Meanings of options
+Deteriorate
+English Meaning: To become worse in quality or condition. Hindi Meaning: कबगṣिा / खराब होिा
+Example: His health began to deteriorate after the accident.
+Fit here? Yes, “decline in effectiveness” = “deterioration in effectiveness.”
+Rejection
+English Meaning: Refusal or dismissal. Hindi Meaning: अस्वीिार
+Example: His proposal faced rejection from the committee. Doesn’t fit.
+Downsizing
+English Meaning: Reduction in workforce or business operations. Hindi Meaning: आिार घटािा / िमणचाररयों में िटौती
+Example: The company announced downsizing due to losses. Too specific; doesn’t match “decline in effectiveness.”
+Support
+English Meaning: To help or strengthen. Hindi Meaning: समथणि
+Opposite meaning.
+Progress
+English Meaning: Forward movement or improvement. Hindi Meaning: प्रगकत
+Opposite of decline.
+Best synonym
+The closest in meaning is (a) Deteriorate.
+S65. Ans.(a)
+Sol. Here, benefits means positive outcomes, advantages.
+Meanings of options
+Advantages
+English Meaning: Favourable or beneficial conditions. Hindi Meaning: लाभ / फायदे
+Example: One advantage of studying abroad is cultural exposure. Perfect synonym for “benefits.”
+Drawbacks
+English Meaning: Disadvantages or negative aspects. Hindi Meaning: िुिसाि / िमी
+Opposite of benefits.
+Gains
+English Meaning: Profits, improvements, or advantages obtained. Hindi Meaning: लाभ / प्राकप्त
+Example: The company made huge gains this year.
+Similar, but “advantages” is a more precise synonym in this context.
+More
+English Meaning: A greater amount. Hindi Meaning: अकधि
+Not a synonym for “benefits.”
+Conflicts
+English Meaning: Disagreements or clashes. Hindi Meaning: टिराव / संघर्ण
+Opposite sense.
+Best synonym
+The closest in meaning is (a) Advantages.
+S66. Ans.(b)
+Sol. Total candidates registered from C = 760
+Total candidates who did not participate from A = 480 - 280 = 200 Required ratio = 760 : 200 = 19:5
+S67. Ans.(a)
+Sol. Number of candidates who did not participate from C
+= 760 - 400 = 360
+Number of candidates who did not participate from D = 840 - 600 = 240 Required average = (360 + 240)/2 = 300
+S68. Ans.(d)
+Sol.
+[[IMG:image24.jpeg]]
+S69. Ans.(c)
+Sol.
+[[IMG:image25.png]]
+S70. Ans.(c)
+[[IMG:image26.png]]Sol.
+S71. Ans.(a)
+Sol. Interest received from scheme A = 12500×r/100×2=250r
+Cumulative compound interest from scheme B= (10 + 10 + (10×10)/100)% = 21% ATQ,
+121/100×250r=3630 r = 12
+S72. Ans.(b)
+[[IMG:image27.png]]Sol.
+S73. Ans.(e)
+Sol. Speed of car A = 480/4 = 120 km/hr Speed of car B = 480/6 = 80 km/hr
+They are moving towards each other, so their relative speed
+= 120 + 80 = 200 km/hr
+Required time = 480/200 = 2.4 hours
+S74. Ans.(a)
+Sol. Company A Male employes = 260
+Female employees = 260 - 130 - 130
+Total employees = 260 + 130 = 390 Female managers = 60
+Non-manager female employees = 130 - 60 = 70 Similarly,
+Companies
+Total employees
+Male employees
+Female employees
+Female mangers
+Non-manager	female employees
+A
+390
+260
+130
+60
+70
+B
+550
+340
+210
+90
+120
+C
+310
+220
+90
+70
+20
+D
+650
+390
+260
+140
+120
+Reuqired average = (70 + 120)/2 = 95
+S75. Ans.(a)
+Sol. Company A Male employes = 260
+Female employees = 260 - 130 - 130
+Total employees = 260 + 130 = 390 Female managers = 60
+Non-manager female employees = 130 - 60 = 70 Similarly,
+Companies
+Total employees
+Male employees
+Female employees
+Female mangers
+Non-manager	female employees
+A
+390
+260
+130
+60
+70
+B
+550
+340
+210
+90
+120
+C
+310
+220
+90
+70
+20
+D
+650
+390
+260
+140
+120
+[[IMG:image28.png]]
+S76. Ans.(c)
+Sol. Company A Male employes = 260
+Female employees = 260 - 130 - 130
+Total employees = 260 + 130 = 390 Female managers = 60
+Non-manager female employees = 130 - 60 = 70 Similarly,
+Companies
+Total
+employees
+Male
+employees
+Female
+employees
+Female
+mangers
+Non-manager	female
+employees
+A
+390
+260
+130
+60
+70
+B
+550
+340
+210
+90
+120
+C
+310
+220
+90
+70
+20
+D
+650
+390
+260
+140
+120
+[[IMG:image29.png]]
+S77. Ans.(c)
+Sol. Company A Male employes = 260
+Female employees = 260 - 130 - 130
+Total employees = 260 + 130 = 390 Female managers = 60
+Non-manager female employees = 130 - 60 = 70 Similarly,
+Companies
+Total
+employees
+Male
+employees
+Female
+employees
+Female
+mangers
+Non-manager	female
+employees
+A
+390
+260
+130
+60
+70
+B
+550
+340
+210
+90
+120
+C
+310
+220
+90
+70
+20
+D
+650
+390
+260
+140
+120
+Number of male managers in D = 195×2-140=250
+Number of non-manager male employees in D = 390 - 250 = 140 Required difference = (60 + 90) - 140 = 10
+S78. Ans.(e)
+Sol. Company A Male employes = 260
+Female employees = 260 - 130 - 130
+Total employees = 260 + 130 = 390 Female managers = 60
+Non-manager female employees = 130 - 60 = 70 Similarly,
+Companies
+Total
+employees
+Male
+employees
+Female
+employees
+Female
+mangers
+Non-manager	female
+employees
+A
+390
+260
+130
+60
+70
+B
+550
+340
+210
+90
+120
+C
+310
+220
+90
+70
+20
+D
+650
+390
+260
+140
+120
+Total number of employees in E = 3/5×550=330
+Total number of male employees in E = 60/100×260=156 Total number of female employees in E = 330 - 156 = 174 Required sum = 174 + 90 + 260 = 524
+S79. Ans.(e)
+Sol. Let the monthly salary be Rs 100x
+Amount sped on regular expenses = 100x × 30/100=30x Amount sped on personal expenses = 100x × 50/100=50x Amount received by father = (100x - 30x - 50x) ×3/4=15x Amount received by mother = (100x - 30x - 50x) ×1/4=5x ATQ,
+15x - 5x = 4000
+10x = 4000
+x = 400
+Required salary = 100x = Rs 40000
+S80. Ans.(a)
+Sol. Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x
+= 2x
+The number of students who like both art and music together in school B
+= 2x + 15
+Given, 3x + 2x+15 = 65 5x = 50
+x = 10
+The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x
+= 60 -20 = 40
+[[IMG:image30.jpeg]][[IMG:image31.jpeg]]
+Required differecne = (50 + 20) - 35 = 35
+S81. Ans.(b)
+Sol. Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x
+= 2x
+The number of students who like both art and music together in school B
+= 2x + 15
+Given, 3x + 2x+15 = 65 5x = 50
+x = 10
+The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x
+= 60 -20 = 40
+[[IMG:image32.jpeg]]
+[[IMG:image33.jpeg]]
+Required percentage = 40/30×100=133.33%
+S82. Ans.(d)
+Sol. Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x
+= 2x
+The number of students who like both art and music together in school B
+= 2x + 15
+Given, 3x + 2x+15 = 65 5x = 50
+x = 10
+The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x
+[[IMG:image30.jpeg]][[IMG:image31.jpeg]]= 60 -20 = 40
+Required ratio = 20 : 45 = 4:9
+S83. Ans.(a)
+Sol. Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x
+= 2x
+The number of students who like both art and music together in school B
+= 2x + 15
+Given, 3x + 2x+15 = 65 5x = 50
+x = 10
+The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x
+[[IMG:image32.jpeg]][[IMG:image33.jpeg]]= 60 -20 = 40
+Required answer = 20 + 35 = 55
+S84. Ans.(b)
+Sol. Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x
+= 2x
+The number of students who like both art and music together in school B
+= 2x + 15
+Given, 3x + 2x+15 = 65 5x = 50
+x = 10
+The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x
+= 60 -20 = 40
+[[IMG:image30.jpeg]][[IMG:image33.jpeg]]
+Number of students who like at most one activity in school B = 30 + 45 = 75 Required difference = 75 - (50 + 20) = 5
+S85. Ans.(e)
+Sol.
+[[IMG:image34.png]]
+S86. Ans.(b)
+Sol.
+[[IMG:image35.png]]
+S87. Ans.(d)
+[[IMG:image36.png]]Sol.
+S88. Ans.(c)
+[[IMG:image37.png]]Sol.
+S89. Ans.(e)
+[[IMG:image38.png]]Sol.
+S90. Ans.(a)
+Sol.
+[[IMG:image39.png]]
+[[IMG:image40.png]]
+S92. Ans.(a)
+[[IMG:image41.png]]Sol.
+S93. Ans.(c)
+Sol.
+[[IMG:image42.png]]
+S94. Ans.(a)
+Sol.
+[[IMG:image43.png]]
+S95. Ans.(d)
+Sol.
+[[IMG:image44.png]]
+S96. Ans.(d)
+[[IMG:image45.png]]Sol. Let amount invested by Neeraj and Vivan be 4x and 7x and time period of investment of Vivan be ‘y’ months According to question
+S97. Ans.(b)
+Sol. Let speed of boat in still water and speed of water current be x km/hr and y km/hr So,
+[[IMG:image46.png]]
+[[IMG:image47.png]]
+S99. Ans.(a)
+[[IMG:image48.png]]Sol.
+S100. Ans.(a) Sol. ATQ –
+2(l + 9) = 42 (where l = length of rectangle) 2l = 24
+l = 12 meters
+So, measurement of side of square = 36 – 12 = 24 meters

@@ -29,7 +29,7 @@ const ForgotPasswordPage = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await API.forgotPassword({ email });
+      const res = await API.forgotPassword(email);
       if (res.success) {
         setSuccess(true);
         toast.success("Password reset link sent to your email.");

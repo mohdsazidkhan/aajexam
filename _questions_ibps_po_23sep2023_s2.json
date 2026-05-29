@@ -1,0 +1,2202 @@
+[
+  {
+    "n": 1,
+    "section": "English Language",
+    "q": "Directions: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.The India Employment Report (IER) 2024 by the Institute for Human Development and International Labour Organization poses questions on the trickle-down effect of benefits to the working class in the backdrop of a 5.4% average real economic growth, from 2015-16 to 2022-23. It also shows a divergent trend between rural and urban areas in terms of employment and income. It demonstrates a relatively higher unemployment rate in urban areas, at 4.8% in 2000 over the 1.5% in rural areas. However, average monthly earnings are higher by 76% for self-employed, 44% for regular employed and 22% for casual labour in urban areas in 2022. The coexistence of higher unemployment and wages requires further investigation to understand its implications for the urban poor. This article looks at the dynamics of employment and wages in pockets of deep urban poverty, such as slums, and juxtaposes these with the findings of the IER 2024.\nDirections: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.\nThe higher income in urban areas and a better life have underrated rural-urban migration in the past. As in the IER 2024, although overall migration has increased, the migration of males has declined by 1.2% during 2000-08 and further marginally in 2021. This implies that migration for economic mobility is losing its sheen. An analysis of income and employment trends among slum dwellers in urban India reveals prospects for economic mobility and decent work, as poor rural households often migrate to slums rather than formal settlements. This writer and a team surveyed 37 slums across different parts of Kolkata in 2012. These slums were again surveyed in 2022-\n23. However, we could track only 29 slums as the other slums had either been redeveloped or evicted. We surveyed 513 slum households in 2012 and 396 in 2021-22. To get the overall trends from 2012, we collected data on income and employment in slums in 2019, the pre-COVID-19 year, to avoid the COVID-19-affected years of 2019-22, for comparison.\nThe major occupations in slums in Kolkata have remained the same over the decade, with a fourth of the working population taking on unskilled labour. It is the most stable and significant occupation in slums. The IER 2024 also finds that a fourth of workers in India were engaged in unskilled work during this period. Other major occupations in slums were skilled or semi-skilled labour work, and people as employees in private organisations, and owning petty businesses or small shops. Unlike unskilled labour, the share of employment in skilled and semi-skilled labour was reduced by 6%, and in private organisations by 3% between 2012-19. On the other hand, employment has increased by 9% in petty businesses or small shops. Surprisingly, the share of other self-employed has also declined by 3%. Among occupations that were less popular earlier but which gained\nmomentum in the last 10 years are truck driving and cleaning, by 5%, and construction and related work, by 4%. The number of people employed in construction and related work was minuscule in 2012.\nWhat does the passage reveal about the evolution of major occupations in Kolkata's slums over the past decade?",
+    "q_image": "",
+    "opts": [
+      "There has been a significant shift towards skilled and semi-skilled labour occupations.",
+      "Unskilled labour remains the most stable and predominant occupation in slums.",
+      "Employment in private organizations has consistently increased over the years.",
+      "The number of self-employed individuals has declined steadily since 2012.",
+      "Truck driving and cleaning declined in popularity compared to construction work."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 2,
+    "section": "English Language",
+    "q": "What does the passage suggest about the migration patterns in India based on the IER 2024?",
+    "q_image": "",
+    "opts": [
+      "Female migration is increasing, contributing to urbanization without slum settlement preference.",
+      "Economic factors are driving increased migration to rural areas instead of urban centres.",
+      "Migration patterns are stable, with no significant changes observed in rural-urban migration trends.",
+      "Economic factors are driving increased migration to urban centres instead of rural areas.",
+      "Male migration for economic reasons is decreasing, leading to increased migration to urban slums."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 3,
+    "section": "English Language",
+    "q": "Which of the following sentence(s) can be inferred from the passage?\nOver the decade, the proportion of individuals engaged in skilled and semi-skilled labour decreased\nby 6%.\nHigher unemployment rates in urban areas are juxtaposed with significantly higher average monthly earnings.\nMigration for economic mobility among males declined by 1.2% during 2000-08 and marginally in 2021.",
+    "q_image": "",
+    "opts": [
+      "Only A",
+      "Both B and C",
+      "Only C",
+      "All A, B, and C",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 4,
+    "section": "English Language",
+    "q": "What trend does the IER 2024 highlight regarding unemployment rates between rural and urban areas?",
+    "q_image": "",
+    "opts": [
+      "Urban areas consistently have lower unemployment rates compared to rural areas.",
+      "Urban areas experience higher unemployment rates compared to rural areas.",
+      "There is no significant difference in unemployment rates between rural and urban areas.",
+      "Unemployment rates have been declining steadily in both rural and urban areas.",
+      "Urban areas witness a surge in unemployment rates while rural areas remain stable."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 5,
+    "section": "English Language",
+    "q": "Which of the highlighted words from the passage is grammatically/contextually incorrect?",
+    "q_image": "",
+    "opts": [
+      "coexistence",
+      "underrated",
+      "petty",
+      "momentum",
+      "All are correct"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 6,
+    "section": "English Language",
+    "q": "Which of the following inferences can be drawn from the underlined sentence from the passage?",
+    "q_image": "",
+    "opts": [
+      "Migration to urban slums in India offers potential economic advancement and job opportunities for poor rural households.",
+      "Stagnation in urban slums' economy persists, with a significant portion engaged in unskilled labour for over a decade.",
+      "Choosing formal settlements over urban slums limits economic mobility and work prospects for poor rural households in India.",
+      "Investigating simultaneous high unemployment and wages is crucial for understanding urban poverty dynamics.",
+      "Income and employment conditions in urban slums tend to perpetuate rather than alleviate systemic poverty and inequality."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 7,
+    "section": "English Language",
+    "q": "Which of the following sentences are TRUE/FALSE according to the passage?\nSkilled and semi-skilled labour saw a 6% increase, unlike unskilled labour.\nEmployment in skilled and semi-skilled labour decreased over the decade.\nThe urban unemployment rate decreased consistently from 2015-16 to 2022-23.\nThe number of surveyed slum households decreased from 513 to 396.\nUrban areas exhibit higher unemployment rates compared to rural areas.",
+    "q_image": "",
+    "opts": [
+      "Both B and C are true",
+      "Only D is false",
+      "All B, D, and E are true",
+      "Both B and D are false",
+      "All A, B, and C are true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 8,
+    "section": "English Language",
+    "q": "Which of the following sentence(s) cannot be inferred from the passage?\nThe lower wages in urban areas have resulted in a decrease in migration for economic mobility.\nThe survey revealed that all 396 households in 2021-22 had improved economically since 2012.\nTruck driving and cleaning have decreased in popularity as occupations in slums in the last decade.",
+    "q_image": "",
+    "opts": [
+      "Only A",
+      "Only B",
+      "Only C",
+      "All A, B, and C",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 9,
+    "section": "English Language",
+    "q": "What conclusion can be drawn from the third paragraph of the passage?",
+    "q_image": "",
+    "opts": [
+      "The divergence in employment and income trends between rural and urban areas is highlighted in the report, emphasizing the dynamics of slum economies.",
+      "The data collected from Kolkata's slums shows a shift towards formal employment and away from self-employment, contradicting the findings of the IER 2024.",
+      "While unskilled labour remains dominant in Kolkata's slums, skilled labour and formal employment have decreased, replaced by petty businesses.",
+      "The survey conducted in 2022-23 covered all 37 slums in Kolkata that were surveyed in 2012, although some slums had either been redeveloped or evicted.",
+      "The income and employment trends in slums were found to be unaffected by the COVID-19 pandemic during the pre-COVID-19 year of 2019."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 10,
+    "section": "English Language",
+    "q": "Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If\nall the sentences are correct, mark 'All are correct as your answer'.",
+    "q_image": "",
+    "opts": [
+      "Neither the contestants nor the principal were aware of the fire.",
+      "Instead criticizing why don't you help with the presentation?",
+      "It is requested that a detailed report be sent urgent on the representations and ongoing strike by the employees.",
+      "Neither Sameera nor Vinod knows anything about the accident.",
+      "All are correct."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 11,
+    "section": "English Language",
+    "q": "Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If\nall the sentences are correct, mark 'All are correct as your answer'.",
+    "q_image": "",
+    "opts": [
+      "The developers submitted building plans to the council for the approval.",
+      "The girl, with several others, was late for school.",
+      "She was heavily fined last month for coming lately.",
+      "Each of the ladies have a designer handbag.",
+      "All are correct."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 12,
+    "section": "English Language",
+    "q": "Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If\nall the sentences are correct, mark 'All are correct as your answer'.",
+    "q_image": "",
+    "opts": [
+      "I see you have eaten fewer than ten percent of your mashed potatoes",
+      "A different policeman has been assigned with the case.",
+      "No sooner had he arrived in Delhi than he was kidnapped.",
+      "Five kilograms of flour are all that I need for my baking.",
+      "All are correct."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 13,
+    "section": "English Language",
+    "q": "Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If\nall the sentences are correct, mark 'All are correct as your answer'.",
+    "q_image": "",
+    "opts": [
+      "Several members of the party have resurrected the idea of constitutional change.",
+      "I clearly empathize with the people who lives in those neighborhoods.",
+      "When the ship finally reached land, only a few of the crew was left to witness the event.",
+      "Everyone have their own ideas about the best way to bring up children.",
+      "All are correct."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 14,
+    "section": "English Language",
+    "q": "Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best\nalternative among the five options given below each statement as your answer.\nwere not protected in the epidemic, and (A)/ the outbreak was originally mistaken for Japanese encephalitis, (B)/ who had been vaccinated against Japanese encephalitis (C)/ but physicians in the area noted that persons (D)/ the number of cases among adults was unusual (E)/",
+    "q_image": "",
+    "opts": [
+      "DABEC",
+      "ABCED",
+      "CBDAE",
+      "EDABC",
+      "BDCAE"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 15,
+    "section": "English Language",
+    "q": "Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best\nalternative among the five options given below each statement as your answer.\nof petroleum-based jet fuel but with a fraction (A)/ of its carbon footprint, giving airlines solid footing (B)/ SAF made from renewable biomass and waste resources (C)/ for decoupling greenhouse gas (GHG) emissions from flight (D)/ has the potential to deliver the performance (E)/",
+    "q_image": "",
+    "opts": [
+      "AEDCB",
+      "CEABD",
+      "DCBAE",
+      "EDCBA",
+      "BCDEA"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 16,
+    "section": "English Language",
+    "q": "Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best\nalternative among the five options given below each statement as your answer.\nregistered with the Bureau of Patents (A)/ first mass-produced commercially by (B)/ Magdalo V. Francisco Sr. who founded (C)/ in 1942, banana ketchup was (D)/ the brand name Mafran which he (E)/",
+    "q_image": "",
+    "opts": [
+      "BAEDC",
+      "EBACD",
+      "CAEBD",
+      "DBCEA",
+      "ADCBE"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 17,
+    "section": "English Language",
+    "q": "Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a\nwhole.\nRekha's family hired \tpersonnel to \ther in daily tasks like bathing and preparing meals.",
+    "q_image": "",
+    "opts": [
+      "assistive, support",
+      "sabotage, antagonistic",
+      "undercut, hostile",
+      "weaken, fierce",
+      "controvert, scrape"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 18,
+    "section": "English Language",
+    "q": "Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a\nwhole.\nRed Cross workers usually \tin the \tof victims of natural disasters by providing medical care to those who are injured.",
+    "q_image": "",
+    "opts": [
+      "relapse, obstacle",
+      "regression, constraint",
+      "aid, recovery",
+      "loss, hindrance",
+      "misplace, drawback"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 19,
+    "section": "English Language",
+    "q": "Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a\nwhole.\nMy supervisor won’t \tmy day off because there is no one to \tmy shift.",
+    "q_image": "",
+    "opts": [
+      "bare, proscribe",
+      "approve, cover",
+      "expose, prohibit",
+      "omit, interdict",
+      "slur, neglect"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 20,
+    "section": "English Language",
+    "q": "Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a\nwhole.\nIf you want to \tyour lawn, you will need to water it \tso it stays nice and fresh.",
+    "q_image": "",
+    "opts": [
+      "rare, ignore",
+      "seldom, withdraw",
+      "perpetually, retract",
+      "maintain, frequently",
+      "constant, negotiate"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 21,
+    "section": "English Language",
+    "q": "Directions: Five sentences A, B, C, D, and E are given below, You need to rearrange the sentences so that the five sentences can together form a meaningful paragraph.\nEducated at the University of Pennsylvania in physics, Musk started getting his feet wet as a serial tech entrepreneur.\nHe is surpassed only by Jeff Bezos as the richest person in the world.\nHe was instrumental in creating the company that became PayPal.\nElon Musk is the charismatic co-founder and CEO of electric car maker Tesla and rocket manufacturer SpaceX.\nHis astounding success has given rise to comparisons to other visionary businessmen.\nWhich of the following should be the FIRST sentence after rearrangement?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 22,
+    "section": "English Language",
+    "q": "Which of the following should be the SECOND sentence after rearrangement?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 23,
+    "section": "English Language",
+    "q": "Which of the following should be the THIRD sentence after rearrangement?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 24,
+    "section": "English Language",
+    "q": "Which of the following should be the FOURTH sentence after rearrangement?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 25,
+    "section": "English Language",
+    "q": "Which of the following should be the FIFTH sentence after rearrangement?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 26,
+    "section": "English Language",
+    "q": "Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No\ncorrection required' as your answer.\nAs a whole, the Malays are, however, remarkably healthy people, and deformity and hereditary diseases is rare between them.",
+    "q_image": "",
+    "opts": [
+      "Is rare among them",
+      "Was rare between them",
+      "Was rare among them",
+      "Are rare among them",
+      "No correction required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 27,
+    "section": "English Language",
+    "q": "Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No\ncorrection required' as your answer.\nThe location is one of the most important things to consider when buying a house.",
+    "q_image": "",
+    "opts": [
+      "Are one of the most important things",
+      "Is one of the most important thing",
+      "Are one of the most important thing",
+      "One of the most important thing",
+      "No correction required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 28,
+    "section": "English Language",
+    "q": "Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No\ncorrection required' as your answer.\nIt is also important to check to see if each resident has a pitcher of water in his or her room for reach of the bed.",
+    "q_image": "",
+    "opts": [
+      "Her room during reach",
+      "Her room within reach",
+      "Her room among reach",
+      "His room across reach",
+      "No correction required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 29,
+    "section": "English Language",
+    "q": "Directions: In the following question, a sentence is given with four words marked as (A), (B), (C), and (D). These words may or may not be placed in the correct order. Four options with different\narrangements of these words have been provided. Mark the option with the correct arrangement as the answer. If no rearrangement is required, mark option (5) as your answer.\nIf you want to maintain(A) your lawn, you will need to fresh(B) the grass and water it frequently(C) so it stays nice and mow(D).",
+    "q_image": "",
+    "opts": [
+      "A-C",
+      "B-D",
+      "C-D",
+      "A-B",
+      "No change required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 30,
+    "section": "English Language",
+    "q": "Directions: In the following question, a sentence is given with four words marked as (A), (B), (C), and (D). These words may or may not be placed in the correct order. Four options with different\narrangements of these words have been provided. Mark the option with the correct arrangement as the answer. If no rearrangement is required, mark option (5) as your answer.\nEven though the alibi(A) could not substantiate(B) his defendant(C) for the night of the murder, he was still found innocent(D) of all charges.\nD-A",
+    "q_image": "",
+    "opts": [
+      "C-B",
+      "B-D",
+      "A-C",
+      "No change required",
+      "Que. 31Que. 31"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 31,
+    "section": "Quantitative Aptitude",
+    "q": "Que. 31\nTable below shows the number of male and female students studying in three different institutions AMU, MMH, and LPU in two sections A and B.\nInstitutions\nRatio of male\nRatio of female\nNumber of students\nstudents in section A to that in section B\nin section B is how much more than the number of students in section A\nAMU\n3: 4\n6: 5\n10\nMMH\n1: 3\n5: 4\n20\nLPU\n4: 3\n2: 3\n15\nNote:\nMale students in AMU college are 50 more than female students in that college.\nFemale students in colleges MMH and LPU are 30 and 55 respectively more than the number of male students.\nNumber of males in section B from college AMU is what percentage of the total number of males from section B from all the colleges.",
+    "q_image": "",
+    "opts": [
+      "55.55%",
+      "44.44%",
+      "34.78%",
+      "88.78%",
+      "33.33%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 32,
+    "section": "Quantitative Aptitude",
+    "q": "If average number of male students in section A of colleges AMU, MMH, LPU, and PQR is 45 and average number of female students in section A of these 4 colleges is 40, then find the total number of\nstudents in section A to college PQR.",
+    "q_image": "",
+    "opts": [
+      "150",
+      "140",
+      "110",
+      "120",
+      "130"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 33,
+    "section": "Quantitative Aptitude",
+    "q": "Find the ratio of total number of students in section A to colleges AMU and MMH together to the total number of female students in section B of all the three colleges together.",
+    "q_image": "",
+    "opts": [
+      "1: 1",
+      "2: 1",
+      "3: 2",
+      "2: 3",
+      "1: 2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 34,
+    "section": "Quantitative Aptitude",
+    "q": "If ratio of male students to female students in section C of LPU college is 10: 7 and total students in section C in LPU college is equal to the total students in section B of MMH college, then find the total\nnumber of male students in all the three sections together of LPU college.",
+    "q_image": "",
+    "opts": [
+      "140",
+      "120",
+      "130",
+      "150",
+      "160"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 35,
+    "section": "Quantitative Aptitude",
+    "q": "Find the difference between the total number of male students from the colleges AMU and MMH together and the total number of female students the colleges MMH and LPU together.",
+    "q_image": "",
+    "opts": [
+      "75",
+      "60",
+      "65",
+      "50",
+      "55"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 36,
+    "section": "Quantitative Aptitude",
+    "q": "Out of total male and female students from college MMH, x and (x + 10) are interested in internships respectively. If total students from college MMH who are not interested in internship are 40, find the\nvalue of 'x'.",
+    "q_image": "",
+    "opts": [
+      "35",
+      "45",
+      "50",
+      "55",
+      "40"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 37,
+    "section": "Quantitative Aptitude",
+    "q": "The ratio of the speed of a boat in still water to the speed of the stream is 5 ∶ 1, if a boat can row a distance of 120 km upstream in 2 hrs more than the time taken to travel the same distance downstream,\nfind the speed of boat in still water?",
+    "q_image": "",
+    "opts": [
+      "12 km/hr",
+      "18 km/hr",
+      "25 km/hr",
+      "20 km/hr",
+      "21 km/hr"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 38,
+    "section": "Quantitative Aptitude",
+    "q": "A sum of money is invested for '2t' years at R% simple rate of interest and interest amount received is 40% of the sum invested. If same sum is invested at 2 years at 2R% annual rate of compound interest,\nthen interest amount received is 44% of the sum invested. Find the value of 't'.",
+    "q_image": "",
+    "opts": [
+      "8 years",
+      "5 years",
+      "6 years",
+      "2 years",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 39,
+    "section": "Quantitative Aptitude",
+    "q": "Two partners Nisha and Arun enter into a partnership with initial investment of Rs. 2000 and Rs. 3000 respectively. After 4 months, Nisha invested Rs. P more such that share of Arun in the annual profit is\n9/10 of Nisha's profit share. Find the value of P.",
+    "q_image": "",
+    "opts": [
+      "Rs. 2000",
+      "Rs. 4000",
+      "Rs. 6000",
+      "Rs. 1000",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 40,
+    "section": "Quantitative Aptitude",
+    "q": "What approximate value should come in the place of question mark (?) in the following question? (71.98 + 143.9 × 3.99) ÷ 17.95 + 27.98 = ?",
+    "q_image": "",
+    "opts": [
+      "72",
+      "64",
+      "56",
+      "48",
+      "32"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 41,
+    "section": "Quantitative Aptitude",
+    "q": "What approximate value should come in the place of question mark (?) in the following question?\n39.99% of (124.95 ÷ 25.05 × 3.94 + 15.05) = ?",
+    "q_image": "",
+    "opts": [
+      "21",
+      "7",
+      "24",
+      "14",
+      "28"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 42,
+    "section": "Quantitative Aptitude",
+    "q": "What approximate value should come in the place of question mark (?) in the following question?\n6.972 + 161.92 ÷ 2.992 – 6.99 × 8.99 = ?",
+    "q_image": "",
+    "opts": [
+      "8",
+      "4",
+      "2",
+      "161",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 43,
+    "section": "Quantitative Aptitude",
+    "q": "What approximate value should come in the place of question mark (?) in the following question?\n79.98% of 599.98 + 192.02 ÷ 31.92 = √35.96 × ?",
+    "q_image": "",
+    "opts": [
+      "63",
+      "56",
+      "78",
+      "72",
+      "81"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 44,
+    "section": "Quantitative Aptitude",
+    "q": "What approximate value should come in the place of question mark (?) in the following question?\n11.98 – [25.96 – {1.98 + 4.95 × (6.06 – 2.93)}] = ?",
+    "q_image": "",
+    "opts": [
+      "7",
+      "3",
+      "1",
+      "-2",
+      "5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 45,
+    "section": "Quantitative Aptitude",
+    "q": "Cost of a fan is 250 more than the cost of a bulb. If bulb is sold at 35% profit and fan is sold at 40% loss, the selling price of bulb and fan becomes equal. Find the cost of bulb.",
+    "q_image": "",
+    "opts": [
+      "Rs. 600",
+      "Rs. 300",
+      "Rs. 200",
+      "Rs. 500",
+      "Rs. 400"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 46,
+    "section": "Quantitative Aptitude",
+    "q": "Width of a rectangle is 6 cm and length of rectangle is equal to the side of a square. If side of a square is decreased by 4, then area of square becomes 3 cm2 more than the area of rectangle, then find the\narea of rectangle.",
+    "q_image": "",
+    "opts": [
+      "67",
+      "54",
+      "78",
+      "88",
+      "90"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 47,
+    "section": "Quantitative Aptitude",
+    "q": "Train A running with the speed of 36 km/hr crosses a pole in 20 seconds. Another train B whose length is 100 metre more than length of train A is running with the speed of 18 km/hr. Find the time taken by\ntrain B to cross a platform of length 500 metre.",
+    "q_image": "",
+    "opts": [
+      "200 seconds",
+      "150 seconds",
+      "160 seconds",
+      "140 seconds",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 48,
+    "section": "Quantitative Aptitude",
+    "q": "The given bar - graph shows the total number of health insurance sold to male and females, and the number of vehicle insurance sold to females by three different agents A, B and C.\n\nNote:\nAll the agents each sold health insurance to 50 males\nRatio of vehicle insurance sold to female to male by each agent is 5: 4 respectively.\nIf agent A sold '2y' more health and 'y' more vehicle insurance such that total number of vehicle insurance sold by him becomes 27 less than total number of health insurance sold by him. Find the value of 'y'.",
+    "q_image": "image3.png",
+    "opts": [
+      "25",
+      "45",
+      "30",
+      "35",
+      "40"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 49,
+    "section": "Quantitative Aptitude",
+    "q": "Find the ratio between the health and vehicle insurance sold by A to the number of health and vehicle insurance sold by C.",
+    "q_image": "image3.png",
+    "opts": [
+      "322: 351",
+      "303: 239",
+      "301: 334",
+      "327: 329",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 50,
+    "section": "Quantitative Aptitude",
+    "q": "If cost per person of health insurance and vehicle insurance policy is ₹1500 and 2000 respectively, then find the difference between total cost of all the health insurance done by B and total cost of all the\nvehicle insurance done by C?",
+    "q_image": "image3.png",
+    "opts": [
+      "21000",
+      "18000",
+      "12000",
+      "15000",
+      "19000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 51,
+    "section": "Quantitative Aptitude",
+    "q": "Health insurance sold to females by agent A is what percentage of the total number of health insurance sold to females by all the agents.",
+    "q_image": "image3.png",
+    "opts": [
+      "43.78%",
+      "28.89%",
+      "34.78%",
+      "38.46%",
+      "26.68%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 52,
+    "section": "Quantitative Aptitude",
+    "q": "If the vehicle insurance sold by B to all the people is 21% of ‘x ‘then the health insurance sold by B to all the people is what percent value of x?",
+    "q_image": "image3.png",
+    "opts": [
+      "10%",
+      "15%",
+      "30%",
+      "20%",
+      "25%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 53,
+    "section": "Quantitative Aptitude",
+    "q": "A and B are two inlet pipes connected to a cistern, can alone fill it in 20 hours and 24 hours respectively. There is third pipe C which can empty 160 litres of water in one hour from the cistern. If\nall three pipes are opened together cistern gets filled in 40 hours. Find the total capacity of the cistern.\n1920 liters",
+    "q_image": "",
+    "opts": [
+      "2400 liters",
+      "2240 liters",
+      "2720 liters",
+      "3000 liters",
+      "Que. 54Que. 54A mixture contains Alcohol and water in the ratio 7 : 5. When 5 litres of water and 6 litres of alcohol is added to the mixture, the ratio of alcohol to water in the resultant mixture becomes 34 : 25. Find the"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 54,
+    "section": "Quantitative Aptitude",
+    "q": "Que. 54\ninitial quantity of the mixture.",
+    "q_image": "",
+    "opts": [
+      "189 litres",
+      "190 litres",
+      "48 litres",
+      "58 litres",
+      "None of these."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 55,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n63, 80, 99, ?, 143, 168",
+    "q_image": "",
+    "opts": [
+      "121",
+      "122",
+      "124",
+      "126",
+      "120"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 56,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n7, 8, 17, 52, ?, 1046",
+    "q_image": "",
+    "opts": [
+      "209",
+      "316",
+      "329",
+      "263",
+      "291"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 57,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n16, 160, 281, 381, ?, 526",
+    "q_image": "",
+    "opts": [
+      "432",
+      "442",
+      "462",
+      "452",
+      "472 Que. 58Que. 58What will come in place of the question mark (?) in the following series? 103, 615, 958, 1174, 1299, 1363, ?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 58,
+    "section": "Quantitative Aptitude",
+    "q": "Que. 58",
+    "q_image": "",
+    "opts": [
+      "1390",
+      "1408",
+      "1583",
+      "1498",
+      "2458"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 59,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n7, 7, 14, ?, 168, 840",
+    "q_image": "",
+    "opts": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 60,
+    "section": "Quantitative Aptitude",
+    "q": "Tickets numbered 1 to 50 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn bears a number which is a multiple of 8?",
+    "q_image": "",
+    "opts": [
+      "1/7",
+      "7/26",
+      "3/25",
+      "2/5",
+      "3/5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 61,
+    "section": "Quantitative Aptitude",
+    "q": "Set A contains 3 consecutive prime numbers while set B contains 2 consecutive odd numbers. Sum of largest number of set A and set B is 64 while largest number of set A is 4 less than the 3 times of largest\nnumber of set B. Find the smallest number of set A.",
+    "q_image": "",
+    "opts": [
+      "47",
+      "43",
+      "53",
+      "59",
+      "41"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 62,
+    "section": "Quantitative Aptitude",
+    "q": "Subhash spends 40% of his monthly income on household items, 20% of his monthly income on buying clothes, 10% of his monthly income on investing in recurring deposits, and the remaining\namount of Rs. 15,000 he saves. What is Subhash's monthly income?",
+    "q_image": "",
+    "opts": [
+      "Rs. 25,000",
+      "Rs. 1,00,000",
+      "Rs. 50,000",
+      "Rs. 45,000",
+      "Rs. 48,000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 63,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Given below are two quantities named I and II. Based on the given information, you have to determine the relation between the two quantities. You should use the given data and your\nknowledge of Mathematics to choose among the possible answers. a = -3, b = -1 and c = 6\nQuantity I: Find the value of (a3 + b2 + c2) / 4\nQuantity II: Find the value of [a / (a3 + b2)]",
+    "q_image": "",
+    "opts": [
+      "Quantity I = Quantity II",
+      "Quantity I ≥ Quantity II",
+      "Quantity I ≤ Quantity II",
+      "Quantity I ˂ Quantity II",
+      "Quantity I ˃ Quantity II"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 64,
+    "section": "Quantitative Aptitude",
+    "q": "Direction: Given below are two quantities named A and B. Based on the given information you have to determine the relation between the two quantities. You should use the given data and your\nknowledge of Mathematics to choose between the possible answers.\nThe perimeter of a square is equal to twice the perimeter of a rectangle of length 11 cm and breadth 10 cm. Quantity A: What is the circumference of the semicircle whose diameter is equal to the side of the square? Quantity B: What is the circumference of the circle which is inscribed inside the square?",
+    "q_image": "",
+    "opts": [
+      "Quantity A > Quantity B",
+      "Quantity A < Quantity B",
+      "Quantity A ≥ Quantity B",
+      "Quantity A ≤ Quantity B",
+      "Quantity A = Quantity B or No relation"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 65,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Two quantities A and B are given in the following questions. You have to find the value to both A and B by using your knowledge of mathematics and choose the most suitable relation between\nthe magnitude of A and B from the given options.\nQuantity A - Distance between trains after 3 hours. Train X travels 420 km in 7 hours. Ratio of speeds of train X and Y is 5 : 3. Trains are 100 km apart and are travelling towards each other.\nQuantity B - Distance (in km) travelled in 2 hours. Bus can travel 300 m in 12 seconds.",
+    "q_image": "",
+    "opts": [
+      "Quantity A ≥ Quantity B",
+      "Quantity A ≤ Quantity B",
+      "Quantity A = Quantity B or no relationship can be established",
+      "Quantity A > Quantity B",
+      "Quantity A < Quantity B"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 66,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nSeven persons A, B, C, D, E, F, and G are sitting in a straight row. Some of them are facing the north while others face the south direction. Two people sit between B and A, who sit at one of the extreme ends of the row. B is second to the left of E. E and A are facing the same direction. E is not an immediate neighbor of A. D is sitting second to the right of G. G faces opposite the direction of E. Persons sitting on the extreme ends face opposite directions. C is not sitting on the extreme end and is not the immediate neighbor of F. F is sitting to the right of D but is not an immediate neighbor of the person who faces the south direction. The immediate neighbor of D faces the same direction. Not more than two persons facing north direction sit adjacent to each other.\nWho sits second to the left of B?",
+    "q_image": "",
+    "opts": [
+      "E",
+      "D",
+      "G",
+      "A",
+      "C"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 67,
+    "section": "Reasoning Ability",
+    "q": "Number of persons sitting right to C is one less than the number of persons sitting to the left of   .",
+    "q_image": "",
+    "opts": [
+      "The one who sits immediate right of D.",
+      "A",
+      "G",
+      "The one who sits immediate left of F.",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 68,
+    "section": "Reasoning Ability",
+    "q": "Who among the following person is standing to the right of the one who stands immediate left of G?",
+    "q_image": "",
+    "opts": [
+      "The one who stand immediate left of E.",
+      "A",
+      "The one who stands immediate right of D.",
+      "F",
+      "C"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 69,
+    "section": "Reasoning Ability",
+    "q": "What is the position of D from the left end?",
+    "q_image": "",
+    "opts": [
+      "First",
+      "Fifth",
+      "Sixth",
+      "Second",
+      "Third"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 70,
+    "section": "Reasoning Ability",
+    "q": "How many persons are facing North direction?",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "One",
+      "Five",
+      "Three",
+      "Seven"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 71,
+    "section": "Reasoning Ability",
+    "q": "Each of the vowels in the word \"RANDOM\" is replaced by number \"2\" and each consonant is replaced by a number which is the serial number of that consonant in the word i.e., R by 1, N by 3 and so on.\nWhat is the total of all the numbers once the replacement is completed?",
+    "q_image": "",
+    "opts": [
+      "14",
+      "15",
+      "20",
+      "18",
+      "19"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 72,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nM < T ≤ Q < D; P > A = W ≥ D\nConclusions:\nW ≥ T\nP > Q",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Only Il follows",
+      "Either I or II follows",
+      "Both I and II follow",
+      "Neither I or II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 73,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nR < V > C ≥ S < N; Q ≥ O > S\nConclusions:\nV > O\nQ > C",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Only Il follows",
+      "Neither I or II follows",
+      "Both follow",
+      "Either I or II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 74,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nC < P = R > N > S; Z < S ≤ O < G\nConclusions:\nO > R\nP > Z",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Only Il follows",
+      "Neither I or II follows",
+      "Either I or II follows",
+      "Both I and II follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 75,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nSix persons Meena, Ritu, Karan, Priya, Vivek, and Lalit visited different Label ATMs on two different dates either the 5th or 18th in three months viz. January, March, and April of the same year. Each of them uses different types of ATMs viz. Green, Brown, Yellow, Pink, Orange, and White. All the information given is not in the same order. Karan and Priya visited the ATM in the same month. Karan visited the ATM before Ritu. A person visited the white Label ATM on 5th January. Two persons visited in between the persons who visited White and Brown Label ATMs. Lalit and Vivek visited the ATM on the same date. The person visited Pink Label ATM in the month which has 30 days only. Two Persons visited in between Meena and the one who visited the\nPink Label ATM. Ritu does not visit Pink Label ATM. Priya and Vivek visited the ATM on different dates. The person visited the Green Label ATM just before the Yellow Label ATM. Meena does not visit Yellow Label ATM. Lalit does not visit Pink Label ATM.\nWhich of the following colors does ATM Karan like?",
+    "q_image": "",
+    "opts": [
+      "Orange",
+      "Pink",
+      "Brown",
+      "Yellow",
+      "White"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 76,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a certain way and hence they form a group. Which of the following does not belong to that group.",
+    "q_image": "",
+    "opts": [
+      "Lalit",
+      "Ritu",
+      "Priya",
+      "Meena",
+      "Karan"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 77,
+    "section": "Reasoning Ability",
+    "q": "How many persons went to ATM between Priya and Ritu?",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "Three",
+      "One",
+      "Five",
+      "Four"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 78,
+    "section": "Reasoning Ability",
+    "q": "Which of the following statements is/are false with respect to Vivek?\nVivek went to Pink Label ATM.\nVivek went to an ATM in April.\nVivek went to the ATM on the18th.",
+    "q_image": "",
+    "opts": [
+      "Only I",
+      "Only II",
+      "Only I and II",
+      "Only II and III",
+      "Only III"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 79,
+    "section": "Reasoning Ability",
+    "q": "Who among the following pairs are visiting ATM in month of April?",
+    "q_image": "",
+    "opts": [
+      "Meena, Ritu",
+      "Vivek, Ritu",
+      "Lalit, Priya",
+      "Karan, Meena",
+      "Vivek, Meena"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 80,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the given information and answer the questions that follow.\nPoint A is 12 meters to the West of B. B is to the North of C. H is the midpoint of B and C. F is 9 meters to the West of E. E is 13 meters to the North of D. Distance Between C and D is 6 meters. E is in the North East direction of C. Distance between A and H is 13 meters. G is 8 meters South of F. G is in the West direction of H.\nWhat is the distance between B and C?",
+    "q_image": "",
+    "opts": [
+      "8 meters",
+      "10 meters",
+      "12 meters",
+      "14 meters",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 81,
+    "section": "Reasoning Ability",
+    "q": "What Is the Distance between G and H?",
+    "q_image": "",
+    "opts": [
+      "7 meters",
+      "11 meters",
+      "3 meters",
+      "5 meters",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 82,
+    "section": "Reasoning Ability",
+    "q": "In which direction is C with respect to D?",
+    "q_image": "",
+    "opts": [
+      "South",
+      "East",
+      "West",
+      "South East",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 83,
+    "section": "Reasoning Ability",
+    "q": "How many such pairs of letters are there in the word \"MACAROONS\" which has as many letters between them as in the English alphabetical order (both forward and backward)?",
+    "q_image": "",
+    "opts": [
+      "Three",
+      "One",
+      "More than three",
+      "Two",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 84,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nFive friends Ajay, Rahul, Soni, Mayank, and Paras are living in a five-storey building. The lowermost floor is numbered 1 and the floor above it is 2 and so on till the topmost floor is numbered 5. Each of them has a different bike viz. Hero, Royal Enfield, Jawa, Ola, and Ampere. All the given information is not necessarily in the same order. The person sitting on the third floor has an Ampere bike. One floor is between Soni and the one who has an Ampere bike. Mayank is living either immediately above or below Soni. The one who has Ola lives immediately above the one who has a Royal Enfield bike. One person lives between Ajay and Paras. Rahul does not have a Jawa or Hero bike. Soni does not have a Hero bike. Ajay does not have Ola and Royal Enfield.\nParas does not live on the topmost floor.\nWhich of the following statements is true with respect to the final arrangement.",
+    "q_image": "",
+    "opts": [
+      "Rahul has Royal Enfield.",
+      "Mayank lives three floors above Soni.",
+      "Soni lives on the floor above Ajay.",
+      "Paras has a Hero bike.",
+      "Ajay lives on the second floor."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 85,
+    "section": "Reasoning Ability",
+    "q": "Who among the following person lives immediately above the one who have Ola?",
+    "q_image": "",
+    "opts": [
+      "The one who have Hero bike.",
+      "Soni",
+      "The one who lives immediately below Paras.",
+      "The one who has Ampere bike.",
+      "Mayank"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 86,
+    "section": "Reasoning Ability",
+    "q": "Who lives on the floor number three?",
+    "q_image": "",
+    "opts": [
+      "Ajay",
+      "Mayank",
+      "Paras",
+      "Soni",
+      "Rahul"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 87,
+    "section": "Reasoning Ability",
+    "q": "Who among the following has Hero bike?",
+    "q_image": "",
+    "opts": [
+      "Ajay",
+      "Paras",
+      "Rahul",
+      "Soni",
+      "Mayank"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 88,
+    "section": "Reasoning Ability",
+    "q": "How many people are living between the floor of Paras and Soni?",
+    "q_image": "",
+    "opts": [
+      "Either two or three",
+      "Three",
+      "Two",
+      "One",
+      "Either one or two"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 89,
+    "section": "Reasoning Ability",
+    "q": "In the following question below are given some statements followed by some conclusions based on those statements. Take the given statements to be true even if they seem to be at a variance from\ncommonly known facts. Read all the conclusions and then decide which of the given conclusions logically follow the given statements.\nStatements:\nAll dams are wood.\nSome wood are chairs.\nNo chairs are umbrellas.\nConclusions:\nSome umbrellas are wood.\nAll wood are dams.",
+    "q_image": "",
+    "opts": [
+      "Only conclusion I follows",
+      "Neither conclusion I nor II follow",
+      "Only conclusion II follows",
+      "Both conclusion I and II follow",
+      "Either conclusion I or II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 90,
+    "section": "Reasoning Ability",
+    "q": "Directions: In the question below are given statements followed by conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all\nthe conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.\nStatement:\nOnly a few Genes are DNA Some DNA is RNA\nNo RNA is Protein\nConclusion:\nAll DNA is Protein is a possibility\nAll Genes being Protein is a possibility\nAll Protein is DNA",
+    "q_image": "",
+    "opts": [
+      "Only I follow",
+      "Both I and III follows",
+      "Either I or III follows",
+      "Only II follows",
+      "None follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 91,
+    "section": "Reasoning Ability",
+    "q": "Directions: In the question below are given statement followed by three conclusions numbered I, II and III. You have to take the given statements to be true even if they seem to be at variance with\ncommonly known facts. Read all the conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.\nStatement:\nOnly a few Fan are bulb All Bulb are switch\nSome switch are tube light\nConclusion:\nI: All Fan is switch is a possibility II: Some switch is fan\nIII: Some bulb is tube light",
+    "q_image": "",
+    "opts": [
+      "Either I or II and III follows",
+      "Both I and II follows",
+      "Both II and III follows",
+      "None follows",
+      "Only II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 92,
+    "section": "Reasoning Ability",
+    "q": "If each vowel of the word 'VOLUME' is changed to the next letter in the English alphabetical series and each consonant is changed to the previous letter in the English alphabetical series and then the\nalphabets thus formed are arranged in alphabetical order from left to right, which of the following will be a fourth letter from the left end?",
+    "q_image": "",
+    "opts": [
+      "U",
+      "V",
+      "P",
+      "K",
+      "L"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 93,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nNine boxes A, B, C, D, E, F, G, H, and J are kept one above the other in a single stack. The bottommost position is numbered one and the topmost is numbered nine. But not necessarily in the same order. Three boxes are placed between C and E. Two boxes are placed between E and J. J and C are not immediate neighbors. E is kept in two boxes above G. E and G are kept in the even-numbered boxes. Box B is placed just above F. The Same number of boxes are between A and H as between E and G. A is placed above H. Box A is not placed adjacent to Box G. At least two boxes are between D and F.\nAs many boxes are kept above E as below \t.",
+    "q_image": "",
+    "opts": [
+      "A",
+      "J",
+      "D",
+      "B",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 94,
+    "section": "Reasoning Ability",
+    "q": "Which of the following box is kept exactly in the middle of J and A?",
+    "q_image": "",
+    "opts": [
+      "G",
+      "D",
+      "H",
+      "C",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 95,
+    "section": "Reasoning Ability",
+    "q": "How many boxes are kept between H and B?\nAs many boxes kept above F.",
+    "q_image": "",
+    "opts": [
+      "As many boxes kept below B.",
+      "Two",
+      "As many boxes kept between D and G.",
+      "One",
+      "Que. 96Que. 96If all the boxes are kept in the alphabetical order from bottom to top, then how many boxes remains unchanged in its position?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 96,
+    "section": "Reasoning Ability",
+    "q": "Que. 96",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "Four",
+      "Three",
+      "Five",
+      "One"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 97,
+    "section": "Reasoning Ability",
+    "q": "Which of the following box is kept second from the top of the stack?",
+    "q_image": "",
+    "opts": [
+      "The box which is kept two boxes above J.",
+      "The box which is kept immediately below D.",
+      "Box E",
+      "Box A",
+      "The box which is kept immediately above H."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 98,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nSix people Mehak, Renu, Atul, Parul, Kiku, and Lata are standing in the bank line one after the other to deposit cash in their respective accounts but not necessarily in the same order. The line is set so that the person standing first will deposit the maximum amount and the person in the last will deposit the least amount. At least two people are standing ahead of Renu. Renu is not the last person in the line. Mehak is standing just before Parul. As many persons are ahead of Kiku as after Renu. Mehak is not standing first in the line. Lata is standing ahead of Atul, who has Rs. 3000 to deposit in the bank. Parul wants to deposit Rs. 5000 in her bank account.\nWhich of the following statement is true with respect to the final arrangement?",
+    "q_image": "",
+    "opts": [
+      "Kiku is first in the line.",
+      "Three persons are standing between Mehak and Lata",
+      "Parul is the last one in the line.",
+      "Only two persons are standing before Renu.",
+      "Only one person is standing after Renu."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 99,
+    "section": "Reasoning Ability",
+    "q": "What is the position of Parul with respect to the first position?",
+    "q_image": "",
+    "opts": [
+      "Third",
+      "Fourth",
+      "Second",
+      "Fifth",
+      "Sixth"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 100,
+    "section": "Reasoning Ability",
+    "q": "What could be the amount Renu deposit in bank?",
+    "q_image": "",
+    "opts": [
+      "2000",
+      "4222",
+      "5500",
+      "2996",
+      "5100"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  }
+]

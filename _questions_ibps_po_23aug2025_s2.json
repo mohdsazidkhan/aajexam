@@ -1,0 +1,2202 @@
+[
+  {
+    "n": 1,
+    "section": "Reasoning Ability",
+    "q": "Which among the following statement(s) is/are true?\nA lives on the topmost floor\nG and C live on the same floor\nNo one lives to the west of E",
+    "q_image": "",
+    "opts": [
+      "Only I",
+      "Both I and II",
+      "Both II and III",
+      "Only III",
+      "All are true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Floor Flat P Flat Q 4 A D 3 F B 2 C G 1 E H"
+  },
+  {
+    "n": 2,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a certain way and thus form a group. Find the one who doesn’t belong to group?",
+    "q_image": "",
+    "opts": [
+      "F",
+      "D",
+      "B",
+      "C",
+      "G"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Floor Flat P Flat Q 4 A D 3 F B 2 C G 1 E H"
+  },
+  {
+    "n": 3,
+    "section": "Reasoning Ability",
+    "q": "Who among the following lives in flat Q of the 3rd floor?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "E",
+      "B",
+      "F",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Floor Flat P Flat Q 4 A D 3 F B 2 C G 1 E H"
+  },
+  {
+    "n": 4,
+    "section": "Reasoning Ability",
+    "q": "In which direction F lives with respect to G?",
+    "q_image": "",
+    "opts": [
+      "North-east",
+      "North-west",
+      "North",
+      "South- east",
+      "South-west"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Floor Flat P Flat Q 4 A D 3 F B 2 C G 1 E H"
+  },
+  {
+    "n": 5,
+    "section": "Reasoning Ability",
+    "q": "What will be the sum of the floor number of A and H?",
+    "q_image": "",
+    "opts": [
+      "3",
+      "4",
+      "6",
+      "5",
+      "7"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Floor Flat P Flat Q 4 A D 3 F B 2 C G 1 E H"
+  },
+  {
+    "n": 6,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "How many pairs of digits are in the number 6281837’, each of which have as many digits between them (both forward and backward direction) as they have between them in the number series?",
+      "Two",
+      "More than four",
+      "Four",
+      "One"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Sol. Three pairs found [[IMG:image12.png"
+  },
+  {
+    "n": 7,
+    "section": "Reasoning Ability",
+    "q": "Statements:\nOnly a few master is impressive Some impressive is crashed\nNo crashed is champion\nConclusions:\nNo master is crashed\nSome impressive are not champion",
+    "q_image": "",
+    "opts": [
+      "If only conclusion I follows",
+      "If only conclusion II follows",
+      "If either conclusion I or II follows",
+      "If neither conclusion I nor II follows",
+      "If both conclusions I and II follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 8,
+    "section": "Reasoning Ability",
+    "q": "Statements:\nOnly a few Trophy is good All good is down\nNo down is hunger\nConclusions:\nSome good is hunger\nSome trophy being hunger is a possibility",
+    "q_image": "",
+    "opts": [
+      "If only conclusion I follows",
+      "If only conclusion II follows",
+      "If either conclusion I or II follows",
+      "If neither conclusion I nor II follows",
+      "If both conclusions I and II follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "[[IMG:image13.jpeg"
+  },
+  {
+    "n": 9,
+    "section": "Reasoning Ability",
+    "q": "Statements:\nAll compare is cup. Some cup is play\nOnly a few play is waiting\nConclusions:\nSome compare being waiting is a possibility",
+    "q_image": "",
+    "opts": [
+      "All cup is waiting",
+      "If only conclusion I follows",
+      "If only conclusion II follows",
+      "If either conclusion I or II follows",
+      "If neither conclusion I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "[[IMG:image14.jpeg"
+  },
+  {
+    "n": 10,
+    "section": "Reasoning Ability",
+    "q": "Who among the following is the heaviest?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "C",
+      "E",
+      "B",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "[[IMG:image15.jpeg"
+  },
+  {
+    "n": 11,
+    "section": "Reasoning Ability",
+    "q": "How many persons are lighter to D?",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "More than four",
+      "Four",
+      "One",
+      "Three"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "[[IMG:image15.jpeg"
+  },
+  {
+    "n": 12,
+    "section": "Reasoning Ability",
+    "q": "Who is exactly between A and E?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "C",
+      "E",
+      "B",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "[[IMG:image15.jpeg"
+  },
+  {
+    "n": 13,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Find the odd one out?",
+      "CDF",
+      "NOQ",
+      "STW",
+      "KLN"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Except STW, logic is here: [[IMG:image16.jpeg"
+  },
+  {
+    "n": 14,
+    "section": "Reasoning Ability",
+    "q": "Which of the following color does Q like?",
+    "q_image": "",
+    "opts": [
+      "Green",
+      "White",
+      "Red",
+      "Yellow",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Months Persons - Colors January O - Yellow March S - black April N - Grey May P - Blue June R - Green July M - Red August Q - White"
+  },
+  {
+    "n": 15,
+    "section": "Reasoning Ability",
+    "q": "Who among the following goes on holiday trip in July?",
+    "q_image": "",
+    "opts": [
+      "M",
+      "P",
+      "R",
+      "O",
+      "Q"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Months Persons - Colors January O - Yellow March S - black April N - Grey May P - Blue June R - Green July M - Red August Q - White"
+  },
+  {
+    "n": 16,
+    "section": "Reasoning Ability",
+    "q": "How many persons go on trip between O and the one who likes Blue?",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "More than four",
+      "Four",
+      "One",
+      "Three"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Months Persons - Colors January O - Yellow March S - black April N - Grey May P - Blue June R - Green July M - Red August Q - White"
+  },
+  {
+    "n": 17,
+    "section": "Reasoning Ability",
+    "q": "If all the persons go according to alphabetical order starts from January, then the position of how many persons remains unchanged?",
+    "q_image": "",
+    "opts": [
+      "Two",
+      "More than four",
+      "Four",
+      "One",
+      "Three"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Months Persons - Colors January O - Yellow March S - black April N - Grey May P - Blue June R - Green July M - Red August Q - White"
+  },
+  {
+    "n": 18,
+    "section": "Reasoning Ability",
+    "q": "Who among the following goes just after P?",
+    "q_image": "",
+    "opts": [
+      "M",
+      "The one who likes green",
+      "S",
+      "N",
+      "O"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Months Persons - Colors January O - Yellow March S - black April N - Grey May P - Blue June R - Green July M - Red August Q - White"
+  },
+  {
+    "n": 19,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "If the third, sixth, seventh, eighth and eleventh letters (from left) of the word “CONSEQUENCES” are combined to form a meaningful word, then what will be the third letter from the right end of the meaningful word formed? If more than one such word can be formed, mark the answer as X and if no such word can be formed, mark the answer as Y.",
+      "N",
+      "Q",
+      "E",
+      "X"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "QUEEN"
+  },
+  {
+    "n": 20,
+    "section": "Reasoning Ability",
+    "q": "How is A related to C?",
+    "q_image": "",
+    "opts": [
+      "Father",
+      "Grandfather",
+      "Brother",
+      "Uncle",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "[[IMG:image17.jpeg"
+  },
+  {
+    "n": 21,
+    "section": "Reasoning Ability",
+    "q": "How is the sister-in-law of H related to E?",
+    "q_image": "",
+    "opts": [
+      "Aunt",
+      "Sister",
+      "Niece",
+      "Grandmother",
+      "Mother"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Sol."
+  },
+  {
+    "n": 22,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "How many female members are there in the family?",
+      "Five",
+      "Four",
+      "Three",
+      "Two"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "[[IMG:image20.png"
+  },
+  {
+    "n": 23,
+    "section": "Reasoning Ability",
+    "q": "Who among the following works in the HR department?",
+    "q_image": "",
+    "opts": [
+      "B",
+      "D",
+      "The one who likes red colour",
+      "The one who likes green colour",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 24,
+    "section": "Reasoning Ability",
+    "q": "Which among the following combination is correct?",
+    "q_image": "",
+    "opts": [
+      "B – Finance – Black",
+      "A – Marketing – Green",
+      "B – HR – Blue",
+      "G – Finance – White",
+      "D – HR – Black"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Sol."
+  },
+  {
+    "n": 25,
+    "section": "Reasoning Ability",
+    "q": "Which colour is liked by the person who works in the same department as E?",
+    "q_image": "",
+    "opts": [
+      "Black",
+      "Orange",
+      "Yellow",
+      "White",
+      "Green"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Sol."
+  },
+  {
+    "n": 26,
+    "section": "Reasoning Ability",
+    "q": "Which of the following statements is not true?",
+    "q_image": "",
+    "opts": [
+      "The one who likes blue works in HR",
+      "A works in Marketing department",
+      "B and D work in the same department",
+      "A likes Green",
+      "The one who likes orange works in Finance department"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "[[IMG:image20.png"
+  },
+  {
+    "n": 27,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Which of the following groups of persons definitely belong to the same department?",
+      "C, D and the one who likes Green",
+      "A, E and the one who likes white",
+      "D and A",
+      "F, B and the one who likes Black"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 28,
+    "section": "Reasoning Ability",
+    "q": "In which direction is point G with respect to point A?",
+    "q_image": "",
+    "opts": [
+      "North",
+      "East",
+      "North-east",
+      "West",
+      "North-west"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "[[IMG:image22.jpeg"
+  },
+  {
+    "n": 29,
+    "section": "Reasoning Ability",
+    "q": "What is the shortest distance between point L and point E?",
+    "q_image": "",
+    "opts": [
+      "13m",
+      "11m",
+      "√113m",
+      "113m",
+      "√117m"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "[[IMG:image23.jpeg"
+  },
+  {
+    "n": 30,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Four of the following five are similar in a certain way. Who among the following does not belong to the group?",
+      "Point A and Point B",
+      "Point B and Point D",
+      "Point C and Point E",
+      "Point K and Point D"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Except Point E and Point G, in other options first point is to the west of second point. Designations Persons Chairman E MD B GM G DGM A SM H Manager D AM C Clerk F"
+  },
+  {
+    "n": 31,
+    "section": "Reasoning Ability",
+    "q": "Who among the following is designated as Senior Manager (SM)?",
+    "q_image": "",
+    "opts": [
+      "The one who is designated immediately junior to D",
+      "A",
+      "The one who is designated three persons senior to F",
+      "G",
+      "B"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 32,
+    "section": "Reasoning Ability",
+    "q": "How many persons are designated between B and the one who is designated immediately senior to F?",
+    "q_image": "",
+    "opts": [
+      "Three",
+      "Five",
+      "Four",
+      "Six",
+      "Two"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Designations Persons Chairman E MD B GM G DGM A SM H Manager D AM C Clerk F"
+  },
+  {
+    "n": 33,
+    "section": "Reasoning Ability",
+    "q": "Which of the following is the designation of D?",
+    "q_image": "",
+    "opts": [
+      "Managing Director",
+      "Deputy General Manager",
+      "Senior Manager",
+      "Manager",
+      "Assistant Manager"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Designations Persons Chairman E MD B GM G DGM A SM H Manager D AM C Clerk F"
+  },
+  {
+    "n": 34,
+    "section": "Reasoning Ability",
+    "q": "The number of persons designated senior to A is same as the number of persons designated junior to\t_.",
+    "q_image": "",
+    "opts": [
+      "D",
+      "H",
+      "C",
+      "G",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Designations Persons Chairman E MD B GM G DGM A SM H Manager D AM C Clerk F Designations Persons Chairman E MD B GM G DGM A SM H Manager D AM C Clerk F E is related to General Manager. Logic here is - the first person is designated two persons senior to the designation given."
+  },
+  {
+    "n": 35,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "If B is related to Deputy General Manager and in the same way D is related to clerk then, E is related to who among the following?",
+      "Managing Director",
+      "Clerk",
+      "General Manager",
+      "Manager"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 36,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "B – A – D – C – A",
+      "B – D – C – E – A",
+      "B – D – C – A – E",
+      "D – C– B – E – A",
+      "No rearrangement required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Final Correct Sequence: B – D – C – E – A Step-by-step Analysis: (B) is the logical opening sentence. It introduces the structure of sleep: \"Human sleep is divided into REM and non-REM stages.\" (D) follows naturally by elaborating on REM sleep, which was introduced in (B): \"During REM sleep, dreams are most vivid and brain activity is high.\" (C) contrasts REM with non-REM sleep, using \"whereas comparatively\": \"Whereas comparatively non-REM sleep includes stages of deep, restorative rest.\" This must follow (D) to maintain the contrast. (E) generalizes the importance of both stages: \"Each stage plays a vital role in physical and mental recovery.\" (A) concludes by noting the repetition of the REM–non-REM cycle: \"In all, this cycle repeats several times during a typical night’s sleep.\" “This cycle” clearly refers to the REM and non-REM stages discussed."
+  },
+  {
+    "n": 37,
+    "section": "English Language",
+    "q": "(A) Many users share personal data without realizing the consequences.\nThis can lead to identity theft and targeted surveillance.\nInternet privacy is a growing concern in the digital age.\nCompanies often collect and store user information for various purposes.\nTherefore, users must take steps to protect their online identity.",
+    "q_image": "",
+    "opts": [
+      "C – D – A – B – E",
+      "A – D – B – C – E",
+      "B – D – A – C – E",
+      "D – A – C – B – E",
+      "No rearrangement required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Correct Sequence: C – D – A – B – E Step-by-step Analysis: Sentence (C) is the most general and introduces the main idea: \"Internet privacy is a growing concern in the digital age.\" This must be the opening sentence. After introducing the concern, the paragraph should describe who collects user data and how. So, (D) fits next: \"Companies often collect and store user information...\" Then, (A) highlights user behavior in this context: \"Many users share personal data without realizing the consequences.\" Logically follows (D), as both deal with how data gets exposed. Next, we explain the consequences of this data sharing — that’s (B): \"This can lead to identity theft and targeted surveillance.\" Finally, (E) concludes with a recommendation: \"Therefore, users must take steps to protect their online identity.\" The word \"Therefore\" shows it's a conclusion based on the previous problems."
+  },
+  {
+    "n": 38,
+    "section": "English Language",
+    "q": "(A) Oceans absorb a significant amount of the Earth's heat.\nThis heat absorption regulates global climate and weather patterns.\nThese changes highlight the link between oceans and climate change.\nWarmer oceans disrupt marine ecosystems and intensify storms.\nHowever, excess heat is causing ocean temperatures to rise.",
+    "q_image": "",
+    "opts": [
+      "B – D – A – C – E",
+      "A – C – B – D – E",
+      "B – A – D – C – E",
+      "A – B – E – D – C",
+      "No rearrangement required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Correct sequence: (d) A – B – E – D – C Step-by-step Analysis: Sentence (A) introduces the topic by stating that oceans absorb Earth's heat. This is the logical starting point. Sentence (B) follows, explaining the effect of that heat absorption—regulation of climate and weather. \"This heat absorption\" clearly refers to (A). Sentence (E) introduces a contrast with the word \"however,\" showing that too much heat is now being absorbed, leading to warming oceans. Sentence (D) continues the cause-effect sequence, showing the consequences of warmer oceans. Sentence (C) serves as the conclusion, summarizing that these changes connect oceans to climate change."
+  },
+  {
+    "n": 39,
+    "section": "English Language",
+    "q": "(A) On one hand, reading enhances vocabulary.\nIt improves concentration and strengthens language skills.\nDeveloping a regular reading habit has multiple cognitive benefits.\nOn the other hand, in a world of distractions, reading offers a focused mental exercise.",
+    "q_image": "",
+    "opts": [
+      "These advantages make reading an essential lifelong habit.",
+      "C – A – B – D – E",
+      "A – C – B – D – E",
+      "C – B – A – D – E",
+      "C – A – D – B – E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Correct sequence: (a) C – A – B – D – E Step-by-step Analysis: Sentence (C) is the most general and introductory in nature: \"Developing a regular reading habit has multiple cognitive benefits.\" This sets the topic and must come first. Sentence (A) begins the first point using the phrase \"On one hand,\" which requires a contrast later. So (A) should come right after the introduction (C). Sentence (B) supports and adds to (A) by listing additional benefits. \"It improves concentration...\" refers back to reading. Sentence (D) introduces a contrast with \"On the other hand,\" continuing the structured comparison started in (A). It presents another kind of benefit: focus in a distracted world. Sentence (E) concludes the paragraph: \"These advantages...\" refers back to all the benefits described, making it a natural closing line."
+  },
+  {
+    "n": 40,
+    "section": "English Language",
+    "q": "What is the central irony described in the passage regarding digital payment gateways in China?",
+    "q_image": "",
+    "opts": [
+      "Consumers believe digital platforms are free, though they are highly profitable.",
+      "Platforms intended to help small merchants are instead contributing to their collapse.",
+      "China developed digital payment systems for rural areas but they are only used in cities.",
+      "Regulatory authorities fail to notice the dominance of platforms like Alipay and WeChat Pay.",
+      "Consumers benefit more than merchants due to government subsidies on transactions."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The key irony is found in: \"Ironically, the very gateways that were expected to boost inclusivity are now becoming a source of financial strain.\" This points to the contradiction between the intended benefit and the actual outcome. Detailed Analysis of Options: (a) Consumers believe digital platforms are free, though they are highly profitable. This is not the central irony. The passage does not state that consumers believe the platforms are free; rather, it highlights that consumers are unaware of overcharging because costs are hidden in product prices. (b) Platforms intended to help small merchants are instead contributing to their collapse. This captures the irony well. Digital gateways were meant to provide convenience and support business growth, but the hidden charges and high fees have pushed many small firms into losses or closure. Hence, instead of being an enabler, they have become a burden. (c) China developed digital payment systems for rural areas but they are only used in cities. This is not mentioned in the passage. The text focuses on transaction fees and market dominance, not geographical distribution. (d) Regulatory authorities fail to notice the dominance of platforms like Alipay and WeChat Pay. While the passage suggests a need for oversight, it does not claim regulators are unaware; rather, it warns about unchecked dominance in the future. (e) Consumers benefit more than merchants due to government subsidies on transactions. The passage does not mention g"
+  },
+  {
+    "n": 41,
+    "section": "English Language",
+    "q": "How does the overall state of the economy affect the problems caused by digital payment platforms, according to the passage?",
+    "q_image": "",
+    "opts": [
+      "It helps small merchants adapt faster to digital systems.",
+      "It makes overcharging practices more acceptable to the public.",
+      "It increases the burden of overcharging due to financial pressures like inflation.",
+      "It incentivizes payment firms to reduce fees.",
+      "It drives consumers away from digital platforms."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "From: “the weather of the broader economy—rising inflation, slowing exports…—makes these charges even harder to digest.” Hence, the economic stress compounds the burden. Detailed Analysis of Options: (a) It helps small merchants adapt faster to digital systems. This is incorrect. The passage does not suggest that the economy helps merchants adapt. In fact, small merchants are struggling more because of financial pressures. (b) It makes overcharging practices more acceptable to the public. Incorrect. The public is largely unaware of overcharging, but there is no mention that it becomes more \"acceptable.\" The tone of the passage stresses the negative impact. (c) It increases the burden of overcharging due to financial pressures like inflation. Correct. The passage explicitly mentions that rising inflation, slowing exports, and unpredictable growth make these charges harder to digest. Thus, the already weak economic climate worsens the effects of hidden fees. (d) It incentivizes payment firms to reduce fees. Incorrect. The passage makes no mention of firms reducing fees; instead, it shows they continue exploiting merchants. (e) It drives consumers away from digital platforms. Incorrect. Consumers remain largely unaware of the issue because costs are hidden in final prices. There is no indication that they are abandoning digital payments."
+  },
+  {
+    "n": 42,
+    "section": "English Language",
+    "q": "Which of the following statements can be inferred to be TRUE based on the passage?\nDigital payment systems were initially perceived as tools to improve financial accessibility.\nDelays in settlement and penalties are part of the challenges faced by merchants using Chinese digital payment platforms.\nConsumers have protested en masse against overcharging practices by payment firms.",
+    "q_image": "",
+    "opts": [
+      "Only (I)",
+      "Both (I) and (II)",
+      "Only (III)",
+      "Both (I) and (III)",
+      "All (I), (II) and (III)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "(b) Both (I) and (II) Statement-wise Analysis: (I) Digital payment systems were initially perceived as tools to improve financial accessibility. True. The passage mentions that platforms like Alipay and WeChat Pay “revolutionized the financial landscape, providing convenience and speed.” This implies they were seen as a way to improve access and efficiency. (II) Delays in settlement and penalties are part of the challenges faced by merchants using Chinese digital payment platforms. True. The passage clearly states that merchants face “delays in settlement, mandatory promotional tie-ins, and penalties for using alternative platforms.” (III) Consumers have protested en masse against overcharging practices by payment firms. False. The passage highlights that “consumers remain largely unaware of the scale of overcharging.” Hence, there is no mention of widespread protests."
+  },
+  {
+    "n": 43,
+    "section": "English Language",
+    "q": "Which of the following statements is/are FALSE according to the passage?\nThe majority of consumers are well-informed about the extra transaction charges added by payment firms.\nThe convenience of digital payments has completely eliminated financial dependency on dominant platforms.\nAll Chinese digital gateways charge uniformly between 1% and 3% per transaction.",
+    "q_image": "",
+    "opts": [
+      "Only (I)",
+      "Only (II)",
+      "Both (I) and (II)",
+      "Both (I) and (III)",
+      "All (I), (II), and (III)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "(e) All (I), (II), and (III) Statement-wise Analysis: (I) The majority of consumers are well-informed about the extra transaction charges added by payment firms. False. The passage clearly states that “consumers remain largely unaware of the scale of overcharging.” (II) The convenience of digital payments has completely eliminated financial dependency on dominant platforms. False. The passage says the opposite — instead of encouraging financial freedom, these practices “contribute to a sense of dependency on a few dominant players.” (III) All Chinese digital gateways charge uniformly between 1% and 3% per transaction. False. The passage points out that international credit card companies charge between 1–3%, but Chinese gateways often impose hidden charges that push rates even higher. Thus, the statement is inaccurate."
+  },
+  {
+    "n": 44,
+    "section": "English Language",
+    "q": "Choose the most suitable word for the given blank.",
+    "q_image": "",
+    "opts": [
+      "informs",
+      "produces",
+      "change",
+      "highlights",
+      "payment"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Correct Answer: highlights Because the sentence needs a word that shows or emphasizes the point being made. The collapse of businesses highlights how dependency distorts competition. Word Meanings & Usage Informs English meaning: Gives information about something. Example: The teacher informs students about the exam schedule. Hindi meaning: सूचित करना / जानकारी देना Produces English meaning: To create, make, or bring forth. Example: The factory produces thousands of cars every year. Hindi meaning: उत्पादन करना / बनाना Change English meaning: To make or become different. Example: The weather can change suddenly in the mountains. Hindi meaning: बदलना / पररवततन Highlights English meaning: To emphasize or make something stand out. Example: This case highlights the need for stricter safety rules. Hindi meaning: उजागर करना / प्रमुखता देना Payment English meaning: The act of giving money for goods or services. Example: She made the payment through online banking. Hindi meaning: भुगतान"
+  },
+  {
+    "n": 45,
+    "section": "English Language",
+    "q": "Choose the word that can best replace the word “weather” in the passage.",
+    "q_image": "",
+    "opts": [
+      "Atmosphere",
+      "Condition",
+      "Climate",
+      "Situation",
+      "Storm"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The relevant line is: “In a way, the weather of the broader economy—rising inflation, slowing exports, and unpredictable growth—makes these charges even harder to digest.” Here, “weather” is not used in the literal sense of climate or atmosphere. Instead, it metaphorically refers to the overall condition/situation of the economy. Option Analysis: (a) Atmosphere Too literal. Refers to air or surroundings, not suitable in this economic context. (b) Condition Close, but still a bit too general. (c) Climate Again too literal, though sometimes used metaphorically for “business climate.” Still, not the best fit. (d) Situation Best fit. The passage describes the situation of the broader economy (inflation, slowing exports, growth issues). (e) Storm Implies chaos or trouble, but the passage is broader and neutral in tone — not about a literal storm."
+  },
+  {
+    "n": 46,
+    "section": "English Language",
+    "q": "Which of the following is the most appropriate synonym of “firms” in the context of the passage?",
+    "q_image": "",
+    "opts": [
+      "Companies",
+      "Holds",
+      "Contracts",
+      "Stubborn",
+      "Customers"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The passage uses “firms” in lines such as: “Merchants across sectors have complained… Small firms, in particular, feel the burden…” Here, “firms” clearly refers to business organizations/companies. Word meanings: Companies (Correct Synonym of “Firms”) Meaning (English): Business organizations that sell goods or services. Example (English): Several companies are competing in the digital payment industry. Meaning (Hindi): कंपचनयााँ / व्यवसाचयक संगठन Holds Meaning (English): To grasp, carry, or keep in possession. Example (English): She holds the keys to the office. Meaning (Hindi): पकड़ / थामना Contracts Meaning (English): A written or spoken agreement that is legally binding. Example (English): The company signed two new contracts with suppliers. Meaning (Hindi): अनुबंध / समझौता Stubborn Meaning (English): Unwilling to change one’s opinion or behavior despite reason. Example (English): He is too stubborn to admit his mistake. Meaning (Hindi): च़िद्दी / हठी Customers Meaning (English): People who buy goods or services from a business. Example (English): The shop has many loyal customers. Meaning (Hindi): ग्राहक"
+  },
+  {
+    "n": 47,
+    "section": "English Language",
+    "q": "In the sentence, what is the most suitable synonym for “folded”?",
+    "q_image": "",
+    "opts": [
+      "Expanded",
+      "Closed",
+      "Shrunk",
+      "Evolved",
+      "Joined"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "“Many local businesses, unable to bear the pressure of mounting costs, have folded within months of adopting these systems.” Here, “folded” means shut down or closed due to failure — not literally folding paper. Word meanings: Expanded Meaning (English): To increase in size, number, or importance. Example (English): The company expanded its operations to three more countries. Meaning (Hindi): चवस्तार करना Closed (Correct synonym for folded in passage) Meaning (English): To shut down, stop operations, or bring something to an end. Example (English): The shop closed last year due to high rents. Meaning (Hindi): बंद करना / समाप्त करना Shrunk Meaning (English): To become smaller in size, amount, or value. Example (English): The sweater shrunk after being washed in hot water. Meaning (Hindi): चसकुड़ना / छोटा होना Evolved Meaning (English): To gradually develop or change into a better or more advanced form. Example (English): Human beings have evolved over millions of years. Meaning (Hindi): चवकचसत होना / क्रचमक पररवततन होना Joined Meaning (English): To become a member of or connect with something. Example (English): She joined the new school last month. Meaning (Hindi): जुड़ना / शाचमल होना"
+  },
+  {
+    "n": 48,
+    "section": "English Language",
+    "q": "In the question below, four sentences have been given. Out of four sentences, one sentence is error-free. Find out which of the following sentences is error-free. If all the given sentences have errors, then choose option ‘All are incorrect’ as your answer choice.",
+    "q_image": "",
+    "opts": [
+      "The Indian Ocean is strategically important for global trade and shipping.",
+      "Front running involves illegal trading based on non-public information above transactions.",
+      "The Marrakech Agreement focuses on global climate action since sustainable development.",
+      "Blackbucks are graceful antelopes find primarily in the Indian subcontinent.",
+      "None are correct"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The Indian Ocean is strategically important for global trade and shipping. Analysis: Grammatically correct: subject (The Indian Ocean) + linking verb (is) + complement (strategically important for global trade and shipping). Contextually correct: The Indian Ocean is indeed crucial for trade and shipping routes. Error-free Front running involves illegal trading based on non-public information above transactions. Error: The preposition “above” is wrong. The correct phrase is “based on non-public information about transactions.” Incorrect: information above transactions Correct: information about transactions Incorrect The Marrakech Agreement focuses on global climate action since sustainable development. Error: Wrong connector. “since” indicates time or cause, which is incorrect here. It should be “and” or “for”. Correct: The Marrakech Agreement focuses on global climate action and sustainable development. Incorrect Blackbucks are graceful antelopes find primarily in the Indian subcontinent. Error: The verb form is wrong. Instead of “find”, it should be the past participle “found.” Correct: Blackbucks are graceful antelopes found primarily in the Indian subcontinent. Incorrect Correct Answer: (a) The Indian Ocean is strategically important for global trade and shipping. Final Answer: (a)"
+  },
+  {
+    "n": 49,
+    "section": "English Language",
+    "q": "In the question below, four sentences have been given. Out of four sentences, one sentence is error-free. Find out which of the following sentences is error-free. If all the given sentences have errors, then choose option ‘All are incorrect’ as your answer choice.",
+    "q_image": "",
+    "opts": [
+      "Patachitra painting is an ancient Indian art form known for storytelling.",
+      "Critical minerals is essential for technology, energy, and industrial applications worldwide.",
+      "Drip pricing adds extra charges to advertising prices, deceiving consumers.",
+      "Migration affects economies, creating opportunities and challenges to both regions.",
+      "None are correct"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Let’s carefully check each option step by step. Patachitra painting is an ancient Indian art form known for storytelling. Analysis: Grammatically correct: Subject (Patachitra painting) + verb (is) + complement (an ancient Indian art form known for storytelling). Contextually correct: Patachitra is indeed a traditional art form famous for narrative painting. Correct Critical minerals is essential for technology, energy, and industrial applications worldwide. Error: Subject–verb disagreement. “Critical minerals” is plural, so verb should be “are”, not “is.” Correct: Critical minerals are essential for technology, energy, and industrial applications worldwide. Incorrect Drip pricing adds extra charges to advertising prices, deceiving consumers. Error: Wrong preposition. It should be “on advertised prices” (or “to advertised prices”), not “to advertising prices.” Correct: Drip pricing adds extra charges to advertised prices, deceiving consumers. Incorrect Migration affects economies, creating opportunities and challenges to both regions. Error: Wrong preposition. It should be “challenges for both regions”, not “challenges to both regions.” Correct: Migration affects economies, creating opportunities and challenges for both regions. Incorrect Correct Answer: (a) Patachitra painting is an ancient Indian art form known for storytelling. Final Answer: (a)"
+  },
+  {
+    "n": 50,
+    "section": "English Language",
+    "q": "In the question below, four sentences have been given. Out of four sentences, one sentence is error-free. Find out which of the following sentences is error-free. If all the given sentences have errors, then choose option ‘All are incorrect’ as your answer choice.",
+    "q_image": "",
+    "opts": [
+      "Sailfin catfish is freshwater fish with distinctive fins and vibrant coloration.",
+      "Meitei Sagol is a traditional breeds of horse in Manipur.",
+      "Foot rot disease affects livestock, causing pain, lameness, and productive loss.",
+      "Areca nut is widely consumed across Asia for its stimulant properties.",
+      "None are correct"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Sailfin catfish is freshwater fish with distinctive fins and vibrant coloration. Error: Missing article. It should be “a freshwater fish” not “freshwater fish.” Correct: Sailfin catfish is a freshwater fish with distinctive fins and vibrant coloration. Incorrect Meitei Sagol is a traditional breeds of horse in Manipur. Error: Subject–noun mismatch. “a traditional breeds” is wrong because “a” (singular) cannot modify breeds (plural). Correct: Meitei Sagol is a traditional breed of horse in Manipur. Incorrect Foot rot disease affects livestock, causing pain, lameness, and productive loss. Error: Wrong word choice. It should be “loss of productivity” or “production loss”, not “productive loss.” Correct: Foot rot disease affects livestock, causing pain, lameness, and loss of productivity. Incorrect Areca nut is widely consumed across Asia for its stimulant properties. Analysis: Grammatically correct: subject (Areca nut) + verb (is) + complement (widely consumed across Asia for its stimulant properties). Contextually correct: Areca nut (betel nut) is indeed consumed widely in Asia. Correct Correct Answer: (d) Areca nut is widely consumed across Asia for its stimulant properties. Final Answer: (d)"
+  },
+  {
+    "n": 51,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "In the question below, four sentences have been given. Out of four sentences, one sentence is error-free. Find out which of the following sentences is error-free. If all the given sentences have errors, then choose option ‘All are incorrect’ as your answer choice.",
+      "Bhishm Cube is an intricate puzzle challenge logical thinking and strategy.",
+      "India VIX measured market volatility and investor sentiment in Indian markets.",
+      "The paradox of thrift suggests saving most would harm economic growth.",
+      "The Panama Canal connects the Atlantic and Pacific Oceans, enabling global trade."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Let’s carefully analyze step by step. Bhishm Cube is an intricate puzzle challenge logical thinking and strategy. Error: Missing participle. It should be “puzzle challenging logical thinking and strategy,” not “puzzle challenge.” Correct: Bhishm Cube is an intricate puzzle challenging logical thinking and strategy. Incorrect India VIX measured market volatility and investor sentiment in Indian markets. Error: Wrong tense. India VIX is an index that still measures volatility → should be “measures”, not “measured.” Correct: India VIX measures market volatility and investor sentiment in Indian markets. Incorrect The paradox of thrift suggests saving most would harm economic growth. Error: Wrong word choice. It should be “saving more” not “saving most.” Correct: The paradox of thrift suggests saving more would harm economic growth. Incorrect The Panama Canal connects the Atlantic and Pacific Oceans, enabling global trade. Analysis: Grammatically correct: subject (The Panama Canal) + verb (connects) + object (the Atlantic and Pacific Oceans). Contextually correct: The Panama Canal indeed connects both oceans and facilitates global trade. Correct Correct Answer: (d) The Panama Canal connects the Atlantic and Pacific Oceans, enabling global trade. Final Answer: (d)"
+  },
+  {
+    "n": 52,
+    "section": "English Language",
+    "q": "Which of the following word best fits in blank A?",
+    "q_image": "",
+    "opts": [
+      "demand",
+      "growth",
+      "offer",
+      "review",
+      "wait"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "The correct answer is: (c) offer Sentence with Blank A: In a healthy office environment, it is important that senior employees (A) guidance and support to their juniors. Seniors don’t demand or wait — they give/offer guidance. Option Analysis: demand English: to ask forcefully, require. Hindi: मांगना Example: He demanded an explanation. Incorrect – seniors don’t “demand guidance,” they provide it. growth English: development, increase. Hindi: वृचि, चवकास Example: The company saw rapid growth last year. Incorrect – grammatically doesn’t fit. offer English: to provide, give willingly. Hindi: प्रदान करना / पेश करना Example: Teachers offer guidance to their students. Correct – seniors offer guidance and support. review English: to examine, evaluate. Hindi: समीक्षा करना Example: The manager reviewed the project report. Incorrect – doesn’t fit the context of giving guidance. wait English: to stay in place until something happens. Hindi: प्रतीक्षा करना Example: We waited for the bus. Incorrect – meaningless here. Final Answer: (c) offer"
+  },
+  {
+    "n": 53,
+    "section": "English Language",
+    "q": "Which of the following word best fits in blank B?",
+    "q_image": "",
+    "opts": [
+      "nervous",
+      "lazy",
+      "empty",
+      "anxiety",
+      "complete"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The correct answer is: (a) nervous Sentence with Blank B: Newcomers often feel (B) when trying to understand their roles and responsibilities. Context: New employees → unsure, lacking confidence → they feel nervous. Option Analysis: nervous English: anxious, uneasy. Hindi: घबराया हुआ Example: She was nervous before her first interview. Correct – perfectly matches newcomers adjusting to a new role. lazy English: unwilling to work. Hindi: आलसी Example: He is too lazy to finish his homework. Incorrect – doesn’t fit; newcomers aren’t lazy, they’re adjusting. empty English: not filled. Hindi: खाली Example: The bottle is empty. Incorrect – irrelevant to emotions at work. anxiety English: feeling of worry (noun). Hindi: चिंता Example: He suffers from anxiety before presentations. Incorrect form – needs an adjective (anxious/nervous), not a noun. complete English: whole, finished. Hindi: पूरा Example: She completed her assignment on time. Incorrect – doesn’t fit. Final Answer: (a) nervous"
+  },
+  {
+    "n": 54,
+    "section": "English Language",
+    "q": "Which of the following word best fits in blank C?",
+    "q_image": "",
+    "opts": [
+      "delay",
+      "confuse",
+      "recruit",
+      "guess",
+      "speed"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "The correct answer is: (e) speed Sentence with Blank C: A helpful senior can ___________(C) the learning process by sharing experiences and providing useful tips. Context: Seniors help juniors → they make learning faster/easier → correct word = speed. Option Analysis: delay English: to make late, slow down. Hindi: चवलंब करना Example: Heavy traffic delayed the bus. Incorrect – opposite meaning. confuse English: to make unclear. Hindi: उलझाना Example: The instructions confused the students. Incorrect – seniors are supposed to help, not confuse. recruit English: to hire or enlist. Hindi: भती करना Example: The company recruited new employees. Incorrect – irrelevant here. guess English: to estimate without certainty. Hindi: अनुमान लगाना Example: She guessed the answer correctly. Incorrect – doesn’t fit with learning support. speed English: to make faster. (often used as speed up). Hindi: गचत देना Example: Technology can speed up the learning process. Correct – seniors speed the learning process. Final Answer: (e) speed"
+  },
+  {
+    "n": 55,
+    "section": "English Language",
+    "q": "Which of the following word best fits in blank D?",
+    "q_image": "",
+    "opts": [
+      "blocks",
+      "pursues",
+      "fulfilled",
+      "fosters",
+      "integrate"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "The correct answer is: (d) fosters Sentence with Blank D: This not only builds confidence but also (D) stronger team relationships. Context: Building confidence → positive effect → it encourages/nurtures team relationships. Option Analysis: blocks English: to stop, obstruct. Hindi: रोकना Example: A wall blocks the view. Incorrect – opposite of the positive meaning. pursues English: to follow, chase, try to achieve. Hindi: पीछा करना / प्रयास करना Example: She pursues a career in medicine. Incorrect – not about “relationships.” fulfilled English: satisfied, completed. Hindi: पूरा करना / संतुष्ट करना Example: She felt fulfilled after achieving her dream. Incorrect – wrong form; does not collocate with “team relationships.” fosters English: encourages, promotes, nurtures. Hindi: बढावा देना / पोषण करना Example: Teamwork fosters strong bonds among employees. Correct – fits perfectly: confidence fosters stronger relationships. integrate English: to combine, bring together. Hindi: एकीकृत करना Example: The new software integrates multiple functions. Incorrect – grammatically off here. Final Answer: (d) fosters"
+  },
+  {
+    "n": 56,
+    "section": "English Language",
+    "q": "Which of the following word best fits in blank E?",
+    "q_image": "",
+    "opts": [
+      "adhered",
+      "welcomed",
+      "tired",
+      "regulated",
+      "restricted"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "The correct answer is: (b) welcomed Sentence with Blank E: When juniors feel respected and (E), they are more likely to contribute effectively. Context: If juniors are respected → the parallel positive feeling is welcomed. Option Analysis: adhered English: stuck to, followed. Hindi: पालन करना / चिपकना Example: He adhered to the rules strictly. Incorrect – doesn’t fit with “respected.” welcomed English: received with friendliness, accepted warmly. Hindi: स्वागत ककया गया / अपनाया गया Example: New employees felt welcomed by their team. Correct – juniors who feel respected and welcomed contribute more. tired English: fatigued, exhausted. Hindi: थका हुआ Example: He was tired after a long day. Incorrect – negative, doesn’t fit the positive context. regulated English: controlled by rules. Hindi: चनयंचित Example: The government regulated online payments. Incorrect – irrelevant to emotions of juniors. restricted English: limited, confined. Hindi: सीचमत Example: Access to the area was restricted. Incorrect – opposite of welcomed. Final Answer: (b) welcomed"
+  },
+  {
+    "n": 57,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Which of the following word best fits in blank F?",
+      "critical",
+      "nominal",
+      "analytical",
+      "accrual"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "The correct answer is: (a) critical Sentence with Blank F: Hence, mutual cooperation and mentorship are ___________(F) for maintaining a productive workplace. Here the sentence emphasizes how essential cooperation and mentorship are → best word = critical. Option Analysis: critical English: extremely important, essential. Hindi: अत्यावश्यक / बेहद महत्वपूणत Example: Trust is critical for a successful relationship. Correct – fits perfectly with “maintaining a productive workplace.” nominal English: very small, in name only. Hindi: नाममाि / बहुत कम Example: The students paid a nominal fee. Incorrect – opposite meaning, not about importance. analytical English: relating to analysis or logical thinking. Hindi: चवश्लेषणात्मक Example: He has an analytical approach to problems. Incorrect – irrelevant in this context. accrual English: gradual accumulation, growth. Hindi: संिय / वृचि Example: The accrual of interest was noted in the account. Incorrect – unrelated to mentorship. minimal English: the least possible, very small. Hindi: न्यूनतम / बहुत कम Example: The risks were minimal. Incorrect – opposite meaning, doesn’t suit “essential.” Final Answer: (a) critical"
+  },
+  {
+    "n": 58,
+    "section": "English Language",
+    "q": "Recent space relentless (A) highlight humanity's breakthroughs (B) pursuit of cosmic knowledge, propelling (C) us toward a future of exploration (D) and discovery.\"",
+    "q_image": "",
+    "opts": [
+      "B-C & A-D",
+      "A-B",
+      "C-D",
+      "A-C & B-D",
+      "No interchange required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Original Sentence: Recent space relentless (A) highlight humanity's breakthroughs (B) pursuit of cosmic knowledge, propelling (C) us toward a future of exploration (D) and discovery. Problem: space relentless does not make sense. The intended phrase is space breakthroughs. Similarly, humanity’s breakthroughs pursuit is awkward; it should be humanity’s relentless pursuit. So, swap (A) relentless ↔ (B) breakthroughs. Corrected Sentence: Recent space breakthroughs (B) highlight humanity's relentless (A) pursuit of cosmic knowledge, propelling (C) us toward a future of exploration (D) and discovery. Word-by-word Meanings & Explanation relentless English: continuing without stopping, determined. Hindi: चनरंतर / अटल Example: She showed relentless effort in preparing for the exam. Incorrect in original place → “space relentless” is meaningless. Correct after swap: relentless pursuit. breakthroughs English: major discoveries or advancements. Hindi: बड़ी खोजें / प्रगचत Example: Medical breakthroughs saved thousands of lives. Incorrect in original place → “humanity’s breakthroughs pursuit” is wrong. Correct after swap: space breakthroughs. propelling English: driving forward, pushing ahead. Hindi: आगे बढाना / प्रेररत करना Example: Innovation is propelling the industry to new heights. Correct – fits perfectly: knowledge propelling us toward a future. exploration English: the act of traveling to discover or learn. Hindi: खोज / अन्वेषण Example: Space exploration inspires new generations. "
+  },
+  {
+    "n": 59,
+    "section": "English Language",
+    "q": "Global including (A) for sustainability, initiatives (B) reforestation, signal a safeguard (C) commitment to collective (D) our planet's future.",
+    "q_image": "",
+    "opts": [
+      "A-D",
+      "B-C",
+      "A-B & C-D",
+      "D-B & C-A",
+      "No interchange required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Original Sentence: Global including (A) for sustainability, initiatives (B) reforestation, signal a safeguard (C) commitment to collective (D) our planet's future. Problem: Global including doesn’t fit. Correct should be Global initiatives. safeguard commitment to collective our planet’s future is awkward. Correct should be collective commitment to safeguard our planet’s future. So we must swap A–B and C–D. Corrected Sentence: Global initiatives (B) for sustainability, including (A) reforestation, signal a collective (D) commitment to safeguard (C) our planet's future. Word-by-word Meanings & Explanation (A) including English: containing as part of the whole. Hindi: सचममचलत करना Example: The package includes books, pens, and pencils. Incorrect in original place – “Global including” is wrong. Correct after swap → including reforestation. (B) initiatives English: plans, programs, actions started for a purpose. Hindi: पहल / योजनाएाँ Example: The government launched initiatives for clean energy. Incorrect in original place – “initiatives reforestation” doesn’t work. Correct after swap → Global initiatives. (C) safeguard English: to protect. Hindi: सुरक्षा करना / बिाना Example: Laws safeguard the rights of citizens. Incorrect in original place – “signal a safeguard commitment” is odd. Correct after swap → commitment to safeguard. (D) collective English: done by people acting as a group. Hindi: सामूचहक Example: We need collective action to fight climate change. Incorrect in origina"
+  },
+  {
+    "n": 60,
+    "section": "English Language",
+    "q": "Innovative (A) educational tech, from (B) virtual classrooms to interactive apps, is reshaping\n(C) learning, offering dynamic and personalized (D) experiences.",
+    "q_image": "",
+    "opts": [
+      "D-B & C-A",
+      "A-D",
+      "B-C",
+      "A-B & C-D",
+      "No interchange required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Original Sentence: Innovative (A) educational tech, from (B) virtual classrooms to interactive apps, is reshaping (C) learning, offering dynamic and personalized (D) experiences. This sentence already makes complete grammatical and contextual sense: Innovative educational tech → correct collocation. from virtual classrooms to interactive apps → correct prepositional phrase. is reshaping learning → correct verb form and logical meaning. offering dynamic and personalized experiences → correct parallel phrase. Thus, no swaps are needed. Word-by-word Meanings & Explanation (A) Innovative English: creative, introducing something new. Hindi: नवािारी / नवीन Example: The company launched innovative solutions for energy saving. Correct here – “Innovative educational tech” fits perfectly. (B) From English: indicating a starting point or source. Hindi: से / द्वारा Example: She traveled from Mumbai to Delhi. Correct here – “from virtual classrooms to interactive apps” is the right range expression. (C) Reshaping English: changing the form, reforming. Hindi: नया रूप देना / पुनगतठन करना Example: AI is reshaping the future of work. Correct here – “is reshaping learning” is logical. (D) Personalized English: tailored, customized for an individual. Hindi: व्यचिगत / अनुकूचलत Example: The app provides personalized recommendations. Correct here – “personalized experiences” is an accurate phrase. Why Other Options Are Incorrect in Short (a) D-B → “personalized educational tech” changes intended m"
+  },
+  {
+    "n": 61,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Artificial Intelligence transforms (A) healthcare with precise diagnostics (B) and personalized treatments, era (C) in a new ushering (D) of medical advancements.",
+      "A-B & C-D",
+      "A-C & B-D",
+      "C-D",
+      "A-D"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Original Sentence: Artificial Intelligence transforms (A) healthcare with precise diagnostics (B) and personalized treatments, era (C) in a new ushering (D) of medical advancements. Problem: era in a new ushering → grammatically wrong. Correct phrase should be ushering in a new era. So, swap (C) era ↔ (D) ushering. Corrected Sentence: Artificial Intelligence transforms healthcare with precise diagnostics and personalized treatments, ushering (D) in a new era (C) of medical advancements. Word-by-word Meanings & Explanation (A) transforms English: changes completely, revolutionizes. Hindi: बदलना / रूपांतररत करना Example: Technology transforms the way we live. Correct – “AI transforms healthcare” makes sense. (B) diagnostics English: identification of a disease or problem. Hindi: चनदान / रोग-पहिान Example: Early diagnostics save lives. Correct – “precise diagnostics” is a standard collocation. (C) era English: a long distinct period of history. Hindi: युग / काल Example: We live in the digital era. Incorrect in original place – “era in a new ushering” is ungrammatical. Correct after swap → “new era.” (D) ushering English: beginning or introducing something new. Hindi: शुरुआत करना / प्रवेश कराना Example: The invention ushered in a new age of technology. Incorrect in original place – wrong order. Correct after swap → “ushering in.” Final Corrected Sentence: Artificial Intelligence transforms healthcare with precise diagnostics and personalized treatments, ushering in a new era of m"
+  },
+  {
+    "n": 62,
+    "section": "English Language",
+    "q": "COLUMN I\nAs the orchestra played, the harmonious\nSetting off on an impromptu journey, they unearthed\nThe classroom buzzed with intellectual curiosity COLUMN II\nthat a well-prepared meal brings to the table\nat home can open up the magical world\nhidden treasures, crafting indelible memories",
+    "q_image": "",
+    "opts": [
+      "C-E & A-D",
+      "B-F",
+      "B-D & C-F",
+      "A-E",
+      "None of the above"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "COLUMN I – COLUMN II Matching (A) As the orchestra played, the harmonious … Best fit: (D) that a well-prepared meal brings to the table illogical (orchestra ≠ meal). (E) doesn’t match. (F) orchestra ≠ hidden treasures. No proper match for A. (B) Setting off on an impromptu journey, they unearthed … Best fit: (F) hidden treasures, crafting indelible memories (makes perfect sense). (C) The classroom buzzed with intellectual curiosity … Best fit: (E) at home can open up the magical world mismatch (classroom ≠ at home). (D) irrelevant. (F) illogical. No proper match for C. Check Options C-E & A-D – both mismatched. B-F – correct and meaningful. B-D & C-F – nonsense. A-E – nonsense. None of the above – because B-F works well. Correct Sentence: (B–F) Setting off on an impromptu journey, they unearthed hidden treasures, crafting indelible memories. Final Answer: (b) B-F"
+  },
+  {
+    "n": 63,
+    "section": "English Language",
+    "q": "COLUMN I\nAmidst challenges, a glimmer of hope emerged,\nBeneath the starlit sky, the rhythmic sounds of\nBefore sleep, dreams painted vibrant landscapes COLUMN II\nechoing the timeless beauty of nature's embrace.\nof unexplored possibilities and aspirations",
+    "q_image": "",
+    "opts": [
+      "while mysteries that once seemed vulnerable",
+      "C-E",
+      "B-D & A-E",
+      "C-D & B-F",
+      "A-F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "(a) C–E Why: C–E forms a smooth, grammatical sentence: “Before sleep, dreams painted vibrant landscapes of unexplored possibilities and aspirations.” — natural and coherent. B–D (option b) is awkward: “the rhythmic sounds of echoing …” needs a noun after “of”. C–D & B–F (option c): C–D is fine, but B–F is nonsensical. A–F (option d) is incomplete/ill-formed. Hence, the best valid pairing is C–E only."
+  },
+  {
+    "n": 64,
+    "section": "English Language",
+    "q": "Bring up\nShe decided to bring up the issue of salary during the meeting.\nThey had to bring up the old furniture from the basement.\nHer grandparents brought her up after her parents passed away.",
+    "q_image": "",
+    "opts": [
+      "Only (I)",
+      "Only (II)",
+      "Both (I) and (II)",
+      "Both (I) and (III)",
+      "All (I), (II), and (III)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Analysis: Correct. “Bring up an issue” means to mention it. Example: He brought up politics at the dinner table. Hindi: बात छेड़ना Incorrect. “Bring up” is not used for moving objects from one place to another. The correct usage would be “bring out” or “carry up.” Example: They brought out the boxes from storage. Hindi: बाहर लाना Correct. “Bring up a child” means to raise or nurture a child. Example: She was brought up by her aunt. Hindi: पालन-पोषण करना Answer: Both (I) and (III) → option (d)"
+  },
+  {
+    "n": 65,
+    "section": "English Language",
+    "q": "Look after\nShe stayed home to look after her younger brother.\nThe manager promised to look after the complaints personally.",
+    "q_image": "",
+    "opts": [
+      "He wanted to look after the documents before signing the contract.",
+      "Only (I)",
+      "Only (II)",
+      "Both (I) and (II)",
+      "Both (I) and (III)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Analysis: Correct. “Look after” means to care for someone. Example: Parents look after their children. Hindi: देखभाल करना Correct. Here “look after the complaints” means to handle or manage them. Example: The teacher looks after discipline in the school. Hindi: ध्यान रखना या संभालना Incorrect. “Look after” does not mean to examine carefully. The correct phrasal verb is “look over.” Example: He looked over the report before submitting it. Hindi: जांिना या परखना Answer: Both (I) and (II) → option (c)"
+  },
+  {
+    "n": 66,
+    "section": "Quantitative Aptitude",
+    "q": "Find the ratio of cost of total mechanical pencil in A and B together to cost of total wooden pencil in D.",
+    "q_image": "",
+    "opts": [
+      "16:5",
+      "5:1",
+      "1:6",
+      "1:5",
+      "1:2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Let the wooden and mechanical pencil be x and y. x + y = 38 (i) x×5+y×20=490 5x + 20y = 490 x + 4y = 98 (ii) solving (i) and (ii) 20 = y and 18 = x Similarly for others Shops Total wooden pencils Total cost of wooden pencil Total mechanical pencils Total cost of mechanical pencil A 18 90 20 400 B 35 175 12 240 C 62 310 50 1000 D 40 200 35 700 E 25 125 15 300 Required ratio = 400 + 240 : 200 = 16:5"
+  },
+  {
+    "n": 67,
+    "section": "Quantitative Aptitude",
+    "q": "Find the total mechanical pencil in C is what percentage of total wooden pencil in E.",
+    "q_image": "",
+    "opts": [
+      "100",
+      "200",
+      "160",
+      "150",
+      "102"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Let the wooden and mechanical pencil be x and y. x + y = 38 (i) x×5+y×20=490 5x + 20y = 490 x + 4y = 98 (ii) solving (i) and (ii) 20 = y and 18 = x Similarly for others Shops Total wooden pencils Total cost of wooden pencil Total mechanical pencils Total cost of mechanical pencil A 18 90 20 400 B 35 175 12 240 C 62 310 50 1000 D 40 200 35 700 E 25 125 15 300 [[IMG:image25.png"
+  },
+  {
+    "n": 68,
+    "section": "Quantitative Aptitude",
+    "q": "Find the average number of wooden pencil in A, mechanical pencil in B and E.",
+    "q_image": "",
+    "opts": [
+      "10",
+      "5",
+      "16",
+      "15",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Let the wooden and mechanical pencil be x and y. x + y = 38 (i) x×5+y×20=490 5x + 20y = 490 x + 4y = 98 (ii) solving (i) and (ii) 20 = y and 18 = x Similarly for others Shops Total wooden pencils Total cost of wooden pencil Total mechanical pencils Total cost of mechanical pencil A 18 90 20 400 B 35 175 12 240 C 62 310 50 1000 D 40 200 35 700 E 25 125 15 300 [[IMG:image26.png"
+  },
+  {
+    "n": 69,
+    "section": "Quantitative Aptitude",
+    "q": "Shop B sold 20% of wooden pencil at the profit of 20% and rest at the profit of 50%. Find the total selling price of wooden pencil.",
+    "q_image": "",
+    "opts": [
+      "292",
+      "215",
+      "246",
+      "232",
+      "252"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Let the wooden and mechanical pencil be x and y. x + y = 38 (i) x×5+y×20=490 5x + 20y = 490 x + 4y = 98 (ii) solving (i) and (ii) 20 = y and 18 = x Similarly for others Shops Total wooden pencils Total cost of wooden pencil Total mechanical pencils Total cost of mechanical pencil A 18 90 20 400 B 35 175 12 240 C 62 310 50 1000 D 40 200 35 700 E 25 125 15 300 Profit on 20% of the wooden pencil = 20% of 35 ×5×120%=42 Profit on 80% of wooden pencil = 80% of 35×5×150%= 210 Total = 42 + 210 = Rs 252"
+  },
+  {
+    "n": 70,
+    "section": "Quantitative Aptitude",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "The ratio of total pencil in F to total pencil in C is 5: 7 and shop F has 30% more than wooden pencil than D. Find the mechanical pencils in F is what percentage more/less than wooden pencil sold by E.",
+      "102%",
+      "105%",
+      "106%",
+      "112%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Let the wooden and mechanical pencil be x and y. x + y = 38 (i) x×5+y×20=490 5x + 20y = 490 x + 4y = 98 (ii) solving (i) and (ii) 20 = y and 18 = x Similarly for others Shops Total wooden pencils Total cost of wooden pencil Total mechanical pencils Total cost of mechanical pencil A 18 90 20 400 B 35 175 12 240 C 62 310 50 1000 D 40 200 35 700 E 25 125 15 300 [[IMG:image27.png"
+  },
+  {
+    "n": 71,
+    "section": "Quantitative Aptitude",
+    "q": "Find the ratio of items sold by A and B together to unsold items of C and D together.",
+    "q_image": "",
+    "opts": [
+      "39:10",
+      "20:19",
+      "40:41",
+      "32:39",
+      "22:21"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Manufactured items Items sold items Unsold items A 120 80 40 B 96 76 20 C 140 120 20 D 80 60 20 Required answer = 80 + 76 : 20 + 20 = 156 : 40 = 39:10"
+  },
+  {
+    "n": 72,
+    "section": "Quantitative Aptitude",
+    "q": "Unsold items of A, B and C is what percentage of total items sold by C.",
+    "q_image": "",
+    "opts": [
+      "42%",
+      "66.66%",
+      "40%",
+      "32%",
+      "33.33%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Manufactured items Items sold items Unsold items A 120 80 40 B 96 76 20 C 140 120 20 D 80 60 20 [[IMG:image28.png"
+  },
+  {
+    "n": 73,
+    "section": "Quantitative Aptitude",
+    "q": "If the cost price of Article A and D is 100 and 60 respectively. Find the difference between total selling price of all the sold items in A and D.",
+    "q_image": "",
+    "opts": [
+      "14800",
+      "18000",
+      "14000",
+      "31200",
+      "18600"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Manufactured items Items sold items Unsold items A 120 80 40 B 96 76 20 C 140 120 20 D 80 60 20 Selling price of article A = 100 + 20 = 120 Selling price of article D = 60 + 90 = 150 selling price of all the sold items in A and D= 80×120+60×150=18600"
+  },
+  {
+    "n": 74,
+    "section": "Quantitative Aptitude",
+    "q": "If the total selling price of all the sold items of B is Rs.15200, then find the cost price of 10% of items manufactured by B.",
+    "q_image": "",
+    "opts": [
+      "4200",
+      "2000",
+      "4000",
+      "3200",
+      "2200"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Sol. Manufactured items Items sold items Unsold items A 120 80 40 B 96 76 20 C 140 120 20 D 80 60 20 Sol. Manufactured items Items sold items Unsold items A 120 80 40 B 96 76 20 C 140 120 20 D 80 60 20 Let the cost price be 100x Marked price = 120% of 100x = 120x Selling price = 90% of 120x = 108x Given in the note = 108x – 100x = 85 8x = 85 10.625 = x Required answer = 120x = 1275"
+  },
+  {
+    "n": 75,
+    "section": "Quantitative Aptitude",
+    "q": "If the item C is marked up by 20% of cost price and give a discount of 10%. Find the marked price of the each item of C.",
+    "q_image": "",
+    "opts": [
+      "1292",
+      "1275",
+      "1245",
+      "1235",
+      "1220"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 76,
+    "section": "Quantitative Aptitude",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "A shopkeeper marked up an article 2R% above cost price and allow a discount of 25% and sold it loss of 19% at Rs. 648. Find the value of ‘R’?",
+      "8",
+      "6",
+      "5",
+      "4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Sol."
+  },
+  {
+    "n": 77,
+    "section": "Quantitative Aptitude",
+    "q": "8, 129, 298, 587, 950,\t1477,\t2318",
+    "q_image": "",
+    "opts": [
+      "8",
+      "129",
+      "1477",
+      "950",
+      "2318"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Pattern of series – Square of consecutive price number start from 11 8 + 112 = 129 129 + 133 = 298 298 + 172 = 587 587 + 192 = 948 948 + 232 = 1477 1477 + 292 = 2318"
+  },
+  {
+    "n": 78,
+    "section": "Quantitative Aptitude",
+    "q": "7, 8,  16,  39,\t55,\t180,\t216",
+    "q_image": "",
+    "opts": [
+      "8",
+      "216",
+      "180",
+      "55",
+      "16"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Pattern of series – 7 + 13 = 8 8 + 22 = 12 12 + 33 = 39 39 + 42 = 55 55 + 53 = 180 180 + 62 = 216 Sol. Pattern of series – 110 + 5 = 115 115 – 10 = 105 105 + 15 = 120 120 – 20 = 100 100 + 25 = 125 125 – 30 = 95"
+  },
+  {
+    "n": 79,
+    "section": "Quantitative Aptitude",
+    "q": "110, 115, 120,\t120,\t100,\t125, 95",
+    "q_image": "",
+    "opts": [
+      "110",
+      "120",
+      "95",
+      "100",
+      "125"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 80,
+    "section": "Quantitative Aptitude",
+    "q": "3, 6,\t27,\t100,\t505,\t3036,\t21259",
+    "q_image": "",
+    "opts": [
+      "21259",
+      "505",
+      "6",
+      "27",
+      "100"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": "Pattern of series – 3 ×2+2 = 8 8 ×3+3 = 27 27 ×4+4 = 100 100 ×5+5 = 505 505 ×6+6 = 3036 3036 ×7+7 = 21259"
+  },
+  {
+    "n": 81,
+    "section": "Quantitative Aptitude",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "213,\t221,\t331,\t345,\t365,\t395,\t431",
+      "213",
+      "221",
+      "345",
+      "395"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Sol. Pattern of series –"
+  },
+  {
+    "n": 82,
+    "section": "Quantitative Aptitude",
+    "q": "1620.03 ÷ 44.93+ 8836÷ (46.98)² = ?",
+    "q_image": "",
+    "opts": [
+      "50",
+      "42",
+      "48",
+      "40",
+      "45"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "Sol."
+  },
+  {
+    "n": 83,
+    "section": "Quantitative Aptitude",
+    "q": "(11.99)² + (28.86)² - {(425+ 655) ÷ (6)3} = ?",
+    "q_image": "",
+    "opts": [
+      "1030",
+      "980",
+      "1065",
+      "1090",
+      "1025"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Sol."
+  },
+  {
+    "n": 84,
+    "section": "Quantitative Aptitude",
+    "q": "3875 ÷(4.99)3 = ? -{(24)2÷47.98}",
+    "q_image": "",
+    "opts": [
+      "45",
+      "49",
+      "41",
+      "47",
+      "43"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Sol. [[IMG:image35.png"
+  },
+  {
+    "n": 85,
+    "section": "Quantitative Aptitude",
+    "q": "",
+    "q_image": "image6.png",
+    "opts": [
+      "662",
+      "735",
+      "679",
+      "701",
+      "726"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 86,
+    "section": "Quantitative Aptitude",
+    "q": "(? ÷17.99)×5.99=319.87% of 60",
+    "q_image": "image6.png",
+    "opts": [
+      "560",
+      "568",
+      "554",
+      "576",
+      "578"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": "[[IMG:image36.png"
+  },
+  {
+    "n": 87,
+    "section": "Quantitative Aptitude",
+    "q": "A spend 25% of his monthly income on rent and 20% of remaining in food, 40% remaining in traveling and rest he saved. If total monthly saving of A is Rs.10800, then find the monthly income of A. (in Rs.)?",
+    "q_image": "image6.png",
+    "opts": [
+      "25000",
+      "30000",
+      "21000",
+      "40000",
+      "48000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "[[IMG:image37.png"
+  },
+  {
+    "n": 88,
+    "section": "Quantitative Aptitude",
+    "q": "Two trains, A and B, are moving at speeds of 60 km/h and 80 km/h respectively. Train A crosses a platform that is 150 meters long in 15 seconds, while Train B crosses a pole in 18 seconds. What the sum of length of both trains A and B (in meters)?",
+    "q_image": "image6.png",
+    "opts": [
+      "320",
+      "160",
+      "420",
+      "400",
+      "500"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Sol. Let the length of train A and train B be x and y respectively. Required answer = 100+400= 500 meters S89. Ans.(a) Sol. Let the quantity of of milk and water be 5x and x respectively. Quantity of milk = 5x = 25 liters [[IMG:image40.png"
+  },
+  {
+    "n": 89,
+    "section": "Quantitative Aptitude",
+    "q": "In a mixture, the ratio of milk to water is 5:1. When 20 liters of water is added into the mixture, then the ratio of milk to water becomes equal. Find the quantity of milk in the final mixture (in liter).",
+    "q_image": "image6.png",
+    "opts": [
+      "25",
+      "24",
+      "5",
+      "20",
+      "15"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 90,
+    "section": "Quantitative Aptitude",
+    "q": "A can complete 40% of a work in 8 days, while B takes four more days than that of A to complete the same work. Find the time taken by A and B together to complete the same work (in days)?",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      "10",
+      ""
+    ],
+    "opt_images": [
+      "image7.png",
+      "image8.png",
+      "image9.png",
+      "",
+      "image10.png"
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 91,
+    "section": "Quantitative Aptitude",
+    "q": "The length of the rectangle is 20% more than its breadth. If the side of a square is equal to the breadth of rectangle, then find the respective ratio of area of square to that of rectangle?",
+    "q_image": "",
+    "opts": [
+      "5 : 6",
+      "1 : 6",
+      "6 : 5",
+      "6 :7",
+      "5 :1"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "[[IMG:image41.png"
+  },
+  {
+    "n": 92,
+    "section": "Quantitative Aptitude",
+    "q": "A boat covers 120 km in six hours in downstream. The respective ratio of speed of boat in still water and speed of stream is 3: 1. If speed of stream is increased by 80%, then find in how much time the boat will cover 84 km in upstream?",
+    "q_image": "",
+    "opts": [
+      "12 hours",
+      "14 hours",
+      "10 hours",
+      "15 hours",
+      "16 hours"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Let speed of boat in still water and speed of stream be 3a kmph and a kmph respectively. ATQ, So, speed of boat in still water and speed of stream is 15 kmph and 5 kmph respectively."
+  },
+  {
+    "n": 93,
+    "section": "Quantitative Aptitude",
+    "q": "A invests Rs.5600 on simple interest at R% for four years and he invested Rs.4800 on compound interest at 10% p.a. for two years. If the simple interest is Rs.672 more than that of compound interest, then find the value of R.",
+    "q_image": "",
+    "opts": [
+      "7.5",
+      "8",
+      "5",
+      "10",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Sol."
+  },
+  {
+    "n": 94,
+    "section": "Quantitative Aptitude",
+    "q": "A and B started a business with an investment of Rs X and Rs X+800, respectively. After eight months A left, C joined with Rs 2400. If, at the end of the year, the profit share of B is Rs 5400 out of the total profit of Rs 9300, then find X.",
+    "q_image": "",
+    "opts": [
+      "2500",
+      "4000",
+      "1600",
+      "5000",
+      "6500"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Profit sharing ratio of A, B and C = X×8 :(X+800)×12 :2400×4 [[IMG:image46.png"
+  },
+  {
+    "n": 95,
+    "section": "Quantitative Aptitude",
+    "q": "The average weight of 75 students in a class is 20 kg. The average weight of boys and girls is 22 kg and X kg, respectively. If the ratio of boys and girls in the class is 2:1, respectively, then find X?",
+    "q_image": "",
+    "opts": [
+      "16",
+      "24",
+      "48",
+      "8",
+      "32"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 96,
+    "section": "Quantitative Aptitude",
+    "q": "The ratio of present age of A to B’s is 3 : 2. Five years ago, A age was twice than that of B age at that time. Five years hence, sum of ages of A and B is equal to C age at that time. Find present age of C (in years)?",
+    "q_image": "",
+    "opts": [
+      "35",
+      "40",
+      "20",
+      "25",
+      "30"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": "Information given: The ratio of present age of A to B’s is 3 : 2 Five years ago, A age was twice than that of B age at that time Five years hence, sum of ages of A and B is equal to C age at that time Explanation: Let present age of B = x Present age of A = 1.5x B age five years ago = x – 5 A age five years ago = 2(x-5) = 2x – 10 But A age five years ago also equals to (1.5x – 5) 2x – 10 = 1.5x – 5 0.5x = 5 x = 10 C age five years hence = 10 + 5 + 1.5 × 10 + 5 = 15 + 15 + 5 = 35 C present age = 35 – 5 = 30 years"
+  },
+  {
+    "n": 97,
+    "section": "Quantitative Aptitude",
+    "q": "Set X contains seven consecutive even numbers which sum is 630. Set Y contains five consecutive odd numbers whose sum is 295.\nQuantity I: What is average of first four consecutive even number of the set X.",
+    "q_image": "",
+    "opts": [
+      "Quantity II: 27 more than average of first two numbers of set Y.",
+      "Quantity I > Quantity II",
+      "Quantity I < Quantity II",
+      "Quantity I ≥ Quantity II (d)Quantity I ≤ Quantity II",
+      "(e)Quantity I = Quantity II or no relation"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Information Given: The sum of seven consecutive even numbers of set X = 630 The sum of five consecutive odd numbers of set Y = 295 Formula used: Average = (Sum of unit)/(number of units) Explanation: Average of set X = 630/7 = 90 Point to Remember: When a set of odd-numbered consecutive terms (like 3, 5, 7, etc.) is given, the average is always the middle term. So, it is an average of 7 consecutive even numbers, then this average must be the 4th number of the set So, the first four numbers of the set X = 84, 86, 88, and 90 it is an average of 5 consecutive odd numbers, then this average must be the 3rd number of the set Average of set Y = 295/5=59 So, first two numbers if set Y = 55 & 57 Quantity I: Average of first four consecutive even number of set X = (84+86+88+90)/4==87 Quantity II: Average of first two numbers of odd numbers of set Y = (55+57)/2=56 Required value = 56+27 = 83 So, Quantity I > Quantity II Quantity I = Quantity II"
+  },
+  {
+    "n": 98,
+    "section": "Quantitative Aptitude",
+    "q": "What is the S.I accrued on a principle of Rs.6000 in 5 years.\nQuantity I – The rate of interest for the first 2 years is 10% and for the last 3 years is 15%.",
+    "q_image": "",
+    "opts": [
+      "Quantity II – Rs.3900",
+      "Quantity I > Quantity II",
+      "Quantity I < Quantity II",
+      "Quantity I ≥ Quantity II (d)Quantity I ≤ Quantity II",
+      "(e)Quantity I = Quantity II or no relation"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 99,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two quantities are given, one as ‘Quantity I’ and another as ‘Quantity II’. You have to determine relationship between two quantities and choose the appropriate option.\nQuantity I : A mixture contains 120 liters of milk and water in the ratio of 3:5, respectively. If Y liters of mixture are taken out and 10 liters of milk and 15 liters of water are added to the mixture, then the ratio of milk to water becomes 8:13. Find Y.",
+    "q_image": "",
+    "opts": [
+      "Quantity II : 60",
+      "Quantity I > Quantity II",
+      "Quantity I < Quantity II",
+      "Quantity I ≥ Quantity II (d)Quantity I ≤ Quantity II",
+      "(e)Quantity I = Quantity II or no relation"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": "Sol."
+  },
+  {
+    "n": 100,
+    "section": "Quantitative Aptitude",
+    "q": "In the given questions, two quantities are given, one as ‘Quantity I’ and another as ‘Quantity II’.\nYou have to determine relationship between two quantities and choose the appropriate option. Quantity I: The average age of 21 people is 64 years. If the age of a new person is added the new average age becomes 64.5 years, then find the age of new person.\nQuantity II: There are 14 people in a family and the average age of all the family members is 30 years. A new baby born in a family, after 4 years what will be the average age of the all-family member.",
+    "q_image": "",
+    "opts": [
+      "Quantity I > Quantity II",
+      "Quantity I < Quantity II",
+      "Quantity I ≥ Quantity II (d)Quantity I ≤ Quantity II",
+      "(e)Quantity I = Quantity II or no relation",
+      "SolutionsSolutions"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": "Sol."
+  }
+]

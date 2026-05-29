@@ -1,0 +1,2202 @@
+[
+  {
+    "n": 1,
+    "section": "English Language",
+    "q": "Direction: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer\nAs global efforts to curb carbon emissions continue to intensify, particular attention has been drawn to the transportation industry, one sector with significant potential to effect positive change. The drive towards increased electric vehicle (EV) usage is gathering pace, with more consumers moving away from fossil fuel-dependent engines. This transition is expected to build on momentum already achieved in renewable energy sectors, setting the stage for a more sustainable future.\nHowever, success in this field is heavily predicated on the wide-scale availability of element X, a crucial ingredient for the production of EVs, particularly in the manufacture of powerful, reliable batteries. Element X brings together the perfect blend of lightness, energy capacity, heat tolerance, and cost-effectiveness, qualities that soundly position it as an indispensable material in EV battery production.\nAs global demand for EVs increases, the scale of production and consumption of element X will take an equivalent uptick, impacting a steep upward growth curve on the global market. With governments and corporations across the globe actively driving the transition to green energy, the surge in EV's adoption will lead to an unparalleled build-up in demand for this critical ingredient.\nThis dynamic presents both opportunities and challenges. On the one hand, the elevated production of element X will contribute to job creation and economic growth in regions where its extraction and refining occur, offering an economic uplift. On the other hand, its extraction and processing must be managed in an environmentally and socially responsible way to match the green ideals of the EV movement.\nIn this context, planning for the future must consider investment in infrastructural expansion, research into alternate or synthetic substitutes for element X, and regulations that incentivize responsible and sustainable mining. This is a crucial step to not only meet burgeoning demand but also mitigate any negative environmental or social implications.\nUltimately, the drive to increase EV usage necessitates a corresponding upswing in the production and processing of element X. As such, efforts to curb reliance on fossil fuels will catalyze a new trajectory in the mining sector, poised to meet the growing demand of this critical element that underpins the growth of EVs.\nWhich of the following words is a synonym for the word 'curb' as used in the passage?",
+    "q_image": "",
+    "opts": [
+      "Encourage",
+      "Boost",
+      "Suppress",
+      "Amplify",
+      "Raise"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 2,
+    "section": "English Language",
+    "q": "What implications does the increased production of element X have for regions where its extraction occurs?",
+    "q_image": "",
+    "opts": [
+      "Increased pollution",
+      "Decreased economic activity",
+      "Job creation and economic growth",
+      "Social disruption",
+      "No change"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 3,
+    "section": "English Language",
+    "q": "Which of the following words is a antonym for the word 'build' as used in the passage?",
+    "q_image": "",
+    "opts": [
+      "Construct",
+      "Develop",
+      "Assemble",
+      "Demolish",
+      "Strengthen"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 4,
+    "section": "English Language",
+    "q": "Which of the following statements is/are true?\nEnvironmentally sustainable practices are not necessary in the production and processing of element X.\nThe production of element X will stimulate job creation and economic growth in regions where it is extracted and refined.\nThe transition to green energy will decrease the global demand for EVs.",
+    "q_image": "",
+    "opts": [
+      "Only 1 is true",
+      "Only 2 is true",
+      "Only 3 is true",
+      "1 and 3 are true",
+      "2 and 3 are true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 5,
+    "section": "English Language",
+    "q": "According to the passage, why is element X crucial in the production of electric vehicle batteries?",
+    "q_image": "",
+    "opts": [
+      "It makes the battery more substantial.",
+      "It makes the battery look more attractive.",
+      "It renders the battery less efficient.",
+      "It combines qualities of energy capacity, cost-effectiveness, heat tolerance, and lightness.",
+      "It makes the battery heavier, reducing vehicle speed."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 6,
+    "section": "English Language",
+    "q": "What is a crucial step to meet the increasing demand for element X and mitigate negative environmental or social implications?",
+    "q_image": "",
+    "opts": [
+      "Reducing investment in infrastructural expansion",
+      "Ignoring research into alternate or synthetic substitutes for element X",
+      "Decreasing regulations that incentivize sustainable mining",
+      "Increasing emissions of fossil fuels",
+      "Planning for investment in infrastructural expansion, research into alternate or synthetic substitutes, and regulations that incentivize sustainable mining"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 7,
+    "section": "English Language",
+    "q": "Which of the following statements are true?\nThe demand for EVs directly impacts the production and consumption of element X.\nWith the growth of the EV market, the production of element X will decrease.\nRegulatory actions and infrastructural expansion are critical for managing the increasing demand for element X.",
+    "q_image": "",
+    "opts": [
+      "Only 1 and 3 are true",
+      "Only 2 is true",
+      "Only 3 is true",
+      "1, 2, and 3 are true",
+      "None of them are true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 8,
+    "section": "English Language",
+    "q": "Which of the following statements is/are false?\nResearch into alternate or synthetic substitutes for Element X is unnecessary for future planning.\nSustainable mining for Element X extraction is undesirable.\nJob creation and economic growth will result from the escalated production of Element X.",
+    "q_image": "",
+    "opts": [
+      "Only 1",
+      "Only 2",
+      "Only 3",
+      "1 and 2",
+      "2 and 3"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 9,
+    "section": "English Language",
+    "q": "In the sentence, certain words are in bold and numbered from A to E, which are the possible pairs to be interchanged. Choose the pair(s) of words which need to be interchanged to make the\nsentence grammatically correct and meaningful.\nThe (A) enemies of using pests’ natural (B) method is (C) known as biological control, and is (D) considered an eco-friendly (E) alternative to the use of insecticides.\nOnly A-B",
+    "q_image": "",
+    "opts": [
+      "A-C and B-D",
+      "No Improvement",
+      "Only C-D",
+      "Both A-B and C-D",
+      "Que. 10Que. 10In the sentence, certain words are in bold and numbered from A to E, which are the possible pairs to be interchanged. Choose the pair(s) of words which need to be interchanged to make the"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 10,
+    "section": "English Language",
+    "q": "Que. 10\nsentence grammatically correct and meaningful.\nTurkey should (A) seek ways to (B) relying the (C) process by (D) expedite on (E) existing research elsewhere.",
+    "q_image": "",
+    "opts": [
+      "A-C",
+      "B-E and A-C",
+      "B-D",
+      "A-D and B-E",
+      "A-B"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 11,
+    "section": "English Language",
+    "q": "In the sentence, certain words are in bold and numbered from A to E, which are the possible pairs to be interchanged. Choose the pair(s) of words which need to be interchanged to make the\nsentence grammatically correct and meaningful.\nSuppose we wanted to (A) estimate how many car owners there are in the UK and how many of those (B) data a Ford Fiesta, but we only have (C) own on those people who (D) visited Ford car showrooms in the (E) last year.",
+    "q_image": "",
+    "opts": [
+      "A-D and B-E",
+      "B-C",
+      "A-C and B-D",
+      "A-D",
+      "B-C and A-D"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 12,
+    "section": "English Language",
+    "q": "In the sentence, certain words are in bold and numbered from A to E, which are the possible pairs to be interchanged. Choose the pair(s) of words which need to be interchanged to make the\nsentence grammatically correct and meaningful.\nThe wind came (A) edge across the (B) highest (C) unhampered of the Pennines, the iciest of (D) blasts from the north-west (E) corner of the sky.",
+    "q_image": "",
+    "opts": [
+      "B-E",
+      "A-C",
+      "D-E",
+      "A-D and B-E",
+      "B-C"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 13,
+    "section": "English Language",
+    "q": "Direction: The given sentence is divided into four parts: A, B, C, and D. Choose the part that contains an error as your answer. If the sentence is error-free, mark E i.e. No error as your\nanswer.\nBusiness is about having (A)/ an extremely skilled team (B)/ and provide the best service (C)/ to our customers.\n(D)/ No error (E)",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 14,
+    "section": "English Language",
+    "q": "Direction: The given sentence is divided into four parts: A, B, C, and D. Choose the part that contains an error as your answer. If the sentence is error-free, mark E i.e. No error as your\nanswer.\nThe fundamental idea is to (A)/ foster connections through (B)/ real-life meetups rather (C)/ than solely through virtual interactions. (D)/ No error (E)",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 15,
+    "section": "English Language",
+    "q": "Direction: The given sentence is divided into four parts: A, B, C, and D. Choose the part that contains an error as your answer. If the sentence is error-free, mark E i.e. No error as your\nanswer.\nPeople develop a attachment (A)/ to a city because they find (B)/ a sense of belonging (C)/ within like-minded individuals. (D)/ No error (E)",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 16,
+    "section": "English Language",
+    "q": "Direction: The given sentence is divided into four parts: A, B, C, and D. Choose the part that contains an error as your answer. If the sentence is error-free, mark E i.e. No error as your\nanswer.\nThese are just small (A)/ alterations with our lifestyle (B)/ that will help us achieve (C)/ that perfect body. (D)/ No error (E)",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 17,
+    "section": "English Language",
+    "q": "Direction: The given sentence is divided into four parts: A, B, C, and D. Choose the part that contains an error as your answer. If the sentence is error-free, mark E i.e. No error as your\nanswer.\nHaryana Police are (A)/ carrying out its procedure, (B)/ and our officers are (C)/ in contact with them. (D)/ No error (E)",
+    "q_image": "",
+    "opts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 18,
+    "section": "English Language",
+    "q": "Directions: Given below is a word, followed by three sentences that consist of that word. Identify the sentence(s) that express(es) the meaning of the word.\nINTEREST\nShe must be allowed to grieve and interest in her own way.\nHe urged further interest rate cuts in a bid to kick-start the economy.\nIt might interest you to learn that I've changed my opinion on that matter.",
+    "q_image": "",
+    "opts": [
+      "Only A",
+      "Only B",
+      "Only C",
+      "Both A and B",
+      "Both B and C"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 19,
+    "section": "English Language",
+    "q": "Directions: The given question has one blank indicating that something has been omitted. Choose the word for the given options that could fit in the blank correctly.\nThe \tof her nausea was so strong that she felt dizzy and began to retch.\nResonate",
+    "q_image": "",
+    "opts": [
+      "Vulnerable",
+      "Susceptible",
+      "Intensity",
+      "Diversity",
+      "Que. 20Que. 20Directions: The given question has one blank indicating that something has been omitted. Choose the word for the given options that could fit in the blank correctly."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 20,
+    "section": "English Language",
+    "q": "Que. 20\nThe \timage displayed was not a real person but a projected hologram.",
+    "q_image": "",
+    "opts": [
+      "Exclusive",
+      "Fiasco",
+      "Illusive",
+      "Delicate",
+      "Oblivion"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 21,
+    "section": "English Language",
+    "q": "Directions: The given question has one blank indicating that something has been omitted. Choose the word for the given options that could fit in the blank correctly.\nThey used violence to \topposition rallies and meetings.",
+    "q_image": "",
+    "opts": [
+      "Corrupt",
+      "Disrupt",
+      "Stigma",
+      "Supercilious",
+      "Abrupt"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 22,
+    "section": "English Language",
+    "q": "Directions: The following sentences form a paragraph. The rest of the sentences are marked as A, B, C, D, E and F. The sentences are not given in their proper order. Read the sentences and\nanswer the following questions.\nArtificial Intelligence refers to the intelligence of machines.\nMost noteworthy, Artificial Intelligence is the simulation of human intelligence by machines.\nWith Artificial Intelligence, machines perform functions such as learning, planning, reasoning, and problem-solving.\nFurthermore, many experts believe AI could solve major challenges and crisis situations.\nThis is in contrast to the natural intelligence of humans and animals.\nIt is probably the fastest-growing development in the World of technology and innovation.\nWhich sentence should be the SECOND sentence in the paragraph?",
+    "q_image": "",
+    "opts": [
+      "D",
+      "A",
+      "F",
+      "E",
+      "B"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 23,
+    "section": "English Language",
+    "q": "Which sentence should be the FOURTH sentence in the paragraph?",
+    "q_image": "",
+    "opts": [
+      "F",
+      "A",
+      "B",
+      "D",
+      "E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 24,
+    "section": "English Language",
+    "q": "Which sentence should be the SIXTH sentence in the paragraph?",
+    "q_image": "",
+    "opts": [
+      "D",
+      "E",
+      "F",
+      "B",
+      "A"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 25,
+    "section": "English Language",
+    "q": "Which sentence should be the FIRST sentence in the paragraph?",
+    "q_image": "",
+    "opts": [
+      "D",
+      "A",
+      "B",
+      "E",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 26,
+    "section": "English Language",
+    "q": "Which sentence should be the FIFTH sentence in the paragraph?",
+    "q_image": "",
+    "opts": [
+      "E",
+      "D",
+      "A",
+      "B",
+      "F"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 27,
+    "section": "English Language",
+    "q": "Directions: Which of the phrases given in the options should replace the word/phrase that is underlined in the sentence to make it grammatically correct? If the sentence is correct as it is\ngiven and no correction is required, select ''No correction required'' as the answer.\nThe Indian football team is set to bear down the Asian Cup trophy for the first time.",
+    "q_image": "",
+    "opts": [
+      "Is set to bear up",
+      "Is set to bear out",
+      "Is set to bear with",
+      "Is set to bear away",
+      "No correction required"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 28,
+    "section": "English Language",
+    "q": "Directions: In the following sentence, a part of the sentence is underlined. Below are given alternatives to the underlined part, which may improve the sentence. Choose the correct\nalternative. In case no improvement is needed, choose the alternative that indicates 'No improvement'.\nMrs. Kavitha is eclipsed by her husband who is much livelier and more intelligent than she is.",
+    "q_image": "",
+    "opts": [
+      "Much lively and more intelligent",
+      "Much liveliest and most intelligent",
+      "More lively and much intelligent",
+      "Much more lively and much more intelligent",
+      "No improvement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 29,
+    "section": "English Language",
+    "q": "Directions: In the following sentence, a part of the sentence is underlined. Below are given alternatives to the underlined part, which may improve the sentence. Choose the correct\nalternative. In case no improvement is needed, choose the alternative that indicates 'No improvement'.\nWe got at touch with the bank to check out the suspect's story.",
+    "q_image": "",
+    "opts": [
+      "Got to touch from",
+      "Got in touch with",
+      "Getting at touch with",
+      "Got at touch from",
+      "No improvement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 30,
+    "section": "English Language",
+    "q": "Directions: In the following sentence, a part of the sentence is underlined. Below are given alternatives to the underlined part, which may improve the sentence. Choose the correct\nalternative. In case no improvement is needed, choose the alternative that indicates 'No improvement'.\nHis entry to the team dressing room was restrict as an official inquiry had been constituted against him.\nIs restricting as an",
+    "q_image": "",
+    "opts": [
+      "Was restricting as a",
+      "Was restricted as an",
+      "Is restricted as a",
+      "No improvement",
+      "Que. 31Que. 31"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 31,
+    "section": "Quantitative Aptitude",
+    "q": "Que. 31\nIn the given question, two equations numbered l and II are given. Solve both the equations and mark the appropriate answer.\nx2 – 16x + 55 = 0\ny2 – 17y + 52 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x ≥ y",
+      "x < y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 32,
+    "section": "Quantitative Aptitude",
+    "q": "In the given questions, two equations numbered l and II are given. You have to solve both the equations and mark the appropriate answer.\nI. 2x2 – 7x – 15 = 0\nll. 3y2 – 6y – 9 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relation between them cannot be established"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 33,
+    "section": "Quantitative Aptitude",
+    "q": "In the following question to equations are given. You have to solve the question and mark the answer accordingly.\nl. 5x2 + 8x + 3 = 0\nll. 6y2 + 7y – 3 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relation between cannot be established"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 34,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and mark the appropriate answer.\n4x2 – 10x + 4 = 0\n3y2 – 11y + 6 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "Relation can't be formed or x = y"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 35,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and mark the appropriate answer.\n2x2 – 11x + 15 = 0\n2y2 – 9y + 10 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "relation can't be established or x = y"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 36,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Answer the questions based on the information given below.\nThe first pie chart below shows the percentage distribution of the total number of students in five different schools and the second pie chart below shows the total number of male students in each school.\nTotal number of students in a school = Number of male students in the school + Number of female students in the school\nTotal number of students in all five schools together = 4300\n\nTotal number of male students in all five schools together = 2100\n\nIf the total number of students (male + female) in another school 'Z' is 30% more than that in school 'D' and the respective ratio between the number of male to female students in school 'Z' is 6 : 7 respectively then find the average total number of female students in school 'A' and school 'Z' together?",
+    "q_image": "q36_combined.png",
+    "opts": [
+      "726",
+      "736",
+      "746",
+      "756",
+      "766"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 37,
+    "section": "Quantitative Aptitude",
+    "q": "If (p - 15)% of the number of female students in school 'D' and (p + 10)% of that in school 'E' are selected for a 'quiz' competition and the average total number of female students who are selected for\nthe 'quiz' competition from school 'D' and that from school 'E' together is 83 then find the value of 'p'?",
+    "q_image": "q36_combined.png",
+    "opts": [
+      "25",
+      "30",
+      "35",
+      "40",
+      "45"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 38,
+    "section": "Quantitative Aptitude",
+    "q": "If the average total number of female students in school 'C' and school 'X' together is 498 then the number of female students in school 'X is what percentage of that in school 'A'?",
+    "q_image": "q36_combined.png",
+    "opts": [
+      "63.33%",
+      "64.44%",
+      "65.55%",
+      "66.66%",
+      "67.77%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 39,
+    "section": "Quantitative Aptitude",
+    "q": "If the difference between the number of male students in school 'A' to that in school 'E' is same as that in school 'C' to school 'M' and the number of male students in school 'M' is more than that in school 'C'\nthen find the sum of the number of male students in school 'M' and that in school 'B' together?",
+    "q_image": "q36_combined.png",
+    "opts": [
+      "1150",
+      "1155",
+      "1160",
+      "1165",
+      "1170"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 40,
+    "section": "Quantitative Aptitude",
+    "q": "If the central angle corresponding to the total number of students (male + female) in school 'D' and school 'G' together is 120º then find the difference between the total number of students in school 'A' to\nthat in school 'G'?",
+    "q_image": "q36_combined.png",
+    "opts": [
+      "410",
+      "420",
+      "430",
+      "440",
+      "450"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 41,
+    "section": "Quantitative Aptitude",
+    "q": "The second lowest number of five consecutive odd number series is four more than the 5/12th of the third highest number of five consecutive even numbers series. If the average of five consecutive even\nnumber series is 60, then find the difference between the highest number of both series.",
+    "q_image": "",
+    "opts": [
+      "37",
+      "27",
+      "33",
+      "29",
+      "31"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 42,
+    "section": "Quantitative Aptitude",
+    "q": "Raman scored 456 marks in a exam and Seeta got 54% marks in the same exam which is 24 marks less than Raman. If the minimum passing marks in the exam is 34%, then how much more marks did\nRaman score than the minimum passing marks?",
+    "q_image": "",
+    "opts": [
+      "180",
+      "190",
+      "184",
+      "196",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 43,
+    "section": "Quantitative Aptitude",
+    "q": "In a family of four members A, B, C, and D, Rs. 50,000 was divided among them. A took 2/3 of the money, B took 1/5 of the remaining amount, and the rest was divided between C and D in the ratio of 2\n: 3 respectively. How much(approx.) did C get as his share?",
+    "q_image": "",
+    "opts": [
+      "Rs. 5,334",
+      "Rs. 5,000",
+      "Rs. 6,000",
+      "Rs. 7,000",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 44,
+    "section": "Quantitative Aptitude",
+    "q": "The present age of mother is four times the present age of her son. 8 years hence, the ratio of ages of mother and son becomes 16:5. If x is the square of the present age of son, then what will be the value\nof (x+2)?",
+    "q_image": "",
+    "opts": [
+      "450",
+      "481",
+      "486",
+      "485",
+      "480"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 45,
+    "section": "Quantitative Aptitude",
+    "q": "1 card is randomly chosen from a deck of which red face cards have been removed, find the probability that the picked card is a face card.",
+    "q_image": "",
+    "opts": [
+      "3 / 23",
+      "3 / 46",
+      "6 / 23",
+      "3 / 26",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 46,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of (?) in the given series?\n20, 32, 47, 57, ?, 80",
+    "q_image": "",
+    "opts": [
+      "72",
+      "74",
+      "78",
+      "77",
+      "79"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 47,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in the place of (?) in the given series?\n500, 50, 10, 3, 1.2, ?",
+    "q_image": "",
+    "opts": [
+      "0.4",
+      "0.8",
+      "0.3",
+      "0.6",
+      "1.4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 48,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in the place of (?) in the given series?\n100, ?, 228, 299, 372, 451",
+    "q_image": "",
+    "opts": [
+      "161",
+      "163",
+      "171",
+      "164",
+      "173"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 49,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in the place of (?) in the given series?\n80, ?, 117, 168, 271, 478",
+    "q_image": "",
+    "opts": [
+      "92",
+      "95",
+      "89",
+      "91",
+      "87"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 50,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in the place of (?) in the given series?\n40, 66, 116, 198, 320, ?",
+    "q_image": "",
+    "opts": [
+      "480",
+      "510",
+      "490",
+      "500",
+      "495"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 51,
+    "section": "Quantitative Aptitude",
+    "q": "The interest earned when a sum invested at 32% p.a. simple interest for 5 years is Rs. 2400. The same initial sum when invested at (R + 12)% p.a. compound interest, compounded annually amounts to Rs.\n2535 at the end of two years. Find the value of R.",
+    "q_image": "",
+    "opts": [
+      "18",
+      "22",
+      "26",
+      "15",
+      "32"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 52,
+    "section": "Quantitative Aptitude",
+    "q": "4 men and 3 women finish a job in 6 days. Also, 5 men and 7 women can do the same job in 4 days. If 1 man and 1 woman will do the same job in x days, then what will be value of the perfect square\nnearest to the value of 14x ?",
+    "q_image": "",
+    "opts": [
+      "324",
+      "225",
+      "441",
+      "625",
+      "729"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 53,
+    "section": "Quantitative Aptitude",
+    "q": "Pipe A can fill a tank in 22 hours, and pipe B can fill 50% of the tank in 14 hours. Pipe C can empty the tank in 14 hours. If all the pipes are opened at 5:00 am, and pipe C is closed after 3 hours, then at\nwhat time (approx) the tank will be filled?",
+    "q_image": "",
+    "opts": [
+      "5:00 PM",
+      "8:00 PM",
+      "7:30 PM",
+      "6:00PM",
+      "8:30 PM"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 54,
+    "section": "Quantitative Aptitude",
+    "q": "Vessel A contains (2x + 360) liters mixture of milk and water in the ratio of 7:5 and vessel B contains a 200 liters mixture of milk and water in the ratio of 3:2. If vessels A and B are mixed together, then the\nratio of the milk and water becomes 47:33. Find the value of x.",
+    "q_image": "",
+    "opts": [
+      "80",
+      "100",
+      "120",
+      "125",
+      "150"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 55,
+    "section": "Quantitative Aptitude",
+    "q": "An old man is walking on a foggy road at a speed of x km/hr. Due to low visibility, the old man see only up to 600 meters. If a car overtakes the man from the behind with the speed of 15 km/hr then the\nman can see the car for 216 seconds. Find the speed of the man?",
+    "q_image": "",
+    "opts": [
+      "2 km/hr",
+      "3 km/hr",
+      "4 km/hr",
+      "5 km/hr",
+      "6 km/hr"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 56,
+    "section": "Quantitative Aptitude",
+    "q": "The total time taken by the boat to go 'x' km upstream and then return back to a certain distance is 6 hours. The ratio of the speed boat in still water to the speed of the stream is 8 : 1, respectively. If the\nupstream distance covered is 50 km more than the downstream distance covered and the boat can cover (3x + 60) km in still water in 12 hours, then find the value of 'x'?",
+    "q_image": "",
+    "opts": [
+      "120 km",
+      "128 km",
+      "140 km",
+      "150 km",
+      "158 km"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 57,
+    "section": "Quantitative Aptitude",
+    "q": "Sachin and Kohli decided to invest in a business. They put in their capitals in the ratio of 5:3.\nHowever, in the next year sachin invested 40% more money and kohli withdrew 20% of his capital. If at the end of second year sachin got Rs 4000 as profit, then find the profit earned by kohli.",
+    "q_image": "",
+    "opts": [
+      "Rs 1500",
+      "Rs 1800",
+      "Rs3050",
+      "Rs 1780",
+      "Rs 2100"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 58,
+    "section": "Quantitative Aptitude",
+    "q": "Ratio of the cost price of apple and orange is 4 : 5. If the shopkeeper sold the apple at 20% profit and oranges at 30% profit and discount offer of 20% and 35 % on apple and oranges respectively,\nThen what is the ratio of the marked price of apple and orange ?",
+    "q_image": "",
+    "opts": [
+      "4 : 5",
+      "3 : 5",
+      "7 : 5",
+      "11 : 9",
+      "7 : 6"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 59,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Answer the questions based on the information given below.\nThe table given below shows the total number of male employees (Public + Private) and the total number of female employees (Public + Private) working in five different cities.\nTotal number of employees in a city = Number of male employees working in the city + Number of female employees working in the city\nCity\nNumber of male employees\nTotal Number of female employees\nPublic\nPrivate\nP\n3x + 2y\n14y\n48\nQ\n8x\n6x\n48\nR\n5x\n2x\n24\nS\n12y\n81\n63\nT\n36y\n28y\n48\nNote : (1) Sum of the total number of male employees working in the 'Public' sector from city 'P' and city 'R' together is 70.\n(2) Sum of the total number of male employees working in the 'Private' sector from city ''Q' and city 'T' together is 132.\nWhat is the average total number of employees working in city 'Q', 'R', and 'T' together?",
+    "q_image": "",
+    "opts": [
+      "120",
+      "130",
+      "140",
+      "150",
+      "160"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 60,
+    "section": "Quantitative Aptitude",
+    "q": "If the average total number of employees working in city 'P', 'S', 'T' and 'U' together is 185 and the number of female employees working in city 'U' is 25% more than the number of male employees\nworking in city 'P' then find the total number of male employees working in city 'U' and city 'Q' together?",
+    "q_image": "",
+    "opts": [
+      "222",
+      "228",
+      "232",
+      "238",
+      "242"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 61,
+    "section": "Quantitative Aptitude",
+    "q": "The number of female employees working in 'private' sector from city 'P' and from city 'Q' is 33.33% and 37.5% of the number of male employees working in 'public' sector from city 'T' and city 'R'\nrespectively then find the difference between the number of female employees working in 'public' sector from city 'P' and that from city 'Q'?",
+    "q_image": "",
+    "opts": [
+      "11",
+      "19",
+      "21",
+      "27",
+      "29"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 62,
+    "section": "Quantitative Aptitude",
+    "q": "If the total number of female employees working in the 'public' sector from city 'R' and city 'S' together is 55.55% less than the total number of male employees working in the 'private' sector from city 'P' and\ncity 'Q' together then find the total number of female employees working in the 'private' sector from city 'R' and city 'S' together?",
+    "q_image": "",
+    "opts": [
+      "31",
+      "37",
+      "41",
+      "47",
+      "CND"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 63,
+    "section": "Quantitative Aptitude",
+    "q": "If the total number of employees (male + female) working in city 'Z' is 60% less than the total number of employees working in all five cities together and the total number of male employees (public +\nprivate) working in city 'Z' is 8 more than that of female employees then the total number of male employees (public + private) working in city 'Z' is what percentage that of city T'?",
+    "q_image": "",
+    "opts": [
+      "80%",
+      "83.33%",
+      "85%",
+      "86.66%",
+      "88%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 64,
+    "section": "Quantitative Aptitude",
+    "q": "The area of the circle is 2464 cm2 and the ratio of the breadth of the rectangle to radius of the circle is 6:7. If the circumference of the circle is equal to the perimeter of the rectangle, then what is the area of\nthe rectangle.",
+    "q_image": "",
+    "opts": [
+      "1536cm2",
+      "1546cm2",
+      "1556cm2",
+      "1566cm2",
+      "1576cm2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 65,
+    "section": "Quantitative Aptitude",
+    "q": "Two cars 'M' and 'N' leave from point 'P' towards point 'Q' with car 'M' leaving 1 hour earlier than car 'N'. Both the cars travel first 100 km at 50 km/hr, next 50 km at 25 km/hr and the remaining distance at\n20 km/hr. If the distance between 'P' and 'Q' is 250 km, the find the distance between car 'N' and half of the distance between points 'P' and 'Q', when car 'M' reaches point 'Q'?",
+    "q_image": "",
+    "opts": [
+      "45 km",
+      "60 km",
+      "75 km",
+      "90 km",
+      "105 km"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 66,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nSix persons - P, Q, R, S T, and U went on a tour on two different dates either the 9th or 26th in three different months viz. March, May, and November of the same year. Each of them visited different cities viz.\nPune, Gaya, Vadodara, Sonipat, Kota and Mysore. All the information is not necessarily in the same order.\nU went on an odd-numbered date. Only two persons went between the one who went to Mysore and U. R and Q went on the same date but none of them went in November. The one who went to Vadodara went immediately before Q but not in May. As many persons went after T is the same as before the one who went to Kota. T did not go in March. Only one person went between the one who went to Pune and Sonipat. P went immediately after the one who went to Sonipat but did not go to Mysore. S did not go to Pune.\nWhich of the following statement(s) is/are true with respect to the final arrangement?",
+    "q_image": "",
+    "opts": [
+      "Q went to Mysore city.",
+      "R went in the month having an even number of days",
+      "S did not go to tour on an odd-numbered date",
+      "Only two persons went between T and the one who went to Pune city",
+      "None is true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 67,
+    "section": "Reasoning Ability",
+    "q": "On which of the following date and month does P went to the tour?",
+    "q_image": "",
+    "opts": [
+      "26th May",
+      "9th November",
+      "26th March",
+      "9th May",
+      "26th November"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 68,
+    "section": "Reasoning Ability",
+    "q": "T went to which of the following cities?",
+    "q_image": "",
+    "opts": [
+      "Mysore",
+      "Vadodara",
+      "Sonipat",
+      "Kota",
+      "Pune"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 69,
+    "section": "Reasoning Ability",
+    "q": "Which among the following person went to Gaya?",
+    "q_image": "",
+    "opts": [
+      "S",
+      "The one who went immediately before U",
+      "The one who goes on 26th May",
+      "P",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 70,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a certain way as per the given arrangement and hence form a group. Find the one who doesn’t belong to that group.",
+    "q_image": "",
+    "opts": [
+      "The one who went to Kota",
+      "The one who went to Pune",
+      "The one who went to Mysore",
+      "The one who went to Vadodara",
+      "The one who went to Sonipat"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 71,
+    "section": "Reasoning Ability",
+    "q": "How many pair of letters are there in the word \"FABULATED\" that has as many letters between them backward and forward in the word as in the alphabet?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Three",
+      "Two",
+      "More than three",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 72,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions given below.\nFive boxes containing different fruits are kept above one another such that the lowermost box is numbered 1, the box immediately above is numbered 2, and so on.\nThe box having Bananas is kept in an even-numbered position but the box is not P. Two boxes are kept between the one which has Bananas and Box G. Box Z is kept just below the box which has Mangoes. T is kept three boxes above the box which has Oranges. Box K is kept at an odd-numbered position but doesn’t have Mangoes. The box which has Apples is kept below the box which has Grapes. Box G is kept above Box Z but not just above.\nHow many boxes are there between the box which has Mangoes and box Z?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "None"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 73,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a certain way and hence form a group. Find the one that doesn’t belong to that group:",
+    "q_image": "",
+    "opts": [
+      "G - Apples",
+      "T - Grapes",
+      "P - Bananas",
+      "Z - Grapes",
+      "K - Bananas"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 74,
+    "section": "Reasoning Ability",
+    "q": "Which fruit is kept in box K?",
+    "q_image": "",
+    "opts": [
+      "Bananas",
+      "Apples",
+      "Grapes",
+      "Mangoes",
+      "Oranges"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 75,
+    "section": "Reasoning Ability",
+    "q": "Which box is kept at the 4th position?",
+    "q_image": "",
+    "opts": [
+      "The one which has Mangoes",
+      "G",
+      "The one which has Bananas",
+      "T",
+      "The one which has Grapes"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 76,
+    "section": "Reasoning Ability",
+    "q": "In which position does the box having Apples is kept?",
+    "q_image": "",
+    "opts": [
+      "Fifth",
+      "Second",
+      "Third",
+      "Fourth",
+      "First"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 77,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nH < I > J < L; J < P < R; P > U < W\nConclusions:\nH < R\nJ > W",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Either I or II follows",
+      "Only Il follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 78,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nS > T ≥ U < V; U < W = X > Y > Z; X < M < L\nConclusions:\nU < L\nV < W",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Only Il follows",
+      "Either I or II follows",
+      "Neither I nor II follows",
+      "Both I and II follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 79,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers\naccordingly.\nStatement:\nM < T ≤ Q < D; P > A = W ≥ D\nConclusions:\nW ≥ T\nP > Q",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Only Il follows",
+      "Either I or II follows",
+      "Both I and II follow",
+      "Neither I or II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 80,
+    "section": "Reasoning Ability",
+    "q": "In a certain code, ‘256’ means ‘you are good’; ‘637’ means ‘we are bad’ and ‘358’ means ‘good and bad’. Which of the following digits represents ‘and’ in that code?",
+    "q_image": "",
+    "opts": [
+      "2",
+      "5",
+      "8",
+      "3",
+      "6"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 81,
+    "section": "Reasoning Ability",
+    "q": "Direction: Read the given information carefully and answer the questions asked below.\nEight people S, Q, A, P, G, O, X and T are sitting around a square table in such a way that four of them sit at four corners of the square while four sit in the middle of each of the four sides. People who are sitting at the corner are facing outside the center while people sitting in the middle are facing the center. G sits second to the right of T. O is sitting opposite to G. S is sitting third to the right of G. Three people are sitting between T and X. A is sitting second to the left of Q, who is one of the immediate neighbours of G. P is sitting at one of the corners of the square and is facing outside.\nWho is sitting opposite to A?\nS",
+    "q_image": "",
+    "opts": [
+      "Q",
+      "P",
+      "O",
+      "G",
+      "Que. 82Que. 82Who is sitting second to the right of X?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 82,
+    "section": "Reasoning Ability",
+    "q": "Que. 82",
+    "q_image": "",
+    "opts": [
+      "S",
+      "A",
+      "P",
+      "O",
+      "Q"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 83,
+    "section": "Reasoning Ability",
+    "q": "Who is sitting opposite to Q?",
+    "q_image": "",
+    "opts": [
+      "S",
+      "X",
+      "O",
+      "T",
+      "G"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 84,
+    "section": "Reasoning Ability",
+    "q": "Who is sitting third to the right of T?",
+    "q_image": "",
+    "opts": [
+      "X",
+      "G",
+      "A",
+      "O",
+      "S"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 85,
+    "section": "Reasoning Ability",
+    "q": "How many people are sitting between G and S when counted from the left of G?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Two",
+      "Four",
+      "Three",
+      "None"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 86,
+    "section": "Reasoning Ability",
+    "q": "Directions: In the question below are given statement followed by two conclusions numbered I and II.\nYou have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.\nStatement:\nAll Book are Pages\nSome Pages are Pen No Pen is Pencil\nConclusion:\nSome Book are Pen\nNo Book is Pen",
+    "q_image": "",
+    "opts": [
+      "Only conclusion I follows.",
+      "Only conclusion II follows.",
+      "Either conclusion I or II follows.",
+      "Neither conclusion I nor II follows.",
+      "Both conclusions I and II follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 87,
+    "section": "Reasoning Ability",
+    "q": "Directions: In each question three statements followed by two conclusions numbered I and II have been given. You have to take the given statement to be true even if they seem to be at variance with\ncommonly known facts and then decide which of the given conclusions logically follows from the given statements. Give answer.\nStatements:\nOnly a few airplanes are ships. Only a few ships are cargos.\nOnly a few cargos are jets.\nConclusions:\nSome cargos can be airplanes. All jets can be ships.",
+    "q_image": "",
+    "opts": [
+      "If only conclusion II follows.",
+      "If neither conclusion i nor ii follows.",
+      "If both conclusions I and II follow.",
+      "If either conclusion I or II follows.",
+      "If only conclusion I follows."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 88,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the question below are given three statements followed by two conclusions numbered I and II. You have to take the given statements to be true even if they seem to be at variance with\ncommonly known facts. Read all the conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.\nStatements:\nOnly Mug is Knife.\nOnly a few Mugs are Bowl.\nSome Bowls are Spoons.\nConclusions:\nNo Knife is Spoon.\nSome Spoons are Knife.",
+    "q_image": "",
+    "opts": [
+      "Only I follows",
+      "Both follow",
+      "Either I or II follows",
+      "Only II follows",
+      "Neither I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 89,
+    "section": "Reasoning Ability",
+    "q": "Directions: Read the following information carefully and answer the questions.\nAn uncertain number of persons are sitting in a row facing towards North. G sits sixth from one of the extreme ends of the row. Only one person sits between P and T. R, who sits third to the right of T is an immediate neighbour of W. Only two persons sit between G and S, who sits third from the left end of the row. T sits eighth from the right end of the row. F, who sits to the immediate right of G, is seated second to the left of P. W doesn’t sit to the right of R. Only five people sit to the right of W. V sits sixth to the right of T.\nHow many persons sit between F and W?",
+    "q_image": "",
+    "opts": [
+      "Six",
+      "Three",
+      "Four",
+      "Five",
+      "Two"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 90,
+    "section": "Reasoning Ability",
+    "q": "Who sits fourth to the right of F?",
+    "q_image": "",
+    "opts": [
+      "V",
+      "T",
+      "R",
+      "S",
+      "W"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 91,
+    "section": "Reasoning Ability",
+    "q": "How many persons are seated in the row?",
+    "q_image": "",
+    "opts": [
+      "20",
+      "13",
+      "16",
+      "18",
+      "21 Que. 92Que. 92"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 92,
+    "section": "Reasoning Ability",
+    "q": "Que. 92\nIf it is possible to make only one meaningful 4-letter English word with the 3rd, 8th, 10th and 11th letters of the word 'COMFORTABLE', which of the following will be the fourth letter from the left end of that word? If no such word can be made give 'A' as the answer and if more than one such word can be made give 'C' as the answer.",
+    "q_image": "",
+    "opts": [
+      "A",
+      "E",
+      "L",
+      "C",
+      "M"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 93,
+    "section": "Reasoning Ability",
+    "q": "Directions: Read the following information carefully and answer the questions.\nNine persons- P, N, K, J, S, T, H, R and W work in a particular company but they belong to three different countries namely Cyprus, Barcelona and Bosnia, with not more than four persons and not less than two persons belonging from the same country.\nW and R do not belong to the same country. S belongs to the same country as H. P doesn’t belong to either Barcelona or Cyprus. J, who belongs to Barcelona, doesn’t work in the same country as N. W and T belong to the same country. K belongs to either Cyprus or Barcelona. H doesn’t belong to either Bosnia or Cyprus. W belongs to either Barcelona or Bosnia. T doesn’t belong to Barcelona or Cyprus. N, who belongs to Cyprus, comes from the same country as K. R belongs to the same country as J.\nWhich of the following statements is/are not true?\nStatement I: J and N belong to the same country.\nStatement II: The number of persons belonging to Cyprus is four.\nStatement III: H belongs to Bosnia.",
+    "q_image": "",
+    "opts": [
+      "Only Statement I",
+      "Both Statements II and III",
+      "All the statements are not true",
+      "Both statements I and III",
+      "Both statements I and II"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 94,
+    "section": "Reasoning Ability",
+    "q": "The pair which represents persons belonging to Barcelona is?\nW and T",
+    "q_image": "",
+    "opts": [
+      "N and H",
+      "R and K",
+      "J and S",
+      "W and R",
+      "Who among the following belongs to Cyprus?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 95,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "H",
+      "R",
+      "T",
+      "S",
+      "N"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 96,
+    "section": "Reasoning Ability",
+    "q": "The total number of persons belonging to Barcelona and Cyprus is?",
+    "q_image": "",
+    "opts": [
+      "Five",
+      "Three",
+      "Six",
+      "Seven",
+      "Four"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 97,
+    "section": "Reasoning Ability",
+    "q": "W belongs to same country as?",
+    "q_image": "",
+    "opts": [
+      "R",
+      "K",
+      "N",
+      "P",
+      "S"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 98,
+    "section": "Reasoning Ability",
+    "q": "Study the following information carefully and answer the questions given below:\nPoint N is 8 m to the west of Point O. Point P is 4 m to the south of Point O. Point Q is 4 m to the east of Point P. Point R is 6 m to the north of Point Q. Point S is 8 m to the west of Point R. Point T is 2 m to the south of Point S.\nWhat is the direction of point P with respect to point T?",
+    "q_image": "",
+    "opts": [
+      "South-West",
+      "North-East",
+      "South-East",
+      "North-West",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 99,
+    "section": "Reasoning Ability",
+    "q": "If a point A is 4 m in the north direction with respect to Q. Then what is the minimum distance between N and A?",
+    "q_image": "",
+    "opts": [
+      "16 m",
+      "8 m",
+      "12 m",
+      "10 m",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 100,
+    "section": "Reasoning Ability",
+    "q": "What is the shortest distance between point S and point Q?",
+    "q_image": "",
+    "opts": [
+      "15 m",
+      "13 m",
+      "12 m",
+      "10 m",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  }
+]

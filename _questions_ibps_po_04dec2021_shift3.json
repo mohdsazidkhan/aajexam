@@ -1,0 +1,2202 @@
+[
+  {
+    "n": 1,
+    "section": "English Language",
+    "q": "Given below is a word, followed by three sentences which consist of that word. Identify the\nsentence(s) which best express(es) the meaning of the word. Choose option 5 ‘None of these’ if\nthe word is not suitable in any of the sentences.\nALLUSION\nA. There are lots of literary echoes and allusions in the novel, but they don't do anything for the tired texture\nof the prose.\nB. He made some allusion to the years they lived apart.\nC. The video game is designed to give the allusion that you are in control of an airplane.",
+    "q_image": "",
+    "opts": [
+      "Both A and C",
+      "Both A and B",
+      "Only B",
+      "Both B and C",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 2,
+    "section": "English Language",
+    "q": "Given below is a word, followed by three sentences which consist of that word. Identify the\nsentence(s) which best express(es) the meaning of the word. Choose option 5 ‘None of these’ if\nthe word is not suitable in any of the sentences.\nBorne\nA. She was borne up to the ambulance.\nB. His version of events just isn't borne out by the facts.\nC. These matters are beyond the borne of our understanding.",
+    "q_image": "",
+    "opts": [
+      "Only A",
+      "Only B",
+      "A, B and C",
+      "A and B",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 3,
+    "section": "English Language",
+    "q": "Given below is a word, followed by three sentences which consist of that word. Identify the\nsentence(s) which best express(es) the meaning of the word. Choose option 5 ‘None of these’ if\nthe word is not suitable in any of the sentences.\nCorroborate\nA. Recent research seems to corroborate his theory.\nB. Employment trends corroborate the dismal economic picture.\nC. There was no one to corroborate her story about the disturbance in the lounge.",
+    "q_image": "",
+    "opts": [
+      "Only B",
+      "A and C",
+      "A, B and C",
+      "B and C",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 4,
+    "section": "English Language",
+    "q": "Read the passage given below and answer the questions that follow.\nIt is well accorded that COVID-19 extracts a huge toll on the mental health of patients and leaves\nbehind a slew of neurological sequelae in its wake. However, what is alarming is the wide gamut of mental\nand neurological disorders seen even in those with milder symptoms. Such patients frequently reported being\nanxious, depressed and having difficulty in sleeping. A higher incidence of frank psychosis manifesting as\ndisorganization of thought processes and personality disorders was also reported. Many survivors of COVID-\n19 had to battle substance abuse in its immediate aftermath. There was a steep increase in the amount of\nalcohol consumed by regular drinkers. Persons who had stopped smoking and consuming alcohol resumed\ntheir habit in disconcerting numbers.\nThe occurrence of neurodegenerative disorders like Parkinsonism is concerning as this would bring long-\nterm disability in the form of impaired mobility and memory decline. It has been hypothesized that the\ncausative mechanism for many of the neurological conditions due to COVID-19 may be the direct invasion\nof the nervous system by the virus, an increased tendency to blood clotting or an exaggerated immune\nresponse by the body. Various other factors like pre-existing psychiatric illness, prolonged quarantine,\nperceived lack of organizational support, and social stigma are risk factors. Anxiety, Nervousness, and Post-\ntraumatic stress disorder are often fuelled by fear of infecting other family members, physical\ndistancing, loneliness, and ________ at home in cramped quarters.\nThe pandemic has radically transformed the way businesses function and services delivered. Remote\nworking disrupts a healthy-work life balance. Face to face contact and human interactions which were\nconsidered so essential for emotional well-being has taken a backseat. Lack of comforting physical contact\nlike shaking hands and hugging friends is stressful and disconcerting. Online classes and home-schooling\nhave placed a gargantuan burden both on students and parents. Lack of access to reliable computer\nhardware and spotty internet connections, particularly in rural areas and in the economically backward have\ncreated a new class divide. Children have been deprived of co-curricular activities, participation in group\nevents and sports which is essential for their holistic development. Mental stress and fatigue have increased\nmanyfold due to the rigours imposed by virtual learning.\nAccording to the passage, what is alarming considering COVID-19's toll on mental health?",
+    "q_image": "",
+    "opts": [
+      "The rise of the black fungus wrecking havoc on patients with mild immunity.",
+      "The steep increase in the amount of alcohol consumption by regular drinkers.",
+      "The rise of virtual learning and work from home.",
+      "The wide range of mental and neurological disorders in patients with milder symptoms.",
+      "None of the above."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 5,
+    "section": "English Language",
+    "q": "What is the synonym of the word gargantuan mentioned in the passage?",
+    "q_image": "",
+    "opts": [
+      "Puny",
+      "Miniscule",
+      "Tepid",
+      "Enormous",
+      "Opulent"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 6,
+    "section": "English Language",
+    "q": "Choose the most appropriate option to fill in the blank for the sentence given below.\nAnxiety, Nervousness, and Post-traumatic stress disorder are often fuelled by fear of infecting other\nfamily members, physical distancing, loneliness, and ________ at home in cramped quarters.",
+    "q_image": "",
+    "opts": [
+      "Freedom",
+      "Luxury",
+      "Independence",
+      "Confinement",
+      "Consent"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 7,
+    "section": "English Language",
+    "q": "What is the hypothesis behind the many neurological conditions arising due to COVID-19?",
+    "q_image": "",
+    "opts": [
+      "A direct invasion of the nervous system by the virus.",
+      "An increased tendency to blood clotting.",
+      "An exaggerated immune response by the body.",
+      "All of the above",
+      "None of the above."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 8,
+    "section": "English Language",
+    "q": "What is the synonym of the word function given in the passage?",
+    "q_image": "",
+    "opts": [
+      "Conjugate",
+      "Break",
+      "Impede",
+      "Operate",
+      "Conclude"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 9,
+    "section": "English Language",
+    "q": "Choose the statement that is false according to the passage.",
+    "q_image": "",
+    "opts": [
+      "COVID patients frequently reported difficulty in sleeping",
+      "Smoking and consumption of alcohol decreased due to prolonged quarantine.",
+      "Disorders like Parkinsonism occurring during COVID is a cause of concern.",
+      "Prolonged quarantine is a risk factor that can be associated with COVID related neurological conditions.",
+      "None of the above."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 10,
+    "section": "English Language",
+    "q": "Choose the statement that is true according to the passage.",
+    "q_image": "",
+    "opts": [
+      "People are able to enjoy the work life balance due to work from home.",
+      "Spending time inside has given people an opportunity for self reflection.",
+      "Less exposure to the pollution of the outside world is a blessing for many.",
+      "The imposed virtual learning has increased the mental stress and fatigue in students.",
+      "None."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 11,
+    "section": "English Language",
+    "q": "How did the pandemic transform the way businesses are run?",
+    "q_image": "",
+    "opts": [
+      "Remote working has disrupted the work-life balance.",
+      "There is a constant need to be readily available for work.",
+      "Face to face contact and human interactions have taken a back seat.",
+      "Both 1 and 3",
+      "None of the above."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 12,
+    "section": "English Language",
+    "q": "What is the synonym of the word accord ?",
+    "q_image": "",
+    "opts": [
+      "Transpose",
+      "Expel",
+      "Reject",
+      "Agreement",
+      "Admit"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 13,
+    "section": "English Language",
+    "q": "In the following question, an idiomatic expression or a proverb is highlighted. Select the\nalternative which best describes its use in the sentence.\nHercules lock of hair was his Achilles heel",
+    "q_image": "",
+    "opts": [
+      "Weakness that could result in failure",
+      "A desirable quality",
+      "A hated quality",
+      "A wonderful characteristic",
+      "The strongest ability"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 14,
+    "section": "English Language",
+    "q": "In the following questions, an idiomatic expression and its four meanings are\ngiven. Find out the correct meaning of the idiomatic expression.\nTo be in the doldrums",
+    "q_image": "",
+    "opts": [
+      "to be in a tough spot",
+      "to be caught lying",
+      "to be caught in a hurricane",
+      "to be misunderstood",
+      "to be in low spirits"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 15,
+    "section": "English Language",
+    "q": "In the given question, four words are printed in bold and are numbered A, B, C, and D. Of\nthese, the positions of two of these words may be incorrect and need to be exchanged to make\nthe sentence correct. Find the two words which need to be exchanged. In case the given sentence is\ncorrect, your answer is (E), i.e. No improvement.\nUnion minister M.J. Akbar newspapers (A) to take legal action against several women journalists (B) who\nhad accused (C) him of sexual harassment at two threatened (D) where he had been an editor.",
+    "q_image": "",
+    "opts": [
+      "Both A-B and C-D",
+      "Only C-D",
+      "Only A-B",
+      "Only A-D",
+      "No improvement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 16,
+    "section": "English Language",
+    "q": "Directions: In the following sentence, 4 words are given in bold. Two or more of these words\nare incorrectly placed and need to be interchanged. If there is no need for interchanging then\n‘No Error’ can be selected.\nVikram was very demolishing (A) with his handling of the chinaware (B), he ended up reckless (C) most of\nthe pieces before they even turned up (D). No Error (E)",
+    "q_image": "",
+    "opts": [
+      "ABDC",
+      "BACD",
+      "CBAD",
+      "DCBA",
+      "No Error"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 17,
+    "section": "English Language",
+    "q": "In the following question, a sentence is given with four words marked as (A), (B), (C) and (D).\nThese words may or may not be placed in their correct order. Four options with different\narrangements of these words have been provided. Mark the option with the correct arrangement as the\nanswer. If no rearrangement is required, mark option (5) as your answer.\nThe article (A) was a page five hopefully (B) and filler (C) will be forgotten (D) in a couple of days.",
+    "q_image": "",
+    "opts": [
+      "A-C",
+      "B-C",
+      "C-D",
+      "B-D",
+      "No rearrangement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 18,
+    "section": "English Language",
+    "q": "In the following question, a sentence is given with four words marked as (A), (B), (C) and (D).\nThese words may or may not be placed in their correct order. Four options with different\narrangements of these words have been provided. Mark the option with the correct arrangement as the\nanswer. If no rearrangement is required, mark option (5) as your answer.\nAfter entertainment (A) the army (B), he restarted his leaving (C) career on the west coast with movie (D)\nand television roles.",
+    "q_image": "",
+    "opts": [
+      "A-B",
+      "B-C",
+      "C-D",
+      "A-C",
+      "No rearrangement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 19,
+    "section": "English Language",
+    "q": "In the following question, a sentence is given with four words marked as (A), (B), (C) and (D).\nThese words may or may not be placed in their correct order. Four options with different\narrangements of these words have been provided. Mark the option with the correct arrangement as the\nanswer. If no rearrangement is required, mark option (5) as your answer.\nHe helped (A) her up and she tried (B) to stand, but her legs (C) felt like rubber (D).",
+    "q_image": "",
+    "opts": [
+      "C-D",
+      "D-B",
+      "B-A",
+      "A-D",
+      "No rearrangement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 20,
+    "section": "English Language",
+    "q": "Directions: Below, a passage is given with five blanks labelled (A)- (E). Below the passage,\nfive options are given for each blank. Choose the word that fits each blank most\nappropriately in the context of the passage, and mark the corresponding answer.\nTiny plastic particles washed off products like synthetic clothing and car tyres account for up to a third of the\nplastic polluting oceans, __ (A) __ eco-systems and human health, a top conservationist body warned.\nUnlike the __ (B) __ images of country-sized garbage patches floating in the oceans, the micro plastic\nparticles that wash off textiles and roadways leave the waterways looking __ (C) __.\nBut they constitute a significant part of the “plastic soup” clogging our waters — accounting for between\n15% and 31% of the estimated 9.5 million tones of plastic released into the oceans each year, according to the\nInternational Union for Conservation of Nature (IUCN).\nIn its report “Primary Micro plastics in the Oceans”, the IUCN found that in many developed countries in\nNorth America and Europe, which have __ (D) __ waste management, tiny plastic particles are in fact a\nbigger source of marine plastic pollution than plastic waste.\nIn addition to car tyres and synthetic textiles, such particles stem from everything from marine coatings and\nroad markings, to city dust and the micro beads in cosmetics. “Plastic waste is not all there is to ocean\nplastics,” IUCN chief Inger Andersen said in a statement, insisting that “we must look far beyond waste\nmanagement if we are to __ (E) __ ocean pollution in its entirety”.\nWhich of the following words most appropriately fits the blank labelled (D)?",
+    "q_image": "",
+    "opts": [
+      "Effective",
+      "Coherent",
+      "Rational",
+      "Forcible",
+      "Productive"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 21,
+    "section": "English Language",
+    "q": "Which of the following words most appropriately fits the blank labelled (C)?",
+    "q_image": "",
+    "opts": [
+      "Unmarked",
+      "Flawless",
+      "Pristine",
+      "Unblemished",
+      "Sterile"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 22,
+    "section": "English Language",
+    "q": "Which of the following words most appropriately fits the blank labelled (A)?",
+    "q_image": "",
+    "opts": [
+      "Deciding",
+      "Striking",
+      "Modifying",
+      "Impacting",
+      "Acting"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 23,
+    "section": "English Language",
+    "q": "Which of the following words most appropriately fits the blank labelled (B)?",
+    "q_image": "",
+    "opts": [
+      "Horrifying",
+      "Shocking",
+      "Repelling",
+      "Bewildering",
+      "Offensive Which of the following words most appropriately fits the blank labelled (E)?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 24,
+    "section": "English Language",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "Post",
+      "Communicate",
+      "Convey",
+      "Speech",
+      "Address"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 25,
+    "section": "English Language",
+    "q": "In the following question, two columns are given containing three phrases each. In the first\ncolumn, phrases are A, B, and C, and in the second column, the phrases are D, E, and F. A\nphrase from the first column may or may not connect with a phrase from the second column to make a\ngrammatically and contextually correct sentence. There are five options, four of which display the\nsequence(s) in which the phrases can be joined to form a grammatically and contextually correct\nsentence. If none of the options forms a correct sentence after combination, select ‘None of these’ as\nyour answer.\nColumn 1) Column 2)\nA) Local officials in 15 areas D) was built to protect the land of the\naround the capital were also asked natives.\nB) Volvo cars are understandably E) to remove anything lying in the\nsuperior to their streets that could be used as projectiles.\nC) Kohli remains the highest run F) indeed needed but wasn't given to the\nscorer in poor in time.",
+    "q_image": "",
+    "opts": [
+      "A-F",
+      "C-D",
+      "A-E",
+      "B-D",
+      "B-E"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 26,
+    "section": "English Language",
+    "q": "In the following question, two columns are given containing three phrases each. In the first\ncolumn, phrases are A, B, and C, and in the second column, the phrases are D, E, and F. A\nphrase from the first column may or may not connect with a phrase from the second column to make a\ngrammatically and contextually correct sentence. There are five options, four of which display the\nsequence(s) in which the phrases can be joined to form a grammatically and contextually correct\nsentence. If none of the options forms a correct sentence after combination, select ‘None of these’ as\nyour answer.\nColumn 1) Column 2)\nA) We talk and plan and dream about D) a big part of who I am and I have\nnothing but no desire to trade any of it away.\nB) There were many people in his E) excited to see her dressed up for\ndream, and the occasion.\nC) Everything I found in books that F) he thought he should remember\npleased me I retained in my memory them.",
+    "q_image": "",
+    "opts": [
+      "B -E and C-F",
+      "A-E, B-F and C-D",
+      "A-F and C-D",
+      "B-F",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 27,
+    "section": "English Language",
+    "q": "In the following question, two columns are given containing three phrases each. In the first\ncolumn, phrases are A, B, and C, and in the second column, the phrases are D, E, and F. A\nphrase from the first column may or may not connect with a phrase from the second column to make a\ngrammatically and contextually correct sentence. There are five options, four of which display the\nsequence(s) in which the phrases can be joined to form a grammatically and contextually correct\nsentence. If none of the options forms a correct sentence after combination, select ‘None of these’ as\nyour answer.\nColumn 1) Column 2)\n(A) The Consumer Protection Act (D) but there are many dark sides to it\nshould be implemented more strictly once you enter into this\n(E) so that the businessmen become\n(B) The music industry is now\nalert and are compelled to stop the\nsaturated with too many singers\nunfair practice\n(F) and the lifetime of a singer is\nC) The showbiz business is not all\nhence reduced to one or two songs\nrosy as it seems\nonly",
+    "q_image": "",
+    "opts": [
+      "A-F",
+      "B-F, C-D",
+      "A-E, B-F and C-D",
+      "B-F, C-E",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 28,
+    "section": "English Language",
+    "q": "In the following sentence, a part is underlined. Below are given alternatives to the underlined\npart, which may improve the sentence. Choose the correct alternative. In case no\nimprovement is needed, choose the alternative that indicates 'No improvement’.\nThe new captain's poker face made them unable for gauge his mood.\nA.unable in gauge his mood\nB. unable to assess his mood\nC. unable to gauge his mood",
+    "q_image": "",
+    "opts": [
+      "Only A",
+      "Only C",
+      "Only B",
+      "Both B and C",
+      "No improvement"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 29,
+    "section": "English Language",
+    "q": "In the following sentence, a word has been emboldened. Select the best alternative for the\nbold word from the given options.\nI was shocked at the audacity and brazenness of the gangsters.",
+    "q_image": "",
+    "opts": [
+      "Cowardice",
+      "Insolence",
+      "Presumption",
+      "Brevity",
+      "Heed"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 30,
+    "section": "English Language",
+    "q": "Direction: In the following question, out of four alternatives, select the word which can replace the\nunderlined word given in the question. In case no replacement is needed, select 'None of these'.\nThose who follow world affairs would not be entirely wise to consign colonialism to the proverbial dustbin\nof history, as it remains a relevant factor in understanding the problems and the dangers of the world.",
+    "q_image": "",
+    "opts": [
+      "Announce",
+      "Circulate",
+      "Indicate",
+      "Assign",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 31,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n64, 62, 65, 60, 67, ?",
+    "q_image": "",
+    "opts": [
+      "50",
+      "62",
+      "64",
+      "56",
+      "66"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 32,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n6, 8, 11, 16, 23, ?",
+    "q_image": "",
+    "opts": [
+      "32",
+      "36",
+      "34",
+      "28",
+      "42"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 33,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n8.5, 9.5, 21, 66, ?, 1345",
+    "q_image": "",
+    "opts": [
+      "258",
+      "268",
+      "274",
+      "284",
+      "278"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 34,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n29, 30, 26, 35, ?, 44",
+    "q_image": "",
+    "opts": [
+      "31",
+      "23",
+      "27",
+      "15",
+      "19"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 35,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n77, 76, 84, 57, ?, – 4",
+    "q_image": "",
+    "opts": [
+      "81",
+      "100",
+      "121",
+      "144",
+      "169"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 36,
+    "section": "Quantitative Aptitude",
+    "q": "What should come in place of the question mark '?' in the following number series?\n0.25, 1.25, 4.5, ?, 70, 355",
+    "q_image": "",
+    "opts": [
+      "16.25",
+      "16",
+      "16.75",
+      "16.5",
+      "17.25"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 37,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Read the pie chart carefully and answer the following questions.\nNote: No new employees joined the given banks of left the given banks from January 2015 to December\n2015.\nWhat is the average number of scale I officers in Banks D, E and F?",
+    "q_image": "",
+    "opts": [
+      "63",
+      "65",
+      "64",
+      "67",
+      "68"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 38,
+    "section": "Quantitative Aptitude",
+    "q": "In January 2015, the number of male Scale I Officers in Bank B was three times the number of\nfemale Scale I Officers in the same bank. If in Bank D, the number of female Scale I Officers was\nthe same as that in bank B; what was the number of male Scale I Officers in Bank D?",
+    "q_image": "",
+    "opts": [
+      "80",
+      "78",
+      "82",
+      "84",
+      "76"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 39,
+    "section": "Quantitative Aptitude",
+    "q": "In January 2015, 32% of the total number of scale I officers in Banks B, D, and E together were\nunmarried. If the respective ratio between the number of unmarried officers in these banks was 3 :\n2 : 3, what was the number of unmarried Scale I officers in Bank D?",
+    "q_image": "",
+    "opts": [
+      "18",
+      "24",
+      "14",
+      "20",
+      "16"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 40,
+    "section": "Quantitative Aptitude",
+    "q": "In December 2014, 4% of the candidates who applied for a job as Scale 1 officer were recruited in\nBank A. If Bank A had 44 Scale I officers in 2014, what was the number of candidates who applied\nfor the job?",
+    "q_image": "",
+    "opts": [
+      "240",
+      "450",
+      "400",
+      "250",
+      "300"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 41,
+    "section": "Quantitative Aptitude",
+    "q": "In January 2016, some Scale I Officers resigned from Bank C and all of them joined Bank B. If the\nresultant respective ratio between the number of Scale I Officers in Bank C and that in Bank B is\n24 : 13, what is the number of Scale I Officers who resigned from Bank C?",
+    "q_image": "",
+    "opts": [
+      "3",
+      "6",
+      "7",
+      "4",
+      "5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 42,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 + 7x + 10 = 0\nII. y2 + 5y + 4 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 43,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 + 35x + 306 = 0\nII. y2 + 41y + 408 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 44,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 - 19x + 60 = 0\nII. y2 - 20y + 99 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 45,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 - 28x + 195 = 0\nII. y2 - 21y + 108 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 46,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 + 19x + 78 = 0\nII. 45y2 + 83y + 28 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 47,
+    "section": "Quantitative Aptitude",
+    "q": "In the given question, two equations numbered l and II are given. Solve both the equations and\nmark the appropriate answer.\nI. x2 + 31x + 240 = 0\nII. 5y2 + 60y + 135 = 0",
+    "q_image": "",
+    "opts": [
+      "x > y",
+      "x < y",
+      "x ≥ y",
+      "x ≤ y",
+      "x = y or relationship between x and y cannot be established."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 48,
+    "section": "Quantitative Aptitude",
+    "q": "The average monthly savings of Shifa for the first 5 months is Rs. 2120, for the next 3 months is\nRs. 4260 and for the remaining months of the year is Rs. 3140. Now, the average monthly\nexpenditure for the complete year is Rs. 11000. Find the total income of the year",
+    "q_image": "",
+    "opts": [
+      "Rs. 170,520",
+      "Rs. 174,680",
+      "Rs. 180,950",
+      "Rs. 167,940",
+      "Rs. 190,360"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 49,
+    "section": "Quantitative Aptitude",
+    "q": "In a class, 60% speak Hindi and 70% speak English. If 28% of the students can’t speak any of the\ntwo languages, then what % of the students in the class can speak both the languages?",
+    "q_image": "",
+    "opts": [
+      "55%",
+      "56%",
+      "58%",
+      "60%",
+      "62%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 50,
+    "section": "Quantitative Aptitude",
+    "q": "Two equal glasses are filled with alcohol and water respectively. First glass is filled with (2/5) of\nalcohol and second glass is filled with (1/4) of alcohol. Then, the glasses are filled up with water\nand the resultant mixture is put into a big Jug. Find the ratio of alcohol and water in the jug.",
+    "q_image": "",
+    "opts": [
+      "13 : 27",
+      "23 : 25",
+      "17 : 19",
+      "14 : 25",
+      "18 : 17"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 51,
+    "section": "Quantitative Aptitude",
+    "q": "A train met with an accident 100 km from station P. It completes the remaining journey at 2/3 of\nthe previous speed and reached 42 min late at station Q. If the accident had taken place 40 km\nfurther, it would have been only 22 min late. Then, what is the original speed of the train?",
+    "q_image": "",
+    "opts": [
+      "60 km/hr",
+      "40 km/hr",
+      "30 km/hr",
+      "36 km/hr",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 52,
+    "section": "Quantitative Aptitude",
+    "q": "A Man rows to a place 63 km far and comes back in 16 hours. He finds that he can row 18 km with\nthe flow in the same time taken to row 14 km against the flow. What is the speed of the stream?",
+    "q_image": "",
+    "opts": [
+      "1 km/hr",
+      "2 km/hr",
+      "2.5 km/hr",
+      "4 km/hr",
+      "5 km/hr"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 53,
+    "section": "Quantitative Aptitude",
+    "q": "A and B entered into a partnership by investing Rs. 8000 and Rs. 6000 respectively. After 8\nmonths, A withdrew half his investment while B invested 1.5 times more of his investment more\nand C joined the partnership with Rs. 12000. Find the profit share of C after 1 year if A got Rs. 8000 as\nprofit.",
+    "q_image": "",
+    "opts": [
+      "Rs. 5400",
+      "Rs. 4500",
+      "Rs. 5000",
+      "Rs. 4800",
+      "Rs. 6000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 54,
+    "section": "Quantitative Aptitude",
+    "q": "Directions: Read the given pie and table carefully and answer the following questions.\nThe pie chart shows the percentage distribution of people who found COVID – 19 positive in four\nmajor cities of India from 1st July to 31st August 2020 and the table shows the number of people who tested\npositive in July from these cities.\nCity July\nMumbai 230068\nDelhi 48149\nKolkata 83468\nChennai 147890\nNumber of people from Delhi who tested positive in July is what percent of total positive tested people of\nthat city?",
+    "q_image": "",
+    "opts": [
+      "56%",
+      "57.32%",
+      "62.58%",
+      "60%",
+      "59.86%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 55,
+    "section": "Quantitative Aptitude",
+    "q": "What is the average of the number of people in August from Mumbai and the number of people in\nJuly from Chennai who tested positive?",
+    "q_image": "",
+    "opts": [
+      "258911",
+      "324526",
+      "242478",
+      "278562",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 56,
+    "section": "Quantitative Aptitude",
+    "q": "Total numbers of cases in July are how much more or less than the total number of cases in August\nof all four cities?",
+    "q_image": "",
+    "opts": [
+      "509575",
+      "690425",
+      "180850",
+      "245689",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 57,
+    "section": "Quantitative Aptitude",
+    "q": "Total peoples tested positive in Delhi is what percent of the total number of people tested positive\nin Mumbai?",
+    "q_image": "",
+    "opts": [
+      "11%",
+      "14%",
+      "16%",
+      "18%",
+      "19%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 58,
+    "section": "Quantitative Aptitude",
+    "q": "If the recovery rate is 70% and the death rate is 10% of total tested cases in Chennai at the end of\nJuly. How many active cases are on 1st August, if no case is found on that day?",
+    "q_image": "",
+    "opts": [
+      "32593",
+      "21500",
+      "15320",
+      "29578",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 59,
+    "section": "Quantitative Aptitude",
+    "q": "The cost of printing a book increased from Rs. 96 to Rs. 120 from the year 2013 to 2018, such that\nthe total money spent on printing books by a printing press increased in the ratio 5 ∶ 6. If the\nprinting press printed 200 books in the year 2013, how many books did they print in the year 2018?",
+    "q_image": "",
+    "opts": [
+      "176",
+      "192",
+      "216",
+      "252",
+      "223"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 60,
+    "section": "Quantitative Aptitude",
+    "q": "What is the total compound interest on Rs. 45000 for 3 years when the sum is divided into a ratio\nof 4 : 5 and rate of interest on a small sum is 10% and 20% on the large sum? (Compounded\nannually)",
+    "q_image": "",
+    "opts": [
+      "Rs. 20010",
+      "Rs. 24820",
+      "Rs. 25630",
+      "Rs. 26400",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 61,
+    "section": "Quantitative Aptitude",
+    "q": "A alone can do a piece of work in 15 days, while B alone can do it in 20 days. They work together\nfor 6 days and the rest of the work is done by C in 6 days. If they get Rs 800 for the whole work,\nhow should they divide the money?",
+    "q_image": "",
+    "opts": [
+      "Rs. 320, Rs. 240 and Rs. 240",
+      "Rs. 640, Rs. 280 and Rs. 260",
+      "Rs. 320, Rs. 420 and Rs. 360",
+      "Rs. 360, Rs. 420 and Rs. 240",
+      "Rs. 320, Rs. 240 and Rs. 720"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 62,
+    "section": "Quantitative Aptitude",
+    "q": "If a 50 liters mixture of milk and water is in the ratio of 3 : 2. After removal of 10 liters mixture, 12\nliters milk and 12 liters water is added into the mixture. Find the final ratio of water and milk in the\nmixture.",
+    "q_image": "",
+    "opts": [
+      "9 : 7",
+      "7 : 9",
+      "3 : 2",
+      "2 : 3",
+      "1 : 1"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 63,
+    "section": "Quantitative Aptitude",
+    "q": "A shopkeeper gives discounts of 10% on the T.V.. The marked price of T.V. is Rs. 8000. After\nallowing discount, a shopkeeper gain 20 %. Find the cost price of a T.V.",
+    "q_image": "",
+    "opts": [
+      "Rs. 7500",
+      "Rs. 8500",
+      "Rs. 3500",
+      "Rs. 4050",
+      "Rs. 6000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 64,
+    "section": "Quantitative Aptitude",
+    "q": "Five dice are tossed together. What is the probability of getting different faces in all of the dice?",
+    "q_image": "",
+    "opts": [
+      "6!/66",
+      "6!/65",
+      "5!/65",
+      "5!/66",
+      "6!/55"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 65,
+    "section": "Quantitative Aptitude",
+    "q": "A circular pavement was to be built around a square park of side 18 m. The maximum width of\npavement is 5 m. Calculate the cost of cementing the pavement at Rs. 15 per m2.",
+    "q_image": "",
+    "opts": [
+      "Rs. 5000",
+      "Rs. 4750",
+      "Rs. 4360",
+      "Rs. 4380",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 66,
+    "section": "Reasoning Ability",
+    "q": "Directions: Answer the questions based on the information given below.\nJulie starts her journey from point ‘Z’ and walks 10km east to reach point ‘Y’ then she turns to her\nleft and walks 3km to reach point ‘R’ and then she turns to her left again and walks 12km to reach point ‘S’.\nAgain, she turns to her left and walks 3km to reach point ‘E’. Finally, she took to her right and moves for\nanother 4km to reach point J.\nPoint E is in which direction with respect to the point R?",
+    "q_image": "",
+    "opts": [
+      "South west",
+      "North west",
+      "North east",
+      "North",
+      "South east"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 67,
+    "section": "Reasoning Ability",
+    "q": "If point K is southwest of Y and 8km south of point Z then what is the shortest distance (Approx)\nbetween point K and point Y?",
+    "q_image": "",
+    "opts": [
+      "10 km",
+      "13 Km",
+      "8 Km",
+      "11 Km",
+      "15 Km"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 68,
+    "section": "Reasoning Ability",
+    "q": "Which among the following is to the northwest of Point Z?",
+    "q_image": "",
+    "opts": [
+      "Point J",
+      "Point E",
+      "Point S",
+      "Point R",
+      "Point Y"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 69,
+    "section": "Reasoning Ability",
+    "q": "In the given word ‘MOTIVATION’ if the vowels are changed to the next letters and the consonants\nare changed to the previous letters as per the alphabetical series, then which letter/letters are\nrepeated more than once?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "None"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 70,
+    "section": "Reasoning Ability",
+    "q": "If 2 is added to each even digit and 1 is subtracted from each odd digit in the number 945217, then\nwhat will be the sum of number/numbers not repeated in the new number?",
+    "q_image": "",
+    "opts": [
+      "6",
+      "8",
+      "4",
+      "5",
+      "7"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 71,
+    "section": "Reasoning Ability",
+    "q": "How many pair of letters are there in the word “EFFECTIVE” which has as many letters (in both\nforward and backward direction) in between as they have in English alphabet series?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 72,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions that follow:\nNine boxes A, B, C, D, E, F, G, H, and I are kept one above the other not necessarily in the same\norder.\nThree boxes are kept between A and B. Equal number of boxes are kept above and below A. Number of\nboxes kept above B is same as the number of boxes kept below C. Only two boxes are kept between C and I.\nOne box is kept between A and G, which is not kept immediate above I. No box is kept between F and D,\nwhich is not kept above F. E is placed below H, which is kept immediate below D.\nHow many boxes are kept between F and A?",
+    "q_image": "",
+    "opts": [
+      "None",
+      "Two",
+      "One",
+      "Three",
+      "More than three"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 73,
+    "section": "Reasoning Ability",
+    "q": "Which box is kept immediately below H?",
+    "q_image": "",
+    "opts": [
+      "I",
+      "F",
+      "D",
+      "E",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 74,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a certain way and so form a group, find the one which does\nnot belong to the group.",
+    "q_image": "",
+    "opts": [
+      "AG",
+      "BD",
+      "FH",
+      "IC",
+      "DA"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 75,
+    "section": "Reasoning Ability",
+    "q": "Which of the following pairs represent the lowermost and the topmost box?",
+    "q_image": "",
+    "opts": [
+      "EF",
+      "EB",
+      "CB",
+      "CF",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 76,
+    "section": "Reasoning Ability",
+    "q": "Which of the following statement is / are true?",
+    "q_image": "",
+    "opts": [
+      "Only one box is kept between F and A",
+      "All of the given statements are true",
+      "Three boxes are kept between E and H",
+      "I is kept immediately below G",
+      "None of the given statement is true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 77,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the question below are given three statements followed by two conclusions\nnumbered I and II. You have to take the given statements to be true even if they seem to be at\nvariance with commonly known facts. Read all the conclusions and then decide which of the given\nconclusions logically follows from the given statements disregarding commonly known facts.\nStatements:\nSome A are B.\nAll B are C.\nOnly a few D are C.\nConclusions:\nI. Some D are not A.\nII. Some D are not B.",
+    "q_image": "",
+    "opts": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Both conclusion I and II follow",
+      "Either conclusion I or II follows",
+      "Neither conclusion I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 78,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the question below are given three statements followed by two conclusions\nnumbered I and II. You have to take the given statements to be true even if they seem to be at\nvariance with commonly known facts. Read all the conclusions and then decide which of the given\nconclusions logically follows from the given statements disregarding commonly known facts.\nStatements:\nSome Sparrow are Parrot\nOnly a few Parrot are Camel.\nAll Camel are Goats.\nConclusions:\nI. All Sparrow are Parrot.\nII. Some Parrot are not Camel.",
+    "q_image": "",
+    "opts": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Both conclusion I and II follow",
+      "Either conclusion I or II follows",
+      "Neither conclusion I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 79,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the question below are given three statements followed by two conclusions\nnumbered I and II. You have to take the given statements to be true even if they seem to be at\nvariance with commonly known facts. Read all the conclusions and then decide which of the given\nconclusions logically follows from the given statements disregarding commonly known facts.\nStatements:\nOnly a few Bus is Car.\nSome Car is Train.\nSome Train is Truck.\nConclusions:\nI. Some Car is Truck.\nII. All Bus being Car is a possibility.",
+    "q_image": "",
+    "opts": [
+      "Only I follow",
+      "Only II follow",
+      "Both I and II follows",
+      "Either I or II follows",
+      "Neither I nor II follows"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 80,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions that follow:\nSeven persons A, C, P, L, J, K, F are sitting around a circular table but not necessarily in the same\norder. Only two of them are facing inside. Three persons are sitting between F and P when counted from the\nright of F. L is sitting second to the left of K who is facing inside. L is not an immediate neighbor of A or F.\nBoth the immediate neighbors of K are facing in opposite direction as that of K. The person sitting adjacent\nto both J and P is facing outside. A is sitting to the immediate left of F and facing outside. J is an immediate\nneighbor of neither F nor P. L is sitting to the immediate left of P.\nWho is sitting to the immediate right of J?",
+    "q_image": "",
+    "opts": [
+      "P",
+      "C",
+      "F",
+      "L",
+      "A"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 81,
+    "section": "Reasoning Ability",
+    "q": "How many persons are sitting between K and P?",
+    "q_image": "",
+    "opts": [
+      "1",
+      "2",
+      "4",
+      "3",
+      "Either 2 or 3 persons"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 82,
+    "section": "Reasoning Ability",
+    "q": "If A and L interchange their positions, who will be sitting to the third left of L?",
+    "q_image": "",
+    "opts": [
+      "P",
+      "K",
+      "A",
+      "L",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 83,
+    "section": "Reasoning Ability",
+    "q": "Four of the following five are alike in a way and hence form a group. Choose the one that does not\nbelong to the group.",
+    "q_image": "",
+    "opts": [
+      "F",
+      "K",
+      "J",
+      "L",
+      "A"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 84,
+    "section": "Reasoning Ability",
+    "q": "Who is sitting to the fifth right of F?",
+    "q_image": "",
+    "opts": [
+      "A",
+      "L",
+      "P",
+      "K",
+      "C"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 85,
+    "section": "Reasoning Ability",
+    "q": "Study the following information and answer the given questions.\nEight members of a family are living in a house, in which two are married couples. N is the father\nof D. E is married to N. G and D are siblings. C is married to G. N has no son. K is the father of E. Q is the\nonly son of C. A is the brother-in-law of N.\nWho among the following is the son-in-law of N?",
+    "q_image": "",
+    "opts": [
+      "G",
+      "K",
+      "C",
+      "Q",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 86,
+    "section": "Reasoning Ability",
+    "q": "How K is related to D?",
+    "q_image": "",
+    "opts": [
+      "Father",
+      "Uncle",
+      "Grand Mother",
+      "Grand Father",
+      "None of these Which of the following statement is true?"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 87,
+    "section": "Reasoning Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "K is the mother of A",
+      "D and C are Siblings",
+      "Q is the son of A",
+      "N is the husband of E",
+      "None is correct"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 88,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions that follow:\nFive persons T, N, R, C and G went to the market on different days of a week from Monday to\nFriday, but not necessarily in the same order. They wore different types of cloths among Cotton, Silk, Wool,\nLeather and Linen. Additional information about them is given below.\nThree persons went to the market between the persons who wore Cotton and Leather. T wore Silk cloth and\nwent on one of the days after C. C did not wear Linen. Two persons went to the market between R and N. R\nand G did not wear Leather. The number of persons who went to the market before N is more than the\nnumber of persons went to the market after N. C did not go to the market on Monday.\nWho went to the market on Monday?",
+    "q_image": "",
+    "opts": [
+      "C",
+      "R",
+      "G",
+      "N",
+      "None of these"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 89,
+    "section": "Reasoning Ability",
+    "q": "C wore which type of cloth?",
+    "q_image": "",
+    "opts": [
+      "Leather",
+      "Linen",
+      "Cotton",
+      "Wool",
+      "Either 1 or 2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 90,
+    "section": "Reasoning Ability",
+    "q": "How many persons went to the market between T and N?",
+    "q_image": "",
+    "opts": [
+      "One",
+      "Two",
+      "Zero",
+      "Three",
+      "Four"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 91,
+    "section": "Reasoning Ability",
+    "q": "Who went to the market at the first and last respectively?",
+    "q_image": "",
+    "opts": [
+      "R, C",
+      "G, N",
+      "T, N",
+      "G, R",
+      "C, N"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 92,
+    "section": "Reasoning Ability",
+    "q": "Which of the following statement is false?",
+    "q_image": "",
+    "opts": [
+      "R did not go on Friday.",
+      "C did not wear Leather.",
+      "One person went ot the market between the persons who wore Wool and Leather.",
+      "N went on Thursday.",
+      "C and T went to the market on consecutive days."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 93,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the following questions, assuming the given statements to be true, find which of the\ntwo conclusions I and II given them is/are definitely follow.\nStatement: P ≤ Q < S = T ≥ U ≥ W < Z\nConclusion:\nI. S > W\nII. W = T",
+    "q_image": "",
+    "opts": [
+      "Only conclusion II is true",
+      "Either conclusion I or II is true",
+      "Both conclusion I and II are true",
+      "Neither conclusion I nor II is true",
+      "Only conclusion I is true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 94,
+    "section": "Reasoning Ability",
+    "q": "Direction: In the given question, assuming the given statements to be true, find which of the\nconclusions I and II given below the statements is/are definitely true.\nStatements:\nH > G < C, E ≥ K < D ≤ B, E = C\nConclusions:\nI.G ≤ D\nII. G>D",
+    "q_image": "",
+    "opts": [
+      "If only conclusion I follows",
+      "If only conclusion II follows",
+      "If either conclusion I or conclusion II follows",
+      "If neither conclusion I nor conclusion II follows",
+      "If both conclusions follow"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 95,
+    "section": "Reasoning Ability",
+    "q": "Directions: In the following question assuming the given statements to be true, find which of the\nconclusion among the given conclusions is/ are definitely true and then give your answers\naccordingly\nStatements: H ≤ X ≤ R = O > T; Y = F ≥ R > D\nConclusions:\nI. H ≥ Y\nII. Y > H",
+    "q_image": "",
+    "opts": [
+      "Only I is true",
+      "Only II is true",
+      "Either I or II is true",
+      "Both I and II is true",
+      "Neither I nor II is true"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 96,
+    "section": "Reasoning Ability",
+    "q": "Directions: Study the following information carefully and answer the questions that follow:\nSix persons P, Q, R, S, T and U were born in three different months May, September and\nNovember, on two different dates- 9 and 16 not necessarily in the same order.\nP was born after R but not on the same date as that of R. Number of persons born before S is equal to the\nnumber of persons born after T. Q and U were born in the same month. T was born in a month having even\nnumber of days. Two persons were born between R and T.\nWho was born on 16th November?",
+    "q_image": "",
+    "opts": [
+      "R",
+      "P",
+      "Q",
+      "U",
+      "Either Q or U"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 97,
+    "section": "Reasoning Ability",
+    "q": "Who was born immediately before R?",
+    "q_image": "",
+    "opts": [
+      "P",
+      "Q",
+      "S",
+      "T",
+      "No one"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 98,
+    "section": "Reasoning Ability",
+    "q": "What is the square root of sum of the dates on which R and P were born?",
+    "q_image": "",
+    "opts": [
+      "16",
+      "4",
+      "5",
+      "9",
+      "25"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 99,
+    "section": "Reasoning Ability",
+    "q": "How many persons were born between P and U?",
+    "q_image": "",
+    "opts": [
+      "2",
+      "3",
+      "4",
+      "1",
+      "Cannot be determined"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  },
+  {
+    "n": 100,
+    "section": "Reasoning Ability",
+    "q": "Who was born in a month having odd number of days?",
+    "q_image": "",
+    "opts": [
+      "S",
+      "T",
+      "Q",
+      "U",
+      "R"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "E",
+    "sol": ""
+  }
+]

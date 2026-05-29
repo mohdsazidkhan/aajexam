@@ -1,0 +1,3002 @@
+[
+  {
+    "n": 1,
+    "section": "Numerical & Mental Ability",
+    "q": "Study the bar graph and answer the questions based on it.\n\nIn how many of the given years was the production of mobiles more than the average production of the given years?",
+    "q_image": "image3.jpeg",
+    "opts": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 2,
+    "section": "Numerical & Mental Ability",
+    "q": "In which year was the percentage increase in production as compared to the previous year the maximum ?",
+    "q_image": "image4.jpeg",
+    "opts": [
+      "2005",
+      "2002",
+      "2007",
+      "2003"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 3,
+    "section": "Numerical & Mental Ability",
+    "q": "What was the approximate percentage decline in the production of mobile from 2003 to 2004 ?",
+    "q_image": "image4.jpeg",
+    "opts": [
+      "27%",
+      "21%",
+      "29%",
+      "23%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 4,
+    "section": "Numerical & Mental Ability",
+    "q": "The average production of 2005 and 2006 was exactly equal to the average production of which of the following pairs of years?",
+    "q_image": "image4.jpeg",
+    "opts": [
+      "2004 and 2006",
+      "2006 and 2007",
+      "2002 and 2007",
+      "2004 and 2005"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 5,
+    "section": "Numerical & Mental Ability",
+    "q": "What was the approximate percentage increase in production of mobile in 2008 compared to that in 2001?",
+    "q_image": "image4.jpeg",
+    "opts": [
+      "195%",
+      "166.67%",
+      "200%",
+      "183.33%"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 6,
+    "section": "Numerical & Mental Ability",
+    "q": "Choose the correct mirror image of the given figure (X) from amongst the four alternatives.",
+    "q_image": "image5.jpeg",
+    "opts": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 7,
+    "section": "Numerical & Mental Ability",
+    "q": "Choose the Venn diagram which best explains relationship among given: Husband, Family, Wife",
+    "q_image": "image5.jpeg",
+    "opts": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+    ],
+    "opt_images": [
+      "image7.jpeg",
+      "image8.jpeg",
+      "image9.jpeg",
+      "image10.jpeg"
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 8,
+    "section": "Numerical & Mental Ability",
+    "q": "In the given figure if Triangle represents healthy people, Rectangle represents old persons and Circle represents men, then what is the number of those men who are healthy but not old?",
+    "q_image": "image13.jpeg",
+    "opts": [
+      "6",
+      "3",
+      "8",
+      "5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 9,
+    "section": "Numerical & Mental Ability",
+    "q": "If ‘+’ stands for division, '÷' stands for multiplication, '×' stands for subtraction and ‘-' stands for addition, the 63 × 24 + 8 ÷ 4 + 2 - 3 = ?",
+    "q_image": "image13.jpeg",
+    "opts": [
+      "61",
+      "58",
+      "63",
+      "60"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 10,
+    "section": "Numerical & Mental Ability",
+    "q": "Lion : Den :: Rabbit : (?)",
+    "q_image": "image13.jpeg",
+    "opts": [
+      "Burrow",
+      "Hole",
+      "Trench",
+      "Pit"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 11,
+    "section": "Numerical & Mental Ability",
+    "q": "Que. 11",
+    "q_image": "image13.jpeg",
+    "opts": [
+      "HURN",
+      "DUQN",
+      "EUQM",
+      "HUQM"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 12,
+    "section": "Numerical & Mental Ability",
+    "q": "How many triangles are there in the following figure ?",
+    "q_image": "image13.jpeg",
+    "opts": [
+      "12",
+      "8",
+      "14",
+      "10"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 13,
+    "section": "Numerical & Mental Ability",
+    "q": "A person moves in north direction by 9 km, then turns left and moves by 4 km, again turns left and moves by 10 km, again turns left and moves by 4 km. How far the person is from initial position?",
+    "q_image": "",
+    "opts": [
+      "9 km",
+      "1 km",
+      "14 km",
+      "4 km"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 14,
+    "section": "Numerical & Mental Ability",
+    "q": "In the following question, one word is given, followed by four words, one of which cannot be formed using the letters of the given word. Find that word.\nADMINISTRATION",
+    "q_image": "",
+    "opts": [
+      "RATION",
+      "MIND",
+      "MINISTER",
+      "STATION"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 15,
+    "section": "Numerical & Mental Ability",
+    "q": "Which one set of letters when sequentially placed at the gaps in the given letter series shall complete it? a_d_an_n_ma_a_d_m_n",
+    "q_image": "",
+    "opts": [
+      "mnadmna",
+      "nmaadna",
+      "nmadnan",
+      "nmadnna"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 16,
+    "section": "Numerical & Mental Ability",
+    "q": "Choose the correct alternative from given ones that will complete the series.\n8, 23, 38, 53, 68, (?)",
+    "q_image": "",
+    "opts": [
+      "85",
+      "78",
+      "87",
+      "83"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 17,
+    "section": "Numerical & Mental Ability",
+    "q": "Question given below consists of a statement, followed by four arguments numbered I, II, III and IV. You have to decide which of the argument(s) is/are ‘strong’ argument(s) and which is/are 'weak argument(s) and\naccordingly choose your answer from the alternatives given below the question:\nStatement: Should India go in for computerization in all possible sectors ?\nArguments:\nYes. It will bring efficiency and accuracy in the work.\nNo. It will be an injustice to the monumental human resources which are at present underutilized.\nNo. Computerization demands a lot of money. We should not waste money on it.\nYes. When advanced countries are introducing computers in every field, how can India afford to lag behind.",
+    "q_image": "",
+    "opts": [
+      "Only I and III are strong.",
+      "Only I is strong.",
+      "Only II and III are strong.",
+      "Only I and II are strong."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 18,
+    "section": "Numerical & Mental Ability",
+    "q": "In the question below a statement followed by two assumptions numbered I and II is given. You have to consider the statement and the following assumptions and decide which of the assumption(s) is/are implicit\nin the statement.\nStatement : Imprisonment for 27 years made Mihir Kalal the President.\nAssumptions:\nOne who will be imprisoned for 27 years will become the President.\nTo become the President imprisonment is a qualification.",
+    "q_image": "",
+    "opts": [
+      "Either I or II is implicit.",
+      "Only assumption I is implicit.",
+      "Neither I nor II is implicit.",
+      "Only assumption II is implicit."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 19,
+    "section": "Numerical & Mental Ability",
+    "q": "Following are the criteria for selection of computer professionals in an organisation : The candidate must-\nbe a Computer Engineer or MCA with first class having minimum 65% marks.\nhave secured at least 50% marks in the Selection Test.\nhave secured at least 40% marks in the Interview.\nnot be less than 21 years and not more than 30 years of age as on 1-10-2005. In case of candidate who satisfies all other criteria, except:\nAt (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.\nAt (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.\nIn each of the following question, information about one candidate is given. You have to analyse it with reference to the above criteria and condition and then decide the appropriate course of action. You are not to assume anything other than the given information. All these cases are given to you as on 1-10-2005.\nModi Jay did MCA in 1998 with 70% marks at the age of 22 years. He scored 55% marks in Interview and 55% marks in the Selection Test. He joined an IIT company in 1999 as programmer and got promoted as Systems Analyst in December 2002.",
+    "q_image": "",
+    "opts": [
+      "If the case is to be referred to the Chairman, Recruitment Committee.",
+      "If the candidate is to be selected.",
+      "If the case is to be referred to the GM, Recruitment.",
+      "If the candidate is not to be selected."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 20,
+    "section": "Numerical & Mental Ability",
+    "q": "Sanjay is a Civil Engineer with 75% marks. He was born on 6th July, 1976. He scored 70% marks in the Selection Test and 42% marks in the Interview.",
+    "q_image": "",
+    "opts": [
+      "If the case is to be referred to the Chairman, Recruitment Committee.",
+      "If the candidate is to be selected.",
+      "If the case is to be referred to the GM, Recruitment.",
+      "If the candidate is not to be selected."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 21,
+    "section": "Numerical & Mental Ability",
+    "q": "Vijay, a Computer Engineer, passed out with 72% marks in the final examination at the age of 22 years in 2003. He secured 70% marks in the Selection Test and 48% marks in the Interview.",
+    "q_image": "",
+    "opts": [
+      "If the case is to be referred to the Chairman, Recruitment Committee",
+      "If the candidate is to be selected.",
+      "Data inadequate.",
+      "If the candidate is not to be selected."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 22,
+    "section": "Numerical & Mental Ability",
+    "q": "Ankit scored 80% marks in B.Sc. (IT) and 78% marks in Electronics Engineering. His scores at the Selection Test and the Interview are 55% and 60% respectively. He has been working as Systems Analyst\nsince 2001. His date of birth is 19th April, 1980.-",
+    "q_image": "",
+    "opts": [
+      "If the case is to be referred to the Chairman, Recruitment Committee.",
+      "If the candidate is to be selected.",
+      "If the case is to be referred to the GM, Recruitment.",
+      "If the candidate is not to be selected."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 23,
+    "section": "Numerical & Mental Ability",
+    "q": "Divya is a Computer Engineer with 80% marks. She scored more than 55% marks in the Interview and the Selection Test. She has worked in XYZ company as a Systems Analyst for more than 5 years.",
+    "q_image": "",
+    "opts": [
+      "If the case is to be referred to the Chairman, Recruitment Committee.",
+      "If the candidate is to be selected.",
+      "Data inadequate.",
+      "If the candidate is not to be selected."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 24,
+    "section": "Numerical & Mental Ability",
+    "q": "You are stationed as a police officer, an agitated crowd at a local fair accuses a teenager of theft and attempts mob lynching. You should :",
+    "q_image": "",
+    "opts": [
+      "make the accused confess under duress.",
+      "use force to arrest the accused for questioning.",
+      "let the mob punish the accused if enough proof available.",
+      "rescue the teenager and disperse the mob to ensure fair trial."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 25,
+    "section": "Numerical & Mental Ability",
+    "q": "As head of police in a riot-hit mixed religious locality, you should :",
+    "q_image": "",
+    "opts": [
+      "act tough on miscreants crossing community lines.",
+      "impose indefinite curfew till tensions subside.",
+      "engage elders to reconcile groups through dialogue.",
+      "table concerns with municipal authorities for resolution."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 26,
+    "section": "Numerical & Mental Ability",
+    "q": "You are stationed as a police officer, you receive reliable information of preparations to violently disrupt upcoming local body elections. You should :",
+    "q_image": "",
+    "opts": [
+      "mobilize auxiliary police augmentation in vulnerable areas.",
+      "recommend postponing the electoral process.",
+      "ban political campaign events and restrict assembly.",
+      "conduct preventive detentions to avoid subversion."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 27,
+    "section": "Numerical & Mental Ability",
+    "q": "You are an Investigating officer; the primary accused in a VIP assassination case is offering huge bribes for manipulating evidence and influencing judges to ensure acquittal. You should :",
+    "q_image": "",
+    "opts": [
+      "pretend to agree but submit weakly fabricated bogus evidence.",
+      "comply on records but secretly collect dialogue against accused.",
+      "avoid investigating as per your independent professional judgement.",
+      "remain uncorrupted and present facts transparently in court."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 28,
+    "section": "Numerical & Mental Ability",
+    "q": "You are stationed as a police officer; to prevent further cases of card cloning at ATMs, you should :",
+    "q_image": "",
+    "opts": [
+      "place one observer each in all ATMs to identify suspicious accomplices.",
+      "temporarily disable all ATMs in the jurisdiction.",
+      "purchase card cloning machine prototypes to understand methodology.",
+      "examine ATM machine access logs for anomalies."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 29,
+    "section": "Numerical & Mental Ability",
+    "q": "You are a constable in a special cell that deals with cyber crimes and online frauds. You have been trained in various aspects of cyber security and digital forensics. However, due to a shortage of staff, you are assigned\nto a patrol duty where you have to patrol the streets and respond to emergency calls. You feel that this is a boring and mundane task that does not suit your expertise. You should:",
+    "q_image": "",
+    "opts": [
+      "do the patrol duty but constantly look for opportunity of taking leave.",
+      "refuse to do the patrol duty and insist on staying in the cyber cell.",
+      "do the patrol duty enthusiastically and learn from the experiences of other patrol officers.",
+      "do the patrol duty reluctantly and complain about it to your superiors and colleagues."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 30,
+    "section": "Numerical & Mental Ability",
+    "q": "In the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.You should :\nIn the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.\nYou should :\nIn the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.\nYou should :",
+    "q_image": "",
+    "opts": [
+      "conceal news avoiding distraction till mission completion.",
+      "handover reins to accomplished deputy for family priority.",
+      "commit singular focus expecting siblings to handle parent.",
+      "remotely coordinate certain areas without Ops leadership."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 31,
+    "section": "Numerical & Mental Ability",
+    "q": "when investigating rape forensic evidence from victim, you should :",
+    "q_image": "",
+    "opts": [
+      "focus on Medical test ruthlessly without any women police present.",
+      "complete documentation along with FIR using pseudo name.",
+      "transfer to experienced Woman Inspector without direct involvement.",
+      "personally interview the victim in plain clothes to build trust."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 32,
+    "section": "Numerical & Mental Ability",
+    "q": "As a police officer, transgender citizens report facing harassment and dignity violations during law enforcement interactions. You should :",
+    "q_image": "",
+    "opts": [
+      "enforce strict disciplinary actions against offenders.",
+      "depute gender-rights community volunteers for engagements.",
+      "take complaint and forward it to Human Rights Commission.",
+      "implement mass sensitization drives on appropriate conduct."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 33,
+    "section": "Numerical & Mental Ability",
+    "q": "As a police officer, you notice certain religious minorities being denied neighbourhood entry. You should :",
+    "q_image": "",
+    "opts": [
+      "organize multi-faith community dialogues to ease tensions.",
+      "arrest and prosecute housing societies flouting laws.",
+      "enforce diversity by posting minority community officers.",
+      "refer complaints to state's minority welfare schemes."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 34,
+    "section": "Numerical & Mental Ability",
+    "q": "As a police officer, you are assigned to a police station in a district. Which of the following is the name of the officer who is in-charge of the police station ?",
+    "q_image": "",
+    "opts": [
+      "Superintendent of Police",
+      "Station House Officer",
+      "Deputy Inspector General",
+      "Circle Officer"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 35,
+    "section": "Numerical & Mental Ability",
+    "q": "As a police officer, what would guide your decision-making in enforcing laws?",
+    "q_image": "",
+    "opts": [
+      "Following the orders of your superiors without questioning their judgment.",
+      "Strict adherence to the letter of the law, regardless of individual circumstances.",
+      "Applying personal moral values even if they conflict with established regulations.",
+      "Balancing legal requirements with empathy and consideration for the situation."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 36,
+    "section": "Numerical & Mental Ability",
+    "q": "Find suitable alternative in place of question mark (?).\nMother : Child :: Cloud : ?",
+    "q_image": "",
+    "opts": [
+      "Rain",
+      "Shine",
+      "Weather",
+      "Loud"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 37,
+    "section": "Numerical & Mental Ability",
+    "q": "As a police officer, certain religious customs violate Supreme Court directions on entry of women in places of worship. You should :",
+    "q_image": "",
+    "opts": [
+      "avoid the situation by taking leaves.",
+      "enforce directions by removing opposing groups if necessary.",
+      "sensitize opinion leaders leveraging spiritual heads' assistance.",
+      "publicly threaten charges against customs upholding court rulings."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 38,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Shyam travels 7 km North, then he turns to his right and walks 3 km. He again turns to his right and moves 7 km forward. Now in which direction is he from his starting point?",
+    "q_image": "",
+    "opts": [
+      "South",
+      "North",
+      "West",
+      "East"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 39,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "In the following question, some words are given. They have some common features except the odd one. You are required to find odd one out.",
+    "q_image": "",
+    "opts": [
+      "Harass",
+      "Annoy",
+      "Ravage",
+      "Distress"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 40,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Choose the correct alternative from given ones that will complete the series: 2.3, 15.9, 79.6, 423, 2574, (?)",
+    "q_image": "",
+    "opts": [
+      "10300",
+      "5632",
+      "18067",
+      "8432"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 41,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "In a certain code language \"MADRAS\" is written as \"OWNHEQ\". How will \"SUNDAY\" be written in that same code ?",
+    "q_image": "",
+    "opts": [
+      "WUZWYR",
+      "WUZRYX",
+      "UWZYWR",
+      "UWZRYW"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 42,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Suresh's sister is the wife of Ram. Ram is Rani's brother. Ram's father is Madhur. Sheetal is Ram's grandmother. Rema is Sheetal's daughter - in - law. Rohit is Rani's brother's son. How is Rohit related to\nSuresh ?",
+    "q_image": "",
+    "opts": [
+      "Brother",
+      "Brother - in - law",
+      "Nephew",
+      "Son"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 43,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "If in the word \"SPIRITUAL\", position of second and fifth letter is interchanged, similarly position of fourth and sixth letter is interchanged with seventh and ninth letters respectively, then how many pair of letters in\nthe new word have as many letters between them (either forward or backward) as they have in the English alphabet series?",
+    "q_image": "",
+    "opts": [
+      "5",
+      "3",
+      "6",
+      "4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 44,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "A clock is started at noon. By 10 minutes past 4, the hour hand has turned through",
+    "q_image": "",
+    "opts": [
+      "130°",
+      "120°",
+      "135°",
+      "125°"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 45,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Study the following figure and answer the question given below.\nWhat is represented by the number 7?",
+    "q_image": "",
+    "opts": [
+      "Married nurses in the hospital",
+      "Trained nurses",
+      "Married trained nurses",
+      "Unmarried trained nurses"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 46,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Which of the following diagrams best indicates the relation between India, Gujarat, Surat?",
+    "q_image": "",
+    "opts": [
+      "",
+      "2.",
+      "3.",
+      "4."
+    ],
+    "opt_images": [
+      "",
+      "image75.jpeg",
+      "image77.png",
+      "image78.jpeg"
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 47,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Solve: 120 ÷ 3 + 8 × 3 - 40 = ?",
+    "q_image": "",
+    "opts": [
+      "-256",
+      "24",
+      "74",
+      "-24"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 48,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "In a row Mihir is 17th from the left and 19th from the right, then what is the total number of candidates in that row?",
+    "q_image": "",
+    "opts": [
+      "35",
+      "36",
+      "29",
+      "31"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 49,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "There is a cuboid whose dimensions are 4 × 3 × 3 cm. The opposite faces of dimensions 4 × 3 are coloured yellow. The opposite faces of other dimensions 4 × 3 are coloured red. The opposite faces of dimensions 3 ×\n3 are coloured green. Now the cuboid is cut into small cubes of side 1 cm. How many small cubes have three faces coloured?",
+    "q_image": "",
+    "opts": [
+      "16",
+      "8",
+      "20",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 50,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "In the following question, a word has been given, followed by four other words, one of which can be formed using the letters of the given word. Find that word.\nMEASUREMENT",
+    "q_image": "",
+    "opts": [
+      "RETUNES",
+      "ASSURE",
+      "MANTLE",
+      "SUMMIT"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 51,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "A scientist is trying to recall the access code to a secure laboratory. He remembers the following details:\nThe code starts with the digit 5.\nThe code ends with 987.\nThe second digit is the sum of the first digit and 3.\nThe third digit is half of the second digit.\nNow, considering these conditions, the scientist has narrowed down four potential access codes for the laboratory. Find the suitable one.",
+    "q_image": "",
+    "opts": [
+      "563987",
+      "542987",
+      "548987",
+      "584987"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 52,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "In the question below two statements followed by three conclusions numbered I, II and III are given. You have to assume everything in the statements to be true, then consider the the three conclusions together and\ndecide which of them logically follows beyond reasonable doubt from the information given in the statements.\nStatements:\nWater has no shape, has volume.\nThe knowledge is like water, flowed from one side to other.\nConclusions:\nThe knowledge is interdisciplinary.\nThe knowledge is bound within a specific area.\nThe knowledge influences the core of mental activity directly.",
+    "q_image": "",
+    "opts": [
+      "Both I and II follow.",
+      "Only conclusion I follows.",
+      "Both I and III follow.",
+      "Only conclusion II follows."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 53,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "A is B's sister. C is B's mother. D is C's father. E is D's mother. Then how is A related to D?",
+    "q_image": "",
+    "opts": [
+      "Daughter",
+      "Grand mother",
+      "Grand daughter",
+      "Grand father"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 54,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Que. 54",
+    "q_image": "",
+    "opts": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+    ],
+    "opt_images": [
+      "image82.jpeg",
+      "image83.jpeg",
+      "image84.jpeg",
+      "image85.jpeg"
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 55,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Find out which of the figures (1), (2), (3) and (4) can be formed from the pieces given in the figure (X).",
+    "q_image": "",
+    "opts": [
+      "(1)",
+      "(2)",
+      "(3)",
+      "(4)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 56,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Find out from amongst the four alternatives as to how the pattern would appear when the transparent sheet is folded at the dotted line.",
+    "q_image": "image89.jpeg",
+    "opts": [
+      "(3)",
+      "(1)",
+      "(4)",
+      "(2)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 57,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Simplify : 108 ÷ 36 × 1 + 2 × 3 1\n4\t5\n4\nQue. 57\nSimplify : 108 ÷ 36 × 1 + 2 × 3 1\n4\t5\n4",
+    "q_image": "image89.jpeg",
+    "opts": [
+      "2 1 5",
+      "1 1 20",
+      "2 1 11",
+      "2 1 20"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 58,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Which of the following option would be meaningful order of the following words?\nExhaust\nNight\nDay\nSleep\nWork",
+    "q_image": "image89.jpeg",
+    "opts": [
+      "3, 5, 1, 4, 2",
+      "1, 3, 5, 4, 2",
+      "3, 5, 2, 1, 4",
+      "3, 5, 1, 2, 4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 59,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Choose the figure which is different from the rest.",
+    "q_image": "image89.jpeg",
+    "opts": [
+      "(3)",
+      "(1)",
+      "(4)",
+      "(2)"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 60,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The number of apples in a basket doubles every minute. If the basket is full of apples in an hour, when was the basket half-filled ?",
+    "q_image": "image89.jpeg",
+    "opts": [
+      "55 minutes",
+      "38 minutes",
+      "59 minutes",
+      "47 minutes"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 61,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The Great Barrier Reef is located at the coast of which of the following countries?",
+    "q_image": "",
+    "opts": [
+      "Australia",
+      "South Africa",
+      "Philippines",
+      "Indonesia"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 62,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Who among the following was the President of the Constituent Assembly of India in 1946 ?",
+    "q_image": "",
+    "opts": [
+      "Dr. B.R. Ambedkar",
+      "Sardar Vallabhbhai Patel",
+      "Dr. Rajendra Prasad",
+      "Jawaharlal Nehru"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 63,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The \"Prayaga Prashasti\" had been composed by whom among the following in Sanskrit ?",
+    "q_image": "",
+    "opts": [
+      "Bhavabhuti",
+      "Harishena",
+      "Baudhayana",
+      "Banabhatta"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 64,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Which of the following is the largest salt water lagoon lake situated at the Eastern coast of India ?",
+    "q_image": "",
+    "opts": [
+      "The Lonar Crater Lake",
+      "The Kolleru Lake",
+      "The Chilika Lake",
+      "The Panchbhadra Salt Lake"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 65,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The white light is composed of how many colours ?",
+    "q_image": "",
+    "opts": [
+      "Seven",
+      "Five",
+      "Eight",
+      "Six"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 66,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "Sri Lanka is separated from India by a narrow channel of sea formed by which of the following ?",
+    "q_image": "",
+    "opts": [
+      "The Makassar Strait",
+      "The Eight Degree Channel",
+      "The Strait of Messina",
+      "The Palk Strait and the Gulf of Mannar"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 67,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The Sonepur Cattle Fair is a cultural event held at which of the following states of India every year ?",
+    "q_image": "",
+    "opts": [
+      "Sikkim",
+      "Bihar",
+      "Odisha",
+      "Assam"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 68,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The cultivation, growing and harvesting of grapes is known as which of the following ?",
+    "q_image": "",
+    "opts": [
+      "Viticulture",
+      "Sericulture",
+      "Horticulture",
+      "Pisciculture"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 69,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The Bailadila hills look like the hump of an ox. This range of hills is situated in which of the following states of India?",
+    "q_image": "",
+    "opts": [
+      "Kerala",
+      "Chhattisgarh",
+      "Karnataka",
+      "Tamil Nadu"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 70,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "What is the highest post for Census Organisation in India?",
+    "q_image": "",
+    "opts": [
+      "Deputy Registrar General",
+      "Census Officer",
+      "Sr. Technical Director",
+      "Registrar General & Census Commissioner, India"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 71,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "\"Kumarasambhavam\" is the literary work of which of the following writers ?",
+    "q_image": "",
+    "opts": [
+      "Mahakavi Kalidasa",
+      "Kalhan",
+      "Mahadevi",
+      "Bharavi"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 72,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "\"World Book Day\" is celebrated on which of the following day every year?",
+    "q_image": "",
+    "opts": [
+      "7th April",
+      "23rd April",
+      "25th June",
+      "5th June"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 73,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "The parts of which of the following states had evolved a local system of canal irrigation called kulhs over four hundred years ago ?",
+    "q_image": "",
+    "opts": [
+      "Himachal Pradesh",
+      "Gujarat",
+      "Kerala",
+      "Karnataka"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 74,
+    "section": "Mental Aptitude / Reasoning",
+    "q": "National Aluminium Company Limited (NALCO) is having its registered office at which of the following places?",
+    "q_image": "",
+    "opts": [
+      "Bhubaneshwar, Odisha",
+      "Noonmati, Assam",
+      "Raipur, Chhattisgarh",
+      "Digboi, Assam"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 75,
+    "section": "General Knowledge",
+    "q": "The increase in the proportion population of a country who live in urban areas is known as which of the following?",
+    "q_image": "",
+    "opts": [
+      "Colonisation",
+      "Urbanisation",
+      "Rustication",
+      "Unplanned Development"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 76,
+    "section": "General Knowledge",
+    "q": "The headquarters of World Health Organisation (WHO) is located at which of the following places ?",
+    "q_image": "",
+    "opts": [
+      "Brussels, Belgium",
+      "Amsterdam, Netherlands",
+      "Paris, France",
+      "Geneva, Switzerland"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 77,
+    "section": "General Knowledge",
+    "q": "Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at which of the following districts of Uttar Pradesh?",
+    "q_image": "",
+    "opts": [
+      "Gonda",
+      "Ballia",
+      "Sant Kabir Nagar",
+      "Etah"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 78,
+    "section": "General Knowledge",
+    "q": "Which of the following social media platforms is best suited for professional networking and job hunting?",
+    "q_image": "",
+    "opts": [
+      "Instagram",
+      "Facebook",
+      "Linkedin",
+      "Snapchat"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 79,
+    "section": "General Knowledge",
+    "q": "Bhadohi that is located in Uttar Pradesh is famous for which of the following art?",
+    "q_image": "",
+    "opts": [
+      "Saree weaving",
+      "Carpet weaving",
+      "Glazed pottery",
+      "Chikankari"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 80,
+    "section": "General Knowledge",
+    "q": "Which of the following is the state tree of Uttar Pradesh?",
+    "q_image": "",
+    "opts": [
+      "Oak",
+      "Ashoka",
+      "Bamboo",
+      "Banyan"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 81,
+    "section": "General Knowledge",
+    "q": "Which among the following well-known folk dance of Uttar Pradesh is performed during paddy and maize cultivation ?",
+    "q_image": "",
+    "opts": [
+      "Hurka Baul",
+      "Charkula",
+      "Kajri",
+      "Rasiya"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 82,
+    "section": "General Knowledge",
+    "q": "Banaras Hindu University was founded by Pandit Madan Mohan Malaviya with cooperation of whom among , the following ?",
+    "q_image": "",
+    "opts": [
+      "Madam Bhikaiji Cama",
+      "Sardar Vallabhbhai Patel",
+      "Dr. Annie Besant",
+      "Rabindranath Tagore"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 83,
+    "section": "General Knowledge",
+    "q": "Mathura is the birthplace of whom among the following that is also known as Brij Bhoomi ?",
+    "q_image": "",
+    "opts": [
+      "Lord Ganesha",
+      "Lord Shiva",
+      "Lord Rama",
+      "Lord Krishna"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 84,
+    "section": "General Knowledge",
+    "q": "Akbar's mausoleum is located at which of the following places?",
+    "q_image": "",
+    "opts": [
+      "Unnao",
+      "Sikandara",
+      "Etah",
+      "Rampur"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 85,
+    "section": "General Knowledge",
+    "q": "Demonetisation is also known by which of the following names?",
+    "q_image": "",
+    "opts": [
+      "Cashless",
+      "New Currency",
+      "Note Ban",
+      "No Currency"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 86,
+    "section": "General Knowledge",
+    "q": "A parcel of land held under one tenure or one lease, engagement or grant is known as which of the following according to Uttar Pradesh Revenue Code, 2006 ?",
+    "q_image": "",
+    "opts": [
+      "Agricultural Land",
+      "Holding",
+      "Consolidated",
+      "Grove Land"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 87,
+    "section": "General Knowledge",
+    "q": "Give full form of UPSSF.",
+    "q_image": "",
+    "opts": [
+      "Uttar Pradesh Social Security Force",
+      "Uttar Pradesh Special Security Force",
+      "Uttar Pradesh Social Source Force",
+      "Uttar Pradesh Solid Security Force"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 88,
+    "section": "General Knowledge",
+    "q": "Nivesh Mitra Mobile application is an initiative of which of the following states of India?",
+    "q_image": "",
+    "opts": [
+      "Gujarat",
+      "Uttar Pradesh",
+      "Assam",
+      "Telangana"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 89,
+    "section": "General Knowledge",
+    "q": "Which of the following sentences is in correct for GST?",
+    "q_image": "",
+    "opts": [
+      "GST is a destination-based tax.",
+      "There are multiple levies of tax on goods and services.",
+      "GST is a common law and procedure throughout the country under single administration.",
+      "GST is a comprehensive levy and collection on both goods and services at the same rate with benefit of input tax credit or subtraction of value."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 90,
+    "section": "General Knowledge",
+    "q": "An attempt to obtain sensitive information such as username, password and credit card details etc. for malicious reasons, by posing as a trustworthy source in e-mail is called as",
+    "q_image": "",
+    "opts": [
+      "Losing",
+      "Phishing",
+      "Sourcing",
+      "Cheating"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 91,
+    "section": "General Knowledge",
+    "q": "\"Taka\" is the currency of which of the following countries?",
+    "q_image": "",
+    "opts": [
+      "Bangladesh",
+      "Thailand",
+      "Serbia",
+      "Turkey"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 92,
+    "section": "General Knowledge",
+    "q": "Which of the following awards is given to motivate Cooperative and Milk producer Companies to grow and to instill competitive spirit?",
+    "q_image": "",
+    "opts": [
+      "Arjuna Award",
+      "Dronacharya Award",
+      "National Gopal Ratna Award",
+      "Dhyanchand Award"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 93,
+    "section": "General Knowledge",
+    "q": "Which of the following ports is located in Kuchchh, Gujarat ?",
+    "q_image": "",
+    "opts": [
+      "Paradwip Port",
+      "Mormugao Port",
+      "Kandla Port (Deendayal Port)",
+      "The Jawaharlal Nehru Port"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 94,
+    "section": "General Knowledge",
+    "q": "Recently, Shri Amit Shah has laid the foundation-stone of the headquarters of National Cooperative Dairy Federation of India (NCDFI) at which of the following places ?",
+    "q_image": "",
+    "opts": [
+      "Jaipur",
+      "Gandhinagar",
+      "Anand",
+      "Bengaluru"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 95,
+    "section": "General Knowledge",
+    "q": "Who among the following was the founder of the Khudai Khidmatgars?",
+    "q_image": "",
+    "opts": [
+      "Badruddin Tyabji",
+      "Mohammad Ali Jinnah",
+      "Khan Abdul Gaffar Khan",
+      "Maulana Azad"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 96,
+    "section": "General Knowledge",
+    "q": "Who among the following has inaugurated Kochi-Lakshadweep Islands Submarine Optical Fiber Connection (KLI-SOFC) recently ?",
+    "q_image": "",
+    "opts": [
+      "Dr. S. Jaishankar",
+      "Shri Narendra Modi",
+      "Shri Rajnath Singh",
+      "Shri Amit Shah"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 97,
+    "section": "General Knowledge",
+    "q": "The Union Cabinet has recently approved the Migration and Mobility Agreement between India and which of the following countries?",
+    "q_image": "",
+    "opts": [
+      "Italy",
+      "Nepal",
+      "Germany",
+      "Sri Lanka"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 98,
+    "section": "General Knowledge",
+    "q": "Recently, Indian Navy's Fast Attack Craft INS Kabra has arrived at which of the following places ?",
+    "q_image": "",
+    "opts": [
+      "Male, Maldives",
+      "Matarbari Port, Bangladesh",
+      "Colombo, Sri Lanka",
+      "Port of Jebel Ali, U.A.E."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 99,
+    "section": "General Hindi",
+    "q": "'पूव और उKर के बीच की िदशा इस वा  ांश के िलए एक श  िन िलिखत म से कौन सा है ?",
+    "q_image": "",
+    "opts": [
+      "आVेय",
+      "नैऋw",
+      "ईशान",
+      "वायD"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 100,
+    "section": "General Hindi",
+    "q": "िकस िवक  म श  ुितसम-िभ ाथ क का सही अथ -भेद है ?",
+    "q_image": "",
+    "opts": [
+      "Fण - वण =रंग - घाव",
+      "िवष - िवस् = धन - जहर",
+      "कृत - ाकृत = एक भाषा - यथाथ",
+      "शशधर - शिशधर = चाँद - िशव"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 101,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से िकस िवक  म शु5 वा  है ?",
+    "q_image": "",
+    "opts": [
+      "दीन - दुब लों को ार करना मानवता है ।",
+      "लड़के अ ापक को  पूछते ह ।",
+      "वह ऑिफस म बैठा मेरी  ती ा कर रहा है।",
+      "दस बजने को पं5ह िमनट ह ।"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 102,
+    "section": "General Hindi",
+    "q": "Que. 102",
+    "q_image": "",
+    "opts": [
+      "अजवायन",
+      "िवहार",
+      "पराधीनता",
+      "मुि5का"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 103,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से िकस श  का  योग एकवचन म होता है ?",
+    "q_image": "",
+    "opts": [
+      "सोना",
+      "ह™ा र",
+      "ाण",
+      "दश न"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 104,
+    "section": "General Hindi",
+    "q": "हे ई र ! दया करो। रेखांिकत श  म कौन सा कारक है ?",
+    "q_image": "",
+    "opts": [
+      "करण कारक",
+      "कम कारक",
+      "संबोधन कारक",
+      "सं दान कारक"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 105,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से तदव श  कौन सा है ?",
+    "q_image": "",
+    "opts": [
+      "शांित",
+      "काज",
+      "जलिध",
+      "ताप"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 106,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से िकस िवक  म सभी श  तTम ह ?",
+    "q_image": "",
+    "opts": [
+      "पलंग, पीला",
+      "कु ार, गधा",
+      "डंडा, नाक",
+      "नD, 4ण कार"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 107,
+    "section": "General Hindi",
+    "q": "'निलन' और 'राजीव' श  िन िलिखत म से िकस श  के पया यवाची ह ?",
+    "q_image": "",
+    "opts": [
+      "अंबर",
+      "कमल",
+      "उपवन",
+      "उ  ष"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 108,
+    "section": "General Hindi",
+    "q": "ों, कब कौन से सव नाम के उदाहरण ह ?",
+    "q_image": "",
+    "opts": [
+      "वाचक सव नाम",
+      "िनजवाचक सव नाम",
+      "अिन यवाचक सव नाम",
+      "िन यवाचक सव नाम"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 109,
+    "section": "General Hindi",
+    "q": "'मिदरालय' श  के संिध - िव  ेद का चयन कीिजए:",
+    "q_image": "",
+    "opts": [
+      "मिदरा + अलय",
+      "मिदरा + आलय",
+      "मिदरा + लय",
+      "मंिदर + आलय"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 110,
+    "section": "General Hindi",
+    "q": "अवतरण िच5 को और िकस नाम से जाना जाता है ?",
+    "q_image": "",
+    "opts": [
+      "को क िच5",
+      "उ5रण िच5",
+      "िनद´शक िच5",
+      "योजक िच5"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 111,
+    "section": "General Hindi",
+    "q": "'सतसई' श  म िकस  कार के सं%ाबोधक िवशेषण का  योग है ?",
+    "q_image": "",
+    "opts": [
+      "आवृिKबोधक िवशेषण",
+      "अिनि त सं%ाबोधक िवशेषण",
+      "गणनावाचक िवशेषण",
+      "समु  यबोधक िवशेषण"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 112,
+    "section": "General Hindi",
+    "q": "'राधा ने पायल से िच ी िलखवाई।' इस वा  म कौन सी ि या है ?",
+    "q_image": "",
+    "opts": [
+      "संयु4 ि या",
+      "पूव कािलक ि या",
+      "ेरणाथ क ि या",
+      "नामधातु ि या"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 113,
+    "section": "General Hindi",
+    "q": "'िचWाहट' म कौन सा  wय है ?",
+    "q_image": "",
+    "opts": [
+      "हट",
+      "िच",
+      "आहट",
+      "िचWा"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 114,
+    "section": "General Hindi",
+    "q": "'अिभभाषण' श  म कौन सा उपसग है ?",
+    "q_image": "",
+    "opts": [
+      "अ",
+      "अभी",
+      "अभ",
+      "अिभ"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 115,
+    "section": "General Hindi",
+    "q": "'र4रंिजत' श   म कौन सा समास है ?",
+    "q_image": "",
+    "opts": [
+      "अDयीभाव समास",
+      "ि गु समास",
+      "त  ु ष समास",
+      "ं  समास"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 116,
+    "section": "General Hindi",
+    "q": "'परो ' का िवलोम श  है",
+    "q_image": "",
+    "opts": [
+      "अपरो",
+      "w",
+      "5 D",
+      "™ूल"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 117,
+    "section": "General Hindi",
+    "q": "'चमड़ी जाए, पर दमड़ी न जाए' लोकोि4 का अथ िन िलिखत म से कौन सा है ?",
+    "q_image": "",
+    "opts": [
+      "पैसे का ब5त मोह होना",
+      "पैसा ही माँ - बाप दोनों",
+      "जान चली जाए पर पैसा न जाए",
+      "अwिधक कंजूस होना"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 118,
+    "section": "General Hindi",
+    "q": "' ोध' िकस रस का ™ायी भाव है ?",
+    "q_image": "",
+    "opts": [
+      "रौ5 रस",
+      "वीभT रस",
+      "वीर रस",
+      "भयानक रस"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 119,
+    "section": "General Hindi",
+    "q": "सोरठा के ि तीय और चतुथ चरण म िकतनी मा ाएँ होती ह ?",
+    "q_image": "",
+    "opts": [
+      "13",
+      "10",
+      "16",
+      "11"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 120,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से िकस अलंकार म समान धम का होना अिनवाय है ?",
+    "q_image": "",
+    "opts": [
+      "उ  े ा",
+      "ेष",
+      "यमक",
+      "उपमा"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 121,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से 'भाग' श  का अनेकाथT श  िकस िवक  म नहीं है ?",
+    "q_image": "",
+    "opts": [
+      "बाँटना",
+      "भागना",
+      "िह4ा",
+      "‰ाज"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 122,
+    "section": "General Hindi",
+    "q": "'वह बाज़ार जा चुका है।' इस वा  का काल पहचािनए ।",
+    "q_image": "",
+    "opts": [
+      "संिद  वत मानकाल",
+      "पूण भूतकाल",
+      "आस  भूतकाल / पूण वत मानकाल",
+      "सामा  वत मानकाल"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 123,
+    "section": "General Hindi",
+    "q": "'राम अभी सोएगा।' इस वा  म कौन सा वा  होगा ?",
+    "q_image": "",
+    "opts": [
+      "भाववा",
+      "कम वा",
+      "इनम से कोई नहीं",
+      "कतृ वा"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 124,
+    "section": "General Hindi",
+    "q": "'ितल का ताड़ बनाना' मुहावरे का अथ बताइए :",
+    "q_image": "",
+    "opts": [
+      "आ  मण करना",
+      "Dथ काम करना",
+      "साधारण बात को बढ़ा-चढ़ाकर कहना",
+      "धाक बैठना"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 125,
+    "section": "General Hindi",
+    "q": "िन िलिखत गBांश को पढ़कर पूछे गए   ों के उKर दीिजए\nभारत भयंकर अं ेज़ी - मोह की दुरव™ा से गुजर रहा है । इस दुरव™ा का एक भयानक दु  रणाम यह है िक भारतीय भाषाओं के समकालीन सािहw पर उन लोगों की 7ि नहीं पड़ती जो िव िवBालयों के ायः सव Kम छा थे और अब शासन तं म ऊँचे\nओहदों पर काम कर रहे ह । इस 7ि से भारतीय भाषाओं के लेखक केवल यूरोपीय और अमे रकी लेखकों से हीन नहीं ह , बि उनकी िक4त िम , बमा , इंडोनेिशया, चीन और जापान के लेखकों की िक4त से भी खराब है  ों˙िक इन सभी देशों के लेखकों की कृितयाँ वहाँ के अwंत सुिशि त लोग भी पढ़ते ह । केवल हम ही ह िजनकी पु™कों पर यहाँ के तथाकिथत िशि त समुदाय की 7ि ायः नहीं पड़ती । हमारा तथाकिथत उ  िशि त समुदाय जो कुछ पढ़ना चाहता है, उसे अं ेज़ी म ही पढ़ लेता है, यहाँ तक\nिक उसकी किवता और उप ास पढ़ने की तृ ा भी अं ेज़ी की किवता और उप ास पढ़कर ही समा™ हो जाती है और उसे यह जानने की इ ा ही नहीं होती िक शरीर से वह िजस समाज का सद4 है उसके मनोभाव उप ास और काD म िकस अदा से D4 हो रहे ह ।\nभारतीय लेखकों की िक4त खराब है  ों˙िक",
+    "q_image": "",
+    "opts": [
+      "वे अपनी बात भारतीय िशि त पाठकों तक प5ँचा नहीं पाते ।",
+      "वे अपनी भाषा म िलख नहीं सकते ।",
+      "उनकी पु™कों को यहाँ के नाग रक गव - यो  नहीं मानते ।",
+      "वे अपनी भाषा के सािहw को पढ़कर अपने समाज का हाल - चाल नहीं जान सकते ।"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 126,
+    "section": "General Hindi",
+    "q": "उपयु4 शीष क दीिजए -\nQue. 126\nउपयु4 शीष क दीिजए -",
+    "q_image": "",
+    "opts": [
+      "भारतीय िशि तों का अं ेज़ी - मोह",
+      "भारत की दुरव™ा",
+      "भारतीय लेखकों की दुद शा",
+      "भारतीय िशि तों की दुरव™ा"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 127,
+    "section": "General Hindi",
+    "q": "भारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-\nQue. 127\nभारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-",
+    "q_image": "",
+    "opts": [
+      "उनके सािहw को भारत म नहीं पढ़ा जाता ।",
+      "उनम 4भाषा के  ित गौरव नहीं है ।",
+      "उनके सािहw को भारत के सुिशि त लोग नहीं पढ़ते ।",
+      "वे अं ेज़ी के मोह से  ™ ह ।"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 128,
+    "section": "General Hindi",
+    "q": "भारत का सुिशि त समाज कौन सा सािहw पढ़कर संतु  हो जाता है ?",
+    "q_image": "",
+    "opts": [
+      "देशी",
+      "िहंदी",
+      "भारतीय",
+      "अं ेज़ी"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 129,
+    "section": "General Hindi",
+    "q": "भारतीय भाषाओं के सािहw के  ित समाज के िकस वग म अ िच की भावना है ?",
+    "q_image": "",
+    "opts": [
+      "अनपढ़",
+      "उ",
+      "नगरवासी",
+      "सुिशि त"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 130,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से 'नहीं' कौन से कार का रीितवाचक ि यािवशेषण है ?",
+    "q_image": "",
+    "opts": [
+      "वाचक",
+      "िविधबोधक",
+      "िनषेधवाचक",
+      "िन यबोधक"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 131,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?Que. 131िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?\nQue. 131\nिन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?\nQue. 131\nिन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?",
+    "q_image": "",
+    "opts": [
+      "भोर",
+      "भव",
+      "वैराग",
+      "र ाकर"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 132,
+    "section": "General Hindi",
+    "q": "'मेघ - मेध'  ुितसमिभ ाथ क श  का सही अथ - भेद िन  म से कौन सा है ?",
+    "q_image": "",
+    "opts": [
+      "बादल - जीवन",
+      "बादल - यy",
+      "यy - जल",
+      "यy - बादल"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 133,
+    "section": "General Hindi",
+    "q": "'™ी जो अिभनय करती हो' वा  ांश के िलए एक श  का चयन कीिजए।",
+    "q_image": "",
+    "opts": [
+      "अिभने ी",
+      "नत की",
+      "नाियका",
+      "गाियका"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 134,
+    "section": "General Hindi",
+    "q": "'मानसरोवर' िकसकी रचनाओं का संकलन है ?",
+    "q_image": "",
+    "opts": [
+      "महादेवी वमा",
+      "ेमचंद",
+      "रामचं5 शु4",
+      "रवी  नाथ टैगोर"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 135,
+    "section": "General Hindi",
+    "q": "मीराबाई िकसकी िश ा थीं ?",
+    "q_image": "",
+    "opts": [
+      "संत रैदास",
+      "संत नामदेव",
+      "संत एकनाथ",
+      "संत तुकाराम"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 136,
+    "section": "General Hindi",
+    "q": "िन िलिखत म से कौन सी भाषा पि मी िहंदी से संबंध रखती है ?",
+    "q_image": "",
+    "opts": [
+      "बाँगV",
+      "राज™ानी",
+      "अवधी",
+      "भोजपुरी"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 137,
+    "section": "Numerical & Mental Ability",
+    "q": "Two numbers are in the ratio of 13 ∶ 9. If their HCF is 13, then find the largest number.",
+    "q_image": "",
+    "opts": [
+      "117",
+      "52",
+      "143",
+      "169"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 138,
+    "section": "Numerical & Mental Ability",
+    "q": "Salaries of Rohan and Soham are in the ratio 2 ∶ 3. If the salary of each is increased by ₹ 2,000, the new ratio becomes 40 ∶ 57. What is Soham's present salary ?",
+    "q_image": "",
+    "opts": [
+      "₹ 25,500",
+      "₹ 17,000",
+      "₹ 34,000",
+      "₹ 20,000"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 139,
+    "section": "Numerical & Mental Ability",
+    "q": "In a certain school, 20% of students are below 10 years of age. The number of students above 10 years ofage is 2 of the number of students of 10 years age which is 48. What is the total number of students in the3\nIn a certain school, 20% of students are below 10 years of age. The number of students above 10 years of\nage is 2 of the number of students of 10 years age which is 48. What is the total number of students in the\n3\nIn a certain school, 20% of students are below 10 years of age. The number of students above 10 years of\nage is 2 of the number of students of 10 years age which is 48. What is the total number of students in the\n3\nschool?",
+    "q_image": "",
+    "opts": [
+      "100",
+      "80",
+      "110",
+      "90"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 140,
+    "section": "Numerical & Mental Ability",
+    "q": "A number when divided by 119, leaves 19 as remainder. If it is divided by 17, it will leave a remainder",
+    "q_image": "",
+    "opts": [
+      "3",
+      "1",
+      "4",
+      "2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 141,
+    "section": "Numerical & Mental Ability",
+    "q": "Simplify : 17.28÷x = 2\n3.6× 0.2\nQue. 141\nSimplify : 17.28÷x = 2\n3.6× 0.2",
+    "q_image": "",
+    "opts": [
+      "14",
+      "10",
+      "15",
+      "12"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 142,
+    "section": "Numerical & Mental Ability",
+    "q": "What will replace the question mark (?) in the following equation?\n5072.19 + 368.312 + (?) = 9018.618",
+    "q_image": "",
+    "opts": [
+      "3571.115",
+      "3571.116",
+      "3578.116",
+      "3578.112"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "C",
+    "sol": ""
+  },
+  {
+    "n": 143,
+    "section": "Numerical & Mental Ability",
+    "q": "The average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is3.55. What is the average of the remaining two numbers?\nThe average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is\n3.55. What is the average of the remaining two numbers?\nThe average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is\n3.55. What is the average of the remaining two numbers?",
+    "q_image": "",
+    "opts": [
+      "4.5",
+      "4.3",
+      "4.6",
+      "4.4"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 144,
+    "section": "Numerical & Mental Ability",
+    "q": "",
+    "q_image": "",
+    "opts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "A",
+    "sol": ""
+  },
+  {
+    "n": 145,
+    "section": "Numerical & Mental Ability",
+    "q": "A sum of money amounts to ₹ 4,460 after 3 years and to ₹ 6,690 after 6 years on compound interest. Find the approximate sum.",
+    "q_image": "",
+    "opts": [
+      "₹ 3,115.33",
+      "₹ 2,973.33",
+      "₹ 2,991.66",
+      "₹ 3,121.66"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 146,
+    "section": "Numerical & Mental Ability",
+    "q": "Three partners P, Q and R start a business. Twice P's capital is equal to thrice Q's capital and Q's capital is equal to four times R's capital. Out of total profit of ₹ 27,500 at the end of the year, R's share is:",
+    "q_image": "",
+    "opts": [
+      "₹ 5,000",
+      "₹ 7,000",
+      "₹ 15,000",
+      "₹ 2,500"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 147,
+    "section": "Numerical & Mental Ability",
+    "q": "How long will a boy take to run round a square field of side 25 metres, if he runs at the rate of 9 km/hr ?",
+    "q_image": "",
+    "opts": [
+      "42 sec.",
+      "38 sec.",
+      "48 sec.",
+      "40 sec."
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 148,
+    "section": "Numerical & Mental Ability",
+    "q": "4 boys and 6 girls can do a piece of work in 10 days while 6 boys and 4 girls can do the same work in 8 days. In how many days can 4 boys and 2 girls do the work ?",
+    "q_image": "",
+    "opts": [
+      "28",
+      "25/2",
+      "30",
+      "27/2"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  },
+  {
+    "n": 149,
+    "section": "Numerical & Mental Ability",
+    "q": "Find the 21st term of the sequence 26, 20, 14, 8, ......... .\nQue. 149\nFind the 21st term of the sequence 26, 20, 14, 8, ......... .",
+    "q_image": "",
+    "opts": [
+      "-100",
+      "146",
+      "88",
+      "-94"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "D",
+    "sol": ""
+  },
+  {
+    "n": 150,
+    "section": "Numerical & Mental Ability",
+    "q": "The area of circular field is 13.86 hectares. Find the cost of fencing it at the rate of Rs. 3.2 per metre. (1 hectare = 10,000 m2)",
+    "q_image": "",
+    "opts": [
+      "Rs. 5,808",
+      "Rs. 4,224",
+      "Rs. 6,132",
+      "Rs. 5,138"
+    ],
+    "opt_images": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": "B",
+    "sol": ""
+  }
+]

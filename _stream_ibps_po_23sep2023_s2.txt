@@ -1,0 +1,956 @@
+100 Questions
+Que. 1	Directions: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.	Que. 1	Directions: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.The India Employment Report (IER) 2024 by the Institute for Human Development and International Labour Organization poses questions on the trickle-down effect of benefits to the working class in the backdrop of a 5.4% average real economic growth, from 2015-16 to 2022-23. It also shows a divergent trend between rural and urban areas in terms of employment and income. It demonstrates a relatively higher unemployment rate in urban areas, at 4.8% in 2000 over the 1.5% in rural areas. However, average monthly earnings are higher by 76% for self-employed, 44% for regular employed and 22% for casual labour in urban areas in 2022. The coexistence of higher unemployment and wages requires further investigation to understand its implications for the urban poor. This article looks at the dynamics of employment and wages in pockets of deep urban poverty, such as slums, and juxtaposes these with the findings of the IER 2024.
+Que. 1	Directions: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.
+Que. 1	Directions: Read the given passage carefully to answer the following questions. Each question will have five alternatives as its answer. Choose the correct option as your answer.
+The higher income in urban areas and a better life have underrated rural-urban migration in the past. As in the IER 2024, although overall migration has increased, the migration of males has declined by 1.2% during 2000-08 and further marginally in 2021. This implies that migration for economic mobility is losing its sheen. An analysis of income and employment trends among slum dwellers in urban India reveals prospects for economic mobility and decent work, as poor rural households often migrate to slums rather than formal settlements. This writer and a team surveyed 37 slums across different parts of Kolkata in 2012. These slums were again surveyed in 2022-
+23. However, we could track only 29 slums as the other slums had either been redeveloped or evicted. We surveyed 513 slum households in 2012 and 396 in 2021-22. To get the overall trends from 2012, we collected data on income and employment in slums in 2019, the pre-COVID-19 year, to avoid the COVID-19-affected years of 2019-22, for comparison.
+The major occupations in slums in Kolkata have remained the same over the decade, with a fourth of the working population taking on unskilled labour. It is the most stable and significant occupation in slums. The IER 2024 also finds that a fourth of workers in India were engaged in unskilled work during this period. Other major occupations in slums were skilled or semi-skilled labour work, and people as employees in private organisations, and owning petty businesses or small shops. Unlike unskilled labour, the share of employment in skilled and semi-skilled labour was reduced by 6%, and in private organisations by 3% between 2012-19. On the other hand, employment has increased by 9% in petty businesses or small shops. Surprisingly, the share of other self-employed has also declined by 3%. Among occupations that were less popular earlier but which gained
+momentum in the last 10 years are truck driving and cleaning, by 5%, and construction and related work, by 4%. The number of people employed in construction and related work was minuscule in 2012.
+What does the passage reveal about the evolution of major occupations in Kolkata's slums over the past decade?
+There has been a significant shift towards skilled and semi-skilled labour occupations.
+Unskilled labour remains the most stable and predominant occupation in slums.
+Employment in private organizations has consistently increased over the years.
+The number of self-employed individuals has declined steadily since 2012.
+Truck driving and cleaning declined in popularity compared to construction work.
+Correct Option - 2
+Que. 2	What does the passage suggest about the migration patterns in India based on the IER 2024?	Que. 2	What does the passage suggest about the migration patterns in India based on the IER 2024?
+Que. 2	What does the passage suggest about the migration patterns in India based on the IER 2024?
+Que. 2	What does the passage suggest about the migration patterns in India based on the IER 2024?
+Female migration is increasing, contributing to urbanization without slum settlement preference.
+Economic factors are driving increased migration to rural areas instead of urban centres.
+Migration patterns are stable, with no significant changes observed in rural-urban migration trends.
+Economic factors are driving increased migration to urban centres instead of rural areas.
+Male migration for economic reasons is decreasing, leading to increased migration to urban slums.
+Correct Option - 5
+Que. 3	Which of the following sentence(s) can be inferred from the passage?
+Over the decade, the proportion of individuals engaged in skilled and semi-skilled labour decreased
+by 6%.
+Higher unemployment rates in urban areas are juxtaposed with significantly higher average monthly earnings.
+Migration for economic mobility among males declined by 1.2% during 2000-08 and marginally in 2021.
+Only A
+Both B and C
+Only C
+All A, B, and C
+None of these
+Correct Option - 4
+Que. 4	What trend does the IER 2024 highlight regarding unemployment rates between rural and urban areas?	Que. 4	What trend does the IER 2024 highlight regarding unemployment rates between rural and urban areas?
+Que. 4	What trend does the IER 2024 highlight regarding unemployment rates between rural and urban areas?
+Que. 4	What trend does the IER 2024 highlight regarding unemployment rates between rural and urban areas?
+Urban areas consistently have lower unemployment rates compared to rural areas.
+Urban areas experience higher unemployment rates compared to rural areas.
+There is no significant difference in unemployment rates between rural and urban areas.
+Unemployment rates have been declining steadily in both rural and urban areas.
+Urban areas witness a surge in unemployment rates while rural areas remain stable.
+Correct Option - 2
+Que. 5	Which of the highlighted words from the passage is grammatically/contextually incorrect?	Que. 5	Which of the highlighted words from the passage is grammatically/contextually incorrect?
+Que. 5	Which of the highlighted words from the passage is grammatically/contextually incorrect?
+Que. 5	Which of the highlighted words from the passage is grammatically/contextually incorrect?
+coexistence
+underrated
+petty
+momentum
+All are correct
+Correct Option - 2
+Que. 6	Which of the following inferences can be drawn from the underlined sentence from the passage?	Que. 6	Which of the following inferences can be drawn from the underlined sentence from the passage?
+Que. 6	Which of the following inferences can be drawn from the underlined sentence from the passage?
+Que. 6	Which of the following inferences can be drawn from the underlined sentence from the passage?
+Migration to urban slums in India offers potential economic advancement and job opportunities for poor rural households.
+Stagnation in urban slums' economy persists, with a significant portion engaged in unskilled labour for over a decade.
+Choosing formal settlements over urban slums limits economic mobility and work prospects for poor rural households in India.
+Investigating simultaneous high unemployment and wages is crucial for understanding urban poverty dynamics.
+Income and employment conditions in urban slums tend to perpetuate rather than alleviate systemic poverty and inequality.
+Correct Option - 1
+Que. 7	Which of the following sentences are TRUE/FALSE according to the passage?
+Skilled and semi-skilled labour saw a 6% increase, unlike unskilled labour.
+Employment in skilled and semi-skilled labour decreased over the decade.
+The urban unemployment rate decreased consistently from 2015-16 to 2022-23.
+The number of surveyed slum households decreased from 513 to 396.
+Urban areas exhibit higher unemployment rates compared to rural areas.
+Both B and C are true
+Only D is false
+All B, D, and E are true
+Both B and D are false
+All A, B, and C are true
+Correct Option - 3
+Que. 8	Which of the following sentence(s) cannot be inferred from the passage?
+The lower wages in urban areas have resulted in a decrease in migration for economic mobility.
+The survey revealed that all 396 households in 2021-22 had improved economically since 2012.
+Truck driving and cleaning have decreased in popularity as occupations in slums in the last decade.
+Only A
+Only B
+Only C
+All A, B, and C
+None of these
+Correct Option - 4
+Que. 9	What conclusion can be drawn from the third paragraph of the passage?	Que. 9	What conclusion can be drawn from the third paragraph of the passage?
+Que. 9	What conclusion can be drawn from the third paragraph of the passage?
+Que. 9	What conclusion can be drawn from the third paragraph of the passage?
+The divergence in employment and income trends between rural and urban areas is highlighted in the report, emphasizing the dynamics of slum economies.
+The data collected from Kolkata's slums shows a shift towards formal employment and away from self-employment, contradicting the findings of the IER 2024.
+While unskilled labour remains dominant in Kolkata's slums, skilled labour and formal employment have decreased, replaced by petty businesses.
+The survey conducted in 2022-23 covered all 37 slums in Kolkata that were surveyed in 2012, although some slums had either been redeveloped or evicted.
+The income and employment trends in slums were found to be unaffected by the COVID-19 pandemic during the pre-COVID-19 year of 2019.
+Correct Option - 3
+Que. 10	Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If
+all the sentences are correct, mark 'All are correct as your answer'.
+Neither the contestants nor the principal were aware of the fire.
+Instead criticizing why don't you help with the presentation?
+It is requested that a detailed report be sent urgent on the representations and ongoing strike by the employees.
+Neither Sameera nor Vinod knows anything about the accident.
+All are correct.
+Correct Option - 4
+Que. 11	Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If
+all the sentences are correct, mark 'All are correct as your answer'.
+The developers submitted building plans to the council for the approval.
+The girl, with several others, was late for school.
+She was heavily fined last month for coming lately.
+Each of the ladies have a designer handbag.
+All are correct.
+Correct Option - 2
+Que. 12	Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If
+all the sentences are correct, mark 'All are correct as your answer'.
+I see you have eaten fewer than ten percent of your mashed potatoes
+A different policeman has been assigned with the case.
+No sooner had he arrived in Delhi than he was kidnapped.
+Five kilograms of flour are all that I need for my baking.
+All are correct.
+Correct Option - 3
+Que. 13	Directions: In each of the questions below, four sentences are given that may or may not contain an error. Choose the one that is grammatically as well as contextually correct and meaningful. If
+all the sentences are correct, mark 'All are correct as your answer'.
+Several members of the party have resurrected the idea of constitutional change.
+I clearly empathize with the people who lives in those neighborhoods.
+When the ship finally reached land, only a few of the crew was left to witness the event.
+Everyone have their own ideas about the best way to bring up children.
+All are correct.
+Correct Option - 1
+Que. 14 Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best
+alternative among the five options given below each statement as your answer.
+were not protected in the epidemic, and (A)/ the outbreak was originally mistaken for Japanese encephalitis, (B)/ who had been vaccinated against Japanese encephalitis (C)/ but physicians in the area noted that persons (D)/ the number of cases among adults was unusual (E)/
+DABEC
+ABCED
+CBDAE
+EDABC
+BDCAE
+Correct Option - 5
+Que. 15	Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best
+alternative among the five options given below each statement as your answer.
+of petroleum-based jet fuel but with a fraction (A)/ of its carbon footprint, giving airlines solid footing (B)/ SAF made from renewable biomass and waste resources (C)/ for decoupling greenhouse gas (GHG) emissions from flight (D)/ has the potential to deliver the performance (E)/
+AEDCB
+CEABD
+DCBAE
+EDCBA
+BCDEA
+Correct Option - 2
+Que. 16	Directions: In the following questions, there is a statement divided into five parts, when arranged properly forms a coherent sentence both grammatically and contextually. Choose the best
+alternative among the five options given below each statement as your answer.
+registered with the Bureau of Patents (A)/ first mass-produced commercially by (B)/ Magdalo V. Francisco Sr. who founded (C)/ in 1942, banana ketchup was (D)/ the brand name Mafran which he (E)/
+BAEDC
+EBACD
+CAEBD
+DBCEA
+ADCBE
+Correct Option - 4
+Que. 17	Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a
+whole.
+Rekha's family hired 	personnel to 	her in daily tasks like bathing and preparing meals.
+assistive, support
+sabotage, antagonistic
+undercut, hostile
+weaken, fierce
+controvert, scrape
+Correct Option - 1
+Que. 18	Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a
+whole.
+Red Cross workers usually 	in the 	of victims of natural disasters by providing medical care to those who are injured.
+relapse, obstacle
+regression, constraint
+aid, recovery
+loss, hindrance
+misplace, drawback
+Correct Option - 3
+Que. 19	Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a
+whole.
+My supervisor won’t 	my day off because there is no one to 	my shift.
+bare, proscribe
+approve, cover
+expose, prohibit
+omit, interdict
+slur, neglect
+Correct Option - 2
+Que. 20	Directions: The question below has two blanks, each blank indicating that something has been omitted. Choose the set of words for each blank that best fit the meaning of the sentence as a
+whole.
+If you want to 	your lawn, you will need to water it 	so it stays nice and fresh.
+rare, ignore
+seldom, withdraw
+perpetually, retract
+maintain, frequently
+constant, negotiate
+Correct Option - 4
+Que. 21	Directions: Five sentences A, B, C, D, and E are given below, You need to rearrange the sentences so that the five sentences can together form a meaningful paragraph.	Que. 21	Directions: Five sentences A, B, C, D, and E are given below, You need to rearrange the sentences so that the five sentences can together form a meaningful paragraph.
+Que. 21	Directions: Five sentences A, B, C, D, and E are given below, You need to rearrange the sentences so that the five sentences can together form a meaningful paragraph.
+Que. 21	Directions: Five sentences A, B, C, D, and E are given below, You need to rearrange the sentences so that the five sentences can together form a meaningful paragraph.
+Educated at the University of Pennsylvania in physics, Musk started getting his feet wet as a serial tech entrepreneur.
+He is surpassed only by Jeff Bezos as the richest person in the world.
+He was instrumental in creating the company that became PayPal.
+Elon Musk is the charismatic co-founder and CEO of electric car maker Tesla and rocket manufacturer SpaceX.
+His astounding success has given rise to comparisons to other visionary businessmen.
+Which of the following should be the FIRST sentence after rearrangement?
+1.	A
+2.	B
+3.	C
+4.	D
+5.	E
+Correct Option - 4
+Que. 22	Which of the following should be the SECOND sentence after rearrangement?	Que. 22	Which of the following should be the SECOND sentence after rearrangement?
+Que. 22	Which of the following should be the SECOND sentence after rearrangement?
+Que. 22	Which of the following should be the SECOND sentence after rearrangement?
+1.	A
+2.	B
+3.	C
+4.	D
+5.	E
+Correct Option - 1
+Que. 23	Which of the following should be the THIRD sentence after rearrangement?	Que. 23	Which of the following should be the THIRD sentence after rearrangement?
+Que. 23	Which of the following should be the THIRD sentence after rearrangement?
+Que. 23	Which of the following should be the THIRD sentence after rearrangement?
+1.	A
+2.	B
+3.	C
+4.	D
+5.	E
+Correct Option - 3
+Que. 24	Which of the following should be the FOURTH sentence after rearrangement?	Que. 24	Which of the following should be the FOURTH sentence after rearrangement?
+Que. 24	Which of the following should be the FOURTH sentence after rearrangement?
+Que. 24	Which of the following should be the FOURTH sentence after rearrangement?
+1.	A
+2.	B
+3.	C
+4.	D
+5.	E
+Correct Option - 5
+Que. 25	Which of the following should be the FIFTH sentence after rearrangement?	Que. 25	Which of the following should be the FIFTH sentence after rearrangement?
+Que. 25	Which of the following should be the FIFTH sentence after rearrangement?
+Que. 25	Which of the following should be the FIFTH sentence after rearrangement?
+A
+B
+C
+D
+E
+Correct Option - 2
+Que. 26	Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No
+correction required' as your answer.
+As a whole, the Malays are, however, remarkably healthy people, and deformity and hereditary diseases is rare between them.
+Is rare among them
+Was rare between them
+Was rare among them
+Are rare among them
+No correction required
+Correct Option - 4
+Que. 27	Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No
+correction required' as your answer.
+The location is one of the most important things to consider when buying a house.
+Are one of the most important things
+Is one of the most important thing
+Are one of the most important thing
+One of the most important thing
+No correction required
+Correct Option - 5
+Que. 28	Directions: Select the phrase from the options below that should replace the underlined phrase in the sentence to make it grammatically correct. If the sentence is already correct, select 'No
+correction required' as your answer.
+It is also important to check to see if each resident has a pitcher of water in his or her room for reach of the bed.
+Her room during reach
+Her room within reach
+Her room among reach
+His room across reach
+No correction required
+Correct Option - 2
+Que. 29	Directions: In the following question, a sentence is given with four words marked as (A), (B), (C), and (D). These words may or may not be placed in the correct order. Four options with different
+arrangements of these words have been provided. Mark the option with the correct arrangement as the answer. If no rearrangement is required, mark option (5) as your answer.
+If you want to maintain(A) your lawn, you will need to fresh(B) the grass and water it frequently(C) so it stays nice and mow(D).
+A-C
+B-D
+C-D
+A-B
+No change required
+Correct Option - 2
+Que. 30	Directions: In the following question, a sentence is given with four words marked as (A), (B), (C), and (D). These words may or may not be placed in the correct order. Four options with different
+arrangements of these words have been provided. Mark the option with the correct arrangement as the answer. If no rearrangement is required, mark option (5) as your answer.
+Even though the alibi(A) could not substantiate(B) his defendant(C) for the night of the murder, he was still found innocent(D) of all charges.
+D-A
+C-B
+B-D
+A-C
+No change required
+Correct Option - 4
+Que. 31Que. 31
+Que. 31
+Que. 31
+Table below shows the number of male and female students studying in three different institutions AMU, MMH, and LPU in two sections A and B.
+Institutions
+Ratio of male
+Ratio of female
+Number of students
+students in section A to that in section B
+students in section A to that in section B
+in section B is how much more than the number of students in section A
+AMU
+3: 4
+6: 5
+10
+MMH
+1: 3
+5: 4
+20
+LPU
+4: 3
+2: 3
+15
+Note:
+Male students in AMU college are 50 more than female students in that college.
+Female students in colleges MMH and LPU are 30 and 55 respectively more than the number of male students.
+Number of males in section B from college AMU is what percentage of the total number of males from section B from all the colleges.
+1.	55.55%
+2.	44.44%
+3.	34.78%
+4.	88.78%
+5.	33.33%
+Correct Option - 2
+Que. 32	If average number of male students in section A of colleges AMU, MMH, LPU, and PQR is 45 and average number of female students in section A of these 4 colleges is 40, then find the total number of
+students in section A to college PQR.
+1.	150
+2.	140
+3.	110
+4.	120
+5.	130
+Correct Option - 3
+Que. 33	Find the ratio of total number of students in section A to colleges AMU and MMH together to the total number of female students in section B of all the three colleges together.	Que. 33	Find the ratio of total number of students in section A to colleges AMU and MMH together to the total number of female students in section B of all the three colleges together.
+Que. 33	Find the ratio of total number of students in section A to colleges AMU and MMH together to the total number of female students in section B of all the three colleges together.
+Que. 33	Find the ratio of total number of students in section A to colleges AMU and MMH together to the total number of female students in section B of all the three colleges together.
+1.	1: 1
+2.	2: 1
+3.	3: 2
+4.	2: 3
+5.	1: 2
+Correct Option - 1
+Que. 34	If ratio of male students to female students in section C of LPU college is 10: 7 and total students in section C in LPU college is equal to the total students in section B of MMH college, then find the total
+number of male students in all the three sections together of LPU college.
+1.	140
+2.	120
+3.	130
+4.	150
+5.	160
+Correct Option - 2
+Que. 35	Find the difference between the total number of male students from the colleges AMU and MMH together and the total number of female students the colleges MMH and LPU together.	Que. 35	Find the difference between the total number of male students from the colleges AMU and MMH together and the total number of female students the colleges MMH and LPU together.
+Que. 35	Find the difference between the total number of male students from the colleges AMU and MMH together and the total number of female students the colleges MMH and LPU together.
+Que. 35	Find the difference between the total number of male students from the colleges AMU and MMH together and the total number of female students the colleges MMH and LPU together.
+1.	75
+2.	60
+3.	65
+4.	50
+5.	55
+Correct Option - 4
+Que. 36	Out of total male and female students from college MMH, x and (x + 10) are interested in internships respectively. If total students from college MMH who are not interested in internship are 40, find the
+value of 'x'.
+1.	35
+2.	45
+3.	50
+4.	55
+5.	40
+Correct Option - 3
+Que. 37	The ratio of the speed of a boat in still water to the speed of the stream is 5 ∶ 1, if a boat can row a distance of 120 km upstream in 2 hrs more than the time taken to travel the same distance downstream,
+find the speed of boat in still water?
+12 km/hr
+18 km/hr
+25 km/hr
+20 km/hr
+21 km/hr
+Correct Option - 3
+Que. 38	A sum of money is invested for '2t' years at R% simple rate of interest and interest amount received is 40% of the sum invested. If same sum is invested at 2 years at 2R% annual rate of compound interest,
+then interest amount received is 44% of the sum invested. Find the value of 't'.
+8 years
+5 years
+6 years
+2 years
+None of these
+Correct Option - 4
+Que. 39	Two partners Nisha and Arun enter into a partnership with initial investment of Rs. 2000 and Rs. 3000 respectively. After 4 months, Nisha invested Rs. P more such that share of Arun in the annual profit is
+9/10 of Nisha's profit share. Find the value of P.
+Rs. 2000
+Rs. 4000
+Rs. 6000
+Rs. 1000
+None of these
+Correct Option - 1
+Que. 40	What approximate value should come in the place of question mark (?) in the following question? (71.98 + 143.9 × 3.99) ÷ 17.95 + 27.98 = ?
+1.	72
+2.	64
+3.	56
+4.	48
+5.	32
+Correct Option - 2
+Que. 41	What approximate value should come in the place of question mark (?) in the following question?
+39.99% of (124.95 ÷ 25.05 × 3.94 + 15.05) = ?
+1.	21
+2.	7
+3.	24
+4.	14
+5.	28
+Correct Option - 4
+Que. 42	What approximate value should come in the place of question mark (?) in the following question?
+6.972 + 161.92 ÷ 2.992 – 6.99 × 8.99 = ?
+1.	8
+2.	4
+3.	2
+4.	161
+5.	12
+Correct Option - 2
+Que. 43	What approximate value should come in the place of question mark (?) in the following question?
+79.98% of 599.98 + 192.02 ÷ 31.92 = √35.96 × ?
+1.	63
+2.	56
+3.	78
+4.	72
+5.	81
+Correct Option - 5
+Que. 44	What approximate value should come in the place of question mark (?) in the following question?
+11.98 – [25.96 – {1.98 + 4.95 × (6.06 – 2.93)}] = ?
+1.	7
+2.	3
+3.	1
+4.	-2
+5.	5
+Correct Option - 2
+Que. 45	Cost of a fan is 250 more than the cost of a bulb. If bulb is sold at 35% profit and fan is sold at 40% loss, the selling price of bulb and fan becomes equal. Find the cost of bulb.	Que. 45	Cost of a fan is 250 more than the cost of a bulb. If bulb is sold at 35% profit and fan is sold at 40% loss, the selling price of bulb and fan becomes equal. Find the cost of bulb.
+Que. 45	Cost of a fan is 250 more than the cost of a bulb. If bulb is sold at 35% profit and fan is sold at 40% loss, the selling price of bulb and fan becomes equal. Find the cost of bulb.
+Que. 45	Cost of a fan is 250 more than the cost of a bulb. If bulb is sold at 35% profit and fan is sold at 40% loss, the selling price of bulb and fan becomes equal. Find the cost of bulb.
+Rs. 600
+Rs. 300
+Rs. 200
+Rs. 500
+Rs. 400
+Correct Option - 3
+Que. 46	Width of a rectangle is 6 cm and length of rectangle is equal to the side of a square. If side of a square is decreased by 4, then area of square becomes 3 cm2 more than the area of rectangle, then find the
+area of rectangle.
+1.	67
+2.	54
+3.	78
+4.	88
+5.	90
+Correct Option - 3
+Que. 47	Train A running with the speed of 36 km/hr crosses a pole in 20 seconds. Another train B whose length is 100 metre more than length of train A is running with the speed of 18 km/hr. Find the time taken by
+train B to cross a platform of length 500 metre.
+200 seconds
+150 seconds
+160 seconds
+140 seconds
+None of these
+Correct Option - 3
+Que. 48	The given bar - graph shows the total number of health insurance sold to male and females, and the number of vehicle insurance sold to females by three different agents A, B and C.
+[[IMG:image3.png]]
+Note:
+All the agents each sold health insurance to 50 males
+Ratio of vehicle insurance sold to female to male by each agent is 5: 4 respectively.
+If agent A sold '2y' more health and 'y' more vehicle insurance such that total number of vehicle insurance sold by him becomes 27 less than total number of health insurance sold by him. Find the value of 'y'.
+1.	25
+2.	45
+3.	30
+4.	35
+5.	40
+Correct Option - 3
+Que. 49	Find the ratio between the health and vehicle insurance sold by A to the number of health and vehicle insurance sold by C.	Que. 49	Find the ratio between the health and vehicle insurance sold by A to the number of health and vehicle insurance sold by C.
+Que. 49	Find the ratio between the health and vehicle insurance sold by A to the number of health and vehicle insurance sold by C.
+Que. 49	Find the ratio between the health and vehicle insurance sold by A to the number of health and vehicle insurance sold by C.
+1.	322: 351
+2.	303: 239
+3.	301: 334
+4.	327: 329
+5.	None of these
+Correct Option - 2
+Que. 50	If cost per person of health insurance and vehicle insurance policy is ₹1500 and 2000 respectively, then find the difference between total cost of all the health insurance done by B and total cost of all the
+vehicle insurance done by C?
+1.	21000
+2.	18000
+3.	12000
+4.	15000
+5.	19000
+Correct Option - 2
+Que. 51	Health insurance sold to females by agent A is what percentage of the total number of health insurance sold to females by all the agents.	Que. 51	Health insurance sold to females by agent A is what percentage of the total number of health insurance sold to females by all the agents.
+Que. 51	Health insurance sold to females by agent A is what percentage of the total number of health insurance sold to females by all the agents.
+Que. 51	Health insurance sold to females by agent A is what percentage of the total number of health insurance sold to females by all the agents.
+1.	43.78%
+2.	28.89%
+3.	34.78%
+4.	38.46%
+5.	26.68%
+Correct Option - 4
+Que. 52	If the vehicle insurance sold by B to all the people is 21% of ‘x ‘then the health insurance sold by B to all the people is what percent value of x?	Que. 52	If the vehicle insurance sold by B to all the people is 21% of ‘x ‘then the health insurance sold by B to all the people is what percent value of x?
+Que. 52	If the vehicle insurance sold by B to all the people is 21% of ‘x ‘then the health insurance sold by B to all the people is what percent value of x?
+Que. 52	If the vehicle insurance sold by B to all the people is 21% of ‘x ‘then the health insurance sold by B to all the people is what percent value of x?
+1.	10%
+2.	15%
+3.	30%
+4.	20%
+5.	25%
+Correct Option - 4
+Que. 53	A and B are two inlet pipes connected to a cistern, can alone fill it in 20 hours and 24 hours respectively. There is third pipe C which can empty 160 litres of water in one hour from the cistern. If
+all three pipes are opened together cistern gets filled in 40 hours. Find the total capacity of the cistern.
+1920 liters
+2400 liters
+2240 liters
+2720 liters
+3000 liters
+Correct Option - 2
+Que. 54Que. 54A mixture contains Alcohol and water in the ratio 7 : 5. When 5 litres of water and 6 litres of alcohol is added to the mixture, the ratio of alcohol to water in the resultant mixture becomes 34 : 25. Find the
+Que. 54
+Que. 54
+initial quantity of the mixture.
+189 litres
+190 litres
+48 litres
+58 litres
+None of these.
+Correct Option - 3
+Que. 55	What should come in place of the question mark '?' in the following number series?
+63, 80, 99, ?, 143, 168
+1.	121
+2.	122
+3.	124
+4.	126
+5.	120
+Correct Option - 5
+Que. 56	What should come in place of the question mark '?' in the following number series?
+7, 8, 17, 52, ?, 1046
+1.	209
+2.	316
+3.	329
+4.	263
+5.	291
+Correct Option - 1
+Que. 57	What should come in place of the question mark '?' in the following number series?
+16, 160, 281, 381, ?, 526
+1.	432
+2.	442
+3.	462
+4.	452
+5.	472
+Correct Option - 3
+Que. 58Que. 58What will come in place of the question mark (?) in the following series? 103, 615, 958, 1174, 1299, 1363, ?
+Que. 58
+Que. 58
+1.	1390
+2.	1408
+3.	1583
+4.	1498
+5.	2458
+Correct Option - 1
+Que. 59	What should come in place of the question mark '?' in the following number series?
+7, 7, 14, ?, 168, 840
+1.	39
+2.	40
+3.	41
+4.	42
+5.	43
+Correct Option - 4
+Que. 60	Tickets numbered 1 to 50 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn bears a number which is a multiple of 8?	Que. 60	Tickets numbered 1 to 50 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn bears a number which is a multiple of 8?
+Que. 60	Tickets numbered 1 to 50 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn bears a number which is a multiple of 8?
+Que. 60	Tickets numbered 1 to 50 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn bears a number which is a multiple of 8?
+1.	1/7
+2.	7/26
+3.	3/25
+4.	2/5
+5.	3/5
+Correct Option - 3
+Que. 61	Set A contains 3 consecutive prime numbers while set B contains 2 consecutive odd numbers. Sum of largest number of set A and set B is 64 while largest number of set A is 4 less than the 3 times of largest
+number of set B. Find the smallest number of set A.
+1.	47
+2.	43
+3.	53
+4.	59
+5.	41
+Correct Option - 5
+Que. 62	Subhash spends 40% of his monthly income on household items, 20% of his monthly income on buying clothes, 10% of his monthly income on investing in recurring deposits, and the remaining	Que. 62	Subhash spends 40% of his monthly income on household items, 20% of his monthly income on buying clothes, 10% of his monthly income on investing in recurring deposits, and the remaining
+Que. 62	Subhash spends 40% of his monthly income on household items, 20% of his monthly income on buying clothes, 10% of his monthly income on investing in recurring deposits, and the remaining
+Que. 62	Subhash spends 40% of his monthly income on household items, 20% of his monthly income on buying clothes, 10% of his monthly income on investing in recurring deposits, and the remaining
+amount of Rs. 15,000 he saves. What is Subhash's monthly income?
+Rs. 25,000
+Rs. 1,00,000
+Rs. 50,000
+Rs. 45,000
+Rs. 48,000
+Correct Option - 3
+Que. 63	Directions: Given below are two quantities named I and II. Based on the given information, you have to determine the relation between the two quantities. You should use the given data and your
+knowledge of Mathematics to choose among the possible answers. a = -3, b = -1 and c = 6
+Quantity I: Find the value of (a3 + b2 + c2) / 4
+Quantity II: Find the value of [a / (a3 + b2)]
+Quantity I = Quantity II
+Quantity I ≥ Quantity II
+Quantity I ≤ Quantity II
+Quantity I ˂ Quantity II
+Quantity I ˃ Quantity II
+Correct Option - 5
+Que. 64  Direction: Given below are two quantities named A and B. Based on the given information you have to determine the relation between the two quantities. You should use the given data and your
+knowledge of Mathematics to choose between the possible answers.
+The perimeter of a square is equal to twice the perimeter of a rectangle of length 11 cm and breadth 10 cm. Quantity A: What is the circumference of the semicircle whose diameter is equal to the side of the square? Quantity B: What is the circumference of the circle which is inscribed inside the square?
+Quantity A > Quantity B
+Quantity A < Quantity B
+Quantity A ≥ Quantity B
+Quantity A ≤ Quantity B
+Quantity A = Quantity B or No relation
+Correct Option - 2
+Que. 65	Directions: Two quantities A and B are given in the following questions. You have to find the value to both A and B by using your knowledge of mathematics and choose the most suitable relation between
+the magnitude of A and B from the given options.
+Quantity A - Distance between trains after 3 hours. Train X travels 420 km in 7 hours. Ratio of speeds of train X and Y is 5 : 3. Trains are 100 km apart and are travelling towards each other.
+Quantity B - Distance (in km) travelled in 2 hours. Bus can travel 300 m in 12 seconds.
+Quantity A ≥ Quantity B
+Quantity A ≤ Quantity B
+Quantity A = Quantity B or no relationship can be established
+Quantity A > Quantity B
+Quantity A < Quantity B
+Correct Option - 4
+Que. 66	Directions: Study the following information carefully and answer the questions given below.
+Seven persons A, B, C, D, E, F, and G are sitting in a straight row. Some of them are facing the north while others face the south direction. Two people sit between B and A, who sit at one of the extreme ends of the row. B is second to the left of E. E and A are facing the same direction. E is not an immediate neighbor of A. D is sitting second to the right of G. G faces opposite the direction of E. Persons sitting on the extreme ends face opposite directions. C is not sitting on the extreme end and is not the immediate neighbor of F. F is sitting to the right of D but is not an immediate neighbor of the person who faces the south direction. The immediate neighbor of D faces the same direction. Not more than two persons facing north direction sit adjacent to each other.
+Who sits second to the left of B?
+E
+D
+G
+A
+C
+Correct Option - 1
+Que. 67	Number of persons sitting right to C is one less than the number of persons sitting to the left of   .	Que. 67	Number of persons sitting right to C is one less than the number of persons sitting to the left of   .
+Que. 67	Number of persons sitting right to C is one less than the number of persons sitting to the left of   .
+Que. 67	Number of persons sitting right to C is one less than the number of persons sitting to the left of   .
+The one who sits immediate right of D.
+A
+G
+The one who sits immediate left of F.
+F
+Correct Option - 3
+Que. 68	Who among the following person is standing to the right of the one who stands immediate left of G?	Que. 68	Who among the following person is standing to the right of the one who stands immediate left of G?
+Que. 68	Who among the following person is standing to the right of the one who stands immediate left of G?
+Que. 68	Who among the following person is standing to the right of the one who stands immediate left of G?
+The one who stand immediate left of E.
+A
+The one who stands immediate right of D.
+F
+C
+Correct Option - 4
+Que. 69	What is the position of D from the left end?	Que. 69	What is the position of D from the left end?
+Que. 69	What is the position of D from the left end?
+Que. 69	What is the position of D from the left end?
+First
+Fifth
+Sixth
+Second
+Third
+Correct Option - 5
+Que. 70	How many persons are facing North direction?	Que. 70	How many persons are facing North direction?
+Que. 70	How many persons are facing North direction?
+Que. 70	How many persons are facing North direction?
+Two
+One
+Five
+Three
+Seven
+Correct Option - 4
+Que. 71	Each of the vowels in the word "RANDOM" is replaced by number "2" and each consonant is replaced by a number which is the serial number of that consonant in the word i.e., R by 1, N by 3 and so on.
+What is the total of all the numbers once the replacement is completed?
+1.	14
+2.	15
+3.	20
+4.	18
+5.	19
+Correct Option - 4
+Que. 72	Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers
+accordingly.
+Statement:
+M < T ≤ Q < D; P > A = W ≥ D
+Conclusions:
+W ≥ T
+P > Q
+Only I follows
+Only Il follows
+Either I or II follows
+Both I and II follow
+Neither I or II follows
+Correct Option - 2
+Que. 73	Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers
+accordingly.
+Statement:
+R < V > C ≥ S < N; Q ≥ O > S
+Conclusions:
+V > O
+Q > C
+Only I follows
+Only Il follows
+Neither I or II follows
+Both follow
+Either I or II follows
+Correct Option - 3
+Que. 74	Direction: In the following question, assuming the given statement to be true, find which of the conclusion(s) among the given conclusions is/are definitely true, and then give your answers
+accordingly.
+Statement:
+C < P = R > N > S; Z < S ≤ O < G
+Conclusions:
+O > R
+P > Z
+Only I follows
+Only Il follows
+Neither I or II follows
+Either I or II follows
+Both I and II follow
+Correct Option - 2
+Que. 75	Directions: Study the following information carefully and answer the questions given below.
+Six persons Meena, Ritu, Karan, Priya, Vivek, and Lalit visited different Label ATMs on two different dates either the 5th or 18th in three months viz. January, March, and April of the same year. Each of them uses different types of ATMs viz. Green, Brown, Yellow, Pink, Orange, and White. All the information given is not in the same order. Karan and Priya visited the ATM in the same month. Karan visited the ATM before Ritu. A person visited the white Label ATM on 5th January. Two persons visited in between the persons who visited White and Brown Label ATMs. Lalit and Vivek visited the ATM on the same date. The person visited Pink Label ATM in the month which has 30 days only. Two Persons visited in between Meena and the one who visited the
+Pink Label ATM. Ritu does not visit Pink Label ATM. Priya and Vivek visited the ATM on different dates. The person visited the Green Label ATM just before the Yellow Label ATM. Meena does not visit Yellow Label ATM. Lalit does not visit Pink Label ATM.
+Which of the following colors does ATM Karan like?
+Orange
+Pink
+Brown
+Yellow
+White
+Correct Option - 4
+Que. 76	Four of the following five are alike in a certain way and hence they form a group. Which of the following does not belong to that group.	Que. 76	Four of the following five are alike in a certain way and hence they form a group. Which of the following does not belong to that group.
+Que. 76	Four of the following five are alike in a certain way and hence they form a group. Which of the following does not belong to that group.
+Que. 76	Four of the following five are alike in a certain way and hence they form a group. Which of the following does not belong to that group.
+Lalit
+Ritu
+Priya
+Meena
+Karan
+Correct Option - 2
+Que. 77	How many persons went to ATM between Priya and Ritu?	Que. 77	How many persons went to ATM between Priya and Ritu?
+Que. 77	How many persons went to ATM between Priya and Ritu?
+Que. 77	How many persons went to ATM between Priya and Ritu?
+Two
+Three
+One
+Five
+Four
+Correct Option - 3
+Que. 78	Which of the following statements is/are false with respect to Vivek?
+Vivek went to Pink Label ATM.
+Vivek went to an ATM in April.
+Vivek went to the ATM on the18th.
+Only I
+Only II
+Only I and II
+Only II and III
+Only III
+Correct Option - 5
+Que. 79	Who among the following pairs are visiting ATM in month of April?	Que. 79	Who among the following pairs are visiting ATM in month of April?
+Que. 79	Who among the following pairs are visiting ATM in month of April?
+Que. 79	Who among the following pairs are visiting ATM in month of April?
+Meena, Ritu
+Vivek, Ritu
+Lalit, Priya
+Karan, Meena
+Vivek, Meena
+Correct Option - 2
+Que. 80	Directions: Study the given information and answer the questions that follow.
+Point A is 12 meters to the West of B. B is to the North of C. H is the midpoint of B and C. F is 9 meters to the West of E. E is 13 meters to the North of D. Distance Between C and D is 6 meters. E is in the North East direction of C. Distance between A and H is 13 meters. G is 8 meters South of F. G is in the West direction of H.
+What is the distance between B and C?
+8 meters
+10 meters
+12 meters
+14 meters
+None of these
+Correct Option - 2
+Que. 81	What Is the Distance between G and H?	Que. 81	What Is the Distance between G and H?
+Que. 81	What Is the Distance between G and H?
+Que. 81	What Is the Distance between G and H?
+7 meters
+11 meters
+3 meters
+5 meters
+None of these
+Correct Option - 3
+Que. 82	In which direction is C with respect to D?	Que. 82	In which direction is C with respect to D?
+Que. 82	In which direction is C with respect to D?
+Que. 82	In which direction is C with respect to D?
+South
+East
+West
+South East
+None of these
+Correct Option - 3
+Que. 83	How many such pairs of letters are there in the word "MACAROONS" which has as many letters between them as in the English alphabetical order (both forward and backward)?	Que. 83	How many such pairs of letters are there in the word "MACAROONS" which has as many letters between them as in the English alphabetical order (both forward and backward)?
+Que. 83	How many such pairs of letters are there in the word "MACAROONS" which has as many letters between them as in the English alphabetical order (both forward and backward)?
+Que. 83	How many such pairs of letters are there in the word "MACAROONS" which has as many letters between them as in the English alphabetical order (both forward and backward)?
+Three
+One
+More than three
+Two
+None of these
+Correct Option - 2
+Que. 84	Directions: Study the following information carefully and answer the questions given below.
+Five friends Ajay, Rahul, Soni, Mayank, and Paras are living in a five-storey building. The lowermost floor is numbered 1 and the floor above it is 2 and so on till the topmost floor is numbered 5. Each of them has a different bike viz. Hero, Royal Enfield, Jawa, Ola, and Ampere. All the given information is not necessarily in the same order. The person sitting on the third floor has an Ampere bike. One floor is between Soni and the one who has an Ampere bike. Mayank is living either immediately above or below Soni. The one who has Ola lives immediately above the one who has a Royal Enfield bike. One person lives between Ajay and Paras. Rahul does not have a Jawa or Hero bike. Soni does not have a Hero bike. Ajay does not have Ola and Royal Enfield.
+Paras does not live on the topmost floor.
+Which of the following statements is true with respect to the final arrangement.
+Rahul has Royal Enfield.
+Mayank lives three floors above Soni.
+Soni lives on the floor above Ajay.
+Paras has a Hero bike.
+Ajay lives on the second floor.
+Correct Option - 3
+Que. 85	Who among the following person lives immediately above the one who have Ola?	Que. 85	Who among the following person lives immediately above the one who have Ola?
+Que. 85	Who among the following person lives immediately above the one who have Ola?
+Que. 85	Who among the following person lives immediately above the one who have Ola?
+The one who have Hero bike.
+Soni
+The one who lives immediately below Paras.
+The one who has Ampere bike.
+Mayank
+Correct Option - 4
+Que. 86	Who lives on the floor number three?	Que. 86	Who lives on the floor number three?
+Que. 86	Who lives on the floor number three?
+Que. 86	Who lives on the floor number three?
+Ajay
+Mayank
+Paras
+Soni
+Rahul
+Correct Option - 1
+Que. 87	Who among the following has Hero bike?	Que. 87	Who among the following has Hero bike?
+Que. 87	Who among the following has Hero bike?
+Que. 87	Who among the following has Hero bike?
+Ajay
+Paras
+Rahul
+Soni
+Mayank
+Correct Option - 5
+Que. 88	How many people are living between the floor of Paras and Soni?	Que. 88	How many people are living between the floor of Paras and Soni?
+Que. 88	How many people are living between the floor of Paras and Soni?
+Que. 88	How many people are living between the floor of Paras and Soni?
+Either two or three
+Three
+Two
+One
+Either one or two
+Correct Option - 2
+Que. 89	In the following question below are given some statements followed by some conclusions based on those statements. Take the given statements to be true even if they seem to be at a variance from
+commonly known facts. Read all the conclusions and then decide which of the given conclusions logically follow the given statements.
+Statements:
+All dams are wood.
+Some wood are chairs.
+No chairs are umbrellas.
+Conclusions:
+Some umbrellas are wood.
+All wood are dams.
+Only conclusion I follows
+Neither conclusion I nor II follow
+Only conclusion II follows
+Both conclusion I and II follow
+Either conclusion I or II follows
+Correct Option - 2
+Que. 90	Directions: In the question below are given statements followed by conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all	Que. 90	Directions: In the question below are given statements followed by conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all
+Que. 90	Directions: In the question below are given statements followed by conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all
+Que. 90	Directions: In the question below are given statements followed by conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all
+the conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.
+Statement:
+Only a few Genes are DNA Some DNA is RNA
+No RNA is Protein
+Conclusion:
+All DNA is Protein is a possibility
+All Genes being Protein is a possibility
+All Protein is DNA
+Only I follow
+Both I and III follows
+Either I or III follows
+Only II follows
+None follows
+Correct Option - 4
+Que. 91	Directions: In the question below are given statement followed by three conclusions numbered I, II and III. You have to take the given statements to be true even if they seem to be at variance with
+commonly known facts. Read all the conclusions and then decide which of the given conclusions logically follows from the given statements disregarding commonly known facts.
+Statement:
+Only a few Fan are bulb All Bulb are switch
+Some switch are tube light
+Conclusion:
+I: All Fan is switch is a possibility II: Some switch is fan
+III: Some bulb is tube light
+Either I or II and III follows
+Both I and II follows
+Both II and III follows
+None follows
+Only II follows
+Correct Option - 2
+Que. 92	If each vowel of the word 'VOLUME' is changed to the next letter in the English alphabetical series and each consonant is changed to the previous letter in the English alphabetical series and then the
+alphabets thus formed are arranged in alphabetical order from left to right, which of the following will be a fourth letter from the left end?
+U
+V
+P
+K
+L
+Correct Option - 3
+Que. 93	Directions: Study the following information carefully and answer the questions given below.
+Nine boxes A, B, C, D, E, F, G, H, and J are kept one above the other in a single stack. The bottommost position is numbered one and the topmost is numbered nine. But not necessarily in the same order. Three boxes are placed between C and E. Two boxes are placed between E and J. J and C are not immediate neighbors. E is kept in two boxes above G. E and G are kept in the even-numbered boxes. Box B is placed just above F. The Same number of boxes are between A and H as between E and G. A is placed above H. Box A is not placed adjacent to Box G. At least two boxes are between D and F.
+As many boxes are kept above E as below 	.
+A
+J
+D
+B
+F
+Correct Option - 5
+Que. 94	Which of the following box is kept exactly in the middle of J and A?	Que. 94	Which of the following box is kept exactly in the middle of J and A?
+Que. 94	Which of the following box is kept exactly in the middle of J and A?
+Que. 94	Which of the following box is kept exactly in the middle of J and A?
+G
+D
+H
+C
+F
+Correct Option - 3
+Que. 95	How many boxes are kept between H and B?	Que. 95	How many boxes are kept between H and B?
+Que. 95	How many boxes are kept between H and B?
+Que. 95	How many boxes are kept between H and B?
+As many boxes kept above F.
+As many boxes kept below B.
+Two
+As many boxes kept between D and G.
+One
+Correct Option - 1
+Que. 96Que. 96If all the boxes are kept in the alphabetical order from bottom to top, then how many boxes remains unchanged in its position?
+Que. 96
+Que. 96
+Two
+Four
+Three
+Five
+One
+Correct Option - 5
+Que. 97	Which of the following box is kept second from the top of the stack?	Que. 97	Which of the following box is kept second from the top of the stack?
+Que. 97	Which of the following box is kept second from the top of the stack?
+Que. 97	Which of the following box is kept second from the top of the stack?
+The box which is kept two boxes above J.
+The box which is kept immediately below D.
+Box E
+Box A
+The box which is kept immediately above H.
+Correct Option - 2
+Que. 98	Directions: Study the following information carefully and answer the questions given below.
+Six people Mehak, Renu, Atul, Parul, Kiku, and Lata are standing in the bank line one after the other to deposit cash in their respective accounts but not necessarily in the same order. The line is set so that the person standing first will deposit the maximum amount and the person in the last will deposit the least amount. At least two people are standing ahead of Renu. Renu is not the last person in the line. Mehak is standing just before Parul. As many persons are ahead of Kiku as after Renu. Mehak is not standing first in the line. Lata is standing ahead of Atul, who has Rs. 3000 to deposit in the bank. Parul wants to deposit Rs. 5000 in her bank account.
+Which of the following statement is true with respect to the final arrangement?
+Kiku is first in the line.
+Three persons are standing between Mehak and Lata
+Parul is the last one in the line.
+Only two persons are standing before Renu.
+Only one person is standing after Renu.
+Correct Option - 5
+Que. 99	What is the position of Parul with respect to the first position?	Que. 99	What is the position of Parul with respect to the first position?
+Que. 99	What is the position of Parul with respect to the first position?
+Que. 99	What is the position of Parul with respect to the first position?
+Third
+Fourth
+Second
+Fifth
+Sixth
+Correct Option - 2
+Que. 100	What could be the amount Renu deposit in bank?	Que. 100	What could be the amount Renu deposit in bank?
+Que. 100	What could be the amount Renu deposit in bank?
+Que. 100	What could be the amount Renu deposit in bank?
+1.	2000
+2.	4222
+3.	5500
+4.	2996
+5.	5100
+Correct Option - 2

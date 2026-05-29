@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const ForgotPasswordPage = () => {
 
     setIsLoading(true);
     try {
-      const res = await API.forgotPassword({ email });
+      const res = await API.forgotPassword(email);
       if (res.success) {
         setSuccess(true);
         toast.success('Reset link sent successfully!');

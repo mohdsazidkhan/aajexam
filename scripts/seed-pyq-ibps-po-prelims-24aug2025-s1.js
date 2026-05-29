@@ -1,0 +1,431 @@
+/**
+ * Seed: IBPS PO Prelims - 24 August 2025 Shift-1
+ * IBPS PO Prelims — Probationary Officer Preliminary Exam.
+ * 100 Q × 1 mark, 3 sections (Eng 30 / Reas 35 / Quant 35), 60 min total,
+ * sectional timing 20 min each, 0.25 negative marking.
+ * Uploads question/option images from local _extracted_ibps_po_24aug2025_s1/ to Cloudinary.
+ */
+
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { v2 as cloudinary } from 'cloudinary';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+const MONGO_URI = process.env.MONGO_URI;
+if (!MONGO_URI) { console.error('MONGO_URI not found'); process.exit(1); }
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const EXTRACTED_DIR = path.resolve(__dirname, '../_extracted_ibps_po_24aug2025_s1');
+const CLOUDINARY_FOLDER = 'aajexam/pyq/ibps-po-prelims-24aug2025-s1';
+const F = '24aug2025-s1';
+
+const examCategorySchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  type: { type: String, enum: ['Central', 'State'], required: true },
+  description: { type: String, trim: true }
+}, { timestamps: true });
+
+const examSchema = new mongoose.Schema({
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamCategory', required: true },
+  name: { type: String, required: true, trim: true },
+  code: { type: String, required: true, uppercase: true, trim: true },
+  description: { type: String, trim: true },
+  isActive: { type: Boolean, default: true },
+  logo: { type: String }
+}, { timestamps: true });
+
+const examPatternSchema = new mongoose.Schema({
+  exam: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam', required: true },
+  title: { type: String, required: true, trim: true },
+  duration: { type: Number, required: true, min: 1 },
+  totalMarks: { type: Number, required: true, min: 0 },
+  negativeMarking: { type: Number, default: 0, min: 0 },
+  sections: [{
+    name: { type: String, required: true, trim: true },
+    totalQuestions: { type: Number, required: true, min: 1 },
+    marksPerQuestion: { type: Number, required: true, min: 0 },
+    negativePerQuestion: { type: Number, default: 0, min: 0 },
+    sectionDuration: { type: Number, min: 0 }
+  }]
+}, { timestamps: true });
+
+const practiceTestSchema = new mongoose.Schema({
+  examPattern: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamPattern', required: true },
+  title: { type: String, required: true, trim: true },
+  slug: { type: String, lowercase: true, trim: true },
+  totalMarks: { type: Number, required: true, min: 0 },
+  duration: { type: Number, required: true, min: 1 },
+  accessLevel: { type: String, enum: ['FREE', 'PRO'], default: 'FREE' },
+  isPYQ: { type: Boolean, default: false },
+  pyqYear: { type: Number, default: null },
+  pyqShift: { type: String, default: null, trim: true },
+  pyqExamName: { type: String, default: null, trim: true },
+  publishedAt: { type: Date, default: Date.now },
+  questions: [{
+    questionText: { type: String, required: true },
+    questionImage: { type: String, default: '' },
+    options: [{ type: String, required: true }],
+    optionImages: [{ type: String, default: '' }],
+    correctAnswerIndex: { type: Number, required: true, min: 0 },
+    explanation: { type: String, trim: true },
+    section: { type: String, required: true, trim: true },
+    tags: [{ type: String, trim: true }],
+    difficulty: { type: String, enum: ['easy', 'medium', 'hard', 'mixed'], default: 'medium' }
+  }]
+}, { timestamps: true });
+
+const ExamCategory = mongoose.models.ExamCategory || mongoose.model('ExamCategory', examCategorySchema);
+const Exam = mongoose.models.Exam || mongoose.model('Exam', examSchema);
+const ExamPattern = mongoose.models.ExamPattern || mongoose.model('ExamPattern', examPatternSchema);
+const PracticeTest = mongoose.models.PracticeTest || mongoose.model('PracticeTest', practiceTestSchema);
+
+const ENG = 'English Language';
+const REA = 'Reasoning Ability';
+const QA  = 'Quantitative Aptitude';
+
+const KEY = [4, 1, 2, 5, 5, 4, 5, 2, 3, 3, 2, 5, 4, 5, 1, 3, 1, 4, 1, 3, 3, 2, 2, 1, 3, 3, 2, 4, 5, 4, 1, 4, 1, 4, 1, 2, 4, 2, 3, 5, 3, 1, 3, 2, 2, 3, 3, 2, 4, 3, 5, 1, 2, 5, 4, 1, 4, 3, 5, 2, 3, 2, 3, 1, 1, 2, 1, 4, 3, 3, 1, 2, 5, 1, 1, 3, 3, 5, 5, 1, 2, 4, 1, 2, 5, 2, 4, 3, 5, 1, 1, 1, 3, 1, 4, 4, 2, 1, 1, 1];
+const RAW = [
+  { n: 1, s: `Reasoning Ability`, q: `How many persons are younger to the one who likes running?`, qi: ``, o: [`None`, `Four`, `Two`, `Three`, `One`], oi: [``, ``, ``, ``, ``], e: `Year Age (years) Person Activity 1947 78 B Reading 1962 63 D Drawing 1974 51 A Dancing 1981 44 F Running 1987 38 G Hiking 1998 27 C Swimming 2009 16 E Climbing` },
+  { n: 2, s: `Reasoning Ability`, q: `What is the total age of E and A?`, qi: ``, o: [`67 years`, `78 years`, `90 years`, `54 years`, `None of these`], oi: [``, ``, ``, ``, ``], e: `Year Age (years) Person Activity 1947 78 B Reading 1962 63 D Drawing 1974 51 A Dancing 1981 44 F Running 1987 38 G Hiking 1998 27 C Swimming 2009 16 E Climbing` },
+  { n: 3, s: `Reasoning Ability`, q: `Which activity is liked by the one who was born in 1974?`, qi: ``, o: [`Drawing`, `Dancing`, `Reading`, `Running`, `Climbing`], oi: [``, ``, ``, ``, ``], e: `Year Age (years) Person Activity 1947 78 B Reading 1962 63 D Drawing 1974 51 A Dancing 1981 44 F Running 1987 38 G Hiking 1998 27 C Swimming 2009 16 E Climbing` },
+  { n: 4, s: `Reasoning Ability`, q: `Who among the following likes hiking?`, qi: ``, o: [`E`, `A`, `F`, `B`, `G`], oi: [``, ``, ``, ``, ``], e: `Year Age (years) Person Activity 1947 78 B Reading 1962 63 D Drawing 1974 51 A Dancing 1981 44 F Running 1987 38 G Hiking 1998 27 C Swimming 2009 16 E Climbing` },
+  { n: 5, s: `Reasoning Ability`, q: ``, qi: ``, o: [`Four of the following five are similar in a certain manner and related to a group, who among the following is not related to the group?`, `B`, `F`, `G`, `E`], oi: [``, ``, ``, ``, ``], e: `Year Age (years) Person Activity 1947 78 B Reading 1962 63 D Drawing 1974 51 A Dancing 1981 44 F Running 1987 38 G Hiking 1998 27 C Swimming 2009 16 E Climbing` },
+  { n: 6, s: `Reasoning Ability`, q: `Who among the following lives in Flat-Q on the 3rd floor?`, qi: ``, o: [`D`, `E`, `N`, `K`, `L`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: Persons Flat P Flat Q 4 D N 3 L K 2 O E 1 M F` },
+  { n: 7, s: `Reasoning Ability`, q: `Which of the following pairs live on the same floor?`, qi: ``, o: [`L and E`, `M and K`, `D and K`, `N and O`, `K and L`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: Persons Flat P Flat Q 4 D N 3 L K 2 O E 1 M F` },
+  { n: 8, s: `Reasoning Ability`, q: `Who among the following persons lives to the east of M?`, qi: ``, o: [`K`, `F`, `O`, `N`, `D`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: Persons Flat P Flat Q 4 D N 3 L K 2 O E 1 M F` },
+  { n: 9, s: `Reasoning Ability`, q: `Which of the following statements is/are definitely true?
+D lives below M.
+Only one floor is there below E’s floor.
+N lives two floors above O.`, qi: ``, o: [`Only I`, `Both I and II`, `Both II and III`, `Only III`, `Both I and III`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: Persons Flat P Flat Q 4 D N 3 L K 2 O E 1 M F` },
+  { n: 10, s: `Reasoning Ability`, q: `Who among the following lives to the north west of K?`, qi: ``, o: [`L`, `M`, `D`, `F`, `None of these`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: Persons Flat P Flat Q 4 D N 3 L K 2 O E 1 M F` },
+  { n: 11, s: `Reasoning Ability`, q: `Statements: G = H > K = I ≥ L > M = N ≥ O < P
+Conclusions:
+G ≥ P
+L > O`, qi: ``, o: [`If only conclusion I is true`, `If only conclusion II is true`, `If either conclusion I or II is true`, `If both conclusions I and II are true`, `If neither conclusion I nor II is true`], oi: [``, ``, ``, ``, ``], e: `I. G ≥ P (False) II. L > O (True)` },
+  { n: 12, s: `Reasoning Ability`, q: `Statements: A = B > C ≥ D < E > O < L ≤ F > G
+Conclusions:
+A > F
+D < G`, qi: ``, o: [`If only conclusion I is true`, `If only conclusion II is true`, `If either conclusion I or II is true`, `If both conclusions I and II are true`, `If neither conclusion I nor II is true`], oi: [``, ``, ``, ``, ``], e: `I. A > F (False) II. D < G (False)` },
+  { n: 13, s: `Reasoning Ability`, q: `Statements: W < U ≤ V = K ≤ X < Y > Z ≤ T = H
+Conclusions:
+X > W`, qi: ``, o: [`U < Z`, `If either conclusion I or II is true`, `If both conclusions I and II are true`, `If neither conclusion I nor II is true`, `If only conclusion I is true`], oi: [``, ``, ``, ``, ``], e: `I. X > W (True) II. U < Z (False)` },
+  { n: 14, s: `Reasoning Ability`, q: `Who among the following person sits eight to the left of P?`, qi: ``, o: [`H`, `D`, `W`, `P`, `L`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: [[IMG:image13.png` },
+  { n: 15, s: `Reasoning Ability`, q: `What is the position of D in the row?`, qi: ``, o: [`Ninth from the left end of the row`, `Seventh from the right end of the row.`, `Ninth from the right end of the row`, `Eighth from the left end of the row`, `Eighth from the right end of the row`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: [[IMG:image13.png` },
+  { n: 16, s: `Reasoning Ability`, q: `How many persons sit in the row?`, qi: ``, o: [`13`, `14`, `18`, `16`, `19`], oi: [``, ``, ``, ``, ``], e: `Final Arrangement is here: [[IMG:image13.png` },
+  { n: 17, s: `Reasoning Ability`, q: ``, qi: ``, o: [`Find the odd-one out.`, `DFUC`, `LNMK`, `OQJN`, `XZAV`], oi: [``, ``, ``, ``, ``], e: `Except XZAV, logic here is: [[IMG:image14.jpeg` },
+  { n: 18, s: `Reasoning Ability`, q: `Which of the following combination is true?`, qi: ``, o: [`U- England`, `T- Singapore`, `S- Finland`, `Both [a] and [b]`, `P- Vietnam`], oi: [``, ``, ``, ``, ``], e: `The Final arrangement: Designations Persons Country CTO Q Philippines PH R Canada LSP P Finland GM T Singapore CEO U England HRM S Vietnam The Final arrangement: Designations Persons Country CTO Q Philippines PH R Canada LSP P Finland GM T Singapore CEO U England HRM S Vietnam` },
+  { n: 19, s: `Reasoning Ability`, q: `Who among the following is designated as HRM?`, qi: ``, o: [`U`, `P`, `The one who lives Philippines`, `S`, `None of these`], oi: [``, ``, ``, ``, ``], e: `` },
+  { n: 20, s: `Reasoning Ability`, q: `Who among the following person lives in Canada?`, qi: ``, o: [`U`, `P`, `R`, `S`, `T`], oi: [``, ``, ``, ``, ``], e: `The Final arrangement: Designations Persons Country CTO Q Philippines PH R Canada LSP P Finland GM T Singapore CEO U England HRM S Vietnam` },
+  { n: 21, s: `Reasoning Ability`, q: `How many persons are junior to the one who lives Philippines?
+Two
+Four`, qi: ``, o: [`Five`, `One`, `Three`, `2`, `www.sscadda.com	|	Adda247 App`], oi: [``, ``, ``, ``, ``], e: `The Final arrangement: Designations Persons Country CTO Q Philippines PH R Canada LSP P Finland GM T Singapore CEO U England HRM S Vietnam` },
+  { n: 22, s: `Reasoning Ability`, q: `Which of the following statement (s) is/ are not true?`, qi: ``, o: [`Three persons are junior to the one who lives in Finland`, `R is junior to U`, `T is designated GM`, `S lives in Vietnam`, `U is designated as CEO`], oi: [``, ``, ``, ``, ``], e: `The Final arrangement: Designations Persons Country CTO Q Philippines PH R Canada LSP P Finland GM T Singapore CEO U England HRM S Vietnam` },
+  { n: 23, s: `Reasoning Ability`, q: ``, qi: ``, o: [`How many pair of digits are in the number ‘758231265’, each of which have as many digits between them as in number series (both forward and backward direction)?`, `Two`, `More than four`, `Four`, `One`], oi: [``, ``, ``, ``, ``], e: `Sol. [[IMG:image16.jpeg` },
+  { n: 24, s: `Reasoning Ability`, q: `In which direction is point A with respect to point X?`, qi: ``, o: [`South-east`, `North-east`, `South-west`, `North-west`, `East`], oi: [``, ``, ``, ``, ``], e: `` },
+  { n: 25, s: `Reasoning Ability`, q: `Four of the following five are similar in a certain manner and related to a group, who among the following is not related to the group?`, qi: ``, o: [`AE`, `MS`, `FW`, `YE`, `MX`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image16.jpeg` },
+  { n: 26, s: `Reasoning Ability`, q: `In which direction is point D with respect to point Y?`, qi: ``, o: [`South`, `North-east`, `South-west`, `North-west`, `North`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image17.jpeg` },
+  { n: 27, s: `Reasoning Ability`, q: ``, qi: ``, o: [`How many meaningful words can be formed from the first, second, eighth and ninth letter from the left end of the word “REFRIGERATOR”. If no word is formed, then mark the answer as @ and if more than three words are formed, then mark the answer as #, else choose the correct answer from given options?`, `1`, `2`, `3`, `#`], oi: [``, ``, ``, ``, ``], e: `REAR, RARE` },
+  { n: 28, s: `Reasoning Ability`, q: `Who among the following sits opposite to L?`, qi: ``, o: [`R`, `The one who sits immediate right of X`, `U`, `Both [a] and [b]`, `S`], oi: [``, ``, ``, ``, ``], e: `The final arrangement is: [[IMG:image18.jpeg` },
+  { n: 29, s: `Reasoning Ability`, q: `Four of the following five are alike in a certain way so form a group, which of the following does not belong to that group?`, qi: ``, o: [`P`, `M`, `X`, `S`, `W`], oi: [``, ``, ``, ``, ``], e: `The final arrangement is: [[IMG:image19.jpeg` },
+  { n: 30, s: `Reasoning Ability`, q: `Which of the following statement is true?`, qi: ``, o: [`P sits second to the left of N`, `Three persons sit between X and W`, `N sits opposite to U`, `P sits opposite to the one who sits immediate left of S`, `None of these`], oi: [``, ``, ``, ``, ``], e: `Sol. The final arrangement is: [[IMG:image20.jpeg` },
+  { n: 31, s: `Reasoning Ability`, q: `How many persons sit between P and the one who sits opposite to X?`, qi: ``, o: [`Two`, `Three`, `Four`, `One`, `More than four`], oi: [``, ``, ``, ``, ``], e: `` },
+  { n: 32, s: `Reasoning Ability`, q: ``, qi: ``, o: [`Which of the following pair of persons sit at extreme ends?`, `W, M`, `J, U`, `L, P`, `J, R`], oi: [``, ``, ``, ``, ``], e: `Sol. The final arrangement is:` },
+  { n: 33, s: `Reasoning Ability`, q: `Statements: Only a few retro is power Some power is fight
+No fight is risky
+Conclusions:
+Some retro being fight is a possibility
+No power is risky`, qi: ``, o: [`If only conclusion I follows`, `If only conclusion II follows`, `If either conclusion I or II follows`, `If neither conclusion I nor II follows`, `If both conclusions I and II follow`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image21.jpeg` },
+  { n: 34, s: `Reasoning Ability`, q: `Statements: Only a few grey is work All work is good
+No good is food
+Conclusions:
+All work being food is a possibility
+No grey is food`, qi: ``, o: [`If only conclusion I follows`, `If only conclusion II follows`, `If either conclusion I or II follows`, `If neither conclusion I nor II follows`, `If both conclusions I and II follow`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image22.jpeg` },
+  { n: 35, s: `Reasoning Ability`, q: `Statements: Some regulate is order All order is declare
+Some declare is segment
+Conclusions:
+Some regulate is declare`, qi: ``, o: [`No order is segment pmarks: 0.9, nmarks: 0.225`, `If only conclusion I follows`, `If only conclusion II follows`, `If either conclusion I or II follows`, `If neither conclusion I nor II follows`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image23.jpeg` },
+  { n: 36, s: `English Language`, q: `Which of the following is the FIRST sentence after the rearrangement?`, qi: ``, o: [`(a) A`, `(b) F`, `(c) C`, `(d) D`, `(e) E`], oi: [``, ``, ``, ``, ``], e: `Correct Sequence: F – D – B – C – E – A Explanation: F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup. B shifts to the problem: suspicions arise about FBI control—natural turn to controversy. C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C. A closes with outcome: despite controversy, usage persists—logical wrap-up.` },
+  { n: 37, s: `English Language`, q: `Which of the following is the SECOND sentence after the rearrangement?`, qi: ``, o: [`(a) A`, `(b) B`, `(c) C`, `(d) D`, `(e) E`], oi: [``, ``, ``, ``, ``], e: `Correct Sequence: F – D – B – C – E – A Explanation: F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup. B shifts to the problem: suspicions arise about FBI control—natural turn to controversy. C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C. A closes with outcome: despite controversy, usage persists—logical wrap-up.` },
+  { n: 38, s: `English Language`, q: `Which of the following is the THIRD sentence after the rearrangement?`, qi: ``, o: [`(a) A`, `(b) B`, `(c) C`, `(d) D`, `(e) E`], oi: [``, ``, ``, ``, ``], e: `Correct Sequence: F – D – B – C – E – A Explanation: F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup. B shifts to the problem: suspicions arise about FBI control—natural turn to controversy. C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C. A closes with outcome: despite controversy, usage persists—logical wrap-up.` },
+  { n: 39, s: `English Language`, q: `Which of the following is the FOURTH sentence after the rearrangement?`, qi: ``, o: [`(a) F`, `(b) B`, `(c) C`, `(d) D`, `(e) E`], oi: [``, ``, ``, ``, ``], e: `Correct Sequence: F – D – B – C – E – A Explanation: F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup. B shifts to the problem: suspicions arise about FBI control—natural turn to controversy. C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C. A closes with outcome: despite controversy, usage persists—logical wrap-up.` },
+  { n: 40, s: `English Language`, q: `Which of the following is the FIFTH sentence after the rearrangement?`, qi: ``, o: [`A`, `B`, `F`, `D`, `E`], oi: [``, ``, ``, ``, ``], e: `Correct Sequence: F – D – B – C – E – A Explanation: F introduces the subject and context: the app, community, and appeal (privacy). D adds how it was positioned: secure and independent—still background/setup. B shifts to the problem: suspicions arise about FBI control—natural turn to controversy. C strengthens the suspicion with a concrete catalyst: a leaked report. E gives the immediate rebuttal: developers’ denial answers B and C. A closes with outcome: despite controversy, usage persists—logical wrap-up.` },
+  { n: 41, s: `English Language`, q: `Identify the sentence that is grammatically incorrect.`, qi: ``, o: [`She has already finished the assignment ahead of schedule.`, `Neither the manager nor the employees were at the meeting.`, `I have lived in this neighborhood since five years.`, `We are planning a surprise party for her birthday tonight.`, `All are correct`], oi: [``, ``, ``, ``, ``], e: `Explanation of the Error: (c) Incorrect use of the preposition "since" with a duration. "Since" is used with specific points in time (e.g., since 2020), not durations. The correct version is: "I have lived in this neighborhood for five years. Analysis of each option: "She has already finished the assignment ahead of schedule." Correct. The verb tense is proper, and "ahead of schedule" is a standard phrase. "Neither the manager nor the employees were at the meeting." Correct. With "neither…nor", the verb agrees with the subject nearest to it (employees), so "were" is right. "I have lived in this neighborhood since five years." Incorrect. "Since" is used for a specific point in time (e.g., since 2018, since last Monday). For a duration, "for" must be used. Correct version: "I have lived in this neighborhood for five years." "We are planning a surprise party for her birthday tonight." Correct. Present continuous tense is appropriate to show a planned future action. "All are correct" Incorrect, because (c) has an error.` },
+  { n: 42, s: `English Language`, q: `Identify the sentence that is grammatically incorrect.`, qi: ``, o: [`Each of the players have signed the registration form.`, `He enjoys listening to classical music in the evenings.`, `We have been waiting for the bus for over an hour.`, `My sister and I are going hiking this weekend.`, `All are incorrect`], oi: [``, ``, ``, ``, ``], e: `Explanation of the Error: (a) The subject "Each" is singular and should take a singular verb. The correct version is: "Each of the players has signed the registration form." Analysis of each option: "Each of the players have signed the registration form." Incorrect. The subject "Each" is singular, so the verb should also be singular. Correct version: "Each of the players has signed the registration form." "He enjoys listening to classical music in the evenings." Correct. The subject is singular (He) and the verb enjoys agrees. The gerund phrase listening to classical music is used correctly. "We have been waiting for the bus for over an hour." Correct. Present perfect continuous tense is appropriately used to show an action continuing from the past until now. "My sister and I are going hiking this weekend." Correct. The subject is plural (My sister and I) and the verb are going is accurate. "All are incorrect" This is wrong, because only (a) has an error.` },
+  { n: 43, s: `English Language`, q: `In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The witness gave a/an 	account of the events during the trial which led to the verdict.`, qi: ``, o: [`cleared`, `fictional`, `vivid`, `deceptive`, `honestly`], oi: [``, ``, ``, ``, ``], e: `The sentence indicates that the witness provided a clear and detailed account, so vivid is the most appropriate word. Analysis: Option (a) cleared English Meaning: Free from doubt, confusion, or obstruction; made plain. Hindi Meaning: स्पष्ट किया हुआ / साफ़ किया हुआ Example: The teacher cleared the doubts of all the students before the exam. Why wrong here: "Cleared account" is not a natural phrase to describe testimony. Option (b) fictional English Meaning: Made up, imaginary, not based on real events. Hindi Meaning: िाल्पकिि / गढा हुआ Example: The movie is based on a fictional story. Why wrong here: A witness cannot give an imaginary account in a legal trial. Option (c) vivid English Meaning: Producing strong, clear, and lifelike images in the mind. Hindi Meaning: जीवंत / स्पष्ट / सजीव Example: She gave a vivid description of her childhood memories. Why correct here: A vivid account means a clear, detailed, and lifelike description, which fits the context of a trial. Option (d) deceptive English Meaning: Misleading, intended to make someone believe something false. Hindi Meaning: भ्रामि / छलपर्ूण Example: The advertisement was deceptive and misled many customers. Why wrong here: A deceptive account would mean a false and misleading statement, which is not contextually appropriate for leading to a verdict. Option (e) honestly English Meaning: In a truthful and sincere manner. Hindi Meaning: ईमािदारी से Example: She answered the interviewer’s questions honestly. Why wrong her` },
+  { n: 44, s: `English Language`, q: `In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The teacher was impressed by the student’s 	 to improve.`, qi: ``, o: [`resistance`, `determination`, `refusal`, `wise`, `responsive`], oi: [``, ``, ``, ``, ``], e: `The teacher being impressed suggests a positive quality; determination to improve fits well. Analysis: Option (a) resistance English Meaning: The refusal to accept or comply with something. Hindi Meaning: कवरोध / प्रकतरोध Example: His resistance to change made progress difficult. Why wrong here: "Resistance to improve" would mean the student opposed improvement, which contradicts the context. Option (b) determination English Meaning: Firmness of purpose; the quality of being resolute. Hindi Meaning: दृढ किश्चय / संिल्प Example: Her determination helped her succeed in the competition. Why correct here: "Determination to improve" means the student showed strong willpower and effort, which rightly impressed the teacher. Option (c) refusal English Meaning: The act of declining or rejecting something. Hindi Meaning: इंिार / अस्वीिार Example: His refusal to participate upset the organizers. Why wrong here: "Refusal to improve" has a negative meaning and does not fit the positive tone of the sentence. Option (d) wise English Meaning: Having or showing experience, knowledge, and good judgment. Hindi Meaning: बुकिमाि / समझदार Example: It was a wise decision to save money for the future. Why wrong here: "Wise to improve" is grammatically incorrect and does not convey the intended meaning. Option (e) responsive English Meaning: Reacting quickly and positively. Hindi Meaning: संवेदिशील / प्रत्युत्तर देिे वाला Example: The child was responsive to the teacher’s guidance. Why wrong here: Wh` },
+  { n: 45, s: `English Language`, q: `In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The committee postpone (A) to decided (B) the annual meeting because several key members (C) were unable
+(D) to attend on time.`, qi: ``, o: [`B-C & A-D`, `A-B`, `C-D`, `A-C & B-D`, `No interchange required`], oi: [``, ``, ``, ``, ``], e: `The committee decided (B) to postpone (A) the annual meeting because several key members (C) were unable (D) to attend on time. Step-by-step Analysis: Word (A) postpone: Used here as "The committee postpone to decided..." → grammatically incorrect. It should be decided. Word (B) decided: Used as "to decided the annual meeting" → incorrect. The correct word here should be postpone ("to postpone the annual meeting"). Word (C) members: This is correctly placed in "several key members". No change needed. Word (D) unable: Correctly placed in "were unable to attend". No change needed. So, the necessary swap is between A (postpone) and B (decided). Corrected sentence: The committee decided (B) to postpone (A) the annual meeting because several key members were unable to attend on time. Correct Answer: (b) A-B` },
+  { n: 46, s: `English Language`, q: `In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+Despite facing multiple obstacles (A), the young entrepreneur expanding (B) her determination (C) and eventually succeeded in maintained (D) her small business.
+B-C & A-D
+A-C
+B-D
+A-C & B-D
+No interchange required
+COLUMN ICOLUMN IIA. Social media platforms		must	implement	stricter policies to curb		D.	farmers	adopting	sustainable	agricultural practicesB. The education system needs reformsE. to reduce dependence on fossil fuels and cutemissions		C.	The	governmentannounced new subsidies to support		F.	problem-solving	inindustries like healthcare and financeCOLUMN ICOLUMN IIA. Social media platforms		must	implement	stricter policies to curb		D.	farmers	adopting	sustainable	agricultural practicesB. The education system needs reformsE. to reduce dependence on fossil fuels and cutemissions		C.	The	governmentannounced new subsidies to support		F.	problem-solving	inindustries like healthcare and financeQ47. Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. Social media platforms
+must	implement	stricter policies to curb
+D.	farmers	adopting
+sustainable	agricultural practices
+B. The education system needs reforms
+E. to reduce dependence on fossil fuels and cut
+emissions
+C.	The	government
+announced new subsidies to support
+F.	problem-solving	in
+industries like healthcare and finance
+COLUMN I
+COLUMN II
+A. Social media platforms
+must	implement	stricter policies to curb
+D.	farmers	adopting
+sustainable	agricultural practices
+B. The education system needs reforms
+E. to reduce dependence on fossil fuels and cut
+emissions
+C.	The	government
+announced new subsidies to support
+F.	problem-solving	in
+industries like healthcare and finance`, qi: ``, o: [`None of these`, `B-F`, `C-D`, `A-E, B-F`, `A-F, C-D, B-E`], oi: [``, ``, ``, ``, ``], e: `Despite facing multiple obstacles (A), the young entrepreneur maintained (D) her determination (C) and eventually succeeded in expanding (B) her small business. Step-by-step Analysis: Word (A) obstacles: Correctly placed. "Facing multiple obstacles" is grammatically fine. Word (B) expanding: Wrongly placed. The correct form should be maintained determination and succeeded in expanding. Word (C) determination: Correctly placed with "maintained determination." Word (D) maintained: Wrongly placed after "succeeded in maintained." It should be "succeeded in expanding." So, B (expanding) and D (maintained) need to be interchanged.` },
+  { n: 47, s: `English Language`, q: ``, qi: ``, o: [``, ``, ``, ``, ``], oi: [``, ``, ``, ``, ``], e: `C-D: The government announced new subsidies to support farmers adopting sustainable agricultural practices. Analysis: A with E/F/D A–E: “policies to curb to reduce…” is clumsy and contextually mismatched for social media. A–F: “curb problem-solving…” is grammatically possible but contextually absurd. A–D: “curb farmers adopting sustainable practices” is the opposite of the likely intent. B with D/E/F B–D: “needs reforms farmers…” is missing a preposition (“for”/“to support”). B–E: grammatical (“needs reforms to reduce dependence on fossil fuels…”), but context is weak for “education system” as the direct agent of emissions reduction in this framing. B–F: ungrammatical without “to/for,”. C with D/E/F C–D: perfect grammatically and contextually: “The government announced new subsidies to support farmers adopting sustainable agricultural practices.” C–E: “to support to reduce…” is malformed. C–F: would be smoother if it were “to support problem-solving initiatives …”; as written it’s less idiomatic compared with C–D. Therefore, the only clean, unequivocal match is C–D, so the answer remains (c) C–D.` },
+  { n: 48, s: `English Language`, q: `Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. Advances in artificial intelligence are enabling
+machines
+D. controlling inflation and stabilize the economy.
+B. Several countries are investing	heavily	in
+renewable energy
+E. forced farmers to migrate to nearby cities in search of
+work
+C.	The	government launched  a  new  digital
+literacy campaign
+F.	to learn and adapt without	explicit
+programming`, qi: ``, o: [`None of these`, `A-F`, `B-D`, `A-E, B-F`, `A-F, B-D, C-E`], oi: [``, ``, ``, ``, ``], e: `A-F: Advances in artificial intelligence are enabling machines to learn and adapt without explicit programming. Step-by-step analysis Advances in artificial intelligence are enabling machines… Best match: F (to learn and adapt without explicit programming). Sentence: “Advances in artificial intelligence are enabling machines to learn and adapt without explicit programming.” Grammatically and contextually correct. Several countries are investing heavily in renewable energy… Best match: None of D/E/F fits properly. D: “controlling inflation and stabilize the economy” – renewable energy isn’t directly tied to controlling inflation here. E: “forced farmers to migrate…” – unrelated. F: already taken by A. So B has no valid match. The government launched a new digital literacy campaign… Check options: D: “controlling inflation…” – illogical. E: “forced farmers to migrate…” – grammatically possible (“launched a campaign forced farmers…”) but contextually nonsensical. F: already used. So C also has no valid match.` },
+  { n: 49, s: `English Language`, q: `Identify the sentence that is grammatically correct.`, qi: ``, o: [`She don’t like walking in the rain every morning.`, `They has been working on the project since last week.`, `He go to the gym before work on weekdays.`, `I was late because the bus arrived very slowly.`, `All are incorrect`], oi: [``, ``, ``, ``, ``], e: `Explanation of Errors: She don’t like walking in the rain every morning. Incorrect. With She (third-person singular), the correct form is doesn’t like, not “don’t like.” They has been working on the project since last week. Incorrect. With plural subject They, it should be have been working, not “has been working.” He go to the gym before work on weekdays. Incorrect. With He (third-person singular), it should be goes to the gym, not “go.” I was late because the bus arrived very slowly. Grammatically correct. Past tense was late and arrived match. The adverb slowly is also correct in describing how the bus arrived. All are incorrect Wrong, because option (d) is correct. Correct Answer: (d) I was late because the bus arrived very slowly.` },
+  { n: 50, s: `English Language`, q: `Identify the sentence that is grammatically correct.`, qi: ``, o: [`I seen him at the store just yesterday afternoon.`, `He don’t have enough experience for this senior role.`, `The cat sleeps peacefully in the sun every afternoon.`, `Everyone in the team are excited for the trip.`, `All are incorrect`], oi: [``, ``, ``, ``, ``], e: `Explanation of Errors: I seen him at the store just yesterday afternoon. Incorrect. Past participle seen requires a helping verb (have/has/had). Correct form: I saw him at the store just yesterday afternoon. He don’t have enough experience for this senior role. Incorrect. With He (third-person singular), the verb should be doesn’t have, not “don’t have.” The cat sleeps peacefully in the sun every afternoon. Correct. Singular subject The cat takes sleeps (simple present, habitual action). Adverb peacefully is correctly placed, and the sentence is both grammatically and contextually sound. Everyone in the team are excited for the trip. Incorrect. Everyone is singular, so it should be Everyone in the team is excited for the trip. All are incorrect Wrong, because option (c) is correct.` },
+  { n: 51, s: `English Language`, q: `A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+After months of practice and dedication, the athlete finally
+achieved his dream of winning the national championship.`, qi: ``, o: [`gain`, `procured`, `shifted`, `moved`, `No replacement required`], oi: [``, ``, ``, ``, ``], e: `The word achieved is correct here. It properly conveys the idea of successfully reaching a goal after effort. So the answer is (e) No replacement required. Analysis of all options gain English Meaning: To obtain or secure something desirable. Hindi Meaning: पािा / हाकसल िरिा Example: She worked hard to gain the respect of her colleagues. Why wrong here: “Gain his dream” is unnatural; we say “achieve a dream,” not “gain a dream.” procured English Meaning: To obtain something, especially with effort or difficulty. Hindi Meaning: प्राप्त िरिा / हाकसल िरिा Example: The manager procured rare materials for the project. Why wrong here: “Procured his dream” is awkward; “procure” is used more for tangible items, not abstract goals like dreams. shifted English Meaning: To move from one place, position, or direction to another. Hindi Meaning: बदलिा / स्थािांतररत िरिा Example: They shifted the furniture to the new house. Why wrong here: “Shifted his dream” makes no sense in this context. moved English Meaning: To change position or to cause something to change place. Also, to affect someone emotionally. Hindi Meaning: कहलिा / स्थाि बदलिा / भावुि िरिा Example: The speech moved the audience to tears. Why wrong here: “Moved his dream” is incorrect; it does not convey achieving a goal. No replacement required Explanation: The word achieved is already the most appropriate verb here, meaning successfully reached a desired goal. Example: She achieved her ambition of becoming a doctor.` },
+  { n: 52, s: `English Language`, q: `In the following question, a sentence with a blank is given. Choose the most appropriate word to fill the given blank to make the sentence grammatically correct and meaningful.
+The manager’s 	response to the complaint irritated the already angry customer.`, qi: ``, o: [`indifferent`, `strong`, `prompt`, `detailed`, `emotional`], oi: [``, ``, ``, ``, ``], e: `The correct answer is indifferent. The sentence suggests that the manager's reaction made the situation worse, implying a lack of concern or care. "Indifferent" fits perfectly here. Analysis: indifferent English Meaning: Showing no concern, interest, or sympathy. Hindi Meaning: उदासीि / लापरवाह Example: The teacher’s indifferent attitude upset the students. Fit here? Yes. An indifferent response would indeed irritate an already angry customer. strong English Meaning: Having force, intensity, or firmness. Hindi Meaning: मजबूत / िṣा Example: He gave a strong argument against the proposal. Fit here? Not the best choice. A “strong response” could either calm or anger, but it’s not precise for this context. prompt English Meaning: Done quickly without delay. Hindi Meaning: त्वररत / शीघ्र Example: The nurse gave a prompt reply to the patient’s request. Fit here? A “prompt response” is positive and unlikely to irritate the customer. detailed English Meaning: Giving a lot of information with attention to facts. Hindi Meaning: कवस्तृत / कवस्तारपूवणि Example: She gave a detailed explanation of the project. Fit here? A “detailed response” is neutral or positive, not irritating. emotional English Meaning: Showing strong feelings. Hindi Meaning: भाविात्मि Example: His emotional speech touched the audience. Fit here? Possible, but less accurate. An “emotional response” may not always irritate; it depends on tone.` },
+  { n: 53, s: `English Language`, q: `In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The teacher participate (A) the students to encouraged
+(B) actively in the discussion (C), ensuring everyone had an equal opportunity (D) to speak.`, qi: ``, o: [`B-C & A-D`, `A-B`, `C-D`, `A-C & B-D`, `No interchange required`], oi: [``, ``, ``, ``, ``], e: `The teacher encouraged (B) the students to participate (A) actively in the discussion (C), ensuring everyone had an equal opportunity (D) to speak. Step-by-step Analysis: Word (A) participate: Used as "The teacher participate the students" → incorrect. It should be encouraged the students to participate. Word (B) encouraged: Wrongly placed after "to encouraged actively," which is grammatically wrong. Word (C) discussion: Correctly placed. "In the discussion" is proper. Word (D) opportunity: Correctly placed. "Equal opportunity to speak" is correct. So, A (participate) and B (encouraged) must be interchanged.` },
+  { n: 54, s: `English Language`, q: `In the question below four words are given in bold. These four words are may not be in their correct position. The sentence is then followed by options with the correct combination of words that should replace each other in order to make the sentence grammatically and contextually correct. Find the correct combination of the words that replace each other.
+The project required (A) a detailed (B) analysis of financial data, followed by a clear presentation (C) of strategies to improve profitability (D).`, qi: ``, o: [`B-C & A-D`, `B-C`, `C-D`, `A-B`, `No interchange required`], oi: [``, ``, ``, ``, ``], e: `The project required (A) a detailed (B) analysis of financial data, followed by a clear presentation (C) of strategies to improve profitability (D). Step-by-step Analysis: Word (A) required: Correct. "The project required" is grammatically and contextually right. Word (B) detailed: Correct. "A detailed analysis" is the standard usage. Word (C) presentation: Correct. "A clear presentation of strategies" makes complete sense. Word (D) profitability: Correct. "Improve profitability" is appropriate. No word needs to be swapped; everything is in its correct position.` },
+  { n: 55, s: `English Language`, q: `A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+The fragile storm forced travelers to take shelter in nearby lodges until the weather conditions improved significantly.`, qi: ``, o: [`mild`, `forecast`, `conditioned`, `unexpected`, `No replacement required`], oi: [``, ``, ``, ``, ``], e: `Fragile means easily broken or delicate (Hindi: िाṇुि / िमजोर). Context: A storm cannot be “fragile,” because storms are by nature powerful or destructive, not delicate. So fragile is incorrect here. Analysis: mild English Meaning: Not severe, gentle in nature. Hindi Meaning: हल्िा / सौम्य Example: He had a mild fever yesterday. Fit here? No, because a “mild storm” would not force travelers to take shelter. forecast English Meaning: A prediction of future events, especially weather. Hindi Meaning: पूवाणिुमाि / भकवष्यवार्ी Example: The weather forecast predicted heavy rain. Fit here? No, “forecast storm” is grammatically incorrect. conditioned English Meaning: Influenced or determined by conditions. Hindi Meaning: शतणबि / पररकस्थकतयों पर किभणर Example: His behavior is conditioned by his upbringing. Fit here? No, “conditioned storm” is meaningless. unexpected English Meaning: Not anticipated or predicted. Hindi Meaning: अप्रत्याकशत / अचािि Example: The unexpected rainfall caused traffic jams. Fit here? Yes. An unexpected storm could force travelers to take shelter. Both grammatically and contextually correct. No replacement required Invalid, since “fragile” does not fit. Final Answer Correct Answer: (d) unexpected` },
+  { n: 56, s: `English Language`, q: `A sentence is given below with a highlighted word that may be incorrect. From the given options, choose the word that can best replace the highlighted word to make the sentence correct.
+The farmer worked tirelessly from dawn to dusk, ensuring the crops received adequate care from the growing season.`, qi: ``, o: [`throughout`, `under`, `through`, `of`, `No replacement required`], oi: [``, ``, ``, ``, ``], e: `From the growing season is incorrect. “From” usually shows starting point (e.g., from Monday, from the village). Here, we need a word that expresses duration or time span. Analysis: throughout English Meaning: During the whole of a period. Hindi Meaning: पूरे समय / हर जगह Example: The child was cheerful throughout the day. Fit here? Yes. “Care throughout the growing season” is correct and natural. under English Meaning: Beneath or controlled by something. Hindi Meaning: िीचे / अधीि Example: The area is under government control. Fit here? No. “Care under the growing season” is meaningless. through English Meaning: From beginning to end of a period. Hindi Meaning: िे दौराि / आर-पार Example: He worked hard through the night. Fit here? Yes, “care through the growing season” works, but “throughout” is stronger for covering the whole period. of English Meaning: Expressing belonging/possession. Hindi Meaning: िा / िे / िी Example: The color of the flower is red. Fit here? No. “Care of the growing season” is ungrammatical in this sense. No replacement required Wrong, because “from the growing season” is incorrect. Most appropriate choice The best replacement is (a) throughout, because it expresses care given for the entire duration of the growing season.` },
+  { n: 57, s: `English Language`, q: `Match the parts of sentences given in Column I and Column II to form meaningful and grammatically correct complete sentences. Choose the option that contains all the correct combinations.
+COLUMN I
+COLUMN II
+A. The company invested in
+D. regulate the functioning
+of digital payment systems
+B. The discovery of new exoplanets has encouraged
+astronomers
+E. to explore the possibility of life beyond Earth
+C. The finance ministry introduced stricter`, qi: ``, o: [`F. to monitor deforestation and climate changes`, `None of these`, `A-F`, `C-D`, `B-E`], oi: [``, ``, ``, ``, ``], e: `B-E: The discovery of new exoplanets has encouraged astronomers to explore the possibility of life beyond Earth. Step-by-step check The company invested in… If we pair with F, the sentence reads: “The company invested in to monitor deforestation and climate changes.” This is grammatically wrong because “invested in” must be followed by a noun/noun phrase, not “to + verb.” Correct would be: “invested in monitoring…”. So A–F is invalid. The discovery of new exoplanets has encouraged astronomers… With E, it becomes: “has encouraged astronomers to explore the possibility of life beyond Earth.” This is grammatically perfect and contextually correct. So B–E is valid. The finance ministry introduced stricter… With D, it becomes: “introduced stricter regulate the functioning of digital payment systems.” This is ungrammatical, because “stricter” must be followed by a noun like “rules/regulations.” It should be: “introduced stricter regulations to regulate the functioning…”. So C–D is invalid as given.` },
+  { n: 58, s: `English Language`, q: `According to the passage, what is the main advantage
+of being bilingual in low-resource professional settings?`, qi: ``, o: [`Bilinguals demand lower salaries, making them easier to hire in poor regions.`, `Bilinguals can work longer hours without facing language-related fatigue.`, `Bilinguals improve communication and adapt better in cross-cultural work environments.`, `Bilinguals receive more government support in multilingual workplaces.`, `Bilinguals avoid jobs that require technical or specialized training.`], oi: [``, ``, ``, ``, ``], e: `The passage says: “Bilingual workers show greater adaptability... where communication across cultures is essential... bridging language barriers...” This clearly shows that (c) is the major benefit: better communication and adaptability. Options (a), (b), (d), and (e) are not supported or mentioned in the passage. Analysis in detail: Relevant lines from the passage: “In regions where poverty and limited resources prevail, bilingual workers show greater adaptability. They can handle diverse work areas where communication across cultures is essential. In such settings, monolinguals often face a decline in effectiveness, while bilinguals continue to thrive by bridging language barriers and creating smoother interactions.” Option Analysis Bilinguals demand lower salaries, making them easier to hire in poor regions. Not mentioned anywhere in the passage. Incorrect. Bilinguals can work longer hours without facing language-related fatigue. Not stated. Incorrect. Bilinguals improve communication and adapt better in cross-cultural work environments. Matches the passage exactly. They “bridge language barriers and create smoother interactions,” showing better adaptability. Correct. Bilinguals receive more government support in multilingual workplaces. Not mentioned. Incorrect. Bilinguals avoid jobs that require technical or specialized training. Not mentioned; in fact, the passage says the opposite—they adapt better. Incorrect.` },
+  { n: 59, s: `English Language`, q: `Which of the following statement(s) is/are incorrect
+as per the passage?
+Bilingualism restricts mental flexibility and slows task- switching.
+Bilingual professionals struggle more in cross-cultural work environments.
+Diplomatic children show poor fluency in new languages due to relocation stress.`, qi: ``, o: [`Only I`, `Both I and III`, `Only II`, `II and III`, `All I, II, and III`], oi: [``, ``, ``, ``, ``], e: `All three statements contradict the text: Bilingualism restricts mental flexibility and slows task-switching. Passage says: “bilingualism provides mental agility… The ability to switch between languages seems connected with the additional skill of switching between tasks more efficiently.” This means bilingualism improves flexibility and task-switching. So statement (I) is incorrect. Bilingual professionals struggle more in cross-cultural work environments. Passage says: “bilingual workers show greater adaptability… thrive by bridging language barriers and creating smoother interactions.” So they do better, not worse. Statement (II) is incorrect. Diplomatic children show poor fluency in new languages due to relocation stress. Passage says: “children of diplomats often pick up more than one language early in life… master new languages with surprising ease.” So this is the opposite. Statement (III) is incorrect. Final Answer All three statements are incorrect. Correct Option: (e) All I, II, and III` },
+  { n: 60, s: `English Language`, q: `Which of the following statement(s) is/are correct
+according to the passage?
+Bilingual individuals switch tasks more efficiently due to enhanced mental control.
+Diplomatic children easily acquire multiple languages through early exposure.
+Bilingualism leads to increased emotional sensitivity and empathetic behavior.`, qi: ``, o: [`Only I`, `Both I and II`, `Only III`, `II and III`, `All I, II, and III`], oi: [``, ``, ``, ``, ``], e: `Analysis: Bilingual individuals switch tasks more efficiently due to enhanced mental control. Passage: “The ability to switch between languages seems connected with the additional skill of switching between tasks more efficiently.” This matches exactly. Statement (I) is correct. Diplomatic children easily acquire multiple languages through early exposure. Passage: “Children of diplomats often pick up more than one language early in life… master new languages with surprising ease.” This matches exactly. Statement (II) is correct. Bilingualism leads to increased emotional sensitivity and empathetic behavior. Passage talks about cognitive abilities, problem-solving, adaptability, intelligence, communication, but does not mention emotional sensitivity or empathy. Statement (III) is not supported by the passage.` },
+  { n: 61, s: `English Language`, q: `What does the 2019 study mentioned in the passage show?`, qi: ``, o: [`Bilinguals read faster but calculate more slowly.`, `Monolinguals perform better in creative tasks.`, `Bilinguals have better calculation speed and intelligence.`, `Bilingualism has no measurable cognitive effect.`, `Bilingualism reduces attention span in adults.`], oi: [``, ``, ``, ``, ``], e: `The passage states: “In 2019, a study was conducted that revealed remarkable findings. It was discovered that individuals who were bilingual demonstrated better calculation speed and higher intelligence levels than their monolingual counterparts.” → Supports (c). Option Analysis Bilinguals read faster but calculate more slowly. Opposite of what is given. Incorrect. Monolinguals perform better in creative tasks. Not mentioned in the passage. Incorrect. Bilinguals have better calculation speed and intelligence. Matches the passage exactly. Correct. Bilingualism has no measurable cognitive effect. Contradicts the passage. Incorrect. Bilingualism reduces attention span in adults. Not mentioned. Incorrect.` },
+  { n: 62, s: `English Language`, q: `Choose the best word/phrase to fill the given blank.`, qi: ``, o: [`to function`, `to come`, `to results`, `happens`, `including`], oi: [``, ``, ``, ``, ``], e: `The only word that is both grammatically correct and contextually accurate is: Correct Answer: (b) to come Analysis: to function Sentence: “seems to function with the additional skill…” Grammatically awkward and does not fit context. to come Sentence: “seems to come with the additional skill…” Grammatically correct and contextually makes sense: switching languages comes with better task-switching ability. to results Ungrammatical. “Results” is plural noun; cannot use “to results.” happens Sentence: “seems happens with the additional skill…” Grammatically wrong (requires “to happen”). including Sentence: “seems including with the additional skill…” Grammatically incorrect and illogical.` },
+  { n: 63, s: `English Language`, q: `Choose the word that is most opposite in meaning to
+“later” as used in the passage.`, qi: ``, o: [`When`, `Eventually`, `Prior`, `Upcoming`, `Gradually`], oi: [``, ``, ``, ``, ``], e: `Here, “later” means afterwards, at a subsequent time. Meanings of options When Refers to time but not opposite of “later.” Eventually Means in the end, after some time → similar to “later,” not opposite. Prior Means earlier, before something else. This is the direct opposite of “later.” Upcoming Means about to happen in the near future. Not opposite, just future-oriented. Gradually Means slowly, step by step. Not opposite of “later.”` },
+  { n: 64, s: `English Language`, q: `Choose the word that is closest in meaning to
+“decline” as used in the passage:`, qi: ``, o: [`Deteriorate`, `Rejection`, `Downsizing`, `Support`, `Progress`], oi: [``, ``, ``, ``, ``], e: `Here, decline means a reduction or deterioration. Meanings of options Deteriorate English Meaning: To become worse in quality or condition. Hindi Meaning: कबगṣिा / खराब होिा Example: His health began to deteriorate after the accident. Fit here? Yes, “decline in effectiveness” = “deterioration in effectiveness.” Rejection English Meaning: Refusal or dismissal. Hindi Meaning: अस्वीिार Example: His proposal faced rejection from the committee. Doesn’t fit. Downsizing English Meaning: Reduction in workforce or business operations. Hindi Meaning: आिार घटािा / िमणचाररयों में िटौती Example: The company announced downsizing due to losses. Too specific; doesn’t match “decline in effectiveness.” Support English Meaning: To help or strengthen. Hindi Meaning: समथणि Opposite meaning. Progress English Meaning: Forward movement or improvement. Hindi Meaning: प्रगकत Opposite of decline. Best synonym The closest in meaning is (a) Deteriorate.` },
+  { n: 65, s: `English Language`, q: `Choose the word that is closest in meaning to`, qi: ``, o: [`“benefits” as used in the passage:`, `Advantages`, `Drawbacks`, `Gains`, `More`], oi: [``, ``, ``, ``, ``], e: `Here, benefits means positive outcomes, advantages. Meanings of options Advantages English Meaning: Favourable or beneficial conditions. Hindi Meaning: लाभ / फायदे Example: One advantage of studying abroad is cultural exposure. Perfect synonym for “benefits.” Drawbacks English Meaning: Disadvantages or negative aspects. Hindi Meaning: िुिसाि / िमी Opposite of benefits. Gains English Meaning: Profits, improvements, or advantages obtained. Hindi Meaning: लाभ / प्राकप्त Example: The company made huge gains this year. Similar, but “advantages” is a more precise synonym in this context. More English Meaning: A greater amount. Hindi Meaning: अकधि Not a synonym for “benefits.” Conflicts English Meaning: Disagreements or clashes. Hindi Meaning: टिराव / संघर्ण Opposite sense. Best synonym The closest in meaning is (a) Advantages.` },
+  { n: 66, s: `Quantitative Aptitude`, q: `Find the ratio of the total candidates registered from C and the total candidates who did not participate from A.`, qi: ``, o: [`11:4`, `19:5`, `13:4`, `12:7`, `14:9`], oi: [``, ``, ``, ``, ``], e: `Total candidates registered from C = 760 Total candidates who did not participate from A = 480 - 280 = 200 Required ratio = 760 : 200 = 19:5` },
+  { n: 67, s: `Quantitative Aptitude`, q: `Find the average number of candidates who did not participate from C and D.`, qi: ``, o: [`300`, `345`, `250`, `280`, `310`], oi: [``, ``, ``, ``, ``], e: `Number of candidates who did not participate from C = 760 - 400 = 360 Number of candidates who did not participate from D = 840 - 600 = 240 Required average = (360 + 240)/2 = 300` },
+  { n: 68, s: `Quantitative Aptitude`, q: `If the total number of candidates who registered from E is 25% more than that of D and the number of candidates who participated from E is 60% that of C, then find the difference between the number of candidates who did not participate from E and D.`, qi: ``, o: [`510`, `535`, `550`, `570`, `520`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image24.jpeg` },
+  { n: 69, s: `Quantitative Aptitude`, q: `If 40% of the candidates who participated from B qualify for semifinals and only 25% of the candidates who qualify for finals, then find the number of candidates who did not qualify for finals from B.`, qi: ``, o: [`112`, `110`, `108`, `104`, `106`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image25.png` },
+  { n: 70, s: `Quantitative Aptitude`, q: `The total number of candidates who registered from A is what percentage more or less than the number of candidates who did not participate from C and D together?`, qi: ``, o: [`5%`, `10%`, `20%`, `30%`, `15%`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 71, s: `Quantitative Aptitude`, q: `A man invested Rs 12500 in scheme A that offers simple interest at r% p.a. for two years, and the interest received from scheme A is invested in scheme B that offers compound interest at 10% p.a. for two years. If the amount received from scheme B is Rs 3630, then find r.`, qi: ``, o: [`12`, `14`, `18`, `10`, `15`], oi: [``, ``, ``, ``, ``], e: `Interest received from scheme A = 12500×r/100×2=250r Cumulative compound interest from scheme B= (10 + 10 + (10×10)/100)% = 21% ATQ, 121/100×250r=3630 r = 12` },
+  { n: 72, s: `Quantitative Aptitude`, q: `Pipe A can fill 25% of a tank in 6 hours, and pipe B can fill 50% of the tank in 12 hours. Pipe C is an outlet pipe and empties the filled tank in 20 hours. If the tank is already 60% filled, then find the time taken by all the pipes together to fill the remaining tank.`, qi: ``, o: [`11 hours`, `12 hours`, `10 hours`, `8 hours`, `13 hours`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 73, s: `Quantitative Aptitude`, q: `Two cars A and B start simultaneously from cities
+P and Q toward each other. The distance between P and`, qi: ``, o: [`Q is 480 km. Car A covers the distance in 4 hours, and car B covers the same distance in 6 hours. After how much time from the start will they meet?`, `1 hours`, `2 hours`, `5 hours`, `6 hours`], oi: [``, ``, ``, ``, ``], e: `Speed of car A = 480/4 = 120 km/hr Speed of car B = 480/6 = 80 km/hr They are moving towards each other, so their relative speed = 120 + 80 = 200 km/hr Required time = 480/200 = 2.4 hours` },
+  { n: 74, s: `Quantitative Aptitude`, q: `Find the average number of non-manager female employees in B and A.`, qi: ``, o: [`95`, `100`, `105`, `80`, `85`], oi: [``, ``, ``, ``, ``], e: `Company A Male employes = 260 Female employees = 260 - 130 - 130 Total employees = 260 + 130 = 390 Female managers = 60 Non-manager female employees = 130 - 60 = 70 Similarly, Companies Total employees Male employees Female employees Female mangers Non-manager female employees A 390 260 130 60 70 B 550 340 210 90 120 C 310 220 90 70 20 D 650 390 260 140 120 Reuqired average = (70 + 120)/2 = 95` },
+  { n: 75, s: `Quantitative Aptitude`, q: `If the ratio of male manager employees to non- manager male employees in C is 7:3, respectively, then the total non-manager male employees in C is how many more or less than the total female employees in A?
+64`, qi: ``, o: [`60`, `58`, `61`, `70`, `8	www.sscadda.com	|	Adda247 App`], oi: [``, ``, ``, ``, ``], e: `Company A Male employes = 260 Female employees = 260 - 130 - 130 Total employees = 260 + 130 = 390 Female managers = 60 Non-manager female employees = 130 - 60 = 70 Similarly, Companies Total employees Male employees Female employees Female mangers Non-manager female employees A 390 260 130 60 70 B 550 340 210 90 120 C 310 220 90 70 20 D 650 390 260 140 120 [[IMG:image28.png` },
+  { n: 76, s: `Quantitative Aptitude`, q: `The total number of female employees in B is what percentage of the total number of employees in B and D together?`, qi: ``, o: [`10%`, `12.5%`, `17.5%`, `16.67%`, `8.33%`], oi: [``, ``, ``, ``, ``], e: `Company A Male employes = 260 Female employees = 260 - 130 - 130 Total employees = 260 + 130 = 390 Female managers = 60 Non-manager female employees = 130 - 60 = 70 Similarly, Companies Total employees Male employees Female employees Female mangers Non-manager female employees A 390 260 130 60 70 B 550 340 210 90 120 C 310 220 90 70 20 D 650 390 260 140 120 [[IMG:image29.png` },
+  { n: 77, s: `Quantitative Aptitude`, q: `The average number of male managers and female managers in D is 195. Find the difference between the number of non-manager male employees in D and the sum of the female managers in A and B.`, qi: ``, o: [`15`, `20`, `10`, `5`, `25`], oi: [``, ``, ``, ``, ``], e: `Company A Male employes = 260 Female employees = 260 - 130 - 130 Total employees = 260 + 130 = 390 Female managers = 60 Non-manager female employees = 130 - 60 = 70 Similarly, Companies Total employees Male employees Female employees Female mangers Non-manager female employees A 390 260 130 60 70 B 550 340 210 90 120 C 310 220 90 70 20 D 650 390 260 140 120 Number of male managers in D = 195×2-140=250 Number of non-manager male employees in D = 390 - 250 = 140 Required difference = (60 + 90) - 140 = 10` },
+  { n: 78, s: `Quantitative Aptitude`, q: `The total number of employees in E is 3/5th that of B, and the total number of male employees in E is 60% that of A. Find the total number of female employees in E, C, and D together.`, qi: ``, o: [`387`, `330`, `345`, `404`, `524`], oi: [``, ``, ``, ``, ``], e: `Company A Male employes = 260 Female employees = 260 - 130 - 130 Total employees = 260 + 130 = 390 Female managers = 60 Non-manager female employees = 130 - 60 = 70 Similarly, Companies Total employees Male employees Female employees Female mangers Non-manager female employees A 390 260 130 60 70 B 550 340 210 90 120 C 310 220 90 70 20 D 650 390 260 140 120 Total number of employees in E = 3/5×550=330 Total number of male employees in E = 60/100×260=156 Total number of female employees in E = 330 - 156 = 174 Required sum = 174 + 90 + 260 = 524` },
+  { n: 79, s: `Quantitative Aptitude`, q: ``, qi: ``, o: [`Sita spends 30% of her monthly salary on regular expenses and 50% on personal expenses. From the remaining amount, she gives a portion of her money to her mother and father in the ratio 3:1. If the difference between the amounts given to her mother and father is Rs 4,000, what is Sita’s monthly salary?`, `Rs 32000`, `Rs 35500`, `Rs 40500`, `Rs 44000`], oi: [``, ``, ``, ``, ``], e: `Let the monthly salary be Rs 100x Amount sped on regular expenses = 100x × 30/100=30x Amount sped on personal expenses = 100x × 50/100=50x Amount received by father = (100x - 30x - 50x) ×3/4=15x Amount received by mother = (100x - 30x - 50x) ×1/4=5x ATQ, 15x - 5x = 4000 10x = 4000 x = 400 Required salary = 100x = Rs 40000` },
+  { n: 80, s: `Quantitative Aptitude`, q: `Find the difference between the number of students who like art in school A and the number of students who like both art and music together in school B.`, qi: ``, o: [`35`, `40`, `45`, `50`, `30`], oi: [``, ``, ``, ``, ``], e: `Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x = 2x The number of students who like both art and music together in school B = 2x + 15 Given, 3x + 2x+15 = 65 5x = 50 x = 10 The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x = 60 -20 = 40 Required differecne = (50 + 20) - 35 = 35` },
+  { n: 81, s: `Quantitative Aptitude`, q: `The number of students who like only music in school A is what percentage of the number of students who like only art in school B?`, qi: ``, o: [`122.25%`, `133.3%`, `166.67%`, `108.33%`, `132.5%`], oi: [``, ``, ``, ``, ``], e: `Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x = 2x The number of students who like both art and music together in school B = 2x + 15 Given, 3x + 2x+15 = 65 5x = 50 x = 10 The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x = 60 -20 = 40 Required percentage = 40/30×100=133.33%` },
+  { n: 82, s: `Quantitative Aptitude`, q: `Find the ratio of the number of students who like both art and music together in school A to the number of students who like only music in school B.`, qi: ``, o: [`5:9`, `3:7`, `4:5`, `4:9`, `2:7`], oi: [``, ``, ``, ``, ``], e: `Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x = 2x The number of students who like both art and music together in school B = 2x + 15 Given, 3x + 2x+15 = 65 5x = 50 x = 10 The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x = 60 -20 = 40 Required ratio = 20 : 45 = 4:9` },
+  { n: 83, s: `Quantitative Aptitude`, q: `Find the number of students who like at least two activities in both schools together.`, qi: ``, o: [`55`, `45`, `65`, `75`, `35`], oi: [``, ``, ``, ``, ``], e: `Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x = 2x The number of students who like both art and music together in school B = 2x + 15 Given, 3x + 2x+15 = 65 5x = 50 x = 10 The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x = 60 -20 = 40 Required answer = 20 + 35 = 55` },
+  { n: 84, s: `Quantitative Aptitude`, q: ``, qi: ``, o: [`The number of students who like at most one activity in school B is how many more or less than the number of students who like art in school A?`, `3`, `5`, `6`, `4`], oi: [``, ``, ``, ``, ``], e: `Let the number of students who like only art in school A and school B be 5x and 3x respectively. The number of students who like both art and music in school A = 40/100×5x = 2x The number of students who like both art and music together in school B = 2x + 15 Given, 3x + 2x+15 = 65 5x = 50 x = 10 The number of students who like music in school A = 15 + 45 = 60 The number of students who like only music in school A = 60 - 2x = 60 -20 = 40 Number of students who like at most one activity in school B = 30 + 45 = 75 Required difference = 75 - (50 + 20) = 5` },
+  { n: 85, s: `Quantitative Aptitude`, q: `x<y`, qi: `image5.png`, o: [`x>y`, `x≤y`, `x≥y`, `x=y or no relation.`, `9	www.sscadda.com	|	Adda247 App`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image34.png` },
+  { n: 86, s: `Quantitative Aptitude`, q: ``, qi: `image6.png`, o: [`x<y`, `x>y`, `x≤y`, `x≥y`, `x=y or no relation.`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image35.png` },
+  { n: 87, s: `Quantitative Aptitude`, q: ``, qi: `image7.png`, o: [`x<y`, `x>y`, `x≤y`, `x≥y`, `x=y or no relation.`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 88, s: `Quantitative Aptitude`, q: ``, qi: `image8.png`, o: [`x<y`, `x>y`, `x≤y`, `x≥y`, `x=y or no relation.`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 89, s: `Quantitative Aptitude`, q: ``, qi: `image8.png`, o: [``, `x<y`, `x>y`, `x≤y`, `x≥y`], oi: [`image9.png`, ``, ``, ``, ``], e: `Sol.` },
+  { n: 90, s: `Quantitative Aptitude`, q: `31.93% of 750.03 + ?2 = 48.03 % of 1699.98`, qi: `image8.png`, o: [`24`, `22`, `18`, `26`, `28`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image40.png` },
+  { n: 91, s: `Quantitative Aptitude`, q: ``, qi: `image10.png`, o: [`48`, `12`, `24`, `18`, `6`], oi: [``, ``, ``, ``, ``], e: `` },
+  { n: 92, s: `Quantitative Aptitude`, q: `125.07% of 419.93 + 50.99 = (80% of ?)2
+30
+45
+20
+25
+50
+Q93.
+3
+4
+5
+6
+8
+Q94.`, qi: `q92_combined.png`, o: [`4`, `16`, `30`, `8`, `24`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 93, s: `Quantitative Aptitude`, q: ``, qi: `q92_combined.png`, o: [``, ``, ``, ``, ``], oi: [``, ``, ``, ``, ``], e: `[[IMG:image42.png` },
+  { n: 94, s: `Quantitative Aptitude`, q: ``, qi: `q92_combined.png`, o: [``, ``, ``, ``, ``], oi: [``, ``, ``, ``, ``], e: `[[IMG:image43.png` },
+  { n: 95, s: `Quantitative Aptitude`, q: `A milkman mixed (y+30) liters of water in 150 liters of milk and then again replaced 35 liters of the mixture with milk. If quantity of milk in the final mixture is 160 liters, then find ‘y’?`, qi: `q92_combined.png`, o: [`45 liters`, `40 liters`, `35 liters`, `30 liters`, `25 liters`], oi: [``, ``, ``, ``, ``], e: `[[IMG:image44.png` },
+  { n: 96, s: `Quantitative Aptitude`, q: `Neeraj and Vivan invested amount in a business which are in the ratio 4 : 7 respectively. Vivan invested for 2 months less than the time that Neeraj invested. If at the end of the year Profit obtained by Neeraj is 28 4/7% less than Profit obtained by Vivan, then find the time for which Vivan invested.`, qi: `q92_combined.png`, o: [`14 Months`, `12 Months`, `6 Months`, `8 Months`, `10 Months`], oi: [``, ``, ``, ``, ``], e: `Sol. Let amount invested by Neeraj and Vivan be 4x and 7x and time period of investment of Vivan be ‘y’ months According to question` },
+  { n: 97, s: `Quantitative Aptitude`, q: `A boat covers 105 km in downstream in ‘t’ hours and 90 km upstream in (t + 6) hours. If ratio of speed of boat in still water to the downstream speed of river is 6
+: 7 ,then find out the time taken by boat to cover 35 km to and fro in the river ?`, qi: ``, o: [`20h`, `24h`, `18h`, `12h`, `28h`], oi: [``, ``, ``, ``, ``], e: `Let speed of boat in still water and speed of water current be x km/hr and y km/hr So, [[IMG:image47.png` },
+  { n: 98, s: `Quantitative Aptitude`, q: `Shivam bought a table at Rs. X and sold it at Rs Y by earning a profit of 30%. If Shivam would had bought the table at 10% less and sold it at Rs. Rs 44 less, then he would had made a profit of 20%. Then find value of (Y – X) ?`, qi: ``, o: [`Rs. 60`, `Rs. 40`, `Rs. 20`, `Rs. 80`, `Rs. 120`], oi: [``, ``, ``, ``, ``], e: `` },
+  { n: 99, s: `Quantitative Aptitude`, q: `A train ‘P’ running at the speed of 72 km/hr crosses a platform which is half of its length in one minute. Find the time in which train ‘P’ crosses another train ‘Q’ whose length is two times of train ‘P’ and running at the speed of 108 km/hr in opposite direction?`, qi: ``, o: [`48 sec.`, `54 sec.`, `60 sec.`, `64 sec.`, `40 sec.`], oi: [``, ``, ``, ``, ``], e: `Sol.` },
+  { n: 100, s: `Quantitative Aptitude`, q: `The sum of the length of a rectangle and the side of a square is 36 meters. If the perimeter of the rectangle is 42 meters and the breadth of the rectangle is 9 meters, then find the measurement of the side of the square (in meters).`, qi: ``, o: [`24`, `18`, `27`, `30`, `15`], oi: [``, ``, ``, ``, ``], e: `ATQ – 2(l + 9) = 42 (where l = length of rectangle) 2l = 24 l = 12 meters So, measurement of side of square = 36 – 12 = 24 meters` }
+];
+
+if (RAW.length !== 100) { console.error(`Expected 100, got ${RAW.length}`); process.exit(1); }
+if (KEY.length !== 100) { console.error(`KEY length ${KEY.length}`); process.exit(1); }
+
+const uploadCache = new Map();
+async function uploadImage(fileName, publicId) {
+  if (!fileName) return '';
+  if (uploadCache.has(fileName)) return uploadCache.get(fileName);
+  const localPath = path.join(EXTRACTED_DIR, fileName);
+  if (!fs.existsSync(localPath)) {
+    console.log(`  [missing] ${fileName}`);
+    uploadCache.set(fileName, '');
+    return '';
+  }
+  try {
+    const res = await cloudinary.uploader.upload(localPath, {
+      folder: CLOUDINARY_FOLDER, public_id: publicId, overwrite: true, resource_type: 'image'
+    });
+    uploadCache.set(fileName, res.secure_url);
+    return res.secure_url;
+  } catch (err) {
+    console.error(`  [upload failed] ${fileName}: ${err.message}`);
+    uploadCache.set(fileName, '');
+    return '';
+  }
+}
+
+async function buildQuestions() {
+  const questions = [];
+  for (let i = 0; i < RAW.length; i++) {
+    const r = RAW[i];
+    const n = r.n;
+    let qImage = '';
+    let optImages = ['', '', '', '', ''];
+    if (r.qi) {
+      process.stdout.write(`Q${n} q-img... `);
+      qImage = await uploadImage(r.qi, `${F}-q-${n}`);
+      console.log(qImage ? 'ok' : 'missing');
+    }
+    for (let oi = 0; oi < 5; oi++) {
+      if (r.oi[oi]) {
+        process.stdout.write(`  Q${n} opt-${oi+1}-img... `);
+        optImages[oi] = await uploadImage(r.oi[oi], `${F}-q-${n}-option-${oi+1}`);
+        console.log(optImages[oi] ? 'ok' : 'missing');
+      }
+    }
+    questions.push({
+      questionText: r.q || '(Question text unavailable — see image)',
+      questionImage: qImage,
+      options: r.o.map(o => o || '(image option)'),
+      optionImages: optImages,
+      correctAnswerIndex: KEY[i] - 1,
+      explanation: r.e || '',
+      section: r.s,
+      tags: ['IBPS', 'PO', 'Prelims', 'PYQ', '2025', '24 August 2025 Shift-1'],
+      difficulty: 'medium'
+    });
+  }
+  return questions;
+}
+
+async function seed() {
+  console.log('Connecting to MongoDB...');
+  await mongoose.connect(MONGO_URI);
+  console.log('Connected.\n');
+
+  let category = await ExamCategory.findOne({ name: 'Central', type: 'Central' });
+  if (!category) {
+    category = await ExamCategory.create({ name: 'Central', type: 'Central', description: 'Central government competitive exams' });
+  }
+
+  let exam = await Exam.findOne({ code: 'IBPS-PO-PRE' });
+  if (!exam) {
+    exam = await Exam.create({
+      category: category._id,
+      name: 'IBPS PO (Probationary Officer) - Prelims',
+      code: 'IBPS-PO-PRE',
+      description: 'Institute of Banking Personnel Selection - Probationary Officer Preliminary Examination',
+      isActive: true
+    });
+    console.log('Created Exam: IBPS-PO-PRE');
+  }
+
+  const PATTERN_TITLE = 'IBPS PO Prelims';
+  let pattern = await ExamPattern.findOne({ exam: exam._id, title: PATTERN_TITLE });
+  if (!pattern) {
+    pattern = await ExamPattern.create({
+      exam: exam._id, title: PATTERN_TITLE, duration: 60, totalMarks: 100, negativeMarking: 0.25,
+      sections: [
+        { name: ENG, totalQuestions: 30, marksPerQuestion: 1, negativePerQuestion: 0.25, sectionDuration: 20 },
+        { name: REA, totalQuestions: 35, marksPerQuestion: 1, negativePerQuestion: 0.25, sectionDuration: 20 },
+        { name: QA,  totalQuestions: 35, marksPerQuestion: 1, negativePerQuestion: 0.25, sectionDuration: 20 }
+      ]
+    });
+    console.log('Created ExamPattern: IBPS PO Prelims');
+  }
+
+  const TEST_TITLE = `IBPS PO Prelims - 24 August 2025 Shift-1`;
+  await PracticeTest.deleteMany({ examPattern: pattern._id, title: TEST_TITLE });
+
+  console.log('Building questions (uploading images)...');
+  const questions = await buildQuestions();
+
+  const test = await PracticeTest.create({
+    examPattern: pattern._id, title: TEST_TITLE, totalMarks: 100, duration: 60,
+    accessLevel: 'FREE', isPYQ: true, pyqYear: 2025, pyqShift: `24 August 2025 Shift-1`,
+    pyqExamName: 'IBPS PO Prelims', questions
+  });
+  console.log(`\nCreated PracticeTest: ${test._id} (${test.questions.length} questions)`);
+
+  await mongoose.disconnect();
+  console.log('Done.');
+}
+
+seed().catch(err => { console.error('Seed failed:', err); process.exit(1); });

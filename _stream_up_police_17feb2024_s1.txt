@@ -1,0 +1,3052 @@
+[[IMG:image1.png]]	[[IMG:image2.png]]
+150 Questions
+Que. 1	Study the bar graph and answer the questions based on it.
+[[IMG:image3.jpeg]]
+In how many of the given years was the production of mobiles more than the average production of the given years?
+1.	3
+2.	1
+3.	4
+4.	2
+Correct Option - 3 Given:
+Production of mobile in the company over the years.
+Formula used:
+Average = Sum of observation / Number of observations
+Calculations:
+Years
+Production(in Lakhs)
+2001
+30
+2002
+45
+2003
+65
+2004
+50
+2005
+70
+2006
+55
+2007
+80
+2008
+85
+Required average =
+480
+⇒	= 60
+8
+30 + 45 + 65 + 50 + 70 + 55 + 80 + 85
+8
+So, in the years 2003, 2005, 2007, and 2008 the production is more than the average value.
+∴ The answer is 4.
+Que. 2	In which year was the percentage increase in production as compared to the previous year the maximum ?
+[[IMG:image4.jpeg]]
+1.	2005
+2.	2002
+3.	2007
+4.	2003
+Correct Option - 2 Given:
+Production of mobile in the company over the years.
+Calculations:
+45 − 30
+Percentage increase in 2002 (production is 45) compared to the previous year 2001 (production is 30) =	×
+30
+100 = 50%
+65 − 45
+Percentage increase in 2003 (production is 65) compared to the previous year 2002 (production is 45) =	×
+45
+100 = 44.4%
+70 − 50
+Percentage increase in 2005 (production is 70) compared to the previous year 2004 (production is 50) =	×
+50
+100 = 40%
+80 − 55
+Percentage increase in 2007 (production is 80) compared to the previous year 2006 (production is 55) = =	×
+55
+100 = 45.45%
+From the above calculation, in the year 2002, the percentage increase is maximum
+∴ The answer is 2002
+Que. 3	What was the approximate percentage decline in the production of mobile from 2003 to 2004 ?	Que. 3	What was the approximate percentage decline in the production of mobile from 2003 to 2004 ?
+Que. 3	What was the approximate percentage decline in the production of mobile from 2003 to 2004 ?
+Que. 3	What was the approximate percentage decline in the production of mobile from 2003 to 2004 ?
+1.	27%
+2.	21%
+3.	29%
+4.	23%
+Correct Option - 4 Given:
+Production of mobile in a company over the years.
+Calculations:
+Production of mobile in 2003 and 2004 is 65 and 50.
+65 − 50
+Required percentage decline =	× 100 = 23.07% ~ 23%
+65
+∴ The answer is 23%.
+Que. 4	The average production of 2005 and 2006 was exactly equal to the average production of which of the following pairs of years?	Que. 4	The average production of 2005 and 2006 was exactly equal to the average production of which of the following pairs of years?
+Que. 4	The average production of 2005 and 2006 was exactly equal to the average production of which of the following pairs of years?
+Que. 4	The average production of 2005 and 2006 was exactly equal to the average production of which of the following pairs of years?
+2004 and 2006
+2006 and 2007
+2002 and 2007
+2004 and 2005
+Correct Option - 3
+Given:
+Production of mobile by the company over the years.
+Formula used:
+Average × number of observations = sum of observation
+Calculations:
+Production of mobile in 2005 = 70 and in 2006 = 55 Required average = (70 + 55)/2 = 62.5
+Checking option(1),
+The average production of 2006 and 2007 = (80 + 55)/2 = 67.5 (Not the same) The average production of 2004 and 2006 = (50 + 55)/2 = 52.5 (Not the same) The average production of 2004 and 2005 = (50 + 70)/2 = 60 (Not the same) The average production of 2002 and 2007 = (45 + 80 )/2 = 62.5 (Same)
+Hence, same as the given one, after dividing the summation by 2 we can obtain the same average.
+∴ The correct answer is 2002 and 2007.
+Que. 5	What was the approximate percentage increase in production of mobile in 2008 compared to that in 2001?	Que. 5	What was the approximate percentage increase in production of mobile in 2008 compared to that in 2001?
+Que. 5	What was the approximate percentage increase in production of mobile in 2008 compared to that in 2001?
+Que. 5	What was the approximate percentage increase in production of mobile in 2008 compared to that in 2001?
+1.	195%
+2.	166.67%
+3.	200%
+4.	183.33%
+Correct Option - 4 Given:
+Production of mobile in the company over the years.
+Formula used:
+Average = Sum of observation / Number of observations
+Calculations:
+Years
+Production(in Lakhs)
+2001
+30
+2002
+45
+2003
+65
+2004
+50
+2005
+70
+2006
+55
+2007
+80
+2008
+85
+Require % = (85 - 30)/30 × 100 = 183.33%
+Que. 6	Choose the correct mirror image of the given figure (X) from amongst the four alternatives.	Que. 6	Choose the correct mirror image of the given figure (X) from amongst the four alternatives.
+Que. 6	Choose the correct mirror image of the given figure (X) from amongst the four alternatives.
+Que. 6	Choose the correct mirror image of the given figure (X) from amongst the four alternatives.
+[[IMG:image5.jpeg]]
+1.	1
+2.	2
+3.	3
+4.	4
+Correct Option - 4
+The correct mirror image of the given figure is:
+[[IMG:image6.jpeg]]
+Hence, the correct answer is "Option 4".
+Que. 7	Choose the Venn diagram which best explains relationship among given: Husband, Family, Wife
+[[IMG:image7.jpeg]]1.
+[[IMG:image8.jpeg]]2.
+[[IMG:image9.jpeg]]3.
+[[IMG:image10.jpeg]]4.
+Correct Option - 2
+The least possible Venn diagram for the given relation is as shown below :
+[[IMG:image11.png]] Husband and wife both are the part of a Family.
+[[IMG:image12.jpeg]]
+Hence, the correct answer is "Option 2".
+Que. 8	In the given figure if Triangle represents healthy people, Rectangle represents old persons and Circle represents men, then what is the number of those men who are healthy but not old?
+[[IMG:image13.jpeg]]
+1.	6
+2.	3
+3.	8
+4.	5
+Correct Option - 2
+According to the given Venn Diagram:
+Triangle represents healthy people, Rectangle represents old persons, and Circle represents men.
+[[IMG:image14.jpeg]]
+The shaded area shows the Total number of men who are healthy but not old = 3.
+Hence, the correct answer is "Option 2".
+Que. 9	If ‘+’ stands for division, '÷' stands for multiplication, '×' stands for subtraction and ‘-' stands for addition, the 63 × 24 + 8 ÷ 4 + 2 - 3 = ?
+1.	61
+2.	58
+3.	63
+4.	60
+Correct Option - 4
+Given Equation: 63 × 24 + 8 ÷ 4 + 2 - 3 = ?
+[[IMG:image15.png]]BODMAS Rule:
+[[IMG:image16.png]]
+Decoding the Given Information:
+Symbols
++
+÷
+×
+-
+Meaning
+÷
+×
+-
++
+Now replacing the sign from left to right using BODMAS Rule, we get:
+New Equation: 63 - 24 ÷ 8 × 4 ÷ 2 + 3 = ?
+Calculation:
+⇒ 63 - 24 ÷ 8 × 4 ÷ 2 + 3 = ?
+⇒ 63 - 3 × 2 + 3 = ?
+⇒ 63 - 6 + 3 = ?
+⇒ 66 - 6 = 60.
+Hence, the correct answer is "Option 4".
+Que. 10	Lion : Den :: Rabbit : (?)
+Burrow
+Hole
+Trench
+Pit
+Correct Option - 1
+The logic followed here is:
+Lion : Den → A den is the natural habitat or shelter of a lion. Similarly,
+Rabbit : Burrow → A burrow is the natural habitat or shelter of a rabbit. Hence, the correct answer is "Option 1".
+Que. 11Que. 11BPMN : CQNO :: GTPL : (?)
+Que. 11
+Que. 11
+HURN
+DUQN
+EUQM
+HUQM
+Correct Option - 4
+[[IMG:image17.png]]The position and positional values or English Alphabets are:
+[[IMG:image18.jpeg]]
+Now,
+BPMN : CQNO
+[[IMG:image19.jpeg]]
+Similarly, for GTPL : (?)
+[[IMG:image20.jpeg]]
+Hence, the correct answer is "Option 4".
+[[IMG:image21.jpeg]]	Que. 12	How many triangles are there in the following figure ?	Que. 12	How many triangles are there in the following figure ?
+Que. 12	How many triangles are there in the following figure ?
+Que. 12	How many triangles are there in the following figure ?
+1.	12
+2.	8
+3.	14
+4.	10
+Correct Option - 1 The triangles are:
+[[IMG:image22.jpeg]]
+So, there are '12' triangles in the given figure. Hence, the correct answer is "Option 1".
+Que. 13	A person moves in north direction by 9 km, then turns left and moves by 4 km, again turns left and moves by 10 km, again turns left and moves by 4 km. How far the person is from initial position?	Que. 13	A person moves in north direction by 9 km, then turns left and moves by 4 km, again turns left and moves by 10 km, again turns left and moves by 4 km. How far the person is from initial position?
+Que. 13	A person moves in north direction by 9 km, then turns left and moves by 4 km, again turns left and moves by 10 km, again turns left and moves by 4 km. How far the person is from initial position?
+Que. 13	A person moves in north direction by 9 km, then turns left and moves by 4 km, again turns left and moves by 10 km, again turns left and moves by 4 km. How far the person is from initial position?
+9 km
+1 km
+14 km
+4 km
+Correct Option - 2 Given:
+A person moves in north direction by 9 km, then turns left and moves by 4 km,
+again turns left and moves by 10 km, again turns left and moves by 4 km.
+[[IMG:image23.png]]
+[[IMG:image24.jpeg]]
+So, the person is '1 km' from the initial position. Hence, the correct answer is 'Option 2'.
+Que. 14	In the following question, one word is given, followed by four words, one of which cannot be formed using the letters of the given word. Find that word.
+ADMINISTRATION
+RATION
+MIND
+MINISTER
+STATION
+Correct Option - 3
+Given: ADMINISTRATION
+Now checking the options:
+Option 1: RATION → Can be formed. Option 2: MIND → Can be formed.
+Option 3: MINISTER → Can't be formed as the letter 'E' is not present in the word 'ADMINISTRATION'.
+Option 4: STATION → Can be formed.
+Hence, “MINISTER” cannot be formed using letters of the given word. Hence, the correct answer is "Option 3".
+Que. 15	Which one set of letters when sequentially placed at the gaps in the given letter series shall complete it? a_d_an_n_ma_a_d_m_n
+mnadmna
+nmaadna
+nmadnan
+nmadnna
+Correct Option - 4
+The logic followed here is:
+Given Sequence: a_d_an_n_ma_a_dm_n
+Now, putting the letters in the blank spaces given in the option one by one: Option 1) mnadmna → amd / nan / and / mam / and / man
+Option 2) nmaadna → and / man / ana / mad / and / man Option 3) nmadnan → and / man / and / man / aad / mnn Option 4) nmadnna → and / man / and / man / and / man Here, 'Option 4' followed a pattern.
+Hence, the correct answer is "Option 4".
+Que. 16	Choose the correct alternative from given ones that will complete the series.
+8, 23, 38, 53, 68, (?)
+1.	85
+2.	78
+3.	87
+4.	83
+Correct Option - 4
+[[IMG:image25.png]]The logic followed here is:
+[[IMG:image26.jpeg]]
+So, 83 will complete the series.
+Hence, the correct answer is 'Option 4'.
+Que. 17	Question given below consists of a statement, followed by four arguments numbered I, II, III and IV. You have to decide which of the argument(s) is/are ‘strong’ argument(s) and which is/are 'weak argument(s) and
+accordingly choose your answer from the alternatives given below the question:
+Statement: Should India go in for computerization in all possible sectors ?
+Arguments:
+Yes. It will bring efficiency and accuracy in the work.
+No. It will be an injustice to the monumental human resources which are at present underutilized.
+No. Computerization demands a lot of money. We should not waste money on it.
+Yes. When advanced countries are introducing computers in every field, how can India afford to lag behind.
+Only I and III are strong.
+Only I is strong.
+Only II and III are strong.
+Only I and II are strong.
+Correct Option - 2 Given:
+Statement: Should India go in for computerization in all possible sectors.
+Arguments:
+Yes. It will bring efficiency and accuracy in the work - Strong (It will bring efficiency and accuracy in the work. This argument supports the computerization of all possible sectors by highlighting the potential benefits of increased efficiency and accuracy that come with the use of computers)
+No. It will be an injustice to the monumental human resources which are at present underutilized - Week (It will be an injustice to the monumental human resources which are at present underutilized. This argument opposes the idea of widespread computerization, expressing concern that it might lead to the underutilization of human resources.)
+No. Computerization demands a lot of money. We should not waste money on it - Week (Computerization demands a lot of money. We should not waste money on it. This argument presents a financial perspective, suggesting that the significant cost of computerization may not be justified and could be considered a waste of resources.)
+Yes. When advanced countries are introducing computers in every field, how can India afford to lag behind - Week (This statement is not related with the statement, so week argument.)
+So, Only 'Argument I' is strong.
+Hence, the correct answer is "Option 2".
+Que. 18	In the question below a statement followed by two assumptions numbered I and II is given. You have to consider the statement and the following assumptions and decide which of the assumption(s) is/are implicit
+in the statement.
+Statement : Imprisonment for 27 years made Mihir Kalal the President.
+Assumptions:
+One who will be imprisoned for 27 years will become the President.
+To become the President imprisonment is a qualification.
+Either I or II is implicit.
+Only assumption I is implicit.
+Neither I nor II is implicit.
+Only assumption II is implicit.
+Correct Option - 3 Given:
+Statement : Imprisonment for 27 years made Mihir Kalal the President.
+Assumptions:
+One who will be imprisoned for 27 years will become the President - Not Implicit (The statement does not indicate that imprisonment for 27 years is a guaranteed path to becoming the President. There may be other factors or events that contributed to Mihir Kalal becoming the President.)
+To become the President imprisonment is a qualification - Not Implicit (There is no direct correlation or indication in the statement that suggests imprisonment is a specific qualification for becoming the President.)
+So, Neither I nor II is implicit.
+Hence, the correct answer is "Option 3".
+Que. 19	Following are the criteria for selection of computer professionals in an organisation : The candidate must-
+be a Computer Engineer or MCA with first class having minimum 65% marks.
+have secured at least 50% marks in the Selection Test.
+have secured at least 40% marks in the Interview.
+not be less than 21 years and not more than 30 years of age as on 1-10-2005. In case of candidate who satisfies all other criteria, except:
+At (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+At (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+In each of the following question, information about one candidate is given. You have to analyse it with reference to the above criteria and condition and then decide the appropriate course of action. You are not to assume anything other than the given information. All these cases are given to you as on 1-10-2005.
+Modi Jay did MCA in 1998 with 70% marks at the age of 22 years. He scored 55% marks in Interview and 55% marks in the Selection Test. He joined an IIT company in 1999 as programmer and got promoted as Systems Analyst in December 2002.
+If the case is to be referred to the Chairman, Recruitment Committee.
+If the candidate is to be selected.
+If the case is to be referred to the GM, Recruitment.
+If the candidate is not to be selected.
+Correct Option - 2 As of 1-10-2005,
+Condition
+Details
+Suitability
+i
+Computer Engineer or MCA with first class having minimum 65% marks.
+Yes, He has 70% marks in MCA.
+ii
+Secured at least 50% marks in the Selection Test.
+Yes, He has 55% marks.
+iii
+Secured at least 40% marks in the Interview.
+Yes, He has 55% marks.
+iv
+Not be less than 21 years and not more than 30 years of age as on 1-10-2005.
+Yes, 22 years in 1998, so in 2005,
+His age will be 29 Years.
+1
+If NOT criteria (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+not applicable
+2
+If NOT criteria (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+not applicable
+According to the given information in the table, All the data are fulfilled. We can say "Modi Jay to be selected".
+Hence, "Option 2" is the correct answer.
+Que. 20	Sanjay is a Civil Engineer with 75% marks. He was born on 6th July, 1976. He scored 70% marks in the Selection Test and 42% marks in the Interview.
+If the case is to be referred to the Chairman, Recruitment Committee.
+If the candidate is to be selected.
+If the case is to be referred to the GM, Recruitment.
+If the candidate is not to be selected.
+Correct Option - 4 As of 1-10-2005,
+Condition
+Details
+Suitability
+i
+Computer Engineer or MCA with first class having minimum 65% marks.
+No, He has 75% marks but in Civil Engineering.
+ii
+Secured at least 50% marks in the Selection Test.
+Yes, He has 70% marks.
+iii
+Secured at least 40% marks in the Interview.
+Yes, He has 42% marks.
+iv
+Not be less than 21 years and not more than 30 years of age as on 1-10-2005.
+Yes, 29 years.
+1
+If NOT criteria (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+not applicable
+2
+If NOT criteria (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+not applicable
+According to the given information in the table, Condition I are not fulfilled by Sanjay. We can say "Sanjay is not to be selected".
+Hence, "Option 4" is the correct answer.
+Que. 21	Vijay, a Computer Engineer, passed out with 72% marks in the final examination at the age of 22 years in 2003. He secured 70% marks in the Selection Test and 48% marks in the Interview.
+If the case is to be referred to the Chairman, Recruitment Committee
+If the candidate is to be selected.
+Data inadequate.
+If the candidate is not to be selected.
+Correct Option - 3 As of 1-10-2005,
+Condition
+Details
+Suitability
+i
+Computer Engineer or MCA with first class having minimum 65% marks.
+Can't say, Because He has 72% marks in in the final examination, not in the complete Degree.
+ii
+Secured at least 50% marks in the Selection Test.
+Yes, He has 70% marks.
+iii
+Secured at least 40% marks in the Interview.
+Yes, He has 48% marks.
+iv
+Not be less than 21 years and not more than 30 years of age as on 1-
+Yes, 24 years.
+10-2005.
+1
+If NOT criteria (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+not applicable
+2
+If NOT criteria (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+not applicable
+According to the given information in the table, Vijay's Degree's marks is not given in the question. So, the Data is inadequate to take any decision.
+Hence, "Option 3" is the correct answer.
+Que. 22	Ankit scored 80% marks in B.Sc. (IT) and 78% marks in Electronics Engineering. His scores at the Selection Test and the Interview are 55% and 60% respectively. He has been working as Systems Analyst
+since 2001. His date of birth is 19th April, 1980.-
+If the case is to be referred to the Chairman, Recruitment Committee.
+If the candidate is to be selected.
+If the case is to be referred to the GM, Recruitment.
+If the candidate is not to be selected.
+Correct Option - 3 As of 1-10-2005,
+Condition
+Details
+Suitability
+i
+Computer Engineer or MCA with first class having minimum 65% marks.
+No, Ankit has B.Sc (IT) degree.
+ii
+Secured at least 50% marks in the Selection Test.
+Yes, He has 55% marks.
+iii
+Secured at least 40% marks in the Interview.
+Yes, He has 60% marks.
+iv
+Not be less than 21 years and not more than 30 years of age as on 1-10-2005.
+Yes, 25 Years
+1
+If NOT criteria (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+Yes, 78 % marks
+in Electronics Engineering.
+2
+If NOT criteria (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+Yes, He has been working as Systems Analyst since 2001.
+According to the given information in the table, Condition I is not fulfilled but he has the degree in Electronics Engineering.
+So, "the case is to be referred to the GM, Recruitment".
+Hence, "Option 3" is the correct answer.
+Que. 23	Divya is a Computer Engineer with 80% marks. She scored more than 55% marks in the Interview and the Selection Test. She has worked in XYZ company as a Systems Analyst for more than 5 years.	Que. 23	Divya is a Computer Engineer with 80% marks. She scored more than 55% marks in the Interview and the Selection Test. She has worked in XYZ company as a Systems Analyst for more than 5 years.
+Que. 23	Divya is a Computer Engineer with 80% marks. She scored more than 55% marks in the Interview and the Selection Test. She has worked in XYZ company as a Systems Analyst for more than 5 years.
+Que. 23	Divya is a Computer Engineer with 80% marks. She scored more than 55% marks in the Interview and the Selection Test. She has worked in XYZ company as a Systems Analyst for more than 5 years.
+If the case is to be referred to the Chairman, Recruitment Committee.
+If the candidate is to be selected.
+Data inadequate.
+If the candidate is not to be selected.
+Correct Option - 3 As of 1-10-2005,
+Condition
+Details
+Suitability
+i
+Computer Engineer or MCA with first class having minimum 65% marks.
+Yes, Computer Engineer with 80% marks
+ii
+Secured at least 50% marks in the Selection Test.
+Yes, He has 55% marks.
+iii
+Secured at least 40% marks in the Interview.
+Yes, He has 55% marks.
+iv
+Not be less than 21 years and not more than 30 years of age as on 1-10-2005.
+Not mentioned.
+1
+If NOT criteria (1) above, but is an Electronics Engineer with 70% marks, the case may be referred to the GM, Recruitment.
+not applicable
+2
+If NOT criteria (2) above, but is having at least 2 years' experience of working as a Systems Analyst, the case may be referred to the Chairman, Recruitment Committee.
+Yes, 5 Years
+According to the given information in the table, Divya's age is not given in the question. So, the Data is inadequate to take any decision.
+Hence, "Option 3" is the correct answer.
+Que. 24	You are stationed as a police officer, an agitated crowd at a local fair accuses a teenager of theft and attempts mob lynching. You should :	Que. 24	You are stationed as a police officer, an agitated crowd at a local fair accuses a teenager of theft and attempts mob lynching. You should :
+Que. 24	You are stationed as a police officer, an agitated crowd at a local fair accuses a teenager of theft and attempts mob lynching. You should :
+Que. 24	You are stationed as a police officer, an agitated crowd at a local fair accuses a teenager of theft and attempts mob lynching. You should :
+make the accused confess under duress.
+use force to arrest the accused for questioning.
+let the mob punish the accused if enough proof available.
+rescue the teenager and disperse the mob to ensure fair trial.
+Correct Option - 4
+The correct answer is rescue the teenager and disperse the mob to ensure fair trial.  Key Points
+The most appropriate action in this scenario is to "rescue the teenager and disperse the mob to ensure a fair trial." Here are the key points that support this decision:
+[[IMG:image29.png]] Upholding the Rule of Law: As a police officer, it is your duty to uphold the rule of law and ensure that due process is followed. This means protecting individuals from vigilante justice, which can often be based on misinformation, bias, or emotion rather than evidence.
+[[IMG:image30.png]] Protecting Human Rights: Every individual, regardless of the accusations against them, has the right to a fair trial. By rescuing the teenager, you are safeguarding their human rights, including the right to defend themselves in a court of law where evidence can be impartially examined.
+Que. 25	As head of police in a riot-hit mixed religious locality, you should :	Que. 25	As head of police in a riot-hit mixed religious locality, you should :
+Que. 25	As head of police in a riot-hit mixed religious locality, you should :
+Que. 25	As head of police in a riot-hit mixed religious locality, you should :
+act tough on miscreants crossing community lines.
+impose indefinite curfew till tensions subside.
+engage elders to reconcile groups through dialogue.
+table concerns with municipal authorities for resolution.
+Correct Option - 3
+The correct answer is engage elders to reconcile groups through dialogue.
+Key Points
+As head of police in a riot-hit mixed religious locality, you should engage elders to reconcile groups through dialogue.
+The points that support this decision are:
+[[IMG:image32.png]] Community Engagement: Engaging community elders and respected figures in dialogue helps leverage their influence to calm tensions. Elders are often seen as neutral arbitrators who can lend credibility to the peace-making process.
+[[IMG:image33.png]] Promoting Understanding and Reconciliation: Dialogue facilitated by community elders can help bridge misunderstandings and reduce animosities between groups. It provides a platform for airing grievances in a constructive manner, promoting empathy and mutual understanding.
+Que. 26	You are stationed as a police officer, you receive reliable information of preparations to violently disrupt upcoming local body elections. You should :	Que. 26	You are stationed as a police officer, you receive reliable information of preparations to violently disrupt upcoming local body elections. You should :
+Que. 26	You are stationed as a police officer, you receive reliable information of preparations to violently disrupt upcoming local body elections. You should :
+Que. 26	You are stationed as a police officer, you receive reliable information of preparations to violently disrupt upcoming local body elections. You should :
+mobilize auxiliary police augmentation in vulnerable areas.
+recommend postponing the electoral process.
+ban political campaign events and restrict assembly.
+conduct preventive detentions to avoid subversion.
+Correct Option - 1
+The correct answer is mobilize auxiliary police augmentation in vulnerable areas.
+Key Points
+[[IMG:image34.png]] The most appropriate action upon receiving reliable information about preparations to violently disrupt upcoming local body elections is to "mobilize auxiliary police augmentation in vulnerable areas." Here are the points that support this decision:
+[[IMG:image35.png]] Ensuring Voter Safety: Mobilizing auxiliary police forces to augment security in vulnerable areas prioritizes the safety and security of voters. It aims to provide a secure environment that encourages voter participation without fear of violence.
+[[IMG:image36.png]] Maintaining Public Order: A visible and proactive law enforcement presence can deter potential disruptors and maintain public order during the election process. It sends a clear message that any attempts to disrupt the elections will be met with an immediate response.
+Que. 27	You are an Investigating officer; the primary accused in a VIP assassination case is offering huge bribes for manipulating evidence and influencing judges to ensure acquittal. You should :
+pretend to agree but submit weakly fabricated bogus evidence.
+comply on records but secretly collect dialogue against accused.
+avoid investigating as per your independent professional judgement.
+remain uncorrupted and present facts transparently in court.
+Correct Option - 4
+The correct answer is remain uncorrupted and present facts transparently in court.
+Key Points
+[[IMG:image37.png]] The points that support this decision are -
+[[IMG:image38.png]] Upholding Integrity and Professional Duty
+[[IMG:image39.png]] Ensuring Justice
+[[IMG:image40.png]] Maintaining Public Trust
+[[IMG:image41.png]] Moral and Ethical Responsibility
+Que. 28	You are stationed as a police officer; to prevent further cases of card cloning at ATMs, you should :
+place one observer each in all ATMs to identify suspicious accomplices.
+temporarily disable all ATMs in the jurisdiction.
+purchase card cloning machine prototypes to understand methodology.
+examine ATM machine access logs for anomalies.
+Correct Option - 4
+The correct answer is examine ATM machine access logs for anomalies.
+Key Points
+The points that support this decision:
+Targeted Approach: By examining ATM machine access logs, you can identify patterns or anomalies indicative of cloning activities, such as unusual access times, failed transaction attempts,
+Efficient Use of Resources: This strategy utilizes existing data and technology, making it a more resource-efficient way to tackle card cloning.
+Que. 29	You are a constable in a special cell that deals with cyber crimes and online frauds. You have been trained in various aspects of cyber security and digital forensics. However, due to a shortage of staff, you are assigned
+to a patrol duty where you have to patrol the streets and respond to emergency calls. You feel that this is a boring and mundane task that does not suit your expertise. You should:
+do the patrol duty but constantly look for opportunity of taking leave.
+refuse to do the patrol duty and insist on staying in the cyber cell.
+do the patrol duty enthusiastically and learn from the experiences of other patrol officers.
+do the patrol duty reluctantly and complain about it to your superiors and colleagues.
+Correct Option - 3
+The correct answer is do the patrol duty enthusiastically and learn from the experiences of other patrol officers.
+Key Points
+Professional Growth: Engaging positively with the patrol duty allows you to gain a broader understanding of law enforcement. This perspective can be invaluable, even in cybercrime investigations, where understanding the physical aspects of crime can complement digital investigations.
+Teamwork and Morale: Approaching the assignment with enthusiasm can positively influence team morale and cohesion. It demonstrates adaptability and a team-first attitude, qualities that are crucial in law enforcement agencies.
+Contributing to Public Safety: Patrol duties are crucial for maintaining public safety and order. By performing these duties enthusiastically, you contribute directly to the safety and security of the community, fulfilling the broader mission of law enforcement beyond your specialization in cybercrime.
+Que. 30	In the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.You should :	Que. 30	In the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.You should :
+Que. 30	In the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.
+You should :
+Que. 30	In the climax stage of a nationwide terror manhunt, you learn your only parent suffers a debilitating stroke.
+You should :
+conceal news avoiding distraction till mission completion.
+handover reins to accomplished deputy for family priority.
+commit singular focus expecting siblings to handle parent.
+remotely coordinate certain areas without Ops leadership.
+Correct Option - 3
+The correct answer is commit singular focus expecting  siblings to handle parent.
+Key Points
+[[IMG:image45.png]] Commit singular focus expecting siblings to handle parent," could be considered the most appropriate decision under certain circumstances:
+[[IMG:image46.png]] Critical Role in Operations: In this scenario, your role in the nationwide terror manhunt is presumably of such critical nature that your absence could significantly affect the outcome. In situations of national security, the unique responsibilities and skills you possess might be irreplaceable at the climax of operations.
+[[IMG:image47.png]] Trust in Siblings' Capability: This choice relies on the belief that your siblings are both capable and willing to take care of your parent in your stead. It presumes a family dynamic where responsibilities can be shifted, and where there is enough support in place for your parent without your physical presence.
+[[IMG:image48.png]] Prioritization of Duties: It underscores the harsh reality of prioritizing duties. In careers that deal with national security, law enforcement, or emergency services, individuals often face situations where personal sacrifices are made for the greater good. The decision acknowledges the weight of responsibility towards societal safety and security.
+Que. 31	when investigating rape forensic evidence from victim, you should :	Que. 31	when investigating rape forensic evidence from victim, you should :
+Que. 31	when investigating rape forensic evidence from victim, you should :
+Que. 31	when investigating rape forensic evidence from victim, you should :
+focus on Medical test ruthlessly without any women police present.
+complete documentation along with FIR using pseudo name.
+transfer to experienced Woman Inspector without direct involvement.
+personally interview the victim in plain clothes to build trust.
+Correct Option - 3
+The correct answer is transfer to experienced Woman Inspector without direct involvement.
+Key Points
+Transferring the case to an experienced Woman Inspector without direct involvement can indeed be an essential step in handling cases of rape sensitively and effectively.
+Why transferring the case to an experienced Woman Inspector is appropriate:
+[[IMG:image50.png]] Gender Sensitivity: An experienced Woman Inspector is likely to have a better understanding of the nuances and sensitivities involved in such cases. Gender-sensitive policing can lead to a more empathetic and effective investigation.
+[[IMG:image51.png]] Comfort and Trust: Female victims of sexual assault may feel more comfortable and safe talking about their experiences with a woman,
+Que. 32	As a police officer, transgender citizens report facing harassment and dignity violations during law enforcement interactions. You should :
+enforce strict disciplinary actions against offenders.
+depute gender-rights community volunteers for engagements.
+take complaint and forward it to Human Rights Commission.
+implement mass sensitization drives on appropriate conduct.
+Correct Option - 4
+The correct answer is implement mass sensitization drives on appropriate conduct.
+Key Points
+[[IMG:image52.png]] The points that support this decision
+[[IMG:image53.png]] Promoting Understanding and Awareness
+[[IMG:image54.png]] Ensuring Respectful Treatment
+[[IMG:image55.png]] Building Trust with the Community
+[[IMG:image56.png]] Promoting Inclusivity within the Force
+[[IMG:image57.png]] Compliance with Human Rights Standards
+Que. 33	As a police officer, you notice certain religious minorities being denied neighbourhood entry. You should :
+organize multi-faith community dialogues to ease tensions.
+arrest and prosecute housing societies flouting laws.
+enforce diversity by posting minority community officers.
+refer complaints to state's minority welfare schemes.
+Correct Option - 1
+The correct answer is organize multi-faith community dialogues to ease tensions.
+Key Points
+Organizing multi-faith community dialogues to ease tensions would be most appropriate step.
+Long-Term Harmony: Oorganizing community dialogues helps foster understanding and long-term harmony among different religious communities.
+Community Building: Dialogues provide a platform for open communication, allowing community members to express concerns and grievances. This can lead to the development of trust between law enforcement and the community.
+Que. 34	As a police officer, you are assigned to a police station in a district. Which of the following is the name of the officer who is in-charge of the police station ?
+Superintendent of Police
+Station House Officer
+Deputy Inspector General
+Circle Officer
+Correct Option - 2
+The correct answer is Station House Officer.
+Key Points
+Station House Officer is in-charge of the police station.
+The SHO holds the rank of inspector or sub-inspector.
+In India, the law permits a station house officer to conduct an investigation of crimes.
+He supervises the police station's activities and is responsible for maintaining law and order in his region.
+Thus, we can say that S.H.O regarding police is Station House Officer.
+Que. 35	As a police officer, what would guide your decision-making in enforcing laws?	Que. 35	As a police officer, what would guide your decision-making in enforcing laws?
+Que. 35	As a police officer, what would guide your decision-making in enforcing laws?
+Que. 35	As a police officer, what would guide your decision-making in enforcing laws?
+Following the orders of your superiors without questioning their judgment.
+Strict adherence to the letter of the law, regardless of individual circumstances.
+Applying personal moral values even if they conflict with established regulations.
+Balancing legal requirements with empathy and consideration for the situation.
+Correct Option - 4
+The correct answer is Balancing  legal requirements with empathy and consideration for the situation.
+Key Points
+Empathy: Understanding the unique circumstances of each situation allows for a more nuanced and compassionate approach to law enforcement. Empathy helps build trust within the community.
+Legal Compliance: As a police officer, it is crucial to adhere to the letter of the law to maintain public order and ensure justice.
+Que. 36	Find suitable alternative in place of question mark (?).
+Mother : Child :: Cloud : ?
+Rain
+Shine
+Weather
+Loud
+Correct Option - 1
+The logic follows here:
+Mother : Child → A child comes from the mother. Simialrly,
+Cloud : Rain → Rain comes from clouds. Hence, the correct answer is "Rain".
+Que. 37	As a police officer, certain religious customs violate Supreme Court directions on entry of women in places of worship. You should :	Que. 37	As a police officer, certain religious customs violate Supreme Court directions on entry of women in places of worship. You should :
+Que. 37	As a police officer, certain religious customs violate Supreme Court directions on entry of women in places of worship. You should :
+Que. 37	As a police officer, certain religious customs violate Supreme Court directions on entry of women in places of worship. You should :
+avoid the situation by taking leaves.
+enforce directions by removing opposing groups if necessary.
+sensitize opinion leaders leveraging spiritual heads' assistance.
+publicly threaten charges against customs upholding court rulings.
+Correct Option - 2
+The correct answer of above Question is option 2. We Will update detailed solution soon.
+Que. 38	Shyam travels 7 km North, then he turns to his right and walks 3 km. He again turns to his right and moves 7 km forward. Now in which direction is he from his starting point?	Que. 38	Shyam travels 7 km North, then he turns to his right and walks 3 km. He again turns to his right and moves 7 km forward. Now in which direction is he from his starting point?
+Que. 38	Shyam travels 7 km North, then he turns to his right and walks 3 km. He again turns to his right and moves 7 km forward. Now in which direction is he from his starting point?
+Que. 38	Shyam travels 7 km North, then he turns to his right and walks 3 km. He again turns to his right and moves 7 km forward. Now in which direction is he from his starting point?
+South
+North
+West
+East
+Correct Option - 4
+Drawing the diagram according to the given information,
+[[IMG:image60.jpeg]]
+So, the direction from the starting point = East Hence, East is the correct answer.
+Que. 39	In the following question, some words are given. They have some common features except the odd one. You are required to find odd one out.	Que. 39	In the following question, some words are given. They have some common features except the odd one. You are required to find odd one out.
+Que. 39	In the following question, some words are given. They have some common features except the odd one. You are required to find odd one out.
+Que. 39	In the following question, some words are given. They have some common features except the odd one. You are required to find odd one out.
+Harass
+Annoy
+Ravage
+Distress
+Correct Option - 3
+Harass - This implies persistently troubling or bothering someone.
+Annoy - This means to irritate or bother, often in a less intense or less aggressive manner than harassment.
+Ravage - Unlike the other words, which deal with emotional or minor physical disturbances, "ravage" implies severe damage or destruction, often used in the context of natural disasters, wars, or something that physically
+destroys.
+Distress - This involves causing someone to feel extremely worried, upset, or troubled, often as a result of a particular event or situation.
+While "harass," "annoy," and "distress" are primarily concerned with causing emotional turmoil or irritation, "ravage" stands out because it refers to causing severe and extensive damage or destruction,
+Hence, the correct answer is option 3.
+Que. 40	Choose the correct alternative from given ones that will complete the series: 2.3, 15.9, 79.6, 423, 2574, (?)
+1.	10300
+2.	5632
+3.	18067
+4.	8432
+Correct Option - 3
+The logic follows here:
+[[IMG:image61.jpeg]]
+Hence, the correct answer is "18067".
+Que. 41	In a certain code language "MADRAS" is written as "OWNHEQ". How will "SUNDAY" be written in that same code ?	Que. 41	In a certain code language "MADRAS" is written as "OWNHEQ". How will "SUNDAY" be written in that same code ?
+Que. 41	In a certain code language "MADRAS" is written as "OWNHEQ". How will "SUNDAY" be written in that same code ?
+Que. 41	In a certain code language "MADRAS" is written as "OWNHEQ". How will "SUNDAY" be written in that same code ?
+WUZWYR
+WUZRYX
+UWZYWR
+UWZRYW
+Correct Option - 4
+[[IMG:image62.jpeg]][[IMG:image63.png]]The table shows the place value of the alphabet from A to Z and Z to A.
+The logic followed here is:
+Now, "MADRAS" is written as "OWNHEQ"
+[[IMG:image64.jpeg]]
+Similarly,
+"SUNDAY" be coded as
+[[IMG:image65.jpeg]]
+Therefore, "SUNDAY" is coded as "UWZRYW". Hence, the correct answer is "Option (4)".
+Que. 42	Suresh's sister is the wife of Ram. Ram is Rani's brother. Ram's father is Madhur. Sheetal is Ram's grandmother. Rema is Sheetal's daughter - in - law. Rohit is Rani's brother's son. How is Rohit related to
+Suresh ?
+Brother
+Brother - in - law
+Nephew
+Son
+Correct Option - 3
+From the given information,
+[[IMG:image66.png]]
+[[IMG:image67.png]]
+We can draw the following Family Tree from the information given above:
+[[IMG:image68.jpeg]]
+Hence, Rohit is the “Nephew” of Suresh.
+Que. 43	If in the word "SPIRITUAL", position of second and fifth letter is interchanged, similarly position of fourth and sixth letter is interchanged with seventh and ninth letters respectively, then how many pair of letters in
+the new word have as many letters between them (either forward or backward) as they have in the English alphabet series?
+1.	5
+2.	3
+3.	6
+4.	4
+Correct Option - 1
+[[IMG:image69.png]][[IMG:image70.png]]The alphabets are positioned in the following order:
+Follow the conditions given in the question:
+Position of second and fifth letter is interchanged, similarly position of fourth and sixth letter is interchanged with seventh and ninth letters respectively.
+[[IMG:image71.jpeg]]
+The word can be presented as follows,
+[[IMG:image72.jpeg]]
+In Forward direction: IL, PR, RT, PT; In Backward direction: RU.
+Hence, we can see that "5" such pairs are there.
+Que. 44	A clock is started at noon. By 10 minutes past 4, the hour hand has turned through	Que. 44	A clock is started at noon. By 10 minutes past 4, the hour hand has turned through
+Que. 44	A clock is started at noon. By 10 minutes past 4, the hour hand has turned through
+Que. 44	A clock is started at noon. By 10 minutes past 4, the hour hand has turned through
+1.	130°
+2.	120°
+3.	135°
+4.	125°
+Correct Option - 4
+Given: A clock is started at noon - This means from 12 : 00 PM. By 10 minutes past 4,
+So, the time travelled between 12 : 00 pm to 04 : 10 pm = 4 hours and 10 minutes. We know, 1 hour has make 30°.
+6060And, 4 hours 10 minutes: 30° × 4 and in 10 Minutes has = 10
+60
+60
+× 30°
+→ 120° + 5° = 125°.
+Hence, the correct answer is "Option 4".
+[[IMG:image73.jpeg]]	Que. 45	Study the following figure and answer the question given below.	Que. 45	Study the following figure and answer the question given below.
+Que. 45	Study the following figure and answer the question given below.
+Que. 45	Study the following figure and answer the question given below.
+What is represented by the number 7?
+Married nurses in the hospital
+Trained nurses
+Married trained nurses
+Unmarried trained nurses
+Correct Option - 1
+The Venn diagram representation is as follows :
+[[IMG:image74.png]]
+From the above diagram "7" represent "Married nurse in hospital but not trained." Thus, the correct answer is "Married nurses in the hospital ".
+Que. 46	Which of the following diagrams best indicates the relation between India, Gujarat, Surat?	Que. 46	Which of the following diagrams best indicates the relation between India, Gujarat, Surat?
+Que. 46	Which of the following diagrams best indicates the relation between India, Gujarat, Surat?
+Que. 46	Which of the following diagrams best indicates the relation between India, Gujarat, Surat?
+1.
+[[IMG:image75.jpeg]][[IMG:image76.jpeg]]2.
+[[IMG:image77.png]]3.
+[[IMG:image78.jpeg]]4.
+Correct Option - 3
+Given: India, Gujrat, Surat
+India → country
+Gujrat→ State of India.
+Surat → city of Gujrat.
+The Venn diagram is:
+[[IMG:image79.png]]
+Hence, the correct answer is "Option (3)".
+Que. 47	Solve: 120 ÷ 3 + 8 × 3 - 40 = ?	Que. 47	Solve: 120 ÷ 3 + 8 × 3 - 40 = ?
+Que. 47	Solve: 120 ÷ 3 + 8 × 3 - 40 = ?
+Que. 47	Solve: 120 ÷ 3 + 8 × 3 - 40 = ?
+1.	-256
+2.	24
+3.	74
+4.	-24
+Correct Option - 2 Given:
+120 ÷ 3 + 8 × 3 - 40 = ?
+Calculation:
+120 ÷ 3 + 8 × 3 - 40 = ?
+⇒ 120 × 1/3 + 8 × 3 - 40 = ?
+⇒ 40 + 24 - 40 = ?
+⇒ 64 - 40 = ?
+⇒ ? = 24
+Que. 48	In a row Mihir is 17th from the left and 19th from the right, then what is the total number of candidates in that row?
+1.	35
+2.	36
+3.	29
+4.	31
+Correct Option - 1 Formula used:
+Total candidates in the row = {(rank from the left+ rank from the right) - 1}
+As per the given information:
+Mihir is 17th from the left and 19th from the right in a row. then,
+Total candidates in the row= {(17 + 19) - 1}
+Total candidates in the row = 36 - 1 = 35 Hence, the correct answer is "35".
+Que. 49	There is a cuboid whose dimensions are 4 × 3 × 3 cm. The opposite faces of dimensions 4 × 3 are coloured yellow. The opposite faces of other dimensions 4 × 3 are coloured red. The opposite faces of dimensions 3 ×
+3 are coloured green. Now the cuboid is cut into small cubes of side 1 cm. How many small cubes have three faces coloured?
+1.	16
+2.	8
+3.	20
+4.	12
+Correct Option - 2 Given:
+There is a cuboid whose dimensions are 4 × 3 × 3 cm.
+The opposite faces of dimensions 4 × 3 are coloured yellow. The opposite faces of other dimensions 4 × 3 are coloured red. The opposite faces of dimensions 3 × 3 are coloured green.
+The number of cuboids with three faces painted is always 8 Hence, "8" is the correct answer.
+Que. 50	In the following question, a word has been given, followed by four other words, one of which can be formed using the letters of the given word. Find that word.
+MEASUREMENT
+RETUNES
+ASSURE
+MANTLE
+SUMMIT
+Correct Option - 1
+Given word: MEASUREMENT Let’s check all the options:
+RETUNES ⇒ It can be formed.
+ASSURE ⇒ It can’t be formed as it requires S .
+MANTLE ⇒ It can’t be formed as it requires L.
+SUMMIT⇒ It can’t be formed as it requires I. Hence, the correct answer is "RETUNES "
+Que. 51	A scientist is trying to recall the access code to a secure laboratory. He remembers the following details:
+The code starts with the digit 5.
+The code ends with 987.
+The second digit is the sum of the first digit and 3.
+The third digit is half of the second digit.
+Now, considering these conditions, the scientist has narrowed down four potential access codes for the laboratory. Find the suitable one.
+1.	563987
+2.	542987
+3.	548987
+4.	584987
+Correct Option - 4 Given:
+The code starts with the digit 5.
+⇒ 5
+The second digit is the sum of the first digit and 3.
+⇒ 5 8
+The third digit is half of the second digit.
+⇒ 5 8 4
+The code ends with 987.
+⇒ 5 8 4 9 8 7
+Hence, The correct answer is "584987".
+Que. 52	In the question below two statements followed by three conclusions numbered I, II and III are given. You have to assume everything in the statements to be true, then consider the the three conclusions together and
+decide which of them logically follows beyond reasonable doubt from the information given in the statements.
+Statements:
+Water has no shape, has volume.
+The knowledge is like water, flowed from one side to other.
+Conclusions:
+The knowledge is interdisciplinary.
+The knowledge is bound within a specific area.
+The knowledge influences the core of mental activity directly.
+Both I and II follow.
+Only conclusion I follows.
+Both I and III follow.
+Only conclusion II follows.
+Correct Option - 2
+The solution is based on analyzing the metaphorical comparison of knowledge to water, which suggests flexibility, adaptability, and the capacity to flow or transfer across areas.
+Conclusion I, "The knowledge is interdisciplinary," aligns with this metaphorical representation, suggesting knowledge is not confined to a single domain but can be applied across different fields, much like water taking the shape of its container.
+Conclusion II, "The knowledge is bound within a specific area," contradicts the analogy of water's ability to flow and adapt, implying that knowledge is not rigidly confined.
+Conclusion III, "The knowledge influences the core of mental activity directly," does not directly follow from the statements provided, which focus more on the nature of knowledge's spread rather than its effect on mental activity.
+Given the analysis Only conclusion I follows.
+Hence, the correct answer is "Only conclusion I follows.".
+Que. 53	A is B's sister. C is B's mother. D is C's father. E is D's mother. Then how is A related to D?	Que. 53	A is B's sister. C is B's mother. D is C's father. E is D's mother. Then how is A related to D?
+Que. 53	A is B's sister. C is B's mother. D is C's father. E is D's mother. Then how is A related to D?
+Que. 53	A is B's sister. C is B's mother. D is C's father. E is D's mother. Then how is A related to D?
+Daughter
+Grand mother
+Grand daughter
+Grand father
+Correct Option - 3
+[[IMG:image80.png]]From the given information,
+[[IMG:image67.png]]
+We can draw the following Family Tree from the information given above:
+[[IMG:image81.jpeg]]
+Here, A is grand daughter of D.
+Hence, the correct answer is "Granddaughter".
+Choose the alternative which closely resembles the mirror image of the given combination.
+Que. 54Que. 54B R 4 A Q 1 6 H I
+Que. 54
+Que. 54
+[[IMG:image82.jpeg]]1.
+[[IMG:image83.jpeg]]2.
+[[IMG:image84.jpeg]]3.
+[[IMG:image85.jpeg]]4.
+Correct Option - 2
+The correct mirror image of the given figure is:
+[[IMG:image86.jpeg]]
+The correct answer of above Question is option 2.
+[[IMG:image87.jpeg]]	Que. 55	Find out which of the figures (1), (2), (3) and (4) can be formed from the pieces given in the figure (X).	Que. 55	Find out which of the figures (1), (2), (3) and (4) can be formed from the pieces given in the figure (X).
+Que. 55	Find out which of the figures (1), (2), (3) and (4) can be formed from the pieces given in the figure (X).
+Que. 55	Find out which of the figures (1), (2), (3) and (4) can be formed from the pieces given in the figure (X).
+1.	(1)
+2.	(2)
+3.	(3)
+4.	(4)
+Correct Option - 2
+The figure will be formed from the given figure 'X':
+[[IMG:image88.jpeg]]
+So, the figure number '2' will forms a complete figure after assemble the pieces of given figure. Hence, the correct answer is "Option 2".
+Que. 56	Find out from amongst the four alternatives as to how the pattern would appear when the transparent sheet is folded at the dotted line.	Que. 56	Find out from amongst the four alternatives as to how the pattern would appear when the transparent sheet is folded at the dotted line.
+Que. 56	Find out from amongst the four alternatives as to how the pattern would appear when the transparent sheet is folded at the dotted line.
+Que. 56	Find out from amongst the four alternatives as to how the pattern would appear when the transparent sheet is folded at the dotted line.
+[[IMG:image89.jpeg]]
+1.	(3)
+2.	(1)
+3.	(4)
+4.	(2)
+Correct Option - 1
+Here, we unfold the paper-cutting step by step:
+[[IMG:image90.jpeg]]
+Hence, the correct answer is option 1: Figure (3).
+Que. 57Simplify : 108 ÷ 36 × 1 + 2 × 3 1	4	54Que. 57Simplify : 108 ÷ 36 × 1 + 2 × 3 1	4	54
+Que. 57
+Simplify : 108 ÷ 36 × 1 + 2 × 3 1
+4	5
+4
+Que. 57
+Simplify : 108 ÷ 36 × 1 + 2 × 3 1
+4	5
+4
+1.	2 1
+5
+2.	1 1
+20
+3.	2 1
+11
+4.	2 1
+20
+Correct Option - 1 Given:
+108 ÷ 36 × 1 + 2
+4	5
+× 3 1
+4
+Calculation:
+108 ÷ 36 × 1 + 2
+4	5
+× 3 1
+4
+⇒ 108 × 1/36 × 1/4 + 2/5 × 13/4
+⇒ 3 × 1/4 + 13/10
+⇒ 3/4 + 13/10 = (15 + 26)/10 = 41/20 = 2 1
+20
+Que. 58	Which of the following option would be meaningful order of the following words?
+Exhaust
+Night
+Day
+Sleep
+Work
+1.	3, 5, 1, 4, 2
+2.	1, 3, 5, 4, 2
+3.	3, 5, 2, 1, 4
+4.	3, 5, 1, 2, 4
+Correct Option - 4
+The logical order is as follows:
+3. Day
+5. Work
+Exhaust
+Night
+4. Sleep
+Hence, the correct answer is option 4.
+[[IMG:image91.jpeg]]	Que. 59	Choose the figure which is different from the rest.	Que. 59	Choose the figure which is different from the rest.
+Que. 59	Choose the figure which is different from the rest.
+Que. 59	Choose the figure which is different from the rest.
+1.	(3)
+2.	(1)
+3.	(4)
+4.	(2)
+Correct Option - 1
+The logic follows here:
+[[IMG:image92.jpeg]]
+All the given figures in the shape's open area are in different directions except figure 3. Hence, the correct answer is "Option 1".
+Que. 60	The number of apples in a basket doubles every minute. If the basket is full of apples in an hour, when was the basket half-filled ?	Que. 60	The number of apples in a basket doubles every minute. If the basket is full of apples in an hour, when was the basket half-filled ?
+Que. 60	The number of apples in a basket doubles every minute. If the basket is full of apples in an hour, when was the basket half-filled ?
+Que. 60	The number of apples in a basket doubles every minute. If the basket is full of apples in an hour, when was the basket half-filled ?
+55 minutes
+38 minutes
+59 minutes
+47 minutes
+Correct Option - 3
+Given, the number of apples in a basket doubles every minute and the basket is full of apples in one hour or 60 minutes.
+Clearly, the basket is half-filled in 59 minutes. Hence, option (3) is the correct answer.
+Que. 61	The Great Barrier Reef is located at the coast of which of the following countries?	Que. 61	The Great Barrier Reef is located at the coast of which of the following countries?
+Que. 61	The Great Barrier Reef is located at the coast of which of the following countries?
+Que. 61	The Great Barrier Reef is located at the coast of which of the following countries?
+Australia
+South Africa
+Philippines
+Indonesia
+Correct Option - 1
+The correct answer is Australia.
+Key Points
+The Great Barrier Reef is located parallel to the north-eastern coast of Queensland (Australia).
+It contains the world’s largest collection of coral reefs, with 400 types of coral, 1,500 species of fish and 4,000 types of mollusc.
+It also holds great scientific interest as the habitat of species such as the dugong (‘sea cow’) and the large green turtle, which are threatened with extinction.
+The length is more than 1,900 km.
+It is the world’s largest coral reef.
+The coral reef formed by the deposition of coral polyps of very small creatures.
+The Great Barrier Reef Marine Park was established to protect its ecosystems in 1975.
+[[IMG:image94.jpeg]]	Que. 62	Who among the following was the President of the Constituent Assembly of India in 1946 ?	Que. 62	Who among the following was the President of the Constituent Assembly of India in 1946 ?
+Que. 62	Who among the following was the President of the Constituent Assembly of India in 1946 ?
+Que. 62	Who among the following was the President of the Constituent Assembly of India in 1946 ?
+Dr. B.R. Ambedkar
+Sardar Vallabhbhai Patel
+Dr. Rajendra Prasad
+Jawaharlal Nehru
+Correct Option - 3
+The correct answer is Dr. Rajendra Prasad.
+Key Points
+Dr. Rajendra Prasad was the first president of the Constituent Assembly of India.
+The Constituent Assembly was formed on 9th December 1946 and Dr. Rajendra Prasad was elected as its President.
+Dr. Rajendra Prasad was an eminent lawyer and Congress leader.
+He played a crucial role in the constitution-making process.
+After signing the final draft constitution on 26th November 1949, he resigned as the President of the Constituent Assembly.
+Dr. Rajendra Prasad was later elected as the first President of India.
+Que. 63	The "Prayaga Prashasti" had been composed by whom among the following in Sanskrit ?
+Bhavabhuti
+Harishena
+Baudhayana
+Banabhatta
+Correct Option - 2
+The correct answer is Harisena.
+Key Points
+Prashasti is a Sanskrit word, meaning commendation or ‘in praise of’.
+Court poets flattered their kings listing out their achievements.
+These accounts were later engraved on pillars so that the people could read them.
+Samudragupta, son of Chandragupta I, was the greatest ruler of the Gupta dynasty.
+The 'Prayag Prashasti', composed by Samudragupta’s court poet Harisena was engraved on Allahabad Pillar.
+This Allahabad Pillar inscription is the main source of information for Samudragupta’s reign.
+The poet praised the king in glowing terms — as a warrior, as a king who won victories in battle, who was learned and the best of poets.
+He is also described as equal to the gods.
+The Prayag Prashasti was composed in very long sentences.
+Que. 64	Which of the following is the largest salt water lagoon lake situated at the Eastern coast of India ?
+The Lonar Crater Lake
+The Kolleru Lake
+The Chilika Lake
+The Panchbhadra Salt Lake
+Correct Option - 3
+The correct answer is The Chilika Lake.
+Key Points
+Lake Chilka is the largest lagoon lake situated on the east coast of India.
+It is located at the mouth of the Daya River, which flows into the Bay of Bengal
+Lake Chilika is the largest brackish water lagoon in Asia and the second largest coastal lagoon in the world.
+Due to its rich biological diversity, Lake Chilika was the first Indian wetland of international importance to be designated under the Ramsar Convention in the year 1981.
+The gradual transition from freshwater to saltwater leads to the coexistence of four different ecosystems and the development of a unique biodiversity for lakes.
+Que. 65	The white light is composed of how many colours ?
+Seven
+Five
+Eight
+Six
+Correct Option - 1
+The correct answer is seven.
+Key Points
+White light: The light that contains all the wavelengths in the visible light range is called white light.
+[[IMG:image98.png]][[IMG:image99.png]] It is the combination of seven light colors: 1. Violet, 2. Indigo 3. Blue, 4. Green, 5. Yellow, 6. Orange, 7. Red
+[[IMG:image100.png]]
+Dispersion of light: The splitting of a composite beam of light into its constituent colors is called dispersion of light.
+[[IMG:image101.png]] The dispersion of white light occurs because the colors of white light travel at different speeds through the glass prism.
+[[IMG:image102.png]] The dispersion was discovered by Sir Issac Newton.
+[[IMG:image103.png]] Newton discovered that light is made up of seven different colors.
+Que. 66	Sri Lanka is separated from India by a narrow channel of sea formed by which of the following ?	Que. 66	Sri Lanka is separated from India by a narrow channel of sea formed by which of the following ?
+Que. 66	Sri Lanka is separated from India by a narrow channel of sea formed by which of the following ?
+Que. 66	Sri Lanka is separated from India by a narrow channel of sea formed by which of the following ?
+The Makassar Strait
+The Eight Degree Channel
+The Strait of Messina
+The Palk Strait and the Gulf of Mannar
+Correct Option - 4
+The correct answer is The Palk Strait and the Gulf of Mannar.
+Key Points
+Sri Lanka is separated from India by a narrow channel of sea formed by The Palk Strait and the Gulf of Mannar.
+The Palk Strait connects India (Tamil Nadu) with Sri Lanka (Jaffna).
+The Mannar Gulf is located near Mannar Island in Sri Lanka.
+Adam's Bridge (Rama Setu), which is 50 kilometres long, connects the Palk Strait with the Gulf of Mannar.
+The Gulf of Mannar is a huge shallow harbour in the Indian Ocean that is part of the Laccadive Sea.
+The Coromandel Coast region is located between the southeastern tip of India and the west coast of Sri Lanka.
+Que. 67	The Sonepur Cattle Fair is a cultural event held at which of the following states of India every year ?
+Sikkim
+Bihar
+Odisha
+Assam
+Correct Option - 2
+The correct answer is Bihar.
+Key Points
+[[IMG:image105.png]]  Sonepur Cattle Fair is a well-known cultural event of Bihar.
+State
+Fair
+Gujarat
+Rann Utsav
+Bhavnath Mahadev Mela
+Rajasthan
+Beneshwar Fair Gogaji Fair Ramdevra Fair
+The Marwar Festival
+Bihar
+Sonepur Cattle Fair
+Punjab
+The Basant fair Baisakhi Chhapar Fair
+Que. 68	The cultivation, growing and harvesting of grapes is known as which of the following ?
+Viticulture
+Sericulture
+Horticulture
+Pisciculture
+Correct Option - 1
+The correct answer is Viticulture.
+Key Points
+Cultivation of grapes called Viticulture.
+Cultivation of grapes either for wine production or for raw consumption (table grapes) is called Viticulture.
+China is the leading producer of grapes.
+It accounts for 16.9% of global production.
+China is followed by Italy at 10.8%, and later by the United States at 8.7%.
+Additional Information
+Horticulture is a type of agriculture in which fruits and vegetables are grown.
+The breeding, rearing, and transplantation of fish are called pisciculture.
+Sericulture is the production of raw silk by means of raising caterpillars.
+Floriculture is coined for cultivation of flower.
+Que. 69	The Bailadila hills look like the hump of an ox. This range of hills is situated in which of the following states of India?
+Kerala
+Chhattisgarh
+Karnataka
+Tamil Nadu
+Correct Option - 2
+The correct answer is Chhattisgarh.
+Key Points
+The Bailadila hills look like the hump of an ox. Hence, the Bailadila iron-ore field gets its name.
+A mountain landform on the Deccan Plateau that rises roughly two hundred kilometres west of the Eastern Ghats is the Bailadila hills. It was named 'Bailadila' since it looked like an ox's hump.
+It is in the Dantewada district of southern Chhattisgarh, India, near Kirandul town.
+The famous Bailadila range of hills in Chhattisgarh's Bastar district contains very high-grade hematites.
+The Bailadila hills are home to 14 deposits of ultra-high-grade hematite iron ore.
+It possesses the best physical qualities required for steel production. These mines' iron ore gets shipped to Japan and South Korea via Visakhapatnam port.
+Que. 70	What is the highest post for Census Organisation in India?
+Deputy Registrar General
+Census Officer
+Sr. Technical Director
+Registrar General & Census Commissioner, India
+Correct Option - 4
+The correct answer is Registrar General and Census Commissioner, India.
+Key Points
+The Indian Census is the largest single source of various statistical information on various characteristics of the people of India.
+In the year 1872, the first census was conducted non-synchronously in different parts of India.
+The responsibility of conducting the decadal census rests with the Office of the Registrar General and Census Commissioner of India, Ministry of Home Affairs, Government of India.
+Additional Information
+The NITI Aayog serves as the apex public policy think tank of the Government of India.
+The Election Commission of India is an independent Constitutional Authority since 25th January 1950.
+ECI prepares and periodically updates electoral rolls and registers all eligible voters.
+The Comptroller and Auditor General of India is the supreme audit institution of India, established under Article 148 of the Constitution of India.
+Que. 71	"Kumarasambhavam" is the literary work of which of the following writers ?
+Mahakavi Kalidasa
+Kalhan
+Mahadevi
+Bharavi
+Correct Option - 1
+The correct answer is Mahakavi Kalidasa.
+Key Points
+[[IMG:image109.png]] Kalidas
+[[IMG:image110.png]] Kumarsambhava was an epic poem which was composed by the famous poet Kalidas.
+[[IMG:image111.png]] Malavikagnimitram, Vikramorvasiyam, and Abhijnanasakuntalam are some of his famous plays.
+[[IMG:image112.png]] And his poems like Raghuvamsa, Kumarasambhava, and Meghaduta are also famous.
+[[IMG:image113.png]] Kalidas was a court poet of the ruler of Ujjain, King Vikramaditya.
+Que. 72	"World Book Day" is celebrated on which of the following day every year?
+7th April
+23rd April
+25th June
+5th June
+Correct Option - 2
+The correct answer is 23rd April.  Key Points
+Every year April 23rd is celebrated as world book day to honour the literary genius, William Shakespeare.
+April 23rd Shakespeare's death anniversary is observed as World book day.
+Additional Information
+William Shakespeare is widely regarded as the greatest writer in the English language and the world's greatest dramatist.
+[[IMG:image115.png]] He is often called England's national poet and the "Bard of Avon".
+[[IMG:image116.png]] Important works: Hamlet, Romeo and Juliet, Othello, King Lear, and Macbeth.
+[[IMG:image117.png]] Evergreen characters of Shakespeare: Lady Macbeth, Shylock, Cordelia.
+Que. 73	The parts of which of the following states had evolved a local system of canal irrigation called kulhs over four hundred years ago ?
+Himachal Pradesh
+Gujarat
+Kerala
+Karnataka
+Correct Option - 1
+The correct answer is Himachal Pradesh.
+Key Points
+Irrigation: It refers to the supply of water to land or crops to help growth, typically by means of channels.
+Kuhls:
+[[IMG:image119.png]] These are a traditional irrigation system in Himachal Pradesh-surface channels diverting water from natural flowing streams (khuds).
+[[IMG:image120.png]] The water from glaciers is channelled into small canals leading to the fields.
+[[IMG:image121.png]] The kuhls were constructed and maintained by the village community.
+[[IMG:image122.png]] The system consists of a temporary headwall (constructed usually with river boulders) across a khud (ravine) for storage and diversion of the flow through a canal to the fields.
+[[IMG:image123.png]] Since in hilly regions it is not possible to make tube wells, kulhs were developed.
+Que. 74	National Aluminium Company Limited (NALCO) is having its registered office at which of the following places?	Que. 74	National Aluminium Company Limited (NALCO) is having its registered office at which of the following places?
+Que. 74	National Aluminium Company Limited (NALCO) is having its registered office at which of the following places?
+Que. 74	National Aluminium Company Limited (NALCO) is having its registered office at which of the following places?
+Bhubaneshwar, Odisha
+Noonmati, Assam
+Raipur, Chhattisgarh
+Digboi, Assam
+Correct Option - 1
+The correct answer is Bhubaneswar, Odisha.
+Key Points
+NALCO, established in 1981, is one of the largest integrated Bauxite-Alumina-Aluminium-Power Complex in the Country.
+It is Asia's largest, and the sixth largest, integrated aluminum complex, encompassing bauxite mining, alumina refining, aluminum smelting and casting, power generation, rail, and port operations.
+The company is a public sector enterprise of the Ministry of Mines, Government of India.
+Its vision is to be a reputed global company in the metals and energy sectors.
+NALCO has been contributing significantly to the industrially backward district and state of Odisha in terms of employment and other developmental schemes.
+Que. 75	The increase in the proportion population of a country who live in urban areas is known as which of the following?	Que. 75	The increase in the proportion population of a country who live in urban areas is known as which of the following?
+Que. 75	The increase in the proportion population of a country who live in urban areas is known as which of the following?
+Que. 75	The increase in the proportion population of a country who live in urban areas is known as which of the following?
+Colonisation
+Urbanisation
+Rustication
+Unplanned Development
+Correct Option - 2
+The correct answer is Urbanisation.
+Key Points
+The increase in the proportion of a country's population who live in urban areas is known as urbanisation.
+There are many factors that contribute to urbanization, such as:
+[[IMG:image125.png]] Economic opportunities: Cities tend to offer more job opportunities and higher wages than rural areas.
+[[IMG:image126.png]] Education and healthcare: Cities also tend to have better access to education and healthcare.
+[[IMG:image127.png]] Transportation: Improved transportation makes it easier for people to move to and from cities.
+Additional Information
+Colonisation: This refers to the establishment of a colony by a foreign power in a new territory.
+Rustication: This means moving from an urban area to a rural one.
+Unplanned development: This refers to development without proper planning or regulation, which can be associated with urbanization but is not the same thing.
+Que. 76	The headquarters of World Health Organisation (WHO) is located at which of the following places ?	Que. 76	The headquarters of World Health Organisation (WHO) is located at which of the following places ?
+Que. 76	The headquarters of World Health Organisation (WHO) is located at which of the following places ?
+Que. 76	The headquarters of World Health Organisation (WHO) is located at which of the following places ?
+Brussels, Belgium
+Amsterdam, Netherlands
+Paris, France
+Geneva, Switzerland
+Correct Option - 4
+The correct answer is Geneva, Switzerland.
+Key Points
+The World Health Organization is a specialized agency of the United Nations responsible for international public health.
+The headquarters of WHO is in Geneva, Switzerland.
+WHO was established on 7 April 1948.
+The constitution of the World Health Organization was signed by all 51 countries of the United Nations, and by 10 other countries, on 22 July 1946.
+It thus became the first specialized agency of the United Nations to which every member subscribed.
+WHO's main functions can be summed up as follows:
+To act as a directing and coordinating authority on international health work.
+To ensure valid and productive technical cooperation, and to promote research.
+The objective of WHO is to attain the highest possible level of health for all people.
+Que. 77	Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at which of the following districts of Uttar Pradesh?	Que. 77	Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at which of the following districts of Uttar Pradesh?
+Que. 77	Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at which of the following districts of Uttar Pradesh?
+Que. 77	Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at which of the following districts of Uttar Pradesh?
+Gonda
+Ballia
+Sant Kabir Nagar
+Etah
+Correct Option - 2
+The correct answer is Ballia.
+Key Points
+Surha Taal is the famous sanctuary that also receives many migratory birds from Siberia and other colder regions, is located at Ballia.
+Surha Taal Wildlife Sanctuary is a natural rainfed lake, located north of Ballia town near village Rajpur in Ballia district.
+It has an area of 1,528 ha.
+Surha Taal is surrounded by agricultural fields.
+Eichhornia crassipes is the dominant weed, within and along the margins of the lake.
+An excellent water body serving as host to several migratory and resident bird fauna.
+This wetland has been listed as a high priority wetland of Level V.
+Que. 78	Which of the following social media platforms is best suited for professional networking and job hunting?
+Instagram
+Facebook
+Linkedin
+Snapchat
+Correct Option - 3
+The correct answer is LinkedIn.
+Key Points
+LinkedIn, the popular professional networking site with 800 million members worldwide, can be a powerful tool for professional development.
+First launched in 2003, LinkedIn is an online platform designed to create and strengthen business connections, regardless of field or location.
+Often compared to Facebook, which many use for professional purposes, LinkedIn focuses on connecting with other professionals instead of friends and family.
+LinkedIn is also a place many prospective employers go to learn more about candidates.
+LinkedIn offers a rich experience of features that allows you to deepen professional relationships.
+Additional Information
+Facebook is an online social media and social networking service owned by American company Meta Platforms.
+Viber, or Rakuten Viber, is a cross-platform voice over IP and instant messaging software application owned by Japanese multinational company Rakuten, provided as freeware for the Google Android, iOS, Microsoft Windows, Apple macOS and Linux platforms.
+Signal is a cross-platform centralized encrypted instant messaging service developed by the non-profit Signal Foundation and its subsidiary, the Signal Messenger LLC.
+Que. 79	Bhadohi that is located in Uttar Pradesh is famous for which of the following art?
+Saree weaving
+Carpet weaving
+Glazed pottery
+Chikankari
+Correct Option - 2
+The correct answer is Carpet weaving.
+Key Points
+'Carpet City' Bhadoi:
+Bhadohi is a city in the Indian state of Uttar Pradesh.
+It is home to the largest hand-knotted carpet weaving industry hub in South Asia.
+Bhadohi district is known by the name ‘CARPET CITY’ as it is home to the largest hand-knotted carpet weaving industry hubs in South Asia.
+A large number of buyers from domestic and overseas markets visit Bhadohi in connection with business deals.
+The district is surrounded by Jaunpur District to the north, Varanasi District to the east, Mirzapur District to the south, and Allahabad District to the west.
+Bhadohi has been linked with Lal Bahadur Shastri airport at Varanasi through 4 – lane road to facilitate foreign carpet buyers to come for their business negotiations directly with the carpet manufacturers and exporters of Bhadohi.
+The town is located on the Varanasi-Delhi railway line, about 42 km to the West of Varanasi city.
+The town is well connected by road and rail to other parts of the country.
+Hence, the correct answer is Bhadohi.
+Que. 80	Which of the following is the state tree of Uttar Pradesh?
+Oak
+Ashoka
+Bamboo
+Banyan
+Correct Option - 2
+The correct answer is Ashoka.
+Key Points
+The state tree of Uttar Pradesh is Ashoka Tree.
+Uttar Pradesh day is celebrated on 24 January.
+On 24 January 1950, the United Provinces was renamed as Uttar Pradesh.
+It was formed on 1 April 1937 as the United Province.
+Uttar Pradesh has an area of 2,40,928 square km.
+Uttar Pradesh has a population of 19,9,812,341.
+Other Facts of Uttar Pradesh:
+Population density
+829 per square km
+Sex Ratio
+912 per thousand
+Literacy rate
+67.68%
+Male literacy
+77.28%
+Female literacy
+57.18%
+Districts
+75
+Nagar Nigam
+17
+State Animal
+Barasingha
+State Bird
+Sarus Crane
+Additional Information
+State
+Details
+Picture
+Uttar Pradesh
+Formed in the year 1937.
+[[IMG:image133.png]]
+Capital
+Lucknow
+Chief Minister
+Yogi Adityanath
+[[IMG:image134.png]]
+Governor
+Anandiben Patel
+[[IMG:image135.png]]
+State Legislation
+403 MLA,'s 1
+Anglo Indian
+[[IMG:image136.png]]
+Parliament
+80
+Constituencies
+State Animal
+Barasingha / Swamp Deer
+[[IMG:image137.png]]
+State Bird
+Sarus crane
+[[IMG:image138.png]]
+State Flower
+Palash
+[[IMG:image139.png]]
+State Tree
+[[IMG:image140.png]]Ashok
+http://uttarpradesh.gov.in/en/history
+Que. 81	Which among the following well-known folk dance of Uttar Pradesh is performed during paddy and maize cultivation ?
+Hurka Baul
+Charkula
+Kajri
+Rasiya
+Correct Option - 1
+The correct answer is Hurka Baul.
+Key Points
+The Hurka Baul dance is performed during the cultivation of paddy and maize in Uttarakhand.
+The dance name is derived from Hurka, the drum which is the only musical accompaniment, and baul, the song.
+In the Hurka Baul dance, the singer narrates the story of battles and heroic deeds, while the performers enter from two opposite sides and enact the stories in a series of crisp movements.
+The farmers are found to form 2 rows and then move backward in harmony by responding to the song's rhythm and tune of the song.
+Important Points
+State
+Dance
+Uttar Pradesh
+Raas Leela, Mayur Dance, Braj Holi, Charkula.
+Maharashtra
+Lavani, Koli, Dindi, Dhangari Gaja and Tamasha.
+Rajasthan
+Ghoomar, Kachchighori, Tejaji.
+Que. 82	Banaras Hindu University was founded by Pandit Madan Mohan Malaviya with cooperation of whom among , the following ?
+Madam Bhikaiji Cama
+Sardar Vallabhbhai Patel
+Dr. Annie Besant
+Rabindranath Tagore
+Correct Option - 3
+The correct answer is Dr. Annie Besant.
+Key Points
+The central Hindu school at Banaras in 1898 was established by Annie Besant.
+In 1916, the college was further developed into Banaras Hindu University by Madan Mohan Malaviya.
+Madan Mohan Malviya was an Indian independence activist.
+It is a public central university which is located in Uttar Pradesh.
+Rameshwar Singh, Madan Mohan Malviya and Sundar Singh had founded this University together.
+Additional Information
+In Asia, this is the largest residential University.
+The six institutes are contained by the University.
+The University covers students from 48 countries.
+In 2015-16, the centenary year of BHU was celebrated.
+Que. 83	Mathura is the birthplace of whom among the following that is also known as Brij Bhoomi ?
+Lord Ganesha
+Lord Shiva
+Lord Rama
+Lord Krishna
+Correct Option - 4
+The correct answer is Lord Krishna.
+Key Points
+Shri Krishna was born in Mathura (Uttar Pradesh).
+This place is famous as "Brajbhoomi".
+Additional Information
+On the occasion of Shri Krishna Janmashtami, all the temples of Mathura are decorated with flowers and lamps.
+The most important event of Janmashtami is held at Shri Krishna Janmabhoomi Temple, which continues for 2 days.
+Ayodhya -
+This place is famous for being the birthplace of God 'Shri Ram'.
+Prayagraj -
+It is famous for the confluence of the Ganga, Yamuna, and the historical Saraswati rivers.
+Que. 84	Akbar's mausoleum is located at which of the following places?
+Unnao
+Sikandara
+Etah
+Rampur
+Correct Option - 2
+The correct answer is Sikandara.
+Key Points
+Place Sikandara which comes under the suburb of Agra is associated with the tomb of Akbar.
+Akbar's tomb is located in Sikandra Agra.
+Its construction was started by Akbar in 1605 and completed by Jahangir.
+Sikandra was named/related to sikander Lodi.
+This is a beautiful five-story tomb.
+Que. 85	Demonetisation is also known by which of the following names?
+Cashless
+New Currency
+Note Ban
+No Currency
+Correct Option - 3
+The correct answer is Note Ban.
+Key Points
+Note Ban is the act of banning existing banknotes. Demonetisation history in India:
+1946: First demonetisation to curb black money and counterfeit notes.
+1978: Demonetisation of high-value notes aimed at combating tax evasion and black money. Also known as "Morarji Desai Demonetisation" after the then-Prime Minister.
+2016: Large-scale demonetisation of Rs. 500 and Rs. 1000 notes announced by Prime Minister Narendra Modi. Gained several names:
+[[IMG:image147.png]] "Note Ban": Most common and direct reference to the banning of specific notes.
+[[IMG:image148.png]] "Surgical Strike on Black Money": Term used by PM Modi to highlight its aim of tackling black money.
+[[IMG:image149.png]] "Modi Demonetisation": Referencing the initiative's association with the specific government.
+[[IMG:image150.png]] "Cashless Economy Drive": Reflecting the envisioned long-term goal of promoting cashless transactions.
+Que. 86	A parcel of land held under one tenure or one lease, engagement or grant is known as which of the following according to Uttar Pradesh Revenue Code, 2006 ?	Que. 86	A parcel of land held under one tenure or one lease, engagement or grant is known as which of the following according to Uttar Pradesh Revenue Code, 2006 ?
+Que. 86	A parcel of land held under one tenure or one lease, engagement or grant is known as which of the following according to Uttar Pradesh Revenue Code, 2006 ?
+Que. 86	A parcel of land held under one tenure or one lease, engagement or grant is known as which of the following according to Uttar Pradesh Revenue Code, 2006 ?
+Agricultural Land
+Holding
+Consolidated
+Grove Land
+Correct Option - 2
+The correct answer is Holding.
+Key Points
+According to Uttar Pradesh Revenue Code, 2006- A parcel of land held under one tenure or one lease, engagement or grant is known as Holding.
+Grove Land means any specific part of land in a holding having trees (not including papayaor banana plants) planted thereon in such manner that they preclude, or when full grown willpreclude, the land or any considerable portion thereof from being used primarily for any otherpurpose, and the trees on such land shall constitute a grove;
+Que. 87	Give full form of UPSSF.	Que. 87	Give full form of UPSSF.
+Que. 87	Give full form of UPSSF.
+Que. 87	Give full form of UPSSF.
+Uttar Pradesh Social Security Force
+Uttar Pradesh Special Security Force
+Uttar Pradesh Social Source Force
+Uttar Pradesh Solid Security Force
+Correct Option - 2
+The correct answer is Uttar Pradesh Special Security Force.
+Key Points
+The Uttar Pradesh Special Security Force (UPSSF) is a state-level armed police force in India responsible for protecting important government buildings, offices, and industrial establishments in the state of Uttar Pradesh.
+It was formed in September 2020 through the Uttar Pradesh Special Security Force Act, 2020.
+The UPSSF is headed by an Inspector General of Police (IGP) and is divided into five battalions, each headed by a Superintendent of Police (SP).
+The battalions are deployed in different parts of the state, with headquarters in Lucknow, Gorakhpur, Prayagraj, Agra, and Noida.
+The UPSSF is a crucial force for maintaining law and order and protecting vital installations in Uttar Pradesh.
+Que. 88	Nivesh Mitra Mobile application is an initiative of which of the following states of India?
+Gujarat
+Uttar Pradesh
+Assam
+Telangana
+Correct Option - 2
+The correct answer is Uttar Pradesh.
+Key Points
+Nivesh Mitra is an entrepreneur-friendly application to enhance the ease of doing business in Uttar Pradesh.
+The government of Uttar Pradesh has launched ‘Nivesh Mitra’, a web-based online facility for entrepreneurs desirous of setting up an enterprise in Uttar Pradesh.
+Udyog Bandhu, a Government Agency for Investment Promotion is acting as a nodal agency for the implementation of this project.
+Nivesh Mitra enables entrepreneurs to get online clearances/NOC from the concerned department with ease and minimal “running around”.
+Nivesh Mitra acts as a seamless interface, aimed to facilitate faster and time-bound issuance of various approvals.
+Nivesh Mitra is applicable across states.
+Que. 89	Which of the following sentences is in correct for GST?
+GST is a destination-based tax.
+There are multiple levies of tax on goods and services.
+GST is a common law and procedure throughout the country under single administration.
+GST is a comprehensive levy and collection on both goods and services at the same rate with benefit of input tax credit or subtraction of value.
+Correct Option - 1
+The correct answer is GST is a destination-based tax.
+Key Points
+GST is a destination-based tax. This means that the tax is levied on the final consumption of goods and services, in the state where they are consumed, rather than in the state where they are produced.
+There are multiple levies of tax on goods and services. While GST subsumed many indirect taxes, there are still some other levies like stamp duty and octroi that are not part of GST.
+GST is a common law and procedure throughout the country under single administration. While GST aims for uniformity, each state has its own GST legislation and administration, leading to some variations.
+GST is a comprehensive levy and collection on both goods and services at the same rate with benefit of input tax credit or subtraction of value. While GST applies to a wide range of goods and services, there are different tax rates for different items. Additionally, the input tax credit benefit is not available on all purchases.
+Que. 90	An attempt to obtain sensitive information such as username, password and credit card details etc. for malicious reasons, by posing as a trustworthy source in e-mail is called as
+Losing
+Phishing
+Sourcing
+Cheating
+Correct Option - 2
+The correct answer is Phishing.
+Key Points
+Phishing is the attempt to acquire sensitive information such as usernames, passwords, and credit card details (and sometimes, indirectly, money), often for malicious reasons, by masquerading as a trustworthy entity in an electronic communication.
+The first recorded use of the term "phishing" was in the cracking toolkit AOHell created by Koceilah Rekouche in 1995.
+Types of phishing:
+[[IMG:image155.png]] Email phishing
+[[IMG:image156.png]] Spear pishing
+[[IMG:image157.png]] Whaling and CEO Fraud
+[[IMG:image158.png]] Clone phishing
+[[IMG:image159.png]] Voice phishing
+[[IMG:image160.png]] SMS phishing
+[[IMG:image161.png]] Calendar phishing
+[[IMG:image162.png]] Page hijacking.
+Que. 91	"Taka" is the currency of which of the following countries?
+Bangladesh
+Thailand
+Serbia
+Turkey
+Correct Option - 1
+The correct answer is Bangladesh.
+Key Points
+[[IMG:image163.png]] Bangladesh:
+[[IMG:image164.png]] Bangladesh is bordered by India in the west, north, and east.
+[[IMG:image165.png]] Sheikh Hasina is the current Prime Minister of Bangladesh.
+[[IMG:image166.png]] Dhaka is the capital city of Bangladesh.
+[[IMG:image167.png]] Bangladeshi taka is the currency of Bangladesh.
+[[IMG:image168.jpeg]]
+Que. 92	Which of the following awards is given to motivate Cooperative and Milk producer Companies to grow and to instill competitive spirit?
+Arjuna Award
+Dronacharya Award
+National Gopal Ratna Award
+Dhyanchand Award
+Correct Option - 3
+The correct answer is National Gopal Ratna Award.
+Key Points
+The National Gopal Ratna Awards -2023 is being organised as part of National Milk Day celebration 2023.
+National Gopal Ratna Award is one of the highest National Awards in the field of livestock and dairy sector, with an objective to recognize and encourage all individuals like Farmers, AI Technicians and Dairy cooperative societies.
+Chief Minister, Assam, Dr. Himanta Biswa Sarma and Minister of State for Fisheries, Animal Husbandry and Dairying, Dr. Sanjeev Kumar Balyan will also be present in the award ceremony.
+Additional Information
+Ministry of Fisheries, Animal Husbandry and Dairying in a statement said that livestock sector is crucial to the Indian economy today, comprising one third of the agriculture and allied sector and having 8 per cent Compound Annual Growth Rate of over 8 percent.
+Animal Husbandry, Dairying and Fisheries activities play a significant role in generating farmer income, particularly among the landless, small and marginal farmers and women, besides providing cheap and nutritious food to millions of people.
+Que. 93	Which of the following ports is located in Kuchchh, Gujarat ?
+Paradwip Port
+Mormugao Port
+Kandla Port (Deendayal Port)
+The Jawaharlal Nehru Port
+Correct Option - 3
+The correct answer is Kandala Port (Deendayal Port).
+Key Points
+Kandla Port is a tidal port located in the state of Gujarat.
+it was renamed as Deendayal Port and it became the third port to be named after a person.
+The other two being Jawahar Lal Nehru Port of Mumbai and Kamaraja port.
+Kandla Port is located on Kandla creek, 90 km inward from the Gulf of Kachchh.
+At a distance of 9 km from the port, Kandla SEZ is located which was established in 1965.
+Major ports of India:
+On the western coast
+On the eastern coast
+Port
+State
+Port
+State
+Kanda
+Gujarat
+Haldia
+WestBengal
+Jawaharlal Nehru Port
+Maharashtra
+Paradip
+Odisha
+Mumbai
+Maharashtra
+Vishakhapatnam
+Andra Pradesh
+Mormugao
+Goa
+Ennore
+Tamil Nadu
+Mangalore
+Karnataka
+Chennai
+Tamil Nadu
+Kochi
+Kerela
+Tuticorin
+Tamil Nadu
+Que. 94	Recently, Shri Amit Shah has laid the foundation-stone of the headquarters of National Cooperative Dairy Federation of India (NCDFI) at which of the following places ?
+Jaipur
+Gandhinagar
+Anand
+Bengaluru
+Correct Option - 3
+The correct answer is Anand.
+Key Points
+National Cooperative Dairy Federation of India (NCDFI), based at Anand (Gujarat), is the apex organization for the cooperative dairy sector.
+It’s members include federal dairy cooperatives of states and union territories.
+The primary objective of NCDFI is to facilitate the working of dairy cooperatives through coordination, networking and advocacy.
+Que. 95	Who among the following was the founder of the Khudai Khidmatgars?
+Badruddin Tyabji
+Mohammad Ali Jinnah
+Khan Abdul Gaffar Khan
+Maulana Azad
+Correct Option - 3
+The correct answer is Khan Abdul Ghaffar Khan.
+Key Points
+Khan Abdul Ghaffar Khan is also known as the 'Badshah Khan' of India.
+Abdul ghaffar khan also known as Badshah khan, was a Pashtun independence activist against the rule of the British Raj.
+He was a political and spiritual leader known for his nonviolent opposition, and a lifelong pacifist and devout Muslim.
+He was also known as Frontier Gandhi.
+He led his non-violent Khudai Khidmatgar movement against the British Raj in the 1930s and 1940s.
+Que. 96	Who among the following has inaugurated Kochi-Lakshadweep Islands Submarine Optical Fiber Connection (KLI-SOFC) recently ?
+Dr. S. Jaishankar
+Shri Narendra Modi
+Shri Rajnath Singh
+Shri Amit Shah
+Correct Option - 2
+The correct answer is Shri Narendra Modi.
+Key Points
+The main purpose of the Kochi-Lakshadweep Islands Submarine Optical Fiber Connection (KLI-SOFC) project is to ensure faster and more reliable internet services for the people of Lakshadweep.
+The project involves the laying of a dedicated submarine optic fiber cable, marking the first time the Lakshadweep islands will be connected through such a cable.
+Inaugurated by Prime Minister Narendra Modi, the KLI-SOFC project is part of developmental projects worth over Rs 1,150 crore covering various sectors like technology, energy, water resources, healthcare, and education.
+The dedicated submarine optic fiber cable is expected to bring about a paradigm shift in communication infrastructure, unlocking possibilities for telemedicine, e-governance, educational initiatives, digital banking, digital currency usage, and digital literacy in Lakshadweep.
+The project is funded by the Universal Services Obligation Fund (USOF), Department of Telecommunications.
+Que. 97	The Union Cabinet has recently approved the Migration and Mobility Agreement between India and which of the following countries?
+Italy
+Nepal
+Germany
+Sri Lanka
+Correct Option - 1
+The correct answer is Italy.
+Key Points
+The Union Cabinet chaired by the Prime Minister, Shri Narendra Modi has given its ex-post facto approval to the proposal of Ministry of External Affairs to sign and ratify the Migration and Mobility Agreement between the Government of the Republic of India and the Government of the Italian Republic.
+The Agreement would enhance people-to-people contacts, foster mobility of students, skilled workers, business people and young professionals and strengthen cooperation on issues related to irregular migration between the two sides.
+The Agreement locks-in the current Italian visa regime including mechanisms for post study opportunities, internships, professional trainings assuring an advantage for India under the existing labour mobility pathways under the Flows Decree.
+Que. 98	Recently, Indian Navy's Fast Attack Craft INS Kabra has arrived at which of the following places ?
+Male, Maldives
+Matarbari Port, Bangladesh
+Colombo, Sri Lanka
+Port of Jebel Ali, U.A.E.
+Correct Option - 3
+The correct answer is Colombo, Sri Lanka.
+Key Points
+Indian Navy's Fast Attack Craft INS Kabra has arrived at Colombo, Sri Lanka.
+The ship was accorded a warm welcome by the Sri Lanka Navy. During the port call, Commanding Officer, INS Kabra called on Commander, Western Naval Area, Rear Admiral TSK Perera.
+The visit further strengthens the bilateral cooperation and camaraderie between the two Navies in keeping with the Prime Minister's vision of SAGAR.
+Que. 99	'पूव और उKर के बीच की िदशा इस वा  ांश के िलए एक श  िन िलिखत म से कौन सा है ?
+आVेय
+नैऋw
+ईशान
+वायD
+Correct Option - 3
+[[IMG:image175.png]]  ‘पूरब और उKर के बीच की िदशा’ को ‘ईUान’ कहा जाता है।
+[[IMG:image176.png]]  िविभ  कार की वा™ु और भूगोल म इनका अ  यन िकया जाता है।
+Key Pointsवा  ु म िदUाओं का मह  उU₹ और पूव´ के बीच वाले कोण को उU₹-पूव´ या ईUान कहते ह । पूव´ और दि ण के बीच वाले कोण को दि ण-पूव´ या आUेय कहते ह ।दि ण और पि म के बीच वाले कोण को दि ण-पि म या नैऋ  कहते ह । पि म और उU₹ के बीच के कोणको उU₹-पि म या वायD कोण कहते ह ।Key Pointsवा  ु म िदUाओं का मह  उU₹ और पूव´ के बीच वाले कोण को उU₹-पूव´ या ईUान कहते ह । पूव´ और दि ण के बीच वाले कोण को दि ण-पूव´ या आUेय कहते ह ।दि ण और पि म के बीच वाले कोण को दि ण-पि म या नैऋ  कहते ह । पि म और उU₹ के बीच के कोणको उU₹-पि म या वायD कोण कहते ह ।
+Key Points
+वा  ु म िदUाओं का मह
+उU₹ और पूव´ के बीच वाले कोण को उU₹-पूव´ या ईUान कहते ह । पूव´ और दि ण के बीच वाले कोण को दि ण-पूव´ या आUेय कहते ह ।
+दि ण और पि म के बीच वाले कोण को दि ण-पि म या नैऋ  कहते ह । पि म और उU₹ के बीच के कोण
+को उU₹-पि म या वायD कोण कहते ह ।
+Key Points
+वा  ु म िदUाओं का मह
+उU₹ और पूव´ के बीच वाले कोण को उU₹-पूव´ या ईUान कहते ह । पूव´ और दि ण के बीच वाले कोण को दि ण-पूव´ या आUेय कहते ह ।
+दि ण और पि म के बीच वाले कोण को दि ण-पि म या नैऋ  कहते ह । पि म और उU₹ के बीच के कोण
+को उU₹-पि म या वायD कोण कहते ह ।
+Additional Informationिहंदी भाषा म जब कई श ों के ™ान पर एक श  का योग िकया जाये तो उसेवा ांश के िलए एक श कहा जाता है। इसे "अनेक श ों के िलए एक श " भी कहा जाता है। वा ांश को सं ेप म सामािसक पद का भी Vप िदया जाता है। कुछ ऐसे ला िणक पद या श  भी है, जो अपने म पूरे एक वा  या वा ांश का अथ रखते है।Additional Informationिहंदी भाषा म जब कई श ों के ™ान पर एक श  का योग िकया जाये तो उसेवा ांश के िलए एक श कहा जाता है। इसे "अनेक श ों के िलए एक श " भी कहा जाता है। वा ांश को सं ेप म सामािसक पद का भी Vप िदया जाता है। कुछ ऐसे ला िणक पद या श  भी है, जो अपने म पूरे एक वा  या वा ांश का अथ रखते है।
+Additional Information
+िहंदी भाषा म जब कई श ों के ™ान पर एक श  का योग िकया जाये तो उसे
+वा ांश के िलए एक श कहा जाता है। इसे "अनेक श ों के िलए एक श " भी कहा जाता है। वा ांश को सं ेप म
+सामािसक पद का भी Vप िदया जाता है। कुछ ऐसे ला िणक पद या श  भी है, जो अपने म पूरे एक वा  या वा ांश का अथ रखते है।
+Additional Information
+िहंदी भाषा म जब कई श ों के ™ान पर एक श  का योग िकया जाये तो उसे
+वा ांश के िलए एक श कहा जाता है। इसे "अनेक श ों के िलए एक श " भी कहा जाता है। वा ांश को सं ेप म
+सामािसक पद का भी Vप िदया जाता है। कुछ ऐसे ला िणक पद या श  भी है, जो अपने म पूरे एक वा  या वा ांश का अथ रखते है।
+Que. 100	िकस िवक  म श  ुितसम-िभ ाथ क का सही अथ -भेद है ?
+1.	Fण - वण =रंग - घाव
+िवष - िवस् = धन - जहर
+कृत - ाकृत = एक भाषा - यथाथ
+शशधर - शिशधर = चाँद - िशव
+Correct Option - 4
+श   ुितसम-िभ ाथ क का सही अथ -भेद है - UUध₹ - UिUध₹ = चाँद - िUव
+Key Points
+[[IMG:image174.png]]  ण - वण´ = घाव- ₹ंग
+[[IMG:image177.png]] िवष - िवस् = जह₹ - धन
+[[IMG:image176.png]] UUध₹ - UिUध₹ = चाँद - िUव
+Important Points
+कुछ अ  मह  पूण´ U  यु  :-
+[[IMG:image178.png]] िनवा त - हवा रिहत
+[[IMG:image179.png]] िनवा द - अपवाद
+[[IMG:image180.png]]  माण - सबूत
+[[IMG:image181.png]]  णाम - नम ार
+[[IMG:image179.png]] वसन - व™
+[[IMG:image182.png]] Dसन - बुरी आदत
+[[IMG:image183.png]] शर - बाण
+[[IMG:image184.png]] सर - तालाब
+[[IMG:image185.png]] वदन - मुख
+[[IMG:image186.png]] बदन - शरीर
+[[IMG:image187.png]] उ5त - उह
+[[IMG:image188.png]] उपल - ओला
+[[IMG:image189.png]] कंकाल - अि™-पंजर
+[[IMG:image190.png]] कंगाल - िनध न
+[[IMG:image191.png]] अमाw - मं ी
+[[IMG:image192.png]] अमा - मा ा रिहत
+Que. 101	िन िलिखत म से िकस िवक  म शु5 वा  है ?
+दीन - दुब लों को ार करना मानवता है ।
+लड़के अ ापक को  पूछते ह ।
+वह ऑिफस म बैठा मेरी  ती ा कर रहा है।
+दस बजने को पं5ह िमनट ह ।
+Correct Option - 1
+दीन - दुब´लों को  ा₹ क₹ना मानवUा हैI यह वा य शु5 है।
+Key Points
+[[IMG:image193.png]] Uु5 वा य- दीन - दुब लों को ार करना मानवता है ।
+अ य िवक प-
+अUु5 वा य
+Uु5 वा य
+लड़के अ ापक को
+पूछते ह ।
+लड़के अ ापक से पूछते ह ।
+वह ऑिफस म बैठा
+मेरी ती ा कर रहा है।
+वह ऑिफस म बैठकर मेरी ती ा कर रहा है।
+दस बजने को पं5ह
+िमनट ह ।
+दस बजने म पं5ह िमनट ह ।
+जैसे-
+Important Points
+वा  रचना म संyा,सव नाम,िवशेषण,ि या,अDय, वत नी से स ंिधत या अ  कार की अशुि5याँ हो सकती ह िजनसे स ंिधत िविभ   परी ाओं म पूछे जाते ह ।
+सं]ा संबंिधU वा  Uुि5
+[[IMG:image194.png]] अशु5 - म रिववार के िदन तु ारे घर आऊँगा।
+[[IMG:image195.png]] शु5 - म रिववार को तु ारे घर आऊँगा।
+िलंग संबंिधU अUुि5याँ
+[[IMG:image196.png]]  अशु5 - सिवता ने जोर से हँस िदया।
+[[IMG:image197.png]]  शु5 - सिवता जोर से हँस दी।
+वचन संबंिधU अUुि5याँ
+[[IMG:image198.png]]  अशु5 -मेरे आँसू से Vमाल भींग गया।
+[[IMG:image199.png]]  शु5 - मेरे आँसुओं से Vमाल भींग गया।
+का₹क संबंिधU अUुि5याँ
+[[IMG:image200.png]] अशु5 - सब से नम™े।
+[[IMG:image185.png]] शु5 - सब को नम™े।
+Que. 102Que. 102िन िलिखत म से पुिWंग श  का चयन कीिजए :
+Que. 102
+Que. 102
+अजवायन
+िवहार
+पराधीनता
+मुि5का
+Correct Option - 2
+िवहा₹ पुिWंग श  है।
+वा   योग - उनका िवहार वषा ऋतु के चार महीनों (चातुमा 4) म ब  रहता है।
+Key Points
+अ  िवक  ों का वा   योग -
+[[IMG:image201.png]] अजवायन- अजमोद के गुण अजवायन की तरह होता है।
+[[IMG:image202.png]] प₹ाधीनUा- पराधीनता की बेड़ी म जकड़ा भारत उ ीस सौ स तालीस म आज़ाद 5आ।
+[[IMG:image203.png]]  मुि5का- एका  होने पर हनुमान ने सीता से भ ट करके उ5 राम की मुि5का दी।
+Additional Information
+िहंदी म िलंग के दो भेद होUे ह -
+™ीिलंग - िजन संyा या सव नाम श  ों से ™ी जाती का बोध होता है, उ5 ™ीिलंग कहा जाता है।
+[[IMG:image204.png]]  सदैव पुिWंग के Vप म  योग िकए जाने वाले श  (कुछ श  ों को लेकर इसम अपवाद देखा जाता है) -
+[[IMG:image205.png]] देशों के नाम
+[[IMG:image206.png]] वृ ों के नाम
+[[IMG:image207.png]]  हों के नाम
+[[IMG:image208.png]] पव तों के नाम
+[[IMG:image209.png]] समय, िदनों एवं महीनों के नाम
+[[IMG:image210.png]]  जलीय और ™लीय भागों के नाम
+[[IMG:image211.png]] र ों एवं धातुओं के नाम
+[[IMG:image212.png]] शरीर के अवयवों के नाम
+[[IMG:image213.png]] अनाजों के नाम
+[[IMG:image214.png]] 5व पदाथfi के नाम
+[[IMG:image215.png]]  ाणीवाचक श  ों म पु ष जाती के बोधक
+[[IMG:image216.png]] समूहवाची श
+[[IMG:image217.png]] वण माला के अ र
+[[IMG:image218.png]] न, आव, पन, पा,  ,  wयों से बनने वाले श
+पुिMंग - िजन संyा या सव नाम श  ों से पु  ष जाती का बोध होता है, उ5 पुिWंग कहा जाता है।
+[[IMG:image196.png]]  ™ीिलंग की पहचान के कुछ िनयम -
+[[IMG:image219.png]] इकारांत और ईकारांत िनजTव संyाएँ ायः ™ीिलंग
+[[IMG:image220.png]] आई, आहट, आवट, इया, ई आिद wयों से बानी संyाएँ ायः ™ीिलंग
+[[IMG:image221.png]] िलिपयों, भाषाओँ और बोिलयों के नाम
+[[IMG:image222.png]] ितिथयों के नाम
+[[IMG:image223.png]] निदयों के नाम
+[[IMG:image224.png]] शरीर के कुछ अंगों के नाम
+[[IMG:image225.png]] अंत म 'आ' लगने वाले तTम श
+[[IMG:image226.png]] आकार की 7ि से ायः छोटी चीज़ ™ीिलंग होती ह ।
+Que. 103	िन िलिखत म से िकस श  का  योग एकवचन म होता है ?
+सोना
+ह™ा र
+ाण
+दश न
+Correct Option - 1
+सही उKर है - "सोना" l
+Key Points
+[[IMG:image227.png]] 'सोना' ब5वचन श  नहीं है l
+[[IMG:image228.png]] 5Dवाचक सं]ा का उदाहरण है, िजसे िगना नहीं जा सकता l पानी, घी, तेल, कोयला, चाँदी, सोना, फल, स ी, िहरा, लोहा, चीनी, आिद 5D 5Dवाचक संyा कहलाते है।
+[[IMG:image229.png]] इ5 िगना नहीं जाता बि  इ5 मापा या िफर तोला जाता है।
+[[IMG:image230.png]] सोना का एक 'नींद' भी होता है l
+[[IMG:image231.png]] 'सोना' श  के साथ एकवचन ि या Vप का योग होता है l
+[[IMG:image232.png]] उदाह₹ण :- उसके पास काफी सोना िमला है l
+[[IMG:image195.png]] अ  िवक  :- ह™ा र, ाण और दश न - ब5वचन श  है, और इनके साथ ब5वचन संyा Vप का ही योग िकया जाता है l
+Additional Information
+वचन - संyा, सव नाम, िवशेषण और ि या के
+िजस Vप से सं%ा का बोध हो उसे वचन कहते ह ।
+वचन के दो  का₹ ह - 1. एकवचन, 2. ब5वचन
+वचन
+प ₹भाषा
+उदाह₹ण
+एकवचन
+श  के िजस Vप से िकसी Dि4, व™ु आिद के एक होने का बोध हो, उसे एकवचन कहते ह
+™ी, घोड़ा, नदी, पया इwािद।
+ब वचन
+श  के िजस Vप से एक से अिधक Dि4यों या व™ुओं आिद का बोध हो, उसे ब5वचन कहते ह ।
+ि™याँ, घोड़े, निदयाँ, पये इwािद।
+Que. 104	हे ई र ! दया करो। रेखांिकत श  म कौन सा कारक है ?
+करण कारक
+कम कारक
+संबोधन कारक
+सं दान कारक
+Correct Option - 3
+सही उKर है - ‘संबोधन का₹क’।
+[[IMG:image233.png]] “हे ई र ! दया करो।” इस वा  म संबोधन कारक है।
+[[IMG:image234.png]] वा  म हे िवभि4 िच5 का योग िकया है। यह स ोधन के िलए योग िकया जाता है।
+[[IMG:image235.png]] अत: यहाँ संबोधन कारक है।
+Key Points
+संबोधन का₹क : संyा या सव नाम का वह Vप िजससे िकसी को बुलाने, पुकारने या बोलने का बोध होता है, तो वह संबोधन कारक कहलाता है।
+[[IMG:image236.png]] स ोधन कारक की पहचान करने के िलए ! यह िच5 लगाया जाता है।
+[[IMG:image237.png]] स ोधन कारक के अरे, हे, अजी आिद िवभि4 िच5 होता ह ।
+उदाह₹ण :
+[[IMG:image238.png]]  हे अजु न ! तु  े यह काम अव4 करना चािहए।
+[[IMG:image239.png]] अरे ! तुम इतनी ज ी कैसे आये।
+अ  िवक  :
+क₹ण का₹क : संyा आिद श  ों के िजस Vप से ि या के करने के साधन का बोध हो अथा त् िजसकी सहायता से काय संप हो वह करण कारक कहलाता है।
+उदाह₹ण :
+[[IMG:image240.png]] वह कलम से िलखता है।
+कम´ का₹क : संyा या सव नाम के िजस Vप पर ि या का  भाव या फल पङे, उसे कम´ का₹क कहते ह ।
+उदाह₹ण :
+[[IMG:image241.png]] तनुज ने ता रणी को बुलाया।
+[[IMG:image190.png]] अ ापक ने छा ों का हौसला बढ़ाया।
+सं दान का₹क : स  दान का अथ ‘देना’ होता है। जब वा  म िकसी को कुछ िदया जाए या िकसी के िलए कुछ िकया जाए तो वहां पर स दान कारक होता है।
+उदाह₹ण :
+[[IMG:image204.png]] िवकास तुषार को िकताब देता है।
+[[IMG:image242.png]] नरेश मीना के िलए फल लाया है।
+Additional Information
+का₹क :
+[[IMG:image243.png]] कारक का अथ होता है िकसी काय को करने वाला। यानी जो भी ि या को करने म भूिमका िनभाता है, वह का₹क कहलाता है।
+कारक के मु%तः आठ भेद होते ह :
+[[IMG:image244.png]] कम कारक
+[[IMG:image245.png]] करण कारक
+[[IMG:image246.png]] स  दान कारक
+[[IMG:image247.png]] अपादान कारक
+[[IMG:image248.png]] संबंध कारक
+[[IMG:image249.png]] अिधकरण कारक
+[[IMG:image250.png]] संबोधन कारक
+Que. 105	िन िलिखत म से तदव श  कौन सा है ?
+शांित
+काज
+जलिध
+ताप
+Correct Option - 2 'तदव' श  है- काज'।
+तTम श  - 'काय´'।
+Key Points
+अ  'U5व-UTम' U  -
+UTम U
+U5व U
+अ र
+अ  र
+अँगरखा
+अंगर क
+अ वतT
+अगाड़ी
+आ य
+आसरा
+आय
+आरज
+अि
+आँख
+इि का
+ईंट
+उTाह
+उछाह
+उ त न
+उबटन
+उलूखल
+ओखली
+Que. 106	िन िलिखत म से िकस िवक  म सभी श  तTम ह ?
+पलंग, पीला
+कु ार, गधा
+डंडा, नाक
+नD, 4ण कार
+Correct Option - 4
+तTम ह - नD, 4ण´का₹I
+[[IMG:image251.png]] नD - नया
+[[IMG:image195.png]] 4ण´का₹ - सुनार
+Key Points
+अ  'U5व-UTम' U  -
+UTम U
+U5व U
+अ र
+अ  र
+अँगरखा
+अंगर क
+अ वतT
+अगाड़ी
+आ य
+आसरा
+आय
+आरज
+अि
+आँख
+इि का
+ईंट
+उTाह
+उछाह
+उ त न
+उबटन
+उलूखल
+ओखली
+Que. 107	'निलन' और 'राजीव' श  िन िलिखत म से िकस श  के पया यवाची ह ?
+अंबर
+कमल
+उपवन
+उ  ष
+Correct Option - 2
+[[IMG:image252.png]] सही उKर है - ‘कमल’।
+[[IMG:image253.png]] राजीव, निलन - ‘कमल’ के पया यवाची श  ह ।
+[[IMG:image254.png]] ‘कमल’ के अ  पया यवाची : पंकज, नीरज, सरोज, जलज, अंबुज, अ  , अरिवंद, इंदीवर, उ ल, कंज, कँवल आिद।
+Key Points
+अ  िवक  :
+[[IMG:image255.png]] अंब₹ के पया यवाची : आकाश, गगन, अश , आसमान, Dोम, शू  , अ , फलक, नभ आिद।
+[[IMG:image256.png]] उपवन के पया यवाची : जबाग़, वािटका, बगीचा, उBान, फुलवारी, बिगया आिद।
+[[IMG:image257.png]] उ  ष´ का पया यवाची : आरोह, आरोहण, ऊ  गमन, उyमन, उप रगमन, चढ़ाव, उठाव, उभार, उ यन आिद।
+Additional Information
+समानाथ U  :
+[[IMG:image258.png]] वे श  िजनका अथ एक समान होता ह समानाथT श  कहलाते ह ।
+समानथT श  को हम पया यवाची श  भी कहते है। ‘पया य’ का अथ है ‘समान’ तथा ‘वाची’ का अथ है ‘बोले जाने वाले’ अथा त समान बोले जाने वाले श  ों को हम पया यवाची श  या समानाथT श  कहते है।
+पया´यवाची U  के उदाह₹ण :
+[[IMG:image259.png]] गौरव - मान, स ान, मह  , बड़  न।
+[[IMG:image260.png]] झंडा -  जा, केतु, पताका, िनसान।
+[[IMG:image261.png]]  हंस - च  ांग, मानसौक, कलहंस, मराल, कारंडव, सर4ती वाहन।
+[[IMG:image262.png]] इ ािण - इ वधू, मधवानी, शची, शतावरी, पोलोमी।
+Que. 108	  ों, कब कौन से सव नाम के उदाहरण ह ?
+वाचक सव नाम
+िनजवाचक सव नाम
+अिन यवाचक सव नाम
+िन यवाचक सव नाम
+Correct Option - 1
+उपय 4 िवक ों म से सही िवक  ‘  वाचक सव´नाम’ है।
+Key Points
+[[IMG:image202.png]] तुमने  ों देखा, रोहन तुम कब आओगे- वा  ों म  ों, कब श  ों का  योग करके िकसी Dि4 या व™ु के बारे म जानने की कोिशश की जा रही है।
+[[IMG:image263.png]] अतः ये  वाचक सव नाम की  ेणी म आएंगे।
+[[IMG:image264.png]]   ों, कब  वाचक सव नाम के उदहारण ह ।
+Additional Information
+संyा के ™ान पर यु4 होने वाले श  ों को सव नाम कहते ह । जैसे - म , वह, वे, उ5 , अपने तुम, हम आिद। िहंदी म सव नामों की सं%ा 11 है - ‘म , तू, आप, यह, वह, जो, सो, कोई, कुछ, कौन,
+ा’ सव नाम के छः भेद ह -
+िन यवाचक सव´नाम
+जो सव नाम श  िकसी Dि4, व™ु आिद का िन यपूव क बोध कराते ह वे िन यवाचक सव नाम कहलाते ह । जैसे - वे, यह, वह आिद।
+पु5षवाचक (Dि4वाचक) सव´नाम
+िजस सव नाम का  योग व4ा
+ारा 4यं के िलए या अ Dि4 के िलए िकया जाता है। जैसे - म , हम, मुझे, तू, तुम, तुझे, तु ारा,
+वह, वे, उसने आिद।
+िनजवाचक सव´नाम
+जहाँ 4यं के िलए 'आप, अपना, अपने आप' श ों का योग हो। जैसे - वह अपने आप ही घर चली गयी।
+वाचक सव´नाम
+जो सव नाम श  संyा के ™ान पर आकर वा  को  ाचक
+बनाते ह । जैसे - ा, कौन आिद।
+अिन यवाचक सव´नाम
+िजन सव नाम श  ों से व™ु, Dि4, ™ान आिद की िनि तता का बोध नही होता वे
+अिन यवाचक सव नाम कहलाते ह । जैसे- कुछ, कोई आिद।
+स  वाचक सव´नाम
+िजन सव नाम श  ों का  योग
+िकसी व™ु या Dि4 का स बताने के िलए िकया जाए वे श स  वाचक सव नाम कहलाते ह । जैसे - जो-सो, जैसा-वैसा
+आिद।
+Que. 109	'मिदरालय' श  के संिध - िव  ेद का चयन कीिजए:
+मिदरा + अलय
+मिदरा + आलय
+मिदरा + लय
+मंिदर + आलय
+Correct Option - 2
+सही उKर मिद₹ा + आलय है।
+Key Points
+[[IMG:image265.png]] ‘मिदरालय’ श  का संिध िव  ेद ‘मिद₹ा + अलय’ होगा।
+[[IMG:image266.png]] अ + आ= आ िनयमानुसार िहमालय म दीघ 4र संिध है।
+[[IMG:image267.png]] दीघ´ 4₹ संिध- दीघ अ, आ, इ, ई, उ, ऊ और ऋ के बाद 54 या दीघ अ, आ, इ, ई, उ, ऊ और ऋ 4र आ जाएँ तो दोनों
+िमलकर दीघ आ, ई, ऊ और ऋ हो जाते ह ।
+[[IMG:image268.png]] इस मेल से बनने वाली संिध को दीघ 4र संिध कहते ह ।
+[[IMG:image269.png]] जैसे- िवBालय= िवBा + आलय
+Additional Information
+संिध- दो श  ों के मेल से जो िवकार (प रवत न) होता है उसे संिध कहते ह । संिध के तीन  कार ह -
+1. 4र, 2. Dंजन और 3. िवसग ,
+संिध
+प ₹भाषा
+उदाह₹ण
+4₹
+4र वण के साथ 4र वण के मेल से िवकार उ   होता है।
+िवBा + अथT = िवBाथT
+महा + ईश = महेश
+Dंजन
+एक Dंजन से दूसरे Dंजन या 4र के मेल से िवकार उ   होता है।
+अहम् + कार = अहंकार
+उत् + लास = उWास
+िवसग´
+िवसग के साथ 4र या Dंजन के मेल से िवकार उ   होता है।
+दुः + आ ा =दुरा ा
+िनः + कपट =िन  पट
+Que. 110	अवतरण िच5 को और िकस नाम से जाना जाता है ?
+को क िच5
+उ5रण िच5
+िनद´शक िच5
+योजक िच5
+Correct Option - 2
+सही िवक  उ5₹ण िचइ है।
+Key Points
+[[IMG:image270.png]] ' ' अवतरण िच5 है।
+[[IMG:image271.png]]  िकसी वा  म िकसी खास श  पर जोर देने के िलए अवU₹ण या उ5₹ण िच  (' ') का  योग िकया जाता है।
+[[IMG:image272.png]] अवतरण िच5 के दो कार होते ह - इकह₹ा अवU₹ण िच  औ₹ दुह₹ा अवU₹ण िच I
+[[IMG:image273.png]] अवU₹ण िच  - िकसी वा  म िकसी खास श  पर जोर देने के िलए अवतरण या उ5रण िच5 (' ') का  योग िकया जाता है।
+[[IMG:image274.png]] अथा त िकसी और के ारा िलखे या कहे गए वा  या श  ों को  ों-का-wों िलखने के िलए अवतरण िच5 या उ5रण िच5
+(“ ”) का  योग िकया जाता है।
+[[IMG:image275.png]] जैसे — महा किव तुलसीदास ने सw कहा है — “पराधीन सपने5 सुख नाही”ं ।
+Additional Information
+िव₹ाम िचइ- िवराम का अथ होता है - ठहराव ।िलखते समय या बोलते समय यिद िवराम न हो, तो पाठक या ोता को भाषा के स क् yान म किठनाई होती है। एक ही वा  के कई अथ िनकल सकते ह । वह  िमत हो सकता है। जैसे --उसे जैसे रोको , मत जाने दो । (रोकने की बात है।)िहंदी के िवराम िच5ों की  ंखला इस  कार है -1). अ  िवराम (comma) --- ( , )	अ5 िवराम (semi colon) --- ( ; )	पूण िवराम (full stop) --- ( । )	उपिवराम (colon) --- ( : )	वाचक-िच5 (mark of interrogation) ---( ? )	िव4यािदबोधक-िच5 (mark of exclamation) --- ( ! )	संयोजक-िच5 (hyphen) --- ( - )	उ5रण- िच5 (inverted commas) --- ( " " )या ( ' ' )	को क-िच5 (bracket) --- ( ( ) ) या ( [ ] )	िनद´श-िच5 (dash) ( _ )	लोप-िच5 (mark of elipses) --- ( ... ) या ( xxx )	लाघव-िच5 (mark of abbreviation) --- ( ॰)	पुन ि4-िच5 (mark of repetition) --- ( " " " )िव₹ाम िचइ- िवराम का अथ होता है - ठहराव ।िलखते समय या बोलते समय यिद िवराम न हो, तो पाठक या ोता को भाषा के स क् yान म किठनाई होती है। एक ही वा  के कई अथ िनकल सकते ह । वह  िमत हो सकता है। जैसे --उसे जैसे रोको , मत जाने दो । (रोकने की बात है।)िहंदी के िवराम िच5ों की  ंखला इस  कार है -1). अ  िवराम (comma) --- ( , )	अ5 िवराम (semi colon) --- ( ; )	पूण िवराम (full stop) --- ( । )	उपिवराम (colon) --- ( : )	वाचक-िच5 (mark of interrogation) ---( ? )	िव4यािदबोधक-िच5 (mark of exclamation) --- ( ! )	संयोजक-िच5 (hyphen) --- ( - )	उ5रण- िच5 (inverted commas) --- ( " " )या ( ' ' )	को क-िच5 (bracket) --- ( ( ) ) या ( [ ] )	िनद´श-िच5 (dash) ( _ )	लोप-िच5 (mark of elipses) --- ( ... ) या ( xxx )	लाघव-िच5 (mark of abbreviation) --- ( ॰)	पुन ि4-िच5 (mark of repetition) --- ( " " " )
+िव₹ाम िचइ- िवराम का अथ होता है - ठहराव ।
+िलखते समय या बोलते समय यिद िवराम न हो, तो पाठक या ोता को भाषा के स क् yान म किठनाई होती है। एक ही वा  के कई अथ
+िनकल सकते ह । वह  िमत हो सकता है। जैसे --
+उसे जैसे रोको , मत जाने दो । (रोकने की बात है
+।)
+िहंदी के िवराम िच5ों की  ंखला इस  कार है -
+1). अ  िवराम (comma) --- ( , )
+अ5 िवराम (semi colon) --- ( ; )
+पूण िवराम (full stop) --- ( । )
+उपिवराम (colon) --- ( : )
+वाचक-िच5 (mark of interrogation) ---( ? )
+िव4यािदबोधक-िच5 (mark of exclamation) --- ( ! )
+संयोजक-िच5 (hyphen) --- ( - )
+उ5रण- िच5 (inverted commas) --- ( " " )
+या ( ' ' )
+को क-िच5 (bracket) --- ( ( ) ) या ( [ ] )
+िनद´श-िच5 (dash) ( _ )
+लोप-िच5 (mark of elipses) --- ( ... ) या ( xxx )
+लाघव-िच5 (mark of abbreviation) --- ( ॰
+)
+पुन ि4-िच5 (mark of repetition) --- ( " " " )
+िव₹ाम िचइ- िवराम का अथ होता है - ठहराव ।
+िलखते समय या बोलते समय यिद िवराम न हो, तो पाठक या ोता को भाषा के स क् yान म किठनाई होती है। एक ही वा  के कई अथ
+िनकल सकते ह । वह  िमत हो सकता है। जैसे --
+उसे जैसे रोको , मत जाने दो । (रोकने की बात है
+।)
+िहंदी के िवराम िच5ों की  ंखला इस  कार है -
+1). अ  िवराम (comma) --- ( , )
+अ5 िवराम (semi colon) --- ( ; )
+पूण िवराम (full stop) --- ( । )
+उपिवराम (colon) --- ( : )
+वाचक-िच5 (mark of interrogation) ---( ? )
+िव4यािदबोधक-िच5 (mark of exclamation) --- ( ! )
+संयोजक-िच5 (hyphen) --- ( - )
+उ5रण- िच5 (inverted commas) --- ( " " )
+या ( ' ' )
+को क-िच5 (bracket) --- ( ( ) ) या ( [ ] )
+िनद´श-िच5 (dash) ( _ )
+लोप-िच5 (mark of elipses) --- ( ... ) या ( xxx )
+लाघव-िच5 (mark of abbreviation) --- ( ॰
+)
+पुन ि4-िच5 (mark of repetition) --- ( " " " )
+ुिट-िच5 (mark of omission) --- ( ^ )	िववरण-िच5 (colon-dash) --- ( :- )	ुिट-िच5 (mark of omission) --- ( ^ )	िववरण-िच5 (colon-dash) --- ( :- )
+ुिट-िच5 (mark of omission) --- ( ^ )
+िववरण-िच5 (colon-dash) --- ( :- )
+ुिट-िच5 (mark of omission) --- ( ^ )
+िववरण-िच5 (colon-dash) --- ( :- )
+Que. 111	'सतसई' श  म िकस  कार के सं%ाबोधक िवशेषण का  योग है ?
+आवृिKबोधक िवशेषण
+अिनि त सं%ाबोधक िवशेषण
+गणनावाचक िवशेषण
+समु  यबोधक िवशेषण
+Correct Option - 4
+'सतसई' श  म िकस  कार के सं%ाबोधक िवशेषण का  योग है - समु  यबोधक िवUेषण
+Key Points
+Additional Informationयह व™ुओं की सामुदाियक सं%ा को D4 करता है। जैसे- एक जोड़ी च ल, पाँच दज न कॉिपयाँ आिद।समु  यबोधकिवUेषणAdditional Informationयह व™ुओं की सामुदाियक सं%ा को D4 करता है। जैसे- एक जोड़ी च ल, पाँच दज न कॉिपयाँ आिद।समु  यबोधकिवUेषण
+Additional Information
+यह व™ुओं की सामुदाियक सं%ा को D4 करता है। जैसे- एक जोड़ी च ल, पाँच दज न कॉिपयाँ आिद।
+समु  यबोधक
+िवUेषण
+Additional Information
+यह व™ुओं की सामुदाियक सं%ा को D4 करता है। जैसे- एक जोड़ी च ल, पाँच दज न कॉिपयाँ आिद।
+समु  यबोधक
+िवUेषण
+िवUेषण
+प ₹भाषा
+आवृिKबोधक
+िवशेषण
+जो िवशेषण सं%ा के गुणन का बोध कराएँ।
+जैसे- दुगने छा , ढाई गुना लाभ आिद।
+अिनि त सं%ाबोधक
+िवशेषण
+िजससे िकसी िनि9चत सं%ा का yान हो, वह िनि त सं%ावाचक
+िवशेषण है।
+जैसे- एक, दो आठ, चौगुना, सातवाँ आिद।
+गणनावाचक
+िवशेषण
+जो िवशेषण िगनती या गणना का बोध कराएँ।
+जैसे- एक, दो, दस, बीस आिद।
+Important Points
+िवशेषण
+िवशेषण का शाि क अथ है
+'िवशेषता बताना'। िवशेषण एक ऐसा श  है जो संyा या सव नाम की
+िवशेषता बताता है संyा और सव नाम श ों की िवशेषता बताने वाले श ों को िवशेषण कहते ह । जैसे- यह भूरी गाय है।
+िवशे
+िजसकी िवशेषता बताई जाती है उसे
+िवशे कहते ह अथात िजस संyा और सव नाम की िवशेषता बताई जाती है उसे िवशे  कहते ह ।
+िवशे  को िवशेषण के पहले या बाद म भी िलखा जा सकता है। जैसे-
+िव ान् अ ापक।
+िवशेषण
+िजन श  ों से िवशेषण की िवशेषता का पता चलता है उ5 िवशे
+कहते ह । जैसे- यह आम ब5त मीठा है।
+उहे4
+िवशेषण
+िवशे  के पूव या पहले आने वाले
+िवशेषण को उहे4 िवशेषण कहते ह । जैसे- चतुर बालक अपना काय करते ह । (उहे4 िवशेषण)
+िवधेय
+िवशेषण
+िवशे  के पूव या पहले आने वाले
+िवशेषण को उहे4 (िवशे  )
+िवशेषण कहते ह जबिक बाद वाले
+िवशेषण िवधेय िवशेषण होते ह । जैसे- बालक चतुर है। (िवधेय
+िवशेषण)
+Que. 112	'राधा ने पायल से िच ी िलखवाई।' इस वा  म कौन सी ि या है ?
+संयु4 ि या
+पूव कािलक ि या
+ेरणाथ क ि या
+नामधातु ि या
+Correct Option - 3
+‘राधा ने पायल से िच ी िलखवाई।’ इस वा  म े₹णाथ´क ि या हैl
+Key Points
+े₹णाथ´क
+ि या
+जब कता िकसी काय को 4यं न करके िकसी दूसरे को काय करने की ेरणा दे तो उस ि या को
+ेरणाथ क ि या कहते ह ।
+जैसे - काटना से कटवाना, करना से कराना।
+अ  िवक
+ि या
+प ₹भाषा
+पूव´कािलक
+ि या
+जो ि या एक ि या को समा™ कर त ाल िकसी दूसरी ि या को आर™ करता है तब पहली
+ि या पूण कािलक ि या कहलाती है
+जैसे - कृ ा नहाकर  ूल जाएगाl
+संयु4 ि या
+जो ि या दूसरी ि या या अ श  से िमलकर ि या बनाती है, उसे संयु4 ि या कहते हैl
+जैसे - तुम ितिदन Dायाम िकया करो; वह अपना खाना खा चूका हैl
+नामधाUु
+ि या
+संyा, सव नाम, िवशेषण इwािद से बननेवाली ि या को नामधातु
+ि या कहते ह ।
+जैसे - हाथ से हिथयाना, बात से बितयाना, दुखना से दुखाना,
+िचकना से िचकनाना
+Additional Information
+U
+प ₹भाषा
+ि या
+िजस श  अथवा श  -समूह के
+ारा िकसी काय के होने अथवा करने का बोध हो, वह ि या
+कहलाता है।
+जैसे - देवेश दूध िपता है; अच ना काम कर रही है।
+Que. 113	'िचWाहट' म कौन सा  wय है ?
+हट
+िच
+आहट
+िचWा
+Correct Option - 3
+िदये गए िवक  ों का उिचत उKर िवक  3 ‘आहट’ है।
+Key Points
+[[IMG:image276.png]] ‘िचWाहट’ श  म ‘आहट’ wय है।
+[[IMG:image277.png]] यह भाववाचक ‘कृदंU   य’ का उदाहरण है।
+[[IMG:image278.png]]  ‘आहट’   य से बने अ  U  ह - घबराहट, चकनाहट, गुरा हट आिद।
+[[IMG:image279.png]]  िजन कृत्- wयों के योग से बने संyा-पदों से भाव या ि या के Dापार का बोध हो, उ5 भाववाचक कृत्- wय तथा इनसे बने श ों को भाववाचक कृदंU कहते ह ।
+Additional Information
+प ₹भाषा
+उदाह₹ण
+य
+wय िकसी भी साथ क मूल श के प ात् जोड़े जाने वाले वे
+अिवकारी श  ांश ह , जो श  के
+पढ़+आई =
+पढ़ाई, सुंदर+ता =
+सुंदरता
+अ  म जुड़कर उसके अ	म या भाव म प रवत न कर देते ह
+Que. 114	'अिभभाषण' श  म कौन सा उपसग है ?
+अ
+अभी
+अभ
+अिभ
+Correct Option - 4
+उपरो4 िवक  ों म अिभ सही है।
+Key Points
+उपसग´ Uथा  य
+उपसग´
+· वह श  ांश या अDय, जो िकसी श  के आरंभ म
+जुड़कर मूल श  के अथ म िवशेषता ला दे या उसका अथ ही बदल दे। जैसे – अ + छूता = अछूता, कु + चैला = कुचैला इwािद।
+सं  ृत के उपसग
+िहंदी के उपसग
+उदू के उपसग
+अं ेजी के उपसग
+य
+· जो श ांश, श ों के अंत म जुड़कर अथ म प रवत न लाये, wय कहलाते है। जैसे - पाठक, शि4, भलाई, मनु ता आिद।
+1. कृत  wय
+- ि या या धातु के अंत म यु4 होनेवाले wय को 'कृU
+य' कहते ह और इनके मेल से बने श
+को ‘कृदंU’ कहा जाता है। जैसे – गाना + वाला = गानेवाला, शक् + ित = शि4।
+िवUेष :
+* ि या के मूल Vप को धातु कहते है। जैसे – ‘खा + ना = खाना, िलख + ना = िलखना’ म ‘खा’ तथा ‘िलख’ धातु ह तथा wय ‘ना’ लगने के बाद ‘खाना’ व ‘िलखना’ ि या ह ।
+2. ति5त  wय
+- संyा, सव नाम और िवशेषण के अंत म लगनेवाले wय को 'Uि5U' कहते ह तथा इनके मेल से बने श
+को ‘Uि5UांU’ कहा जाता है। जैसे – मानव + ता =
+मानवता, लड़का + पन = लड़कपन।
+Additional Information
+य
+वे श ांश या अDय, जो िकसी श  के अंत म जुड़कर उसके अथ
+जैसे - आस, वत, ता, वान आिद। उदाहरण –मानव
+म (मूल श  के अ म ) िवशेषता ला दे या उसका अथ ही बदल दे।
++ ता= मानवता, शक् + ित = शि4 आिद।
+य के दो  का₹ होUे ह :
+कृU   य
+ि या या धातु के अ म यु4 होनेवाले
+wयों को 'कृत्' wय कहते है और उनके मेल से बने श  को 'कृद ' कहते है।
+जैसे – गाना =
+गानेवाला, होना = होनहार, छलना = छिलया।
+Uि5U   य
+संyा, सव नाम और
+िवशेषण के अ  म लगनेवाले wय को 'ति5त' कहा जाता है और उनके मेल से बने श  को 'ति5ता '।
+जैसे - मानव + ता
+= मानवता, अ ा
++ आई = अ ाई, अपना + पन =
+अपनापन, एक +
+ता = एकता।
+Que. 115	'र4रंिजत' श   म कौन सा समास है ?
+अDयीभाव समास
+ि गु समास
+त  ु ष समास
+ं  समास
+Correct Option - 3
+उपयु 4 िवक  ों म से ‘₹4₹ंिजU’ त  ु ष समास का उदाहरण है।
+Key Points
+[[IMG:image280.png]] '₹4₹ंिजU' का समास िव ह ‘₹4 से ₹ंिजU’ होगा।
+Key Points
+U ु5ष समास: िजस समास म उKरपद धान हो तथा समास करने के उपरांत िवभि4(कारक िच5) का लोप हो, त ु ष समास कहलाता है। जैसे: राम का अनुज= रामानुज, धम का  = धम  , तुलसीदास ारा कृत = तुलसीदासकृत आिद। त  ु ष समास के छः भेद होते ह -
+समास
+प ₹भाषा
+उदाह₹ण
+कम त ु ष समास
+जहां कम कारक
+िच5 (को) का लोप हो
+िगरहकट = िगरह को काटने वाला
+करण त ु ष समास
+जहां करण कारक
+िच5 (से) का लोप हो
+गुणहीन = गुणों से हीन
+सं दान त ु ष समास
+जहां सं दान कारक िच5 (के
+िलए, को) का लोप हो
+हथकड़ी = हाथ के
+िलए कड़ी
+अपादान त ु ष समास
+जहां अपादान कारक िच5 (से, अलग होने के संबंध
+म ) का लोप हो
+धनहीन = धन से हीन
+संबंध त ु ष समास
+जहां संबंध कारक (का, की के) का लोप हो
+ेम सागर = ेम का सागर
+अिधकरण त ु ष समास
+जहां अिधकरण कारक (म , पर) का
+लोप हो
+नीितिनपुण = नीित म िनपुण
+Que. 116	'परो ' का िवलोम श  है
+अपरो
+w
+5 D
+™ूल
+Correct Option - 2
+'परो ' श  का िवलोम श  '    ' है।
+Key Points
+[[IMG:image281.png]] 'परो ' श  का िवलोम श  '    ' है।
+[[IMG:image282.png]] परो  का अथ - जो आँखों के सामने न होI
+[[IMG:image283.png]]  īय का अथ - जो आँखों के सामने होI
+Additional Information
+अ  उदाह₹ण
+श
+िवलोम
+पतला
+मोटा
+े
+किन
+™ावर
+जंगम
+आलोक
+अंधकार
+सुशील
+दुशील
+षंड
+मद
+शा त
+न र
+एकािधकार
+सवा िधकार
+कलुष
+िन  लुष
+Que. 117	'चमड़ी जाए, पर दमड़ी न जाए' लोकोि4 का अथ िन िलिखत म से कौन सा है ?
+1.	पैसे का ब5त मोह होना
+पैसा ही माँ - बाप दोनों
+जान चली जाए पर पैसा न जाए
+अwिधक कंजूस होना
+Correct Option - 4
+'चमड़ी जाए पर दमड़ी न जाए' लोकोि4 का अथ “अ  िधक कंजूस होना” होगा। अतः िवक  1 सही उKर होगा।
+Important Points
+मुहाव₹ा प ₹भाषा
+उदाह₹ण
+मुहावरा का शाि क अथ
+‘अ  ास’ है। मुहावरा श
+अरबी भाषा का श  है। िह ी म ऐसे वा  ांशों को मुहावरा कहा जाता है, जो अपने
+साधारण अथ को छोडकर
+िवशेष अथ को D4 करते ह ।
+आँख का तारा अथा त ब5त
+ारा।
+वा  - हर ब ा अपनी माँ की आँख का तारा होता है।
+Que. 118	' ोध' िकस रस का ™ायी भाव है ?
+1.	रौ5 रस
+वीभT रस
+वीर रस
+भयानक रस
+Correct Option - 1
+िदए गए िवक  ों म से सही उKर ‘₹ौ5 ₹स’ है।
+Key Points
+[[IMG:image284.png]] िदए गए िवक  ों म से ' ोध' रौ5 रस का ™ायी भाव है।
+[[IMG:image285.png]] जब िकसी एक प  या Dि4 ारा दूसरे प  या दूसरे Dि4 का अपमान करने अथवा अपने गु जन आिद की िन ा से जो
+ोध उ   होता है, उसे रौ5 रस कहते ह ।
+[[IMG:image286.png]] इसम ोध के कारण मुख लाल हो जाना, दाँत िपसना, शा™ चलाना, भौहे चढ़ाना आिद के भाव उ  होते ह ।
+Additional Information
+काD को पढ़ने, सुनने से उ  होने वाले आनंद की अनुभूित को सािहw के अंतग त रह कहा जाता है। िहंदी म ‘™ायी भाव’ के आधार पर काD म ‘नौ’ रस बताए गए ह , जो िन िलिखत ह :-
+₹स
+™ायी भाव
+1.
+ंगार रस
+रित
+2.
+हा4 रस
+हास
+3.
+क ण रस
+शोक
+4.
+रौ5 रस
+ोध
+5.
+वीर रस
+उTाह
+6.
+भयानक रस
+भय
+7.
+वीभT रस
+जुगु ा
+8.
+अद्भुत रस
+िव4य
+9.
+शांत रस
+िनव´द
+इसके अलावा 2 औ₹ ₹स माने जाUे ह I वे ह -
+10.
+वाT
+Wेह
+11.
+भि4
+वैरा
+Que. 119	सोरठा के ि तीय और चतुथ चरण म िकतनी मा ाएँ होती ह ?
+1.	13
+2.	10
+3.	16
+4.	11
+Correct Option - 1
+सही उKर '13' है।
+Key Points
+[[IMG:image287.png]]  सोरठा एक अ5´सम माि क छंद है।
+[[IMG:image288.png]]  इसके िवषम चरणों चरण म 11-11 मा ाएँ और सम चरणों (ि तीय तथा चतुथ ) चरण म 13-13 मा ाएँ होती ह ।
+[[IMG:image289.png]]  िवषम चरणों के अंत म एक गु  और एक लघु मा ा का होना आव4क होता है।
+उदाह₹ण-
+III IऽI IऽI	ऽI ऽऽ ऽ ऽऽ
+ह₹ह₹ािU लह₹ािU,	सहस जोजन चिल आवैII
+Additional Information
+[[IMG:image290.png]]  छ  िजस रचना म मा ाओं और वणfi की िवशेष Dव™ा तथा संगीता  क लय और गित की योजना रहती है, उसे ‘छ  ’
+कहते ह ।
+[[IMG:image291.png]]  ऋ  ेद के पु षसू4 के नवम् छ  म ‘छ  ’ की उ  िK ई र से बताई गई है।
+[[IMG:image292.png]] लौिकक सं  ृत के छ  ों का जƠदाता वा ीिक को माना गया है।
+[[IMG:image293.png]] आचाय िपंगल ने ‘छ  सू ’ म छ  का सुस  5 वण न िकया है, अत: इसे छ  शा™ का आिद   माना जाता है।
+[[IMG:image294.png]] छ  शा™ को ‘िपंगलशा™’ भी कहा जाता है।
+[[IMG:image295.png]] िह ी सािहw म छ  शा™ की 7ि से थम कृित ‘छ  माला’ है।
+Que. 120	िन िलिखत म से िकस अलंकार म समान धम का होना अिनवाय है ?
+उ  े ा
+ेष
+यमक
+उपमा
+Correct Option - 4
+िदए गए िवक  ों म सही उKर ‘उपमा अलंका₹’ है।
+Key Points
+[[IMG:image296.png]] समान धम के आधार पर जहाँ एक व™ु की समानता या तुलना िकसी दूसरी व™ु से की जाती है, वहाँ उपमा अलंका₹ होता है।
+उपमा के चा₹ अंग ह -
+उपमेय वण नीय व™ु िजसकी उपमा या समानता दी जाती है, उसे ‘उपमेय’ कहते ह ; जैसे-उसका मुख च  मा के समान सु  र है। वा  म ‘मुख’ की च  मा से समानता बताई गई है, अत: मुख उपमेय है।
+उपमान िजससे उपमेय की समानता या तुलना की जाती है उसे उपमान कहते ह ; जैसे-उपमेय (मुख) की समानता च मा से की गई है, अतः च मा उपमान है।
+साधारण धम िजस गुण के िलए उपमा दी जाती है, उसे साधारण धम कहते ह । उ4 उदाहरण म सु  रता के िलए उपमा दी गई है, अत: सु रता साधारण धम है।
+वाचक श  िजस श  के ारा उपमा दी जाती है, उसे वाचक श  कहते ह । उपयु 4 उदाहरण म समान श  वाचक है। इसके अलावा ‘सी’, ‘सम’, ‘स रस’ स7श श  उपमा के वाचक होते ह ।
+अ  िवक  :
+अलंका₹
+प ₹भाषा
+उदाह₹ण
+Additional Information
+उ  े ा
+जहाँ उपमेय म उपमान होने की
+संभावना या क ना की जाती है, वहाँ
+उ े ा अलंकार होता है।
+सोहत ओढ़े
+पीत पर, 4ाम सलोने गात।
+मन5 नील मिन सैण पर, आतप परयौ भात।।
+यमक
+जब श  की एक से
+ादा बार आवृित होती है एवं िविभ अथ िनकलते ह तो वहाँ यमक अलंकार होता है।
+तीन बेर खाती थी वे तीन बेर खाती ह ।
+ेष
+जहां पर िकसी एक श  का अनेक अथfi
+म योग हो, वहाँ  ेष अलंकार होता है।
+मधुवन की
+छाती को देखो,
+सूखी िकतनी
+इसकी किलयाँ।
+अलंका₹
+काD अथवा भाषा की शोभा बढ़ाने वाले मनोरंजक ढंग को अलंकार
+कहते ह । अथा त िजन गुण धमfi ारा काD की शोभा बढ़ाई जाती है, उ5 अलंकार कहा जाता है। इसके दो भेद ह - श ालंकार और
+अथा लंकार।
+Que. 121	िन िलिखत म से 'भाग' श  का अनेकाथT श  िकस िवक  म नहीं है ?
+बाँटना
+भागना
+िह4ा
+‰ाज
+Correct Option - 3
+इस  का सही उKर िह4ा होगा। अत: सही िवक  3 होगा।
+[[IMG:image297.png]] अनेकाथ U  का अथ´:- ऐसे श  , िजनके अनेक अथ होते है, अनेकाथT श  कहलाते है।
+Key Points
+[[IMG:image287.png]]	दूसरे श  ों म - िजन श  ों के एक से अिधक अथ होते ह , उ5 'अनेकाथT श  ' कहते है।
+[[IMG:image298.png]] अ  अनेकाथT श  :-
+U
+अनेकथ´
+आपिK
+िवपिK,एतराज।
+अपे ा
+इ ा, आव4कता, आशा, इwािद।
+अंबर
+आकाश, अमृत, व™।
+अनंत
+आकाश, ई र, िव  ु, अंतहीन, शेष नाग।
+अवकाश
+छुटटी, अवसर, अंतराल
+अ  र
+शेष, दूरी, 5दय, भेद।
+अक
+इ  , सूय , रस, अकबन।
+अंकुर
+कोंपल, नोंक, सूजन, रोआँ।
+Que. 122	'वह बाज़ार जा चुका है।' इस वा  का काल पहचािनए ।
+संिद  वत मानकाल
+पूण भूतकाल
+आस  भूतकाल / पूण वत मानकाल
+सामा  वत मानकाल
+Correct Option - 3
+िदए गए िवक  ों म से ‘वह बाज़ार जा चुका है।’ वा  आस  भूUकाल / पूण´ वU´मानकाल म है।
+Key Points
+[[IMG:image299.png]] वह बाज़ार जा चुका है। = आस  भूत काल/ पूण वत मानकाल
+[[IMG:image300.png]] ि या के िजस Vप से काय Dापार की िनकट समय म समाि™ का पता चले उसे आस भूतकाल कहते ह , जैसे :- म अभी
+िहसार से आया 5ँ।
+Additional Information
+U
+प ₹भाषा
+उदाह₹ण
+काल
+काल का अथ होता है –
+समय। ि या के िजस Vप से
+(i) सुनील गीता पढ़ता है।
+का	के होने के समय का पता चले उसे काल कहते ह । अथात काय – Dापार के समय और उसकी पूण और अपूण अव™ा के yान के Vपांतरण को काल कहते
+ह । काल के तीन भेद ह -
+(ii) दीप पढ़ रहा है।
+भूUकाल - िजस ि या से काय के समा™ होने का पता चले उसे भूतकाल कहते ह । इसकी पहचान वा  ों के अंत म था
+, थे , थी आिद से होती है। जैसे - रमेश पटना गया था।
+वU´मान काल - िजन वा  ों के अंत म ता , ती , ते , है , ह आते ह वो वत मान काल कहलाता है। ि याओं के होने की
+िनर रता को वत मान काल कहते ह ।जैसे :- राम अभी-अभी आया है।
+भिव  काल - ि या के िजस Vप से ि या के आने वाले समय म पूरा होने का पता चले उसे भिव काल कहते ह । इससे आगे आने वाले समय का पता चलता है। िजन वा ों के अंत म गा , गे , गी आिद आते ह वे भिव काल होते ह । जैसे :- म कल िवBालय जाउँगा।
+Que. 123	'राम अभी सोएगा।' इस वा  म कौन सा वा  होगा ?
+भाववा
+कम वा
+इनम से कोई नहीं
+कतृ वा
+Correct Option - 4
+'राम अभी सोएगा।' इस वा  म कौन सा वा  होगा - कUृ´वा
+Additional Information
+वा - ि या के िजस Vपांतर से यह जाना जाता है
+िक ि या का िवधान कता , कम या भाव म से
+िकससे या िकसके िवषय म िकया गया है, वा कहलाता है। िहंदी म वा  तीन कार के होते ह -
+कUृ´वा
+इस वा  म कता के
+िलंग, वचन और पु ष के अनुसार ि या का
+योग होता है।
+रमेश केला खाता है।
+लड़का पु™क पढ़ता है।
+कम´वा
+ि या के उस Vपा  र को
+कम वा  कहते ह ,
+िजससे वा  म कम की धानता का बोध हो।
+रोगी को दवा दी गई।
+उसके ारा पु™क पढ़ी गई।
+ि या के िजस Vप म
+न तो कता की
+राम से रेत म
+धानता हो न कम
+दौड़ा भी नहीं
+भाववा
+की बि ि या का
+जाता। मुझसे
+भाव ही  धान हो,
+वहाँ भाववा  होता
+उठा नहीं जाता।
+है।
+Que. 124	'ितल का ताड़ बनाना' मुहावरे का अथ बताइए :
+आ  मण करना
+Dथ काम करना
+साधारण बात को बढ़ा-चढ़ाकर कहना
+धाक बैठना
+Correct Option - 3
+'ितल का ताड़ बनाना' मुहावरे का अथ बताइए : - साधा₹ण बाU को बढ़ा-चढ़ाक₹ कहना '
+[[IMG:image301.png]] वा   योग - राजनीित म छोटी सी गलती होने पर िवप  पाटT "ितल का ताड़ बना देती है"।
+Important Points
+कुछ अ  मह  पूण´ मुहाव₹ा एवं उनके अथ´:-
+[[IMG:image302.png]] गूल₹ का फूल होना - दुल भ होना या िदखाई न देना ।
+[[IMG:image303.png]] अ4 के घोड़े दौड़ाना - हवाई क  नाएँ करना।
+[[IMG:image304.png]] ईद का चाँद होना - कभी-कभी दश न देना।
+[[IMG:image296.png]]  उ ी माला फे₹ना - िकसी के अमंगल की कामना करना
+[[IMG:image305.png]]  एड़ी-चोटी का पसीना एक क₹ना - अwिधक प र म करना।
+[[IMG:image306.png]] कलेजा मुँह को आना - अwिधक Dाकुल होना।
+[[IMG:image289.png]] गड़े मुद˜ उखाड़ना - ब5त पुरानी बात दोहराना।
+[[IMG:image307.png]]  छ  े छुड़ाना - िह  त प™ कर देना।
+Que. 125  िन िलिखत गBांश को पढ़कर पूछे गए   ों के उKर दीिजए
+भारत भयंकर अं ेज़ी - मोह की दुरव™ा से गुजर रहा है । इस दुरव™ा का एक भयानक दु  रणाम यह है िक भारतीय भाषाओं के समकालीन सािहw पर उन लोगों की 7ि नहीं पड़ती जो िव िवBालयों के ायः सव Kम छा थे और अब शासन तं म ऊँचे
+ओहदों पर काम कर रहे ह । इस 7ि से भारतीय भाषाओं के लेखक केवल यूरोपीय और अमे रकी लेखकों से हीन नहीं ह , बि उनकी िक4त िम , बमा , इंडोनेिशया, चीन और जापान के लेखकों की िक4त से भी खराब है  ों˙िक इन सभी देशों के लेखकों की कृितयाँ वहाँ के अwंत सुिशि त लोग भी पढ़ते ह । केवल हम ही ह िजनकी पु™कों पर यहाँ के तथाकिथत िशि त समुदाय की 7ि ायः नहीं पड़ती । हमारा तथाकिथत उ  िशि त समुदाय जो कुछ पढ़ना चाहता है, उसे अं ेज़ी म ही पढ़ लेता है, यहाँ तक
+िक उसकी किवता और उप ास पढ़ने की तृ ा भी अं ेज़ी की किवता और उप ास पढ़कर ही समा™ हो जाती है और उसे यह जानने की इ ा ही नहीं होती िक शरीर से वह िजस समाज का सद4 है उसके मनोभाव उप ास और काD म िकस अदा से D4 हो रहे ह ।
+भारतीय लेखकों की िक4त खराब है  ों˙िक
+वे अपनी बात भारतीय िशि त पाठकों तक प5ँचा नहीं पाते ।
+वे अपनी भाषा म िलख नहीं सकते ।
+उनकी पु™कों को यहाँ के नाग रक गव - यो  नहीं मानते ।
+वे अपनी भाषा के सािहw को पढ़कर अपने समाज का हाल - चाल नहीं जान सकते ।
+Correct Option - 1
+इस  का सही उKर वे अपनी बाU भा₹Uीय िUि U पाठकों Uक प ँचा नहीं पाUे होगा। अत: सही िवक  1 होगा।
+Key Points
+[[IMG:image308.png]]	भारतीय भाषाओं के समकालीन सािहw पर उन लोगों की 7ि नहीं पड़ती ।
+[[IMG:image309.png]] जो िव िवBालयों के ायः सव Kम छा थे और अब शासन तं म ऊँचे ओहदों पर काम कर रहे ह ।
+[[IMG:image310.png]]  गBांश के अथ से समझा जा सकता है की िवक  1 सही होगा।
+Que. 126उपयु4 शीष क दीिजए -Que. 126उपयु4 शीष क दीिजए -
+Que. 126
+उपयु4 शीष क दीिजए -
+Que. 126
+उपयु4 शीष क दीिजए -
+भारतीय िशि तों का अं ेज़ी - मोह
+भारत की दुरव™ा
+भारतीय लेखकों की दुद शा
+भारतीय िशि तों की दुरव™ा
+Correct Option - 2
+इस  का सही उKर भा₹U की दु₹व™ा होगा। अत: सही िवक  2 होगा।
+Key Points
+[[IMG:image311.png]]	  के उKर का अंदाजा गBांश की  थन लाईन से लगाया जा सकता है।
+[[IMG:image312.png]]  भा₹U भयंक₹ अंUेज़ी - मोह की दु₹व™ा से गुज₹ ₹हा है ।
+[[IMG:image290.png]] अथा त गBांश म भा₹U की दु₹व™ा की बात की है।
+[[IMG:image313.png]] िवक  म भी भारत की दुरव™ा िदया 5आ है।
+Que. 127भारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-Que. 127भारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-
+Que. 127
+भारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-
+Que. 127
+भारतीय भाषाओं के लेखक अमे रकी यूरोपीय तथा चीन, बमा , जापान के लेखकों से भी हीन ह .  ों˙िक-
+उनके सािहw को भारत म नहीं पढ़ा जाता ।
+उनम 4भाषा के  ित गौरव नहीं है ।
+उनके सािहw को भारत के सुिशि त लोग नहीं पढ़ते ।
+वे अं ेज़ी के मोह से  ™ ह ।
+Correct Option - 3
+इस  का सही उKर उनके सािह  को भा₹U के सुिUि U लोग नहीं पढ़Uे होगा। अत: िवक  3 सही होगा।
+Key Points
+[[IMG:image314.png]]  केवल हम ही ह िजनकी पु™कों पर यहाँ के तथाकिथत िशि त समुदाय की 7ि  ायः नहीं पड़ती ।
+[[IMG:image315.png]]  गBांश का अथ है िक भारतीय लोग भी भारतीय सािहw आिद को पढ़ना पसंद नहीं करते।
+[[IMG:image316.png]] जबिक िवदेशी लेखकों को पढ़ना पसंद करते है।
+[[IMG:image317.png]] हमारा तथाकिथत उ  िशि त समुदाय जो कुछ पढ़ना चाहता है, उसे अं ेज़ी म ही पढ़ लेता है, यहाँ तक िक उसकी किवता और उप ास पढ़ने की तृ ा भी अं ेज़ी की किवता और उप ास पढ़कर ही समा™ हो जाती है।
+Que. 128	भारत का सुिशि त समाज कौन सा सािहw पढ़कर संतु  हो जाता है ?
+देशी
+िहंदी
+भारतीय
+अं ेज़ी
+Correct Option - 4
+इस  का सही उKर अंUेजी है। अत: सही िवक  4 होगा।
+Key Points
+[[IMG:image318.png]]	हमारा तथाकिथत उ  िशि त समुदाय जो कुछ पढ़ना चाहता है, उसे अं ेज़ी म ही पढ़ लेता है,
+[[IMG:image319.png]]  यहाँ तक िक उसकी किवता और उप ास पढ़ने की तृ ा भी अं ेज़ी की किवता और उप ास पढ़कर ही समा™ हो जाती है और उसे यह जानने की इ ा ही नहीं होती िक शरीर से वह िजस समाज का सद4 है।
+[[IMG:image309.png]] उसके मनोभाव उप ास और काD म िकस अदा से D4 हो रहे ह ।
+[[IMG:image320.png]]  गBांश का अथ है िक भारतीय लोग भी भारतीय सािहw आिद को पढ़ना पसंद नहीं करते।
+Que. 129	भारतीय भाषाओं के सािहw के  ित समाज के िकस वग म अ िच की भावना है ?
+अनपढ़
+उ
+नगरवासी
+सुिशि त
+Correct Option - 4
+इस  का सही उKर सुिUि U होगा। अत: सही िवक  4 होगा।
+सुिशि त का अथ :- अ ी U₹ह िसखाया आ।
+Key Points
+[[IMG:image321.png]]		इस 7ि से भारतीय भाषाओं के लेखक केवल यूरोपीय और अमे रकी लेखकों से हीन नहीं ह , बि  उनकी िक4त िम , बमा , इंडोनेिशया, चीन और जापान के लेखकों की िक4त से भी खराब है  ों˙िक इन सभी देशों के लेखकों की कृितयाँ वहाँ के अwंत सुिशि त लोग भी पढ़ते ह ।
+[[IMG:image322.png]]	केवल हम ही ह िजनकी पु™कों पर यहाँ के तथाकिथत िशि त समुदाय की 7ि  ायः नहीं पड़ती ।
+[[IMG:image323.png]] हमारा तथाकिथत उ  िशि त समुदाय जो कुछ पढ़ना चाहता है, उसे अं ेज़ी म ही पढ़ लेता है।
+Que. 130	िन िलिखत म से 'नहीं' कौन से कार का रीितवाचक ि यािवशेषण है ?
+वाचक
+िविधबोधक
+िनषेधवाचक
+िन यबोधक
+Correct Option - 3
+इस  का सही उKर िनषेधवाचक होगा। अत: सही िवक  3 होगा।
+Key Points
+[[IMG:image324.png]]  िनषेधवाचक का अथ :- एक ऐसा स  ेश जो िकसी काम को न क₹ने का आदेश दे रहा हो (वा  म नका₹ा  क हो) वह
+िनषेधवाचक वा  कहलाता है।
+[[IMG:image325.png]] िनषेधवाचक श  :- वा  ों म ायः न, नहीं या मU जैसे श  ों का  योग िकया जाता है।
+[[IMG:image326.png]]  िजन अDय श  ों से काय के Dापार की ₹ीिU या िविध का पता चलता है उ5 ₹ीिUवाचक ि यािवUेषण अDय कहते ह ।
+Additional Information
+वह श  जो हम ि याओं की िवशेषता का बोध कराते ह वे श  ि या िवशेषण कहलाते ह । अथ के आधार पर ि यािवशेषण के चार भेद होते ह :
+कालवाचक ि यािवशेषण
+रीितवाचक ि यािवशेषण
+™ानवाचक ि यािवशेषण
+प रमाणवाचक ि यािवशेषण
+Que. 131िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?Que. 131िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?
+Que. 131
+िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?
+Que. 131
+िन िलिखत म से 'समु5' श  का पया यवाची श  कौन सा है ?
+भोर
+भव
+वैराग
+र ाकर
+Correct Option - 4
+उपरो4 श  ों म से 'समु5' का पया यवाची श  है - '₹ ाक₹'I
+'र ाकर' का अथ होता है - '₹ ों की खान' जोिक समु5 म भी होती है। अतः सही उKर (िवक  4) '₹ ाक₹' होगा।
+Key Points
+[[IMG:image327.png]]  समु5 का पया यवाची साग₹, पयोिध, उदिध,नदीU, जलिध,नी₹िनिध, ₹ ाक₹, िस  ु,Uोयनिनिध आिद होते है।
+[[IMG:image328.png]] अ  िवक
+वैराग का अथ :- अलग इ ा।
+भव का अथ :- संसा₹, जगU्।
+भोर का अथ :- ाUः काल।
+Additional Information
+अ  पया यवाची श  :-
+पया´यवाचीU पया´यवाचीU
+पया´यवाची
+U
+पया´यवाची
+U
+स रता
+नदी, तिटनी, द रया, सिलला, तरंिगणी
+सरोवर
+पु  र, पोखरा, जलवान, सरसी, पhाकर, कासार, सरस
+जलद
+वा रद, नीरद, पयोद, पयोधर, अ ुद, धराधर, वा रवाह
+Que. 132	'मेघ - मेध'  ुितसमिभ ाथ क श  का सही अथ - भेद िन  म से कौन सा है ?
+बादल - जीवन
+बादल - यy
+यy - जल
+यy - बादल
+Correct Option - 2
+मेघ-मेध का सही अथ :- बादल - य] होगा। अत: िवक  2 सही होगा।
+[[IMG:image329.png]] जो श   िन के आधार पर समान लगते है।
+[[IMG:image330.png]] परंतु अथ अलग होते है।
+[[IMG:image291.png]] जैसे- घन और धन दोनों के उ ारण म कोई खास अ  र महसूस नहीं होता पर  ु अथ म िभ ता है। घन= बादलI
+धन= स4िUI
+Key Points
+[[IMG:image331.png]] ऐसे श  , जो सुनने म समान लगते ह परंतु िजनके अथ´ िभ  होते ह ,  ुिUसमिभ ाथ´क U  कहलाते ह ।
+[[IMG:image332.png]] कुछ श  ऐसे होते ह िजनम 4₹, मा ा अथवा Dंजन म थोड़ा-सा अ  ₹ होता है।
+[[IMG:image333.png]] वे बोलचाल म लगभग एक जैसे लगते ह , पर  ु उनके अथ´ म िभ Uा होती है
+ुिUसमिभ ाथ´क U  के कुछ उदाह₹ण:- ब5-ब5=अwिधक-पु वधू , िनयत-नीयत=िनि त-इरादा, खोलना-खौलना=ब नमु4 करना-उबलना आिद।
+Additional Information
+ुिUसमिभ ाथ´क U  की Uािलका:-
+U
+अथ´
+पास-पाश
+िनकट-ब  न
+वात-बात
+हवा-बातचीत
+िग र-िगरी
+पव त-बीज
+ब5-ब5
+अwिधक-पु वधू
+कोश-कोष
+ान-खजाना
+गाड़ी-गाढ़ी
+यान-गहरी
+Que. 133	'™ी जो अिभनय करती हो' वा  ांश के िलए एक श  का चयन कीिजए।
+अिभने ी
+नत की
+नाियका
+गाियका
+Correct Option - 1
+™ी जो अिभनय करती हो उसे अिभने ी कहते है। अत: िवक  1 सही होगा।
+Key Points
+[[IMG:image334.png]] जब िकसी वा  को कम से कम श  ों म  कट िकया जाता है,और वह श  वा  ांश के अथ को पूरी तरह िस5 करता हो तो उसे वा  ांU के िलए एक U  कहUे ह ।
+वा  ांU के िलए एक U  के उदाह₹ण:-
+वा  ांU
+U
+िजस पु™क म आठ अ ाय हो
+अ ा ायी
+िजसका भाषा ारा वण न असंभव हो
+अिनव चनीय
+अwिधक बढ़ा–चढ़ा कर कही गई बात
+अितशयोि4
+सबसे आगे रहने वाला
+अ णी
+जो पहले जƠा हो
+अ ज
+जो बाद मे जƠा हो
+अनुज
+जो इंि5यों ारा न जाना जा सके
+अगोचर
+िजसका पता न हो
+अyात
+Que. 134	'मानसरोवर' िकसकी रचनाओं का संकलन है ?
+महादेवी वमा
+ेमचंद
+रामचं5 शु4
+रवी  नाथ टैगोर
+Correct Option - 2
+मानस₹ोव₹ ेमचं5 की रचनाओं का संकलन है। अत: िवक  2 सही होगा।
+[[IMG:image335.png]] उनके िनधनोप₹ांU मानस₹ोव₹ नाम से 8 ख  ों म कािशत इस संकलन म उनकी दो सौ से भी अिधक कहािनयों को शािमल िकया गया है।
+[[IMG:image336.png]] हर ख  म अलग-अलग कहाँिनया है।
+Key Points
+[[IMG:image337.png]]	मुंशी ेमचंद, भारतीय सािहw के एक महान कथाकार, उप ासकार और नाटककार थे। उनका असली नाम धनपU
+₹ाय था।
+[[IMG:image288.png]]  मुंशी  ेमचंद का जƠ 31 जुलाई, 1880 को उU₹  देU के वा₹ाणसी िजले म 5आ था।
+[[IMG:image329.png]]  ेमचंद ने अपने जीवन के दौरान प का ₹Uा म भी अद्भुत योगदान िदया। उ5ों˙ने कई अख़बा₹ों म लेखन िकया और समाज के मुहों पर आंदोलन िकया।
+[[IMG:image338.png]]  ेमचंद को िहंदी सािहw के महान कथाका₹ औ₹ उप ासका₹ के Vप म पहचाना जाता है। उनके लेखन की कहािनयाँ औ₹ उप ास हमेUा पाठकों के िदलों म ™ान बना रहे ह ।
+Additional Information
+[[IMG:image339.png]]  ेमचंद के लगभग 300 से अिधक ₹चनाएँ ह , िजनम कहािनयाँ, उप ास, नाटक, िनबंध, किवUाएँ आिद शािमल ह । उनकी कुछ मुख ₹चनाएँ िन िलिखत ह :
+गोदान
+गबन
+रंगभूिम
+िनम ला
+कम भूिम
+Que. 135	मीराबाई िकसकी िश ा थीं ?
+संत रैदास
+संत नामदेव
+संत एकनाथ
+संत तुकाराम
+Correct Option - 1
+मीराबाई को संU ₹ैदास की िश ा कहा जाता है।
+[[IMG:image303.png]] गु  ₹िवदास अथवा ₹ैदास म  काल म एक भारतीय संत थे।
+[[IMG:image340.png]] रैदास ने जात-पात के अ  िवरोध म काय िकया।
+[[IMG:image341.png]] रैदास सतगु  अथवा जगतगु  की उपािध दी जाती है।
+[[IMG:image342.png]]  रैदास ने ₹ैदािसया अथवा ₹िवदािसया पंथ की ™ापना की।
+Key Points
+[[IMG:image343.png]] मीराबाई (1498-1546) सोलहवीं शता ी की एक कृ  भ4 और कविय ी थीं।
+[[IMG:image344.png]] मीरा बाई ने कृ  भि4 के  ुट पदों की रचना की है।
+[[IMG:image320.png]] संत ₹ैदास या ₹िवदास उनके गु  थे।
+[[IMG:image313.png]] मीराबाई बचपन से ही कृ  भि4 म  िच लेने लगी थीं।
+Additional Information
+मीरा बाई की रचनाएँ:
+[[IMG:image345.png]] गीत गोिव  की टीका-पB
+[[IMG:image346.png]] नरसी जी रो मायरो-पB
+[[IMG:image347.png]] राग सोरठा पद-पB
+[[IMG:image348.png]] मलार राग-पB
+[[IMG:image307.png]] राग गोिव -पB
+[[IMG:image349.png]] सwभामानु षणं-पB
+[[IMG:image350.png]] मीरां की गरबी-पB
+[[IMG:image297.png]]   णी मंगल-पB
+[[IMG:image351.png]] च रत-पB
+अ  किवयों की ₹चनाएँ:-
+किव
+रचनाएँ
+तुलसीदास (1511 - 1623)
+जानकी-मंगल (1582)
+रामललानहछू (1582)
+दोहावली (1583)
+वैरा  संदीपनी (1612)
+धम दास (1433 - 1543)
+संत काD-काD
+कबीरदास(1398-1464)
+कबीर श ावली कबीर दोहवाली कबीर ंथावली कबीर सागर
+Que. 136	िन िलिखत म से कौन सी भाषा पि मी िहंदी से संबंध रखती है ?
+बाँगV
+राज™ानी
+अवधी
+भोजपुरी
+Correct Option - 1
+िन िलिखत म से बाँग  पि मी िहंदी से संबंिधत है।
+Key Points
+[[IMG:image352.png]]  पि मी िहंदी का िवकास Uौ₹सेनी अपTंU से 5आ है।
+[[IMG:image353.png]]  पि मी िहंदी की बोिलयां- जभाषा,क ौजी,बुंदेली,कौरवी/खड़ी बोली,ह रयाणवी(जाटू, बाँग  ),दि  नी।
+[[IMG:image354.png]] पूवT िहंदी का िवकास अध´मागधी से 5आ है।
+[[IMG:image355.png]] पूवT िहंदी की बोिलयां-अविध,बघेली,छKीसगढ़ी।
+Additional Information
+[[IMG:image356.png]]  शौरसेनी अप  ंश के अंतग त राज™ानी िहंदी,पहाड़ी िहंदी,पि मी िहंदी आती है।
+[[IMG:image281.png]]  ₹ाज™ानी िहंदी की बोिलयां-मारवाड़ी,मालवी,मेवाती,जयपुरी।
+[[IMG:image328.png]] पहाड़ी िहंदी की बोिलयां-कुमाउँनी,गढ़वाली।
+[[IMG:image357.png]] िबहारी िहंदी की बोिलयां-भोजपु₹ी,मगही,मैिथली।
+Que. 137	Two numbers are in the ratio of 13 ∶ 9. If their HCF is 13, then find the largest number.
+1.	117
+2.	52
+3.	143
+4.	169
+Correct Option - 4 Given:
+Ratio of numbers = 13 : 9, HCF = 13
+Concept:
+The smallest number is the product of its ratio and HCF.
+Solution:
+Let the number be 13x and 9x
+Since x is common in both as both number is divided by x, so x will be the HCF. x = 13
+The largest number = 13x = 13 × 13 = 169
+Therefore, the largest number is 169.
+Que. 138	Salaries of Rohan and Soham are in the ratio 2 ∶ 3. If the salary of each is increased by ₹ 2,000, the new ratio becomes 40 ∶ 57. What is Soham's present salary ?	Que. 138	Salaries of Rohan and Soham are in the ratio 2 ∶ 3. If the salary of each is increased by ₹ 2,000, the new ratio becomes 40 ∶ 57. What is Soham's present salary ?
+Que. 138	Salaries of Rohan and Soham are in the ratio 2 ∶ 3. If the salary of each is increased by ₹ 2,000, the new ratio becomes 40 ∶ 57. What is Soham's present salary ?
+Que. 138	Salaries of Rohan and Soham are in the ratio 2 ∶ 3. If the salary of each is increased by ₹ 2,000, the new ratio becomes 40 ∶ 57. What is Soham's present salary ?
+₹ 25,500
+₹ 17,000
+₹ 34,000
+₹ 20,000
+Correct Option - 2 Given:
+Ratio of salaries of Rohan and Soham = 2 : 3. Increased salary = 2000 each.
+New ratio of Ravi and Sumit = 40 : 57.
+Calculation:
+Let the original salaries of Rohan and Soham be Rs.2x and Rs.3x respectively. Then, (2x + 2000)/(3x + 2000) = 40/57
+⇒ 57(2x + 2000) = 40(3x + 2000)
+⇒ 114x + 114000 = 120x + 80000
+⇒ 6x = 34000
+⇒ x = 34000/6
+The original salaries Soham = Rs.3x = 3 × 34000/6 = Rs. 17000
+Que. 139	In a certain school, 20% of students are below 10 years of age. The number of students above 10 years ofage is 2 of the number of students of 10 years age which is 48. What is the total number of students in the3	Que. 139	In a certain school, 20% of students are below 10 years of age. The number of students above 10 years ofage is 2 of the number of students of 10 years age which is 48. What is the total number of students in the3
+Que. 139	In a certain school, 20% of students are below 10 years of age. The number of students above 10 years of
+age is 2 of the number of students of 10 years age which is 48. What is the total number of students in the
+3
+Que. 139	In a certain school, 20% of students are below 10 years of age. The number of students above 10 years of
+age is 2 of the number of students of 10 years age which is 48. What is the total number of students in the
+3
+school?
+1.	100
+2.	80
+3.	110
+4.	90
+Correct Option - 1 Given:
+Students are below age of 10 years = 20%
+Students above 10 years of age = 2/3 of the number of students of 10 years of age which is 48 = 2/3 of 48 = 32 So, the 80% of the total will be ≥ 10 years of age
+Number of students of 10 Years = 48
+⇒ 80% of x = 48 + 2/3 of 48	(1)
+Calculation:
+Let the number of students be x Then,
+Number of students above 10 years of age
+⇒ (100 – 20) % of x
+⇒ 80% of x According to question
+⇒ 80% of x = 48 + 2/3 of 48
+⇒ 80/100 × x = 48 + 32
+⇒ 4x/5 = 80
+⇒ 4x = 400
+⇒ x = 100
+∴ Total number of students in the school is 100
+Que. 140	A number when divided by 119, leaves 19 as remainder. If it is divided by 17, it will leave a remainder	Que. 140	A number when divided by 119, leaves 19 as remainder. If it is divided by 17, it will leave a remainder
+Que. 140	A number when divided by 119, leaves 19 as remainder. If it is divided by 17, it will leave a remainder
+Que. 140	A number when divided by 119, leaves 19 as remainder. If it is divided by 17, it will leave a remainder
+1.	3
+2.	1
+3.	4
+4.	2
+Correct Option - 4 Given:
+Number is divided by 119 then leaves reminder 19.
+Concept Used:
+Dividend = Divisor × Quotient + Remainder
+Calculation:
+Let the quotient be 1,
+⇒ Dividend = 119 × 1 + 19
+⇒ Dividend = 119 + 19
+⇒ Dividend = 138
+Now when 138 is divided by 17,
+2
+⇒ 138/17 = 8
+17
+∴ The remainder is 2
+Que. 141Simplify : 17.28÷x = 23.6× 0.2Que. 141Simplify : 17.28÷x = 23.6× 0.2
+Que. 141
+Simplify : 17.28÷x = 2
+3.6× 0.2
+Que. 141
+Simplify : 17.28÷x = 2
+3.6× 0.2
+1.	14
+2.	10
+3.	15
+4.	12
+Correct Option - 4 Given:
+= 2= 217.28÷x
+= 2
+= 2
+3.6× 0.2
+Calculation:
+= 2= 217.28÷x
+= 2
+= 2
+3.6× 0.2
+⇒ 17.28 × 1/x = 2 × 3.6 × 0.2
+⇒ x = (17.28)/(2 × 3.6 × 0.2) = 12
+∴ The value of x is 12.
+Que. 142	What will replace the question mark (?) in the following equation?
+5072.19 + 368.312 + (?) = 9018.618
+1.	3571.115
+2.	3571.116
+3.	3578.116
+4.	3578.112
+Correct Option - 3 Given:
+5072.19 + 368.312 + (?) = 9018.618
+Calculation:
+5072.19 + 368.312 + (?) = 9018.618
+⇒ 5440.502 + ? = 9018.618
+⇒ ? = 9018.618 - 5440.502 = 3578.116
+∴ The value of x is 3578.116.
+Que. 143	The average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is3.55. What is the average of the remaining two numbers?	Que. 143	The average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is3.55. What is the average of the remaining two numbers?
+Que. 143	The average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is
+3.55. What is the average of the remaining two numbers?
+Que. 143	The average of six numbers is 3.75. The average of two of them is 3.2, while the average of other two is
+3.55. What is the average of the remaining two numbers?
+1.	4.5
+2.	4.3
+3.	4.6
+4.	4.4
+Correct Option - 1 Given:
+Average of six numbers = 3.75
+Average of the first set of two numbers = 3.2 Average of the second set of two numbers = 3.55 Total numbers = 6
+Calculation:
+Sum of six number = 6 × 3.75 = 22.5
+Sum of first set of two numbers = 2 × 3.2 = 6.4
+Sum of the second set of two numbers = 2 × 3.55 = 7.1 Sum of the remaining two numbers = 22.5 - (6.4 + 7.1) = 9 The average of the remaining two numbers = 9/2 = 4.5
+∴ The option (1) is the correct answer.
+33Que. 144	An article is sold at a certain price. By selling it at 2 of that price one loses 10%. Find the gain percent at
+3
+3
+original price.
+1.	35%
+2.	25%
+3.	38%
+4.	30%
+Correct Option - 1 Given:
+Let the original selling price of article be Rs. x. Then, new selling price = Rs. 2x/3. Loss = 10%
+∴ Cost price = (100/90 × 2x/3) = 20x/27
+⇒ Profit = (x – 20x/27) = Rs. 7x/27
+∴ Profit % = (profit/cost price × 100 )% = (7x/27 × 27/20x × 100 ) = 35%
+Que. 145	A sum of money amounts to ₹ 4,460 after 3 years and to ₹ 6,690 after 6 years on compound interest. Find the approximate sum.
+₹ 3,115.33
+₹ 2,973.33
+₹ 2,991.66
+₹ 3,121.66
+Correct Option - 2 Given:
+Calculation:
+Amount after 3 years (A3) = ₹ 4,460 Amount after 6 years (A6) = ₹ 6,690 Calculation:
+A = P[1 + R/100]n
+For 3 years
+4,460 = P[1 + R/100]3 →(1)
+For 6 years
+6,690 = P[1 + R/100]6 →(2)
+From Eqn (1) and (2), we have 6,690/4,460 = P[1 + R/100]3
+From (1),
+6,690/4,460 = P × 4,460
+P = 4,460 × 4,460/6,690 = Rs. 2,973.33
+Que. 146	Three partners P, Q and R start a business. Twice P's capital is equal to thrice Q's capital and Q's capital is equal to four times R's capital. Out of total profit of ₹ 27,500 at the end of the year, R's share is:
+₹ 5,000
+₹ 7,000
+₹ 15,000
+₹ 2,500
+Correct Option - 4 Given:
+Twice P's capital is equal to thrice Q's capital. Q's capital is equal to four times R's capital. Total profit at the end of the year is ₹ 27,500. Calculation:
+According to the question, 2P = 3Q and Q = 4R
+P : Q : R
+3 : 2 : 2
+4 : 4 : 1
+12 : 8 : 2
+Share of R = 2/22 × 27500 = Rs. 2500
+Que. 147	How long will a boy take to run round a square field of side 25 metres, if he runs at the rate of 9 km/hr ?	Que. 147	How long will a boy take to run round a square field of side 25 metres, if he runs at the rate of 9 km/hr ?
+Que. 147	How long will a boy take to run round a square field of side 25 metres, if he runs at the rate of 9 km/hr ?
+Que. 147	How long will a boy take to run round a square field of side 25 metres, if he runs at the rate of 9 km/hr ?
+42 sec.
+38 sec.
+48 sec.
+40 sec.
+Correct Option - 4 Given:
+Side of a square field = 25 meters The speed of boy = 9 km/hr Concept used:
+To convert kilometers per hour to meters per second, multiply it with 5/18
+Formula used:
+Perimeter of square = 4 × side of square Time = Distance/Time
+Calculation:
+We will covert its unit with m/s, so we get 9 km/hr = 9 × (5/18) = 5/2 m/s
+According to the question:
+Distance run around the field (d) = Perimeter of the field Perimeter of square = 4 × side of square
+⇒ d = 4 × 25m = 100 meters Now,
+Time (time taken to run around the field) = 100 m/(5/2) m/s
+⇒ 100 ×(2/5) sec = 20 × 2 = 40 sec
+∴ Time taken to run around the field is 40 sec.
+Que. 148	4 boys and 6 girls can do a piece of work in 10 days while 6 boys and 4 girls can do the same work in 8 days. In how many days can 4 boys and 2 girls do the work ?	Que. 148	4 boys and 6 girls can do a piece of work in 10 days while 6 boys and 4 girls can do the same work in 8 days. In how many days can 4 boys and 2 girls do the work ?
+Que. 148	4 boys and 6 girls can do a piece of work in 10 days while 6 boys and 4 girls can do the same work in 8 days. In how many days can 4 boys and 2 girls do the work ?
+Que. 148	4 boys and 6 girls can do a piece of work in 10 days while 6 boys and 4 girls can do the same work in 8 days. In how many days can 4 boys and 2 girls do the work ?
+1.	28
+2.	25/2
+3.	30
+4.	27/2
+Correct Option - 2 Given:
+4 boys and 6 girls can do a work in 10 days
+6 boys and 4 girls can do the same work in 8 days
+Concept used:
+Time = Work/Efficiency
+Calculation:
+Let, M = boys ; B = girls
+(4M + 6B) × 10 = (6M + 4B) × 8
+⇒ 40M + 60B = 48M + 32B
+⇒ 48M - 40M = 60B - 32B
+⇒ 8M = 28B
+⇒ M/B = 28/8 = 7/2
+So, the efficiency of one boys = 7 Efficiency of one girls = 2
+Total work = [(4 × 7) + (6 × 2)] × 10 = 400
+Efficiency of 5 boys and 4 girls = (4 × 7) + (2 × 2) = 32 Required time to finish the work = 400/32 = 25/2 days
+∴ The 5 boys and 4 girls will take 8 days to do the same work.
+Que. 149Find the 21st term of the sequence 26, 20, 14, 8, ......... .Que. 149Find the 21st term of the sequence 26, 20, 14, 8, ......... .
+Que. 149
+Find the 21st term of the sequence 26, 20, 14, 8, ......... .
+Que. 149
+Find the 21st term of the sequence 26, 20, 14, 8, ......... .
+1.	-100
+2.	146
+3.	88
+4.	-94
+Correct Option - 4 Calculation
+The sequence you provided is an arithmetic sequence with a common difference of -6. This means each term is 6 less than the previous one.
+To find the 21st term, we can use the explicit formula for arithmetic sequences: an = a1 + d(n - 1)
+where:
+an is the nth term
+a1 is the first term (26 in this case)
+d is the common difference (-6)
+n is the term number (21 in this case) a21 = 26 - 6(21 - 1)
+a21 = 26 - 120
+a21 = -94
+Therefore, the 21st term of the sequence is -94.
+Que. 150	The area of circular field is 13.86 hectares. Find the cost of fencing it at the rate of Rs. 3.2 per metre. (1 hectare = 10,000 m2)
+Rs. 5,808
+Rs. 4,224
+Rs. 6,132
+Rs. 5,138
+Correct Option - 2 Given:
+1 hectare = 10,000 m²
+Therefore, area of field = 13.86 hectares * 10,000 m²/hectare = 138,600 m²
+Area of a circle = πr²
+We need to isolate r, so rearrange the formula:
+r = √ (Area)/Π
+r = √(138,600*7 m² / 22)
+r ≈ 210 m
+Circumference of a circle = 2πr Circumference = 2 * 22/7 * 210 m Circumference ≈ 1320 m
+The cost of fencing
+Cost of fencing = Fence length * Cost per meter Cost = 1320 m * Rs. 3.2/meter
+Cost ≈ Rs. 4224
+Therefore, the cost of fencing the circular field is approximately Rs. 4224.
