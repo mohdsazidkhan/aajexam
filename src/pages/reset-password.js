@@ -97,7 +97,7 @@ const ResetPasswordPage = () => {
                       <input
                         type={showPassword ? "text" : "password"} required
                         className="w-full pl-12 pr-12 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/50 font-bold outline-none focus:border-primary-500 transition-all"
-                        placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                        placeholder="••••••••"
                         value={newPassword} onChange={e => setNewPassword(e.target.value)}
                       />
                       <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300">

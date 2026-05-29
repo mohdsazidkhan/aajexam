@@ -138,7 +138,7 @@ const NotificationsPage = () => {
                       <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.message}</p>
                       <div className="flex items-center gap-2 pt-2 opacity-50 group-hover:opacity-100 transition-opacity">
                         <Clock className="w-3 h-3" />
-                        <span className="text-[10px] font-black uppercase tracking-widest">{new Date(n.createdAt).toLocaleDateString()} â€¢ {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest">{new Date(n.createdAt).toLocaleDateString()} • {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
                     </div>
 
