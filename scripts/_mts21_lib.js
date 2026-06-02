@@ -108,9 +108,10 @@ function sectionFor(n) {
  *   cfg.publicPrefix - public_id prefix for uploads
  *   cfg.testTitle  - PracticeTest title
  *   cfg.pyqShift   - pyqShift string
+ *   cfg.pyqYear    - PYQ year (default 2021; pass 2022 etc. for other years — also used in tags)
  */
 export async function buildAndSeed(cfg) {
-  const { RAW, imageMap = {}, imagesDir, cloudFolder, publicPrefix, testTitle, pyqShift } = cfg;
+  const { RAW, imageMap = {}, imagesDir, cloudFolder, publicPrefix, testTitle, pyqShift, pyqYear = 2021 } = cfg;
 
   async function uploadIfExists(filename) {
     const fp = path.join(imagesDir, filename);
@@ -167,7 +168,7 @@ export async function buildAndSeed(cfg) {
     questions.push({
       questionText: r.q, questionImage, options: r.o, optionImages: ['', '', '', ''],
       correctAnswerIndex: r.ans, explanation: r.e || '', section: sectionFor(r.n),
-      tags: ['SSC', 'MTS', 'Paper-I', 'PYQ', '2021'], difficulty: 'medium'
+      tags: ['SSC', 'MTS', 'Paper-I', 'PYQ', String(pyqYear)], difficulty: 'medium'
     });
   }
   console.log(`Built ${questions.length} questions.`);
@@ -175,7 +176,7 @@ export async function buildAndSeed(cfg) {
   await PracticeTest.deleteMany({ examPattern: pattern._id, title: testTitle });
   const test = await PracticeTest.create({
     examPattern: pattern._id, title: testTitle, totalMarks: 100, duration: 100,
-    accessLevel: 'FREE', isPYQ: true, pyqYear: 2021, pyqShift, pyqExamName: 'SSC MTS', questions
+    accessLevel: 'FREE', isPYQ: true, pyqYear, pyqShift, pyqExamName: 'SSC MTS', questions
   });
   console.log(`\nCreated PYQ PracticeTest: ${test._id} (${test.questions.length} questions)`);
 
