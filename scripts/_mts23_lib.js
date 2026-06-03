@@ -114,9 +114,13 @@ function sectionFor(n) {
  *   cfg.testTitle  - PracticeTest title
  *   cfg.pyqShift   - pyqShift string
  *   cfg.pyqYear    - PYQ year (default 2023; also used in tags)
+ *   cfg.sectionFor - optional (n)=>section override. Default uses the 2023
+ *                    order (ENG 1-25, REA 26-45, NUM 46-65, GA 66-90). 2024
+ *                    papers print Numerical first, so they pass their own.
  */
 export async function buildAndSeed(cfg) {
   const { RAW, imageMap = {}, imagesDir, cloudFolder, publicPrefix, testTitle, pyqShift, pyqYear = 2023 } = cfg;
+  const secFor = cfg.sectionFor || sectionFor;
 
   async function uploadIfExists(filename) {
     const fp = path.join(imagesDir, filename);
@@ -172,7 +176,7 @@ export async function buildAndSeed(cfg) {
     }
     questions.push({
       questionText: r.q, questionImage, options: r.o, optionImages: ['', '', '', ''],
-      correctAnswerIndex: r.ans, explanation: r.e || '', section: sectionFor(r.n),
+      correctAnswerIndex: r.ans, explanation: r.e || '', section: secFor(r.n),
       tags: ['SSC', 'MTS', 'PYQ', String(pyqYear)], difficulty: 'medium'
     });
   }
