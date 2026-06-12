@@ -15,14 +15,24 @@ export async function GET(req) {
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
+        const examId = searchParams.get('examId') || null;
+
+        // Build filter: if examId provided, find patterns for that exam first
+        let baseMatch = { isPYQ: true };
+        if (examId) {
+            const ExamPattern = (await import('@/models/ExamPattern')).default;
+            const patterns = await ExamPattern.find({ exam: examId }).select('_id').lean();
+            const patternIds = patterns.map(p => p._id);
+            baseMatch.examPattern = { $in: patternIds };
+        }
 
         const [tests, total, maxYears] = await Promise.all([
-            PracticeTest.find({ isPYQ: true })
+            PracticeTest.find(baseMatch)
                 .populate({ path: 'examPattern', populate: { path: 'exam', select: 'name code' } })
                 .sort({ pyqYear: -1, createdAt: -1 })
                 .skip(skip)
                 .limit(limit),
-            PracticeTest.countDocuments({ isPYQ: true }),
+            PracticeTest.countDocuments(baseMatch),
             PracticeTest.aggregate([
                 { $match: { isPYQ: true, pyqYear: { $ne: null } } },
                 { $lookup: { from: 'exampatterns', localField: 'examPattern', foreignField: '_id', as: 'ep' } },

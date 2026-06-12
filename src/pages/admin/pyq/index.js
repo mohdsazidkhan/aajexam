@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { FileText, Plus, Pencil, Trash2 } from 'lucide-react';
+import { FileText, Plus, Pencil, Trash2, Filter } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -16,11 +16,25 @@ const AdminPYQ = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [exams, setExams] = useState([]);
+  const [selectedExamId, setSelectedExamId] = useState('');
+
+  // Fetch all exams for the filter dropdown
+  useEffect(() => {
+    const fetchExams = async () => {
+      try {
+        const res = await API.request('/api/real-exams/all-exams');
+        if (res?.success) setExams(res.data || []);
+      } catch (e) {}
+    };
+    fetchExams();
+  }, []);
 
   const fetchData = async () => {
     try {
       setLoading(true);
-      const testsRes = await API.request(`/api/admin/pyq?page=${page}&limit=20`);
+      const examParam = selectedExamId ? `&examId=${selectedExamId}` : '';
+      const testsRes = await API.request(`/api/admin/pyq?page=${page}&limit=20${examParam}`);
       if (testsRes?.success) {
         setTests(testsRes.data || []);
         setMaxYearByExam(testsRes.maxYearByExam || {});
@@ -28,7 +42,13 @@ const AdminPYQ = () => {
       }
     } catch (e) { } finally { setLoading(false); }
   };
-  useEffect(() => { fetchData(); }, [page]);
+
+  useEffect(() => { fetchData(); }, [page, selectedExamId]);
+
+  const handleExamChange = (e) => {
+    setSelectedExamId(e.target.value);
+    setPage(1);
+  };
 
   const handleDelete = async (id) => {
     if (!confirm('Delete this PYQ paper?')) return;
@@ -42,21 +62,37 @@ const AdminPYQ = () => {
       <div className="min-h-screen pb-24">
         <Head><title>Manage PYQ Papers - Admin</title></Head>
         <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-3 flex-wrap">
             <div>
               <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> PYQ Papers</h1>
               <p className="text-xs text-slate-400 font-bold mt-0.5">Manage previous-year question papers across all exams</p>
             </div>
-            <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
-              <Plus className="w-4 h-4" /> New PYQ
-            </button>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              {/* Exam Filter Dropdown */}
+              <div className="relative flex items-center">
+                <Filter className="absolute left-2.5 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+                <select
+                  value={selectedExamId}
+                  onChange={handleExamChange}
+                  className="pl-8 pr-3 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition min-w-[160px]"
+                >
+                  <option value="">All Exams</option>
+                  {exams.map(exam => (
+                    <option key={exam._id} value={exam._id}>{exam.name}</option>
+                  ))}
+                </select>
+              </div>
+              <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
+                <Plus className="w-4 h-4" /> New PYQ
+              </button>
+            </div>
           </div>
 
           {tests.length === 0 ? (
             <Card className="p-10 text-center space-y-3">
               <FileText className="w-12 h-12 text-slate-300 mx-auto" />
-              <h2 className="text-lg font-black text-slate-500">No PYQ papers yet</h2>
-              <p className="text-sm text-slate-400">Click "New PYQ" above to add your first previous-year paper.</p>
+              <h2 className="text-lg font-black text-slate-500">No PYQ papers {selectedExamId ? 'for this exam' : 'yet'}</h2>
+              <p className="text-sm text-slate-400">{selectedExamId ? 'Try selecting a different exam or clear the filter.' : 'Click "New PYQ" above to add your first previous-year paper.'}</p>
             </Card>
           ) : (
             <div className="space-y-3">
