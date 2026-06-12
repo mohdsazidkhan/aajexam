@@ -561,8 +561,8 @@ const StudentsPage = () => {
                                   {student.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
-                                  <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{student.name}</div>
-                                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">#{student._id.slice(-6).toUpperCase()}</div>
+                                  <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-500 transition-colors block">{student.name}</Link>
+                                  <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[9px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary-500 transition-colors">@{student.username || student._id.slice(-6).toUpperCase()}</Link>
                                 </div>
                               </div>
                             </td>
@@ -622,7 +622,8 @@ const StudentsPage = () => {
 
                         <div className="flex-1 space-y-4">
                           <div className="flex flex-wrap items-center gap-4">
-                            <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{student.name}</h3>
+                            <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors">{student.name}</Link>
+                            {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-500 transition-colors">@{student.username}</Link>}
                             <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 ${student.subscriptionStatus === 'PRO' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
@@ -679,8 +680,8 @@ const StudentsPage = () => {
                           </div>
                         </div>
 
-                        <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1">{student.name}</h3>
-                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">{student.username ? `@${student.username}` : 'No username set'}</div>
+                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-500 transition-colors block">{student.name}</Link>
+                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 hover:text-primary-500 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
 
                         <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
@@ -698,12 +699,14 @@ const StudentsPage = () => {
                         </div>
 
                         <div className="w-full flex items-center gap-3">
+                          <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
-                            className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
+                            className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
                           >
                             VIEW PROFILE
                           </motion.button>
+                          </Link>
                           <div className="p-1">
                             {renderStudentActions(student)}
                           </div>
