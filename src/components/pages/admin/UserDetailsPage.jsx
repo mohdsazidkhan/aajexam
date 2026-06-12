@@ -23,6 +23,16 @@ import Sidebar from "../../Sidebar";
 
 const PAGE_LIMIT = 10;
 
+const formatDate = (dateString) => {
+  if (!dateString) return 'N/A';
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  const time = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  return `${day}-${month}-${year} at ${time}`;
+};
+
 export default function UserDetailsPage() {
   const { isMounted, isRouterReady, router } = useSSR();
   const [userDetails, setUserDetails] = useState([]);
@@ -178,6 +188,7 @@ export default function UserDetailsPage() {
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Information</th>
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Social Links</th>
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wins (Daily/Weekly/Monthly)</th>
+                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Joined</th>
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Plan</th>
                       </tr>
                     </thead>
@@ -219,6 +230,9 @@ export default function UserDetailsPage() {
                               <div className="text-[8px] font-black text-slate-400 uppercase">{'Student'}</div>
                             </div>
                           </td>
+                          <td className="px-4 lg:px-8 py-3 lg:py-6">
+                            <div className="text-[9px] font-bold text-slate-400 whitespace-nowrap">{formatDate(u.createdAt)}</div>
+                          </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                             <div className="flex flex-col items-end gap-1">
                               <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
@@ -257,6 +271,7 @@ export default function UserDetailsPage() {
                       <div className="space-y-4 mb-4 lg:mb-8">
                         <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-blue-500/50" /> {u.email || 'N/A'}</div>
                         <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-emerald-500/50" /> {u.phone || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
                       <button className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Full Profile</button>
@@ -288,7 +303,7 @@ export default function UserDetailsPage() {
                         </div>
                         <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
                           <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email'}</div>
-                          <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Calendar className="w-4 text-primary-500/50" /> Joined {new Date(u.createdAt).toLocaleDateString()}</div>
+                          <div className="flex items-center gap-2 text-[9px] font-black text-slate-400"><Calendar className="w-4 text-primary-500/50" /> {formatDate(u.createdAt)}</div>
                           <div className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>

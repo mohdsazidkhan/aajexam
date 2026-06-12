@@ -79,11 +79,10 @@ const StudentsPage = () => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, '0');
-    const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    const month = monthNames[date.getMonth()];
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     const time = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-    return `${day} ${month} ${year} at ${time}`;
+    return `${day}-${month}-${year} at ${time}`;
   };
   const fetchStudents = useCallback(async (page = 1, search = '', filterParams = {}) => {
     try {
@@ -541,6 +540,7 @@ const StudentsPage = () => {
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account Status</th>
+                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Joined</th>
                           <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
                         </tr>
                       </thead>
@@ -591,6 +591,9 @@ const StudentsPage = () => {
                                 {student.status || 'Inactive'}
                               </div>
                             </td>
+                            <td className="px-4 lg:px-8 py-3 lg:py-6">
+                              <div className="text-[9px] font-bold text-slate-400 whitespace-nowrap">{formatDate(student.createdAt)}</div>
+                            </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                               {renderStudentActions(student)}
                             </td>
@@ -638,6 +641,10 @@ const StudentsPage = () => {
                               <Crown className="w-4 h-4 text-amber-500/50" />
                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Student</span>
                             </div>
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-primary-500/50" />
+                              <span className="text-[10px] font-black text-slate-400">{formatDate(student.createdAt)}</span>
+                            </div>
                           </div>
                         </div>
 
@@ -684,6 +691,10 @@ const StudentsPage = () => {
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
                             <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
                           </div>
+                        </div>
+                        <div className="w-full p-3 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 mb-4 flex items-center gap-2">
+                          <Calendar className="w-3 h-3 text-primary-500/50 shrink-0" />
+                          <div className="text-[8px] font-black text-slate-400">{formatDate(student.createdAt)}</div>
                         </div>
 
                         <div className="w-full flex items-center gap-3">
