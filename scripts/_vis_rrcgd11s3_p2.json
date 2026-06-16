@@ -1,0 +1,195 @@
+{
+  "kept": [
+    {
+      "orig": 33,
+      "s": "SCI",
+      "q": "The SI unit of power of a lens is:",
+      "o": ["joule", "newton", "dioptre", "metre"]
+    },
+    {
+      "orig": 34,
+      "s": "GA",
+      "q": "Which of the following languages has maximum number of speakers in India according to the Census 2011 data?",
+      "o": ["Odia", "Bengali", "Kannada", "Malayalam"]
+    },
+    {
+      "orig": 35,
+      "s": "SCI",
+      "q": "aHNO₃(aq) + bCa(OH)₂(aq) → Ca(NO₃)₂ + cH₂O\nThe coefficients a, b and c in the given balanced chemical equation are:",
+      "o": ["1, 2 and 2, respectively", "2, 1 and 1, respectively", "2, 1 and 2, respectively", "1, 2 and 1, respectively"]
+    },
+    {
+      "orig": 36,
+      "s": "REA",
+      "q": "Refer to the following letter, number, symbol series and answer the question.\n(Left) E ? 8 # K 2 L ? = R 3 @ W * X 5 C H D 4 (Right).\nIf all numbers are dropped from the series, which of the following will be seventh from the left?",
+      "o": ["W", "=", "R", "*"]
+    },
+    {
+      "orig": 37,
+      "s": "GA",
+      "q": "Which of the following events of modern Indian history is NOT correctly matched?",
+      "o": ["Dandi March by Mahatma Gandhi – 1910", "Partition of Bengal by Lord Curzon – 1905", "Quit India movement – 1942", "Jallianwala Bagh massacre at Amritsar – 1919"]
+    },
+    {
+      "orig": 38,
+      "s": "SCI",
+      "q": "The power of an electric bulb of resistance 18 ohm if no voltage is applied across it is ______",
+      "o": ["0 W", "18 W", "infinity", "9 W"]
+    },
+    {
+      "orig": 39,
+      "s": "REA",
+      "q": "Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth term.\n47 : 4913 :: 8 : ? :: 11 : 2197",
+      "o": ["1003", "1001", "1000", "1002"]
+    },
+    {
+      "orig": 40,
+      "s": "MATH",
+      "q": "Find the mode for the following data of student ages:\n16, 17, 15, 17, 16, 15, 14, 14, 13, 17, 13, 12, 12, 16, 10, 14, 17, 10, 11.",
+      "o": ["15", "16", "17", "11"]
+    },
+    {
+      "orig": 42,
+      "s": "GA",
+      "q": "According to the NREGA ('At a Glance' report, the average MGNREGA wages paid in the financial year 2021-2022 remain at only ₹208.85 per day. What is the full form of MGNREGA?",
+      "o": ["Mahatma Gandhi National Rural Employer Guarantee Action", "Mahatma Gandhi National Rural Employee Guarantee Act", "Mahatma Gandhi National Rural Employment Guarantee Activity", "Mahatma Gandhi National Rural Employment Guarantee Act"]
+    },
+    {
+      "orig": 43,
+      "s": "GA",
+      "q": "What is the full form of 'MICR' in MICR code?",
+      "o": ["Marking Ink Character Recognition", "Magnetic Ink Character Recognition", "Magnetic Ink Character Reconstruction", "Magnetic Ink Character Registration"]
+    },
+    {
+      "orig": 44,
+      "s": "REA",
+      "q": "Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth term.\n32 : 96 :: 72 : ? :: 42 : 66",
+      "o": ["75", "73", "76", "71"]
+    },
+    {
+      "orig": 45,
+      "s": "SCI",
+      "q": "Which of the following salts is an active ingredient in antacids?",
+      "o": ["NaHCO₃", "Na₂CO₃", "CaCl₂", "CaOCl₂"]
+    },
+    {
+      "orig": 46,
+      "s": "REA",
+      "q": "Which of the following numbers will replace the question mark (?) in the given series?\n3   13   21   27   31   ?",
+      "o": ["36", "33", "35", "34"]
+    },
+    {
+      "orig": 47,
+      "s": "MATH",
+      "q": "There is a 20% discount on a dozen pairs of identical shoes marked at a combined price of ₹7,200. How many such pairs of shoes can be bought for ₹1,440?",
+      "o": ["4", "5", "2", "3"]
+    },
+    {
+      "orig": 48,
+      "s": "MATH",
+      "q": "The area of a triangle is 85 cm² and its base is 5 cm. Find the height of the triangle corresponding to this given base.",
+      "o": ["51 cm", "34 cm", "24 cm", "17 cm"]
+    },
+    {
+      "orig": 49,
+      "s": "GA",
+      "q": "Which NRI was awarded Padma Vibhushan in the field of Science and Engineering posthumously in 2022?",
+      "o": ["Sanjay Rajaram", "Narinder Singh Kapany", "Thiruvengadam Veeraraghavan", "Rattan Lal"]
+    },
+    {
+      "orig": 50,
+      "s": "REA",
+      "q": "If yesterday was Monday, then which day of the week it will be after 89 days from today?",
+      "o": ["Sunday", "Saturday", "Monday", "Tuesday"]
+    },
+    {
+      "orig": 51,
+      "s": "SCI",
+      "q": "From the following, identify the applications of scattering of light.\n(a) Danger signals being red\n(b) Advanced sun rise and delayed sun set\n(c) Twinkling of stars\n(d) Tyndall effect\n(e) Redness of sun and blueness of sky",
+      "o": ["(b), (c), (d)", "(c), (d), (e)", "(a), (b), (c)", "(d), (e), (a)"]
+    },
+    {
+      "orig": 52,
+      "s": "SCI",
+      "q": "Meristematic tissue cells lack ______.",
+      "o": ["cytoplasm", "nucleus", "cell wall", "vacuoles"]
+    },
+    {
+      "orig": 53,
+      "s": "SCI",
+      "q": "A galvanometer when connected in a circuit, detects the presence of:",
+      "o": ["Current", "Frequency", "Resistance", "Potential difference"]
+    },
+    {
+      "orig": 54,
+      "s": "GA",
+      "q": "Padma Vibhushan award of 2022 has not been given in which of the following fields?",
+      "o": ["Art", "Trade and Industry", "Civil Service", "Literature and Education"]
+    },
+    {
+      "orig": 55,
+      "s": "REA",
+      "q": "Seven people - B, D, F, K, M, Q and W are sitting in a straight line facing North. D sits second from one of the extreme ends of the line. Only two people sit between D and F. M sits fourth to the right of F. Q sits second to the right of W. K is not an immediate neighbour of W. How many people sit to the left of B?",
+      "o": ["Three", "None", "Two", "One"]
+    },
+    {
+      "orig": 56,
+      "s": "GA",
+      "q": "Which group of organisation/institutes is an example of Constitutional bodies in India?",
+      "o": ["National Human Right Commission, National Commission for Minorities, Election Commission of India", "Comptroller and Auditor General of India, National Human Right Commission, Election Commission of India", "Election Commission of India, Attorney General of India, Union Public Service Commission", "National Commission of India, Securities and Exchange Board of India, Attorney General of India"]
+    },
+    {
+      "orig": 57,
+      "s": "MATH",
+      "q": "A and B can do a piece of work in 28 days and 35 days, respectively. They work on alternate days starting with A till the work gets completed. How long (in days) would it take A and B to complete the work?",
+      "o": ["31 1/9", "31 1/2", "31", "31 4/9"]
+    },
+    {
+      "orig": 58,
+      "s": "SCI",
+      "q": "How many elements exist in nature according to Newlands law of octaves?",
+      "o": ["56", "36", "46", "76"]
+    },
+    {
+      "orig": 60,
+      "s": "GA",
+      "q": "Orchidarium and the orchid production unit on the premises of the Institute of Bioresources and Sustainable Development (IBSD), is coming up in the state of ______ which has about 300 of the world's 17,000 species of orchids.",
+      "o": ["Arunachal Pradesh", "Meghalaya", "Himachal Pradesh", "Uttarakhand"]
+    },
+    {
+      "orig": 62,
+      "s": "SCI",
+      "q": "Which of the following vessels carries blood away from the heart to various organs of the body, except the lungs?",
+      "o": ["Pulmonary artery", "Aorta", "Pulmonary vein", "Vena cava"]
+    },
+    {
+      "orig": 63,
+      "s": "MATH",
+      "q": "Avinash's age is 3 times his son Aniruddh's age. Four years hence, the age of Avinash will be four times Aniruddh's age. Find the present age of Avinash.",
+      "o": ["30 years", "24 years", "28 years", "36 years"]
+    },
+    {
+      "orig": 64,
+      "s": "REA",
+      "q": "Five boxes containing different items, namely scales, pens, tapes, erasers and pencils, are kept one above the other, not necessarily in the same order. The box with pens is on the topmost position. The box with erasers is the only box between the boxes with pencils and scales. There is only one box below the box with scales and that is the box with tapes. Which box is immediately below the box containing pencils?",
+      "o": ["Erasers", "Scales", "Tapes", "Pens"]
+    },
+    {
+      "orig": 65,
+      "s": "SCI",
+      "q": "How many number of bonds do the single carbon atom form?",
+      "o": ["1", "2", "3", "4"]
+    },
+    {
+      "orig": 66,
+      "s": "MATH",
+      "q": "The average age of Yamuna and her daughter, Sathvika, is 21 years. The ratio of their ages is 5 : 2. Find the age of Sathvika.",
+      "o": ["10 years", "12 years", "17 years", "15 years"]
+    }
+  ],
+  "dropped": [
+    { "orig": 41, "reason": "Venn diagram figure required to answer (rural males/females employed) - not representable as plain text" },
+    { "orig": 59, "reason": "Venn diagram figure required to answer - not representable as plain text" },
+    { "orig": 61, "reason": "Geometry figure (triangle ABC with DE) required - not representable as plain text" }
+  ]
+}

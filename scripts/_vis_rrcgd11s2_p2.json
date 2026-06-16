@@ -1,0 +1,235 @@
+{
+  "kept": [
+    {
+      "orig": 33,
+      "s": "GA",
+      "q": "In the year 2021, who among the following became the first Indian Chairperson of the United Nations Advisory Committee of the Human Rights Council (HRC)?",
+      "o": ["Syed Akbaruddin", "Nirupama Rao", "Barakat Ahmad", "Ajai Malhotra"]
+    },
+    {
+      "orig": 34,
+      "s": "SCI",
+      "q": "Identify the FALSE statement in the context of digestion.",
+      "o": [
+        "Assimilation and absorption both occur before egestion.",
+        "Digestion comes before egestion but after ingestion.",
+        "Absorption comes before assimilation but after ingestion.",
+        "Assimilation comes before ingestion but after absorption."
+      ]
+    },
+    {
+      "orig": 35,
+      "s": "REA",
+      "q": "Which of the following numbers will replace the question mark (?) in the given number series?\n590, 605, 588, 607, 586, ?",
+      "o": ["611", "609", "613", "605"]
+    },
+    {
+      "orig": 36,
+      "s": "REA",
+      "q": "Six friends are sitting around a round table facing the centre with equal distances between two neighbours. Sarah is sitting to the immediate left of Laura. Ron is sitting second to the right of Tyler. Sarah is sitting third to the left of Adam. Laura is sitting to the immediate left of Tyler. Tessa is sitting to the immediate right of Ron. Who is sitting to the immediate left of Sarah?",
+      "o": ["Laura", "Tessa", "Ron", "Tyler"]
+    },
+    {
+      "orig": 37,
+      "s": "SCI",
+      "q": "The respiratory pigment, haemoglobin, is present in:",
+      "o": ["blood platelets", "white blood corpuscles", "red blood corpuscles", "blood plasma"]
+    },
+    {
+      "orig": 38,
+      "s": "GA",
+      "q": "What does the cost of self-owned inputs used in the production process refer to?",
+      "o": ["Total cost", "Marginal cost", "Total variable cost", "Implicit cost"]
+    },
+    {
+      "orig": 39,
+      "s": "REA",
+      "q": "In a certain code language, 'MATCH' is written as 'NDYJQ' and 'SKULL' is written as 'TNZSU'. How will 'CHAMP' be written in that language?",
+      "o": ["ELFTY", "DKFTY", "DJFTZ", "EJFTZ"]
+    },
+    {
+      "orig": 40,
+      "s": "REA",
+      "q": "Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth term.\n6 : 27 :: 8 : ? :: 42 : 54",
+      "o": ["34", "35", "32", "36"]
+    },
+    {
+      "orig": 41,
+      "s": "MATH",
+      "q": "The marked price of an article is ₹1,820 and its selling price is ₹1,420. Find the discount percentage. (Round the answer to nearest whole number.)",
+      "o": ["26%", "25%", "22%", "28%"]
+    },
+    {
+      "orig": 42,
+      "s": "GA",
+      "q": "Which of the following ports is located along the east coast of India?",
+      "o": ["Paradip", "Kandla", "Mazagaon", "JLN port Nhava Sheva"]
+    },
+    {
+      "orig": 43,
+      "s": "SCI",
+      "q": "Mining causes pollution because of the large amount of:",
+      "o": ["sludge", "slag", "ore", "slurry"]
+    },
+    {
+      "orig": 44,
+      "s": "MATH",
+      "q": "A trader owns a machine worth ₹9,000 due in one year. However, the trader wants to settle the amount after 4 months. If the rate of interest is 4% per annum, then, how much money should he pay? (Give your answer correct to the nearest whole number value.)",
+      "o": ["₹8,686", "₹8,654", "₹8,645", "₹8,688"]
+    },
+    {
+      "orig": 45,
+      "s": "REA",
+      "q": "Refer to the following letter-symbol-series and answer the question that follows.\n(Left) 8 R * # P 5 V * @ Z 9 T 9 G B Y 5 & Z R 9 N @ ¢ V N (Right)\nFrom left how many such letters are there that are immediately preceded by a symbol and immediately followed by a letter?",
+      "o": ["4", "7", "3", "5"]
+    },
+    {
+      "orig": 46,
+      "s": "MATH",
+      "q": "A sum of ₹5,000 is divided into two parts. One part is deposited in bank A at simple interest at 5% per annum, and the other part is deposited in bank B at simple interest at 10% per annum. If the total annual interest received is ₹325, then the money deposited in bank A was:",
+      "o": ["₹5,000", "₹3,500", "₹4,000", "₹1,500"]
+    },
+    {
+      "orig": 47,
+      "s": "GA",
+      "q": "In March 2022, ________ has been elected as the superior general of the Missionaries of Charity, becoming the fourth occupant of the top post of the global organisation founded by Saint Teresa of Kolkata.",
+      "o": ["Sister Anselm", "Sister Mary Prema Pierick", "Sisters Marguerite", "Sister Mary Joseph"]
+    },
+    {
+      "orig": 48,
+      "s": "GA",
+      "q": "Which Indian golfer was the runner-up at the Players Championship 2022 at Florida?",
+      "o": ["Shiv Kapur", "Anirban Lahiri", "Arjun Atwal", "Gaurav Ghei"]
+    },
+    {
+      "orig": 49,
+      "s": "REA",
+      "q": "Refer to the following letter series and answer the question that follows.\nP L M O K I J N B H U Y G A V E C F T\nHow many such consonants are there in the above series, each of which is immediately preceded by a vowel and immediately followed by a vowel?",
+      "o": ["Two", "Zero", "One", "Three"]
+    },
+    {
+      "orig": 50,
+      "s": "REA",
+      "q": "In this question, a statement is followed by two conclusions numbered I and II. You have to assume everything in the statement to be true and on the basis of which of them logically follows beyond a reasonable doubt from the information given in the statement.\nStatement:\nProviding LPG connections to BPL (Below Poverty Level) households will ensure universal coverage of cooking gas in country X.\nConclusions:\nI. Usage of inefficient cooking fuels such as firewood, coal, etc., is a common practice in rural parts of country X.\nII. No other mode of cooking is as effective as using LPG.",
+      "o": [
+        "Neither conclusion I nor II follows",
+        "Both conclusions I and II follow",
+        "Only conclusion I follows",
+        "Only conclusion II follows"
+      ]
+    },
+    {
+      "orig": 51,
+      "s": "SCI",
+      "q": "Suppose an object of height 5 cm is placed in front of a concave mirror and a real and inverted image of the same size is formed at a distance of 20.0 cm. Then the centre of curvature of the mirror is at:",
+      "o": ["10 cm", "20 cm", "15 cm", "5 cm"]
+    },
+    {
+      "orig": 52,
+      "s": "REA",
+      "q": "U, V, W, X, Y and Z are six students sitting around a circular table, facing the centre of the table for a school assignment. X is the immediate neighbour of W. V is seated third to the left of W. U is seated to the immediate right of Y. V is seated second to the right of X. Who is seated third to the left of Z?",
+      "o": ["V", "W", "Y", "U"]
+    },
+    {
+      "orig": 53,
+      "s": "MATH",
+      "q": "Simplify the given expression.\nz(x³ − y³)/(x² + xy + y²) + x(y³ − z³)/(y² + yz + z²) + y(z³ − x³)/(z² + zx + x²)",
+      "o": ["x − y − z", "0", "x² + y² + z²", "x + y + z"]
+    },
+    {
+      "orig": 54,
+      "s": "REA",
+      "q": "In a certain alpha-numeric code, 'PLATE' is written as 45 and 'BREAK' is written as 13. How will 'PASTE' be written in the same code?",
+      "o": ["12", "21", "54", "16"]
+    },
+    {
+      "orig": 55,
+      "s": "MATH",
+      "q": "3 men can complete a piece of work in 6 days while 6 women can do it in 5 days. In how many days can 5 women and 3 men complete it?",
+      "o": ["5 days", "4 days", "6 days", "3 days"]
+    },
+    {
+      "orig": 56,
+      "s": "SCI",
+      "q": "What was the main reason behind Mendel's success in deriving the laws of inheritance?",
+      "o": [
+        "He selected the pea plant.",
+        "He studied only one character at a time in his crosses.",
+        "He chose parents that were identical.",
+        "He counted the individuals exhibiting a particular trait in each generation."
+      ]
+    },
+    {
+      "orig": 57,
+      "s": "MATH",
+      "q": "If a and b are the roots of the equation x² + 5x + 4 = 0, then the value of (a³ + b³)/(a² + b² − 4) is:",
+      "o": ["−6", "−5", "−4", "−7"]
+    },
+    {
+      "orig": 58,
+      "s": "SCI",
+      "q": "A device employed to produce large currents for use in homes and industry is ________.",
+      "o": ["electric motor", "electric toaster", "electric generator", "electric kettle"]
+    },
+    {
+      "orig": 59,
+      "s": "GA",
+      "q": "Pawl Kut is the greatest of all the festivals celebrated in the state of ________.",
+      "o": ["Meghalaya", "Kerala", "Goa", "Mizoram"]
+    },
+    {
+      "orig": 60,
+      "s": "GA",
+      "q": "Which of the following is India's first AI-based job platform for persons with disabilities?",
+      "o": ["Swarajability", "Ujalaability", "Jeevanability", "Bhartability"]
+    },
+    {
+      "orig": 61,
+      "s": "SCI",
+      "q": "Focal length of the concave mirror which can produce magnification of −2 and real image at a distance 1.5 m from the pole is:",
+      "o": ["5 m", "0.5 m", "1.5 m", "2 m"]
+    },
+    {
+      "orig": 62,
+      "s": "SCI",
+      "q": "Select the correct Dobereiner's triads from the given sets.",
+      "o": ["Ca, Sr, I", "Li, Na, Ba", "Ca, Sr, Ba", "F, Cl, Br"]
+    },
+    {
+      "orig": 63,
+      "s": "SCI",
+      "q": "The substance which doctors use as plaster for supporting fractured bones in the right position is:",
+      "o": ["Na₂CO₃.10H₂O", "CuSO₄.5H₂O", "CaSO₄.2H₂O", "CaSO₄.½H₂O"]
+    },
+    {
+      "orig": 64,
+      "s": "REA",
+      "q": "If '+' means '÷', '−' means '+', '×' means '−' and '÷' means '×', what will be the value of the following expression?\n[{(16 × 6) − (2 ÷ 3)} + (4 − 4)] ÷ 2",
+      "o": ["8", "6", "4", "2"]
+    },
+    {
+      "orig": 65,
+      "s": "MATH",
+      "q": "The area of a triangle whose sides measures 10 cm, 12 cm and 14 cm is:",
+      "o": ["32√3 cm²", "25√5 cm²", "30√2 cm²", "24√6 cm²"]
+    },
+    {
+      "orig": 66,
+      "s": "SCI",
+      "q": "Which of the following properties remain same while moving down the group in the periodic table?",
+      "o": ["Non-metallic character", "Atomic size", "Metallic character", "Valency"]
+    },
+    {
+      "orig": 67,
+      "s": "GA",
+      "q": "A ________ is a retail establishment that combines a department store and a grocery supermarket.",
+      "o": ["hypermarket", "supermarket", "minimart", "hitmart"]
+    }
+  ],
+  "dropped": [
+    {
+      "orig": 68,
+      "reason": "Line graph (figure) required to answer; question references plotted data not representable as plain text"
+    }
+  ]
+}

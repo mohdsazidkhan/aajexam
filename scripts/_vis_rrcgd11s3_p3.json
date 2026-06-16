@@ -1,0 +1,205 @@
+{
+  "kept": [
+    {
+      "orig": 67,
+      "s": "MATH",
+      "q": "Mohan, Sohan and Madhav enter into a partnership investing ₹3,000, ₹2,000 and ₹5,000 respectively. Find their respective shares in the annual profit of ₹5,600 in the given order of the names mentioned here.",
+      "o": ["₹1,752, ₹1,168, ₹2,680", "₹1,680, ₹1,120, ₹2,800", "₹1,480, ₹1,320, ₹2,800", "₹1,680, ₹1,240, ₹2,680"]
+    },
+    {
+      "orig": 68,
+      "s": "GA",
+      "q": "Match the mountain ranges in column-A with their states in column-B.\nColumn-A (Mountain range): a. Aravali mountain, b. Vindhya range, c. Western ghat, d. Himalaya range\nColumn-B (State): 1. Himachal Pradesh and Uttarakhand, 2. Kerala and Karnataka, 3. Rajasthan, 4. Madhya Pradesh",
+      "o": ["a-1, b-2, c-3, d-4", "a-4, b-3, c-1, d-2", "a-3, b-4, c-2, d-1", "a-4, b-3, c-2, d-1"]
+    },
+    {
+      "orig": 69,
+      "s": "MATH",
+      "q": "If K + 1/K = −2, then the value of K³ + 1/K³ is:",
+      "o": ["−3", "−2", "−4", "−1"]
+    },
+    {
+      "orig": 70,
+      "s": "REA",
+      "q": "Select the option that is related to the fifth term in the same way as the fourth term is related to the third term and the second term is related to the first term.\nSTUDENT : SRQWVUNG :: TEACHER : GVZXVYI :: SCHOOL : ?",
+      "o": ["SLOLXH", "HXSOLL", "HXSLLO", "XSHLLO"]
+    },
+    {
+      "orig": 71,
+      "s": "SCI",
+      "q": "Which of the following with respect to the Modern Periodic Table is NOT correct?",
+      "o": ["The elements present in the same group have same number of valence electrons.", "It has 18 groups and 7 periods.", "Na, Mg and S belongs to the 4th period of the Modern Periodic Table.", "The number of shells increases as we go down the group."]
+    },
+    {
+      "orig": 72,
+      "s": "REA",
+      "q": "If '×' means '−', '−' means '÷', '÷' means '+', and '+' means '×', what will be the value of the following expression?\n[(16 × 9) + (3 ÷ 2)] − (7 + 4)] × 2",
+      "o": ["6", "8", "4", "2"]
+    },
+    {
+      "orig": 73,
+      "s": "SCI",
+      "q": "Which statement regarding molecular movement (living character) of viruses is correct?",
+      "o": ["Viruses do not respire.", "A virus does not grow in an artificial medium.", "Inactive until they infect some cell.", "Metabolism is absent in viruses."]
+    },
+    {
+      "orig": 74,
+      "s": "REA",
+      "q": "Ravi starts from Point A and drives 8 km towards the west. He then takes a left turn, drives 7 km, turns left and drives 19 km. He then takes a right turn and drives 2 km. He takes a final right turn, drives 11 km and stops at Point B. How far and in which direction should he drive in order to reach Point A from Point B? (All turns are 90 degree turns only)",
+      "o": ["7 km towards the north", "2 km towards the north", "5 km towards the south", "3 km towards the south"]
+    },
+    {
+      "orig": 75,
+      "s": "SCI",
+      "q": "What would have happened if Mendel had NOT studied the F2 generation?",
+      "o": ["He would not have discovered which traits were dominant", "He would not have been able to get hybrid plants", "He would not have discovered that recessive traits are not lost", "He would not have been able to study multiple characters"]
+    },
+    {
+      "orig": 76,
+      "s": "REA",
+      "q": "Seven people A, B, D, E, G, M and K are sitting in a straight line facing the north. K is sitting at an extreme end of the line. M is an immediate neighbour of E. Only three people are sitting between A and E. A is sitting second to the right of D. M is neither the immediate neighbour of A nor B. K is sitting second to the right of D. How many people are sitting to the right of K?",
+      "o": ["Three", "Two", "One", "Zero"]
+    },
+    {
+      "orig": 77,
+      "s": "MATH",
+      "q": "If K is the mean of 2, 3, 4, K, then the mode is:",
+      "o": ["4", "2", "3", "1"]
+    },
+    {
+      "orig": 78,
+      "s": "REA",
+      "q": "Refer to the given letter-cluster series and answer the question that follows.\nADAG, BTDC, WQCI, PRLE, VTSZ, BKXW\nIf in each of the letter-clusters, each letter is changed to the next letter in the English alphabetical series, how many letter-clusters thus formed will have exactly two vowels?",
+      "o": ["1", "0", "3", "2"]
+    },
+    {
+      "orig": 79,
+      "s": "SCI",
+      "q": "One of the following is NOT a bacterial disease?",
+      "o": ["Gonorrhoea", "AIDS", "Syphilis", "Tuberculosis"]
+    },
+    {
+      "orig": 80,
+      "s": "MATH",
+      "q": "Observe the given pattern and the find the missing number.\n22² = 484\n202² = 40804\n2002² = 4008004\n20002² = …….",
+      "o": ["400800400", "2000220002", "4840000", "400080004"]
+    },
+    {
+      "orig": 81,
+      "s": "GA",
+      "q": "Which of the following is NOT among the groups organised by microfinance institutions in India?",
+      "o": ["Joint Liability Group (JLG)", "Urban Model Bank", "Self Help Group (SHG)", "Grameen Model Bank"]
+    },
+    {
+      "orig": 82,
+      "s": "SCI",
+      "q": "object is placed _______ to obtain an inverted and enlarged image.",
+      "o": ["at infinity from concave mirror", "at infinity from convex mirror", "between C and F of concave mirror", "between C and F of convex mirror"]
+    },
+    {
+      "orig": 84,
+      "s": "MATH",
+      "q": "The base of the right-angled triangle is 3 m greater than its height. If its hypotenuse is 15 m, then find its area.",
+      "o": ["84 m²", "64 m²", "72 m²", "54 m²"]
+    },
+    {
+      "orig": 85,
+      "s": "REA",
+      "q": "Three statements are followed by three conclusions numbered I, II and III. You have to consider these statements to be true, even if they seem to be at variance with commonly known facts. Decide which of the given conclusions logically follow(s) from the given statements.\nStatements:\nSome eggs are wheats.\nSome fruits are gravels.\nAll gravels are bottles.\nConclusions:\n(I) Some fruits are wheats.\n(II) Some bottles are fruits.\n(III) Some eggs are gravels.",
+      "o": ["Only conclusion I follows", "Either conclusion I or III follows", "Only conclusion II follows", "None of the conclusions follow"]
+    },
+    {
+      "orig": 86,
+      "s": "SCI",
+      "q": "Some bacteria are photosynthetic. Where are the photosynthetic pigments located in these cells?",
+      "o": ["On special membranes", "In the infolding of the plasma membrane", "In chloroplasts", "In the cell cytoplasm"]
+    },
+    {
+      "orig": 87,
+      "s": "GA",
+      "q": "As of August 2022, the Maintenance and Welfare of Parents and Senior Citizens Act of which year governs the financial security, welfare and protection of senior citizens?",
+      "o": ["2002", "2014", "2007", "2005"]
+    },
+    {
+      "orig": 88,
+      "s": "MATH",
+      "q": "If i = 7/2 j and j = 4/5 k, then the ratio of i : j : k is:",
+      "o": ["28 : 4 : 15", "28 : 12 : 15", "7 : 12 : 5", "21 : 12 : 20"]
+    },
+    {
+      "orig": 89,
+      "s": "REA",
+      "q": "In a certain code language, 'FRAME' is written as 'HPCKG', and 'PEACH' is written as 'RCCAF'. How will 'GROOM' be written in that language?",
+      "o": ["CPPMO", "DPQMO", "DTQQO", "APQNO"]
+    },
+    {
+      "orig": 90,
+      "s": "GA",
+      "q": "Which of the following is NOT correctly matched?",
+      "o": ["Neem – Alpine region", "Ficus – Malabar coast moist forests", "Pine – Himalayan subtropical forest", "Indian Sandalwood – Deciduous forests of Deccan Plateau"]
+    },
+    {
+      "orig": 91,
+      "s": "GA",
+      "q": "Which of the following is NOT a body of the urban local body administration?",
+      "o": ["Municipality", "Nagar Panchayat", "Municipal Corporation", "Zila panchayat"]
+    },
+    {
+      "orig": 92,
+      "s": "GA",
+      "q": "In which part of the Indian Constitution are the Fundamental Rights explained?",
+      "o": ["Part IV", "Part III", "Part V", "Part VI"]
+    },
+    {
+      "orig": 93,
+      "s": "GA",
+      "q": "What are the four factors of production?",
+      "o": ["Capital, transportation, excise duty and entrepreneurship", "Labour, transportation, excise duty and entrepreneurship", "Man power, transportation, excise duty and import", "Land, labour, capital, and entrepreneurship"]
+    },
+    {
+      "orig": 94,
+      "s": "SCI",
+      "q": "When a magnet is moved into a coil connected to a galvanometer, the current is induced in the coil. The induced current does not depend on which of the following factor?",
+      "o": ["Number of turns of the coil", "Speed of movement of the magnet", "Resistance of the galvanometer connected in the coil", "The pole strength of the magnet"]
+    },
+    {
+      "orig": 95,
+      "s": "REA",
+      "q": "A total of 50 students are in a row. Ankit is at the 10th position from the start of the row. What is the position of Ankit from the end of the row?",
+      "o": ["30th", "31st", "32nd", "33rd"]
+    },
+    {
+      "orig": 96,
+      "s": "REA",
+      "q": "A statement is given below, followed by four conclusions given in the options. Find out which conclusion is true based on the given statement.\nStatement: S = T ≥ O = M < K > P > O",
+      "o": ["K > O > S", "M ≥ P ≥ O", "O = S = T", "K > G > S"]
+    },
+    {
+      "orig": 97,
+      "s": "MATH",
+      "q": "What is the sum of the digits placed at the even places when counted from left to right in the number 4796123567?",
+      "o": ["18", "26", "22", "32"]
+    },
+    {
+      "orig": 98,
+      "s": "SCI",
+      "q": "Formation of slaked lime by the reaction of calcium oxide with water is an example of _____.",
+      "o": ["decomposition reaction", "endothermic reaction", "displacement reaction", "combination reaction"]
+    },
+    {
+      "orig": 99,
+      "s": "GA",
+      "q": "Parts of which present state had evolved a local system of canal irrigation called 'kuhls' over 400 years ago?",
+      "o": ["Madhya Pradesh", "Himachal Pradesh", "Uttar Pradesh", "Jammu and Kashmir"]
+    },
+    {
+      "orig": 100,
+      "s": "REA",
+      "q": "In a certain code language, 'WORSE' is written as 'R#5&27' and 'STEAK' is written as '&@*88'. How will 'THORN' be written in that language?",
+      "o": ["@5#27", "#5@86", "@5*86", "#5@27"]
+    }
+  ],
+  "dropped": [
+    {"orig": 83, "reason": "Table-based data interpretation (translated words counts per day/person), not faithfully linearizable as plain text"}
+  ]
+}

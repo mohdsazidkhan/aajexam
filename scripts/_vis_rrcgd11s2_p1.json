@@ -1,0 +1,193 @@
+{
+  "kept": [
+    {
+      "orig": 1,
+      "s": "GA",
+      "q": "In which year was the 11ᵗʰ Fundamental Duty added to the list of Fundamental Duties in the Indian Constitution?",
+      "o": ["2000", "1999", "2004", "2002"]
+    },
+    {
+      "orig": 2,
+      "s": "REA",
+      "q": "Three statements are followed by three conclusions numbered I, II and III. You have to consider these statements to be true, even if they seem to be at variance with commonly known facts. Decide which of the given conclusions logically follow(s) from the given statements.\nStatements:\nFew spiders are caterpillars\nNo caterpillar is a grasshopper\nAll grasshoppers are bedbugs\nConclusions:\n(I) Some bedbugs are not caterpillars\n(II) All caterpillars are spiders\n(III) All bedbugs are grasshoppers",
+      "o": ["Either conclusion I or III follows", "Only conclusion I follows", "Only conclusion II follows", "None of the conclusions follow"]
+    },
+    {
+      "orig": 3,
+      "s": "REA",
+      "q": "Which of the following numbers will replace the question mark (?) in the given series?\n1.1   1.2   1.4   1.8   2.5   ?",
+      "o": ["3.2", "3.5", "3.6", "3.7"]
+    },
+    {
+      "orig": 4,
+      "s": "GA",
+      "q": "The 'Northern Circars' is the name of a __________ in India.",
+      "o": ["mountain", "coastal plain", "waterfall", "river valley"]
+    },
+    {
+      "orig": 5,
+      "s": "REA",
+      "q": "Amongst six friends A, B, C, D, E and F, each has a different height. B is taller than D but shorter than A. D is not the shortest. Only one person is shorter than C. Only two people are shorter than E. Who is the shortest among all the friends?",
+      "o": ["B", "F", "C", "D"]
+    },
+    {
+      "orig": 7,
+      "s": "MATH",
+      "q": "A tailor has 22 metres of cloth and he has to cut each metre of cloth into 5 pieces. How many pieces can he get from the 22 metres of cloth he has?",
+      "o": ["11", "55", "110", "1110"]
+    },
+    {
+      "orig": 8,
+      "s": "SCI",
+      "q": "When Mendel crossed tall pea plants with short pea plants, the progeny was all tall plants. When he crossed plants bearing round seeds with plants bearing wrinkled seeds, the progeny was all round seeds. If he crossed tall plants bearing wrinkled seeds with short plants bearing round seeds, what would the progeny plants look like?",
+      "o": ["Short plants with wrinkled seeds", "Short plants with round seeds", "Tall plants with round seeds", "Tall plants with wrinkled seeds"]
+    },
+    {
+      "orig": 9,
+      "s": "SCI",
+      "q": "In plants, resins and gums are stored especially in __________.",
+      "o": ["old phloem", "old cortex", "old pith", "old xylem"]
+    },
+    {
+      "orig": 10,
+      "s": "MATH",
+      "q": "Find area of a triangle whose base measures 126.4 cm and height 54.8 cm.",
+      "o": ["3343.36 cm²", "9267.72 cm²", "6926.72 cm²", "3463.36 cm²"]
+    },
+    {
+      "orig": 11,
+      "s": "MATH",
+      "q": "If 1.345 + 13.45 + 0.1354 + 0.0596 = 11.453 − 0.543 + k, then what is the value of k?",
+      "o": ["4.08", "4.48", "3.06", "3.28"]
+    },
+    {
+      "orig": 12,
+      "s": "REA",
+      "q": "All 20 students of a class are sitting in a straight row facing east. Ram is 8ᵗʰ from the right end and Sita is 16ᵗʰ from the left end. How many students are sitting between Ram and Sita?",
+      "o": ["3", "2", "4", "8"]
+    },
+    {
+      "orig": 13,
+      "s": "MATH",
+      "q": "The average weight of 4 persons increases by 3 kg when a person of 53 kg is replaced by a new person. The weight (in kg) of the new person is:",
+      "o": ["62", "65", "67", "68"]
+    },
+    {
+      "orig": 14,
+      "s": "MATH",
+      "q": "If the ratio of two exterior angles on the same side of a transversal line intersecting the two parallel lines is 7 : 5, then how much more is the larger of these two exterior angles than the smaller one?",
+      "o": ["60°", "30°", "45°", "75°"]
+    },
+    {
+      "orig": 15,
+      "s": "REA",
+      "q": "Rahman goes 20 km towards north from a fixed-point F, then after turning to his right he goes 15 km. After this he goes 20 km after turning to his right. How far and in what direction is he now with respect to the starting point F?\n(All turns are 90° turns only)",
+      "o": ["15 km towards north", "15 km towards south", "15 km towards west", "15 km towards east"]
+    },
+    {
+      "orig": 16,
+      "s": "SCI",
+      "q": "The melting and boiling points of ionic compounds are very high because ______.",
+      "o": ["a large amount of energy is required to break the strong inter-ionic attraction", "a large amount of energy is required to break the weak inter-ionic attraction", "a large amount of energy is required to break the weak inter-ionic attraction", "a small amount of energy is required to break the strong inter-ionic attraction"]
+    },
+    {
+      "orig": 17,
+      "s": "SCI",
+      "q": "An electric circuit consumes energy at a rate of 540 W per minute when heated. If the voltage across the circuit is 270 V, what is the resistance of the circuit?",
+      "o": ["270 ohm", "135 ohm", "65 ohm", "540 ohm"]
+    },
+    {
+      "orig": 18,
+      "s": "MATH",
+      "q": "A and B invest in a business in the ratio of 7 : 8 for same time. If 7% of the total profit goes to charity and A's share in profit is ₹12,600, then what is the total amount of profit earned? [Give your answer correct to 2 decimal places.]",
+      "o": ["₹28,025.32", "₹28,032.25", "₹29,025.32", "₹29,032.26"]
+    },
+    {
+      "orig": 19,
+      "s": "MATH",
+      "q": "A class consisting of 30 students took a competitive exam. 18 of these students got an average of 90 marks and the remaining students of this class got an average of 80 marks. What is the average score of the class as a whole?",
+      "o": ["92", "76", "86", "82"]
+    },
+    {
+      "orig": 20,
+      "s": "MATH",
+      "q": "Find the smallest number, which when tripled, will leave the remainder as zero on being divided by 5, 15 and 33.",
+      "o": ["70", "150", "35", "100"]
+    },
+    {
+      "orig": 21,
+      "s": "SCI",
+      "q": "Which of the following properties is required for a material to be used in filament of an electric bulb?",
+      "o": ["Low melting point", "Low temperature", "High conductivity", "High resistivity"]
+    },
+    {
+      "orig": 22,
+      "s": "REA",
+      "q": "All 28 students of a class are standing in a straight row facing north. Joy is 14ᵗʰ from the right end, while Beto is 12ᵗʰ from the left end. How many students stand between Joy and Beto?",
+      "o": ["2", "3", "4", "1"]
+    },
+    {
+      "orig": 23,
+      "s": "GA",
+      "q": "Who won a bronze medal at the U23 Asian Wrestling Championships in 2022?",
+      "o": ["Sushil Kumar", "Anshu Malik", "Ravi K Dahiya", "Deepak Punia"]
+    },
+    {
+      "orig": 24,
+      "s": "SCI",
+      "q": "Consider the following reaction.\nNa₂SO₄(aq) + BaCl₂(aq) ⟶ BaSO₄(s) + 2NaCl(s)\nThis reaction is an example of:",
+      "o": ["combination reaction", "displacement reaction", "decomposition reaction", "precipitation reaction"]
+    },
+    {
+      "orig": 25,
+      "s": "REA",
+      "q": "A statement is given below, followed by four conclusions given in the options. Find out which conclusion is true based on the given statement.\nStatement: A > S ≥ D > F ≤ G < H",
+      "o": ["S > F", "S = H", "A ≥ G", "D > G"]
+    },
+    {
+      "orig": 26,
+      "s": "MATH",
+      "q": "Simplify the given expression.\n2(x² + y²)² − 3xy(x² + y²) − 2x²y²",
+      "o": ["(x² + y² − xy)(2x² + 2y² − xy)", "(2x² + 2y² + xy)(x² + y² − 2xy)", "(x² + y² + xy)(2x² + 2y² + xy)", "(2x² + 2y² − xy)(x² + y² − 2xy)"]
+    },
+    {
+      "orig": 27,
+      "s": "GA",
+      "q": "The production function of a firm is relationship between inputs used and __________.",
+      "o": ["quantity of inputs used by the firm", "quality of inputs used by the firm", "output produced by the firm", "price of inputs used by the firm"]
+    },
+    {
+      "orig": 28,
+      "s": "SCI",
+      "q": "In an electric motor, the __________ act(s) as a contact between the commutator and the terminals of the battery.",
+      "o": ["magnetic poles", "split ring", "plug key", "carbon brushes"]
+    },
+    {
+      "orig": 29,
+      "s": "SCI",
+      "q": "The conversion of ethanol to acetic acid is an example of:",
+      "o": ["substitution reaction", "oxidation reaction", "addition reaction", "reduction reaction"]
+    },
+    {
+      "orig": 30,
+      "s": "SCI",
+      "q": "Carbon makes strong bonds with other elements.\nWhich of the following is the correct explanation for the given statement?",
+      "o": ["A carbon nucleus holds the shared pairs of electrons weakly due to its small size.", "A carbon nucleus holds the shared pairs of electrons strongly due to its small size.", "A carbon nucleus holds the shared pairs of electrons strongly due to its large size.", "A carbon nucleus holds the shared pairs of electrons weakly due to its large size."]
+    },
+    {
+      "orig": 31,
+      "s": "SCI",
+      "q": "Which of the following is a balanced food in itself?",
+      "o": ["Pulses", "Milk", "Meat", "Honey"]
+    },
+    {
+      "orig": 32,
+      "s": "GA",
+      "q": "India's first amputee clinic was launched in which place?",
+      "o": ["Chandigarh", "Bhopal", "Bengaluru", "Kanpur"]
+    }
+  ],
+  "dropped": [
+    {"orig": 6, "reason": "non-linearizable symbol series (counting symbols immediately followed by an even number in a mixed character/symbol sequence)"}
+  ]
+}

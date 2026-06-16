@@ -1,0 +1,234 @@
+{
+  "kept": [
+    {
+      "orig": 69,
+      "s": "SCI",
+      "q": "Clouds can be seen as white because the small water droplets of the cloud ______.",
+      "o": [
+        "do not scatter any one of the wavelengths of visible light",
+        "scatter very high amount of red and blue wavelength of visible light",
+        "scatter all the wavelengths of the visible light with almost equal intensity",
+        "scatter very less amount of red and blue wavelength of visible light"
+      ]
+    },
+    {
+      "orig": 70,
+      "s": "REA",
+      "q": "Seven boxes S, T, U, V, W, X and Y are kept one over the other but not necessarily in the same order. X is kept immediately below V. Only two boxes are kept above U. T is kept immediately above S. U is kept immediately above V. Only two boxes are kept below X. How many boxes are below V?",
+      "o": ["One", "Two", "Four", "Three"]
+    },
+    {
+      "orig": 71,
+      "s": "MATH",
+      "q": "Which of the following equations does NOT have real roots?",
+      "o": [
+        "6x² − 14x + 9 = 0",
+        "3x² − 5x + 2 = 0",
+        "x² − 4x − 3 = 0",
+        "x² − 7x + 5 = 0"
+      ]
+    },
+    {
+      "orig": 72,
+      "s": "REA",
+      "q": "Each of the digits in the number 46734 is arranged in ascending order from left to right. The position of how many digits will change as compared to that in the original number?",
+      "o": ["2", "3", "4", "5"]
+    },
+    {
+      "orig": 73,
+      "s": "MATH",
+      "q": "Simplify the given expression.\n(x² + 3x − 10)/(x² − 25) × (x² + 3x + 2)/(x² − 4) × x(x + 2)/((x + 1)² + (x + 1))",
+      "o": [
+        "(x − 5)/x",
+        "(x + 5)/x",
+        "x/(x + 5)",
+        "x/(x − 5)"
+      ]
+    },
+    {
+      "orig": 75,
+      "s": "GA",
+      "q": "When a Tirthankara leaves a mortal body, it is known as ______.",
+      "o": ["Janma Kalyana", "Tapa Kalyana", "Siddhashila", "Nirvana"]
+    },
+    {
+      "orig": 76,
+      "s": "SCI",
+      "q": "When we consider biodegradable substances, we see that the common property is that ______.",
+      "o": [
+        "they are all water-soluble",
+        "they are all plant products",
+        "they are all biological in origin",
+        "they are not toxic"
+      ]
+    },
+    {
+      "orig": 77,
+      "s": "GA",
+      "q": "Dibru-Saikhowa National Park is located in which of the following states?",
+      "o": ["Assam", "Meghalaya", "Nagaland", "Mizoram"]
+    },
+    {
+      "orig": 78,
+      "s": "REA",
+      "q": "Ashutosh walks 90 m towards north from his house, then he turns left and walks 110 m. He again turns left and walks 150 m. He then turns left again, and covers a distance of 130 m. In which direction is Ashutosh now, with respect to the starting point? (All turns are 90° turns only)",
+      "o": ["South-east", "North-east", "North-west", "South-west"]
+    },
+    {
+      "orig": 79,
+      "s": "REA",
+      "q": "In the given letter-cluster pairs, the first letter-cluster is related to the second letter-cluster following a certain logic. Study the given pairs carefully, and from the given options, select the pair that follows the same logic.\nACR : BDS\nGUX : HVY",
+      "o": ["SIO : KQP", "MQF : NRG", "OIF : NHE", "HJL : SQO"]
+    },
+    {
+      "orig": 80,
+      "s": "GA",
+      "q": "Which of the following schemes is aimed at better administration of Waqf properties and safeguarding and preventing the encroachment of these properties?",
+      "o": [
+        "Awami Waqf Board Taraqqiati Scheme (AWBTS)",
+        "Qaumi Waqf Board Taraqqiati Scheme (QWBTS)",
+        "Molana Waqf Board Taraqqiati Scheme (MWBTS)",
+        "Islamic Waqf Board Taraqqiati Scheme (IWBTS)"
+      ]
+    },
+    {
+      "orig": 81,
+      "s": "SCI",
+      "q": "A copper wire has radius 0.5 mm and length 100 m. If the resistivity of the material is 2.5 × 10⁻⁸ ohm−m, then the resistance of the wire is ______.",
+      "o": ["10 π ohm", "1000 π ohm", "1000 / π ohm", "10 / π ohm"]
+    },
+    {
+      "orig": 82,
+      "s": "MATH",
+      "q": "If 12600 = p³ × q² × r² × s¹, where p, q, r and s are consecutive prime numbers in ascending order, then what is the value of (3p + 2q − r + s)?",
+      "o": ["12", "13", "14", "17"]
+    },
+    {
+      "orig": 83,
+      "s": "GA",
+      "q": "Ao is a prominent language spoken in the state of ______.",
+      "o": ["Chhattisgarh", "Tripura", "Nagaland", "Odisha"]
+    },
+    {
+      "orig": 84,
+      "s": "GA",
+      "q": "Which Articles of the Constitution of India deals with the provision of Attorney General of India?",
+      "o": ["Article 76", "Article 56", "Article 66", "Article 46"]
+    },
+    {
+      "orig": 85,
+      "s": "MATH",
+      "q": "Which of the following is NOT a leap year?",
+      "o": ["6800", "2600", "8800", "4800"]
+    },
+    {
+      "orig": 86,
+      "s": "MATH",
+      "q": "Which of the following options is the closest approximate value which will come in place of the question mark (?) in the following equation?\n20.01% of 320.002 + 121.99 = ?",
+      "o": ["174", "154", "162", "186"]
+    },
+    {
+      "orig": 87,
+      "s": "REA",
+      "q": "Select the option that is related to the fifth number in the same way as the second number is related to the first number, the fourth number is related to the third number.\n23 : 14 :: 11 : 8 :: 7 : ?",
+      "o": ["6", "4", "8", "5"]
+    },
+    {
+      "orig": 88,
+      "s": "GA",
+      "q": "Which of the following states has started the 'Gehunkhalisi' programme which plays a vital role in enhancing the financial status of the rural privileged women in the State through its thrift and credit programme?",
+      "o": ["Assam", "West Bengal", "Kerala", "Odisha"]
+    },
+    {
+      "orig": 89,
+      "s": "MATH",
+      "q": "cotθ (1/(cosecθ − 1) + 1/(cosecθ + 1)) × (sinθ − cosecθ)(cosθ − secθ), 0° < θ < 90°, is equal to:",
+      "o": ["2 sin θ", "cosec θ", "2 cos θ", "sec θ"]
+    },
+    {
+      "orig": 90,
+      "s": "REA",
+      "q": "Three statements are given followed by two conclusions numbered I and II. You have to take the statements to be true, even if they seem to be at variance with commonly known facts and decide which of the conclusions logically follow(s) from the statements.\nStatements:\nAll Bats are Mammals.\nSome Bats are Viruses.\nAll Viruses are Diseases.\nConclusions:\n(I) Some Bats are Diseases.\n(II) Some Mammals are Viruses.",
+      "o": [
+        "Both conclusions (I) and (II) follow.",
+        "Neither conclusion (I) nor (II) follows.",
+        "Only conclusion (I) follows.",
+        "Only conclusion (II) follows."
+      ]
+    },
+    {
+      "orig": 91,
+      "s": "MATH",
+      "q": "The sum of two consecutive multiples of 8 is 56. The greater of these two multiples is:",
+      "o": ["24", "42", "23", "32"]
+    },
+    {
+      "orig": 92,
+      "s": "MATH",
+      "q": "Two trains of equal length are running on parallel lines in the same direction at speeds of 46 km/h and 36 km/h. The faster train passes the slower train in 36 seconds. The relative speed of these two trains (in m/s) is:",
+      "o": ["25/9", "25/18", "25/8", "25/7"]
+    },
+    {
+      "orig": 94,
+      "s": "SCI",
+      "q": "The splitting of light of the sun into various colours of the rainbow is called ______.",
+      "o": [
+        "Dispersion of light",
+        "scattering of light",
+        "Reflection of light",
+        "Total internal reflection"
+      ]
+    },
+    {
+      "orig": 95,
+      "s": "REA",
+      "q": "If 12 : 3 :: 8 : x, then find the value of x.",
+      "o": ["6", "1", "2", "4"]
+    },
+    {
+      "orig": 96,
+      "s": "GA",
+      "q": "Under which amendment in The Constitutional Act 1992 did the Panchayati Raj Institutions receive their constitutional status?",
+      "o": ["73rd Amendment", "70th Amendment", "75th Amendment", "65th Amendment"]
+    },
+    {
+      "orig": 97,
+      "s": "REA",
+      "q": "Three statements are given followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.\nStatements:\nAll books are papers.\nAll trees are papers.\nAll papers are recyclable.\nConclusions:\nI. Some books are trees.\nII. All trees are recyclable.",
+      "o": [
+        "Neither conclusion I nor II follows",
+        "Only conclusion II follows",
+        "Both conclusions I and II follow",
+        "Only conclusion I follows"
+      ]
+    },
+    {
+      "orig": 98,
+      "s": "REA",
+      "q": "Select the option that represents the letters that, when placed from left to right in the same sequence in the blanks below, will complete the letter series.\nJJL _ KKJJ _ KKKJ _ LKKKJJ",
+      "o": ["KLJ", "KJL", "JKL", "KLK"]
+    },
+    {
+      "orig": 99,
+      "s": "MATH",
+      "q": "{40 ÷ (2³ ÷ 4) × 125} equals:",
+      "o": ["2000", "225", "1000", "625"]
+    },
+    {
+      "orig": 100,
+      "s": "SCI",
+      "q": "In the given reaction, reduction of which substance takes place?\nFe₂O₃ (s) + 2Al (s) → Al₂O₃(s) + 2Fe(l)",
+      "o": ["Ferric oxide", "Aluminium oxide", "Aluminium", "Iron"]
+    }
+  ],
+  "dropped": [
+    {
+      "orig": 74,
+      "reason": "geometry figure question (triangle ABF/intersection diagram) - not faithfully representable as plain text"
+    },
+    {
+      "orig": 93,
+      "reason": "pie chart question - requires reading chart image"
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "kept": [
+    {
+      "orig": 1,
+      "s": "GA",
+      "q": "The Chairman of the Block Panchayat Samiti is elected by the:",
+      "o": [
+        "village Pradhan",
+        "members of the Zila Panchayat",
+        "members of the samiti",
+        "members of the State Legislature"
+      ]
+    },
+    {
+      "orig": 2,
+      "s": "REA",
+      "q": "In this question, the statement is followed by four conclusions. Find out which conclusion is NOT true based on the given statement.\nStatement : Y < V < N ≤ L = A > C ≥ M",
+      "o": [
+        "X > A",
+        "X > Y",
+        "A > H",
+        "L ≥ V"
+      ]
+    },
+    {
+      "orig": 3,
+      "s": "SCI",
+      "q": "What kind of diet does an adolescent require to develop a healthy reproductive system?",
+      "o": [
+        "Fortified with iron",
+        "Nutritionally well-balanced",
+        "Rich in proteins",
+        "Low in saturated fats"
+      ]
+    },
+    {
+      "orig": 4,
+      "s": "REA",
+      "q": "Refer to the following letter series and answer the question.\n(Left) B Z C T B Z T E S B C Z T W A Z T T Z T U X R B Z T V (Right)\nHow many Z are there in the series which are immediately followed by T but not immediately preceded by B?",
+      "o": [
+        "Five",
+        "Two",
+        "Four",
+        "Three"
+      ]
+    },
+    {
+      "orig": 5,
+      "s": "MATH",
+      "q": "If the HCF of 408 and 1032 is expressed as 516m − 252 × 4, then m is:",
+      "o": [
+        "−6",
+        "6",
+        "−2",
+        "2"
+      ]
+    },
+    {
+      "orig": 6,
+      "s": "SCI",
+      "q": "In which group and period is carbon present?",
+      "o": [
+        "Group 1 and period 2",
+        "Group 5 and period 5",
+        "Group 13 and period 4",
+        "Group 14 and period 2"
+      ]
+    },
+    {
+      "orig": 7,
+      "s": "SCI",
+      "q": "Complete the given step of anaerobic respiration:\nGlucose (C₆H₁₂O₆) → __________ = Carbon Dioxide (CO₂) + Energy (ATP)",
+      "o": [
+        "Water",
+        "Pyruvate",
+        "Ethanol (C₂H₅OH)",
+        "Lactic Acid"
+      ]
+    },
+    {
+      "orig": 8,
+      "s": "SCI",
+      "q": "Consider a horse shoe magnet with its north pole towards west and south pole towards east. A conducting coil is loosely connected to a galvanometer. If this coil is now moved between the poles of the magnet vertically downwards, the direction of the induced current in it will be __________.",
+      "o": [
+        "west to east direction",
+        "south to north direction",
+        "east to west direction",
+        "north to south direction"
+      ]
+    },
+    {
+      "orig": 9,
+      "s": "GA",
+      "q": "Which is the first country to play 1000 One-Day International matches?",
+      "o": [
+        "Sri Lanka",
+        "Australia",
+        "Pakistan",
+        "India"
+      ]
+    },
+    {
+      "orig": 10,
+      "s": "GA",
+      "q": "Which of the following is responsible for bringing western disturbances from the Mediterranean region into the Indian subcontinent?",
+      "o": [
+        "Jet stream",
+        "Relief rain",
+        "Mango shower",
+        "Anabatic winds"
+      ]
+    },
+    {
+      "orig": 11,
+      "s": "GA",
+      "q": "At Devprayag (Uttarakhand), which of the following two rivers confluence and form river Ganga?",
+      "o": [
+        "Alaknanda and Yamuna",
+        "Bhagirathi and Yamuna",
+        "Yamuna and Gomti",
+        "Alaknanda and Bhagirathi"
+      ]
+    },
+    {
+      "orig": 12,
+      "s": "GA",
+      "q": "Who among the following was a well-known revolutionary activist and leader of the Hindustan Socialist Republican Association (HSRA)?",
+      "o": [
+        "Chandra Shekhar Azad",
+        "Chhakravarti Rajagopalachari",
+        "Bhulabhai Desai",
+        "Behramji M Malabari"
+      ]
+    },
+    {
+      "orig": 13,
+      "s": "REA",
+      "q": "Three statements are followed by three conclusions numbered I, II and III. You have to consider these statements to be true, even if they seem to be at variance with commonly known facts. Decide which of the given conclusions logically follow(s) from the given statements.\nStatements:\nAll periwinks are peacocks\nAll peacocks are cheetahs\nNo cheetah are horses\nConclusions:\n(I) Some horses are peacocks\n(II) Some cheetahs are periwinks\n(III) All peacocks are horses",
+      "o": [
+        "Either conclusion I or III follows",
+        "Only conclusion I follows",
+        "All conclusions I, II and III follow",
+        "Only conclusion II follows"
+      ]
+    },
+    {
+      "orig": 14,
+      "s": "REA",
+      "q": "In a certain code language, 'BLAME' is written as '92Ω2*35' and 'MEERA' is written as 'Ω235*9'. How will 'DELTA' be written in that language?",
+      "o": [
+        "Ω2*35",
+        "2Ω*653",
+        "92*35",
+        "925Ω5"
+      ]
+    },
+    {
+      "orig": 15,
+      "s": "MATH",
+      "q": "During a sale, a TV shop owner offers four different types of successive discounts for any customer to choose from. Which of the following options will give the best possible price to the shop owner as a percentage of the marked price of an item?",
+      "o": [
+        "25% and 15%",
+        "30% and 10%",
+        "35% and 5%",
+        "20% and 20%"
+      ]
+    },
+    {
+      "orig": 17,
+      "s": "REA",
+      "q": "A certain number of people are sitting in a row, facing north. Only Q sits exactly between W and Z. G sits sixth to the right of W. Only three people sit to the right of G. Z sits at the extreme left end of the row.\nIf no other person is sitting in the row, what is the total number of people seated?",
+      "o": [
+        "10",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "orig": 18,
+      "s": "SCI",
+      "q": "The process by which a changing magnetic field in a conductor induces a potential difference that sets up an induced electric current is called __________.",
+      "o": [
+        "thermal induction",
+        "electromagnetic induction",
+        "electric induction",
+        "magnetic induction"
+      ]
+    },
+    {
+      "orig": 19,
+      "s": "REA",
+      "q": "Six girls with the initials V, M, S, E, N and C are sitting around a circular table, facing the centre and at equal distances from each other, not necessarily in the same order.\nE sits second to the left of C. S sits second to the right of V. C sits at the immediate left of V. N sits second to the left of E. Who sits at the immediate left of C?",
+      "o": [
+        "S",
+        "V",
+        "M",
+        "N"
+      ]
+    },
+    {
+      "orig": 20,
+      "s": "REA",
+      "q": "Select the combination of letters that when placed from left to right in the same sequence in the blanks of the given series will complete the series.\nMN _ LNM _ PLM _ NP MNNN _ N",
+      "o": [
+        "NPNNMNLPP",
+        "NNNNMNLPL",
+        "NPNNMNLPL",
+        "MPNNMNLPL"
+      ]
+    },
+    {
+      "orig": 21,
+      "s": "SCI",
+      "q": "What is the scientific name of baking soda?",
+      "o": [
+        "Sodium bicarbonate (NaHCO₃)",
+        "Sodium sulphate (Na₂SO₄)",
+        "Sodium carbonate (NaCO₃)",
+        "Sodium chloride (NaCl)"
+      ]
+    },
+    {
+      "orig": 22,
+      "s": "MATH",
+      "q": "Simplify the following.\n1 − 2 × [{−2(2 + 3) × 20} ÷ 2]",
+      "o": [
+        "−200",
+        "−50",
+        "−1/50",
+        "201"
+      ]
+    },
+    {
+      "orig": 23,
+      "s": "MATH",
+      "q": "Shyam and Sundar can do a piece of work in 16 days and 24 days, respectively. Shyam started the work alone and after 10 days Sundar joined him and the duo worked together till the completion of the work. What was the total time taken for the work to be completed?",
+      "o": [
+        "13 3/5 days",
+        "12 3/5 days",
+        "15 3/5 days",
+        "10 3/5 days"
+      ]
+    },
+    {
+      "orig": 24,
+      "s": "SCI",
+      "q": "Which of the following reactions is an example of a displacement reaction?",
+      "o": [
+        "3Fe (s) + 4H₂O (l) → Fe₃O₄ (s) + 2H₂ (l)",
+        "Zn (s) + CuSO₄(aq) → ZnSO₄ (aq) − Cu (s)",
+        "2FeSO₄ (s) → Fe₂O₃(s) + SO₂ (g) + SO₃(g)",
+        "CaO (s) + H₂O (l) → Ca(OH)₂ (aq) + Heat"
+      ]
+    },
+    {
+      "orig": 25,
+      "s": "REA",
+      "q": "If '+' means '×', '×' means '÷', '÷' means '+', and '−' means '×', what will come in place of the question mark (?) in the following equation?\n8 + 7 − 8 − 4 ÷ 2 = ?",
+      "o": [
+        "63",
+        "74",
+        "68",
+        "60"
+      ]
+    },
+    {
+      "orig": 26,
+      "s": "MATH",
+      "q": "The present age of Arun is 1/3 of his uncle's age. After 5 years, the sum of their ages will be 86 years. The present age of Arun is:",
+      "o": [
+        "21 years",
+        "19 years",
+        "23 years",
+        "25 years"
+      ]
+    },
+    {
+      "orig": 27,
+      "s": "GA",
+      "q": "Centre for Excellence of Classical Tamil was shifted from Mysore to Chennai in __________.",
+      "o": [
+        "2010",
+        "2008",
+        "2004",
+        "2006"
+      ]
+    },
+    {
+      "orig": 28,
+      "s": "REA",
+      "q": "In this question, a group of letters is coded using numbers/symbols as per the table given below and the conditions which follow. The correct combination of codes following the conditions is your answer.\nLetters: E O L Y A W N S\nNumbers/Symbols: 5 % 7 # 1 4 @ 1\nConditions:\n(i) If a word has a vowel at the end, the vowel present at the end will be coded as 6.\n(ii) If a word has more than 2 vowels, all the vowels will be coded as 8.\n(iii) If a letter is present exactly twice in a word, it will be coded as 2 in both such places.\nWhat will be the correct code for YELLOW?",
+      "o": [
+        "#82284",
+        "#5779%6",
+        "#5779%4",
+        "#522%4"
+      ]
+    },
+    {
+      "orig": 29,
+      "s": "SCI",
+      "q": "Effective resistance of the parallel combination of two resistors with 2Ω and 3Ω resistance, respectively, is:",
+      "o": [
+        "8.3 Ω",
+        "0.83 Ω",
+        "5 Ω",
+        "1.2 Ω"
+      ]
+    }
+  ],
+  "dropped": [
+    {"orig": 16, "reason": "Venn diagram (Barbie dolls / Lego blocks / Racing cars) figure in stem"}
+  ]
+}

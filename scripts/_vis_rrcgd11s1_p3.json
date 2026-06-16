@@ -1,0 +1,212 @@
+{
+  "kept": [
+    {
+      "orig": 65,
+      "s": "SCI",
+      "q": "Which of the following is a correct pair for homologous series?",
+      "o": ["CH₃OH and CH₄", "CH₃OH and C₂H₅OH", "C₃H₇OH and CH₃OH", "CH₃OH and C₃H₇OH"]
+    },
+    {
+      "orig": 66,
+      "s": "MATH",
+      "q": "If x − 1/x = 2 , then find the value of x⁴ + 1/x⁴.",
+      "o": ["24", "16", "34", "36"]
+    },
+    {
+      "orig": 67,
+      "s": "REA",
+      "q": "The position of how many letters will remain unchanged of each of the letters in the word BRIGHT is arranged in alphabetical order?",
+      "o": ["One", "None", "Two", "Three"]
+    },
+    {
+      "orig": 68,
+      "s": "SCI",
+      "q": "Which method of contraception changes the hormonal balance of the body?",
+      "o": ["Surgical blockage of the fallopian tubes", "Use of condoms", "Intake of pills", "Insertion of Copper-T"]
+    },
+    {
+      "orig": 69,
+      "s": "SCI",
+      "q": "Which of the following is required for the formation of human blood?",
+      "o": ["Copper", "Cobalt", "Iron", "Nickel"]
+    },
+    {
+      "orig": 70,
+      "s": "MATH",
+      "q": "A capsule is in the shape of a sphere of diameter 3.5 mm. Find the amount of medicine required to fill the capsule (in mm³). [Use π = 22/7 , and give your answer correct to 2 places of decimal.]",
+      "o": ["22.42", "22.41", "22.46", "22.43"]
+    },
+    {
+      "orig": 71,
+      "s": "REA",
+      "q": "Refer to the following letter, number, symbol series and answer the question.\n(Left) S = N 4 & % L A * 6 T & C @ 4 B % 2 X L (Right)\nHow many such numbers are there which are immediately preceded by a letter and also immediately followed by a symbol?",
+      "o": ["4", "1", "6", "3"]
+    },
+    {
+      "orig": 72,
+      "s": "MATH",
+      "q": "The length of a rectangle is 5 cm more than its width. If the area of the rectangle is 215 cm² , then the equation to find the width (w) of the rectangle is:",
+      "o": ["w² − 5w − 215 = 0", "2w² + 5w − 215 = 0", "w² + 5w + 215 = 0", "w² + 5w − 215 = 0"]
+    },
+    {
+      "orig": 73,
+      "s": "REA",
+      "q": "If each even digit is divided by 2 and 2 is added to each odd digit in the number 4723361, what will be the sum of the largest and the smallest digits thus formed?",
+      "o": ["9", "12", "10", "11"]
+    },
+    {
+      "orig": 74,
+      "s": "SCI",
+      "q": "Generally, plants have low energy needs when compared to animals. The main reason for this is the:\n(A) presence of large proportion of dead cells in the tissues\n(B) absence of mobility\n(C) plants synthesise their own food\n(D) plants release O₂ during respiration",
+      "o": ["A and B", "B and C", "A and D", "A and C"]
+    },
+    {
+      "orig": 75,
+      "s": "MATH",
+      "q": "Simplify the following.\n(y²x)⁴ × (y²x)⁻⁴ , x ≠ 0, y ≠ 0.",
+      "o": ["0", "(y²x)⁸", "1", "(y²x)⁻¹⁶"]
+    },
+    {
+      "orig": 76,
+      "s": "SCI",
+      "q": "During heavy exercise when the demand for energy is high, but the supply of oxygen to produce the energy is limited, the muscle cells show ________.",
+      "o": ["loss of water", "synthesis of ethanol", "accumulation of pyruvate", "formation of lactic acid"]
+    },
+    {
+      "orig": 77,
+      "s": "MATH",
+      "q": "If a transversal cuts two parallel lines, then which of the options below is necessarily true?",
+      "o": ["the interior alternate angles are equal", "the interior opposite angles on the same side of the transversal are equal", "the adjacent angles formed are equal", "the vertically opposite angles are supplementary"]
+    },
+    {
+      "orig": 78,
+      "s": "GA",
+      "q": "How many people have received the Shanti Swaroop Bhatnagar Award in 2021 ?",
+      "o": ["12", "11", "10", "9"]
+    },
+    {
+      "orig": 79,
+      "s": "GA",
+      "q": "India has a ________ form of government.",
+      "o": ["oligarchy", "communalism", "monarchy", "parliamentary"]
+    },
+    {
+      "orig": 80,
+      "s": "REA",
+      "q": "In the given letter-cluster pairs, the first letter-cluster is related to the second letter-cluster following a certain logic. Study the given pairs carefully, and from the given options, select the pair that follows the same logic.\nJRE : IQD",
+      "o": ["PKM : UGI", "GKV : OSN", "FCH : TBY", "TGI : SFH"]
+    },
+    {
+      "orig": 82,
+      "s": "SCI",
+      "q": "For a spherical mirror, when a ray is passed through the centre of curvature C, the angle formed between the reflected ray and incident ray will be:",
+      "o": ["0°", "270°", "90°", "180°"]
+    },
+    {
+      "orig": 83,
+      "s": "REA",
+      "q": "Which of the following numbers will replace the question mark (?) in the given series?\n9.6  8.4  7.2  6  ?",
+      "o": ["4.2", "5.4", "3.6", "4.8"]
+    },
+    {
+      "orig": 84,
+      "s": "MATH",
+      "q": "A dishonest merchant claims to sell his items at cost price, but gives 200 kg of an item instead of the 250 kg he charges for. What is his percentage of profit in this transaction?",
+      "o": ["20%", "15%", "25%", "10%"]
+    },
+    {
+      "orig": 85,
+      "s": "REA",
+      "q": "Six friends are sitting around a circular table facing the centre. Gabriel is sitting second to the right of Suchita. Ritesh is sitting second to the right of Trinabh. Sourav is an immediate neighbour of both Gabriel and Dhruv. Who is an immediate neighbour of both Ritesh and Trinabh?",
+      "o": ["Sourav", "Suchita", "Gabriel", "Dhruv"]
+    },
+    {
+      "orig": 89,
+      "s": "SCI",
+      "q": "In electric circuits, losses take place in the form of ________ due to flow of electric current.",
+      "o": ["light", "sound", "Magnetic losses", "heat"]
+    },
+    {
+      "orig": 91,
+      "s": "MATH",
+      "q": "A sum of ₹7,250 is lent under simple interest at the beginning of a year at a certain rate of interest per annum. After 6 months, a sum of ₹3,625 more is lent under simple interest but at a rate that is twice the former. At the end of the year, ₹335 is earned as interest from both the loans taken together. What was the rate of interest per annum at which the initial ₹7,250 was lent? [Give your answer correct to 2 decimal places.]",
+      "o": ["3.08%", "3.00%", "3.10%", "3.12%"]
+    },
+    {
+      "orig": 92,
+      "s": "MATH",
+      "q": "The interior angles of an 8-sided polygon are in the ratio 1 : 3 : 4 : 6 : 7 : 11 : 13 : 15. Find the measure of the largest interior angle in this polygon.",
+      "o": ["288°", "300°", "270°", "234°"]
+    },
+    {
+      "orig": 93,
+      "s": "SCI",
+      "q": "If an object is placed at a distance of 5 cm from the pole of a given concave mirror of focal length 2.5 cm, then the magnification produced is:",
+      "o": ["−2", "2", "1", "−1"]
+    },
+    {
+      "orig": 94,
+      "s": "SCI",
+      "q": "Ratio of Sin i and Sin r is known as:",
+      "o": ["dispersion", "magnification", "refractive index", "refraction"]
+    },
+    {
+      "orig": 95,
+      "s": "SCI",
+      "q": "The fuse used for domestic purpose is rated in the range of ________.",
+      "o": ["100 Ampere − 200 Ampere", "500 Ampere − 1000 Ampere", "1 Ampere − 10 Ampere", "1000 Ampere − 2000 Ampere"]
+    },
+    {
+      "orig": 96,
+      "s": "GA",
+      "q": "Select the option that does NOT support the role of the Indian Parliament.",
+      "o": ["To settle disputes and makes judgments between different level of governments", "To select the national government", "To control, guide and inform the government", "The function of law making"]
+    },
+    {
+      "orig": 97,
+      "s": "REA",
+      "q": "Ram is to the south-west of Abhishek. Arjun is to the north of Ram as well as to the east of Abhishek. Pooja is to the west of Arjun. What is the position of Pooja with respect to Abhishek?",
+      "o": ["South-West", "East", "North-East", "West"]
+    },
+    {
+      "orig": 98,
+      "s": "GA",
+      "q": "In Rajasthan, ________ is a native loving community that conserves forest and wildlife.",
+      "o": ["Bishnoi", "Banjara", "Bhil", "Chhipa"]
+    },
+    {
+      "orig": 99,
+      "s": "GA",
+      "q": "Which female tennis player has won the most Grand Slam tournament titles as of February 2021?",
+      "o": ["Steffi Graf", "Serena Williams", "Chris Evert", "Martina Navratilova"]
+    },
+    {
+      "orig": 100,
+      "s": "REA",
+      "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 − Operations on 13 such as adding / subtracting / multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)\n(2, 6, 22)\n(4, 13, 47)",
+      "o": ["(7, 4, 36)", "(29, 35, 68)", "(23, 41, 77)", "(9, 5, 33)"]
+    },
+    {
+      "orig": 86,
+      "s": "MATH",
+      "q": "The variable X takes values 3 and 7, with frequencies of K and K − 2, respectively. If the arithmetic mean of X is 6 , then the value of K is:",
+      "o": ["4", "6", "5", "3"]
+    },
+    {
+      "orig": 87,
+      "s": "REA",
+      "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 − Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)\n(15, 405, 9)\n(13, 273, 7)",
+      "o": ["(11, 165, 5)", "(12, 360, 5)", "(9, 405, 9)", "(14, 490, 7)"]
+    },
+    {
+      "orig": 90,
+      "s": "REA",
+      "q": "A, B, C, D, E and F live on six different floors of the same building. The lowermost floor in the building is numbered 1, the floor above it, number 2 and so on till the topmost floor is numbered 6. C lives immediately above F, on an even numbered floor but not on the 6th floor. Only three people live between F and E. If B lives two floors below E, and A is not on the topmost floor, then how many people live exactly between D and C?",
+      "o": ["2", "3", "4", "1"]
+    }
+  ],
+  "dropped": [
+    {"orig": 81, "reason": "options are nth-root radical expressions (cube roots / surds) not faithfully linearizable as plain text"},
+    {"orig": 88, "reason": "stem contains a pie-chart figure required to answer"}
+  ]
+}

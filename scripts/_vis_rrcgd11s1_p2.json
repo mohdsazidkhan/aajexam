@@ -1,0 +1,211 @@
+{
+  "kept": [
+    {
+      "orig": 30,
+      "s": "REA",
+      "q": "A statement is given followed by four conclusions. Find out which conclusion is true based on the given statement.\nStatement: L : H = P : O > D : I = U\nConclusions:\n1) L ≤ P\n2) U ≥ D\n3) L > D\n4) L > O",
+      "o": ["1", "4", "3", "2"]
+    },
+    {
+      "orig": 31,
+      "s": "MATH",
+      "q": "If the sum of a number and its reciprocal is 7, then which of the options below can be such a number?",
+      "o": ["(7 + 3√5)/2", "(−7 + 2√5)/2", "(3 + 7√5)/2", "(3 − 7√5)/2"]
+    },
+    {
+      "orig": 32,
+      "s": "GA",
+      "q": "Nowruz is popularly known as the new year of which religious group/community?",
+      "o": ["Sikhism", "Buddhism", "Muslim", "Parsi"]
+    },
+    {
+      "orig": 33,
+      "s": "MATH",
+      "q": "If a and b are two co-prime numbers, then their LCM is:",
+      "o": ["a + b", "a × b", "(a − b)/(a + b)", "a − b"]
+    },
+    {
+      "orig": 34,
+      "s": "SCI",
+      "q": "During which period did the amount of ozone in the atmosphere begin to drop sharply?",
+      "o": ["In the 1980s", "In the 1960s", "In the 1990s", "In the 1970s"]
+    },
+    {
+      "orig": 35,
+      "s": "REA",
+      "q": "Town C is south of the mid-point of the straight line joining town A and B. Town B is to the East of Town A. Town D is west of town C. Town M is north of town B. What is the position of town D with respect to M?",
+      "o": ["South-east", "South-west", "South", "West"]
+    },
+    {
+      "orig": 36,
+      "s": "REA",
+      "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.\nStatements:\n1. Some flowers are leaves.\n2. Some flowers are stems.\n3. Some fruits are flowers.\nConclusions:\nI. Some stems are flowers.\nII. Some fruits are leaves.",
+      "o": ["Neither conclusion I nor II follows.", "Both conclusions I and II follow.", "Only conclusion I follows.", "Only conclusion II follows."]
+    },
+    {
+      "orig": 37,
+      "s": "SCI",
+      "q": "An atom of element with electronic configuration of 2,8,8. To which group does it belong?",
+      "o": ["10ᵗʰ group", "6ᵗʰ group", "4ᵗʰ group", "18ᵗʰ group"]
+    },
+    {
+      "orig": 38,
+      "s": "GA",
+      "q": "Which law states that 'as the quantity of one factor is increased, keeping the other factors fixed, the marginal product of that factor will eventually decline'?",
+      "o": ["The law of unstable economy", "The law of variable proportions", "The law of constant proportions", "The law of money savings"]
+    },
+    {
+      "orig": 39,
+      "s": "REA",
+      "q": "Six students, Madhu, Aarav, Anubhav, Avani, Aarav, Priti, and Shikha, gave their presentations on different days in the month of March. The presentation was from 11ᵗʰ March to 16ᵗʰ March.\nAnubhav presented on 14ᵗʰ March and Shikha presented immediately before Anubhav. Only one person presented between Shikha and Priti. Shikha presented after Priti but before Aarav. Avani presented immediately before Madhu. Who presented on 13ᵗʰ March?",
+      "o": ["Madhu", "Aarav", "Priti", "Avani"]
+    },
+    {
+      "orig": 40,
+      "s": "MATH",
+      "q": "If the sum of two numbers is 25 and the product is 136, then the sum of their cubes is:",
+      "o": ["4524", "4525", "5524", "5425"]
+    },
+    {
+      "orig": 41,
+      "s": "REA",
+      "q": "A statement is given followed by two assumptions numbered I and II. You have to assume everything in the statement to be true and decide which of the assumptions is/are implicit in the statement.\nStatement:\nThe Union Road Transport and Highways Ministry is gearing up to build a expressway to connect Delhi and Mumbai, which would allow commuters to finish the 1,500 km long journey within 12 hours.\nAssumptions:\nI. The road between the four cities is in very bad shape.\nII. Currently there are no roads to connect these two cities of India.",
+      "o": ["Only assumption I is implicit", "Neither assumption I nor II is implicit", "Only assumption II is implicit", "Both assumptions I and II are implicit"]
+    },
+    {
+      "orig": 42,
+      "s": "GA",
+      "q": "Which of the following cities is NOT situated on banks of the Ganga?",
+      "o": ["Patna", "Lucknow", "Haridwar", "Kanpur"]
+    },
+    {
+      "orig": 43,
+      "s": "MATH",
+      "q": "If 144 : y :: y : 225, and y > 0, find the value of y.",
+      "o": ["210", "180", "130", "120"]
+    },
+    {
+      "orig": 44,
+      "s": "SCI",
+      "q": "The process of using electricity to decompose water into oxygen and hydrogen gas is called ____.",
+      "o": ["hydrolysis of water", "ionisation of water", "atomisation of water", "electrolysis of water"]
+    },
+    {
+      "orig": 45,
+      "s": "MATH",
+      "q": "Which of the following options is (or closer) approximate value which will come in place of the question mark (?) in the following equation?\n8.99 + 17.99 − 3.99 × 2.99 = ?",
+      "o": ["9", "15", "24", "32"]
+    },
+    {
+      "orig": 46,
+      "s": "MATH",
+      "q": "Ujwal has ₹1,250 in currency notes of denominations ₹50, ₹100 and ₹200. The number of notes of each denomination are equal. How many notes in total does Ujwal have?",
+      "o": ["30", "60", "45", "15"]
+    },
+    {
+      "orig": 47,
+      "s": "GA",
+      "q": "Who founded the Indian Statistical Institute and is considered the Father of Modern Statistics in India?",
+      "o": ["Debabrata Basu", "Prasanta Chandra Mahalanobis", "Raghu Raj Bahadur", "Anil Kumar Bhattacharya"]
+    },
+    {
+      "orig": 48,
+      "s": "GA",
+      "q": "Which of the following statements about real wage rate is correct?",
+      "o": ["Real wage rate is equal to the Marginal Productivity of Labour.", "Real wage rate is less than the Marginal Productivity of Labour.", "Real wage rate has no relation to Marginal Productivity of Labour.", "Real wage rate is more than the Marginal Productivity of Labour."]
+    },
+    {
+      "orig": 49,
+      "s": "SCI",
+      "q": "The effective diameter of the circular outline of a spherical lens is called ____.",
+      "o": ["aperture", "centre of curvature", "radius of curvature", "focus"]
+    },
+    {
+      "orig": 50,
+      "s": "REA",
+      "q": "Which of the following numbers will replace the question mark (?) in the given series?\n1331  729  343  125  ?",
+      "o": ["1", "27", "8", "64"]
+    },
+    {
+      "orig": 51,
+      "s": "MATH",
+      "q": "If A is an acute angle, then (1 + tan²A)/(1 + cot²A) is equal to:",
+      "o": ["sec²A", "tan²A", "sin²A", "cos²A"]
+    },
+    {
+      "orig": 52,
+      "s": "GA",
+      "q": "According to the Census of India 2011, ____ has the largest number of Christians among the states.",
+      "o": ["Goa", "Nagaland", "Kerala", "Mizoram"]
+    },
+    {
+      "orig": 53,
+      "s": "MATH",
+      "q": "Simplify the following.\n1½ × 22 + 10 ÷ 5 − 2 × 8",
+      "o": ["17", "613/44", "19", "13/2"]
+    },
+    {
+      "orig": 54,
+      "s": "GA",
+      "q": "On 5ᵗʰ August 2021 which one of the following state launched 'Mukkalai Theli Maruthuvam' Scheme that helps the poor, sick who can't visit hospitals and the chronically ill, by providing medical facilities at their doorstep?",
+      "o": ["Tamil Nadu", "Kerala", "Karnataka", "Telangana"]
+    },
+    {
+      "orig": 55,
+      "s": "GA",
+      "q": "____ system of ad hoc treasury bills to finance the budget deficit was discontinued in India with effect from April 1, ____.",
+      "o": ["1997", "1994", "2007", "2004"]
+    },
+    {
+      "orig": 56,
+      "s": "SCI",
+      "q": "In the Modern Periodic Table elements present in one group have the same number of ____.",
+      "o": ["electrons", "valence electrons", "shells", "protons"]
+    },
+    {
+      "orig": 57,
+      "s": "GA",
+      "q": "Which of the following State Governments launched the 'Ghar Ghar Ration Yojna' in March 2022?",
+      "o": ["Rajasthan", "Punjab", "Bihar", "Odisha"]
+    },
+    {
+      "orig": 58,
+      "s": "GA",
+      "q": "Which of the following is a premier national research funding agency with the mission to raise the quality and footprint of Indian science and engineering to the highest global levels in an accelerated mode, through informed, competitive support of research and development?",
+      "o": ["Department of Science & Industrial Research", "Science and Engineering Research Board (SERB)", "Department of Space", "Department of Scientific Research"]
+    },
+    {
+      "orig": 59,
+      "s": "MATH",
+      "q": "The mean of the first 7 prime numbers is:",
+      "o": ["58/7", "63/7", "75/7", "50/7"]
+    },
+    {
+      "orig": 60,
+      "s": "MATH",
+      "q": "10 women can do a piece of work in 8 days. 8 men can complete the same work in 12 days. What is the ratio of the amount of work that can be done in a day by a man and a woman?",
+      "o": ["3 : 2", "2 : 1", "5 : 6", "4 : 3"]
+    },
+    {
+      "orig": 61,
+      "s": "SCI",
+      "q": "By which process do we get washing soda?",
+      "o": ["By reaction between NaCl(aq), NH₃ and CO₂", "By heating of NaHCO₃", "By mixing NaHCO₃ with an edible acid", "By recrystallisation of Na₂CO₃"]
+    },
+    {
+      "orig": 62,
+      "s": "REA",
+      "q": "If each of the letters in the word 'CAUTIONED' is arranged in the English alphabetical order, which letter will be in the exact middle position after such arrangement?",
+      "o": ["N", "I", "E", "O"]
+    },
+    {
+      "orig": 64,
+      "s": "REA",
+      "q": "If y : 196 :: 196 : 784, then what is the value of y?",
+      "o": ["16", "4", "7", "49"]
+    }
+  ],
+  "dropped": [
+    {"orig": 63, "reason": "contains a line graph (expenditure over months)"}
+  ]
+}
