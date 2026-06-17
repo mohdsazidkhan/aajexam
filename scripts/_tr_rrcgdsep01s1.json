@@ -1,0 +1,1202 @@
+[
+{
+"orig": 1,
+"section": "General Awareness & Current Affairs",
+"q": "The shaggy horn wild ibex is found in ______ in India.",
+"o": [
+"Thorn Forests",
+"Tropical Deciduous Forest",
+"Montane forests",
+"Mangrove Forests"
+],
+"drop": false
+},
+{
+"orig": 2,
+"section": "General Science",
+"q": "Identify the basic requirements that led scientists towards the classification of elements.\n(i) Identification of some pattern in different properties of elements\n(ii) Rearrangement of elements on the basis of their synthesis\n(iii) To get overall idea of the colour of different elements",
+"o": [
+"(ii) and (iii)",
+"(i), (ii) and (iii)",
+"(i) and (iii)",
+"only (i)"
+],
+"drop": false
+},
+{
+"orig": 3,
+"section": "General Intelligence & Reasoning",
+"q": "The following question is based on the given seven, 3-digit numbers.\n(Left) 621, 443, 227, 316, 625, 118, 231 (Right)\n(For example, 456 = + digit in unit's place, 5 = digit in ten's place, 4 = digit in hundred's place)\nNOTE - All operations to be done from left to right.\nIf 6 is added to the digit in ten's place of each number and 1 is subtracted from the digit in unit's place of each number, which digit will be repeated the greatest number of times in the transformed number series thus formed?",
+"o": [
+"7",
+"2",
+"6",
+"4"
+],
+"drop": false
+},
+{
+"orig": 4,
+"section": "Mathematics",
+"q": "The given bar graph shows the data of the number of students who were called for an interview by a company 'XYZ' from three different institutes A, B and C over the years. Study the bar graph and answer the question.\nWhat is the ratio of the average number of students called for an interview from institute C in the period 2018 to 2020 to the average number of students called for an interview from institute B in the same period?",
+"o": [
+"12 : 13",
+"14 : 15",
+"1 : 3",
+"13 : 12"
+],
+"drop": true
+},
+{
+"orig": 5,
+"section": "Mathematics",
+"q": "Roni stitches a gown in 3 hours while Pankaj stitches an identical gown in 2 hours. Each of them works for 4 hours per day. If they have to stitch one of 32 such gowns in stock, in how many days will they together complete the task if they work on alternate days, starting with Roni?",
+"o": [
+"11 days",
+"21 days",
+"20 days",
+"10 days"
+],
+"drop": false
+},
+{
+"orig": 6,
+"section": "General Awareness & Current Affairs",
+"q": "Which committee recommended that Fundamental Duties be included in the Constitution of India?",
+"o": [
+"JB Kripalani Committee",
+"Swaran Singh Committee",
+"AV Thakkar Committee",
+"HC Mookherjee Committee"
+],
+"drop": false
+},
+{
+"orig": 7,
+"section": "General Science",
+"q": "Coal and petroleum have their own advantages and disadvantages. Three of the statements regarding coal and petroleum are similar. Choose the one that is dissimilar.",
+"o": [
+"When burnt in insufficient O₂ produce carbon monoxide, which is a poisonous gas",
+"When burnt produce CO₂, which causes global warming",
+"When burnt produce oxides of N and S that are poisonous and cause acid rain",
+"Used to generate electricity in thermal plants and are cost effective"
+],
+"drop": false
+},
+{
+"orig": 8,
+"section": "General Intelligence & Reasoning",
+"q": "If 28 March 2017 was a Tuesday, then what day of the week was 12 February 2017?",
+"o": [
+"Friday",
+"Thursday",
+"Saturday",
+"Sunday"
+],
+"drop": false
+},
+{
+"orig": 9,
+"section": "General Intelligence & Reasoning",
+"q": "Select the option that represents the letters that, when placed from left to right in the same sequence in the blanks below, will complete the letter series.\nJ_I_O_R_P_X_E_P_O",
+"o": [
+"JRAD",
+"JPXD",
+"JPAG",
+"JPAD"
+],
+"drop": false
+},
+{
+"orig": 10,
+"section": "General Science",
+"q": "According to mirror formula, the focal length of a spherical mirror is equal to:",
+"o": [
+"(u−v)/uv",
+"uv/(u−v)",
+"(u+v)/uv",
+"uv/(u+v)"
+],
+"drop": false
+},
+{
+"orig": 11,
+"section": "General Science",
+"q": "Red colour is scattered the _______ by fog or smoke because its wavelength is _______ than the wavelength of other colour components of white light.",
+"o": [
+"least, less",
+"most, less",
+"least, more",
+"most, more"
+],
+"drop": false
+},
+{
+"orig": 12,
+"section": "General Intelligence & Reasoning",
+"q": "Study the given diagram carefully and answer the question. The numbers in different sections indicate the number of different types of juices containing different fruit flavours which are manufactured by a juice company.\nHow many types of juices does the company make that contain both Apple and Strawberry flavours?",
+"o": [
+"41",
+"10",
+"18",
+"8"
+],
+"drop": true
+},
+{
+"orig": 13,
+"section": "General Awareness & Current Affairs",
+"q": "Mahindra & Mahindra Financial Services Limited is an Indian rural non-banking financial company headquartered in",
+"o": [
+"Kerala",
+"Mumbai",
+"Goa",
+"Lucknow"
+],
+"drop": false
+},
+{
+"orig": 14,
+"section": "General Intelligence & Reasoning",
+"q": "Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.\n21 : 14 : : 36 : 24 : : 39 : ?",
+"o": [
+"15",
+"14",
+"12",
+"16"
+],
+"drop": false
+},
+{
+"orig": 15,
+"section": "Mathematics",
+"q": "Which of the following quadratic equations satisfies that the roots are 3 and −2?",
+"o": [
+"x² − x − 6 = 0",
+"x² − x − 6 = 0",
+"x² − x − 6 = 0",
+"x² − x + 6 = 0"
+],
+"drop": true
+},
+{
+"orig": 16,
+"section": "General Intelligence & Reasoning",
+"q": "Which of the following interchanges of numbers would make the given equation correct?\n23 ÷ 5 × 2 + 25 − 11 = 24",
+"o": [
+"24, 25",
+"11, 24",
+"2, 5",
+"5, 25"
+],
+"drop": false
+},
+{
+"orig": 17,
+"section": "General Intelligence & Reasoning",
+"q": "If 'A' means (÷), 'B' means (+), 'C' means (−) and 'D' means (×), then what will be the value of the following expression?\n(8 C 2 D 7 B 11 A 3)",
+"o": [
+"21",
+"25",
+"17",
+"20"
+],
+"drop": false
+},
+{
+"orig": 18,
+"section": "General Awareness & Current Affairs",
+"q": "Which formula is used for the calculation of Ex Ante Aggregate Demand?",
+"o": [
+"Ĉ + Ī − cY",
+"Ĉ + cY",
+"cY − Ĉ + Ī",
+"Ĉ + Ī + cY"
+],
+"drop": false
+},
+{
+"orig": 19,
+"section": "Mathematics",
+"q": "If Sahaj travels a distance of 90 km at a speed of 30 km/h and returns at a speed of 90 km/h, his average speed is:",
+"o": [
+"60 km/h",
+"40 km/h",
+"45 km/h",
+"30 km/h"
+],
+"drop": false
+},
+{
+"orig": 20,
+"section": "General Intelligence & Reasoning",
+"q": "Which of the following interchanges of signs would make the given equation correct?\n3 − 6 ÷ 9 + 6 × 2 = 6",
+"o": [
+"+ and ×",
+"+ and ÷",
+"− and +",
+"− and ×"
+],
+"drop": false
+},
+{
+"orig": 21,
+"section": "General Intelligence & Reasoning",
+"q": "Six houses, K, L, M, N, O and P, are located in the same colony. P is 400 m to the west of K, M is 200 m to the east of L, O is 100 m to the north of K, N is 100 m to the south of L, L is 250 m to the north of K. What is the straight distance between O and N?",
+"o": [
+"350 m",
+"400 m",
+"700 m",
+"600 m"
+],
+"drop": false
+},
+{
+"orig": 22,
+"section": "Mathematics",
+"q": "Find the LCM of 24, 42 and 56.",
+"o": [
+"816",
+"618",
+"168",
+"186"
+],
+"drop": false
+},
+{
+"orig": 23,
+"section": "Mathematics",
+"q": "Simplify (9³ × 27 × 10²) / (5⁵ × 3³ × 4)",
+"o": [
+"3/2",
+"1/2",
+"8",
+"6"
+],
+"drop": false
+},
+{
+"orig": 24,
+"section": "General Intelligence & Reasoning",
+"q": "Study the given letter series and answer the question that follows.\nL E A P K X O Z A Y W U D O A D S L Y R K E V U L\nHow many consonants are immediately preceded and immediately followed by a vowel, and which consonant is repeated the most number of times in the series?",
+"o": [
+"3, D respectively",
+"2, K respectively",
+"3, L respectively",
+"2, Y respectively"
+],
+"drop": false
+},
+{
+"orig": 25,
+"section": "General Intelligence & Reasoning",
+"q": "GOZ J is related to IPV 36 in a certain way. In the same way, ENP 5 is related to GAU 196. To which of the following is 13Z6 related following the same logic?",
+"o": [
+"VAT 68",
+"VAS 68",
+"VAT 70",
+"VAU 68"
+],
+"drop": false
+},
+{
+"orig": 26,
+"section": "General Science",
+"q": "Which enzyme requires the presence of hydrochloric acid for its action in the process of digestion?",
+"o": [
+"Lipase",
+"Trypsin",
+"Pepsin",
+"Amylase"
+],
+"drop": false
+},
+{
+"orig": 27,
+"section": "Mathematics",
+"q": "The sum of the ages of Sumit and Kishore is 25 years. If 3 years ago, Kishore was 2/3 times as old as Sumit, then the present age of the Sumit is:",
+"o": [
+"11 years",
+"9 years",
+"10 years",
+"12 years"
+],
+"drop": false
+},
+{
+"orig": 28,
+"section": "Mathematics",
+"q": "The roots of (x − 5)² = 5x + 11 are _______",
+"o": [
+"1 and 14",
+"5 and 7",
+"2 and −13",
+"3 and 12"
+],
+"drop": false
+},
+{
+"orig": 29,
+"section": "General Science",
+"q": "A bulb filament is made of a _______ metal with _______ melting point.",
+"o": [
+"weak, low",
+"weak, high",
+"strong, low",
+"strong, high"
+],
+"drop": false
+},
+{
+"orig": 30,
+"section": "Mathematics",
+"q": "Simplify: 3(9x² − 6x² + 30) − 9(3x² − 2x + 30).",
+"o": [
+"18(x² + x − 10)",
+"18(x² + x − 10)",
+"−18(x² − x + 10)",
+"18(x² + x − 18)"
+],
+"drop": false
+},
+{
+"orig": 31,
+"section": "Mathematics",
+"q": "If the diameter and the height of a cylinder are 12 cm and 10.5 cm, respectively, then using π = 22/7, find the volume of the cylinder.",
+"o": [
+"1313 cm³",
+"1188 cm³",
+"1281 cm³",
+"1288 cm³"
+],
+"drop": false
+},
+{
+"orig": 32,
+"section": "General Awareness & Current Affairs",
+"q": "Anthurium Festival is celebrated to promote farmers, flowers and horticulture in ___________.",
+"o": [
+"Nagaland",
+"Assam",
+"Mizoram",
+"Arunachal Pradesh"
+],
+"drop": false
+},
+{
+"orig": 33,
+"section": "Mathematics",
+"q": "Seven times a number reduced by 14 is equal to the sum of 5 times the number and 6. Find the number.",
+"o": [
+"10",
+"20",
+"5",
+"15"
+],
+"drop": false
+},
+{
+"orig": 34,
+"section": "Mathematics",
+"q": "Find the value of x, if 6^(x+4) = 6⁷.",
+"o": [
+"3",
+"2",
+"4",
+"5"
+],
+"drop": false
+},
+{
+"orig": 35,
+"section": "Mathematics",
+"q": "Arun borrowed a sum of ₹9,000 from Jayanthi at 10% rate of compound interest per annum, compounded annually. Find the total amount paid by Arun after 2 years to clear all dues.",
+"o": [
+"₹10,089",
+"₹10,890",
+"₹10,098",
+"₹10,980"
+],
+"drop": false
+},
+{
+"orig": 36,
+"section": "General Science",
+"q": "Which among the following is NOT a use of sodium hydroxide?\n(i) Used in making soaps and detergents.\n(ii) Used in the manufacture of paper.\n(iii) Used for removing permanent hardness of water.",
+"o": [
+"Both ii and iii",
+"Only i",
+"Only iii",
+"Only ii"
+],
+"drop": false
+},
+{
+"orig": 37,
+"section": "General Intelligence & Reasoning",
+"q": "A statement is given followed by two arguments I and II. Read the statement and the arguments carefully and select the appropriate answer from the given options.\nStatement:\nUse of re-usable cloth bags for shopping will help in reducing pollution caused by indiscriminate use of plastic bags.\nArguments:\nI. The government has banned the use of single-use plastic from 1 July 2022.\nII. Cloth bags are eco-friendly since they are re-usable and can be made from scrap fabric that would otherwise go to landfill.",
+"o": [
+"Argument I weakens, while argument II strengthens the statement",
+"Argument II weakens, while argument I strengthens the statement",
+"Both arguments I and II strengthen the statement",
+"Both arguments I and II weaken the statement"
+],
+"drop": false
+},
+{
+"orig": 38,
+"section": "General Intelligence & Reasoning",
+"q": "A, B, C, D, E, F and G were seven kings, sitting around a circular table, facing the centre. They were equidistant to one another. Only E was sitting between F and C. A was third to the left of G. Only D was sitting between A and B. G was sitting to the immediate left of C. Which king was sitting to the immediate left of G?",
+"o": [
+"F",
+"A",
+"B",
+"D"
+],
+"drop": true
+},
+{
+"orig": 39,
+"section": "General Awareness & Current Affairs",
+"q": "Poa Mecca is situated on top of Garurachal Hill in the state of __________.",
+"o": [
+"Gujarat",
+"Assam",
+"Himachal Pradesh",
+"Kerala"
+],
+"drop": false
+},
+{
+"orig": 40,
+"section": "General Awareness & Current Affairs",
+"q": "Which branch of Physical Geography studies the earth's form and structure?",
+"o": [
+"Biogeography",
+"Climatology",
+"Hydrology",
+"Geomorphology"
+],
+"drop": false
+},
+{
+"orig": 41,
+"section": "General Science",
+"q": "What is the process of transport of soluble products of photosynthesis and other materials from the leaves to other tissues of the plant called?",
+"o": [
+"Transpiration",
+"Tropic movement",
+"Guttation",
+"Translocation"
+],
+"drop": false
+},
+{
+"orig": 42,
+"section": "General Awareness & Current Affairs",
+"q": "India's first Christian missionary organisation, Serampore Mission, was founded by __________.",
+"o": [
+"Matteo Ricci",
+"William Carey",
+"Hudson Taylor",
+"Mother Teresa"
+],
+"drop": false
+},
+{
+"orig": 43,
+"section": "General Science",
+"q": "Consider the following statements about magnetic field due to a current-carrying solenoid.\n(a) The magnetic field inside the solenoid is in the form of parallel straight lines.\n(b) The strong magnetic field produced inside the solenoid can be used to magnetise a piece of a magnetic material.\nWhich of the above statements is/are correct?",
+"o": [
+"Only (a)",
+"Both (a) and (b)",
+"Only (b)",
+"Neither (a) nor (b)"
+],
+"drop": false
+},
+{
+"orig": 44,
+"section": "General Science",
+"q": "What specialisations are found in the germ cells of sexually reproducing animals with complex body designs?",
+"o": [
+"Male germ cell - large with food store, Female - small and motile",
+"Male germ cell - small with food store, Female - large and motile",
+"Male germ cell - small and motile, Female - large with food store",
+"Male germ cell - large and motile, Female - small with food store"
+],
+"drop": false
+},
+{
+"orig": 45,
+"section": "General Intelligence & Reasoning",
+"q": "Refer to the following letter, number, symbol series and answer the question.\n(Left) N w 2 n D @ 4 Y 3 D O R 7 # h 5 P @i ! < N 2 J (Right)\nHow many such symbols are there each of which is immediately preceded by a letter and immediately followed by a number?",
+"o": [
+"4",
+"1",
+"2",
+"3"
+],
+"drop": true
+},
+{
+"orig": 46,
+"section": "General Intelligence & Reasoning",
+"q": "Eight characters D, E, F, G, H, I, J and K are sitting in a straight row, facing north. J is at the extreme right end of the row. D and I are immediate neighbours. There are only two characters sitting between H and D. Only K is to the immediate left of D. Who sits at the second position from the left end of the row?",
+"o": [
+"H",
+"K",
+"D",
+"F"
+],
+"drop": true
+},
+{
+"orig": 47,
+"section": "General Awareness & Current Affairs",
+"q": "The Balwant Rai Mehta Committee recommended in 1957 for the establishment of a ___________ Panchayati Raj System in India.",
+"o": [
+"Two-tier",
+"Four-tier",
+"Five-tier",
+"Three-tier"
+],
+"drop": false
+},
+{
+"orig": 48,
+"section": "Mathematics",
+"q": "4 men and 4 women can complete a piece of work in 5 days while 4 men and 8 women can also complete the same work in 3 days. In how many days will 7 men and 7 women complete the same work?",
+"o": [
+"3 days",
+"6 days",
+"2 days",
+"5 days"
+],
+"drop": false
+},
+{
+"orig": 49,
+"section": "General Intelligence & Reasoning",
+"q": "In this question, a group of letters is coded using numbers as per the table given below and the conditions which follow. The correct combination of codes following the conditions is your answer.\nLetter: B L M H Y O C E N\nCode: 4 8 0 1 3 5 7 9 (table)\nConditions:\n(i) If the first element is a vowel and the last, a consonant, the codes for these two (the first and the last elements) are to be interchanged.\n(ii) If the first element is a consonant and the last, a vowel, the first and last elements are to be coded as 2.\n(iii) If both the second and the fourth elements are vowels, the fourth element is to be coded in the code for the third element and vice-versa.\nQuestion: LEMON",
+"o": [
+"23872",
+"63879",
+"67839",
+"97836"
+],
+"drop": true
+},
+{
+"orig": 50,
+"section": "General Awareness & Current Affairs",
+"q": "Which of the following disciplines attempts to explain the concept of 'temporal synthesis'?",
+"o": [
+"Geomorphology",
+"Anthropology",
+"History",
+"Philosophy"
+],
+"drop": false
+},
+{
+"orig": 51,
+"section": "General Science",
+"q": "Two resistors, A of 8 Ω and B of 12 Ω, are connected in series with a battery of 6 V. If V₁ and V₂ are the potential drops across A and B and r₁ and r₂ are the currents through them, respectively, then (V₁/V₂) and (r₁/r₂) are respectively",
+"o": [
+"(2/3) and (2/3)",
+"(2/3) and (3/2)",
+"(2/3) and 1",
+"(3/2) and 1"
+],
+"drop": true
+},
+{
+"orig": 52,
+"section": "General Science",
+"q": "The catenation property shown by carbon refers to which of the following properties?",
+"o": [
+"Self-combining capacity to form a long chain of atoms",
+"Property of carbon to give combustive nature to its compounds",
+"Self-degeneration property",
+"Property of occurring as different allotropes"
+],
+"drop": false
+},
+{
+"orig": 53,
+"section": "General Intelligence & Reasoning",
+"q": "Which of the following numbers will replace the question mark (?) in the given series?\n3, 4, 10, 33, 136, ?",
+"o": [
+"684",
+"700",
+"688",
+"685"
+],
+"drop": false
+},
+{
+"orig": 54,
+"section": "General Science",
+"q": "A converging lens having focal length 30 cm is kept in contact with a diverging lens having focal length 20 cm. The power of combination of the two lenses is:",
+"o": [
+"8 D",
+"−8 D",
+"+3 D",
+"−3 D"
+],
+"drop": false
+},
+{
+"orig": 55,
+"section": "Mathematics",
+"q": "The value of\n(−5/3) × (9/25) + (1/5 − 2) =",
+"o": [
+"−4/5",
+"−12/5",
+"0",
+"9/5"
+],
+"drop": false
+},
+{
+"orig": 56,
+"section": "General Science",
+"q": "An optical device X has a focal length of −30 cm. X can be:",
+"o": [
+"either a convex lens or a convex mirror",
+"either a concave lens or a concave mirror",
+"either a convex lens or a concave mirror",
+"either a concave lens or a convex mirror"
+],
+"drop": false
+},
+{
+"orig": 57,
+"section": "General Intelligence & Reasoning",
+"q": "In this question, a statement is followed by two conclusions. Which of the two conclusions is/are true with respect to the statement?\nStatement: C = D < F ≤ M = G = I > K\nConclusions:\nI. H > K\nII. M > C",
+"o": [
+"Only conclusion II is true",
+"Neither conclusion I nor II is true",
+"Only conclusion I is true",
+"Both conclusions I and II are true"
+],
+"drop": false
+},
+{
+"orig": 58,
+"section": "Mathematics",
+"q": "Two numbers are in the ratio 5 : 4. If the first number increases by 40% and second number decreases by 15%, the new ratio becomes ______.",
+"o": [
+"37 : 39",
+"35 : 34",
+"23 : 26",
+"12 : 17"
+],
+"drop": false
+},
+{
+"orig": 59,
+"section": "General Intelligence & Reasoning",
+"q": "Which of the following numbers will replace the question mark (?) in the given series?\n12, 14, 20, 34, 60, ?",
+"o": [
+"100",
+"108",
+"104",
+"102"
+],
+"drop": false
+},
+{
+"orig": 60,
+"section": "General Awareness & Current Affairs",
+"q": "Which player holds the record for most runs (6411) in Indian Premier League (IPL) (as of July 2022)?",
+"o": [
+"Rohit Sharma",
+"Suresh Raina",
+"Shikhar Dhawan",
+"Virat Kohli"
+],
+"drop": false
+},
+{
+"orig": 61,
+"section": "General Intelligence & Reasoning",
+"q": "In this question, a statement is followed by four conclusions. Find out which conclusion is true based on the given statement.\nStatement:\nB > Y ≥ Z = A < X > O\nConclusions:\n1. B > X\n2. Y > O\n3. Y < X\n4. A > O",
+"o": [
+"4",
+"2",
+"3",
+"1"
+],
+"drop": false
+},
+{
+"orig": 62,
+"section": "General Awareness & Current Affairs",
+"q": "Which of the following statements is TRUE?",
+"o": [
+"Plastic bags should be used to keep food.",
+"We should not place waste in plastic bags and discard them.",
+"After use, we should dispose of plastic bags by burning them.",
+"Shopkeepers are required to use plastic bags by law."
+],
+"drop": false
+},
+{
+"orig": 63,
+"section": "General Awareness & Current Affairs",
+"q": "In March 2022, Union Cabinet of India approved the establishment of the World Health Organization Global Centre for Traditional Medicine (WHO GCTM) in Jamnagar, Gujarat. Under which ministry will this centre be set up?",
+"o": [
+"Ministry of Women and Child Development",
+"Ministry of Cooperation",
+"Ministry of Health and Family Welfare",
+"Ministry of AYUSH"
+],
+"drop": false
+},
+{
+"orig": 64,
+"section": "Mathematics",
+"q": "Find the curved surface area of a spherical container of thickness 2 cm and external radius 8 cm. (Rounded off to 2 decimal places.)\n(Use π = 22/7)",
+"o": [
+"1050.67 cm²",
+"1590.48 cm²",
+"1437.33 cm²",
+"1241.14 cm²"
+],
+"drop": false
+},
+{
+"orig": 65,
+"section": "General Science",
+"q": "Which of the following devices is NOT based on the concept of force on a current-carrying conductor in a magnetic field?\nLoudspeaker, Voltmeter, Ammeter, Electric fuse",
+"o": [
+"Electric fuse",
+"Loudspeaker",
+"Ammeter",
+"Voltmeter"
+],
+"drop": false
+},
+{
+"orig": 66,
+"section": "General Awareness & Current Affairs",
+"q": "Which of the following ministries released the draft National Air Sports Policy, 2022, in January 2022?",
+"o": [
+"Ministry of Culture",
+"Ministry of Defence",
+"Ministry of Youth Affairs and Sports",
+"Ministry of Civil Aviation"
+],
+"drop": false
+},
+{
+"orig": 67,
+"section": "Mathematics",
+"q": "If the manufacturer pays 12% the wholesale dealer gains 15% and the retailer gains 20%, then find the cost of production of a table, the retail price of which is ₹15,456.",
+"o": [
+"₹20,000",
+"₹15,000",
+"₹12,000",
+"₹10,000"
+],
+"drop": false
+},
+{
+"orig": 68,
+"section": "General Awareness & Current Affairs",
+"q": "The 'Revised Produce Mantri Suvikas Karyakram' is being implemented (w.e.f 2022-23) by the ______.",
+"o": [
+"Ministry of Home Affairs",
+"Ministry of Minority Affairs",
+"Ministry of Rural Development",
+"Ministry of Tribal Affairs"
+],
+"drop": false
+},
+{
+"orig": 69,
+"section": "General Awareness & Current Affairs",
+"q": "As per Vision Budget of India 2022-23, 'One Nation One Product' is an initiative taken by the Indian ______.",
+"o": [
+"roadways",
+"airways",
+"railways",
+"waterways"
+],
+"drop": false
+},
+{
+"orig": 70,
+"section": "Mathematics",
+"q": "There are two sets of data A and B. The mean of both sets is same. The median of data B is twice the median of data A. The relation between the modes of sets A and B is:",
+"o": [
+"Mode B − Mode A = (3/2) median A",
+"Mode B − Mode A = 3 median A",
+"Mode B − Mode A = (3/4) median A",
+"Mode B ÷ Mode A = 3 median A"
+],
+"drop": false
+},
+{
+"orig": 71,
+"section": "Mathematics",
+"q": "Which of the following is RHS of the equation\nsin²A / (1 − cos A) =",
+"o": [
+"sec A + tan A",
+"cosec A",
+"tan A",
+"cos A + 1"
+],
+"drop": false
+},
+{
+"orig": 72,
+"section": "General Awareness & Current Affairs",
+"q": "Which of the following was added to the list of official languages of India in 1967?",
+"o": [
+"Konkani",
+"Nepali",
+"Sindhi",
+"Manipuri"
+],
+"drop": false
+},
+{
+"orig": 73,
+"section": "General Intelligence & Reasoning",
+"q": "Study the given diagram carefully and answer the question. The numbers in different sections indicate the number of persons in a company with preference for different foods for lunch.\nHow many people prefer salads but NOT stew?",
+"o": [
+"41",
+"51",
+"29",
+"39"
+],
+"drop": true
+},
+{
+"orig": 74,
+"section": "General Awareness & Current Affairs",
+"q": "The given bar graph shows the data of cotton exports in India from years 2018 to 2021. Study the given bar graph and answer the question.\nIn which year was the value per thousand tons the maximum?",
+"o": [
+"2019",
+"2021",
+"2020",
+"2018"
+],
+"drop": true
+},
+{
+"orig": 75,
+"section": "Mathematics",
+"q": "In triangle ABC, if the angles are in the ratio 4 : 3 : 5, find the angles.",
+"o": [
+"20°, 15°, 25°",
+"40°, 30°, 50°",
+"20°, 50°, 70°",
+"60°, 45°, 75°"
+],
+"drop": false
+},
+{
+"orig": 76,
+"section": "General Awareness & Current Affairs",
+"q": "The 'Shree Manorakshi' Project launched in Bengaluru by the Government of India in March 2022 aims at improving ______ health of women in India.",
+"o": [
+"spiritual",
+"physical",
+"mental",
+"social"
+],
+"drop": false
+},
+{
+"orig": 77,
+"section": "General Awareness & Current Affairs",
+"q": "What is the range of the annual average temperature in sub-tropical vegetation zones in India?",
+"o": [
+"Above 24°C",
+"17°C to 24°C",
+"7°C to 17°C",
+"Below 7°C"
+],
+"drop": false
+},
+{
+"orig": 78,
+"section": "General Science",
+"q": "The following table shows different epithelial tissues in animals and their location in different parts. Identify the correct option.",
+"o": [
+"A-i, B-ii, C-iii, D-iv",
+"A-ii, B-iii, C-iv, D-i",
+"A-iii, B-iv, C-ii, D-i",
+"A-iv, B-iv, C-i, D-ii"
+],
+"drop": true
+},
+{
+"orig": 79,
+"section": "General Intelligence & Reasoning",
+"q": "P, Q, R, S, T and U are six siblings who passed their class tenth exam in different years viz. 2001, 2003, 2005, 2007, 2010 and 2012 but not necessarily in the same order.\nP passed in one of the years before S and after R. Only Q passed before R. T passed in the year immediately after S. U passed in one of the years before T. Who passed their class tenth exam in the year 2007?",
+"o": [
+"P",
+"U",
+"S",
+"T"
+],
+"drop": false
+},
+{
+"orig": 80,
+"section": "Mathematics",
+"q": "X placed an order for 20 shirts marked for ₹750 each. The shopkeeper offered 20% discount on purchase of 20 shirts. He allowed a further discount of ₹500, as the payment was made in cash. Find the final selling price of each shirt, if the selling price of each shirt is the same.",
+"o": [
+"₹575",
+"₹625",
+"₹550",
+"₹650"
+],
+"drop": false
+},
+{
+"orig": 81,
+"section": "General Intelligence & Reasoning",
+"q": "A certain number of people are sitting in a row, facing north. P sits to the immediate left of Q. P sits second to the right of A, who is at the extreme ends of the row. Only one person sits to the right of Q. A sits to the immediate right of D. L sits second to the right of B. Only two people sit between D and Z. Only one person sits between Q and B. If no other person is sitting in the row, what is the total number of persons seated?",
+"o": [
+"15",
+"14",
+"12",
+"13"
+],
+"drop": true
+},
+{
+"orig": 82,
+"section": "General Intelligence & Reasoning",
+"q": "Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.\n5 : 15 :: 9 : 49 :: 13 : ?",
+"o": [
+"157",
+"175",
+"174",
+"147"
+],
+"drop": true
+},
+{
+"orig": 83,
+"section": "General Science",
+"q": "Which of the following combinations is an example of balanced meal?",
+"o": [
+"Burger, chips, cold drink",
+"Roti, vegetables, cold drink",
+"Roti, pulses, vegetables",
+"Rice, chips, cold drink"
+],
+"drop": false
+},
+{
+"orig": 84,
+"section": "General Intelligence & Reasoning",
+"q": "To reach house B from house A, a person has to walk 36 m towards the south. Then he must take a left turn and walk 15 m. Then he must take a left turn again and walk 20 m. Again, he must take a left turn and walk 21 m. Then he must take a right turn and walk 16 m. Then he must take a left turn and walk 17 m to finally reach house B. How far and in which direction is house A from house B? (All turns are 90 degree turns only)",
+"o": [
+"27 m, West",
+"17 m, West",
+"17 m, East",
+"27 m, East"
+],
+"drop": false
+},
+{
+"orig": 85,
+"section": "General Intelligence & Reasoning",
+"q": "Study the given diagram carefully and answer the question. The numbers in different sections indicate the number of persons who eat a particular food for dinner every day.\nHow many people eat potatoes and eggs for dinner but NOT chicken?",
+"o": [
+"81",
+"21",
+"15",
+"36"
+],
+"drop": true
+},
+{
+"orig": 86,
+"section": "Mathematics",
+"q": "If 18% of 200 = x, then x = ?",
+"o": [
+"36",
+"27",
+"63",
+"72"
+],
+"drop": false
+},
+{
+"orig": 87,
+"section": "Mathematics",
+"q": "The sum of a two-digit number and the number obtained by reversing the digits is 99. If the digits of the number differ by 5, then the two-digit number can be:",
+"o": [
+"27",
+"16",
+"83",
+"18"
+],
+"drop": false
+},
+{
+"orig": 88,
+"section": "Mathematics",
+"q": "The product of the LCM and HCF of two numbers is 48. If the two numbers differ by 13, then find the numbers.",
+"o": [
+"3 and 16",
+"4 and 17",
+"11 and 24",
+"12 and 25"
+],
+"drop": false
+},
+{
+"orig": 89,
+"section": "General Science",
+"q": "CuSO₄ + Mg → MgSO₄ + Cu\nIn the above reaction Mg is the:",
+"o": [
+"oxidising agent",
+"dissolving agent",
+"catalyst",
+"reducing agent"
+],
+"drop": false
+},
+{
+"orig": 90,
+"section": "General Science",
+"q": "A steady current I flows through an appliance of resistance R. The amount of heat produced by it in time t is:",
+"o": [
+"I²R t",
+"(It)/R",
+"IRt",
+"(I²t)/R"
+],
+"drop": false
+},
+{
+"orig": 91,
+"section": "General Science",
+"q": "When sodium sulphide reacts with dilute hydrochloric acid, a gas with unpleasant smell is produced. This gas with unpleasant smell is:",
+"o": [
+"H₂S",
+"SO₂",
+"SO₃",
+"H₂"
+],
+"drop": false
+},
+{
+"orig": 92,
+"section": "General Awareness & Current Affairs",
+"q": "Who launched the beta version of 'Swayatrikitty', India's first Artificial Intelligence based job platform for persons with disabilities?",
+"o": [
+"IIT Hyderabad",
+"IIT Gandhinagar",
+"IISc Bengaluru",
+"IIT Roorkee"
+],
+"drop": false
+},
+{
+"orig": 93,
+"section": "General Science",
+"q": "The balanced reaction for the following chemical reaction is:\nHydrogen + Bromine → Hydrogen bromide",
+"o": [
+"2H + Br₂ → 2 HBr",
+"H₂ + Br₂ → 2 HBr",
+"H + Br → HBr",
+"H₂ + 2Br → 2 HBr"
+],
+"drop": false
+},
+{
+"orig": 94,
+"section": "General Science",
+"q": "Which of the following is the chemical reaction involved in the baking soda preparation?",
+"o": [
+"NaHCO₃ + H⁺ → CO₂ + H₂O + Sodium salt of acid",
+"2 NaCl (aq) + 2 H₂O (l) → 2 NaOH (aq) → Cl₂ (g) + H₂ (g)",
+"NaCl + H₂O + CO₂ + NH₃ → NH₄Cl + NaHCO₃",
+"Ca(OH)₂ + Cl₂ → CaOCl₂ + H₂O"
+],
+"drop": false
+},
+{
+"orig": 95,
+"section": "Mathematics",
+"q": "In the adjoining figure AB ∥ CD and CD ∥ EF. Also, FA ∥ AB. If ∠BOF = 62°, then the value of x = ?",
+"o": [
+"28°",
+"108°",
+"118°",
+"62°"
+],
+"drop": true
+},
+{
+"orig": 96,
+"section": "General Awareness & Current Affairs",
+"q": "Who among the following appoints the Chief Justice of India?",
+"o": [
+"The Prime Minister of India",
+"The Attorney General of India",
+"The Supreme Court Judge of India",
+"The President of India"
+],
+"drop": false
+},
+{
+"orig": 97,
+"section": "General Intelligence & Reasoning",
+"q": "In this question, a group of letters is coded using numbers as per the table given below and the conditions which follow. The correct combination of codes following the conditions in your answer.\nConditions:\n(i) If the first element is a vowel and the last, a consonant, the codes for these two (the first and the last elements) are to be interchanged.\n(ii) If the first element is a consonant and the last, a vowel, the first and last elements are to be coded as 2.\n(iii) If both the first and the fifth elements are vowels, the fifth element is to be coded as the code for the third element and vice versa.\nQuestion: GRAVITY",
+"o": [
+"5603984",
+"5038964",
+"5309846",
+"5098364"
+],
+"drop": true
+},
+{
+"orig": 98,
+"section": "General Intelligence & Reasoning",
+"q": "Each of P, Q, R, S, T, U and V has an exam on a different day of a week starting from Monday and ending on Sunday of the same week. S's exam is immediately before R. Only three people have exam between S and V. P's exam is on Tuesday. R's exam is on Sunday. Only two people have exam between S and P. Q's exam is immediately before S. Only two people have exam between S and T. Who among the following has exam on Monday?",
+"o": [
+"T",
+"U",
+"Q",
+"V"
+],
+"drop": false
+},
+{
+"orig": 99,
+"section": "General Science",
+"q": "Identify the correct order, if A, B, C, D, E are the atomic numbers of the elements in positions of rows 1 to 4 of the periodic table of Groups 15, 16, 17 respectively, as specified in figure below:",
+"o": [
+"A > B > C > D > E",
+"B > D > E > A > C",
+"D > B > E > C > A",
+"E > B > D > A > C"
+],
+"drop": true
+},
+{
+"orig": 100,
+"section": "General Science",
+"q": "The food prepared by the leaves of the plants is transported to which parts of the plant?",
+"o": [
+"Only to roots and seeds",
+"Only to roots and fruits",
+"Only to seeds and growing regions",
+"To storage organs of roots, seeds, fruits and growing regions"
+],
+"drop": false
+}
+]
