@@ -1,0 +1,306 @@
+[
+  {
+    "orig": 63,
+    "section": "General Awareness & Current Affairs",
+    "q": "The famous Haji Ali Dargah is located in which of the following cities?",
+    "o": ["Delhi", "Ajmer", "Mumbai", "Hyderabad"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 64,
+    "section": "General Awareness & Current Affairs",
+    "q": "According to a report by the Indian Express, in January 2022, the maximum vacancies in police were recorded in which state?",
+    "o": ["Haryana", "Punjab", "Himachal Pradesh", "Rajasthan"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 65,
+    "section": "General Intelligence & Reasoning",
+    "q": "How many distinct straight lines can be drawn through 4 points such that no three of them are collinear?",
+    "o": ["8", "3", "2", "6"],
+    "tick": 4,
+    "drop": "Hindi stem about lines through points; figure-style geometry counting, ambiguous without figure"
+  },
+  {
+    "orig": 66,
+    "section": "Mathematics",
+    "q": "The LCM of 48, 72 and another number, t, is 576. Which of the values given below can be the value of t?",
+    "o": ["288", "192", "144", "96"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 67,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the correct combination of mathematical signs that can sequentially replace * to balance the following equation.\n20 * 4 * 4 * 2 * 14 * 10",
+    "o": ["+, ÷, =, ÷, +", "÷, +, =, ×, +", "+, ×, −, =, ×", "+, ×, =, =, ÷"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 68,
+    "section": "Mathematics",
+    "q": "A is twice as old as B. B is 2 times as old as C. The sum of ages of A, B and C is 42 years. Find the sum of the ages of A and B.",
+    "o": ["12 years", "15 years", "21 years", "23 years"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 69,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which part of the Indian Constitution has only one Article 51-A, which deals with the Code of 11 Fundamental Duties for the Citizens?",
+    "o": ["Part IX-A", "Part VII", "Part IV-A", "Part V"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 70,
+    "section": "General Awareness & Current Affairs",
+    "q": "What fraction of the positions in all panchayat institutions is reserved for women?",
+    "o": ["1/5", "1/4", "1/3", "1/2"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 71,
+    "section": "Mathematics",
+    "q": "At simple interest, a certain sum of money amounts to ₹1,250 in 2 years and to ₹2,000 in 5 years. Find the rate of interest per annum (rounded off to two places of decimals).",
+    "o": ["11.11%", "33.33%", "16.67%", "27.27%"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 72,
+    "section": "Mathematics",
+    "q": "Which of the following is the most beneficial for a customer?\nScheme 1.) Buy 5 get 3 free\nScheme 2.) Buy 5 get 6\nScheme 3.) Two successive discounts of 10% and 5%",
+    "o": ["Scheme 1 and 2 both", "Scheme 1", "Scheme 2", "Scheme 2 and 3 both"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 73,
+    "section": "General Awareness & Current Affairs",
+    "q": "Sandhya Gurung received the Dronacharya Award, 2021, for coaching in the field of ________.",
+    "o": ["Swimming", "Kabaddi", "Boxing", "Shooting"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 74,
+    "section": "General Science",
+    "q": "Which of the following parts of the cell helps in cellular respiration?",
+    "o": ["Vacuole", "Nucleus", "Ribosomes", "Cell membrane"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 75,
+    "section": "Mathematics",
+    "q": "14 years ago, the age of a father was three times the age of his son. Now, the father is twice as old as his son. What is the sum of the present ages of the father and the son?",
+    "o": ["42 years", "56 years", "98 years", "84 years"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 76,
+    "section": "General Science",
+    "q": "What is the total number of shells involved in the electronic configuration of carbon?",
+    "o": ["Three", "Four", "Two", "One"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 77,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the given diagram and answer the question. The numbers in different sections indicate the number of persons. How many such accountants are there who are also biologists?",
+    "o": ["15", "24", "9", "22"],
+    "tick": 2,
+    "drop": "Requires Venn diagram with numbers in overlapping regions"
+  },
+  {
+    "orig": 78,
+    "section": "General Science",
+    "q": "Arrange the following steps of water purification in the correct sequence in which they occur in a water treatment plant.",
+    "o": ["Filtration, sedimentation, sludge re-absorption, removal", "Sedimentation, filtration, sludge re-absorption, removal", "Sludge re-absorption, sedimentation, filtration, removal", "Sedimentation, sludge re-absorption, filtration, removal"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 79,
+    "section": "Mathematics",
+    "q": "What is the nature of the roots of 3x² + 6x − 5 = 0?",
+    "o": ["The roots are real and distinct.", "The roots are real and equal.", "The roots are real and more than 2.", "There are no real roots."],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 80,
+    "section": "General Science",
+    "q": "The I-V graph of three resistances R₁, R₂ and R₃ is shown in the figure below. The correct relation between R₁, R₂ and R₃ is:",
+    "o": ["R₃ > R₁ > R₂", "R₃ < R₁ < R₂", "R₁ < R₂ < R₃", "R₁ > R₂ > R₃"],
+    "tick": 2,
+    "drop": "Requires I-V graph of three resistors to compare slopes"
+  },
+  {
+    "orig": 81,
+    "section": "Mathematics",
+    "q": "The expansion of (3a − 4b − 2c)² is:",
+    "o": ["9a² + 16b² + 4c² − 24ab + 8bc + 12ac", "9a² + 16b² + 4c² − 24ab + 16bc − 6ac", "9a² + 16b² + 4c² + 12ab − 8bc + 6ac", "9a² + 16b² + 4c² − 24ab + 16bc − 12ac"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 82,
+    "section": "General Science",
+    "q": "Consider the below statements and identify the correct answer.\nStatement-I: Anhydrous sodium carbonate is used in soda-acid fire extinguisher.\nStatement-II: Anhydrous sodium carbonate is dissolved in water and recrystallized to get washing soda crystals containing 10 molecules of water of crystallization.",
+    "o": ["Both the statements are true.", "Statement-II is true, and Statement-I is false.", "Both the statements are false.", "Statement-I is true, and Statement-II is false."],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 83,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following set.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 — Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)\n(35, 42, 29)\n(23, 16, 31)",
+    "o": ["(18, 12, 21)", "(19, 8, 23)", "(21, 25, 29)", "(33, 30, 27)"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 84,
+    "section": "General Awareness & Current Affairs",
+    "q": "In context of Consumer Rights, what is the full form of COPRA?",
+    "o": ["Consumer Protection Association", "Consumer Protection Act", "Consumer Protection Agency", "Consumer Protection Alliance"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 85,
+    "section": "Mathematics",
+    "q": "Find the median of the data 11, 16, 33, 15, 51, 18, 71, 75, 22, 17.",
+    "o": ["18", "24", "20", "22"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 86,
+    "section": "General Science",
+    "q": "During adolescence, several changes occur in the human body. Which of the following changes is associated with sexual maturation only in girls?",
+    "o": ["Growth of mammary glands", "Growth of hair on different parts of the body", "Conscious of their looks", "Oily skin with pimples"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 87,
+    "section": "General Science",
+    "q": "In the figure shown below, the incident ray and the emergent ray in the respective order are given by:",
+    "o": ["BC and CD", "AB and CD", "AB and BC", "CD and AB"],
+    "tick": 2,
+    "drop": "Requires the ray diagram figure to identify incident and emergent rays"
+  },
+  {
+    "orig": 88,
+    "section": "General Intelligence & Reasoning",
+    "q": "In the given question, the first letter-cluster is related to the second letter-cluster following a certain logic. Study the given pair carefully and from the given options, select the pair that follows the same logic.\nCOWBOY : WOCYOB",
+    "o": ["FLOWER : OLFREW", "CROWDS : ORDSWC", "MANGLE : NMALEG", "PICKLE : CIPLKE"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 89,
+    "section": "Mathematics",
+    "q": "The following chart shows the numbers of insurance policies sold by five salespersons named P, Q, R, S and T. Study the chart and answer the question. What is the percentage share of insurance policies sold by Q to the total insurance policies sold by all five salespersons?",
+    "o": ["25%", "28%", "30%", "20%"],
+    "tick": 2,
+    "drop": "Requires the bar chart of policies sold by P, Q, R, S, T to compute percentage"
+  },
+  {
+    "orig": 90,
+    "section": "General Intelligence & Reasoning",
+    "q": "In this question, a group of numbers/symbols is coded using letters as per the table given below and the conditions which follow. The correct combination of codes following the conditions is your answer.",
+    "o": ["DLGPSJJ", "JLFPAHD", "DL&P%@J", "SLFPAHJ"],
+    "tick": 3,
+    "drop": "Requires the number-to-letter coding table and conditions to derive the code"
+  },
+  {
+    "orig": 91,
+    "section": "Mathematics",
+    "q": "Find the amount of water contained in a cylindrical tank of radius 7 m and height 20 m. It is known that the tank is completely filled.",
+    "o": ["4250 m³", "3125 m³", "5110 m³", "3080 m³"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 92,
+    "section": "General Science",
+    "q": "The presence of which bacteria is an indicator of water pollution?",
+    "o": ["Mycobacterium tuberculosis", "E. coli Coliform", "Salmonella typhi", "Vibrio cholerae"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 93,
+    "section": "General Science",
+    "q": "Which of the following is NOT an example of asexual reproduction?",
+    "o": ["Grafting", "Fragmentation", "Binary Fission", "Budding"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 94,
+    "section": "General Science",
+    "q": "Which of the following elements has the maximum number of atoms in their molecular form?",
+    "o": ["P", "Ne", "S", "Ar"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 95,
+    "section": "Mathematics",
+    "q": "The product of the roots of 3x² − 13x + 6 = 0 is:",
+    "o": ["3", "4", "2", "5"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 96,
+    "section": "General Science",
+    "q": "The distance between the focus and the centre of curvature of a spherical mirror in terms of the radius of curvature R, is equal to:",
+    "o": ["2R", "R/2", "R/4", "R"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 97,
+    "section": "General Awareness & Current Affairs",
+    "q": "Bharat Heavy Electricals Limited was registered as Heavy Electricals (India) Limited (HEIL) in the Public Sector under the Ministry of Industry and Commerce on 29th August, ________.",
+    "o": ["1969", "1956", "1952", "1962"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 98,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following rivers originates from Amarkantak Hills?",
+    "o": ["Sutlej", "Godavari", "Narmada", "Teesta"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 99,
+    "section": "General Intelligence & Reasoning",
+    "q": "Suresh walked 10 m towards the north, then he turned left and walked 12 m, then from there he turned right and walked 13 m, and then he turned right again and walked 25 m. In which direction is Suresh facing now?",
+    "o": ["East", "West", "South", "North"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 100,
+    "section": "General Intelligence & Reasoning",
+    "q": "One statement and two conclusions (I and II) are given below. Considering the statement to be true, decide which of the given conclusions logically follow(s) from the statement.\nStatement:\nUntouchability is a great sin and one should not consider any person of a lower caste as untouchable.\nConclusions:\nI. The government should make proper arrangements for the welfare of people of all castes so that no person of lower caste is considered untouchable.\nII. People should be educated so that they do not discriminate between people of different castes.",
+    "o": ["Conclusion I does not follow, while conclusion II follows", "Neither conclusion I nor II follows", "Both conclusions I and II follow", "Conclusion II does not follow, while conclusion I follows"],
+    "tick": 3,
+    "drop": false
+  }
+]

@@ -1,0 +1,266 @@
+[
+  {
+    "orig": 1,
+    "section": "Mathematics",
+    "q": "Last year, Ranjan's monthly salary was ₹14,300 and this year his monthly salary is ₹16,640. What is the percentage increase in Ranjan's monthly salary in this year over his monthly salary last year?",
+    "o": ["12%", "13%", "15%", "20%"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 2,
+    "section": "General Science",
+    "q": "Cyclobutane contains ______ C–C bonds and ______ C–H bonds, so total ______ covalent bonds.",
+    "o": ["4, 12, 16", "6, 12, 18", "6, 10, 16", "4, 8, 12"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 3,
+    "section": "General Awareness & Current Affairs",
+    "q": "In December 2021, which state Government inaugurated the 'Pink Force' of Police to enhance safety, security of women and children?",
+    "o": ["Meghalaya", "Goa", "Kerala", "Sikkim"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 4,
+    "section": "General Science",
+    "q": "An object is placed at a distance of 25 cm from a concave mirror, and its image is formed at a distance of 30 cm from the mirror. Find the magnification and the nature of the image formed by this object.",
+    "o": ["5/6", "−6/5", "6/5", "−5/6"],
+    "tick": 2,
+    "drop": "Hindi stem partly inferred; numerical wording approximate but options/tick reliable"
+  },
+  {
+    "orig": 5,
+    "section": "General Science",
+    "q": "Which of the following is NOT an example of a redox reaction?\n(i) ZnO + C → Zn + CO\n(ii) MnO₂ + 4HCl → MnCl₂ + 2H₂O + Cl₂\n(iii) 4Na + O₂ → 2Na₂O\n(iv) AgNO₃ + NaCl → AgCl + NaNO₃",
+    "o": ["i", "iv", "iii", "ii"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 6,
+    "section": "General Intelligence & Reasoning",
+    "q": "If the given equation is balanced by interchanging the signs and numbers indicated, then which of the following options should replace the question mark (?), and which two numbers should be interchanged?\n# 9 1 @ 4 ÷ 7 * 5 3 @ 1 * 5 4 @ 3 5 # 2 − 6 1 # 2 6 9 < 3 8 # 2 % 2 @ 7\nDivision sign should come in place of question mark, and the equation should hold true.",
+    "o": ["3", "2", "5", "4"],
+    "tick": 4,
+    "drop": "Symbol-substitution puzzle with garbled symbol string; tick reliable"
+  },
+  {
+    "orig": 7,
+    "section": "General Awareness & Current Affairs",
+    "q": "Article 279A is related to which constitutional body?",
+    "o": ["Finance Commission", "Goods and Services Tax Council", "UPSC", "Election Commission of India"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 8,
+    "section": "General Intelligence & Reasoning",
+    "q": "Three statements are given, followed by three conclusions numbered I, II and III. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.\nStatements:\nAll phones are tablets.\nNo tablet is a calculator.\nAll drives are calculators.\nConclusions:\nI. Some drives are phones.\nII. Some calculators are phones.\nIII. No tablet is a drive.",
+    "o": ["Only conclusions I and II follow", "Only conclusions I and III follow", "Only conclusion III follows", "Only conclusion II follows"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 9,
+    "section": "General Intelligence & Reasoning",
+    "q": "If '+' means '−', '−' means '×', '×' means '+', '÷' means '−', what will come in place of the question mark (?) in the following equation?\n16 + 4 − 8 ÷ 3 × 2 = ?",
+    "o": ["23", "22", "31", "14"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 10,
+    "section": "General Science",
+    "q": "The distance between the pole and the centre of curvature of a spherical mirror, in terms of its focal length f, is equal to ______.",
+    "o": ["f/4", "f/2", "f", "2f"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 11,
+    "section": "General Science",
+    "q": "The armature of an electric motor consists of which of the following part/parts?\n(i) Soft iron core\n(ii) Coil\n(iii) Magnets",
+    "o": ["Only (ii)", "Both (i) and (iii)", "Only (i)", "Both (i) and (ii)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 12,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following 'state – major language' pairs has been INCORRECTLY matched?",
+    "o": ["Manipur – Meitei", "Kerala – Kannada", "Meghalaya – Khasi", "Andhra Pradesh – Telugu"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 13,
+    "section": "General Intelligence & Reasoning",
+    "q": "To reach point B from point A, Anita should walk 70 m towards the west, then she should turn right and walk 70 m, then she should turn left and walk 150 m, then she should turn left and walk 70 m, then she should turn left and walk 90 m, then she should turn right and walk 100 m, and finally she should turn left and walk 130 m. How far and in which direction is point B from point A? (All turns are 90 degree turns only.)",
+    "o": ["100 m, North", "130 m, North", "100 m, South", "130 m, South"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 14,
+    "section": "Mathematics",
+    "q": "The following graph and table show the performance of three persons – A, B and C – in three tests (Test 1, Test 2 and Test 3). If the maximum marks for Test 1 and Test 2 are both 80, and for Test 3 are 100, then considering the performance in all three tests, by what percentage are the marks obtained by A more than those obtained by C?",
+    "o": ["5.56%", "6.92%", "8.2%", "7.69%"],
+    "tick": 4,
+    "drop": "Requires a line graph and table of marks that cannot be linearized into text"
+  },
+  {
+    "orig": 15,
+    "section": "Mathematics",
+    "q": "A, B and C started a business. They partnered for 6 months, 12 months and 14 months respectively. If their profit is in the ratio 5 : 4 : 7 respectively, then the ratio of their respective investments is ______.",
+    "o": ["5 : 2 : 3", "2 : 3 : 5", "2 : 3 : 7", "1 : 5 : 3"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 16,
+    "section": "General Science",
+    "q": "The Sangai deer is an endemic species found in which of the following Indian states?",
+    "o": ["Kerala", "Manipur", "Telangana", "Rajasthan"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 17,
+    "section": "Mathematics",
+    "q": "The mean of 36 numbers was found to be 42. Later, it was discovered that one number 47 was wrongly read as 41. Find the correct mean of the given numbers (rounded to two decimal places).",
+    "o": ["43.62", "42.17", "43.74", "42.83"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 18,
+    "section": "General Awareness & Current Affairs",
+    "q": "Who prepared the first estimate of national income of India in 1876?",
+    "o": ["Dadabhai Naoroji", "P. C. Mahalanobis", "V. K. R. V. Rao", "William Digby"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 19,
+    "section": "Mathematics",
+    "q": "Express 0.4‾24‾ in the form p/q, where p and q are integers and q ≠ 0.",
+    "o": ["14/33", "41/165", "13/33", "41/990"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 20,
+    "section": "Mathematics",
+    "q": "A person had ₹11,920 with him, on which he had to pay a certain amount as tax. This year the amount increased by 10% and he had to pay an additional tax. If the total tax payable now is ₹11,500, then find the increase in the amount of tax over the previous tax.",
+    "o": ["₹4,000", "₹7,000", "₹1,881", "₹2,000"],
+    "tick": 3,
+    "drop": "Hindi stem; wording approximate but options/tick reliable"
+  },
+  {
+    "orig": 21,
+    "section": "General Intelligence & Reasoning",
+    "q": "Based on the given statement, two conclusions are drawn. Find out which conclusion is true based on the statement.\nStatement: Z > R ≥ V > P = Q ≤ N < S\nConclusions:\nI. P > S\nII. Z = Q",
+    "o": ["Neither conclusion 1 nor 2 is true", "Both conclusions 1 and 2 are true", "Only conclusion 1 is true", "Only conclusion 2 is true"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 22,
+    "section": "Mathematics",
+    "q": "If the radius R of a circle is divided into 2 equal parts, then find the radius of the new circle.",
+    "o": ["R/4", "R", "R/2", "2R"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 23,
+    "section": "General Awareness & Current Affairs",
+    "q": "According to the Human Development Report 2020 released by the United Nations Development Programme (UNDP), what was India's rank in the Human Development Index in 2021?",
+    "o": ["161st", "135th", "128th", "131st"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 24,
+    "section": "General Science",
+    "q": "Study the given diagram carefully. Which option correctly explains the reason for the appearance of the blue-black colour?",
+    "o": ["Potato juice contains proteins, which turn blue black with iodine", "Potato juice contains fats, which turn blue black with iodine", "Potato juice contains starch, which turns blue black with iodine", "Potato juice contains glucose, which turns blue black with iodine"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 25,
+    "section": "General Intelligence & Reasoning",
+    "q": "Sejal, Pathak, Divya, Devij and Ravneet are sitting around a circular table facing the centre. Pathak is sitting third to the left of Ravneet. Divya is sitting to the immediate right of Sejal. Devij is not an immediate neighbour of Pathak. Who is sitting to the immediate left of Divya?",
+    "o": ["Sejal", "Pathak", "Devij", "Ravneet"],
+    "tick": 1,
+    "drop": "Hindi stem; arrangement details partly inferred but options/tick reliable"
+  },
+  {
+    "orig": 26,
+    "section": "General Intelligence & Reasoning",
+    "q": "If 15 March 2022 was a Tuesday, what day of the week was 15 March 2020?",
+    "o": ["Sunday", "Saturday", "Monday", "Friday"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 27,
+    "section": "General Awareness & Current Affairs",
+    "q": "Mawsynram is the wettest place on earth and it is situated in ______.",
+    "o": ["Rajmahal Hills", "Khasi Hills", "Mahadeo Hills", "Lushai Hills"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 28,
+    "section": "General Intelligence & Reasoning",
+    "q": "S, T, U, V, W and X live on six different floors of the same building. The lowermost floor in the building is numbered 1, the floor above it is numbered 2, and so on till the topmost floor is numbered 6.\nV lives on the lowermost floor. X and U each live on an even numbered floor. T lives exactly between U and W. W lives on floor number 2. Who lives on floor number 5?",
+    "o": ["S", "X", "U", "T"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 29,
+    "section": "General Awareness & Current Affairs",
+    "q": "The Navroz festival is related to which religious community?",
+    "o": ["Parsi", "Buddhist", "Jain", "Sikh"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 30,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(12, 18, 18)\n(45, 35, 25)\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 - Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)",
+    "o": ["(14, 28, 14)", "(19, 18, 1)", "(13, 10, 17)", "(15, 20, 25)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 31,
+    "section": "Mathematics",
+    "q": "Find the ratio of (sin² 22° + sin² 68°) and (cos² 33° + cos² 57°).",
+    "o": ["1 : 4", "1 : 1", "3 : 2", "2 : 1"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 32,
+    "section": "General Intelligence & Reasoning",
+    "q": "Answer the question asked on the basis of the following number series.\n5 1 2 6 3 8 6 5 3 6 5 3 2 5 6 9 5 1 7 2\nHow many such numbers are there in the above series, each of which is immediately preceded by an even number and also immediately followed by an even number?",
+    "o": ["4", "3", "2", "5"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "General Science",
+    "q": "Which action occurring in the human digestive system is similar to the emulsifying action of soap on dirt?",
+    "o": ["The breaking down of large fat globules into smaller globules by bile salts", "Providing an alkaline medium by bile juice", "Assisting in the digestion of starch by the enzymes of bile juice", "Providing an acidic medium by bile juice"],
+    "tick": 1,
+    "drop": false
+  }
+]

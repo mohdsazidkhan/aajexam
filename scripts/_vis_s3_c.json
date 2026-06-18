@@ -1,0 +1,290 @@
+[
+  {
+    "orig": 65,
+    "section": "Mathematics",
+    "q": "If the sum of the roots of the quadratic equation 5x² + bx + 4 = 0 is 9, then find the value of b.",
+    "o": ["−25", "−45", "0", "20"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 66,
+    "section": "General Science",
+    "q": "A contraceptive technique that increases phagocytosis of sperms within the uterus is:",
+    "o": ["use of oral contraceptives", "use of condoms", "surgery", "use of copper T"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 67,
+    "section": "General Science",
+    "q": "The resistivity of a material is dependent on which of the following factors?",
+    "o": ["Temperature", "Length", "Resistance", "Area of cross section"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 68,
+    "section": "General Science",
+    "q": "A convex mirror used as a rear-view mirror of a car has a focal length of 2 m. If a bus is located at a distance of 3 m from the mirror, where will its image be formed?",
+    "o": ["1.2 m behind the mirror", "0.83 m in front of the mirror", "1.2 m in front of the mirror", "0.83 m behind the mirror"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 69,
+    "section": "General Intelligence & Reasoning",
+    "q": "",
+    "o": ["64", "41", "63", "67"],
+    "tick": 4,
+    "drop": "Requires a Venn diagram with numeric regions that cannot be linearized into text"
+  },
+  {
+    "orig": 70,
+    "section": "General Science",
+    "q": "Guard cells are involved in the process of ________.",
+    "o": ["transport of food", "tropic movements", "circulation", "transpiration"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 71,
+    "section": "General Science",
+    "q": "Which of the following rules is used to determine the direction of induced current due to the motion of coil at right angle to the magnetic field?",
+    "o": ["Fleming's right-hand rule", "Maxwell's corkscrew rule", "Right-hand thumb rule", "Fleming's left-hand rule"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 72,
+    "section": "Mathematics",
+    "q": "A man travels 90 km in three hours. He further travels for two more hours. Find the distance travelled in the latter two hours, if his average speed for the entire journey is 30 km/h.",
+    "o": ["70 km", "150 km", "120 km", "90 km"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 73,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.\n8 : 16 :: 6 : 12 :: 21 : ?",
+    "o": ["40", "18", "42", "26"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 74,
+    "section": "General Awareness & Current Affairs",
+    "q": "In March 2022, which bank did RBI direct to stop onboarding new customers?",
+    "o": ["AU Small Finance Bank", "Airtel Payment Bank", "Ujjivan Small Finance Bank", "Paytm Payments Bank"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 75,
+    "section": "Mathematics",
+    "q": "A shopkeeper sold a book at a loss of 14%. If the selling price had been increased by ₹100, there would have been a gain of 6%. What was the cost price of the book?",
+    "o": ["₹650", "₹500", "₹970", "₹450"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 76,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n14, 14, 17, 85, 92, ?",
+    "o": ["924", "828", "418", "628"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 77,
+    "section": "Mathematics",
+    "q": "If 5 + x, 2x + 7, 6x + 9, and y are in proportion when x = 2, find the value of y.",
+    "o": ["33", "28", "42", "45"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 78,
+    "section": "General Intelligence & Reasoning",
+    "q": "If '−' means '×', '×' means '÷', '÷' means '+' and '+' means '−', what will come in place of the question mark (?) in the following equation?\n15 ÷ 16 − 8 × 7 = 2 + ?",
+    "o": ["19", "14", "16", "18"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 79,
+    "section": "General Intelligence & Reasoning",
+    "q": "V, W, X, Y, Z and A are six singers who have their concerts in different days of the same month, viz. 17th, 24th, 16th, 21st, 25th and 31st of July.\nW has his concert on one of the days before X, but not on 21st. V has his concert on 16th. Only A has his concert after X. Y has his concert before V. Who has the concert on 21st of July?",
+    "o": ["Z", "A", "Y", "X"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 80,
+    "section": "General Science",
+    "q": "Which of the following has the maximum non-metallic characters in group 16 elements?",
+    "o": ["Po", "Se", "S", "O"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 81,
+    "section": "General Intelligence & Reasoning",
+    "q": "A statement is given, followed by four conclusions given in the options. Find out which conclusion is true based on the given statement.\nStatement: G > P > T > S > K > N > D",
+    "o": ["P > D", "G ≥ D", "G > T", "N > T"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 82,
+    "section": "General Intelligence & Reasoning",
+    "q": "Three statements are followed by three conclusions numbered I, II and III. You have to consider these statements to be true, even if they seem at variance from commonly known facts. Decide which of the given conclusions logically follow/s from the given statements.\nStatements:\n1. All squigs are brooks.\n2. Some brooks are crooks.\n3. No crook is top.\nConclusions:\nI. Some tops are brooks.\nII. No squig is top.\nIII. Some brooks are squigs.",
+    "o": ["Only conclusion I follows.", "Only conclusions III follows.", "Only conclusions II and III follow.", "Only conclusions I and II follow."],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 83,
+    "section": "General Intelligence & Reasoning",
+    "q": "Amit's son was born on 10 January 2012. On what day of the week was he born?",
+    "o": ["Tuesday", "Wednesday", "Monday", "Thursday"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 84,
+    "section": "Mathematics",
+    "q": "The value of 0.16̅ + 0.15̅ − 0.13̅ is:",
+    "o": ["17/90", "34/45", "23/63", "19/99"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 85,
+    "section": "General Science",
+    "q": "What will come in place of A and B, respectively, in the given double displacement reaction?\nA + B → AgBr + KNO₃",
+    "o": ["HBr and NaOH", "Ag and HNO₃", "HBr and NaOH", "AgNO₃ and KBr"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 86,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following is NOT a direct tax in India?",
+    "o": ["Income Tax", "Corporate tax", "Excise Tax", "Capital Gain tax"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 87,
+    "section": "General Awareness & Current Affairs",
+    "q": "KK Venugopal, the 15th Attorney General of India, received the first extension in his tenure in which of the following years?",
+    "o": ["2022", "2019", "2020", "2021"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 88,
+    "section": "Mathematics",
+    "q": "If a : b = 2 : 3 and b : c = 3 : 4, then a : b : c = ?",
+    "o": ["3 : 4 : 2", "2 : 4 : 3", "2 : 3 : 4", "3 : 2 : 4"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 89,
+    "section": "General Science",
+    "q": "Which of the following is an example of a human cell that has the ability to modify its shape?",
+    "o": ["RBC", "WBC", "Brain cell", "Liver cells"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 90,
+    "section": "General Science",
+    "q": "A ray of light is incident on an interface separating two media along the normal to the interface. The angle between the incident ray and refracted ray is equal to:",
+    "o": ["90°", "0°", "45°", "30°"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 91,
+    "section": "Mathematics",
+    "q": "Ram is 55 years out and Sam is 25 years old. How many years ago was Ram three times as old as Sam?",
+    "o": ["7 years", "15 years", "5 years", "10 years"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 92,
+    "section": "Mathematics",
+    "q": "X and Y can complete a piece of work in 8 days and 12 days, respectively. If they work on alternate days, with X working on first day, then how long will it take the duo to complete the same work?",
+    "o": ["9½ days", "9⅔ days", "9⅖ days", "9⅗ days"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 93,
+    "section": "Mathematics",
+    "q": "If x/y = 3/2, then find (x² + y²)/(x² − y²).",
+    "o": ["9/5", "11/5", "13/5", "7/5"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 94,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following set.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 − Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)\n(4, 25, 8)\n(3, 25, 9)",
+    "o": ["(7, 22, 3)", "(14, 55, 4)", "(3, 81, 6)", "(12, 96, 8)"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 95,
+    "section": "General Science",
+    "q": "Which of the following situations is/are possible?\n(a) Magnetic field lines can be parallel to each other.\n(b) Magnetic field lines can be concentric circles.\n(c) Magnetic field lines can intersect each other.",
+    "o": ["Both (a) and (b)", "Only (a)", "Both (a) and (c)", "Only (b)"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 96,
+    "section": "Mathematics",
+    "q": "What is the ratio of the girls who have passed in Physics, Chemistry and Biology respectively?",
+    "o": ["9 : 13 : 11", "9 : 13 : 8", "8 : 11 : 14", "9 : 15 : 13"],
+    "tick": 1,
+    "drop": "Requires a line graph of boys/girls passed in five subjects; data cannot be fully linearized into text"
+  },
+  {
+    "orig": 97,
+    "section": "General Awareness & Current Affairs",
+    "q": "In February 2022, which state launched open-air classroom 'Paray Shikshalaya'?",
+    "o": ["Punjab", "West Bengal", "Kerala", "Haryana"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 98,
+    "section": "General Intelligence & Reasoning",
+    "q": "Refer to the following letter series and answer the question.\nL E T Y A N E C M K E W A P H E Q A P M N B E D R E K U W S D A N M A W E (Right)\nHow many such consonants are there in the series which are immediately preceded by a vowel and also immediately followed by a vowel?",
+    "o": ["Five", "Four", "Three", "Six"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 99,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following is the prominent language spoken by 8.03% population of India as per 2011 census?",
+    "o": ["Gujarati", "Bengali", "Marathi", "Punjabi"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 100,
+    "section": "General Intelligence & Reasoning",
+    "q": "Three statements are followed by four conclusions numbered I, II, III and IV. You have to consider these statements to be true, even if they seem at variance from commonly known facts. Decide which of the given conclusions logically follow/s from the given statements.\nStatements:\n1. Some cucutious are persicus.\n2. All persicus are sunflowers.\n3. Some sunflowers are cucutious.\nConclusions:\nI. Some sunflowers are cucutious.\nII. All cucutious are sunflowers.\nIII. All persicus are cucutious.\nIV. No sunflower is cucutious.",
+    "o": ["Only conclusions II and III follow.", "Only conclusion IV follows.", "Only conclusions I follows", "Only conclusions I and IV follow."],
+    "tick": 3,
+    "drop": false
+  }
+]
