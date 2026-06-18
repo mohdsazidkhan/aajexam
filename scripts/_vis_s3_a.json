@@ -1,0 +1,282 @@
+[
+  {
+    "orig": 1,
+    "section": "General Intelligence & Reasoning",
+    "q": "In the given letter-cluster pairs, the first letter-cluster is related to the second letter-cluster following a certain logic.\nStudy the given pairs carefully, and from the given options, select the pair that follows the same logic.\nTORPEDO : DEOOPRT\nFLICKER : CEFIKLR",
+    "o": ["CYNICAL : ACCLINY", "CURTAIN : RUCNIAT", "PERTAIN : AEINPRT", "CLOSURE : OLCERUS"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 2,
+    "section": "General Intelligence & Reasoning",
+    "q": "Four friends Ramniwas, Ramesh, Ramsingh and Raman received their PhD degrees in consecutive months of the same calendar year. Ramniwas received his degree exactly one month prior to Ramsingh. Raman received his degree exactly one month after Ramesh. Ramniwas received his degree in September and Raman did not obtain his degree before Ramniwas. In which month did Ramesh receive his degree?",
+    "o": ["August", "October", "November", "December"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 3,
+    "section": "General Intelligence & Reasoning",
+    "q": "A statement is given followed by two assumptions numbered I and II. You have to assume everything in the statement to be true and decide which of the given assumptions is/are implicit in the statement.\nStatement:\nThe demand for smartphones and laptops has increased substantially since the introduction of online classes in schools.\nAssumptions:\nI. People are buying smartphones and laptops to enable their children to attend online classes\nII. Desktop computers cannot be used to attend online classes.",
+    "o": ["Only assumption II is implicit", "Only assumption I is implicit", "Neither assumption I nor II is implicit", "Both assumptions I and II are implicit"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 4,
+    "section": "General Intelligence & Reasoning",
+    "q": "From point X, a girl walks 70 m towards the north. Then, she takes a left turn and walks 150 m. Then, she takes a left turn and walks 70 m. Then, she takes another left turn and walks 90 m. She then takes a right turn and walks 100 m. Finally, she takes a left turn and walks 60 m to reach point Z. How far and in which direction is point Z from point X? (All turns are 90 degree turns only)",
+    "o": ["60 m, South", "60 m, North", "100 m, North", "100 m, South"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 5,
+    "section": "Mathematics",
+    "q": "The HCF of two numbers is 7 and their LCM is 434. If one of the numbers is 14, find the other.",
+    "o": ["146", "217", "52", "48"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 6,
+    "section": "Mathematics",
+    "q": "In the given figure ∠ABC = ∠ABD, BC = BD then △CAB ≅ △____",
+    "o": ["DBA", "DAB", "ADB", "ABD"],
+    "tick": 2,
+    "drop": "Requires the given geometry figure (triangle diagram) to determine the congruent triangle correspondence"
+  },
+  {
+    "orig": 7,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the given letter, symbol series and answer the question that follows.\nL @ S * E ^ B U # W I < E M @ O $ # B * H ! A & L < O\nIf we replace each of the vowels with any consonant and similarly if we replace each of the consonants in the original series with any vowel, then how many consonants will be immediately followed by a symbol in the resultant series thus formed?",
+    "o": ["5", "7", "6", "4"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 8,
+    "section": "General Science",
+    "q": "In which organism sex is not determined genetically?",
+    "o": ["Sparrow", "Butterfly", "Snail", "Moth"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 9,
+    "section": "Mathematics",
+    "q": "The age of a father six years ago was six times the then age of his daughter. Three years hence, the father will be thrice as old as his daughter. What is the present age of the daughter?",
+    "o": ["15 years", "12 years", "17 years", "20 years"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 10,
+    "section": "General Science",
+    "q": "Two wires A and B are made of same material and have the same length but different cross-sectional areas. If the resistance of wire A is 16 times the resistance of wire B, the ratio of the cross-sectional area of wire A to that of wire B is:",
+    "o": ["1 : 4", "1 : 16", "4 : 1", "16 : 1"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 11,
+    "section": "General Intelligence & Reasoning",
+    "q": "Each of W, X, Y, Z, A, B and C has a wedding to attend on a different day of a week starting from Monday to Sunday of the same week. C has to attend wedding immediately after A. Y has to attend a wedding on one of the days before B and W. Only Z has to attend a wedding before A. X has to attend a wedding on Friday. B does not have to attend a wedding on Sunday. On which day of the week does Y have to attend a wedding?",
+    "o": ["Saturday", "Sunday", "Wednesday", "Thursday"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 12,
+    "section": "General Awareness & Current Affairs",
+    "q": "Who was conferred with Major Dhyan Chand Khel Ratna Award 2021 for his outstanding achievements in Para shooting?",
+    "o": ["Harman Preet Singh", "Praveen Kumar", "Manish Narwal", "Sharad Kumar"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 13,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following alphanumeric clusters will replace the question mark (?) in the series to make it logically complete?\n1 AZC 2, 3 DYF 4, 7 GXI 8, ?",
+    "o": ["15 JWL 16", "13 IJK 14", "13 IWK 14", "15 IVK 16"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 14,
+    "section": "General Awareness & Current Affairs",
+    "q": "A cost incurred in the past and that cannot be recovered in the future is called ____.",
+    "o": ["economic cost", "floating cost", "sunk cost", "prime cost"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 15,
+    "section": "Mathematics",
+    "q": "If 2ˣ × 4¹² × 8³ = 16¹¹, then the value of x is:",
+    "o": ["14", "12", "11", "13"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 16,
+    "section": "General Awareness & Current Affairs",
+    "q": "Identify the personality from among the following who received the Padma Shri 2022 award in the sports field.",
+    "o": ["Tara Jauhar", "Shaibal Gupta", "Shivnath Mishra", "Avani Lekhara"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 17,
+    "section": "Mathematics",
+    "q": "A can finish painting a sari in 11 days, B in 20 days and C in 55 days, if they work independently. In how many days can the work be completed if A is assisted by B on every odd numbered day and by C on every even numbered day till the work completes?",
+    "o": ["8 days", "18 days", "12 days", "9 days"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 18,
+    "section": "General Intelligence & Reasoning",
+    "q": "Eight friends, A, B, C, D, E, F, G and H are sitting around a square table facing the centre of the table. Four of them are sitting at the corners while the other four are sitting at the exact centre of sides of the table. Both A and C are sitting at the opposite corners. F and D are sitting at the opposite corners. Only G is between A and F. Only B is between A and D. H is to the immediate left of C. G is to the immediate right of F. E is second to right of H. D is second to left of C. D is third to left of E. Who is sitting second to left of B?",
+    "o": ["E", "F", "G", "H"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 19,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, Q, R, S and T are sitting in a straight line, facing north. S is an immediate neighbour of both P and R. R is an immediate neighbour of both S and Q. Q is an immediate neighbour of both R and T. Who are the immediate neighbours of Q?",
+    "o": ["S and R", "S and T", "P and R", "R and T"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 20,
+    "section": "General Awareness & Current Affairs",
+    "q": "What does the term 'Upa' in the term Upanishad denote?",
+    "o": ["Nearness", "Totality", "Secret", "Happiness"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 21,
+    "section": "General Awareness & Current Affairs",
+    "q": "'Save the Narmada' movement originated as a protest against raising the height of Sardar Sarovar Dam. Some disadvantages of building dams are mentioned below. Which one is an advantage?",
+    "o": ["Helpful in irrigation and electricity production", "Lot of public money is used", "Many tribals and peasants are displaced", "Causes deforestation and loss of biodiversity"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 22,
+    "section": "General Science",
+    "q": "Arrange the following metals in the decreasing order of reactivity:\nK, Na, Zn, Cu, Hg, Ag",
+    "o": ["K > Na > Zn > Ag > Hg > Cu", "K > Na > Zn > Ag > Hg > Cu", "K > Na > Zn > Cu > Hg > Ag", "K > Na > Zn > Hg > Cu > Ag"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 23,
+    "section": "Mathematics",
+    "q": "A man invested ₹75,000 at the rate of 7½% per annum simple interest for 6 years. Find the amount he will receive after 6 years.",
+    "o": ["₹69,600", "₹75,000", "₹1,12,500", "₹1,08,750"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 24,
+    "section": "General Awareness & Current Affairs",
+    "q": "What is the direction of the Inter Tropical Convergence Zone in winter?",
+    "o": ["Westward", "Southward", "Northward", "Eastward"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 25,
+    "section": "General Science",
+    "q": "A student focusses a sharp image of sun using a spherical mirror on a sheet of paper, which starts to burn after some time. Which of the following statement/statements about the mirror is/are correct?\n(a) It is concave spherical mirror\n(b) It has positive focal length\n(c) It is a converging mirror",
+    "o": ["Both (a) and (c)", "Both (a) and (b)", "(a), (b) and (c)", "Both (b) and (c)"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 26,
+    "section": "General Science",
+    "q": "Which of the following statements is FALSE?",
+    "o": ["In the first stage of respiration, breakdown of glucose takes place.", "In the mitochondria, acetic acid is broken down utilising oxygen.", "Pyruvic acid is produced in the first stage of respiration.", "Oxygen is not necessary for the fermentation process."],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 27,
+    "section": "Mathematics",
+    "q": "The sum of the roots of the quadratic equation 4x² + 7x − 21 = 0 is:",
+    "o": ["−21/4", "−21", "−7/4", "7/4"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 28,
+    "section": "Mathematics",
+    "q": "What is the area of an equilateral triangle whose each side is 14 cm long?",
+    "o": ["21√3 cm²", "14√3 cm²", "35√3 cm²", "49√3 cm²"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 29,
+    "section": "General Intelligence & Reasoning",
+    "q": "If 2 is subtracted from each odd digit and 1 is added to each even digit in the number 83252769, how many digits will occur more than once in the new number thus formed?",
+    "o": ["None", "Three", "Two", "One"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 30,
+    "section": "General Science",
+    "q": "Which of the following is the commercial unit of electric energy?",
+    "o": ["Calorie", "Kilowatt hour", "Joule", "Watt second"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 31,
+    "section": "Mathematics",
+    "q": "A man travelled at a speed of 20 m/min for 100 min, and at a speed of 70 m/min for 50 min. His average speed is",
+    "o": ["25 m/min", "35 m/min", "110/3 m/min", "70/3 m/min"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 32,
+    "section": "General Awareness & Current Affairs",
+    "q": "Panchayati Raj Institutions in India have been established following the ____ of the Constitution Of India.",
+    "o": ["42ⁿᵈ Amendment Act", "57ᵗʰ Amendment Act", "73ʳᵈ Amendment Act", "86ᵗʰ Amendment Act"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "General Awareness & Current Affairs",
+    "q": "Sohan Singh Bhakna was the first president of the ____ founded by Indians in the United States of America in 1913.",
+    "o": ["Swatantra Party", "Ghadar Party", "Swaraj Party", "India Revolutionary party"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 34,
+    "section": "Mathematics",
+    "q": "If θ is an acute angle, find the denominator A, when\n(cosec θ − cot θ)² = (1 − cos θ) / A",
+    "o": ["1 + sin θ", "cosec θ − 1", "1 + cos θ", "cot θ"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 35,
+    "section": "Mathematics",
+    "q": "Aruna has a younger sister whose age is 8 years less than that of Aruna. If Aruna's sister's age is 18 years, then Aruna's age is:",
+    "o": ["28 years", "26 years", "10 years", "24 years"],
+    "tick": 2,
+    "drop": false
+  }
+]

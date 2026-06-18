@@ -1,0 +1,290 @@
+[
+  {
+    "orig": 1,
+    "section": "General Science",
+    "q": "Select the correct option for the full form of AIDS.",
+    "o": ["Acquired Immune Deficiency Syndrome", "Added Immune Deficient Syndrome", "Aggravated Immune Deficient Syndrome", "Artificial Immune Deficiency Syndrome"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 2,
+    "section": "Mathematics",
+    "q": "In a class of students, Preeti ranked 18th from the top and 47th from bottom. What is the total number of students in the class?",
+    "o": ["61", "62", "60", "63"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 3,
+    "section": "General Science",
+    "q": "If a ray of light is incident passing through the centre of curvature of a concave mirror, then the angle between the incident ray and the reflected ray will be equal to:",
+    "o": ["0°", "150°", "90°", "180°"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 4,
+    "section": "General Science",
+    "q": "Which of the following compound is/are used in black and white photography?",
+    "o": ["Silver bromide", "Silver chloride", "Silver chloride and silver bromide both", "Silver oxide"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 5,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the given letter, number, symbol series and answer the question that follows.\nT % N 9 * M $ 3 U = L 8 Y @ G & 3 E > W & 4 R F ! K\nFind out the total number of symbols that are immediately preceded by a number and immediately followed by a letter.",
+    "o": ["2", "1", "4", "3"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 6,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the given diagram carefully and answer the question. The numbers in different sections indicate the number of persons. (Medal winners section shows 12; Medal winners ∩ Gymnasts = 8; Medal winners ∩ Girls = 16; Medal winners ∩ Gymnasts ∩ Girls = 11; Gymnasts only = 23; Gymnasts ∩ Girls = 14; Girls only = 25.)\nWhich of the following statements is correct on the basis of the above diagram?",
+    "o": ["The number of medal winners who are also girls is 27.", "The number of gymnasts who are also medal winners is 34.", "The number of girls who are also gymnasts is 41.", "The number of girls who are neither gymnasts nor medal winners is 23."],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 7,
+    "section": "General Awareness & Current Affairs",
+    "q": "The Panchayati Raj system was first implemented in which state of India?",
+    "o": ["Rajasthan", "West Bengal", "Uttar Pradesh", "Madhya Pradesh"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 8,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following was a non-violent protest against the British monopoly on salt production in 1930?",
+    "o": ["Khilafat Movement", "Kheda Satyagraha", "Dandi March", "Civil disobedience"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 9,
+    "section": "General Science",
+    "q": "In the following decomposition reaction, identify the p q r s:\np FeSO₄(s) → q Fe₂O₃(s) + r SO₂(g) + s SO₃(g)",
+    "o": ["1,1,2,1", "3,1,1,2", "1,1,1,1", "2,1,1,1"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 10,
+    "section": "General Intelligence & Reasoning",
+    "q": "How many such pairs of letters are there in the word DAUGHTER (in both forward and backward directions) which have as many letters between them in the word as there are in the English alphabetical order?",
+    "o": ["4", "2", "3", "5"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 11,
+    "section": "General Science",
+    "q": "What is the main function performed by the SER (smooth endoplasmic reticulum) in the liver cells of vertebrates?",
+    "o": ["Synthesis of lipids", "Synthesis of proteins", "Synthesis of complex sugars", "Detoxification of drugs and poisons"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 12,
+    "section": "General Awareness & Current Affairs",
+    "q": "_______ is the nodal agency for releasing data related to national income, consumption expenditure, savings and capital formation, since 1950.",
+    "o": ["Public Asset Management Office", "Central Statistics Office", "Central Financial Office", "Monetary Policy Office"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 13,
+    "section": "Mathematics",
+    "q": "If the cost price of an article is ₹2,500 and its selling price is ₹2,375, then the loss percentage is:",
+    "o": ["3%", "5%", "4%", "6%"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 14,
+    "section": "Mathematics",
+    "q": "Convert 36 cm to km.",
+    "o": ["0.00036 km", "0.0036 km", "0.00063 km", "0.000036 km"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 15,
+    "section": "Mathematics",
+    "q": "Find the simple interest on ₹2,000 at 8.25% per annum for the period from 7 February 2022 to 20 April 2022.",
+    "o": ["₹35", "₹31", "₹37", "₹33"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 16,
+    "section": "General Awareness & Current Affairs",
+    "q": "In how many languages was the Bal Sahitya Puraskar awarded in 2021?",
+    "o": ["21", "22", "24", "23"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 17,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following terms will replace the question mark (*) in the given series to make it logically complete?\nS2L, P5N, M18R, J34R, G16CE, ?",
+    "o": ["D486V", "D324V", "D386V", "E486V"],
+    "tick": 1,
+    "drop": "Series term codes (S2L, P5N, etc.) are not fully legible in the source image"
+  },
+  {
+    "orig": 18,
+    "section": "General Science",
+    "q": "Which of the following statements are correct?\n(i) Tin-lead alloy is used for making fuse wires.\n(ii) Fuse is connected to live wire.\n(iii) The material chosen for making fuse should have high melting point.",
+    "o": ["Both (i) and (iii)", "Both (i) and (ii)", "(i), (ii) and (iii)", "Both (ii) and (iii)"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 19,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 — Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)\n(15, 41, 4)\n(19, 71, 5)",
+    "o": ["(41, 125, 4)", "(13, 55, 3)", "(44, 91, 3)", "(10, 8, 2)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 20,
+    "section": "Mathematics",
+    "q": "If 1 is added to each odd digit and 1 is subtracted from each even digit in the number 4274 0563, what will be the difference between the highest and lowest digits thus formed?",
+    "o": ["8", "7", "2", "5"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 21,
+    "section": "General Science",
+    "q": "Which of the following relations represents the correct mathematical form of Ohm's law?",
+    "o": ["I = R/V", "I = V²R", "R = I/V", "V = IR"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 22,
+    "section": "Mathematics",
+    "q": "John bought a laptop at 15% discount on the marked price. If he paid ₹28,475 for the laptop, what was its marked price?",
+    "o": ["₹37,946", "₹37,496", "₹37,694", "₹37,964"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 23,
+    "section": "Mathematics",
+    "q": "20 women can complete a work in 15 days, 18 men can complete the same work in 15 days. Find the ratio between the work efficiency of a man to a woman.",
+    "o": ["5:3", "3:2", "4:3", "5:4"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 24,
+    "section": "General Science",
+    "q": "The filament of a bulb is made extremely thin and long in order to achieve:",
+    "o": ["high resistance", "high current", "high resistivity", "high voltage"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 25,
+    "section": "General Intelligence & Reasoning",
+    "q": "In this question, a statement is followed by two conclusions. Which of the two conclusions is/are true with respect to the statement?\nStatement: P ≤ Q < F = R > M ≥ B\nConclusions:\nI. R > P\nII. R = B",
+    "o": ["Only conclusion II is true", "Both conclusions I and II are true", "Neither conclusion I nor II is true", "Only conclusion I is true"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 26,
+    "section": "Mathematics",
+    "q": "The greatest possible length which can be used to measure exactly the lengths 5 m 25 cm, 7 m 35 cm and 4 m 90 cm is:",
+    "o": ["25 cm", "55 cm", "35 cm", "45 cm"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 27,
+    "section": "General Science",
+    "q": "Study the diagram of the cross-section of a leaf given below. Which option shows the correct labelling?",
+    "o": ["a - upper epidermis, b - lower epidermis, c - stoma, d - air spaces, e - nucleus", "a - upper epidermis, b - lower epidermis, c - guard cell, d - air spaces, e - chloroplast", "a - upper epidermis, b - waxy cuticle, c - stoma, d - air spaces, e - chloroplast", "a - waxy cuticle, b - upper epidermis, c - stoma, d - air spaces, e - nucleus"],
+    "tick": 2,
+    "drop": "Requires interpreting a labelled cross-section leaf diagram (positions a-e) not linearizable to text"
+  },
+  {
+    "orig": 28,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.\n40 : 35 :: 42 : 45 :: 10 : ?",
+    "o": ["85", "92", "90", "95"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 29,
+    "section": "General Awareness & Current Affairs",
+    "q": "Who among the following was the chairman of Planning Commission when the First Five Year plan was started?",
+    "o": ["Sardar Vallabhbhai Patel", "Harendra Coomar Mookerjee", "Rajendra Prasad", "Jawaharlal Nehru"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 30,
+    "section": "General Science",
+    "q": "How many water and carbon dioxide molecules take part, respectively, in the process of photosynthesis as indicated by the following unbalanced equation?\nH₂O(l) + CO₂(g) → C₆H₁₂O₆(aq) + O₂(g) + H₂O(l) (In the presence of sunlight and chlorophyll).",
+    "o": ["6 and 3", "6 and 6", "4 and 5", "3 and 6"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 31,
+    "section": "General Intelligence & Reasoning",
+    "q": "Refer to the following letter series and answer the question.\nY H S D S Y I R A Y E U G I R O A B U B R X M P Q\nHow many such vowels are there in the series each of which is immediately preceded by a consonant and also immediately followed by a consonant?",
+    "o": ["5", "2", "4", "3"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 32,
+    "section": "Mathematics",
+    "q": "Which of the following options is the closest approximate value which will come in place of question mark (?) in the following equation?\n25.19 × 3 + 4.41 − 0.9 = ?",
+    "o": ["100", "95", "62", "78"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "Mathematics",
+    "q": "Find x if ABCD is a parallelogram with two diagonals AC and BD intersecting at O and OA = x + 3, OB = y + 2, OC = 2x + y, OD = 3y.",
+    "o": ["2", "3", "4", "1"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 34,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which state is the 'Chalo Loku' festival celebrated?",
+    "o": ["Uttar Pradesh", "Andhra Pradesh", "Madhya Pradesh", "Arunachal Pradesh"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 35,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, Q, R, S, T and U are six giraffes in a jungle, each with a different height. S is taller than Q. P is taller than R. S is shorter than T. Q is taller than P but shorter than T. T is shorter than U. Which of the six giraffes is the shortest?",
+    "o": ["P", "R", "T", "Q"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 36,
+    "section": "General Intelligence & Reasoning",
+    "q": "What will come in place of the question mark (?) in the following equation, if '+' is interchanged with '×'?\n100 × 121 + 11 − 7 ÷ 24 − 8 × 33 × 99 ÷ 17 = ?",
+    "o": ["80", "100", "101", "90"],
+    "tick": 2,
+    "drop": false
+  }
+]

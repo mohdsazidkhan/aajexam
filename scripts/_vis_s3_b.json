@@ -1,0 +1,322 @@
+[
+  {
+    "orig": 30,
+    "section": "General Science",
+    "q": "Which of the following is the commercial unit of electric energy?",
+    "o": ["Calorie", "Kilowatt hour", "Joule", "Watt second"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 31,
+    "section": "Mathematics",
+    "q": "A man travelled at a speed of 20 m/min for 100 min, and at a speed of 70 m/min for 50 min. His average speed is",
+    "o": ["25 m/min", "35 m/min", "110/3 m/min", "70/3 m/min"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 32,
+    "section": "General Awareness & Current Affairs",
+    "q": "Panchayati Raj Institutions in India have been established following the ______ of the Constitution Of India.",
+    "o": ["42nd Amendment Act", "57th Amendment Act", "73rd Amendment Act", "86th Amendment Act"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "General Awareness & Current Affairs",
+    "q": "Sohan Singh Bhakna was the first president of the ______ founded by Indians in the United States of America in 1913.",
+    "o": ["Swatantra Party", "Ghadar Party", "Swaraj Party", "India Revolutionary party"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 34,
+    "section": "Mathematics",
+    "q": "If θ is an acute angle, find the denominator A, when\n(cosec θ − cot θ)² = (1 − cos θ)/A",
+    "o": ["1 + sin θ", "cosec θ − 1", "1 + cos θ", "cot θ"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 35,
+    "section": "Mathematics",
+    "q": "Aruna has a younger sister whose age is 8 years less than that of Aruna. If Aruna's sister's age is 18 years, then Aruna's age is:",
+    "o": ["28 years", "26 years", "10 years", "24 years"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 36,
+    "section": "General Intelligence & Reasoning",
+    "q": "Gayatri starts walking from her home and goes 100 m towards the south direction. She then turns right and walks 120 m. She then turns right and walks 100 m. She finally turns right again and walks 180 m. How far is she now from the starting point? (All turns are 90 degree turns only)",
+    "o": ["100 m", "50 m", "90 m", "60 m"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 37,
+    "section": "Mathematics",
+    "q": "A cuboid of dimensions 18.5 cm × 12.5 cm × 10 cm needs to be painted all over. Find the area to be painted.",
+    "o": ["1198 cm²", "1157.5 cm²", "984.56 cm²", "1082.5 cm²"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 38,
+    "section": "General Awareness & Current Affairs",
+    "q": "How many participants from India won the gold medal in the 14th International Olympiad on Astronomy and Astrophysics (IOAA) 2021?",
+    "o": ["5", "3", "4", "6"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 39,
+    "section": "Mathematics",
+    "q": "A dealer bought a second-hand scooter and spent 10% of the cost on its repairs. He sold the scooter for a profit of ₹2,200. How much did he spend on repairs if he made a profit of 20%?",
+    "o": ["₹1,200", "₹750", "₹1,000", "₹400"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 40,
+    "section": "General Science",
+    "q": "In Newlands' Octaves, the properties of which two elements were found to be the same?",
+    "o": ["Li, Na", "Na, Mg", "H, Th", "Ca, Cl"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 41,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which day of the calendar year is acknowledged as the 'Rare Disease Day'?",
+    "o": ["08 February", "18 February", "28 March", "28 February"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 42,
+    "section": "Mathematics",
+    "q": "In the adjoining figure line l is parallel to m. What is the value of 2x + y?",
+    "o": ["320°", "270°", "150°", "225°"],
+    "tick": 2,
+    "drop": "Requires a geometry figure (parallel lines l and m cut by transversals with marked angles 60°, x and y) that cannot be linearized into text."
+  },
+  {
+    "orig": 43,
+    "section": "General Awareness & Current Affairs",
+    "q": "As of July 2022, under the Pradhan Mantri Shram Yogi Maan-Dhan Yojana (PM-SYM) (Old Age Protection), what percentage of monthly contribution is payable by the beneficiary?",
+    "o": ["50%", "25%", "40%", "30%"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 44,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n3, 7, 13, 21, 31, ?",
+    "o": ["44", "41", "42", "43"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 45,
+    "section": "General Intelligence & Reasoning",
+    "q": "What will come in place of the question mark (?) in the following equation, if '−' is interchanged with '×' and '+' is interchanged with '÷'?\n6 ÷ 16 × 4 ÷ 9 − 8 + 2 × 7 = ?",
+    "o": ["47", "−11", "43", "38"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 46,
+    "section": "General Science",
+    "q": "The balanced reaction for following chemical reaction is:\nBarium sulphate + Aluminium chloride → Barium chloride + Aluminium sulphate",
+    "o": ["2 BaSO₄ + 2 AlCl₃ → 2 BaCl₂ + Al₂(SO₄)₃", "BaSO₄ + AlCl₃ → BaCl₂ + Al₂(SO₄)₃", "BaSO₄ + AlCl₃ → BaCl₂ + AlSO₄", "3 BaSO₄ + 2 AlCl₃ → 3 BaCl₂ + Al₂(SO₄)₃"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 47,
+    "section": "General Intelligence & Reasoning",
+    "q": "In a certain code language, PRECIOUS is written as KIVXRLFH and CLEAR is written as XOVZI. How will DRIVING be written in the same language?",
+    "o": ["WHSGBRMT", "WRIFBRMS", "WRIGBRMT", "VRIGBROT"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 48,
+    "section": "General Science",
+    "q": "The bluish colour of water in deep sea is due to:",
+    "o": ["reflection of light", "refraction of light", "scattering of light", "dispersion of light"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 49,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following features says that people of India have a direct role in electing their representatives?",
+    "o": ["Fundamental Rights", "Separation of Powers", "Secularism", "Parliamentary Form of Government"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 50,
+    "section": "Mathematics",
+    "q": "Find the number of 2-digit numbers divisible by both 2 and 4.",
+    "o": ["12", "42", "22", "32"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 51,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which year was Steel Authority of India incorporated?",
+    "o": ["1973", "1982", "1987", "1979"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 52,
+    "section": "Mathematics",
+    "q": "The present ages of Shanthi and Keerthi are in the ratio of 7 : 3. After 5 years, Shanthi's age will be 40. How old will Keerthi be after 5 years?",
+    "o": ["10 years", "30 years", "20 years", "15 years"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 53,
+    "section": "Mathematics",
+    "q": "Study the following graph carefully and answer the question. Production of two companies A and B over the years. For company A, what is the approximate percentage decrease in production from 2015 to 2016?",
+    "o": ["15%", "22%", "25%", "20%"],
+    "tick": 4,
+    "drop": "Requires reading values from a line graph of production of companies A and B over years; the data cannot be linearized into text."
+  },
+  {
+    "orig": 54,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the given letter, symbol series and answer the question that follows.\nL @ S * J ^ B U # W R < E @ N $ # B * H ! A & L < W Q\nHow many symbols are immediately followed by a consonant and immediately preceded by a vowel?",
+    "o": ["4", "2", "3", "1"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 55,
+    "section": "General Awareness & Current Affairs",
+    "q": "The 'Mango Showers' phenomena in India is related to which season?",
+    "o": ["Summer", "Rainy", "Winter", "Autumn"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 56,
+    "section": "General Awareness & Current Affairs",
+    "q": "Gosikhurd National Irrigation Project is related to which of the following states?",
+    "o": ["Uttar Pradesh", "West Bengal", "Maharashtra", "Punjab"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 57,
+    "section": "General Science",
+    "q": "What is the need to balance chemical equations?",
+    "o": ["To indicate the ratio of volumes of reactants and products in which these react.", "To satisfy the law of conservation of mass.", "To satisfy the law of constant proportions.", "To indicate the ratio of masses of reactants and products in which these react."],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 58,
+    "section": "General Science",
+    "q": "A white precipitate will be formed if we add ammonia solution to:",
+    "o": ["Mg(NO₃)₂ solution", "Ba(NO₃)₂ solution", "AlCl₃ solution", "KNO₃ solution"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 59,
+    "section": "General Science",
+    "q": "Which of the following substances are selectively reabsorbed from the initial filtrate by the tubular portion of the nephron in human kidney?",
+    "o": ["Glucose, water, amino acids and proteins", "Salts, glucose, fats and water", "Glucose, water, salts and amino acids", "Water, glucose, salts and proteins"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 60,
+    "section": "General Intelligence & Reasoning",
+    "q": "In this question, a statement is followed by two conclusions. Which of the two conclusions is/are true with respect to the statement?\nStatement: T > G < E > F = B ≤ Z\nConclusions:\nI. F = Z\nII. E > B",
+    "o": ["Both conclusions I and II are true", "Neither conclusion I nor II is true", "Only conclusion II is true", "Only conclusion I is true"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 61,
+    "section": "General Intelligence & Reasoning",
+    "q": "In a certain code language, TRY is written as 63 and NOT is written as 49. How will DUG be written in the same language?",
+    "o": ["30", "40", "36", "32"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 62,
+    "section": "General Awareness & Current Affairs",
+    "q": "On which day is a major national festival celebrated every year to commemorate the enactment of the Constitution of India, which declared India to be a sovereign, democratic and republic state?",
+    "o": ["26th January", "15th August", "23rd March", "2nd October"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 63,
+    "section": "General Science",
+    "q": "Which of the following is not the use of bleaching powder?\n(i) to make drinking water free from germs\n(ii) in soda-acid fire extinguishers\n(iii) as an oxidising agent in many chemical industries\n(iv) for baking cakes",
+    "o": ["ii", "iii", "iv", "i"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 64,
+    "section": "General Science",
+    "q": "Soil degradation is one of the major environmental problems being faced these days. A wide range of techniques to conserve soil are mentioned below. Select the INCORRECT option.",
+    "o": ["Crop rotation", "Planting trees", "Terrace farming", "Overgrazing"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 65,
+    "section": "Mathematics",
+    "q": "If the sum of the roots of the quadratic equation 5x² + bx + 4 = 0 is 9, then find the value of b.",
+    "o": ["−25", "−45", "0", "20"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 66,
+    "section": "General Science",
+    "q": "A contraceptive technique that increases phagocytosis of sperms within the uterus is:",
+    "o": ["use of oral contraceptives", "use of condoms", "surgery", "use of copper T"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 67,
+    "section": "General Science",
+    "q": "The resistivity of a material is dependent on which of the following factors?",
+    "o": ["Temperature", "Length", "Resistance", "Area of cross section"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 68,
+    "section": "General Science",
+    "q": "A convex mirror used as a rear-view mirror of a car has a focal length of 2 m. If a bus is located at a distance of 3 m from the mirror, where will its image be formed?",
+    "o": ["1.2 m behind the mirror", "0.83 m in front of the mirror", "1.2 m in front of the mirror", "0.83 m behind the mirror"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 69,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the diagram and answer the question that follows. A = Academicians, B = Teachers, D = Women, B = Men and C = Doctors. The numbers inside the shapes indicate number of the respective persons. What is the sum total number of the following: Academicians who are teachers; Teachers who are doctors and; Women who are NEITHER teachers NOR academicians?",
+    "o": ["64", "41", "63", "67"],
+    "tick": 4,
+    "drop": "Requires reading numbers from a Venn diagram of overlapping circles (Academicians, Teachers, Doctors, etc.) that cannot be linearized into text."
+  }
+]

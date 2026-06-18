@@ -1,0 +1,306 @@
+[
+  {
+    "orig": 30,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)\n(12, 18, 16)\n(45, 35, 25)",
+    "o": ["(14, 28, 14)", "(19, 18, 1)", "(13, 10, 17)", "(15, 20, 25)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 31,
+    "section": "Mathematics",
+    "q": "Find the ratio of (sin² 22° + sin² 68°) and (cos² 33° + cos² 57°).",
+    "o": ["1 : 4", "1 : 1", "3 : 2", "2 : 1"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 32,
+    "section": "General Intelligence & Reasoning",
+    "q": "How many such pairs of digits are there in the number 5128865365325896572, each of which has as many digits between them (both forward and backward) as they have between them in the number system?",
+    "o": ["4", "3", "2", "5"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "General Science",
+    "q": "What is described as the movement of large food molecules through the cell membrane into the cell during pinocytosis?",
+    "o": ["Small molecules made by the cell are taken in by fat juice", "Helping in the digestion of fat juice enzymes in the body", "(option not legible)", "Providing acidic medium by fat juice"],
+    "tick": 1,
+    "drop": "Hindi options partially illegible; biology pinocytosis question, options garbled"
+  },
+  {
+    "orig": 34,
+    "section": "General Science",
+    "q": "The potential drop across the 4 Ω resistor in the given circuit is:",
+    "o": ["2 V", "5 V", "3 V", "0.5 V"],
+    "tick": 1,
+    "drop": "Requires circuit diagram (4 ohm and 6 ohm resistors with 5V source) that cannot be linearized to text"
+  },
+  {
+    "orig": 35,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, Q, R, S, T, U and V live on seven different floors of the same building. The lowermost floor is numbered 1, the floor above it is numbered 2, and so on till the topmost floor is numbered 7. Q lives on floor number 2. R lives on the floor immediately above S. T lives on the floor immediately below V's floor. Only three persons live between the floors of T and P. R lives on the topmost floor. Only one person lives between the floors of R and P. On which floor does P live?",
+    "o": ["Floor 2", "Floor 4", "Floor 5", "Floor 3"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 36,
+    "section": "General Intelligence & Reasoning",
+    "q": "Seven friends P, Q, R, S, T, U and V are sitting around a circular table. All are facing the centre of the table. Only R is sitting between Q and S. Only T is sitting between P and V. V is sitting third to the right of Q. V is third to the left of U. Who is sitting to the immediate right of R?",
+    "o": ["P", "T", "S", "V"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 37,
+    "section": "General Intelligence & Reasoning",
+    "q": "Study the following arrangement carefully and answer the question given below.\n3 ^ % 7 2 4 £ 5 V 4 7 @ 8 6 6 6 @ 1 (star)\nHow many such symbols are there in the above arrangement, each of which is immediately preceded by a number and immediately followed by a number?",
+    "o": ["3", "2", "4", "1"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 38,
+    "section": "Mathematics",
+    "q": "A book has 802 pages in total. If the first part of the book has twice as many pages as the second part, then how many pages are there in the first part of the book?",
+    "o": ["484", "420", "472", "482"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 39,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the option that correctly represents the relationship shown in the given Venn diagram.",
+    "o": ["211 and 178, respectively", "479 and 211, respectively", "138 and 479, respectively", "138 and 178, respectively"],
+    "tick": 1,
+    "drop": "Requires a Venn diagram that cannot be linearized to text"
+  },
+  {
+    "orig": 40,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the option that will come in place of the question mark (?) to complete the given series.\nUCK-4, WFO-9, YIS-19, ALW-39, ?",
+    "o": ["CPB-79", "BOA-76", "COA-77", "COA-79"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 41,
+    "section": "Mathematics",
+    "q": "If a number 34135278 is divisible by 2, then a number is written next to it, and if it is not divisible by 2, then 1 is written next to it, then what will be the sum of these new numbers?",
+    "o": ["7", "2", "3", "4"],
+    "tick": 4,
+    "drop": "Stem ambiguous/garbled translation; digit-rule problem"
+  },
+  {
+    "orig": 42,
+    "section": "General Science",
+    "q": "When wet slaked lime dries up, it gets converted into ______, so the main substance of slaked lime is ______.",
+    "o": ["Hydrochloric acid", "Acetic acid", "Calcium oxychloride", "Unslaked lime (quicklime)"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 43,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following is necessary for protecting the environment, and is also useful for agriculture?",
+    "o": ["Contour ploughing", "Livestock grazing", "Inferior method of irrigation", "More farming"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 44,
+    "section": "Mathematics",
+    "q": "Which of the following is divisible by both 4 and 8?",
+    "o": ["4382", "8342", "3824", "3842"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 45,
+    "section": "General Intelligence & Reasoning",
+    "q": "O, P, Q, R, S, T and U are in a row. Q is immediately to the right of O. T is just two places away from S. S is third to the left of R. P is between Q and R. O is at one of the ends. How many persons are sitting between P and S?",
+    "o": ["One", "Three", "Two", "Four"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 46,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which of the following years was the Indian Parliament Act passed?",
+    "o": ["1909", "1915", "1921", "1910"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 47,
+    "section": "General Intelligence & Reasoning",
+    "q": "In this question, a statement is followed by two conclusions. Which of the two conclusions is/are true with respect to the statement?\nStatement: H ÷ Y ≥ A = N = A / W\nConclusions:\nI. H > S\nII. A ≥ Y",
+    "o": ["Only conclusion I is true", "Both conclusions I and II are true", "Neither conclusion I nor II is true", "Only conclusion II is true"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 48,
+    "section": "Mathematics",
+    "q": "6124.8 × 625.5 × 0.0043 is equal in value to:",
+    "o": ["61.248 × 6255 × 0.043", "6.1248 × 62.55 × 0.43", "612.48 × 625.5 × 0.43", "6.1248 × 62.55 × 0.043"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 49,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n11, 21, 47, 97, 179, ?",
+    "o": ["295", "281", "301", "231"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 50,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which sport did P. V. Sindhu win the gold medal at the 2021 Tokyo Olympics?",
+    "o": ["Athletics", "Table tennis", "Boxing", "Weightlifting"],
+    "tick": 1,
+    "drop": "Translated stem; P.V. Sindhu won bronze in badminton at Tokyo 2021 — question/options appear inconsistent, kept as transcribed"
+  },
+  {
+    "orig": 51,
+    "section": "Mathematics",
+    "q": "Rohan reaches a birthday party 20 minutes late if he walks 3 km/h from his home. If she increases her speed to 4 km/h she would reach 30 minutes early, then the distance between her home and the venue of the birthday party is:",
+    "o": ["9 km", "7 km", "10 km", "4 km"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 52,
+    "section": "Mathematics",
+    "q": "If the volume of a sphere is 36π cm³, then the diameter of the sphere is:",
+    "o": ["3 cm", "9 cm", "27 cm", "6 cm"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 53,
+    "section": "General Awareness & Current Affairs",
+    "q": "In January 2022, GAIL started India's maiden project of blending hydrogen into natural gas system at which point?",
+    "o": ["Bhopal", "Gwalior", "Ujjain", "Indore"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 54,
+    "section": "General Science",
+    "q": "The region around a magnet within which the effect of the magnet can be felt is called ______ and ______ together determine the ______ of that region.",
+    "o": ["Region, current", "Force, magnetic field", "Magnetic field, force", "Current, region"],
+    "tick": 2,
+    "drop": "Hindi fill-in-the-blanks; stem partially illegible, kept best-effort translation"
+  },
+  {
+    "orig": 55,
+    "section": "General Intelligence & Reasoning",
+    "q": "In a certain code language, 'FURL' is written as 'IN' and 'PEER' is written as '44'. How will 'EARL' be written in that language?",
+    "o": ["40", "38", "34", "36"],
+    "tick": 4,
+    "drop": "Coding-decoding stem partially illegible; codes uncertain"
+  },
+  {
+    "orig": 56,
+    "section": "Mathematics",
+    "q": "Find the ratio in the given problem.",
+    "o": ["1 : 1", "4 : 3", "3 : 4", "2 : 4"],
+    "tick": 2,
+    "drop": "Hindi ratio question stem illegible/garbled; cannot reconstruct the figures reliably"
+  },
+  {
+    "orig": 57,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n124, 129, 136, 145, 156, ?",
+    "o": ["168", "165", "172", "169"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 58,
+    "section": "Mathematics",
+    "q": "Simplify (3²)³ + (2³)².",
+    "o": ["379", "793", "729", "739"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 59,
+    "section": "General Science",
+    "q": "Which of the following led to the classification of elements by scientists?\n(i) Various methods of synthesis of elements\n(ii) Different sources of elements\n(iii) Different properties of elements",
+    "o": ["Only iii", "Only ii", "i, ii, iii", "Only i"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 60,
+    "section": "General Science",
+    "q": "The chemical reaction in which an insoluble substance is formed is called ______.",
+    "o": ["Displacement reaction", "Redox reaction", "Decomposition reaction", "Precipitation reaction"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 61,
+    "section": "Mathematics",
+    "q": "5 men and 8 women can do a piece of work in 6 days while 5 men and 7 women can do the same work in 8 days. In how many days can 5 men and 2 women do the same work?",
+    "o": ["11 3/11 days", "13 3/11 days", "10 9/11 days", "12 3/11 days"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 62,
+    "section": "General Awareness & Current Affairs",
+    "q": "In May 2022, which of the following state Chief Ministers/state governments launched a new health and wellness scheme app AAYU?",
+    "o": ["Kerala", "Karnataka", "Andhra Pradesh", "Tamil Nadu"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 63,
+    "section": "General Awareness & Current Affairs",
+    "q": "The famous Haji Ali Dargah is located in which of the following cities?",
+    "o": ["Delhi", "Ajmer", "Mumbai", "Hyderabad"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 64,
+    "section": "General Awareness & Current Affairs",
+    "q": "According to the State of India's Birds report, in which state was the maximum decline in the population of vultures seen in January 2022?",
+    "o": ["Haryana", "Punjab", "Himachal Pradesh", "Rajasthan"],
+    "tick": 1,
+    "drop": "Hindi stem partially illegible; best-effort translation"
+  },
+  {
+    "orig": 65,
+    "section": "General Intelligence & Reasoning",
+    "q": "How many distinct straight lines can be drawn through 8 points lying on a plane, no three of which are collinear?",
+    "o": ["8", "3", "2", "6"],
+    "tick": 4,
+    "drop": "Hindi stem partially illegible; best-effort translation"
+  },
+  {
+    "orig": 66,
+    "section": "Mathematics",
+    "q": "The LCM of 48, 72 and another number, t, is 576. Which of the values given below can be the value of t?",
+    "o": ["288", "192", "144", "96"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 67,
+    "section": "General Intelligence & Reasoning",
+    "q": "Select the correct combination of mathematical signs that can sequentially replace * to balance the following equation.\n39 * 4 * 4 * 2 * 14 * 16",
+    "o": ["÷, +, =, ÷, +", "÷, =, ×, ×, +", "×, +, ×, −, =", "÷, ×, +, =, +"],
+    "tick": 4,
+    "drop": false
+  }
+]

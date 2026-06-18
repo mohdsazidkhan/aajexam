@@ -1,0 +1,330 @@
+[
+  {
+    "orig": 32,
+    "section": "Mathematics",
+    "q": "Which of the following options is the closest approximate value which will come in place of the question mark (?) in the following equation?\n25.19 × 3 + 4.41 − 0.9 = ?",
+    "o": ["100", "95", "62", "78"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 33,
+    "section": "Mathematics",
+    "q": "Find x if ABCD is a parallelogram as given in the figure below, with two diagonals AC and BD intersecting at O and OA = x + 3, OB = y + 2, OC = 2x + y, OD = y + 6.",
+    "o": ["2", "3", "4", "1"],
+    "tick": 1,
+    "drop": "Requires the parallelogram diagram showing diagonal segment expressions; cannot be reliably linearised to text."
+  },
+  {
+    "orig": 34,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which state is the 'Chalo Loku' festival celebrated?",
+    "o": ["Uttar Pradesh", "Andhra Pradesh", "Madhya Pradesh", "Arunachal Pradesh"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 35,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, Q, R, S, T and U are six giraffes in a jungle, each with a different height. S is taller than Q. P is taller than R. S is taller than U. Q is taller than P but shorter than T. T is shorter than U. Which of the six giraffes is the shortest?",
+    "o": ["P", "R", "T", "Q"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 36,
+    "section": "General Intelligence & Reasoning",
+    "q": "What will come in place of the question mark (?) in the following equation, if '+' is interchanged with '÷', and '−' is interchanged with '×'?\n100 × 121 + 11 − 7 ÷ 24 − 8 × 33 × 99 ÷ 17 = ?",
+    "o": ["80", "100", "101", "90"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 37,
+    "section": "General Awareness & Current Affairs",
+    "q": "In February 2022, who launched the ICMR/DHR Policy on Biomedical Innovation?",
+    "o": ["Nitin Gadkari", "Amit Shah", "Mansukh Mandaviya", "Narendra Modi"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 38,
+    "section": "General Science",
+    "q": "The part of an electric motor that reverses the direction of flow of current in it, is:",
+    "o": ["coil", "soft iron core", "split ring", "brush"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 39,
+    "section": "Mathematics",
+    "q": "If 6, 18, 39, and x are in proportion, then find the value of x.",
+    "o": ["117", "112", "139", "115"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 40,
+    "section": "General Science",
+    "q": "The table given below shows four methods of contraception and their modes of action. Which option shows the correct matching?\nMethod — Mode of action\nA. Copper-T — i) Egg will not reach uterus\nB. Oral pills — ii) Sperms do not reach the cervix\nC. Condom — iii) Prevent implantation\nD. Tubectomy — iv) Prevent fertilization",
+    "o": ["A-iii, B-ii, C-iv, D-i", "A-ii, B-i, C-iv, D-iii", "A-i, B-ii, C-iii, D-iv", "A-iv, B-iii, C-ii, D-i"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 41,
+    "section": "General Awareness & Current Affairs",
+    "q": "The Periyar River flows in which of the following Indian states?",
+    "o": ["Kerala", "Tripura", "Odisha", "Punjab"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 42,
+    "section": "Mathematics",
+    "q": "A water tank is in the form of a cube of side 2 m. It has an inlet in the shape of a circle with radius 3.5 cm. How long will it take to fill the tank (approximately), if the water is flowing at a speed of 2 m/s?",
+    "o": ["19.2 minutes", "17.3 minutes", "1 hour", "22 minutes"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 43,
+    "section": "General Awareness & Current Affairs",
+    "q": "In economics, the slope of the demand curve is typically ________.",
+    "o": ["Curved moving from left to right", "downward from left to right", "upward from left to right", "Straight parallel to X axis from left to right"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 44,
+    "section": "Mathematics",
+    "q": "If x + y + z = 11 and xy + yz + zx = 42, then the value of x² + y² + z² is:",
+    "o": ["37", "43", "41", "39"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 45,
+    "section": "General Science",
+    "q": "A chemical compound X is prepared by heating gypsum. It is white powder and used in a fire-proofing material. Compound X is:",
+    "o": ["plaster of Paris", "sodium hydroxide", "washing soda", "baking soda"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 46,
+    "section": "General Intelligence & Reasoning",
+    "q": "Rajan started from a point and walked a distance of 200 m towards the north, he then turned left and walked 300 m, turned right and walked 400 m, and then turned left and walked 1 km. In which direction is Rajan facing now? (All turns are 90 degree turns only)",
+    "o": ["South", "West", "East", "North"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 47,
+    "section": "Mathematics",
+    "q": "The following chart shows the production of an organisation in various years from 2012 to 2016. Study the chart and answer the question. What was the percentage increase in the production from 2013 to 2016?",
+    "o": ["50%", "21%", "40%", "25%"],
+    "tick": 1,
+    "drop": "Requires reading values off the bar chart of yearly production; cannot be linearised to text."
+  },
+  {
+    "orig": 48,
+    "section": "General Science",
+    "q": "Which of the following groups of organisms help in keeping the environment clean?",
+    "o": ["Bacteria and Fungi", "Algae and Protozoa", "Protozoa and Lichens", "Algae and Lichens"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 49,
+    "section": "General Science",
+    "q": "Tropical Evergreen Forests are found in which of the following states of India?",
+    "o": ["Kerala", "Gujarat", "Uttar Pradesh", "Rajasthan"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 50,
+    "section": "General Intelligence & Reasoning",
+    "q": "In a certain code language, 'MINUS' is written as 'LEASE' and 'UNDER' is written as 'EMBRZ'. How will 'TRICK' be written in that language?",
+    "o": ["USDJL", "SQHBJ", "USJDL", "SSHJB"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 51,
+    "section": "General Science",
+    "q": "In which of the following reactions of respiration is oxygen required?",
+    "o": ["Conversion of glucose to pyruvate", "Conversion of pyruvate to CO₂, H₂O and energy", "Conversion of pyruvate to ethanol", "Conversion of pyruvate to CO₂"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 52,
+    "section": "Mathematics",
+    "q": "P and Q alone can complete a piece of work in 9 days and 12 days, respectively. In how many days will the work be completed if they work on alternate days starting with Q?",
+    "o": ["10⅓", "11⅙", "11⅓", "10⅚"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 53,
+    "section": "General Intelligence & Reasoning",
+    "q": "E, F, G, H, I and X are sitting in a straight row, facing north. H is second to the right of G. F and X are immediate neighbours. Both F and X are immediate neighbours of I. H and X are immediate neighbours. X is at the extreme right end of the row. I is at the immediate left of H. Who is at the immediate left of I?",
+    "o": ["H", "F", "G", "E"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 54,
+    "section": "General Intelligence & Reasoning",
+    "q": "Six persons A, B, C, D, E and F, are sitting around a circular table. Only two persons are sitting between B and A. F is to the immediate right of C. E is second to the right of C. E is second to the left of A. Who is sitting to the immediate right of E?",
+    "o": ["E", "C", "A", "D"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 55,
+    "section": "General Intelligence & Reasoning",
+    "q": "A statement is given followed by two assumptions numbered I and II. You have to assume everything in the statement to be true, even if they seem to be at variance with commonly known facts, and decide which of the given assumptions is/are implicit in the statement.\nStatement:\nPlease replace the rent letter by 1) April to collect free passes. Passes will not be issued without valid address proof.\nAssumption:\nI. Voter ID card is a valid address proof.\nII. Passes can be purchased at the venue.",
+    "o": ["Only assumption I is implicit", "Both assumptions I and II are implicit", "Neither assumption I nor II is implicit", "Only assumption II is implicit"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 56,
+    "section": "General Science",
+    "q": "The difference in molecular mass between two consecutive homologous series members will be.",
+    "o": ["12", "08", "14", "16"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 57,
+    "section": "General Awareness & Current Affairs",
+    "q": "Which of the following statements is INCORRECT about longitudes and latitudes?",
+    "o": ["The latitude lines are parallel to each other.", "Longitudes never intersect each other.", "Latitudes never intersect each other.", "180° E and 180° W refer to the same longitudinal line."],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 58,
+    "section": "General Awareness & Current Affairs",
+    "q": "The Indian Constitution gives the President the authority to declare three types of emergencies. Which of following is NOT among them?",
+    "o": ["Article 356 - Emergency in State (President's rule)", "Article 352 - National Emergency", "Article 358 - Public health emergency", "Article 360 - Financial Emergency"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 59,
+    "section": "General Intelligence & Reasoning",
+    "q": "Three statements are followed by three conclusions numbered I, II and III. You have to consider these statements to be true, even if they seem to be at variance with commonly known facts, and decide which of the given conclusions logically follow/s from the given statements.\nStatements:\nAll pens are pens.\nAll pens are brushes.\nAll brushes are tables.\nConclusions:\nI) Some tables are pens.\nII) All pens are pens.\nIII) No pen is a pen.",
+    "o": ["Either conclusion I or conclusion III follows", "Only conclusion II follows", "Only conclusion I follows", "None of the conclusions follow"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 60,
+    "section": "General Science",
+    "q": "Which of the following statements is/are correct for a current carrying solenoid?\n(i) It can be used to magnetise a piece of soft iron.\n(ii) It acts like a bar magnet.\n(iii) The field lines are concentric circles.",
+    "o": ["Only (i)", "Both (i) and (iii)", "Only (iii)", "Both (i) and (ii)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 61,
+    "section": "General Awareness & Current Affairs",
+    "q": "The Rajiv Gandhi Khel Ratna award was renamed by the Government of India as Major Dhyan Chand Khel Ratna Award in the year ________.",
+    "o": ["2021", "2019", "2022", "2020"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 62,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n9, 10, 18, 45, 109, ?",
+    "o": ["327", "234", "198", "218"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 63,
+    "section": "General Awareness & Current Affairs",
+    "q": "Who became the first Indian woman to win a silver medal in the World Wrestling Championships in 2021?",
+    "o": ["Anshu Malik", "Mona", "Sarita Mor", "Babita Phogat"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 64,
+    "section": "Mathematics",
+    "q": "What will be the approximate angle between the two hands of a clock (hour hand and minute hand) when the time is 3:45?",
+    "o": ["17°", "7°", "10°", "2°"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 65,
+    "section": "General Science",
+    "q": "What is the process by which water seeps into the ground?",
+    "o": ["Incineration", "Infiltration", "Osmosis", "Transpiration"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 66,
+    "section": "General Science",
+    "q": "What part of the respiratory system prevents the air-passage from collapsing?",
+    "o": ["Ribs", "Rings of cartilage", "Spine", "Trachea"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 67,
+    "section": "General Intelligence & Reasoning",
+    "q": "In the given letter-cluster pairs, the first letter-cluster is related to the second letter-cluster following a certain logic. Study the given pairs carefully, and from the given options, select the pair that follows the same logic.\nPRO : LFM\nZEN : RWN",
+    "o": ["KLP : QPL", "DEN : WWN", "NYZ : MCB", "GUN : UGM"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 68,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, L, K, U, J and Y went for a trip to Rajasthan and Uttar Pradesh in six consecutive months of the same calendar year. P preferred to visit Rajasthan in the month of November. U visited Uttar Pradesh exactly two months prior to P. Y preferred the month of July. J preferred to visit Rajasthan exactly between the months preferred by Y and U. L visited exactly one month prior to Y. In which month did K visit?",
+    "o": ["August", "November", "September", "October"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 69,
+    "section": "Mathematics",
+    "q": "The value of\n27 ÷ 3 − 27 × 0 + 1 =",
+    "o": ["12", "-18", "13", "10"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 70,
+    "section": "General Awareness & Current Affairs",
+    "q": "What is the name of the indigenously developed High-Speed Expendable Aerial Target System which was successfully flight-tested by Defence Research and Development Organisation (DRDO) in December 2021?",
+    "o": ["Abhyas", "Nirbhay", "Shaurya", "Pralay"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 71,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which year did the Supreme Court give its judgement in the 'Sachin Singh versus the State of Haryana' case, which was related to dowry cases?",
+    "o": ["2020", "2021", "2022", "2019"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 72,
+    "section": "Mathematics",
+    "q": "X and Y are two alloys of Gold and Platinum prepared by mixing the metals in the ratio of 5:2 and 7:7, respectively. If equal quantities of the alloys are formed a third alloy Z, then the ratio of the quantity of Gold to the quantity of Platinum in Z will be:",
+    "o": ["95:84", "73:95", "95:73", "84:73"],
+    "tick": 3,
+    "drop": false
+  }
+]

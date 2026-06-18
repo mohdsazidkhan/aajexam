@@ -1,0 +1,274 @@
+[
+  {
+    "orig": 67,
+    "section": "General Intelligence & Reasoning",
+    "q": "In the given letter-cluster pairs, the first letter-cluster is related to the second letter-cluster following a certain logic. Study the given pairs carefully, and from the given options, select the pair that follows the same logic.\nPRO : LJM\nZEN : BWN",
+    "o": ["KLP : QPL", "DEN : WWN", "NYZ : MCB", "GUN : UGM"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 68,
+    "section": "General Intelligence & Reasoning",
+    "q": "P, L, K, U, J and Y went for a trip to Rajasthan and Uttar Pradesh in six consecutive months of the same calendar year. P preferred to visit Rajasthan in the month of November. U visited Uttar Pradesh exactly two months prior to P. Y preferred the month of July. J preferred to visit Rajasthan exactly between the months preferred by Y and U. L visited exactly one month prior to Y. In which month did K visit?",
+    "o": ["August", "November", "September", "October"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 69,
+    "section": "Mathematics",
+    "q": "The value of\n27 ÷ 3 − 27 × 0 + 1 =",
+    "o": ["12", "−18", "13", "10"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 70,
+    "section": "General Awareness & Current Affairs",
+    "q": "What is the name of the indigenously developed High-Speed Expandable Aerial Target System which was successfully flight-tested by Defence Research and Development Organisation (DRDO) in December 2021?",
+    "o": ["Abhyas", "Nirbhay", "Shaurya", "Pralay"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 71,
+    "section": "General Awareness & Current Affairs",
+    "q": "In which year did the Supreme Court give its judgement in the 'Satbir Singh versus the State of Haryana' case, which was related to dowry issues?",
+    "o": ["2020", "2021", "2022", "2019"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 72,
+    "section": "Mathematics",
+    "q": "X and Y are two alloys of Gold and Platinum prepared by mixing the metals in the ratio of 5 : 2 and 7 : 7, respectively. If we mix equal quantities of the alloys to form a third alloy Z, then the ratio of the quantity of Gold to the quantity of Platinum in Z will be:",
+    "o": ["95 : 84", "73 : 95", "95 : 73", "84 : 73"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 73,
+    "section": "Mathematics",
+    "q": "Express sin θ in terms of cot θ, where θ is an acute angle.",
+    "o": ["1 + cot²θ", "√(1 + cot²θ)", "1/(1 + cot²θ)", "1/√(1 + cot²θ)"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 74,
+    "section": "General Intelligence & Reasoning",
+    "q": "Three statements are given, followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.\nStatements:\nNo computer is a marker.\nAll erasers are markers.\nAll pens are erasers.\nConclusions:\nI. No pen is a computer.\nII. Some erasers are computers.",
+    "o": ["Only conclusion I follows", "Only conclusion II follows", "Neither conclusion I nor II follows", "Both conclusions I and II follow"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 75,
+    "section": "General Science",
+    "q": "A fine beam of light becomes visible when it enters a smoke filled room due to:",
+    "o": ["refraction of light", "dispersion of light", "reflection of light", "scattering of light"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 76,
+    "section": "Mathematics",
+    "q": "In ΔABC if ∠A = 40° and ∠B = 70°, find the measure of exterior angle A.",
+    "o": ["30°", "110°", "140°", "70°"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 77,
+    "section": "Mathematics",
+    "q": "The roots of the equation a x² + x + b = 0 are equal if:",
+    "o": ["ab = 1/4", "b² < 4a", "b² > 4a", "b² = 4a"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 78,
+    "section": "Mathematics",
+    "q": "If the sum of two numbers is 430 and their HCF is 43, then which of the following is the correct pair?",
+    "o": ["172, 258", "129, 301", "86, 344", "215, 215"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 79,
+    "section": "Mathematics",
+    "q": "The average of 11 numbers arranged in an order is 41. The average of the first five numbers is 18 and that of the last five numbers is 64. What is the sixth number?",
+    "o": ["55", "64", "45", "41"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 80,
+    "section": "General Science",
+    "q": "In Newland's law of octaves, the first element is ______ and the last known element is ______.",
+    "o": ["hydrogen, lanthanum", "hydrogen, thorium", "helium, zirconium", "hydrogen, zirconium"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 81,
+    "section": "General Intelligence & Reasoning",
+    "q": "Five friends A, S, D, F and G took admission in a coaching institute in consecutive months of the same calendar year. A took admission in May. Only D took admission between F and S, while G took admission exactly one month after A. F was the last one to take admission. In which month did D take admission?",
+    "o": ["July", "June", "August", "September"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 82,
+    "section": "General Intelligence & Reasoning",
+    "q": "Raman started from a point and walked a distance of 200 m towards the north, he then turned left and walked 300 m, turned right and walked 400 m, and then turned right again and walked 300 m. How far is Raman from the starting point?\n(All turns are 90 degree turns only)",
+    "o": ["1400 m", "200 m", "600 m", "700 m"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 83,
+    "section": "Mathematics",
+    "q": "The value of 0.6 + (√0.81 − (√0.0144 + 0.4 ÷ 0.5)) is:",
+    "o": ["0.82", "0.62", "0.78", "0.58"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 84,
+    "section": "Mathematics",
+    "q": "",
+    "o": ["₹1,200", "₹1,000", "₹1,500", "₹600"],
+    "tick": 1,
+    "drop": "Requires a pie chart showing percentage distribution of expenditure (slice values not fully readable as text)"
+  },
+  {
+    "orig": 85,
+    "section": "General Science",
+    "q": "Which of the following types of images can be obtained on a screen?\n(a) Real and enlarged\n(b) Real and diminished\n(c) Virtual and enlarged\n(d) Virtual and diminished",
+    "o": ["Both (c) and (d)", "Both (a) and (d)", "Both (a) and (b)", "Both (b) and (c)"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 86,
+    "section": "General Intelligence & Reasoning",
+    "q": "In this question, a group of numbers/symbols is coded using letters as per the table given below and the conditions which follow. The correct combination of codes following the conditions is your answer.\nNumber/Symbol: 7  5  E  %  &  4  8\nCodes:         S  D  M  U  T  L  A\nConditions:\n(i) If the second element is an odd number and the last element is an even number, the codes for these two (the second and the last elements) are to be interchanged.\n(ii) If the third element is an even number and the fifth element is a symbol, the codes for these two (the third and the fifth elements) are to be interchanged.\n(iii) If the fifth element is a symbol and the sixth element is also a symbol, both these elements (the fifth and the sixth elements) are to be coded as R.\nQuestion: E 7 5 % & 4 % 8",
+    "o": ["M A D U R R U S", "M A T U D L U S", "M S D U T L U A", "M A D U T L U S"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 87,
+    "section": "General Science",
+    "q": "Three products, ______, ______ and ______ are produced in chlor-alkali process.",
+    "o": ["Oxygen, Hydrogen, NaOH", "Hydrogen, Chlorine, NaOH", "Chlorine, Oxygen, Na₂CO₃", "Chlorine, Hydrogen, Na₂CO₃"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 88,
+    "section": "Mathematics",
+    "q": "The average speed of Gaurav during a two-way journey is 15 km/h. If he walked a distance of 20 km every hour while going, then his speed while returning will be:",
+    "o": ["11 km/h", "15 km/h", "12 km/h", "10 km/h"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 89,
+    "section": "General Intelligence & Reasoning",
+    "q": "Which of the following numbers will replace the question mark (?) in the given series?\n55, 104, 140, 165, ?",
+    "o": ["181", "192", "185", "174"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 90,
+    "section": "Mathematics",
+    "q": "The ages of two persons differ by 30 years. If 5 years ago, the elder one was 3 times as old as the younger one, then the present age of the younger person is:",
+    "o": ["25 years", "20 years", "30 years", "35 years"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 91,
+    "section": "General Awareness & Current Affairs",
+    "q": "In Sanskrit, the word 'Jina' is derived from the Sanskrit word 'Jina', which means ______, implying one who has transcended all human passions.",
+    "o": ["conqueror", "immortal", "vigour", "candour"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 92,
+    "section": "General Awareness & Current Affairs",
+    "q": "On 7 March 2022, the Ministry of Women and Child Development (MoWCD), in partnership with the Ministry of Education and UNICEF, launched the ______ campaign to bring back out of school adolescent girls in India to the formal education.",
+    "o": ["Kishori Shakti Yojana", "Sukanya Samriddhi Yojana", "Balika Padhao Yojana", "Kanya Shiksha Pravesh Utsav"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 93,
+    "section": "Mathematics",
+    "q": "Which of the following is a quadratic equation?\nA.) b − √3 + 2b − √32 = 0\nB.) (x − 4x² + 5) + √3 x + 8 = 0\nC.) (p − q)² − q² + 2pq − √p = −3\nD.) (x + 3)^(1/2) = 0",
+    "o": ["B", "D", "A", "C"],
+    "tick": 1,
+    "drop": false
+  },
+  {
+    "orig": 94,
+    "section": "Mathematics",
+    "q": "If the perimeter of one face of a cube is 24 cm, then its volume is:",
+    "o": ["180 cm³", "154 cm³", "200 cm³", "216 cm³"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 95,
+    "section": "General Awareness & Current Affairs",
+    "q": "In January 2022, V Anantha Nageswaran was appointed as the new Chief Economic Advisor (CEA) of India, thus replacing ______.",
+    "o": ["Kaushik Basu", "Raghuram Rajan", "Arvind Subramanian", "Krishnamurthy Subramanian"],
+    "tick": 4,
+    "drop": false
+  },
+  {
+    "orig": 96,
+    "section": "General Awareness & Current Affairs",
+    "q": "Who among the following has been authorised to act as the Chairperson, Lokpal, with effect from 28 May 2022?",
+    "o": ["Justice P Vishwanath Shetty", "Justice Chittaranjan Sharma", "Justice Pradip Kumar Mohanty", "Justice BS Patil"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 97,
+    "section": "General Science",
+    "q": "As atomic number ______ and nuclear charge ______, the force of attraction between nucleus and valence electrons ______, hence, atomic radii ______ from Li to F.",
+    "o": ["increases, decreases, decreases, increases", "increases, increases, increases, decreases", "decreases, decreases, decreases, increases", "increases, increases, decreases, decreases"],
+    "tick": 2,
+    "drop": false
+  },
+  {
+    "orig": 98,
+    "section": "Mathematics",
+    "q": "Srinivas has just got married to a girl who is 4 years younger than him. After 5 years their average age will be 33 years. Find the present age of the girl.",
+    "o": ["35 years", "30 years", "26 years", "31 years"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 99,
+    "section": "Mathematics",
+    "q": "One year ago, the ratio of the ages of Saketh and Tilak was 5 : 6, respectively. Four years hence, this ratio would become 6 : 7. The present age of Saketh is:",
+    "o": ["31 years", "25 years", "26 years", "30 years"],
+    "tick": 3,
+    "drop": false
+  },
+  {
+    "orig": 100,
+    "section": "General Science",
+    "q": "Which of the following statements is/are true about the principal axis of a spherical mirror?\n(i) It is normal to the mirror\n(ii) Point of incidence always lies on the principal axis\n(iii) Principal focus always lies on the principal axis",
+    "o": ["Only (ii)", "Both (i) and (iii)", "Both (i) and (ii)", "Only (i)"],
+    "tick": 2,
+    "drop": false
+  }
+]
