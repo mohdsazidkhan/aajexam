@@ -69,7 +69,8 @@ full="\n".join(chunks)
 
 # Section spans: find 'Section : X' positions
 SEC_RE=re.compile(r"Section\s*:\s*(.+)")
-sec_marks=[(m.start(), m.group(1).strip()) for m in SEC_RE.finditer(full)]
+IMG_TAG=re.compile(r"\s*\[\[IMG:[^\]]+\]\]\s*")
+sec_marks=[(m.start(), IMG_TAG.sub(" ", m.group(1)).strip()) for m in SEC_RE.finditer(full)]
 def sec_at(pos):
     s=None
     for mp,nm in sec_marks:
