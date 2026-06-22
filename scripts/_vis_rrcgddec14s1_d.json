@@ -1,0 +1,46 @@
+[
+  {
+    "orig": 13,
+    "q": "The process of fission in an amoeba results in the formation of ____________.",
+    "o": [
+      "two similar sized, genetically identical daughter cells",
+      "a large number of small, genetically identical daughter cells",
+      "a small daughter cell and a large mother cell that are genetically different",
+      "four genetically different daughter cells"
+    ],
+    "fig": false
+  },
+  {
+    "orig": 47,
+    "q": "Two statements are given, followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follows from the statements. Statements: All glue is gum. No gum is colour. Conclusions: I. All glue is colour. II. No glue is colour.",
+    "o": [
+      "Only conclusion I follows",
+      "Both conclusions I and II follow",
+      "Only conclusion II follows",
+      "Neither conclusion I nor II follows"
+    ],
+    "fig": false
+  },
+  {
+    "orig": 59,
+    "q": "Seven boxes B, C, D, E, J, K and L are placed one above another. Only one box is placed above E, but it is not placed immediately above E. Only one box is placed between B and J. Box K is placed immediately above the box J. There are as many boxes between K and L as there are between B and C. Box D is placed at one of the positions above L. How many boxes are placed between B and K?",
+    "o": [
+      "Three",
+      "Four",
+      "Two",
+      "One"
+    ],
+    "fig": false
+  },
+  {
+    "orig": 74,
+    "q": "A girl starts walking from a point and walks 12 km towards the South, then turns to her right and walks 8 km, then turns to her right and walks 4 km, then turns to her left and walks 10 km, then again turns to her left and walks 4 km, finally turns to her left and walks 12 km and stops at point D. In which direction is point D with respect to her starting point? (All turns are 90-degree turns only.)",
+    "o": [
+      "6 km, towards the South",
+      "6 km, towards the West",
+      "5 km, towards the East",
+      "6 km, towards the East"
+    ],
+    "fig": false
+  }
+]
