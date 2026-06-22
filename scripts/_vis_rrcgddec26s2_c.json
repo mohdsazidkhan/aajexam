@@ -1,0 +1,230 @@
+[
+  {
+    "orig": 63,
+    "q": "Refer to the following number series and answer the question that follows (all numbers are single-digit numbers only). (Left) 8 5 3 6 2 4 7 9 1 3 5 7 8 4 2 6 1 9 3 7 5 4 (Right) How many numbers are perfect squares in the series (each number counted only once, regardless of repetitions)?",
+    "o": ["One", "Two", "Three", "Four"],
+    "fig": false
+  },
+  {
+    "orig": 64,
+    "q": "In a certain code language, KFHL is related to RMOS in such a way that, from the same code, MHJN is related to TOQU. In the same way, following the same logic, to which group of letters in the options is OJLP related?",
+    "o": ["QVSW", "QVWS", "VQWS", "VQSW"],
+    "fig": false
+  },
+  {
+    "orig": 65,
+    "q": "In a row of 54 people facing north, Mohit sits 22nd from the right end. If Charu sits 15th from the left end of the row, how many people sit between Mohit and Charu?",
+    "o": ["15", "16", "18", "17"],
+    "fig": false
+  },
+  {
+    "orig": 66,
+    "q": "Six friends A, B, C, D, E and F are seated in a row facing north. E and D are sitting at the two ends. A is to the immediate right of D. B is between C and E. There is one person between A and F. Who is sitting at the immediate left of C?",
+    "o": ["EE", "BA", "CB", "AD"],
+    "fig": false
+  },
+  {
+    "orig": 67,
+    "q": "Which number should come in place of the question mark (?) in the series given below? 23, 24, 26, 32, 56, 176, ?",
+    "o": ["896", "568", "384", "782"],
+    "fig": false
+  },
+  {
+    "orig": 68,
+    "q": "On the basis of the position of letters in the English alphabet, in which of the following groups is the third letter related to the first two letters in the same way? Which one is NOT related to the third letter in the same way as the others (which group is the odd one out)?",
+    "o": ["KQ - IM", "GK - EI", "PS - NR", "MQ - KO"],
+    "fig": false
+  },
+  {
+    "orig": 69,
+    "q": "Select the group of letters that follows the same pattern as the two letter-groups given below, and follows the pattern of both groups. AXB-FCG IFJ-NKO",
+    "o": ["WSV-AXB", "WTX-BYC", "WSV-BYC", "WTX-AYB"],
+    "fig": false
+  },
+  {
+    "orig": 70,
+    "q": "Seven friends G, H, I, Q, R and S are seated in a straight line facing north. R sits at one of the ends. There are three persons between R and Q. I sits at the immediate left of Q. H is third to the left of I. There are two persons between I and S. S sits at the immediate right of R. H sits at the immediate right of R. Between which two friends does I sit?",
+    "o": ["Two", "Three", "Four", "One"],
+    "fig": false
+  },
+  {
+    "orig": 71,
+    "q": "In a certain code language, A + B means A is the husband of B; A - B means A is the brother of B; A x B means A is the father of B; and A ÷ B means A is the mother of B. If 'I + O & R x N - M', then how is O related to M?",
+    "o": ["Brother's wife", "Father's mother", "Father's mother's sister", "Father's brother"],
+    "fig": false
+  },
+  {
+    "orig": 72,
+    "q": "Answer the question by counting the equal-sum pairs of consecutive digits in the number series given below (all numbers from the single-digit numbers in the given order). (To find): 4 1 7 9 2 2 7 9 9 9 4 7 7 8 9 1 8 6 2 1 2 2 8 (Code). In how many such number pairs is each of the two numbers placed exactly once such that the sum of one number and the number immediately before it is equal to the number immediately after it?",
+    "o": ["Three", "Four", "One", "Two"],
+    "fig": false
+  },
+  {
+    "orig": 73,
+    "q": "On the basis of the position of letters in the English alphabet, in which of the following groups is the third letter related to the first two letters in the same way? Which one is NOT related to the third letter in the same way as the others (which group is the odd one out)?",
+    "o": ["QO - TO", "SQ-VQ", "AY-DY", "US - ZS"],
+    "fig": false
+  },
+  {
+    "orig": 74,
+    "q": "In a row of 97 students facing north, when counting from the right end, a student's position is 9th from the right. If that same student is at the 18th position from the left end, then from the left end of the row, at which position is the student who sits in the middle of the row?",
+    "o": ["71st", "69th", "70th", "72nd"],
+    "fig": false
+  },
+  {
+    "orig": 75,
+    "q": "What should come in place of the question mark (?) in the series given below? 32 40 31 41 ? 42",
+    "o": ["26", "35", "30", "32"],
+    "fig": false
+  },
+  {
+    "orig": 76,
+    "q": "Two conclusions are given below the given statements. Assuming the statements to be true even if they appear to differ from commonly known facts, decide which of the given conclusions logically follows from the statements. Statements: All bells are red. No red is a comb. Conclusions: (I) Some bells are red. (II) No bell is a comb.",
+    "o": ["Neither conclusion (I) nor (II) follows", "Only conclusion (II) follows", "Only conclusion (I) follows", "Both conclusions (I) and (II) follow"],
+    "fig": false
+  },
+  {
+    "orig": 77,
+    "q": "Which of the following letter-and-number-group should come in place of the question mark (?) in the series given below, to complete it logically? CYB 48 DZC S3 EAD 58 FBE 63 ?",
+    "o": ["GBE 67", "GHJ 67", "GCF 68", "GDE 68"],
+    "fig": false
+  },
+  {
+    "orig": 78,
+    "q": "If in a certain code language 'VALE' is coded as '3751' and 'ULVA' is coded as '1397', then what will be the code for 'V' in that language?",
+    "o": ["9", "1", "3", "7"],
+    "fig": false
+  },
+  {
+    "orig": 79,
+    "q": "The following is based on the three-digit numbers given below. (Code) 453 125 410 183 473 (To find). (Example: 697 - first digit = 6, second digit = 9 and third digit = 7) (Note: All operations are done on the digits only.) If the digit in the third place of the largest number is added to the digit in the third place of the smallest number, what is the result?",
+    "o": ["11", "5", "8", "7"],
+    "fig": false
+  },
+  {
+    "orig": 80,
+    "q": "Seven friends - A, B, C, D, E, F and G are seated in a straight line facing north. A sits at one of the ends. B sits at the immediate right of A. There are three persons between B and C. D sits at the immediate left of C. D and G are seated at the two ends. A is third to the left of B. Between which two friends does B sit?",
+    "o": ["Two", "Three", "One", "Neither of these"],
+    "fig": false
+  },
+  {
+    "orig": 81,
+    "q": "The Digi Yatra, which is a product for citizens by the Ministry of Civil Aviation, received the National e-Governance Award in 2025 in which category?",
+    "o": ["Jury", "Gold", "Silver", "Bronze"],
+    "fig": false
+  },
+  {
+    "orig": 82,
+    "q": "In December 2025, ISRO, IN-SPACe and NewSpace India Limited (NewSpace India Limited) signed an MoU with which company to manufacture 100 Small Satellite Launch Vehicles (SSLV)?",
+    "o": ["Bharat Electronics Ltd.", "Hindustan Aeronautics Limited", "L&T Defence", "BHEL Aerospace Division"],
+    "fig": false
+  },
+  {
+    "orig": 83,
+    "q": "According to the World Bank's 2025 report, how many people in India have been lifted out of extreme poverty in the last decade?",
+    "o": ["250 million", "211 million", "100 million", "171 million"],
+    "fig": false
+  },
+  {
+    "orig": 84,
+    "q": "What is India's rank on the 2025 Energy Transition Index of the World Economic Forum?",
+    "o": ["71st", "61st", "51st", "81st"],
+    "fig": false
+  },
+  {
+    "orig": 85,
+    "q": "When was the UNDP Human Development Report 2025, based on 2023 data, released?",
+    "o": ["22 April 2025", "1 June 2025", "20 March 2025", "6 May 2025"],
+    "fig": false
+  },
+  {
+    "orig": 86,
+    "q": "Who was awarded the Sahitya Akademi Translation Prize 2024 (presented in March 2025) for an outstanding translation in Marathi?",
+    "o": ["Chandan Negi", "Madan Soni", "P. Pimala", "Usha Bichukulwal"],
+    "fig": false
+  },
+  {
+    "orig": 87,
+    "q": "Where was the 2025 World Athletics Indoor Championships held?",
+    "o": ["Nanjing, China", "Beijing, China", "Florence, Italy", "Sydney, Australia"],
+    "fig": false
+  },
+  {
+    "orig": 88,
+    "q": "According to the guidelines of the Reserve Bank of India (RBI), what will be the situation when an account is changed by a bank (such as when an IFSC code changes due to a merger in November 2025)?",
+    "o": ["A new cheque book will be required", "The old cheque book will remain valid", "The cheque book will be cancelled", "All cheques will be returned"],
+    "fig": false
+  },
+  {
+    "orig": 89,
+    "q": "Where and when will the 2025 Ballon d'Or ceremony be held?",
+    "o": ["July, Madrid", "October, Madrid", "June, Rome", "September, Paris"],
+    "fig": false
+  },
+  {
+    "orig": 90,
+    "q": "Which fitness India movement, a major cycling event that promotes fitness and pollution-free solutions, was organized in Mumbai's streets in February 2025?",
+    "o": ["Sundays on Cycle", "Wheels for Wellness", "Cycle for Health", "Fit India Cycling Marathon"],
+    "fig": false
+  },
+  {
+    "orig": 91,
+    "q": "At the June 2025 G7 Summit, at which summit was emphasis placed on Global South cooperation, in the context of the G7's outreach?",
+    "o": ["G7 Summit", "APEC Summit", "BRICS Summit", "ASEAN Summit"],
+    "fig": false
+  },
+  {
+    "orig": 92,
+    "q": "In January 2025, the Big Cat Alliance became a treaty-based organization. Under which ministry of India does it function?",
+    "o": ["Ministry of Finance", "Ministry of Jal Shakti", "Ministry of Environment, Forest and Climate Change", "Ministry of Fisheries, Animal Husbandry and Dairying"],
+    "fig": false
+  },
+  {
+    "orig": 93,
+    "q": "On which date is International Labour Workers' Day observed in India?",
+    "o": ["3 May", "10 May", "1 June", "2 June"],
+    "fig": false
+  },
+  {
+    "orig": 94,
+    "q": "In November 2025, the establishment of which board in Bihar was announced for the year 2025-26?",
+    "o": ["Foxnut Development Board", "Eastern Food Processing Board", "Makhana Board", "Bihar Agricultural Processing Board"],
+    "fig": false
+  },
+  {
+    "orig": 95,
+    "q": "Under the CAQM measures (10 November 2025) to prevent air pollution in NCR, by approximately what percentage was the number of stubble-burning incidents in Punjab and Haryana reduced in 2024 compared to 2024?",
+    "o": ["35%", "25%", "45%", "45%"],
+    "fig": false
+  },
+  {
+    "orig": 96,
+    "q": "How many sports were there in the Khelo India Youth Games 2025?",
+    "o": ["27", "30", "29", "28"],
+    "fig": false
+  },
+  {
+    "orig": 97,
+    "q": "On the occasion of Rashtriya Ekta Diwas (7 October 2025), which portal was launched by India to strengthen national export and self-reliance in defence?",
+    "o": ["Defence Exim Portal", "Mission Indigenisation Portal", "Bharat Tech Portal", "Make in India Portal"],
+    "fig": false
+  },
+  {
+    "orig": 98,
+    "q": "Which of the following is the regional grouping in which the Indian Prime Minister Narendra Modi participated in November 2025, and announced the resumption of India-China direct flights after a gap of five years?",
+    "o": ["ASEAN", "BRICS", "SCO", "G20"],
+    "fig": false
+  },
+  {
+    "orig": 99,
+    "q": "Which of the following agencies conducted the first test flight of an integrated air defence weapon system in August 2025?",
+    "o": ["Indian Space Research Organisation", "Defence Research and Development Organisation", "National Defence Academy", "Defence Space Agency"],
+    "fig": false
+  },
+  {
+    "orig": 100,
+    "q": "Which of the following Indian states conducted a large-scale disaster drill in November 2025, focusing on disaster preparedness in major industrial centres for oil and chemical disasters?",
+    "o": ["Tamil Nadu", "Gujarat", "West Bengal", "Maharashtra"],
+    "fig": false
+  }
+]
