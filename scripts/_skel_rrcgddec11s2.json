@@ -1,0 +1,502 @@
+[
+ {
+  "orig": 1,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 2,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 3,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 4,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 5,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 6,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 7,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 8,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 9,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 10,
+  "s": "General Science",
+  "a": 1
+ },
+ {
+  "orig": 11,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 12,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 13,
+  "s": "General Science",
+  "a": 1
+ },
+ {
+  "orig": 14,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 15,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 16,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 17,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 18,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 19,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 20,
+  "s": "General Science",
+  "a": 1
+ },
+ {
+  "orig": 21,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 22,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 23,
+  "s": "General Science",
+  "a": 2
+ },
+ {
+  "orig": 24,
+  "s": "General Science",
+  "a": 3
+ },
+ {
+  "orig": 25,
+  "s": "General Science",
+  "a": 4
+ },
+ {
+  "orig": 26,
+  "s": "Mathematics",
+  "a": 4
+ },
+ {
+  "orig": 27,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 28,
+  "s": "Mathematics",
+  "a": 4
+ },
+ {
+  "orig": 29,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 30,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 31,
+  "s": "Mathematics",
+  "a": 3
+ },
+ {
+  "orig": 32,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 33,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 34,
+  "s": "Mathematics",
+  "a": 4
+ },
+ {
+  "orig": 35,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 36,
+  "s": "Mathematics",
+  "a": 3
+ },
+ {
+  "orig": 37,
+  "s": "Mathematics",
+  "a": 3
+ },
+ {
+  "orig": 38,
+  "s": "Mathematics",
+  "a": 4
+ },
+ {
+  "orig": 39,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 40,
+  "s": "Mathematics",
+  "a": 3
+ },
+ {
+  "orig": 41,
+  "s": "Mathematics",
+  "a": 3
+ },
+ {
+  "orig": 42,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 43,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 44,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 45,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 46,
+  "s": "Mathematics",
+  "a": 4
+ },
+ {
+  "orig": 47,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 48,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 49,
+  "s": "Mathematics",
+  "a": 1
+ },
+ {
+  "orig": 50,
+  "s": "Mathematics",
+  "a": 2
+ },
+ {
+  "orig": 51,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 52,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 53,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 54,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 55,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 56,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 57,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 58,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 59,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 60,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 61,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 62,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 63,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 64,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 65,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 66,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 67,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 68,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 69,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 70,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 71,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 72,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 73,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 74,
+  "s": "General Intelligence & Reasoning",
+  "a": 2
+ },
+ {
+  "orig": 75,
+  "s": "General Intelligence & Reasoning",
+  "a": 3
+ },
+ {
+  "orig": 76,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 77,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 78,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 79,
+  "s": "General Intelligence & Reasoning",
+  "a": 4
+ },
+ {
+  "orig": 80,
+  "s": "General Intelligence & Reasoning",
+  "a": 1
+ },
+ {
+  "orig": 81,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 82,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 83,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 84,
+  "s": "General Awareness & Current Affairs",
+  "a": 4
+ },
+ {
+  "orig": 85,
+  "s": "General Awareness & Current Affairs",
+  "a": 4
+ },
+ {
+  "orig": 86,
+  "s": "General Awareness & Current Affairs",
+  "a": 2
+ },
+ {
+  "orig": 87,
+  "s": "General Awareness & Current Affairs",
+  "a": 4
+ },
+ {
+  "orig": 88,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 89,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 90,
+  "s": "General Awareness & Current Affairs",
+  "a": 1
+ },
+ {
+  "orig": 91,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 92,
+  "s": "General Awareness & Current Affairs",
+  "a": 1
+ },
+ {
+  "orig": 93,
+  "s": "General Awareness & Current Affairs",
+  "a": 2
+ },
+ {
+  "orig": 94,
+  "s": "General Awareness & Current Affairs",
+  "a": 4
+ },
+ {
+  "orig": 95,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 96,
+  "s": "General Awareness & Current Affairs",
+  "a": 3
+ },
+ {
+  "orig": 97,
+  "s": "General Awareness & Current Affairs",
+  "a": 1
+ },
+ {
+  "orig": 98,
+  "s": "General Awareness & Current Affairs",
+  "a": 2
+ },
+ {
+  "orig": 99,
+  "s": "General Awareness & Current Affairs",
+  "a": 4
+ },
+ {
+  "orig": 100,
+  "s": "General Awareness & Current Affairs",
+  "a": 2
+ }
+]

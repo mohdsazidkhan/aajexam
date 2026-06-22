@@ -1,0 +1,266 @@
+[
+  {
+    "orig": 27,
+    "q": "Which of the following is NOT a prime number?",
+    "o": ["31", "79", "67", "51"],
+    "fig": false
+  },
+  {
+    "orig": 28,
+    "q": "The average age of 43 students of a class is 13 years. If the age of the teacher is also included, the average age of the whole group becomes 14 years. The age (in years) of the teacher is:",
+    "o": ["57", "56", "58", "54"],
+    "fig": false
+  },
+  {
+    "orig": 29,
+    "q": "When x is added to each of 10, 16, 38 and 28, then the numbers so obtained, in this order, are in proportion. Then, if 3x : y :: y : (5x - 6), and y > 0, what is the value of y?",
+    "o": ["72", "65", "78", "79"],
+    "fig": false
+  },
+  {
+    "orig": 30,
+    "q": "A class of 75 students took a Physics test. 22 students had an average score of 85. The other students had an average score of 95. What is the average score (rounded off to one decimal place) of the whole class?",
+    "o": ["88.3", "82.4", "96.7", "92.1"],
+    "fig": false
+  },
+  {
+    "orig": 31,
+    "q": "A train of length 239 m takes 20 seconds to pass another train 161 m long coming from the opposite direction. The speed of the first train is 43 km/hr, then find speed of the second train.",
+    "o": ["29 km/hr", "38 km/hr", "23 km/hr", "32 km/hr"],
+    "fig": false
+  },
+  {
+    "orig": 32,
+    "q": "Maya buys a mobile phone for her child. The phone is marked at ₹21,000 and is offered with two successive discounts of 5% and Z%, respectively. After receiving both discounts, she pays ₹11,172. Find the value of Z.",
+    "o": ["43", "45", "44", "42"],
+    "fig": false
+  },
+  {
+    "orig": 33,
+    "q": "Simplify: 72 - [49 - {81 + 9 - (14 - 24 + 4) + 8}]",
+    "o": ["27", "39", "31", "35"],
+    "fig": false
+  },
+  {
+    "orig": 34,
+    "q": "R's age is twice S's age, and three times T's age. If S is 5 years older than T, then what is the age difference between R and S?",
+    "o": ["20", "30", "24", "28"],
+    "fig": false
+  },
+  {
+    "orig": 35,
+    "q": "The number of prime numbers lying between 309 and 320 is:",
+    "o": ["3", "4", "4", "5"],
+    "fig": false
+  },
+  {
+    "orig": 36,
+    "q": "The income of Raman is ₹43,800. He saves 20% of his income. If his income increases by 36% and expenditure increases by 40%, then his savings will:",
+    "o": ["decrease by ₹1,753", "increase by ₹1,752", "decrease by ₹1,748", "increase by ₹1,757"],
+    "fig": false
+  },
+  {
+    "orig": 37,
+    "q": "If the radius of the base of a right circular cylinder is decreased by 15% and its height is increased by 149%, then what is the percentage increase (rounded to the nearest integer) in its volume?",
+    "o": ["73%", "53%", "109%", "80%"],
+    "fig": false
+  },
+  {
+    "orig": 38,
+    "q": "Simplify the following.\n(a^3 - b^3)/(a^2 + ab + b^2) + (a^3 + b^3)/(a^2 - ab + b^2)",
+    "o": ["2b", "2a", "2b2", "2a2"],
+    "fig": false
+  },
+  {
+    "orig": 39,
+    "q": "In quadrilateral PQRS, the bisectors of ∠R and ∠S meet at the point T (inside the quadrilateral) and ∠STR = 42.5°. If the ratio of ∠P to ∠Q is 8 : 9, then what is the difference between the measures of ∠Q and ∠P?",
+    "o": ["5°", "7°", "6°", "2°"],
+    "fig": false
+  },
+  {
+    "orig": 40,
+    "q": "From the top of a building 15 m high, the angle of depression to a point on the ground is 45 degrees. Find the horizontal distance from the building to the point.",
+    "o": ["45 m", "7.5 m", "30 m", "15 m"],
+    "fig": false
+  },
+  {
+    "orig": 41,
+    "q": "If the expenditure of Company A in 2023 was ₹660 crore and the profit percentage was 35%, then what was its income in 2023?",
+    "o": ["891 crore", "665 crore", "231 crore", "435 crore"],
+    "fig": false
+  },
+  {
+    "orig": 42,
+    "q": "Two trains, 170 metres and 220 metres in length, are running in opposite directions. The first runs at the rate of 45 km/hr and the second at the rate of 63 km/hr. How long will they take to cross each other?",
+    "o": ["20 seconds", "17 seconds", "13 seconds", "23 seconds"],
+    "fig": false
+  },
+  {
+    "orig": 43,
+    "q": "A water tank can be filled by tap A in 11 minutes. While the second tap B fills the full tank in 22 minutes, it can also empty it. If both taps are opened together along with the third tap C, then the tank empties completely in 8 minutes. How many minutes will tap C take to empty the full tank?",
+    "o": ["22", "23", "12", "11"],
+    "fig": false
+  },
+  {
+    "orig": 44,
+    "q": "A merchant buys an article and sells it at a profit of 25%. If he had bought it for 10% less and sold it for ₹9,900, he would have made a profit of ₹2 (Rs) on it. How much did the merchant buy the article for?",
+    "o": ["8,800", "8,000", "8,400", "9,000"],
+    "fig": false
+  },
+  {
+    "orig": 45,
+    "q": "Given that C is the third proportional of 59 and B. If B is the sum of the first three even natural numbers, then find the value of C. (Round off the answer to two decimal places.)",
+    "o": ["1.44", "2.44", "6.32", "0.14"],
+    "fig": false
+  },
+  {
+    "orig": 46,
+    "q": "The amount on a sum of ₹4,400 at the rate of 20% per annum compound interest, compounded annually, in 2 years will be:",
+    "o": ["66,336", "67,289", "65,729", "65,989"],
+    "fig": false
+  },
+  {
+    "orig": 47,
+    "q": "The curved surface area and the volume of a cylindrical pipe is 565.2 m^2 and 1,695.6 m^3, respectively. Find the total surface area of the pipe. (Use π = 3.14)",
+    "o": ["428.36 m2", "791.26 m2", "658.76 m2", "548.29 m2"],
+    "fig": false
+  },
+  {
+    "orig": 48,
+    "q": "X people were given a contract for doing a piece of work in 36 days. 3 people did not turn up to work due to sickness, and the rest of the people completed the work in 39 days. What is the value of X?",
+    "o": ["48", "44", "39", "40"],
+    "fig": false
+  },
+  {
+    "orig": 49,
+    "q": "3 cups and 4 glasses cost ₹270. If 2 more glasses are purchased, then the total amount becomes ₹330. Find the cost of a cup.",
+    "o": ["30", "50", "40", "45"],
+    "fig": false
+  },
+  {
+    "orig": 50,
+    "q": "The monthly incomes of two friends, David and Ajay, are in the ratio 5 : 8, and each of them saves ₹72,000 every month. If the ratio of their monthly expenditure is 1 : 4, find the monthly income of David (in ₹).",
+    "o": ["91,000", "90,000", "89,000", "1,26,000"],
+    "fig": false
+  },
+  {
+    "orig": 51,
+    "q": "Which of the following letter-number clusters will replace the question mark (?) in the given series to make it logically complete?\nZSL 18, VOH 29, RKD 40, NGZ 51, JCV 62, ?",
+    "o": ["FYL 73", "FYI 73", "FYR 73", "FOR 73"],
+    "fig": false
+  },
+  {
+    "orig": 52,
+    "q": "Six people, A, B, C, D, E and F, are sitting in a row, facing north. A sits to the immediate left of B. C sits third to the left of B. D is an immediate neighbour of B. F sits to the immediate right of C. D sits to the immediate left of E. Who sits at the extreme right end of the row?",
+    "o": ["E", "D", "A", "F"],
+    "fig": false
+  },
+  {
+    "orig": 53,
+    "q": "A, B, C, D, E and F are sitting around a circular table facing the centre. E sits second to the left of B. C sits second to the right of F. D is on the immediate left of C. Who is sitting on the immediate right of A?",
+    "o": ["B", "C", "D", "F"],
+    "fig": false
+  },
+  {
+    "orig": 54,
+    "q": "If 1 is added to each even digit and 1 is subtracted from each odd digit in the number 258671543, then what will be the value of middle digit in the new number thus formed?",
+    "o": ["6", "3", "5", "4"],
+    "fig": false
+  },
+  {
+    "orig": 55,
+    "q": "Satish starts from Point A and drives 47 km towards south. He then takes a right turn, drives 65 km, turns right and drives 65 km. He then takes a right turn and drives 77 km. He takes a final right turn, drives 18 km and stops at Point P. How far (shortest distance) and towards which direction should he drive in order to reach Point A again? (Note: All turns are 90° turns only unless specified.)",
+    "o": ["12 km to the east", "11 km to the east", "12 km to the west", "13 km to the east"],
+    "fig": false
+  },
+  {
+    "orig": 56,
+    "q": "Seven boxes, M, N, O, P, Q, R and S, are kept one over the other, but not necessarily in the same order. Only two boxes are kept between M and O. Only N is kept above S. No box is kept below O. R is kept at some place below P but at some place above Q. Which box is kept third above Q?",
+    "o": ["S", "M", "N", "P"],
+    "fig": false
+  },
+  {
+    "orig": 57,
+    "q": "Refer to the following series and answer the question that follows (all numbers are single digit numbers only). Counting to be done from left to right only.\n(Left) 6 6 4 5 2 2 4 6 1 4 7 7 4 5 9 6 9 2 4 3 8 1 2 8 3 7 1 (Right)\nHow many such odd numbers are there each of which is immediately preceded by an odd number and also immediately followed by an even number?",
+    "o": ["5", "4", "2", "3"],
+    "fig": false
+  },
+  {
+    "orig": 58,
+    "q": "Rakesh ranked 13th from the top and 18th from the bottom in his class. How many students are there in the class?",
+    "o": ["20", "19", "16", "30"],
+    "fig": false
+  },
+  {
+    "orig": 59,
+    "q": "Mr. Akai starts from Point A and drives 15 km towards the north. He then takes a right turn, drives 18 km, turns right and drives 23 km. He then takes a right turn and drives 26 km. He takes a final right turn, drives 8 km and stops at Point P. How far (shortest distance) and towards which direction should he drive in order to reach Point A again? (All turns are 90-degree turns only unless specified.)",
+    "o": ["8 km to the east", "8 km to the east", "8 km to the north", "8 km to the east"],
+    "fig": false
+  },
+  {
+    "orig": 60,
+    "q": "What should come in place of the question mark (?) in the given series based on the English alphabetical order?\nBMV, EOT, HQR, KSP, ?",
+    "o": ["NUR", "MUN", "QVM", "RUQ"],
+    "fig": false
+  },
+  {
+    "orig": 61,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group? (Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["HR-CX", "GA-XG", "UE-PK", "BL-WR"],
+    "fig": false
+  },
+  {
+    "orig": 62,
+    "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.\nStatements:\nSome erasers are pens.\nSome pens are bags.\nConclusions:\n(I) Some erasers are bags.\n(II) All bags are pens.",
+    "o": ["Both conclusions (I) and (II) follow.", "Only conclusion (II) follows.", "Only conclusion (I) follows.", "Neither conclusion (I) nor (II) follows."],
+    "fig": false
+  },
+  {
+    "orig": 63,
+    "q": "In a certain code language, P × Q means 'P is the father of Q', P # Q means 'P is the mother of Q', P & Q means 'P is the wife of Q', and P % Q means 'P is the sister of Q'. How is V related to D if 'V % L & C + B % D'?",
+    "o": ["Husband's brother", "Mother's mother", "Mother's sister", "Wife's brother"],
+    "fig": false
+  },
+  {
+    "orig": 64,
+    "q": "Refer to the following number series and answer the question that follows. All numbers are single digit numbers only. Counting to be done from left to right only.\n(Left) 2 6 9 1 2 5 7 2 5 2 4 2 7 4 5 9 9 1 4 4 9 9 1 8 9 (Right)\nHow many such even digits are there each of which is immediately preceded by an even digit and also immediately followed by an even digit?",
+    "o": ["Three", "Two", "One", "Four"],
+    "fig": false
+  },
+  {
+    "orig": 65,
+    "q": "In the following triad, each group of letters is related to the subsequent one following a certain logic. Select from the given options, the one which follows the same logic.\nDIVE - DEVI - EVID\nBEAR - BRAE - RAEB",
+    "o": ["COLD - CDLO - DLOC", "MUST - MUTS - USTM", "SOUP - OSUP - POUS", "ICED - IECD - DECI"],
+    "fig": false
+  },
+  {
+    "orig": 66,
+    "q": "If 1 is added to each even digit and 2 is subtracted from each odd digit in the number 54286379, how many digits will appear more than once in the new number thus formed?",
+    "o": ["One", "Two", "None", "Three"],
+    "fig": false
+  },
+  {
+    "orig": 67,
+    "q": "What should come in place of the question mark (?) in the given series?\n12 28 45 63 ? 102",
+    "o": ["82", "88", "76", "72"],
+    "fig": false
+  },
+  {
+    "orig": 68,
+    "q": "If + means -, - means x, x means +, ÷ means +, then what will come in place of the question mark (?) in the following equation?\n21 - 4 + 371 + 111 x 3 = ?",
+    "o": ["409", "418", "406", "411"],
+    "fig": false
+  },
+  {
+    "orig": 69,
+    "q": "Seven people B, C, D, I, J, K, and L are sitting around a circular table facing the centre of the table. Only three people sit between D and L, when counted from the right of L. Only three people sit between K and L, when counted from the left of K. B sits to the immediate right of D. J is an immediate neighbour of L as well as I. Who sits second to the left of C?",
+    "o": ["L", "J", "I", "K"],
+    "fig": false
+  },
+  {
+    "orig": 70,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group? (Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["UR-WS", "QN-SP", "SP-UQ", "WT-YU"],
+    "fig": false
+  }
+]

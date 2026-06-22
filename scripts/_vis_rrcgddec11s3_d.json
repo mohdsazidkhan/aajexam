@@ -1,0 +1,44 @@
+[
+  {
+    "orig": 52,
+    "q": "A, B, C, E, F and P are sitting in a row facing north. P is fourth to the right of A. Only one person sits to the left of A. B is to the immediate left of C. C sits second to the right of F. E is at one of the extreme ends of the row. How many persons sit between Q and B? (Note: the question references the relative positions of these persons.)",
+    "o": ["A, fifth", "B, three", "C, one", "D, four"],
+    "fig": false
+  },
+  {
+    "orig": 54,
+    "q": "From the given options, select the pair of numbers in which the second number is related to the first number in the same way as the second number is related to the first number in the given pairs. (Note: choose the option that follows the same logical/mathematical relationship as the given example pairs.)",
+    "o": ["A, 64, 36", "B, 49, 29", "C, 122, 86", "D, 142, 76"],
+    "fig": false
+  },
+  {
+    "orig": 56,
+    "q": "Seven persons A, B, C, D, E, F and P are sitting in a circle facing the centre. A is third to the left of B. C is between A and the person who is to the immediate right of P. B is second to the right of C. Who sits to the immediate left of A?",
+    "o": ["A, F", "B, E", "C, A", "D, D"],
+    "fig": false
+  },
+  {
+    "orig": 59,
+    "q": "In a certain code language, the relationship in the first pair of words applies in the same way to the second pair of words. Select the option that has the same relationship as the given pair: AKbJ : AKbJ.",
+    "o": ["A, KOu", "B, JNl", "C, MQk", "D, OUM"],
+    "fig": false
+  },
+  {
+    "orig": 61,
+    "q": "M, N, O, P, W, X and Y are seven persons sitting around a circle facing the centre. P is to the immediate right of M. O is third to the left of P. X is second to the right of O. N is between P and M. W is to the immediate left of O. Who is third to the right of N?",
+    "o": ["A, P", "B, M", "C, O", "D, W"],
+    "fig": false
+  },
+  {
+    "orig": 62,
+    "q": "In the following arrangement of letters, numbers and symbols, how many such symbols are there each of which is immediately preceded by a number and immediately followed by a letter? (arrangement) 2 9 8 & 5 £ & $ E $ 1 * * # * 6 5 % 6 0 7",
+    "o": ["A, four", "B, five", "C, three", "D, two"],
+    "fig": false
+  },
+  {
+    "orig": 63,
+    "q": "If in the word '7361564' all the digits are arranged in ascending order from left to right, and then 2 is subtracted from each of the digits, then how many digits will remain the same in their position from the right end in the so-formed number?",
+    "o": ["A, four", "B, six", "C, five", "D, three"],
+    "fig": false
+  }
+]

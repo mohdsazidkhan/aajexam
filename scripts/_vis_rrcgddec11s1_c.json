@@ -1,0 +1,248 @@
+[
+  {
+    "orig": 60,
+    "q": "What should come in place of the question mark (?) in the given series based on the English alphabetical order?\nBMV, EOT, HQR, KSP, ?",
+    "o": ["NUN", "MUN", "QVM", "RUQ"],
+    "fig": false
+  },
+  {
+    "orig": 61,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group?\n(Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["HR-CX", "GA-XG", "UE-PK", "BL-WR"],
+    "fig": false
+  },
+  {
+    "orig": 62,
+    "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.\nStatements:\nSome erasers are pens.\nSome pens are bags.\nConclusions:\n(I) Some erasers are bags.\n(II) All bags are pens.",
+    "o": ["Both conclusions (I) and (II) follow.", "Only conclusion (II) follows.", "Only conclusion (I) follows.", "Neither conclusion (I) nor (II) follows."],
+    "fig": false
+  },
+  {
+    "orig": 63,
+    "q": "In a certain code language,\nP × Q means 'P is the father of Q',\nP # Q means 'P is the mother of Q',\nP & Q means 'P is the wife of Q',\nand P % Q means 'P is the sister of Q'.\nHow is L related to D if 'V % L & C + B % D'?",
+    "o": ["Husband's brother", "Mother's mother", "Mother's sister", "Wife's brother"],
+    "fig": false
+  },
+  {
+    "orig": 64,
+    "q": "Refer to the following number series and answer the question that follows. All numbers are single digit numbers only. Counting to be done from left to right only.\n(Left) 2 6 9 1 2 5 7 2 5 2 4 7 1 8 3 4 1 4 4 9 9 1 8 9 (Right)\nHow many such even digits is/are there each of which is immediately preceded by an even digit and also immediately followed by an even digit?",
+    "o": ["Three", "Two", "One", "Four"],
+    "fig": false
+  },
+  {
+    "orig": 65,
+    "q": "In the following triad, each group of letters is related to the subsequent one following a certain logic. Select from the given options, the one which follows the same logic.\nDIVE - DEVI - EVID\nBEAR - BRAE - RAEB",
+    "o": ["COLD - CDLO - DLOC", "MUST - MUTS - USTM", "SOUP - OSUP - POUS", "ICED - IECD - DECI"],
+    "fig": false
+  },
+  {
+    "orig": 66,
+    "q": "If 1 is added to each even digit and 2 is subtracted from each odd digit in the number 54286379, how many digits will appear more than once in the new number thus formed?",
+    "o": ["One", "Two", "None", "Three"],
+    "fig": false
+  },
+  {
+    "orig": 67,
+    "q": "What should come in place of the question mark (?) in the given series?\n12 28 45 63 ? 102",
+    "o": ["82", "88", "76", "72"],
+    "fig": false
+  },
+  {
+    "orig": 68,
+    "q": "If + means -, - means ×, × means ÷, and ÷ means +, then what will come in place of the question mark (?) in the following equation?\n21 - 4 ÷ 371 + 111 × 3 = ?",
+    "o": ["409", "418", "406", "411"],
+    "fig": false
+  },
+  {
+    "orig": 69,
+    "q": "Seven people B, C, D, I, J, K, and L are sitting around a circular table facing the centre of the table. Only three people sit between D and L, when counted from the right of L. Only three people sit between K and L, when counted from the left of K. B sits to the immediate right of D. J is an immediate neighbour of L as well as I. Who sits second to the left of C?",
+    "o": ["L", "J", "I", "K"],
+    "fig": false
+  },
+  {
+    "orig": 70,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group?\n(Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["UR-WS", "QN-SP", "SP-UQ", "WT-YU"],
+    "fig": false
+  },
+  {
+    "orig": 71,
+    "q": "Refer to the following number series and answer the question that follows (all numbers are single-digit numbers only). Counting to be done from left to right only.\n(Left) 1 2 8 4 6 9 5 8 8 7 9 2 6 6 3 8 6 3 1 1 4 4 6 9 (Right)\nHow many such numbers are there, each of which is immediately preceded by an even number and also immediately followed by an even number?",
+    "o": ["One", "Four", "Three", "Two"],
+    "fig": false
+  },
+  {
+    "orig": 72,
+    "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements.\nStatements:\nSome samosas are burgers.\nSome burgers are pizzas.\nConclusions:\n(I) Some samosas are pizzas.\n(II) All pizzas are burgers.",
+    "o": ["Both conclusions (I) and (II) follow", "Only conclusion (II) follows", "Only conclusion (I) follows", "Neither conclusion (I) nor (II) follows"],
+    "fig": false
+  },
+  {
+    "orig": 73,
+    "q": "In a certain code language, 'royal snow blue' is written as 'ni zw cr', and 'blue two web' is written as 'rg iq zw'. How is 'blue' written in that code language?",
+    "o": ["ti", "zw", "rg", "cr"],
+    "fig": false
+  },
+  {
+    "orig": 74,
+    "q": "Which of the following number will replace the question mark (?) in the given series?\n1, 2, 6, 15, 31, 56, ?",
+    "o": ["72", "80", "92", "86"],
+    "fig": false
+  },
+  {
+    "orig": 75,
+    "q": "CEID is related to JLPK in a certain way based on the English alphabetical order. In the same way, EGKF is related to LNRM. To which of the given options is GIMH related, following the same logic?",
+    "o": ["KMRO", "NPTO", "PNTO", "PNOT"],
+    "fig": false
+  },
+  {
+    "orig": 76,
+    "q": "Select the set in which the numbers are related in the same way as are the numbers of the following sets.\n(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits. E.g. 13 - Operations on 13 such as adding to/subtracting from/multiplying with 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)\n(12, 20, 45)\n(18, 26, 57)",
+    "o": ["(9, 17, 29)", "(11, 20, 45)", "(15, 7, 19)", "(13, 21, 47)"],
+    "fig": false
+  },
+  {
+    "orig": 77,
+    "q": "What should come in place of the question mark (?) in the given series?\n18, 22, 30, 42, 58, ?",
+    "o": ["78", "77", "79", "76"],
+    "fig": false
+  },
+  {
+    "orig": 78,
+    "q": "This question is based on the five, three-digit numbers given below.\n(Left) 515 758 761 726 579 (Right)\n(Example: 697 - First digit = 6, second digit = 9 and third digit = 7)\n(NOTE: All operations to be done from left to right.)\nWhat will be the resultant if the second digit of the highest number is added to the second digit of the lowest number?",
+    "o": ["13", "6", "9", "7"],
+    "fig": false
+  },
+  {
+    "orig": 79,
+    "q": "In the following triads, each group of letters is related to the subsequent one following a certain logic. Select from the given options, the one which follows the same logic.\nRAMP - PRMA - RPAM\nSEND - DSNE - SDEN",
+    "o": ["KEPT - TKPE - KETP", "QUAD - DQAU - QDUA", "CODE - OCDE - EODC", "HALT - THAL - ALTH"],
+    "fig": false
+  },
+  {
+    "orig": 80,
+    "q": "In a certain code language, 'dirt is there' is written as 'mp rc gp', and 'clean the dirt' is written as 'hk mp bo'. How is 'dirt' written in that code language?",
+    "o": ["hk", "mp", "gp", "bo"],
+    "fig": false
+  },
+  {
+    "orig": 81,
+    "q": "Who submitted India's third biennial report on climate change to the UNFCCC in December 2024?",
+    "o": ["United Nations Foundation for Climate Cooperation", "United Nations Framework Convention on Climate Change", "Union Network for Future Climate Control", "United Nations Forum for Climate Coordination"],
+    "fig": false
+  },
+  {
+    "orig": 82,
+    "q": "In which city did DRDO conduct the flight test of VLSRSAM?",
+    "o": ["Jaisalmer, Rajasthan", "Chandipur, Odisha", "Pune, Maharashtra", "Visakhapatnam, Andhra Pradesh"],
+    "fig": false
+  },
+  {
+    "orig": 83,
+    "q": "What percentage did CPI inflation touch in April 2025 in India, marking a new six-year low?",
+    "o": ["3.16%", "5.20%", "4.2%", "6.2%"],
+    "fig": false
+  },
+  {
+    "orig": 84,
+    "q": "In December 2024, which foundation day was celebrated by the Border Security Force (BSF) of India?",
+    "o": ["55th", "50th", "60th", "20th"],
+    "fig": false
+  },
+  {
+    "orig": 85,
+    "q": "Which contemporary award did Karnan win at the Bengaluru International Festival, 2025?",
+    "o": ["Best Film", "Best Direction", "Best Cinematography", "Best Actor"],
+    "fig": false
+  },
+  {
+    "orig": 86,
+    "q": "What was the theme of the World Day of Social Justice celebrated in 2025?",
+    "o": ["A Just Transition for the Planet", "Strengthening Democracy, Inspiring Participation", "Democracy for Development", "Voices for Change"],
+    "fig": false
+  },
+  {
+    "orig": 87,
+    "q": "The Government of India established a National Centre of Excellence on Climate Research in collaboration with which institution in October 2024?",
+    "o": ["Centre for Sustainable Urban Climate Research", "National Institute for Atmospheric Studies and Policy", "Indian Council for Environmental Data and Analysis", "Centre for Research on Energy and Clean Air"],
+    "fig": false
+  },
+  {
+    "orig": 88,
+    "q": "Which of the following countries launched the world's first AI-based satellite in May 2025?",
+    "o": ["China", "Russia", "USA", "Japan"],
+    "fig": false
+  },
+  {
+    "orig": 89,
+    "q": "The 2025 French Open, also known as Roland Garros, was played on which type of court surface?",
+    "o": ["Grass", "Clay Court", "Artificial Turf", "Hard Court"],
+    "fig": false
+  },
+  {
+    "orig": 90,
+    "q": "Which of the following statements regarding the publication of the Election Commission of India Network (ECINET) during elections is true?",
+    "o": ["Polling will be conducted on 72 ports.", "Approval was obtained from the Election Commission in this regard.", "New digitization has reduced the cost of returns.", "Powers were given to local administration officers in this regard."],
+    "fig": false
+  },
+  {
+    "orig": 91,
+    "q": "Which organisation initiated a 12-day cybersecurity exercise called 'Cyber Suraksha', starting 16 June 2025?",
+    "o": ["Indian Space Research Organisation", "Indian Air Force Cyber Agency", "Cyber Security Association of India", "Indian Defence Cyber Agency"],
+    "fig": false
+  },
+  {
+    "orig": 92,
+    "q": "What is the prize money for Bal Sahitya Puraskar winners?",
+    "o": ["₹25,000", "₹75,000", "₹1,00,000", "₹50,000"],
+    "fig": false
+  },
+  {
+    "orig": 93,
+    "q": "The Mussalman Wakf (Repeal) Bill, 2025, seeks to remove the outdated Mussalman Wakf Act of ______.",
+    "o": ["1943", "1923", "1953", "1933"],
+    "fig": false
+  },
+  {
+    "orig": 94,
+    "q": "Which mentorship initiative was launched on 21 March 2025 to provide research mentorship to bioscience and biotechnology students?",
+    "o": ["Bioinnovate India", "Biotech Startup-Mission", "BioNurture Mentorship Programme", "BioSaarthi Mentorship Initiative"],
+    "fig": false
+  },
+  {
+    "orig": 95,
+    "q": "In the first quarter of the current financial year 26, which insurance company's total APE in ULIP accounted for a share of 46.8%, whereas this share was 51.4% in the previous year?",
+    "o": ["AID/IDD (ICICI) Prudential Life Insurance", "Bajaj Allianz Life Insurance Company Limited", "Life Insurance Corporation of India", "Axis Max Life Insurance Limited"],
+    "fig": false
+  },
+  {
+    "orig": 96,
+    "q": "Which government's process was praised for excavating a large multipurpose dam on the Sutlej river in Himachal Pradesh in 2025?",
+    "o": ["Gram Panchayat", "Central Government", "Local Panchayat", "State Government"],
+    "fig": false
+  },
+  {
+    "orig": 97,
+    "q": "How many gold medals did Suruchi Singh win in the 10 m pistol event at the ISSF World Cup in 2025?",
+    "o": ["Two", "Three", "Four", "One"],
+    "fig": false
+  },
+  {
+    "orig": 98,
+    "q": "Which team won the National Team of the Year award at the Sportstar Aces Awards 2025?",
+    "o": ["Indian Women's Cricket Team", "Indian Men's Hockey Team", "Indian Men's Football Team", "Indian Chess Team"],
+    "fig": false
+  },
+  {
+    "orig": 99,
+    "q": "In 2025, which authority declared the Anti-Competition Bill 2024 unnecessary, and described the BNS provisions as more stringent and contradictory?",
+    "o": ["Bar Council of India", "National Women's Commission", "High Court", "Law Commission"],
+    "fig": false
+  },
+  {
+    "orig": 100,
+    "q": "Which Indian state launched a special drive in its mangrove forests to protect the marine ecosystem and the environment by 2030?",
+    "o": ["Tamil Nadu", "West Bengal", "Odisha", "Andhra Pradesh"],
+    "fig": false
+  }
+]
