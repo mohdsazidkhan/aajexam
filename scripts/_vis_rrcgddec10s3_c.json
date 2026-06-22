@@ -1,0 +1,248 @@
+[
+  {
+    "orig": 60,
+    "q": "Raghu starts from Point Y and drives 18 km towards west. He then turns right and drives 26 km, takes a left turn, drives 30 km, turns left and drives 68 km. He then takes a right turn and drives 31 km. He takes a right turn, drives 42 km, turns left and drives 16 km to stop at Point Z. How far (shortest distance) and towards which direction should he drive in order to reach Point Y again? (All turns are 90 degree turns only unless specified.)",
+    "o": ["89 km towards west", "97 km towards east", "95 km towards east", "91 km towards west"],
+    "fig": false
+  },
+  {
+    "orig": 61,
+    "q": "Refer to the following number and symbol series and answer the question that follows. (Left) ? * + ? \\ & 3 # 9 % 4 1 6 * @ 5 4 8 8 $ \\ (Right). How many such numbers are there each of which is immediately preceded by another number and also immediately followed by a symbol?",
+    "o": ["Three", "Four", "Two", "One"],
+    "fig": false
+  },
+  {
+    "orig": 62,
+    "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements. Statements: Some books are novels. All novels are stories. Conclusions: (I): Some stories are books. (II): No books are stories.",
+    "o": ["Neither conclusion (I) nor (II) follows", "Both conclusions (I) and (II) follow", "Only conclusion (I) follows", "Only conclusion (II) follows"],
+    "fig": false
+  },
+  {
+    "orig": 63,
+    "q": "In a certain code language, 'A ? B' means 'A is the daughter of B', 'A # B' means 'A is the son of B', 'A @ B' means 'A is the father of B' and 'A \\ B' means 'A is the sister of B'. How is L related to L if 'C ? D = E @ F \\ L'?",
+    "o": ["Daughter", "Brother's wife", "Sister's daughter", "Brother's daughter"],
+    "fig": false
+  },
+  {
+    "orig": 64,
+    "q": "If 'A' means 'x', 'B' means '/', 'C' means '+' and 'D' means '-', then what will be the value of the following equation? 14 B 2 D 10 A 5 C 12 = ?",
+    "o": ["48", "45", "50", "43"],
+    "fig": false
+  },
+  {
+    "orig": 65,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group? (Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["HL-OJ", "BF-IE", "FJ-MH", "DH-KF"],
+    "fig": false
+  },
+  {
+    "orig": 66,
+    "q": "In a certain code language, 'CORM' is coded as '9518' and 'MORE' is coded as '5831'. What is the code for 'E' in the given code language?",
+    "o": ["1", "3", "8", "5"],
+    "fig": false
+  },
+  {
+    "orig": 67,
+    "q": "Select the number that will replace the question mark (?) in the following expression and give the answer. (Left side) 7 $ 5 @ 3 1 3 5 6 7 & % 5 3 # 2 7 + ? > < (Right side). How many such numbers are there each of which is immediately preceded by a symbol and immediately followed by a number?",
+    "o": ["#", "%", "$", "@"],
+    "fig": false
+  },
+  {
+    "orig": 68,
+    "q": "If '+' means '/', '-' means 'x', 'x' means '-' and '/' means '+', then what will come in place of the question mark (?) in the following equation? 12 - 15 + 143 x 98 x 7 = ?",
+    "o": ["309", "303", "312", "306"],
+    "fig": false
+  },
+  {
+    "orig": 69,
+    "q": "P, Q, R, S, T and U are sitting in a row facing the north. S is sitting to the immediate left of Q. P is sitting to the immediate right of Q. U is sitting to the immediate right of P and immediate left of T. S and R are sitting at the ends of the line not necessarily in the same order. Who is sitting to the immediate right of T?",
+    "o": ["S", "P", "R", "Q"],
+    "fig": false
+  },
+  {
+    "orig": 70,
+    "q": "Which number will come in place of the question mark (?) in the following number series? 10, 23, 49, 88, 140, ?",
+    "o": ["204", "206", "207", "205"],
+    "fig": false
+  },
+  {
+    "orig": 71,
+    "q": "TQKG is related to XUOK in a certain way. Following the same logic, WTNJ is related to ROHE. Accordingly, which of the following options is related to SPJF in the same way?",
+    "o": ["UQKI", "VPMF", "VSMI", "WROK"],
+    "fig": false
+  },
+  {
+    "orig": 72,
+    "q": "In the following triads, each group of letters is related to the subsequent one following a certain logic. Select from the given options, the one that follows the same logic. RAGE - ARGE - EARG, QUIZ - UQIZ - ZUQI",
+    "o": ["SAME - ASME - AMES", "COLD - OCLD - DOLC", "KIND - KNID - DNIK", "HERD - EHRD - DEHR"],
+    "fig": false
+  },
+  {
+    "orig": 73,
+    "q": "Which of the given letter-number clusters will replace the question mark (?) in the following series to make it logically complete? ECP \\ 1 GEM \\ -2 IGJ 4 KIG \\ -8 ?",
+    "o": ["MKD 16", "KMD 15", "MKK \\ -13", "LKM \\ -19"],
+    "fig": false
+  },
+  {
+    "orig": 74,
+    "q": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements. Statements: Some rabbits are fans. No fan is a car. Conclusions: (I): Some rabbits are cars. (II): Some fans are rabbits.",
+    "o": ["Both conclusions (I) and (II) follow", "Neither conclusion (I) nor (II) follows", "Only conclusion (I) follows", "Only conclusion (II) follows"],
+    "fig": false
+  },
+  {
+    "orig": 75,
+    "q": "Based on the English alphabetical order, three of the following four letter-cluster pairs are alike in a certain way and thus form a group. Which letter-cluster pair DOES NOT belong to that group? (Note: The odd one out is not based on the number of consonants/vowels or their position in the letter-cluster.)",
+    "o": ["LI-SL", "VS-DV", "MJ-TM", "DA-KD"],
+    "fig": false
+  },
+  {
+    "orig": 76,
+    "q": "If 1 is added to each odd digit and 2 is subtracted from each even digit in the number 4651783, what will be the sum of the highest digit and the second from the left and first from the right in the new number thus formed?",
+    "o": ["14", "19", "16", "12"],
+    "fig": false
+  },
+  {
+    "orig": 77,
+    "q": "Aditi starts from Point A and drives 10 km towards the west. She then takes a left turn, drives 8 km, turns right and drives 5 km. She then takes a left turn and drives 8 km. She then takes a left turn and drives 15 km. She takes a final right turn, drives 4 km and stops at Point D. How far (shortest distance) and in which direction is Point D with respect from Point A? (All turns are 90 degree turns only unless specified.)",
+    "o": ["20 km towards south", "11 km towards east", "18 km towards south", "16 km towards north"],
+    "fig": false
+  },
+  {
+    "orig": 78,
+    "q": "Select the number that will replace the question mark (?) and give the answer. (All numbers are single-digit numbers!!) (Left side) 1 3 1 8 9 3 1 9 9 3 4 8 6 3 2 4 7 9 5 5 9 7 5 4 1 5 3 (Right side). How many such numbers are there each of which is immediately preceded by a number and immediately followed by a number?",
+    "o": ["4", "3", "2", "1"],
+    "fig": false
+  },
+  {
+    "orig": 79,
+    "q": "In the following triads, each group of letters is related to the group of letters following a certain logic. Select from the given options, the one which follows the same logic. SWAP - WSAP - PAWS, ALSO - LASO - OSLA",
+    "o": ["USER - SUER - RESU", "EARN - AERN - ARNE", "CROW - CORW - WORC", "TIDE - ITDE - EIDT"],
+    "fig": false
+  },
+  {
+    "orig": 80,
+    "q": "O, P, Q, R, W, X are sitting facing the centre around a circular table. P is sitting to the immediate right of O. Q is sitting third to the right of P. R is sitting to the immediate left of Q. X is sitting between O and Q, but X is not the immediate neighbour of W. W and X are not adjacent to each other. Who is sitting second to the right of X?",
+    "o": ["R", "P", "Q", "W"],
+    "fig": false
+  },
+  {
+    "orig": 81,
+    "q": "In which country was the National Quantum Mission Technology Implementation Conclave (ESTIC) 2025 organised?",
+    "o": ["France", "China", "North Korea", "New Delhi"],
+    "fig": false
+  },
+  {
+    "orig": 82,
+    "q": "In August 2025, the Union Minister Sarbananda Sonowal launched an index under the National Mechanism initiative, which will help to evaluate, monitor and promote the working of State Pharmaceutical and Medical Devices Regulatory Bodies. What is the name of that index?",
+    "o": ["State Health Regulatory Excellence Index", "Health Infrastructure Performance Index", "National Drug Regulatory Reform Index", "Pharmaceutical Compliance Monitoring Index"],
+    "fig": false
+  },
+  {
+    "orig": 83,
+    "q": "Which state launched the Tribal Genome Sequencing Project for the first time in July 2025?",
+    "o": ["Odisha", "Andhra Pradesh", "Jharkhand", "Chhattisgarh"],
+    "fig": false
+  },
+  {
+    "orig": 84,
+    "q": "Which team's all four important players were ruled out by injury under the new player auction rules introduced in July 2025?",
+    "o": ["Achievers", "Jaipur Warriors", "Royal Riders", "Desert Stallions"],
+    "fig": false
+  },
+  {
+    "orig": 85,
+    "q": "In July 2025, an environmentalist won the Goldsmith Award. Who was he?",
+    "o": ["Tom Pidcock", "Kelly Slater", "Yuto Horigome", "Chloe Kim"],
+    "fig": false
+  },
+  {
+    "orig": 86,
+    "q": "Who was elected as the new Prime Minister of which country in 2024, who returned to power as Prime Minister with a historic mandate in 2025?",
+    "o": ["Pedro Sanchez", "Shigeru Ishiba", "Anwar Ibrahim", "Bisente Mokuetsu"],
+    "fig": false
+  },
+  {
+    "orig": 87,
+    "q": "According to the Global Innovation Index (GII), 2025 published by the World Intellectual Property Organization (WIPO), what is India's rank?",
+    "o": ["38th", "28th", "33rd", "43rd"],
+    "fig": false
+  },
+  {
+    "orig": 88,
+    "q": "Which company became the first Indian fintech unicorn and announced an investment of Rs 5,000 crore over the next five years for innovation and development in India?",
+    "o": ["Smart City Mission", "Smart Indi", "Slum Pro", "Atmanirbhar Bharat Abhiyan"],
+    "fig": false
+  },
+  {
+    "orig": 89,
+    "q": "In 2025, India signed an agreement with which country for the controlled cultivation of marijuana (cannabis) through cooperative societies?",
+    "o": ["Malaysia", "Nigeria", "Afghanistan", "Thailand"],
+    "fig": false
+  },
+  {
+    "orig": 90,
+    "q": "In July 2025, India joined which European drone manufacturing programme as a development partner?",
+    "o": ["Predator XP (Predator XP)", "Eurodrone (Eurodrone)", "Global Hawk (Global Hawk)", "nEUROn"],
+    "fig": false
+  },
+  {
+    "orig": 91,
+    "q": "In July 2025, the Earth observation satellite EOS-09 (PSLV-C61), placed in a Sun-synchronous orbit after a successful launch, was India's which mission?",
+    "o": ["First phase of monsoon monitoring", "Second phase of monsoon monitoring", "Third phase of monsoon monitoring", "Fourth phase of monsoon monitoring"],
+    "fig": false
+  },
+  {
+    "orig": 92,
+    "q": "According to the Reserve Bank of India (RBI) Foreign Exchange Management (FPI) regulations approved in July 2025, what is the upper limit set for foreign portfolio investment in any single corporate bond?",
+    "o": ["15%", "10%", "18%", "12%"],
+    "fig": false
+  },
+  {
+    "orig": 93,
+    "q": "According to the 2025-26 Indian Budget, how many new districts will be brought under the food storage scheme in 2025-26?",
+    "o": ["175", "200", "100", "150"],
+    "fig": false
+  },
+  {
+    "orig": 94,
+    "q": "According to a report published by the Council on Energy, Environment and Water (CEEW) and the Alliance for an Energy Efficient Economy (AEEE) in 2025, by what percentage can India reduce its carbon emissions by adopting energy efficiency in 1000 MW capacity by 2030?",
+    "o": ["20%", "35%", "60%", "45%"],
+    "fig": false
+  },
+  {
+    "orig": 95,
+    "q": "In July 2025, in which state was an emergency declared due to flooding of the Subarnarekha, Budhabalanga and other rivers, following 4 to 7 days of continuous rainfall?",
+    "o": ["Bihar", "Odisha", "West Bengal", "Assam"],
+    "fig": false
+  },
+  {
+    "orig": 96,
+    "q": "Which Indian footballer received the Best Player award in 2025 for excellent goalkeeping?",
+    "o": ["MI Vijayan", "Bhaichung Bhutia", "Sunil Chhetri", "Sandesh Jhingan"],
+    "fig": false
+  },
+  {
+    "orig": 97,
+    "q": "Which institute in India was awarded the title in 2025 for excellence in the field of Artificial Intelligence, Machine Learning and Blockchain technology?",
+    "o": ["IIT Madras", "IIM Ahmedabad", "ISB Hyderabad", "BITS Pilani"],
+    "fig": false
+  },
+  {
+    "orig": 98,
+    "q": "Who took charge as the Deputy Governor of RBI on 24 April 2025?",
+    "o": ["Michael Debroy", "Ashwani Bhatia", "Poonam Gupta", "Michael Patra"],
+    "fig": false
+  },
+  {
+    "orig": 99,
+    "q": "In 2025, which Indian classical dancer won the prestigious Ostrava Golden Spike Award?",
+    "o": ["Rohit Yadav", "Annu Rani", "Neeraj Chopra", "Kishore Kumar"],
+    "fig": false
+  },
+  {
+    "orig": 100,
+    "q": "In July 2025, due to heavy rainfall in which city, a special Integrated Flood Management Cell (IFMC) was set up by the Indian Meteorological Department for waste management of the surrounding affected city?",
+    "o": ["Bhopal", "Pune", "Guwahati", "Gorakhpur"],
+    "fig": false
+  }
+]
