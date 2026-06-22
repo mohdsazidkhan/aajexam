@@ -1,0 +1,37 @@
+[
+  {
+    "orig": 23,
+    "q": "In a two-way exchange, what type of ions are exchanged between two ion exchangers?",
+    "o": [
+      "Both cation-cation and anion-anion",
+      "Cation-cation ions",
+      "Anion-anion ions",
+      "Cation-anion ions"
+    ],
+    "fig": false
+  },
+  {
+    "orig": 26,
+    "q": "In triangle ABC, side BD is perpendicular to AC. If angle DBC = 71 degrees, then BC is extended to point E such that angle CAE = 55 degrees and angle AEB is a right angle, what is the measure of angle AEB?",
+    "o": ["66 degrees", "73 degrees", "0 degrees", "74 degrees"],
+    "fig": true
+  },
+  {
+    "orig": 62,
+    "q": "In a certain code language, the letters A, B, C, D, E, and F are seated in a row. A and E are seated next to each other, but A is exactly to the right of D. E is seated to the left of B and to the right of F. C is not the immediate neighbour of A. Who is seated exactly in the middle?",
+    "o": ["E does not sit at any one place", "Two", "One", "Three"],
+    "fig": false
+  },
+  {
+    "orig": 73,
+    "q": "Seven boxes B, D, E, P, S, and T are kept one above another, but not necessarily in the same order. Only one box is kept between B and S, and S is kept above B. Only three boxes are kept between E and T. P is kept just above the box which is kept just above E. The box D is kept above B. How many boxes are kept above box S?",
+    "o": ["Five", "Eight", "One", "Four"],
+    "fig": false
+  },
+  {
+    "orig": 78,
+    "q": "What will come in place of the question mark (?) in the given series: 5 9 16 26 39 ?",
+    "o": ["51", "55", "58", "60"],
+    "fig": false
+  }
+]
