@@ -54,12 +54,17 @@ spart = strip_noise(raw[m.end():])
 LET = {'a':0,'b':1,'c':2,'d':3,'e':4}
 ans_iter = list(re.finditer(r'S\s*(\d+)\.\s*Ans\.?\s*\(\s*([a-eA-E])\s*\)', spart))
 nums = [int(m.group(1)) for m in ans_iter]
-by_number = sorted(nums) == list(range(1, 101))
+# Map by printed S-number whenever the numbers are unique and in 1..100 (robust to a few
+# MISSING markers, e.g. equation-image Qs whose solution line is absent). Only fall back to
+# positional mapping when printed numbers collide (e.g. 2021's S60-misprinted-as-S50 dup),
+# which would make by-number mapping ambiguous.
+by_number = len(nums) == len(set(nums)) and all(1 <= x <= 100 for x in nums)
 if by_number:
     answers = [None] * 100
     for m in ans_iter:
         answers[int(m.group(1)) - 1] = LET[m.group(2).lower()]
-    print(f'answer matches: {len(ans_iter)} (mapped by printed number)')
+    missing = [n for n in range(1, 101) if answers[n-1] is None]
+    print(f'answer matches: {len(ans_iter)} (mapped by printed number); missing S-nums: {missing}')
 else:
     answers = [LET[m.group(2).lower()] for m in ans_iter]
     print(f'answer matches: {len(ans_iter)} (mapped by order - fallback)')
