@@ -39,7 +39,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
     }
 
     const handleStart = () => {
-        const dest = `/govt-exams/test/${paper.slug}/start`;
+        const dest = `/govt-exams/test/${paper.slug || paper._id}/start`;
         if (requireAuthForAction(router, dest)) router.push(dest);
     };
 

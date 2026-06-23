@@ -120,7 +120,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     name: `${examName} – Practice Tests & PYQs`,
     items: [...practiceTests, ...pyqs].slice(0, 50).map(t => ({
       name: t.title,
-      url: `/govt-exams/test/${t.slug}/start`
+      url: `/govt-exams/test/${t.slug || t._id}/start`
     }))
   }) : null;
   const faqSchema = generateFAQSchema([
@@ -324,7 +324,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           onConfirm={() => {
             setShowTestModal(false);
             localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'exam-detail', testData: selectedTest }));
-            router.push(`/govt-exams/test/${selectedTest.slug}/start`);
+            router.push(`/govt-exams/test/${selectedTest.slug || selectedTest._id}/start`);
           }}
           test={selectedTest}
           pattern={selectedTest.examPattern}

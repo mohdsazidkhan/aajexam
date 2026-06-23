@@ -182,7 +182,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     const isPro = !test.isLastYear;
                                     const hasAccess = !isPro || hasProSubscription();
                                     const examSlug = test.examSlug;
-                                    const linkHref = examSlug && test.slug ? `/pyq/${examSlug}/${test.slug}` : `/govt-exams/test/${test.slug}/start`;
+                                    const linkHref = examSlug && test.slug ? `/pyq/${examSlug}/${test.slug}` : `/govt-exams/test/${test.slug || test._id}/start`;
                                     return (
                                         <Card
                                             key={test._id || i}

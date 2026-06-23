@@ -99,7 +99,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       router.push('/subscription');
       return;
     }
-    router.push(`/govt-exams/test/${test.slug}/start`);
+    router.push(`/govt-exams/test/${test.slug || test._id}/start`);
   };
 
   const handleViewResult = (test) => {

@@ -117,6 +117,9 @@ const Exam = mongoose.models.Exam || mongoose.model('Exam', examSchema);
 const ExamPattern = mongoose.models.ExamPattern || mongoose.model('ExamPattern', examPatternSchema);
 const PracticeTest = mongoose.models.PracticeTest || mongoose.model('PracticeTest', practiceTestSchema);
 
+const slugify = (s) => String(s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
+
 const ENG = 'English Language', NA = 'Numerical Ability', REA = 'Reasoning Ability';
 const TAGS = ['SBI', 'Clerk', 'Prelims', 'PYQ', '%(year)s', %(titlejs)s];
 const RAW = %(raw)s;
@@ -185,7 +188,7 @@ async function seed() {
   const questions = await buildQuestions();
 
   const test = await PracticeTest.create({
-    examPattern: pattern._id, title: TEST_TITLE, totalMarks: 100, duration: 60,
+    examPattern: pattern._id, title: TEST_TITLE, slug: slugify(TEST_TITLE), totalMarks: 100, duration: 60,
     accessLevel: 'FREE', isPYQ: true, pyqYear: %(year)s, pyqShift: %(titlejs)s,
     pyqExamName: 'SBI Clerk Prelims', questions
   });
