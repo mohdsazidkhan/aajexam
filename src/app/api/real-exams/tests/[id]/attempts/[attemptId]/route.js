@@ -21,7 +21,7 @@ export async function GET(req, { params }) {
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
 
         const answerMap = Object.fromEntries(attempt.answers.map(a => [a.questionId?.toString(), a.selectedIndex]));
-        const submittedAnswers = test.questions.map(q => answerMap[q._id.toString()] ?? null);
+        const submittedAnswers = test.questions.map(q => answerMap[q._id?.toString()] ?? null);
 
         const evaluation = evaluateAnswers(test.questions, submittedAnswers, test.examPattern.sections);
 
