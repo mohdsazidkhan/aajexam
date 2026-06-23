@@ -98,6 +98,7 @@ export async function POST(req, { params }) {
             optionImages: q.optionImages || [],
             correctAnswerIndex: q.correctAnswerIndex,
             explanation: q.explanation,
+            explanationImage: q.explanationImage || '',
             section: q.section
         }));
 

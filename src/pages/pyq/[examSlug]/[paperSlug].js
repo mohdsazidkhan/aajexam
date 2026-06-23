@@ -241,10 +241,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                                 );
                                             })}
                                         </ol>
-                                        {q.explanation && (
+                                        {(q.explanation || q.explanationImage) && (
                                             <div className="ml-11 mt-3 px-4 py-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary-500">
                                                 <p className="text-xs font-black text-primary-700 dark:text-primary-400 uppercase tracking-widest mb-1">Explanation</p>
-                                                <p className="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-pre-line">{q.explanation}</p>
+                                                {q.explanation && <p className="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-pre-line">{q.explanation}</p>}
+                                                {q.explanationImage && (
+                                                    /* eslint-disable-next-line @next/next/no-img-element */
+                                                    <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-w-full mt-2 rounded border border-slate-200 dark:border-slate-700" />
+                                                )}
                                             </div>
                                         )}
                                     </article>
@@ -422,6 +426,7 @@ export async function getServerSideProps({ params, res }) {
             optionImages: q.optionImages || [],
             correctAnswerIndex: typeof q.correctAnswerIndex === 'number' ? q.correctAnswerIndex : 0,
             explanation: q.explanation || null,
+            explanationImage: q.explanationImage || null,
         }));
 
         const paper = {
