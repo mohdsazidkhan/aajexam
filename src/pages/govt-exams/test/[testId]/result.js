@@ -406,10 +406,14 @@ const TestResult = ({ resolvedId } = {}) => {
                         })}
                       </div>
 
-                      {q.explanation && (
+                      {(q.explanation || q.explanationImage) && (
                         <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-500">
                           <p className="text-xs font-black text-primary-600 uppercase mb-1">Explanation</p>
-                          <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>
+                          {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
+                          {q.explanationImage && (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                          )}
                         </div>
                       )}
 
