@@ -70,7 +70,8 @@ for pno in range(1, doc.page_count + 1):
             continue
         if cur is None:
             continue
-        mid = re.search(r'Question ID\s*:\s*(\d+)', re.sub(r'\s+', ' ', t))
+        # QID label; tolerate the dropped-'i' font garble 'Quest on D' for 'Question ID'
+        mid = re.search(r'Quest\w*\s*\w*\s*I?D\s*:?\s*(\d{6,})', re.sub(r'\s+', ' ', t))
         if mid:
             cur['qid'] = mid.group(1)
             cur['y1'] = ly
@@ -82,7 +83,9 @@ for pno in range(1, doc.page_count + 1):
         # and carries the answer colour (green correct / red wrong). First span per
         # option number wins (avoids stray '1.' inside a stem later in the block).
         for s in ss:
-            mo = re.match(r'([1-4])\.(?:\s|$)', s['text'].strip())
+            # option label: 'N.' (Dec shifts) OR 'N  text' double-space (Nov-27 S1
+            # style, no period; whole span carries the answer colour)
+            mo = re.match(r'([1-4])(?:\.(?:\s|$)|\s\s)', s['text'].strip())
             if mo and int(mo.group(1)) not in cur['optcolors']:
                 cur['optcolors'][int(mo.group(1))] = s['color']
 if cur:
@@ -100,9 +103,17 @@ for r in records:
     prev = r['qn']
 sections.append(sec)
 
+# 'lenient' (3rd CLI arg) tolerates a short LAST section (e.g. trailing Computer
+# questions rasterised on an image-only page -> recovered later by vision).
+LENIENT = len(sys.argv) > 3 and sys.argv[3] == 'lenient'
 assert len(sections) == 4, f'expected 4 sections, got {len(sections)}'
 sizes = [len(s) for s in sections]
-assert sizes == SIZES, f'section sizes {sizes} != {SIZES}'
+if sizes != SIZES:
+    if LENIENT and sizes[:3] == SIZES[:3] and sizes[3] < SIZES[3]:
+        print(f'LENIENT: section sizes {sizes} (last short by {SIZES[3]-sizes[3]}); '
+              'recover missing tail via vision')
+    else:
+        raise AssertionError(f'section sizes {sizes} != {SIZES}')
 
 out = []
 glob = 0
