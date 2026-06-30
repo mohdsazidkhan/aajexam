@@ -147,8 +147,9 @@ for idx, it in enumerate(allitems):
         if cur['state'] == 'qtext':
             cur['qtext_lines'].append(t)
             continue
-        # stray text after options but before meta (rare wrap of option) -> append to last opt
-        if cur['state'] == 'opts' and cur['opts'] and it['x0'] > 80 and it['x0'] < 360:
+        # continuation of a wrapped option (its 2nd+ line sits at the question-text
+        # indent x~69, LEFT of the option-number x~88) -> append to last option.
+        if cur['state'] == 'opts' and cur['opts'] and it['x0'] > 60 and it['x0'] < 360:
             cur['opts'][-1] = (cur['opts'][-1] + ' ' + t).strip()
             continue
     else:  # image block — collect globally, assign to a question afterwards
