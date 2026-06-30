@@ -43,3 +43,12 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# PYQ seeding working artifacts (regenerable; images live on Cloudinary).
+# Commit ONLY the pipeline scripts + seed-pyq-*.js, never these.
+/_dpc2023_*
+/_dpc2020_*
+/_dpc09_*
+/_seedimg_*
+/_vis_*
+/_final*
