@@ -59,16 +59,19 @@ def page_items(pg, pno):
             x0, y0, x1, y1 = l["bbox"]
             items.append(dict(kind='txt', page=pno, y0=y0, x0=x0, x1=x1, y1=y1,
                               text=txt, color=col))
-    # sort reading order: top-to-bottom, then left-to-right. A 'Q.N' marker and the
-    # first line of its question text share a visual line but can differ by <1pt in
-    # y0 (marker slightly lower), which rounding would flip — nudge markers earlier
-    # so they always precede their own first text line.
-    def sortkey(it):
-        y = it['y0']
-        if it['kind'] == 'txt' and re.match(r'^Q\.\d', it['text'].strip()):
-            y -= 2.5
-        return (round(y), it['x0'])
-    items.sort(key=sortkey)
+    # Reading order: cluster items into visual rows (y within 3pt), then order each
+    # row left-to-right. Naive (round(y0), x0) flips items that share a visual line
+    # but differ by <1pt in y0 — e.g. a 'Q.N' marker vs the first text line, or
+    # option-1 vs the 'Ans' label (seen rendered 1pt above each other), which would
+    # mis-route the line. Clustering makes same-line items group regardless.
+    items.sort(key=lambda it: (it['y0'], it['x0']))
+    ref = None
+    row = -1
+    for it in items:
+        if ref is None or it['y0'] - ref > 3.0:
+            row += 1; ref = it['y0']
+        it['_row'] = row
+    items.sort(key=lambda it: (it['_row'], it['x0']))
     return items
 
 allitems = []

@@ -35,26 +35,27 @@ def clean(a, xcut_px):
     r = a[:, :, 0].astype(int); g = a[:, :, 1].astype(int); b = a[:, :, 2].astype(int)
     maxc = np.maximum(np.maximum(r, g), b)
     minc = np.minimum(np.minimum(r, g), b)
-    tint = (maxc - minc) > 12            # any colour tint (markers + their halos)
-    sat_red = (r - g > 40) & (r - b > 40)
-    sat_green = (g - r > 40) & (g - b > 25)
+    tint = maxc - minc
     xs = np.arange(W)[None, :].repeat(H, axis=0)
     left = xs < xcut_px
-    # left of cut holds only the tick/cross markers (figures there are pure b/w) ->
-    # whiten ALL tinted pixels plus a dilated halo (catches the grey anti-alias
-    # fringe, which has no tint). Dilation only grows around tinted marker seeds,
-    # so b/w figure borders in this column are untouched.
-    mk = tint & left
+    # 1) Light tinted watermark (Adda247 logo is light PINK ~245,196,199; also any
+    #    faint green/blue) -> whiten. Distinguished from real answer colours by a
+    #    HIGH min channel; b/w figures/text have ~zero tint so are untouched.
+    a[((minc > 90) & (tint > 8)) | (minc > 150)] = 255
+    # 2) Strong colour = the green/red answer markers and option-number labels
+    #    (0x40c64b -> minc 64, 0xf61818 -> minc 24). minc<150 separates from watermark.
+    strong = (tint > 40) & (minc < 150)
+    # markers (left of cut) -> whiten plus a dilated halo to kill the anti-alias
+    # fringe. Dilation grows only around strong-colour marker seeds, so b/w figure
+    # borders in this column are untouched.
+    mk = strong & left
     halo = mk.copy()
     for sh in range(1, 6):
         halo[sh:, :] |= mk[:-sh, :]; halo[:-sh, :] |= mk[sh:, :]
         halo[:, sh:] |= mk[:, :-sh]; halo[:, :-sh] |= mk[:, sh:]
     a[halo] = 255
-    # option-number labels (right of cut) are colour-coded -> blacken to neutralise.
-    a[(sat_red | sat_green) & ~left] = 0
-    # faint green watermark anywhere
-    watermark = (g - r > 4) & (g - r < 40) & (g > 195) & (b > 175)
-    a[watermark] = 255
+    # option-number labels (right of cut) -> blacken to neutralise the answer colour.
+    a[strong & ~left] = 0
     return a
 
 
