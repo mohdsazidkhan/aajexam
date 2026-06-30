@@ -52,3 +52,10 @@ next-env.d.ts
 /_seedimg_*
 /_vis_*
 /_final*
+/_esic_*
+/_pdftext_*
+/_para_*
+/_stream_*
+/_extracted_*
+/_key_*
+/_questions_*
