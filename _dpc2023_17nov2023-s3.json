@@ -1,0 +1,1704 @@
+[
+ {
+  "n": 1,
+  "secn": 1,
+  "section": "General Knowledge / Current Affairs",
+  "page": 0,
+  "qtext": "Which country did India beat in the Thomas Cup Finals in 2022?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Indonesia",
+   "Malaysia",
+   "Pakistan",
+   "Singapore"
+  ]
+ },
+ {
+  "n": 2,
+  "secn": 2,
+  "section": "General Knowledge / Current Affairs",
+  "page": 0,
+  "qtext": "Who among the following is a famous performer of Kalbelia dance form?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Minati Mishra",
+   "Geeta Mahalik",
+   "Gulabo Sapera",
+   "Vyjayanti Kashi"
+  ]
+ },
+ {
+  "n": 3,
+  "secn": 3,
+  "section": "General Knowledge / Current Affairs",
+  "page": 0,
+  "qtext": "नलवाड़ी मेला किस भारतीय राज्य में आयोजित किया जाता है?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "पंजाब",
+   "उत्तर प्रदेश",
+   "हिमाचल प्रदेश",
+   "हरियाणा"
+  ]
+ },
+ {
+  "n": 4,
+  "secn": 4,
+  "section": "General Knowledge / Current Affairs",
+  "page": 1,
+  "qtext": "Which of the following is an example of a Western coast port?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Vishakhapatnam port",
+   "Kandla port",
+   "Haldia port",
+   "Tuticorin port"
+  ]
+ },
+ {
+  "n": 5,
+  "secn": 5,
+  "section": "General Knowledge / Current Affairs",
+  "page": 1,
+  "qtext": "रथ सप्तमी का सांस्कृृतिक उत्सव मुख्य रूप से भारत के किस राज्य में मनाया जाता है?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "पश्चिम बंगाल",
+   "बिहार",
+   "हिमाचल प्रदेश",
+   "आंध्र प्रदेश"
+  ]
+ },
+ {
+  "n": 6,
+  "secn": 6,
+  "section": "General Knowledge / Current Affairs",
+  "page": 1,
+  "qtext": "Who has the power to grant pardons?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Chief Justice of India",
+   "Attorney General",
+   "Chief Minister",
+   "President"
+  ]
+ },
+ {
+  "n": 7,
+  "secn": 7,
+  "section": "General Knowledge / Current Affairs",
+  "page": 1,
+  "qtext": "The aim of ‘Poorna Swaraj’ was adopted during the 1929 session of the _________ Congress.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Lucknow",
+   "Poona",
+   "Amritsar",
+   "Lahore"
+  ]
+ },
+ {
+  "n": 8,
+  "secn": 8,
+  "section": "General Knowledge / Current Affairs",
+  "page": 2,
+  "qtext": "Which of the following Articles mentions that the state shall not deny to any person equality before the law or the equal protection of the laws within the territory of India?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Article 12",
+   "Article13",
+   "Article15",
+   "Article14"
+  ]
+ },
+ {
+  "n": 9,
+  "secn": 9,
+  "section": "General Knowledge / Current Affairs",
+  "page": 2,
+  "qtext": "नादिर शाह ________ का शासक था जिसने 1739 में दिल्ली शहर पर विजय प्राप्त करके इसे लूट लिया था।",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "ईरान",
+   "इराक",
+   "तुर्की",
+   "मंगोलिया"
+  ]
+ },
+ {
+  "n": 10,
+  "secn": 10,
+  "section": "General Knowledge / Current Affairs",
+  "page": 2,
+  "qtext": "Nanjiyamma received the National Award _________ for the song Kalakkatha Sandana from the Malayalam film Ayyappanum Koshiyum.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "2019",
+   "2018",
+   "2020",
+   "2021"
+  ]
+ },
+ {
+  "n": 11,
+  "secn": 11,
+  "section": "General Knowledge / Current Affairs",
+  "page": 3,
+  "qtext": "State legislature has the concurrent powers enumerated in List ______ of the Seventh Schedule of the Constitution of India.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "I",
+   "IV",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "n": 12,
+  "secn": 12,
+  "section": "General Knowledge / Current Affairs",
+  "page": 3,
+  "qtext": "Who among the following social reformers of British India was known as Lokhitwadi?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "VeeresalingamPantulu",
+   "Gopal Hari Deshmukh",
+   "Narayan Guru",
+   "Jyotiba Phule"
+  ]
+ },
+ {
+  "n": 13,
+  "secn": 13,
+  "section": "General Knowledge / Current Affairs",
+  "page": 3,
+  "qtext": "Sonal Mansingh got the Sangeet Natak Akademi Award for which form of dance?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Manipuri",
+   "Kuchipudi",
+   "Mohiniattam",
+   "Odissi"
+  ]
+ },
+ {
+  "n": 14,
+  "secn": 14,
+  "section": "General Knowledge / Current Affairs",
+  "page": 3,
+  "qtext": "Who among the following established the Arya Samaj and in which year?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Swami Dayananda Sarasvati in 1875",
+   "Swami Vivekananda in 1785",
+   "Swami Vivekananda in 1875",
+   "Swami Dayananda Sarasvati in 1785"
+  ]
+ },
+ {
+  "n": 15,
+  "secn": 15,
+  "section": "General Knowledge / Current Affairs",
+  "page": 4,
+  "qtext": "How many fundamental duties were enumerated in the 42nd Amendment of the Constitution?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "10",
+   "8",
+   "12",
+   "18"
+  ]
+ },
+ {
+  "n": 16,
+  "secn": 16,
+  "section": "General Knowledge / Current Affairs",
+  "page": 4,
+  "qtext": "Which natural form of vitamin B helps to prevent some of the major birth defects of the baby's brain (anencephaly) and spina bifida?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Pyridoxine",
+   "Cobalamin",
+   "Pantothenic acid",
+   "Folate"
+  ]
+ },
+ {
+  "n": 17,
+  "secn": 17,
+  "section": "General Knowledge / Current Affairs",
+  "page": 4,
+  "qtext": "Which is the largest brackish water lagoon in Asia that was designated as a ‘Ramsar Site’ in 1981?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Loktak lake",
+   "Chilika lake",
+   "Tampara lake",
+   "Harike lake"
+  ]
+ },
+ {
+  "n": 18,
+  "secn": 18,
+  "section": "General Knowledge / Current Affairs",
+  "page": 4,
+  "qtext": "Which of the following Trophies/Cups is related to cricket?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Thomas Cup",
+   "Santosh Trophy",
+   "Durand Cup",
+   "Duleep Trophy"
+  ]
+ },
+ {
+  "n": 19,
+  "secn": 19,
+  "section": "General Knowledge / Current Affairs",
+  "page": 5,
+  "qtext": "In which of the following states was the first edition of the Khelo India University Games held in 2020?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Odisha",
+   "Assam",
+   "Haryana",
+   "Karnataka"
+  ]
+ },
+ {
+  "n": 20,
+  "secn": 20,
+  "section": "General Knowledge / Current Affairs",
+  "page": 5,
+  "qtext": "Who became the first Indian woman to win an Olympic medal?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Sakshi Malik",
+   "Mary Kom",
+   "Saina Nehwal",
+   "Karnam Malleswari"
+  ]
+ },
+ {
+  "n": 21,
+  "secn": 21,
+  "section": "General Knowledge / Current Affairs",
+  "page": 5,
+  "qtext": "Vacuoles in plant cells can occupy up to what percentage of the cell's volume?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "20",
+   "60",
+   "90",
+   "40"
+  ]
+ },
+ {
+  "n": 22,
+  "secn": 22,
+  "section": "General Knowledge / Current Affairs",
+  "page": 5,
+  "qtext": "Which of the following replaced the Planning Commission in 2014?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "NABARD",
+   "NITI Aayog",
+   "SEBI",
+   "Stand Up India Scheme"
+  ]
+ },
+ {
+  "n": 23,
+  "secn": 23,
+  "section": "General Knowledge / Current Affairs",
+  "page": 6,
+  "qtext": "The following are the features of which initiative of the Government of India? a. It is devised to transform India into a global design and manufacturing hub. b. It has an Investor Facilitation Cell to assist investors in seeking regulatory approvals, hand-holding services through the pre-investment phase, execution and after-care support. c. It aspires to facilitate investment, foster innovation, enhance skill development and build best-in-class manufacturing infrastructure.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Start-up India",
+   "Stand up India",
+   "Skill India",
+   "Make in India"
+  ]
+ },
+ {
+  "n": 24,
+  "secn": 24,
+  "section": "General Knowledge / Current Affairs",
+  "page": 6,
+  "qtext": "उस मौर्य राजा का नाम बताइए जिसने अफगानिस्तान और बलूचिस्तान के रूप में उत्तर पश्चिम तक नियंत्रण बढ़ाया।",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "सम्प्रति",
+   "चंद्रगुप्त मौर्य",
+   "दशरथ",
+   "बिन्दुदुसार"
+  ]
+ },
+ {
+  "n": 25,
+  "secn": 25,
+  "section": "General Knowledge / Current Affairs",
+  "page": 6,
+  "qtext": "Which river basin has a catchment area of 5,179 km2, which originates from the Belgaum district of Karnataka and falls in Karwar Bay?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Brahmani",
+   "Kalinadi",
+   "Bharathapuzha",
+   "Palar"
+  ]
+ },
+ {
+  "n": 26,
+  "secn": 26,
+  "section": "General Knowledge / Current Affairs",
+  "page": 7,
+  "qtext": "How many layers of structures consist of the cell envelope?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "One",
+   "Four",
+   "Three",
+   "Two"
+  ]
+ },
+ {
+  "n": 27,
+  "secn": 27,
+  "section": "General Knowledge / Current Affairs",
+  "page": 7,
+  "qtext": "विशेष रूप से 1988 में ऑपरेशन कैक्टस के बाद भारत ने किस देश को व्यापक सुरक्षा सहयोग की पेशकश की थी?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "भूटान",
+   "मालदीव",
+   "नेपाल",
+   "श्रीलंका"
+  ]
+ },
+ {
+  "n": 28,
+  "secn": 28,
+  "section": "General Knowledge / Current Affairs",
+  "page": 7,
+  "qtext": "Which of the following is NOT listed in the Directive Principles of State Policy?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Equal pay for equal work",
+   "Promote the welfare of the people",
+   "Uniform civil code for citizens",
+   "Rights for transgenders in certain cases"
+  ]
+ },
+ {
+  "n": 29,
+  "secn": 29,
+  "section": "General Knowledge / Current Affairs",
+  "page": 7,
+  "qtext": "Pandit Ram Dayal Sharma was awarded the Padma Shri in 2022 for Nautangi, Swang, Bhagat, _________ and Rasiya forms.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Khoria",
+   "Phag",
+   "Rasleela",
+   "Matki"
+  ]
+ },
+ {
+  "n": 30,
+  "secn": 30,
+  "section": "General Knowledge / Current Affairs",
+  "page": 8,
+  "qtext": "In which state is coffee a major plantation crop?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Haryana",
+   "Karnataka",
+   "Assam",
+   "Madhya Pradesh"
+  ]
+ },
+ {
+  "n": 31,
+  "secn": 31,
+  "section": "General Knowledge / Current Affairs",
+  "page": 8,
+  "qtext": "Which of the following elements has the highest atomic number?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Copper",
+   "Gold",
+   "Silver",
+   "Iron"
+  ]
+ },
+ {
+  "n": 32,
+  "secn": 32,
+  "section": "General Knowledge / Current Affairs",
+  "page": 8,
+  "qtext": "निम्नलिखित विजयनगर शासकों में से किसने विजयनगर के पास नागलापुरम नामक एक उपनगरीय बस्ती की स्थापना की?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "राम राय",
+   "कृष्ण देव राय",
+   "सदाशिव राय",
+   "अच्युत देव राय"
+  ]
+ },
+ {
+  "n": 33,
+  "secn": 33,
+  "section": "General Knowledge / Current Affairs",
+  "page": 8,
+  "qtext": "निम्नलिखित में से कौन-सा राज्य का नीति निर्देशक सिद्धांांत है?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "राष्ट्रीीय संघर्ष के आदर्शों को संजोए रखना और उनका पालन करना",
+   "व्यक्तिगत और सामूहिक गतिविधि के सभी क्षेत्रोंों में उत्कृृष्टता की दिशा में प्रयास करना",
+   "संविधान और उसके आदर्शों का पालन करना",
+   "लोक कल्याण की अभिवृद्धि के लिए सामाजिक व्यवस्था बनाए रखना"
+  ]
+ },
+ {
+  "n": 34,
+  "secn": 34,
+  "section": "General Knowledge / Current Affairs",
+  "page": 9,
+  "qtext": "Which of the following statements is correct? a) India is the only country in the world that has both tigers and lions. b) The natural habitat of the Indian lion is the Gir forest in Gujarat. Tigers are found in the forests of Madhya Pradesh, the Sundarbans of West Bengal and the Himalayan region.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Only a is correct.",
+   "Only b is correct.",
+   "Both a and b are incorrect.",
+   "Both a and b are correct."
+  ]
+ },
+ {
+  "n": 35,
+  "secn": 35,
+  "section": "General Knowledge / Current Affairs",
+  "page": 9,
+  "qtext": "‘The Test of My Life: From Cricket to Cancer and Back’, is the autobiography of which famous Indian cricketer?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Robin Utthappa",
+   "Akash Chopra",
+   "Suresh Raina",
+   "Yuvraj Singh"
+  ]
+ },
+ {
+  "n": 36,
+  "secn": 36,
+  "section": "General Knowledge / Current Affairs",
+  "page": 9,
+  "qtext": "According to the 2011 census, which state has the highest sex ratio?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Kerala",
+   "Uttar Pradesh",
+   "Maharashtra",
+   "West Bengal"
+  ]
+ },
+ {
+  "n": 37,
+  "secn": 37,
+  "section": "General Knowledge / Current Affairs",
+  "page": 10,
+  "qtext": "Who wrote the famous autobiography titled ‘Becoming’?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Johnny Marr",
+   "Steffi Graf",
+   "Andre Agassi",
+   "Michelle Obama"
+  ]
+ },
+ {
+  "n": 38,
+  "secn": 38,
+  "section": "General Knowledge / Current Affairs",
+  "page": 10,
+  "qtext": "Padma Shri awardee Madhuri Barthwal from _________ is a legendary folk singer. She was the first woman music composer for All India Radio.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Punjab",
+   "Uttar Pradesh",
+   "Uttarakhand",
+   "Haryana"
+  ]
+ },
+ {
+  "n": 39,
+  "secn": 39,
+  "section": "General Knowledge / Current Affairs",
+  "page": 10,
+  "qtext": "बिष्णुपुर मंदिर समूह भारत के किस राज्य में स्थित है?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "पश्चिम बंगाल",
+   "मध्य प्रदेश",
+   "असम",
+   "बिहार"
+  ]
+ },
+ {
+  "n": 40,
+  "secn": 40,
+  "section": "General Knowledge / Current Affairs",
+  "page": 10,
+  "qtext": "What is the purpose of the ‘EShakti’ programme?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Digitisation of Self-Help Group details for banks",
+   "Giving electricity to women farmers",
+   "Providing credit cards for women",
+   "Providing loans to buy e-rickshaws"
+  ]
+ },
+ {
+  "n": 41,
+  "secn": 41,
+  "section": "General Knowledge / Current Affairs",
+  "page": 11,
+  "qtext": "Shovana Narayan is associated with which of these dance forms?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Kathakali",
+   "Kathak",
+   "Bharatnatyam",
+   "Mohiniyattam"
+  ]
+ },
+ {
+  "n": 42,
+  "secn": 42,
+  "section": "General Knowledge / Current Affairs",
+  "page": 11,
+  "qtext": "In which of the following states is the Thousand Pillar temple located, in which thousand pillars are built?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Tamil Nadu",
+   "Maharashtra",
+   "Kerala",
+   "Telangana"
+  ]
+ },
+ {
+  "n": 43,
+  "secn": 43,
+  "section": "General Knowledge / Current Affairs",
+  "page": 11,
+  "qtext": "Windfall gains are NOT included while calculating national income as _______________.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "there is value addition",
+   "it has already been included",
+   "there is no income",
+   "there is no productive activity connected with them"
+  ]
+ },
+ {
+  "n": 44,
+  "secn": 44,
+  "section": "General Knowledge / Current Affairs",
+  "page": 11,
+  "qtext": "Which body was responsible for formulating, implementing and regulating the five year plans before the year 2015?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Reserve Bank of India",
+   "Ministry of Rural Development",
+   "Ministry of Finance",
+   "Planning Commission"
+  ]
+ },
+ {
+  "n": 45,
+  "secn": 45,
+  "section": "General Knowledge / Current Affairs",
+  "page": 12,
+  "qtext": "In ____, as an immediate measure to resolve the balance of payments crisis, the Indian rupee was devalued against foreign currencies.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "1971",
+   "1981",
+   "1991",
+   "1961"
+  ]
+ },
+ {
+  "n": 46,
+  "secn": 46,
+  "section": "General Knowledge / Current Affairs",
+  "page": 12,
+  "qtext": "________ scheme was announced based on the five pillars to overcome difficulties caused due to COVID-19 in India.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Atmanirbhar Bharat Abhiyan",
+   "Swachh Bharat Abhiyan",
+   "PM-JAY",
+   "Ayushman Bharat"
+  ]
+ },
+ {
+  "n": 47,
+  "secn": 47,
+  "section": "General Knowledge / Current Affairs",
+  "page": 12,
+  "qtext": "The ‘Sinhalese’ ethnic group is found in which of the following countries?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Nepal",
+   "Myanmar",
+   "Indonesia",
+   "Sri Lanka"
+  ]
+ },
+ {
+  "n": 48,
+  "secn": 48,
+  "section": "General Knowledge / Current Affairs",
+  "page": 12,
+  "qtext": "Gandhiji participated in the ________ as a result of Gandhi-Irwin Pact.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Second Round Table Conference",
+   "Quit India Movement",
+   "First Round Table Conference",
+   "Khilafat movement"
+  ]
+ },
+ {
+  "n": 49,
+  "secn": 49,
+  "section": "General Knowledge / Current Affairs",
+  "page": 13,
+  "qtext": "Who composed the play ‘Mrichchhakatika’?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Bhans",
+   "Atul",
+   "Kalidasa",
+   "Sudraka"
+  ]
+ },
+ {
+  "n": 50,
+  "secn": 50,
+  "section": "General Knowledge / Current Affairs",
+  "page": 13,
+  "qtext": "The Chief Justice of India will take prior permission from the _____________, while appointing Adhoc Judges.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Prime Minister of India",
+   "Collegium of the Supreme Court",
+   "Parliament",
+   "President of India"
+  ]
+ },
+ {
+  "n": 51,
+  "secn": 1,
+  "section": "Reasoning / Logical Ability",
+  "page": 13,
+  "qtext": "Select the set in which the numbers are related in the same way as are the numbers of the following sets. (NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /deleting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.) (63, 9, 36) (105, 15, 60)",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "(133, 17, 74)",
+   "(129, 19, 74)",
+   "(129, 17, 76)",
+   "(133, 19, 76)"
+  ]
+ },
+ {
+  "n": 52,
+  "secn": 2,
+  "section": "Reasoning / Logical Ability",
+  "page": 14,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "qfigure",
+  "options": [
+   "14",
+   "12",
+   "11",
+   "13"
+  ],
+  "crop": {
+   "page": 14,
+   "y0": 33.8968505859375,
+   "y1": 263.2843017578125,
+   "combined": false
+  }
+ },
+ {
+  "n": 53,
+  "secn": 3,
+  "section": "Reasoning / Logical Ability",
+  "page": 14,
+  "qtext": "Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation. 8 * 14 * 3 * 24 * 7 = 168",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "×, ×, −, ×",
+   "+, ×, −, ×",
+   "+, ×, −, +",
+   "×, −, ×, +"
+  ]
+ },
+ {
+  "n": 54,
+  "secn": 4,
+  "section": "Reasoning / Logical Ability",
+  "page": 15,
+  "qtext": "Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern so that the final image is symmetrical.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 15,
+   "y0": 52.40773010253906,
+   "y1": 531.8641967773438,
+   "combined": true
+  }
+ },
+ {
+  "n": 55,
+  "secn": 5,
+  "section": "Reasoning / Logical Ability",
+  "page": 16,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 16,
+   "y0": 33.90958786010742,
+   "y1": 279.42449951171875,
+   "combined": true
+  }
+ },
+ {
+  "n": 56,
+  "secn": 6,
+  "section": "Reasoning / Logical Ability",
+  "page": 17,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 17,
+   "y0": 33.878211975097656,
+   "y1": 374.55670166015625,
+   "combined": true
+  }
+ },
+ {
+  "n": 57,
+  "secn": 7,
+  "section": "Reasoning / Logical Ability",
+  "page": 17,
+  "qtext": "Three different positions of the same dice are shown. Find the number on the face opposite the face showing ‘3’.",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "qfigure",
+  "options": [
+   "2",
+   "5",
+   "4",
+   "1"
+  ],
+  "crop": {
+   "page": 17,
+   "y0": 500.4363098144531,
+   "y1": 565.9325561523438,
+   "combined": false
+  }
+ },
+ {
+  "n": 58,
+  "secn": 8,
+  "section": "Reasoning / Logical Ability",
+  "page": 18,
+  "qtext": "Which figure should replace the question mark (?) in the following series to continue the pattern?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 18,
+   "y0": 52.52210998535156,
+   "y1": 469.19818115234375,
+   "combined": true
+  }
+ },
+ {
+  "n": 59,
+  "secn": 9,
+  "section": "Reasoning / Logical Ability",
+  "page": 19,
+  "qtext": "Three different positions of the same dice are shown. Find the number on the face opposite the face showing ‘3’.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "qfigure",
+  "options": [
+   "6",
+   "1",
+   "4",
+   "5"
+  ],
+  "crop": {
+   "page": 19,
+   "y0": 52.36553955078125,
+   "y1": 117.86695861816406,
+   "combined": false
+  }
+ },
+ {
+  "n": 60,
+  "secn": 10,
+  "section": "Reasoning / Logical Ability",
+  "page": 19,
+  "qtext": "If ‘A’ denotes ‘+’, ‘B’ denotes ‘×’, ‘C’ denotes ‘−’ and ‘D’ denotes ‘÷’, then what will come in place of ‘?’ in the following equation? 80 C 4 B 5 A 20 = ?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "20",
+   "80",
+   "40",
+   "120"
+  ]
+ },
+ {
+  "n": 61,
+  "secn": 11,
+  "section": "Reasoning / Logical Ability",
+  "page": 20,
+  "qtext": "Select the option in which the given figure is embedded (rotation is NOT allowed).",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 20,
+   "y0": 43.2405891418457,
+   "y1": 373.3446960449219,
+   "combined": true
+  }
+ },
+ {
+  "n": 62,
+  "secn": 12,
+  "section": "Reasoning / Logical Ability",
+  "page": 20,
+  "qtext": "Which of the following letter clusters will replace the question mark (?) in the given series to make it logically complete? TVU, QSS, NPQ, KMO, ?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "HKM",
+   "HKL",
+   "IKM",
+   "HJM"
+  ]
+ },
+ {
+  "n": 63,
+  "secn": 13,
+  "section": "Reasoning / Logical Ability",
+  "page": 21,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 21,
+   "y0": 33.96709060668945,
+   "y1": 303.272216796875,
+   "combined": true
+  }
+ },
+ {
+  "n": 64,
+  "secn": 14,
+  "section": "Reasoning / Logical Ability",
+  "page": 21,
+  "qtext": "Select the correct mirror image of the given figure when the mirror is placed at 'AB' as shown.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 21,
+   "y0": 429.149658203125,
+   "y1": 703.08203125,
+   "combined": true
+  }
+ },
+ {
+  "n": 65,
+  "secn": 15,
+  "section": "Reasoning / Logical Ability",
+  "page": 22,
+  "qtext": "Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern so that the final image is symmetrical.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 22,
+   "y0": 52.468685150146484,
+   "y1": 272.21124267578125,
+   "combined": true
+  }
+ },
+ {
+  "n": 66,
+  "secn": 16,
+  "section": "Reasoning / Logical Ability",
+  "page": 22,
+  "qtext": "Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth term. 23 : 92 :: 44 : ? :: 32 : 128",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "204",
+   "160",
+   "172",
+   "176"
+  ]
+ },
+ {
+  "n": 67,
+  "secn": 17,
+  "section": "Reasoning / Logical Ability",
+  "page": 22,
+  "qtext": "In a certain code language, ‘HAND’ is written as ‘16’ and ‘ENTRY’ is written as ‘20’. How will ‘AIRPORT’ be written in that language?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "24",
+   "26",
+   "28",
+   "22"
+  ]
+ },
+ {
+  "n": 68,
+  "secn": 18,
+  "section": "Reasoning / Logical Ability",
+  "page": 23,
+  "qtext": "Select the option that is related to the fifth letter cluster in the same way as the second letter cluster is related to the first letter cluster and the fourth letter cluster is related to the third letter cluster. GBEJ : DGBO :: TJDG : QOAL :: BAHQ : ?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "PLWM",
+   "YFEV",
+   "YFRM",
+   "OJEH"
+  ]
+ },
+ {
+  "n": 69,
+  "secn": 19,
+  "section": "Reasoning / Logical Ability",
+  "page": 23,
+  "qtext": "Select the number from the given options that can replace the question mark (?) in the following series. 3, 6, 12, 24, ?, 96",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "48",
+   "36",
+   "72",
+   "84"
+  ]
+ },
+ {
+  "n": 70,
+  "secn": 20,
+  "section": "Reasoning / Logical Ability",
+  "page": 24,
+  "qtext": "Which figure should replace the question mark (?) in the following series to continue the pattern?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 24,
+   "y0": 52.44325256347656,
+   "y1": 468.4563293457031,
+   "combined": true
+  }
+ },
+ {
+  "n": 71,
+  "secn": 21,
+  "section": "Reasoning / Logical Ability",
+  "page": 25,
+  "qtext": "A square transparent sheet with a pattern is shown in the given figure. How will the pattern appear when the transparent sheet is folded at the dotted line.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 25,
+   "y0": 52.4185791015625,
+   "y1": 412.9226379394531,
+   "combined": true
+  }
+ },
+ {
+  "n": 72,
+  "secn": 22,
+  "section": "Reasoning / Logical Ability",
+  "page": 26,
+  "qtext": "Which figure should replace the question mark (?) in the following series to continue the pattern?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 26,
+   "y0": 52.420318603515625,
+   "y1": 467.1101379394531,
+   "combined": true
+  }
+ },
+ {
+  "n": 73,
+  "secn": 23,
+  "section": "Reasoning / Logical Ability",
+  "page": 27,
+  "qtext": "Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusions logically follow(s) from the statements. Statements: Some balloons are cars. Some cars are rockets. Conclusions: I. Some rockets are balloons. II. All rockets are balloons.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Neither conclusion I nor II follows",
+   "Only conclusion I follows",
+   "Only conclusion II follows",
+   "Both conclusions I and II follow"
+  ]
+ },
+ {
+  "n": 74,
+  "secn": 24,
+  "section": "Reasoning / Logical Ability",
+  "page": 27,
+  "qtext": "Select the option in which the given figure is embedded (rotation is NOT allowed).",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 27,
+   "y0": 314.78240966796875,
+   "y1": 623.0748291015625,
+   "combined": true
+  }
+ },
+ {
+  "n": 75,
+  "secn": 25,
+  "section": "Reasoning / Logical Ability",
+  "page": 28,
+  "qtext": "6 persons are sitting around a circular table facing the centre, with each person facing another person. Anshu is between Rohin and Sonal. Rohin is opposite to Leena. Fizza is not the immediate neighbour of Rohin. Who is sitting opposite to Prabhleen?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Sonal",
+   "Leena",
+   "Anshu",
+   "Fizza"
+  ]
+ },
+ {
+  "n": 76,
+  "secn": 1,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 28,
+  "qtext": "A shopkeeper is offering 10% discount on a shirt marked at ₹4,000 and still earns a profit of 20%. What is the cost price (in ₹)?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "3,200",
+   "3,333",
+   "3,600",
+   "3,000"
+  ]
+ },
+ {
+  "n": 77,
+  "secn": 2,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 28,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "qfigure",
+  "options": [
+   "1760",
+   "1792",
+   "1780",
+   "1731"
+  ],
+  "crop": {
+   "page": 28,
+   "y0": 462.119384765625,
+   "y1": 517.7021484375,
+   "combined": false
+  }
+ },
+ {
+  "n": 78,
+  "secn": 3,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 29,
+  "qtext": "The average weight of the first 14 persons among 15 persons is 80 kg. The weight of the 15th person is 42 kg more than the average weight of all 15 persons. Find the weight (in Kg) of the 15th person.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "127",
+   "121",
+   "125",
+   "123"
+  ]
+ },
+ {
+  "n": 79,
+  "secn": 4,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 29,
+  "qtext": "Find the area (in square cm) of a right angled triangle whose altitude is 7 cm less than its base and its hypotenuse is 17 cm.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "48",
+   "84",
+   "72",
+   "60"
+  ]
+ },
+ {
+  "n": 80,
+  "secn": 5,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 29,
+  "qtext": "How much should you invest today at 10% compound interest annually to accumulate ₹1,46,410 in 4 years?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "₹1,00,000",
+   "₹1,10,000",
+   "₹1,11,100",
+   "₹1,00,500"
+  ]
+ },
+ {
+  "n": 81,
+  "secn": 6,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 30,
+  "qtext": "Deepa deposited ₹10,000 in a bank on simple interest. After 4 years, she received an amount of ₹12,400. Find the rate of interest.",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "6% p.a.",
+   "7% p.a.",
+   "5.5% p.a.",
+   "6.5% p.a."
+  ]
+ },
+ {
+  "n": 82,
+  "secn": 7,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 30,
+  "qtext": "The largest 4-digit prime number is:",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "9991",
+   "9967",
+   "9983",
+   "9973"
+  ]
+ },
+ {
+  "n": 83,
+  "secn": 8,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 30,
+  "qtext": "A man takes 40 minutes to cover a certain distance at a speed of 9 km/h. If he walks with a speed of 12 km/h, he covers the same distance in:",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "28 minutes",
+   "32 minutes",
+   "25 minutes",
+   "30 minutes"
+  ]
+ },
+ {
+  "n": 84,
+  "secn": 9,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 31,
+  "qtext": "Ram and Naresh can complete a work together in 20 days and Naresh and Shyam together in 15 days. All three together can complete the work in 12 days. In how many days can Ram and Shyam together complete the work?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "26",
+   "28",
+   "20",
+   "25"
+  ]
+ },
+ {
+  "n": 85,
+  "secn": 10,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 31,
+  "qtext": "Select the correct option based on the image given below.",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "figural",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "crop": {
+   "page": 31,
+   "y0": 240.8546600341797,
+   "y1": 422.92779541015625,
+   "combined": true
+  }
+ },
+ {
+  "n": 86,
+  "secn": 11,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 31,
+  "qtext": "What is the smallest number which leaves remainder 3 when divided by any of the numbers 5, 8 and 9, but leaves no remainder when it is divided by 11?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "363",
+   "563",
+   "463",
+   "663"
+  ]
+ },
+ {
+  "n": 87,
+  "secn": 12,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 32,
+  "qtext": "Amit received his monthly salary. The ratio of his expenditure to savings is 3 : 2. What percentage of his salary did he spend and what percentage was saved by him, respectively?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "60% and 40%",
+   "65% and 35%",
+   "70% and 30%",
+   "55% and 45%"
+  ]
+ },
+ {
+  "n": 88,
+  "secn": 13,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 32,
+  "qtext": "Find the number of ways in which 960 can be written as the product of two numbers that are co-prime to each other.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "6",
+   "2",
+   "4",
+   "8"
+  ]
+ },
+ {
+  "n": 89,
+  "secn": 14,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 32,
+  "qtext": "A person has some amount initially. He gives 30% of the amount to his wife. Then from the remaining amount, he gives 20%, 20% and 15%, respectively, to both his sons and one daughter. Now from the amount left, he pays 1/3 of the amount as house rent and the remaining amount of ₹33,600 he deposits in the bank. Find his initial amount.",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "₹1,00,000",
+   "₹1,40,000",
+   "₹1,60,000",
+   "₹1,20,000"
+  ]
+ },
+ {
+  "n": 90,
+  "secn": 15,
+  "section": "Numerical Ability (Quantitative Aptitude)",
+  "page": 33,
+  "qtext": "The selling price of 61 items is equal to the cost price of 53 items. What is the profit or loss percentage (rounded off to two decimal places)?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "8.25% loss",
+   "8.25% profit",
+   "13.11% loss",
+   "13.11% profit"
+  ]
+ },
+ {
+  "n": 91,
+  "secn": 1,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 33,
+  "qtext": "When replying to an email, what is the key difference between ‘Reply’ and ‘Reply all’?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "‘Reply’ forwards email to specific contacts, while ‘Reply all’ forwards the original email to all contacts in the address book.",
+   "‘Reply’ allows you to edit the original email’s content before sending the response, while ‘Reply all’ automatically includes the entire original email’s content in the response.",
+   "‘Reply’ sends the response only to the original sender, while ‘Reply all’ sends the response to all recipients of the original email.",
+   "‘Reply’ attaches any files from the original email, while ‘Reply all’ includes any attachments along with the entire original email’s content in response."
+  ]
+ },
+ {
+  "n": 92,
+  "secn": 2,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 33,
+  "qtext": "In MS word 365 To change the formatting of the text to match the formatting of other text in a document, which of the following tools can be used?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Format painter",
+   "Paragraph alignment",
+   "SmartArt",
+   "Change styles"
+  ]
+ },
+ {
+  "n": 93,
+  "secn": 3,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 34,
+  "qtext": "In MS Excel 365 which of the following keyboard shortcuts is used to save a workbook in MS-Excel?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Ctrl + S",
+   "Ctrl + Alt + S",
+   "Shift + S",
+   "Ctrl + Shift + S"
+  ]
+ },
+ {
+  "n": 94,
+  "secn": 4,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 34,
+  "qtext": "In Microsoft Word 2019, which option is common in both the 'Indents & Spacing' and 'Line & Page Breaks' tabs of the 'Paragraph' dialog box?",
+  "ans": 0,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Preview",
+   "General",
+   "Textbox options",
+   "Indentation"
+  ]
+ },
+ {
+  "n": 95,
+  "secn": 5,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 34,
+  "qtext": "In MS Excel 365, when you right-click on a cell and select 'Filter,' which of the following options is NOT visible?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Filter by selected cell colour",
+   "Filter by selected cell font",
+   "Filter by selected cell height",
+   "Filter by selected cell values"
+  ]
+ },
+ {
+  "n": 96,
+  "secn": 6,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 34,
+  "qtext": "In MS Excel 2007, which option is used for opening a new or existing spreadsheet?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Home",
+   "Insert",
+   "Format",
+   "Office button"
+  ]
+ },
+ {
+  "n": 97,
+  "secn": 7,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 35,
+  "qtext": "Which of the following is the correct option to draw a line through the middle of text in MS Word 365?",
+  "ans": 1,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Line",
+   "Strikethrough",
+   "Dash",
+   "Underline"
+  ]
+ },
+ {
+  "n": 98,
+  "secn": 8,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 35,
+  "qtext": "Which layer of the internet architecture model is responsible for routing packets between networks?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Transport layer",
+   "Data link layer",
+   "Network layer",
+   "Application layer"
+  ]
+ },
+ {
+  "n": 99,
+  "secn": 9,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 35,
+  "qtext": "Which of the following best describes the difference between Save and Save As?",
+  "ans": 2,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "‘Save’ is used to save file in a local computer, while ‘Save As’ is used to save it on cloud.",
+   "‘Save’ is used to save file as read only file, while ‘Save As’ is used to save it as editable file.",
+   "‘Save’ is used to save the document for the first time, while ‘Save As’ is used to save the document with a new name or different file format.",
+   "‘Save’ is used to save file in compressed manner, while ‘Save As’ is used to save it as it is."
+  ]
+ },
+ {
+  "n": 100,
+  "secn": 10,
+  "section": "Computer Awareness / Fundamentals",
+  "page": 36,
+  "qtext": "Which of the following options will allow you to set text within a paragraph at different margins in MS Word 365?",
+  "ans": 3,
+  "answer_from": "green",
+  "kind": "text",
+  "options": [
+   "Page breaks",
+   "Border",
+   "Line spacing",
+   "Indenting"
+  ]
+ }
+]

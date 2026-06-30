@@ -1,0 +1,660 @@
+PDF: D:\Sazid\AajExam\Exams PYQ's\Delhi Police Constable\2020\november\15\shift-3\Delhi Police Constable 2023 Nov 15 (Shift 3) Question Paper with Answers English PDF.pdf
+slug: 15nov2023-s3
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 80, 'figural': 13, 'qfigure': 7}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=2:अटल समुदाय नवाचार केंद्र कार्यक्रम
+  Q: सरकार ने नवाचार के लिए सक्षम बुनियादी ढांचा और सुगमकारी माहौल प्रदान करके भारत के अल्पसेवित/असेवित क्षेत्रोंों में उद्यमिता की भावना को प्रोत्साहित करने के लिए 
+     1. उत्पादन सम्‍बद्ध प्रोत्साहन योजना
+     2. वन नेशन वन राशन नीति
+    *3. अटल समुदाय नवाचार केंद्र कार्यक्रम
+     4. डिजिटल लाइब्रेरी मिशन
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=1:H3O+
+  Q: Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Which of the following is the correct way to show hydrogen ions?
+     1. HO-
+    *2. H3O+
+     3. H2
+     4. H2SO4
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=2:Western Disturbances
+  Q: Which factor contributes to the occurrence of rainfall in the north-western parts of India during winters?
+     1. Southwest Monsoon
+     2. Trade Winds
+    *3. Western Disturbances
+     4. Northeast Monsoon
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=1:स्वर्ण सिंह समिति
+  Q: किस समिति ने सुझाव दिया कि करों का भुगतान करना भी नागरिकों का मौलिक कर्तव्य होना चाहिए?
+     1. भूटा सिंह समिति
+    *2. स्वर्ण सिंह समिति
+     3. चरण सिंह समिति
+     4. जे एस वर्मा समिति
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=3:Conflicts between central and state
+  Q: Which of the following is NOT covered by the appellate jurisdiction of the Supreme Court?
+     1. Civil cases
+     2. Criminal cases
+     3. Constitutional cases
+    *4. Conflicts between central and state
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=1:2022
+  Q: Har Ghar Tiranga movement was proposed in which year’s Independence Day?
+     1. 2020
+    *2. 2022
+     3. 2021
+     4. 2019
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=3:86th Constitutional Amendment Act
+  Q: Which of the following Constitutional Amendment Acts is related to the addition of eleventh fundamental duty in the Indian Constitution?
+     1. 69th Constitutional Amendment Act
+     2. 81st Constitutional Amendment Act
+     3. 83rd Constitutional Amendment Act
+    *4. 86th Constitutional Amendment Act
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=3:Andhra Pradesh
+  Q: The festival of Pushkaralu is celebrated to promote the cultural heritage of which Indian state?
+     1. Tamil Nadu
+     2. Karnataka
+     3. Kerala
+    *4. Andhra Pradesh
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=2:2000
+  Q: The first edition of the Commonwealth Youth Games was held in the year:
+     1. 2008
+     2. 2004
+    *3. 2000
+     4. 2011
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=2:30
+  Q: विधान-परिषद के सदस्य के रूप में निर्वाचित होने के लिए किसी व्यक्ति की आयु __________________ वर्ष से कम नहीं होनी चाहिए।
+     1. 25
+     2. 35
+    *3. 30
+     4. 21
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=2:increases
+  Q: As we go down under water in a ocean the water pressure:
+     1. decreases
+     2. remains constant and equal to the atmospheric pressure
+    *3. increases
+     4. remains less than atmospheric pressure
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=2:समान संसाधन अवधि (Uniform Resource Period)
+  Q: 1993-94 तक, गरीबी रेखा, ________ के आंकड़ों पर आधारित होती थी।
+     1. मिश्रित संदर्भ अवधि (Mixed Reference Period)
+     2. मिश्रित शोध अवधि (Mixed Research Period)
+    *3. समान संसाधन अवधि (Uniform Resource Period)
+     4. समान शोध अवधि (Uniform Research Period)
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=3:three
+  Q: The ocean has _________ main temperature layers.
+     1. five
+     2. two
+     3. four
+    *4. three
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=0:Rajasthan
+  Q: Which state does the noted Sindhi Sarangi player Lakha Khan belong to?
+    *1. Rajasthan
+     2. Punjab
+     3. Uttarakhand
+     4. Haryana
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=3:Jabalpur
+  Q: The headquarters of West Central Railway Zone of Indian Railway is located in ________.
+     1. Jaipur
+     2. Bhopal
+     3. Agra
+    *4. Jabalpur
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=2:गोवा
+  Q: मोरमुगाओ बंदरगाह किस राज्य में स्थित है?
+     1. तमिलनाडु
+     2. पश्चिम बंगाल
+    *3. गोवा
+     4. महाराष्ट्र
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=3:ऊंचा चबूतरा, जिस पर मंदिर बना होता है
+  Q: दिए गए विकल्पोंों में से कौन-सा विकल्प, नागर मंदिर वास्तुकला में 'जगती' शब्द का सबसे अच्छा वर्णन करता है?
+     1. ऊंचा चबूतरा, जो मुख्य देवी देवताओं का स्थान होता है
+     2. ऊंचा चबूतरा, जिस पर ध्वज (झंडा) लगाया जाता है
+     3. ऊंचा चबूतरा, जिस पर कलश होता है
+    *4. ऊंचा चबूतरा, जिस पर मंदिर बना होता है
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=1:2021
+  Q: When was Rajiv Gandhi Khel Ratna Award renamed as Major Dhyan Chand Khel Ratna Award?
+     1. 2022
+    *2. 2021
+     3. 2020
+     4. 2019
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=1:एम.एन. रॉय
+  Q: कम्युनिस्ट जर्नल 'वैनगार्ड (Vangaurd)' के संपादक बनने वाले स्वतंत्रता सेनानी का नाम बताइए।
+     1. सी. राजगोपालाचारी
+    *2. एम.एन. रॉय
+     3. के. केलप्पन
+     4. पी. कृष्णा पिल्लई
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=2:Jammu and Kashmir
+  Q: The second edition of the Khelo India Winter Games 2021 was held in which of the following states/Union Territories?
+     1. Sikkim
+     2. Himachal Pradesh
+    *3. Jammu and Kashmir
+     4. Uttarakhand
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=0:Kuchipudi
+  Q: Vyjayanthi Kashi is an exponent of which Indian classical dance form?
+    *1. Kuchipudi
+     2. Bharatanatyam
+     3. Mohiniattam
+     4. Odissi
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=0:multi-dimensional
+  Q: Globalisation is a ________ phenomenon.
+    *1. multi-dimensional
+     2. cultural only
+     3. uni-dimensional only
+     4. political only
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=0:M is a meiosis phase.
+  Q: Which of the following statements is NOT correct about cell cycle?
+    *1. M is a meiosis phase.
+     2. In G2, phase cell prepare to divide.
+     3. The correct sequence of cell cycle is G1,S, G2, M.
+     4. DNA replication takes place in S cycle.
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=1:Chris Gayle
+  Q: Which of the following cricketers has written an autobiography titled ‘Six Machine’?
+     1. Brendon McCullum
+    *2. Chris Gayle
+     3. Jacques Kallis
+     4. Adam Gilchrist
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=0:Jayalakshmi Eshwar
+  Q: Who among the following is a Sangeet Natak Akademi award-winning Bharatanatyam dancer?
+    *1. Jayalakshmi Eshwar
+     2. Kumkum Dhar
+     3. Sunanda Nair
+     4. M Sailaja
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=3:एक इकाई की संपत्ति पर अधिकतम निवेश की अनुमति
+  Q: लघु उद्योग को परिभाषित करने के लिए एक मानदंड क्या है?
+     1. एक वर्ष की अवधि के दौरान कारोबार की राशि
+     2. इकाई का आकार
+     3. किसी विशेष वर्ष के दौरान इकाई की कुल बिक्री
+    *4. एक इकाई की संपत्ति पर अधिकतम निवेश की अनुमति
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=0:बराक
+  Q: मक्कूू, तुइवई, सोनाई और रुक्नी किस नदी की सहायक नदियाँ हैं?
+    *1. बराक
+     2. पेन्नार
+     3. साबरमती
+     4. तापी
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=3:1839
+  Q: When was Tattvabodhini Sabha established?
+     1. 1851
+     2. 1831
+     3. 1843
+    *4. 1839
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=0:Kerala
+  Q: As per Census 2011, which of the following states/union territories has the highest male literacy rate?
+    *1. Kerala
+     2. Mizoram
+     3. Chandigarh
+     4. Lakshadweep
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=3:कंजीरा
+  Q: पुदुक्कोट्टई दक्षिणमूर्ति पिल्लई एक प्रसिद्ध _________ वादक हैं।
+     1. मेज़
+     2. गिटार
+     3. बाँसुरी
+    *4. कंजीरा
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=1:Punjab
+  Q: Which of the following states was selected by the Indian Government to try a new variety of wheat seeds for the first time during the green revolution?
+     1. Madhya Pradesh
+    *2. Punjab
+     3. Uttar Pradesh
+     4. Bihar
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=1:एसबीआई
+  Q: 1969 में बैंकों के राष्ट्रीीयकरण के दौरान निम्नलिखित में से किस बैंक का राष्ट्रीीयकरण नहीं किया गया था?
+     1. केनरा बैंक
+    *2. एसबीआई
+     3. यूको बैंक
+     4. बैंक ऑफ बड़ौदा
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=0:Sunil Gavaskar
+  Q: ‘Sunny Days: An Autobiography’ is written by which of the following Indian cricketers?
+    *1. Sunil Gavaskar
+     2. Rahul Dravid
+     3. Mohinder Amarnath
+     4. Kapil Dev
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=3:Prohibition of trade
+  Q: Which of the following is NOT an element of the Competition Act 2002?
+     1. Prohibition of anti-competitive agreements
+     2. Regulation of combination
+     3. Abuse of dominant position
+    *4. Prohibition of trade
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=2:Pali
+  Q: In which language is the Hathigumpha Inscription engraved?
+     1. Sanskrit
+     2. Hindi
+    *3. Pali
+     4. Marathi
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=0:Samudragupta
+  Q: Who among the following Gupta kings is popularly known as the Napoleon of India?
+    *1. Samudragupta
+     2. Kumaragupta I
+     3. Ghatotkacha
+     4. Vishnugupta
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=0:राज्यपाल
+  Q: अनुच्छेेद 166 के अनुसार किसी राज्य सरकार की समस्त कार्यपालिका कार्यवाही किसके नाम पर व्यक्त की जाएगी ?
+    *1. राज्यपाल
+     2. मुख्यमंत्री
+     3. राज्य महाधिवक्ता
+     4. राष्ट्रपति
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=3:Sitara Devi
+  Q: Who among the following was given the title of ‘Queen of Kathak’ by Gurudev Rabindranath Tagore?
+     1. Rukmini Devi Arundale
+     2. Sanjukta Panigrahi
+     3. Shanta Rao
+    *4. Sitara Devi
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=0:दामाद
+  Q: इल्तुतमिश का कुतुबुद्दीन ऐबक से क्या संबंध था?
+    *1. दामाद
+     2. भाई
+     3. बहनोई
+     4. पुत्र
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=1:महाराष्ट्र
+  Q: बौद्धोंों द्वारा निर्मित कन्हेरी गुफाएँ निम्नलिखित में से किस राज्य में स्थित हैं?
+     1. गुजरात
+    *2. महाराष्ट्र
+     3. बिहार
+     4. मध्य प्रदेश
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=3:To provide opportunities for education to his/her child between 6 and 14 years
+  Q: Which of the following fundamental duties was added by the 86th Constitutional Act, 2002?
+     1. To protect and improve the natural environment
+     2. To safeguard public property
+     3. To uphold and protect the sovereignty, unity and integrity of India
+    *4. To provide opportunities for education to his/her child between 6 and 14 years
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=2:2022
+  Q: In which year did the Indian Government develop ‘SMILE’ (‘Support for Marginalized Individuals for Livelihood and Enterprise’)?
+     1. 2019
+     2. 2021
+    *3. 2022
+     4. 2018
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=3:Safavids
+  Q: Qandahar was lost to the __________ during the reign of Shah Jahan.
+     1. Seljuks
+     2. Uzbegs
+     3. Pahlavis
+    *4. Safavids
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=0:Monera
+  Q: In which of the following kingdoms is the eukaryotic cell NOT found?
+    *1. Monera
+     2. Animalia
+     3. Protista
+     4. Fungi
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=0:आर्य समाज
+  Q: 1875 में स्थापित निम्नलिखित में से कौन-सा संगठन मूर्ति पूजा का विरोध करता है और वेदों की अचूकता का समर्थन करता है?
+    *1. आर्य समाज
+     2. परमहंस मंडली
+     3. प्रार्थना समाज
+     4. रामकृष्ण मिशन
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=2:cooperative societies
+  Q: The 97th Constitutional Amendment Act of 2011 added a new directive principle of state policy relating to __________________.
+     1. interstate relations
+     2. quasi-judicial bodies
+    *3. cooperative societies
+     4. rivers and water bodies
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=2:1919
+  Q: Through which of the following Government of India Acts the Montagu-Chelmsford Reforms introduced Dyarchy in the provinces?
+     1. 1858
+     2. 1894
+    *3. 1919
+     4. 1935
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=0:1975 में
+  Q: भारत सरकार ने क्षेत्रीय ग्रामीण बैंकों की स्थापना किस वर्ष शुरू की थी?
+    *1. 1975 में
+     2. 1992 में
+     3. 2005 में
+     4. 1951 में
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=0:शारोदी सैकिया
+  Q: निम्नलिखित में से कौन एक प्रसिद्ध 'सत्रीया' नर्तकी है?
+    *1. शारोदी सैकिया
+     2. अलुना काबुईनी
+     3. सोनल मानसिंह
+     4. मल्लिका साराभाई
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=2:FIDE
+  Q: निम्नलिखित में से कौन-सा अंतरराष्ट्रीीय संगठन शतरंज का शासी निकाय है?
+     1. ICC
+     2. IOC
+    *3. FIDE
+     4. FIFA
+
+n51 (Reasoning / Logical Ability #1) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n52 (Reasoning / Logical Ability #2) [figural] ans=2:3
+  Q: Which figure should replace the question mark (?) if the series were to be continued?
+
+n53 (Reasoning / Logical Ability #3) [figural] ans=0:1
+  Q: Select the correct mirror image of the given figure when the mirror is placed at 'AB' as shown.
+
+n54 (Reasoning / Logical Ability #4) [figural] ans=0:1
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern.
+
+n55 (Reasoning / Logical Ability #5) [text] ans=2:Only conclusion I follows
+  Q: Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with co
+     1. Only conclusion III follows
+     2. Only conclusion IV follows
+    *3. Only conclusion I follows
+     4. Only conclusion II follows
+
+n56 (Reasoning / Logical Ability #6) [figural] ans=3:4
+  Q: The sequence of folding a piece of paper and the manner in which the folded paper is cut is shown in the following figure. How would this paper look when unfold
+
+n57 (Reasoning / Logical Ability #7) [text] ans=0:W
+  Q: Six people, S, T, U, V, W and X, are sitting in a straight row facing north. Only two people sit to the left of U. Only two people sit between U and X. T sits t
+    *1. W
+     2. X
+     3. V
+     4. S
+
+n58 (Reasoning / Logical Ability #8) [text] ans=1:XIVQ
+  Q: In a certain code language, ‘SITE’ is written as ‘WMXI’ and ‘MAKE’ is written as ‘QEOI’ . How will ‘TERM’ be written in that language?
+     1. XHUP
+    *2. XIVQ
+     3. WHVQ
+     4. WIUO
+
+n59 (Reasoning / Logical Ability #9) [text] ans=2:182
+  Q: Which of the following options will replace the question mark (?) in the given series? 286, 257, 230, 205, ?, 161
+     1. 188
+     2. 178
+    *3. 182
+     4. 192
+
+n60 (Reasoning / Logical Ability #10) [figural] ans=2:3
+  Q: A square sheet of paper is folded along the dotted line successively along the directions shown and is then punched in the last. How would the paper look when u
+
+n61 (Reasoning / Logical Ability #11) [figural] ans=3:4
+  Q: A paper is folded and cut as shown below. How will it appear when unfolded?
+
+n62 (Reasoning / Logical Ability #12) [qfigure] ans=2:14
+  Q: Select the correct option based on the image given below.
+     1. 12
+     2. 8
+    *3. 14
+     4. 10
+
+n63 (Reasoning / Logical Ability #13) [qfigure] ans=3:1
+  Q: Select the correct option based on the image given below.
+     1. 4
+     2. 5
+     3. 2
+    *4. 1
+
+n64 (Reasoning / Logical Ability #14) [text] ans=2:12
+  Q: Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth t
+     1. 4
+     2. 8
+    *3. 12
+     4. 16
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=1:2
+  Q: Select the correct mirror image from the following options, when the mirror is placed on the right side of the given figure.
+
+n66 (Reasoning / Logical Ability #16) [text] ans=0:(547, 424)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the following sets. (NOTE : Operations should be performed on the whole nu
+    *1. (547, 424)
+     2. (421, 301)
+     3. (691, 581)
+     4. (752, 628)
+
+n67 (Reasoning / Logical Ability #17) [figural] ans=2:3
+  Q: Select the figure from among the given options that can replace the question mark (?) in the following series.
+
+n68 (Reasoning / Logical Ability #18) [text] ans=3:स्वार्म (Swarm)
+  Q: उस विकल्प का चयन कीजिए, जो तीसरे शब्द से उसी प्रकार संबंधित है ,जिस प्रकार दूसरा शब्द पहले शब्द से संबंधित है। (शब्दोंों को अंग्रेजी/हिंदी के अर्थपूर्ण शब्दोंों
+     1. गैंग (Gang)
+     2. मॉब (Mob)
+     3. लीग (League)
+    *4. स्वार्म (Swarm)
+
+n69 (Reasoning / Logical Ability #19) [qfigure] ans=1:− and ×
+  Q: Select the correct option based on the image given below.
+     1. ÷ and −
+    *2. − and ×
+     3. − and +
+     4. + and ×
+
+n70 (Reasoning / Logical Ability #20) [qfigure] ans=2:3
+  Q: Three different positions of the same dice are shown. Find the number on the face opposite to the face showing ‘6’.
+     1. 4
+     2. 5
+    *3. 3
+     4. 1
+
+n71 (Reasoning / Logical Ability #21) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n72 (Reasoning / Logical Ability #22) [figural] ans=3:4
+  Q: Select the option in which the given figure is embedded (rotation is NOT allowed).
+
+n73 (Reasoning / Logical Ability #23) [text] ans=1:HQRK
+  Q: Which of the following terms will replace the question mark (?) in the given series? BMXO, EOUM, ?, KSOI, NULG
+     1. FQRL
+    *2. HQRK
+     3. HORL
+     4. FQSK
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n75 (Reasoning / Logical Ability #25) [text] ans=3:÷, –, ×, +, =
+  Q: Select the correct combination of mathematical signs that can sequentially replace the * signs and balance the given equation. 12*6*3*2*8*4
+     1. +, ×, –, ÷, =
+     2. +, ×, –, =, ÷
+     3. +, –, ×, ÷, =
+    *4. ÷, –, ×, +, =
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [text] ans=1:9
+  Q: A sum of money on compound interest becomes double of itself in 3 years. How many years will it take for the amount to become eight times of itself at the same 
+     1. 7
+    *2. 9
+     3. 5
+     4. 8
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [text] ans=0:108
+  Q: Two numbers are in the ratio 5 : 7. The product of their HCF and LCM is 2835. What is the sum of the numbers?
+    *1. 108
+     2. 107
+     3. 109
+     4. 106
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [qfigure] ans=3:2,400
+  Q: Select the correct option based on the image given below.
+     1. 2,800
+     2. 2,000
+     3. 1,600
+    *4. 2,400
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=3:₹1,250
+  Q: Ramesh lent some amount of money at 12% simple interest and an equal amount of money at 15% simple interest, each for 2 years. If his total interest was ₹675, t
+     1. ₹1,150
+     2. ₹1,550
+     3. ₹1,350
+    *4. ₹1,250
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [text] ans=0:8
+  Q: A positive integer is said to be prime if it is not divisible by any positive integer other than itself and one. Let K be a prime number strictly greater than 5
+    *1. 8
+     2. 1
+     3. 7
+     4. 5
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=0:31%
+  Q: In a school, 45% of the staff is female. 80% of the female staff and 60% of the male staff are postgraduates. Find the percentage of the non-postgraduate staff 
+    *1. 31%
+     2. 64%
+     3. 42%
+     4. 53%
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=3:₹10,000
+  Q: Komal sold two devices, each for ₹4,982. If she made 6% profit on the first and 6% loss on the second, what is the total cost of both the devices?
+     1. ₹11,000
+     2. ₹9,000
+     3. ₹8,000
+    *4. ₹10,000
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [figural] ans=1:2
+  Q: A is thrice as good a workman as B and is, therefore, able to finish a job in 60 days less than B. Working together, they can do it in:
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [qfigure] ans=0:1.79
+  Q: Select the correct option based on the image given below.
+    *1. 1.79
+     2. 1.99
+     3. 2.17
+     4. 2.79
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [text] ans=3:198
+  Q: What is the average of 144, 169,196, 225 and 256?
+     1. 108
+     2. 208
+     3. 188
+    *4. 198
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [text] ans=2:Increase of 2.9%
+  Q: A number is first decreased by 30% and then, increased by 40%. The resulting number is again increased by 5%. What is the net increase or decrease percentage?
+     1. Decrease of 3.4%
+     2. Increase of 3.4%
+    *3. Increase of 2.9%
+     4. Decrease of 2.9%
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [qfigure] ans=3:23
+  Q: Select the correct option based on the image given below.
+     1. 30
+     2. 27
+     3. 32
+    *4. 23
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=0:70
+  Q: Zeeshan travelled for 40 minutes at a speed of 75 km/h and for 20 minutes at 60 km/h. Find his average speed (in km/h) during the journey.
+    *1. 70
+     2. 65
+     3. 67.5
+     4. 72.5
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=2:₹1,700
+  Q: A shopkeeper sells his goods at a 30% discount. Find the marked price of an article whose selling price is ₹1,190.
+     1. ₹1,800
+     2. ₹1,500
+    *3. ₹1,700
+     4. ₹1,600
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=1:887.3π
+  Q: A tower is topped by a hemispherical dome that has a surface area of 363π sq.ft approximately. Find the volume of the dome (in cubic ft).
+     1. 665.7π
+    *2. 887.3π
+     3. 792.7π
+     4. 724.3π
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=3:F10
+  Q: In MS Excel 365 what is the cell address of the cell two columns to the right and three rows down from cell D7?
+     1. F9
+     2. E9
+     3. G10
+    *4. F10
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=0:Menu bar is situated below the title bar.
+  Q: Where is the position of the menu bar in accordance with the title bar in MS word 365?
+    *1. Menu bar is situated below the title bar.
+     2. Menu bar is situated above the title bar.
+     3. Menu bar is situated to the left of the title bar.
+     4. Menu bar is situated to the right of the title bar.
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=1:$B$2
+  Q: In MS Excel 365 what is the Microsoft Excel formula to create an absolute cell reference for cell B2?
+     1. B2
+    *2. $B$2
+     3. $B2
+     4. B$2
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=0:By typing =
+  Q: In Microsoft Excel 365, how do you start to write a formula?
+    *1. By typing =
+     2. By typing ;
+     3. By typing /
+     4. By typing :
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=1:Dial up Connection
+  Q: Which of the following is an Internet accessing technique where computer uses its modem to dial a telephone number given to the user by an Internet Service Prov
+     1. Digital Subscriber Line
+    *2. Dial up Connection
+     3. Broadband Connection
+     4. Integrated Services Digital Network (ISDN) Service
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=3:Find and Replace
+  Q: In MS-Word 365, which action allows you to replace a specific word or phrase throughout the entire document?
+     1. Cut
+     2. Copy
+     3. Paste
+    *4. Find and Replace
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=2:‘Save’ is used to save the document for the first time, while ‘Save As’ is used to save the document with a new filename or in a different location.
+  Q: In MS-Word 365, what is the primary difference between the ‘Save’ and ‘Save As’ commands?
+     1. ‘Save’ is used to save the document with a new filename or in a different location, while ‘Save As’ is used to save the 
+     2. ‘Save’ is used to save the document in the cloud storage, while ‘Save As’ is used to save the document on the local comp
+    *3. ‘Save’ is used to save the document for the first time, while ‘Save As’ is used to save the document with a new filename
+     4. Both ‘Save’ and ‘Save As’ perform the same function of saving the document; they are just two different names for the sa
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=3:Orientation
+  Q: Which option in Page Setup of MS word 365 determines whether the content of the document is displayed vertically or horizontally?
+     1. Columns
+     2. Paper Size
+     3. Margins
+    *4. Orientation
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=1:Mark the email as SPAM or Junk
+  Q: Which of the following is an effective method to handle SPAM emails?
+     1. Forward the email to all your contacts
+    *2. Mark the email as SPAM or Junk
+     3. Unsubscribe from all mailing lists
+     4. Reply to the sender asking them to stop
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=0:Print Odd pages
+  Q: Which of the following is the most appropriate option to print pages 1, 3, 5 and so on in MS Word 365?
+    *1. Print Odd pages
+     2. Print
+     3. Print Even pages
+     4. Print all

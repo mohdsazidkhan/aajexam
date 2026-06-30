@@ -1,0 +1,660 @@
+PDF: D:\Sazid\AajExam\Exams PYQ's\Delhi Police Constable\2020\november\16\shift-2\Delhi Police Constable 2023 Nov 16 (Shift 2) Question Paper with Answers English PDF.pdf
+slug: 16nov2023-s2
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 81, 'figural': 13, 'qfigure': 6}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=3:increase in GDP
+  Q: The sale of car results in __________.
+     1. decrease in sale of final products
+     2. no change
+     3. decrease in GDP
+    *4. increase in GDP
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=3:Kalibangan
+  Q: As of October 2022, fire altars are primarily found in which of the following Harappan cities?
+     1. Rakhigarhi
+     2. Banawali
+     3. Mohenjo-Daro
+    *4. Kalibangan
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=2:Both (i) and (ii)
+  Q: Which of the following will NOT be included in the estimation of national income? (i) Expenses on electricity by a factory (ii) Financial help to earthquake vic
+     1. Both (iii) and (iv)
+     2. All of (i), (ii), (iii) and (iv)
+    *3. Both (i) and (ii)
+     4. None of (i), (ii), (iii) and (iv)
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=3:Diamond
+  Q: Which of the following is the hardest mineral?
+     1. Gypsum
+     2. Talc
+     3. Calcite
+    *4. Diamond
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=2:1504
+  Q: In which year was the city of Agra founded?
+     1. 1404
+     2. 1204
+    *3. 1504
+     4. 1304
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=3:20.9%
+  Q: What is the approximate percentage of adolescents (10-19 years) in India as per Census 2011?
+     1. 22.6%
+     2. 18.3%
+     3. 24.3%
+    *4. 20.9%
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=0:Cottage Industries
+  Q: Industrial Licensing is compulsory for five industries. Which of the following is NOT one of those five industries?
+    *1. Cottage Industries
+     2. Industrial Explosives
+     3. Alcohol
+     4. Cigarettes
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=1:Goa
+  Q: Kunbi is the folk dance of which Indian state?
+     1. Jharkhand
+    *2. Goa
+     3. Tamil Nadu
+     4. Bihar
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=2:Saw dust
+  Q: Which of the following is NOT generally used in milk adulteration?
+     1. Urea
+     2. Starch
+    *3. Saw dust
+     4. Detergent
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=0:five
+  Q: The maximum duration of a test match of cricket is ________ days.
+    *1. five
+     2. two
+     3. four
+     4. three
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=0:Malaysia
+  Q: Sultan Azlan Shah Cup is held in _________ .
+    *1. Malaysia
+     2. Iran
+     3. India
+     4. Indonesia
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=1:Kushan
+  Q: King Kanishka was a famous ruler of which Indian dynasty?
+     1. Hind Unani
+    *2. Kushan
+     3. Satavahana
+     4. Shaka
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=0:Living History
+  Q: Name the autobiography written by Hillary Clinton, as an account of her eight years as the first lady of the United States.
+    *1. Living History
+     2. In the Shadow of Man
+     3. My Life, My Truth
+     4. Express Yourself
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=0:Chandragupta I
+  Q: Kumaradevi, a Lichchhavi princess, was married to whom among the following Gupta kings?
+    *1. Chandragupta I
+     2. Srigupta
+     3. Chandragupta II
+     4. Samudragupta
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=1:Government of India Act, 1919
+  Q: Under which Act was the Central Legislature made of two houses?
+     1. Government of India Act, 1935
+    *2. Government of India Act, 1919
+     3. Government of India Act, 1947
+     4. The Indian Councils Act, 1909
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=2:Rourkela
+  Q: Identify the iron and steel plant that was developed in collaboration with Germany.
+     1. Durgapur
+     2. Visvesvaraya
+    *3. Rourkela
+     4. Salem
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=0:1969
+  Q: From which of the following years did the fourth five-year plan commence?
+    *1. 1969
+     2. 1964
+     3. 1966
+     4. 1963
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=1:Jute
+  Q: _______ grows well on well-drained fertile soils in the flood plains of India where soils are renewed every year.
+     1. Natural silk
+    *2. Jute
+     3. Saffron
+     4. Bajra
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=0:Sardar Swaran Singh Committee
+  Q: Which Committee made recommendations for the inclusion of fundamental duties in the Indian Constitution?
+    *1. Sardar Swaran Singh Committee
+     2. AP Jain Committee
+     3. PK Wattal Committee
+     4. John Mathai Committee
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=1:₹3,000 month
+  Q: Pradhan Mantri Kisan Maan Dhan Yojana is a government scheme meant for old age protection and social security of Small and Marginal Farmers (SMF). It provides f
+     1. ₹5,000 month
+    *2. ₹3,000 month
+     3. ₹1,000 month
+     4. ₹6,000 month
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=1:Keshab Chandra Sen
+  Q: Who among the following social reformers was the inspiration behind the establishment of Prarthana Samaj in 1867?
+     1. Raja Ram Mohan Roy
+    *2. Keshab Chandra Sen
+     3. Durgaram Mehta
+     4. Shiv Narayan Agnihotri
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=0:Statocysts
+  Q: What are the paired organs of balance commonly found in aquatic invertebrates which are usually fluid-filled vesicles with sensory hairs?
+    *1. Statocysts
+     2. Nephridia
+     3. Radula
+     4. Pharynx
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=3:Assam
+  Q: Natpuja dance is the folk dance of _________.
+     1. Bihar
+     2. Punjab
+     3. Uttar Pradesh
+    *4. Assam
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=1:Lavani
+  Q: Sulochana Chavan is a celebrated _________ singer who was awarded the Padma award in 2022.
+     1. Carnatic
+    *2. Lavani
+     3. Ghazal
+     4. Sufi
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=0:Tanvi Shah
+  Q: ________is the first Indian woman to have won a Grammy.
+    *1. Tanvi Shah
+     2. Neeti Mohan
+     3. Neha Bhasin
+     4. Monali Thakur
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=0:Governor
+  Q: The Chairman and members of the State Public Service Commission are appointed by the __________________.
+    *1. Governor
+     2. President of India
+     3. State Assembly
+     4. Chief Minister
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=1:Harper Lee
+  Q: To Kill a Mockingbird’, an English novel, was written by which of the following authors?
+     1. Doris Lessing
+    *2. Harper Lee
+     3. Muriel Spark
+     4. Joseph Heller
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=2:Swami Vivekananda
+  Q: Who among the following established the Ramakrishna Mission in 1897?
+     1. Swami Dayananda Saraswati
+     2. Swami Shraddananda
+    *3. Swami Vivekananda
+     4. Swami Acchutananda
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=3:Christian
+  Q: ‘Lent’ is a religious observance celebrated by the people who practice the ________ religion.
+     1. Buddhist
+     2. Jain
+     3. Sikh
+    *4. Christian
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=2:Economic
+  Q: What does the E stand for in SEZ?
+     1. Economically
+     2. External
+    *3. Economic
+     4. Export
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=0:reproductive rate
+  Q: r-selected species have maximum:
+    *1. reproductive rate
+     2. mortality rate
+     3. survival rate
+     4. parental care
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=3:Tyndall effect
+  Q: Rahul decided to take a walk through a forest early in the morning. While he was inside the dense forest, he could see the beautiful sunrays through the small g
+     1. Reflection
+     2. Diffraction
+     3. Dispersion
+    *4. Tyndall effect
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=2:Seventh Five-Year Plan
+  Q: ‘Food, Work and Productivity’ were the focus of which Five-Year Plan?
+     1. Ninth Five-Year Plan
+     2. Fifth Five-Year Plan
+    *3. Seventh Five-Year Plan
+     4. Fourth Five-Year Plan
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=1:Shah Jahan
+  Q: The Afghan noble Khan Jahan Lodi rebelled against the Mughal emperor ___________ and was defeated.
+     1. Bahadur Shah
+    *2. Shah Jahan
+     3. Aurangzeb
+     4. Muhammad Azam Shah
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=0:Kerala and Tamil Nadu
+  Q: According to the census of India 2011, which group of states has the highest sex ratio?
+    *1. Kerala and Tamil Nadu
+     2. Kerala and Andhra Pradesh
+     3. Andhra Pradesh and Chhattisgarh
+     4. Tamil Nadu and Bihar
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=3:To abide by the Constitution and respect its ideals and institutions, the National Flag and the National Anthem
+  Q: Which of the following Fundamental Duties is mentioned first in the Constitution of India?
+     1. To uphold and protect the sovereignty, unity and integrity of India
+     2. To cherish and follow the noble ideals which inspired our national struggle for freedom
+     3. To defend the country and render national service when called upon to do so
+    *4. To abide by the Constitution and respect its ideals and institutions, the National Flag and the National Anthem
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=0:Directive Principles Of State Policy
+  Q: Which of the following denotes the ideals that the state should keep in mind while formulating policies and enacting laws?
+    *1. Directive Principles Of State Policy
+     2. Preamble
+     3. Fundamental Right
+     4. Fundamental Duties
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=2:New Delhi
+  Q: Dr. Shyama Prasad Mukherjee Swimming Pool Complex is located at:
+     1. Bangalore
+     2. Kolkata
+    *3. New Delhi
+     4. Patiala
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=2:A, C, B, D
+  Q: Arrange the following Fundamental Duties in sequential order according to their mention in the Constitution of India. A. To abide by the Constitution and respec
+     1. B, A, D, C
+     2. A, D, C, B
+    *3. A, C, B, D
+     4. A, B, C, D
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=3:London
+  Q: Summer Olympics 1948, when Indian hockey team won gold medal was held in which of the following cities?
+     1. Tokyo
+     2. Los Angeles
+     3. Rome
+    *4. London
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=3:Gujarat
+  Q: Champaner-Pavagadh Archaeological Park is situated in which of the following states of India?
+     1. Bihar
+     2. Rajasthan
+     3. Haryana
+    *4. Gujarat
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=1:1973
+  Q: In which year was Project Tiger launched in India to conserve the declining number of tigers?
+     1. 1987
+    *2. 1973
+     3. 1981
+     4. 1970
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=0:Targeted Public Distribution System
+  Q: Public Distribution System was relaunched by Government of India as ____________in 1997.
+    *1. Targeted Public Distribution System
+     2. Targeted People Distribution System
+     3. Cooperative Public Distribution System
+     4. Public Food Distribution System
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=3:Attorney General of India
+  Q: Who is the first law officer of the Government of India?
+     1. Law Commissioner
+     2. Law Minister
+     3. The Advocate-General for the State
+    *4. Attorney General of India
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=1:Dust particles
+  Q: What are sea salt, pollen, ash, smoke soot and fine soil associated with?
+     1. Gases
+    *2. Dust particles
+     3. Water vapour
+     4. Meteors
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=0:Manipuri
+  Q: Sangeet Natak Akademi award winner Guru Bipin Singh is a famous _________ dancer.
+    *1. Manipuri
+     2. Mohiniattam
+     3. Odissi
+     4. Sattriya
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=2:Gujarat
+  Q: The ________Tableau won 'People's Choice Award' at the 74th Republic Day Parade.
+     1. Tripura
+     2. Uttarakhand
+    *3. Gujarat
+     4. Kerala
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=3:Kathak
+  Q: Sitara Devi and Lachhu Maharaj are popular for their mastery in which of the following styles of Indian dance?
+     1. Manipuri
+     2. Kuchipudi
+     3. Bharatanatyam
+    *4. Kathak
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=3:Prime Minister
+  Q: Who is the head of the government among the following?
+     1. President
+     2. Speaker
+     3. Vice President
+    *4. Prime Minister
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=2:Jyotirao Govindrao Phule
+  Q: Who among the following was the founder of Satyashodhak Samaj, a society dedicated towards eradicating caste injustice?
+     1. Bal Gangadhar Tilak
+     2. Periyar Erode Venkata Ramasamy
+    *3. Jyotirao Govindrao Phule
+     4. Mahatma Ayyankali
+
+n51 (Reasoning / Logical Ability #1) [text] ans=2:÷, ×, –, =
+  Q: Select the correct combination of mathematical signs that can sequentially replace the * signs and balance the given equation. 66*3*11*12*230
+     1. ×, –, =, ÷
+     2. –, ×, ÷, =
+    *3. ÷, ×, –, =
+     4. ×, –, ÷, =
+
+n52 (Reasoning / Logical Ability #2) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n53 (Reasoning / Logical Ability #3) [figural] ans=0:1
+  Q: The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown below. Choose a figure which would most closely resemble
+
+n54 (Reasoning / Logical Ability #4) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n55 (Reasoning / Logical Ability #5) [figural] ans=1:2
+  Q: Which figure should replace the question mark (?) if the series were to be continued?
+
+n56 (Reasoning / Logical Ability #6) [qfigure] ans=0:M
+  Q: Six letters, M, N, O, P, Q and R are written on different faces of a dice. Three positions of this dice are shown here. Find the letter on the face opposite N.
+    *1. M
+     2. P
+     3. R
+     4. O
+
+n57 (Reasoning / Logical Ability #7) [text] ans=3:KZTFGSDQ
+  Q: In a code language, if SMILE is coded as RLHKD and BELIEVE is coded as ADKHDUD, then how will LAUGHTER be coded?
+     1. NCWIJVGT
+     2. MBVHIUFS
+     3. MBHVIFSU
+    *4. KZTFGSDQ
+
+n58 (Reasoning / Logical Ability #8) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n59 (Reasoning / Logical Ability #9) [text] ans=1:Neither conclusion I nor II follows
+  Q: Two statements are given followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance with commonly kn
+     1. Only conclusion II follows
+    *2. Neither conclusion I nor II follows
+     3. Both conclusions I and II follow
+     4. Only conclusion I follows
+
+n60 (Reasoning / Logical Ability #10) [text] ans=1:÷ and =
+  Q: Which two signs should be interchanged to make the given equation correct? 23 × 7 − 76 + 87 ÷ 344 = 2
+     1. × and ÷
+    *2. ÷ and =
+     3. × and −
+     4. + and ×
+
+n61 (Reasoning / Logical Ability #11) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n62 (Reasoning / Logical Ability #12) [text] ans=2:UPSK
+  Q: Select the option that is related to the fifth letter cluster in the same way as the second letter cluster is related to the first letter cluster and the fourth
+     1. USPC
+     2. IHAL
+    *3. UPSK
+     4. IHEN
+
+n63 (Reasoning / Logical Ability #13) [figural] ans=3:4
+  Q: A square sheet of paper is folded along the dotted line successively along the directions shown and is then punched in the last. How would the paper look when u
+
+n64 (Reasoning / Logical Ability #14) [qfigure] ans=1:D
+  Q: Six letters, D, E, F, G, H and I are written on different faces of a dice. Three positions of this dice are shown here. Find the letter on the face opposite E.
+     1. F
+    *2. D
+     3. G
+     4. I
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=3:4
+  Q: A paper is folded and cut as shown below. How will it appear when unfolded?
+
+n66 (Reasoning / Logical Ability #16) [qfigure] ans=1:11
+  Q: Select the correct option based on the image given below.
+     1. 13
+    *2. 11
+     3. 10
+     4. 12
+
+n67 (Reasoning / Logical Ability #17) [text] ans=3:Pranjali
+  Q: Muskan, Amrita, Pranjali, Deepti, Riya and Sonali are six friends sitting around a circle facing the centre. Muskan is between Amrita and Pranjali. Amrita is op
+     1. Deepti
+     2. Riya
+     3. Muskan
+    *4. Pranjali
+
+n68 (Reasoning / Logical Ability #18) [text] ans=2:300
+  Q: Select the option that is related to the fourth term in the same way as the first term is related to the second term and the fifth term is related to the sixth 
+     1. 280
+     2. 260
+    *3. 300
+     4. 250
+
+n69 (Reasoning / Logical Ability #19) [text] ans=1:WEQSQWAE
+  Q: Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series. A Q _ _ S 
+     1. WESQWAWE
+    *2. WEQSQWAE
+     3. WEQSQAWE
+     4. WSQSQAWE
+
+n70 (Reasoning / Logical Ability #20) [qfigure] ans=2:U
+  Q: Six letters, U, V, W, X, Y and Z are written on different faces of a dice. Three positions of this dice are shown here. Find the letter on the face opposite X.
+     1. Z
+     2. V
+    *3. U
+     4. W
+
+n71 (Reasoning / Logical Ability #21) [text] ans=2:(188, 129, 70)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the given sets. (NOTE: Operations should be performed on the whole numbers
+     1. (222, 169, 123)
+     2. (230, 181, 137)
+    *3. (188, 129, 70)
+     4. (180, 130, 71)
+
+n72 (Reasoning / Logical Ability #22) [figural] ans=2:3
+  Q: A paper is folded and cut as shown below. How will it appear when unfolded?
+
+n73 (Reasoning / Logical Ability #23) [figural] ans=0:1
+  Q: A square sheet of paper is folded along the dotted line successively along the directions shown and is then punched in the last. How would the paper look when u
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=3:4
+  Q: Select the figure that will replace the question mark (?) in the following figure series.
+
+n75 (Reasoning / Logical Ability #25) [text] ans=1:405
+  Q: Select the number from among the given options that can replace the question mark (?) in the following series. 2, 15, 41, 93, 197, ?
+     1. 324
+    *2. 405
+     3. 320
+     4. 534
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [text] ans=1:3
+  Q: The concentration of three wines A, B, and C is given as 15%, 30%, and 45%, respectively. They are mixed in the ratio of p : 5 : 3, resulting in a 30% concentra
+     1. 2
+    *2. 3
+     3. 1
+     4. 4
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [text] ans=0:7.776 π
+  Q: The radius of a sphere is 1.8 cm. Find the exact volume (in cm3) of this sphere.
+    *1. 7.776 π
+     2. 7.676 π
+     3. 7.786 π
+     4. 7.766 π
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [qfigure] ans=3:6
+  Q: Select the correct option based on the image given below.
+     1. 5
+     2. 3
+     3. 4
+    *4. 6
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [figural] ans=2:3
+  Q: Simplify the following. (8888 ÷ 88) ÷ 5
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [qfigure] ans=2:850.50 m2
+  Q: Select the correct option based on the image given below.
+     1. 780.50 m2
+     2. 750.50 m2
+    *3. 850.50 m2
+     4. 800.50 m2
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=2:0.18
+  Q: Find the HCF of 3.6, 0.54 and 1.08.
+     1. 1.8
+     2. 0.018
+    *3. 0.18
+     4. 18
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=0:1,125
+  Q: A man borrows ₹2,196 and agrees to return it with compound interest at the rate of 25% in three equal annual instalments at the end of the first, second and the
+    *1. 1,125
+     2. 984
+     3. 1,072
+     4. 732
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [text] ans=2:100 sec
+  Q: Find the time taken by a train 750 m long to cross a platform twice its length at a speed of 81 km/h.
+     1. 80 sec
+     2. 90 sec
+    *3. 100 sec
+     4. 75 sec
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [text] ans=0:160%
+  Q: A number y, when reduced by 25%, becomes 120% of a second number z. What percentage of z is y?
+    *1. 160%
+     2. 145%
+     3. 175%
+     4. 150%
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [text] ans=1:₹4,000
+  Q: A sum was invested at a certain rate of simple interest per annum for 2 years. Had it been invested at 3% per annum more rate than the existing rate, the simple
+     1. ₹16,000
+    *2. ₹4,000
+     3. ₹24,000
+     4. ₹6,000
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [text] ans=1:₹7,840
+  Q: Deepak sold a bike to Sharath at a profit of 40%. Sharath sold his bike to Sivaji at a loss of 30%. If Deepak paid ₹8,000 for this bike, then find the cost pric
+     1. ₹6,728
+    *2. ₹7,840
+     3. ₹5,423
+     4. ₹11,200
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=2:472
+  Q: The marked price of a book is ₹767. A shopkeeper allows a discount of 20% and still earns a profit of 30%. Find the cost price of the book (in ₹).
+     1. 680
+     2. 450
+    *3. 472
+     4. 525
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=0:335
+  Q: P aims to get total 360 marks out of 500. He gets 5% less than his target. How much does he get?
+    *1. 335
+     2. 325
+     3. 340
+     4. 330
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=3:40
+  Q: If A and B together can complete a work in 15 days, B and C together in 12 days and C and A together in 10 days, then in how many days can B alone complete the 
+     1. 30
+     2. 45
+     3. 35
+    *4. 40
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=2:Select the cell<<Right click<<Delete<<Entire Column
+  Q: In MS Excel 365, which of the following is the correct sequence for deleting a column in MS-Excel spreadsheet?
+     1. Select the cell<<Right click<<Delete<<Entire Row
+     2. Select the cell<<Left click<<Delete<<Entire Row
+    *3. Select the cell<<Right click<<Delete<<Entire Column
+     4. Select the cell<<Left click<<Delete<<Entire Column
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=2:F12
+  Q: Which of the following is a shortcut key for Save as option in MS Word 365?
+     1. F1
+     2. F11
+    *3. F12
+     4. F2
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=3:Changing the colour of the text
+  Q: What is the purpose of the ‘Font Color’ option in Microsoft Word 365?
+     1. Changing the font style
+     2. Changing the font size
+     3. Applying a background colour to text
+    *4. Changing the colour of the text
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=1:Home
+  Q: Which menu tab on Microsoft Word's 365 ribbon contains options for text formatting and editing?
+     1. File
+    *2. Home
+     3. View
+     4. Insert
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=0:Shift + Ctrl + N
+  Q: In MS Excel 365, which of the following is NOT a method to open a spreadsheet in MS- Excel?
+    *1. Shift + Ctrl + N
+     2. Alt + F + O
+     3. Ctrl + N
+     4. File -> open
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=2:Page number
+  Q: Which of the following is a common element in an MS Word 365 document's header or footer?
+     1. Document title
+     2. Bullet points
+    *3. Page number
+     4. Font colour
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=1:Email address and password
+  Q: What information is typically required to sign in to an email client?
+     1. Full name and date of birth
+    *2. Email address and password
+     3. Social media account details
+     4. Phone number and address
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=1:If you want to delete multiple rows at once, simply select the rows by clicking and dragging over the row numbers, and then press ‘Ctrl’ and ‘−‘.
+  Q: In MS Excel 365 which of the following statements related to deleting rows in an excel sheet is correct?
+     1. If you want to delete multiple rows at once, simply select the rows by clicking and dragging over the row numbers, and t
+    *2. If you want to delete multiple rows at once, simply select the rows by clicking and dragging over the row numbers, and t
+     3. If you want to delete multiple rows at once, simply select the rows by clicking and dragging over the row numbers, and t
+     4. If you want to delete multiple rows at once, simply select the rows by clicking and dragging over the row numbers, and t
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=2:Ctrl + Shift + C
+  Q: Which of the following shortcut keys is used to copy formatting in MS Word 365?
+     1. Ctrl + Shift + A
+     2. Ctrl + Shift + D
+    *3. Ctrl + Shift + C
+     4. Ctrl + Shift + V
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=1:E-commerce
+  Q: Which of the following services allows users to buy and sell products online?
+     1. Instant messaging
+    *2. E-commerce
+     3. Video conferencing
+     4. Streaming

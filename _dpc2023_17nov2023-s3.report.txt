@@ -1,0 +1,660 @@
+PDF: D:/Sazid/AajExam/Exams PYQ's/Delhi Police Constable/2020/november/17/shift-3/Delhi Police Constable 2023 Nov 17 (Shift 3) Question Paper with Answers English PDF.pdf
+slug: 17nov2023-s3
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 83, 'qfigure': 4, 'figural': 13}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=0:Indonesia
+  Q: Which country did India beat in the Thomas Cup Finals in 2022?
+    *1. Indonesia
+     2. Malaysia
+     3. Pakistan
+     4. Singapore
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=2:Gulabo Sapera
+  Q: Who among the following is a famous performer of Kalbelia dance form?
+     1. Minati Mishra
+     2. Geeta Mahalik
+    *3. Gulabo Sapera
+     4. Vyjayanti Kashi
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=2:हिमाचल प्रदेश
+  Q: नलवाड़ी मेला किस भारतीय राज्य में आयोजित किया जाता है?
+     1. पंजाब
+     2. उत्तर प्रदेश
+    *3. हिमाचल प्रदेश
+     4. हरियाणा
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=1:Kandla port
+  Q: Which of the following is an example of a Western coast port?
+     1. Vishakhapatnam port
+    *2. Kandla port
+     3. Haldia port
+     4. Tuticorin port
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=3:आंध्र प्रदेश
+  Q: रथ सप्तमी का सांस्कृृतिक उत्सव मुख्य रूप से भारत के किस राज्य में मनाया जाता है?
+     1. पश्चिम बंगाल
+     2. बिहार
+     3. हिमाचल प्रदेश
+    *4. आंध्र प्रदेश
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=3:President
+  Q: Who has the power to grant pardons?
+     1. Chief Justice of India
+     2. Attorney General
+     3. Chief Minister
+    *4. President
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=3:Lahore
+  Q: The aim of ‘Poorna Swaraj’ was adopted during the 1929 session of the _________ Congress.
+     1. Lucknow
+     2. Poona
+     3. Amritsar
+    *4. Lahore
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=3:Article14
+  Q: Which of the following Articles mentions that the state shall not deny to any person equality before the law or the equal protection of the laws within the terr
+     1. Article 12
+     2. Article13
+     3. Article15
+    *4. Article14
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=0:ईरान
+  Q: नादिर शाह ________ का शासक था जिसने 1739 में दिल्ली शहर पर विजय प्राप्त करके इसे लूट लिया था।
+    *1. ईरान
+     2. इराक
+     3. तुर्की
+     4. मंगोलिया
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=2:2020
+  Q: Nanjiyamma received the National Award _________ for the song Kalakkatha Sandana from the Malayalam film Ayyappanum Koshiyum.
+     1. 2019
+     2. 2018
+    *3. 2020
+     4. 2021
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=3:III
+  Q: State legislature has the concurrent powers enumerated in List ______ of the Seventh Schedule of the Constitution of India.
+     1. I
+     2. IV
+     3. II
+    *4. III
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=1:Gopal Hari Deshmukh
+  Q: Who among the following social reformers of British India was known as Lokhitwadi?
+     1. VeeresalingamPantulu
+    *2. Gopal Hari Deshmukh
+     3. Narayan Guru
+     4. Jyotiba Phule
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=3:Odissi
+  Q: Sonal Mansingh got the Sangeet Natak Akademi Award for which form of dance?
+     1. Manipuri
+     2. Kuchipudi
+     3. Mohiniattam
+    *4. Odissi
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=0:Swami Dayananda Sarasvati in 1875
+  Q: Who among the following established the Arya Samaj and in which year?
+    *1. Swami Dayananda Sarasvati in 1875
+     2. Swami Vivekananda in 1785
+     3. Swami Vivekananda in 1875
+     4. Swami Dayananda Sarasvati in 1785
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=0:10
+  Q: How many fundamental duties were enumerated in the 42nd Amendment of the Constitution?
+    *1. 10
+     2. 8
+     3. 12
+     4. 18
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=3:Folate
+  Q: Which natural form of vitamin B helps to prevent some of the major birth defects of the baby's brain (anencephaly) and spina bifida?
+     1. Pyridoxine
+     2. Cobalamin
+     3. Pantothenic acid
+    *4. Folate
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=1:Chilika lake
+  Q: Which is the largest brackish water lagoon in Asia that was designated as a ‘Ramsar Site’ in 1981?
+     1. Loktak lake
+    *2. Chilika lake
+     3. Tampara lake
+     4. Harike lake
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=3:Duleep Trophy
+  Q: Which of the following Trophies/Cups is related to cricket?
+     1. Thomas Cup
+     2. Santosh Trophy
+     3. Durand Cup
+    *4. Duleep Trophy
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=0:Odisha
+  Q: In which of the following states was the first edition of the Khelo India University Games held in 2020?
+    *1. Odisha
+     2. Assam
+     3. Haryana
+     4. Karnataka
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=3:Karnam Malleswari
+  Q: Who became the first Indian woman to win an Olympic medal?
+     1. Sakshi Malik
+     2. Mary Kom
+     3. Saina Nehwal
+    *4. Karnam Malleswari
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=2:90
+  Q: Vacuoles in plant cells can occupy up to what percentage of the cell's volume?
+     1. 20
+     2. 60
+    *3. 90
+     4. 40
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=1:NITI Aayog
+  Q: Which of the following replaced the Planning Commission in 2014?
+     1. NABARD
+    *2. NITI Aayog
+     3. SEBI
+     4. Stand Up India Scheme
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=3:Make in India
+  Q: The following are the features of which initiative of the Government of India? a. It is devised to transform India into a global design and manufacturing hub. b
+     1. Start-up India
+     2. Stand up India
+     3. Skill India
+    *4. Make in India
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=1:चंद्रगुप्त मौर्य
+  Q: उस मौर्य राजा का नाम बताइए जिसने अफगानिस्तान और बलूचिस्तान के रूप में उत्तर पश्चिम तक नियंत्रण बढ़ाया।
+     1. सम्प्रति
+    *2. चंद्रगुप्त मौर्य
+     3. दशरथ
+     4. बिन्दुदुसार
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=1:Kalinadi
+  Q: Which river basin has a catchment area of 5,179 km2, which originates from the Belgaum district of Karnataka and falls in Karwar Bay?
+     1. Brahmani
+    *2. Kalinadi
+     3. Bharathapuzha
+     4. Palar
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=2:Three
+  Q: How many layers of structures consist of the cell envelope?
+     1. One
+     2. Four
+    *3. Three
+     4. Two
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=1:मालदीव
+  Q: विशेष रूप से 1988 में ऑपरेशन कैक्टस के बाद भारत ने किस देश को व्यापक सुरक्षा सहयोग की पेशकश की थी?
+     1. भूटान
+    *2. मालदीव
+     3. नेपाल
+     4. श्रीलंका
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=3:Rights for transgenders in certain cases
+  Q: Which of the following is NOT listed in the Directive Principles of State Policy?
+     1. Equal pay for equal work
+     2. Promote the welfare of the people
+     3. Uniform civil code for citizens
+    *4. Rights for transgenders in certain cases
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=2:Rasleela
+  Q: Pandit Ram Dayal Sharma was awarded the Padma Shri in 2022 for Nautangi, Swang, Bhagat, _________ and Rasiya forms.
+     1. Khoria
+     2. Phag
+    *3. Rasleela
+     4. Matki
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=1:Karnataka
+  Q: In which state is coffee a major plantation crop?
+     1. Haryana
+    *2. Karnataka
+     3. Assam
+     4. Madhya Pradesh
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=1:Gold
+  Q: Which of the following elements has the highest atomic number?
+     1. Copper
+    *2. Gold
+     3. Silver
+     4. Iron
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=1:कृष्ण देव राय
+  Q: निम्नलिखित विजयनगर शासकों में से किसने विजयनगर के पास नागलापुरम नामक एक उपनगरीय बस्ती की स्थापना की?
+     1. राम राय
+    *2. कृष्ण देव राय
+     3. सदाशिव राय
+     4. अच्युत देव राय
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=3:लोक कल्याण की अभिवृद्धि के लिए सामाजिक व्यवस्था बनाए रखना
+  Q: निम्नलिखित में से कौन-सा राज्य का नीति निर्देशक सिद्धांांत है?
+     1. राष्ट्रीीय संघर्ष के आदर्शों को संजोए रखना और उनका पालन करना
+     2. व्यक्तिगत और सामूहिक गतिविधि के सभी क्षेत्रोंों में उत्कृृष्टता की दिशा में प्रयास करना
+     3. संविधान और उसके आदर्शों का पालन करना
+    *4. लोक कल्याण की अभिवृद्धि के लिए सामाजिक व्यवस्था बनाए रखना
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=3:Both a and b are correct.
+  Q: Which of the following statements is correct? a) India is the only country in the world that has both tigers and lions. b) The natural habitat of the Indian lio
+     1. Only a is correct.
+     2. Only b is correct.
+     3. Both a and b are incorrect.
+    *4. Both a and b are correct.
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=3:Yuvraj Singh
+  Q: ‘The Test of My Life: From Cricket to Cancer and Back’, is the autobiography of which famous Indian cricketer?
+     1. Robin Utthappa
+     2. Akash Chopra
+     3. Suresh Raina
+    *4. Yuvraj Singh
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=0:Kerala
+  Q: According to the 2011 census, which state has the highest sex ratio?
+    *1. Kerala
+     2. Uttar Pradesh
+     3. Maharashtra
+     4. West Bengal
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=3:Michelle Obama
+  Q: Who wrote the famous autobiography titled ‘Becoming’?
+     1. Johnny Marr
+     2. Steffi Graf
+     3. Andre Agassi
+    *4. Michelle Obama
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=2:Uttarakhand
+  Q: Padma Shri awardee Madhuri Barthwal from _________ is a legendary folk singer. She was the first woman music composer for All India Radio.
+     1. Punjab
+     2. Uttar Pradesh
+    *3. Uttarakhand
+     4. Haryana
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=0:पश्चिम बंगाल
+  Q: बिष्णुपुर मंदिर समूह भारत के किस राज्य में स्थित है?
+    *1. पश्चिम बंगाल
+     2. मध्य प्रदेश
+     3. असम
+     4. बिहार
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=0:Digitisation of Self-Help Group details for banks
+  Q: What is the purpose of the ‘EShakti’ programme?
+    *1. Digitisation of Self-Help Group details for banks
+     2. Giving electricity to women farmers
+     3. Providing credit cards for women
+     4. Providing loans to buy e-rickshaws
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=1:Kathak
+  Q: Shovana Narayan is associated with which of these dance forms?
+     1. Kathakali
+    *2. Kathak
+     3. Bharatnatyam
+     4. Mohiniyattam
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=3:Telangana
+  Q: In which of the following states is the Thousand Pillar temple located, in which thousand pillars are built?
+     1. Tamil Nadu
+     2. Maharashtra
+     3. Kerala
+    *4. Telangana
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=3:there is no productive activity connected with them
+  Q: Windfall gains are NOT included while calculating national income as _______________.
+     1. there is value addition
+     2. it has already been included
+     3. there is no income
+    *4. there is no productive activity connected with them
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=3:Planning Commission
+  Q: Which body was responsible for formulating, implementing and regulating the five year plans before the year 2015?
+     1. Reserve Bank of India
+     2. Ministry of Rural Development
+     3. Ministry of Finance
+    *4. Planning Commission
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=2:1991
+  Q: In ____, as an immediate measure to resolve the balance of payments crisis, the Indian rupee was devalued against foreign currencies.
+     1. 1971
+     2. 1981
+    *3. 1991
+     4. 1961
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=0:Atmanirbhar Bharat Abhiyan
+  Q: ________ scheme was announced based on the five pillars to overcome difficulties caused due to COVID-19 in India.
+    *1. Atmanirbhar Bharat Abhiyan
+     2. Swachh Bharat Abhiyan
+     3. PM-JAY
+     4. Ayushman Bharat
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=3:Sri Lanka
+  Q: The ‘Sinhalese’ ethnic group is found in which of the following countries?
+     1. Nepal
+     2. Myanmar
+     3. Indonesia
+    *4. Sri Lanka
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=0:Second Round Table Conference
+  Q: Gandhiji participated in the ________ as a result of Gandhi-Irwin Pact.
+    *1. Second Round Table Conference
+     2. Quit India Movement
+     3. First Round Table Conference
+     4. Khilafat movement
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=3:Sudraka
+  Q: Who composed the play ‘Mrichchhakatika’?
+     1. Bhans
+     2. Atul
+     3. Kalidasa
+    *4. Sudraka
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=3:President of India
+  Q: The Chief Justice of India will take prior permission from the _____________, while appointing Adhoc Judges.
+     1. Prime Minister of India
+     2. Collegium of the Supreme Court
+     3. Parliament
+    *4. President of India
+
+n51 (Reasoning / Logical Ability #1) [text] ans=3:(133, 19, 76)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the following sets. (NOTE : Operations should be performed on the whole nu
+     1. (133, 17, 74)
+     2. (129, 19, 74)
+     3. (129, 17, 76)
+    *4. (133, 19, 76)
+
+n52 (Reasoning / Logical Ability #2) [qfigure] ans=3:13
+  Q: Select the correct option based on the image given below.
+     1. 14
+     2. 12
+     3. 11
+    *4. 13
+
+n53 (Reasoning / Logical Ability #3) [text] ans=0:×, ×, −, ×
+  Q: Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation. 8 * 14 * 3 * 24 * 7 = 168
+    *1. ×, ×, −, ×
+     2. +, ×, −, ×
+     3. +, ×, −, +
+     4. ×, −, ×, +
+
+n54 (Reasoning / Logical Ability #4) [figural] ans=2:3
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern so that the final image is sy
+
+n55 (Reasoning / Logical Ability #5) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n56 (Reasoning / Logical Ability #6) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n57 (Reasoning / Logical Ability #7) [qfigure] ans=1:5
+  Q: Three different positions of the same dice are shown. Find the number on the face opposite the face showing ‘3’.
+     1. 2
+    *2. 5
+     3. 4
+     4. 1
+
+n58 (Reasoning / Logical Ability #8) [figural] ans=2:3
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n59 (Reasoning / Logical Ability #9) [qfigure] ans=3:5
+  Q: Three different positions of the same dice are shown. Find the number on the face opposite the face showing ‘3’.
+     1. 6
+     2. 1
+     3. 4
+    *4. 5
+
+n60 (Reasoning / Logical Ability #10) [text] ans=1:80
+  Q: If ‘A’ denotes ‘+’, ‘B’ denotes ‘×’, ‘C’ denotes ‘−’ and ‘D’ denotes ‘÷’, then what will come in place of ‘?’ in the following equation? 80 C 4 B 5 A 20 = ?
+     1. 20
+    *2. 80
+     3. 40
+     4. 120
+
+n61 (Reasoning / Logical Ability #11) [figural] ans=3:4
+  Q: Select the option in which the given figure is embedded (rotation is NOT allowed).
+
+n62 (Reasoning / Logical Ability #12) [text] ans=3:HJM
+  Q: Which of the following letter clusters will replace the question mark (?) in the given series to make it logically complete? TVU, QSS, NPQ, KMO, ?
+     1. HKM
+     2. HKL
+     3. IKM
+    *4. HJM
+
+n63 (Reasoning / Logical Ability #13) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n64 (Reasoning / Logical Ability #14) [figural] ans=0:1
+  Q: Select the correct mirror image of the given figure when the mirror is placed at 'AB' as shown.
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=0:1
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern so that the final image is sy
+
+n66 (Reasoning / Logical Ability #16) [text] ans=3:176
+  Q: Select the option that is related to the third term in the same way as the second term is related to the first term and the sixth term is related to the fifth t
+     1. 204
+     2. 160
+     3. 172
+    *4. 176
+
+n67 (Reasoning / Logical Ability #17) [text] ans=2:28
+  Q: In a certain code language, ‘HAND’ is written as ‘16’ and ‘ENTRY’ is written as ‘20’. How will ‘AIRPORT’ be written in that language?
+     1. 24
+     2. 26
+    *3. 28
+     4. 22
+
+n68 (Reasoning / Logical Ability #18) [text] ans=1:YFEV
+  Q: Select the option that is related to the fifth letter cluster in the same way as the second letter cluster is related to the first letter cluster and the fourth
+     1. PLWM
+    *2. YFEV
+     3. YFRM
+     4. OJEH
+
+n69 (Reasoning / Logical Ability #19) [text] ans=0:48
+  Q: Select the number from the given options that can replace the question mark (?) in the following series. 3, 6, 12, 24, ?, 96
+    *1. 48
+     2. 36
+     3. 72
+     4. 84
+
+n70 (Reasoning / Logical Ability #20) [figural] ans=0:1
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n71 (Reasoning / Logical Ability #21) [figural] ans=3:4
+  Q: A square transparent sheet with a pattern is shown in the given figure. How will the pattern appear when the transparent sheet is folded at the dotted line.
+
+n72 (Reasoning / Logical Ability #22) [figural] ans=3:4
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n73 (Reasoning / Logical Ability #23) [text] ans=0:Neither conclusion I nor II follows
+  Q: Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with co
+    *1. Neither conclusion I nor II follows
+     2. Only conclusion I follows
+     3. Only conclusion II follows
+     4. Both conclusions I and II follow
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=0:1
+  Q: Select the option in which the given figure is embedded (rotation is NOT allowed).
+
+n75 (Reasoning / Logical Ability #25) [text] ans=0:Sonal
+  Q: 6 persons are sitting around a circular table facing the centre, with each person facing another person. Anshu is between Rohin and Sonal. Rohin is opposite to 
+    *1. Sonal
+     2. Leena
+     3. Anshu
+     4. Fizza
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [text] ans=3:3,000
+  Q: A shopkeeper is offering 10% discount on a shirt marked at ₹4,000 and still earns a profit of 20%. What is the cost price (in ₹)?
+     1. 3,200
+     2. 3,333
+     3. 3,600
+    *4. 3,000
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [qfigure] ans=0:1760
+  Q: Select the correct option based on the image given below.
+    *1. 1760
+     2. 1792
+     3. 1780
+     4. 1731
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [text] ans=2:125
+  Q: The average weight of the first 14 persons among 15 persons is 80 kg. The weight of the 15th person is 42 kg more than the average weight of all 15 persons. Fin
+     1. 127
+     2. 121
+    *3. 125
+     4. 123
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=3:60
+  Q: Find the area (in square cm) of a right angled triangle whose altitude is 7 cm less than its base and its hypotenuse is 17 cm.
+     1. 48
+     2. 84
+     3. 72
+    *4. 60
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [text] ans=0:₹1,00,000
+  Q: How much should you invest today at 10% compound interest annually to accumulate ₹1,46,410 in 4 years?
+    *1. ₹1,00,000
+     2. ₹1,10,000
+     3. ₹1,11,100
+     4. ₹1,00,500
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=0:6% p.a.
+  Q: Deepa deposited ₹10,000 in a bank on simple interest. After 4 years, she received an amount of ₹12,400. Find the rate of interest.
+    *1. 6% p.a.
+     2. 7% p.a.
+     3. 5.5% p.a.
+     4. 6.5% p.a.
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=3:9973
+  Q: The largest 4-digit prime number is:
+     1. 9991
+     2. 9967
+     3. 9983
+    *4. 9973
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [text] ans=3:30 minutes
+  Q: A man takes 40 minutes to cover a certain distance at a speed of 9 km/h. If he walks with a speed of 12 km/h, he covers the same distance in:
+     1. 28 minutes
+     2. 32 minutes
+     3. 25 minutes
+    *4. 30 minutes
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [text] ans=2:20
+  Q: Ram and Naresh can complete a work together in 20 days and Naresh and Shyam together in 15 days. All three together can complete the work in 12 days. In how man
+     1. 26
+     2. 28
+    *3. 20
+     4. 25
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [text] ans=0:363
+  Q: What is the smallest number which leaves remainder 3 when divided by any of the numbers 5, 8 and 9, but leaves no remainder when it is divided by 11?
+    *1. 363
+     2. 563
+     3. 463
+     4. 663
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [text] ans=0:60% and 40%
+  Q: Amit received his monthly salary. The ratio of his expenditure to savings is 3 : 2. What percentage of his salary did he spend and what percentage was saved by 
+    *1. 60% and 40%
+     2. 65% and 35%
+     3. 70% and 30%
+     4. 55% and 45%
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=2:4
+  Q: Find the number of ways in which 960 can be written as the product of two numbers that are co-prime to each other.
+     1. 6
+     2. 2
+    *3. 4
+     4. 8
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=2:₹1,60,000
+  Q: A person has some amount initially. He gives 30% of the amount to his wife. Then from the remaining amount, he gives 20%, 20% and 15%, respectively, to both his
+     1. ₹1,00,000
+     2. ₹1,40,000
+    *3. ₹1,60,000
+     4. ₹1,20,000
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=2:13.11% loss
+  Q: The selling price of 61 items is equal to the cost price of 53 items. What is the profit or loss percentage (rounded off to two decimal places)?
+     1. 8.25% loss
+     2. 8.25% profit
+    *3. 13.11% loss
+     4. 13.11% profit
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=2:‘Reply’ sends the response only to the original sender, while ‘Reply all’ sends the response to all recipients of the original email.
+  Q: When replying to an email, what is the key difference between ‘Reply’ and ‘Reply all’?
+     1. ‘Reply’ forwards email to specific contacts, while ‘Reply all’ forwards the original email to all contacts in the addres
+     2. ‘Reply’ allows you to edit the original email’s content before sending the response, while ‘Reply all’ automatically inc
+    *3. ‘Reply’ sends the response only to the original sender, while ‘Reply all’ sends the response to all recipients of the or
+     4. ‘Reply’ attaches any files from the original email, while ‘Reply all’ includes any attachments along with the entire ori
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=0:Format painter
+  Q: In MS word 365 To change the formatting of the text to match the formatting of other text in a document, which of the following tools can be used?
+    *1. Format painter
+     2. Paragraph alignment
+     3. SmartArt
+     4. Change styles
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=0:Ctrl + S
+  Q: In MS Excel 365 which of the following keyboard shortcuts is used to save a workbook in MS-Excel?
+    *1. Ctrl + S
+     2. Ctrl + Alt + S
+     3. Shift + S
+     4. Ctrl + Shift + S
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=0:Preview
+  Q: In Microsoft Word 2019, which option is common in both the 'Indents & Spacing' and 'Line & Page Breaks' tabs of the 'Paragraph' dialog box?
+    *1. Preview
+     2. General
+     3. Textbox options
+     4. Indentation
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=2:Filter by selected cell height
+  Q: In MS Excel 365, when you right-click on a cell and select 'Filter,' which of the following options is NOT visible?
+     1. Filter by selected cell colour
+     2. Filter by selected cell font
+    *3. Filter by selected cell height
+     4. Filter by selected cell values
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=3:Office button
+  Q: In MS Excel 2007, which option is used for opening a new or existing spreadsheet?
+     1. Home
+     2. Insert
+     3. Format
+    *4. Office button
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=1:Strikethrough
+  Q: Which of the following is the correct option to draw a line through the middle of text in MS Word 365?
+     1. Line
+    *2. Strikethrough
+     3. Dash
+     4. Underline
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=2:Network layer
+  Q: Which layer of the internet architecture model is responsible for routing packets between networks?
+     1. Transport layer
+     2. Data link layer
+    *3. Network layer
+     4. Application layer
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=2:‘Save’ is used to save the document for the first time, while ‘Save As’ is used to save the document with a new name or different file format.
+  Q: Which of the following best describes the difference between Save and Save As?
+     1. ‘Save’ is used to save file in a local computer, while ‘Save As’ is used to save it on cloud.
+     2. ‘Save’ is used to save file as read only file, while ‘Save As’ is used to save it as editable file.
+    *3. ‘Save’ is used to save the document for the first time, while ‘Save As’ is used to save the document with a new name or 
+     4. ‘Save’ is used to save file in compressed manner, while ‘Save As’ is used to save it as it is.
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=3:Indenting
+  Q: Which of the following options will allow you to set text within a paragraph at different margins in MS Word 365?
+     1. Page breaks
+     2. Border
+     3. Line spacing
+    *4. Indenting

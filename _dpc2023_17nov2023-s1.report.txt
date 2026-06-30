@@ -1,0 +1,660 @@
+PDF: D:/Sazid/AajExam/Exams PYQ's/Delhi Police Constable/2020/november/17/shift-1/Delhi Police Constable 2023 Nov 17 (Shift 1) Question Paper with Answers English PDF.pdf
+slug: 17nov2023-s1
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 80, 'qfigure': 7, 'figural': 13}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=1:July 1991
+  Q: Which of the following dates is correct with regard to the announcement of LPG model?
+     1. August 1991
+    *2. July 1991
+     3. June 1991
+     4. December 1991
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=2:Amrita Pritam
+  Q: Who among the following has written the novel ‘Pinjar’?
+     1. Bhisham Sahani
+     2. Mohan Rakesh
+    *3. Amrita Pritam
+     4. Mannu Bhandari
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=2:Non-cooperation Movement
+  Q: The ________ was abruptly called off by Mahatma Gandhi due to the Chauri Chaura incident.
+     1. Kheda Movement
+     2. Rowlatt Act Satyagraha
+    *3. Non-cooperation Movement
+     4. Champaran Satyagraha
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=1:Southeast Karnataka
+  Q: Torrential rain is any amount of rain that is considered especially heavy. Accordingly, which of the following Indian regions receives this type of rainfall dur
+     1. Western Rajasthan
+    *2. Southeast Karnataka
+     3. North Bengal
+     4. Central Maharashtra
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=0:Ustad Bismillah Khan
+  Q: Who among the following is known as the ‘Shehnai maestro’?
+    *1. Ustad Bismillah Khan
+     2. Ustad Bade Ghulam Ali Khan
+     3. Hariprasad Chaurasia
+     4. Ustad Amjad Ali Khan
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=2:A, B and D only
+  Q: Which of the following new words were added to Indian Constitution by the 42nd Constitutional Amendment Act? A. Socialist B. Integrity C. Fraternity D. Secular 
+     1. A, D and E only
+     2. B, C and D only
+    *3. A, B and D only
+     4. A, C and D only
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=2:five
+  Q: Small scale industries in 1950 were defined as all those industries in which the maximum investment was ________ lakh rupees.
+     1. ten
+     2. fifty
+    *3. five
+     4. twenty
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=3:Dravidian
+  Q: What type of architecture was constructed in Hampi temples and palaces?
+     1. Vesara
+     2. Kalinga
+     3. Nagara
+    *4. Dravidian
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=0:surplus budget
+  Q: When the total expenditure is less than total receipts, it is called ______________.
+    *1. surplus budget
+     2. balanced budget
+     3. deficit budget
+     4. estimate budget
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=3:Manipuri
+  Q: Which Indian dance form is Darshana Jhaveri the leading exponent of?
+     1. Odissi
+     2. Kuchipudi
+     3. Kathak
+    *4. Manipuri
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=2:Guitar
+  Q: Which of the following string instruments is played by Braj Bhushan Kabra?
+     1. Mohan Veena
+     2. Sitar
+    *3. Guitar
+     4. Violin
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=2:Limulus
+  Q: Which species of Arthropods is horseshoe shaped, with hard shell and spine-like tail?
+     1. Loligo
+     2. Locusta
+    *3. Limulus
+     4. Laccifer
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=1:Kerala
+  Q: Theyyam dance, performed to appease and make peace with the Gods who ensure good harvest and prosperity, is popular in which of the following states?
+     1. Karnataka
+    *2. Kerala
+     3. Jharkhand
+     4. Andhra Pradesh
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=1:Article 324
+  Q: Which Article of the Indian Constitution provides for an Independent Election Commission for the superintendence, direction and control of the electoral roll an
+     1. Article 320
+    *2. Article 324
+     3. Article 323
+     4. Article 329
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=3:Avantibai Lodhi
+  Q: Who among the following was the leader of 1857 revolt in Ramgarh state?
+     1. Zinat Mahal
+     2. Uda Devi
+     3. Jhalkaribai
+    *4. Avantibai Lodhi
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=3:Lal Bahadur Shastri
+  Q: The Green Revolution was commenced under the leadership of whom among the following Prime Ministers of India?
+     1. Gulzarilal Nanda
+     2. Charan Singh
+     3. Morarji Desai
+    *4. Lal Bahadur Shastri
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=2:Kesavananda Bharti Case
+  Q: In which case did the court rule that Parliament CANNOT amend the basic structure of the Constitution?
+     1. Balbir Mehta Case
+     2. Ashok Mehta Case
+    *3. Kesavananda Bharti Case
+     4. Golaknath Case
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=1:Jawaharlal Nehru
+  Q: Who among the following headed the Constitutional States Committee formed for negotiating with the states?
+     1. Dr. Rajendra Prasad
+    *2. Jawaharlal Nehru
+     3. JB Kripalani
+     4. Vallabhbhai Patel
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=0:Son
+  Q: The Rohtasgarh or Rohtas Fort is located in which river valley?
+    *1. Son
+     2. Ganga
+     3. Karmanasa
+     4. Ghaghara
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=2:Globalisation
+  Q: What is the integration between countries through foreign trade and foreign investments by multinational corporations (MNCs)?
+     1. World trade
+     2. International trade
+    *3. Globalisation
+     4. International investment
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=2:Certiorari
+  Q: Under which of the following Writs can the Supreme Court and the High Courts call for the record of a case from a lower court or semi-judicial body on an allega
+     1. Mandamus
+     2. Prohibition
+    *3. Certiorari
+     4. Quo Warranto
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=2:Odisha
+  Q: During the Mauryan period, Kalinga was the ancient name of which dominant present- day coastal state?
+     1. Andhra Pradesh
+     2. Tamil Nadu
+    *3. Odisha
+     4. Karnataka
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=1:Lothal
+  Q: As of October 2022, in which of the following Harappan cities was the Citadel NOT walled off?
+     1. Harappa
+    *2. Lothal
+     3. Kalibangan
+     4. Mohenjo-Daro
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=3:Joseph Francois Dupleix
+  Q: Who was the leader of the French forces during the second Carnatic War?
+     1. John Ferro
+     2. Albert Newman
+     3. Daniel Samuel
+    *4. Joseph Francois Dupleix
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=3:Ashvaghosha
+  Q: Who among the following was the author of Buddhacharita?
+     1. Jinasena
+     2. Shudraka
+     3. Dandin
+    *4. Ashvaghosha
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=3:caramelisation
+  Q: The process of browning of sugar used extensively in cooking for the resulting sweet nutty flavour and brown colour is called:
+     1. pasteurisation
+     2. neutralisation
+     3. sterilisation
+    *4. caramelisation
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=0:Andhra Pradesh
+  Q: In which state is the Seshachalam Biosphere Reserve located?
+    *1. Andhra Pradesh
+     2. Maharashtra
+     3. Gujarat
+     4. Tamil Nadu
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=2:relay race
+  Q: The term ‘anchor runner’ is related to _______.
+     1. steeple chase
+     2. 1500 m race
+    *3. relay race
+     4. marathon race
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=0:Haryana
+  Q: Olympian boxer Vijender Singh belongs to which of the following states?
+    *1. Haryana
+     2. Chandigarh
+     3. Delhi
+     4. Punjab
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=3:Udaipur
+  Q: As of the December 2022, which of the following cities of India was NOT a Railway Zone?
+     1. Hajipur
+     2. Bilaspur
+     3. Jabalpur
+    *4. Udaipur
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=0:Chandra Shekhar Bhanj
+  Q: Who among the following personalities is an awardee of Sahitya Natak Akademi for his contribution to the Chhau dance?
+    *1. Chandra Shekhar Bhanj
+     2. Radha Reddy
+     3. Reba Vidyarthi
+     4. Chandralekha
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=0:continuous
+  Q: Maintenance functions of a living organism is a _________ process.
+    *1. continuous
+     2. long time
+     3. one time
+     4. short time
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=0:Child labour
+  Q: The first Indian Factories Act 1881 was mainly related to which subject?
+    *1. Child labour
+     2. Woman labour
+     3. Wages rate
+     4. Equal work equal pay
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=2:Jains
+  Q: According to the census of India 2011, which of the following religions has the least population?
+     1. Christians
+     2. Buddhists
+    *3. Jains
+     4. Sikhs
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=1:Hockey
+  Q: The term ‘scoop’ is related to which of the following games?
+     1. Boxing
+    *2. Hockey
+     3. Badminton
+     4. Football
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=3:South Central Railway Zone
+  Q: Secunderabad is the headquarters of which railway zone?
+     1. West Central Railway Zone
+     2. Southern Railway Zone
+     3. North Central Railway Zone
+    *4. South Central Railway Zone
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=0:William Faulkner
+  Q: ‘As I Lay Dying’ is an English novel by which of the following authors?
+    *1. William Faulkner
+     2. John Dos Passos
+     3. Stella Gibbons
+     4. Aldous Huxley
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=1:Sikkim
+  Q: According to Census of India 2011, which of the following states recorded a population density of less than 100 persons/sq. km?
+     1. Rajasthan
+    *2. Sikkim
+     3. Odisha
+     4. Assam
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=3:37th AFI National Junior Athletics Championship
+  Q: At which of the following events did Punjab’s Devansh Jagga break the national record in the Under-16 Discus Throw Competition?
+     1. 34th AFI National Junior Athletics Championship
+     2. 35th AFI National Junior Athletics Championship
+     3. 36th AFI National Junior Athletics Championship
+    *4. 37th AFI National Junior Athletics Championship
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=1:−190°C to 110°C
+  Q: What is the range of temperature on the surface of the Moon with no atmosphere?
+     1. −110°C to 190°C
+    *2. −190°C to 110°C
+     3. −80°C to 150°C
+     4. −50°C to 120°C
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=3:Justice JS Verma Committee
+  Q: Which committee was appointed by the Government of India “to operationalise the suggestions to teach Fundamental Duties to the citizens of India” ?
+     1. Justice BN Srikrishna Committee
+     2. Justice Usha Mehra Committee
+     3. Justice AK Mathur Committee
+    *4. Justice JS Verma Committee
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=0:Kartika Amavasya
+  Q: When is Kali Pooja celebrated in West Bengal region?
+    *1. Kartika Amavasya
+     2. Kartika Poornima
+     3. Ashwin Amavasya
+     4. Ashwin Poornima
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=3:₹15,000
+  Q: To remove unemployment through skill development, how much expenditure is permissible per person on training of the urban poor, under the Deen Dayal Antyodaya Y
+     1. ₹12,000
+     2. ₹20,000
+     3. ₹8,000
+    *4. ₹15,000
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=2:substitution reaction
+  Q: A reaction wherein atoms of an element in the reactants are exchanged or replaced to form new elements in the product is called:
+     1. oxidation
+     2. addition reaction
+    *3. substitution reaction
+     4. combustion
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=1:Net Domestic Product at Factor Cost
+  Q: Which of the following concepts refers to the income earned by the factors of production at factor cost in the form of wages, profits, rent, interest, etc., wit
+     1. Net Domestic Product at Market Prices
+    *2. Net Domestic Product at Factor Cost
+     3. Gross Domestic Product at Market Prices
+     4. Gross National Product at Factor Cost
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=2:Members of the Legislative Assembly
+  Q: The Speaker and the Deputy Speaker of a state are elected by the _____________.
+     1. Attorney General
+     2. Chief Justice of Supreme Court
+    *3. Members of the Legislative Assembly
+     4. Chief Justice of High Court
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=2:Iltutmish
+  Q: Who among the following Sultans of Delhi established Turkan-i-Chahalgani?
+     1. Ghiyasuddin Balban
+     2. Bhalol Lodhi
+    *3. Iltutmish
+     4. Alauddin Khilji
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=1:Kuchipudi
+  Q: Yamini Krishnamurthy, an eminent _________ and Bharatanatyam dancer has been awarded the Padma Bhushan and Padma Shri.
+     1. Kathakali
+    *2. Kuchipudi
+     3. Kathak
+     4. Sattriya
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=0:75 weeks
+  Q: ‘Azadi ka Amrit Mahotsav’ started how many weeks before the 15th August 2023 celebration?
+    *1. 75 weeks
+     2. 25 weeks
+     3. 50 weeks
+     4. 100 weeks
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=1:Ministry of Social Justice and Empowerment
+  Q: Which ministry is implementing the ‘PM DAKSH’ scheme?
+     1. Ministry of Finance
+    *2. Ministry of Social Justice and Empowerment
+     3. Ministry of Micro, Small and Medium Enterprises
+     4. Ministry of Education
+
+n51 (Reasoning / Logical Ability #1) [text] ans=3:OKU
+  Q: Which of the following terms will replace the question mark (?) in the given series? GOM, INO, KMQ, MLS, ?
+     1. OJV
+     2. NKV
+     3. NJU
+    *4. OKU
+
+n52 (Reasoning / Logical Ability #2) [text] ans=0:Sky
+  Q: Select the option that is related to the third word in the same way as the second word is related to the first word. (The words must be considered as meaningful
+    *1. Sky
+     2. Camera
+     3. Light
+     4. Sun
+
+n53 (Reasoning / Logical Ability #3) [text] ans=2:18661
+  Q: Select the number from among the given options that can replace the question mark (?) in the following series. 1, 13, 85, 517, 3109, ?
+     1. 31456
+     2. 19834
+    *3. 18661
+     4. 18000
+
+n54 (Reasoning / Logical Ability #4) [qfigure] ans=3:7
+  Q: Select the correct option based on the image given below.
+     1. 4
+     2. 5
+     3. 6
+    *4. 7
+
+n55 (Reasoning / Logical Ability #5) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n56 (Reasoning / Logical Ability #6) [figural] ans=3:4
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n57 (Reasoning / Logical Ability #7) [figural] ans=1:2
+  Q: Select the figure from among the given options that can replace the question mark (?) in the following series.
+
+n58 (Reasoning / Logical Ability #8) [text] ans=0:+ , – , ÷ , ×, =
+  Q: Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation. 20 * 96 * 66 * 11 * 10 * 56
+    *1. + , – , ÷ , ×, =
+     2. + , – , ÷ , = , ×
+     3. – , ×, ÷ , + , =
+     4. – , + , ÷ ,×, =
+
+n59 (Reasoning / Logical Ability #9) [text] ans=3:E
+  Q: D, E, F, G, H, J and K were sitting in a straight row, facing north. J was exactly between H and E. Only K was to the right of F. Only G was to the left of D. H
+     1. H
+     2. J
+     3. F
+    *4. E
+
+n60 (Reasoning / Logical Ability #10) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n61 (Reasoning / Logical Ability #11) [text] ans=0:(389, 183, 206)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the given sets. (NOTE: Operations should be performed on the whole numbers
+    *1. (389, 183, 206)
+     2. (349, 145, 206)
+     3. (191, 891, 118)
+     4. (245, 213, 122)
+
+n62 (Reasoning / Logical Ability #12) [figural] ans=1:2
+  Q: Select the option in which the given figure is embedded (rotation is NOT allowed).
+
+n63 (Reasoning / Logical Ability #13) [figural] ans=3:4
+  Q: Select the option figure in which the given figure is embedded as its part (rotation is NOT allowed).
+
+n64 (Reasoning / Logical Ability #14) [qfigure] ans=2:1
+  Q: Six numbers, 1, 2, 3, 4, 5 and 6, are written on the different faces of a dice. Three different positions of the same dice are shown (Figures 1-3). Find the num
+     1. 4
+     2. 2
+    *3. 1
+     4. 5
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=0:1
+  Q: A square sheet of paper is folded along the dotted line successively along the directions shown and is then punched in the last. How would the paper look when u
+
+n66 (Reasoning / Logical Ability #16) [qfigure] ans=1:4
+  Q: Select the correct option based on the image given below.
+     1. 5
+    *2. 4
+     3. 6
+     4. 3
+
+n67 (Reasoning / Logical Ability #17) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n68 (Reasoning / Logical Ability #18) [text] ans=3:186
+  Q: Select the option that is related to the fourth term in the same way as the first term is related to the second term and the fifth term is related to the sixth 
+     1. 168
+     2. 158
+     3. 185
+    *4. 186
+
+n69 (Reasoning / Logical Ability #19) [figural] ans=1:2
+  Q: Choose the dice from the given options that is similar to the dice formed from the given sheet of paper (X).
+
+n70 (Reasoning / Logical Ability #20) [text] ans=3:+ and ×
+  Q: Which of the following interchanges of signs would make the given equation correct? 7 – 4 × 40 ÷ 5 + 6 = 51
+     1. − and +
+     2. ÷ and ×
+     3. − and ×
+    *4. + and ×
+
+n71 (Reasoning / Logical Ability #21) [text] ans=2:Only conclusion I follows.
+  Q: Two statements are given followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance from commonly kn
+     1. Only conclusion II follows.
+     2. Both conclusions I and II follow.
+    *3. Only conclusion I follows.
+     4. Neither conclusion I nor II follows.
+
+n72 (Reasoning / Logical Ability #22) [text] ans=3:KKBZLV
+  Q: In a certain code language, ‘BELONG’ is written as ‘DVTLRT’ and 'STUDIO' is written as 'MGKWWL'. How will ‘UPDATE’ be written as in that language?
+     1. KPRBUS
+     2. KLRZBL
+     3. KJLDFO
+    *4. KKBZLV
+
+n73 (Reasoning / Logical Ability #23) [qfigure] ans=2:1
+  Q: Select the correct option based on the image given below.
+     1. 5
+     2. 4
+    *3. 1
+     4. 2
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n75 (Reasoning / Logical Ability #25) [figural] ans=0:1
+  Q: Select the correct mirror image of the given combination when the mirror is placed at MN as shown below.
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [qfigure] ans=2:23 cm
+  Q: Select the correct option based on the image given below.
+     1. 21 cm
+     2. 25 cm
+    *3. 23 cm
+     4. 27 cm
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [text] ans=1:₹1,000
+  Q: An amount of ₹2,500 is divided into two parts in such a way that, if one part is put out at 5% p.a. simple interest and the other at 6% p.a., then the yearly an
+     1. ₹500
+    *2. ₹1,000
+     3. ₹2,000
+     4. ₹1,500
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [text] ans=0:₹6,475
+  Q: A man invests ₹5,000 for 3 years at compound interest. After one year, the money amounts to ₹5,450. What will be the amount (to the nearest rupee) due at the en
+    *1. ₹6,475
+     2. ₹5,575
+     3. ₹7,405
+     4. ₹6,970
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=0:585
+  Q: A shopkeeper offers a scheme on the purchase of shirts: ‘Buy two, get one free of the same kind’. The cost price of one shirt is ₹300. What should be the sellin
+    *1. 585
+     2. 535
+     3. 485
+     4. 435
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [text] ans=0:50
+  Q: The average of the marks of Ram, Ramesh, Somesh and Soham in mathematics is 75, and the average of the marks of Ramesh, Somesh, Soham and Mohan in mathematics i
+    *1. 50
+     2. 78
+     3. 62
+     4. 45
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=3:33.33%
+  Q: 12 फुट लम्बे वर्गाकार बोर्ड की एक भुजा से 4 फुट लम्बाई का एक टुकड़ा काटा जाता है। बोर्ड के क्षेत्रफल में कितने प्रतिशत की कमी होती है?
+     1. 30.33%
+     2. 13.33%
+     3. 27.27%
+    *4. 33.33%
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=2:10
+  Q: The number of prime numbers which are greater than 100 and less than 150 is:
+     1. 8
+     2. 11
+    *3. 10
+     4. 9
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [text] ans=3:23.08%
+  Q: Raju lost 13% by selling a radio set for ₹4,524. What percentage of profit would he have earned by selling it for ₹6,400 (rounded off to two decimal places)?
+     1. 25.25%
+     2. 28.52%
+     3. 21.05%
+    *4. 23.08%
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [figural] ans=1:2
+  Q: If the diameter of a circle is increased by 24%, then the percentage increase in the area is:
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [qfigure] ans=0:2992
+  Q: Select the correct option based on the image given below.
+    *1. 2992
+     2. 2991
+     3. 2990
+     4. 2993
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [text] ans=0:400 sec
+  Q: In a circular race on a track of length 2000 m, X and Y start from the same point at the same time in opposite direction at the speeds of 15 km/h and 33 km/h, r
+    *1. 400 sec
+     2. 250 sec
+     3. 300 sec
+     4. 275 sec
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [text] ans=0:47
+  Q: The sum of three prime numbers is 72. If one of them exceeds another by 24, then one of the numbers is:
+    *1. 47
+     2. 29
+     3. 37
+     4. 31
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [qfigure] ans=0:10
+  Q: Select the correct option based on the image given below.
+    *1. 10
+     2. 100
+     3. 1
+     4. 0.1
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=3:24
+  Q: Dileep and Rajesh can complete a work separately in 20 days and 30 days, respectively. In how many days will the entire work be completed, if they work on an al
+     1. 28
+     2. 22
+     3. 12
+    *4. 24
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=3:Sorting mail cannot help us remove unwanted emails from our inboxes and more easily unsubscribe from mailings we don’t need.
+  Q: Which of the following statements is INCORRECT related to sorting emails in Gmail?
+     1. Sorting mail can help us remove unwanted emails from your inbox and more easily unsubscribe from mailings we don’t need.
+     2. Depending on what we use your email address for, sorting emails can also help you keep track of trends and correspondenc
+     3. We can sort emails by a variety of factors, like the topic, sender, size, or age of the message.
+    *4. Sorting mail cannot help us remove unwanted emails from our inboxes and more easily unsubscribe from mailings we don’t n
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=3:Tethering
+  Q: _________involves using a smartphone's data connection to provide internet access to other devices such as laptops or tablets.
+     1. Satellite
+     2. Dial up
+     3. Wi-Fi
+    *4. Tethering
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=1:Inserts the content from the clipboard into the document
+  Q: What does the ‘Paste’ command do in Microsoft Word 365?
+     1. Deletes the content of the clipboard
+    *2. Inserts the content from the clipboard into the document
+     3. Removes the selected text
+     4. Copies the selected text to the clipboard
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=2:AVERAGE
+  Q: Which Microsoft Excel 365 function calculates the average of a range of numbers?
+     1. AVG
+     2. MEDIAN
+    *3. AVERAGE
+     4. MEAN
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=1:Justification
+  Q: Which option in MS-Word 365 allows you to align the text in a paragraph to both the left and right margins, creating a visually appealing document?
+     1. Line Spacing
+    *2. Justification
+     3. Paragraph Alignment
+     4. Text Indentation
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=2:Hold down the Shift key while clicking on the documents.
+  Q: Which option allows you to select multiple documents while opening them in Microsoft Word 365?
+     1. Hold down the Tab key while clicking on the documents.
+     2. Hold down the Windows key while clicking on the documents.
+    *3. Hold down the Shift key while clicking on the documents.
+     4. Hold down the Alt key while clicking on the documents.
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=0:Save As
+  Q: In Microsoft Word 365, which option is used to save an existing document with a new name or in a different location?
+    *1. Save As
+     2. Save
+     3. Copy
+     4. Print
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=0:Ctrl + I
+  Q: Which of the following shortcut keys is used to modify selected text as Italic in MS- Word 365?
+    *1. Ctrl + I
+     2. Ctrl + U
+     3. Ctrl + O
+     4. Ctrl + B
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=0:csv
+  Q: In MS Excel 365 which file type used in MS Excel produces a comma-delimited text file that can be read by almost all spreadsheet applications on any operating s
+    *1. csv
+     2. docx
+     3. pdf
+     4. xlsx
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=1:Click on the cell containing the May sales data -> Press F2 to enter edit mode -> Make the necessary changes -> Press Enter to confirm the edit
+  Q: Suppose you have a worksheet in MS Excel 365 containing sales data for different months. You need to update the sales figure for May, as there was an error in t
+     1. Click on the cell containing the May sales data -> Press F6 to enter edit mode -> Make the necessary changes -> Press En
+    *2. Click on the cell containing the May sales data -> Press F2 to enter edit mode -> Make the necessary changes -> Press En
+     3. Click on the cell containing the May sales data -> Press F7 to enter edit mode -> Make the necessary changes -> Press En
+     4. Click on the cell containing the May sales data -> Press F1 to enter edit mode -> Make the necessary changes -> Press En

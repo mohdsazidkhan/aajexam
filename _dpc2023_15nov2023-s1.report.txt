@@ -1,0 +1,652 @@
+PDF: D:\Sazid\AajExam\Exams PYQ's\Delhi Police Constable\2020\november\15\shift-1\Delhi-Police-Constable-Executive-2023-Official-Paper-Held-On_-15-Nov-2023-Shift-1.pdf
+slug: 15nov2023-s1
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 80, 'figural': 15, 'qfigure': 5}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=2:7
+  Q: How many medals did India win in the International Shooting Sport Federation (ISSF) World Cup-2022, which was held in Cairo, Egypt?
+     1. 5
+     2. 4
+    *3. 7
+     4. 6
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=1:Bharatanatyam
+  Q: Narthaki Nataraj, awarded with Padma Shri in 2019 is an Indian _________ dancer.
+     1. Odissi
+    *2. Bharatanatyam
+     3. Kathakali
+     4. Kathak
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=0:Garbhagriha
+  Q: The innermost sanctum of a Hindu temple where the idol of the main deity is placed is called:
+    *1. Garbhagriha
+     2. Mandapa
+     3. Pradakshina path
+     4. Shikhara
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=2:Meghalaya
+  Q: In which state of India from the following is the old bamboo drip irrigation technology still used in the agriculture?
+     1. Maharashtra
+     2. Chhattisgarh
+    *3. Meghalaya
+     4. Telangana
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=0:99th Amendment Act
+  Q: Which Constitutional Amendment Act has replaced the collegium system of appointing judges to the Supreme Court and High Courts?
+    *1. 99th Amendment Act
+     2. 65th Amendment Act
+     3. 82nd Amendment Act
+     4. 52nd Amendment Act
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=0:Hector Munro
+  Q: Who led the English Forces in the Battle of Buxar?
+    *1. Hector Munro
+     2. Sir Hugh Wheeler
+     3. Henry Lawrence
+     4. John Nicholson
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=2:Article 51A
+  Q: Under which Article of the Indian Constitution are Fundamental Duties mentioned?
+     1. Article 50B
+     2. Article 44C
+    *3. Article 51A
+     4. Article 55D
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=3:Sania Mirza
+  Q: Which of the following Indian players has written the autobiography titled ‘Ace Against Odds’?
+     1. Saina Nehwal
+     2. Maria Sharapova
+     3. Monica Seles
+    *4. Sania Mirza
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=0:Meghalaya
+  Q: The Ahaia Winter Festival is primarily organised by the North-Eastern state of ______ to promote tourism.
+    *1. Meghalaya
+     2. Tripura
+     3. Arunachal Pradesh
+     4. Sikkim
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=1:China
+  Q: Which of the following countries hosts the first para Asiad?
+     1. South Korea
+    *2. China
+     3. Japan
+     4. India
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=1:Kumari Kamala
+  Q: Who among the following Padma Bhushan awardee dancers was called to perform for the coronation festivities of Queen Elizabeth II?
+     1. Birju Maharaj
+    *2. Kumari Kamala
+     3. Yamini Krishnamurthy
+     4. Alarmel Velli
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=0:Article 27 and 28
+  Q: Freedom of Conscience provided in Article 25 of the Constitution of India is strengthened by which of the following two articles?
+    *1. Article 27 and 28
+     2. Article 27 and 29
+     3. Article 26 and 28
+     4. Article 24 and 28
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=2:special officer for linguistic minorities
+  Q: The Article 350 (B) of the Indian Constitution deals with the .
+     1. finance commission
+     2. election commission
+    *3. special officer for linguistic minorities
+     4. UPSC
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=2:Khushwant Singh
+  Q: Who wrote the novel ‘Train to Pakistan’?
+     1. Vikram Seth
+     2. Mulk Raj Anand
+    *3. Khushwant Singh
+     4. Bhisham Sahni
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=1:Ladakh
+  Q: Which of the following union territories recorded the highest sex ratio at birth in India in 2020 as per annual report on vital statistics based on Civil Regist
+     1. Jammu and Kashmir
+    *2. Ladakh
+     3. Lakshadweep
+     4. Chandigarh
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=0:22
+  Q: The original Constitution contained 395 Articles divided into ________ parts.
+    *1. 22
+     2. 19
+     3. 21
+     4. 24
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=0:US
+  Q: Norman Borlaug, known as the Father of Green Revolution for the world, belongs to which country?
+    *1. US
+     2. New Zealand
+     3. Australia
+     4. Germany
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=1:America
+  Q: In which country was the Theosophical Society founded?
+     1. England
+    *2. America
+     3. France
+     4. Japan
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=3:Tectonic earthquakes
+  Q: What are the most common type of earthquakes?
+     1. Volcanic earthquakes
+     2. Seismic earthquakes
+     3. Reservoir earthquakes
+    *4. Tectonic earthquakes
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=2:Deen Dayal Upadhyaya Grameen Kaushalya Yojana
+  Q: Which government scheme’s main aim is to ‘transform rural poor youth into an economically independent and globally relevant workforce’?
+     1. Shyama Prasad Mukherjee Rurban Mission
+     2. National Career Service
+    *3. Deen Dayal Upadhyaya Grameen Kaushalya Yojana
+     4. Deendayal Antyoday Yojana- National Rural Livelihood Mission
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=2:Neena Prasad
+  Q: Who among the following personalities is an award-winning Mohiniyattam Dancer?
+     1. Meenakshi Chitharanjan
+     2. Vasundhara Doraswamy
+    *3. Neena Prasad
+     4. Sutapa Talukdar
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=1:Seven
+  Q: The scheme called Bringing Green Revolution to Eastern India is being implemented in how many eastern states?
+     1. Four
+    *2. Seven
+     3. Three
+     4. Six
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=0:Maharashtra
+  Q: According to Census of India, 2011 Which of the following is in the top three states with highest population of age 0-6 years?
+    *1. Maharashtra
+     2. Assam
+     3. Kerala
+     4. Madhya Pradesh
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=0:New Economic Policy
+  Q: India announced the NEP in 1991. NEP stands for _________ .
+    *1. New Economic Policy
+     2. National Export Plan
+     3. National Economic Policy
+     4. New Economic Provision
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=1:Kathak
+  Q: Shambhu Maharaj was conferred the Sangeet Natak Akademi Fellowship for which form of dance?
+     1. Kuchipudi
+    *2. Kathak
+     3. Bharatanatyam
+     4. Manipuri
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=1:Country’s residents over a period of time
+  Q: Gross national product is the total market value of all final goods and services produced by _________.
+     1. nationals and NRIs of a country during a period of five years
+    *2. Country’s residents over a period of time
+     3. national and foreigners during a period of two years
+     4. nationals of a country during a period of five year
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=1:1980
+  Q: At which Olympic Games did the Indian hockey men’s team win its last gold medal?
+     1. 2008
+    *2. 1980
+     3. 2012
+     4. 1996
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=0:Both a and b are correct
+  Q: Select the most appropriate option with respect to the correctness of the following statements. a) India has great potential for the development of tidal energy
+    *1. Both a and b are correct
+     2. Only a is correct
+     3. Both a and b are incorrect
+     4. Only b is correct
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=1:Harmika
+  Q: Which of the following parts/structures is located at the topmost part of a Stupa?
+     1. Torana
+    *2. Harmika
+     3. Vedika
+     4. Medhi
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=1:Tabla
+  Q: Sandeep Das is famous for playing which of the following percussion instruments?
+     1. Pakhawaj
+    *2. Tabla
+     3. Kanjira
+     4. Ghatam
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=0:Myanmar
+  Q: Arakan and Shan are recognised ethnic groups of ________.
+    *1. Myanmar
+     2. Sri Lanka
+     3. Nepal
+     4. Bhutan
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=2:Assam
+  Q: In which of the following States was the 37th National Junior Athletics Championship held?
+     1. Manipur
+     2. Nagaland
+    *3. Assam
+     4. Mizoram
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=3:Linnaeus
+  Q: Who among the following introduced binominal nomenclature of biological classification?
+     1. Aristotle
+     2. John Ray
+     3. Charles Darwin
+    *4. Linnaeus
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=2:Wheat and rice
+  Q: According to the PRS report of the Ministry of Agriculture, which two crops contributed to 78% of the country's food grain production till 2015-16?
+     1. Maize and soybeans
+     2. Millets and pulses
+    *3. Wheat and rice
+     4. Pulses and sugarcane
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=1:fossil fuels
+  Q: Coal, petroleum, and kerosene are examples of:
+     1. coal fuels
+    *2. fossil fuels
+     3. renewable resources
+     4. clean energy resources
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=2:44
+  Q: Which Constitutional Amendment Act amended Article 38, enumerated under the Directive Principles of State Policy, and directed ‘State to minimise inequalities i
+     1. 43
+     2. 42
+    *3. 44
+     4. 40
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=0:To provide a place where the terminally ill could die in peace
+  Q: Why did Mother Teresa establish the ‘Nirmal Hriday’ Hospice?
+    *1. To provide a place where the terminally ill could die in peace
+     2. To provide a home for orphan girl-children
+     3. To provide a refuge for patients of leprosy
+     4. To provide a home for young widows
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=2:Use of chemicals for therapeutic purposes
+  Q: Which of the following correctly describes chemotherapy?
+     1. Use of motivational advice as treatment
+     2. Use of physical exercise for treatment
+    *3. Use of chemicals for therapeutic purposes
+     4. Use of treatment for behavioural disorder
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=2:Satyendra Nath Tagore
+  Q: Who was the first Indian to qualify for the covenanted civil services in India?
+     1. Surendra Nath Banerjee
+     2. Subhas Chandra Bose
+    *3. Satyendra Nath Tagore
+     4. Rajagopalachari
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=1:Thirty-Three
+  Q: What is the sanctioned judge strength of the Supreme Court excluding Chief Justice of India as per the Supreme Court (Number of Judges) Amendment Act, 2019?
+     1. Ten
+    *2. Thirty-Three
+     3. Twenty-One
+     4. Twenty-Eight
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=0:central Asia
+  Q: ‘Shaka’ is the Indian term used for the people called Scythians, who originally belonged to _________ .
+    *1. central Asia
+     2. south-western Asia
+     3. south-eastern Asia
+     4. eastern Asia
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=2:Malik Kafur
+  Q: Who was the leader of the southern military campaign of Alauddin Khalji?
+     1. Aadham Khan
+     2. Mahmud Ganva
+    *3. Malik Kafur
+     4. Malik Sarvar
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=2:भू-राजस्व एकत्रित करने
+  Q: मुगल अधिकारी अमल-गुजार मुख्य रूप से ________ का कार्य करते थे।
+     1. शाही उद्यान की बागवानी
+     2. सैनिकों की भर्ती
+    *3. भू-राजस्व एकत्रित करने
+     4. शाही परिवार को सुरक्षा प्रदान करने
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=1:सिक्किम
+  Q: साकेवा एक धार्मिक त्योहार है जो _________ के किरात खंबू राई समुदाय द्वारा मनाया जाता है।
+     1. मध्य प्रदेश
+    *2. सिक्किम
+     3. झारखंड
+     4. पंजाब
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=3:Ustad Zakir Hussain
+  Q: Who among the following is known as the tabla maestro?
+     1. Ustad Bismillah Khan
+     2. Ghulam Ali
+     3. Ustad Amjad Ali Khan
+    *4. Ustad Zakir Hussain
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=1:10%
+  Q: A solution contains 50 g of sugar in 450 g of water. Calculate the concentration in terms of mass by mass percentage of the solution.
+     1. 0.1%
+    *2. 10%
+     3. 1%
+     4. 0.01%
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=2:Strike and dip
+  Q: Which special symbol is commonly used by geologists to describe the orientation of rock beds, faults, fractures, cuestas, igneous dikes and sills?
+     1. Scale Indicator
+     2. Average directional index
+    *3. Strike and dip
+     4. Compass rose
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=0:Maurya
+  Q: Which fo the following dynasties arose as a result of Alexander’s invasion?
+    *1. Maurya
+     2. Pandya
+     3. Chalukya
+     4. Pallava
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=3:Speculative
+  Q: The phenomenon of liquidity trap is based upon which of the following aspects of demand for money?
+     1. Precautionary
+     2. Velocity of circulation
+     3. Transaction
+    *4. Speculative
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=0:liberalisation
+  Q: The process of removing government-imposed limits or impediments is known as:
+    *1. liberalisation
+     2. financial investments
+     3. privatisation
+     4. globalisation
+
+n51 (Reasoning / Logical Ability #1) [text] ans=2:76
+  Q: Study the given pattern carefully and select the number that can replace the question mark (?) in it. First row - 56, 16, 60 Second row - 64, 18, 68 Third row -
+     1. 75
+     2. 74
+    *3. 76
+     4. 78
+
+n52 (Reasoning / Logical Ability #2) [text] ans=0:SEDADWSW
+  Q: Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series. D _ A _ W 
+    *1. SEDADWSW
+     2. SEDADWES
+     3. SEDADSSW
+     4. SEDADESW
+
+n53 (Reasoning / Logical Ability #3) [text] ans=0:Utpal
+  Q: Six students are sitting around a circular table facing the centre. Udit is an immediate neighbour of both Uday and Unnati. Umesh is sitting second to the right
+    *1. Utpal
+     2. Uday
+     3. Utsav
+     4. Udit
+
+n54 (Reasoning / Logical Ability #4) [figural] ans=3:4
+  Q: Select the correct mirror image of the given combination when the mirror is placed at 'MN' as shown below.
+
+n55 (Reasoning / Logical Ability #5) [text] ans=2:Both conclusions I and II follow
+  Q: Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with co
+     1. Only conclusion I follows
+     2. Only conclusion II follows
+    *3. Both conclusions I and II follow
+     4. Neither conclusion I nor II follows
+
+n56 (Reasoning / Logical Ability #6) [figural] ans=0:1
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below and complete the pattern.
+
+n57 (Reasoning / Logical Ability #7) [figural] ans=2:3
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n58 (Reasoning / Logical Ability #8) [text] ans=1:47
+  Q: 14 is related to 27 following a certain logic. Following the same logic, 17 is related to 33. To which of the following is 24 related following the same logic?
+     1. 53
+    *2. 47
+     3. 56
+     4. 50
+
+n59 (Reasoning / Logical Ability #9) [figural] ans=0:1
+  Q: A paper is folded and cut as shown below. How will it appear when unfolded?
+
+n60 (Reasoning / Logical Ability #10) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n61 (Reasoning / Logical Ability #11) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n62 (Reasoning / Logical Ability #12) [qfigure] ans=1:12
+  Q: Select the correct option based on the image given below.
+     1. 10
+    *2. 12
+     3. 14
+     4. 15
+
+n63 (Reasoning / Logical Ability #13) [qfigure] ans=2:A
+  Q: Select the correct option based on the image given below.
+     1. B
+     2. P
+    *3. A
+     4. Q
+
+n64 (Reasoning / Logical Ability #14) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n66 (Reasoning / Logical Ability #16) [text] ans=0:÷ and ×
+  Q: Which two signs should be interchanged to make the given equation correct? 35 + 76 − 98 ÷ 3 × 6 = 62
+    *1. ÷ and ×
+     2. = and ×
+     3. + and ×
+     4. − and +
+
+n67 (Reasoning / Logical Ability #17) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n68 (Reasoning / Logical Ability #18) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n69 (Reasoning / Logical Ability #19) [text] ans=1:561
+  Q: Select the number from among the given options that can replace the question mark (?) in the following series. 3, 21, 57, 129, 273, ?
+     1. 234
+    *2. 561
+     3. 456
+     4. 345
+
+n70 (Reasoning / Logical Ability #20) [text] ans=1:8-1-18-13-15-14-9-21-13
+  Q: In a code language, if MUSIC is coded as 13-21-19-9-3 and BAND is coded as 2-1-14-4, then how will HARMONIUM be coded?
+     1. 7-25-16-12-14-13-8-19-12
+    *2. 8-1-18-13-15-14-9-21-13
+     3. 7-26-17-12-14-13-8-20-12
+     4. 8-2-19-12-15-14-9-20-12
+
+n71 (Reasoning / Logical Ability #21) [qfigure] ans=3:6
+  Q: Three different positions of the same dice are shown. Find the number on the face opposite the face showing ‘3’.
+     1. 2
+     2. 4
+     3. 5
+    *4. 6
+
+n72 (Reasoning / Logical Ability #22) [text] ans=2:Tehran
+  Q: Select the option that is related to the third word in the same way as the second word is related to the first word. (The words must be considered as meaningful
+     1. Baghdad
+     2. Moscow
+    *3. Tehran
+     4. Madrid
+
+n73 (Reasoning / Logical Ability #23) [figural] ans=3:4
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern.
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=0:1
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below and complete the pattern.
+
+n75 (Reasoning / Logical Ability #25) [text] ans=1:85
+  Q: If A denotes ‘+’, B denotes ‘×‘, C denotes ‘−’, and D denotes ‘÷’, then what will come in place of ‘?’ in the following equation? 24 D (1 A 7) C 2 A 7 B 12 B (5
+     1. 96
+    *2. 85
+     3. 88
+     4. 83
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [text] ans=2:30,000
+  Q: A certain sum is lent on simple interest at 4% p.a. for 3 years, 8% p.a. for the next 4 years, and 12% p.a. beyond 7 years. If for a period of 11 years, the sim
+     1. 28,000
+     2. 25,000
+    *3. 30,000
+     4. 32,000
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [text] ans=3:₹43,560
+  Q: A sum of ₹66,550 is taken on loan. This is to be paid back in two equal instalments. If the rate of interest is 20% compounded annually, find the value of each 
+     1. ₹42,560
+     2. ₹44,550
+     3. ₹40,550
+    *4. ₹43,560
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [text] ans=2:7.14%
+  Q: The price of an item is to be increased by 25% in two years. This year, the price increased to ₹140 from ₹120. What is the percentage increase in the next year?
+     1. 4.71%
+     2. 4.17%
+    *3. 7.14%
+     4. 7.41%
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=2:50 cm
+  Q: What is the diameter of a sphere that has a surface area of 2500π cm2?
+     1. 40 cm
+     2. 35 cm
+    *3. 50 cm
+     4. 25 cm
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [figural] ans=0:1
+  Q: The price of an article has been reduced by 20%. In order to restore the original price, the new price must be increased by:
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=1:7 : 21
+  Q: Which of the following is the smallest ratio?
+     1. 15 : 20
+    *2. 7 : 21
+     3. 21 : 25
+     4. 17 : 25
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=0:a loss of 16.67%
+  Q: If Malay buys guavas at ₹300 per kg and sells them at ₹25 per 100 gm., then he will have (rounded off to 2 decimal places):
+    *1. a loss of 16.67%
+     2. a profit of 25.25%
+     3. a loss of 25.25%
+     4. a profit of 16.67%
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [text] ans=0:25 days
+  Q: If 25 people, working 15 hours a day, can complete 5 units of work in 8 days, then how many days will be required by 12 people to complete 10 units of work, wor
+    *1. 25 days
+     2. 24 days
+     3. 20 days
+     4. 22 days
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [qfigure] ans=0:10 cm
+  Q: Select the correct option based on the image given below.
+    *1. 10 cm
+     2. 12.5 cm
+     3. 11.5 cm
+     4. 11 cm
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [text] ans=1:₹900
+  Q: Meera made a profit of 5% by selling a bag after offering a discount of 10%. If the marked price of bag is ₹1,050, find its cost price.
+     1. ₹850
+    *2. ₹900
+     3. ₹508
+     4. ₹1,000
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [text] ans=1:1370
+  Q: What is the sum of the square of the prime numbers between 20 and 30?
+     1. 1500
+    *2. 1370
+     3. 1290
+     4. 1276
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=2:2520
+  Q: What will be the least common multiple of four numbers 15, 35, 42 and 72?
+     1. 2550
+     2. 2050
+    *3. 2520
+     4. 2025
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=1:4
+  Q: The highest common factor (HCF) of 256, 136 and 436 is _________.
+     1. 2
+    *2. 4
+     3. 8
+     4. 12
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=1:Left Align
+  Q: Which text alignment option in Microsoft Word 365 aligns text along the left margin?
+     1. Center Align
+    *2. Left Align
+     3. Right Align
+     4. Justify
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=0:Right-click on an existing row or column and select ‘Insert’ from the context menu.
+  Q: What action should be taken to add a new row or column in a spreadsheet?
+    *1. Right-click on an existing row or column and select ‘Insert’ from the context menu.
+     2. Use the ‘Find and Replace’ function to search for a specific cell, and then insert a new row or column using the results
+     3. Highlight a range of cells, right-click, and choose ‘Delete’ from the context menu to create space for the new row or co
+     4. Select a row or column, press the ‘Ctrl+X’ keyboard shortcut to cut it, and then press ‘Ctrl+V’ to paste it in the desir
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=0:Formula bar
+  Q: In Microsoft Excel 365, which tool should we use for creating or editing formulas in a worksheet?
+    *1. Formula bar
+     2. Watch window
+     3. Precedents
+     4. Auditing toolbar
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=1:Home
+  Q: In which of the following tabs in MS Word 365 is Bullets and Numbering present?
+     1. Page layout
+    *2. Home
+     3. Edit
+     4. File
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=0:To include additional recipients who should be kept informed
+  Q: What is the purpose of the CC field in an email?
+    *1. To include additional recipients who should be kept informed
+     2. To request a read receipt from the recipient
+     3. To encrypt the email for added security
+     4. To indicate that the email is of high importance
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=1:Ctrl + K
+  Q: Which of the following shorcut key is used to insert a hyperlink in MS Word 365?
+     1. Shift + H
+    *2. Ctrl + K
+     3. Ctrl + H
+     4. Shift + K
+
+n97 (Computer Awareness / Fundamentals #7) [qfigure] ans=1:Right alignment
+  Q: Select the correct option based on the image given below.
+     1. Justifying
+    *2. Right alignment
+     3. Centre of text
+     4. Left alignment
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=1:Page layout (portrait or landscape)
+  Q: What does the ‘Orientation’ option in the Page Setup menu in Microsoft Word 365 allow you to change?
+     1. Text alignment
+    *2. Page layout (portrait or landscape)
+     3. Font style
+     4. Page size
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=1:Extranet
+  Q: Which of the following is a private network that is typically open to external parties, such as business partners, suppliers, and key customers?
+     1. Telnet
+    *2. Extranet
+     3. Intranet
+     4. Internet
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=3:In the ‘Sort’ dialog box, select the ‘Ascending’ option in the ‘Order’ section.
+  Q: Which of the following is the correct way to sort a range of cells in ascending order in MS Excel 365?
+     1. Select the range of cells and press ‘Ctrl + Shift + S’.
+     2. Click on the ‘Review’ tab and select ‘Sort’.
+     3. Click on the ‘OK’ button.
+    *4. In the ‘Sort’ dialog box, select the ‘Ascending’ option in the ‘Order’ section.

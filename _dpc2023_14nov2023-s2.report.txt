@@ -1,0 +1,664 @@
+PDF: D:\Sazid\AajExam\Exams PYQ's\Delhi Police Constable\2023\november\14\shift-2\Delhi Police Constable 2023 Nov 14 (Shift 2) Question Paper with Answers PDF.pdf
+slug: 14nov2023-s2
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 79, 'figural': 12, 'qfigure': 9}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=0:Dhana Nanda.
+  Q: Who was defeated by Chandragupta Maurya in order to found the Maurya dynasty?
+    *1. Dhana Nanda.
+     2. Bimbisara
+     3. Mahapadma Nanda
+     4. Ajatshatru
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=2:Exclusive Original
+  Q: Any dispute between the Government of India and one or more States or between the Government of India and any State or States comes under ___________________ ju
+     1. Advisory
+     2. Appellate
+    *3. Exclusive Original
+     4. Writ
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=0:Rajasthan
+  Q: Kajli Teej is the cultural festival of which Indian state?
+    *1. Rajasthan
+     2. Goa
+     3. West Bengal
+     4. Maharashtra
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=2:Senior-most judge of High Court available
+  Q: In whose presence does the Governor take oath or make affirmation in case of the absence of the Chief Justice of the High Court?
+     1. Nominated judge by President
+     2. Secretary of State Legislature
+    *3. Senior-most judge of High Court available
+     4. Speaker of State legislature
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=3:Mera Khaata, Bhagya Vidhaata
+  Q: What is the slogan of the Pradhan Mantri Jan Dhan Yojana?
+     1. MeraAdhikar, MeraKhaata
+     2. MeraKhaata, MeraAdhikar
+     3. Mera Paisa, Mere Bank Me
+    *4. Mera Khaata, Bhagya Vidhaata
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=2:Jain
+  Q: According to Census 2011 of India, which religion recorded highest literacy rate from following?
+     1. Hindu
+     2. Muslim
+    *3. Jain
+     4. Sikh
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=3:Dr. Babasaheb Ambedkar
+  Q: In 1932, the Poona Pact was signed between Mahatma Gandhi and _________.
+     1. C. Natesa Mudaliar
+     2. Taravath Madhavan Nair
+     3. Ramaswami Naicker-Periyar
+    *4. Dr. Babasaheb Ambedkar
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=3:1992
+  Q: In which year did India adopt a dual exchange rate for the interim period?
+     1. 1994
+     2. 1990
+     3. 1996
+    *4. 1992
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=2:Jaishankar Prasad
+  Q: The Hindi novel ‘Indrajal’ is written by:
+     1. Ramdhari Singh Dinkar
+     2. Harivansh Rai Bachchan
+    *3. Jaishankar Prasad
+     4. Namvar Singh
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=3:it has the largest flower in the plant kingdom
+  Q: Rafflesia arnoldii is famous because:
+     1. it has the thickest trunk
+     2. it has the largest leaves in the plant kingdom
+     3. it is the tallest plant in the plant kingdom
+    *4. it has the largest flower in the plant kingdom
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=1:proceeds from disinvestment of Central Public Sector Undertakings
+  Q: National Investment Fund in India is a corpus fund that mobilises its financial receipts from _____________.
+     1. proceeds of profits of Central Public Sector Undertakings
+    *2. proceeds from disinvestment of Central Public Sector Undertakings
+     3. savings of General Provident Fund
+     4. contributory pension scheme
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=0:1951
+  Q: When did India host the Asian Games for the first time?
+    *1. 1951
+     2. 1954
+     3. 1962
+     4. 1990
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=1:Sedimentary rocks
+  Q: Destruction, weathering, dissolving, rainfall, and lithification are the major geological processes that contribute to the formation of which of the following r
+     1. Igneous rocks
+    *2. Sedimentary rocks
+     3. Sub-metamorphic rocks
+     4. Metamorphic rocks
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=2:A, B and C
+  Q: Which of the following statements are correct regarding festivals followed in Christianity? A. Easter is the day celebrated for the ‘Resurrection of Jesus Chris
+     1. A and C only
+     2. B and C only
+    *3. A, B and C
+     4. A and B only
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=0:IDBI
+  Q: Which of the following is NOT a key player in the microfinance sector?
+    *1. IDBI
+     2. Regional rural banks
+     3. Small finance banks
+     4. Commercial banks
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=2:Muhammad Bin Tughluq
+  Q: The Begumpuri mosque was built during the reign of Sultan ___________.
+     1. Ghiyasuddin Balban
+     2. Qutbuddin Aybak
+    *3. Muhammad Bin Tughluq
+     4. Jalaluddin Khalji
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=2:Being a custodian of the early dance form of Bharatnatyam
+  Q: R Muthukannammal was conferred the Padma Shri award in 2022. Which of the following is her contribution?
+     1. Working with Orissa’s poor and backward communities
+     2. Specializing in the study of Indian society
+    *3. Being a custodian of the early dance form of Bharatnatyam
+     4. Playing a key role in powering India’s Blue Revolution
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=3:Ministry of Tribal Affairs
+  Q: Which of the following ministries collaborated with NCERT on a joint mission for the NISHTHA capacity-building programme for Eklavya school teachers and princip
+     1. Ministry of Skill Development and Entrepreneurship
+     2. Ministry of Minority Affairs
+     3. Ministry of Education
+    *4. Ministry of Tribal Affairs
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=1:48
+  Q: What is the molecular mass of an ozone molecule?
+     1. 32
+    *2. 48
+     3. 16
+     4. 18
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=1:Tamil
+  Q: The famous south Indian epic “Silappadikaram” was originally written in ________ language.
+     1. Sanskrit
+    *2. Tamil
+     3. Malayalam
+     4. Telugu
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=3:Himachal Pradesh
+  Q: Jhali is the folk dance of which Indian state?
+     1. Uttar Pradesh
+     2. Madhya Pradesh
+     3. Bihar
+    *4. Himachal Pradesh
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=3:Sufiana
+  Q: Musician Bhajan Sopori was a Santoor maestro from the ______________ Gharana.
+     1. Maihar
+     2. Benaras
+     3. Punjab
+    *4. Sufiana
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=0:Dissolution of the Rajya Sabha
+  Q: Which of the following is NOT a feature of India’s parliamentary government?
+    *1. Dissolution of the Rajya Sabha
+     2. Presence of nominal and real executives
+     3. Membership of the ministers in the legislature
+     4. Majority party rule
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=2:3
+  Q: The Harappan city of Dholavira was divided into how many parts?
+     1. 2
+     2. 4
+    *3. 3
+     4. 5
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=2:Gram
+  Q: Identify the crop which is grown in Rabi season in North India from the following.
+     1. Rice
+     2. Cotton
+    *3. Gram
+     4. Bajra
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=1:Bal Gangadhar Tilak
+  Q: ‘Freedom is my birth right and I shall have it’. Who among the following said this?
+     1. Lala Lajpat Rai
+    *2. Bal Gangadhar Tilak
+     3. Aurobindo Ghosh
+     4. Bipin Chandra pal
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=0:Ibrahim Lodhi
+  Q: The first battle of Panipat was fought between Babur and _________ .
+    *1. Ibrahim Lodhi
+     2. Maharana Pratap
+     3. Muhammad bin Tughlaq
+     4. Sikandar Lodhi
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=2:4 years
+  Q: The period between two FIFA Football World Cups is ________.
+     1. 3 years
+     2. 5 years
+    *3. 4 years
+     4. 6 years
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=3:Uttar Pradesh
+  Q: Ajita Srivastava is a famous folk singer from _________ and she received the Padma Shri in 2022.
+     1. Maharashtra
+     2. Gujarat
+     3. Madhya Pradesh
+    *4. Uttar Pradesh
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=1:Barak
+  Q: The Katakhal, Jiri, Chiri, Modhura, Longai, Sonai, Rukni and Singla are the main tributaries of which river?
+     1. Chambal
+    *2. Barak
+     3. Damodar
+     4. Ghaghra
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=1:Road transport
+  Q: In India, which mode of transport provide door to door services?
+     1. Waterways
+    *2. Road transport
+     3. Railways
+     4. Airways
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=0:Anita Desai
+  Q: A novel based on the story of a family named ‘Fasting, Feasting’ was written by whom among the following?
+    *1. Anita Desai
+     2. Arundhati Roy
+     3. Arvind Adiga
+     4. Kiran Desai
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=1:2015
+  Q: Pradhan Mantri Awas Yojana–Urban (PMAY-U) was launched in the year ________ by the Government of India.
+     1. 2021
+    *2. 2015
+     3. 2017
+     4. 2019
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=0:Article 42
+  Q: Which of the following Articles of the Indian Constitution is related with provision for just and humane conditions of work and maternity relief?
+    *1. Article 42
+     2. Article 45
+     3. Article 44
+     4. Article 43
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=3:equal justice and free legal aid
+  Q: Article 39A of the Constitution of India gives the idea of:
+     1. right to work, to education and to public assistance in certain cases
+     2. provisions for just and humane conditions of work
+     3. living wage, etc., for workers
+    *4. equal justice and free legal aid
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=1:Secretary General
+  Q: Who is the Head of the Secretariat of each house of the Parliament?
+     1. Speaker
+    *2. Secretary General
+     3. President
+     4. Deputy Speaker
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=0:Maharashtra and Bihar
+  Q: According to the census of India 2011, which group of states from the following recorded the highest population?
+    *1. Maharashtra and Bihar
+     2. Tamil Nadu and Karnataka
+     3. West Bengal and Madhya Pradesh
+     4. Bihar and West Bengal
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=2:Mayilattam
+  Q: Which of the following dances of South India is known as peacock dance?
+     1. Garadi
+     2. Padayani
+    *3. Mayilattam
+     4. Kummi
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=2:Yamuna River is a tributary of Ganga River.
+  Q: Which of the following statements about Indian river systems is correct?
+     1. The Mahanadi river flows through the state of Chhattisgarh only.
+     2. Godavari river flows through Haryana state.
+    *3. Yamuna River is a tributary of Ganga River.
+     4. Sone River originates in Punjab.
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=3:Investment in basic and heavy industries
+  Q: Which of the following statements is true with regard to preference given in most Five- Year Plans in India?
+     1. Extensive Promotion of private sector entrepreneurship
+     2. Control of prices
+     3. Regulation of financial sector
+    *4. Investment in basic and heavy industries
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=1:1972
+  Q: When was Singer and Nicolson's fluid mosaic model accepted as the foundational model for the interpretation of existing data on membrane proteins and lipids, an
+     1. 1952
+    *2. 1972
+     3. 1942
+     4. 1982
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=2:34
+  Q: How many temples and monasteries are there in Ellora caves?
+     1. 18
+     2. 29
+    *3. 34
+     4. 23
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=1:Rowlatt Act
+  Q: Which of the following gave the British Indian government enormous powers to repress political activities, and allowed the detention of political prisoners with
+     1. Indian Slavery Act
+    *2. Rowlatt Act
+     3. Indian Contract Act
+     4. Negotiable Instruments Act
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=0:carbon dioxides
+  Q: Autotrophs can fix _______.
+    *1. carbon dioxides
+     2. carbon monoxide
+     3. methane
+     4. oxygen
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=0:Sir Dorabji Tata
+  Q: Who among the following was the first President of the Indian Olympic Association (IOA)?
+    *1. Sir Dorabji Tata
+     2. Dr. AG Noehren
+     3. Raja Bhalender Singh
+     4. Maharaja Bhupinder Singh
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=1:Madhya Pradesh
+  Q: Ram Sahay Panday got Padma Shri for promoting the dance form “Raai” from Bundelkhand region. Which State does this dance form belong to?
+     1. Rajasthan
+    *2. Madhya Pradesh
+     3. Bihar
+     4. Chhattisgarh
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=3:1 April 1935
+  Q: Reserve Bank of India (RBI) was established on:
+     1. 1 April 1945
+     2. 1 April 1925
+     3. 1 April 1955
+    *4. 1 April 1935
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=2:गुरु घासीदास
+  Q: निम्नलिखित में से किसने मध्य भारत में चमड़ा श्रमिकों की बेहतरी के लिए सतनामी आंदोलन शुरू किया था?
+     1. बी.आर. अंबेडकर
+     2. महात्मा गांधी
+    *3. गुरु घासीदास
+     4. स्वामी विवेकानंद
+
+n49 (General Knowledge / Current Affairs #49) [text] ans=0:specialised defensive player
+  Q: In a volleyball game, ‘libero’ is a ________.
+    *1. specialised defensive player
+     2. blocking expert
+     3. specialised attacking player
+     4. smashing expert
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=3:British
+  Q: The parliamentary system of the Government in India is based on the pattern of which of the following Parliamentary Governments?
+     1. Russian
+     2. Canadian
+     3. USA
+    *4. British
+
+n51 (Reasoning / Logical Ability #1) [figural] ans=2:3
+  Q: Which figure should replace the question mark (?) if the series were to be continued?
+
+n52 (Reasoning / Logical Ability #2) [qfigure] ans=0:3
+  Q: Six numbers 1, 2, 3, 4, 5 and 6 are written on different faces of a dice. Two positions of this dice are shown in the figure. Find the number on the face opposi
+    *1. 3
+     2. 4
+     3. 1
+     4. 6
+
+n53 (Reasoning / Logical Ability #3) [figural] ans=1:2
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern.
+
+n54 (Reasoning / Logical Ability #4) [text] ans=2:× and −
+  Q: Which two signs should be interchanged to make the given equation correct? 156 ÷ 12 − 4 × 65 + 87 = 74
+     1. + and −
+     2. = and ×
+    *3. × and −
+     4. + and =
+
+n55 (Reasoning / Logical Ability #5) [text] ans=0:C
+  Q: छह दोस्त - A, B, C, D, E और F - एक वृत्ताकार मेज के परितः मेज के केंद्र की ओर मुख करके बैठे थे। वे एक दूसरे से समान दूरी पर बैठे थे। A, B के दाएं तीसरे स्थान पर
+    *1. C
+     2. E
+     3. A
+     4. F
+
+n56 (Reasoning / Logical Ability #6) [text] ans=2:(35, 125, 10)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the following sets. (NOTE : Operations should be performed on the whole nu
+     1. (39, 120, 17)
+     2. (25, 60, 12)
+    *3. (35, 125, 10)
+     4. (40, 75, 15)
+
+n57 (Reasoning / Logical Ability #7) [text] ans=3:VGI
+  Q: Which of the following terms will replace the question mark (?) in the given series? MAF, PCG, SEH, ?, YIJ
+     1. UFI
+     2. RHI
+     3. WHI
+    *4. VGI
+
+n58 (Reasoning / Logical Ability #8) [figural] ans=1:2
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n59 (Reasoning / Logical Ability #9) [text] ans=2:32
+  Q: In a certain code language, ‘WAR’ is written as ‘39’ and ‘ZIP’ is written as ‘30’. How will ‘YES’ be written in that language?
+     1. 36
+     2. 34
+    *3. 32
+     4. 37
+
+n60 (Reasoning / Logical Ability #10) [qfigure] ans=3:1
+  Q: Three different positions of the same dice are shown. Find the number on the face opposite to the face showing ‘4’.
+     1. 2
+     2. 5
+     3. 6
+    *4. 1
+
+n61 (Reasoning / Logical Ability #11) [figural] ans=2:3
+  Q: Select the option in which the given figure is embedded (rotation is NOT allowed).
+
+n62 (Reasoning / Logical Ability #12) [text] ans=1:Only conclusion I follows
+  Q: Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with co
+     1. Only conclusion II follows
+    *2. Only conclusion I follows
+     3. Neither conclusion I nor II follows
+     4. Both conclusions I and II follow
+
+n63 (Reasoning / Logical Ability #13) [text] ans=1:27
+  Q: Select the option that is related to the fourth number in the same way as the first number is related to the second number and the fifth number is related to th
+     1. 40
+    *2. 27
+     3. 37
+     4. 31
+
+n64 (Reasoning / Logical Ability #14) [qfigure] ans=0:30
+  Q: Select the correct option based on the image given below.
+    *1. 30
+     2. 28
+     3. 24
+     4. 32
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=2:3
+  Q: Select the correct mirror image of the given figure when the mirror is placed at 'AB' as shown.
+
+n66 (Reasoning / Logical Ability #16) [qfigure] ans=3:B
+  Q: Three different positions of the same dice are shown, the faces of which are marked with the letters A, B, C, D, E and F. Select the letter that will be on the 
+     1. F
+     2. A
+     3. C
+    *4. B
+
+n67 (Reasoning / Logical Ability #17) [text] ans=3:GBPW
+  Q: Select the option that is related to the fifth letter cluster in the same way as the second letter cluster is related to the first letter cluster and the fourth
+     1. PLEX
+     2. GMNA
+     3. JFBT
+    *4. GBPW
+
+n68 (Reasoning / Logical Ability #18) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n69 (Reasoning / Logical Ability #19) [qfigure] ans=0:D
+  Q: Six letters A, B, C, D, E and F are written on different faces of a dice. Two different positions of this dice are shown in the figure. Select the letter that w
+    *1. D
+     2. C
+     3. F
+     4. A
+
+n70 (Reasoning / Logical Ability #20) [text] ans=1:70
+  Q: Select the number from the given options that can replace the question mark (?) in the following series. 40, 50, 30, 60, 20, ?
+     1. 40
+    *2. 70
+     3. 50
+     4. 80
+
+n71 (Reasoning / Logical Ability #21) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n72 (Reasoning / Logical Ability #22) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n73 (Reasoning / Logical Ability #23) [qfigure] ans=3:1
+  Q: Three numbers, 1, 2 and 3, and three letters, X, Y and Z, are written on the different faces of a dice. Two positions of this dice are shown in the given figure
+     1. X
+     2. Z
+     3. 3
+    *4. 1
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=2:3
+  Q: Select the correct option based on the image given below.
+
+n75 (Reasoning / Logical Ability #25) [text] ans=1:×, –, +, ÷, =
+  Q: Select the correct combination of mathematical signs that can sequentially replace the * signs and balance the given expression. 13 * 7 * 32 * 56 * 4 * 73
+     1. +, ×, –, ÷, =
+    *2. ×, –, +, ÷, =
+     3. –, ÷, +, ×, =
+     4. –, ×, +, ÷, =
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [qfigure] ans=0:0.092
+  Q: Select the correct option based on the image given below.
+    *1. 0.092
+     2. 0.0081
+     3. 0.27
+     4. 1.8
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [figural] ans=1:2
+  Q: A, B and C can complete a piece of work in 8, 10 and 12 days, respectively. In how many days would all of them complete the same work, working together?
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [text] ans=0:180
+  Q: A solid copper sphere of diameter 30 cm is drawn into a wire of diameter 10 cm. Find the length of the wire (in cm).
+    *1. 180
+     2. 120
+     3. 240
+     4. 300
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=2:125%
+  Q: If 45% of Ram’s money is added to 50% of Soham’s money, then the total amount will be 86% of Soham’s money. What percentage of Ram’s money did Soham have?
+     1. 137%
+     2. 85%
+    *3. 125%
+     4. 95%
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [text] ans=2:1111
+  Q: What is the product of the 5th prime number and the prime number immediately greater than 100?
+     1. 1067
+     2. 1717
+    *3. 1111
+     4. 1261
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [qfigure] ans=0:225
+  Q: Select the correct option based on the image given below.
+    *1. 225
+     2. 250
+     3. 275
+     4. 200
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=3:2,02,800
+  Q: The initial population of a country is 1,87,500. If the birth and the death rates are 13% and 9%, respectively, then find the population of the country after 2 
+     1. 2,02,700
+     2. 2,02,900
+     3. 2,03,000
+    *4. 2,02,800
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [figural] ans=3:4
+  Q: A trip to a destination is made in the following way: a) 550 km by train at an average speed of 55 km/h b) 4500 km by plane at an average speed of 500 km/h c) 4
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [qfigure] ans=3:2
+  Q: Select the correct option based on the image given below.
+     1. 4
+     2. 3
+     3. 7
+    *4. 2
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [text] ans=0:22%
+  Q: If the price of tea goes up by 28%, then by what percentage (correct to the nearest whole number) should its consumption be reduced so that the expenditure on i
+    *1. 22%
+     2. 27%
+     3. 21%
+     4. 28%
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [figural] ans=0:1
+  Q: What is the area of a triangle (in "cm2" ) having sides of length 24 cm, 17 cm and 9 cm?
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [text] ans=0:5%
+  Q: If marked price is 75% more than the cost price and a discount of 40% is allowed on the marked price, then percentage profit is:
+    *1. 5%
+     2. 8%
+     3. 3%
+     4. 7%
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=3:7.4
+  Q: Find the average of the first five composite numbers.
+     1. 7.8
+     2. 6.8
+     3. 8.2
+    *4. 7.4
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=3:80
+  Q: A vertical pole of length 8.3 m casts a shadow of length 4.15 m. Find the height of the tree that casts a 40 m long shadow under similar conditions (in m).
+     1. 60
+     2. 70
+     3. 100
+    *4. 80
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=3:14.29% Loss
+  Q: Arun bought 150 guavas for ₹525 and sold them at the rate of ₹36 per dozen. What is the profit or loss percentage of Arun (correct up to two decimal places)?
+     1. 16.67% Loss
+     2. 14.29% Profit
+     3. 16.67% Profit
+    *4. 14.29% Loss
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=0:Hypertext Transfer Protocol
+  Q: Which of the following is the foundation of data communication on the web, enabling the transfer of web page content?
+    *1. Hypertext Transfer Protocol
+     2. Domain Name Server
+     3. World Wide Web
+     4. Uniform Resource Locator
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=2:न तो (1) और न ही (2)
+  Q: एमएस वर्ड 365 (MS Word 365) से संबंधित निम्न कथनों के आधार पर कौन-सा विकल्प सही है? 1) Ctrl + X का उपयोग डॉक्‍यूमेंट को कॉपी करने के लिए किया जाता है। 2) Ctrl+V
+     1. दोनों (1) और (2)
+     2. केवल (1)
+    *3. न तो (1) और न ही (2)
+     4. केवल (2)
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=2:F2
+  Q: Which of the following shortcut keys is used in MS Excel 365 to make the cell in edit mode, allowing you to make changes?
+     1. Ctrl + F1
+     2. F1
+    *3. F2
+     4. Ctrl + F2
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=3:TRIM
+  Q: एमएस एक्सेल 365 (MS Excel 365) का निम्नलिखित में से कौन-सा फ़ंंक्शन, प्रत्येक वैल्‍यू (value) के बीच एक स्पेस को छोड़ते हुए अनियमित स्पेस को हटाता है?
+     1. AVERAGE
+     2. SUM
+     3. VLOOKUP
+    *4. TRIM
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=2:फ़ॉन्ट साइज़ बढ़ाएँ
+  Q: MS-Word 365 में निम्नलिखित में से किस विकल्प से आप चयनित टेक्स्ट के फ़ॉन्ट साइज़ को, फ़ॉन्ट साइज़ सूची में उपलब्ध अगले बड़े साइज़ में परिवर्तित कर सकते हैं?
+     1. इटैलिक्स
+     2. बोल्ड
+    *3. फ़ॉन्ट साइज़ बढ़ाएँ
+     4. फ़ॉन्ट साइज़ कम करें
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=2:Print area
+  Q: In MS Excel 365, what is the term for the area that contains specific and formatted data in MS Excel for printing?
+     1. View
+     2. Print preview
+    *3. Print area
+     4. Print margin
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=1:To organize information into lists or sequences.
+  Q: In MS Word 365 What is the primary purpose of using bullets and numbering in document formatting?
+     1. To indicate the importance of specific text.
+    *2. To organize information into lists or sequences.
+     3. To adjust the margins and spacing of the document.
+     4. To highlight text with a different font or colour.
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=1:Plain Grid
+  Q: Which of the following is an example of a table style in Microsoft Word 365?
+     1. Chicago Manual of Style
+    *2. Plain Grid
+     3. MLA (Modern Language Association)
+     4. APA (American Psychological Association)
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=0:ई-मेल (Email)
+  Q: निम्नलिखित में से कौन-सा, यूजर्स के बीच संदेशों के आदान-प्रदान के लिए एक कंप्यूटर-आधारित एप्लिकेशन है?
+    *1. ई-मेल (Email)
+     2. क्रोम (chrome)
+     3. बिंग (Bing)
+     4. मोज़िला (Mozilla)
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=3:एमएस-वर्ड
+  Q: नया खाली डॉक्यूमेंट बनाने का तरीका निम्नलिखित में से कौन-सा है?
+     1. एमएस-एक्सेल
+     2. एमएस आउटलुक
+     3. एमएस-पावरप्वाइंट
+    *4. एमएस-वर्ड

@@ -1,0 +1,652 @@
+PDF: D:/Sazid/AajExam/Exams PYQ's/Delhi Police Constable/2020/november/17/shift-2/Delhi Police Constable 2023 Nov 17 (Shift 2) Question Paper with Answers English PDF.pdf
+slug: 17nov2023-s2
+Total questions: 100
+Section counts:
+  General Knowledge / Current Affairs: 50
+  Reasoning / Logical Ability: 25
+  Numerical Ability (Quantitative Aptitude): 15
+  Computer Awareness / Fundamentals: 10
+Kinds: {'text': 79, 'qfigure': 6, 'figural': 15}
+Problems (0):
+
+--- all questions ---
+
+n1 (General Knowledge / Current Affairs #1) [text] ans=3:Jashan-e-Mihragan
+  Q: Which of the following festivals is celebrated primarily by the Parsi Community?
+     1. Songkran
+     2. Milad-un-Nabi
+     3. Deepawali
+    *4. Jashan-e-Mihragan
+
+n2 (General Knowledge / Current Affairs #2) [text] ans=0:Increased imports
+  Q: Which of the following was NOT an effect of devaluation of the rupee in 1991 to make an international adjustment of Indian currency?
+    *1. Increased imports
+     2. Increased exports
+     3. Raised the influx of foreign capital
+     4. Decreased imports
+
+n3 (General Knowledge / Current Affairs #3) [text] ans=1:Five
+  Q: How many writs are guaranteed under Article 32 of the Indian Constitution?
+     1. Six
+    *2. Five
+     3. Four
+     4. Seven
+
+n4 (General Knowledge / Current Affairs #4) [text] ans=1:Dadabhai Naoroji
+  Q: Who was the author of the book titled ‘Poverty and Un-British Rule in India’?
+     1. Sardar Vallabhbhai Patel
+    *2. Dadabhai Naoroji
+     3. Mahatma Gandhi
+     4. Subhash Chandra Bose
+
+n5 (General Knowledge / Current Affairs #5) [text] ans=1:Thanjavur
+  Q: Vijayalaya, who belonged to the ancient chiefly family of the Cholas from Uraiyur, captured the delta from the Muttaraiyar in the middle of the 9th century and 
+     1. Kanchipuram
+    *2. Thanjavur
+     3. Vengi
+     4. Darasuram
+
+n6 (General Knowledge / Current Affairs #6) [text] ans=1:Pakhawaj
+  Q: Totaram Sharma, Pandit Ayodhya Prasad, Gopal Das and Babu Ram Shanker Pagaldas are noted players of which of the following instruments?
+     1. Sarod
+    *2. Pakhawaj
+     3. Mridangam
+     4. Sarangi
+
+n7 (General Knowledge / Current Affairs #7) [text] ans=1:Satavahana
+  Q: In Ancient India, which of the following dynasties was empowered in Deccan by Gautamiputra Satakarni?
+     1. Saka
+    *2. Satavahana
+     3. Pahlava
+     4. Kushana
+
+n8 (General Knowledge / Current Affairs #8) [text] ans=1:1950
+  Q: In which year was the Basketball Federation of India established?
+     1. 1920
+    *2. 1950
+     3. 1947
+     4. 1951
+
+n9 (General Knowledge / Current Affairs #9) [text] ans=3:Guru Gobind Singh
+  Q: Who among the following Gurus of Sikh religion was the last Guru?
+     1. Guru Angad
+     2. Guru Amar Das
+     3. Guru Hargobind
+    *4. Guru Gobind Singh
+
+n10 (General Knowledge / Current Affairs #10) [text] ans=3:Udham Singh
+  Q: Who among the following was not among the convicts sentenced to death by the British Government of India in the Lahore conspiracy case?
+     1. Sukhdev Thapar
+     2. Shivaram Rajguru
+     3. Bhagat Singh
+    *4. Udham Singh
+
+n11 (General Knowledge / Current Affairs #11) [text] ans=2:Census Act 1948
+  Q: The decennial census of India is conducted under which Census Act?
+     1. Census Act 2001
+     2. Census Act 1955
+    *3. Census Act 1948
+     4. Census Act 2010
+
+n12 (General Knowledge / Current Affairs #12) [text] ans=3:Dadra and Nagar Haveli
+  Q: According to Census of India 2011, which union territories have the lowest literacy rate?
+     1. Chandigarh
+     2. Lakshadweep
+     3. Andaman and Nicobar
+    *4. Dadra and Nagar Haveli
+
+n13 (General Knowledge / Current Affairs #13) [text] ans=3:concrete
+  Q: In Indo Islamic construction, _________and lime mortar was an important factor in construction.
+     1. stone
+     2. mud
+     3. wood
+    *4. concrete
+
+n14 (General Knowledge / Current Affairs #14) [text] ans=2:1950-1954
+  Q: As of November 2022, in which of the following periods in Indian history was the Republic Day parade NOT performed at the Rajpath(now called Kartavya Path)?
+     1. 2006-2008
+     2. 2000-2004
+    *3. 1950-1954
+     4. 1990-1994
+
+n15 (General Knowledge / Current Affairs #15) [text] ans=3:26th January 1930
+  Q: It was decided to celebrate the Republic day on 26th January every year by the Constitution makers to pay homage to the ‘Purna Swaraj’ declaration which was pro
+     1. 26th January 1932
+     2. 26th January 1931
+     3. 26th January 1929
+    *4. 26th January 1930
+
+n16 (General Knowledge / Current Affairs #16) [text] ans=3:गहन क्षेत्र (The profundal zone)
+  Q: तालाब पारिस्थितिकी तंत्र का सबसे गहरा, वनस्पति-रहित और दलदली क्षेत्र क्या कहलाता है?
+     1. उष्णकटिबंधीय क्षेत्र (The tropical zone)
+     2. समशीतोष्ण क्षेत्र (The temperate zone)
+     3. लॉटिक क्षेत्र (The lotic zone)
+    *4. गहन क्षेत्र (The profundal zone)
+
+n17 (General Knowledge / Current Affairs #17) [text] ans=0:USA
+  Q: In the year 2021-22, which country was the largest importer of Jute from India?
+    *1. USA
+     2. France
+     3. Italy
+     4. Japan
+
+n18 (General Knowledge / Current Affairs #18) [text] ans=2:Agriculture
+  Q: _________ is the largest employer of labour force in India.
+     1. Financial Services Sector
+     2. Cottage Industries
+    *3. Agriculture
+     4. Small Scale Industries
+
+n19 (General Knowledge / Current Affairs #19) [text] ans=2:Annie Besant
+  Q: Who popularised the movement of Theosophical Society in India?
+     1. Keshav Chandra Sen
+     2. Ramkrishna Bhandarkar
+    *3. Annie Besant
+     4. Swami Vivekananda
+
+n20 (General Knowledge / Current Affairs #20) [text] ans=2:Narmada
+  Q: Which of the following Peninsular rivers flows westward?
+     1. Krishna
+     2. Kaveri
+    *3. Narmada
+     4. Godavari
+
+n21 (General Knowledge / Current Affairs #21) [text] ans=0:परमादेश (Mandamus)
+  Q: निम्नलिखित में से कौन-सा आज्ञापत्र किसी लोकसेवक को उसके आधिकारिक कर्तव्योंों को ठीक से करने या शक्ति का दुरुपयोग न करने का आदेश देने के लिए न्यायालय द्वारा जारी
+    *1. परमादेश (Mandamus)
+     2. बन्दी प्रत्यक्षीकरण (Habeas corpus )
+     3. निषेधाज्ञा (Prohibition)
+     4. अधिकार पृच्छा (Quo-warranto)
+
+n22 (General Knowledge / Current Affairs #22) [text] ans=1:Urban males
+  Q: As per Census 2011, which Indian demographic group typically exhibits a higher literacy rate?
+     1. Urban females
+    *2. Urban males
+     3. Rural males
+     4. Rural females
+
+n23 (General Knowledge / Current Affairs #23) [text] ans=3:Ultracentrifugation
+  Q: Which method is used to separate ribosomes from the cell?
+     1. Chromatography
+     2. Distillation
+     3. Filtration
+    *4. Ultracentrifugation
+
+n24 (General Knowledge / Current Affairs #24) [text] ans=1:Angiosperm
+  Q: Which of the following is the most dominant flora of the plant kingdom?
+     1. Bryophyta
+    *2. Angiosperm
+     3. Gymnosperm
+     4. Pteridophyte
+
+n25 (General Knowledge / Current Affairs #25) [text] ans=0:Vishwanathan Anand
+  Q: Who among the following is the first ever recipient of Rajiv Gandhi Khel Ratna Award?
+    *1. Vishwanathan Anand
+     2. Dhyan Chand
+     3. Virat Kohli
+     4. Sunil Chhetri
+
+n26 (General Knowledge / Current Affairs #26) [text] ans=2:Swachh Bharat Mission (Urban) 2.0
+  Q: A new phase of which initiative of the Government of India was launched in 2022 with the overall vision of creating ‘Garbage Free Cities’ and with the new compo
+     1. Wastewater Management Framework in India
+     2. Rural Open Defecation Free Initiative
+    *3. Swachh Bharat Mission (Urban) 2.0
+     4. Swachh Bharat Mission (Urban) 3.0
+
+n27 (General Knowledge / Current Affairs #27) [text] ans=1:Interior of the earth
+  Q: Which of the following causes the Tsunami waves?
+     1. Exterior of the earth
+    *2. Interior of the earth
+     3. Interior of the moon
+     4. Exterior of the moon
+
+n28 (General Knowledge / Current Affairs #28) [text] ans=0:Change in interest rate
+  Q: Which of the following is NOT a component of fiscal reforms?
+    *1. Change in interest rate
+     2. Public expenditure reforms
+     3. Taxation reforms
+     4. Control of public debt
+
+n29 (General Knowledge / Current Affairs #29) [text] ans=1:India
+  Q: In the year 2017, which of the following countries hosted the Under-17 Football World Cup?
+     1. United Arab Emirates
+    *2. India
+     3. United States of America
+     4. Thailand
+
+n30 (General Knowledge / Current Affairs #30) [text] ans=3:1980
+  Q: When did India win its last gold medal in Hockey in the Olympics?
+     1. 1972
+     2. 1976
+     3. 1968
+    *4. 1980
+
+n31 (General Knowledge / Current Affairs #31) [text] ans=0:The President of India
+  Q: The Chairman of the State Public Service Commission can be removed by:
+    *1. The President of India
+     2. The Prime Minister of India
+     3. The Governor of the State
+     4. The Chief Minister of the State
+
+n32 (General Knowledge / Current Affairs #32) [text] ans=1:Aurangabad
+  Q: Where are the Ellora caves located?
+     1. Fatehpur Sikri
+    *2. Aurangabad
+     3. Indore
+     4. Delhi
+
+n33 (General Knowledge / Current Affairs #33) [text] ans=3:Kashi Nath Singh
+  Q: Set in the holy city of Varanasi, ‘Kashi Ka Assi’ is written by:
+     1. Kamleshwar
+     2. Kedar Nath Singh
+     3. Amrita Pritam
+    *4. Kashi Nath Singh
+
+n34 (General Knowledge / Current Affairs #34) [text] ans=0:Dholak
+  Q: Which of the following percussion instruments is used in the popular folk dance ‘Lavani’?
+    *1. Dholak
+     2. Xylophone
+     3. Piano
+     4. Sleigh Bells
+
+n35 (General Knowledge / Current Affairs #35) [text] ans=3:20
+  Q: To file the nomination for the post of Vice President, the candidate must be proposed by at least _________ electors.
+     1. 25
+     2. 30
+     3. 40
+    *4. 20
+
+n36 (General Knowledge / Current Affairs #36) [text] ans=2:2011-12
+  Q: The Index of Industrial Production (IIP) is an index that shows the growth rates in different industry groups of the economy in a fixed period of time. What is 
+     1. 2010-11
+     2. 2012-13
+    *3. 2011-12
+     4. 2004-05
+
+n37 (General Knowledge / Current Affairs #37) [text] ans=2:baking powder
+  Q: A baking student started baking a cake. After some time he realised his cake was not rising and hard. This is because he forgotten to add the following ingredie
+     1. milk
+     2. more cake flour
+    *3. baking powder
+     4. vanilla extract
+
+n38 (General Knowledge / Current Affairs #38) [text] ans=3:Upper mantle
+  Q: Which region is the source of basaltic magma?
+     1. Transition region
+     2. Lower mantle
+     3. The core
+    *4. Upper mantle
+
+n39 (General Knowledge / Current Affairs #39) [text] ans=1:Nirad C Chaudhuri
+  Q: Who among the following wrote, ‘The Autobiography of an Unknown Indian’?
+     1. Swami Rama
+    *2. Nirad C Chaudhuri
+     3. Prakash Tandon
+     4. BR Ambedkar
+
+n40 (General Knowledge / Current Affairs #40) [text] ans=1:Part IV
+  Q: Which of the following parts of the Indian Constitution deals with the Directive Principles of State Policy?
+     1. Part XX
+    *2. Part IV
+     3. Part XI
+     4. Part XIV
+
+n41 (General Knowledge / Current Affairs #41) [text] ans=0:Rigvedic
+  Q: The Rajas(kings) did not have capital cities, palaces or regular armies, nor did they collect taxes during the _______ period.
+    *1. Rigvedic
+     2. Huna
+     3. Shunga
+     4. Mauryan
+
+n42 (General Knowledge / Current Affairs #42) [text] ans=3:Ningthou Ching-Thang Khomba
+  Q: Famous dance personality Rajarshi Bhagya Chandra is also known as:
+     1. Rewa Prasad Dwivedi
+     2. Bharat Muni
+     3. Bhasa
+    *4. Ningthou Ching-Thang Khomba
+
+n43 (General Knowledge / Current Affairs #43) [text] ans=0:The Portuguese
+  Q: Which foreign power made the Indian pepper trade a royal monopoly?
+    *1. The Portuguese
+     2. The French
+     3. The Dutch
+     4. The Spanish
+
+n44 (General Knowledge / Current Affairs #44) [text] ans=1:miscellaneous
+  Q: Part XIX of the Indian Constitution deals with:
+     1. elections
+    *2. miscellaneous
+     3. emergency provisions
+     4. amendment of the Constitution
+
+n45 (General Knowledge / Current Affairs #45) [text] ans=0:Pandit Ravi Shankar
+  Q: Who among the following received, in 1997, the Japan Art Association’s Praemium Imperiale prize for music?
+    *1. Pandit Ravi Shankar
+     2. Ustad Allarakha Khan
+     3. Pandit Shiv Kumar Sharma
+     4. Ustad Bismillah Khan
+
+n46 (General Knowledge / Current Affairs #46) [text] ans=2:It is the rate at which banks place their funds with the RBI and receive collateral.
+  Q: Which of the following is INCORRECT with respect to repo rate?
+     1. It is a single policy rate to signal the stance of monetary policy to achieve macro- economic objectives of growth with 
+     2. It is a policy rate which is the key lending rate of the central bank, and its nomenclature varies from country to count
+    *3. It is the rate at which banks place their funds with the RBI and receive collateral.
+     4. It is the rate at which the commercial banks borrow funds from the RBI.
+
+n47 (General Knowledge / Current Affairs #47) [text] ans=1:Bharatanatyam
+  Q: Alarmel Valli and Rukmini Devi Arundale are associated with which of the following styles of Indian Dances?
+     1. Kathakali
+    *2. Bharatanatyam
+     3. Kathak
+     4. Kuchipudi
+
+n48 (General Knowledge / Current Affairs #48) [text] ans=0:N Sailaja
+  Q: Select the personality who received the Sangeet Natak Akademi 2021 award for his/her contribution in Kuchipudi.
+    *1. N Sailaja
+     2. Kalamandalam Girija
+     3. Bhuvan Kumar
+     4. Bijay Kumar Jena
+
+n49 (General Knowledge / Current Affairs #49) [qfigure] ans=3:1-c, 2- b, 3-a
+  Q: Select the correct option based on the image given below.
+     1. 1-c, 2- a, 3-b
+     2. 1-a, 2- b, 3-c
+     3. 1-b, 2- c, 3-a
+    *4. 1-c, 2- b, 3-a
+
+n50 (General Knowledge / Current Affairs #50) [text] ans=1:Net domestic product at market price plus net income from abroad
+  Q: Net national product at market price can be defined as:
+     1. Gross national product at market price plus depreciation
+    *2. Net domestic product at market price plus net income from abroad
+     3. Net domestic product at market price minus net income from abroad
+     4. Net domestic product at market price minus depreciation
+
+n51 (Reasoning / Logical Ability #1) [qfigure] ans=1:÷ and +
+  Q: Select the correct option based on the image given below.
+     1. × and +
+    *2. ÷ and +
+     3. − and ×
+     4. ÷ and −
+
+n52 (Reasoning / Logical Ability #2) [text] ans=0:John
+  Q: Six students, Ram, Gopi, Sita, Vimal, Tony and John, are sitting in a straight row facing north. Only two people sit to the left of Sita. Only two people sit be
+    *1. John
+     2. Vimal
+     3. Tony
+     4. Ram
+
+n53 (Reasoning / Logical Ability #3) [text] ans=1:31
+  Q: Select the option that is related to the fourth term in the same way as the first term is related to the second term and the fifth term is related to the sixth 
+     1. 35
+    *2. 31
+     3. 41
+     4. 45
+
+n54 (Reasoning / Logical Ability #4) [figural] ans=0:1
+  Q: Which figure should replace the question mark (?) in the following series to continue the pattern?
+
+n55 (Reasoning / Logical Ability #5) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n56 (Reasoning / Logical Ability #6) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n57 (Reasoning / Logical Ability #7) [text] ans=2:HNBF
+  Q: In a certain code language, ‘EXIT’ is written as ‘FJYU’ and ‘HIDE’ is written as ‘IEJF’. How will ‘GAME’ be written in that language?
+     1. FBND
+     2. HBNF
+    *3. HNBF
+     4. FNBD
+
+n58 (Reasoning / Logical Ability #8) [qfigure] ans=3:3
+  Q: Select the correct option based on the image given below.
+     1. 5
+     2. 7
+     3. 2
+    *4. 3
+
+n59 (Reasoning / Logical Ability #9) [text] ans=1:34
+  Q: Select the number from among the given options that can replace the question mark (?) in the following series. 4, 10, 17, 25, ?, 44
+     1. 32
+    *2. 34
+     3. 33
+     4. 31
+
+n60 (Reasoning / Logical Ability #10) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n61 (Reasoning / Logical Ability #11) [qfigure] ans=2:8
+  Q: Select the correct option based on the image given below.
+     1. 6
+     2. 7
+    *3. 8
+     4. 9
+
+n62 (Reasoning / Logical Ability #12) [qfigure] ans=3:5
+  Q: A cube (dice) has six different numbers drawn over its six faces. Three different positions of this cube are shown in the given figure. Which number is on the f
+     1. 4
+     2. 6
+     3. 2
+    *4. 5
+
+n63 (Reasoning / Logical Ability #13) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n64 (Reasoning / Logical Ability #14) [text] ans=1:(3, 2)
+  Q: Select the set in which the numbers are related in the same way as are the numbers of the following sets. (NOTE : Operations should be performed on the whole nu
+     1. (6, 192)
+    *2. (3, 2)
+     3. (9, 684)
+     4. (12, 153)
+
+n65 (Reasoning / Logical Ability #15) [figural] ans=1:2
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below to complete the pattern.
+
+n66 (Reasoning / Logical Ability #16) [figural] ans=0:1
+  Q: A paper is folded and cut as shown below. How will it appear when unfolded?
+
+n67 (Reasoning / Logical Ability #17) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n68 (Reasoning / Logical Ability #18) [qfigure] ans=3:L
+  Q: Six letters L, M, N, O, P and Q are written on different faces of a dice. Two different positions of this dice are shown in the figure. Select the letter that w
+     1. Q
+     2. N
+     3. P
+    *4. L
+
+n69 (Reasoning / Logical Ability #19) [text] ans=1:RQPBDPDTDQPR
+  Q: Select the combination of letters that when sequentially placed in the blanks of the given series will complete the series. TP_BD_T_R_ _QT_RB_Q _PRB_ _T_ _BDQ
+     1. PBPRDTRQDPBR
+    *2. RQPBDPDTDQPR
+     3. PBPTRQRDDPBR
+     4. RQPBPRDPBDTR
+
+n70 (Reasoning / Logical Ability #20) [text] ans=1:FRSB
+  Q: Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth
+     1. FRRC
+    *2. FRSB
+     3. FRSC
+     4. ERSB
+
+n71 (Reasoning / Logical Ability #21) [text] ans=3:÷ × + − =
+  Q: Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation. 16 * 4 * 20 * 82 * 14 * 148
+     1. × ÷ + − =
+     2. ÷ + ×− =
+     3. ÷ × + = −
+    *4. ÷ × + − =
+
+n72 (Reasoning / Logical Ability #22) [figural] ans=0:1
+  Q: Select the figure from the given options that will replace the question mark (?) in the figure given below and complete the pattern.
+
+n73 (Reasoning / Logical Ability #23) [figural] ans=2:3
+  Q: Select the correct mirror image of the given combination when the mirror is placed at 'PQ' as shown below.
+
+n74 (Reasoning / Logical Ability #24) [figural] ans=3:4
+  Q: Select the correct option based on the image given below.
+
+n75 (Reasoning / Logical Ability #25) [text] ans=0:Only conclusion I follows
+  Q: Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with co
+    *1. Only conclusion I follows
+     2. Only conclusion II follows
+     3. Neither conclusion I nor II follows
+     4. Both conclusions I and II follow
+
+n76 (Numerical Ability (Quantitative Aptitude) #1) [text] ans=0:26 : 17
+  Q: The ratio of the age of a father to that of his son is 7 : 4. If the product of their ages (in years) is 1008, then what is the ratio of the age of the father t
+    *1. 26 : 17
+     2. 17 : 13
+     3. 11 : 13
+     4. 23 : 21
+
+n77 (Numerical Ability (Quantitative Aptitude) #2) [figural] ans=0:1
+  Q: Select the correct option based on the image given below.
+
+n78 (Numerical Ability (Quantitative Aptitude) #3) [text] ans=0:20
+  Q: If the simple interest for 8 years is equal to 40% of the principal, then after how many years will it be equal to the principal?
+    *1. 20
+     2. 15
+     3. 18
+     4. 25
+
+n79 (Numerical Ability (Quantitative Aptitude) #4) [text] ans=0:18
+  Q: The average of four numbers is 20, and one of these four numbers is 26. What is the average of the remaining three numbers?
+    *1. 18
+     2. 16
+     3. 19
+     4. 17
+
+n80 (Numerical Ability (Quantitative Aptitude) #5) [figural] ans=1:2
+  Q: A temple top is a hollow hemispherical dome with an inner radius of 2 units and an outer radius of 3 units. How much concrete (in cubic units) is used to make t
+
+n81 (Numerical Ability (Quantitative Aptitude) #6) [text] ans=1:₹1,000
+  Q: After successive discounts of 15% and 20%, an article was sold for ₹680. What is the marked price of the article?
+     1. ₹3,000
+    *2. ₹1,000
+     3. ₹2,000
+     4. ₹1,500
+
+n82 (Numerical Ability (Quantitative Aptitude) #7) [text] ans=1:15 days
+  Q: A camp has provisions for 60 pupils for 18 days. In how many days will the same provisions finish off if the strength of the camp is increased to 72 pupils?
+     1. 18 days
+    *2. 15 days
+     3. 12 days
+     4. 8 days
+
+n83 (Numerical Ability (Quantitative Aptitude) #8) [text] ans=2:₹6,250
+  Q: The compound interest on a certain sum of money at 8% per annum for 3 years is ₹4,058. Find the simple interest on the same sum for 4 years at 10% p.a.
+     1. ₹6,520
+     2. ₹6,052
+    *3. ₹6,250
+     4. ₹6,025
+
+n84 (Numerical Ability (Quantitative Aptitude) #9) [text] ans=2:₹191.67
+  Q: The selling price of an item is 15% more than the cost price and shopkeeper is able to earn ₹25. What is the selling price of the item?
+     1. ₹166.67
+     2. ₹177.67
+    *3. ₹191.67
+     4. ₹181.67
+
+n85 (Numerical Ability (Quantitative Aptitude) #10) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n86 (Numerical Ability (Quantitative Aptitude) #11) [figural] ans=1:2
+  Q: Select the correct option based on the image given below.
+
+n87 (Numerical Ability (Quantitative Aptitude) #12) [text] ans=2:30
+  Q: What will be the HCF of (2×2×3×3×5×7×7×11), (2×3×3×5×11), (2×3×3×5×7×11×11), (2×3×3×5×5×11), (2×3×5×7×7)?
+     1. 66
+     2. 42
+    *3. 30
+     4. 105
+
+n88 (Numerical Ability (Quantitative Aptitude) #13) [text] ans=2:3 : 4
+  Q: It takes eight hours for a 600 km journey, if 120 km is done by train and the rest by car. It takes 20 minutes more, if 200 km is done by train and the rest by 
+     1. 2 : 3
+     2. 1 : 3
+    *3. 3 : 4
+     4. 1 : 2
+
+n89 (Numerical Ability (Quantitative Aptitude) #14) [text] ans=0:₹1,000
+  Q: Kiran sells an object to Varun at a profit of 10%. Varun sells that object to Arun for ₹1,155 and makes a profit of 5%. At what cost did Kiran purchase the obje
+    *1. ₹1,000
+     2. ₹1,500
+     3. ₹2,500
+     4. ₹2,000
+
+n90 (Numerical Ability (Quantitative Aptitude) #15) [text] ans=3:18.03%
+  Q: The price of a commodity increased by 22%. By what percentage (correct to two decimal places) should its consumption be reduced so that the total expenditure re
+     1. 19.89%
+     2. 20.03%
+     3. 21.22%
+    *4. 18.03%
+
+n91 (Computer Awareness / Fundamentals #1) [text] ans=2:1, 3, 5
+  Q: In MS Word 365 If you want to print pages 1, 3, and 5 of a document, which of the following page ranges should you select?
+     1. 1-3, 5
+     2. 1-5
+    *3. 1, 3, 5
+     4. 1, 3-5
+
+n92 (Computer Awareness / Fundamentals #2) [text] ans=3:Cut and paste the text at desired location
+  Q: Which of the following is used to move text from one location to another in a word document of MS-Word 365?
+     1. Copy and paste the text at desired location
+     2. Copy the selected text
+     3. Select and cut the selected text
+    *4. Cut and paste the text at desired location
+
+n93 (Computer Awareness / Fundamentals #3) [text] ans=1:Ctrl + N
+  Q: In MS Excel 365 which of the following keyboard shortcuts in MS Excel will allow us to open a new spreadsheet?
+     1. Shift + N
+    *2. Ctrl + N
+     3. Alt + O
+     4. Ctrl + O
+
+n94 (Computer Awareness / Fundamentals #4) [text] ans=1:Insert Row
+  Q: In MS Excel 365, to insert a new row above the selected row in Microsoft Excel 365, which command should you use?
+     1. Insert Column
+    *2. Insert Row
+     3. Delete Row
+     4. Delete Column
+
+n95 (Computer Awareness / Fundamentals #5) [text] ans=0:Select the Print command and then select ‘Ok’
+  Q: How do you print a Microsoft Word 365 document?
+    *1. Select the Print command and then select ‘Ok’
+     2. Select the Ready Printer command and then select ‘Ok’
+     3. Select the Print command
+     4. Select the Ready Printer command
+
+n96 (Computer Awareness / Fundamentals #6) [text] ans=0:बढ़ी हुई डेटा अखंडता और सटीकता
+  Q: एमएस एक्सेल 365 (MS Excel 365) में, निम्नलिखित में से कौन-सा विकल्प माइक्रोसॉफ्ट एक्सेल (Microsoft Excel) में टेबल बनाने का एक लाभ नहीं है?
+    *1. बढ़ी हुई डेटा अखंडता और सटीकता
+     2. ऑटोमेटिक फिल्टरिंंग और सॉर्टिंग विकल्प
+     3. बेहतर कैलकुलेशन क्षमता
+     4. उन्नत विसुअल अपील और फॉर्मेटिंंग
+
+n97 (Computer Awareness / Fundamentals #7) [text] ans=2:name@domain.com
+  Q: Which of the following is the correct structure of an email address?
+     1. name_domain.com
+     2. name@com_domain
+    *3. name@domain.com
+     4. name.com
+
+n98 (Computer Awareness / Fundamentals #8) [text] ans=1:Ctrl+Shift+ +
+  Q: Which of the following is the correct option to convert text into superscript?
+     1. Shift+S
+    *2. Ctrl+Shift+ +
+     3. Ctrl+Shift+U
+     4. Ctrl+Shift+S
+
+n99 (Computer Awareness / Fundamentals #9) [text] ans=2:Both (1) and (2)
+  Q: Which of the following statements related to MS Word 365 is/are correct? 1) ‘Save’ allows you to update a previously saved file with new content. 2) ‘Save As’ a
+     1. Neither (1) nor (2)
+     2. Only (1)
+    *3. Both (1) and (2)
+     4. Only (2)
+
+n100 (Computer Awareness / Fundamentals #10) [text] ans=3:Internet
+  Q: A global network of interconnected computers and devices is called ______________.
+     1. Manet
+     2. Ethernet
+     3. Intranet
+    *4. Internet
