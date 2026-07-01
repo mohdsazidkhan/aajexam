@@ -59,6 +59,6 @@ next-env.d.ts
 /_extracted_*
 /_key_*
 /_questions_*
-/_hr_*
+/_hr*
 /_check_*.mjs
 /_pyq_audit.mjs
