@@ -38,11 +38,13 @@ def assemble(prefix, pages):
                     'options': list(q.get('options', [])),
                     'answerIndex': q.get('answerIndex'), 'page': pg, 'block': block}
             if seq and seq[-1]['block'] == block and seq[-1]['qno'] == qno:
+                # page-boundary duplicate: MERGE (stem may be on one page, options on next)
                 old = seq[-1]
-                new_better = (item['answerIndex'] is not None and old['answerIndex'] is None) or \
-                    (len([o for o in item['options'] if o]) > len([o for o in old['options'] if o]))
-                if new_better:
-                    seq[-1] = item
+                old_q = old['question'] if (old['question'] and str(old['question']).strip()) else item['question']
+                old_opts = old['options'] if len([o for o in old['options'] if o]) >= \
+                    len([o for o in item['options'] if o]) else item['options']
+                old_ans = old['answerIndex'] if old['answerIndex'] is not None else item['answerIndex']
+                old['question'], old['options'], old['answerIndex'] = old_q, old_opts, old_ans
                 prev = qno
                 continue
             seq.append(item)
@@ -71,6 +73,13 @@ def finalize(seq, section='General Knowledge'):
     for it in seq:
         if it.get('_drop'):
             dropped.append((it['block'], it['qno'], 'flagged')); continue
+        if not (it['question'] and str(it['question']).strip()):
+            dropped.append((it['block'], it['qno'], 'no-question')); continue
+        # figure-dependent questions (count shapes in a diagram / Venn-region) whose
+        # figure is not captured -> unanswerable as text, drop
+        FIGDEP = ['कितने त्रिभुज', 'कितने आयत', 'कितने वर्ग हैं', 'कितने वृत्त', 'चित्र में A', 'आकृति में कितने']
+        if any(s in it['question'] for s in FIGDEP):
+            dropped.append((it['block'], it['qno'], 'figure-dependent')); continue
         opts = it['options']; ans1 = it['answerIndex']
         pos = [i for i, o in enumerate(opts) if o and str(o).strip()]
         if ans1 is None:
@@ -215,6 +224,8 @@ def build_2007():
     key.setdefault(20, 4)  # उपर्युक्त सभी (key omitted; derived)
     for it in seq:
         it['answerIndex'] = key.get(it['qno'])
+        if it['qno'] == 15:  # "निम्नांकित आकृति में कितने त्रिभुज है?" — figure not captured
+            it['_drop'] = True
     raw, dropped = finalize(seq)
     print(f'2007: kept {len(raw)}, dropped {len(dropped)} -> {dropped}')
     emit(2007, raw, 'Answers from the printed उत्तरमाला answer key. Figure-based '
