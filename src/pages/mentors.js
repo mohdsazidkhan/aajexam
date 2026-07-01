@@ -7,6 +7,7 @@ import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
+import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const MentorsPage = () => {
@@ -30,7 +31,11 @@ const MentorsPage = () => {
     fetchData();
   }, [search, page]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><GridSkeleton count={8} /></div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen pb-24">

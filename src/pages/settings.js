@@ -11,6 +11,7 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
+import { ProfileSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const FIELD_CLASSNAME = 'w-full px-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/20 font-bold outline-none focus:border-primary-500 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
@@ -95,7 +96,11 @@ const SettingsPage = () => {
   ];
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+    return (
+      <MobileAppWrapper title="Account Settings">
+        <div className="container mx-auto mt-4 px-4 py-8 max-w-5xl"><ProfileSkeleton /></div>
+      </MobileAppWrapper>
+    );
   }
 
   return (

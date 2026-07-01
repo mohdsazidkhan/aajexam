@@ -19,6 +19,7 @@ import { toast } from 'react-hot-toast';
 
 import API from '../lib/api';
 import MobileAppWrapper from '../components/MobileAppWrapper';
+import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
@@ -93,7 +94,11 @@ const PaymentHistoryPage = () => {
       setCurrentPage(1);
    };
 
-   if (loading && transactions.length === 0) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+   if (loading && transactions.length === 0) return (
+      <MobileAppWrapper title="Payment History">
+         <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
+      </MobileAppWrapper>
+   );
 
    return (
       <MobileAppWrapper title="Payment History">

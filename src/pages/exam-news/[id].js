@@ -6,6 +6,7 @@ import API from '../../lib/api';
 import Card from '../../components/ui/Card';
 import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
+import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
 const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
@@ -26,7 +27,11 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
     fetch();
   }, [lookupId, initialNews, router]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24 font-outfit">
+      <div className="container mx-auto px-4 lg:px-10 py-8"><DetailSkeleton /></div>
+    </div>
+  );
   if (!news) return null;
 
   return (

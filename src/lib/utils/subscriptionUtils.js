@@ -13,9 +13,9 @@ export const hasActiveSubscription = () => {
     const userInfo = localStorage.getItem('userInfo');
     if (!userInfo) return false;
     const user = JSON.parse(userInfo);
-    
+    console.log(user, ' hasActiveSubscription')
     const status = (user.subscriptionStatus || 'FREE').toUpperCase();
-    
+
     // For free users, they have access to basic features
     if (status === 'FREE') return true;
 
@@ -26,7 +26,8 @@ export const hasActiveSubscription = () => {
       return expiryDate > now;
     }
 
-    return false;
+    // If no expiry date is set, but status is not FREE, assume lifetime/active
+    return true;
   } catch (error) {
     console.error('Error checking subscription status:', error);
     return false;
@@ -43,9 +44,9 @@ export const hasProSubscription = () => {
     const userInfo = localStorage.getItem('userInfo');
     if (!userInfo) return false;
     const user = JSON.parse(userInfo);
-    
+
     if (user.role === 'admin') return true;
-    
+
     const status = (user.subscriptionStatus || '').toUpperCase();
     if (status !== 'PRO') return false;
 
@@ -55,7 +56,8 @@ export const hasProSubscription = () => {
       return expiryDate > now;
     }
 
-    return false;
+    // If PRO but no expiry date, assume lifetime PRO
+    return true;
   } catch (error) {
     return false;
   }
@@ -272,7 +274,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
 
     const user = JSON.parse(userInfo);
     const subStatus = (user.subscription?.status || 'FREE').toUpperCase();
-    
+
     if (!user.subscription || subStatus === 'FREE') {
       return {
         text: getSubscriptionText(subscriptionStatus),

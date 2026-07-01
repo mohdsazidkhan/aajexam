@@ -7,6 +7,7 @@ import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
+import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const SOURCE_TABS = [
   { key: 'all', label: 'All', icon: Layers },
@@ -30,8 +31,8 @@ const RevisionPage = () => {
       try {
         const url = activeTab === 'all' ? '/api/revision?limit=50' : `/api/revision?limit=50&source=${activeTab}`;
         const [queueRes, statsRes] = await Promise.all([
-          API.request(url),
-          API.request('/api/revision/stats')
+          API.request(url).catch(() => null),
+          API.request('/api/revision/stats').catch(() => null)
         ]);
         if (queueRes?.success) {
           setDueItems(queueRes.data.dueItems || []);
@@ -61,7 +62,11 @@ const RevisionPage = () => {
     } catch (e) { toast.error('Failed'); } finally { setReviewing(false); }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><GridSkeleton count={8} /></div>
+    </div>
+  );
 
   const currentItem = dueItems[currentIdx];
 

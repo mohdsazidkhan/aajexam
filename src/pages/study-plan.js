@@ -5,9 +5,9 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
-import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
+import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const StudyPlanPage = () => {
   const [plans, setPlans] = useState([]);
@@ -39,8 +39,8 @@ const StudyPlanPage = () => {
     const fetchData = async () => {
       try {
         const [plansRes, examsRes] = await Promise.all([
-          API.request('/api/study-plan'),
-          API.request('/api/real-exams/all-exams')
+          API.request('/api/study-plan').catch(() => null),
+          API.request('/api/real-exams/all-exams').catch(() => null)
         ]);
         if (plansRes?.success) setPlans(plansRes.data || []);
         if (examsRes?.success) setExams(examsRes.data || []);
@@ -101,7 +101,11 @@ const StudyPlanPage = () => {
     } catch (e) { }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><ListSkeleton rows={7} /></div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen pb-24">
@@ -139,10 +143,10 @@ const StudyPlanPage = () => {
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-red-500 mt-1">Date past me hai</p>
                       : <p className="text-[10px] font-bold text-primary-500 mt-1">
-                          <Calendar className="w-3 h-3 inline mr-0.5" />
-                          {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{durationPreview.days} din</b>
-                          {' '}({durationPreview.weeks} hafte{durationPreview.extra ? ` + ${durationPreview.extra} din` : ''})
-                        </p>
+                        <Calendar className="w-3 h-3 inline mr-0.5" />
+                        {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{durationPreview.days} din</b>
+                        {' '}({durationPreview.weeks} hafte{durationPreview.extra ? ` + ${durationPreview.extra} din` : ''})
+                      </p>
                   )}
                 </div>
                 <div>

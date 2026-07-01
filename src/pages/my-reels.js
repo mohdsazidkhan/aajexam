@@ -25,6 +25,7 @@ import { useRouter } from 'next/navigation';
 
 import API from '../lib/api';
 import MobileAppWrapper from '../components/MobileAppWrapper';
+import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
@@ -86,7 +87,11 @@ const MyReelsPage = () => {
       return 'Untitled Reel';
    };
 
-   if (loading && reels.length === 0) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+   if (loading && reels.length === 0) return (
+      <MobileAppWrapper title="My Reels">
+         <div className="container mx-auto px-4 py-8"><GridSkeleton count={8} /></div>
+      </MobileAppWrapper>
+   );
 
    return (
       <MobileAppWrapper title="My Reels">

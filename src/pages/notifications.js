@@ -19,6 +19,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
 import MobileAppWrapper from '../components/MobileAppWrapper';
+import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
@@ -72,7 +73,11 @@ const NotificationsPage = () => {
     } catch (e) { }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <MobileAppWrapper title="Notifications">
+      <div className="container mx-auto px-4 py-8"><ListSkeleton rows={7} /></div>
+    </MobileAppWrapper>
+  );
 
   const getIcon = (type) => {
     switch (type) {

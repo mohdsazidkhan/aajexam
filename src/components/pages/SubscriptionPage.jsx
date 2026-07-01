@@ -12,6 +12,7 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
 import Skeleton from '../Skeleton';
+import { SubscriptionSkeleton } from '../skeletons/PrivateSkeletons';
 import PaymentTransactions from "../PaymentTransactions";
 import { launchPayuCheckout } from '../../lib/utils/payu';
 

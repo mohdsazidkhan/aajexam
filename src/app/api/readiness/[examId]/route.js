@@ -18,7 +18,7 @@ export async function GET(req, { params }) {
         const userId = auth.user._id;
 
         // PRO CHECK: Readiness Score is a PRO feature
-        if (auth.user.subscriptionStatus !== 'pro' && auth.user.role !== 'admin') {
+        if (auth.user.subscriptionStatus !== 'PRO' && auth.user.role !== 'admin') {
             return NextResponse.json({
                 success: false,
                 message: 'Readiness Score is a PRO feature. Upgrade to unlock deep insights!',

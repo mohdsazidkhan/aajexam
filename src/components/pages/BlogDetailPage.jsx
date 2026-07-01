@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import API from '../../lib/api';
 import Loading from '../Loading';
+import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
 import { useSelector } from 'react-redux';
 import { Eye, Heart, Clock, Star, Pin, ArrowLeft, Share2 } from 'lucide-react';
 import { FaWhatsapp, FaTelegramPlane, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
@@ -71,8 +72,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loading size="md" color="yellow" message="Loading blog..." />
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 font-outfit">
+        <div className="container mx-auto px-4 lg:px-10 py-8"><DetailSkeleton /></div>
       </div>
     );
   }

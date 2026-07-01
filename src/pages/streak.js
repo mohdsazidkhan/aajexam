@@ -6,6 +6,7 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
+import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const StreakPage = () => {
   const [streak, setStreak] = useState(null);
@@ -36,7 +37,11 @@ const StreakPage = () => {
     } catch (e) { toast.error('Pro subscription required'); }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen pb-24">

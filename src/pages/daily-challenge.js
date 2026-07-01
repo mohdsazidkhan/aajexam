@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 import DiscussionThread from '../components/discussions/DiscussionThread';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const DailyChallengePage = () => {
   const [challenge, setChallenge] = useState(null);
@@ -84,7 +85,11 @@ const DailyChallengePage = () => {
     } catch (e) { toast.error('Submit failed'); } finally { setSubmitting(false); }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+    </div>
+  );
 
   if (!challenge) return (
     <div className="min-h-screen flex items-center justify-center">

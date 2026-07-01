@@ -28,6 +28,7 @@ import Loading from '../Loading';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import UnifiedFooter from '../UnifiedFooter';
+import { ProfileSkeleton } from '../skeletons/PrivateSkeletons';
 
 const formatCurrency = (value) => `Rs.${Number(value || 0).toLocaleString('en-IN')}`;
 
@@ -112,7 +113,11 @@ const ProfilePage = () => {
   ];
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center "><Loading size="lg" /></div>;
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-outfit">
+        <div className="container mx-auto px-4 py-8 lg:py-12 max-w-4xl"><ProfileSkeleton /></div>
+      </div>
+    );
   }
 
   return (

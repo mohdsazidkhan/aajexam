@@ -18,7 +18,7 @@ export async function GET(req) {
         await dbConnect();
 
         // PRO CHECK: Revision Queue is a PRO feature
-        if (auth.user.subscriptionStatus !== 'pro' && auth.user.role !== 'admin') {
+        if (auth.user.subscriptionStatus !== 'PRO' && auth.user.role !== 'admin') {
             return NextResponse.json({
                 success: false,
                 message: 'Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition!',

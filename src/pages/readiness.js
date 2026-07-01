@@ -6,6 +6,7 @@ import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
+import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const ReadinessPage = () => {
   const [exams, setExams] = useState([]);
@@ -33,7 +34,11 @@ const ReadinessPage = () => {
     } catch (e) { } finally { setAnalyzing(false); }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return (
+    <div className="min-h-screen pb-24">
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+    </div>
+  );
 
   const readinessColor = (r) => r >= 70 ? 'emerald' : r >= 40 ? 'yellow' : 'red';
 

@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 
 import API from '../lib/api';
+import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import ProgressBar from '../components/ui/ProgressBar';
@@ -46,7 +47,11 @@ const QuizHistoryPage = () => {
       return { label: 'C', color: 'slate' };
    };
 
-   if (loading && attempts.length === 0) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+   if (loading && attempts.length === 0) return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-emerald-500 selection:text-white">
+         <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
+      </div>
+   );
 
    return (
       <div className="min-h-screen pb-24">

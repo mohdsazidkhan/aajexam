@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
-import Loading from '../Loading';
+import { DashboardSkeleton } from '../skeletons/PrivateSkeletons';
 
 const QuizResultPage = () => {
   const router = useRouter();
@@ -37,8 +37,8 @@ const QuizResultPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <Loading size="lg" />
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20 font-outfit">
+        <div className="container mx-auto px-4 py-8"><DashboardSkeleton /></div>
       </div>
     );
   }

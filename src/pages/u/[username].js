@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PlayCircle, Eye, Heart, FileText, Lightbulb, Zap, Newspaper, BarChart3 } from 'lucide-react';
 import API from '../../lib/api';
+import { generateBreadcrumbSchema } from '../../utils/schema';
+import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
 import FollowButton from '../../components/FollowButton';
@@ -81,9 +83,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
     }
   };
 
-  if (loading) {
-    return <Loading fullScreen={true} size="md" color="gray" message="Loading profile..." />;
-  }
+  if (loading) return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit">
+      <div className="container mx-auto px-4 py-8"><ProfileSkeleton /></div>
+    </div>
+  );
 
   if (error) {
     return (

@@ -8,6 +8,7 @@ import Loading from '../../components/Loading';
 import Card from '../../components/ui/Card';
 import { toast } from 'react-hot-toast';
 import Seo from '../../components/Seo';
+import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 
 export default function MentorProfilePage() {
@@ -100,7 +101,11 @@ export default function MentorProfilePage() {
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
+  if (loading) return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit">
+      <div className="container mx-auto px-4 py-8"><ProfileSkeleton /></div>
+    </div>
+  );
 
   if (!mentor) return (
     <div className="min-h-screen flex items-center justify-center">

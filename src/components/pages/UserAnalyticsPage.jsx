@@ -37,7 +37,8 @@ import API from '../../lib/api';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import ProgressBar from '../ui/ProgressBar';
-import Skeleton from '../Skeleton';
+import UnifiedFooter from '../UnifiedFooter';
+import { DashboardSkeleton } from '../skeletons/PrivateSkeletons';
 import SubscriptionGuard from '../SubscriptionGuard';
 
 // --- Helper: Circular Progress Ring ---
@@ -125,15 +126,8 @@ const MyAnalyticsPage = () => {
    };
 
    if (loading) return (
-      <div className="space-y-6 animate-fade-in mt-0 lg:mt-16">
-         <Skeleton height="140px" borderRadius="2rem" />
-         <div className="flex gap-3 overflow-x-auto">
-            {[1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} height="44px" width="100px" borderRadius="1.5rem" />)}
-         </div>
-         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map(i => <Skeleton key={i} height="100px" borderRadius="1.5rem" />)}
-         </div>
-         <Skeleton height="300px" borderRadius="1.5rem" />
+      <div className="min-h-screen pb-24">
+         <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
       </div>
    );
 
