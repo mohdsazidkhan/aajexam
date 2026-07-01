@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import API from '../../lib/api';
-import Loading from '../Loading';
+import { BlogListSkeleton } from '../skeletons/PublicSkeletons';
 import { useSelector } from 'react-redux';
 import { Search, Eye, Heart, Clock, Star, Pin, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -168,11 +168,7 @@ const BlogsPage = () => {
   );
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loading size="md" color="yellow" message="Loading blogs..." />
-      </div>
-    );
+    return <BlogListSkeleton />;
   }
 
   return (

@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
+import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
 
-const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => <div>Loading...</div> });
+const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
 export default function Subjects() {
   return (

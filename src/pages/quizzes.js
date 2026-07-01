@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import { PageLoadingFallback } from '../components/skeletons/PublicSkeletons';
 
-const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => <div>Loading...</div> });
+const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
 export default function Quizzes() {
   return (

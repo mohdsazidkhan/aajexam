@@ -10,7 +10,7 @@ import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { requireAuthForAction } from '../../lib/auth';
 import { getCurrentUser } from '../../lib/utils/authUtils';
-import Loading from '../Loading';
+import { QuizPreviewPageSkeleton } from '../skeletons/PublicSkeletons';
 import { ProBadge } from '../ui';
 import { Lock } from 'lucide-react';
 
@@ -70,11 +70,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <Loading size="lg" />
-      </div>
-    );
+    return <QuizPreviewPageSkeleton />;
   }
 
   if (!quiz) {

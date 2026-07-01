@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { ArrowLeft, Layers, FileText, BrainCircuit, Play, Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../lib/api';
-import Loading from '../Loading';
+import { TopicDetailSkeleton } from '../skeletons/PublicSkeletons';
 import TestStartModal from '../TestStartModal';
 
 const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
@@ -25,7 +25,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
     }).finally(() => setLoading(false));
   }, [lookupId]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
+  if (loading) return <TopicDetailSkeleton />;
   if (!topic) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Topic not found</p></div>;
 
   const tabs = [

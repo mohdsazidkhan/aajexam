@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { ArrowLeft, BookMarked, BrainCircuit } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../lib/api';
-import Loading from '../Loading';
+import { SubjectDetailSkeleton } from '../skeletons/PublicSkeletons';
 
 const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
     }).finally(() => setLoading(false));
   }, [lookupId]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="lg" /></div>;
+  if (loading) return <SubjectDetailSkeleton />;
   if (!subject) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Subject not found</p></div>;
 
   return (
