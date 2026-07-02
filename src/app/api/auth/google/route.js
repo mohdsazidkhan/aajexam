@@ -137,7 +137,7 @@ export async function POST(req) {
                 user.googleId = googleId;
                 user.profilePicture = picture;
                 if (!user.phone) user.phone = undefined;
-                await user.save();
+                await user.save({ validateModifiedOnly: true });
             }
         }
 
@@ -165,13 +165,16 @@ export async function POST(req) {
                     user.subscriptionStatus = 'PRO';
                     user.subscriptionExpiry = endDate;
                     user.profileCompletionReward = true;
-                    await user.save();
+                    await user.save({ validateModifiedOnly: true });
                 } catch (subErr) { console.error('Reward error:', subErr); }
             }
         }
 
         user.lastLoginDate = new Date();
-        await user.save();
+        // validateModifiedOnly: don't re-validate legacy fields (e.g. old lowercase
+        // subscriptionStatus) that this request didn't touch — otherwise stale docs
+        // block login with an enum ValidationError.
+        await user.save({ validateModifiedOnly: true });
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 

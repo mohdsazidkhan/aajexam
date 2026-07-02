@@ -80,7 +80,10 @@ export async function POST(req) {
         }
 
         user.lastLoginDate = new Date();
-        await user.save();
+        // validateModifiedOnly: don't re-validate legacy fields (e.g. old lowercase
+        // subscriptionStatus) that this request didn't touch — otherwise stale docs
+        // block login with an enum ValidationError.
+        await user.save({ validateModifiedOnly: true });
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
