@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -37,8 +37,11 @@ const ModernLandingPage = () => {
       totalQuizzes: "50+",
       totalSubjects: "10+",
       totalTopics: "50+",
-      totalQuestions: "12K+"
+      totalQuestions: "12K+",
+      recentRegistrations: "10+",
+      recentAttempts: "100+",
    });
+   const [tickerIndex, setTickerIndex] = useState(0);
    const router = useRouter();
 
    useEffect(() => {
@@ -61,12 +64,20 @@ const ModernLandingPage = () => {
                totalQuizzes: formatNum(res.data?.totalQuizzes || 50),
                totalSubjects: formatNum(res.data?.totalSubjects || 10),
                totalTopics: formatNum(res.data?.totalTopics || 50),
-               totalQuestions: formatNum(res.data?.totalQuestions || 12500)
+               totalQuestions: formatNum(res.data?.totalQuestions || 12500),
+               recentRegistrations: res.data?.recentRegistrations || 0,
+               recentAttempts: res.data?.recentAttempts || 0,
             });
          }
       } catch (e) {
       }
    };
+
+   // Auto-rotate ticker every 4 seconds
+   useEffect(() => {
+      const iv = setInterval(() => setTickerIndex((i) => (i + 1) % 2), 4000);
+      return () => clearInterval(iv);
+   }, []);
 
    return (
       <MobileAppWrapper showHeader={true} title="Home">
@@ -78,7 +89,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
-               <div className="max-w-5xl mx-auto text-center space-y-12 mt-8 lg:mt-0 py-4 lg:py-12">
+               <div className="max-w-5xl mx-auto text-center space-y-8 mt-8 lg:mt-0 py-4 lg:py-12">
                   <div
                      className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 dark:text-primary-500 border-2 border-primary-500/10 shadow-xl"
                   >
@@ -143,6 +154,33 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
+         {/* ── Social Proof Ticker ── */}
+         {(stats.recentRegistrations > 0 || stats.recentAttempts > 0) && (
+            <div className="bg-emerald-50 dark:bg-emerald-950/30 border-y border-emerald-200 dark:border-emerald-900/50 py-2.5 overflow-hidden">
+               <div className="container mx-auto px-4">
+                  <motion.div
+                     key={tickerIndex}
+                     initial={{ opacity: 0, y: 6 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     exit={{ opacity: 0, y: -6 }}
+                     transition={{ duration: 0.4 }}
+                     className="flex items-center justify-center gap-3"
+                  >
+                     <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                     </span>
+                     <span className="text-xs font-black text-emerald-800 dark:text-emerald-300 tracking-wide">
+                        {tickerIndex === 0
+                           ? `🎓 ${stats.recentRegistrations} students joined AajExam in the last 7 days`
+                           : `📝 ${stats.recentAttempts} Practice Tests & PYQs attempted in the last 7 days`
+                        }
+                     </span>
+                  </motion.div>
+               </div>
+            </div>
+         )}
+
          <section className="py-8 lg:py-20 bg-white dark:bg-slate-900 border-y-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-6">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
@@ -166,11 +204,75 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
+         {/* ── PYQ Section ── */}
+         <section className="py-10 lg:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-500/10 via-transparent to-transparent blur-[80px] opacity-60" />
+            </div>
+            <div className="container mx-auto px-4 lg:px-6 relative z-10">
+               <div className="text-center space-y-4 mb-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-black tracking-[0.1em] text-emerald-400 uppercase">
+                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                     Last Year PYQ — Always Free
+                  </div>
+                  <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-white leading-none">
+                     Practice with <span className="text-primary-400">Real Papers</span>
+                  </h2>
+                  <p className="text-base lg:text-xl font-bold text-slate-400 max-w-2xl mx-auto">
+                     500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.
+                  </p>
+               </div>
+
+               {/* Exam tiles */}
+               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+                  {[
+                     { name: 'SSC CGL', papers: '28+', color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
+                     { name: 'SSC CHSL', papers: '24+', color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
+                     { name: 'RRB NTPC', papers: '18+', color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
+                     { name: 'IBPS PO', papers: '12+', color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
+                     { name: 'SBI Clerk', papers: '10+', color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
+                     { name: 'SSC GD', papers: '8+', color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
+                  ].map((exam) => (
+                     <motion.div
+                        key={exam.name}
+                        whileHover={{ scale: 1.04, y: -4 }}
+                        onClick={() => router.push('/pyq')}
+                        className={`cursor-pointer p-4 rounded-2xl bg-gradient-to-br ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
+                     >
+                        <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
+                        <span className="text-[10px] font-bold text-slate-400">{exam.papers} papers</span>
+                        <span className="text-[10px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                     </motion.div>
+                  ))}
+               </div>
+
+               {/* CTA row */}
+               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <motion.button
+                     whileHover={{ scale: 1.03 }}
+                     whileTap={{ scale: 0.97 }}
+                     onClick={() => router.push('/register')}
+                     className="w-full sm:w-auto px-10 py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary-500/30 transition-all text-sm"
+                  >
+                     Start Free PYQ Practice →
+                  </motion.button>
+                  <button
+                     onClick={() => router.push('/pyq')}
+                     className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-white/10 transition-all text-sm"
+                  >
+                     Browse All PYQs
+                  </button>
+               </div>
+            </div>
+         </section>
+
+         {/* ── Features Section ── */}
          <section id="features" className="py-10 lg:py-32 bg-white dark:bg-slate-900">
             <div className="container mx-auto px-3 lg:px-6 space-y-10 lg:space-y-20">
                <div className="text-center space-y-6 max-w-3xl mx-auto">
                   <h2 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Study Smart. <br /> Pass Your Exam.</h2>
                   <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">Everything you need to prepare for government exams, all in one place.</p>
+
                </div>
 
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 lg:min-h-[800px]">

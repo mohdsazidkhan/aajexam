@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -104,8 +104,8 @@ const PublicNavbar = () => {
                 {darkMode ? <Sun className="w-5" /> : <Moon className="w-5" />}
               </button>
 
-              <Link href="/login">
-                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs">Join</Button>
+              <Link href="/register">
+                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs">Join Free</Button>
               </Link>
             </div>
           </div>

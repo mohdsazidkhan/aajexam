@@ -254,17 +254,70 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                     </article>
                                 ))}
                             </div>
-                            <button
-                                onClick={handleStart}
-                                className="mt-8 w-full bg-primary-500 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-sm flex items-center justify-center"
-                            >
-                                Attempt Full Paper <FaArrowRight className="ml-3" />
-                            </button>
+                            {/* ── Register Gate CTA ── */}
+                            <div className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-gradient-to-br from-slate-900 to-slate-950 p-6 lg:p-10 text-white">
+                                <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] pointer-events-none" />
+                                <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-6">
+                                    <div className="flex-1 space-y-3">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-black text-emerald-400 uppercase tracking-wider">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Free account required
+                                        </div>
+                                        <h3 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">
+                                            Attempt All {paper.questionCount || 0} Questions
+                                        </h3>
+                                        <p className="text-sm font-bold text-slate-400 max-w-lg">
+                                            You've seen {sampleQuestions.length} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.
+                                        </p>
+                                        <div className="flex flex-wrap gap-3 pt-1">
+                                            {[
+                                                `${paper.questionCount || 0} Questions`,
+                                                `${paper.duration} Min Timer`,
+                                                `${paper.totalMarks} Marks`,
+                                                'Instant Results',
+                                                'Free to attempt',
+                                            ].map((tag) => (
+                                                <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-slate-300 uppercase tracking-wider">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-3 w-full lg:w-auto lg:min-w-[220px]">
+                                        <button
+                                            onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
+                                            className="w-full px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary-500/30 transition-all text-sm border-b-4 border-primary-700 active:translate-y-0.5"
+                                        >
+                                            Create Free Account →
+                                        </button>
+                                        <button
+                                            onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
+                                            className="w-full px-8 py-4 bg-white/5 hover:bg-white/10 text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-white/10 transition-all text-sm"
+                                        >
+                                            Already have account? Log in
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
                     )}
 
+                    {/* ── Sticky bottom CTA (mobile) ── */}
+                    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-2xl">
+                        <button
+                            onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
+                            className="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-xl text-xs shadow-duo-primary transition-all"
+                        >
+                            Attempt Free →
+                        </button>
+                        <button
+                            onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
+                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-xl text-xs transition-all"
+                        >
+                            Log In
+                        </button>
+                    </div>
+
                     {/* FAQ */}
                     {faqs?.length > 0 && (
+
                         <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl mb-10 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 Frequently Asked Questions

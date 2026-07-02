@@ -24,6 +24,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
     const router = useRouter();
     const [filterYear, setFilterYear] = useState(year || '');
     const [filterExam, setFilterExam] = useState(examId || '');
+    const [proModalTest, setProModalTest] = useState(null); // test object when PRO modal is open
 
     const updateQuery = (next) => {
         const q = { ...router.query, ...next };
@@ -189,7 +190,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             className="p-5 hover:shadow-xl transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500"
                                             onClick={() => {
                                                 if (hasAccess) router.push(linkHref);
-                                                else router.push('/subscription');
+                                                else setProModalTest(test);
                                             }}
                                         >
                                             <div className="space-y-3">
@@ -235,6 +236,86 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                             </div>
                         )}
                     </section>
+
+                    {/* ── PRO Unlock Modal ── */}
+                    {proModalTest && (
+                        <div
+                            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4"
+                            onClick={() => setProModalTest(null)}
+                        >
+                            {/* Backdrop */}
+                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+                            {/* Modal card */}
+                            <div
+                                className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border-2 border-slate-100 dark:border-slate-800 overflow-hidden"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {/* Dark header */}
+                                <div className="bg-gradient-to-br from-slate-900 to-slate-950 p-6 text-white relative overflow-hidden">
+                                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
+                                    <div className="flex items-start justify-between gap-3">
+                                        <div className="space-y-1">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/10 border border-amber-400/20 rounded-full text-[10px] font-black text-amber-400 uppercase tracking-widest mb-2">
+                                                <Lock className="w-3 h-3" /> PRO Only
+                                            </div>
+                                            <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">
+                                                {proModalTest.title}
+                                            </h3>
+                                            <p className="text-xs font-bold text-slate-400">
+                                                {proModalTest.examName} &bull; {proModalTest.pyqYear} &bull; {proModalTest.questionCount || 0} Questions &bull; {proModalTest.duration} min
+                                            </p>
+                                        </div>
+                                        <button
+                                            onClick={() => setProModalTest(null)}
+                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-slate-400 hover:text-white text-lg font-black"
+                                        >
+                                            ✕
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Body */}
+                                <div className="p-6 space-y-5">
+                                    <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
+                                        This paper is part of the <span className="text-primary-600 dark:text-primary-400 font-black">AajExam PRO</span> plan. Upgrade to attempt all older PYQ shifts with full analytics.
+                                    </p>
+
+                                    {/* What you unlock */}
+                                    <div className="grid grid-cols-2 gap-2">
+                                        {[
+                                            { icon: '📄', text: 'All older PYQ shifts' },
+                                            { icon: '📊', text: 'Detailed analytics' },
+                                            { icon: '🏆', text: 'All-India ranking' },
+                                            { icon: '📥', text: 'Downloadable reports' },
+                                            { icon: '🧠', text: 'Weakness analysis' },
+                                            { icon: '🚀', text: 'Unlimited mock tests' },
+                                        ].map((item) => (
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-3 py-2">
+                                                <span>{item.icon}</span> {item.text}
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* CTAs */}
+                                    <div className="flex flex-col gap-3 pt-1">
+                                        <button
+                                            onClick={() => router.push('/subscription')}
+                                            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-lg shadow-primary-500/20 border-b-4 border-primary-700 active:translate-y-0.5 transition-all"
+                                        >
+                                            Get PRO — Unlock All PYQs →
+                                        </button>
+                                        <button
+                                            onClick={() => setProModalTest(null)}
+                                            className="w-full py-3 text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest text-xs hover:text-slate-700 dark:hover:text-slate-200 transition"
+                                        >
+                                            Continue with Free Plan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* FAQ */}
                     <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">

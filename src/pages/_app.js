@@ -26,6 +26,10 @@ const CookieConsent = dynamic(() => import('../components/CookieConsent'), {
   ssr: false,
 });
 
+const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentModal'), {
+  ssr: false,
+});
+
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
@@ -129,6 +133,7 @@ function AppContent({ Component, pageProps }) {
         <UnifiedFooter />
         <ClientOnly>
           <PublicBottomNav />
+          <ExitIntentModal />
         </ClientOnly>
       </main>
     );
