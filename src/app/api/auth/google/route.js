@@ -6,6 +6,8 @@ import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import WalletTransaction from '@/models/WalletTransaction';
+import { sendBrevoEmail } from '@/utils/email';
 
 async function getUniqueReferralCode() {
     let code;
@@ -110,6 +112,25 @@ export async function POST(req) {
                 userId: user._id, type: 'registration', title: 'New user registered',
                 description: `${user.name} (${user.email}) via Google`, meta: { userId: user._id, provider: 'google' }
             });
+
+            // Send Welcome Email
+            const welcomeHtml = `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <h2 style="color: #4F46E5;">Welcome to AajExam, ${user.name}! 🎉</h2>
+                <p>We are thrilled to have you on board. Your journey to cracking your dream exam starts today.</p>
+                <div style="background-color: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                    <h3 style="margin-top: 0; color: #D97706;">🎁 Your 7-Day PRO Trial is Active!</h3>
+                    <p style="margin-bottom: 0;">We've automatically unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for the next 7 days for free. Make the most of it!</p>
+                </div>
+                <p>Log in now to track your daily streak and analyze your test performance.</p>
+                <p>Best of luck,<br><strong>The AajExam Team</strong></p>
+            </div>
+            `;
+            sendBrevoEmail({
+                to: user.email,
+                subject: 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
+                html: welcomeHtml
+            }).catch(err => console.error('Failed to send welcome email:', err));
         } else {
             // Existing User Update
             if (!user.googleId) {
@@ -148,6 +169,9 @@ export async function POST(req) {
                 } catch (subErr) { console.error('Reward error:', subErr); }
             }
         }
+
+        user.lastLoginDate = new Date();
+        await user.save();
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 

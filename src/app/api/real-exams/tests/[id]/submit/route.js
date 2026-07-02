@@ -8,6 +8,7 @@ import { protect } from '@/middleware/auth';
 import { normalizeSubmittedAnswers, evaluateAnswers, recomputeRanksForTest } from '../../../helpers';
 import { createNotification } from '@/utils/notifications';
 import { addManyWrongAnswersToRevision, snapshotFromPracticeTestQuestion } from '@/utils/revision';
+import { sendBrevoEmail } from '@/utils/email';
 
 export async function POST(req, { params }) {
     try {
@@ -79,6 +80,44 @@ export async function POST(req, { params }) {
                 await user.save();
             }
         } catch (e) { console.error('updatePerformanceMetrics (test) failed:', e); }
+
+        // Send Result Email
+        try {
+            const user = await User.findById(auth.user.id);
+            if (user && user.email) {
+                const totalMins = Math.floor(attempt.totalTime / 60000);
+                const totalSecs = Math.floor((attempt.totalTime % 60000) / 1000);
+                const timeString = `${totalMins}m ${totalSecs}s`;
+                const examName = test.examPattern?.exam?.name || 'General';
+
+                const resultHtml = `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                    <h2 style="color: #4F46E5;">Your Test Results are here! 📊</h2>
+                    <p>Hi ${user.name}, you just completed a test. Here's a quick summary of your performance:</p>
+                    
+                    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h3 style="margin-top: 0; color: #1E293B;">${test.title}</h3>
+                        <p style="margin: 5px 0;"><strong>Exam:</strong> ${examName}</p>
+                        <p style="margin: 5px 0;"><strong>Time Taken:</strong> ${timeString}</p>
+                        <p style="margin: 5px 0; font-size: 1.1em;"><strong>Score:</strong> <span style="color: #059669; font-weight: bold;">${evaluation.totalScore}</span> / ${test.totalMarks || (test.questions.length)}</p>
+                        <p style="margin: 5px 0;"><strong>Current Rank:</strong> #${attempt.rank || 'N/A'}</p>
+                    </div>
+
+                    <p>Log in to AajExam to view your detailed analytics and topper comparison.</p>
+                    <a href="https://aajexam.com/dashboard" style="display: inline-block; background-color: #4F46E5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">View Detailed Analysis</a>
+                    
+                    <p style="margin-top: 30px; font-size: 0.9em; color: #64748B;">Keep practicing,<br><strong>The AajExam Team</strong></p>
+                </div>
+                `;
+                sendBrevoEmail({
+                    to: user.email,
+                    subject: `Result: ${test.title} - You scored ${evaluation.totalScore}!`,
+                    html: resultHtml
+                }).catch(err => console.error('Failed to send result email:', err));
+            }
+        } catch (emailErr) {
+            console.error('Email send failed:', emailErr);
+        }
 
         try {
             await createNotification({

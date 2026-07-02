@@ -75,6 +75,7 @@ const userSchema = new mongoose.Schema({
   lastTestResetDate: { type: Date, default: Date.now },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
+  lastLoginDate: { type: Date, default: Date.now },
 
   // Profile completion tracking
   profileCompleted: { type: Boolean, default: false },

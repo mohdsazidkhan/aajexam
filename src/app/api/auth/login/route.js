@@ -77,8 +77,10 @@ export async function POST(req) {
                     console.error('❌ Failed to create profile completion subscription during login:', subError);
                 }
             }
-            await user.save();
         }
+
+        user.lastLoginDate = new Date();
+        await user.save();
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
