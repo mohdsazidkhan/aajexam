@@ -43,12 +43,13 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
         if (isAdmin) {
             endDate.setFullYear(2099);
         } else {
-            endDate.setMonth(endDate.getMonth() + 1);
+            // 7-Day PRO Trial
+            endDate.setDate(endDate.getDate() + 7);
         }
 
         return await Subscription.create({
             user: userId,
-            plan: 'FREE',
+            plan: 'PRO',
             status: 'active',
             startDate,
             endDate,
@@ -56,10 +57,10 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
             currency: 'INR',
             features: {
                 unlimitedQuizzes: true,
-                liveQuizzes: false,
-                prioritySupport: false,
-                advancedAnalytics: false,
-                customBadges: false
+                liveQuizzes: true,
+                prioritySupport: true,
+                advancedAnalytics: true,
+                customBadges: true
             }
         });
     } catch (error) {
@@ -92,7 +93,7 @@ export async function POST(req) {
 
         const user = new User({
             name, email, phone, password: hashedPassword, username, role,
-            subscriptionStatus: 'FREE', referredBy: referredBy || null, referralCode
+            subscriptionStatus: 'PRO', referredBy: referredBy || null, referralCode
         });
 
         await user.save();

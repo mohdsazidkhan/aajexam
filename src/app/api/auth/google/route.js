@@ -42,12 +42,13 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
         if (isAdmin) {
             endDate.setFullYear(2099);
         } else {
-            endDate.setMonth(endDate.getMonth() + 1);
+            // 7-Day PRO Trial
+            endDate.setDate(endDate.getDate() + 7);
         }
 
         return await Subscription.create({
             user: userId,
-            plan: 'FREE',
+            plan: 'PRO',
             status: 'active',
             startDate,
             endDate,
@@ -55,10 +56,10 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
             currency: 'INR',
             features: {
                 unlimitedQuizzes: true,
-                liveQuizzes: false,
-                prioritySupport: false,
-                advancedAnalytics: false,
-                customBadges: false
+                liveQuizzes: true,
+                prioritySupport: true,
+                advancedAnalytics: true,
+                customBadges: true
             }
         });
     } catch (error) {
@@ -96,7 +97,7 @@ export async function POST(req) {
             const username = await generateUniqueUsername(email);
             user = new User({
                 name, email, googleId, profilePicture: picture, username,
-                role: 'student', subscriptionStatus: 'FREE', referralCode: newReferralCode,
+                role: 'student', subscriptionStatus: 'PRO', referralCode: newReferralCode,
                 referredBy: referredBy, phone: undefined
             });
 

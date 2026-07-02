@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { FileText, Clock, Trophy, BookOpen, ChevronRight } from 'lucide-react';
@@ -25,6 +25,23 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
     const [filterYear, setFilterYear] = useState(year || '');
     const [filterExam, setFilterExam] = useState(examId || '');
     const [proModalTest, setProModalTest] = useState(null); // test object when PRO modal is open
+    const [progressData, setProgressData] = useState({});
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            fetch('/api/student/pyq-progress', {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    setProgressData(data.data);
+                }
+            })
+            .catch(err => console.error('Error fetching PYQ progress', err));
+        }
+    }, []);
 
     const updateQuery = (next) => {
         const q = { ...router.query, ...next };
@@ -139,14 +156,38 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 Pick an exam to view its complete PYQ archive year-wise and shift-wise.
                             </p>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                {examsWithPYQ.map((e) => (
-                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 lg:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                                        <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
-                                        <div className="text-[10px] font-bold text-slate-500 flex items-center gap-1">
-                                            {e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'} <FaArrowRight className="ml-auto text-[10px] opacity-0 group-hover:opacity-100 transition" />
+                                {examsWithPYQ.map((e) => {
+                                    const completed = progressData[e.slug] || 0;
+                                    const total = e.paperCount;
+                                    const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+                                    
+                                    return (
+                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 lg:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
+                                        <div className="relative z-10">
+                                            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
+                                            <div className="text-[10px] font-bold text-slate-500 flex items-center justify-between mb-3">
+                                                <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
+                                                <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
+                                            </div>
+                                            
+                                            {/* Progress Bar UI */}
+                                            <div className="space-y-1.5 mt-auto">
+                                                <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
+                                                    <span className={completed > 0 ? 'text-emerald-500' : 'text-slate-400'}>
+                                                        {completed > 0 ? 'In Progress' : 'Start Now'}
+                                                    </span>
+                                                    <span className="text-slate-500">{completed}/{total}</span>
+                                                </div>
+                                                <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                                    <div 
+                                                        className="h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out" 
+                                                        style={{ width: `${pct}%` }} 
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
                                     </Link>
-                                ))}
+                                )})}
                             </div>
                         </section>
                     )}
