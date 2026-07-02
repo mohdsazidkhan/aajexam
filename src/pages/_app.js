@@ -30,6 +30,10 @@ const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentMod
   ssr: false,
 });
 
+const PageViewNudge = dynamic(() => import('../components/modals/PageViewNudge'), {
+  ssr: false,
+});
+
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
@@ -134,6 +138,7 @@ function AppContent({ Component, pageProps }) {
         <ClientOnly>
           <PublicBottomNav />
           <ExitIntentModal />
+          <PageViewNudge />
         </ClientOnly>
       </main>
     );
