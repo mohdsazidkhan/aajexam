@@ -142,7 +142,7 @@ const StudentNavbar = () => {
                         />
                       ) : (
                         <div
-                          className={`w-full h-full border border-y-accent-orange rounded-full flex items-center justify-center text-white text-xs font-black uppercase`}
+                          className={`w-full h-full border border-y-accent-orange rounded-full flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase`}
                         >
                           {user.name?.charAt(0)}
                         </div>
