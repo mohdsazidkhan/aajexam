@@ -90,6 +90,22 @@ const ModernLandingPage = () => {
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="max-w-5xl mx-auto text-center space-y-8 mt-8 lg:mt-0 py-4 lg:py-12">
+                  {/* Gamified Floating Elements */}
+                  <motion.div 
+                     animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
+                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                     className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo-primary items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
+                  >
+                     <Trophy className="w-8 h-8 text-primary-500" />
+                  </motion.div>
+                  <motion.div 
+                     animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
+                     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                     className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo border-2 border-secondary-100 dark:border-secondary-900/50 items-center justify-center"
+                  >
+                     <Star className="w-8 h-8 text-secondary-500" />
+                  </motion.div>
+
                   <div
                      className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 dark:text-primary-500 border-2 border-primary-500/10 shadow-xl"
                   >
