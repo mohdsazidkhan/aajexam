@@ -60,7 +60,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             <span>{pagination.totalExams || 0} Exams Available</span>
                         </div>
                         <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
-                            Government Exams <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-600">Preparation</span>
+                            Government Exams <span className="text-primary-600 dark:text-primary-400">Preparation</span>
                         </h1>
                         <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                             Master your competitive exams with our structured quiz modules and real-time performance tracking.

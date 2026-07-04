@@ -102,7 +102,7 @@ const ModernLandingPage = () => {
                         className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] text-slate-900 dark:text-white"
                      >
                         Practice for <span className="text-primary-700 dark:text-primary-500">Exams</span>
-                        <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-primary-500 to-primary-500 bg-[length:200%_auto] animate-gradient">You Study. You Win.</p>
+                        <p className="text-primary-600 dark:text-primary-400">You Study. You Win.</p>
                      </h1>
 
                      <p

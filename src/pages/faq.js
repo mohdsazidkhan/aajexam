@@ -194,7 +194,7 @@ const FAQ = () => {
                         <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
                             Frequently Asked Questions
                         </h1>
                         <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">

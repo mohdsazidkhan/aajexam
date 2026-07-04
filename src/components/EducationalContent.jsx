@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import {
@@ -85,7 +85,7 @@ const EducationalContent = ({ content }) => {
 
                     <div className="space-y-2">
                         <h1 className="text-xl lg:text-5xl font-black text-content-primary uppercase tracking-tighter leading-none">
-                            Why Aspirants Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-500">AajExam</span>
+                            Why Aspirants Choose <span className="text-primary-600 dark:text-primary-400">AajExam</span>
                         </h1>
                         <p className="text-sm lg:text-xl font-bold text-content-secondary dark:text-slate-500 max-w-2xl mx-auto uppercase tracking-widest">
                             Structured preparation for SSC, UPSC, Banking, Railway and State PSC exams
