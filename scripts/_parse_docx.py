@@ -94,19 +94,31 @@ for rid in rid_to_media:
     n = len(re.findall(rf'r:embed="{re.escape(rid)}"', doc_xml))
     rid_counts[rid] = n
 
-# Identify candidates: high-count (>= 50), and the smaller one is the tick (~100 expected)
+# Identify candidates: high-count (>= 50), and the smaller one is the tick
 hi = sorted(rid_counts.items(), key=lambda kv: -kv[1])
 print(f"Top rId counts: {hi[:5]}")
 
-# Heuristic: tick rId has count ~= 100, empty rId has count ~= 300
-# Find an rId with count near 100 and another near 300 (in 4:1 ratio with 1 tick per 4 bullets)
+# Heuristic: Find two rIds that are roughly in a 3:1 ratio (empty:tick).
+# We assume the total questions could be anything (e.g. 50, 100, 200).
 tick_rid = None
 empty_rid = None
-for rid, cnt in hi:
-    if 80 <= cnt <= 120:
-        tick_rid = rid
-    elif 240 <= cnt <= 360:
-        empty_rid = rid
+
+if len(hi) >= 2:
+    # Try to find a pair among the top candidates where one is roughly 3x the other
+    # and both are relatively frequent (e.g. > 20)
+    for i in range(len(hi)):
+        for j in range(i+1, len(hi)):
+            rid_a, cnt_a = hi[i]
+            rid_b, cnt_b = hi[j]
+            if cnt_a < 20 or cnt_b < 20: continue
+            
+            # Since sorted descending, cnt_a > cnt_b
+            ratio = cnt_a / cnt_b
+            if 2.5 <= ratio <= 3.5:
+                empty_rid = rid_a
+                tick_rid = rid_b
+                break
+        if tick_rid: break
 
 if tick_rid and empty_rid:
     print(f"Decoding key: tick={tick_rid}({rid_counts[tick_rid]}), empty={empty_rid}({rid_counts[empty_rid]})")
