@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Flame, Trophy, Calendar, Shield, Snowflake, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
@@ -78,13 +79,15 @@ const StreakPage = () => {
         </div>
 
         {/* Today Status */}
-        <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-orange-50 dark:bg-orange-900/20'}`}>
-          {streak?.todayCompleted
-            ? <><Shield className="w-10 h-10 text-emerald-500 mx-auto mb-2" /><h2 className="text-lg font-black text-emerald-700 dark:text-emerald-300">Today&apos;s Challenge Complete!</h2></>
-            : <><Flame className="w-10 h-10 text-orange-500 mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-orange-700 dark:text-orange-300">Complete Today&apos;s Challenge to Keep Streak!</h2>
-              <a href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors">Go to Challenge</a></>
-          }
-        </Card>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+          <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-emerald-50 dark:bg-emerald-900/20 ring-4 ring-emerald-500/20' : 'bg-orange-50 dark:bg-orange-900/20 ring-4 ring-orange-500/30'}`}>
+            {streak?.todayCompleted
+              ? <><Shield className="w-10 h-10 text-emerald-500 mx-auto mb-2" /><h2 className="text-lg font-black text-emerald-700 dark:text-emerald-300">Today&apos;s Challenge Complete!</h2></>
+              : <><Flame className="w-10 h-10 text-orange-500 mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-orange-700 dark:text-orange-300">Complete Today&apos;s Challenge to Keep Streak!</h2>
+                <a href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</a></>
+            }
+          </Card>
+        </motion.div>
 
         {/* Freeze Button */}
         {!streak?.todayCompleted && streak?.freezesAvailable > 0 && (
@@ -101,18 +104,21 @@ const StreakPage = () => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <Card className="p-5 lg:p-6 space-y-4">
-            <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2"><TrendingUp className="w-4 h-4 text-primary-500" /> Streak Leaderboard</h3>
-            <div className="space-y-2">
-              {leaderboard.map((entry, i) => (
-                <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                  <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
-                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
-                  <span className="text-sm font-black text-orange-500 flex items-center gap-1"><Flame className="w-3 h-3" />{entry.currentStreak}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+            <Card className="p-5 lg:p-6 space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
+              <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-500" /> Streak Leaderboard</h3>
+              <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
+                {leaderboard.map((entry, i) => (
+                  <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
+                    <span className="text-sm font-black text-orange-500 flex items-center gap-1"><Flame className="w-3 h-3" />{entry.currentStreak}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </Card>
+          </motion.div>
         )}
       </div>
     </div>

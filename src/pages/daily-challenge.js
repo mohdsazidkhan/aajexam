@@ -198,23 +198,25 @@ const DailyChallengePage = () => {
         {/* Results */}
         {attempted && attemptData && (
           <div className="space-y-6">
-            <Card className="p-6 text-center space-y-4 bg-gradient-to-br from-primary-50 to-emerald-50 dark:from-primary-900/20 dark:to-emerald-900/20">
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-1">
-                  <p className="text-3xl font-black text-primary-500">{attemptData.score}</p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase">Score</p>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+              <Card className="p-6 text-center space-y-4 bg-gradient-to-br from-primary-50 to-emerald-50 dark:from-primary-900/20 dark:to-emerald-900/20 ring-4 ring-emerald-500/20 shadow-xl">
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="space-y-1">
+                    <p className="text-3xl font-black text-primary-500">{attemptData.score}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase">Score</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-3xl font-black text-emerald-500">{attemptData.accuracy}%</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-3xl font-black text-orange-500">{attemptData.correctCount}/{attemptData.correctCount + attemptData.wrongCount + attemptData.skippedCount}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase">Correct</p>
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-3xl font-black text-emerald-500">{attemptData.accuracy}%</p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-3xl font-black text-orange-500">{attemptData.correctCount}/{attemptData.correctCount + attemptData.wrongCount + attemptData.skippedCount}</p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase">Correct</p>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
 
             {/* Per-question review + discussion */}
             {challenge?.questions?.length > 0 && (
@@ -272,19 +274,22 @@ const DailyChallengePage = () => {
 
             {/* Leaderboard */}
             {leaderboard.length > 0 && (
-              <Card className="p-4 space-y-3">
-                <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2"><Trophy className="w-4 h-4 text-yellow-500" /> Today&apos;s Leaderboard</h3>
-                <div className="space-y-2">
-                  {leaderboard.slice(0, 10).map((entry, i) => (
-                    <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                      <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
-                      <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
-                      <span className="text-sm font-black text-primary-500">{entry.score}</span>
-                      <span className="text-[10px] font-bold text-slate-400">{entry.accuracy}%</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+                <Card className="p-4 space-y-3 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><Trophy className="w-4 h-4 text-yellow-500" /> Today&apos;s Leaderboard</h3>
+                  <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
+                    {leaderboard.slice(0, 10).map((entry, i) => (
+                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
+                        <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
+                        <span className="text-sm font-black text-primary-500">{entry.score}</span>
+                        <span className="text-[10px] font-bold text-slate-400">{entry.accuracy}%</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </Card>
+              </motion.div>
             )}
           </div>
         )}
