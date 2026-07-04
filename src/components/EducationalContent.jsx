@@ -114,7 +114,7 @@ const EducationalContent = ({ content }) => {
                                     <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                         {card.title}
                                     </h3>
-                                    <p className="text-sm font-bold text-content-secondary dark:text-slate-500 leading-relaxed uppercase tracking-wide">
+                                    <p className="text-sm font-medium text-content-secondary dark:text-slate-400 leading-relaxed">
                                         {card.content}
                                     </p>
                                 </div>

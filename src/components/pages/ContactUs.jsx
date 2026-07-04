@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import {
@@ -81,7 +81,7 @@ const ContactUs = ({ contactInfo = {
                   </motion.div>
                   <div className="space-y-4">
                      <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-500">Support</span></h1>
-                     <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
+                     <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
                   </div>
                </section>
 
@@ -135,7 +135,7 @@ const ContactUs = ({ contactInfo = {
                            </div>
                            <div className="space-y-1">
                               <h4 className="text-xl font-black font-outfit uppercase tracking-tight leading-none">We Are Here For You</h4>
-                              <p className="text-xs font-bold opacity-80 uppercase tracking-[0.1em]">Students always come first. We are ready to help.</p>
+                              <p className="text-xs font-medium opacity-90">Students always come first. We are ready to help.</p>
                            </div>
                         </div>
                         <Sparkles className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 text-white/10 pointer-events-none" />
@@ -149,7 +149,7 @@ const ContactUs = ({ contactInfo = {
 
                         <div className="space-y-6 relative z-10">
                            <h3 className="text-2xl lg:text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Send a Message</h3>
-                           <p className="text-xs lg:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em]">We usually reply within 24 hours. Write to us anytime.</p>
+                           <p className="text-xs lg:text-sm font-medium text-slate-500 dark:text-slate-400">We usually reply within 24 hours. Write to us anytime.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
@@ -238,7 +238,7 @@ const ContactUs = ({ contactInfo = {
                         </div>
                         <div className="space-y-3">
                            <h4 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">{f.title}</h4>
-                           <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-relaxed max-w-[200px] mx-auto">{f.desc}</p>
+                           <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px] mx-auto">{f.desc}</p>
                         </div>
                      </Card>
                   ))}

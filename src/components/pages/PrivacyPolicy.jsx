@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { useRouter } from 'next/router';
@@ -114,8 +114,7 @@ const PrivacyPolicy = () => {
                            <ShieldCheck className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-white/5" />
                            <div className="relative z-10 space-y-4">
                               <p className="text-[10px] font-black uppercase tracking-widest text-primary-400">Data Protection</p>
-                              <h4 className="text-xl font-black uppercase tracking-tight">Your Data is Safe</h4>
-                              <p className="text-xs font-bold text-slate-400 leading-relaxed uppercase">We use strong protection to keep your personal data safe and private.</p>
+                              <p className="text-sm font-medium text-slate-400 leading-relaxed">We use strong protection to keep your personal data safe and private.</p>
                            </div>
                         </div>
                      </div>
@@ -133,7 +132,7 @@ const PrivacyPolicy = () => {
                               </div>
                               <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
                            </div>
-                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic border-l-8 border-primary-500/20 pl-2 lg:pl-8">
+                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-medium italic border-l-8 border-primary-500/20 pl-2 lg:pl-8">
                               This Privacy Policy explains how <strong>AajExam</strong> collects, uses, stores, and protects your information when you use our platform. By using AajExam, you agree to the practices described below.
                            </p>
                         </div>
@@ -164,7 +163,7 @@ const PrivacyPolicy = () => {
                                     </div>
                                     <div className="space-y-2">
                                        <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
-                                       <p className="text-xs font-bold text-slate-500 dark:text-slate-400 leading-relaxed uppercase tracking-tight">{item.body}</p>
+                                       <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                     </div>
                                  </div>
                               </div>
@@ -191,7 +190,7 @@ const PrivacyPolicy = () => {
                            ].map((text, i) => (
                               <div key={i} className="flex gap-6 group">
                                  <div className="w-1 h-12 bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors rounded-full" />
-                                 <p className="text-sm font-black text-slate-400 uppercase tracking-widest leading-loose pt-2">{text}</p>
+                                 <p className="text-sm font-medium text-slate-400 leading-loose pt-2">{text}</p>
                               </div>
                            ))}
 
@@ -200,7 +199,7 @@ const PrivacyPolicy = () => {
                                  <Zap className="w-6 h-6" />
                                  <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
                               </div>
-                              <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+                              <p className="text-sm font-medium text-slate-400 leading-relaxed">
                                  Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your wallet and can be withdrawn to your bank account.
                               </p>
                            </div>
@@ -217,7 +216,7 @@ const PrivacyPolicy = () => {
                         </div>
 
                         <div className="space-y-10">
-                           <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-widest italic border-l-4 border-orange-500/20 pl-6 px-4">
+                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-4 border-orange-500/20 pl-6 px-4">
                               We use essential cookies for keeping you logged in. AajExam also works with Google AdSense for showing advertisements.
                            </p>
 
@@ -249,7 +248,7 @@ const PrivacyPolicy = () => {
                               <Lock className="w-6 h-6" />
                            </div>
                            <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">Data Security</h3>
-                           <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em] leading-loose">WE USE HTTPS, SECURE PASSWORD HASHING, AND ACCESS CONTROLS TO PROTECT YOUR DATA.</p>
+                           <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">We use HTTPS, secure password hashing, and access controls to protect your data.</p>
                         </section>
 
                         <section id="eligibility" className="bg-slate-900 p-4 lg:p-12 rounded-[3.5rem] shadow-xl border-none space-y-6 relative overflow-hidden">
@@ -257,7 +256,7 @@ const PrivacyPolicy = () => {
                               <UserShield className="w-6 h-6" />
                            </div>
                            <h3 className="text-xl font-black uppercase tracking-tight text-white leading-none relative z-10">Age Limit</h3>
-                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] leading-loose relative z-10">USERS MUST BE 13 YEARS OR OLDER TO CREATE AN ACCOUNT ON THE AAJEXAM PLATFORM.</p>
+                           <p className="text-sm font-medium text-slate-400 leading-loose relative z-10">Users must be 13 years or older to create an account on the AajExam platform.</p>
                            <Zap className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-white/5" />
                         </section>
                      </div>

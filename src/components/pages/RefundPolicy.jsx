@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
@@ -91,7 +91,7 @@ const RefundPolicy = () => {
                            <div className="relative z-10 space-y-4">
                               <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400">Payment Status</p>
                               <h4 className="text-xl font-black uppercase tracking-tight">Account Activation</h4>
-                              <p className="text-xs font-bold text-slate-400 leading-relaxed uppercase">Subscriptions provide immediate access to all features. Therefore, refunds are only provided under specific conditions.</p>
+                              <p className="text-sm font-medium text-slate-400 leading-relaxed">Subscriptions provide immediate access to all features. Therefore, refunds are only provided under specific conditions.</p>
                            </div>
                         </div>
                      </div>
@@ -103,7 +103,7 @@ const RefundPolicy = () => {
                      {/* Introduction */}
                      <section id="intro" className="group mt-4">
                         <div className="bg-white dark:bg-slate-800 p-4  lg:p-8 rounded-[2rem]  lg:rounded-[4rem] shadow-duo-secondary border-none relative overflow-hidden text-center">
-                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic">
+                           <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-medium italic">
                               Thank you for using <strong>AajExam</strong>. Please read this policy before buying a plan. By paying for a plan, you agree to the rules below.
                            </p>
                         </div>
@@ -127,11 +127,11 @@ const RefundPolicy = () => {
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                               <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h4>
-                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
+                                 <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
                               </div>
                               <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h4>
-                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
+                                 <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
                               </div>
                            </div>
                         </div>
@@ -159,7 +159,7 @@ const RefundPolicy = () => {
                                  </div>
                                  <div className="space-y-1">
                                     <h4 className="text-[11px] font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
-                                    <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-tight leading-relaxed">{item.body}</p>
+                                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                  </div>
                               </div>
                            ))}
@@ -178,7 +178,7 @@ const RefundPolicy = () => {
                         </div>
 
                         <div className="space-y-10 relative z-10">
-                           <p className="text-sm font-black text-slate-400 uppercase tracking-widest leading-loose max-w-xl">
+                           <p className="text-sm font-medium text-slate-400 leading-loose max-w-xl">
                               Refunds are only considered for double payments or technical failures:
                            </p>
 
@@ -188,19 +188,19 @@ const RefundPolicy = () => {
                                     <TriangleAlert className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Double Payment</h4>
                                  </div>
-                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-tight leading-relaxed">When you are accidentally charged twice for the same plan.</p>
+                                 <p className="text-xs font-medium text-slate-400 leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </div>
                               <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-emerald-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-emerald-500">
                                     <Zap className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Activation Failure</h4>
                                  </div>
-                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-tight leading-relaxed">When payment is successful but features are not activated on your account.</p>
+                                 <p className="text-xs font-medium text-slate-400 leading-relaxed">When payment is successful but features are not activated on your account.</p>
                               </div>
                            </div>
 
                            <div className="p-10 bg-emerald-500/10 rounded-[3rem] border-l-8 border-emerald-500">
-                              <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+                              <p className="text-sm font-medium text-slate-400 leading-relaxed">
                                  <strong>REQUEST:</strong> Contact us within 7 days of payment. If approved, your refund will go back to the account you paid from within a few banking days.
                               </p>
                            </div>

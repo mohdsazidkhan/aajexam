@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { useRouter } from 'next/router';
@@ -112,7 +112,7 @@ const TermsAndConditions = () => {
                            <div className="relative z-10 space-y-4">
                               <p className="text-[10px] font-black uppercase tracking-widest text-primary-400">Agreement</p>
                               <h4 className="text-xl font-black uppercase tracking-tight">Acceptance of Terms</h4>
-                              <p className="text-xs font-bold text-slate-400 leading-relaxed uppercase">By using our platform, you agree to follow these terms and conditions.</p>
+                              <p className="text-sm font-medium text-slate-400 leading-relaxed">By using our platform, you agree to follow these terms and conditions.</p>
                            </div>
                         </div>
                      </div>
@@ -131,10 +131,10 @@ const TermsAndConditions = () => {
                               <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">1. Acceptance of Terms</h2>
                            </div>
                            <div className="space-y-6">
-                              <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight">
+                              <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400 font-medium">
                                  Welcome to <strong>AajExam</strong>, India's premier government exam preparation platform. These Terms and Conditions ("Terms") constitute a legally binding agreement between you and AajExam governing your access to and use of our platform.
                               </p>
-                              <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight italic border-l-4 border-primary-500/20 pl-8">
+                              <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400 font-medium italic border-l-4 border-primary-500/20 pl-8">
                                  AajExam is a <strong>100% knowledge-based learning platform</strong>. It is built to help students practice for government exams. There is no gambling or luck involved — only your hard work.
                               </p>
                            </div>
@@ -162,7 +162,7 @@ const TermsAndConditions = () => {
                                  </div>
                                  <div className="space-y-2">
                                     <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
-                                    <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight leading-relaxed">{item.body}</p>
+                                    <p className="text-xs font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                  </div>
                               </div>
                            ))}
@@ -183,20 +183,20 @@ const TermsAndConditions = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                            <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-4">
                               <h4 className="text-emerald-500 font-black uppercase tracking-widest text-xs">Free Plan</h4>
-                              <p className="text-sm font-bold text-slate-400 uppercase tracking-tight">Access to Levels 0-9 for basic exam preparation.</p>
+                              <p className="text-sm font-medium text-slate-400">Access to Levels 0-9 for basic exam preparation.</p>
                            </div>
                            <div className="p-8 bg-emerald-500/10 rounded-[2.5rem] border-2 border-emerald-500/20 space-y-4 shadow-duo-emerald group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
                                  <Zap className="w-4 h-4 text-emerald-500" />
                               </div>
-                              <p className="text-sm font-bold text-slate-200 uppercase tracking-tight">Complete access to all levels, advanced features, and premium study materials.</p>
+                              <p className="text-sm font-medium text-slate-200">Complete access to all levels, advanced features, and premium study materials.</p>
                            </div>
                         </div>
 
                         <div className="p-10 bg-white/5 rounded-[3.5rem] border-l-8 border-emerald-500 relative z-10">
-                           <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
-                              <strong className="text-emerald-500">PAYMENT TERMS:</strong> ALL SUBSCRIPTION FEES ARE PROCESSED SECURELY AND ARE NON-REFUNDABLE. IF YOUR ACCOUNT IS BANNED FOR BREAKING RULES, YOU WILL NOT RECEIVE A REFUND.
+                           <p className="text-sm font-medium text-slate-400 leading-relaxed">
+                              <strong className="text-emerald-500">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
                            </p>
                         </div>
                      </section>
@@ -218,14 +218,14 @@ const TermsAndConditions = () => {
                                     <div className="w-2.5 h-10 bg-amber-500 rounded-full shrink-0" />
                                     <div>
                                        <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-1">Daily Challenges</p>
-                                       <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight px-0">Earn rewards through daily, weekly, and monthly effort.</p>
+                                       <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn rewards through daily, weekly, and monthly effort.</p>
                                     </div>
                                  </li>
                                  <li className="flex gap-6">
                                     <div className="w-2.5 h-10 bg-amber-500 rounded-full shrink-0" />
                                     <div>
                                        <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-1">Referral Bonus</p>
-                                       <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight px-0">Earn bonuses for inviting your friends to join the platform.</p>
+                                       <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn bonuses for inviting your friends to join the platform.</p>
                                     </div>
                                  </li>
                               </ul>
@@ -254,8 +254,8 @@ const TermsAndConditions = () => {
                         </div>
 
                         <div className="p-10 bg-rose-500/10 rounded-[3rem] border-2 border-rose-500/20 text-rose-600 dark:text-rose-400 text-center">
-                           <p className="text-sm font-black uppercase tracking-widest leading-loose">
-                              ANY VIOLATION OF THESE RULES WILL RESULT IN A PERMANENT ACCOUNT BAN.
+                           <p className="text-sm font-bold text-rose-600 dark:text-rose-400 leading-loose">
+                              Any violation of these rules will result in a permanent account ban.
                            </p>
                         </div>
                      </section>
@@ -268,7 +268,7 @@ const TermsAndConditions = () => {
                            </div>
                            <div className="space-y-3 text-center lg:text-left">
                               <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">6. Intellectual Property</h3>
-                              <p className="text-[11px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] leading-loose">ALL CONTENT, QUIZZES, AND BRANDING ARE THE EXCLUSIVE PROPERTY OF AAJEXAM AND ARE PROTECTED BY LAW.</p>
+                              <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">All content, quizzes, and branding are the exclusive property of AajExam and are protected by law.</p>
                            </div>
                         </section>
 
@@ -278,7 +278,7 @@ const TermsAndConditions = () => {
                            </div>
                            <div className="space-y-3 text-center lg:text-left">
                               <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">7. Liability Disclaimer</h3>
-                              <p className="text-[11px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] leading-loose">OUR CONTENT IS PROVIDED "AS-IS". WE PROVIDE STUDY TOOLS BUT DO NOT GUARANTEE SUCCESS IN GOVERNMENT EXAMINATIONS.</p>
+                              <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">Our content is provided "as-is". We provide study tools but do not guarantee success in government examinations.</p>
                            </div>
                         </section>
                      </div>

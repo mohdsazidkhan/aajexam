@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { useRouter } from 'next/router';
@@ -71,7 +71,7 @@ const AboutUs = () => {
                </motion.div>
                <div className="space-y-4">
                   <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-700 dark:text-primary-500">Us</span></h1>
-                  <p className="text-lg md:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest max-w-3xl mx-auto leading-tight">Practice daily. Learn more. Get the job you always wanted.</p>
+                  <p className="text-lg md:text-xl lg:text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Practice daily. Learn more. Get the job you always wanted.</p>
                </div>
 
                {/* Stats Ribbon */}
@@ -119,7 +119,7 @@ const AboutUs = () => {
                   <div className="space-y-2">
                      <div className="p-3 bg-blue-500/10 text-blue-500 w-fit rounded-xl"><Target className="w-5 h-5" /></div>
                      <h4 className="font-black uppercase text-sm">All Subjects Covered</h4>
-                     <p className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide">We cover Maths, English, and General Knowledge for all major government exams.</p>
+                     <p className="text-xs font-medium text-slate-600 dark:text-slate-400">We cover Maths, English, and General Knowledge for all major government exams.</p>
                   </div>
                </div>
             </section>
@@ -139,7 +139,7 @@ const AboutUs = () => {
                         </div>
                         <div className="space-y-2">
                            <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-700 dark:text-primary-500 transition-colors">{f.title}</h4>
-                           <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{f.desc}</p>
+                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{f.desc}</p>
                         </div>
                      </Card>
                   ))}
@@ -160,7 +160,7 @@ const AboutUs = () => {
                         </div>
                      </div>
                      <div className="lg:col-span-8 space-y-6 pl-0 lg:pl-10 lg:border-l-2 border-slate-200 dark:border-slate-700">
-                        <p className="text-sm font-bold text-slate-600 dark:text-slate-300 leading-8 uppercase tracking-wide">Led by <strong>MOHD SAZID KHAN</strong>, AajExam is 100% based on your knowledge and hard work. Everything you earn here is through your own effort. We follow all rules to make sure the platform is safe, fair, and honest for every student.</p>
+                        <p className="text-sm font-medium text-slate-600 dark:text-slate-300 leading-8">Led by <strong>MOHD SAZID KHAN</strong>, AajExam is 100% based on your knowledge and hard work. Everything you earn here is through your own effort. We follow all rules to make sure the platform is safe, fair, and honest for every student.</p>
                      </div>
                   </div>
                </Card>
@@ -171,7 +171,7 @@ const AboutUs = () => {
                <Card className="p-12 text-center bg-gradient-to-r from-primary-500 to-primary-500 border-none text-white shadow-duo-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
-                     <p className="text-lg font-bold opacity-90 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>
+                     <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>
                      <Button onClick={() => router.push('/')} variant="white" size="lg" className="mx-auto px-12 py-6 text-sm font-black text-primary-700 dark:text-primary-500 shadow-xl">START LEARNING FOR FREE</Button>
                   </div>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/10" />

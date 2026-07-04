@@ -165,10 +165,39 @@ const ModernLandingPage = () => {
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
                         <Trophy className="w-5 h-5 text-amber-500" /> Practice with topic-wise quizzes
                      </div>
-                  </div>
-               </div>
-            </div>
-         </section>
+                   </div>
+                </div>
+             </div>
+          </section>
+
+          {/* ── 3-Step How It Works ── */}
+          <section className="py-12 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800">
+             <div className="container mx-auto px-4 lg:px-8">
+                <div className="max-w-4xl mx-auto">
+                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                      <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
+                      
+                      {[
+                         { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                         { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
+                         { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" }
+                      ].map((item, i) => (
+                         <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-duo border-2 border-slate-200 dark:border-slate-700">
+                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
+                               <item.icon className={`w-8 h-8 ${item.color}`} />
+                            </div>
+                            <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
+                               Step {item.step}: {item.title}
+                            </h3>
+                            <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                               {item.desc}
+                            </p>
+                         </div>
+                      ))}
+                   </div>
+                </div>
+             </div>
+          </section>
 
          {/* ── Social Proof Ticker ── */}
          {(stats.recentRegistrations > 0 || stats.recentAttempts > 0) && (
