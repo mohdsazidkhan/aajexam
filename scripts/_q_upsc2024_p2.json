@@ -1,0 +1,962 @@
+[
+ {
+  "n": 1,
+  "q": "Passage - 1 By the time children reach class 8, the bulk of them tend to be in the age range of 13 years to 15 years. But in our country, about a quarter of all children in class 8 struggle with reading simple texts and more than half are still unable to do basic arithmetic operations like division. Every year about 25 million young boys and girls from elementary school move into the life that lies for them beyond compulsory schooling. They cannot enter the workforce at least in the organized sector till they are 18. For many families, these children are the first from their families ever to get this far in school. Parents and children expect that such ‘graduates’ from school will go on to high school and college. Hardly anyone wants to go back to agriculture. On the other hand, abilities in terms of academic competencies are far lower than they should be even based on curricular expectations of class 8. Based on the above passage, following assumptions have been made:\n1. For effective school education, parents have greater role than the governments.\n2. School curriculum that conforms to today’s requirements and is uniform for the entire country may address the issues brought out. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Assumption 1 is invalid: The passage does not assert that effective school education depends more on parents than on governments. It explores challenges within the education system and discusses the aspirations of parents and children, but it does not make a direct comparison between the roles of parents and governments in ensuring effective school education. Assumption 2 is invalid: The passage does not suggest that a uniform school curriculum conforming to today’s requirements is the solution to the educational issues highlighted. It mentions the challenges students face with basic academic competencies but does not propose a solution that involves uniform curriculum reforms. Thus, option (d) is correct."
+ },
+ {
+  "n": 2,
+  "q": "Which one of the following statements best reflects the central idea conveyed by the passage?",
+  "opts": [
+   "Total eradication of poverty in the country will resolve the issue of under-performance of our school- children.",
+   "Monetary incentives to parents and teachers is a strategy to improve the children’s academic performance.",
+   "Public policy should ensure that competencies and achievements of young people are aligned with their expectations.",
+   "India is not going to take advantage of the demographic dividend unless some school pass-outs go back to agriculture."
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect  because while eliminating poverty can positively impact various societal issues, including education, the passage does not explicitly state that eradicating poverty alone resolves the issue of under-performance in school children. The passage primarily focuses on educational challenges and the need for public policy to align competencies with expectations. Option (b) is incorrect because although monetary incentives for parents and teachers can improve academic performance, the passage does not advocate this as the primary solution for addressing under-performance in school children. It emphasizes broader systemic issues within the education system and the necessity of policy interventions Option (c) is correct because it aligns with the central idea of the passage. The passage underscores the importance of public policy in ensuring that the competencies and achievements of young people match their expectations. This is crucial for tackling the under-performance issues highlighted in the passage. Option (d) is incorrect because the passage does not explicitly suggest that India’s demographic dividend hinges on school pass-outs returning to agriculture. This option introduces a specific condition not directly related to the passage’s central theme of aligning competencies and achievements with expectations through public policy. Hence, option (c) is the correct answer."
+ },
+ {
+  "n": 3,
+  "q": "Passage - 2 We take it for granted now that science has a social responsibility. The idea would not have occurred to Newton or Galileo. They thought of science as an account of the world as it is, and the only responsibility that they acknowledged was to tell the truth. The idea that science is a social enterprise is modern, and it begins at the industrial revolution. We are surprised that we cannot trace a social sense further back, because we nurse the illusion that the industrial revolution ended a golden age. Which one of the following statements best reflects the thinking of the author about the science? UPSC CIVIL SERVICES EXAMINATION (PRELIMS)-CSAT",
+  "opts": [
+   "Science must value the commitment of the scientists.",
+   "Science is a product of civilized society and must be used for the promotion of scientific awareness in people.",
+   "Industrial revolution was made possible by the advancements in science.",
+   "Science must pursue truth but be responsible for social welfare."
+  ],
+  "answer": 3,
+  "expl": "Option (a) is incorrect  because the passage centers on the historical perspectives of scientists such as Newton and Galileo, who perceived science primarily as the pursuit of truths without addressing societal obligations. It contrasts their views with the contemporary belief that science should also uphold social responsibility. Option (b) is incorrect  because it implies that the passage advocates using science to enhance public scientific awareness, which isn’t its primary focus. Instead, the passage examines the historical evolution during the industrial revolution regarding science’s societal responsibilities, rather than its role in promoting scientific literacy. Option (c) is incorrect because it oversimplifies the connection between the industrial revolution and scientific advancements. While the passage acknowledges the significant impact of scientific progress during that period, it also underscores the broader societal and technological changes that played crucial roles in driving the industrial revolution. Therefore, option (c) does not fully capture the complexity of factors discussed in the passage regarding this historical era. Option (d) is correct  because it aligns with the central theme of the passage. The passage contrasts early scientists who primarily sought truths with the modern perspective that emphasizes not only discovering truths but also considering the societal impact of scientific advancements and contributing to social welfare. Therefore, option (d) accurately reflects the themes discussed in the passage regarding the evolving role of science."
+ },
+ {
+  "n": 4,
+  "q": "Consider the sequence A _ BCD _ BBCDABC _ DABC _ D that follows a certain pattern. Which one of the following completes the sequence?",
+  "opts": [
+   "B, A, D, C",
+   "B, A, C, D",
+   "A, A, C, D",
+   "A, A, D, C"
+  ],
+  "answer": 2,
+  "expl": "The pattern used in the question is AABCD, ABBCD, ABCCD, ABCDD By filling the appropriate letters in the gaps given in the question from the above pattern, we get the required letters. They are: A, A, C, D Hence option (c) is the correct answer."
+ },
+ {
+  "n": 5,
+  "q": "Two persons P and Q enter into a business. P puts ` 14,000 more than Q, but P has invested for 8 months and Q has invested for 10 months. If P’s share is ` 400 more than Q’s share out of the total profit of ` 2,000, what is the capital contributed by P?",
+  "opts": [
+   "` 30,000",
+   "` 26,000",
+   "` 24,000",
+   "` 20,000"
+  ],
+  "answer": 0,
+  "expl": "Let P’s share in profit be X Then Q’s share in profit = X – 400 Given, total profit = ₹ 2000 ⇒ X + X – 400 = 2000 ⇒ X = 1200 So, P’s profit is ₹ 1200 Q’s profit is ₹ 800 Let P’s investment be P Q’s investment is P - 14000 (Given in the question) We know that, profit is directly proportional to investment × time P's profit Q s profit ' = ( ) ( ) P Q × × 8 800 = P P 8 14000 ( ) Solving for P, we get P = 30000 Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 6,
+  "q": "P’s salary is 20% lower than Q’s salary which is 20% lower than R’s salary. By how much percent is R’s salary more than P’s salary?",
+  "opts": [
+   "48.75%",
+   "56.25%",
+   "60.50%",
+   "62.25%"
+  ],
+  "answer": 1,
+  "expl": "Let R’s salary be 100. As Q’s salary is 20% less than R’s salary, So, Q’s salary = 80 As P’s salary is 20% less than Q’s salary, So, P’s salary = 100 − × 80 = 64 Now, R’s salary difference from P’s salary = 100 – 64 = 36 Percentage = R s salary P s salary P s salary ' ' ' − × 100 64 × 100 = 56.25% Hence, option (b) is the correct option."
+ },
+ {
+  "n": 7,
+  "q": "A number is mistakenly divided by 4 instead of multiplying by 4. What is the percentage change in the result due to this mistake?",
+  "opts": [
+   "25%",
+   "72.75%",
+   "50%",
+   "93.75%"
+  ],
+  "answer": 3,
+  "expl": "Let the number before operation be n Number calculated by mistake is n 4 The actual number to be calculated = 4n Change = 4n – (n/4) Percentage change = 4 4 n n n − × 100 16 × 100 = 93.75% Hence, option (d) is the correct option."
+ },
+ {
+  "n": 8,
+  "q": "In an examination, 80% of students passed in English, 70% of students passed in Hindi and 15% failed in both the subjects. What is the percentage of students who failed in only one subject?",
+  "opts": [
+   "15%",
+   "20%",
+   "25%",
+   "35%"
+  ],
+  "answer": 1,
+  "expl": "Percentage of students who have failed in both subjects = 15% So, the percentage of students who have passed in at least one subject = 100 – 15 = 85% Let x percentage of students have passed in both the subjects Students who have passed only in English = 80 – x % Students who have passed only in Hindi = 70 – x % The total number of students who have passed in at least one subject = 80 – x + 70 – x + x = 150 – x So, 150 – x = 85 x = 65% So, number of students who have passed only in 1 subject = 85 – 65 = 20% So, number of students who have failed in 1 subject = 20% Hence, option (b) is the correct answer."
+ },
+ {
+  "n": 9,
+  "q": "A father said to his son, “n years back l was as old as you are now. My present age is four times your age n years back”. If the sum of the present ages of the father and the son is 130 years, what is the difference of their ages?",
+  "opts": [
+   "30 years",
+   "32 years",
+   "34 years",
+   "36 years"
+  ],
+  "answer": 0,
+  "expl": "Let the present age of son be x n years back father’s age was x, so present age of father = x + n Now, according to given conditions: x + n = 4(x – n) … (i) x + n + x = 130 … (ii) Solving (i) and (ii) to get the value of x and n we get, x = 50 and n = 30 Difference of their ages = x + n – x = n = 30 years Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 10,
+  "q": "Consider the following:\n1. 1000 litres = 1 m3\n2. 1 metric ton = 1000 kg\n3. 1 hectare = 10000 m2\nWhich of the above are correct?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 3,
+  "expl": "As, we know 1 m3 = 1000 litre 1 metric ton = 1000 kg 1 hectare = 10000 m2 So, all the 3 statements are correct relations between different units Hence option (d) is the correct answer."
+ },
+ {
+  "n": 11,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 According to the Food and Agriculture Organization, one- third of food produced for human consumption is lost or wasted globally. Food is lost or wasted throughout the supply chain, from initial agricultural production to final household consumption. The increasing wastage also results in land degradation by about 45%, mainly due to deforestation, unsustainable agricultural practices, and excessive groundwater extraction. The energy spent over wasted food results in about 3.5 billion tonnes of carbon dioxide production every year. Decay also leads to harmful emissions of other gases in the atmosphere. Addressing the loss and wastage of food in all forms is critical to complete the cycle of food sufficiency and food sustainability. Which of the following statements best reflect the most logical and rational inferences that can be made from the passage?\n1. The current methods of food distribution are solely responsible for the loss and wastage of food.\n2. Land productivity is adversely affected by the prevailing trend of food loss and wastage.\n3. Reduction in the loss and wastage of food results in lesser carbon footprint.\n4. Post-harvest technologies to prevent or reduce the loss and wastage of food are not available. Select the correct answer using the code given below.",
+  "opts": [
+   "1, 2 and 3",
+   "2 and 3 only",
+   "1, 3 and 4",
+   "1, 2 and 4"
+  ],
+  "answer": 1,
+  "expl": "The passage clarifies that food loss and wastage occur at various stages of the supply chain, not solely due to current methods of food distribution, rendering Statement 1 incorrect. Statement 2 accurately reflects the passage, which indicates that food loss and wastage contribute significantly to land degradation, thereby affecting land productivity by about 45%. Statement 3 aligns with the passage, which highlights that reducing food loss and wastage can substantially decrease carbon emissions. The passage mentions that wastage contributes to 3.5 billion tonnes of carbon dioxide annually, along with other harmful emissions from decay. Statement 4 is inaccurate. The passage underscores the importance of post-harvest technologies in addressing food loss and wastage, contradicting the suggestion that such technologies are unavailable. Hence, option (b), 2 and 3 only, is the correct answer."
+ },
+ {
+  "n": 12,
+  "q": "Based on the above passage, the following assumptions have been made:\n1. The food distribution mechanism needs to be reimagined and made effective to reduce the loss and wastage of food.\n2. Ensuring the reduction of wastage and loss of food is a social and moral responsibility of all citizens. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Assumption 1 is valid: The passage underscores the inefficiencies across the supply chain result in the loss or waste of one-third of globally produced food. Addressing this issue necessitates a rethinking and improvement of food distribution mechanisms to minimize wastage effectively. Assumption 2 is invalid: While the passage underscores the environmental impacts of food loss and wastage, such as carbon dioxide production and land degradation, it does not explicitly state that reducing food wastage is social and moral responsibility of the citizens."
+ },
+ {
+  "n": 13,
+  "q": "Passage - 2 As inflation rises, even governments previously committed to budget discipline are spending freely to help households. Higher interest rates announced by central banks are supposed to help produce modest fiscal austerity, because to maintain stable debts while paying more to borrow, governments must cut spending or raise taxes. Without the fiscal backup, monetary policy eventually loses traction. Higher interest rates become inflationary, not disinflationary, because they simply lead governments to borrow more to pay rising debt-service costs. The risk of monetary unmooring is greater when public debt rises, because interest rates become more important to budget deficits. Which of the following statements best reflects/reflect the most logical and rational inference/inferences that can be made from the passage?\n1. Central banks cannot bring down inflation without budgetary backing.\n2. The effects of monetary policy depend on the fiscal policies pursued by the government. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is accurate, as the passage indicates that central banks cannot effectively reduce inflation without concurrent fiscal policies. It notes, “Without the fiscal backup, monetary policy eventually loses traction”. While central banks can raise interest rates to control inflation, the effectiveness of this approach hinges on governments implementing fiscal discipline through expenditure cuts or tax hikes to stabilize debts. Statement 2 is also correct, reflecting the passage’s emphasis on the interconnectedness of monetary policy and inflation with the fiscal policies pursued by governments. This assertion aligns with the reasoning outlined above. Hence, option (c) is the correct answer, as both statements 1 and 2 accurately reflect the logical inferences drawn from the passage."
+ },
+ {
+  "n": 14,
+  "q": "Based on the above passage, the following assumptions have been made :\n1. Fiscal policies of governments are solely responsible for higher prices.\n2. Higher prices do not affect the long-term government bonds. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Assumption 1 is incorrect: The passage does not attribute inflation solely to the fiscal policies of governments. It acknowledges that both fiscal policies and monetary policies, such as adjusting interest rates, contribute to managing inflationary pressures. Therefore, assuming that fiscal policies alone are responsible oversimplifies the complex factors influencing inflation. Assumption 2 is incorrect: The passage indicates that inflation affects the management of long-term government bonds. It notes that increasing public debt amplifies the significance of interest rates in handling budget deficits, illustrating a direct correlation between inflation and the costs associated with government bonds. Hence, option (d), Neither 1 nor 2, is the correct answer."
+ },
+ {
+  "n": 15,
+  "q": "What is the least possible number of cuts required to cut a cube into 64 identical pieces?",
+  "opts": [
+   "8",
+   "9",
+   "12",
+   "16"
+  ],
+  "answer": 1,
+  "expl": "To determine the least number of cuts required to divide a cube with side length 4 units into 64 identical smaller cubes, we need to ensure that each cut is strategically placed to achieve this division. The cube has dimensions of 4 units per side, making it a 4 × 4 × 4 Calculation of Cuts Needed: Top to Bottom Cuts: To divide the cube into 4 equal layers vertically (top to bottom), we need 4 – 1 = 3 cuts. Left to Right Cuts: Similarly, to divide each layer into 4 equal columns (left to right), we need 4 – 1 = 3 cuts. Front to Back Cuts: Finally, to divide each column into 4 equal rows (front to back), we need 4 – 1 = 3 cuts. Total Number of Cuts = 3 + 3 + 3 = 9 So, least possible number of cuts required to cut a cube into 64 identical spaces = 9"
+ },
+ {
+  "n": 16,
+  "q": "In the expression 5 * 4 * 3 * 2 * 1, * is chosen from +, –, × each at most two times. What is the smallest non- negative value of the expression?",
+  "opts": [
+   "3",
+   "2",
+   "1",
+   "0"
+  ],
+  "answer": 3,
+  "expl": "If we choose the symbols in the expression in the given manner, 5 – 4 – 3 + 2 × 1 = 5 – 7 + 2 = 0 This arrangement fulfils the condition of using each symbol at most two times and thus delivers the least possible response. The smallest non - negative value of the expression is 0. Hence option (d) is the correct answer."
+ },
+ {
+  "n": 17,
+  "q": "A certain number of men can complete a piece of work in 6k days, where k is a natural number. By what percent should the number of men be increased so that the work can be completed in 5k days?",
+  "opts": [
+   "10%",
+   "(50/3)%",
+   "20%",
+   "25%"
+  ],
+  "answer": 2,
+  "expl": "Let initially, the number of workers be N1 and finally the number of workers be N2. As, the number of workers and number of days vary inversely so their product remains constant. Number of days x number of workers = constant (same in both cases) 6k × N1 = 5k × N2 N2 = 6 5 N1 % increase in the number of workers = N N N 2 1 1 − × 100 = 6 5 1 1 1 N N N − × 100 = 1 5 × 100 = 20% Hence option (c) is the correct answer."
+ },
+ {
+  "n": 18,
+  "q": "X, Y and Z can complete a piece of work individually in 6 hours, 8 hours and 8 hours respectively. However, only one person at a time can work in each hour and nobody can work for two consecutive hours. All are engaged to finish the work. What is the minimum amount of time that they will take to finish the work?",
+  "opts": [
+   "6 hours 15 minutes",
+   "6 hours 30 minutes",
+   "6 hours 45 minutes",
+   "7 hours"
+  ],
+  "answer": 2,
+  "expl": "X, Y and Z complete the work in 6 hours, 8 hours and 8 hours respectively. Now, applying total work and efficiency method on the given problem; Total work = LCM of (6, 8, 8) = 24 units Efficiency of X = 24 6 = 4 units per hour Efficiency of Y = 24 8 = 3 units per hour Efficiency of Z = 24 8 = 3 units per hour As only 1 person can work at a time, they will work one after the other in alternating manner. As X has the highest efficiency and Y and Z have the same efficiency, so for minimum time, we start with X for the first hour, Y or Z will work in the second hour. Similarly, X will work in the upcoming odd hours and Y or Z will work in the even hours until the work is finished. Hour Worker Work Finished 1 X 4 2 Y or Z 4 + 3 = 7 3 X 7 + 4 = 11 4 Y or Z 11 + 3 = 14 5 X 14 + 4 = 18 6 Y or Z 18 + 3 = 21 After 6 hours, in the 7th hour, 3 units of work is left and X is working with an efficiency of 4 units per hour. So, time taken after 6 hours = 3 4 hours = 45 minutes. So, total time taken = 6 hours 45 minutes. Hence, option (c) is the correct answer."
+ },
+ {
+  "n": 19,
+  "q": "How many consecutive zeros are there at the end of the integer obtained in the product 12 × 24 × 36 × 48 × ... × 2550?",
+  "opts": [
+   "50",
+   "55",
+   "100",
+   "200"
+  ],
+  "answer": 3,
+  "expl": "The number of zeros at end represents number of times it is divisible by 10. As, 10 = 2 × 5 i.e. a ten is formed by multiplying 2 and 5. So, number of 10s is equal to the number of 2s or 5s (whichever is lesser) Base Numbers, where 5 is a factor = 5, 10, 15, 20, 25 Number of 5’s in 510 = 10 Number of 5’s in 1020 = 20 Number of 5’s in 1530 = 30 Number of 5’s in 2040 = 40 Number of 5’s in 2550 = 100 Total number of 5s = 10 + 20 + 30 + 40 + 100 = 200 Numbers of 2s will far be more than numbers of 5s As 24 × 48 × 816 has 4 × 16 × 48 = 3072 There are more 2s So, lesser of 2s and 5s is 5s which is 200 So, there are 200 zeros at the end."
+ },
+ {
+  "n": 20,
+  "q": "On January 1st, 2023, a person saved ` 1. On January 2nd, 2023, he saved ` 2 more than that on the previous day. On January 3rd, 2023, he saved ` 2 more than that on the previous day and so on. At the end of which date was his total savings a perfect square as well a perfect cube?",
+  "opts": [
+   "7th January, 2023",
+   "8th January, 2023",
+   "9th January, 2023",
+   "Not possible"
+  ],
+  "answer": 1,
+  "expl": "Savings on day 1 = ₹ 1 Savings on day 2 = ₹ 3 Savings on day 3 = ₹ 5 So, savings on individual days follow the pattern 1, 3, 5, 7, 9 … So, total savings follow the pattern 1, 4, 9, 16, 25 … Hence, we can see that total savings are always a perfect square. As per the question, the total savings has to be both a perfect square and a perfect cube First such perfect square to be a perfect cube = 64 For savings to be 64, we need to add savings till 8 days i.e. 1 + 3 + 5 + 7 + 9 + 11 + 13 + 15 = 64 So, total savings will be a perfect square and perfect cube at the end of 8 days i.e. 8th January, 2023"
+ },
+ {
+  "n": 21,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 “The history of science is the real history of mankind”. In this striking epigram, a nineteenth-century writer links science with its background. Like most epigrams, its power lies in emphasizing by contrast an aspect of truth which may be easily overlooked. In this case, it is easy to overlook the relations between science and mankind, and to treat the former as some abstract third party, which can sometimes be praised for its beneficial influences, but frequently and conveniently blamed for the horrors of war. Science and mankind cannot be divorced from time to time at men’s convenience. Yet we have seen that, in spite of countless opportunities of improvement, the opening years of the present period of civilization have been dominated by international conflict. Is this the inevitable result of the progress of science or does the fault lie elsewhere? Which of the following is/are emphatically conveyed by the author of the passage?\n1. Without science, mankind could not have continued to exist till today.\n2. It is the science that will ultimately determine the destiny of mankind. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Statement 1 is incorrect:  The passage discusses the intertwined history of science and mankind but does not explicitly claim that without science, mankind could not have continued to exist until today. Therefore, statement 1 lacks support from the passage. Statement 2 is incorrect: The passage does not suggest that science will determine the ultimate destiny of mankind. While it acknowledges the significant historical role of science, it does not make predictions about science dictating mankind’s future. Hence, statement 2 is not aligned with the passage’s content. Therefore, based on the passage provided, neither statement 1 nor statement 2 accurately reflects the author’s emphasis on the role and impact of science on mankind’s existence and destiny. Option (d), which states that both statements are incorrect, is the correct answer."
+ },
+ {
+  "n": 22,
+  "q": "Based on the above passage, the following assumptions have been made:\n1. The horrors of modern life are the inevitable result of the progress of science.\n2. The aspect of truth likely to be overlooked is that science is what man has made it. Which of the assumptions given above is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 1,
+  "expl": "Assumption 1 is incorrect. The passage questions whether attributing the horrors of modern life solely to science is convenient but not entirely accurate. It explores whether international conflicts are genuinely inevitable due to scientific progress or if other factors play significant roles. Assumption 2 is correct.  The passage underscores that science is not merely an abstract concept but a result of human actions and decisions. It highlights the importance of recognizing this aspect of science, which is often overlooked."
+ },
+ {
+  "n": 23,
+  "q": "Passage - 2 Only with long experience and opening of his wares on many a beach where his language is not spoken, will the merchant come to know the worth of what he carries, and what is parochial and what is universal in his choice. Such delicate goods as justice, love and honour, courtesy, and indeed all the things we care for, are valid everywhere but they are variously moulded and often differently handled, and sometimes nearly unrecognizable if you meet them in a foreign land, and the art of learning fundamental common values is perhaps the greatest gain of travel to those who wish to live at ease among their fellows. When we meet other people while we travel, we learn to differentiate between:",
+  "opts": [
+   "imagination and understanding",
+   "communities and nationalities",
+   "local values and universal values",
+   "friends and foes"
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect: The passage does not delve into the differentiation between imagination and understanding regarding encountering different cultures and values during travel. Instead, it focuses on the universal validity of values like justice, love, honour, and courtesy, which are interpreted diversely across cultures. Option (b) is incorrect:  While the passage mentions encountering different cultures, it does not primarily address the differentiation between communities and nationalities as a central theme. Option (c) is correct: The passage underscores the universal validity of delicate values such as justice and love, which can be perceived differently across cultures (“variously moulded and often differently handled”). It emphasizes the importance of discerning what is universal and what is parochial when encountering these values in foreign lands. Option (d) is incorrect:  The passage does not discuss differentiating between friends and foes in the context of encountering different cultures and values during travel. Instead, it focuses on understanding fundamental common values and their universal applicability. Therefore, option (c) accurately reflects the central idea conveyed by the passage regarding distinguishing between local values and universal values when encountering different cultures."
+ },
+ {
+  "n": 24,
+  "q": "With reference to the above passage, the following assumptions have been made:\n1. Travel leads to an understanding of humans.\n2. Travel helps those who wish to learn fundamental common values.\n3. A person with long experience in travel can resolve differences amongst people. Which of the assumptions given above are valid?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 0,
+  "expl": "Assumption 1 is valid: The passage suggests that travel contributes to understanding humanity by exposing individuals to diverse cultures and values, thereby fostering an appreciation for universal aspects such as justice, love, honour, and courtesy. Assumption 2 is valid: The passage explicitly states that travel aids individuals in learning fundamental common values by exposing them to various expressions of justice, love, honour, and courtesy across different cultures. Assumption 3 is invalid: The statement that a person with a long experience in travel can resolve differences amongst people is nowhere explicitly stated in the paragraph. The paragraph highlights that the art of fundamental common values is the greatest gain to those who wish to live at ease among their fellows but it doesn't place importance to their capability to resolve the conflicts. Therefore, both assumptions 1 and 2 align with the ideas presented in the passage, indicating that option (a) is the correct answer."
+ },
+ {
+  "n": 25,
+  "q": "Let X be a two-digit number and Y be another two- digit number formed by interchanging the digits of X. If (X + Y) is the greatest two-digit number, then what is the number of possible values of X?",
+  "opts": [
+   "2",
+   "4",
+   "6",
+   "8"
+  ],
+  "answer": 3,
+  "expl": "Let X be ab, where a, b are the 2 digits Then Y = ba X = 10a + b and Y = 10b + a So, X + Y = 11a + 11b Greatest 2-digit number = 99 So, X + Y = 11a + 11b = 99 This implies, a + b = 99 11 = 9 So, the sum of the 2 digits of the number X should be 9 Possible values of X are 18, 81, 27, 72, 36, 63, 45, 54 Hence, there are 8 possible values of X. Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 26,
+  "q": "Consider the following: Weight of 6 boys = Weight of 7 girls = Weight of 3 men = Weight of 4 women If the average weight of the women is 63 kg, then what is the average weight of the boys?",
+  "opts": [
+   "40 kg",
+   "42 kg",
+   "45 kg",
+   "63 kg"
+  ],
+  "answer": 1,
+  "expl": "The average weight of women = 63 kg Total weight of 4 women= 63 × 4 = 252 kg So, the total weight of 6 boys = 252 kg (according to question) So, the average weight of boys = 252 6 = 42 kg Hence, option (b) is the correct answer."
+ },
+ {
+  "n": 27,
+  "q": "How many times the hour hand and the minute hand coincide in a clock between 10:00 a.m. and 2:00 p.m. (same day)?",
+  "opts": [
+   "3 times",
+   "4 times",
+   "5 times",
+   "6 times"
+  ],
+  "answer": 0,
+  "expl": "Between 10 a.m. to 11 a.m., the hour hand crosses the minute hand once between 10:50 and 10:55. Between 11 a.m. to 1 p.m., hour hand crosses the minute hand once at 12:00. Between 1 p.m. to 2 p.m., hour hand crosses the minute hand once between 1:05 and 1:10. So, the hour hand crosses the minute hand for a total 3 times. Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 28,
+  "q": "The calendar for the year 2025 is same for:",
+  "opts": [
+   "2029",
+   "2030",
+   "2031",
+   "2033"
+  ],
+  "answer": 2,
+  "expl": "Shift in calendar = 1 day for a non-leap year and 2 days for a leap year. After 2025, 2026 = 1 day shift 2027 = 1 + 1 = 2 days shift 2028 = 2 + 2 = 4 days shift (as 2028 is a leap year) 2029 = 4 + 1 = 5 days shift 2030 = 5 + 1 = 6 days shift 2031 = 6 + 1 = 7 days shift As 7 days shift brings us to the same calendar, when both the years in reference are non-leap years, Hence, 2025 will have the same calendar as 2031."
+ },
+ {
+  "n": 29,
+  "q": "Let p, q, r and s be distinct positive integers. Let p, q be odd and r, s be even. Consider the following statements:\n1. (p – r)2(qs) is even.\n2. (q – s) q2s is even.\n3. (q + r)2 (p + s) is odd.\nWhich of the statements given above are correct?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 3,
+  "expl": "Given p, q are odd numbers and r, s are even numbers Statement 1: We know that (p – r) = odd – even = odd (p – r)2 × q × s = odd × odd × even = even So, statement 1 is correct. Statement 2: Similarly, as ‘s’ which is an even number is multiplied in the expression, the whole number will become even So, statement 2 is correct. Statement 3: q + r = odd + even = odd p + s = odd + even = odd Now, (q + r)2 × (p + s) = odd × odd × odd = odd So, statement 3 is also correct."
+ },
+ {
+  "n": 30,
+  "q": "What is the angle between the minute hand and hour hand when the clock shows 4:25 hours?",
+  "opts": [
+   "12.5°",
+   "15°",
+   "17.5°",
+   "20°"
+  ],
+  "answer": 2,
+  "expl": "As we know, Minute hand moves 6 degrees in 1 minute Hour hand moves 0.5 degrees in 1 minute At 4:25 P.M., Minute hand is 5 minutes ahead of sharp 4 = 5 × 6 = 30 degrees ahead of 4 Hour hand is 25 minutes ahead of sharp 4 = 0.5 × 25 = 12.5 degrees head of 4 So, the angle between minute hand and hour hand = 30 - 12.5 = 17.5 degrees Hence, option (c) is the correct answer."
+ },
+ {
+  "n": 31,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 Today, if we consider cities such as New York, London and Paris as some of the most iconic cities in the world, it is because plans carrying a heavy systems approach were imposed on mathematical their precincts. The backbone of the systems theory is the process of translating social, spatial and cultural desirables into mathematical models using computing, statistics, optimization and an algorithmic way of formulating and solving problems. The early universities of the West which began to train professionals in planning, spawned some of the most ingenious planners, who were experts in these domains. This was because these very subjects were absorbed into the planning curriculum that had its roots in the social sciences, geography and architecture. Planning in India, and its education differ from the West. Which one of the following statements best reflects the most logical and rational inference that can be made from the above passage?",
+  "opts": [
+   "Curriculum for urban planning courses should have diverse and interdisciplinary approach.",
+   "In India, city administration is under bureaucracy which lacks formal training in urban planning and management.",
+   "In India, the management of urban areas is a local affair with a chronic problem of insufficient funds.",
+   "With high density of population and widespread poverty in our urban areas, planned development in them is very difficult."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct.  The passage highlights how global cities like New York, London, and Paris have thrived through a systematic planning approach. It emphasizes the integration of diverse disciplines such as computing, statistics, and optimization into urban planning education, illustrating the transformative impact of interdisciplinary approaches. Option (b) is incorrect.  It does not delve into the administrative structure of city management in India or the formal training of urban planners. The passage instead illuminates the evolving landscape of urban planning education. Option (c) is incorrect.  The passage does not delve into financial constraints or insufficient funding in urban management. Instead, it captivates with insights into the broadening scope of urban planning education and its interdisciplinary nature. Option (d) is incorrect. Although the passage acknowledges urban planning challenges like population density and poverty, it does not suggest these factors make planned urban development extremely difficult. Instead, it underscores the innovative strategies and interdisciplinary approaches driving urban planning forward. Thus, option (a) is the correct choice."
+ },
+ {
+  "n": 32,
+  "q": "Based on the above passage, the following assumptions have been made :\n1. India needs a new generation of urban professionals with knowledge relevant to modern urban practice.\n2. Indian universities at present have no capacity or potential to impart training in systems approach. Which of the assumptions given above is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Assumption 1 is invalid: The passage highlights that the planning education differs between India and West but does not directly state that India needs a new generation of urban professionals. Assumption 2 is incorrect. The passage does not explicitly mention that Indian universities currently lack the capacity or potential to provide training in the systems approach. Instead, it focuses on the historical evolution of planning education in Western contexts and its consequential influence."
+ },
+ {
+  "n": 33,
+  "q": "Passage - 2 Not every voice on the internet commands the same kind of audience. When anonymous private entities with high capital can pay for more space for their opinions, they are effectively buying a louder voice. If political discourse in the digital sphere is a matter of outshining one’s opponent till the election is won, then the quality of politics suffers. The focus of social media is restricted to the promotion of content that generates more user engagement, regardless of how inflammatory the content may be. Which one of the following statements best reflects the central idea of the above passage?",
+  "opts": [
+   "Constructed as a marketplace of views, social media ensures instant access to information.",
+   "Social media are not ideal or moral institutions but the products built by companies to make profits.",
+   "Social media have been created to strengthen democracies.",
+   "In today’s world, social media are inevitable for well- informed social life."
+  ],
+  "answer": 1,
+  "expl": "The crux of the passage revolves around how social media shapes political discourse by prioritizing content that sparks user engagement, even if it’s controversial or divisive. Option (a) is incorrect. While social media indeed serves as a marketplace of views and provides quick access to information, the passage primarily underscores how entities with significant capital can dominate discourse, rather than solely focusing on information accessibility. Option (b) is correct.  The passage highlights how social media platforms prioritize profit by promoting engaging content, even if it’s controversial or divisive. This aligns perfectly with the passage’s exploration of how financial power influences discourse on these platforms. Option (c) is incorrect.  The passage doesn’t explicitly state that social media platforms were designed to enhance democracies. Instead, it delves into how content promotion mechanics and financial influence shape political discourse. Option (d) is incorrect. While social media certainly play a significant role in contemporary society, the passage doesn’t specifically delve into their impact on fostering well-informed social interactions. It focuses more on their role in shaping political discourse and promoting content. Therefore, the correct answer is option (b)."
+ },
+ {
+  "n": 34,
+  "q": "Based on the passage, the above following assumptions have been made :\n1. Internet is not inclusive enough.\n2. Internet can adversely affect the quality of politics in a country. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Assumption 1 is valid: The passage suggests that the internet does not offer an equal platform for all voices, as it highlights disparities in audience size based on capital. It indicates that entities with greater financial resources can amplify their voices more effectively and thus lack inclusiveness. Assumption 2 is valid: The passage examines how political discourse in the digital realm often prioritizes overshadowing opponents, resulting in a degradation of political quality. This trend is driven by the emphasis on promoting engaging content, irrespective of its substance or impact. Thus, correct answer is option (c)."
+ },
+ {
+  "n": 35,
+  "q": "222333 +333222 is divisible by which of the following numbers?",
+  "opts": [
+   "2 and 3 but not 37",
+   "3 and 37 but not 2",
+   "2 and 37 but not 3",
+   "2, 3 and 37"
+  ],
+  "answer": 1,
+  "expl": "222333 + 333222 = (2 × 111)333 + (3 × 111)222 = 111222 × (2333 × 111111 + 3222) As, 111 = 3 × 37 So, the number is divisible by 3 and 37. When we divide number by 2, 2333 × 111111 is divisible by 2 but 3222 is an odd number and not divisible by 2. So, the number is an odd number and thus not divisible by 2. Hence option (b) is the correct answer."
+ },
+ {
+  "n": 36,
+  "q": "What percent of water must be mixed with honey so as to gain 20% by selling the mixture at the cost price of honey?",
+  "opts": [
+   "20%",
+   "10%",
+   "5%",
+   "4%"
+  ],
+  "answer": 0,
+  "expl": "Let cost price of 1 ml honey = ₹ 1 Then cost price 100 ml honey is ₹ 100. Now x ml water is mixed with 100 ml honey Mixture = (100 + x) ml Selling price calculated on same rate as cost price = (100 + x) × 1 = 100 + x With 20% profit, SP = 100 × 1.2 = 120 So, 100 + x = 120 So, x = 20 Thus, 20 ml water is mixed with 100 ml honey. Percent water mixed = × 100 = 20% Hence option (a) is the correct answer."
+ },
+ {
+  "n": 37,
+  "q": "What is the rightmost digit preceding the zeros in the value of 3030?",
+  "opts": [
+   "1",
+   "3",
+   "7",
+   "9"
+  ],
+  "answer": 3,
+  "expl": "3030 = (3 × 10)30 = 330 × 1030 As, powers of 10 will give only zeroes at the end, so digit before zeroes is given by unit digit of 330. Unit digit in powers of 3 repeat in cycles of 4 i.e. 3, 9, 7, 1 We divide 30 by 4, remainder = 2 Thus, unit digit = 9 Hence, the rightmost digit preceding the zeroes = 9 Hence option (d) is the correct answer."
+ },
+ {
+  "n": 38,
+  "q": "421 and 427, when divided by the same number, leave the same remainder 1. How many numbers can be used as the divisor in order to get the same remainder 1?",
+  "opts": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "answer": 2,
+  "expl": "As, remainder is 1 in all cases, So, 421 – 1 = 420 and 427 – 1 = 426 are divisible by all such divisors. For the numbers 420 and 426 both to be multiples of any number, number has to be equal or smaller than 6. So, the common divisors of 420 and 426 equal to and less than 6 are: 2, 3 and 6 All these divisors will leave remainder 1 when they divide 421 or 427. Hence option (c) is the correct answer."
+ },
+ {
+  "n": 39,
+  "q": "A can X contains 399 litres of petrol and a can Y contains 532 litres of diesel. They are to be bottled in bottles of equal size so that whole of petrol and diesel would be separately bottled. The bottle capacity in terms of litres is an integer. How many different bottle sizes are possible?",
+  "opts": [
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "answer": 1,
+  "expl": "As, both are to be kept in bottle of same size, the bottle size is a common factor of 399 and 532. Now, 399 = 3 × 7 × 19 532 = 2 × 2 × 7 × 19 So, the common factors are 1, 7, 19, 133 So, there are 4 sizes possible for the bottle. Hence option (b) is the correct answer."
+ },
+ {
+  "n": 40,
+  "q": "Consider the following statements in respect of the sum S = x + y + z, where x, y and z are distinct prime numbers each less than 10:\n1. The unit digit of S can be 0.\n2. The unit digit of S can be 9.\n3. The unit digit of S can be 5.\nWhich of the statements given above are correct?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 2,
+  "expl": "Prime numbers less than 10 are 2, 3, 5, 7 So, x, y, z are any three numbers out of 2, 3, 5, 7 So, S = x + y + z The possible values of S are 10, 12, 14, 15 as shown below: 10 = 2 + 3 + 5 12 = 2 + 3 + 7 14 = 2 + 5 + 7 15 = 3 + 5 + 7 Thus, the unit digit of S can be 0, 2, 4 and 5 Hence statement 1 and 3 are correct and statement 2 is incorrect. Hence option (c) is the correct answer."
+ },
+ {
+  "n": 41,
+  "q": "Directions for the following 3 (three) items: Read the following three passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 In a robust democracy, reality, howsoever inconvenient it may be, finds its expression both in the speech of political leaders and the other social forms of assertion. The existence of the real has to be transparent, both through its circulation in and by the media as well as its argumentative articulation in deliberative democracy. A normatively responsible media through its communication effect has the responsibility to circulate the content of reality without distortion. Which one of the following statements best reflects the crux of the above passage?",
+  "opts": [
+   "Responsible media should not distort the real in an ideal democracy.",
+   "Fake news seems inherent in the life of an ideal democracy.",
+   "There should not be any kind of restrictions on the freedom of expression in an ideal democracy.",
+   "Irresponsible media and political leaders cannot be effectively controlled in an ideal democracy."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct: It best encapsulates the central theme of the passage. The passage underscores the critical role of a morally responsible media in a healthy democracy, emphasizing the transparent and accurate communication of reality without distortion as essential. This responsibility of the media in conveying reality faithfully is central to the passage’s argument. Option (b) is incorrect.  It suggests that fake news is an inherent feature of an ideal democracy, which contradicts the passage’s emphasis on the importance of accurately presenting reality. The passage advocates for responsible media that avoids distorting reality, rather than accepting fake news as inevitable in democracy. Option (c) is incorrect. While freedom of expression is crucial in a democracy, the passage specifically highlights the ethical duty of the media to accurately convey reality without distortion. It does not argue against freedom of expression but emphasizes media responsibility in presenting reality truthfully. Option (d) is incorrect. This option implies a focus on the inability to control irresponsible media and political leaders, which is not the primary focus of the passage. Instead, the passage emphasizes the media’s responsibility in transparently communicating reality, rather than addressing control measures against irresponsibility in media and politics."
+ },
+ {
+  "n": 42,
+  "q": "Passage - 2 Now-a-days there is a growing trend to use interconnected home devices. As consumers increasingly network their homes, the connected home device manufacturers and service providers will seek to overcome “thin profit margins by gathering more of our personal data-with or without our agreement— turning the home into a corporate storefront”. Corporate marketers will have powerful incentives to observe consumer behaviour to understand the buying needs and preferences of the device owners. Which one of the following statements best reflects the most logical, rational and practical message implied by the passage?",
+  "opts": [
+   "Knowledge of consumer behaviour leads to more capital expenditure in manufacturing sector.",
+   "Knowledge of consumer behaviour stimulates the growth of commerce and trade and thus helps in the overall economic development of the country.",
+   "Interconnected devices give a lot of comfort to home users and improve the overall quality of life.",
+   "Interconnected devices can be at security risk and home users may have privacy risk."
+  ],
+  "answer": 3,
+  "expl": "Option (a) is incorrect because  the passage focuses more on the implications of gathering personal data and marketing strategies, rather than discussing increased capital expenditure in the manufacturing sector as its central theme. Option (b) is incorrect because while understanding consumer behaviour can stimulate economic growth, the passage does not explicitly address this as its central theme related to economic development. Instead, it primarily examines data collection and its implications for marketing. Option (c) is incorrect because while interconnected devices can indeed improve comfort and quality of life for users, the passage does not emphasize this aspect as its central theme. Instead, the passage primarily focuses on discussing data collection practices and corporate strategies related to consumer behaviour. It explores how data gathered from interconnected devices can be used for marketing purposes and the potential implications for consumer privacy and security. Option (d) is the correct  answer because the passage highlights potential risks associated with interconnected devices, including security vulnerabilities and privacy concerns for users at home. It explores how manufacturers and service providers may collect personal data without full consumer consent, leading to these risks. In summary, based on the passage provided, option (d) accurately reflects the implied message concerning the risks associated with interconnected home devices and the potential privacy and security concerns for users."
+ },
+ {
+  "n": 43,
+  "q": "Passage - 3 Green growth involves rethinking growth strategies with regard to the impacts on environmental sustainability and the environmental resources available to poor and vulnerable groups. In rethinking growth, we need to focus on the current reality of resource-constrained world. Resource intensive and, in particular energy intensive processes will need to make way for more efficient and resource frugal development strategies if we are to avoid an economic dead end or a world in which only a small elite is able to enjoy affluence in the midst of a sea of poverty. Which one of the following statements best reflects the crux of the above passage?",
+  "opts": [
+   "Environmental sustainability is inimical to our objective of achieving a high rate of GDP growth.",
+   "Poverty eradication is not possible without a rapid economic growth and the consequent environmental degradation.",
+   "Maintaining high environmental standards is now a prerequisite for achieving a steady, sufficient and inclusive growth.",
+   "With large populations, rampant poverty and limited resources of today’s world, environmental degradation cannot be prevented and inequalities are inevitable."
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect  because it incorrectly suggests that environmental sustainability opposes achieving high GDP growth. However, the passage advocates for integrating environmental sustainability into growth strategies rather than opposing economic growth. Option (b) is incorrect  because it asserts that poverty eradication requires rapid economic growth even if it leads to environmental degradation. This conflicts with the passage’s emphasis on green growth, which aims to achieve both poverty reduction and environmental sustainability simultaneously. Option (c) is correct as it accurately captures the essence of the passage. The passage discusses the importance of upholding high environmental standards as essential for achieving sustainable and inclusive growth. It stresses the need to reform growth strategies to ensure they are environmentally sustainable while addressing the needs of disadvantaged groups. Option (d) is incorrect because it fatalistically suggests that environmental degradation and inequalities are inevitable under current global conditions. However, the passage advocates for proactive approaches like green growth to mitigate these challenges. Therefore, option (c) provides the most accurate reflection of the passage’s central message regarding the importance of integrating environmental sustainability into growth strategies for achieving sustainable and inclusive development."
+ },
+ {
+  "n": 44,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Question: What are the unique values of x and y, where x, y are distinct natural numbers? Statement-I: x/y is odd. Statement-II: xy = 12 Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 2,
+  "expl": "From statement 1: x y = odd Many such values of x and y are possible. So, this statement alone is not sufficient to answer the question From statement 2: xy = 12 Possible values are (6, 2); (2, 6); (3, 4); (4, 3); (12, 1); (1, 12) So, this statement alone is not sufficient to answer the question On combining the two statements, only possible values are x = 6 and y = 2 Hence the question can be answered definitely with both the statements."
+ },
+ {
+  "n": 45,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. A certain amount was distributed among X, Y and Z. Question: Who received the least amount? Statement-I : X received 4/5 of what Y and Z together received. Statement-II : Y received 2/7 of what X and Z together received. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 2,
+  "expl": "From statement 1 X = 4 5 ( ) Y Z + ⇒ X = 4 5 4 5 Y Z + ⇒ Z = 5 4 4 5 X Y …(i) So, this statement alone is not sufficient to answer the question From statement 2 Y = 2 7 ( ) X Z + This statement alone is also not sufficient to answer the question. Combining the two statements, as there are two equations and three variables We can solve both equations to get X and Y in terms of Z. Y X Z 2 7 2 7 Y X X Y 2 7 2 7 5 4 4 5 Y X X Y 2 7 5 2 7 Y Y X 2 7 9 9 7 9 Y X X Y 2 Putting this is (i) Z Y Y 5 4 2 4 5 Z Y Y 5 2 Z Y 3 2 3 2 Y Z Y Z 2 3 X Z 4 3 So, we can ascertain, who got the least amount. Hence the question can be answered definitely with both the statements."
+ },
+ {
+  "n": 46,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Question: If the average marks in a class are 60, then what is the number of students in the class? Statement-I : The highest marks in the class are 70 and the lowest marks are 50. Statement-II : Exclusion of highest and lowest marks from the class does not change the average. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 3,
+  "expl": "Question: If average = 60, how many students are there? Number of students = total marks average From statement 1 Highest marks = 70, lowest marks = 50 This doesn’t not determine the total marks. So, this statement alone is not sufficient to answer the question From statement 2 Exclusion of highest and lowest marks, average remains same. This implies highest and lowest are at equal distance from average i.e. 60. This doesn’t not determine the total marks. So, this statement alone is not sufficient to answer the question On combining both statements, still we cannot determine the total marks of students. So, number of students cannot be determined even by using both statements."
+ },
+ {
+  "n": 47,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. There are three distinct prime numbers whose sum is a prime number. Question: What are those three numbers? Statement-I: Their sum is less than 23. Statement-II: One of the numbers is 5. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by The using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 0,
+  "expl": "From statement 1: Sum of three prime numbers < 23 So, the sum may be 2, 3, 5, 7, 11, 13, 17 or 19. Out of these; 2, 3, 5, 7, 11, 13 and 17 cannot be obtained as a sum of three prime numbers. So, the only number is 19 which is obtained as a sum of 3, 5 and 11. So, statement 1 is sufficient to answer the question. From statement 2 If one number = 5, without any other condition there are multiple values possible for three numbers from sum to be prime For example: (5, 7, 11); (5, 7, 17), (3, 5, 7) etc. So, this statement is not sufficient to answer the question. Hence option (a) is the correct answer."
+ },
+ {
+  "n": 48,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Question: Is (x + y) an integer? Statement-I: (2x + y) is an integer. Statement-II: (x +2y) is an integer. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 3,
+  "expl": "From statement 1: 2x + y is integer x + y can be/cannot be an integer. So, this statement alone is not sufficient to answer the question From statement 2: x + 2y is integer x + y can be/cannot be an integer. So, this statement alone is not sufficient to answer the question Combining the two statements Adding both equations We get, 3x + 3y = integer x + y = integer 3 , which may or may not be an integer. Hence the question can not be answered definitely with both the statements.’"
+ },
+ {
+  "n": 49,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. A person buys three articles p, q and r for ` 50. The price of the article q is ` 16 which is the least. Question: What is the price of the article p? Statement-I : The cost of p is not more than that of r. Statement-II: The cost of r is not more than that of p. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 2,
+  "expl": "Given information, p + q + r = 50 q = 16, this implies p + r = 50 – 16 = 34 p, r > q = 16 this implies both p and r are at least 17 Question: What is the price of article p? Statement 1: Cost of p is not more than r p ≤ r p, r can be (17, 17) or (16, 18) as the question has nowhere stated that q ≠ p or q ≠ r. It only states that ₹16 is the least i.e. of q. So, it may also occur that q and p are equal. So, statement 1 is not sufficient to answer the question. Statement 2: Cost of r is not more than p r ≤ p Again, the same case has occurred So, statement 2 is not sufficient to answer the question. However, if we combine both the statements, p ≤ r and r ≤ p, we come to the conclusion that p = r and thus the answer is p = 17 and r = 17 Hence the question can be answered using both the statements. Hence option (c) is the correct answer."
+ },
+ {
+  "n": 50,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. P, Q, R and S appeared in a test. Question: Has P scored more marks than Q? Statement-I : The sum of the marks scored by P and Q is equal to the sum of the marks scored by R and S. Statement-II : The sum of the marks scored by P and S is more than the sum of the marks scored by Q and R. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 3,
+  "expl": "Question: If P is greater than Q Statement 1: The sum of marks scored by P and Q is equal to marks scored by R and S. P + Q = R + S … (i) So, statement 1 is not sufficient to answer the question. Statement 2: The sum of marks scored by P and S is more than sum of marks scored by Q and R P + S > Q + R …(ii) So, statement 2 is also not sufficient to answer the question. Combining both statements, adding both equations, P + Q + P + S > R + S + Q + R 2P > 2R P > R But this does not determine if P is greater than Q or not. Hence, the question cannot be answered using both statements."
+ },
+ {
+  "n": 51,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 Conventional classrooms, by emphasizing fixed duration over learning effectiveness, resign themselves to variable outcomes. The tyranny of the classroom is that every learner is subjected to the same set of lectures in the same way for the same duration. In the end, a few learners shine, some survive, and the rest are left behind. After the fixed duration, the classroom model moves on, with not a thought spared for those left behind. This is how we end up with 10 percent employability in our graduates after a decade and half of formal education. Repeating the same ineffectual script in the realm of skill education will not produce different results. Which of the following statements best reflects/reflect the most logical and rational inference/inferences that can be made from the passage?\n1. In conventional classroom learning, the central goal is duration of learning rather than attainment of competency.\n2. Conventional classrooms encourage one-size-fits-all approach and stamp out all differentiation. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is correct: The passage argues that traditional classrooms prioritize completing a fixed duration of learning rather than ensuring all students achieve competence. This approach is criticized for leading to unequal outcomes, where only a few students succeed while many others are left behind, resulting in lower employability rates among graduates. Statement 2 is correct: The passage also criticizes traditional classrooms for adopting a uniform teaching approach that does not account for individual differences in learning styles and abilities. This lack of customization can hinder effective learning and contribute to disparities in educational achievements. Therefore, the correct answer is option (c)."
+ },
+ {
+  "n": 52,
+  "q": "Based on the above passage, the following assumptions have been made:\n1. As a large number of workers in our country are employed in unorganized sector, India does not to change need its present conventional classroom system of education.\n2. Even with its present conventional classroom system of education, India produces sufficient number of skilled workers to fully realize the benefits of demographic dividend. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Statement about Assumption 1: The passage does not discuss the adequacy of India’s education system based on the number of workers in the unorganized sector. Instead, it critiques the conventional classroom system for prioritizing the duration of learning over ensuring competency. It argues that this approach leads to unequal outcomes, where only a minority of students succeed while many others are left behind, resulting in lower employability rates among graduates. Statement about Assumption 2: The passage implies the opposite by criticizing the conventional classroom system for its inefficiencies in producing skilled workers. It argues that the current system leads to unequal outcomes and fails to adequately prepare enough skilled workers to fully utilize the demographic dividend. Therefore, assuming that the current system is sufficient contradicts the passage’s argument. Therefore, option (d) is the correct answer."
+ },
+ {
+  "n": 53,
+  "q": "Passage - 2 When a child reaches adolescence, there is apt to be a conflict between the parents and the child, since the latter considers himself to be by now quite capable of managing his own affairs, while the former are filled with parental solicitude, which is often a disguise for love of power. Parents consider, usually, that the various moral problems which arise in adolescence are peculiarly their province. The options they express, however, are so dogmatic that the young seldom confide in them, and usually go their own way in secret. Based on the above passage, the following assumptions have been made:\n1. The adolescent does not feel comfortable with his parents because they tend to be dominating and assertive.\n2. The adolescent of modern times does not have much respect for parents. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Statement about Assumption 1: The passage suggests that adolescents may feel uncomfortable with their parents due to their dominating and assertive nature. It points out that parental concern can sometimes mask a desire for control, and the options parents offer are described as rigid. As a result, adolescents may avoid confiding in their parents and instead choose to pursue their own paths secretly. Statement about Assumption 2: The passage does not explicitly address the level of respect adolescents have for their parents. It primarily focuses on the conflict arising from parental authority and the secretive behaviour of adolescents, rather than specifically discussing disrespect towards parents. Therefore, Assumption 2 cannot be supported by the information provided in the passage. Therefore, Assumption 1 is valid, and Assumption 2 is invalid based on the passage’s content."
+ },
+ {
+  "n": 54,
+  "q": "Which one of the following statements best reflects the central idea of the above passage?",
+  "opts": [
+   "Parents in general may not be of much help when children are on their way to becoming adults.",
+   "When children reach adolescence, involvement of parents in their lives is unnecessary.",
+   "Modern-day nuclear families are not capable of bringing up children properly.",
+   "In modern societies, adolescents tend to be stubborn, disobedient and careless."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct: It corresponds with the main theme of the passage, which highlights how adolescents often view their parents as authoritative and controlling, leading them to avoid sharing their thoughts and instead navigate their own paths independently. The passage discusses how parental concern can be perceived as a guise for authority, prompting adolescents to keep their thoughts private. Option (b) is incorrect: This option suggests that parental involvement becomes unnecessary once children reach adolescence, which is an extreme view not supported by the nuanced relationship described in the passage. While the passage acknowledges conflicts and a desire for independence, it does not suggest a complete lack of need for parental involvement. Option (c) is incorrect: This option makes a sweeping statement about the ability of nuclear families in modern society to raise children, which exceeds the scope of the passage. The passage focuses specifically on the interactions between parents and adolescents rather than making broad judgments about family structures. Option (d) is incorrect: This option attributes specific traits (such as stubbornness, disobedience, and carelessness) to adolescents in contemporary societies, which does not align with the central theme conveyed in the passage. The passage primarily discusses how adolescents perceive parental authority and their tendency to keep their thoughts private, rather than discussing general characteristics of adolescents. Therefore, based on the central theme of the passage as discussed, option (a) is the correct answer because it most closely aligns with the dynamics described regarding adolescents’ perceptions of their parents."
+ },
+ {
+  "n": 55,
+  "q": "What is the number of fives used in numbering a 260- page book?",
+  "opts": [
+   "55",
+   "57",
+   "56",
+   "60"
+  ],
+  "answer": 1,
+  "expl": "For single digit page numbers, 5 is used only 1 time. For double digit page numbers Case 1: 5 at unit’s place 15, 25, 35… 95 = 9 times Case 2: 5 at tenth place 50, 51, 52…59 = 10 times For triple digit page numbers Case 1: 5 at unit’s place 105, 115, 125, …, 195 = 10 times 205, 215, …, 255 = 6 times Case 2: 5 at tenth place 150, 151, 152, …, 159 = 10 times 250, 251, …, 259 = 10 times Adding all cases, 5 is used = 1 + 9 + 10 + 10 + 6 + 10 + 10 = 56 Hence, option (b) is the correct answer."
+ },
+ {
+  "n": 56,
+  "q": "What is the sum of the first 28 terms in the following sequence? 1, 1, 2, 1, 3, 2, 1, 4, 3, 2, 1, 5, 4, 3, 2,...",
+  "opts": [
+   "83",
+   "84",
+   "85",
+   "86"
+  ],
+  "answer": 1,
+  "expl": "The sequence follows a pattern, where after 2 terms there are sets of natural numbers in reverse order. 1, 1, 2 terms (2, 1), 3 terms (3, 2, 1), 4 terms, 5 terms, 6 terms, 7 terms … For 28 terms = 2 + 2 + 3 + 4 + 5 + 6 + 6 terms The last set of 6 terms contains 7, 6, 5, 4, 3, 2, Sum = 1 + 1 + 3 + 6 + 10 + 15 + 21 + 27 = 84 Hence option (b) is the correct answer."
+ },
+ {
+  "n": 57,
+  "q": "A person buys three articles P, Q and R for ` 3,330. If P costs 25% more than R and R costs 20% more than Q, then what is the cost of P?",
+  "opts": [
+   "` 1,000",
+   "` 1,200",
+   "` 1,250",
+   "` 1,350"
+  ],
+  "answer": 3,
+  "expl": "Now as r = 20% more than q r = 1 q = 1.2q Now, as p costs 25% more than r p = 1 r = 1.25r = 1.25 × 1.2q Adding the values of p, q, r p + q + r = 3330 (given) 1.25 × 1.2q + 1.2q + q = 3330 So, q = 900 It implies r = 1.2 × q = 1.2 × 900 = 1080 p = 1.5 × q = 1.5 × 900 = 1350 Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 58,
+  "q": "If the sum of the two-digit numbers AB and CD is the three-digit number 1CE, where the letters A, B, C, D, E denote distinct digits, then what is the value of A?",
+  "opts": [
+   "9",
+   "8",
+   "7",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 0,
+  "expl": "When the 2-digit number AB and CD are added to get 1CE as shown below in the following addition: A B + C D 1 C E For B + D is either equal to E or 1E If B + D = E, then A + C = 1C Now as A + C cannot be equal to C as A is a non-zero digit So, A + C = 1C, this implies A + C = 10 + C which implies A = 10 This is not possible as A is a single digit So, B + D = 1E A + C + 1 = 10 + C (1 is taken as carry) This implies A = 10 – 1 = 9 Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 59,
+  "q": "Three numbers x, y, z are selected from the set of the first seven natural numbers such that x > 2y> 3z. How many such distinct triplets (x, y, z) are possible?",
+  "opts": [
+   "One triplet",
+   "Two triplets",
+   "Three triplets",
+   "Four triplets"
+  ],
+  "answer": 3,
+  "expl": "1 ≤ x, y, z ≤ 7 As, x > 2y > 3z The only value possible for z = 1 As, if z = 2, ⇒ 3z = 6 No two distinct values greater than 6 are left for y and x. Thus, possible triplets of x, y, z are: 7, 2, 1 7, 3, 1 6, 2, 1 5, 2, 1 So, four triplets are possible."
+ },
+ {
+  "n": 60,
+  "q": "The total cost of 4 oranges, 6 mangoes and 8 apples is equal to twice the total cost of 1 orange, 2 mangoes and 5 apples. Consider the following statements:\n1. The total cost of 3 oranges, 5 mangoes and 9 apples is equal to the total cost of 4 oranges, 6 mangoes and 8 apples.\n2. The total cost of one orange and one mango is equal to the cost of one apple.\nWhich of the statements given above is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Let O denote the cost of orange, M denote the cost of mango and A denote cost of apple. From the given information, 4O + 6M + 8A = 2(1O +2M + 5A) ⇒ 4O + 6M + 8A = 2O + 4M +10A ⇒ 2O + 2M = 2A ⇒ O + M = A Statement 1: 3O + 5M + 9A = 4O + 6M + 8A Simplifying, this gives A = O + M So, this statement is correct as per the information given. Statement 2: 1O + 1M = 1A This statement is also correct as per the information given. So, both the statements are correct. Hence, option (c) is the correct answer."
+ },
+ {
+  "n": 61,
+  "q": "Directions for the following 2 (two) items: Read the following two passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 Unlike religion and science, poetry does not posit or expect any belief in absolute truths. Those forces or individuals who claim to have absolute truths in their grasp tend to turn dictatorial and tyrannical. Truth usually does not admit any contradictions or imperfections. It is unitarian. It is, therefore, not of much use for poetry. Poetry abides by the plurality of life and existence. Perhaps poetry follows reality which is plural, anachronistic, full of contradictions. Against the tyranny of truth, poetry remains a partisan of democratic reality. Against the arrogance of power, wealth and hierarchy, poetry proposes both humility and defiance. Which one of the following statements best reflects the most logical and rational message conveyed by the above passage?",
+  "opts": [
+   "It is the poetry, not science or religion, which recognizes and accepts imperfections in humans.",
+   "Truth is revealed through science or religion and poetry is anathema to truth.",
+   "Poetry is romantic, imaginary and is about feeling whereas science. and religion are about truth.",
+   "In a world of violence, tyranny and bigotry, poetry is a form of dynamic resistance."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct. It accurately reflects the essence of the passage, which argues that poetry does not concern itself with absolute truths that are often rigid and intolerant of contradictions or imperfections. Instead, poetry embraces the diversity of life and acknowledges human imperfections. Option (b) is incorrect. The passage does not suggest that poetry is opposed to truth itself. Rather, it distinguishes poetry from absolute truths by highlighting that poetry does not aim for rigid, dictatorial truths like those found in science and religion. Poetry focuses on different aspects of reality without adhering to absolute truths. Option (c) is incorrect. This option oversimplifies the distinction by emphasizing the emotional and imaginative aspects of poetry in contrast to the truth claims of science and religion. However, the passage’s main point is about poetry’s acceptance of life’s complexities and contradictions, contrasting with the unitarian nature of absolute truths. Option (d) is incorrect. While the passage mentions poetry’s opposition to the tyranny associated with absolute truths, its primary emphasis is on poetry’s embrace of plurality and contradictions in life. The passage does not portray poetry as a dynamic resistance against violence, tyranny, and bigotry, but rather as a form that appreciates the diversity and intricacies of human experience, contrasting with the rigidity of absolute truths."
+ },
+ {
+  "n": 62,
+  "q": "Passage - 2 The flower was not invented to please us. It flaunted its petals and spread its perfume to attract an insect. The insect carries the pollen from flower to flower so that pollen is not carried away by wind and thus not wasted. What we call a flower’s beauty is merely a by-product and a human invention. The perfume is not there to please us, it pleases us because it is there and we have been conditioned to it. Based on the above passage, the following assumptions have been made:\n1. The author of the passage believes that flowers are creations of Nature’s luxury.\n2. The author of the passage does not believe in the usefulness of flowers except as things of beauty. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Assumption 1 is incorrect: The passage does not imply that flowers are creations of Nature’s luxury. Instead, it emphasizes that flowers attract insects for pollination, indicating that their beauty and fragrance serve a purpose in ensuring reproductive success. This perspective views flowers as products of natural selection, developed for their role in the ecosystem rather than as luxurious creations devoid of purpose. Assumption 2 is incorrect: The passage emphasizes that flowers primarily serve a biological function by attracting insects for pollination, thereby preventing wastage of pollen. This utilitarian role underscores their importance in the ecosystem, contrasting with the conventional view that sees flowers only for their aesthetic appeal to humans."
+ },
+ {
+  "n": 63,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Age of each of P and Q is less than 100 years but more than 10 years. If you interchange the digits of the age of P, the number represents the age of Q. Question: What is the difference of their ages? Statement-I : The age of P is greater than the age of Q. Statement-II: The sum of their ages is 11/6 times their difference. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 0,
+  "expl": "Let the ages be ab and ba, where a, b are the digits of a 2-digit number Question = Difference of their ages Statement 1: Age of P is greater than the age of Q Let age of P = ab and Q = ba then, ab > ba This means, 10a + b > 10b + a ⇒ 9a > 9b ⇒ a > b But this is not sufficient to tell the difference of age Hence, the question cannot be answered only using statement 1. Statement 2: The sum of their ages is 11 6 times their difference Let ab be the larger number. 10a + b + 10b + a = 11 6 (10a + b – 10b – a) This implies, 11a + 11b = 11 6 (9a – 9b) This implies, a + b = 3 2 (a – b) Thus, a = 5b The only possible values are a = 5, b = 1 So, ab = 51 ba = 15, Difference of their age can be easily determined using this statement alone. Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 64,
+  "q": "A Main Statement is followed by four Statements labelled P, Q, R and S. Choose the ordered pair of the Statements where the first Statement implies the second, and the two Statements are logically consistent with the Main Statement. Main Statement: Pradeep becomes either a Director or a Producer. Statement P: Pradeep is a Director. Statement Q: Pradeep is a Producer. Statement R: Pradeep is not a Director. Statement S: Pradeep is not a Producer. Select the correct answer.",
+  "opts": [
+   "SP only",
+   "RQ only",
+   "Both SP and RQ",
+   "Neither SP nor RQ"
+  ],
+  "answer": 2,
+  "expl": "Main Statement: Pradeep becomes either a Director or a Producer. This implies that Pradeep can be one or the other, but not necessarily both, and not neither. Let’s analyze the pairs: Statement P: Pradeep is a Director. Statement Q: Pradeep is a Producer. Statement R: Pradeep is not a Director. Statement S: Pradeep is not a Producer. Pair Analysis: SP: Statement S: Pradeep is not a Producer. Statement P: Pradeep is a Director. If Pradeep is not a Producer (S), he can still be a Director (P), which is logically consistent with the main statement. RQ: Statement R: Pradeep is not a Director. Statement Q: Pradeep is a Producer. If Pradeep is not a Director (R), he can still be a Producer (Q), which is also logically consistent with the main statement. Both SP and RQ: As analyzed above, both pairs SP and RQ are consistent with the main statement. Neither SP nor RQ: This option would imply that none of the pairs are consistent with the main statement, which is not the case here. Based on the analysis, the pairs SP and RQ both follow logically and are consistent with the main statement."
+ },
+ {
+  "n": 65,
+  "q": "If a + b means a – b; a – b means a × b; a × b means a ÷ b; a ÷ b means a + b, then what is the value of 10 + 30 – 100 × 50 ÷ 25? (Operations are to be replaced simultaneously)",
+  "opts": [
+   "15",
+   "0",
+   "–15",
+   "–25"
+  ],
+  "answer": 3,
+  "expl": "As, a + b means a – b, a – b means a × b, a × b means a ÷ b, a ÷ b means a + b, So, 10 + 30 – 100 × 50 ÷ 25 is equivalent to 10 – 30 × 100 ÷ 50 + 25 = 10 – 30 × 2 + 25 = 10 – 60 + 25 = -25 Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 66,
+  "q": "If P means ‘greater than (>)’; Q means ‘less than (<)’; R means ‘not greater than (>/   )’; S means ‘not less than (  /<)’ and T means ‘equal to (=)’, then consider the following statements:\n1. If 2x(S)3y and 3x(T)4z, then 9y(P) 8z.\n2. If x(Q)2y and y(R)z, then x(R)z.\nWhich of the statements given above is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Statement 1: 2x(S)3y means 2x ≥ 3y which implies 6x ≥ 9y 3x(T)4z means 3x = 4z which implies 6x = 8z So, 8z ≥ 9y This means, 9y can be equal to 8z So, 9y(P)8z, which means 9y > 8z is incorrect Statement 2: x(Q)2y means x < 2y y(R)z means y ≤ z As, x which is smaller than 2y, it can be greater than z So, x(R)z which means x is not greater than z is incorrect. Hence, both statements are incorrect. Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 67,
+  "q": "If in a certain code, ‘ABCD’ is written as 24 and ‘EFGH’ is written as 1680, then how is IJKL’ written in that code?",
+  "opts": [
+   "11880",
+   "11240",
+   "7920",
+   "5940"
+  ],
+  "answer": 0,
+  "expl": "As A = 1, B = 2, C = 3, D = 4 ABCD = 1 × 2 × 3 × 4 = 24 Similarly, for EFGH, EFGH = 5 × 6 × 7 × 8 = 1680 Now, for IJKL, IJKL = 9 × 10 × 11 × 12 = 11880 Hence, option (a) is the correct answer."
+ },
+ {
+  "n": 68,
+  "q": "If in a certain code, ‘POT’ is written as ATOP and ‘TRAP’ is written as APART, then how is ‘ARENA’ written in that code?",
+  "opts": [
+   "AARENA",
+   "AANREA",
+   "AANEAR",
+   "AANERA"
+  ],
+  "answer": 3,
+  "expl": "As POT is written as ATOP, And TRAP is written is APART, The pattern is to add an A in the beginning of the word and then reversing the word So, for ARENA The code will be AANERA Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 69,
+  "q": "What will come in place of * in the sequence 3, 14, 39, 84, *, 258?",
+  "opts": [
+   "150",
+   "155",
+   "160",
+   "176"
+  ],
+  "answer": 1,
+  "expl": "The given sequence is 3, 14, 39, 84, x, 258 The difference between the consecutive numbers is 11, 25, 45, x – 84, 258 – x The difference of this difference is 14, 20, x – 129, 342 – 2x The difference of difference follows a gap of 6 after starting from 14. Pattern for difference of difference is 14, 20, 26, 32 Hence, x – 129 = 26 x = 155 Hence, option (b) is the correct answer."
+ },
+ {
+  "n": 70,
+  "q": "In some code, letters P, Q, R, S, T represent numbers 4, 5, 10, 12, 15. It is not known which letter represents which number. If Q – S = 2S and T = R + S + 3, then what is the value of P + R – T?",
+  "opts": [
+   "1",
+   "2",
+   "3",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 1,
+  "expl": "As Q – S = 2S, Q = 3S. Possible values of Q = 12, 15 Possible values for S = 4, 5 Case I: Q = 12,S = 4 Now, as T = R + S + 3, As T = 15, R = 5 So, P = 10 (only remaining number from the list) So, P + R – T = 10 + 5 – 15 = 0 (not in Options) Case II: Q = 15, R = 5 T = R + S + 3 then T = 12, R = 4, P = 10 (only remaining number from the list) Now, P + R – T = 10 + 4 – 12 = 2"
+ },
+ {
+  "n": 71,
+  "q": "Directions for the following 3 (three) items: Read the following three passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 When an international team of scientists pumped a carbon dioxide and water mix into underground basalt rocks, basic chemistry took over. The acidic mixture dissolved rocks’ calcium and magnesium and formed limestone. Basically carbon dioxide is converted into stone, exclaimed the scientists. Which one of the following statements best reflects the most logical, rational and practical suggestion implied by the passage?",
+  "opts": [
+   "It is a cheap and practical method to produce limestone at commercial level for building purposes.",
+   "This can be used as one of the methods of carbon sequestration.",
+   "Basalt rock can be made a good source of calcium and magnesium minerals by this method.",
+   "Good rock-dissolving acid can be produced by mixing carbon dioxide and water."
+  ],
+  "answer": 1,
+  "expl": "Option (a) is incorrect because the primary implication of the process described in the passage is not focused on the commercial production of limestone for building purposes, but rather on its role in carbon sequestration. Option (b) aligns with the practical implication suggested by the passage. The passage discusses a method where carbon dioxide is injected into underground basalt rocks, leading to a chemical reaction that forms limestone. This process effectively sequesters carbon dioxide underground in the form of stable limestone, which helps mitigate its release into the atmosphere, supporting carbon sequestration efforts. Option (c) is incorrect because the passage does not emphasize the use of basalt rock as a source of calcium and magnesium minerals, but rather focuses on the chemical reaction involving carbon dioxide and water leading to limestone formation. Option (d) is incorrect because the passage does not involve the production of a rock-dissolving acid. Instead, it describes a chemical process where carbon dioxide reacts with water in basalt rocks to form limestone. Therefore, option (b) provides the most logical and practical implication suggested by the passage, highlighting its potential application in carbon sequestration efforts through the formation of stable limestone underground."
+ },
+ {
+  "n": 72,
+  "q": "Passage - 2 Geographers analyzed 175 satellite images of ocean colour, which is an indicator of phytoplankton productivity at the ocean’s surface, and found that giant icebergs are responsible for storing up to 20 percent of carbon in the Southern Ocean. The researchers discovered that melting water from giant icebergs which contains iron and other nutrients, supports hitherto unexpectedly high levels of phytoplankton growth. Based on the above passage, the following assumptions have been made:\n1. Giant icebergs have a bearing on primary productivity and food chains of the Southern Ocean.\n2. Melting of giant icebergs can produce climate change effects and impact world fisheries. Which of the assumptions given above is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Assumption 1 is valid. According to the passage, giant icebergs in the Southern Ocean store significant amounts of carbon and release nutrients such as iron through melting water. This process supports high levels of phytoplankton growth, which are crucial in marine food chains. Therefore, giant icebergs do influence primary productivity and food chains in the Southern Ocean as described. Assumption 2 is valid. The passage indeed mentions that melting water from giant icebergs, which contains iron and other nutrients, supports unexpectedly high levels of phytoplankton growth. This enhanced phytoplankton growth can potentially impact world fisheries and contribute to climate change effects through its influence on carbon sequestration and marine ecosystems. Therefore, both Assumption 1 and Assumption 2 are valid based on the information provided in the passage."
+ },
+ {
+  "n": 73,
+  "q": "Passage - 3 Evolution has endowed caterpillars that feed on corn with a unique ability, they can induce the plant to turn off its defence against insect predators. This helps caterpillars to eat more and grow faster. The agent that causes this effect is the caterpillar’s faeces or frass. The find could throw new light on compounds associated with plant response to pathogens like fungi or bacteria. Which one of the following statements best reflects the most logical, rational and practical message conveyed by the passage?",
+  "opts": [
+   "Farmers can use caterpillars to feed on weeds in their crop fields/ plantations.",
+   "This finding can help in the development of clinically useful antimicrobial compounds.",
+   "This finding can help in the development of organic, ecologically sustainable pesticides.",
+   "Caterpillars can be genetically modified to be predators of the other plant pests."
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect. The passage does not discuss using caterpillars to control weeds in crop fields. Instead, it focuses on how caterpillars induce plants to deactivate their defences against predators and the implications of this interaction for plant responses to pathogens. Therefore, option (a) is not supported by the passage’s content. Option (b) is incorrect. The passage does not suggest that this discovery could lead to the development of clinically useful antimicrobial compounds. While it mentions compounds related to plant responses to pathogens, it does not extend these implications to clinical applications. Thus, option (b) is not directly relevant to the passage. Option (c) is correct. The passage discusses how caterpillars influence plants to disable their defences against predators, potentially providing insights for the development of organic and ecologically sustainable pesticides. Understanding this mechanism could aid in creating pest control methods that are both environmentally friendly and effective, aligning closely with the passage’s focus on plant defences and ecological implications. Option (d) is incorrect. The passage does not explore genetically modifying caterpillars to prey on other plant pests. Instead, it centers on the interaction between caterpillars and plant defences, particularly how this interaction affects plant by the passage’s content. In conclusion, option (c) accurately reflects the practical implication conveyed by the passage, highlighting the potential development of sustainable pesticides based on insights gained from caterpillar-plant interactions."
+ },
+ {
+  "n": 74,
+  "q": "325 + 227 is divisible by:",
+  "opts": [
+   "3",
+   "7",
+   "10",
+   "11"
+  ],
+  "answer": 2,
+  "expl": "Simplifying the given expression, 325 + 227 = (25)5 + 227 = 225 + 227 = 225(1 + 22) = 225 × 5 = 224 × 10 So, the above number is divisible by 10. Hence option (c) is the correct answer."
+ },
+ {
+  "n": 75,
+  "q": "Let p and I be positive integers satisfying p < q and p + q = k. What is the smallest value of k that does not determine p and q uniquely?",
+  "opts": [
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "answer": 2,
+  "expl": "For not determining p and q uniquely, there must be multiple possible values of p and q. Given conditions, p < q and p + q = k If k = 3 Only possible values are q = 2, p = 1 If k = 4 Only possible values are q = 3, p =1 If k = 5 Possible values are q = 3, p = 2 Or, q = 4, p = 1 So, smallest k for which it is not possible to uniquely determine p and q is 5."
+ },
+ {
+  "n": 76,
+  "q": "A person walks 100 m straight from his house, turns left and walks 100 m, again turns left and walks 300 m, then turns right and walks 100 m to reach his office. In which direction does he walk initially from his house if his office is exactly in the North-East direction?",
+  "opts": [
+   "North-West",
+   "West",
+   "South",
+   "South-West"
+  ],
+  "answer": 2,
+  "expl": "If the office lies in the North East direction, then the person initially started moving in South direction. N S WS 100 m 300 m Home Office 100 m 100 m NE E W NW SE"
+ },
+ {
+  "n": 77,
+  "q": "A person walks 100 m Westward, then turns left and walks 100 m. He then takes 225° turn clockwise. In which direction is he walking now?",
+  "opts": [
+   "South-West",
+   "South-East",
+   "North-West",
+   "North-East"
+  ],
+  "answer": 3,
+  "expl": "If the person starts moving in West direction and then turn left walks 100 m then moves 225° clockwise, he would be facing North-east direction. N S W E 100 m 100 m NE 225°"
+ },
+ {
+  "n": 78,
+  "q": "A Statement is given followed by two Conclusions numbered I and II. Consider the Statement and the Conclusions. Statement: India is the world’s largest producer of milk. Conclusion-I : India is the world’s largest exporter of milk. Conclusion-II : India does not import milk. Which one of the following is correct?",
+  "opts": [
+   "Only Conclusion-I follows",
+   "Only Conclusion-II follows",
+   "Both Conclusion-I and Conclusion-II follow",
+   "Neither Conclusion-I nor Conclusion-II follows"
+  ],
+  "answer": 3,
+  "expl": "Conclusion-I: The fact that India is the largest producer of milk globally does not necessarily mean it is the largest exporter of milk. Production and export are distinct; a country may produce a significant amount of milk but consume most of it domestically. Therefore, the conclusion that India is the world’s largest exporter of milk does not logically follow from the statement. Conclusion-II: Similarly, India being the largest producer of milk does not imply that it does not import milk. Even if a country is a major producer, it may still import certain types of milk or dairy products to fulfil specific demands. Therefore, the conclusion that India does not import milk does not logically follow from the statement."
+ },
+ {
+  "n": 79,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Question: What are the values of m and n, where m and n are natural numbers? Statement-I : m + n > mn and m > n. Statement-II : The product of m and n is 24. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 2,
+  "expl": "m + n > mn For this at least one of m or n has to be equal to 1. As m > n So, n = 1 from statement 1. But this statement alone is not sufficient to answer the question. From statement 2 m × n = 24 m, n can be (3, 8); (4, 6); (12, 2); (24, 1) So, this statement alone is not sufficient to answer the question. Combining the two statements As, n = 1 so, m = 24. Hence both the statements together are sufficient to answer the question."
+ },
+ {
+  "n": 80,
+  "q": "A Question is given followed by two Statements I and II. Consider the Question and the Statements. Question: What is the time required to download the software? Statement-I : The size of the software is 12 megabytes. Statement-II: The transfer rate is 2.4 kilobytes per second. Which one of the following is correct in respect of the above Question and the Statements?",
+  "opts": [
+   "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone",
+   "The Question can be answered by using either Statement alone",
+   "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone",
+   "The Question cannot be answered even by using both the Statements together"
+  ],
+  "answer": 2,
+  "expl": "As statement 1 provides the size of the software, Statement 2 provides the transfer rate per second Time required = size transfer rate So, both statements are necessary and sufficient to answer the question. Hence, option (c) is the correct answer."
+ }
+]

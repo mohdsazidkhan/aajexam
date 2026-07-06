@@ -1,0 +1,962 @@
+[
+ {
+  "n": 1,
+  "q": "Passage - 1 The main threat to maintaining progress in human development comes from the increasingly evident sustainability of production and consumption patterns. Current production models rely heavily on fossil fuels. We now know that this is unsustainable because the resources are finite. The close link between the resources is finite. The close link between economic growth and greenhouse gas emissions needs to be severed for human development to become truly sustainable. Some developed countries have begun to alleviate the worst effects by expanding recycling and investing in public transport and infrastructure. But most developing countries are hampered by the high costs and low availability of clean energy sources. Developed countries need to support developing countries transition to sustainable human development. Unsustainability in production pattern is due to which of the following?\n1. Heavy dependence on fossil fuels\n2. Limited availability of resources\n3. Expansion of recycling Select the correct answer using the code.",
+  "opts": [
+   "1 and 1 only",
+   "2 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 0,
+  "expl": "Unsustainability in production pattern, according to the passage is due to dependence on fossil fuels which is available in a limited quantity. Therefore statements (1) heavy dependence on fossil fuels and (2) Limited availability of resources are correct. What about the statement (3)? Expansion of recycling supports sustainability and is, therefore, not a factor in unsustainability. Therefore, option (a) ‘1 and 2 only’ is correct."
+ },
+ {
+  "n": 2,
+  "q": "Consider the following statements: Developed countries can support developing countries transition to sustainable human development by\n1. making clean energy sources available at low cost.\n2. providing loans for improving their public transport at nominal interest rates.\n3. encouraging them to change their production and consumption patterns.\nWhich of the statements given above is/are correct?",
+  "opts": [
+   "1 only",
+   "1 and 2 only",
+   "2 and 3 only",
+   "1, 2 and 3 UPSC CIVIL SERVICES EXAMINATION (PRELIMS)-CSAT"
+  ],
+  "answer": 0,
+  "expl": "The correct answer is (a). Let us see how. The developed countries can support developed countries’ transition to sustainable human development by (i) Making clean energy sources available at low cost. Read the last line of the passage. It says, “developed countries need to support developing countries’ transition to sustainable human development.” Now we only need to ensure that the developed countries have access to clean energy sources at low cost. So, this statement is correct. (ii) Providing loans for improving their public transport at nominal interest rates. There is a sentence in the passage that reads, “Some developed countries have begun to alleviate the worst effects by expanding recycling and investing in public transport and infrastructure. Here, “investing in public transport and infrastructure” does not mean, giving a loan at nominal interest rate. Thus, this statement is incorrect. (iii) Encouraging to change their production and consumption patterns. The same statement as above taken from the passage also implies that the developed countries have begun to alleviate the worst effects (of the unsustainable production and consumption pattern). It means the developed countries can help the developing countries change their production and consumption pattern. This is not a logical inference based on the given passage. Thus this statement is also incorrect."
+ },
+ {
+  "n": 3,
+  "q": "Passage - 2 Unless the forces and tendencies which are responsible for destroying the country’s environment and checked in the near futures and afforestation of denuded areas is taken up on a massive scale, the harshness of the climatic conditions and soil erosion by wind and water will increase to such as extent that agriculture, which is the mainstay of our people, will gradually become impossible. The desert countries of the world and our own desert areas in Rajasthan are a grim reminder of the consequences of large-scale deforestation. Pockets of desert-like landscape are now appearing in other parts of the country including the Sutlej-Ganga Plains and the Deccan Plateau. Where only a few decades back there used to be lush green forests with perennial streams and springs, there is only brown earth, bare of vegetation, without any water in the streams and springs except in the rainy season. According to the passage given above, deforestation and denudation will ultimately lead to which of the following?\n1. Depletion of soil resource\n2. Shortage of land for the common man\n3. Lack of water for cultivation Select the correct answer using the code given below:",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 2,
+  "expl": "The correct answer is (c). Let us see how? The question is about deforestation and denudation leading to what kind of consequence. This is a straightforward question directly from the passage. Let us note down all the consequences mentioned in the passage: (i) harshness of the climatic conditions (ii) soil erosion by wind and water (iii) agriculture will become impossible (iv) brown earth with bare vegetation without any water in streams and springs. If we note the list of consequences in the statements, they are (1) Depletion of soil resources. This matches our list above. (2) Shortage of land for the common man. It doesn’t match our list above.(3) lack of water for cultivation. It matches our list above. Statement (2) is incorrect because it says there will be a shortage of land for the common man. The fact is there will be enough land for the common man but it will be of no use because agriculture will be impossible. Therefore, we are left with option (c) 1 and 3 only."
+ },
+ {
+  "n": 4,
+  "q": "What is the value of X in the sequence 20, 10, 10, 15, 30, 75, X?",
+  "opts": [
+   "105",
+   "120",
+   "150",
+   "225"
+  ],
+  "answer": 3,
+  "expl": "The given sequence follows the following pattern. 1 2 × 3 2 × 5 2 × × 1 × 2 × 3 Q X = 225"
+ },
+ {
+  "n": 5,
+  "q": "An Identity Card has the number ABCDEFG, not necessarily in that order, where each letter represents a distinct digit (1, 2, 4, 5, 7, 8, 9 only). The number is divisible by 9. After deleting the first digit from the right, the resulting number is divisible by 6. After deleting two digits from the right of original number, the resulting number is divisible by\n5. After deleting three digits from the right of original number, the resulting number is divisible by 3. After deleting five digits from the right of original number, the resulting number is divisible by 2. Which of the following is a possible value for the sum of the middle three digits of the number?",
+  "opts": [
+   "8",
+   "9",
+   "11",
+   "12"
+  ],
+  "answer": 0,
+  "expl": "According to question, identity card has seven digits (1,2,4,5,7,8,9) First digit, from right side, must be 9. As, if you remove any other digit except 9 then remaining number will not be divisible by 6 (Q sum of number will not be divisible by 3). Also, second digit from rigid side can be 2, 4 or 8 (even) 5 2/4/8 9 This digit must be 5 (as number will be divisible by 5 after removal of first two digits) Similarly, we can have 2/4/8 1/7 2/4/8 2/4/8 1/7 5 9 We need to find sum of these three digits. Q 8 can't be at fourth place (from right) as 8 + 5 = 13 which greater than all the given options. Various possibilities for middle three digits 1  4  5 (Sum = 10, not in option) 1  2  5 (Sum = 8, given in option) 7  2  5 (Sum = 14, not in option) 7  4  5 (Sum = 16, not in option) ∴ Sum of middle three digits = 8"
+ },
+ {
+  "n": 6,
+  "q": "Two friends X and Y start running and they run together for 50 m in the same direction and reach a point. X turns right and runs 60 m, while Y turns left and runs 40 m. Then X turns left and runs 50 m and stops, while Y turns right and runs 50 m and then stops. How far are the two friends from each other now?",
+  "opts": [
+   "100 m",
+   "90 m",
+   "60 m",
+   "50 m"
+  ],
+  "answer": 0,
+  "expl": "According to question Distance between X and Y = 40 + 60 = 100 m"
+ },
+ {
+  "n": 7,
+  "q": "Which date of June 2099 among the following is Sunday?",
+  "opts": [
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "answer": 3,
+  "expl": "We know that 5th June, 2022 is Sunday. No. of odd days in normal year = 1 No. of odd days in leap year = 2 No. of leap years from 2022 to 2099 = 24 – 5 = 19 (leap years in 100 years) (leap years from 2000–2022) No. of normal years from 2022 to 2099 = 58 No. of odd days from 5th June, 2022 to 5th June, 2099 = Remainder 19 2 1 7 × + ×       = 5 So, 5th June, 2099 is = Sunday + 5 = Friday ∴ 7th June, 2099 is Sunday."
+ },
+ {
+  "n": 8,
+  "q": "A bill for ` 1,840 is paid in the denominations of ` 50, ` 20 and ` 10 notes. 50 notes in all are used. Consider the following statements:\n1. 25 notes of ` 50 are used and the remaining are in the denominations of ` 20 and ` 10.\n2. 35 notes of ` 20 are used and the remaining are in the denominations of ` 50 and ` 10.\n3. 20 notes of ` 10 are used and the remaining are in the denominations of ` 50 and ` 20.\nWhich of the above statements are not correct?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 3,
+  "expl": "For case - 1 25 notes of ` 50 will sim = 25 × 50 = ` 1250 Rest of 25 notes can sum maximum = 25 × 20 = ` 500 (1250 + 500) < 1840 For case - 2 35 notes of ` 20 will sum = 35 × 20 = ` 700 Rest of 15 notes can sum maximum = 15 × 50 = ` 750 (700 + 750) < 1840 For case - 3 20 notes of ` 10 will sum = 20 × 10 = ` 200 Rest of 30 notes can sum maximum = 30 × 50 = ` 1500 (200 + 1500) < 1840 ∴ All three statements are wrong."
+ },
+ {
+  "n": 9,
+  "q": "Which number amongst 240, 321 , 418 and 812 is the smallest?",
+  "opts": [
+   "240",
+   "321",
+   "418",
+   "812"
+  ],
+  "answer": 1,
+  "expl": "Q 418 = (22)18 = 236 812 = (23)12 = 236 ∴ 240 > 236 = 48 = 812 ...(i) 236 = (212)3 = (4096)3 321 = (37)3 = (2187)3 ∴ 236 > 321 ...(ii) From (i) and (ii) 240 > 418 = 812 > 321 So, 321 is smallest"
+ },
+ {
+  "n": 10,
+  "q": "The digits 1 to 9 are arranged in three rows in such a way that each row contains three digits, and the number formed in the second row is twice the number formed in the first row; and the number formed in the third row is thrice the number formed in the first row. Repetition of digits is not allowed. If only three of the four digits 2, 3, 7 and 9 are allowed to use in the first row, how many such combinations are possible to be arranged in the three rows?",
+  "opts": [
+   "4",
+   "3",
+   "2",
+   "1"
+  ],
+  "answer": 2,
+  "expl": "According to question, Row - 1 ____ ____ ____ (2, 3, 7, 9) First digit of row-1 (from left) can't be 7 or 9 because then twice and thrice of number in row-1 will be of 4-digits. ∴ From digit of row-1 (from left) can be 2 or 3 By hit and trial method: Row - 1    2 7 3           3 2 7 Row - 2    5 4 6     or    6 5 4 Row - 3    8 1 9           9 8 1 Only two possibilities are there."
+ },
+ {
+  "n": 11,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items (11-14) that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 “In simple matters like shoe-making, we think only a specially trained person will serve our purpose, but in politics we presume that everyone who knows how to get votes knows how to administer a State. When we are ill, we call for a trained physician, whose degree is a guarantee of specific preparation and technical competence—we do not ask for the handsomest physician, or the most eloquent one: well then, when the whole State is ill should we not look for the service and guidance of the wisest and the best?” Which one of the following statements best reflects the message of the author of the passage?",
+  "opts": [
+   "We assume that in a democracy, any politician is qualified to administer a State.",
+   "Politicians should be selected from those trained in administration.",
+   "We need to devise a method of barring incompetence from public office.",
+   "As voters select their administrators, the eligibility of politicians to administer a State cannot be questioned."
+  ],
+  "answer": 2,
+  "expl": "The passage can be summarized in a sentence as follows: If we look for a competent person in simple things such as shoe-making or treating someone who is ill, then why don’t we look for competent persons to run a state polity? The message of the passage is clear: we need competent politicians to run the state. Options (a) and (d) are clearly incorrect because they are clearly not the intended message of the author. Option (b) is “politicians should be selected from those trained in the administration”. This is incorrect because the author merely says that the services of the wisest and the best should be sought in politics, not how they are to be selected. We are then left with option (c) which is “we need to devise a method of barring incompetence from public office”. This is the correct option because it is the closest to the message of the author that competent persons should look after the state."
+ },
+ {
+  "n": 12,
+  "q": "Passage - 2 The poverty line is quite unsatisfactory when it comes to grasping the extent of poverty in India. It is not only because of its extremely narrow definition of ‘who is poor’ and the debatable methodology used to count the poor, but also because of a more fundamental assumption underlying it. It exclusively relies on the notion of poverty as insufficient income or insufficient purchasing power. One can better categorize it by calling it income poverty. If poverty is ultimately about deprivations affecting human well-being, then income poverty is only one aspect of it. Poverty of a life, in our view, lies not merely in the impoverished state in which the person actually lives, but also in the lack of real opportunity given by social constraints as well as personal circumstances—to choose other types of living. Even the relevance of low incomes, meagre possessions, and other aspects of what are standardly seen as economic poverty relate ultimately to their role in curtailing capabilities, i.e., their role in severely restricting the choices people have to lead variable and valued lives. Why is the methodology adopted in India to count the ‘poor’ debatable?",
+  "opts": [
+   "There is some confusion regarding what should constitute the ‘poverty line’.",
+   "There are wide diversities in the condition of the rural and urban poor.",
+   "There is no uniform global standard for measuring income poverty.",
+   "It is based on the proposition of poverty as meagre income or buying capacity."
+  ],
+  "answer": 3,
+  "expl": "The question is “Why is the methodology adopted in India to count the poor debatable? In the passage, the author makes a statement on the debatable methodology in the following words: “It is not only because of its extremely narrow definition of ‘who is poor’ and the debatable methodology used to count the poor…” The author does not clarify the methodology used to count the poor but mentions the underlying assumption which is “It exclusively relies on the notion of poverty as insufficient income or insufficient purchasing power”. If you examine all the options, you will find that only option (d) identifies the assumption mentioned in the passage. Option (d) states “it is based on the proposition of poverty as meagre income or buying capacity”. Therefore, this is the correct answer."
+ },
+ {
+  "n": 13,
+  "q": "Why is income poverty only one measure of counting the ‘poor’?",
+  "opts": [
+   "It talks of only one kind of deprivation ignoring all others.",
+   "Other deprivations in a human life having nothing to do with lack of purchasing power.",
+   "Income poverty is not a permanent condition, it changes from time to time.",
+   "Income poverty restricts human choices only at a point of time."
+  ],
+  "answer": 0,
+  "expl": "You will note in the passage that the author find problems with income poverty as a basis of counting poverty because it counts only one aspect of poverty, while poverty has multiple aspects. For example, “lack of opportunity given by social constraints as well as personal circumstances” is also an aspect of poverty. The answer is obvious from the passage where the author makes the following statement: “If poverty is ultimately about deprivations affecting human well-being, then income poverty is only one aspect of it.” Option (a) provides exactly the same information. Therefore, it is the correct option as our answer. Let us briefly see, why other options are incorrect. (b) Other deprivations in human life have nothing to do with a lack of purchasing power. Nowhere is this statement made in the passage. Moreover, the author in fact claims that other deprivations ultimately curtail capabilities. (c) Income poverty is not a permanent condition. This is not mentioned in the passage, whether or not the statement is factually correct or incorrect. (d) Income poverty restricts human choices only at a point of time. This is not mentioned in the passage. Although income poverty restricts human choices but whether at a point in time or for all time is not mentioned in the passage."
+ },
+ {
+  "n": 14,
+  "q": "What does the author mean by ‘poverty of a life’?",
+  "opts": [
+   "All deprivations in a human life which stem not only from lack of income but lack of real opportunities?",
+   "Impoverished state of poor people in rural and urban areas.",
+   "Missed opportunities in diverse personal circumstances.",
+   "Material as well as non-material deprivations in a human life which restrict human choices permanently."
+  ],
+  "answer": 0,
+  "expl": "According to the author, “Poverty of a life, in our view, lies not merely in the impoverished state in which the person actually lives, but also in the lack of real opportunity given by social constraints as well as personal circumstances – to choose other types of living. If you consider the options, you will note that option (a) “All deprivations in a human life which stem not only from a lack of income but a lack of real opportunities”is the closest in meaning to the statement on the poverty of a life made by the author. Option (b) is incorrect because it is not stated in the passage. Option (c) is incorrect because it speaks of “missed opportunities” in diverse personal circumstances. There is a difference between “lack of opportunities” and “missed opportunities”. Poverty is a condition of lack of opportunity rather than a missed opportunity. Option (d) is incorrect because it is not stated in the passage. Secondly, it speaks about material and non-material deprivations. Poor people may not be deprived of non-material aspects, for instance, spirituality is a non-material asset that poor people may have."
+ },
+ {
+  "n": 15,
+  "q": "X and Y run a 3 km race along a circular course of length 300 m. Their speeds are in the ratio of 3 : 2. If they start together in the same direction, how many times would the first one pass the other (the start off is not counted passing)?",
+  "opts": [
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": 1,
+  "expl": "According to question, ratio of speeds of X and Y = 3 : 2 ∴ When X completes 3 rounds then Y completes 2 rounds. They will meet first time only then. Distance covered by X after 3 rounds = 900 m Distance covered by X after 9 rounds = 2700 m After 9 rounds of X, they will meet 3 times and after that they can't meet since race will be completed for X. So, they can meet only 3 times."
+ },
+ {
+  "n": 16,
+  "q": "If the order of the letters in the English alphabet is reversed and each letter represents the letter whose position it occupies, then which one of the following represents ‘LUCKNOW’?",
+  "opts": [
+   "OGXPMLD",
+   "OGXQMLE",
+   "OFXPMLE",
+   "OFXPMLD"
+  ],
+  "answer": 3,
+  "expl": ""
+ },
+ {
+  "n": 17,
+  "q": "In a tournament of Chess having 150 entrants, a player is eliminated whenever he loses a match. It is given that no match results in a tie/draw. How many matches are played in the entire tournament?",
+  "opts": [
+   "151",
+   "150",
+   "149",
+   "148"
+  ],
+  "answer": 2,
+  "expl": "After every match, 1 player is eliminated ∴ To eliminate 149 players, tournament will have 149 matches."
+ },
+ {
+  "n": 18,
+  "q": "How many 3-digit natural numbers (without repetition of digits) are there such that each digit is odd and the number is divisible by 5 ?",
+  "opts": [
+   "8",
+   "12",
+   "16",
+   "24"
+  ],
+  "answer": 1,
+  "expl": "According to question, each digit of 3 digit number is odd. ∴ We can only use digits 1, 3, 5, 7 and 9 Q 3 digit number is divisible by 5 5 O T H (Last digit must be 5) No. of choices for hundred place digit = 4 No. of choices for tens place digit = 3 ∴ Total number of such 3-digit number = 4 × 3 = 12"
+ },
+ {
+  "n": 19,
+  "q": "Consider the Question and two Statements given below: Question: Is x an integer? Statement-1 : x/3 is not an integer. Statement- 2 : 3x is an integer. Which one of the following is correct in respect of the Question and the Statements?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-I and Statement-2 are sufficient to answer the Question",
+   "Both Statement-I and Statement-2 are not sufficient to answer the Question"
+  ],
+  "answer": 3,
+  "expl": "Let x = 2 (integer)       If x = 2 3 (non-integer) ∴ 3 x = 2 3 (non-integer) ∴ 3 x = 2 9 (non-integer) 3x = 6 (integer) 3x = 2 (integer) Clearly, both statement 1 and 2 are not sufficient to answer the question."
+ },
+ {
+  "n": 20,
+  "q": "The increase in the price of a certain item was 25%. Then the price was decreased by 20% and then again increased by 10%. What is the resultant increase in the price?",
+  "opts": [
+   "5%",
+   "10%",
+   "12.5%",
+   "15%"
+  ],
+  "answer": 1,
+  "expl": "Let initial price of item = ` 100 ∴ Price after 25% increase = ` 125 Now, price after 20% decrease = 4 5 × = `100 Price after 10% increase = 110 100 × = ` 110 ∴ Resultant increase = 10%"
+ },
+ {
+  "n": 21,
+  "q": "Directions for the following 3 (three) items: Read the following four passages and answer the items (21-23) that follow the passage. Your answers to these items should be based on the passages only. Passage In some places in the world, the productivity of staples such as rice and wheat has reached a plateau. Neither new strains nor fancy agrochemicals are raising the yields. Nor is there much unformed land left that is suitable to be brought under the plough. If global temperature continues to rise, some places will become unsuitable for farming. Application of technology can help overcome these problems. Agriculture technology is changing fast. Much of this change is brought about by affluent farmers in the West/Americas. Techniques developed in the West are being adapted in some places to make tropical crops more productive. Technology is of little use if it is not adapted. In the developing world, that applies as much to existing farming techniques as it does to the latest advances in genetic modification. Extending to the smallholders and subsistence farmers of Africa and Asia the best of today’s agricultural practices, in such simple matters as how much fertilizers to apply and when, would lead to a greatly increased availability of food for humanity. So would things like better roads and storage facilities, to allow for the carriage of surpluses to markets and reduce wastage. Based on the above passage, the following assumptions have been made:\n1. Development of agricultural technology is confined to developed countries.\n2. Agricultural technology is not adapted in developing countries.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "The correct answer is option (d) Neither 1 nor 2. Let us see how. The two assumptions are given and you have to identify the assumption/s used in the passage. (i) Development of agricultural technology is confined to developed countries. This assumption is not used in the passage because there is a sentence in the passage as follows: “Techniques developed in the West are being adapted in some places to make tropical crops more productive.” It means that the development of agricultural technology is not confined to the developed countries. (ii) Agricultural technology is not adapted in developing countries. This assumption is not used in the passage because the passage claims that the techniques developed in the West are being adapted in some places to make tropical crops more productive Some places here mean, the places that are not West. West signifies development and progress, while other places mean developing countries."
+ },
+ {
+  "n": 22,
+  "q": "Directions for the following 3 (three) items: Read the following four passages and answer the items (21-23) that follow the passage. Your answers to these items should be based on the passages only. Passage In some places in the world, the productivity of staples such as rice and wheat has reached a plateau. Neither new strains nor fancy agrochemicals are raising the yields. Nor is there much unformed land left that is suitable to be brought under the plough. If global temperature continues to rise, some places will become unsuitable for farming. Application of technology can help overcome these problems. Agriculture technology is changing fast. Much of this change is brought about by affluent farmers in the West/Americas. Techniques developed in the West are being adapted in some places to make tropical crops more productive. Technology is of little use if it is not adapted. In the developing world, that applies as much to existing farming techniques as it does to the latest advances in genetic modification. Extending to the smallholders and subsistence farmers of Africa and Asia the best of today’s agricultural practices, in such simple matters as how much fertilizers to apply and when, would lead to a greatly increased availability of food for humanity. So would things like better roads and storage facilities, to allow for the carriage of surpluses to markets and reduce wastage. Based on the above passage, the following assumptions have been made:\n1. Poor countries need to bring about change in their existing farming techniques.\n2. Developed countries have better infrastructure and they waste less food.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "In this question also, you have to identify the assumption/s made. The two assumptions are as follows: (i) Poor countries need to bring about change in their existing farming techniques. The passage has throughout made this point, such as “Extending to the smallholders and subsistence farmers of Africa and Asia…. would lead to greatly increased availability of food for humanity.” (ii) Developed countries have better infrastructure and they waste less food. This is not discussed in the passage .So, this is incorrect statement. Therefore, Only assumption 1 is correct ."
+ },
+ {
+  "n": 23,
+  "q": "Directions for the following 3 (three) items: Read the following four passages and answer the items (21-23) that follow the passage. Your answers to these items should be based on the passages only. Passage In some places in the world, the productivity of staples such as rice and wheat has reached a plateau. Neither new strains nor fancy agrochemicals are raising the yields. Nor is there much unformed land left that is suitable to be brought under the plough. If global temperature continues to rise, some places will become unsuitable for farming. Application of technology can help overcome these problems. Agriculture technology is changing fast. Much of this change is brought about by affluent farmers in the West/Americas. Techniques developed in the West are being adapted in some places to make tropical crops more productive. Technology is of little use if it is not adapted. In the developing world, that applies as much to existing farming techniques as it does to the latest advances in genetic modification. Extending to the smallholders and subsistence farmers of Africa and Asia the best of today’s agricultural practices, in such simple matters as how much fertilizers to apply and when, would lead to a greatly increased availability of food for humanity. So would things like better roads and storage facilities, to allow for the carriage of surpluses to markets and reduce wastage. Based on the above passage, the following assumptions have been made:\n1. Growing enough food for generations will be a challenge.\n2. Corporate farming is a viable option for food security in poor countries.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Based on the given passage, we can assume that Growing enough food for generations will be a challenge . This is a valid assumption. Statement 2: Corporate farming is a viable option for food security in poor countries. This is not discussed in the passage. Hence we cannot assume about this. Here,Only statement 1 is correct."
+ },
+ {
+  "n": 24,
+  "q": "The letters A, B, C, D and E are arranged in such a way that there are exactly two letters between A and E. How many such arrangements are possible?",
+  "opts": [
+   "12",
+   "18",
+   "24",
+   "36"
+  ],
+  "answer": 2,
+  "expl": "According to question, there are always 2 letters between A and E. Case - 1 A _ _ E _ Remaining 3 places can be filled by 3 letters in 3! ways Case - 2 _ A _ _ E Remaining 3 places can be filled by 3 letters in 3! ways Also, A and E can inter-change there places in both the cases. Total no. of required arrangement = 2 × 3! + 2 × 3! = 2 × 6 + 2 × 6 = 24"
+ },
+ {
+  "n": 25,
+  "q": "Consider the Question and two Statements given below: Question: Is Z brother of X? Statement-1: X is a brother of Y and Y is a brother of Z. Statement-2: X, Y and Z are siblings. Which one of the following is correct in respect of the Question and the Statements?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are sufficient to answer the Question",
+   "Both Statement-I and Statement-2 are not sufficient to answer the Question"
+  ],
+  "answer": 3,
+  "expl": "From statement-1 X Y Z brother brother ⇒ X and Y are males but sex of z can't be determined So, we cannot say Z is brother of X. From statement-2 We cannot say Z is brother of X. Since, Z can be sister of X. Also, both statement together cannot answer the question."
+ },
+ {
+  "n": 26,
+  "q": "On one side of a l·01 km long road, 101 plants are planted at equal distances from each other. What is the total distance between 5 consecutive plants?",
+  "opts": [
+   "40 m",
+   "40.4 m",
+   "50 m",
+   "50.5 m"
+  ],
+  "answer": 1,
+  "expl": "According to question, there are 101 plants planted on 1.01 km = 1010 m ∴ distance between two plants = 1010 m = 10.1 m P1 P2 P3 P4 P5 Total distance between 5 consecutive plants = 4 × 10.1 = 40.4 m"
+ },
+ {
+  "n": 27,
+  "q": "A, B and C are three places such that there are three different roads from A to B, four different roads from B to C and three different roads from A to C. In how many different ways can one travel from A to C using these roads?",
+  "opts": [
+   "10",
+   "13",
+   "15",
+   "36"
+  ],
+  "answer": 2,
+  "expl": "As per the given data Case-1 When we travel from A to C via B Total no. of ways = 3 × 4 = 12 Case-2 When we travel from A to C directly Total no. of ways = 3 Total no. of ways to travel from A to C = 12 + 3 = 15"
+ },
+ {
+  "n": 28,
+  "q": "A has some coins. He gives half of the coins and 2 more to B. B gives half of the coins and 2 more to C. C gives half of the coins and 2 more to D. The number of coins D has now, is the smallest two digit number. How many coins does A have in the beginning?",
+  "opts": [
+   "76",
+   "68",
+   "60",
+   "52"
+  ],
+  "answer": 3,
+  "expl": "Let A has no. of coins at the start = x ∴ B has coins = 2 2 x + Now, C will have no. of coins = 2 2 2 3 2 4 x x + + = + When C gives half of coins and 2 more to D then, no of coins D will have = 3 4 2 2 x + + = 7 8 2 8 x x + + = According to question 8 x + = 10 (Smallest of 2-digit number) ⇒ x + 28 = 80 ⇒ x = 52 ∴ A had 52 coins in the beginning."
+ },
+ {
+  "n": 29,
+  "q": "In the series AABABCABCDABCDE.., which letter appears at the 100th place?",
+  "opts": [
+   "G",
+   "H",
+   "I",
+   "J"
+  ],
+  "answer": 2,
+  "expl": "The given pattern is A|AB|ABC|ABCD|ABCDE|... No. of letters are 1|2|3|4|5|6... Q 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 = 91 So, the pattern will continue as below: ABCDEFGHIJKLM 1 st 2 nd 3 rd A AB ABCDEFGHI... ... st th100 th nd So, 100th place will have I."
+ },
+ {
+  "n": 30,
+  "q": "Three persons A, B and C are standing in a queue not necessarily in the same order. There are 4 persons between A and B, and 7 persons between B and C. If there are 11 persons ahead of C and 13 behind A, what could be the minimum number of persons in the queue?",
+  "opts": [
+   "22",
+   "28",
+   "32",
+   "38"
+  ],
+  "answer": 0,
+  "expl": "According to question, 4 persons are between A and B. A _ _ _ _ B Now, there are 7 persons between B and C. So, C can be right of B or left of B. But for minimum persons C should be left of B. C _ _ A _ _ _ _ B Now, 11 persons are ahead of C and 13 behind A. ∴ Total no. of persons in queue = 22"
+ },
+ {
+  "n": 31,
+  "q": "Direction for the following 4 (four) items: Read the following two passages and answer the items(31-34) that follow the passage. Your answers to these items should be based on the passages only. Passage - 1 Natural selection cannot anticipate future environments on the earth. Therefore, the set of existing organisms can never be fully prepared for environmental catastrophes that await life. An outcome of this is the extinction of those species which cannot overcome environmental adversity. This failure of survive, in modern terms, can be attributed to the genomes which are unable to withstand geological vagaries or biological mishaps infections, diseases and so on). In biological evolution on the earth, extinction of species has been a more feature. The early may presently have up to ten million species, yet more than 90% of species that have ever lived on the earth are now extinct. Once again, the creationist doctrines fail to satisfactorily address why a divine creator will firstly bother to create millions of species and then allow them to perish. The Darwinian explanation for extinct life is once again simple, elegant and at once convincing—organisms go extinct as a function of environmental or biological assaults for which their inheritance deems them ill-equipped. Therefore, the so-called Darwinian theory of evolution is not a theory at all. Evolution happens— this is a fact. The mechanism of evolution (Darwin proposed natural selection) is amply supported, by scientific data. Indeed, to date no single zoological, botanical, geological, palaeontological, genetic or physical evidence has refuted either of the central two main Darwinian ideas. If religion is not taken into consideration, Darwinian laws are acceptable just like the laws proposed by Copernicus, Galileo, Newton and Einstein—sets of natural laws that explain natural phenomena in the universe. According to the passage, natural selection cannot anticipate future environment on the earth as\n1. species not fully prepared to face the environmental changes that await them will face extinction.\n2. all the existing species would get extinct as their genomes will not withstand biological mishaps.\n3. inability of the genome to withstand environmental changes would result in extinction.\n4. extinction of species is a common feature. Select the correct answer using the code given below.",
+  "opts": [
+   "1, 2 and 3",
+   "2, 3 and 4",
+   "1, 3 and 4",
+   "1, 2 and 4"
+  ],
+  "answer": 2,
+  "expl": "If you take a close look at the options, you will note that 3 statements out of the four are correct (as all the options have 3 statements) and one statement is incorrect. Therefore, try to identify the incorrect statement. You will further note that statement 2 has not been stated in the passage. Statement 2 is “All the existing species would get the instinct as their genomes will not withstand biological mishaps. The author only speaks of the extinction of “those species which cannot overcome environmental adversity. Once you get the incorrect statement there is no need to even check for other statements or options. You can simply look for the option in which statement 2 is missing. There is only one option in which statement 2 is missing which is option (c)."
+ },
+ {
+  "n": 32,
+  "q": "The passage suggests that Darwinian theory of evolution is not a theory at all because",
+  "opts": [
+   "it does not satisfy the creationist doctrine.",
+   "extinction is a function of environment and biological assaults.",
+   "there are no evidences to refute it.",
+   "existence of organisms is attributed to a creator."
+  ],
+  "answer": 1,
+  "expl": "In the passage, the author maintains that “the so-called Darwinian theory of evolution is not a theory at all. Evolution happens – this is a fact”. The author does not explain it further. Now let us look at the options. Options (a) and (d) can be eliminated because these speak about a creator or creationist doctrine. We are now left with two other options (b) and (c). If you read a sentence above “the so-called Darwinian theory of evolution….”, you will find the answer which makes sense. The sentence is “…organisms go extinct as a function of environmental or biological assaults for which their inheritance deems them ill-equipped. Therefore, the so-called Darwinian theory of evolution is not a theory at all”. Therefore, option (b) is correct."
+ },
+ {
+  "n": 33,
+  "q": "With reference to the passage, the following assumptions have been made:\n1. Only species that have the ability to overcome environmental catastrophes will survive and perpetuate.\n2. More than 90% of the species on the earth are in the danger of gett1ng extinct due to drastic changes in the environment?\n3. Darwin’s theory explains all the natural phenomenon.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "1 and 2 only",
+   "3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 0,
+  "expl": "We will study each of the statements and decide whether this specific assumption has been made. Statement 1: Only species that have the ability to overcome environmental catastrophes will survive and perpetuate (The statement “An outcome of this is the extinction of those species which cannot overcome environmental adversity” means this assumption has been made) Statement 2: More than 90% of the species on the earth are in danger of getting extinct due to drastic changes in the environment (The statement “…yet more than 90% of the species that have ever lived are now extinct. This statement is about the past. Does it mean more than 90% of species currently are in danger of getting extinct? The passage does not say anything about it. We cannot assume it because it cannot be said with 100% certainty that more than 90% of species present now will get extinct). Statement 3: Darwinian theory explains all the natural phenomena (This assumption cannot be validated because Darwin proposes a set of laws that explain natural phenomena in the universe, not all the natural phenomena. Therefore, only statement 1 can be shown to be assumed in the passage. Hence, option (a) is correct."
+ },
+ {
+  "n": 34,
+  "q": "Passage - 2 With steady economic growth, higher literacy and increasing skill levels, the number of Indian middle-class families has gone up exponentially. Diet results of the affluence have been charged in dietary patterns and energy consumption levels. People have moved to a higher protein-based diet like milk products, fish and meat, all of which need significantly more water to produce than cereal- based diets. Increasing use of electronic and electric machines/gadgets and motor vehicles needs more and more energy and generation of energy needs water. Which one of the following statements best reflects the crux of the passage?",
+  "opts": [
+   "People should be persuaded to continue with the mainly Indian traditional cereal- based diets.",
+   "Indian needs to focus on developing agricultural productivity and capacity for more energy generation in the coming years.",
+   "Modern technological developments result in the change of cultural and social behaviour of the people.",
+   "Water management practices in India need to change dramatically in the coming years."
+  ],
+  "answer": 3,
+  "expl": "Let us first state the passage in a sentence or two so that it is easy to understand the crux of the passage. Due to a set of reasons the number of Indian middle class has risen exponentially. Affluence has led to changes in dietary patterns and energy consumption with the result that increasingly more energy use requires more water. As you may notice the passage doesn’t advise or recommend anything. It simply states a fact. Therefore, any option with “Should” or “Need to” etc should be eliminated. These options are (a), (b), and (c). Here word \"Cultural\" is giving more stretch to the sentences. This make it incorrect. Therefore, option (d) is the correct answer. Water management practices in India need to change dramatically in the coming years."
+ },
+ {
+  "n": 35,
+  "q": "How many seconds in total are three in x weeks, x days, x hours, x minutes and x seconds?",
+  "opts": [
+   "11580x",
+   "11581x",
+   "694860x",
+   "694861x"
+  ],
+  "answer": 3,
+  "expl": "Since, x sec + x min + x hr + x day + x week = x (1 sec + 1 min + 1 hr + 1 day + 1 week) = x (1 + 60 + 60 × 60 + 60 × 60 × 24 + 60 × 60 × 24 × 7) = x sec (1 + 60 + 3600 + 86400 + 604800) sec. = 694861 x sec."
+ },
+ {
+  "n": 36,
+  "q": "P, Q, R, S, T and U are six members of a family. R is the spouse of Q. U is the mother of T and S is the daughter of U. P’s daughter is T and R’s son is P. There are two couples in the family. Which one of the following is correct?",
+  "opts": [
+   "Q is the grandfather of T",
+   "Q is the grandmother of T",
+   "R is the mother of P",
+   "T is the granddaughter of Q"
+  ],
+  "answer": 3,
+  "expl": "We will use codes: + → male    – → Female → couple    .... siblings R Q P U + – T – S – Clearly, T is grand daughter of Q"
+ },
+ {
+  "n": 37,
+  "q": "Consider the Question and two Statements given below in respect of three cities P, Q and R in a State: Question: How far is city (P) from city (Q)? Statement-1: City Q is 18 km from city R. Statement-2: City P is 43 km from city R. Which one of the following is correct in respect of the Question and the statements?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are sufficient to answer the Question",
+   "Both Statment-1 and Statement-2 are not sufficient to answer the Question"
+  ],
+  "answer": 3,
+  "expl": "From statement-1 R Q 18 km So, statement alone cannot answer the question. From statement 1 and 2 P R Q 18 km or R Q 18 km P 43 km In both the cases we can find the distance between Q and P. But we have no information whether P is at right of R or left of R. \\ Both statements are not enough for answer."
+ },
+ {
+  "n": 38,
+  "q": "Two Statements followed by four Conclusions are given below. You have to take the Statements to be true even if they seem, to be at variance from the commonly known facts. Read all the Conclusions and then decide which of the given Conclusions logically follows/follow from the Statements, disregarding the commonly known facts: Statement-1: All pens are books. Statement-2: No chair is a pen. Conclusion-I: All chairs are books. Conclusion-II: Some chairs are pens. Conclusion-III: All books are chairs. Conclusion-IV: No chair is a book. Which one of the following is correct?",
+  "opts": [
+   "Only Conclusion-I",
+   "Only Conclusion-II",
+   "Both Conclusion-III and Conclusion-IV",
+   "None of the Conclusions follows"
+  ],
+  "answer": 3,
+  "expl": "According to given statements Pens Books Chair or Pens Books Chair Conclusion-I not follows Conclusion-II not follows Conclusion-III not follows (as this can be/cannot be) Conclusion-IV not follows (as this can be/cannot be) ∴ None of the conclusions follow."
+ },
+ {
+  "n": 39,
+  "q": "Three Statements followed by three Conclusions are given below. You have to take the Statements to be true even if they seem to be at variance from the commonly known facts. Read all the Conclusions and then decide which of the given Conclusions logically follows/follow from the Statements, disregarding the commonly known facts: Statement- 1: Some doctors are teachers. Statement- 2: All teachers are engineers. Statement- 3: All engineers are scientists. Conclusion-I: Some scientists are doctors. Conclusion-II: All engineers are doctors. Conclusion-III: Some engineers are doctors. Which one of the following is correct?",
+  "opts": [
+   "Only Conclusion-I",
+   "Only Conclusion-II",
+   "Both Conclusion-I and Conclusion-III",
+   "Both Conclusion-I and Conclusion-II"
+  ],
+  "answer": 2,
+  "expl": "According to given statements Doctors Teachers Engineers Scientists By Venn-diagram Conclusion-1 Some scientists are doctors (follows) Conclusion-2 All engineers are doctors (not follow) Conclusion-3 Some engineers are doctors (follows)"
+ },
+ {
+  "n": 40,
+  "q": "Eight students A, B, C, D, E, F, G and H sit around a circular table, equidistant from each other, facing the centre of the table, not necessarily in the same order. B and D sit neither adjacent to C nor opposite to C. A sits in between E and D, and F sits in between B and H. Which one of the following is definitely correct?",
+  "opts": [
+   "B sits in between A and G",
+   "C sits opposite to G",
+   "E sits opposite to F",
+   "None of the above"
+  ],
+  "answer": 3,
+  "expl": "As per given conditions the possible arrangements can be A D H E C G B F OR A E C D G B F H OR A E B D G C H F From the above possible arrangements none of the statement in option A, B and C is definitely correct."
+ },
+ {
+  "n": 41,
+  "q": "Directions for the following 4 (four) items: Read the following two passages and answer the items (41-44) that follow the passages. Your answers to these items should be based on the passages only. Passage–1 For two of three generations past, ever-increasing numbers of individuals have been living as workers merely, not as human beings. An excessive amount of labour is rule today in every circle of society, with the result that man’s spiritual element cannot thrive. He finds it very difficult to spend his little leisure in serious activities. He does not want to think; or he cannot even if he wants to. He seeks not self-improvement, but entertainment which would enable him to be mentally idle and to forget his usual activities. Therefore, the so-called culture of our age is dependent more on cinema than on theatre, more on newspapers, magazines and crime stories than on serious literature. The passage is based on the idea that",
+  "opts": [
+   "man should not work hard.",
+   "the great evil of our age is overstrain.",
+   "man cannot think well.",
+   "man cannot care for his spiritual welfare."
+  ],
+  "answer": 1,
+  "expl": "The correct answer is option (b). Let us summarize the passage in a few sentences as follows: For the last few generations, an increasing number of people have been working hard. The result is that man’s spiritual element cannot thrive and little leisure cannot be utilized in serious activities. Instead of self-improvement, man spends leisure in entertainment so as to be mentally idle and forget usual activities. Therefore, the culture of our age is more dependent on cinema than theatre, more on newspapers, and crime stories than on serious literature. The idea is that overstrain is the great evil of our age, which is option (b). Option (a) is incorrect because the passage nowhere maintains that man should not work hard, rather it says there should not be an excessive amount of labour so that man forgets his spiritual element. Option (c) is incorrect because the passage nowhere says man cannot think well. On the contrary the passage maintains that man can think well provided he has enough leisure for serious pursuit. Option (d) is incorrect because the passage nowhere maintains that man cannot think of his spiritual wellbeing. On the contrary, the passage maintains that man is unable to think of spiritual well-being because of work stress."
+ },
+ {
+  "n": 42,
+  "q": "Man does not seek self-improvement because he",
+  "opts": [
+   "is not intellectually capable",
+   "has no time to do so",
+   "is distracted by materialism",
+   "loves amusement and is mentally idle"
+  ],
+  "answer": 1,
+  "expl": "Option (b) is the correct answer. Let us see why. The question is “Man does not seek self- improvement because. The relevant sentence in the passage is an excessive amount of labour is rule today in every circle of society, with the result that man’s spiritual element cannot thrive. He finds it very difficult to spend his little leisure in serious activities. Option (b) is closest to the statement above, which is our answer."
+ },
+ {
+  "n": 43,
+  "q": "Passage–2 The demographic dividend, which has begun in India and is expected to last another few decades, is a great window of opportunity. The demographic dividend is basically a swelling in the working age population, which conversely means that the relative ratio of very young and very old will, for a while, be on the decline. From the experience of Ireland and China, we know that this can be a source of energy and an engine of economic growth. The demographic dividend tends to raise a nation’s savings rate since in any nation, it is the working age population that is the main saver. And since the savings rate is an important driver of growth, this should help elevate our growth rate. However, the benefits of demographic dividend depend on the quality of the working age population. And this implies bringing back the importance of education, acquisition of skills and human capital. Which of the following would invariably happen in a country, when the demographic dividend has begun to operate?\n1. The number of illiterate people will decrease.\n2. The ratio of very old and very young will decrease for a while.\n3. Population growth rate will quickly stabilize. Select the correct answer using the code given below.",
+  "opts": [
+   "1 and 2 only",
+   "2 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 1,
+  "expl": "You need to identify the correct statement/s out of the three given statements. 1. No where does the passage says that in a country when the demographic dividend has begun to operate the number of illiterate people will increase. On the contrary, the passage urges to focus on education and skill development. 2. The meaning of demographic dividend is clarified by this statement which is the ratio of very old and very young will decrease for a while. This is correct because in the passage the demographic dividend has been defined as a “swelling in the working age population” “which conversely means that the relative ratio of very young and very old will, for a while, be on decline. 3. The population growth rate will quickly stabilize. This statement is incorrect and it is also nowhere to be found in the passage. Also, the first sentence of the passage says that the demographic dividend is expected to last another few years. It means the working-age population will continue to expand for few decades, hence, the population will not quickly stabilize. Therefore, option (b) only 2 is correct."
+ },
+ {
+  "n": 44,
+  "q": "With reference to the passage, which of the following inferences can be drawn?\n1. Demographic dividend is an essential condition for a country to rapidly increase its economic growth rate.\n2. Promotion of higher education is an essential condition for a country for its rapid economic growth. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "You have to identify the correct statements out of the two given statements. Statement 1: Demographic dividend is an essential condition for a country to rapidly increase its economic growth rate. According to the passage, statement 1 is correct. From the experience of Ireland and China, we know that this can be a source of energy and an engine of economic growth. The demographic dividend tends to raise a nation’s savings rate since in any nation, it is the working age population that is the main saver. And since the savings rate is an important driver of growth, this should help elevate our growth rate. Statement 2: Promotion of higher education is an essential condition for a country for its rapid economic growth. This statement 2 is incorrect, as from the passage, the benefits of demographic dividend depend on the quality of the working age population. And this implies bringing back the importance of education, acquisition of skills and human capital. Therefore, option (a) 1 only is correct. * Note, it depends on the discretion of the examiner to mark it as correct or incorrect because the passage does not say “higher education” but uses the words like “education, skill development, and human capital”. While these words may be included in higher education in certain contexts, they may not be in some other contexts."
+ },
+ {
+  "n": 45,
+  "q": "Five friends P, Q, X, Y and Z purchased some notebooks. The relevant information is given below:\n1. Z purchased 8 notebooks more than X did.\n2. P and Q together purchased 21 notebooks.\n3. Q purchased 5 notebooks less than P did.\n4. X and Y together purchased 28 notebooks.\n5. P purchased 5 notebooks more than X did. If each notebook is priced ` 40, then what is the total cost of all the notebooks?",
+  "opts": [
+   "` 2,600",
+   "` 2,400",
+   "` 2,360",
+   "` 2,320"
+  ],
+  "answer": 0,
+  "expl": "From statement 2 and 3. P + Q = 21 ...(i) P – Q = 5 ...(ii) On solving both equations P = 13 and Q = 8 From statement 5 X = 8 ...(iii) Q X + Y = 28 ...(iv) (from statement 4) By (iii) and (iv) Y = 20 Also, Z purchased 8 more than X ∴ Z = 16 ∴ Total no. of books = P + Q + X + Y + Z = 13 + 8 + 8 + 20 + 16 = 65 Total cost of all note books = 40 × 65 = ` 2600"
+ },
+ {
+  "n": 46,
+  "q": "A man started from home at 14:30 hours and drove to village, arriving there when the village clock indicated 15:15 hours. After staying for 25 minutes, he drove back by a different route of length 1.25 times the first route at a rate twice as fast reaching home at 16:00 hours. As compared to the clock at home, the village clock is",
+  "opts": [
+   "10 minutes slow",
+   "5 minutes slow",
+   "10 minutes fast",
+   "5 minutes fast"
+  ],
+  "answer": 3,
+  "expl": "Let initial distance between his home and village be \"x\" unit and his speed be \"y\" units/min Case-1 If village's clock is correct Home 14:30 D = x S = y 16:00 D = 1.25 x S = 2y Village 15:15 15:40 (after 25 min) Initially he took 45 min to reach home to village and now taking only 20 min to reach village to home. This cannot possible as distance has increased, so he must take time more than 22.5 min. ⇒ Village clock is fast. If we assume village clock is 5 min fast. Correct time after reaching village is 15:10 After 25 minutes i.e., he returned back from village to home at 15:35 and reaches home at 16:00 (in 25 min) Q x y = 40 min distance time= speed       ∵ By new way, time = 1.25 1.25 2 2 x y = × = 25 min ⇒ Village clock is fast by 5 min"
+ },
+ {
+  "n": 47,
+  "q": "A person X wants to distribute some pens among six children A, B, C, D, E and F. Suppose A gets twice the number of pens received by B, three times that of C, four times that of D, five times that of E and six times that of F. What is the minimum number of pens X should buy so that the number of pens each one gets is an even number?",
+  "opts": [
+   "147",
+   "150",
+   "294",
+   "300"
+  ],
+  "answer": 2,
+  "expl": "Let no. of pens A gets =60 x [Q L.C.M of 2, 3, 4, 5 and 6 = 60] ∴ no. of pens B gets = 30 x no. of pens C gets = 20 x no. of pens D gets = 15 x no. of pens E gets = 12 x no. of pens F gets = 10 x Total no. of pens = 60x + 30x + 20x + 15x + 12x+ 10x = 147 x To give each even, no. of pens and minimum, x = 2 ∴ X should buy no. of pens = 147 × 2 = 294"
+ },
+ {
+  "n": 48,
+  "q": "Six persons A, B, C, D, E and F are sitting equidistant from each other around a circular table (facing the centre of the table). Consider the Question and two Statements given below: Question : Who is sitting on the immediate left of A? Statement-1 : B is sitting opposite to C and D is sitting opposite to E. Statement-2 : F is sitting on the immediate left of B. Which one of the following is correct in respect of the Question and the Statements?",
+  "opts": [
+   "Statement-I alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are not sufficient to answer the Question"
+  ],
+  "answer": 3,
+  "expl": "Both statement alone cannot answer the question. Now using both statement together. B F E/D A C E/D Even now we cannot tell who is sitting immediate left A"
+ },
+ {
+  "n": 49,
+  "q": "Consider the Question and two Statements given below: Question : What is the age of Manisha? Statement-1 : Manisha is 24 years younger than her mother. Statement-2 : 5 years later, the ages of Manisha and her mother will be in the ratio 3:5. Which one of the following is correct in respect of the Question and the Statements?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are sufficient to answer the Question",
+   "Both Statement-I and Statement-2 are not sufficient to answer the Question"
+  ],
+  "answer": 2,
+  "expl": "Both statement alone cannot answer the question. Now use both statement together. Let age of Manisha = x years ∴ age of mother = x + 24 years According to statement-2 5 x x + + = 3 5 ⇒ 5x + 25 = 3x + 87 ⇒ 5x – 3x = 87 – 25 ⇒ 2x = 62 ⇒ x = 31 So, age of Manisha = 31 years Both statement together can answer the question."
+ },
+ {
+  "n": 50,
+  "q": "Six lectures A, B, C, D, E and F, each of one hour duration, are scheduled between 8:00 a.m. and 2:00 p.m. Consider the Question and two Statements given below: Question : Which lecture is in the third period? Statement-1 : Lecture F is preceded by A and followed by C. Statement-2 : There is no lecture after lecture B. Which one of the following is correct in respect of the Question and the Statements?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are not sufficient to answer the Question."
+  ],
+  "answer": 3,
+  "expl": "By statement-1 We cannot tell about their period. By statement-2 We cannot give any information about 3rd period. Even using both the statements, we cannot tell anything about third period."
+ },
+ {
+  "n": 51,
+  "q": "Direction for the following 3 (three) items: Read the following two passages and answer the items (51-53) that follow the passages. Your answers to these items should be based on the passages only. Passage - 1 In an economic organization, allowing mankind to benefit by the productivity of machines should lead to a very good life of leisure, and much leisure is apt to be tedious except to those who have intelligent activities and interests. If a leisured population is to be happy, it must be an educated population, and must be educated with a view to enjoyment as well as to the direct usefulness of technical knowledge. Which of the following statements best reflects the underlying tone of the passage?",
+  "opts": [
+   "Only an educated population can best make use of the benefits of economic progress.",
+   "All economic development should be aimed at the creation of leisure.",
+   "An increase in the educated population of a country leads to an increase in the happiness of its people.",
+   "Use of machines should be encouraged in order to create a large leisured population."
+  ],
+  "answer": 2,
+  "expl": "If you want to understand the tone of the passage look for the author’s contribution to the statements of facts. The tone can be positive, negative, or neutral. The tone of the passage/ author is reflected in the last sentence. This statement makes the following point: - If the leisured population is to be happy - It must be educated and (further) - With their education be able to enjoy and be useful to technical knowledge. Option (c) is the correct answer because this option is the closest to the explanation of the statement provided above."
+ },
+ {
+  "n": 52,
+  "q": "Passage - 2 If presents being less thrill now that we are grown up, perhaps it is because we have too much already; or perhaps it is because we have lost the fullness of the joy of giving and with it the fullness of the joy of receiving. Children’s fears are poignant, their miseries are acute, but they do not look too forward nor too far backward. Their joys are clear and complete, because they have not yet learnt always too add ‘but’ to every proposition. Perhaps we are too cautious too anxious, too sceptical. Perhaps some of our cares would shrink if we thought less about them and entered with more single-minded enjoyment into the happiness that come our way. With reference to the passage, which one of the following statements is correct?",
+  "opts": [
+   "It is not possible for adults to feel thrilled by presents.",
+   "There can be more than one reason why adults feel less thrilled by presents.",
+   "The author does not know why adults feel less thrilled by presents.",
+   "Adults have less capacity to feel the joy of loving or being loved."
+  ],
+  "answer": 1,
+  "expl": "The correct answer is option (b). Let us see how. The author says in the very first sentence of the passage “If presents bring less thrill now that we are grown up, perhaps it is because we have too much already or perhaps it is because we have lost the fullness of joy of giving and with it the fullness of the joy of receiving. The above sentence clarifies that there is more than one reason why adults feel less thrilled by presents. If you read the passage further reasons are provided. So, option (b) is correct."
+ },
+ {
+  "n": 53,
+  "q": "The author of the passage is against",
+  "opts": [
+   "worrying too much about the past and future.",
+   "being in the habit of thinking about present.",
+   "not being thrilled by new things.",
+   "giving and receiving joy only partially."
+  ],
+  "answer": 0,
+  "expl": "Here option (b) is incorrect . As, it is too narrow to being in the habit of thinking about presents. Option (c) and (d) is also incorrect as past and present is not covered in the passage. . Hence option (a) is the correct option. The author of the passage is against worrying too much about the past and future . Perhaps some of our cares would shrink if we thought less about them and entered with more single- minded enjoyment into the happiness that comes our way ."
+ },
+ {
+  "n": 54,
+  "q": "Let A, B and C represent distinct non-zero digits. Suppose x is the sum of all possible 3-digit numbers formed by A, B and C without repetition. Consider the following statements:\n1. The 4-digit least value of x is 1332.\n2. The 3-digit greatest value of x is 888.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Number of 3-digits number formed by 3 non- zero distinct digits = 3! = 3 × 2 = 6 From question Sum (X ) = ABC + ACB + BAC + BCA + CAB + CBA 2(A+B+C) 2(A+B+C) 2(A+B+C) 1st digit 2nd digit Last digit For, minimum value of X , Let A = 1 , B = 2 and C = 3 \\ X = 2(1+2+3) , 2(1+2+3) , 2(1+2+3) Hence, X = 1332 And this is minimum value of X So, Statement 1 is correct . Now, As minimum value of X is a 4-digit number. So, X can never be a 3-digit number. Hence Statement 2 is not correct ."
+ },
+ {
+  "n": 55,
+  "q": "There is a numeric lock which has a 3-digit PIN. The PIN contains digits 1 to 7. There is no repetition of digits. The digits in the PIN from left to right are in decreasing order. Any two digits in the PIN differ by at least 2. How many maximum attempts does one need to find out the PIN with certainty?",
+  "opts": [
+   "6",
+   "8",
+   "10",
+   "12"
+  ],
+  "answer": 2,
+  "expl": "Possible PIN as per the given conditions are: 753, 752, 751, 742, 741, 731, 642, 641, 631, 531 So, total no. of such PIN = 10"
+ },
+ {
+  "n": 56,
+  "q": "There are eight equidistant points on a circle. How many right-angled triangles can be drawn using these points as vertices and taking the diameter as one side of the triangle?",
+  "opts": [
+   "24",
+   "16",
+   "12",
+   "8"
+  ],
+  "answer": 0,
+  "expl": "The circle having 8 equi-distant points. C D E B A H G F * Angle made by semi-circle at any point on the circle is 90°. When we select AE as diameter then no. of right triangle = 6      (from B, C, D, H, G and F) Now, there are 4 diameters (AE, BF, CG and DH) ∴ No. of required triangles = 6 × 4 = 24"
+ },
+ {
+  "n": 57,
+  "q": "24 men and 12 women can do a piece of work in 30 days. In how many days can 12 men and 24 women do the same piece of work?",
+  "opts": [
+   "30 days",
+   "More than 30 days",
+   "Less than 30 days or more than 30 days",
+   "Data is inadequate to draw any conclusion"
+  ],
+  "answer": 3,
+  "expl": "24 men + 12 women can do work in 30 days Q we have no information about the efficiencies of Men and Women. So, we cannot tell that when work will be complected by 12 men + 24 women."
+ },
+ {
+  "n": 58,
+  "q": "What is the remainder when 91 × 92 × 93 × 94 × 95 × 96 × 97 × 98 × 99 is divided by 1261?",
+  "opts": [
+   "3",
+   "2",
+   "1",
+   "0"
+  ],
+  "answer": 3,
+  "expl": "We know that 1261 = 13 × 97 ⇒ 91 × × × × × × × × = 7 × 92 × 93 × 94 × 95 × 96 × 97 × 98 × 99 ∴ Remainder = 0"
+ },
+ {
+  "n": 59,
+  "q": "Consider the following statements in respect of a rectangular sheet of length 20 cm and breadth 8 cm:\n1. It is possible to cut the sheet exactly into 4 square sheets.\n2. It is possible to cut the sheet into 10 triangular sheets of equal area\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "For statement-1 Possible squares are 8 cm 8 cm 4 cm 4 cm 4 cm 8 cm 8 cm 20 cm We can cut rectangle into 4 squares For statement-2 4 cm 4 cm 4 cm 4 cm 4 cm 8 cm 20 cm We can cut rectangle into 10 triangle of equal areas 2 1 4 8 16 unit 2   × × =     So, both statements are correct."
+ },
+ {
+  "n": 60,
+  "q": "When 70% of a number x is added to another number y, the sum becomes 165% of the value of y. When 60% of the number x is added to another number z, then the sum becomes 165% of the value of z. Which one of the following is correct?",
+  "opts": [
+   "z < x < y",
+   "x < y < z",
+   "y < x < z",
+   "z < y < x"
+  ],
+  "answer": 0,
+  "expl": "According to question, 70% of x + y = 165% of y ⇒ 0.7x + y = 1.65 y ⇒ 0.7x = 0.65 y ⇒ x y = 6.5 7 = 13 ...(i) Also, 60% of x + z = 165% of z ⇒ 0.6 x + z = 1.65 z ⇒ 0.6 x = 0.65 z ⇒ x z = 13 ...(ii) On combining (i) and (ii) x : y : z = 13 : 14 : 12 ⇒ y > x > z"
+ },
+ {
+  "n": 61,
+  "q": "Directions for the following 3 (three) items: Read the following two passages and answer the items (61-63) that follow. Your answers to these items should be based on the passages only. Passage - 1 The majority of people who fail to accumulate money sufficient for their needs, are generally, easily influenced by the opinions of others. They permit the newspapers and the gossiping neighbours to do their thinking for them. Opinions are the cheapest commodities on the earth. Everyone has a flock of opinions ready to be wished upon by anyone who will accept them. If you are influenced by opinions when you reach decisions, you will not succeed in any undertaking. Which one of the following is implied by the passage?",
+  "opts": [
+   "Most of the people do not accumulate money for their needs.",
+   "Most of the people never fail to accumulate money for their needs.",
+   "There are people who fail, to accumulate money for their needs.",
+   "There is no need to accumulate money."
+  ],
+  "answer": 2,
+  "expl": "The correct answer is option (c). Let us explain why and how to find what is implied by the passage. Option (a) is incorrect because the passage doesn’t imply that most people do not accumulate money for their needs. Why because the passage says that the majority of the people who do not accumulate sufficient money for their needs are generally influenced by the opinion of the others. It means according to option (a) most people are influenced by the opinion of the others which is no where indicated in the passage. Option (b) is eliminated for the same reason as above because the passage nowhere implies most of the people never fail to accumulate money for their needs which is most people accumulate money for their needs. Option (c) is correct because it says there are people who fail to accumulate money for their needs. The sentence in the passage is that the majority of the people who do not accumulate sufficient money for their needs are generally influenced by the opinion of the others. Suppose the number of people is 100. Suppose the number of people who fail to accumulate money is 50 The majority of the people who do not accumulate sufficient money will be 26 or more. Therefore, we can say there are people who fail to accumulate enough money, which is option (c). The passage doesn’t discuss anything about the need or no need of accumulating money. Therefore, option (d) is eliminated."
+ },
+ {
+  "n": 62,
+  "q": "What is the main idea of the passage?",
+  "opts": [
+   "People should not be influenced by the opinions of others.",
+   "People should accumulate as much money as they can.",
+   "People should neither give nor accept the opinions.",
+   "People will succeed in any undertaking if they do not accept any opinion at all."
+  ],
+  "answer": 0,
+  "expl": "The main idea of the passage is stated in option (a) which is the correct response. Option (a) is people should not be influenced by the opinion of others. Towards the end, the author explains, why? “Because if you are influenced…you will not succeed in any undertaking. Option (b) is incorrect because the passage nowhere states of implies one should accumulate as much money as they can. (At best we can say the implication of the passage is that people should have sufficient for their needs so as not to be influenced by others’ opinions.) Option (c) is incorrect because this statement is in the nature of the recommendation. The author doesn’t make any recommendations. Option (d) is incorrect. There is likely to be some confusion based on the last line of the passage. The last line is “If you are influenced by opinions when you reach decisions, you will not succeed in any undertaking.” This doesn’t mean people will succeed in any undertaking if they do not accept the opinion at all. Understand it with an example: If you read a poor-quality guide, you will not be successful in the exam. This doesn’t mean, If you do not read a poor- quality guide you will be successful in the exam."
+ },
+ {
+  "n": 63,
+  "q": "Passage - 2 “The social order is a sacred right which is the basis of all other rights. Nevertheless, this right does not come from nature, and must therefore be founded on conventions.” With reference to the above passage, which of the following statements is/are correct?\n1. Conventions are the sources of rights of man.\n2. Rights of man can be exercised only when there is a social order. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "This is a two-sentence passage. You have to identify the correct statement/s out of the two given statements. Let us rewrite the passage in the form of logical steps. The social order is a sacred right. Sacred right is the basis of all other rights. This right doesn’t come from nature. Therefore, this right must have come from conventions. Statement 1: Conventions are the sources of rights of man. Yes, conventions are the sources of rights of man. Statements 2: Rights of man can be exercised only when there is social order. Yes, this can be inferred because all rights come from sacred rights and the basis of sacred rights is the social order. Therefore, option (c) Both 1 and 2, is the correct option."
+ },
+ {
+  "n": 64,
+  "q": "Two candidates X and Y contested an election. 80% of voters cast their vote and there were no invalid votes. There was no NOTA (None of the above) option. X got 56% of the votes cast and won by 1440 votes. What is the total number of voters in the voters list?",
+  "opts": [
+   "15000",
+   "12000",
+   "9600",
+   "5000"
+  ],
+  "answer": 0,
+  "expl": "Then, 56% of X – (100 – 56)% of X = 1440 (Winning margin) ⇒ 12 % of X = 1440 \\ X = 1440 × = 12000 Hence, Number of voter in the voter list = 12000 × = 15000"
+ },
+ {
+  "n": 65,
+  "q": "What is the smallest number greater than 1000 than when divided by any one of the numbers 6, 9, 12, 15, 18 leaves a remainder of 3?",
+  "opts": [
+   "1063",
+   "1073",
+   "1083",
+   "1183"
+  ],
+  "answer": 2,
+  "expl": "L.C.M of 6, 9, 12, 15, 18 = 180 Smallest 4 digit multiple of 180 = 1080 To get remainder 3, our number = 1080 + 3 = ∴ Required number is 1083"
+ },
+ {
+  "n": 66,
+  "q": "Let p be a two-digit number and q be the number consisting of same digits written in reverse order. If p × q = 2430, then what is the difference between p and q?",
+  "opts": [
+   "45",
+   "27",
+   "18",
+   "9"
+  ],
+  "answer": 3,
+  "expl": "Let p = 10x + y (x Tens digit and y unit digit) ∴ q = 10y + x Now, p – q = 10x + y – 10y – x = 9 (x – y) Also, p × q = 2430 (last digit is 0) ⇒ y must be 5 and x can be 2, 4, 6, 8 Q p = x5 and q = 5x if x = 2 p.q = 25 × 52 = 1300 (not possible) if x = 4 p.q= 45 × 54 = 2430 ∴ difference between p and q is 9"
+ },
+ {
+  "n": 67,
+  "q": "Consider the following statements in respect of two natural numbers p and q such that p is a prime number and q is a composite number:\n1. p ×q can be an odd number.\n2. q/p can be a prime number.\n3. p + q can be a prime number.\nWhich of the above statements are correct?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 3,
+  "expl": "For statement-1 Let p = 5 and q = 9 p × q = 45 (odd) For statement-2 Let p = 3 and q = 9 q p = 9 3 = 3 (prime) For statement-3 Let p = 2 and q = 9 p + q = 2 + 9 = 11 (prime) All three statement can be possible"
+ },
+ {
+  "n": 68,
+  "q": "Consider the following statements:\n1. Between 3.16 p.m. and 3:17 p.m., both hour hand and minute hand coincide.\n2. Between 4:58 p.m. and 4:59 p.m., both minute hand and second hand coincide.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "For statement-1 Angle between hour hand and minute hand at 3'O clock = 90 ° So, to coincide minute hand needs to gain 15 min over hour hand. Minute hand gains 55 min over hour hand in 1 min Time to gain 15 min by minute hand = × = 15 × = 180 4 min = So, they will coincide at 4 3 : 16 11 For statement-2 After 4'O clock minute hand concide around 4:20 So, they cannot coincide again between 4:48 and 4:49 So, only statement 1 is correct."
+ },
+ {
+  "n": 69,
+  "q": "There are two containers X and Y. X contains 100 ml of milk and Y contains 100 ml of water. 20 ml of milk from X is transferred to Y. After mixing well, 20 ml of the mixture in Y is transferred back to X. If m denotes the proportion of milk in X and n denotes the proportion of water in Y, then which one of the following is correct?",
+  "opts": [
+   "m = n",
+   "m > n",
+   "m < n",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 0,
+  "expl": "100 ml milk 100 ml milk X Y 20 ml After mixing 20 ml of milk in Y Ratio of milk : water = 1 : 5 After mixing 20 ml of mixture from Y to X m = milk in X = 1 6 3 3 + × = + = ml n = water in Y = 5 6 3 3 − × = − = ml ⇒ m = n"
+ },
+ {
+  "n": 70,
+  "q": "A pie chart gives the expenditure on five different items A,  B, C, D and E in a household. If B, C, D and E correspond to 90°, 50°, 45° and 75° respectively, then what is the percentage of expenditure on item A?",
+  "opts": [
+   "112 9",
+   "125 6",
+   "155 9",
+   "250 9"
+  ],
+  "answer": 3,
+  "expl": "Angle corresponding to A = 360° – (90° + 50° + 45° + 75°) = 100° % of expenditures on item A = 100 ° × ° = 10 250 % 9 9 × ="
+ },
+ {
+  "n": 71,
+  "q": "Directions for the following 3 (three) items: Read the following two passages and answer the items (71- 73) that follow as passages. Your answers to these items should be based on the passages only. Passage - 1 To encourage research is one of the functions of a university. Contemporary universities have encouraged research, not only in those cases where research is necessary, but on all sorts of entirely unprofitable subjects as well Scientific research is probably never completely valueless. However silly and insignificant it may seem, however mechanical and unintelligent the labours of the researchers, there is always a chance that the results may be of value of the investigator of talent, who can use the facts collected for him by uninspired but industrious researchers as the basis of some fruitful generalization. But where research is not original, but consists in the mere rearrangement of existing but literary or historical, then there is a risk of the whole business becoming merely futile. The author’s assumption about scientific research is that",
+  "opts": [
+   "it is never very valuable.",
+   "it is sometimes very valuable.",
+   "it is never without some value.",
+   "it is always very valuable."
+  ],
+  "answer": 2,
+  "expl": "The correct answer is option (c). We can say that the author’s assumption about scientific research is that it is never without some value. This assumption is to be found in the following sentences of the passage: “Contemporary universities have encouraged research, not only in those cases where research is necessary, but on all sorts of entirely unprofitable as well. Scientific research is probably never completely valueless.”"
+ },
+ {
+  "n": 72,
+  "q": "According to the author",
+  "opts": [
+   "not many research result can be of value to an intelligent investigator.",
+   "a research result is always valuable to an intelligent investigator.",
+   "any research result can be of value to an intelligent investigator.",
+   "a research result must always be of some value to an intelligent investigator."
+  ],
+  "answer": 2,
+  "expl": "The correct answer is option (c) any research result can be of value to an intelligent investigator. Option (d) is partially correct ,but it would narrow the scope by using the word \"must\"."
+ },
+ {
+  "n": 73,
+  "q": "Passage - 2 How best can the problems of floods and droughts be addressed so that the losses are minimal and the system becomes resilient? In this context, one important point that needs to be noted is that India gets ‘too much’ water (about 75% of annual precipitation) during 120 days (June to September) and ‘too title’ for the remaining 245 days. This skewed water availability has to be managed and regulated for its consumption throughout the year. Which one of the following best reflects the practical, rational and lasting solution?",
+  "opts": [
+   "Constructing huge concrete storage tanks and canals across the country.",
+   "Changing the cropping patterns and farming practices.",
+   "Interlinking of rivers across the country.",
+   "Buffer stocking of water through dams and recharging aquifers."
+  ],
+  "answer": 3,
+  "expl": "The correct answer is option is option (d). The question is to identify the practical, rational, and lasting solution among the options given. The passage itself does provide the answer but provides a problem and hint to the answer. The problem is that in India, there is too much water (75%) during 120 days of June to September and two little for the remaining 245 days. The problem is skewed water distribution, The hint to the answer is to find a way to manage and regulate this skewed distribution for the whole year. The correct answer is buffer stocking of water through dams and recharging aquifers. Options (b) and (c) cannot be the correct answers for obvious reasons. There is some confusion between options (a) and (d). Option (d) appears a better choice by its use of words “buffer stocking of water”"
+ },
+ {
+  "n": 74,
+  "q": "If 15 × 14 × 13 × ... × 3 × 2 × 1 = 3m × n where m and n are positive integers, then what is the maximum value of m?",
+  "opts": [
+   "7",
+   "6",
+   "5",
+   "4"
+  ],
+  "answer": 1,
+  "expl": "According to question, 15 × 14 × 13 × ...×3 × 2 × 1 = 3m × n 15 = 3 × 5 12 = 3 × 4 9 = 3 × 3 6 = 3 × 2 3 = 3 × 1 Q 15 × 14 × 13 × ... × 3 × 2 × 1 = 36 × n ∴ m = 6"
+ },
+ {
+  "n": 75,
+  "q": "What is the value of X in the sequence 2, 12, 36, 80, 150, X?",
+  "opts": [
+   "248",
+   "252",
+   "258",
+   "262"
+  ],
+  "answer": 1,
+  "expl": "Q 2 = 12 + 13 12 = 22 + 23 36 = 32 + 33 80 = 42 + 43 150 = 52 + 53 ∴ X = 62 + 63 = 36 + 216 = 252"
+ },
+ {
+  "n": 76,
+  "q": "One non-zero digit, one vowel and one consonant from English alphabet (in capital) are to be used in forming passwords, such that each password has to start with a vowel and end with a consonant. How many such passwords can be generated?",
+  "opts": [
+   "105",
+   "525",
+   "945",
+   "1050"
+  ],
+  "answer": 2,
+  "expl": "We have 5 vowels, 21 consonants and 9 non-zero digits. Password - Vowel Non-zero number Consonants 5 × 9 × No. of such passwords = 5 × 9 × 21 = 945"
+ },
+ {
+  "n": 77,
+  "q": "There are 9 cups placed on a table arranged in equal number of rows and columns out of which 6 cups contain coffee and 3 cups contain tea. In how many ways can they be arranged so that each row should contain at least one cup of coffee?",
+  "opts": [
+   "18",
+   "27",
+   "54",
+   "81"
+  ],
+  "answer": 3,
+  "expl": "According to problem, we call have 2 cases Case-1 Row-1 C C C (11 ways) Row-2 C C T (3!/2! ways) Row-3 C T T (3!/2! ways) Total no. of ways = 3! 3! 3! 1! 2! 2! × × × = 6 × 3 × 3 = 54 Case-2 Row-1 C C T (3 ways) Row-2 C C T (3 ways) Row-3 C C T (3 ways) Total no. of ways = 1 × 3 × 3 × 3 = 27 Total no. of required ways = 54 + 27 = 81"
+ },
+ {
+  "n": 78,
+  "q": "The sum of three consecutive integers is equal to their product. How many such possibilities are there?",
+  "opts": [
+   "Only one",
+   "Only two",
+   "Only three",
+   "No such possibility is there"
+  ],
+  "answer": 2,
+  "expl": "The possibilities are 1 + 2 + 3 = 1 × 2 × 3 = 6 or –1 + 0 + 1 = – 1 × 0 × 1 = 0 or –1 + (– 2) + (– 3) = – 1 × – 2 × – 3 = – 6 ∴ Only three such possibilities are required."
+ },
+ {
+  "n": 79,
+  "q": "What is the number of numbers of the form\n0. X Y, where X and Y are distinct non-zero digits?",
+  "opts": [
+   "72",
+   "81",
+   "90",
+   "100"
+  ],
+  "answer": 0,
+  "expl": "0.XY ∴ X and Y are non-zero numbers ∴ choices to fill X = 9 and remaining choices to fill Y = 8 ∴ Total numbers of number 0.XY = 9 × 8 = 72"
+ },
+ {
+  "n": 80,
+  "q": "The average weight of A, B, C is 40 kg, the average weight of B, D, E is 42 kg and the weight of F is equal to that of B. What is the average weight of A, B, C, D, E and F?",
+  "opts": [
+   "40.5 kg",
+   "40.8 kg",
+   "41 kg",
+   "Cannot be determined as data is inadequate"
+  ],
+  "answer": 2,
+  "expl": "Q A B C 3 + + = 40 ⇒ A + B + C = 120 ...(i) Similarly, B + D + E = 126 ...(ii) Add (i) and (ii) A + B + C + B + D + E = 120 + 126 = 246 Q Weight of B = Weight of F A + B + C + D + E + F = 120 + 126 = 246 Average weight of all 6 = A B C D E F 6 6 + + + + + = = 41 kg"
+ }
+]

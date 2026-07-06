@@ -1,0 +1,962 @@
+[
+ {
+  "n": 1,
+  "q": "Passage - 1 India faces a challenging immediate future in energy and climate policy-making. The problems are multiple: sputtering fossil fuel production capabilities, limited access to electricity and modern cooking fuel for the poorest; rising fuel imports in an unstable global energy context; continued electricity pricing and governance challenges leading to its costly deficits or surplus supply, and not least, growing environmental contestation around land, water and air. But all is not bleak: growing energy efficiency programmes; integrated urbanisation and transport policy discussions; inroads to enhancing energy access and security; and bold renewable energy initiatives, even if not fully conceptualised, suggest the promise of transformation. Which one of the following statements best reflects the critical message conveyed by the passage given above?",
+  "opts": [
+   "India’s energy decision-making process is ever more complex and interconnected.",
+   "India’s energy and climate policy is heavily tuned to sustainable development goals.",
+   "India’s energy and climate actions are not compatible with its broader social, economic and environmental goals.",
+   "India’s energy decision-making process is straight forward supply-oriented and ignores the demand side."
+  ],
+  "answer": 0,
+  "expl": "After reading all the options, option (d) can be rejected. It is out of the scope of the passage. The demand and supply with reference to the energy decisions are not discussed in the passage. Option (c) is the second one to be eliminated. It is against the positive results discussed in the passage regarding the steps taken to improve the energy situation in the country. Thus, it does not reflect the critical message of the passage which deals with the complexities of policymaking in the energy sector and the few bright spots we have. The author has not elaborated on the connection of the energy policy with sustainable development goals. It is only one aspect of the energy policy. Option (b) is incorrect as it does not talk about functions that are involved in energy and climate policymaking. Option (a) is correct. The author is concerned about the challenges and prospects of energy and climate policy in the very first sentence of the passage. He says that problems are multiple and the mention of myriad factors like sputtering fossil fuel production capabilities, volatile global energy market and supplies etc. Hence, India’s energy decision-making process is ever more complex and interconnected."
+ },
+ {
+  "n": 2,
+  "q": "Passage - 2 There are reports that some of the antibiotics sold in the market are fed to poultry and other livestock as growth promoters. Overusing these substances can create superbugs, pathogens that are resistant to multiple drugs and could be passed along humans. Mindful of that, some farming companies have stopped using the drugs to make chickens gain UPSC CIVIL SERVICES EXAMINATION (PRELIMS)-CSAT weight faster. Since Denmark banned antibiotic growth promoters in the 1990s, the major pork exporter says it is producing more pigs and the animals get fewer diseases. Which one of the following statements best reflects the critical message conveyed by the passage given above?",
+  "opts": [
+   "People should avoid consuming the products of animal farming.",
+   "Foods of animal origin should be replaced with foods of plant origin.",
+   "Using antibiotics on animals should be banned.",
+   "Antibiotics should only be used to treat diseases."
+  ],
+  "answer": 3,
+  "expl": "Option (a) is incorrect. It is not suggested in the passage about what and what not to be consumed by the people. Option (b) is incorrect. The author is concerned about the transmission of diseases from animals to human beings. He does not recommend replacing animal origin foods with plant origin foods. He only contemplates the side effects of using antibiotics for other purposes than treating disease. To ban antibiotics on animals is not a suggestion made in the passage. It only advocates the trend of minimizing the use of antibiotics on animals given their ill effects on human health. Option (c) is incorrect. Option (d) is correct. The message of the author is clear that without the use of excessive antibiotics in animal products, good results can be achieved as the case with Demark. Regular use of antibiotics creates pathogens that adapt to the salts of medicines and develop high resistance for the medicines made to kill them. From the animals, these get transferred to human beings to make them ill. But the antibiotics taken by the human beings in the medicines do not give effective results as the pathogens already have high resistance against them. This can be fatal for human beings. So, the antibiotics shall be used only for medical purposes."
+ },
+ {
+  "n": 3,
+  "q": "Passage - 3 Policy makers and media have placed the blame for sky-rocketing food prices on a variety of factors, including high fuel prices, bad weather in key food producing countries, and the diversion of land to non-food production. Increased emphasis, however, has been placed on a surge in demand for food from the most populous emerging economies. It seems highly probable that mass consumption in these countries could be well poised to create a food crisis. With reference to the above passage, the following assumptions have been made:\n1. Oil producing countries are one of the reasons for high food prices.\n2. If there is a food crisis in the world in the near future, it will be in the emerging economies.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "The passage only highlights that high fuel prices are leading to increasing food prices, it has not explicitly mentioned oil-producing countries being one of the reasons for high fuel prices. Statement 1 is incorrect. Statement 2 is incorrect. The author in the passage expresses the probability that a food crisis can come from the developing countries while this option seems to be definitive. So, it is not in coherence with the passage. It is an inference but not an assumption. Hence, option (d) is correct."
+ },
+ {
+  "n": 4,
+  "q": "Passage - 4 A central message of modern development economics is the importance of income growth, by which is meant growth in Gross Domestic Product (GDP). In theory, rising GDP creates employment and investment opportunities. As incomes grow in a country where the level of GDP was once low, households, communities and governments are increasingly able to set aside some funds for the production of things that make for a good life. Today, GDP has assumed such a significant place in the development lexicon, that if someone mentions “economic growth” , we know they mean growth in GDP. With reference to the above passage, the following assumptions have been made:\n1. Rising GDP is essential for a country to be a developed country.\n2. Rising GDP guarantees a reasonable distribution of income to all households.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "The passage highlights that by theory, rising GDP improves employment and investment opportunities, and it, in turn, sets aside funds necessary for the good life. Therefore, assuming only rising GDP cannot be finalised as essential criteria for a developed country, but income redistribution also plays a critical role, as mentioned in the passage. Statement 2 is not supported by the passage. As the text nowhere mentions that rising GDP guarantees reasonable distribution to all families. Hence, option (d) is correct."
+ },
+ {
+  "n": 5,
+  "q": "Seven books P, Q, R, S, T, U and V are placed side by side. R, Q and T have blue covers and other books have red covers. Only S and U are new books and the rest are old. P, R and S are law reports; the rest are Gazetteers. Books of old Gazetteers with blue covers are",
+  "opts": [
+   "Q and R",
+   "Q and U",
+   "Q and T",
+   "T and U"
+  ],
+  "answer": 2,
+  "expl": "As per given data, we will make table Books P Q R S T U V RED BLUE RED RED BLUE RED RED OLD OLD OLD NEW OLD NEW OLD LAW R. GAZE T. LAW R. LAW R. GAZE T. GAZE T. GAZE T. Old gazetteers with blue covers are Q and T."
+ },
+ {
+  "n": 6,
+  "q": "Replace the incorrect term by the correct term in the given sequence. 3, 2, 7, 4, 13, 10, 21, 18, 31, 28, 43, 40 where odd terms and even terms follow the same pattern.",
+  "opts": [
+   "0",
+   "1",
+   "3",
+   "6"
+  ],
+  "answer": 0,
+  "expl": "It can be seen clearly that wrong term is 2. which should be replaced by 0."
+ },
+ {
+  "n": 7,
+  "q": "Following is a matrix of certain entries. The entries follow a certain trend row-wise. Choose the missing entry (?) accordingly. 7B 10A 3C 3C 9B 6A 10A 13C ?",
+  "opts": [
+   "9B",
+   "3A",
+   "3B",
+   "3C"
+  ],
+  "answer": 2,
+  "expl": "7B 10A 3C 3C 9B 6A 10A 13C 3B In every row, sum of numbers in column I and III is equal to number in column-II and rows have alphabets A, B and C 7 + 3 = 10 3 + 6 = 9 10 + x = 13 ⇒ x = 3 Also, row-3 has not B ∴ missing entry is 3B"
+ },
+ {
+  "n": 8,
+  "q": "You are given two identical sequences in two rows: Sequence I: 8 4 6 52.5 236.25 Sequence II: 5 A B C D E What is the entry in the place of C for the Sequence-II?",
+  "opts": [
+   "2.5",
+   "5",
+   "9.375",
+   "32.8125"
+  ],
+  "answer": 2,
+  "expl": "Sequence-1 8 4 6 52.5 263.25 Sequence-2 5 A B C D E Numbers in sequence-1 are 8 × 0.5 = 4 4 × 1.5 = 6 6 × 2.5 = 15 15 × 3.5 = 52.5 52.5 × 4.5 = 236.25 Numbers in sequence-2 will be 5 × 0.5 = 2.5 = A 2.5 × 1.5 = 3.75 = B 3.75 × 2.5 = 9.375 = C 9.375 × 3.5 = 32.8125 = D 32.8125 × 4.5 = 147.65625 = E So, the number in place of C is 9.375."
+ },
+ {
+  "n": 9,
+  "q": "A person X from a place A and another person Y from a place B set out at the same time to walk towards each other. The places are separated by a distance of 15 km. X walks with a uniform speed of 1.5 km/hr and Y walks with a uniform speed of 1 km/hr in the first hour, with a uniform speed of 1.25 km/hr in the second hour and with a uniform speed of 1.5 km/hr in the third hour and so on. Which of the following is/are correct?\n1. They take 5 hours to meet.\n2. They meet midway between A and B. Select the correct answer using the code given below:",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Distance travelled by X in 5 hour = 5 × 1.5 = 7.5 km Distance travelled by Y in 5 hour = 1 + 1.25 + 1.5 + 1.75 + 2 = 7.5 km ∴ Statement 1 and 2 both are correct they will meet in 5 hour and at midway."
+ },
+ {
+  "n": 10,
+  "q": "A student appeared in 6 papers. The maximum marks are the same for each paper. His marks in these papers are in the proportion of 5 : 6 : 7 : 8 : 9 : 10. Overall he scored 60%. In how many number of papers did he score less than 60% of the maximum marks?",
+  "opts": [
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": 1,
+  "expl": "Let students marks in 6 papers are 50, 60, 70, 80, 90, 100 His total mark in 6 papers = 50 + 60 + 70 + 80 +90 + 100 = 450 ∴Total maximum marks of 6 papers = 100 × = 750 Maximum marks of each paper = 750 6 = 125 60 % of 125 = 60 × = 75 So, he scored marks less than 60% in first 3 papers."
+ },
+ {
+  "n": 11,
+  "q": "Direction for the following 4 (four) items: Read the following four passages and answer the items (11-14) that follow. Your answers to these items should be based on the passages only. Passage - 1 Researchers simulated street lighting on artificial grassland plots containing pea-aphids, sap-sucking insects at night. These were exposed to two different types of light – a white light similar to newer commercial LED lights and an amber light similar to sodium street lamps. The low intensity amber light was shown to inhibit, rather than induce, flowering in a wild plant of the pea family which is a source of food for the pea-aphids in grasslands. The number of aphids was also significantly suppressed under the light treatment due to the limited amount of food available. Which one of the following statements best reflects the most critical inference that can be made from the passage given above?",
+  "opts": [
+   "Low intensity light has more adverse effect on the plants as compared to high intensity light.",
+   "Light pollution can have a permanent adverse impact on an ecosystem.",
+   "White light is better for the flowering of plants as compared to the light of other colours.",
+   "Proper intensity of light in an ecosystem is important not only for plants but for animals too."
+  ],
+  "answer": 1,
+  "expl": "Option (a) is incorrect. It cannot be inferred that low-intensity light has more adverse effects vis- vis high-intensity light. Option (b) is correct. It is an extreme statement, as it can be inferred from the passage that light pollution can have permanent adverse effects on the ecosystem. Moreover, light pollution is explicitly mentioned in the passage, so the statement is an inference based on the passage. The passage does not state that white colour is good for the flowering of the plants. It cannot be inferred that white light is better for the flowering of the plants in comparison with all the other lights of all the other colours. Option (d) is incorrect. The passage states that low-intensity light inhibits the flowering of plants. This statement is not inferred from the given passage. Therefore, it is correct to infer that the proper intensity of light in an ecosystem is important not only for plants but also for animals."
+ },
+ {
+  "n": 12,
+  "q": "Passage - 2 Approximately 80 percent of all flowering plant species are pollinated by animals, including birds and mammals, but the main pollinators are insects. Pollination is responsible for providing us with a wide variety of food, as well as many plant- derived medicines. At least one-third of the world’s agricultural crops depend upon pollination. Bees are the most dominant taxa when it comes to pollination and they are crucial to more than four hundred crops. Pollination is an essential service that is the result of intricate relationships between plants and animals, and the reduction or loss of either affects the survival of both. Effective pollination requires resources, such as refuges of pristine natural vegetation. On the basis of the passage given above, the following assumptions have been made:\n1. Sustainable production of India’s cereal food grains is impossible without the diversity of pollinating animals.\n2. Monoculture of horticultural crops hampers the survival of insects.\n3. Pollinators become scarce in cultivated areas devoid of natural vegetation.\n4. Diversity in insects induces diversity of plants. Which of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2, 3 and 4 only",
+   "1 and 2 only",
+   "3 and 4 only"
+  ],
+  "answer": 3,
+  "expl": "Statement 1 is incorrect in using ‘impossible’. It is a far-fetched assumption. Though the diversity of pollinating animals is important for the sustainable production of India's cereal food grains and can be a valid assumption from the passage the word impossible is making this statement incorrect. It is not mentioned in the passage that the monoculture of horticultural crops hampers the survival of insects. The author has not discussed obstructing agricultural diversity due to monoculture practices leading to a reduction in pollinators. Hence, statement 2 is incorrect. Statement 3 is correct. It is stated in the passage that pollination is an important service that is the result of an intricate relationship between plants and animals, and the reduction or loss of either affects the survival of both. It is correct to assume that the pollinators become scarce in cultivated areas devoid of natural vegetation. Statement 4 is correct. Animals are required for pollination. It is true to think that diversity in insects induces diversity in plants."
+ },
+ {
+  "n": 13,
+  "q": "Passage - 3 A study conducted on the impacts of climate change over the Cauvery basin of Tamil Nadu using regional climate models showed as increasing trend for maximum and minimum temperatures, and a decrease in the number of rainy days. These climatic shifts will have an impact on the hydrological cycles in the region, leading to more run-off and less recharge, and affect on the groundwater tables. Further, there has been an increase in the frequency of droughts in the State. This has driven farmers to increase dependency on groundwater resources to secure their crops. Which one of the following statements best reflects the crux of the passage given above?",
+  "opts": [
+   "Development of regional climate models helps in choosing climate-smart agricultural practices.",
+   "Heavy dependence on groundwater resources can be reduced by adopting dry- land cropping systems.",
+   "Climate changes increase the criticality of water resources while simultaneously threatening it.",
+   "Climate changes cause the farmers to adopt unsustainable livelihoods and risky coping strategies."
+  ],
+  "answer": 2,
+  "expl": "The options are not the close ones. They even have topics that are not discussed in the passage anywhere. So, the elimination method is the best suited for this question. Climate-smart agricultural practices are not the topic of discussion in the passage. The passage doesn't talk about the use of sustainable agriculture practices or adopting dry-land cropping systems. The passage has not explicitly talked about adopting unsustainable livelihoods and risky coping strategies by the farmers. The author is concerned about the adverse effects on the hydrological cycles and over- exploitation of groundwater. In nutshell, he is discussing the criticality associated with the climate-induced water scarcity problem. Hence, option (c) is the most appropriate option for the crux of the passage."
+ },
+ {
+  "n": 14,
+  "q": "Passage - 4 Researchers were able to use stem cells to gauge the neurotoxic effects of the environmental pollutant Bisphenol A (BPA). They used a combination of biochemical and cell-based assays to examine the gene expression profit during the differentiation of mouse embryonic stem cells upon treatment with BPA, a compound known to cause heart diseases, diabetes, and developmental abnormalities in humans. They were able to detect and measure BPA toxicity towards the proper specification of primary germ layers, such as endoderm and ectoderm, and the establishment of neural progenitor cells. On the basis of the passage given above, the following assumptions have been made:\n1. BPA may alter embryonic development in vivo.\n2. Biochemical and cell-based assays are useful in finding out treatments for pollution-induced diseases.\n3. Embryonic stem cells could serve as a model to evaluate the physiological effects of environmental pollutants.\nWhich of the above assumptions are valid?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is correct. It is clear from the passage that the BPA treatment affects embryonic development. It is known to cause heart diseases, diabetes, and developmental abnormalities in humans as well. It cannot be established that biochemical and cell-based assays are useful in finding out treatments for pollution-induced diseases. Statement 2 is not correct. Statement 3 is correct. It can be assumed from the passage that embryonic stem cells could serve as a model to evaluate the physiological effects of environmental pollutants."
+ },
+ {
+  "n": 15,
+  "q": "If 32019 is divided by 10, then what is the remainder?",
+  "opts": [
+   "1",
+   "3",
+   "7",
+   "9"
+  ],
+  "answer": 2,
+  "expl": "32019 = 34×504 + 3 3 3 3 9 3 27 3 3 4 1 2 3 4 , , , cyclicity of is The unit place digit of 32019 is 7 If a number is divided by 10, the unit digit is remainder 32019 ÷ 10 will give remainder =7"
+ },
+ {
+  "n": 16,
+  "q": "The number 3798125P369 is divisible by 7. What is the value of the digit P?",
+  "opts": [
+   "1",
+   "6",
+   "7",
+   "9"
+  ],
+  "answer": 1,
+  "expl": "Given number is 3798125P369 Take P = 1 37981251369 ÷ 7 = 5425893052.7142 Take P = 6 37981256369 ÷ 7 = 5425893767 Take P = 7 37981257369 ÷ 7 = 5425893909.8571 Take P = 9 37981259369 ÷ 7 = 5425894195.5714 Therefore, when P = 6, given number will be divisible by 7."
+ },
+ {
+  "n": 17,
+  "q": "From January 1, 2021, the price of petrol (in Rupees per litre) on mth day of the year is 80 + 0.1m, where m = 1, 2, 3,..., 100 and thereafter remains constant. On the other hand, the price of diesel (in Rupees per litre) on nth day of 2021 is 69 + 0.15n for any n. On which date in the year 2021 are the prices of these two fuels equal?",
+  "opts": [
+   "21st May",
+   "20th May",
+   "19th May",
+   "18th May"
+  ],
+  "answer": 1,
+  "expl": "Since, all the options are in may. Therefore, the required day must be more than 100 days since January 1, 2021. Let required day is nth day since January 1, 2021 Price of petrol after 100 days = 80 + 0.1 × 100 = ` 90 [Since, n > 100 and petrol price increased till 100 days] Price at petrol on nth day = 80 + 0.1 × 100 = 90 According to Question 90 = 69 + 0.15 n 21/0.15 = n n = 140 Price of petrol and diesel will be equal at 140th day since Jan 1. Jan Feb Mar Apr May 31 + 28 + 31 + 30 + 20 = 140 Required day is 20th May."
+ },
+ {
+  "n": 18,
+  "q": "A biology class at high school predicted that a local population of animals will double in size every 12 years. The population at the beginning of the year 2021 was estimated to be 50 animals. If P represents the population after n years, then which one of the following equations represents the model of the class for the population?",
+  "opts": [
+   "P = 12 + 50n",
+   "P = 50 + 12n",
+   "P = 50 (2)12n",
+   "P = 50 (2)n/12"
+  ],
+  "answer": 3,
+  "expl": "Year 2021 + n Popu- lation 50 × 50 × 50 × 50×24 50 × 2n/12 after years after years after years after years after n years Correct model of class for population is P = 50 × n"
+ },
+ {
+  "n": 19,
+  "q": "In a class, 60% of students are from India and 50% of the students are girls. If 30% of the Indian students are girls, then what percentage of foreign students are boys?",
+  "opts": [
+   "45%",
+   "40%",
+   "30%",
+   "20%"
+  ],
+  "answer": 3,
+  "expl": "Let there are 100 students in class 60% 40% Indian students Foreign students Girls 30% Boys 70% Girls Boys Number of total boys = 50 Number of foreigner boys = 50 – 42 = 8 ∴ percent of foreigner boys students = 8 × = 20%"
+ },
+ {
+  "n": 20,
+  "q": "A Statement followed by Conclusion-I and Conclusion-II is given below. You have to take the Statement to be true even if it seems to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/ follow from the Statement, disregarding the commonly known facts. Statement: Some radios are mobiles. All mobiles are computers. Some computers are watches. Conclusion-I: Certainly some radios are watches. Conclusion-II: Certainly some mobiles are watches. Which one of the following is correct?",
+  "opts": [
+   "Only Conclusion-I",
+   "Only Conclusion-II",
+   "Both Conclusion-I and Conclusion-II",
+   "Neither Conclusion-I nor Conclusion-II"
+  ],
+  "answer": 3,
+  "expl": "Conclusion - 1 Certainly some radios are watches From the above diagram, statement does not follow. Since we cannot say certainly. Conclusion - 2 Certainly some mobiles are watches This statement is also not correct."
+ },
+ {
+  "n": 21,
+  "q": "Direction for the following 4 (four) items: Read the following four passages and answer the items (21-24) that follow. Your answer to these items should be based on the passages only. Passage - 1 With respect to what are called denomination of religion, if everyone is left to be a judge of his own religion, there is no such thing as religion that is wrong; but if they are to be a judge of each other’s religion, there is no such thing as a religion that is right, and therefore all the world is right or all the world is wrong in the matter of religion. What is the most logical assumption that can be make from the passage given above?",
+  "opts": [
+   "No man can live without adhering to some religious denomination.",
+   "It is the duty of everyone to propagate one’s religious denomination.",
+   "Religious denominations tend to ignore the unity of man.",
+   "Men do not understand their own religious denomination."
+  ],
+  "answer": 2,
+  "expl": "Religion is seen with biased eyes. No one will accept the shortcomings of his/her religion while not leaving any opportunity to criticise the others’ religions. The author says that with this misplaced logic of criticising the other religions only, either whole of the world is correct or the whole of the world is wrong in the matter of religion. The author seems to be assuming this practice wrong as this leads to religious conflicts and tend to ignore the principles of harmony and peaceful co-existence with unity. Option (c) is correct. Option (a) is incorrect. As the passage does not assume that an individual cannot survive without following any religious denomination. Option (b) is incorrect as the author has discussed the interpretation of religion from different perspectives but not with the propagation of religion. Option (d) is incorrect as people believe that they understand their religion and based on this understanding only they tend to discard and disapprove of the other religions."
+ },
+ {
+  "n": 22,
+  "q": "Passage - 2 It is certain, that sedition, wars, and contempt or breach of the laws are not so much to be imputed to the wickedness of the subjects, as to the bad state of a dominion. For men are not born fit for citizenship, but must be made so. Besides, men’s natural passions are everywhere the same; and if wickedness more prevails, and more offences are committed in one commonwealth than in another, it is certain that the former has neither enough pursued the end of unity, nor framed its laws with sufficient forethought; and that, therefore, it has failed in making quite good its right as a commonwealth. Which among the following is the most logical and rational inference that can be made from the passage given above?",
+  "opts": [
+   "Seditions, wars and breach of the laws are inevitable in every dominion.",
+   "It is not the people, but the sovereign who is responsible for all the problems of any dominion.",
+   "That dominion is the best which pursues the aim of unity and has laws for good citizenship.",
+   "It is impossible for men to establish a good dominion."
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect. The author says that all human beings cannot be fit citizens by the birth. It is not their wickedness that leads to sedition or wars but it is a failure of dominion. It is a stated assumption or fact in the passage. It is not an inference. Option (b) is incorrect. The author puts the responsibility on the bad state of dominion for the problems related to sedition and wars rather than on the passions of residents. This is also an assumption and conspicuously stated in the passage. Option (c) is correct. It is an inference based on the passage. It has been mentioned that there are more unrest and anti-national activities in some dominions in comparison to others. It is due to laws which lack foresight, and the nation has not pursued unity as the greatest virtue. The author has termed it as a failed commonwealth. But if the state does so, it becomes the best state. Option (d) is fictitious and not supported by the content of the passage."
+ },
+ {
+  "n": 23,
+  "q": "Passage - 3 Inequality violates a basic democratic norm: the equal standing of citizens. Equality is a relation that obtains between persons in respect of some fundamental characteristic that they share in common. Equality is, morally speaking, a default principle. Therefore, persons should not be discriminated on grounds such as race, caste, gender, ethnicity, disability, or class. These features of human condition are morally irrelevant. The idea that one should treat persons with respect not only because some of these persons possess some special features or talent, for example skilled cricketers, gifted musicians, or literary giants, but because persons are human beings is by now part of common sense morality. With reference to the above passage, the following assumptions have been made:\n1. Equality is a prerequisite for people to participate in the multiple transactions of society from a position of confidence.\n2. Occurrence of inequality is detrimental to the survival of democracy.\n3. Equal standing of all citizens is an idea that cannot actually be realised even in a democracy.\n4. Right to equality should be incorporated into our values and day-to-day political vocabulary.\nWhich of the above assumptions are valid?",
+  "opts": [
+   "1 and 2 only",
+   "2 and 3 only",
+   "1 and 4 only",
+   "3 and 4 only"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is correct. The author is in favour of the removal of inequalities based on caste, ability, gender or class. It can be assumed that equalities are prerequisites for people to participate in social transactions and interactions with confidence. Statement 2 is not supported by the passage. The occurrence of inequality is not detrimental to the survival of democracy itself. Statement 3 is incorrect. It is against the spirit of the discussion of the passage. Also, the effort of the passage is the removal of inequalities. Statement 4 is correct. This statement is more like a recommendation for the future and be an assumption."
+ },
+ {
+  "n": 24,
+  "q": "Passage - 4 Aristocratic government ruins itself by limiting too narrowly the circle within which power is confined; oligarchic government ruins itself by the incautious scramble for immediate wealth. But even democracy ruins itself by excess of democracy. Its basic principle is the equal right of all to hold office and determine pubic policy. This is, at first glance, a delightful arrangement; it becomes disastrous because the people are not properly equipped by education to select the best rulers and the wisest courses. The people have no understanding and only repeat what their rulers are pleased to tell them. Such a democracy is tyranny or autocracy. – Plato Which one of the following statements best reflects the crux of the passage given above?",
+  "opts": [
+   "Human societies experiment with different forms of governments.",
+   "Any form of government trends to deteriorate by excess of its basic principle.",
+   "Education of all citizens ensures a perfect, functional and sustainable democracy.",
+   "Having a government is a necessary evil because tyranny is inherent in any form of government."
+  ],
+  "answer": 1,
+  "expl": "The author has named several forms of governance in the passage to make his point about the shortcomings of each of them. Option(a) is not the crucial message of the author in the passage. The passage reflects that any form of government can lose its merit due to the excess implication of its principles. Excess of any form of governance is not good. It is the clear message of the author in the passage. He has given the example of aristocracy, oligarchy and democracy to strengthen his point. Option (b) is correct. The main purpose of the author is not to discuss democracy. The lack of education in voters in a democracy leads to inefficient governments again and again. Educating all the citizens might lead to better democracy but the author has not mentioned it. Option (c) limits the scope of the views of the author; Hence, it is not the crux of the passage. Option (d) is a judgement based on the passage but not the crux of the message."
+ },
+ {
+  "n": 25,
+  "q": "In a group of 120 persons, 80 are Indians and rest are foreigners. Further, 70 persons in the group can speak English. The number of Indians who can speak English is",
+  "opts": [
+   "20",
+   "30",
+   "30 or less",
+   "30 or more"
+  ],
+  "answer": 3,
+  "expl": "Indian Foreign 70 persons can speak English (out of total 120 people) Case-1: If all 40 foreigners can speak English. This means 30 Indians can speak English. Case-2: If less than 40 foreigners can speak English. This implies that more than 30 Indians can speak English. From both cases, we can conclude that 30 or more Indians can speak English."
+ },
+ {
+  "n": 26,
+  "q": "Consider all 3-digit numbers (without repetition of digits) obtained using three non- zero digits which are multiples of 3. Let S be their sum. Which of the following is/are correct?\n1. S is always divisible by 74.\n2. S is always divisible by 9. Select the correct answer using the code given below:",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Three non-zero digits which are multiples of 3 are 3,6,9 (without repetition). All possible 3-digits number using 3, 6 and 9 are 369, 396, 639, 693, 936, 963 S, Sum of above numbers (use expanded form) = 300 + 60 + 9 + 300 + 90 + 6 + 600 + 30 + 9 + 600 + 90 + 3 + 900 + 30 + 6 + 900 + 60 + 3 = 3996 = 74 × 54 ∴ S is divisible by both 74 and 9."
+ },
+ {
+  "n": 27,
+  "q": "There are two Classes A and B having 25 and 30 students respectively. In Class-A the highest score is 21 and lowest score is 17. In Class-B the highest test score is 30 and lowest score is 22. Four students are shifted from Class-A to Class-B. Consider the following statements:\n1. The average score of Class-B will definitely decrease.\n2. The average score of Class-A will definitely increase.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Class Total students Highest mark Lowest mark A B Four students are shifted from class A to class B Assume that all toppers are shifted from class A to class B. Even then, their marks will be less than the lowest mark of class-B. So, average of class B will definitely decrease For statements-2, Again , If we shift those 4 students from class A to class B , who scored minimum marks 17 each. Then , the new Average of class A = 4 4 = × = 17 < Initial average. Thus , average of class A not decrease. neither average marks of class A nor scores of 4 students shifted to class B Therefore, only statement-1 is correct."
+ },
+ {
+  "n": 28,
+  "q": "Consider two Statements and a Question: Statement-1: Priya is 4 ranks below Seema and is 31st from the bottom. Statement-2: Ena is 2 ranks above Seema and is 37th from the bottom. Question: What is Seema’s rank from the top in the class of 40 students? Which one of the following is correct in respect of the Statement and the Question?",
+  "opts": [
+   "Statement-I alone is not sufficient to answer the Question.",
+   "Statement-2 alone is not sufficient to answer the Question.",
+   "Either Statement-I alone or Satetement-2 alone is sufficient to answer the Question.",
+   "Both Statement-1 and Statement-2 are required to answer the Question."
+  ],
+  "answer": 2,
+  "expl": "Class has 40 students. Based on above diagrams, we can conclude that correct option is c."
+ },
+ {
+  "n": 29,
+  "q": "Consider two Statements and a Question: Statement-1: Each of A and D is heavier than each of B, E and F, but none of them is the heaviest. Statement-2: A is heavier than D, but is lighter than C. Question: Who is the heaviest among A, B, C, D and E? Which one of the following is correct in respect of the Statement and the Question?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question.",
+   "Statement-2 alone is sufficient to answer the Question.",
+   "Both Satement-1 and Statement -2 are required to answer the Question.",
+   "Neither Statement -1 alone nor Statement-2 alone is sufficient to answer the Question."
+  ],
+  "answer": 2,
+  "expl": "Based on statement-1, we can say A > B, A > E, A > F, D > B, D > E, D > F But cannot compare weight of A and weight of D. Also, there is no information about weight of C. According to statement-2, we can say C > A > D, but there is no information in this statement about weights of B, E and F. So, both statements alone cannot answer the question. When we combine both students, we can clearly see that C is the heaviest."
+ },
+ {
+  "n": 30,
+  "q": "In the English alphabet, the first 4 letters are written in opposite order, and the next 4 letters are written in opposite order and so on; and at the end Y and Z are interchanged. Which will be the fourth letter to the right of the 13th letter?",
+  "opts": [
+   "N",
+   "T",
+   "H",
+   "I"
+  ],
+  "answer": 1,
+  "expl": "Arrangement of letters are 4th letter to the right of 13th letter DCBA|HGFE|LKJI|PONM|TSRQ|XWVU|ZY 13th letter Required letter is T"
+ },
+ {
+  "n": 31,
+  "q": "Direction for the following 4 (four) items: Read the following four passages and answer the items (31-34) that follow. Your answers to these items should be based on the passages only. Passage-1 Fig trees (genus Ficus) are considered sacred in India, East Asia and Africa and are common in agricultural and urban landscapes where other large trees are absent. In natural forests, fig trees provide food for wildlife when other resources are scarce and support a high density and diversity of frugivores (fruit-eating animals). If frugivorous birds and bats continue to visit fig trees located in sites with high human disturbance, sacred fig trees may promote frugivore abundance. Under favourable micro-climate, plenty of seedlings of other tree species would grow around fig trees. On the basis of the passage given above, the following assumptions have been made:\n1. Fig trees can often be keystone species in natural forests.\n2. Fig trees can grow where other large woody species cannot grow.\n3. Sacred trees can have a role in biodiversity conservation.\n4. Fig trees have a role in the seed dispersal of other tree species.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 and 2 only",
+   "3 only",
+   "2 and 4 only",
+   "1, 3 and 4 only"
+  ],
+  "answer": 3,
+  "expl": "A keystone species is a species that has a disproportionately large effect on its natural environment relative to its abundance. The passage mentions fig trees providing food for wildlife species and supporting a density and diversity of frugivores where resources are scarce and absent. That is essentially what a keystone species signifies for an ecosystem. Statement 1 is correct. Statement 3 is also correct. The author has mentioned that due to the sacredness of fig- trees, positive effects on the population of frugivores can be seen. The last line of the passage confirms statement 4. Hence, this is also the correct option. However, the passage does not mention large 'woody' species giving way for the growth of fig trees in their absence. Hence, statement 2 of woody species can't be inferred from the passage."
+ },
+ {
+  "n": 32,
+  "q": "Passage-2 At the heart of agroecology is the idea that agroecosytems should mimic the biodiversity levels and functioning of natural ecosystems. Such agricultural mimics, like their natural models, can be productive, post-resistant, nutrient conserving, and resilient to shocks and stresses. In ecosystems there is no ‘waste’, nutrients are recycle indefinitely. Agroecology aims at closing nutrient loops, i.e., returning all nutrients that come out of the soil back to the soil such as through application of farmyard manure. It also harnesses natural processes to control pests and build soil fertility i.e., through intercropping. Agroecological practices include integrating trees with livestock and crops. Consider the following:\n1. Cover crops\n2. Fertigation\n3. Hydroponics\n4. Mixed farming\n5. Polyculture\n6. Vertical farming\nWhich of the above farming practices can be compatible with agroecology, as implied by the passage?",
+  "opts": [
+   "1, 4 and 5 only",
+   "2,3,4 and 5 only",
+   "1,2,3 and 6 only",
+   "4 and 6 only"
+  ],
+  "answer": 0,
+  "expl": "The passage states that the farming practices compatible with agroecology include the integration of trees with livestock and crops. It is in a sense talking about the practices of Cover cropping, Mixed farming, and Polyculture. Hence, option (a) is correct. It is not mentioned that the farming practices of Fertigation and Hydroponics are artificial methods and are not congruent with the agroecological systems mentioned in the passage. Hence, option (b) is not correct. The passage states agroecology is closing nutrient loops which means returning nutrients that come out of soil back to the soil. Vertical farming similar to hydroponics is soil-less farming and hence not suitable for agroecology. The last option is also not correct."
+ },
+ {
+  "n": 33,
+  "q": "Passage - 3 Computers increasingly deal not just with abstract data like credit card details and databases, but also with the real world of physical objects and vulnerable human bodies. A modern car is a computer on wheels; an aeroplane is a computer on wings. The arrival of the “Internet of Things” will see computers baked into everything from road signs and MRI scanners to prosthetics and insulin pumps. There is little evidence that these gadgets will be any more trustworthy than their desktop counterparts. Hackers have already proved that they can take remote control of internet connected cars and pacemakers. Which one of the following statements best reflects the most critical inference that can be made from the passage given above?",
+  "opts": [
+   "Computers are not completely safe.",
+   "Companies producing the software do not take cyber security seriously.",
+   "Stringent data security laws are needed.",
+   "The present trend of communication technologies will affect our lives in future."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct in using the word ‘completely’ as it makes it an extreme judgement. The computers are vulnerable to risks or threats of an external breach; the passage establishes that they are not safe. Option (b) is not supported by the passage. It is unlikely also that companies do not take security seriously. Though, the author discusses the security breaches. Due to the increasing vulnerabilities and threats of data breaches in case of hackers taking over, the need for stringent data security laws can be indirectly inferred. but, it is a result of the recent trends of communication technologies and their complexities. Option (c) is not correct. Option (d) is incorrect. It is wrong inference where the new trends in various communication technologies led not any complexities in computer-based technologies in various spheres of life. The internet of things is bound to make human lives easier."
+ },
+ {
+  "n": 34,
+  "q": "Passage - 4 A social and physical environment riddled with poverty, inequities, unhygienic and insanitary conditions generates the risk, of infectious disease. Hygiene has different levels: personal, domestic and community hygiene. There is no doubt that personal cleanliness brings down the rate of infectious disease. But the entry of the market into this domain has created a false sense of security that gets conditioned and reinforced by the onslaught of advertisements. Experience in Western Europe shows that along with personal hygiene, general improvements in environmental conditions and components like clean water, sanitation and food security have brought down infant/child death/ infection rates considerably. The obsession with hand hygiene also brings in the persisting influence of the market on personal health, overriding or marginalising the negative impact on ecology and the emergence of resistant germs. On the basis of the passage given above, the following assumptions have been made:\n1. People who are obsessed with personal hygiene tend to ignore the community hygiene.\n2. Emergence of multi-drug resistant germs can be prevented by personal cleanliness.\n3. Entry of the market in the domain of hygiene increases the risk of infectious diseases.\n4. Scientific and micro-level interventions are not sufficient to bring down the burden of infectious diseases.\n5. It is community hygiene implemented through public health measure that is really effective in the battle against infectious diseases.\nWhich of the above assumptions are valid?",
+  "opts": [
+   "1 and 2 only",
+   "3 and 4 only",
+   "4 and 5 only",
+   "1, 2 and 4 only"
+  ],
+  "answer": 2,
+  "expl": "Option (a) is incorrect. Statement 1 is not correct. It cannot be interpreted from the passage that some people put personal hygiene ahead of community hygiene. Statement 2 is not correct. There is no mention of multi-drug resistant germs. Statement 3 is an incorrect assumption. The entry of the market in this domain has created a false sense of security, but it has no link with infectious diseases or their rate of occurrence. Statement 4 is correct. Scientific and micro- level interventions like hand cleaning and environmental improvement referring to personal and domestic hygiene have successfully brought down the infection rates. It is stated in the passage. Past experiences from western Europe have established the direct role of community hygiene through public measures effective in reducing infectious diseases and death rates. Hence, statement 5 is a valid assumption."
+ },
+ {
+  "n": 35,
+  "q": "A Statement followed by Conclusion-I and Conclusion-II is given below. You have to take the Statement to be true even if it seems to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/ follow from the Statement, disregarding the commonly known facts. Statement: Some cats are almirahs. Some almirahs are chairs. All chairs are tables. Conclusion-I: Certainly some almirahs are tables Conclusion-II: Some cats may not be chairs. Which one of the following is correct?",
+  "opts": [
+   "Only Conclusion-I",
+   "Only Conclusion-II",
+   "Both Conclusion-I and Conclusion-II",
+   "Neither Conclusion-I nor Conclusion-II"
+  ],
+  "answer": 2,
+  "expl": "Venn diagram based on given statements Cats Tables Almirah Chairs By venn-diagram, some almirahs are tables. Also, some cats may not be chairs. So, both conclusion-I and II follows."
+ },
+ {
+  "n": 36,
+  "q": "A boy plays with a ball and he drops it from a height of 1.5 m. Every time the ball hits the ground, it bounces back to attain a height 4/5th of the previous height. The ball does not bounce further if the previous height is less than 50 cm. What is the number of times the ball hits the ground before the ball stops bouncing ?",
+  "opts": [
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "answer": 1,
+  "expl": "Height of ball = 1.5 m = 150 cm Height of ball after first bounce = 4/5×150 = 120 cm Height of ball after second bounce = 4 5 × = 96 cm Height of ball after third bounce = 4 5 × = 76.8 cm Height of ball after fourth bounce = 4 5 76 8 × . = 61.44 cm Height of ball fifth bounce = 4 5 61 44 × . = 49.152 cm (less than 50 cm) Now ball will not bounce. Ball bounce 6 times in total and hit the ground 5 times . Hence correct option is (b)."
+ },
+ {
+  "n": 37,
+  "q": "Images of consonants of the English alphabet (Capitals) are observed in a mirror. What is the number of images of these which do not look like their original shapes?",
+  "opts": [
+   "13",
+   "14",
+   "15",
+   "16"
+  ],
+  "answer": 1,
+  "expl": "A B C D E F G H I Letters Mirror Images Letters Mirror Images Letters Mirror Images A B C D E F G H I J K L M N O P Q R J K L M N O P Q R S T U V W X Y Z - S T U V W X Y Z - We can clearly see 14 consonants have not same mirror images which look like them."
+ },
+ {
+  "n": 38,
+  "q": "A bank employee drives 10 km towards South from her house and turns to her left and drives another 20 km, She again turns left and drives 40 km, then she turns to her right and drives for another 5 km. She again turns to her right and drives another 30 km to reach her bank where she works. What is the shortest distance between her bank and her house?",
+  "opts": [
+   "20 km",
+   "25 km",
+   "30 km",
+   "35 km"
+  ],
+  "answer": 1,
+  "expl": "Bank employee start from O (House) moves towards A, then from A to B, then to C, then to D and finally reaches to E (Bank) Distance between house to bank is OE = 20 + 5 = 25 km"
+ },
+ {
+  "n": 39,
+  "q": "Integers are listed from 700 to 1000. In how many integers is the sum of the digits 10?",
+  "opts": [
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "answer": 3,
+  "expl": "Numbers from 700 to 1000 having sum of digits equal to 10. 721, 712, 730, 703, 820, 802, 811, 901, 910 There are 9 such numbers."
+ },
+ {
+  "n": 40,
+  "q": "A woman runs 12 km towards her North, then 6 km towards her South and then 8 km towards her East. In which direction is she from her starting point?",
+  "opts": [
+   "An angle less than 45° South of East.",
+   "An angle less than 45° North of East.",
+   "An angle more than 45° South of East.",
+   "An angle more than 45° North of East."
+  ],
+  "answer": 1,
+  "expl": "Woman starts from O and moves to A, then moves from A to B, then B to C and finally stops at C. Observe DOBC BC > BO ⇒ ∠BOC > ∠BCO So, ∠BOC > 45° So, direction of woman at C is at an angle less than 45° north to east."
+ },
+ {
+  "n": 41,
+  "q": "Direction for the following 2 (two) items: Read the following two passages and answer the items (41-42) that follow. Your answers to these items should be based on the passages only. Passage - 1 Can a democracy avoid being a welfare state for long? Why cannot mass welfare be left entirely to the markets? There is a built-in tension between markets and democracy. Markets do not work on a one-person-one-vote principle as democracies do. What one gets out of the market place depends on one’s endowments, skills, purchasing power and the forces of demand and supply. Market reward individual initiative and skill, and may also lift many from the bottom rungs of society, but some people never get the opportunity to develop skills that markets demand; they are simply too poor and too handicapped; or skill formation takes too long. By creating jobs, markets may be able to help even unskilled people, but capitalism has always witnessed bursts of unemployment. With reference to the above passage, the following assumptions have been made:\n1. Modern democracies rely on the market forces to enable them to be welfare states.\n2. Markets ensure sufficient economic growth necessary for democracies to be effective.\n3. Government programmes are needed for those left behind in economic growth.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 and 3 only",
+   "3 only",
+   "2 and 3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 1,
+  "expl": "Statement 1 is incorrect. It is against the intent of the author in the passage. He has explicitly mentioned that the markets and democracy have inbuilt tension between them. So, it is incorrect to assume that democracies rely on the market for being welfare states. Statement 2 is incorrect. It has been mentioned in the passage that despite markets and capitalism, the poor do not get an opportunity to upgrade their skills. Hence, the purpose of democracy is not met with the unemployment rate increasing. Statement 3 is correct: As the markets cannot ensure equal opportunities for the people who are not having skills or purchasing powers, government programs are needed to complement the market outcomes."
+ },
+ {
+  "n": 42,
+  "q": "Passage - 2 In our schools, we teach our children all that is there to know about Physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large part of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask question, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas and influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful. Which one of the following statements best reflects the central idea of the passage given above?",
+  "opts": [
+   "School curriculum is not compatible with the expectations of children and parents.",
+   "Emphasis on academic achievements does gives time for development of personality and skills.",
+   "Preparing the children to be better citizens should be the responsibility of the education system.",
+   "To be a better citizen, the present world order demands societal and life-coping skills in addition to academic content."
+  ],
+  "answer": 3,
+  "expl": "Option (d) is the best answer. The author has stated that the present world order with caste divide, gender sensitivity and natural calamities overshadows the country. He has also discussed the religious choice in the passage. Societal and life coping skills are discussed Further, the author asserts \"From the cocooned world of school\", making the assertion made in the statement a valid one. Option (a) is out of scope of the passage. Expectations of children and parents are not discussed in the passage. Option (b) is irrelevant in the discussion. The issue of dividing time between academics and personality development is not discussed. Option (c) is the second best only. The author has not made any judgement regarding the responsibility of education for making suitable citizens for the society."
+ },
+ {
+  "n": 43,
+  "q": "There are three points P, Q and R on a straight line such that PQ : QR = 3 : 5, If n is the number of possible values of PQ : PR, then what is n equal to?",
+  "opts": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "answer": 1,
+  "expl": "There are two possible cases for P, Q and R Case-1 When Q is between P and R 3 units 5 units P R Q here PQ : PR = 3 : 8 Case-2 When Q is not between P and R 3 units 2 units Q R P Here PQ : PR = 3 : 2 There are two possible values of PQ : PR i.e., n = 2"
+ },
+ {
+  "n": 44,
+  "q": "On a chess board, in how many different ways can 6 consecutive squares be chosen on the diagonals along a straight path?",
+  "opts": [
+   "4",
+   "6",
+   "8",
+   "12"
+  ],
+  "answer": 1,
+  "expl": "8 7 6 5 4 3 2 1 Ways to select 6 consecutive squares on diagonals: (i) Select squares from 1 to 6 (ii) Select squares from 2 to 7 (iii) Select squares from 3 to 8 There are 3 ways to select 6 consecutive squares on first diagonal. Since, chess-board has 2 diagonals Total numbers of such selection = 3 + 3 = 6"
+ },
+ {
+  "n": 45,
+  "q": "In the series _b_a_ba_b_abab_aab; fill in the six blanks (_) using one of the following given four choices such that the series follows a specific order.",
+  "opts": [
+   "bababa",
+   "baabba",
+   "bbaabb",
+   "ababab"
+  ],
+  "answer": 3,
+  "expl": "Letter in given series (18 in numbers). First make group of 3 letters (multiple of 18) _b_|a_b/a_b|_ab/ab_aab If we use option D (after analysing each option by putting then in blanks) we get, abb/aab/abb/aab/abb/aab"
+ },
+ {
+  "n": 46,
+  "q": "Using 2,2,3,3,3 as digits, how many distinct numbers greater than 30000 can be formed?",
+  "opts": [
+   "3",
+   "6",
+   "9",
+   "12"
+  ],
+  "answer": 1,
+  "expl": "3 T.Th Th H T O Number greater than 30,000 starting digit must be 3 For rest of 4 places, we have 2, 2, 3, 3 Number of ways to fill these 4 places = 4 2 2 4 3 2 1 2 1 2 1 ! ! ! = 6 We have 6 such numbers."
+ },
+ {
+  "n": 47,
+  "q": "Consider the following statements:\n1. The sum of 5 consecutive integers can be\n100.\n2. The product of three consecutive natural numbers can be equal to their sum.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "For statements-1 18 + 19 + 20 + 21 + 22 = 100 Sum of 5 consecutive numbers can be 100 For statement-2 1 × 2 × 3 = 6 = 1 + 2 + 3 Product of three consecutive natural numbers can be equal to their sum."
+ },
+ {
+  "n": 48,
+  "q": "A cubical vessel of side 1 m is filled completely with water. How many millilitres of water is contained in it (neglect thickness of the vessel?",
+  "opts": [
+   "1000",
+   "10000",
+   "100000",
+   "1000000"
+  ],
+  "answer": 3,
+  "expl": "Volume of water in cubical vessel = 1m3 = 1000 l = 1000000 ml"
+ },
+ {
+  "n": 49,
+  "q": "There are 6 persons arranged in a row. Another person has to snake hands with 3 of them so that he should not shake hands with two consecutive persons. In how many distinct possible combinations can the handshakes take place?",
+  "opts": [
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "answer": 1,
+  "expl": "Let the 6 persons are A, B, C, D, E, F 7th person can shake hands with A, C, E or A, C, F or A, D, F or B, D, F There are 4 such cases are possible"
+ },
+ {
+  "n": 50,
+  "q": "An amount of money was distributed among A, B and C in the ratio p : q : r. Consider the following statements:\n1. A gets the maximum share if p is greater than (q + r).\n2. C gets the minimum share if r is less than (p + q).\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Shares of A, B and C are in ratio p : q : r if p > (q + r) ⇒ A gets maximum share For second condition, assume that p : q : r = 4 : 3 : 5 Share of r is less than shares of (p + q) but r is not getting least share. So, statement-2 cannot be correct always."
+ },
+ {
+  "n": 51,
+  "q": "Direction for the following 4 (four) items: Read the following four passages and answer the items (51-54) that follow. Your answers to these items should be based on the passages only. Passage - 1 Nothing can exist in a natural state which can be called good or bad by common assent, since every man who is in a natural state consults only his own advantage, and determines what is good or bad according to his own fancy and insofar as he has regard for his own advantage alone, and holds himself responsible to no one save himself by any law; and therefore sin cannot be conceived in a natural state, but only in a civil state, which is decreed by common consent what is good or bad, and each one holds himself responsible to the state. Which one of the following statements best reflects the central idea of the passage given above?",
+  "opts": [
+   "The conceptions of what is right or wrong exist due to the formation of a state.",
+   "Unless a ruling authority decides as to what is right or wrong, no man would be morally right.",
+   "Man is inherently immoral and selfish in a natural state.",
+   "The idea of what is right or wrong is necessary for the survival of human species."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct. The formation of society or state leads to the creation of thoughts of right or wrong. Without society with a common consent for right or wrong, there is the only natural state of human beings. Option (b) is incorrect. The concept of ‘ruling state’ is not discussed in the passage. Option (c) is incorrect. The passage does highlight the fact that man is inherently inclined to his advantage but the immorality is not connected with him in the passage. It cannot be established from the passage whether the idea of right or wrong is essential for survival. This option does not find support from the passage. Hence, it can be rejected."
+ },
+ {
+  "n": 52,
+  "q": "Passage - 2 In the immediate future, we will see the increasing commodification of many new technologies – artificial intelligence and robotics, 3D manufacturing, custom made biological and pharmaceutical products, lethal autonomous weapons and driverless cars. This will pose conundrums. The moral question of how a driverless car will decide between hitting a jaywalker and swerving and damaging the car has often been debated. The answer is both simple– save the human life – and complex. At which angle should the car swerve – just enough to save jaywalker or more than enough? If the driverless car is in Dublin, who would take the decision? The Irish Government, or the car’s original code writer in California, or a software programmer in Hyderabad to whom maintenance is outsourced? If different national jurisdictions have different fine print on prioritising a human life, how will it affect insurance and investment decisions, including transnational ones? Which of the following statements best reflects the rational, plausible and practical implications that can be derived from the passage given above?\n1. Too much globalization is not in the best interests of any country.\n2. Modern technologies are increasingly blurring the economic borders.\n3. Innovation and capital have impinged on the domain of the state.\n4. Public policy of every country should focus on developing its own supply chains.\n5. Geopolitics will have to reconcile to many ambiguities and uncertainties. Select the correct answer using the code given below:",
+  "opts": [
+   "1, 4 and 5 only",
+   "1, 2, 3 and 4 only",
+   "2, 3 and 5 only",
+   "1, 2, 3, 4 and 5"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is incorrect. The passage does not discuss globalization. This statement is out of the scope of the passage. Statement 2 is correct. This statement is supported by the passage. The author hints that the world has become a global village. One country conceptualises an idea, another one develops software on basis of that and the third one uses that software. While some others have the responsibility to maintain that application. Hence, we can say modern technologies have blurred the economic boundaries. Statement 3 is correct. If different national jurisdictions have an effect on insurance and investment decisions, including transnational ones. It might be assumed that innovation and capital have impinged on the domain of the state. Statement 4 is incorrect. The author is not concerned about the development of supply chains oriented public policy. He has not discussed this point in the passage. Hence, this option can be rejected. Statement 5 is correct. The author raises the issue of uncertain rules in different countries regarding insurance and investment decisions, also he has raised the technical conundrum related to the introduction of new technologies in the coming time. He has given the example of modern car technology to make his point."
+ },
+ {
+  "n": 53,
+  "q": "Passage - 3 The resolution of bankruptcy cases of Indian banks under the Insolvency and Bankruptcy Code should help bring non-performing assets (NPA) situation under some control. Despite the slow pace of resolutions by the National Company Law Tribunal, the Code can be helpful in cleaning up bank book in future credit cycles. The recapitalisation of public sector banks too can help increase the capital cushion of banks and induce them to lend more and boost economic activity. But bad debt resolution and recapitalisation are only a part of the solution as they, by themselves, can do very little to rein in rockless lending, that has pushed the Indian banking system to its current sorry state. Unless there are systemic reforms that address the problem of unsustainable lending, future credit cycles will continue to stress the banking system. Which one of the following statements best reflects the most logical rational and practical suggestion implied by the passage given above?",
+  "opts": [
+   "Lending by the banks should be closely monitored and regulated by the Central Government.",
+   "Interest rates should be kept low so as to induce banks to lend more, promote credit growth and thereby boost economic activity.",
+   "Merger of many banks into a few large banks alone is the long-term solution to make them viable and prevent their bad performance.",
+   "Indian banking system requires structural reforms as a long-term solution for bad loans problem."
+  ],
+  "answer": 3,
+  "expl": "Option (d) is correct. The author demands systemic reforms for addressing the problem of unsustainable and uncontrolled lending. Systemic reforms go much beyond the measure of simple monitoring or regulation. The passage has not put the responsibility on the central government. Option (a) is incorrect. Option (b) is incorrect. Keeping interest rates low is a short-term measure, not a long-term systematic improvement that is intended by the author. These measures are not discussed as a viable solution for the banks’ lending without much scrutiny or concern for the repayment leading to default. Option (c) is incorrect. It is not mentioned or referred to anywhere in the passage, and hence, it is beyond the scope of the passage."
+ },
+ {
+  "n": 54,
+  "q": "Passage - 4 In India, the objective of macroeconomic policy is to enhance the economic welfare of the people, and any one wing of such macro policy, monetary or fiscal, cannot independently work without active support of another. Which one of the following statements best reflects the corollary to the passage given above?",
+  "opts": [
+   "The central bank cannot work independently of the Government.",
+   "Government should regulate financial markets and institutions closely.",
+   "Market economy is not compatible with the socialist policies of the Government.",
+   "Financial sector reforms are required for enhancing the economic welfare of the people."
+  ],
+  "answer": 0,
+  "expl": "Option (a) is correct. The author concludes that anyone wing of such macro policy, monetary or fiscal, cannot independently work without the active support of another. The Central Bank has control over the monetary policy, while the government has an effective tool in form of the fiscal policy of the country. Option (b) is incorrect. It is only a single measure and does not give the comprehensive steps demanded by the author in the passage. The author has demanded fiscal and monetary, both types of measures. Option (c) is incorrect. A market economy is not the point of discussion in the passage. Option (d) is incorrect. The passage does not discuss financial sector reforms. The term financial sector reforms have a very wide scope. The message of the author gets diluted here."
+ },
+ {
+  "n": 55,
+  "q": "Consider the following table: Player Runs scored in the First In- nings Balls faced in the First In- nings Runs scored in the Second Innings Balls faced in the Second Innings A B C D Who is the fastest run scorer in the Test Match?",
+  "opts": [
+   "A",
+   "B",
+   "C",
+   "D"
+  ],
+  "answer": 1,
+  "expl": "Player Total Runs Total balls A B C D Strike rate of player-A = 75 % Strike rate of player-B = 55 % Strike rate of player-C = 35 % Strike rate of player-D = 25 % Fastest scorer is player-B"
+ },
+ {
+  "n": 56,
+  "q": "Half of the villagers of a certain village have their own houses. One-fifth of the villagers cultivate paddy. One-third of the villagers are literate. Fourth-fifth of the villagers are under 25 years of age. Which one of the following statements is certainly correct?",
+  "opts": [
+   "All the villagers who have their own houses are literate.",
+   "Some villagers under 25 years of age are literate.",
+   "Only half of the villagers who cultivate paddy are literate.",
+   "No villagers under 25 years of age has his own house."
+  ],
+  "answer": 1,
+  "expl": "Let total number of villagers = 100 Number of villagers having own houses = 1 2 × = 50 Number of villagers cultivating paddy = 1 5 × = 20 Number of literate villagers = 1 3 × = 33.33 Number of villagers under 25 years = 4 5 × = 80 By observing data, we can surely conclude that some villagers under 25 years are literate."
+ },
+ {
+  "n": 57,
+  "q": "Consider two Statements and a Questions: Statement 1: The last day of the month is a Wednesday. Statement 2: The third Saturday of the month was the seventeenth day. Question: What day is the fourteenth of the given mouth? Which one of the following is correct in respect of the Statements and the Question?",
+  "opts": [
+   "Statement-1 alone is sufficient to answer the Question",
+   "Statement-2 alone is sufficient to answer the Question",
+   "Both Statement-1 and Statement-2 are required to answer the Question",
+   "Neither Statement-1 alone nor Statement-2 alone is sufficient to answer the Question"
+  ],
+  "answer": 1,
+  "expl": "We do not know, how many days are in the given month of first statement. Therefore, we cannot answer on the basis of statement-1. By statement-2, 17th is saturday 14th, 15th, 16th, 17th Wed. Thur. Fri. Sat. Only statement-2 is sufficient to answer the question."
+ },
+ {
+  "n": 58,
+  "q": "Which day is 10th October, 2027?",
+  "opts": [
+   "Sunday",
+   "Monday",
+   "Tuesday",
+   "Saturday"
+  ],
+  "answer": 0,
+  "expl": "Since, calender of 2021 and 2027 is same. year 2021 2022 2023 2024 2025 2026 Odd days 1 1 1 2 1 1 Total odd days are 7, so calender of 2021 repeat in 2027 10th October, 2021 is Sunday ∴ 10th October, 2027 will be Sunday"
+ },
+ {
+  "n": 59,
+  "q": "Consider two Statements and four Conclusions given below. You have to take the Statements to be true even if they seem to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusions(s) logically follows/ follow from the Statements, disregarding the commonly known facts. Statement 1: Some greens are blues. Statement 2: Some blues are blacks. Conclusion-1: Some greens are blacks. Conclusion-2: No green is black. Conclusion-3: All greens are blacks. Conclusion-4: All blacks are greens. Which one of the following is correct?",
+  "opts": [
+   "Conclusion-1 and Conclusion-2 only",
+   "Conclusion-2 and Conclusion-3 only",
+   "Conclusion-3 and Conclusion-4 only",
+   "Neither Conclusion-1 nor 2 nor 3 nor 4"
+  ],
+  "answer": 3,
+  "expl": "Venn diagram for statement 1 and 2 On the basis of above diagram No statement can follow."
+ },
+ {
+  "n": 60,
+  "q": "What is the value of ‘X’ in the sequence 2,7,22,67,202,X,1822?",
+  "opts": [
+   "603",
+   "605",
+   "607",
+   "608"
+  ],
+  "answer": 2,
+  "expl": "2, 7, 22, 67, 202, X, 1822 2 2 × 3 + 1 = 7 7 × 3 + 1 = 22 22 × 3 + 1 = 67 67 × 3 + 1 = 202 202 × 3 + 1 = 607 607 × 3 + 1 = 1822 Value of X is 607."
+ },
+ {
+  "n": 61,
+  "q": "Direction for the following 3 (three) items: Read the following three passages and answer the items (61-63) that follow. Your answers to these items should be based on the passage only. Passage - 1 Medieval merchants risked the hazards of the Silk Road to reach the markets of China; Portuguese caravels in the 15th century sailed beyond the bounds of the known world, searching less for knowledge than for gold and spices. Historically, the driver for opening frontiers has always been the search for resources. Science and curiosity are weaker drivers. The only way to open up space, whether the space of solar system or interstellar space is to create an economic engine and that engine is resource extraction. Which one of the following statements best sums up the passage given above?",
+  "opts": [
+   "Wealth generation is the primary motive for any human endeavour.",
+   "Space, whether space in solar system or interstellar space, will govern our future economy.",
+   "Human beings are motivated to explore new frontiers, principally by economic considerations.",
+   "Wealth generation is based on the risk- taking behaviour of some men."
+  ],
+  "answer": 2,
+  "expl": "The primary objective of exploring the new frontiers for human beings from ancient history is the greed for new resources or economic considerations. Science and curiosity are not strong drivers to put life in danger for moving in stepping in the uncertainty of exploration. Hence, option (c) is the correct choice. Option (a) is incorrect. The author relates the wealth generation as the primary motive for exploration in history, but it is incorrect to say that it is the primary motive for any endeavour. People have different goals for life apart from money. Though they may be weak drivers, they are there. Option (b) is incorrect. The passage gives examples from the past but is not given any possibility for the future. It is an assumption, not a fact supported by the passage. Option (d) is incorrect. It will be incorrect to assume that wealth generation is always based on risk-taking behaviour. Wealth creation may or may not involve risk-taking behaviour."
+ },
+ {
+  "n": 62,
+  "q": "Passage - 2 Most people would agree that telling deliberate lies is wrong, except perhaps in certain special situations where more harm will be done by telling the truth. Even the most truthful people probably tell a good many more lies that might be regarded as semantic lies, their use of words contains some measure of falsehood, more or less deliberate”. The idea which the first part of the passage mentions is",
+  "opts": [
+   "agreement about telling lies.",
+   "disagreement about telling lies.",
+   "disagreement about telling the truth.",
+   "disagreement about the harm in telling the truth."
+  ],
+  "answer": 3,
+  "expl": "Option (d) is correct. The first part of the passage is missing, and the given text is a continuation of the first part. From the first line of this part, we can assume that the missing part is discussing about the disagreement about the harm in telling the truth while in the second part they disagree in truth in every situation. Hence, this option is correct. Other options are not correct as they do not reflect the message of the author in the first part. Telling the truth is not possible every time. It can be assumed that in certain cases telling the truth can harm people."
+ },
+ {
+  "n": 63,
+  "q": "Which one of the following habits is found more often in good people?",
+  "opts": [
+   "Mixing up the true and false",
+   "Intentional mixing up of truth with the false",
+   "Falsification of fact",
+   "Complete concealment of truth"
+  ],
+  "answer": 1,
+  "expl": "Option (a) is incorrect. The passage talks about people telling lies to reduce the harm from telling the truth. It is the reason why all people mix truth with false. However, it cannot be said in terms of good people habits. Option (b) is correct. Good people use lies freely without hesitation to reduce the harm from the truth. Hence, it is their habit of intentionally mixing the truth with false. Hence this option is correct. Option (c) is incorrect. The passage does not argue for the false presentation of facts. It merely focuses on the inclusion of lies in truth occasionally. Option (d) is incorrect. The passage does not argue for concealing the truth. The phrase “measure of falsehood” reflects that concealing truth will only be to some extent rather than complete concealment of truth."
+ },
+ {
+  "n": 64,
+  "q": "A pie diagram shows the percentage distribution of proteins, water and other dry elements in the human body. Given that proteins correspond to 16% and water corresponds to 70%. If both proteins and the other day elements correspond to p%, then what is the central angle of the sector representing p on the pie diagram?",
+  "opts": [
+   "54°",
+   "96°",
+   "108°",
+   "120°"
+  ],
+  "answer": 2,
+  "expl": "% of protein and dry elements = 16% + 14% = 30% = p% Central angle for p = 30 = 108°"
+ },
+ {
+  "n": 65,
+  "q": "Joseph visits the club on every 5th day, Harsh visits on every 24th day, while Sumit visits on every 9th day. If all three of them met at the club on a Sunday, then on which day will all three of them meet again?",
+  "opts": [
+   "Monday",
+   "Wednesday",
+   "Thursday",
+   "Sunday"
+  ],
+  "answer": 1,
+  "expl": "Person Visit of club after every Joseph 5 days Harsh 24 days Sumit 9 days LCM (5, 24, 9) = 360 They will meet after 360 days 360 days = 51 weeks + 3 odd days 3 odd days after Sunday are on Mon. Tue. Wed. 1 2 3 They will again meet on Wednesday."
+ },
+ {
+  "n": 66,
+  "q": "The difference between a 2-digit number and the number obtained by interchanging the positions of the digits is 54.\n1. The sum of the two digits of the number can be determined only if the product of the two digits is known.\n2. The difference between the two digits of the number can be determined.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 1,
+  "expl": "Let unit place of two digit number = y and tens place of that number = x and x > y Number = 10x + y Number after inter changing the digits = 10 y + x difference = 10x + y – (10y + x) = 54 9x – 9y = 54 x – y = 54 ...(i) (i) If product, xy = k (any number) y = k x ∴ x k x − = 54 [from ...(i)] We can find two values of x, then y from eg-(1) (ii) We have already found difference x – y So, only statement 2 follow."
+ },
+ {
+  "n": 67,
+  "q": "X said to Y, “At the time of your birth I was twice as old as you are at present.” If the present age of X is 42 years, then consider the following statements:\n1. 8 years ago, the age of X was five times the age of Y.\n2. After 14 years, the age of X would be two times the age of Y.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 1,
+  "expl": "Let the present age of Y = m years present age of X = 42 years m years before age of X = 42 – m According to question, 42 – m = 2 m 42 = 3 m m = 14 Present age of y = 14 years 8 years ago 14 years after Age of X = 34 years Age of X = 56 years Age of Y = 6 years Age of Y = 28 years X is not 5 times of Y Age of X = 2 X age of Y Hence , Statement 1 is incorrect but statement 2 is correct"
+ },
+ {
+  "n": 68,
+  "q": "If the price of an article is decreased by 20% and then the new price is increased by 25%, then what is the net change in the price?",
+  "opts": [
+   "0%",
+   "5% increase",
+   "5% decrease",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 0,
+  "expl": "Let initial price of article = `100 Price after 20% decrease = `80 [20% of 100 = 20] Price after 25% increase = `100 [25% of 80 = 20] Net change is 0%"
+ },
+ {
+  "n": 69,
+  "q": "When a certain number is multiplied by 7, the product entirely comprises ones only (1111...). What is the smallest such number?",
+  "opts": [
+   "15713",
+   "15723",
+   "15783",
+   "15873"
+  ],
+  "answer": 3,
+  "expl": "15873 × 7 = 111, 111 Hence, Least number = 15873"
+ },
+ {
+  "n": 70,
+  "q": "A man completes 7/8 of a job in 21 days. How many more days will it take him to finish the job if quantum of work is further increased by 50%?",
+  "opts": [
+   "24",
+   "21",
+   "18",
+   "15"
+  ],
+  "answer": 3,
+  "expl": "Number of days to finish the job = 21 8 7 = 24 days If 50% work is further increased, numbers of days to finish = 24 + 12 = 36 days Number of more days (after 21 days) to finish work = 36 – 21 = 15 days"
+ },
+ {
+  "n": 71,
+  "q": "Direction for the following 2 (two) items: Read the following two passages and answer the items (71-72) that follow. Your answers to these items should be based on the passages only. Passage - 1 The best universities like Harvard and MIT, despite having the luxury of having some truly excellent teachers on their payroll, are increasingly embracing the “flipped classroom” format, where students listen to video lectures at home, and spend class time applying their knowledge, solving problems, discussing examples, etc. Professors guide that discussion and fill in wherever necessary, explaining those bits that seem to be eluding the students and throwing in advanced ideas that happen to be topical. These universities have made their video lectures available free for anyone in the world. They are also encouraging colleges and universities all over the world to integrate these online courses into their own pedagogy, picking the pieces that are appropriate for their needs and building a package around them. Which one of the following statements best reflects the central idea of the passage given above?",
+  "opts": [
+   "Efficacy of universities would be better in online mode of conducting classroom tuition as compared to conventional method.",
+   "Availability of higher education can be made easier and cheaper without diluting the content.",
+   "We need not invest much in infrastructure related to higher education and yet develop better human and social capital.",
+   "Private sector institutions in higher education as well as coaching institutes can take advantage of this opportunity and thrive well."
+  ],
+  "answer": 1,
+  "expl": "The author does not make any comparison between the conventional medium of teaching and the online mode. We can reject option (a). It is not the central idea of the passage. It is hinted in the passage that the lectures in higher education are provided to all free of cost by some top-ranking universities. And this is the main point that the author is trying to make in the passage. Option (b) is correct. Option (d) is not the correct answer. The passage does not discuss public or private, universities or coaching institutions. It only focuses on the betterment of the education system with an online medium of teaching. Option (c) is incorrect also. The author is trying to tell that expenditure on physical infrastructure is mandatory if universities across the world integrate online education in their pedagogy as is being done by MIT and Harvard."
+ },
+ {
+  "n": 72,
+  "q": "Passage - 2 Our cities are extremely vulnerable to climate change because of large concentrations of populations and poor infrastructure. Moreover, population densities are increasing in them but we have not yet developed the systems to address climate changes impacts. Our cities contribute to 65 per cent of the GDP, but there are not enough facilities to cater to the needs of the people. It is important to address the issues of air quality, transport, etc., that are vital to identifying sustainable solutions. We need to involve citizens in city planning and create an ecosystem that meets the needs of the people. Which among the following is the most logical and rational inference that can be made from the passage given above?",
+  "opts": [
+   "Our cities need to have well-defined administrative set-up with sufficient autonomy.",
+   "Ever increasing populations densities is a hindrance in our efforts to achieve sustainable development.",
+   "To maintain and develop our cities we need to adopt sustainability related interventions.",
+   "Public-Private Partnership mode of development is the viable long-term solution for the infrastructure and sustainability problems of India."
+  ],
+  "answer": 2,
+  "expl": "The author does not state any administrative problem which is due to lack of autonomy. The passage is about the problem of climate change due to increasing population density and lack of infrastructure. Hence option (a) is incorrect. Though the passage mentions the increasing population density in cities, the major part of the passage focuses on climate change. Hence, option (b) is incorrect. Option (c) is incorrect. This statement is irrelevant of the given passage Option (d) is incorrect. The involvement of the general public in the development of plans for cities is different from the public-private partnership business models. This is not discussed in the passage. The author is just concerned about increasing the say of the public in planning."
+ },
+ {
+  "n": 73,
+  "q": "Jay and Vijay spent an equal amount of money to buy some pens and special pencils of the same quality from the same store. If Jay bought 3 pens and 5 pencils, and Vijay bought 2 pens and 7 pencils, then which one of the following is correct?",
+  "opts": [
+   "A pencil costs more than a pen",
+   "The price of a pencil is equal to that of a pen",
+   "The price of a pen is two times the price of a pencil",
+   "The price of a pen is three times the price of a pencil"
+  ],
+  "answer": 2,
+  "expl": "Let cost of one pen = ` x and cost of one pencil = ` y Cost of 3 pens and 5 pencils = cost of 2 pens and 7 pencils 3x + 5y = 2x + 7y 3x – 2x = 7y – 5y x = 2y Cost of one pen = cost of 2 pencils"
+ },
+ {
+  "n": 74,
+  "q": "P scored 40 marks more than Q in an examination. If Q scored 10% less marks than P, then how much did Q score?",
+  "opts": [
+   "360",
+   "380",
+   "400",
+   "420"
+  ],
+  "answer": 0,
+  "expl": "Let marks of Q = x ∴ marks of P = x + 40 Marks of Q is 10% less than P x = 100 − (x + 40) x = 90 ( ) x + 10x = 9x + 360 x = 360"
+ },
+ {
+  "n": 75,
+  "q": "A person P asks one of his three friends X as to how much money he had. X replied, “If Y gives me ` 40, then Y will have half of as much as Z, but if Z gives me ` 40, then three of us will have equal amount.” What is the total amount of money that X, Y and Z have?",
+  "opts": [
+   "` 420",
+   "` 360",
+   "` 300",
+   "` 270"
+  ],
+  "answer": 1,
+  "expl": "Let money with X = ` x money with Y = ` y money with Z = ` z When Y give 40 to X When Z gives 40 to X y – 40 = z 2 x + 40 = y = z – 40 x + 40 = y = 2y – 80 – 40 [from (i)] 2y – 80 = z ...(i) y = 2y – 120 120 = y ⇒ x + 40 = 120 x = 80 ⇒ z = 2 × 120 – 80 = 160 Total amount = x + y + z = 80 + 120 + 160 = ` 360."
+ },
+ {
+  "n": 76,
+  "q": "In a code language ‘MATHEMATICS’ is written as ‘LBSIDNZUHDR’. How is ‘CHEMISTRY’ written in that code language?",
+  "opts": [
+   "DIDLHRSSX",
+   "BIDNHTSSX",
+   "BIDLHTSSX",
+   "DGFLIRUQZ"
+  ],
+  "answer": 1,
+  "expl": ""
+ },
+ {
+  "n": 77,
+  "q": "At which one of the following times, do the hour hand and the minute hand of the clock make an angle 180° with each other?",
+  "opts": [
+   "At 7:00 hours",
+   "Between 7:00 hours and 7:05 hours",
+   "At 7:05 hours",
+   "Between 7:05 hours and 7:10 hours"
+  ],
+  "answer": 3,
+  "expl": "Angle between the hands = Q = 1 2 |60°H – 11M| Where, H is position of hour hands M is position of minute hands Q = 180° = 1 2 |60° × 7 – 11M| (Take H = 7) 360° = |420° – 11M| 360° = 420° – 11M M = 60 ° = 5'27\" Clock's hands will have 180° angle at 7 : 05 : 27"
+ },
+ {
+  "n": 78,
+  "q": "In an objective type test of 90 questions, 5 marks are allotted for every correct answer and 2 marks are deducted for every wrong answer. After attempting all the 90 questions, a student got a total of 387 marks. What is the number of incorrect responses?",
+  "opts": [
+   "9",
+   "13",
+   "27",
+   "43"
+  ],
+  "answer": 0,
+  "expl": "Let questions solved incorrectly = x ∴ questions solved correctly = 90 – x Total marks = 387 5(90 – x) – 2x = 387 450 – 5x – 2x = 387 450 – 387 = 7x 7 = x x = 9"
+ },
+ {
+  "n": 79,
+  "q": "Consider the following addition problem: 3P + 4P + PP + PP = RQ2; where P, Q and R are different digits. What is the arithmetic mean of all such possible sums?",
+  "opts": [
+   "102",
+   "120",
+   "202",
+   "220"
+  ],
+  "answer": 2,
+  "expl": "3 4 2 P P PP PP RQ + Since, 4P at one's place give 2 at one place So, P can be 3 [4 × 3 = 12] or P can be 8 [4 × 8 = 32] If P = 3 If P = 8 + + A.M of 142 and 262 = 142 2 2 = 202"
+ },
+ {
+  "n": 80,
+  "q": "Consider the following multiplication problem: (PQ) × 3 = RQQ, where P, Q and R are different digits and R ≠ 0. What is the value of (P + R) ÷ Q?",
+  "opts": [
+   "1",
+   "2",
+   "3",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 1,
+  "expl": "(PQ) × 3 = RQQ (P5) × 3 = R55 Q R55 is divisible by 3 R + 5 + 5 = R + 10 (sum of digits must be ÷ 3) Take R = 2 1 3 3 2 3 6 3 3 9 4 3 2 5 3 5 5 × = × = × = × = × =           unit digit Qcan be P5 × 3 = 255 P5 = 85 So, P = 8, Q = 5, R = 2 (P + R) ÷ Q = (8 + 2) ÷ 5 = 2."
+ }
+]

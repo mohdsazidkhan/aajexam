@@ -1,0 +1,962 @@
+[
+ {
+  "n": 1,
+  "q": "This Test Booklet contains 80 items (questions). Each item comprises four responses (answers). In case you feel that there is more than one correct response, mark the response which you consider the best. In any case, choose ONLY ONE response for each item.\n2. You have to mark all your responses ONLY on the separate OMR Sheet provided.\n3. All items carry equal marks.\n4. Penalty for wrong answers: (i) There are four alternatives for the answer to every question. For each question for which a wrong answer has been given by the candidate, one-third (0.33) of the marks assigned to that question will be deducted as penalty. (ii) If a candidate gives more than one answer, it will be treated as a wrong answer even if one of the given answers happens to be correct and there will be same penalty as above to that question. (iii) If a question is left blank, i.e., no answer is given by the candidate, there will be no penalty for that question. General Instructions Direction for the following 6 (six) items: Read the following five passages and answer the items (1-6) that follow, Your answers to these items should be based on the passages only. Passage - 1 In India, over the last decade or so, labour has been departing agriculture, but is only going to construction and unregistered manufacturing which are not markedly better jobs. Services, where labour tends to be most productive, are not generating the additional jobs the country needs. India will need 24 million or so jobs over the next decade. The new sector, e-commerce, can at best close only half the jobs gap. Only those sectors that drive domestic demand, such as health and education can comfortably fill the other half.\n1. Which one of the following is best implied in the passage?",
+  "opts": [
+   "Strong measures need to be taken to reduce the rural to urban migration of labour.",
+   "The working condition in construction and unregistered manufacturing needs to be improved.",
+   "Service sector has been reducing the problem of unemployment.",
+   "Increased social sector spending is imperative for large-scale job creation."
+  ],
+  "answer": 3,
+  "expl": "The main aim of the author in the passage is to discuss the problem of unemployment in India. These are the problems facing India currently and they can increase in the next decade. He is not only concerned about the jobs but also the quality of the jobs. He also tries to give the possible solutions for this problem. He starts the passage by highlighting that the labour force from agricultural activities is shifting to other sectors like manufacturing and construction. He has not mentioned that this shift is from rural areas to urban areas. Hence, option (a) is incorrect in the context. The author has mentioned that unregistered manufacturing and construction employers might not be good paymasters. So, statement (b) can be an apt assumption that there is some exploitation of labours in these unorganized sectors, and there is a need for their upliftment. But it is not an implied fact. It is only an assumption. Based on this rationale, option (b) can also be avoided. It is mentioned that the Services are also failing to create sufficient jobs as they were doing in the recent past. Statement in option (c) contradicts the facts given in the passage. The author emphasises that to create good job opportunities on a large scale, domestic demand shall boost up. It is implied here that the domestic demand is linked with the social sectors like health and education. Hence, option (d) is the most appropriate answer to the question."
+ },
+ {
+  "n": 2,
+  "q": "Passage - 2 In India the current focus on the right to privacy is based on some new realities of the digital age. A right is a substantive right only if it works in all situations, and for everyone. A right to free expression for an individual about her exploitation, for instance, is meaningless without actual availability of security that guarantees that private force cannot be used to thwart this right. The role of the State, therefore, is not just to abstain from preventing rightful free expression, but also to actively ensure that private parties are not able to block it. On the basis of the above passage, the following assumptions have been made: UPSC CIVIL SERVICES EXAMINATION (PRELIMS)-CSAT\n1. State should have some institutions to ensure its appropriate role in a digital society.\n2. State should ensure that private parties do not violate the citizens’ right to privacy.\n3. Digital economy is not compatible with the idea of not violating the citizens’ privacy.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 and 2",
+   "3 only",
+   "1 and 3",
+   "2 only"
+  ],
+  "answer": 0,
+  "expl": "The passage primarily makes two points. The first point is that the right to free expression in a digitally connected society can be exercised only in a fear-free environment and the second point is that this feeling of security shall be ensured by the state. It is a logical assumption that the state would require some systematic instruments to achieve the objective of ensuring safety. Hence, Statement 1 is logical and rational. While statement 1 gives the requirement of the institutions for ensuring the safety of citizens to express themselves freely, Statement 2 explains the duty of these institutions. So, statement 1 and statement 2 are interlinked. These are correct assumptions based on the contents of the passage. Statement 3 is irrelevant and farfetched as it does not find support in the passage. It can be ignored. Option (a) gives the right combination of correct assumptions."
+ },
+ {
+  "n": 3,
+  "q": "Passage - 3 One of the biggest ironies around water is that it comes from rivers and other wetlands. Yet it is seen as divorced from them. While water is used as a resource, public policy does not always grasp that it is a part of the natural ecosystem. Efforts at engineering water systems are thus efforts at augmenting water supply rather than strengthening the capacities of ecological systems. Which one of the following is the most logical and rational inference that can be made from the above passage?",
+  "opts": [
+   "Rivers and other wetlands should be protected under Ramsar Convention.",
+   "Engineering water systems should be modernized and further augmented.",
+   "Wetlands need to be reinforced as more than just open sources of water.",
+   "Water supply should not be free of cost so as to prevent its misuse or overuse."
+  ],
+  "answer": 2,
+  "expl": "The author highlights that the problem of water shortage lies in the shrinking natural water resources. Local water resources are not divorced from their natural ecosystems. But the policymakers, mistakenly, try to engineer the water systems to improve the water supply. Option (a) is incorrect as it mentions Ramasar Convention which is not mentioned in the passage. It might be true that Ramasar Convention is linked with saving natural water resources but we have to answer the question only based on information provided in the passage. Option (b) is not the intent of the author in the passage. So, it cannot be a correct inference based on the reading of the passage. Option (c) is the correct inference as the local water resources are inherently linked with their original water resources. Option (d) is a farfetched judgement and is out of context as it does not find relevance in the passage."
+ },
+ {
+  "n": 4,
+  "q": "Passage - 4 Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can loss value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same time. All these extreme forms of risks we know will not manifest at the same time. Which one of the following statements best implies the suggestion given by the author of the passage?",
+  "opts": [
+   "Distribute your wealth across different kinds of assets so that your risks would be minimized.",
+   "Risk-taking behaviour should be a necessary component of your personality if you want to generate wealth.",
+   "While making investments, find a trustworthy asset management organi- zation which would manage your wealth for you.",
+   "You should know that investing your money is a risky business."
+  ],
+  "answer": 0,
+  "expl": "An implication is a conclusion that can be drawn from something although it is not explicitly stated. In the passage, the author suggests we invest in distribution way. In that way your wealth is divided across different kinds of assets so that your risks would be minimized. He has not mentioned specifically how to invest, he only says- ‘leave your fear and invest’, he does not suggest anything beyond that. Hence, option (b) and (c) are incorrect. Option (d) is in contradiction with the facts presented in the passage. Hence, it can be outrightly rejected as a potential implication. Only option (b) is in coherence with the content of the passage."
+ },
+ {
+  "n": 5,
+  "q": "Passage - 5 Although most of the Genetically Modified (GM) crops cultivated now are genetically engineered for a single trait, in future, crops genetically engineered for more than one trait will be the norm. Thus, biotechnology’s role in agriculture and the regulation of the same cannot be understood solely in the context of the current generation of GM crops. Instead, there is a need to take a comprehensive look, taking into account various aspects, including socio-economic impacts, so that the potential of the technology can be harnessed while minimizing negative impacts. Given the importance of biotechnology in developing varieties that can help in climate change mitigation and adaptation, not using biotechnology as a part of the climate change action plan cannot be an option. Domestic regulation of biotechnology cannot be viewed in isolation of trade policy and obligations under various international treaties and conventions. With reference to the above passage, the following assumptions have been made:\n1. Biotechnology regulation is an evolving process.\n2. Participation of people is needed in policy decisions regarding biotechnology regulation.\n3. Biotechnology regulation should take into account socio-economic aspects in decision-making.\n4. Wider involvement of political executive in biotechnology regulation improves its effectiveness in dealing with the country’s trade policies and international obligations.\nWhich of the above assumptions are valid?",
+  "opts": [
+   "1, 2 and 4 only",
+   "1 and 3 only",
+   "2, 3 and 4 only",
+   "1, 2, 3 and 4"
+  ],
+  "answer": 1,
+  "expl": "The passage strongly put that the role of biotechnology is not limited to Genetically modified crops only. It has a comprehensive role in reducing climate change and also in other socio-economic fields. The author points out that the domestic regulations on biotechnology is an evolving process. Hence, the crux of the passage sees biotechnology as having a wider role than current use in GM crops only. Options (a) and (c) are incorrect as it is not mentioned in the passage. Option (b) is right. Option (d) gives irrelevant information and is out of context."
+ },
+ {
+  "n": 6,
+  "q": "Which one of the following statements best implies the crux of the passage?",
+  "opts": [
+   "Precautionary principle is not given importance in current debate on developing GM crops.",
+   "Biotechnology is not currently used in climate change mitigation and adaptation mechanisms.",
+   "Biotechnology’s role is not confined to the current priorities of developing GM crops.",
+   "The negative impacts of biotechnology are not properly understood."
+  ],
+  "answer": 2,
+  "expl": "Biotechnology might be used in changing limited traits presently but in future, it will be used to change the multiple traits. This will lead to improvement in crops. Biotechnology will find application in mitigating the effects of environmental deterioration and help in adaptation. The author has mentioned the bright future of biotechnology not only in GM crops but also in the climate change action plan. Option (c) gives the best answer for the central idea of the passage. Other options are not coherent with the views of the author as expressed in the passage."
+ },
+ {
+  "n": 7,
+  "q": "How many zeroes are there at the end of the following product? 1 × 5 × 10 × 15 × 20 × 25 × 30 × 35 × 40 × 45 × 50 × 55 × 60",
+  "opts": [
+   "10",
+   "12",
+   "14",
+   "15"
+  ],
+  "answer": 0,
+  "expl": "1 × 5 × 10 × 15 × 20 × 25 × 30 × 35 × 40 × 45 × 50 × 55 × 60 = 1 × 5 × 2 × 5 × 3 × 5 × 4 × 5 × 5 × 5 × 6 × 5 × 7 × 5 × 8 × 5 × 9 × 5 × 10 × 5 × 11 × 5 × 12 × 5 (Prime factorize) = 514 × 210 × 3 × 3 × 7 × 3 × 3 × 11 × 3 ( 10 = 5 × 2) = (5 × 2)10 × 54 × 3 × 3 × 7 × 3 × 3 × 11 × 3 (10 pairs of 5 × 2) \\ Product will have 10 zeros at end."
+ },
+ {
+  "n": 8,
+  "q": "Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + YZX + ZXY) is not divisible by",
+  "opts": [
+   "3",
+   "9",
+   "37",
+   "(X + Y + Z)"
+  ],
+  "answer": 1,
+  "expl": "X + Y + Z is not a multiple of 3 So, X + Y + Z (Sum of digit) is not divisible by 3 \\ XYZ is not divisible by 3 Now, XYZ + YZX + ZXY = 100X × 10Y + Z + 100Y + 10Z + X + 100Z + 10X + Y = 111X + 111Y + 111Z = 111(X + Y + Z) 111 is divisible by both 3 and 37 (X + Y + Z). 111 is also divisible by (X + Y + Z) So, (X + Y + Z). 111 is not divisble by 9."
+ },
+ {
+  "n": 9,
+  "q": "Let p, q, r and s be natural numbers such that p – 2016 = q + 2017 = r – 2018 = s + 2019 Which one of the following is the largest natural number?",
+  "opts": [
+   "p",
+   "q",
+   "r",
+   "s"
+  ],
+  "answer": 2,
+  "expl": "p - 2016 = q + 2017 p – q = 2017 + 2016 = 4033 ⇒ p > q Similarly, q + 2017 = r – 2018 2017 + 2018 = r – q r – q = 4035 ⇒ r > q also r > p [ r – q > p – q] Now, r – 2018 = s + 2019 r – s = 2019 + 2018 r – s = 4037 ⇒ r > s \\ r is greater than other three naturals p, q and s. So, r is largest natural number."
+ },
+ {
+  "n": 10,
+  "q": "How many five-digit prime numbers can be obtained by using all the digits 1, 2, 3, 4 and 5 without repetition of digits?",
+  "opts": [
+   "Zero",
+   "One",
+   "Nine",
+   "Ten"
+  ],
+  "answer": 0,
+  "expl": "Any five-digit number using digits 1, 2, 3, 4 and 5 has sum of digits = 1 + 2 + 3 + 4 + 5 = 15 \\ Since, 15 is divisible by 3 So, all such five - digits numbers will be divisible by 3. No prime number can be formed."
+ },
+ {
+  "n": 11,
+  "q": "In the sum ⊗ + 1 ⊗ + 5 ⊗ + ⊗ ⊗ + ⊗ 1 = 1 ⊗ ⊗ for which digit does the symbol ⊗ stand?",
+  "opts": [
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": 1,
+  "expl": "× × × × 1 × × + × × 1 1 5 If we take 2 as × then unit digit of sum is not 2. When, we take 4 or 5 as × then unit digit of sum are 7 or 1 respectively. Only 3 as × satisfy given sum. (In tabular form) 3 +  31"
+ },
+ {
+  "n": 12,
+  "q": "If you have two straight sticks of length 7.5 feet and 3.25 feet, what is the minimum length can you measure?",
+  "opts": [
+   "0.05 foot",
+   "0.25 foot",
+   "1 foot",
+   "3.25 foot"
+  ],
+  "answer": 1,
+  "expl": "Length of sticks are 7.5 feet and 3.25 feet 7 5 2 . = = 3 25 4 . = = Minimum length can be measured by two sticks is HCF of both numbers. i.e., HCF 15 2 4 15 13 2 4 1 4 0 25 , ( , ) ( , ) . HCF LCM HCF of M N and R S is HCF (M, R) LCM (N, S)"
+ },
+ {
+  "n": 13,
+  "q": "A simple mathematical operation in each number of the sequence 14, 18, 20, 24, 30, 32, ... results in a sequence with respect to prime numbers. Which one of the following is the next number in the sequence?",
+  "opts": [
+   "34",
+   "36",
+   "38",
+   "40"
+  ],
+  "answer": 2,
+  "expl": "14, 18, 20, 24, 30, 32, ... Subtract 1 from each number 13, 17, 19, 23, 29, 31, ... (sequence of primes) Next prime will be 37 i.e., 38 – 1 So, next number in given sequence is 38."
+ },
+ {
+  "n": 14,
+  "q": "One page is torn from a booklet whose pages are numbered in the usual manner starting from the first page as 1. The sum of the numbers on the remaining pages is 195. The torn page contains which of the following numbers?",
+  "opts": [
+   "5, 6",
+   "7, 8",
+   "9, 10",
+   "11, 12"
+  ],
+  "answer": 1,
+  "expl": "Let total number of pages in book = n Sum of all numbers on pages = n n ( ) + 1 2 (Sum of natural numbers) Let sum of numbers of torn page = x Sum of numbers on remaining pages = 195 \\ 195 + x = n n ( ) + 1 2 (We will take “n” such that sum of numbers on pages will come out to nearer to 195) If n = 19, sum of numbers = 190 (less than 190 s, it is not possible) If n = 20, sum of numbers = 210 195 + x = 210 x = 15 as per given options only 7, 8 gives sum = 15 So, torn page has page numbered as 7 and 8."
+ },
+ {
+  "n": 15,
+  "q": "Consider the following arrangement that has some missing letters: abab_b_bcb_dcdcded_d The missing letters which complete the arrangement are:",
+  "opts": [
+   "a, b, c, d",
+   "a, b, d, e",
+   "a, c, c, e",
+   "b, c, d, e"
+  ],
+  "answer": 2,
+  "expl": "abab – b – bcb – dcdcded – d There are 20 letters in arrangement So, we will take divide arrangement into smaller ones having 5, 4, 2, 10 etc. (divisors of 20) So, when we divide in pair of 5 letters abab –, b – bcb, – dcdc, ded – d from options, on taking (c) a, c, c, e abab a, bcbcb, c dcdc, ded e d."
+ },
+ {
+  "n": 16,
+  "q": "Let A3BC and DE2F be four-digit numbers where each letter represents a different digit greater than 3, If the sum of the numbers is 15902, then what is the difference between the values of A and D?",
+  "opts": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "answer": 2,
+  "expl": "A3BC +  DE2F 15902 C and F are different and more than 3 So, C + F = 12 (to get 2 as unit digit) C and F can be 5 and 7 or 4 and 8 Now, B + 2 + 1 (carry) = 10 [as B can be any number from 4 to 9 but sum will be 10] B = 7 Now, 3 + E + 1 (carry) = 9 E = 5 Now, A + D = 15 A and D can only be 9 or 6 to get sum 15 (Q all numbers are different and B is 7) So, difference of A and D = 3 [we cannot take pair 8 and 7]"
+ },
+ {
+  "n": 17,
+  "q": "Two Statements S1 and S2 are given below followed by a Question: S1: There are not more than two figures on any page of a 51-page book. S2: There is at least one figure on every page. Question: Are there more than 100 figures in that book? Which one of the following is correct in respect of the above Statements and the Question?",
+  "opts": [
+   "Both S1 and S2 are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question.",
+   "S1 alone is sufficient to answer the Question.",
+   "S1 and S2 together are not sufficient to answer the Question.",
+   "S2 alone is sufficient to answer the Question."
+  ],
+  "answer": 2,
+  "expl": "As per statement-1, there can be 0, 1 or 2 figures on each page of 51 pages book. Maximum figures in book = 51 × 2 = 102 Minimum figures in book = 51 × 0 = 0 On the basis of this statement, we cannot say anything about number of pages exactly. As per statement-2, there can be 1, 2, 3, ...., ∞ images can be on pages. But, it does not say anything about number of pages of book. On combining both statements Maximum figures = 51 × 1 = 51 Maximum figures = 51 × 2 = 102 But we still cannot answer whether there are more than 100 figures in the book. So, both statements together are not sufficient to answer the question."
+ },
+ {
+  "n": 18,
+  "q": "Consider the following data: Average marks in English Average marks in Hindi Girls 9 8 Boys 8 7 Overall average marks 8.8 x What is the value of x in the above table?",
+  "opts": [
+   "7.8",
+   "7.6",
+   "7.4",
+   "7.2"
+  ],
+  "answer": 0,
+  "expl": "Let numbers of total girls = a and numbers of total boys = b Average marks of English = 9 8 a b a b + + 9 8 a b a b + + = 8.8 ...(i) Average marks of Hindi = 8 7 a b a b + + 8 7 a b a b + + = x ...(ii) Subtract equation (ii) from (i) 9 8 8 7 a b a b a b a b = 8.8 – x ⇒ 9 8 8 7 a b a b a b = 8.8 – x ⇒ a b a b + + = 8.8 – x 1 = 8.8 – x x = 7.8"
+ },
+ {
+  "n": 19,
+  "q": "A family of two generations consisting of six members P, Q, R, S, T and U has three males and three females. There are two married couples and two unmarried siblings. U is P’s daughter and Q is R’s mother-in-law. T is an unmarried male and S is a male. Which one of the following is correct?",
+  "opts": [
+   "R is U’s husband.",
+   "R is S’s wife.",
+   "S is unmarried.",
+   "None of the above"
+  ],
+  "answer": 1,
+  "expl": "According to given information, 3 males 3 females T, S, one other U, Q, one other There are two generations and two couples in family. Definitely married Definitely single P, Q, R T Since, U is P’s daughter and Q is R’s mother-in- law, it means P and Q belong to upper generation and U and R belong to junior generation. + → Male – → Female .... → Siblings = → Couples U and T are the unmarried siblings. R is S’s wife."
+ },
+ {
+  "n": 20,
+  "q": "If in a particular year 12th January is a Sunday, then which one of the following is correct?",
+  "opts": [
+   "15th July is a Sunday if the year is a leap year.",
+   "15th July is a Sunday if the year is not a leap year.",
+   "12th July is a Sunday if the year is a leap year.",
+   "12th July is not a Sunday if the year is a leap year."
+  ],
+  "answer": 2,
+  "expl": "12th January is Sunday Case-1: Year is not leap year. Number of days between 12th January and 15th July (31 – 11) + 28 + 31 + 30 + 31 + 30 + 14 = 184 [We need to count either first day or last day in case of between. Here we counted first day] Number of ODD days = 184 7 2 = (remainder) So, 15th July is (Sunday + 2) Tuesday. Case-2: Year is leap year Days between 12th January and 15th July = 184 + 1 ODD days = 185 7 3 = (remainder) So, 15th July is (Sunday + 3) Wednesday Similarly, 12th July is (Tuesday – 3) Saturday ↑ Day of 15th July of non-leap year But, when year is leap 12th July is (Wednesday – 3) Sunday ↑ Day of 15th July of leap year"
+ },
+ {
+  "n": 21,
+  "q": "Direction for the following 7 (seven) items: Read the following five passages and answer the items (21-27) that follow. Your answers to these items should be based on the passages only. Passage - 1 Private investment in general is volatile. Foreign private investment is more volatile because the available investment avenues are significantly greater (i.e., the entire world). Therefore, the responsibility of providing employment cannot be left to Foreign Direct Investment (FDI). The current FDI inflows are volatile over time and, across sectors and regions, which is a necessary consequence of their search for the highest returns. The adverse consequences are unstable employment and an accentuation of income and regional inequalities. A probable positive consequence of foreign investment is the inflow of new technology and its subsequent diffusion. However, the technology diffusion is not at all certain because the existing state of physical and human capital in India may prove inadequate for the diffusion. With reference to the above passage, the following assumptions have been made:\n1. Relying on foreign investment in the long run is not an economically sound policy.\n2. Policies must be undertaken to reduce volatility in foreign private investment.\n3. Policies must be undertaken to strengthen domestic private investment.\n4. Public investment should be given priority over private investment.\n5. Substantial public investment in education and health should be undertaken.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1, 2 and 4",
+   "1, 3 and 5",
+   "2, 4 and 5",
+   "3 only"
+  ],
+  "answer": 1,
+  "expl": "It is important to understand the relevance of each of the given statements before answering the question. Statement 1 – It can be certain assumption that relying on foreign investment in the long run is not an economically sound policy . Hence, statement 1 is correct . Statement 2 – A policy to control and stable the flow of foreign investment is not discussed in the passage. It can be inferred that foreign companies are capricious in their investment patterns; they just move to new destinations in search of more profits. Statement 3 – In the passage, the author has elaborated on how and why the FDI is volatile, he has also mentioned the adverse effects of unstable foreign direct investments. So, it is logical to assume that he will favour the policies that would strengthen the domestic private investments. Statement 4 – This is a far-fetched assumption; it might be true but it does not find support from the passage. The passage is concentrated on discussing the demerits of overreliance on FDI for employment but it has not discussed or favoured public investment in any part of the passage. Statement 5 – Based on the given passage we can assume that Substantial public investment in education and health should be undertaken. Based on the discussion above, it can be concluded that option (b) is correct."
+ },
+ {
+  "n": 22,
+  "q": "Passage - 2 Many opportunities to harness the highly skewed, seasonal and spatial distribution of monsoon flows, which occur in a four-month period from June to September annually, have been lost. Since these few months account for most of the rainfall and consequent freshwater availability, the need for holding rainwater in reservoirs, for subsequently releasing it for use over the year, is a necessity nobody can afford to overlook. Climate change will continue to affect weather conditions and create water shortages and excesses. While millions suffer from droughts and floods, waters in the country’s many rivers flow unutilized, and are discharged into the sea every year. With reference to the above passage, which of the following could be the most rational and practical implications for India?\n1. Inter-linking of rivers should be undertaken.\n2. A network of dams and canals should be built across the country for proper distribution of water.\n3. Farmers should be provided easy loans for digging borewells.\n4. Usage of water for agriculture should be regulated by law.\n5. Distribution of river water among regions should be regulated by the Union Government. Select the correct answer using the code given below.",
+  "opts": [
+   "1 and 2",
+   "2, 4 and 5",
+   "1, 3 and 4",
+   "2, 3 and 5"
+  ],
+  "answer": 0,
+  "expl": "Statement 1 provides a solution to utilise the rivers water in the optimum way. It finds relevance with thoughts of the author as expressed in the passage. According to the passage, river water is flowing to oceans without being utilized. While the water distribution is very unequal in country -some areas witness drought while some are observing floods. A network of dams and canals across the country can ensure even supply of water for all areas. So, statement 2 seems logical and rationale in the context of the passage. The passage does not mention the inability of farmers to secure credit to dig borewells. Hence, it cannot be the correct implication. The passage does not make any reference to the lack of regulations about usage of water for agriculture. Statement 4 is not correct implication. Statement 5 is not based on the content of the passage."
+ },
+ {
+  "n": 23,
+  "q": "Passage - 3 People will invest in education whenever they are granted the economic freedom to fully enjoy its benefits. Again, this is for the obvious reason that the return on education increases as the level of economic freedom rises. When people, thanks to lower tax rates, are allowed to retain most of the higher income that they gain from each incremental level of education, it makes eminent sense to invest in education. On the other hand, when the government decides to tax the higher income of educated individuals at even higher rates, it makes very little sense to invest in educating oneself further. The same incentives apply to parents who decide on whether to invest in their children’s education. With reference to the above passage, the following assumptions have been made:\n1. Lower tax rates in a country invariably translate into greater investments in higher education.\n2. Investment in the education of children ensures their economic freedom.\n3. Economic freedom has a positive impact on building up human capital.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 2,
+  "expl": "The assumption is a statement that must be true, for the given information to be true; in other words, for the conclusion to hold. This passage relates tax rates with investment in higher education. It says lower tax rates encourage people to educate themselves further. Education leads to income, if the government increases tax rates on the income of educated people and take away this income, that does not mean lower tax rates in a country invariably translate into greater investments in higher education. Hence statement 1 is incorrect. The author has not said that education leads to economic freedom. Rather he says that economic freedom to reap the benefit of higher education leads to more education. Thus, Statement 2 can be discarded. Statement 3 is an assumption based on the facts of the passage. It is mentioned in the passage. that Economic freedom has a positive impact on building up human capital. Only option (c) has the correct statement."
+ },
+ {
+  "n": 24,
+  "q": "Passage - 4 Our urban bodies cannot possibly ensure sustainable delivery of water in our cities unless financing mechanisms are put in place. Water delivery requires heavy investment in collecting it from a natural source, treating it to make it potable, and laying a distribution network of pipes for delivery to the users. It also requires investments in sewerage infrastructure and sewage treatment plants so that the sewers can carry the wastewater to these plants to ensure that no untreated sewage is discharged back into natural water bodies. If our cities were rich enough to meet the entire cost, water could be delivered free. They are not. What is the most logical and crucial message conveyed by the passage?",
+  "opts": [
+   "Urban local bodies must recover costs through user charges.",
+   "Urban local bodies are not efficient enough to meet the water requirements of our cities.",
+   "Water shortage in our cities is a perennial problem that cannot be solved.",
+   "In view of the water crisis in our cities, there is an urgent need to limit the population of cities by adopting an upper limit of population size."
+  ],
+  "answer": 0,
+  "expl": "The passage is talking about increasing the user charges in any part of the passage. Though it justifies user charges for potable water in the last sentence of the passage. Hence, only option (a) has the crucial and logical message of the author in the passage. The very first sentence of the passage mentions that our urban bodies cannot possibly ensure sustainable delivery of water in our cities unless financing mechanisms are put in place. Hence option (b) is irrelevant. The author has discussed the problem of inconsistent water supply in cities with giving the root cause of the problem is lack of infrastructure and finances with urban local bodies but he has not concluded that this problem is unsolvable. Option (d) diverts from the context and tries to relate the problem of water supply with the size of the population. Therefore, this is not true. Only option (a) has the crucial and logical message of the author in the passage."
+ },
+ {
+  "n": 25,
+  "q": "With reference to the above passage, the following assumptions have been made:\n1. Rich cities only can ensure sustainable delivery of water.\n2. Sustainable delivery of water in cities means much more than supplying water to households.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 1,
+  "expl": "Statement 1 is not a valid assumption since the passage talks about having proper financing mechanisms to ensure sustainable delivery of water. Rich cities can afford free supply of water which implies that cities that are not rich need to raise finances to ensure the same. The passage does not state that it is impossible for cities that are not rich to ensure sustainable delivery of water. Statement 2 is correct assumptions sustainable delivery of water is not limited to providing potable water to end but also investments in sewerage infrastructure and sewage treatment plants."
+ },
+ {
+  "n": 26,
+  "q": "Passage - 5 In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India’s story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988-2014, compared to China and Vietnam. India’s poverty reduction was slow during 1988-2005, but during 2005-2012, it accelerated dramatically-almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched 4.1% during 2007- 2012 as against 2.4% during 2002-2007. The net surplus, of agri-trade touched $25 billion in 2013- 2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty. With, reference to the above passage, the following assumptions have been made:\n1. Structural and rural transformation is impossible when farms are mainly small and marginal.\n2. A good price incentive can trigger investments in agriculture.\n3. India needs to build value chains for high- value agri-products like livestock and horticulture.\n4. Higher global prices of agricultural commodities are essential for India’s poverty reduction. Which of the above assumptions are valid?",
+  "opts": [
+   "1 and 3",
+   "2 and 4",
+   "2 and 3",
+   "3 and 4"
+  ],
+  "answer": 2,
+  "expl": "Statement 1 is incorrect as the content of the passage is against it. The farms are still small and arid but the development in agricultural income took place as discussed in the passage. So, it is not correct to say that rural transformation is not possible. Statement 2 is relevant as the passage clearly shows a whopping 50% increase in the private investments to capitalise on the price rise in the foreign crop markets. Statement 3 is correct assumption that India needs to build value chains for high value agri products like livestock and horticulture. Statement 4 is not a very valid assumption based on the passage. Based on the above discussion, option (c) has the correct combination of correct assumptions."
+ },
+ {
+  "n": 27,
+  "q": "Which one of the following statements best reflects the critical message of the passage?",
+  "opts": [
+   "India should create large-scale off-farm rural employment to reduce poverty in the near future.",
+   "India should create a large number of farmer producer companies.",
+   "Private investment in agriculture should be given priority over public investment.",
+   "Inclusive agricultural growth is key to reduce poverty in the near future."
+  ],
+  "answer": 3,
+  "expl": "Inclusive agricultural growth is the key to reduce poverty in the near future is the best statement that reflects the critical message of the passage."
+ },
+ {
+  "n": 28,
+  "q": "Two Statements S1 and S2 are given below with regard to four numbers P, Q, R and S followed by a Question: S1: R is greater than P as well as Q. S2: S is not the largest one. Question: Among four numbers P, Q, R and S, which one is the largest? Which one of the following is correct in respect of the above Statements and the Question?",
+  "opts": [
+   "S1 alone is sufficient to answer the Question.",
+   "S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are not sufficient to answer the Question."
+  ],
+  "answer": 2,
+  "expl": "By S1: R > P and R > Q By S2: R > S By using both S1 and S2 we can say that R is the largest one."
+ },
+ {
+  "n": 29,
+  "q": "Two Statements S1 and S2 are given below followed by a Question: S1: n is a prime number, S2: n leaves a remainder of 1 when divided by 4. Question: If n is a unique natural number between 10 and 20, then what is n? Which one of the following is correct in respect of the above Statements and the Question?",
+  "opts": [
+   "S1 alone is sufficient to answer the Question.",
+   "S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are not sufficient to answer the Question."
+  ],
+  "answer": 3,
+  "expl": "n is unique natural number between 10 and 20 By S1: n is prime So n can be 11, 13, 17, 19 By S2: n ÷ 4 gives remainder 1 So, n can be 13 or 17 Either of statement alone cannot answer the question. Even both the statement together cannot answer."
+ },
+ {
+  "n": 30,
+  "q": "Two Statements S1 and S2 are given below with regard to two numbers followed by a Question: S1: Their product is 21. S2: Their sum is 10. Question: What are the two numbers? Which one of the following is correct in respect of the above Statements and the Question?",
+  "opts": [
+   "S1 alone is sufficient to answer the Question.",
+   "S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question.",
+   "S1 and S2 together are not sufficient to answer the Question."
+  ],
+  "answer": 2,
+  "expl": "By S1: Two numbers can be (3, 7) or (1, 21) By S2: Two numbers can be (1, 9), (2, 8), (3, 7), (4, 6), (5, 5) or (0, 10) Either of statements alone cannot answer the question. But when we combine both, correct answer is (3, 7) 3 × 7 = 21 and 3 + 7 = 10"
+ },
+ {
+  "n": 31,
+  "q": "A man walks down the backside of his house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres, if his house faces to the East, what is his direction from the starting point?",
+  "opts": [
+   "South-East",
+   "South-West",
+   "North-East",
+   "North-West"
+  ],
+  "answer": 3,
+  "expl": "By observing diagram, man is at North-West from House."
+ },
+ {
+  "n": 32,
+  "q": "Two Statements are given followed by two Conclusions: Statements: All numbers are divisible by 2. All numbers are divisible by 3. Conclusion-I: All numbers are divisible by 6. Conclusion-II: All numbers are divisible by 4.\nWhich of the above Conclusions logically follows/follow from the two given Statements?",
+  "opts": [
+   "Only Conclusion - I",
+   "Only Conclusion - II",
+   "Neither Conclusion-I nor Conclusion - II",
+   "Both Conclusion - I and Conclusion - II"
+  ],
+  "answer": 0,
+  "expl": "All numbers ÷ 2 and all numbers ÷ 3 If a number is divisible by both 2 and 3, then it will be divisible by 6. But number need not be divisible by 4. Example: 18 ÷ 2 = 9 18 ÷ 3 = 6 18 ÷ 6 = 3 But 18 is not divisible by 4."
+ },
+ {
+  "n": 33,
+  "q": "Two statements are given followed by two Conclusions: Statements: All cats are dogs. All cats are black. Conclusion-I: All dogs are black. Conclusion-II: Some dogs are not black.\nWhich of the above Conclusions logically follows /follow from the two given Statements, disregarding commonly known facts?",
+  "opts": [
+   "Only Conclusion-I",
+   "Only Conclusion-II",
+   "Neither Conclusion-I nor Conclusion-II",
+   "Both Conclusion-I and Conclusion-II"
+  ],
+  "answer": 2,
+  "expl": "Since, there is no information is given for any relationship between dogs and black. So we cannot say anything perfectly about them based on given statements. So, both conclusions are not follow."
+ },
+ {
+  "n": 34,
+  "q": "Consider the following sequence of numbers : 5 1 4 7 3 9 8 5 7 2 6 3 1 5 8 6 3 8 5 2 2 4 3 4 9 6 How many odd numbers are followed by the odd number in the above sequence?",
+  "opts": [
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "answer": 1,
+  "expl": "⑤1 4 ⑦ ③ 9 8 ⑤ 7 2 6 ③ ① 5 8 6 3 8 5 2 2 4 3 4 9 6 6 odd numbers are followed by the another odd numbers."
+ },
+ {
+  "n": 35,
+  "q": "A is 16th from the left end in a row of boys and V is 18th from the right end. G is 11th from A towards the right and 3rd from V towards the right end. How many boys are there in the row?",
+  "opts": [
+   "40",
+   "41",
+   "42",
+   "Cannot be determined due to insufficient data"
+  ],
+  "answer": 1,
+  "expl": "Position of A: 16th from left end Position of V: 18th from right end Position of G: 11th from A towards the right and 3rd from V towards the right. Case-1: When A is to right of V This is not true. It is given that G is 11th to right of A. If A is to the right of V and G further 11 positions to right of A, then G must be atleast 12 positions to the right of V. But G is only three positions to the right of V. Case-2: When A is to the left of V. Position of G = 18 – 3 = 15th from right end. Position of G = 16 + 11 = 27th from left end. Total number of boys = 27 + 15 – 1 = 41"
+ },
+ {
+  "n": 36,
+  "q": "Three Statements S1, S2 and S3 are given below followed by a Question: S1: C is younger than D, but older than A and B. S2: D is the oldest. S3: A is older than B. Question: Who among A, B, C and D is the youngest? Which one of the following is correct in respect of the above Statements and the Question?",
+  "opts": [
+   "S1 alone is sufficient to answer the Question.",
+   "S1 and S2 together are sufficient to answer the Question.",
+   "S2 and S3 together are sufficient to answer the Question.",
+   "S1 and S3 together are sufficient to answer the Question."
+  ],
+  "answer": 3,
+  "expl": "S1: C is younger than D, but older than A and B D > C > A/B We cannot say who is youngest based on S1 alone. S2: D is oldest D > A/B/C We cannot say who is youngest based on S2 alone. S3: A is older than B A > B We cannot say who is youngest based on S3 alone. But when we combine S1 and S3, we can see clearly D > C > A > B B is youngest among them."
+ },
+ {
+  "n": 37,
+  "q": "How many integers are there between 1 and 100 which have 4 as a digit but are not divisible by 4 ?",
+  "opts": [
+   "5",
+   "11",
+   "12",
+   "13"
+  ],
+  "answer": 2,
+  "expl": "Integers between 1 and 100 having 4 as digit but not divisible by 4 14, 34, 41, 42, 43, 45, 46, 47, 49, 54, 74, 94 Total 12 such numbers are there."
+ },
+ {
+  "n": 38,
+  "q": "Let x, y be the volumes; m, n be the masses of two metallic cubes P and Q respectively. Each side of Q is two times that of P and mass of Q is two times that of P. Let u = m/x and v = n/y. Which one of the following is correct?",
+  "opts": [
+   "u = 4v",
+   "u = 2v",
+   "v = u",
+   "v = 4u"
+  ],
+  "answer": 0,
+  "expl": "Let side of cube P = “a” units \\ side of cube Q = “2a” units P Q mass m n volume x y Q mass of Q = 2 (mass of P) n = 2m ...(i) Also, Volume of Q = (2a)3 = 8a3 = y ...(ii) Volume of P = (a)3 = a3 = x ...(iii) u = m/x = m/a3 [from (iii)] v = n/y = 2m/8a3 = m/4a3 = 1/4 u [using (i) and (ii) ⇒ u = 4v"
+ },
+ {
+  "n": 39,
+  "q": "The average age of a teacher and three students is 20 years. If all the three students are of same age and the difference between the age of the teacher and each student is 20 years, then what is the age of the teacher?",
+  "opts": [
+   "25 years",
+   "30 years",
+   "35 years",
+   "45 years"
+  ],
+  "answer": 2,
+  "expl": "Let age of each student = x years and age of teacher = y years Average age of teacher and 3 students = y x x x + + + 4 20 = y x + 3 4 80 = y + 3x 3x = 80 – y x = 80 3 −y ...(i) difference of age of teacher with age of each student is 20 \\ y – x = 20 y – {(80 – y)/3} = 20 [using eqn. (i)] 3y – 80 + y/3 = 20 4y – 80 = 60 4y = 140 y = 35 Age of teacher is 35 years"
+ },
+ {
+  "n": 40,
+  "q": "A person bought a car and sold it for ` 3, 00,\n000. If he incurred a loss of 20%, then how much did he spend to buy the car?",
+  "opts": [
+   "` 3,60,000",
+   "` 3,65,000",
+   "` 3,70,000",
+   "` 3,75,000"
+  ],
+  "answer": 3,
+  "expl": "Let person bought car for ` x he incurred a loss of 20% \\ S.P. of car = 100 Loss% C.P. 300000 = 100 x 300000 × 100/80 = x x = 3,75,000 he bought cost at ` 3,75,000"
+ },
+ {
+  "n": 41,
+  "q": "Direction for the following 6 (six) items: Read the following five passages and answer the items (41-46) that follow. Your answers to these items should be based on the passages only. Passage - 1 Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the ‘Lumper’ potato, whose genetic frailty would be cruelly exposed by the fungus ‘Phytophthora infestans’. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions. Which one of the following statements best reflects the critical message of the passage?",
+  "opts": [
+   "For introducing any foreign plant into a country, the soil and climate conditions of that country should be suitable.",
+   "As a staple food of a country, tuber crops like potato cannot replace cereal crops.",
+   "Some of the fungal infections of plants cannot be prevented or stopped from spreading across large areas.",
+   "Relying on a homogeneous food source is not desirable."
+  ],
+  "answer": 3,
+  "expl": "Option (a) is incorrect. It is a statement of general truth. But in this context, it cannot be the most critical message of the author as potatoes came in the 16th century and became the staple food in the 19th century. It can be assumed that for this much time there was no problem in the cultivation of potato there related to climate. So, this statement might or might not apply here. Option (b) seems misplaced and out of context. It is not the intent of the author. It is logical and practical to think that some of the infections cannot be prevented or stopped across large areas. See the case of Coronavirus infection. This is also true for the passage. But then, it is not critical or emphasised by the author. The truly critical message the author wants to convey is that it is not a good trend to depend on one type of food all over the country. A combination of foods if adopted by the residents of that country could have saved millions of people from the jaws of the feminine. It is always prudent to develop more alternatives. Hence, option (d) is the correct answer."
+ },
+ {
+  "n": 42,
+  "q": "Passage - 2 India is at once among the fastest growing global economies and home to the largest number of malnourished children in the world. There are regions where malnutrition is not the exception but the norm. And across the country, malnutrition is the cause of death for roughly half the 1.3 million children who die before their fifth birthday each year. Even those children who survive suffer permanently from the damage that has already been done to their bodies and minds from not getting enough of the right foods and nutrients. Around 44 million children under 5 are stunted. That makes it harder for them to learn in school and subsequently earn a living as adults. Their lifetime earnings potential is almost a quarter less than that of their healthy peers. With reference to the above passage, which of the following is/are the most rational and practical implication/ implications?\n1. India’s Public Distribution System should be monitored by the Union Government.\n2. Girls should be encouraged to delay marriage and first pregnancy.\n3. Mothers should be encouraged to breastfeed their children immediately after birth.\n4. The supply of safe drinking water and proper sanitation facilities to all should be ensured.\n5. Authorities should ensure the vaccination as prescribed. Select the correct answer using the code given below.",
+  "opts": [
+   "1, 2, 3 and 4",
+   "2, 3, 4 and 5",
+   "1 only",
+   "3 and 5 only"
+  ],
+  "answer": 1,
+  "expl": "This is a typical application-based question. It is important to understand the term ‘malnutrition’ along with its proper causes and solutions. Malnutrition occurs when the body doesn't get enough nutrients. Malnutrition is not only about lack of food; a combination of other causes lead to malnutrition in children, including diet at home, illnesses such as malaria and water- borne diseases, limited access to clean water and sanitation infrastructure, and knowledge about safe hygiene practices, lack of access to health services, and inadequate child feeding practices and genetic factors. For a sustainable response against malnutrition, it is advocated for increased national government commitment in providing better food and health facilities to its public. An integrated approach involving the health, education, protection and water and sanitation sectors is required. Statement 1 is not relevant as it shows only the commitment of the Union Government to provide basic food facilities to poor people. Statement 2 looks at a practical solution to avoid the genetic problem of malnutrition. A healthy woman will give birth to a healthy child. Statement 3–Optimal breastfeeding helps prevent malnutrition in all its forms with positive lifelong effects on both children and mothers. Child malnutrition often results from artificial feeding in low-income families. This is a correct implication based on the reading of the passage. Statement 4–Repeated infection with diarrhoeal diseases contributes to chronic malnutrition by inhibiting intestinal absorption of nutrients and is strongly correlated with stunting. Statement 5–Vaccination helps to recover from the diseases associated with malnutrition it and is directly related to malnutrition causes. Hence, this statement is correct. Option (b) is correct."
+ },
+ {
+  "n": 43,
+  "q": "Passage - 3 The pulse variety ‘Pusa Arhar 16’ has the potential to be grown in the paddy-growing regions of Punjab, Haryana and Uttar Pradesh and eventually in all of India. Its yield (about 2000 kg/hectare) will be significantly greater than those of the existing varieties and because its size will be uniform, it will be amenable to mechanical harvesting, an attractive feature for farmers in northern India who currently use this technology for paddy. Most important, Arhar straw, unlike paddy straw, is green and can be ploughed back into the soil. In paddy straw, the problem is the high silica content, which does not allow for easy decomposition. In the case of Arhar, the farmer, even after combine harvesting, just needs to run a rotovator to cut the leftover straw into pieces, which can be ploughed back and will decompose very fast. All this is difficult with leftover paddy stalks that cannot be easily salvaged or ploughed back. Farmers, therefore, choose the easiest option of simply burning it. Which of the following are the most rational inferences that can be made from the passage?\n1. Farmers’ income will be higher with pulse cultivation than with paddy cultivation.\n2. Pulse cultivation causes less pollution as compared to paddy cultivation.\n3. Pulse straw can be used to improve soil quality.\n4. In the context of northern Indian agriculture, paddy straw has no usefulness.\n5. Mechanized agriculture is the main cause for stubble burning. Select the correct answer using the code given below:",
+  "opts": [
+   "2, 3 and 5",
+   "1, 4 and 5",
+   "2 and 3 only",
+   "1 and 4 only"
+  ],
+  "answer": 2,
+  "expl": "The main purpose of the passage seems to be to enlist the reasons why farmers in northern India can shift to pulses from the paddy. The most rational inferences that can be made from the passage is Pulse cultivation causes less pollution as compared to paddy cultivation . Its straw can be used to improve soil quality. Hence statements 2 and 3 are only correct inference . Statement 5 is out of context as it is not supported by the content of the passage. Option (c) has the right combination of inferences. Hence, it is the most appropriate answer to the given question."
+ },
+ {
+  "n": 44,
+  "q": "Passage - 4 In India, authorities always look to store the maximum amount of water in reservoirs during the monsoon season, which is then used for irrigation and generation of electricity during the summer months. It is an internationally accepted practice that the water level of a reservoir should be kept below a certain level before the onset of monsoon season. This is so that when monsoon rains come, there is space to store the excess rainwater and also so that water can be released in a regulated manner. But the authorities store the maximum amount of water in reservoirs even before the close of the monsoon, only to ensure greater electricity generation and irrigation. With reference to the above passage, the following assumptions have been made:\n1. High risks involved in holding maximum water in reservoirs are due to our over- dependence on hydropower projects.\n2. Storage capacity of dams should not be fully used before or during monsoon season.\n3. Role of dams in flood control is underestimated in India.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 and 2 only",
+   "2 only",
+   "3 only",
+   "1, 2 and 3"
+  ],
+  "answer": 3,
+  "expl": "The opening statement and the closing statement of the passage, both emphasise the fact that the authorities take the risk of filling the reservoirs to maximum capacity for electricity generation and fulfilling irrigation needs in summer. The authorities are always responsible and accountable people, still they do this. What can be an appropriate explanation for their behaviour? This erratic behaviour of authorities can be explained in our over dependence on hydro power projects. It can be assumed that if they will not do this then they have to face the short supply of the electricity in the city or problem of low irrigation. Therefore, statement 1 is correct. The author has taken reference from the international convention of leaving the space in the reservoirs before and during monsoon season to avoid filling them to the brink. A logical and rationale assumption will be that this caution is observed to avoid releasing of excess water towards the populated areas later on. Hence, statement 2 and 3 are also correct. Option (d) is the correct answer."
+ },
+ {
+  "n": 45,
+  "q": "Passage - 5 Economic liberalization in India was shaped largely by the economic problems of the government than by the economic priorities of the people or by the long-term development objectives. Thus, there were limitations in conception and design which have been subsequently validated by experience. Jobless growth, persistent poverty and rising inequality have mounted as problems since economic liberalization began. And all these years later, four quiet crises confront the economy; agriculture, infrastructure, industrialization and education as constraints on the country’s future prospects. These problems must be resolved if economic growth has to be sustained and transformed into meaningful development. Which of the following is/are the most rational and logical inference/inferences that can be made from the passage?\n1. It is essential to rethink and redefine the economic role of the State in the quest for development.\n2. India has not made effective implementation of its policies in social sectors nor made sufficient investments in them. Select the correct answer using the code given below.",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "The main idea presented in the passage can be summarised in two points – economic liberalisation policies were conceptualised in such a fashion at that time to minimise the problems of the state. It can be assumed that these were formed to avoid the immediate problems of government of that time like liquidity crunch or mounting deficit or international pressure. Though we have to answer the question on basis of the content of the passage. It is important to know the back ground of reason of economic liberalisation of India in 1991. The main reasons of economic reforms in India were- • Rise in Prices, • Rise in Fiscal Deficit, • Increase in Adverse Balance of Payments, • Dismal Performance of PSU's and • Fall in Foreign Exchange Reserves All of these are problems related with the government and not immediately with public. So, the statement 1 is right in demanding the redefining the economic role of state in the quest for development. Here, the inference is that the focus of the government shall be on framing policies that target the problems of public directly- like jobs, income equality and rise in living standard coming out of poverty. Suppose foreign investment brings large sum of money in the country after liberalisation but this money is unequally divided and fail to solve basic problem of public, then the economic role of state will definitely come in question. Statement 2 is also correct. The author says that social policies were not in place at time of liberalisation so the question of effective or ineffective implementation as stated in this statement. Hence last part of the statement is correct. Only option (c) is the answer."
+ },
+ {
+  "n": 46,
+  "q": "With reference to the above passage, the following assumptions have been made:\n1. India’s economy needs to be greatly integrated with global economy so as to create large number of jobs and to sustain its growth momentum.\n2. Economic liberalization would cause large economic growth which would reduce poverty and create sufficient employment in the long run.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 3,
+  "expl": "Statement 1 and Statement 2, prima facie, look practical and true. But the real question is whether they find relevance in the passage or not. International integration of Indian economy is not discussed in the passage. So, statement 1 is out of the scope of the passage. The author would most likely disagree with the assumption that liberalisation will bring the reduction in poverty and sufficient jobs. If it had been so, the India must not have been looking at the four problems of agriculture, infrastructure, industrialization and education. The liberalisation would have eradicated them already. So, statement 2 can not be a true assumption."
+ },
+ {
+  "n": 47,
+  "q": "A shop owner offers the following discount options on an article to a customer:\n1. Successive discounts of 10% and 20%, and then pay a service tax of 10%\n2. Successive discounts of 20% and 10%, and then pay a service tax of 10%\n3. Pay a service tax of 10% first, then successive discounts of 20% and 10% Which one of the following is correct?",
+  "opts": [
+   "1 only is the best option for the customer.",
+   "2 only is the best option for the customer.",
+   "3 only is the best option for the customer.",
+   "All the options are equally good for the customer."
+  ],
+  "answer": 3,
+  "expl": "Let base price is ` 100 Condition-1: Price after 1st discount = 9 ` Price after 2nd discount = 8 ` Price after service tax = 72 1 79 2 ` . Condition-2: Price after 1st discount = 8 ` Price after 2nd discount = 9 ` Price after service tax = 72 1 79 2 ` . Condition-3: Price after service tax = 100 1 ` Price after 1st discount = 110 8 ` Price after 2nd discount = 88 9 79 2 ` . All options are equal for customer."
+ },
+ {
+  "n": 48,
+  "q": "The letters from A to Z are numbered from 1 to 26 respectively. If GHI = 1578 and DEF = 912, then what is ABC equal to?",
+  "opts": [
+   "492",
+   "468",
+   "262",
+   "246"
+  ],
+  "answer": 3,
+  "expl": "When alphabets are numbered GHI = 789 DEF = 456 ABC = 123 According to question, GHI = 1578 = 789 × 2 DEF = 912 = 456 × 2 So, ABC = 123 × 2 = 246"
+ },
+ {
+  "n": 49,
+  "q": "What is the missing term @ in the following? ACPQ : BESU :: MNGI : @",
+  "opts": [
+   "NPJL",
+   "NOJM",
+   "NPIL",
+   "NPJM"
+  ],
+  "answer": 3,
+  "expl": "So,"
+ },
+ {
+  "n": 50,
+  "q": "What is the largest number among the following ?",
+  "opts": [
+   "6 1 2 −      ",
+   "3 1 4 −      ",
+   "4 1 3 −      ",
+   "2 1 6 −      "
+  ],
+  "answer": 2,
+  "expl": "Q (a)–m = 1 a m 1 2 6 = (2)6 , 1 4 3 = (4)3 = 64 = 64 1 3 4 = (3)4 , 1 6 2 = (6)2 = 81 = 36 So, largest number is 1 3 4"
+ },
+ {
+  "n": 51,
+  "q": "What is the greatest length x such that 1 3 m 2 and 3 8 m 4 are integral multiples of x?",
+  "opts": [
+   "1 1 m 2",
+   "1 1 m 3",
+   "1 1 m 4",
+   "3 1 m 4"
+  ],
+  "answer": 3,
+  "expl": "3 1 2 m = 3 2 1 2 7 2 m m 8 3 4 m = 8 4 3 4 4 m m x is HCF of 7 2 4 and x = HCF (7, 35) LCM (2, 4) QHCF of and A B C D HCF A C LCM B D ( , ) ( , ) = 7 4 1 3 4 = length x = 1 3 4 m"
+ },
+ {
+  "n": 52,
+  "q": "Consider the following data: Year Birth Rate Death rate 1911–1921 48.1 35.5 1921–1931 46.4 36.3 1931–1941 45.2 31.2 1941–1951 39.9 27.4 1951–1961 41.7 22.8 1961–1971 41.1 18.9 1971–1981 37.1 14.8 For which period was the natural growth rate maximum?",
+  "opts": [
+   "1911 – 1921",
+   "1941 – 1951",
+   "1961 – 1971",
+   "1971 – 1981"
+  ],
+  "answer": 3,
+  "expl": "Q Growth rate = Birth rate – Death rate Maximum growth rate = 37.1 – 14.8 = 22.3 is for 1971-1981"
+ },
+ {
+  "n": 53,
+  "q": "The recurring decimal representation 1.272727... is equivalent to",
+  "opts": [
+   "13/11",
+   "14/11",
+   "127/99",
+   "137/99"
+  ],
+  "answer": 1,
+  "expl": "Let x = 1.272727... 100x = 127.272727.... 100x – x = 127.272727.... – 1.272727... 99x = 126 x = 126 = 1.272727.... = 14"
+ },
+ {
+  "n": 54,
+  "q": "What is the least four-digit number when divided by 3, 4, 5 and 6 leaves a remainder 2 in each case?",
+  "opts": [
+   "1012",
+   "1022",
+   "1122",
+   "1222"
+  ],
+  "answer": 1,
+  "expl": "LCM of 3, 4, 5 and 6 = 60 Required number is in form 60x + 2 because remainder is 2 If x = 16 Number = 60 × 16 + 2 = 962 (3 digit number) If x = 17 Number = 60 × 17 + 2 = 1022 (4 digit number)"
+ },
+ {
+  "n": 55,
+  "q": "In adult population of a city, 40% men and 30% women are married. What is the percentage of married adult population if no man marries more than one woman and no woman marries more than one man; and there are no widows and widowers?",
+  "opts": [
+   "1 % 7",
+   "34 %",
+   "2 % 7",
+   "35 %"
+  ],
+  "answer": 2,
+  "expl": "According to question, No. of married men = No. of married women Let there are 30 men and 40 women on the city. Total adults = 70 No. of married men = 40 No. of married women = 30 Married adults = 12 + 12 = 24 % of married adults = 24 34 2 7 %"
+ },
+ {
+  "n": 56,
+  "q": "What is the remainder when 51 × 27 × 35 × 62 × 75 is divided by 100?",
+  "opts": [
+   "50",
+   "25",
+   "5",
+   "1"
+  ],
+  "answer": 0,
+  "expl": "× × × × = 51 3 4 × × × × = 51 3 2 × × × × 51 × 27 × 35 × 31 × 3 is a odd number (product of odd number is always odd) (51 × 27 × 35 × 31 × 3) gives remainder 1 when divided by 2. So, 51 × 27 × 35 × 62 × 75 gives remainder 1 × 50 i.e., 50 when divided by 100 (2 × 50)"
+ },
+ {
+  "n": 57,
+  "q": "A sum of ` 2,500 is distributed among X, Y and Z in the ratio 1 3 5 : : 2 4 6 . What is the difference between the maximum share and the minimum share?",
+  "opts": [
+   "` 300",
+   "` 350",
+   "` 400",
+   "` 450"
+  ],
+  "answer": 2,
+  "expl": "Sum distributed among X, Y, Z in ratio = 1 2 3 4 5 6 : : = 6 : 9 : 10 [on multiplied by 12 LCM of 2, 4 and 6] Let the shares of X, Y and Z are 6x, 9x and 10x respectively. 6x + 9x + 10x = 2500 25x = 2500 x = 100 Difference between maximu and minimum share = 10x – 6x = 4x = 4 × 100 = ` 400"
+ },
+ {
+  "n": 58,
+  "q": "For what value of n, the sum of digits in the number (10n + 1) is 2?",
+  "opts": [
+   "For n = 0 only",
+   "For any whole number n",
+   "For any positive integer n only",
+   "For any real number n"
+  ],
+  "answer": 1,
+  "expl": "Number = 10n + 1 Put n = 0, Number = 10° + 1 = 1 + 1 = 2 (sum of digits is 2) Put n = 1, Number = 101 + 1 = 11 (Sum of digits is 2) Put n = 2, Number = 102 + 1 = 101 (Sum of digits is 2) Put n = 3, Number = 103 + 1 = 1001 (Sum of digits is 2) Hence, sum of digits of number is always 2 when n is whole number (0, 1, 2, 3, 4, ....)"
+ },
+ {
+  "n": 59,
+  "q": "In a class, there are three groups A, B and C. If one student from group A and two students from group B are shifted to group C, then what happens to the average weight of the students of the class?",
+  "opts": [
+   "It increases.",
+   "It decreases.",
+   "It remains the same.",
+   "No conclusion can be drawn due to insufficient data."
+  ],
+  "answer": 2,
+  "expl": "Average weight of class = Total weight of class Total number of students in class Only internal shifting is done, no new student is added in class nor any student is shifted to new class. So, average weight of class does not change."
+ },
+ {
+  "n": 60,
+  "q": "How many different sums can be formed with the denominations ` 50, ` 100, ` 200, ` 500 and ` 2,000 taking at least three denominations at a time?",
+  "opts": [
+   "16",
+   "15",
+   "14",
+   "10"
+  ],
+  "answer": 0,
+  "expl": "Number of given denominations = 5 Case-1: Using all 5 denominations We have 1 way to do this Case-2: Using 4 denominations We have to select any 4 out of 5 denominations i.e. 5C4 = 5 4 1 5 ! ! ! ways Case-3: Using 3 denominations We have to select any 3 out of 5 denominations i.e. 5C3 = = = × 5! C 10 ways 3! 2! So, total number of different sums can be 1 + 5 + 10 = 16."
+ },
+ {
+  "n": 61,
+  "q": "Direction for the following 6 (six) items: Read the following five passages and answer the items (61-66) that follow. Your answers to these items should be based on the passages only. Passage - 1 Bank credit to the industrial sector has started shrinking. Its decline has been a serious concern as credit growth is essential to revive investment. The problem’s origins lie in the incomplete reforms of the last 25 years. An institutional change that should have followed the 1991 reforms should have been setting up of a resolution corporation for banks. In a market economy with booms and busts, banks should be allowed to be set up and to fail. Today, we cannot shut down banks because there is no proper system to shut them down. Weak loss- making banks continue to need more capital. Which one of the following is the most logical and rational inference that can be made from the above passage?",
+  "opts": [
+   "Indian banking system is not able to help the country in its economic growth.",
+   "Economic reforms that started in 1991 have not helped in improving the economy to expected levels.",
+   "India lacks the institutional mechanism to deal with the failure of banks.",
+   "Encouraging the foreign investments in our industrial sector is a good alternative to this sector’s dependence on banks for credit."
+  ],
+  "answer": 2,
+  "expl": "Inference is the act or process of reaching a conclusion about something from known facts. Option (a) is incorrect as the passage is discussing the failing banks not the failure of economy due to banks. The author has opined that the system failed to take appropriate steps after the reforms of 1991. He has used the term ‘incomplete reforms’ for denoting the situation. It means that the reforms starting in 1991 remained incomplete. Option(b) is not correct inference as the author has not blamed the 1991 reforms for current condition of economy. According to the passage, the loss-making banks have become burden on the country but we have to continue with them as no other option is left. There is no institutional mechanism to shut them down. This finds ample support in the passage. Hence, option (c) is correct. Option (d) looks a sudden intrusion in the discussion. The role of foreign investment is not discussed in the passage. This option can be rejected as an inference based on the passage outrightly."
+ },
+ {
+  "n": 62,
+  "q": "Passage - 2 India has tremendous potential for solar energy. We all realize that we have to stop burning fossil fuels to meet our energy needs. But certain renewable resources are still going through their cost curves and learning curves to get the required amount of output. The Indian Government has strongly committed to its targets of reducing emissions by 33 per cent by 2030, and towards this it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable energy. However, business houses are wary of investing too heavily in renewable energy at a time when the technology is not yet ready. Which one of the following is the most logical and rational inference that can be made from the above passage?",
+  "opts": [
+   "India’s commitment to reduce emissions by 33% is unlikely to be achieved.",
+   "India should import gas rather than invest in renewable resources.",
+   "Getting renewable resources to market too soon may be costly.",
+   "India should put in more efforts in the exploration of natural gas."
+  ],
+  "answer": 2,
+  "expl": "Option (a) belongs to future. It is very definitive type of statement. There is no reason as mentioned in the passage that India despite of full commitment of its government towards this objective of reducing the emission by 33 % and subsequent positive steps taken in this direction, will not achieve it. So, this option can be discarded. Option (b) looks short-sighted in not observing the long-term goal of India for a gas-based economy. Is it possible for a nation of size of India to depend on imports for its prime resource? This is absurd to infer this. Hence, option (b) is illogical and incoherent. Option (c) is a correct and logical inference. As not many business houses are interested in the renewable resources, it is expected that the cost of getting renewable resources to market will be huge on the shoulders of government. Option (d) looks correct at first instance. But a deep critical reasoning will lead to its rejection. The first sentence of the passage mentions that India has huge potential for solar energy, also as mentioned in passage, it seems that renewable resources are the future, once their efficiency is established after this phase of trials. Till then, it is not prudent to put more efforts on the gas exploration. Option (c) is the most appropriate answer to the question."
+ },
+ {
+  "n": 63,
+  "q": "With reference to the above passage, the following assumptions have been made:\n1. Governments often provide inefficient and costly subsidies for technologies that may not be ready in the near future.\n2. India’s commitment of reducing emissions by 33% by 2030 shall be on the basis of gas- based economy.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 0,
+  "expl": "Statement 1 is correct as the ,Governments often provide inefficient and costly subsidies for technologies that may not be ready in the near future. A student shall always look for words which are key words to reject the options. Some of these words are – definitely, often, surely, perfectly, best, worst etc. These words should have strong support from the passage. In this Statement 1, ‘often’ is the word that demands a strong connection with the content of the passage. India’s commitment of reducing emissions by 33% by 2030 is obviously not dependent solely on gas but a mix of steps like reducing use of fossil fuels and introduction of renewable resources. Statement 2 is not a correct inference."
+ },
+ {
+  "n": 64,
+  "q": "Passage - 3 Genome editing is different from genome modification. Genome editing typically involves finding the part of a plant genome that could be changed to render it less vulnerable to disease, or resistant to certain herbicides, or to increase yields. Researchers use ‘molecular scissors’ to dissect the genome and repair it, which is a process that occurs naturally when plants are under attack from diseases and can throw up new mutations that enable the plant to survive future attacks. This evolutionary process can effectively be speeded up now that it is possible to examine plant genomes in detail in laboratories, and create mechanisms through which the relevant genes can be altered very precisely. With reference to the above passage, the following assumptions have been made:\n1. Genome editing does not require the transfer of genes from one plant to another.\n2. Through genome editing, the chosen genes can be altered precisely in a manner akin to the natural process that helps plants to adapt to the environmental factors.\nWhich of the above assumptions is/are valid?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 2,
+  "expl": "Genome editing is different from genome modification. Gene modification like in Genetically Modified crop, one gene is transferred from one plant variety to another plant variety to introduce desired characteristics in it. Whereas in genome editing, existing gene is edited through a small, controlled tweak to a living organism’s existing DNA versus the introduction of a new, foreign gene. The author has used expression ‘molecular scissors’ for the tweaker. Genome editing does not require a transfer of genes from one plant to the other. Statement 1 is correct. This process is similar that occurs naturally when plants are under attack from diseases and can throw up new more safer mutations. Hence, statement 2 is also true."
+ },
+ {
+  "n": 65,
+  "q": "Passage - 4 Many people understand the connection between solid waste management and health in terms of the consequences of unattended heaps of dry garbage which become home for flies and other vermin. However, there is another aspect that is not well- understood, that is, what happens when unscientific solid waste management combines with poor drainage and dumping of untreated sewage into drains which are meant to carry storm water during rains. The result is choked drains which are full of stagnant water breeding mosquitoes, resulting in the spread of water-borne diseases. In the context of India, which one of the following statements best reflects the critical message of the passage?",
+  "opts": [
+   "In India, the drainage networks are not separate for sewerage and storm water.",
+   "Urban local bodies do not have enough resources and legislative authority to deal with the problems of waste management.",
+   "Solid waste management should be integrated with the maintenance of drainage and sewerage networks.",
+   "Bad management of solid waste and sewerage systems by our municipalities is the reason for drinking water shortages in our cities."
+  ],
+  "answer": 2,
+  "expl": "This is explicitly mentioned in the passage that there is no separate drainage system for sewerage and rain water. But this is not the main point of the author in the passage. This is a supporting statement for the main point. So, option (a) is ignored. Urban local bodies and their inefficiency is not the central idea around which the passage revolves. It is not even mentioned in the passage. Option (b) is not correct. A test taker shall read the first line and the middle part of the passage carefully. It says that there is a connection in solid waste management and health issues created by poor disposal of waste through unscientific drainage system. It calls for an integrated approach that involves proper solid waste management system and efficiently managed drainage system."
+ },
+ {
+  "n": 66,
+  "q": "Passage - 5 In Part III of the Constitution, which assures people certain fundamental rights, Article 25 proclaims that “all persons are equally entitled to freedom of conscience and the right freely to profess, practise and propagate religion”. What people fail to notice is that this proclamation is prefixed with the words “subject to public order, morality, health and to the other provisions of this Part”, which set conditions precedent for the legal protection of religious practices of any community. The closing words of this prefatory rider in Article 25 virtually constitute a subordination clause placing other fundamental rights mentioned in Part III over and above the right to religious freedom. Among those other fundamental rights is the right to equality before law and equal protection of laws-assured at the outset and elaborated in later articles to mean, inter alia, that the State shall not deny equal protection of laws to any person or group of persons on the basis of religion alone. What is the most logical inference from the above passage?",
+  "opts": [
+   "State shall not interfere with the religious affairs of the citizens.",
+   "Religious freedom under the Constitution is open to State intervention.",
+   "Religious freedom of the citizens is not covered under fundamental rights.",
+   "Religious practices of any community are immune to State laws."
+  ],
+  "answer": 1,
+  "expl": "The passage says that Article 25 provides the freedom to practice and propagate religion. This right is not an absolute right. There is sub clause to it. While observing the freedom under the Article 25, everyone shall take caution to maintain order, morality and health of provisions of other parts of the constitution. State shall not deny equal protection of laws to any person or group on basis of religion alone. Statement (b) is the correct answer. Statement (a) is incorrect as it contradicts the content of the passage. According to the passage, the state has very important responsibility to ensure the equality for every citizen. Statement (c) can not be ascertained from the passage. Statement (d) is easy to discard as this grossly is in opposition to the argument of the author in the passage."
+ },
+ {
+  "n": 67,
+  "q": "How many different 5-letter words (with or without meaning) can be constructed using all the letters of the word ‘DELHI’ so that each word has to start with D and end with I?",
+  "opts": [
+   "24",
+   "18",
+   "12",
+   "6"
+  ],
+  "answer": 3,
+  "expl": "D I To make word, we need to fill rest of 3 places by using E, L and H i.e., by 3! = 6 ways"
+ },
+ {
+  "n": 68,
+  "q": "A bottle contains 20 litres of liquid A. 4 litres of liquid A is taken out of it and replaced by same quantity of liquid B. Again 4 litres of the mixture is taken out and replaced by same quantity of liquid B. What is the ratio of quantity of liquid A to that of liquid B in the final mixture?",
+  "opts": [
+   "4 : 1",
+   "5 : 1",
+   "16 : 9",
+   "17 : 8"
+  ],
+  "answer": 2,
+  "expl": "Liquid-A Liquid-B Initial Quantity 0 Quantity after mix-1 4 Quantity after mix-2 4 5 4 4 4 5 5 Ratio of A and B in final mixture = 64 5 5 : = 16 : 9"
+ },
+ {
+  "n": 69,
+  "q": "The average score of a batsman after his 50th innings was 46⋅4. After 60th innings, his average score increases by 2⋅6. What was his average score in the last ten innings?",
+  "opts": [
+   "122",
+   "91",
+   "62",
+   "49"
+  ],
+  "answer": 2,
+  "expl": "Average score after 50 innings = 46.4 Total score in 50 innings = 50 × 46.4 = 2320 Average score after 60 innings = 46.4 + 2.6 = 49 Total score in 60 innings = 60 × 49 = 2940 Average score of 10 innings [51st to 60th] = 2940 − = 620 ="
+ },
+ {
+  "n": 70,
+  "q": "As a result of 25% hike in the price of rice per kg, a person is able to purchase 6 kg less rice for ` 1,200. What was the original price of rice per kg?",
+  "opts": [
+   "` 30",
+   "` 40",
+   "` 50",
+   "` 60"
+  ],
+  "answer": 1,
+  "expl": "Let the original price of rice is ` 100x/kg Rice purchased at original price = 1200 x x = kg After 25% hike New price = 125 x x ` /kg Rice purchased at hiked price = 1200 5 x x = kg According to question, 5 x x − = 6 x = 0.4 Original price of rice = 100 × 0.4 = ` 40 kg"
+ },
+ {
+  "n": 71,
+  "q": "A person X can complete 20% of work in 8 days and another person Y can complete 25% of the same work in 6 days. If they work together, in how many days will 40% of the work be completed?",
+  "opts": [
+   "6",
+   "8",
+   "10",
+   "12"
+  ],
+  "answer": 0,
+  "expl": "X can finish 20% of work in 8 days So, X will finish 100% of work in (5 × 8) 40 days. Y can complete 25% of work in 6 days So, Y will finish 100% of work in (4 × 6) 24 days. Work done by X and Y together in 1 day = 1 1 8 1 th part They will finish whole work in 15 days. They will complete 40% of work in 40% of 15 i.e., 40/100 × 15 = 6 days"
+ },
+ {
+  "n": 72,
+  "q": "A car travels from a place X to place Y at an average speed of v km/hr, from Y to X at an average speed of 2v km/hr, again from X to Y at an average speed of 3v km/hr and again from Y to X at an average speed of 4v km/ hr. Then the average speed of the car for the entire journey.",
+  "opts": [
+   "is less than v km/hr",
+   "lies between v and 2v km/hr",
+   "lies between 2v and 3v km/hr",
+   "lies between 3v and 4v km/hr"
+  ],
+  "answer": 1,
+  "expl": "Let distance between X and Y = 12x km (LCM of 1, 2, 3, 4) Time taken in first round, t1 = 12x V hr Time taken in second round, t2 = 12x 2V hr Time taken in third round, t3 = 12x 3V hr Time taken in fourth round, t4 = 12x 4V hr Average speed = Total distance Total time = 12 2 3 4 x x x x x x x x + + + + + + V V V V = 4 1 1 2 1 3 1 4 x x V V V V = 4 6 4 3 + + + V = 4 V V Q V < 48 2 V V <"
+ },
+ {
+  "n": 73,
+  "q": "Consider the following statements:\n1. The minimum number of points of intersection of a square and a circle is 2.\n2. The maximum number of points of intersection of a square and a circle is 8.\nWhich of the above statements is/are correct?",
+  "opts": [
+   "1 only",
+   "2 only",
+   "Both 1 and 2",
+   "Neither 1 nor 2"
+  ],
+  "answer": 1,
+  "expl": "For statement-1: Here, circle touches the square at one point. So, first statement is wrong. Minimum number of point of intersection is one. For statement-2: A circle can intersect a line at two points. So, maximum points of intersection of square and circle = 4 ×2 = 8 Only statement-2 is correct."
+ },
+ {
+  "n": 74,
+  "q": "A man takes half time in rowing a certain distance downstream than upstream. What is the ratio of the speed in still water to the speed of current?",
+  "opts": [
+   "1 : 2",
+   "2 : 1",
+   "1 : 3",
+   "3 : 1"
+  ],
+  "answer": 3,
+  "expl": "Let speed of man is still water = x m/s and speed of current = y m/s Man is travelling a distance = d m Downstream: speed = x + y m/s time = d x y + Upstream: speed = x – y m/s time = d x y − According to question, 2. d x y + = d x y − 2(x – y) = x + y 2x – x = y + 2y x = 3y x y = 3 1 x : y = 3 : 1"
+ },
+ {
+  "n": 75,
+  "q": "How many pairs of natural numbers are there such that the difference of whose squares is 63?",
+  "opts": [
+   "3",
+   "4",
+   "5",
+   "2"
+  ],
+  "answer": 0,
+  "expl": "Let required pairs of natural number is (x, y) \\ x2 – y2 = 63 (x + y) (x – y) = 63 Case-1: When, x + y = 9 x – y = 7 ⇒ x = 8 y = 1 Case-2 When, x + y = 21 x – y = 3 ⇒ x = 12 y = 9 Case-3 When, x + y = 63 x – y = 1 ⇒ x = 32 y = 31 Therefore, 3 such pairs of natural numbers."
+ },
+ {
+  "n": 76,
+  "q": "Which one of the following will have minimum change in its value if 5 is added to both numerator and the denominator of the fractions 2/3, 3/4, 4/5 and 5/6?",
+  "opts": [
+   "2/3",
+   "3/4",
+   "4/5",
+   "5/6"
+  ],
+  "answer": 3,
+  "expl": "We know that, bigger are the numbers in numerator and denominator, the less will be impact of any addition. Example: 3 5 = 0.6 and 4 6 0 66 = . .... 9 10 = 0.9 and 10 0 9090 = . ... As 5 6 has the biggest number in numerator and denominator, it will be least impacted on adding 1 to numerator and denominator."
+ },
+ {
+  "n": 77,
+  "q": "A digit n > 3 is divisible by 3 but not divisible by 6. Which one of the following is divisible by 4?",
+  "opts": [
+   "2n",
+   "3n",
+   "2n + 4",
+   "3n + 1"
+  ],
+  "answer": 3,
+  "expl": "Q n > 3 and n is not divisible by 6 Let n = 9 (divisible by 3 but not by 6) 2n = 2 × 9 = 18 (not divisible by 4) 3n = 3 × 9 = 27 (not divisible by 4) 2n+ 4 = 2 × 9 + 4 = 22 (not divisible by 4) 3n + 1 = 3 × 9 + 1 = 28 (divisible by 4)"
+ },
+ {
+  "n": 78,
+  "q": "If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh 0.1 gm?",
+  "opts": [
+   "1",
+   "10",
+   "100",
+   "1000"
+  ],
+  "answer": 2,
+  "expl": "1 liter = 1000000 ml Weight of 1000000 ml = 1 kg = 1000 gm Weight of 1000000 10000 10000 ml= gm Weight of 100 ml = 0.1 gm"
+ },
+ {
+  "n": 79,
+  "q": "A vessel full of water weighs 40 kg. If it is one- third filled, its weight becomes 20 kg. What is the weight of the empty vessel?",
+  "opts": [
+   "10 kg",
+   "15 kg",
+   "20 kg",
+   "25 kg"
+  ],
+  "answer": 0,
+  "expl": "Let weight of water = x kg and weight of vessel = y kg So, x + y = 40 ...(i) Weight of water, when vessel filled one-third = x 3 So, x y 3 + = 20 ...(ii) Subtract (ii) from (i) x y x y 3 = 40 – 20 2 3 x = 20 x = 30 kg So, weight of vessel = 40 – x = 40 – 30 = 10 kg"
+ },
+ {
+  "n": 80,
+  "q": "A frog tries to come out of a dried well 4.5 m deep with slippery walls. Every time the frog jumps 30 cm, slides down 15 cm. What is the number of jumps required for the frog to come out of the well?",
+  "opts": [
+   "28",
+   "29",
+   "30",
+   "31"
+  ],
+  "answer": 1,
+  "expl": "Total heights of well = 4.5m = 450 cm Length covered by frog in one jump = 30 – 15 = 15 cm Number of jumps to cover 420 cm = 420 = In 29th jump, frog will be on top of wall and will not slide down. Total number of jumps = 29"
+ }
+]
