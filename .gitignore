@@ -51,7 +51,7 @@ _dpc2020_*
 _dpc09_*
 _seedimg_*
 _vis_*
-_final*
+_final*.json
 _esic_*
 _pdftext_*
 _para_*
@@ -64,3 +64,8 @@ _check_*.mjs
 _pyq_audit.mjs
 _parsed_*.json
 _temp_*.py
+_neet_*
+_neet2*.pdf
+_q_neet*
+_extracted_neet*
+_figmeta_neet*
