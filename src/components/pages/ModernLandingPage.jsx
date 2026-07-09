@@ -91,7 +91,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
-               <div className="max-w-5xl mx-auto text-center space-y-8 mt-8 lg:mt-0 py-4 lg:py-12">
+               <div className="max-w-5xl mx-auto text-center space-y-6 mt-8 lg:mt-0 py-4 lg:py-12">
                   {/* Gamified Floating Elements */}
                   <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
@@ -188,29 +188,29 @@ const ModernLandingPage = () => {
                   animation-play-state: paused;
                }
             `}</style>
-            
+
             <div className="animate-marquee w-max">
                {/* Repeat content twice for seamless loop */}
                {[0, 1].map((iteration) => (
                   <div key={iteration} className="flex items-center gap-12 pr-12">
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                        <span className="text-primary-600 dark:text-primary-400 font-bold text-lg">🔥 {stats.registeredLast30Days}</span> 
+                        <span className="text-primary-600 dark:text-primary-400 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
                         Registered Users (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-                        <span className="text-amber-600 dark:text-amber-400 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span> 
+                        <span className="text-amber-600 dark:text-amber-400 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         Practice Test Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
-                        <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span> 
+                        <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         PYQ's Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
-                        <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span> 
+                        <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         Quiz Attempts (Last 30 Days)
                      </div>
                   </div>
