@@ -63,7 +63,7 @@ export async function POST(req) {
                 try {
                     const now = new Date();
                     const endDate = new Date(now);
-                    endDate.setDate(endDate.getDate() + 30);
+                    endDate.setDate(endDate.getDate() + 7);
                     const subscription = await Subscription.create({
                         user: user._id, plan: 'PRO', status: 'active',
                         startDate: now, endDate, amount: 9, currency: 'INR',
