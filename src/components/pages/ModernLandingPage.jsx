@@ -34,8 +34,10 @@ const ModernLandingPage = () => {
       totalSubjects: "10+",
       totalTopics: "50+",
       totalQuestions: "12K+",
-      recentRegistrations: "10+",
-      recentAttempts: "100+",
+      registeredLast30Days: "0",
+      practiceTestAttemptsLast30Days: "0",
+      pyqAttemptsLast30Days: "0",
+      quizAttemptsLast30Days: "0",
       examStats: [],
    });
    const [tickerIndex, setTickerIndex] = useState(0);
@@ -62,8 +64,10 @@ const ModernLandingPage = () => {
                totalSubjects: formatNum(res.data?.totalSubjects || 10),
                totalTopics: formatNum(res.data?.totalTopics || 50),
                totalQuestions: formatNum(res.data?.totalQuestions || 12500),
-               recentRegistrations: res.data?.recentRegistrations || 0,
-               recentAttempts: res.data?.recentAttempts || 0,
+               registeredLast30Days: res.data?.registeredLast30Days || 0,
+               practiceTestAttemptsLast30Days: res.data?.practiceTestAttemptsLast30Days || 0,
+               pyqAttemptsLast30Days: res.data?.pyqAttemptsLast30Days || 0,
+               quizAttemptsLast30Days: res.data?.quizAttemptsLast30Days || 0,
                examStats: res.data?.examStats || [],
             });
          }
@@ -168,6 +172,52 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
+         {/* ── Ticker Stats ── */}
+         <section className="bg-slate-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 py-3 overflow-hidden relative flex">
+            <style>{`
+               @keyframes marquee {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+               }
+               .animate-marquee {
+                  animation: marquee 25s linear infinite;
+                  display: flex;
+                  white-space: nowrap;
+               }
+               .animate-marquee:hover {
+                  animation-play-state: paused;
+               }
+            `}</style>
+            
+            <div className="animate-marquee w-max">
+               {/* Repeat content twice for seamless loop */}
+               {[0, 1].map((iteration) => (
+                  <div key={iteration} className="flex items-center gap-12 pr-12">
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                        <span className="text-primary-600 dark:text-primary-400 font-bold text-lg">🔥 {stats.registeredLast30Days}</span> 
+                        Registered Users (Last 30 Days)
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                        <span className="text-amber-600 dark:text-amber-400 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span> 
+                        Practice Test Attempts (Last 30 Days)
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span> 
+                        PYQ's Attempts (Last 30 Days)
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
+                        <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span> 
+                        Quiz Attempts (Last 30 Days)
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </section>
+
          {/* ── 3-Step How It Works ── */}
          <section className="py-12 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-8">
@@ -197,32 +247,6 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         {/* ── Social Proof Ticker ── */}
-         {(stats.recentRegistrations > 0 || stats.recentAttempts > 0) && (
-            <div className="bg-emerald-50 dark:bg-emerald-950/30 border-y border-emerald-200 dark:border-emerald-900/50 py-2.5 overflow-hidden">
-               <div className="container mx-auto px-4">
-                  <motion.div
-                     key={tickerIndex}
-                     initial={{ opacity: 0, y: 6 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     exit={{ opacity: 0, y: -6 }}
-                     transition={{ duration: 0.4 }}
-                     className="flex items-center justify-center gap-3"
-                  >
-                     <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                     </span>
-                     <span className="text-xs font-black text-emerald-800 dark:text-emerald-300 tracking-wide">
-                        {tickerIndex === 0
-                           ? `🎓 ${stats.recentRegistrations} students joined AajExam in the last 7 days`
-                           : `📝 ${stats.recentAttempts} Practice Tests & PYQs attempted in the last 7 days`
-                        }
-                     </span>
-                  </motion.div>
-               </div>
-            </div>
-         )}
 
          <section className="py-8 lg:py-20 bg-white dark:bg-slate-900 border-y-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-6">

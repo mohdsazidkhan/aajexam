@@ -15,7 +15,11 @@ export async function GET() {
     try {
         await dbConnect();
 
-        const since7d = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        const since30d = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+        // Fetch all PYQ IDs to differentiate attempts
+        const pyqTests = await PracticeTest.find({ isPYQ: true }, '_id').lean();
+        const pyqTestIds = pyqTests.map(t => t._id);
 
         const [
             activeStudents,
@@ -25,9 +29,10 @@ export async function GET() {
             totalTopics,
             quizQuestions,
             practiceTestQuestions,
-            recentRegistrations,
-            recentTestAttempts,
-            recentQuizAttempts,
+            registeredLast30Days,
+            pyqAttemptsLast30Days,
+            practiceTestAttemptsLast30Days,
+            quizAttemptsLast30Days,
         ] = await Promise.all([
             User.countDocuments({ role: 'student' }),
             Exam.countDocuments({ isActive: true }),
@@ -39,9 +44,10 @@ export async function GET() {
                 { $project: { count: { $size: '$questions' } } },
                 { $group: { _id: null, total: { $sum: '$count' } } }
             ]).then(res => res[0]?.total || 0),
-            User.countDocuments({ role: 'student', createdAt: { $gte: since7d } }),
-            UserTestAttempt.countDocuments({ createdAt: { $gte: since7d } }),
-            QuizAttempt.countDocuments({ createdAt: { $gte: since7d } }),
+            User.countDocuments({ role: 'student', createdAt: { $gte: since30d } }),
+            UserTestAttempt.countDocuments({ practiceTest: { $in: pyqTestIds }, createdAt: { $gte: since30d } }),
+            UserTestAttempt.countDocuments({ practiceTest: { $nin: pyqTestIds }, createdAt: { $gte: since30d } }),
+            QuizAttempt.countDocuments({ createdAt: { $gte: since30d } }),
         ]);
 
         // Fetch stats for specific requested exams
@@ -97,8 +103,10 @@ export async function GET() {
                 totalSubjects,
                 totalTopics,
                 totalQuestions: quizQuestions + practiceTestQuestions,
-                recentRegistrations,
-                recentAttempts: recentTestAttempts + recentQuizAttempts,
+                registeredLast30Days,
+                pyqAttemptsLast30Days,
+                practiceTestAttemptsLast30Days,
+                quizAttemptsLast30Days,
                 examStats,
             }
         });
