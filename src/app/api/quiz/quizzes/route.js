@@ -26,17 +26,23 @@ export async function GET(req) {
         if (type) filter.type = type;
         if (difficulty) filter.difficulty = difficulty;
 
-        const [quizzes, total] = await Promise.all([
+        let [quizzes, total] = await Promise.all([
             Quiz.find(filter)
                 .populate('applicableExams', 'name code')
                 .populate('subject', 'name')
                 .populate('topic', 'name')
-                .select('-questions')
                 .sort({ publishedAt: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             Quiz.countDocuments(filter)
         ]);
+
+        quizzes = quizzes.map(q => {
+             const totalQuestions = q.questions ? q.questions.length : 0;
+             delete q.questions;
+             return { ...q, totalQuestions };
+        });
 
         return NextResponse.json({
             success: true,
