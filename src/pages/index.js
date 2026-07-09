@@ -35,7 +35,7 @@ export default function Index({ educationalContent, isAuthenticated }) {
       />
 
       {/* Show landing page for non-authenticated users */}
-      {!isAuthenticated && <LandingPage educationalContent={educationalContent} />}
+      {!isAuthenticated && <LandingPage />}
     </>
   );
 }

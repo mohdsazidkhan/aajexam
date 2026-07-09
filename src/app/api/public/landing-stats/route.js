@@ -9,6 +9,7 @@ import Question from '@/models/Question';
 import PracticeTest from '@/models/PracticeTest';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import QuizAttempt from '@/models/QuizAttempt';
+import ExamPattern from '@/models/ExamPattern';
 
 export async function GET() {
     try {
@@ -43,6 +44,50 @@ export async function GET() {
             QuizAttempt.countDocuments({ createdAt: { $gte: since7d } }),
         ]);
 
+        // Fetch stats for specific requested exams
+        const targetRegexes = [
+            /^SSC CGL/i,
+            /^SSC CHSL/i,
+            /^RRB GROUP D/i,
+            /^SSC CPO/i,
+            /^UPSC Prelims/i,
+            /^SSC GD/i
+        ];
+        let topExams = await Exam.find({ 
+            isActive: true,
+            name: { $in: targetRegexes }
+        }).lean();
+        
+        // Sort them to match the user's requested order
+        topExams.sort((a, b) => {
+             const getIndex = (name) => {
+                 const idx = targetRegexes.findIndex(r => r.test(name));
+                 return idx === -1 ? 99 : idx;
+             };
+             return getIndex(a.name) - getIndex(b.name);
+        });
+        
+        // Ensure we only process at most 6 exams in case of multiple regex matches
+        topExams = topExams.slice(0, 6);
+        
+        const examStats = await Promise.all(topExams.map(async (exam) => {
+            const patterns = await ExamPattern.find({ exam: exam._id }, '_id').lean();
+            const patternIds = patterns.map(p => p._id);
+            
+            const pyqCount = await PracticeTest.countDocuments({ examPattern: { $in: patternIds }, isPYQ: true });
+            const practiceTestCount = await PracticeTest.countDocuments({ examPattern: { $in: patternIds }, isPYQ: false });
+            const quizCount = await Quiz.countDocuments({ applicableExams: exam._id, status: 'published' });
+            
+            return {
+                _id: exam._id.toString(),
+                name: exam.name,
+                code: exam.code,
+                pyqCount,
+                practiceTestCount,
+                quizCount
+            };
+        }));
+
         const response = NextResponse.json({
             success: true,
             data: {
@@ -54,6 +99,7 @@ export async function GET() {
                 totalQuestions: quizQuestions + practiceTestQuestions,
                 recentRegistrations,
                 recentAttempts: recentTestAttempts + recentQuizAttempts,
+                examStats,
             }
         });
 

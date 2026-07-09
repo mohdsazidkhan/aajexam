@@ -21,11 +21,7 @@ import {
    Gamepad2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-import PublicNavbar from "../navbars/PublicNavbar";
-import UnifiedFooter from "../UnifiedFooter";
 import MobileAppWrapper from "../MobileAppWrapper";
-import config from '../../lib/config/appConfig';
 import API from '../../lib/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -40,6 +36,7 @@ const ModernLandingPage = () => {
       totalQuestions: "12K+",
       recentRegistrations: "10+",
       recentAttempts: "100+",
+      examStats: [],
    });
    const [tickerIndex, setTickerIndex] = useState(0);
    const router = useRouter();
@@ -67,6 +64,7 @@ const ModernLandingPage = () => {
                totalQuestions: formatNum(res.data?.totalQuestions || 12500),
                recentRegistrations: res.data?.recentRegistrations || 0,
                recentAttempts: res.data?.recentAttempts || 0,
+               examStats: res.data?.examStats || [],
             });
          }
       } catch (e) {
@@ -91,14 +89,14 @@ const ModernLandingPage = () => {
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="max-w-5xl mx-auto text-center space-y-8 mt-8 lg:mt-0 py-4 lg:py-12">
                   {/* Gamified Floating Elements */}
-                  <motion.div 
+                  <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                      className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo-primary items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
                   >
                      <Trophy className="w-8 h-8 text-primary-500" />
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                      animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                      className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo border-2 border-secondary-100 dark:border-secondary-900/50 items-center justify-center"
@@ -165,39 +163,39 @@ const ModernLandingPage = () => {
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
                         <Trophy className="w-5 h-5 text-amber-500" /> Practice with topic-wise quizzes
                      </div>
-                   </div>
-                </div>
-             </div>
-          </section>
+                  </div>
+               </div>
+            </div>
+         </section>
 
-          {/* ── 3-Step How It Works ── */}
-          <section className="py-12 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800">
-             <div className="container mx-auto px-4 lg:px-8">
-                <div className="max-w-4xl mx-auto">
-                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-                      <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
-                      
-                      {[
-                         { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                         { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
-                         { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" }
-                      ].map((item, i) => (
-                         <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-duo border-2 border-slate-200 dark:border-slate-700">
-                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
-                               <item.icon className={`w-8 h-8 ${item.color}`} />
-                            </div>
-                            <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
-                               Step {item.step}: {item.title}
-                            </h3>
-                            <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
-                               {item.desc}
-                            </p>
-                         </div>
-                      ))}
-                   </div>
-                </div>
-             </div>
-          </section>
+         {/* ── 3-Step How It Works ── */}
+         <section className="py-12 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800">
+            <div className="container mx-auto px-4 lg:px-8">
+               <div className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                     <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
+
+                     {[
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
+                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" }
+                     ].map((item, i) => (
+                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-duo border-2 border-slate-200 dark:border-slate-700">
+                           <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
+                              <item.icon className={`w-8 h-8 ${item.color}`} />
+                           </div>
+                           <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
+                              Step {item.step}: {item.title}
+                           </h3>
+                           <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                              {item.desc}
+                           </p>
+                        </div>
+                     ))}
+                  </div>
+               </div>
+            </div>
+         </section>
 
          {/* ── Social Proof Ticker ── */}
          {(stats.recentRegistrations > 0 || stats.recentAttempts > 0) && (
@@ -250,7 +248,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="py-10 lg:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+         <section className="py-10 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-500/10 via-transparent to-transparent blur-[80px] opacity-60" />
             </div>
@@ -260,23 +258,47 @@ const ModernLandingPage = () => {
                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                      Last Year PYQ — Always Free
                   </div>
-                  <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-white leading-none">
-                     Practice with <span className="text-primary-400">Real Papers</span>
+                  <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
+                     Practice with <span className="text-primary-600 dark:text-primary-400">Real Papers</span>
                   </h2>
-                  <p className="text-base lg:text-xl font-bold text-slate-400 max-w-2xl mx-auto">
+                  <p className="text-base lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                      500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.
                   </p>
                </div>
 
                {/* Exam tiles */}
                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
-                  {[
-                     { name: 'SSC CGL', papers: '28+', color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
-                     { name: 'SSC CHSL', papers: '24+', color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
-                     { name: 'RRB NTPC', papers: '18+', color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
-                     { name: 'IBPS PO', papers: '12+', color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
-                     { name: 'SBI Clerk', papers: '10+', color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
-                     { name: 'SSC GD', papers: '8+', color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
+                  {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => {
+                     const colors = [
+                        { color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
+                        { color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
+                        { color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
+                        { color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
+                        { color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
+                        { color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
+                     ];
+                     const theme = colors[idx % colors.length];
+                     return (
+                        <motion.div
+                           key={exam._id}
+                           whileHover={{ scale: 1.04, y: -4 }}
+                           onClick={() => router.push('/pyq')}
+                           className={`cursor-pointer p-4 rounded-2xl bg-gradient-to-br ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
+                        >
+                           <span className={`text-sm lg:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.practiceTestCount} Practice Tests</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{exam.quizCount} Quizzes</span>
+                           <span className="text-[10px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                        </motion.div>
+                     );
+                  }) : [
+                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
+                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
+                     { name: 'RRB GROUP D', papers: '18+', color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
+                     { name: 'SSC CPO', papers: '17+', color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
+                     { name: 'UPSC Prelims', papers: '14+', color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
+                     { name: 'SSC GD Constable', papers: '25+', color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
                   ].map((exam) => (
                      <motion.div
                         key={exam.name}
@@ -285,7 +307,7 @@ const ModernLandingPage = () => {
                         className={`cursor-pointer p-4 rounded-2xl bg-gradient-to-br ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
                      >
                         <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
-                        <span className="text-[10px] font-bold text-slate-400">{exam.papers} papers</span>
+                        <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
                         <span className="text-[10px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                      </motion.div>
                   ))}
@@ -303,7 +325,7 @@ const ModernLandingPage = () => {
                   </motion.button>
                   <button
                      onClick={() => router.push('/pyq')}
-                     className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-white/10 transition-all text-sm"
+                     className="w-full sm:w-auto px-8 py-4 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-slate-200 dark:border-white/10 transition-all text-sm"
                   >
                      Browse All PYQs
                   </button>
@@ -414,7 +436,7 @@ const ModernLandingPage = () => {
                         {[
                            { title: "Daily Goals", desc: "Set a small goal for each day and complete it. Small steps lead to big results.", icon: Target },
                            { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
-                           { title: "Refer & Earn", desc: "Invite friends to AajExam. Earn cash rewards when they upgrade to PRO.", icon: Trophy }
+                           { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                         ].map((item, index) => (
                            <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl group hover:-translate-y-2 transition-all">
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 dark:text-primary-500 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
