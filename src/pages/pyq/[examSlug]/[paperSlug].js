@@ -266,7 +266,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             Attempt All {paper.questionCount || 0} Questions
                                         </h3>
                                         <p className="text-sm font-bold text-slate-400 max-w-lg">
-                                            You've seen {sampleQuestions.length} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.
+                                            You&apos;ve seen {sampleQuestions.length} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.
                                         </p>
                                         <div className="flex flex-wrap gap-3 pt-1">
                                             {[

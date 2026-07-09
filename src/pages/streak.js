@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Flame, Trophy, Calendar, Shield, Snowflake, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -84,7 +85,7 @@ const StreakPage = () => {
             {streak?.todayCompleted
               ? <><Shield className="w-10 h-10 text-emerald-500 mx-auto mb-2" /><h2 className="text-lg font-black text-emerald-700 dark:text-emerald-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-orange-500 mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-orange-700 dark:text-orange-300">Complete Today&apos;s Challenge to Keep Streak!</h2>
-                <a href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</a></>
+                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</Link></>
             }
           </Card>
         </motion.div>
