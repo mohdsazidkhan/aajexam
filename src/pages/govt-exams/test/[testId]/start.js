@@ -629,7 +629,9 @@ const TestStart = ({ resolvedId } = {}) => {
                 You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
-                <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit}>YES, I&apos;M DONE!</Button>
+                <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit} disabled={submitting}>
+                  {submitting ? 'SUBMITTING...' : 'YES, I\'M DONE!'}
+                </Button>
                 <Button variant="ghost" fullWidth size="lg" className="border-2 border-slate-200 dark:border-slate-700" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
               </div>
             </motion.div>
