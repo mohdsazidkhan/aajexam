@@ -20,11 +20,14 @@ export async function POST(req, { params }) {
 
         if (!attemptId) return NextResponse.json({ message: 'attemptId is required' }, { status: 400 });
 
-        const attempt = await QuizAttempt.findOne({ _id: attemptId, user: auth.user._id, quiz: id, status: 'InProgress' });
-        if (!attempt) return NextResponse.json({ message: 'No active attempt found' }, { status: 404 });
+        const isObjectId = mongoose.Types.ObjectId.isValid(id) && (new String(id).length === 24);
+        const query = isObjectId ? { _id: id } : { slug: id };
 
-        const quiz = await Quiz.findById(id);
+        const quiz = await Quiz.findOne(query);
         if (!quiz) return NextResponse.json({ message: 'Quiz not found' }, { status: 404 });
+
+        const attempt = await QuizAttempt.findOne({ _id: attemptId, user: auth.user._id, quiz: quiz._id, status: 'InProgress' });
+        if (!attempt) return NextResponse.json({ message: 'No active attempt found' }, { status: 404 });
 
         // fetch full questions with correct answers
         const questions = await Question.find({ _id: { $in: quiz.questions }, isActive: true });
@@ -60,7 +63,7 @@ export async function POST(req, { params }) {
                 wrongRevisionItems.push({
                     userId: auth.user._id,
                     source: 'quiz',
-                    sourceId: id,
+                    sourceId: quiz._id,
                     sourceTitle: quiz.title || '',
                     sourceQuestionId: question._id,
                     questionRef: question._id,
@@ -94,9 +97,9 @@ export async function POST(req, { params }) {
         await attempt.save();
 
         // update quiz stats
-        await Quiz.findByIdAndUpdate(id, {
+        await Quiz.findByIdAndUpdate(quiz._id, {
             $inc: { totalAttempts: 1 },
-            $set: { avgScore: await getAvgScore(id) }
+            $set: { avgScore: await getAvgScore(quiz._id) }
         });
 
         if (wrongRevisionItems.length) {
@@ -115,7 +118,7 @@ export async function POST(req, { params }) {
         } catch (e) { console.error('updatePerformanceMetrics (quiz) failed:', e); }
 
         // compute rank
-        const rank = await recomputeRanksForQuiz(id, attempt._id);
+        const rank = await recomputeRanksForQuiz(quiz._id, attempt._id);
 
         // populate answers.question for review
         const populated = await QuizAttempt.findById(attempt._id)

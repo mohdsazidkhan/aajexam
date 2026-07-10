@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
 
@@ -8,7 +9,10 @@ export async function GET(req, { params }) {
         await dbConnect();
 
         const { id } = await params;
-        const quiz = await Quiz.findOne({ _id: id, status: 'published' })
+        const isObjectId = mongoose.Types.ObjectId.isValid(id) && (new String(id).length === 24);
+        const query = isObjectId ? { _id: id } : { slug: id };
+
+        const quiz = await Quiz.findOne({ ...query, status: 'published' })
             .populate('applicableExams', 'name code')
             .populate('subject', 'name')
             .populate('topic', 'name')

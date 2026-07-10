@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
+import Quiz from '@/models/Quiz';
 import QuizAttempt from '@/models/QuizAttempt';
 
 // GET - quiz leaderboard
@@ -11,7 +13,12 @@ export async function GET(req, { params }) {
         const { searchParams } = new URL(req.url);
         const limit = parseInt(searchParams.get('limit')) || 20;
 
-        const leaderboard = await QuizAttempt.find({ quiz: id, status: 'Completed' })
+        const isObjectId = mongoose.Types.ObjectId.isValid(id) && (new String(id).length === 24);
+        const query = isObjectId ? { _id: id } : { slug: id };
+        const quiz = await Quiz.findOne(query).select('_id');
+        if (!quiz) return NextResponse.json({ message: 'Quiz not found' }, { status: 404 });
+
+        const leaderboard = await QuizAttempt.find({ quiz: quiz._id, status: 'Completed' })
             .populate('user', 'name username profilePicture')
             .select('user score accuracy totalTime rank percentile percentage submittedAt')
             .sort({ score: -1, accuracy: -1, totalTime: 1 })

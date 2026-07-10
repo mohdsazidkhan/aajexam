@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import mongoose from 'mongoose';
 import Quiz from '@/models/Quiz';
 import QuizAttempt from '@/models/QuizAttempt';
 import { protect } from '@/middleware/auth';
@@ -13,7 +14,10 @@ export async function POST(req, { params }) {
         await dbConnect();
 
         const { id } = await params;
-        const quiz = await Quiz.findOne({ _id: id, status: 'published' })
+        const isObjectId = mongoose.Types.ObjectId.isValid(id) && (new String(id).length === 24);
+        const query = isObjectId ? { _id: id } : { slug: id };
+
+        const quiz = await Quiz.findOne({ ...query, status: 'published' })
             .populate({
                 path: 'questions',
                 match: { isActive: true },
@@ -47,7 +51,7 @@ export async function POST(req, { params }) {
         }
 
         // check if user already has an in-progress attempt
-        const existing = await QuizAttempt.findOne({ user: user._id, quiz: id, status: 'InProgress' });
+        const existing = await QuizAttempt.findOne({ user: user._id, quiz: quiz._id, status: 'InProgress' });
         if (existing) {
             return NextResponse.json({ success: true, data: existing, quiz, resumed: true });
         }
@@ -66,7 +70,7 @@ export async function POST(req, { params }) {
 
         const attempt = await QuizAttempt.create({
             user: user._id,
-            quiz: id,
+            quiz: quiz._id,
             totalMarks: quiz.totalMarks,
             answers: quiz.questions.map(q => ({ question: q._id, selectedOptionIndex: -1, isCorrect: false, timeTaken: 0 }))
         });
