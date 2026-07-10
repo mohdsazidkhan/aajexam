@@ -213,7 +213,7 @@ export async function GET(req) {
 					{ tags: regex },
 				]
 			})
-				.select('_id title description difficulty type duration totalMarks isFree totalAttempts avgScore tags publishedAt')
+				.select('_id title slug description difficulty type duration totalMarks isFree totalAttempts avgScore tags publishedAt')
 				.populate('applicableExams', 'name code')
 				.populate('subject', 'name')
 				.populate('topic', 'name')

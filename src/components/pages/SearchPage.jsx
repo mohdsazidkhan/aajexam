@@ -470,7 +470,7 @@ const SearchPage = () => {
                                  <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">Quizzes</h3>
                               </div>
                               {quizzes.slice(0, 4).map(item => (
-                                 <div key={item._id} onClick={() => router.push(`/quiz/${item.slug}`)}
+                                 <div key={item._id} onClick={() => router.push(`/quiz/${item.slug || item._id}`)}
                                     className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0">
                                        <BrainCircuit className="w-4 h-4 text-white" />
@@ -909,7 +909,7 @@ const SearchPage = () => {
                                     )}
                                     {/* Quiz */}
                                     {item.type === 'quiz' && (
-                                       <div onClick={() => router.push(`/quiz/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+                                       <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                                           <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                                           <div className="min-w-0 flex-1">
                                              <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
