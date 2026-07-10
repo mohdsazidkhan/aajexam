@@ -60,7 +60,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       return;
     }
 
-    if (requireAuthForAction(router, `/quiz/${id}/attempt`)) {
+    if (requireAuthForAction(router, `/quiz/${quiz?.slug || lookupId}/attempt`)) {
       localStorage.setItem('quizNavigationData', JSON.stringify({
         quizData: quiz,
         fromPage: document.referrer?.includes('/search') ? 'search' : 'quiz-preview'
