@@ -121,6 +121,7 @@ const StudentSidebar = () => {
       title: 'STUDY',
       items: [
         { path: '/pyq', icon: FileText, label: 'Previous Year Q', isPro: true },
+        { path: '/syllabus-tracker', icon: Layers, label: 'Syllabus Tracker', isPro: true },
         { path: '/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
         { path: '/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
         { path: '/notes', icon: StickyNote, label: 'Notes & Formulas' },
@@ -156,16 +157,15 @@ const StudentSidebar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-12 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${
-        isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
-      }`}
+      className={`fixed left-0 top-12 lg:top-20 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+        }`}
     >
 
       {/* Navigation */}
-      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
-            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
+            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
               {section.title}
             </h3>
             <div className="space-y-0.5">
@@ -173,14 +173,14 @@ const StudentSidebar = () => {
                 const active = isActiveRoute(item.path);
                 return (
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined}>
-                    <button className={`w-full flex items-center justify-between px-3 py-2 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                    <button className={`w-full flex items-center justify-between px-2 py-2 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
                         <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl" />
                       )}
-                      <div className="flex items-center gap-3 relative z-10">
+                      <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                         <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
