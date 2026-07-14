@@ -17,6 +17,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   const [activeTab, setActiveTab] = useState('quizzes');
   const [showTestModal, setShowTestModal] = useState(false);
   const [selectedTest, setSelectedTest] = useState(null);
+  const [generatingAdaptive, setGeneratingAdaptive] = useState(false);
 
   useEffect(() => {
     if (!lookupId) return;
@@ -33,6 +34,28 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
     { key: 'tests', label: 'Practice Tests', icon: FileText, count: practiceTests.length },
   ];
 
+  const handleStartAdaptive = async () => {
+    if (generatingAdaptive) return;
+    try {
+      setGeneratingAdaptive(true);
+      const res = await API.request('/api/quiz/adaptive/generate', {
+        method: 'POST',
+        body: JSON.stringify({ topicId: topic._id })
+      });
+      if (res?.success && res?.data?.quizSlug) {
+        router.push(`/quiz/${res.data.quizSlug}`);
+      } else {
+        if (res?.isLocked) {
+           router.push('/subscription');
+        }
+      }
+    } catch (e) {
+      console.error('Adaptive error', e);
+    } finally {
+      setGeneratingAdaptive(false);
+    }
+  };
+
   const fmtDur = (m) => { const h = Math.floor(m / 60); const min = m % 60; return h > 0 ? `${h}h${min > 0 ? ` ${min}m` : ''}` : `${min}m`; };
 
   return (
@@ -48,6 +71,22 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
           <div className="flex gap-3 mt-3">
             <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{quizzes.length} Quizzes</span>
             <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{practiceTests.length} Tests</span>
+          </div>
+          
+          {/* Adaptive Practice Button */}
+          <div className="mt-5">
+            <button 
+              onClick={handleStartAdaptive}
+              disabled={generatingAdaptive}
+              className="w-full sm:w-auto bg-white text-cyan-600 hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {generatingAdaptive ? (
+                <><div className="w-4 h-4 border-2 border-cyan-600 border-t-transparent rounded-full animate-spin" /> GENERATING...</>
+              ) : (
+                <><BrainCircuit className="w-5 h-5" /> START ADAPTIVE PRACTICE <span className="text-[10px] bg-cyan-100 text-cyan-700 px-1.5 py-0.5 rounded-md ml-1">PRO</span></>
+              )}
+            </button>
+            <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">Generates custom difficulty based on your past accuracy.</p>
           </div>
         </div>
 
