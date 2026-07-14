@@ -263,18 +263,18 @@ const ProfilePage = () => {
                 </div>
 
                 {bankDetails ? (
-                  <div className="p-4 lg:p-8 bg-slate-900 text-white rounded-[2rem] lg:rounded-[3rem] border border-slate-800 relative z-10">
+                  <div className="p-4 lg:p-8 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white rounded-[2rem] lg:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-                      <div className="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-[1.5rem] flex items-center justify-center border border-emerald-500/20">
+                      <div className="w-16 h-16 bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 rounded-[1.5rem] flex items-center justify-center border border-emerald-500/20">
                         <Building2 className="w-8 h-8" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl lg:text-2xl font-black font-outfit tracking-tight">{bankDetails.bankName}</h3>
-                        <p className="text-sm font-medium text-slate-300 mt-1">
-                          {bankDetails.accountHolderName || 'Account holder'} Ã‚Â· Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
+                        <p className="text-sm font-medium text-slate-500 dark:text-slate-300 mt-1">
+                          {bankDetails.accountHolderName || 'Account holder'} · Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
                         </p>
                       </div>
-                      <Button variant="ghost" className="px-6 py-3 rounded-xl border border-slate-700 text-sm font-semibold text-white hover:text-primary-400" onClick={() => router.push('/settings')}>
+                      <Button variant="ghost" className="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white hover:text-primary-600 dark:hover:text-primary-400" onClick={() => router.push('/settings')}>
                         Update
                       </Button>
                     </div>

@@ -22,7 +22,6 @@ import {
   Search,
   Layers
 } from 'lucide-react';
-import { toggleDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar, closeSidebar, openSidebar } from '../../store/sidebarSlice';
 import { useAuthStatus } from '../../hooks/useClientSide';
 import { isAdmin } from '../../lib/utils/adminUtils';
@@ -40,7 +39,6 @@ const AppLayout = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { isAuthenticated, isClient } = useAuthStatus();
-  const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
 
   const isQuestPage = (router.pathname.includes('/govt-exams/test/') && router.pathname.endsWith('/start'));
@@ -80,7 +78,7 @@ const AppLayout = ({ children }) => {
   // ── Search: hide header on mobile, show on desktop, keep bottom nav ──
   if (isSearchPage) {
     return (
-      <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} font-nunito`}>
+      <div className="min-h-screen bg-background-page font-nunito">
         {showAppNav && !isUserAdmin && (
           <div className="hidden lg:block">
             <StudentNavbar />
@@ -109,7 +107,7 @@ const AppLayout = ({ children }) => {
   // ── Reels: fully immersive fixed layout, navbar on desktop ──
   if (isReelsPage) {
     return (
-      <div className={`fixed inset-0 ${darkMode ? 'dark' : ''} font-nunito`} style={{ overflow: 'hidden', height: '100dvh', touchAction: 'none' }}>
+      <div className="fixed inset-0 font-nunito" style={{ overflow: 'hidden', height: '100dvh', touchAction: 'none' }}>
         {showAppNav && !isUserAdmin && (
           <div className="hidden lg:block">
             <StudentNavbar />
@@ -140,7 +138,7 @@ const AppLayout = ({ children }) => {
   }
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'} transition-colors duration-500 font-nunito selection:bg-primary-500 selection:text-white`}>
+    <div className="min-h-screen bg-background-page transition-colors duration-500 font-nunito selection:bg-primary-500 selection:text-white">
 
       {/* --- Top Navbar --- */}
       {showAppNav && (

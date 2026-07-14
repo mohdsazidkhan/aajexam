@@ -43,10 +43,17 @@ const darkModeSlice = createSlice({
       }
     },
     initializeDarkMode: (state) => {
-      // This action can be dispatched to ensure the DOM is in sync with the state
+      // Re-read from localStorage on client to fix SSR hydration mismatch.
+      // On the server, getInitialDarkMode() returns false (no window), so Redux
+      // starts with isDark=false. This action is called in useEffect (client-only)
+      // and re-reads the real preference before syncing the DOM.
       if (typeof window !== 'undefined') {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        state.isDark = shouldBeDark;
         const root = window.document.documentElement;
-        if (state.isDark) {
+        if (shouldBeDark) {
           root.classList.add('dark');
         } else {
           root.classList.remove('dark');

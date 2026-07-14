@@ -153,6 +153,20 @@ function AppContent({ Component, pageProps }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
         <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
+        {/* Anti-FOUC: apply dark class before React hydrates */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              var theme = localStorage.getItem('theme');
+              var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            } catch(e) {}
+          })();
+        `}} />
       </Head>
       {gtag.GA_MEASUREMENT_ID ? (
         <>

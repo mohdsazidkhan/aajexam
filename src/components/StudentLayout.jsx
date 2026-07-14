@@ -106,7 +106,7 @@ const StudentLayout = ({ children }) => {
   const showSidebar = authenticated && user && !shouldHideSidebar;
 
   return (
-    <div className={`student-layout ${darkMode ? 'dark' : ''}`}>
+    <div className={`student-layout`}>
       <ClientOnly>
         <StudentNavbar />
       </ClientOnly>
