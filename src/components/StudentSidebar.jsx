@@ -33,7 +33,8 @@ import {
   StickyNote,
   CalendarDays,
   Users,
-  MessageCircle
+  MessageCircle,
+  Trophy
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -113,6 +114,7 @@ const StudentSidebar = () => {
         { path: '/streak', icon: Flame, label: 'Streak' },
         { path: '/current-affairs', icon: Newspaper, label: 'Current Affairs' },
         { path: '/exam-news', icon: Megaphone, label: 'Exam News' },
+        { path: '/exam-calendar', icon: CalendarDays, label: 'Exam Calendar' },
       ]
     },
     {
@@ -128,6 +130,8 @@ const StudentSidebar = () => {
     {
       title: 'PROGRESS',
       items: [
+        { path: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
+        { path: '/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
         { path: '/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
         { path: '/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
         { path: '/exam-history', icon: History, label: 'Exam History', isPro: true },
