@@ -34,7 +34,8 @@ import {
   CalendarDays,
   Users,
   MessageCircle,
-  Trophy
+  Trophy,
+  Swords
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../lib/store/sidebarSlice';
@@ -138,6 +139,7 @@ const StudentSidebar = () => {
         { path: '/exam-history', icon: History, label: 'Exam History', isPro: true },
         { path: '/payment-history', icon: CreditCard, label: 'Payment History' },
         { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History', isPro: true },
+        { path: '/my-challenges', icon: Swords, label: 'My Challenges', isPro: true },
         { path: '/referral-history', icon: Globe, label: 'Referrals' },
       ]
     },

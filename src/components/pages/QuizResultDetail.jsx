@@ -3,21 +3,24 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
-  Trophy, CheckCircle, XCircle, Brain, ArrowLeft, Crown, Home, BrainCircuit
+  Trophy, CheckCircle, XCircle, Brain, ArrowLeft, Crown, Home, BrainCircuit, Share2, Users
 } from 'lucide-react';
 import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Loading from '../Loading';
 import DiscussionThread from '../discussions/DiscussionThread';
+import { useAuthStatus } from '../../hooks/useClientSide';
 
 const QuizResultDetail = () => {
   const router = useRouter();
+  const { user } = useAuthStatus();
   const { id: attemptId } = router.query;
 
   const [attempt, setAttempt] = useState(null);
   const [loading, setLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [isGeneratingChallenge, setIsGeneratingChallenge] = useState(false);
 
   useEffect(() => {
     if (!attemptId) return;
@@ -50,6 +53,45 @@ const QuizResultDetail = () => {
   if (!attempt) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Result not found</p></div>;
 
   const quiz = attempt.quiz;
+
+  const handleChallenge = async () => {
+    const isPro = user?.subscriptionStatus?.toUpperCase() === 'PRO' || user?.role === 'admin';
+    if (!isPro) {
+      toast.error('Only PRO users can challenge friends!');
+      router.push('/subscription');
+      return;
+    }
+
+    try {
+      setIsGeneratingChallenge(true);
+      const res = await API.request('/api/challenge/create', {
+        method: 'POST',
+        body: JSON.stringify({ quizId: quiz._id || quiz, attemptId })
+      });
+      
+      if (res.success && res.challengeCode) {
+        const link = `${window.location.origin}/challenge/${res.challengeCode}`;
+        const shareData = {
+          title: 'Can you beat my score?',
+          text: `I scored ${Math.round(attempt.percentage)}% on this quiz. I challenge you to beat me!`,
+          url: link
+        };
+        
+        if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(link);
+          toast.success('Challenge link copied to clipboard!');
+        }
+      } else {
+        toast.error(res.message || 'Failed to create challenge');
+      }
+    } catch (err) {
+      toast.error('Something went wrong');
+    } finally {
+      setIsGeneratingChallenge(false);
+    }
+  };
 
   return (
     <div className="min-h-screen pb-24">
@@ -184,13 +226,27 @@ const QuizResultDetail = () => {
         )}
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button onClick={() => router.push('/quiz-history')} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
-            <ArrowLeft className="w-4 h-4" /> Quiz History
+        <div className="flex flex-col gap-3">
+          <button 
+            onClick={handleChallenge} 
+            disabled={isGeneratingChallenge}
+            className="w-full px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isGeneratingChallenge ? (
+              <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+              <><Users className="w-6 h-6" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
+            )}
           </button>
-          <button onClick={() => router.push('/quizzes')} className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
-            <BrainCircuit className="w-4 h-4" /> More Quizzes
-          </button>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-2">
+            <button onClick={() => router.push('/quiz-history')} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+              <ArrowLeft className="w-4 h-4" /> Quiz History
+            </button>
+            <button onClick={() => router.push('/quizzes')} className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+              <BrainCircuit className="w-4 h-4" /> More Quizzes
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import {
   Clock, ArrowLeft, ArrowRight, Brain, CheckCircle, XCircle, Trophy, Star,
   Rocket, ChevronRight, BookOpen, GraduationCap, AlertTriangle, Home, SkipForward,
-  BrainCircuit, Crown
+  BrainCircuit, Crown, Users
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
@@ -93,6 +93,7 @@ const AttemptQuizPage = () => {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+  const [isGeneratingChallenge, setIsGeneratingChallenge] = useState(false);
 
   // Refs to avoid stale closures
   const answersRef = useRef(answers);
@@ -153,7 +154,8 @@ const AttemptQuizPage = () => {
       const res = await API.submitQuiz(quizId, {
         attemptId,
         answers: formattedAnswers,
-        totalTime
+        totalTime,
+        challengeCode: router.query.challengeCode || router.query.challenge || null
       });
 
       if (res.success) {
@@ -180,7 +182,7 @@ const AttemptQuizPage = () => {
     } finally {
       setSubmitting(false);
     }
-  }, [quizId, attemptId, submitting, recordTime]);
+  }, [quizId, attemptId, submitting, recordTime, router.query]);
 
   // Keep submit ref in sync
   useEffect(() => { handleSubmitRef.current = handleSubmit; }, [handleSubmit]);
@@ -346,6 +348,44 @@ const AttemptQuizPage = () => {
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
   const answeredCount = answers.filter(a => a !== null).length;
+  const handleChallenge = async () => {
+    const isPro = currentUser?.subscriptionStatus?.toUpperCase() === 'PRO' || currentUser?.role === 'admin';
+    if (!isPro) {
+      toast.error('Only PRO users can challenge friends!');
+      router.push('/subscription');
+      return;
+    }
+
+    try {
+      setIsGeneratingChallenge(true);
+      const res = await API.request('/api/challenge/create', {
+        method: 'POST',
+        body: JSON.stringify({ quizId: quiz?._id || quizId, attemptId: result?._id || attemptId })
+      });
+      
+      if (res.success && res.challengeCode) {
+        const link = `${window.location.origin}/challenge/${res.challengeCode}`;
+        const shareData = {
+          title: 'Can you beat my score?',
+          text: `I scored ${Math.round(result?.percentage || 0)}% on this quiz. I challenge you to beat me!`,
+          url: link
+        };
+        
+        if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(link);
+          toast.success('Challenge link copied to clipboard!');
+        }
+      } else {
+        toast.error(res.message || 'Failed to create challenge');
+      }
+    } catch (err) {
+      toast.error('Something went wrong');
+    } finally {
+      setIsGeneratingChallenge(false);
+    }
+  };
 
   // ─── SUBMITTED: Result View ───
   if (submitted && result) {
@@ -461,13 +501,29 @@ const AttemptQuizPage = () => {
           <LeaderboardTable leaderboard={leaderboard} currentUser={currentUser} />
 
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-6">
-            <button onClick={handleBack} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
-              <ArrowLeft className="w-4 h-4" /> Go Back
-            </button>
-            <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
-              <Home className="w-4 h-4" /> Home
-            </button>
+          <div className="flex flex-col gap-3 mt-6">
+            {!quizId?.startsWith('adaptive-') && !router.query.challengeCode && !router.query.challenge && (
+              <button 
+                onClick={handleChallenge} 
+                disabled={isGeneratingChallenge}
+                className="w-full px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isGeneratingChallenge ? (
+                  <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <><Users className="w-6 h-6" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
+                )}
+              </button>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-2">
+              <button onClick={handleBack} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+                <ArrowLeft className="w-4 h-4" /> Go Back
+              </button>
+              <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+                <Home className="w-4 h-4" /> Home
+              </button>
+            </div>
           </div>
         </div>
       </div>

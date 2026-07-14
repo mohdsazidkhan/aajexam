@@ -5,6 +5,7 @@ import Quiz from '@/models/Quiz';
 import Question from '@/models/Question';
 import QuizAttempt from '@/models/QuizAttempt';
 import User from '@/models/User';
+import QuizChallenge from '@/models/QuizChallenge';
 import { protect } from '@/middleware/auth';
 import { addManyWrongAnswersToRevision, snapshotFromQuestionDoc } from '@/utils/revision';
 
@@ -16,7 +17,7 @@ export async function POST(req, { params }) {
         await dbConnect();
 
         const { id } = await params;
-        const { attemptId, answers, totalTime } = await req.json();
+        const { attemptId, answers, totalTime, challengeCode } = await req.json();
 
         if (!attemptId) return NextResponse.json({ message: 'attemptId is required' }, { status: 400 });
 
@@ -116,6 +117,22 @@ export async function POST(req, { params }) {
                 await user.save();
             }
         } catch (e) { console.error('updatePerformanceMetrics (quiz) failed:', e); }
+
+        // Link to challenge if provided
+        if (challengeCode) {
+            try {
+                await QuizChallenge.findOneAndUpdate(
+                    { code: challengeCode },
+                    { 
+                        $push: { 
+                            challengers: { user: auth.user._id, attempt: attempt._id } 
+                        } 
+                    }
+                );
+            } catch (err) {
+                console.error('Failed to link challenge attempt:', err);
+            }
+        }
 
         // compute rank
         const rank = await recomputeRanksForQuiz(quiz._id, attempt._id);
