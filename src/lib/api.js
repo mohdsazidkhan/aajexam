@@ -242,10 +242,10 @@ class ApiService {
     return this.request(`/api/quiz/quizzes/${quizId}/start`, { method: 'POST' });
   }
 
-  async submitQuiz(quizId, { attemptId, answers, totalTime }) {
+  async submitQuiz(quizId, { attemptId, answers, totalTime, challengeCode }) {
     return this.request(`/api/quiz/quizzes/${quizId}/submit`, {
       method: 'POST',
-      body: JSON.stringify({ attemptId, answers, totalTime })
+      body: JSON.stringify({ attemptId, answers, totalTime, challengeCode })
     });
   }
 
