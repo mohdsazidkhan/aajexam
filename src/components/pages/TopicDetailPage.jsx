@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { ArrowLeft, Layers, FileText, BrainCircuit, Play, Trophy } from 'lucide-react';
+import { ArrowLeft, Layers, FileText, BrainCircuit, Play, Trophy, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../lib/api';
 import { TopicDetailSkeleton } from '../skeletons/PublicSkeletons';
@@ -13,6 +13,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   const [topic, setTopic] = useState(initialTopic || null);
   const [practiceTests, setPracticeTests] = useState([]);
   const [quizzes, setQuizzes] = useState([]);
+  const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('quizzes');
   const [showTestModal, setShowTestModal] = useState(false);
@@ -23,7 +24,12 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
     if (!lookupId) return;
     API.getTopicDetail(lookupId).then(res => {
       if (res.success) { setTopic(res.topic); setPracticeTests(res.practiceTests || []); setQuizzes(res.quizzes || []); }
-    }).finally(() => setLoading(false));
+    }).catch(console.error);
+
+    // Fetch flashcards for this topic
+    API.request(`/api/flashcards?topic=${lookupId}`).then(res => {
+      if (res?.success) setFlashcards(res.data || []);
+    }).catch(console.error).finally(() => setLoading(false));
   }, [lookupId]);
 
   if (loading) return <TopicDetailSkeleton />;
@@ -32,6 +38,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   const tabs = [
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
     { key: 'tests', label: 'Practice Tests', icon: FileText, count: practiceTests.length },
+    { key: 'flashcards', label: 'Flashcards', icon: Sparkles, count: flashcards.length },
   ];
 
   const handleStartAdaptive = async () => {
@@ -91,14 +98,47 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-5 sticky top-16 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800">
+        <div className="flex gap-2 mb-5 sticky top-16 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
           {tabs.map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-4 ${activeTab === tab.key ? 'bg-cyan-500 text-white border-cyan-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-4 shrink-0 ${activeTab === tab.key ? 'bg-cyan-500 text-white border-cyan-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
               <tab.icon className="w-3.5 h-3.5" /> {tab.label} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{tab.count}</span>
             </button>
           ))}
         </div>
+
+        {/* Flashcards */}
+        {activeTab === 'flashcards' && (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {flashcards.length === 0 ? (
+              <div className="col-span-full py-16 text-center">
+                <Sparkles className="w-12 h-12 text-slate-200 mx-auto mb-2" />
+                <p className="text-sm text-slate-400">No flashcards available yet.</p>
+              </div>
+            ) : flashcards.map((deck, idx) => (
+              <motion.div key={deck._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}
+                onClick={() => router.push(`/flashcards/${deck.slug || deck._id}`)}
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 opacity-90 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <span className="bg-black/20 backdrop-blur-sm text-white text-[10px] font-black uppercase px-2 py-1 rounded-md flex items-center gap-1">
+                      <Sparkles className="w-3 h-3" /> REVISION
+                    </span>
+                    <span className="bg-white text-indigo-600 text-[10px] font-black px-2 py-1 rounded-md">
+                      {deck.cardCount} CARDS
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h3>
+                    <p className="text-white/70 text-xs font-medium mt-1 line-clamp-2">{deck.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Quizzes */}
         {activeTab === 'quizzes' && (
