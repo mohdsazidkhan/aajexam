@@ -9,18 +9,27 @@ export async function GET(req) {
 		const { searchParams } = new URL(req.url);
 		const limit = parseInt(searchParams.get('limit') || '20');
 
-		// Trending = most liked in last 7 days
-		const sevenDaysAgo = new Date();
-		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+		// Try last 30 days first, fall back to all-time if fewer than 3 results
+		const thirtyDaysAgo = new Date();
+		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-		const reels = await Reel.find({
+		let reels = await Reel.find({
 			status: 'published',
-			publishedAt: { $gte: sevenDaysAgo }
+			publishedAt: { $gte: thirtyDaysAgo }
 		})
 			.sort({ likesCount: -1, viewsCount: -1 })
 			.limit(limit)
 			.populate('createdBy', 'name username profilePicture')
 			.lean();
+
+		// Fallback: if not enough recent reels, fetch all-time trending
+		if (reels.length < 3) {
+			reels = await Reel.find({ status: 'published' })
+				.sort({ likesCount: -1, viewsCount: -1, createdAt: -1 })
+				.limit(limit)
+				.populate('createdBy', 'name username profilePicture')
+				.lean();
+		}
 
 		return NextResponse.json({ success: true, data: reels });
 	} catch (error) {
