@@ -5,8 +5,25 @@ import { useRouter } from 'next/router';
 import {
   Clock, ArrowLeft, ArrowRight, Brain, CheckCircle, XCircle, Trophy, Star,
   Rocket, ChevronRight, BookOpen, GraduationCap, AlertTriangle, Home, SkipForward,
-  BrainCircuit, Crown, Users
+  BrainCircuit, Crown, Users, Zap, AlertCircle, MessageSquare
 } from 'lucide-react';
+import DiscussionThread from '../discussions/DiscussionThread';
+
+// Format seconds → "45s" or "1m 23s"
+const fmtSec = (sec) => {
+  if (!sec || sec <= 0) return null;
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
+};
+
+// Returns speed badge props based on seconds taken
+const speedBadge = (sec) => {
+  if (!sec || sec <= 0) return null;
+  if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' };
+  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' };
+  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' };
+};
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Loading from '../Loading';
@@ -457,14 +474,34 @@ const AttemptQuizPage = () => {
                 const correctIndex = question.options?.findIndex(o => o.isCorrect);
                 const isSkipped = ans.selectedOptionIndex === -1;
                 const isCorrect = ans.isCorrect;
+                // timeTaken from local state array (tracked during quiz)
+                const secTaken = timeTaken[index] || ans.timeTaken || 0;
+                const timeLabel = fmtSec(secTaken);
+                const badge = speedBadge(secTaken);
 
                 return (
                   <div key={index} className={`rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                    {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-green-500' : 'bg-red-500'}`}>
                         {index + 1}
                       </div>
-                      <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                        {/* ⏱ Time-per-question */}
+                        {timeLabel && (
+                          <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${badge?.cls || 'bg-slate-100 text-slate-500'}`}>
+                              <Clock className="w-3 h-3" />{timeLabel}
+                            </span>
+                            {badge && (
+                              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${badge.cls}`}>
+                                {badge.icon}{badge.label}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <div className="space-y-1.5 ml-11">
@@ -491,6 +528,14 @@ const AttemptQuizPage = () => {
                         <p className="text-xs text-blue-700 dark:text-blue-300"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                       </div>
                     )}
+
+                    <div className="ml-11">
+                      <DiscussionThread
+                        questionId={question._id}
+                        sourceType="quiz"
+                        sourceId={quiz?._id || quizId}
+                      />
+                    </div>
                   </div>
                 );
               })}

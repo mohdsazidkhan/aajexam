@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
-  Trophy, CheckCircle, XCircle, Brain, ArrowLeft, Crown, Home, BrainCircuit, Share2, Users
+  Trophy, CheckCircle, XCircle, Brain, ArrowLeft, Crown, Home, BrainCircuit, Share2, Users, Clock, Zap, AlertCircle
 } from 'lucide-react';
 import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
 import { toast } from 'react-hot-toast';
@@ -11,6 +11,24 @@ import API from '../../lib/api';
 import Loading from '../Loading';
 import DiscussionThread from '../discussions/DiscussionThread';
 import { useAuthStatus } from '../../hooks/useClientSide';
+
+// Format seconds → "1m 23s" or "45s"
+const formatTime = (sec) => {
+  if (!sec || sec <= 0) return null;
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+};
+
+// Speed badge config
+const getSpeedBadge = (sec, totalQ) => {
+  if (!sec || !totalQ) return null;
+  const avg = sec; // per-question seconds
+  if (avg <= 20) return { label: 'Fast', cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' };
+  if (avg <= 60) return { label: 'Good', cls: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' };
+  return { label: 'Slow', cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' };
+};
 
 const QuizResultDetail = () => {
   const router = useRouter();
@@ -152,14 +170,36 @@ const QuizResultDetail = () => {
               const correctIndex = question.options?.findIndex(o => o.isCorrect);
               const isSkipped = ans.selectedOptionIndex === -1;
               const isCorrect = ans.isCorrect;
+              const timeSec = ans.timeTaken || 0;
+              const timeLabel = formatTime(timeSec);
+              const speedBadge = getSpeedBadge(timeSec);
 
               return (
                 <div key={index} className={`rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                  {/* Question header: number + time badge + text */}
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-green-500' : 'bg-red-500'}`}>
                       {index + 1}
                     </div>
-                    <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                      {/* ⏱ Time-per-question badge */}
+                      {timeLabel && (
+                        <div className="flex items-center gap-2 mt-1.5">
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge?.cls || 'bg-slate-100 text-slate-500'}`}>
+                            <Clock className="w-3 h-3" />
+                            {timeLabel}
+                          </span>
+                          {speedBadge && (
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge.cls}`}>
+                              {speedBadge.label === 'Fast' && <Zap className="w-3 h-3" />}
+                              {speedBadge.label === 'Slow' && <AlertCircle className="w-3 h-3" />}
+                              {speedBadge.label}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="space-y-1.5 ml-11">
