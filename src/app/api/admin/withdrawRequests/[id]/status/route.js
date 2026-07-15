@@ -57,8 +57,14 @@ export async function PATCH(req, { params }) {
                         await WithdrawRequest.updateOne({ _id: wr._id }, { $set: { status: wr.status } });
                         return NextResponse.json({ message: 'User has insufficient balance for this withdrawal amount' }, { status: 400 });
                     }
-                    // Keep the legacy UserWallet mirror in lock-step with the canonical balance.
-                    await UserWallet.updateOne({ userId: uid }, { $inc: { balance: -wr.amount } });
+                    // Keep the legacy UserWallet mirror in lock-step with the canonical
+                    // balance. Set to the freshly-computed canonical value (upsert) so a
+                    // missing/stale mirror self-heals instead of silently no-op'ing.
+                    await UserWallet.updateOne(
+                        { userId: uid },
+                        { $set: { balance: updatedUser.walletBalance }, $setOnInsert: { userId: uid, totalEarned: 0 } },
+                        { upsert: true }
+                    );
 
                     await WalletTransaction.create({
                         user: uid,

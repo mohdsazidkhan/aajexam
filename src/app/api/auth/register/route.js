@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Subscription from '@/models/Subscription';
 import WalletTransaction from '@/models/WalletTransaction';
+import UserWallet from '@/models/UserWallet';
 
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
@@ -103,6 +104,19 @@ export async function POST(req) {
         });
 
         await user.save();
+
+        // Give every user a UserWallet mirror from day one (balance 0), so the
+        // canonical User.walletBalance and its mirror stay in lock-step even
+        // before the first credit. Non-fatal — registration must not fail on this.
+        try {
+            await UserWallet.updateOne(
+                { userId: user._id },
+                { $setOnInsert: { userId: user._id, balance: 0, totalEarned: 0 } },
+                { upsert: true }
+            );
+        } catch (walletErr) {
+            console.error('Failed to create UserWallet on register:', walletErr);
+        }
 
         // Profile completion check
         const profileDetails = user.getProfileCompletionDetails();
