@@ -21,7 +21,9 @@ export async function POST(req) {
         if (limited) return limited;
         const { amount, bankDetails, upi } = await req.json();
 
-        if (!amount || amount <= 0) {
+        // Reject floats, NaN/Infinity, strings and junk — withdrawals are whole rupees.
+        const amt = Number(amount);
+        if (!Number.isFinite(amt) || amt <= 0 || !Number.isInteger(amt)) {
             return NextResponse.json({ success: false, message: 'Invalid amount' }, { status: 400 });
         }
 
