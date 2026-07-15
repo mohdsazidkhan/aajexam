@@ -26,29 +26,19 @@ export async function GET(req) {
             WithdrawRequest.find({ userId: auth.user.id }).sort({ requestedAt: -1 }).limit(20).lean()
         ]);
 
-        // ── Transaction-Based Wallet Calculation ──────────────────────────────
-        // All wallet related amounts coming from WalletTransaction & WithdrawRequest
-        const [categoryAgg, debitAgg] = await Promise.all([
-            WalletTransaction.aggregate([
-                {
-                    $match: {
-                        user: user._id,
-                        status: 'completed',
-                        type: 'credit',
-                        category: { $in: ['blog_reward', 'question_reward', 'bonus', 'referral', 'registration_bonus'] }
-                    }
-                },
-                { $group: { _id: '$category', total: { $sum: '$amount' } } }
-            ]),
-            WithdrawRequest.aggregate([
-                {
-                    $match: {
-                        userId: user._id,
-                        status: 'paid'
-                    }
-                },
-                { $group: { _id: null, total: { $sum: '$amount' } } }
-            ])
+        // Per-category credit totals — used only to show the earnings breakdown.
+        // The authoritative balance is the User.walletBalance field (below), NOT a
+        // re-derivation from transactions, so the two can never drift.
+        const categoryAgg = await WalletTransaction.aggregate([
+            {
+                $match: {
+                    user: user._id,
+                    status: 'completed',
+                    type: 'credit',
+                    category: { $in: ['blog_reward', 'question_reward', 'bonus', 'referral', 'registration_bonus'] }
+                }
+            },
+            { $group: { _id: '$category', total: { $sum: '$amount' } } }
         ]);
 
         // Map categories to labels
@@ -59,18 +49,17 @@ export async function GET(req) {
             bonus: 0
         };
 
-        let totalCredits = 0;
         categoryAgg.forEach(item => {
             if (item._id === 'registration_bonus') {
                 rewardBreakdown.bonus += item.total;
             } else if (rewardBreakdown.hasOwnProperty(item._id)) {
                 rewardBreakdown[item._id] = item.total;
             }
-            totalCredits += item.total;
         });
 
-        const totalPaid = debitAgg[0]?.total || 0;
-        const walletBalance = totalCredits - totalPaid;
+        // Single source of truth: the canonical wallet field. Withdrawals debit
+        // this exact field, so display and withdrawal can never disagree.
+        const walletBalance = Number(user.walletBalance || 0);
 
         // Free users see a "locked balance" — full psychological hook
         const lockedBalance   = !isPro ? walletBalance : 0; // All existing balance is locked for free users
