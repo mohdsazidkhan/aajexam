@@ -42,7 +42,7 @@ export async function GET(req) {
 
         const activeSubscriptions = await User.countDocuments({
             role: 'student',
-            subscriptionStatus: { $in: ['basic', 'premium', 'pro'] },
+            subscriptionStatus: 'PRO',
             subscriptionExpiry: { $gte: new Date() }
         });
 

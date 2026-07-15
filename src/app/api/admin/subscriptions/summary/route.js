@@ -42,10 +42,10 @@ export async function GET(req) {
 
         // 3. Free vs Paid
         const freeSubscriptions = await User.countDocuments({
-            subscriptionStatus: { $in: ['free', null] }
+            subscriptionStatus: { $in: ['FREE', null] }
         });
         const paidSubscriptions = await User.countDocuments({
-            subscriptionStatus: { $nin: ['free', null] }
+            subscriptionStatus: { $nin: ['FREE', null] }
         });
 
         // 4. Revenue Stats from PaymentOrder

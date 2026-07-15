@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
+import { protect, admin } from '@/middleware/auth';
 
 const calculateTotalRevenue = async () => {
     const revenueSummary = await PaymentOrder.aggregate([
@@ -18,6 +19,11 @@ const calculateTotalRevenue = async () => {
 
 export async function GET(req) {
     try {
+        const auth = await protect(req);
+        if (!auth.authenticated || !admin(auth.user)) {
+            return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
+        }
+
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const limit = parseInt(searchParams.get('limit') || '20');
@@ -27,7 +33,7 @@ export async function GET(req) {
         const now = new Date();
         const activeProUsers = await User.countDocuments({
             role: 'student',
-            subscriptionStatus: 'pro',
+            subscriptionStatus: 'PRO',
             subscriptionExpiry: { $gte: now },
             status: 'active'
         });
@@ -36,7 +42,7 @@ export async function GET(req) {
 
         const totalSubscriptions = await User.countDocuments({
             role: 'student',
-            subscriptionStatus: { $in: ['basic', 'premium', 'pro'] }
+            subscriptionStatus: 'PRO'
         });
 
         const subscriptionDistribution = await User.aggregate([

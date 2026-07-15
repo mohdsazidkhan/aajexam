@@ -51,8 +51,11 @@ export async function GET(req, { params }) {
         if (!attempt) {
             attempt = await UserTestAttempt.create({ user: user.id, practiceTest: testId, startedAt: new Date(), status: 'InProgress' });
 
-            // Increment count for first attempt of a mock
-            if (!test.isPYQ && (user.subscriptionStatus !== 'pro')) {
+            // Increment count for first attempt of a mock.
+            // subscriptionStatus is stored uppercase ('FREE'/'PRO'), so this must
+            // compare against 'PRO' — 'pro' never matched and inflated the counter
+            // for PRO users too.
+            if (!test.isPYQ && (user.subscriptionStatus !== 'PRO')) {
                 user.fullMockAttemptCount = (user.fullMockAttemptCount || 0) + 1;
                 await user.save();
             }

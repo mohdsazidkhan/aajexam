@@ -51,22 +51,31 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
     user.subscriptionExpiry = endDate;
     await user.save();
 
+    // Idempotency lock: the subscription_payment tx is unique per txnid. If this
+    // payment was already activated — e.g. PayU's server-to-server callback AND the
+    // browser verify both fire for the same txn — the duplicate insert throws E11000
+    // and we bail out BEFORE re-applying referral rewards or other side effects.
+    try {
+        await WalletTransaction.create({
+            user: userId,
+            type: 'debit',
+            amount: amount,
+            balance: user.walletBalance || 0,
+            description: `Payment for ${normalizedPlan} subscription via PayU`,
+            category: 'subscription_payment',
+            status: 'completed',
+            reference: txnid,
+            subscriptionId: subscription._id,
+            ...(txnid ? { idempotencyKey: `subpay-${txnid}` } : {}),
+            metadata: { gateway: 'payu', payuTransactionId: txnid }
+        });
+    } catch (e) {
+        if (e && e.code === 11000) return subscription; // already activated for this txn
+        throw e;
+    }
+
     // Apply rewards
     await applyReferralRewards(user, normalizedPlan, amount);
-
-    // Record wallet transaction for tracking
-    await WalletTransaction.create({
-        user: userId,
-        type: 'debit',
-        amount: amount,
-        balance: user.walletBalance || 0,
-        description: `Payment for ${normalizedPlan} subscription via PayU`,
-        category: 'subscription_payment',
-        status: 'completed',
-        reference: txnid,
-        subscriptionId: subscription._id,
-        metadata: { gateway: 'payu', payuTransactionId: txnid }
-    });
 
     // Create notification
     await createNotification({

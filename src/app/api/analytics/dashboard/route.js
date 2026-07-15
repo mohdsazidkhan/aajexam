@@ -18,11 +18,11 @@ export async function GET(req) {
 
         const now = new Date();
         const activeProUsers = await User.countDocuments({
-            role: 'student', subscriptionStatus: 'pro', subscriptionExpiry: { $gte: now }, status: 'active'
+            role: 'student', subscriptionStatus: 'PRO', subscriptionExpiry: { $gte: now }, status: 'active'
         });
 
         const totalRevenue = 0;
-        const totalSubscriptions = await User.countDocuments({ role: 'student', subscriptionStatus: { $in: ['basic', 'premium', 'pro'] } });
+        const totalSubscriptions = await User.countDocuments({ role: 'student', subscriptionStatus: 'PRO' });
 
         const subscriptionDistribution = await User.aggregate([
             { $match: { role: 'student' } },
