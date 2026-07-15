@@ -6,6 +6,7 @@ import Exam from '@/models/Exam';
 import { protect } from '@/middleware/auth';
 import { generateCompletion, isAIConfigured } from '@/lib/ai';
 import { buildStudyPlanPrompt } from '@/lib/studyPlanPrompt';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 // POST - Generate AI study plan
 export async function POST(req) {
@@ -14,6 +15,11 @@ export async function POST(req) {
         if (!auth.authenticated) {
             return NextResponse.json({ message: 'Login required' }, { status: 401 });
         }
+
+        // Real LLM call — cap cost/abuse: 10 / hour / user.
+        const limited = await enforceRateLimit(req, { name: 'studyplan-generate', limit: 10, windowSec: 3600, by: auth.user.id });
+        if (limited) return limited;
+
         await dbConnect();
 
         const body = await req.json();

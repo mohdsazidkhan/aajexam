@@ -8,6 +8,7 @@ import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
 import { sendBrevoEmail } from '@/utils/email';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 async function getUniqueReferralCode() {
     let code;
@@ -72,6 +73,10 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
 
 export async function POST(req) {
     try {
+        // Throttle signup abuse (disposable-email farming, referral fraud): 5 / 10 min / IP.
+        const limited = await enforceRateLimit(req, { name: 'register', limit: 5, windowSec: 600 });
+        if (limited) return limited;
+
         await dbConnect();
         const body = await req.json();
         const { name, email, phone, password, role = 'student', referredBy } = body;

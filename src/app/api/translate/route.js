@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import OpenAI from 'openai';
 import dbConnect from '@/lib/db';
 import TranslationCache from '@/models/TranslationCache';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
@@ -97,6 +98,13 @@ async function translateOne(text, targetLangName) {
 
 export async function POST(req) {
     try {
+        // Unauthenticated open translation proxy — biggest AI-cost surface.
+        // Generous per-IP cap: legit per-question test translation (batched +
+        // cached) stays well under; floods of unique strings get blocked.
+        // 60 requests/min/IP (each request may batch many items).
+        const limited = await enforceRateLimit(req, { name: 'translate', limit: 60, windowSec: 60 });
+        if (limited) return limited;
+
         const body = await req.json();
         const { text, target } = body;
         const items = Array.isArray(body.items) ? body.items : null;

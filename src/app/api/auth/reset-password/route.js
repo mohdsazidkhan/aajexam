@@ -2,9 +2,14 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import bcrypt from 'bcryptjs';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 export async function POST(req) {
     try {
+        // Throttle reset-token brute-force: 10 / 15 min / IP.
+        const limited = await enforceRateLimit(req, { name: 'reset-password', limit: 10, windowSec: 900 });
+        if (limited) return limited;
+
         await dbConnect();
         const { token, newPassword } = await req.json();
 

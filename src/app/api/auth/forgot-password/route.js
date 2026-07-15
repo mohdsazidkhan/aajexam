@@ -3,9 +3,14 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import crypto from 'crypto';
 const { sendBrevoEmail } = require('@/utils/email');
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 export async function POST(req) {
     try {
+        // Throttle reset-email spam / user enumeration: 4 / 15 min / IP.
+        const limited = await enforceRateLimit(req, { name: 'forgot-password', limit: 4, windowSec: 900 });
+        if (limited) return limited;
+
         await dbConnect();
         const { email } = await req.json();
 

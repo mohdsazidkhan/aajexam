@@ -58,13 +58,17 @@ export async function GET(req, { params }) {
             }
         }
 
+        // NOTE: `explanation` and `correctAnswerIndex` are deliberately NOT sent
+        // during an in-progress attempt. Explanations name the correct option, so
+        // shipping them here would let a user read answers straight off the network
+        // response. The review screen fetches them separately from the attempt-detail
+        // route (tests/[id]/attempts/[attemptId]) only AFTER submission.
         const safeQuestions = test.questions.map(q => ({
             _id: q._id,
             questionText: q.questionText,
             questionImage: q.questionImage || '',
             options: q.options,
             optionImages: q.optionImages || [],
-            explanation: q.explanation,
             section: q.section,
             tags: q.tags,
             difficulty: q.difficulty

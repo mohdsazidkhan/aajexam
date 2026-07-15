@@ -4,6 +4,7 @@ import User from '@/models/User';
 import WalletTransaction from '@/models/WalletTransaction';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
@@ -14,6 +15,9 @@ export async function POST(req) {
         if (!auth.authenticated) return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
 
         const userId = auth.user.id;
+        // Cap payout-request spam / race-fire abuse: 5 / hour / user.
+        const limited = await enforceRateLimit(req, { name: 'withdraw', limit: 5, windowSec: 3600, by: userId });
+        if (limited) return limited;
         const { amount, upi, bankDetails } = await req.json();
 
         if (!amount || amount <= 0) {

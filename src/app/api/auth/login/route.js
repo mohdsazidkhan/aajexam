@@ -4,9 +4,14 @@ import Subscription from '@/models/Subscription';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 export async function POST(req) {
     try {
+        // Throttle credential-stuffing: 8 attempts / 5 min / IP.
+        const limited = await enforceRateLimit(req, { name: 'login', limit: 8, windowSec: 300 });
+        if (limited) return limited;
+
         await dbConnect();
         const body = await req.json();
         const { identifier, password } = body;

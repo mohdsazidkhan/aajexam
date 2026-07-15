@@ -4,6 +4,7 @@ import UserWallet from '@/models/UserWallet';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
 import { createNotification } from '@/utils/notifications';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
@@ -14,6 +15,9 @@ export async function POST(req) {
 
         await dbConnect();
         const userId = auth.user.id;
+        // Cap payout-request spam / race-fire abuse: 5 / hour / user.
+        const limited = await enforceRateLimit(req, { name: 'withdraw', limit: 5, windowSec: 3600, by: userId });
+        if (limited) return limited;
         const { amount, bankDetails, upi } = await req.json();
 
         if (!amount || amount <= 0) return NextResponse.json({ message: 'Invalid amount' }, { status: 400 });

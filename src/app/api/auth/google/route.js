@@ -8,6 +8,7 @@ import { createNotification } from '@/utils/notifications';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import WalletTransaction from '@/models/WalletTransaction';
 import { sendBrevoEmail } from '@/utils/email';
+import { enforceRateLimit } from '@/lib/rateLimit';
 
 async function getUniqueReferralCode() {
     let code;
@@ -72,6 +73,10 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
 
 export async function POST(req) {
     try {
+        // Lenient — OAuth token is already Google-verified; just blunt automated abuse: 20 / 5 min / IP.
+        const limited = await enforceRateLimit(req, { name: 'google-auth', limit: 20, windowSec: 300 });
+        if (limited) return limited;
+
         await dbConnect();
         const body = await req.json();
         const { googleId, email, name, picture, referralCode } = body;

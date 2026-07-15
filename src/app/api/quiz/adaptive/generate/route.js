@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import { protect } from '@/middleware/auth';
+import { enforceRateLimit } from '@/lib/rateLimit';
 import mongoose from 'mongoose';
 import Topic from '@/models/Topic';
 import QuizAttempt from '@/models/QuizAttempt';
@@ -21,7 +22,11 @@ export async function POST(req) {
     try {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Login required' }, { status: 401 });
-        
+
+        // Cap expensive adaptive-quiz generation: 20 / 10 min / user.
+        const limited = await enforceRateLimit(req, { name: 'adaptive-generate', limit: 20, windowSec: 600, by: auth.user.id });
+        if (limited) return limited;
+
         await dbConnect();
         
         const user = auth.user;
