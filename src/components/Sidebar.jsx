@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   LayoutDashboard,
   Bell,
+  Mail,
   GraduationCap,
   Users,
   User,
@@ -68,6 +69,7 @@ const Sidebar = () => {
       items: [
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
+        { path: '/admin/email-campaigns', icon: Mail, label: 'Email Campaigns', key: 'emails-campaigns' },
       ]
     },
     {
