@@ -570,6 +570,11 @@ class ApiService {
     return this.request(`/api/admin/referral-history?${queryString}`);
   }
 
+  async getReferralFraud(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/referral-fraud?${queryString}`);
+  }
+
   async getReferralWithdrawRequests(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/referral-withdraw-requests?${queryString}`);

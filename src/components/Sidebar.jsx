@@ -12,6 +12,7 @@ import {
   History,
   BarChart3,
   ShieldCheck,
+  ShieldAlert,
   Banknote,
   Wallet,
   CreditCard,
@@ -132,6 +133,7 @@ const Sidebar = () => {
         { path: '/admin/analytics/users-overview', icon: TrendingUp, label: 'Growth', key: 'analytics-users-overview' },
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Financial', key: 'analytics-financial' },
         { path: '/admin/referral-analytics', icon: Globe, label: 'Referrals', key: 'referral-analytics' },
+        { path: '/admin/referral-fraud', icon: ShieldAlert, label: 'Referral Fraud', key: 'referral-fraud' },
       ]
     },
     {
