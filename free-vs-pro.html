@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AajExam — Free vs PRO Features</title>
+<style>
+  :root{
+    --green:#58cc02; --green-d:#46a302;
+    --blue:#1cb0f6; --blue-d:#0097e0;
+    --orange:#ffb020; --red:#ff4b4b; --purple:#ce82ff; --yellow:#ffdc00;
+    --bg:#f7f7f7; --surface:#ffffff; --surface-2:#f0f4f8;
+    --text:#131f24; --muted:#5b6b73; --border:#e3e8ec;
+    --shadow:0 4px 0 0 rgba(0,0,0,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131f24; --surface:#1c2d35; --surface-2:#16242b;
+      --text:#eef3f5; --muted:#9fb0b8; --border:#344955;
+      --shadow:0 4px 0 0 rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:'Outfit','Nunito',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px; margin:0 auto; padding:32px 20px 72px;}
+  header.hero{text-align:center; padding:24px 0 8px;}
+  .brand{
+    display:inline-flex; align-items:center; gap:10px; font-weight:800;
+    font-size:1.05rem; letter-spacing:.3px;
+    background:var(--surface); border:2px solid var(--border);
+    padding:8px 16px; border-radius:999px; box-shadow:var(--shadow);
+  }
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--green);}
+  h1{font-size:clamp(1.8rem,4vw,2.7rem); margin:22px 0 8px; line-height:1.15;}
+  h1 .accent{color:var(--green);}
+  .sub{color:var(--muted); font-size:1.05rem; max-width:640px; margin:0 auto;}
+  .platform-tag{
+    display:inline-block; margin-top:16px; font-size:.78rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:.8px; color:var(--blue-d);
+    background:rgba(28,176,246,.12); padding:5px 12px; border-radius:8px;
+  }
+
+  /* Plan cards */
+  .plans{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:40px 0;}
+  @media (max-width:640px){ .plans{grid-template-columns:1fr;} }
+  .plan{
+    background:var(--surface); border:2px solid var(--border); border-radius:20px;
+    padding:26px 24px; box-shadow:var(--shadow); position:relative;
+  }
+  .plan.pro{border-color:var(--green);}
+  .plan .badge{
+    position:absolute; top:-13px; right:22px; font-size:.72rem; font-weight:800;
+    text-transform:uppercase; letter-spacing:.6px; color:#fff;
+    background:var(--green); padding:5px 12px; border-radius:999px;
+  }
+  .plan h2{margin:0 0 4px; font-size:1.35rem;}
+  .plan .price{font-size:2.1rem; font-weight:800; margin:6px 0;}
+  .plan .price small{font-size:.95rem; font-weight:600; color:var(--muted);}
+  .plan .tagline{color:var(--muted); font-size:.95rem; margin:0 0 18px;}
+  .plan ul{list-style:none; margin:0; padding:0;}
+  .plan li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; font-size:.96rem;}
+  .plan li .ic{flex:0 0 20px; font-weight:800;}
+  .yes{color:var(--green-d);}
+  .no{color:var(--red); opacity:.85;}
+  .cta{
+    display:block; text-align:center; margin-top:20px; font-weight:800;
+    padding:13px; border-radius:14px; text-decoration:none; border:2px solid transparent;
+  }
+  .cta.free{background:var(--surface-2); color:var(--text); border-color:var(--border);}
+  .cta.pro{background:var(--green); color:#fff; box-shadow:0 4px 0 0 var(--green-d);}
+
+  /* Comparison table */
+  h3.section{margin:52px 0 6px; font-size:1.5rem;}
+  .section-sub{color:var(--muted); margin:0 0 20px;}
+  .table-scroll{overflow-x:auto; border:2px solid var(--border); border-radius:16px; background:var(--surface);}
+  table{width:100%; border-collapse:collapse; min-width:520px;}
+  thead th{
+    text-align:left; padding:14px 18px; font-size:.82rem; text-transform:uppercase;
+    letter-spacing:.6px; color:var(--muted); background:var(--surface-2);
+    border-bottom:2px solid var(--border);
+  }
+  thead th.col{text-align:center; width:110px;}
+  tbody td{padding:13px 18px; border-bottom:1px solid var(--border); font-size:.95rem; vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  td.col{text-align:center; font-weight:800;}
+  .cat-row td{
+    background:var(--surface-2); font-weight:800; font-size:.8rem;
+    text-transform:uppercase; letter-spacing:.8px; color:var(--blue-d);
+  }
+  .feat .note{display:block; color:var(--muted); font-weight:500; font-size:.82rem; margin-top:2px;}
+  .chk{color:var(--green-d);}
+  .crs{color:var(--red); opacity:.7;}
+  .lim{color:var(--orange); font-size:.82rem; font-weight:700;}
+
+  /* Footer notes */
+  .notes{
+    margin-top:40px; background:var(--surface); border:2px solid var(--border);
+    border-radius:16px; padding:22px 24px; box-shadow:var(--shadow);
+  }
+  .notes h4{margin:0 0 10px; font-size:1.05rem;}
+  .notes ul{margin:0; padding-left:20px; color:var(--muted); font-size:.92rem;}
+  .notes li{margin:6px 0;}
+  .notes code{
+    background:var(--surface-2); padding:2px 6px; border-radius:6px;
+    font-size:.85em; color:var(--text);
+  }
+  footer.foot{text-align:center; color:var(--muted); font-size:.82rem; margin-top:36px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="brand"><span class="dot"></span>AajExam</span>
+    <h1>Free vs <span class="accent">PRO</span> Features</h1>
+    <p class="sub">Everything a free learner gets — and exactly what unlocks with PRO. Two simple plans, one price.</p>
+    <span class="platform-tag">Web Platform · aajexam.com</span>
+  </header>
+
+  <!-- Plan cards -->
+  <section class="plans">
+    <div class="plan free">
+      <h2>Free</h2>
+      <div class="price">₹0<small> / forever</small></div>
+      <p class="tagline">Start preparing today, no card needed.</p>
+      <ul>
+        <li><span class="ic yes">✓</span> Daily Challenges (1/day + streak)</li>
+        <li><span class="ic yes">✓</span> Unlimited topic-wise practice</li>
+        <li><span class="ic yes">✓</span> Subject Tests — up to 2/day</li>
+        <li><span class="ic yes">✓</span> First Full Mock Test free</li>
+        <li><span class="ic yes">✓</span> Latest-year PYQ papers</li>
+        <li><span class="ic yes">✓</span> Score card, leaderboard &amp; rank</li>
+        <li><span class="ic yes">✓</span> Notes, reels &amp; community Q&amp;A</li>
+        <li><span class="ic no">✕</span> Ad-supported</li>
+      </ul>
+      <a class="cta free" href="/register">Get started free</a>
+    </div>
+
+    <div class="plan pro">
+      <span class="badge">Best value</span>
+      <h2>PRO</h2>
+      <div class="price">₹99<small> / month</small></div>
+      <p class="tagline">Unlock the full exam-prep engine.</p>
+      <ul>
+        <li><span class="ic yes">✓</span> Unlimited Mock Tests, all exams</li>
+        <li><span class="ic yes">✓</span> All Previous Year Papers (every year)</li>
+        <li><span class="ic yes">✓</span> Unlimited Subject Tests (no daily cap)</li>
+        <li><span class="ic yes">✓</span> AI Study Planner &amp; Revision Queue</li>
+        <li><span class="ic yes">✓</span> Exam Readiness Score &amp; deep analytics</li>
+        <li><span class="ic yes">✓</span> Adaptive Practice &amp; Syllabus Tracker</li>
+        <li><span class="ic yes">✓</span> Personalized Mentors guidance</li>
+        <li><span class="ic yes">✓</span> Ad-free experience + PRO badge</li>
+      </ul>
+      <a class="cta pro" href="/subscription">Upgrade to PRO</a>
+    </div>
+  </section>
+
+  <!-- Full comparison -->
+  <h3 class="section">Full feature comparison</h3>
+  <p class="section-sub">Enforced server-side — free limits are real, not just UI.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="col">Free</th>
+          <th class="col">PRO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="3">🧠 Quizzes &amp; Tests</td></tr>
+        <tr class="feat">
+          <td>Daily Challenges<span class="note">Builds streaks + habit rewards</span></td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Topic-wise Practice<span class="note">Unlimited, basic level</span></td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Subject Tests</td>
+          <td class="col"><span class="lim">2 / day</span></td><td class="col chk">Unlimited</td>
+        </tr>
+        <tr class="feat">
+          <td>Full Mock Tests</td>
+          <td class="col"><span class="lim">1st free</span></td><td class="col chk">Unlimited</td>
+        </tr>
+        <tr class="feat">
+          <td>Previous Year Papers (PYQ)</td>
+          <td class="col"><span class="lim">Last year</span></td><td class="col chk">All years</td>
+        </tr>
+        <tr class="feat">
+          <td>Adaptive Practice<span class="note">AI difficulty-tuned quizzes</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="3">📊 Analytics &amp; Insights</td></tr>
+        <tr class="feat">
+          <td>Basic Score Card<span class="note">After every test</span></td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Leaderboard &amp; Rank</td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Exam Readiness Score<span class="note">Selection-probability %</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Advanced Analytics &amp; Reports<span class="note">Section-wise, weakness breakdown</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Quiz &amp; Exam History</td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="3">📚 Study Tools</td></tr>
+        <tr class="feat">
+          <td>Notes &amp; Formulas<span class="note">Standard content</span></td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>AI Study Planner<span class="note">Personalized roadmap</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Revision Queue<span class="note">SM-2 spaced repetition</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Syllabus Tracker</td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Personalized Mentors<span class="note">Verified expert guidance</span></td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="3">🌐 Community &amp; Experience</td></tr>
+        <tr class="feat">
+          <td>Educational Reels</td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Community Q&amp;A</td>
+          <td class="col chk">✓</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>Ad-free Experience</td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+        <tr class="feat">
+          <td>PRO Badge on Profile</td>
+          <td class="col crs">✕</td><td class="col chk">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notes">
+    <h4>Good to know</h4>
+    <ul>
+      <li><strong>Two tiers only:</strong> <code>FREE</code> and <code>PRO</code>. Admins are always treated as PRO.</li>
+      <li><strong>PRO is ₹99 / month</strong>, billed monthly (30-day access) via PayU. FREE stays free forever.</li>
+      <li><strong>Referral rewards:</strong> invite a friend and earn ₹33 when they buy PRO (₹10 on their sign-up).</li>
+      <li><strong>Access is enforced on the server</strong> — locked content returns a real "Upgrade to PRO" gate, not just a hidden button.</li>
+    </ul>
+  </div>
+
+  <footer class="foot">AajExam · Free vs PRO overview — reflects current in-app gating. Prices in INR (₹).</footer>
+
+</div>
+</body>
+</html>
