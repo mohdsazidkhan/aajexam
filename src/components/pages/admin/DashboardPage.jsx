@@ -40,6 +40,7 @@ import Loading from '../../Loading';
 import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
+import { getUserRole } from '../../../lib/utils/authUtils';
 
 const formatINR = (n) => `₹${(n || 0).toLocaleString('en-IN')}`;
 
@@ -51,6 +52,13 @@ const DashboardPage = () => {
   const hasFetchedRef = useRef(false);
 
   useEffect(() => {
+    // Guard: redirect non-admins before hitting the API
+    const role = getUserRole();
+    if (role !== 'admin') {
+      router.replace('/');
+      return;
+    }
+
     const fetchStats = async () => {
       try {
         setLoading(true);
@@ -63,7 +71,12 @@ const DashboardPage = () => {
         setStats({ ...adminStats, ...overview });
       } catch (err) {
         console.error('Error fetching stats:', err);
-        setError('Failed to load dashboard statistics');
+        // Show specific message for 403 errors
+        if (err?.response?.status === 403) {
+          setError('Access denied. Admin privileges required.');
+        } else {
+          setError('Failed to load dashboard statistics');
+        }
         setStats({});
       } finally {
         setLoading(false);
@@ -72,7 +85,7 @@ const DashboardPage = () => {
     if (hasFetchedRef.current) return;
     hasFetchedRef.current = true;
     fetchStats();
-  }, []);
+  }, [router]);
 
   const sections = [
     {
