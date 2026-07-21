@@ -116,30 +116,37 @@ function AppContent({ Component, pageProps }) {
   const { isAuthenticated, isClient } = useAuthStatus();
 
   const renderContent = () => {
-    if (isClient && isAuthenticated) {
+    // Server always renders the public skeleton (no layout branching on server)
+    // to avoid hydration mismatches. Layout selection only happens client-side.
+    if (!isClient) {
       return (
-        <ClientOnly>
-          <AppLayout>
+        <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
+          <div className="appContainer p-4">
             {Component && <Component {...pageProps} />}
-          </AppLayout>
-        </ClientOnly>
+          </div>
+          <UnifiedFooter />
+        </main>
+      );
+    }
+
+    if (isAuthenticated) {
+      return (
+        <AppLayout>
+          {Component && <Component {...pageProps} />}
+        </AppLayout>
       );
     }
 
     return (
       <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
-        <ClientOnly>
-           <PublicNavbar />
-        </ClientOnly>
+        <PublicNavbar />
         <div className="appContainer p-4">
           {Component && <Component {...pageProps} />}
         </div>
         <UnifiedFooter />
-        <ClientOnly>
-          <PublicBottomNav />
-          <ExitIntentModal />
-          <PageViewNudge />
-        </ClientOnly>
+        <PublicBottomNav />
+        <ExitIntentModal />
+        <PageViewNudge />
       </main>
     );
   };
