@@ -466,9 +466,11 @@ const TestStart = ({ resolvedId } = {}) => {
                   return (
                     <button
                       key={idx}
+                      disabled={translatingQ}
                       onClick={() => handleAnswer(idx)}
                       className={`
-                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4 border-b-4 active:border-b-0 active:translate-y-1
+                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4 border-b-4 
+                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-4 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
                           ? 'bg-primary-500 text-white border-primary-600 shadow-duo-primary'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
