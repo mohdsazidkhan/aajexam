@@ -76,7 +76,7 @@ const TestStart = ({ resolvedId } = {}) => {
       const res = await API.startPracticeTest(testId);
       if (res?.success) {
         setTest(res.data);
-        setQuestions(res.data.questions || []);
+        setQuestions((res.data.questions || []).map((q, idx) => ({ ...q, _id: q._id || q.id || `q_${idx}` })));
         setAttemptId(res.data.attemptId);
 
         // If we have saved progress, we can auto-start
