@@ -16,8 +16,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('quizzes');
-  const [showTestModal, setShowTestModal] = useState(false);
-  const [selectedTest, setSelectedTest] = useState(null);
+
   const [generatingAdaptive, setGeneratingAdaptive] = useState(false);
 
   useEffect(() => {
@@ -173,14 +172,14 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{test.title}</p>
                     <p className="text-xs text-slate-400">{test.questionCount || 0} Q · {test.totalMarks} marks · {fmtDur(test.duration)}</p>
                   </div>
-                  <button onClick={() => { setSelectedTest(test); setShowTestModal(true); }} className={`text-[10px] font-black px-3 py-2 rounded-lg uppercase ${done ? 'bg-slate-100 text-slate-600' : 'bg-primary-500 text-white'}`}>{done ? 'Retake' : 'Start'}</button>
+                  <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)} className={`text-[10px] font-black px-3 py-2 rounded-lg uppercase ${done ? 'bg-slate-100 text-slate-600' : 'bg-primary-500 text-white'}`}>{done ? 'Retake' : 'Start'}</button>
                 </motion.div>
               );
             })}
           </div>
         )}
 
-        {showTestModal && selectedTest && <TestStartModal isOpen={showTestModal} onClose={() => setShowTestModal(false)} onConfirm={() => { setShowTestModal(false); router.push(`/govt-exams/test/${selectedTest.slug}/start`); }} test={selectedTest} pattern={selectedTest.examPattern} exam={topic.subject?.exam} />}
+
       </div>
     </div>
   );

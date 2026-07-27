@@ -31,8 +31,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const [quizzes, setQuizzes] = useState(initialQuizzes);
   const [loading, setLoading] = useState(!initialExam && !initialError);
   const [error, setError] = useState(initialError);
-  const [showTestModal, setShowTestModal] = useState(false);
-  const [selectedTest, setSelectedTest] = useState(null);
+
 
   const fetchData = useCallback(async () => {
     if (!examId) return;
@@ -261,7 +260,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                               Results
                             </button>
                           )}
-                          <button onClick={() => { setSelectedTest(test); setShowTestModal(true); }}
+                          <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
                             className={`text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
                             {isCompleted ? 'Retake' : 'Start'}
                           </button>
@@ -316,21 +315,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         </div>
       )}
 
-      {/* Test Start Modal */}
-      {showTestModal && selectedTest && (
-        <TestStartModal
-          isOpen={showTestModal}
-          onClose={() => setShowTestModal(false)}
-          onConfirm={() => {
-            setShowTestModal(false);
-            localStorage.setItem('testNavigationData', JSON.stringify({ fromPage: 'exam-detail', testData: selectedTest }));
-            router.push(`/govt-exams/test/${selectedTest.slug || selectedTest._id}/start`);
-          }}
-          test={selectedTest}
-          pattern={selectedTest.examPattern}
-          exam={exam}
-        />
-      )}
+
     </div>
   );
 };
