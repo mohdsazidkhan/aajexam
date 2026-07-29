@@ -142,7 +142,8 @@ const AttemptQuizPage = () => {
   const { language, toggleLanguage, translating, translated } = useQuestionTranslation({
     questions: quiz?.questions,
     currentIndex: currentQuestionIndex,
-    active: !!quiz && !submitted,
+    sourceType: 'quiz',
+    sourceId: quiz?._id,
   });
 
   // Timer - uses ref to avoid stale closure
@@ -716,7 +717,7 @@ const AttemptQuizPage = () => {
             </p>
           </div>
 
-          {language !== 'en' && !translated && (
+          {translating && (
             <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
               हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)

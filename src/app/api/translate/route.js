@@ -17,7 +17,7 @@ function getModelChain() {
     if (process.env.OPENROUTER_TRANSLATE_MODEL && !chain.includes(process.env.OPENROUTER_TRANSLATE_MODEL)) {
         chain.unshift(process.env.OPENROUTER_TRANSLATE_MODEL);
     }
-    if (chain.length === 0) chain.push('meta-llama/llama-3.3-70b-instruct:free');
+    if (chain.length === 0) chain.push('openai/gpt-oss-20b:free');
     return chain;
 }
 

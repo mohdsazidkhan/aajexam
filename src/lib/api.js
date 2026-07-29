@@ -821,10 +821,18 @@ class ApiService {
     });
   }
 
-  async translateBatch(target, items) {
-    return this.request('/api/translate', {
+  // Read the questions of a quiz/test that are already stored in `lang`
+  async getBulkTranslations({ sourceType, sourceId, lang = 'hi' }) {
+    const qs = new URLSearchParams({ sourceType, sourceId, lang }).toString();
+    return this.request(`/api/translate/bulk?${qs}`);
+  }
+
+  // Ask the server to translate + store whatever is still missing.
+  // Pass questionIds to translate just those and get them back in the response.
+  async requestBulkTranslation({ sourceType, sourceId, lang = 'hi', questionIds }) {
+    return this.request('/api/translate/bulk', {
       method: 'POST',
-      body: JSON.stringify({ target, items })
+      body: JSON.stringify({ sourceType, sourceId, lang, ...(questionIds ? { questionIds } : {}) })
     });
   }
 

@@ -57,7 +57,8 @@ const TestStart = ({ resolvedId } = {}) => {
   const { language, toggleLanguage, translating: translatingQ, translated } = useQuestionTranslation({
     questions,
     currentIndex: currentQIndex,
-    active: started,
+    sourceType: 'test',
+    sourceId: test?._id,
   });
 
   const timerRef = useRef(null);
@@ -246,7 +247,6 @@ const TestStart = ({ resolvedId } = {}) => {
   } : null;
   const progressPercent = ((currentQIndex + 1) / questions.length) * 100;
   const answeredCount = Object.keys(answers).length;
-  const isShowingOriginalDuringTranslate = started && language !== 'en' && !translated;
 
   return (
     <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col">
@@ -405,10 +405,10 @@ const TestStart = ({ resolvedId } = {}) => {
                 </h2>
               </div>
 
-              {translatingQ && isShowingOriginalDuringTranslate && (
+              {translatingQ && (
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[11px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">
                   <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                  Translating to {language === 'hi' ? 'हिंदी' : language.toUpperCase()}…
+                  Translating to हिंदी…
                 </div>
               )}
 
