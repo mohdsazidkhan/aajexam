@@ -58,6 +58,8 @@ function isRetryableError(err) {
     const msg = (err?.message || '').toLowerCase();
     if (msg.includes('rate') || msg.includes('timeout') || msg.includes('unavailable') || msg.includes('quota')) return true;
     if (msg.includes('no endpoints') || msg.includes('not found') || msg.includes('does not exist')) return true;
+    // A retired/renamed model slug must not abort the chain — skip to the next model.
+    if (msg.includes('not a valid model') || msg.includes('invalid model')) return true;
     // OpenRouter's "Provider returned error" (status 400) means the upstream model/provider failed.
     if (status === 400 && (msg.includes('provider') || msg.includes('upstream'))) return true;
     return false;
