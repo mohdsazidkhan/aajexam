@@ -9,18 +9,10 @@ import {
 
 const LanguageContext = createContext();
 
-const INDIAN_LANGUAGES = [
+// Quiz and practice tests support English ⇄ Hindi only.
+const SUPPORTED_LANGUAGES = [
+  { code: "en", name: "English" },
   { code: "hi", name: "Hindi" },
-  { code: "mr", name: "Marathi" },
-  { code: "gu", name: "Gujarati" },
-  { code: "bn", name: "Bengali" },
-  { code: "pa", name: "Punjabi" },
-  { code: "ta", name: "Tamil" },
-  { code: "te", name: "Telugu" },
-  { code: "kn", name: "Kannada" },
-  { code: "ml", name: "Malayalam" },
-  { code: "or", name: "Odia" },
-  { code: "ur", name: "Urdu" },
 ];
 
 export const LanguageProvider = ({ children }) => {
@@ -92,7 +84,7 @@ export const LanguageProvider = ({ children }) => {
   );
 
   const changeLanguage = (lang) => {
-    dispatch(setLanguage(lang));
+    dispatch(setLanguage(lang === "hi" ? "hi" : "en"));
   };
 
   const getTranslation = (text) => {
@@ -109,7 +101,7 @@ export const LanguageProvider = ({ children }) => {
         changeLanguage,
         getTranslation,
         translateTexts, // ⬅ MAIN TRANSLATION FUNCTION (simple & clean)
-        languages: [{ code: "en", name: "English" }, ...INDIAN_LANGUAGES],
+        languages: SUPPORTED_LANGUAGES,
       }}
     >
       {children}
@@ -125,4 +117,4 @@ export const useLanguage = () => {
   return context;
 };
 
-export { INDIAN_LANGUAGES };
+export { SUPPORTED_LANGUAGES };

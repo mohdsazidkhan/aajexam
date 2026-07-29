@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Only English ⇄ Hindi is supported; older saved codes fall back to English.
+const normalizeLanguage = (lang) => (lang === 'hi' ? 'hi' : 'en');
+
 // Initialize language from localStorage or default to English
 const getInitialLanguage = () => {
   if (typeof window !== 'undefined') {
     const savedLanguage = localStorage.getItem('pageLanguage');
-    if (savedLanguage) return savedLanguage;
+    if (savedLanguage) return normalizeLanguage(savedLanguage);
   }
   return 'en';
 };
@@ -18,9 +21,9 @@ const languageSlice = createSlice({
   },
   reducers: {
     setLanguage: (state, action) => {
-      state.currentLanguage = action.payload;
+      state.currentLanguage = normalizeLanguage(action.payload);
       if (typeof window !== 'undefined') {
-        localStorage.setItem('pageLanguage', action.payload);
+        localStorage.setItem('pageLanguage', state.currentLanguage);
       }
     },
     setTranslations: (state, action) => {
@@ -34,7 +37,7 @@ const languageSlice = createSlice({
       if (typeof window !== 'undefined') {
         const savedLanguage = localStorage.getItem('pageLanguage');
         if (savedLanguage) {
-          state.currentLanguage = savedLanguage;
+          state.currentLanguage = normalizeLanguage(savedLanguage);
         }
       }
     },

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import {
   Clock, ArrowLeft, ArrowRight, Brain, CheckCircle, XCircle, Trophy, Star,
   Rocket, ChevronRight, BookOpen, GraduationCap, AlertTriangle, Home, SkipForward,
-  BrainCircuit, Crown, Users, Zap, AlertCircle, MessageSquare
+  BrainCircuit, Crown, Users, Zap, AlertCircle, MessageSquare, Maximize2, Minimize2
 } from 'lucide-react';
 import DiscussionThread from '../discussions/DiscussionThread';
 
@@ -27,6 +27,8 @@ const speedBadge = (sec) => {
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Loading from '../Loading';
+import LanguageToggle from '../LanguageToggle';
+import useQuestionTranslation from '../../hooks/useQuestionTranslation';
 
 const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard.length === 0) {
@@ -56,12 +58,11 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
           const isCurrentUser = entry.user?._id === currentUser?.id;
           return (
             <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-xl ${isCurrentUser ? 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700' : 'bg-white/60 dark:bg-slate-700/60'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${
-                index === 0 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' :
-                index === 1 ? 'bg-gradient-to-r from-slate-400 to-slate-500' :
-                index === 2 ? 'bg-gradient-to-r from-amber-600 to-yellow-600' :
-                'bg-slate-300 dark:bg-slate-600'
-              }`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' :
+                  index === 1 ? 'bg-gradient-to-r from-slate-400 to-slate-500' :
+                    index === 2 ? 'bg-gradient-to-r from-amber-600 to-yellow-600' :
+                      'bg-slate-300 dark:bg-slate-600'
+                }`}>
                 {index === 0 ? <Crown className="w-4 h-4" /> : index + 1}
               </div>
               <div className="flex-1 min-w-0">
@@ -111,6 +112,21 @@ const AttemptQuizPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [isGeneratingChallenge, setIsGeneratingChallenge] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  }, []);
+
+  useEffect(() => {
+    const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', onFsChange);
+    return () => document.removeEventListener('fullscreenchange', onFsChange);
+  }, []);
 
   // Refs to avoid stale closures
   const answersRef = useRef(answers);
@@ -121,6 +137,13 @@ const AttemptQuizPage = () => {
   useEffect(() => { answersRef.current = answers; }, [answers]);
   useEffect(() => { timeTakenRef.current = timeTaken; }, [timeTaken]);
   useEffect(() => { currentQuestionIndexRef.current = currentQuestionIndex; }, [currentQuestionIndex]);
+
+  // EN ⇄ HI translation of the current question + its options
+  const { language, toggleLanguage, translating, translated } = useQuestionTranslation({
+    questions: quiz?.questions,
+    currentIndex: currentQuestionIndex,
+    active: !!quiz && !submitted,
+  });
 
   // Timer - uses ref to avoid stale closure
   useEffect(() => {
@@ -235,7 +258,7 @@ const AttemptQuizPage = () => {
         try {
           const lbRes = await API.getQuizLeaderboard(quizId);
           if (lbRes.success) setLeaderboard(lbRes.data || []);
-        } catch (e) {}
+        } catch (e) { }
       } catch (error) {
         console.error('Error fetching quiz:', error);
         toast.error('Error loading quiz');
@@ -379,7 +402,7 @@ const AttemptQuizPage = () => {
         method: 'POST',
         body: JSON.stringify({ quizId: quiz?._id || quizId, attemptId: result?._id || attemptId })
       });
-      
+
       if (res.success && res.challengeCode) {
         const link = `${window.location.origin}/challenge/${res.challengeCode}`;
         const shareData = {
@@ -387,7 +410,7 @@ const AttemptQuizPage = () => {
           text: `I scored ${Math.round(result?.percentage || 0)}% on this quiz. I challenge you to beat me!`,
           url: link
         };
-        
+
         if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
           await navigator.share(shareData);
         } else {
@@ -548,8 +571,8 @@ const AttemptQuizPage = () => {
           {/* Actions */}
           <div className="flex flex-col gap-3 mt-6">
             {!quizId?.startsWith('adaptive-') && !router.query.challengeCode && !router.query.challenge && (
-              <button 
-                onClick={handleChallenge} 
+              <button
+                onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
                 className="w-full px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
@@ -582,20 +605,64 @@ const AttemptQuizPage = () => {
 
         {/* Quiz Header */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-3 mb-3">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
+          {/* 3-column layout on desktop: left=title | center=dots | right=controls */}
+          <div className="flex items-center mb-2">
+            {/* Left: Logo + Title */}
+            <div className="flex items-center gap-2 flex-1 min-w-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shrink-0">
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
-              <div>
-                <h1 className="text-sm lg:text-lg font-bold text-slate-800 dark:text-white truncate max-w-[200px] lg:max-w-none">{quiz?.title}</h1>
+              <div className="min-w-0">
+                <h1 title={quiz?.title} className="text-sm lg:text-lg font-bold text-slate-800 dark:text-white truncate max-w-[200px] lg:max-w-none">{quiz?.title}</h1>
                 <p className="text-[10px] lg:text-xs text-slate-500">{quiz.questions.length} Questions</p>
               </div>
             </div>
-            {/* Timer */}
-            <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300 animate-pulse' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'}`}>
-              <Clock className="w-4 h-4" />
-              {formatTime(timeLeft)}
+
+            {/* Center: Question Navigation Dots — desktop only, truly centered */}
+            <div className="hidden lg:flex flex-wrap gap-1.5 justify-center flex-1">
+              {quiz.questions.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    const updated = [...timeTaken];
+                    updated[currentQuestionIndex] = (updated[currentQuestionIndex] || 0) + Math.round((Date.now() - questionStartTime) / 1000);
+                    setTimeTaken(updated);
+                    setCurrentQuestionIndex(idx);
+                  }}
+                  className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
+                      ? 'bg-emerald-500 text-white shadow-md scale-110'
+                      : answers[idx] !== null
+                        ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
+                    }`}
+                >
+                  {idx + 1}
+                </button>
+              ))}
+            </div>
+
+            {/* Right: Language + Timer + Fullscreen */}
+            <div className="flex items-center gap-2 flex-1 justify-end">
+              {/* Language */}
+              <LanguageToggle
+                language={language}
+                onToggle={toggleLanguage}
+                translating={translating}
+                className="flex items-center justify-center gap-1.5 min-w-[52px] px-3 py-1.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+              />
+              {/* Timer */}
+              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300 animate-pulse' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'}`}>
+                <Clock className="w-4 h-4" />
+                {formatTime(timeLeft)}
+              </div>
+              {/* Fullscreen Toggle */}
+              <button
+                onClick={toggleFullscreen}
+                title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+                className="flex items-center justify-center w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+              >
+                {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 
@@ -607,11 +674,15 @@ const AttemptQuizPage = () => {
             <span className="text-[10px] text-slate-400">Q {currentQuestionIndex + 1}/{quiz.questions.length}</span>
             <span className="text-[10px] text-slate-400">{answeredCount} answered</span>
           </div>
+
         </div>
 
-        {/* Question Navigation Dots - Top */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 mb-3 border border-white/20">
-          <div className="flex flex-wrap gap-1.5 justify-center">
+        {/* Question Navigation Dots — mobile only, standalone card */}
+        <div className="lg:hidden bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 mb-3 border border-white/20">
+          <div
+            className="flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {quiz.questions.map((_, idx) => (
               <button
                 key={idx}
@@ -621,13 +692,12 @@ const AttemptQuizPage = () => {
                   setTimeTaken(updated);
                   setCurrentQuestionIndex(idx);
                 }}
-                className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${
-                  idx === currentQuestionIndex
+                className={`w-7 h-7 shrink-0 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
                     ? 'bg-emerald-500 text-white shadow-md scale-110'
                     : answers[idx] !== null
                       ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
-                }`}
+                  }`}
               >
                 {idx + 1}
               </button>
@@ -641,8 +711,17 @@ const AttemptQuizPage = () => {
             <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0">
               {currentQuestionIndex + 1}
             </div>
-            <p className="text-base lg:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed">{currentQuestion.questionText}</p>
+            <p className="text-base lg:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed">
+              {translated?.questionText || currentQuestion.questionText}
+            </p>
           </div>
+
+          {language !== 'en' && !translated && (
+            <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+              हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)
+            </p>
+          )}
 
           {currentQuestion.image && (
             <div className="mb-4 flex justify-center">
@@ -658,19 +737,17 @@ const AttemptQuizPage = () => {
                 <button
                   key={optIdx}
                   onClick={() => handleSelect(optIdx)}
-                  className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
-                    isSelected
+                  className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-all duration-200 ${isSelected
                       ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 shadow-md'
                       : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
-                  }`}
+                    }`}
                 >
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${
-                    isSelected ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
-                  }`}>
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                    }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>
                   <span className={`text-sm font-medium ${isSelected ? 'text-emerald-800 dark:text-emerald-200' : 'text-slate-700 dark:text-slate-300'}`}>
-                    {option.text}
+                    {translated?.optionTexts?.[optIdx] || option.text}
                   </span>
                 </button>
               );

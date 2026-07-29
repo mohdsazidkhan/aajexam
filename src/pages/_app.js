@@ -116,16 +116,16 @@ function AppContent({ Component, pageProps }) {
   const { isAuthenticated, isClient } = useAuthStatus();
 
   const renderContent = () => {
-    // Server always renders the public skeleton (no layout branching on server)
-    // to avoid hydration mismatches. Layout selection only happens client-side.
+    // Until the client has mounted and checked auth state, render a minimal
+    // layout-agnostic shell. This shell must NOT include any semantic wrapper
+    // elements like <footer> or <nav> inside <main> that differ from what the
+    // client will render after hydration — otherwise React throws a hydration
+    // mismatch error.
     if (!isClient) {
       return (
-        <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
-          <div className="appContainer p-4">
-            {Component && <Component {...pageProps} />}
-          </div>
-          <UnifiedFooter />
-        </main>
+        <div id="main-content" className="min-h-screen">
+          {Component && <Component {...pageProps} />}
+        </div>
       );
     }
 

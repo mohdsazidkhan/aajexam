@@ -30,12 +30,13 @@ import Button from "../../../../components/ui/Button";
 import Card from "../../../../components/ui/Card";
 import Skeleton from "../../../../components/Skeleton";
 import TestStartModal from "../../../../components/TestStartModal";
+import LanguageToggle from "../../../../components/LanguageToggle";
+import useQuestionTranslation from "../../../../hooks/useQuestionTranslation";
 
 const TestStart = ({ resolvedId } = {}) => {
   const router = useRouter();
   const testId = resolvedId || router.query.testId;
   const user = getCurrentUser();
-  // Language selection hidden as per request
 
   const [test, setTest] = useState(null);
   const [questions, setQuestions] = useState([]);
@@ -50,11 +51,14 @@ const TestStart = ({ resolvedId } = {}) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [timeLeft, setTimeLeft] = useState(0);
   const [startedAt, setStartedAt] = useState(null);
-  const [translationMap, setTranslationMap] = useState({});
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [started, setStarted] = useState(false);
-  const [language, setLanguage] = useState('en');
-  const [translatingQ, setTranslatingQ] = useState(false);
+
+  const { language, toggleLanguage, translating: translatingQ, translated } = useQuestionTranslation({
+    questions,
+    currentIndex: currentQIndex,
+    active: started,
+  });
 
   const timerRef = useRef(null);
   const autoSaveRef = useRef(null);
@@ -145,8 +149,7 @@ const TestStart = ({ resolvedId } = {}) => {
     setAnswers(prev => ({ ...prev, [qId]: idx }));
   };
 
-  const onStartQuest = (selectedLanguage = 'en') => {
-    setLanguage(selectedLanguage);
+  const onStartQuest = () => {
     if (!startedAt) {
       const duration = test?.examPattern?.duration || test?.duration || 60;
       setTimeLeft(duration * 60);
@@ -155,48 +158,6 @@ const TestStart = ({ resolvedId } = {}) => {
     enterFullscreen();
     setStarted(true);
   };
-
-  // Per-question on-demand translation
-  useEffect(() => {
-    if (!started || language === 'en') return;
-    const q = questions[currentQIndex];
-    if (!q || translationMap[q._id]) return;
-
-    let cancelled = false;
-    const run = async () => {
-      try {
-        setTranslatingQ(true);
-        const items = [];
-        if (q.questionText) items.push({ id: 'q', text: q.questionText });
-        if (q.explanation) items.push({ id: 'e', text: q.explanation });
-        (q.options || []).forEach((opt, i) => {
-          if (opt) items.push({ id: `o${i}`, text: opt });
-        });
-        if (items.length === 0) {
-          setTranslationMap(prev => ({ ...prev, [q._id]: {} }));
-          return;
-        }
-        const res = await API.translateBatch(language, items);
-        if (cancelled || !res?.results) return;
-        const out = { questionText: q.questionText, explanation: q.explanation, options: [...(q.options || [])] };
-        res.results.forEach(r => {
-          if (r.id === 'q') out.questionText = r.translated;
-          else if (r.id === 'e') out.explanation = r.translated;
-          else if (r.id?.startsWith('o')) {
-            const idx = parseInt(r.id.slice(1));
-            if (!isNaN(idx)) out.options[idx] = r.translated;
-          }
-        });
-        setTranslationMap(prev => ({ ...prev, [q._id]: out }));
-      } catch (err) {
-        console.error('Question translate failed:', err);
-      } finally {
-        if (!cancelled) setTranslatingQ(false);
-      }
-    };
-    run();
-    return () => { cancelled = true; };
-  }, [currentQIndex, language, started, questions, translationMap]);
 
   // --- Fullscreen Experience ---
   const enterFullscreen = useCallback(async () => {
@@ -278,16 +239,14 @@ const TestStart = ({ resolvedId } = {}) => {
   const sectionNames = Object.keys(sectionGroups);
 
   const rawQ = questions[currentQIndex];
-  const tr = rawQ ? translationMap[rawQ._id] : null;
   const currentQ = rawQ ? {
     ...rawQ,
-    questionText: (language !== 'en' && tr?.questionText) ? tr.questionText : rawQ.questionText,
-    options: (language !== 'en' && tr?.options) ? tr.options : rawQ.options,
-    explanation: (language !== 'en' && tr?.explanation) ? tr.explanation : rawQ.explanation
+    questionText: translated?.questionText || rawQ.questionText,
+    options: translated?.optionTexts || rawQ.options
   } : null;
   const progressPercent = ((currentQIndex + 1) / questions.length) * 100;
   const answeredCount = Object.keys(answers).length;
-  const isShowingOriginalDuringTranslate = started && language !== 'en' && !tr;
+  const isShowingOriginalDuringTranslate = started && language !== 'en' && !translated;
 
   return (
     <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col">
@@ -323,14 +282,12 @@ const TestStart = ({ resolvedId } = {}) => {
               <span className="font-mono text-xl lg:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
 
-            <button
-              onClick={() => setLanguage(prev => prev === 'en' ? 'hi' : 'en')}
+            <LanguageToggle
+              language={language}
+              onToggle={toggleLanguage}
+              translating={translatingQ}
               className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-500 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
-              title={language === 'en' ? 'Switch to Hindi' : 'Switch to English'}
-            >
-              {translatingQ && language !== 'en' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />}
-              <span>{language === 'en' ? 'EN' : 'हिं'}</span>
-            </button>
+            />
 
             <button
               onClick={toggleFullscreen}
