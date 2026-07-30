@@ -19,9 +19,12 @@ import {
 // Vercel Pro allows up to 300s.
 export const maxDuration = 300;
 
-// How many chunks translate at once. Keeps a full test under a minute without
-// hammering the provider.
-const CHUNK_CONCURRENCY = 3;
+// One chunk of 10 questions measures ~170s on the free tier, and running
+// chunks in parallel does not speed it up — the provider serialises them. So
+// each request does exactly one chunk (well inside maxDuration) and reports
+// what is left; the caller posts again to continue. A long practice test is
+// translated across several requests instead of dying at the 300s wall.
+const CHUNKS_PER_REQUEST = 1;
 
 // Guards against two students opening the same quiz at once and paying for the
 // same translation twice. Per-instance only — the upsert keeps it correct
@@ -205,58 +208,53 @@ export async function POST(req) {
         let quotaExhausted = false;
 
         try {
-            const groups = chunk(missing, QUESTIONS_PER_CHUNK);
+            const groups = chunk(missing, QUESTIONS_PER_CHUNK).slice(0, CHUNKS_PER_REQUEST);
 
-            // One model call per chunk; a few chunks in parallel.
-            for (let i = 0; i < groups.length && !quotaExhausted; i += CHUNK_CONCURRENCY) {
-                const wave = groups.slice(i, i + CHUNK_CONCURRENCY);
-                const results = await Promise.all(wave.map(async (group) => {
-                    // Flatten the chunk: "<qid>" for the question, "<qid>|<n>" per option
-                    const items = [];
-                    group.forEach((q) => {
-                        const qid = String(q._id);
-                        if (q.questionText) items.push({ id: qid, text: q.questionText });
-                        q.options.forEach((opt, idx) => {
-                            if (opt) items.push({ id: `${qid}|${idx}`, text: opt });
-                        });
+            for (const group of groups) {
+                if (quotaExhausted) break;
+
+                // Flatten the chunk: "<qid>" for the question, "<qid>|<n>" per option
+                const items = [];
+                group.forEach((q) => {
+                    const qid = String(q._id);
+                    if (q.questionText) items.push({ id: qid, text: q.questionText });
+                    q.options.forEach((opt, idx) => {
+                        if (opt) items.push({ id: `${qid}|${idx}`, text: opt });
                     });
-
-                    try {
-                        const { map, model } = await translateItems(items, lang);
-                        const ops = group.map((q) => {
-                            const qid = String(q._id);
-                            const questionText = map[qid] || q.questionText;
-                            const options = q.options.map((opt, idx) => map[`${qid}|${idx}`] || opt);
-                            if (wanted) translations[qid] = { questionText, options };
-                            return {
-                                updateOne: {
-                                    filter: { questionId: q._id, lang },
-                                    update: {
-                                        $set: {
-                                            questionText,
-                                            options,
-                                            model: model || ''
-                                        },
-                                        // Provenance only — a shared question keeps its first owner
-                                        $setOnInsert: { sourceType, sourceId }
-                                    },
-                                    upsert: true
-                                }
-                            };
-                        });
-                        if (ops.length) await QuestionTranslation.bulkWrite(ops, { ordered: false });
-                        return { count: group.length };
-                    } catch (err) {
-                        if (isDailyQuotaExhausted(err)) return { quota: true };
-                        console.error('Bulk chunk failed:', err?.message || err);
-                        return { count: 0 };
-                    }
-                }));
-
-                results.forEach((r) => {
-                    if (r.quota) quotaExhausted = true;
-                    translated += r.count || 0;
                 });
+
+                try {
+                    const { map, model } = await translateItems(items, lang);
+                    const ops = group.map((q) => {
+                        const qid = String(q._id);
+                        const questionText = map[qid] || q.questionText;
+                        const options = q.options.map((opt, idx) => map[`${qid}|${idx}`] || opt);
+                        if (wanted) translations[qid] = { questionText, options };
+                        return {
+                            updateOne: {
+                                filter: { questionId: q._id, lang },
+                                update: {
+                                    $set: {
+                                        questionText,
+                                        options,
+                                        model: model || ''
+                                    },
+                                    // Provenance only — a shared question keeps its first owner
+                                    $setOnInsert: { sourceType, sourceId }
+                                },
+                                upsert: true
+                            }
+                        };
+                    });
+                    if (ops.length) await QuestionTranslation.bulkWrite(ops, { ordered: false });
+                    translated += group.length;
+                } catch (err) {
+                    if (isDailyQuotaExhausted(err)) {
+                        quotaExhausted = true;
+                        break;
+                    }
+                    console.error('Bulk chunk failed:', err?.message || err);
+                }
             }
         } finally {
             if (!wanted) inFlight.delete(jobKey);

@@ -39,7 +39,6 @@ const useQuestionTranslation = ({ questions, currentIndex, sourceType, sourceId 
     bulkStartedFor.current = jobKey;
 
     let cancelled = false;
-    const timers = [];
 
     const load = async () => {
       const res = await API.getBulkTranslations({ sourceType, sourceId, lang: 'hi' });
@@ -51,30 +50,28 @@ const useQuestionTranslation = ({ questions, currentIndex, sourceType, sourceId 
     const run = async () => {
       try {
         if (await load() >= questionCount) return;
-
         setJobRunning(true);
-        // The job can run for a while server-side, so don't block on it — poll
-        // instead and let each wave of stored questions land.
-        API.requestBulkTranslation({ sourceType, sourceId, lang: 'hi' }).catch(() => {});
 
-        [8000, 20000, 40000].forEach((delay, i, all) => {
-          timers.push(setTimeout(async () => {
-            if (cancelled) return;
-            const count = await load().catch(() => 0);
-            if (count >= questionCount || i === all.length - 1) setJobRunning(false);
-          }, delay));
-        });
+        // Each request translates one chunk and reports what is left, so a long
+        // test is covered by several requests instead of one that would hit the
+        // serverless time limit. Rounds are bounded so a repeatedly failing
+        // chunk can't loop forever.
+        for (let round = 0; round < 15 && !cancelled; round += 1) {
+          const res = await API.requestBulkTranslation({ sourceType, sourceId, lang: 'hi' });
+          if (cancelled) return;
+          await load();
+          if (cancelled) return;
+          if (res?.quotaExhausted || !res?.pending || res.translated === 0) break;
+        }
       } catch (err) {
-        setJobRunning(false);
         console.error('Bulk translation unavailable:', err?.message || err);
+      } finally {
+        if (!cancelled) setJobRunning(false);
       }
     };
 
     run();
-    return () => {
-      cancelled = true;
-      timers.forEach(clearTimeout);
-    };
+    return () => { cancelled = true; };
   }, [sourceType, sourceId, questionCount]);
 
   const current = language === 'en' || !questionId ? null : stored[questionId] || null;
