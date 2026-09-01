@@ -37,6 +37,7 @@ import {
   CalendarDays,
   RotateCcw,
   MessageCircle,
+  Sparkles,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -80,6 +81,7 @@ const Sidebar = () => {
         { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Patterns', key: 'govt-exams-patterns' },
         { path: '/admin/govt-exams/tests', icon: FileText, label: 'Tests', key: 'govt-exams-tests' },
         { path: '/admin/govt-exams/results', icon: Activity, label: 'Results', key: 'govt-exams-results' },
+        { path: '/admin/generate-tests', icon: Sparkles, label: 'Generate Tests', key: 'generate-tests' },
       ]
     },
     {
