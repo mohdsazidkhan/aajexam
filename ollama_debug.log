@@ -1,0 +1,11 @@
+
+[2026-09-02T11:33:43.708Z] Generating Q1 to Q10, attempt 2
+[2026-09-02T11:33:43.709Z] Error parsing batch starting at Q1: Ollama Network error (fetch failed): canceled by client
+Raw response:
+Ollama Network error (fetch failed): canceled by client
+
+[2026-09-02T11:33:45.719Z] Generating Q1 to Q10, attempt 3
+[2026-09-02T11:33:45.720Z] Error parsing batch starting at Q1: Ollama Network error (fetch failed): canceled by client
+Raw response:
+Ollama Network error (fetch failed): canceled by client
+[2026-09-02T11:33:45.720Z] Failed batch starting at Q1 after 3 attempts

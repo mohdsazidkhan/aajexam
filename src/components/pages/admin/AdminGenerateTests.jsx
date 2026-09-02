@@ -74,7 +74,7 @@ function StepBar({ step }) {
 // ─────────────────────────────────────────────
 // SECTION CARD
 // ─────────────────────────────────────────────
-function SectionCard({ section, status, error, questions, expanded, onToggle }) {
+function SectionCard({ section, status, error, questions, streamText, expanded, onToggle }) {
   const statusColor = {
     [STATUS.IDLE]: '#64748b',
     [STATUS.GENERATING]: '#f59e0b',
@@ -107,9 +107,9 @@ function SectionCard({ section, status, error, questions, expanded, onToggle }) 
       <div
         style={{
           display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px',
-          cursor: status === STATUS.DONE && questions.length > 0 ? 'pointer' : 'default',
+          cursor: questions.length > 0 ? 'pointer' : 'default',
         }}
-        onClick={() => status === STATUS.DONE && questions.length > 0 && onToggle()}
+        onClick={() => questions.length > 0 && onToggle()}
       >
         <div style={{
           width: 8, height: 8, borderRadius: '50%',
@@ -131,7 +131,7 @@ function SectionCard({ section, status, error, questions, expanded, onToggle }) 
             {status === STATUS.DONE && `${questions.length} Generated`}
             {status === STATUS.ERROR && 'Error'}
           </span>
-          {status === STATUS.DONE && questions.length > 0 && (
+          {questions.length > 0 && (
             expanded ? <ChevronUp size={14} color="#64748b" /> : <ChevronDown size={14} color="#64748b" />
           )}
         </div>
@@ -146,7 +146,7 @@ function SectionCard({ section, status, error, questions, expanded, onToggle }) 
 
       {/* Questions preview */}
       <AnimatePresence>
-        {expanded && questions.length > 0 && (
+        {expanded && (questions.length > 0 || (status === STATUS.GENERATING && streamText)) && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -154,6 +154,20 @@ function SectionCard({ section, status, error, questions, expanded, onToggle }) 
             style={{ overflow: 'hidden' }}
           >
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '14px 18px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              
+              {/* Show streaming text if generating */}
+              {status === STATUS.GENERATING && streamText && (
+                <div style={{ 
+                  background: 'rgba(0,0,0,0.3)', padding: '12px 16px', borderRadius: 10,
+                  border: '1px solid rgba(99,102,241,0.2)', color: '#a78bfa',
+                  fontSize: 12, fontFamily: 'monospace', whiteSpace: 'pre-wrap',
+                  maxHeight: 250, overflowY: 'auto'
+                }}>
+                  {streamText}
+                  <span style={{ animation: 'pulse 1s infinite' }}>_</span>
+                </div>
+              )}
+
               {questions.map((q, qi) => (
                 <QuestionPreview key={qi} question={q} index={qi} />
               ))}
@@ -293,6 +307,16 @@ const AdminGenerateTests = () => {
     fetchCategories();
   }, []);
 
+  // ── Sync to localStorage
+  useEffect(() => {
+    if (selectedExam && selectedPattern && sectionStates.length > 0) {
+      // Don't save if everything is idle (initial state)
+      if (sectionStates.every(s => s.status === STATUS.IDLE && s.questions.length === 0)) return;
+      const key = `aajexam_ai_draft_${selectedExam._id}_${selectedPattern._id}`;
+      localStorage.setItem(key, JSON.stringify(sectionStates));
+    }
+  }, [sectionStates, selectedExam, selectedPattern]);
+
   // ── Fetch categories
   const fetchCategories = async () => {
     setLoadingInit(true);
@@ -330,13 +354,34 @@ const AdminGenerateTests = () => {
   // ── When pattern selected, go step 3
   const handlePatternSelect = (pattern) => {
     setSelectedPattern(pattern);
-    setTestTitle(`${selectedExam.name} — ${pattern.title} (AI Generated)`);
-    setSectionStates(
-      pattern.sections.map(() => ({ status: STATUS.IDLE, error: null, questions: [], expanded: false }))
-    );
+    setTestTitle(`${selectedExam.name} — ${pattern.title} - ${Date.now()}`);
     setGenerationDone(false);
     setAllSectionResults([]);
     setStep(3);
+
+    const draftKey = `aajexam_ai_draft_${selectedExam._id}_${pattern._id}`;
+    const draft = localStorage.getItem(draftKey);
+    if (draft) {
+      try {
+        const parsed = JSON.parse(draft);
+        if (Array.isArray(parsed) && parsed.length === pattern.sections.length) {
+          setSectionStates(parsed);
+          if (parsed.every(s => s.status === STATUS.DONE)) {
+            setGenerationDone(true);
+            setAllSectionResults(parsed.map((s, i) => ({ sectionName: pattern.sections[i].name, questions: s.questions })));
+          } else {
+             setAllSectionResults(parsed.map((s, i) => ({ sectionName: pattern.sections[i].name, questions: s.questions || [] })));
+          }
+          return;
+        }
+      } catch (e) {
+        console.error("Failed to parse draft", e);
+      }
+    }
+    
+    setSectionStates(
+      pattern.sections.map(() => ({ status: STATUS.IDLE, error: null, questions: [], expanded: false }))
+    );
   };
 
   // ── Toggle section question preview
@@ -351,10 +396,11 @@ const AdminGenerateTests = () => {
     if (!selectedPattern || !selectedExam) return;
     setGenerating(true);
     setGenerationDone(false);
-    setAllSectionResults([]);
-    setSectionStates(
-      selectedPattern.sections.map(() => ({ status: STATUS.IDLE, error: null, questions: [], expanded: false }))
-    );
+    
+    // Resume from current state, reset only ERROR statuses to IDLE
+    setSectionStates(prev => prev.map(s => 
+      s.status === STATUS.ERROR ? { ...s, status: STATUS.IDLE, error: null } : s
+    ));
 
     const controller = new AbortController();
     abortRef.current = controller;
@@ -372,6 +418,7 @@ const AdminGenerateTests = () => {
           patternTitle: selectedPattern.title,
           sections: selectedPattern.sections,
           language,
+          existingState: sectionStates, // Pass current state so backend can resume
         }),
         signal: controller.signal,
       });
@@ -414,7 +461,7 @@ const AdminGenerateTests = () => {
       case 'section_start':
         setSectionStates((prev) =>
           prev.map((s, i) =>
-            i === event.index ? { ...s, status: STATUS.GENERATING, error: null, questions: [] } : s
+            i === event.index ? { ...s, status: STATUS.GENERATING, error: null, expanded: true } : s
           )
         );
         break;
@@ -422,7 +469,15 @@ const AdminGenerateTests = () => {
       case 'section_progress':
         setSectionStates((prev) =>
           prev.map((s, i) =>
-            i === event.index ? { ...s, status: STATUS.GENERATING, questions: event.questions || [] } : s
+            i === event.index ? { ...s, status: STATUS.GENERATING, questions: event.questions || [], expanded: true } : s
+          )
+        );
+        break;
+
+      case 'section_stream':
+        setSectionStates((prev) =>
+          prev.map((s, i) =>
+            i === event.index ? { ...s, streamText: event.text } : s
           )
         );
         break;
@@ -480,9 +535,15 @@ const AdminGenerateTests = () => {
         }),
       });
       const data = await res.json();
-      if (data.success) {
-        toast.success(data.message || 'Practice test saved!');
-      } else {
+        if (data.success) {
+          toast.success('Test Saved Successfully!');
+          
+          // Clear draft on successful save
+          const draftKey = `aajexam_ai_draft_${selectedExam._id}_${selectedPattern._id}`;
+          localStorage.removeItem(draftKey);
+          
+          router.push('/admin/real-exams');
+        } else {
         toast.error(data.error || 'Save failed');
       }
     } catch (e) {
@@ -824,6 +885,7 @@ const AdminGenerateTests = () => {
                     status={state.status}
                     error={state.error}
                     questions={state.questions}
+                    streamText={state.streamText}
                     expanded={state.expanded}
                     onToggle={() => toggleSection(i)}
                   />

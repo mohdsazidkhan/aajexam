@@ -17,8 +17,9 @@ const OLLAMA_MODEL =
   process.env.OLLAMA_MODEL ||
   'qwen3:8b';
 
+// Timeout set to 60 minutes because local CPU generation of 10 questions can take a very long time
 const OLLAMA_TIMEOUT_MS =
-  parseInt(process.env.QUIZ_AI_TIMEOUT_MS || '900000', 10);
+  parseInt(process.env.QUIZ_AI_TIMEOUT_MS || '3600000', 10);
 
 const QUIZ_AI_DELAY_MS =
   parseInt(process.env.QUIZ_AI_DELAY_MS || '2000', 10);
@@ -34,10 +35,14 @@ function buildPrompt(examName, sectionName, questionCount, language = 'en', retr
     ? 'Write all questions, options, hints and explanations in HINDI language only.'
     : 'Write all questions, options, hints and explanations in ENGLISH language only.';
 
-  const prevTexts = previousQuestions.slice(-10).map(q => q.questionText);
+  const prevTexts = previousQuestions.slice(-30).map(q => q.questionText);
   const avoidDupes = prevTexts.length > 0
-    ? `\nCRITICAL: Do NOT generate any questions similar to these previously generated ones:\n${prevTexts.join('\n')}\n`
+    ? `\nCRITICAL DIVERSITY RULE: You MUST ensure HIGH DIVERSITY. Do NOT generate any questions similar in structure, logic, or wording to these previously generated ones:\n${prevTexts.join('\n')}\n\nDO NOT use the same question template with just different variables (e.g., if a previous question is about "average height of people wearing hats", DO NOT generate one about "average height of people wearing shoes"). Every question MUST test a completely different sub-topic and concept!\n`
     : '';
+
+  const batchInfo = questionCount > 1 
+    ? `These are questions ${qIndex} to ${qIndex + questionCount - 1} out of ${totalQ} for this section.`
+    : `This is question ${qIndex} of ${totalQ} for this section.`;
 
   let prompt = `
 You are an expert educational quiz creator for competitive government exams in India.
@@ -47,7 +52,7 @@ SECTION: "${sectionName}"
 LANGUAGE: ${language === 'hi' ? 'Hindi' : 'English'}
 
 Create exactly ${questionCount} multiple-choice question(s) strictly based on the syllabus and previous year question (PYQ) trends of the "${sectionName}" section for the "${examName}" exam.
-This is question ${qIndex} of ${totalQ} for this section.
+${batchInfo}
 ${avoidDupes}
 IMPORTANT REQUIREMENTS:
 1. Questions MUST strictly match the actual difficulty, syllabus, and question pattern of the ${examName} exam.
@@ -57,7 +62,7 @@ IMPORTANT REQUIREMENTS:
 5. Each question must have EXACTLY 4 options.
 6. Exactly ONE option must be correct.
 7. Wrong options must be plausible and related to the topic.
-8. Do NOT repeat questions.
+8. DIVERSITY IS MANDATORY. Do NOT repeat questions, question structures, or logic templates. Each question in the batch MUST cover a COMPLETELY DIFFERENT sub-topic and concept.
 9. Do NOT repeat options inside a question.
 10. Vary correctAnswerIndex across questions (use 0,1,2,3 spread evenly).
 11. Every question must have a useful hint that does NOT reveal the answer directly.
@@ -100,7 +105,11 @@ Generate exactly ${questionCount} questions. Return ONLY the JSON object above.`
 // CALL OLLAMA
 // ============================================================
 
-async function callOllama(prompt, signal) {
+async function callOllama(prompt, signal, onChunk) {
+  if (signal && signal.aborted) {
+    throw new Error('Ollama Network error (fetch failed): canceled by client');
+  }
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), OLLAMA_TIMEOUT_MS);
 
@@ -109,41 +118,69 @@ async function callOllama(prompt, signal) {
   if (signal) signal.addEventListener('abort', onAbort);
 
   try {
-    console.log('[DEBUG] Calling Ollama via axios at:', OLLAMA_API_URL);
-    const response = await axios.post(
-      OLLAMA_API_URL,
-      {
+    const response = await fetch(OLLAMA_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         model: OLLAMA_MODEL,
         messages: [{ role: 'user', content: prompt }],
-        stream: false,
+        stream: true,
         options: {
-          temperature: 0.7,
-          top_p: 0.9,
-          num_predict: 6000,
+          temperature: 0.85, // Increased for more diversity
+          top_p: 0.95,
+          // Removed num_predict to let reasoning models think fully
         },
-      },
-      {
-        headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
+      }),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Ollama API error: ${response.status} ${response.statusText}`);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+    let lastSendTime = 0;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const chunkStr = decoder.decode(value, { stream: true });
+      const lines = chunkStr.split('\n');
+      
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          const parsed = JSON.parse(line);
+          const content = parsed.message?.content || parsed.response || '';
+          fullText += content;
+        } catch (e) {}
       }
-    );
+
+      if (onChunk) {
+        const now = Date.now();
+        if (now - lastSendTime > 150) { // Throttle UI updates to 150ms
+          lastSendTime = now;
+          onChunk(fullText);
+        }
+      }
+    }
 
     clearTimeout(timeoutId);
     if (signal) signal.removeEventListener('abort', onAbort);
 
-    const raw = response.data?.message?.content || response.data?.response || '';
-    return raw.trim();
+    if (onChunk) onChunk(''); // Clear the stream text when done
+
+    return fullText.trim();
   } catch (err) {
     clearTimeout(timeoutId);
     if (signal) signal.removeEventListener('abort', onAbort);
-
-    if (err.response) {
-      throw new Error(`Ollama API error: ${err.response.status} ${JSON.stringify(err.response.data)}`);
-    } else if (err.request) {
-      throw new Error(`Ollama Network error (fetch failed): ${err.message}`);
-    } else {
-      throw err;
+    if (err.name === 'AbortError' || (err.cause && err.cause.name === 'AbortError')) {
+      throw new Error('Ollama Network error (fetch failed): canceled');
     }
+    throw err;
   }
 }
 
@@ -198,23 +235,41 @@ function parseQuestions(raw, expectedCount) {
 // GENERATE FOR ONE SECTION
 // ============================================================
 
-async function generateSection({ examName, sectionName, questionCount, language, signal, send, sectionIndex }) {
+async function generateSection({ examName, sectionName, questionCount, language, signal, send, sectionIndex, initialQuestions = [] }) {
   let lastError = null;
-  const questions = [];
+  const questions = [...initialQuestions];
+  const fs = require('fs');
+  const logFile = 'd:\\Sazid\\Github\\aajexam\\ollama_debug.log';
 
-  for (let i = 0; i < questionCount; i++) {
-    let successForThisQuestion = false;
+  const BATCH_SIZE = 10;
+  
+  if (questions.length >= questionCount) return questions.slice(0, questionCount);
+
+  for (let i = questions.length; i < questionCount; i += BATCH_SIZE) {
+    const currentBatchSize = Math.min(BATCH_SIZE, questionCount - i);
+    let successForThisBatch = false;
 
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
-        const prompt = buildPrompt(examName, sectionName, 1, language, lastError?.message, i + 1, questionCount, questions);
-        const raw = await callOllama(prompt, signal);
-        const parsed = parseQuestions(raw, 1);
+        fs.appendFileSync(logFile, `\n[${new Date().toISOString()}] Generating Q${i+1} to Q${i+currentBatchSize}, attempt ${attempt}\n`);
+        const prompt = buildPrompt(examName, sectionName, currentBatchSize, language, lastError?.message, i + 1, questionCount, questions);
+        const raw = await callOllama(prompt, signal, (currentText) => {
+          if (send && sectionIndex !== undefined) {
+            send({
+              type: 'section_stream',
+              index: sectionIndex,
+              text: currentText,
+            });
+          }
+        });
+        fs.appendFileSync(logFile, `[${new Date().toISOString()}] Received response length: ${raw?.length}\n`);
+        const parsed = parseQuestions(raw, currentBatchSize);
         
         if (parsed.length > 0) {
-          questions.push(parsed[0]);
-          successForThisQuestion = true;
+          questions.push(...parsed);
+          successForThisBatch = true;
           lastError = null;
+          fs.appendFileSync(logFile, `[${new Date().toISOString()}] Successfully parsed batch (got ${parsed.length} questions)\n`);
 
           if (send && sectionIndex !== undefined) {
             const questionsWithSection = questions.map((q) => ({
@@ -228,16 +283,18 @@ async function generateSection({ examName, sectionName, questionCount, language,
               questions: questionsWithSection,
             });
           }
-          break; // success, move to next question
+          break; // success, move to next batch
         }
       } catch (err) {
         lastError = err;
+        fs.appendFileSync(logFile, `[${new Date().toISOString()}] Error parsing batch starting at Q${i+1}: ${err.message}\nRaw response:\n${err.message.includes('No JSON') ? '...omitted...' : err.message}\n`);
         if (attempt < 3) await sleep(2000);
       }
     }
 
-    if (!successForThisQuestion) {
-      return { success: false, error: `Failed at question ${i + 1}: ` + (lastError?.message || 'Unknown error'), questions };
+    if (!successForThisBatch) {
+      fs.appendFileSync(logFile, `[${new Date().toISOString()}] Failed batch starting at Q${i+1} after 3 attempts\n`);
+      return { success: false, error: `Failed at question batch ${i + 1}-${i + currentBatchSize}: ` + (lastError?.message || 'Unknown error'), questions };
     }
   }
 
@@ -257,7 +314,7 @@ export async function POST(req) {
   await dbConnect();
 
   const body = await req.json();
-  const { examName, patternTitle, sections, language = 'en' } = body;
+  const { examName, patternTitle, sections, language = 'en', existingState = [] } = body;
 
   if (!examName || !sections || !Array.isArray(sections) || sections.length === 0) {
     return NextResponse.json({ success: false, error: 'examName and sections are required' }, { status: 400 });
@@ -288,36 +345,47 @@ export async function POST(req) {
 
       for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
-        const { name: sectionName, totalQuestions } = section;
+        const state = existingState[i];
 
-        send({
-          type: 'section_start',
-          index: i,
-          sectionName,
-          totalQuestions,
-        });
+        // If this section is already fully generated, skip generating it again
+        if (state && state.status === 'DONE' && state.questions && state.questions.length >= section.totalQuestions) {
+          if (send) {
+            send({ type: 'section_done', index: i, sectionName: section.name, questions: state.questions });
+          }
+          allSectionResults.push({ sectionName: section.name, error: null, questions: state.questions });
+          if (i < sections.length - 1) {
+            await sleep(QUIZ_AI_DELAY_MS);
+          }
+          continue;
+        }
+
+        const initialQuestions = (state && state.questions) ? state.questions : [];
+
+        if (send) {
+          send({ type: 'section_start', index: i, sectionName: section.name });
+        }
 
         const result = await generateSection({
           examName,
-          sectionName,
-          questionCount: totalQuestions,
+          sectionName: section.name,
+          questionCount: section.totalQuestions,
           language,
-          signal,
+          signal: req.signal,
           send,
           sectionIndex: i,
+          initialQuestions
         });
 
         if (result.success) {
-          // Attach section name to each question
           const questionsWithSection = result.questions.map((q) => ({
             ...q,
-            section: sectionName,
+            section: section.name,
           }));
-          allSectionResults.push({ sectionName, questions: questionsWithSection });
+          allSectionResults.push({ sectionName: section.name, questions: questionsWithSection });
           send({
             type: 'section_done',
             index: i,
-            sectionName,
+            sectionName: section.name,
             count: questionsWithSection.length,
             questions: questionsWithSection,
           });
@@ -325,13 +393,13 @@ export async function POST(req) {
           const partialQ = result.questions || [];
           const questionsWithSection = partialQ.map((q) => ({
             ...q,
-            section: sectionName,
+            section: section.name,
           }));
-          allSectionResults.push({ sectionName, error: result.error, questions: questionsWithSection });
+          allSectionResults.push({ sectionName: section.name, error: result.error, questions: questionsWithSection });
           send({
             type: 'section_error',
             index: i,
-            sectionName,
+            sectionName: section.name,
             error: result.error,
             questions: questionsWithSection,
           });
