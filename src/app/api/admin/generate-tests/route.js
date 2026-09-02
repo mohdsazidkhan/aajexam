@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import { protect, admin } from '@/middleware/auth';
+import axios from 'axios';
+
+export const maxDuration = 300; // 5 minutes
 
 // ============================================================
 // OLLAMA CONFIGURATION
@@ -26,10 +29,15 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 // BUILD PROMPT
 // ============================================================
 
-function buildPrompt(examName, sectionName, questionCount, language = 'en', retryError = null) {
+function buildPrompt(examName, sectionName, questionCount, language = 'en', retryError = null, qIndex = 1, totalQ = 1, previousQuestions = []) {
   const langInstr = language === 'hi'
     ? 'Write all questions, options, hints and explanations in HINDI language only.'
     : 'Write all questions, options, hints and explanations in ENGLISH language only.';
+
+  const prevTexts = previousQuestions.slice(-10).map(q => q.questionText);
+  const avoidDupes = prevTexts.length > 0
+    ? `\nCRITICAL: Do NOT generate any questions similar to these previously generated ones:\n${prevTexts.join('\n')}\n`
+    : '';
 
   let prompt = `
 You are an expert educational quiz creator for competitive government exams in India.
@@ -38,8 +46,9 @@ EXAM: "${examName}"
 SECTION: "${sectionName}"
 LANGUAGE: ${language === 'hi' ? 'Hindi' : 'English'}
 
-Create exactly ${questionCount} multiple-choice questions strictly based on the syllabus and previous year question (PYQ) trends of the "${sectionName}" section for the "${examName}" exam.
-
+Create exactly ${questionCount} multiple-choice question(s) strictly based on the syllabus and previous year question (PYQ) trends of the "${sectionName}" section for the "${examName}" exam.
+This is question ${qIndex} of ${totalQ} for this section.
+${avoidDupes}
 IMPORTANT REQUIREMENTS:
 1. Questions MUST strictly match the actual difficulty, syllabus, and question pattern of the ${examName} exam.
 2. Questions MUST be specifically and exclusively about the "${sectionName}" topic area.
@@ -100,10 +109,10 @@ async function callOllama(prompt, signal) {
   if (signal) signal.addEventListener('abort', onAbort);
 
   try {
-    const response = await fetch(OLLAMA_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+    console.log('[DEBUG] Calling Ollama via axios at:', OLLAMA_API_URL);
+    const response = await axios.post(
+      OLLAMA_API_URL,
+      {
         model: OLLAMA_MODEL,
         messages: [{ role: 'user', content: prompt }],
         stream: false,
@@ -112,25 +121,29 @@ async function callOllama(prompt, signal) {
           top_p: 0.9,
           num_predict: 6000,
         },
-      }),
-      signal: controller.signal,
-    });
+      },
+      {
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+      }
+    );
 
     clearTimeout(timeoutId);
     if (signal) signal.removeEventListener('abort', onAbort);
 
-    if (!response.ok) {
-      const errText = await response.text().catch(() => response.statusText);
-      throw new Error(`Ollama API error: ${response.status} ${errText}`);
-    }
-
-    const data = await response.json();
-    const raw = data?.message?.content || data?.response || '';
+    const raw = response.data?.message?.content || response.data?.response || '';
     return raw.trim();
   } catch (err) {
     clearTimeout(timeoutId);
     if (signal) signal.removeEventListener('abort', onAbort);
-    throw err;
+
+    if (err.response) {
+      throw new Error(`Ollama API error: ${err.response.status} ${JSON.stringify(err.response.data)}`);
+    } else if (err.request) {
+      throw new Error(`Ollama Network error (fetch failed): ${err.message}`);
+    } else {
+      throw err;
+    }
   }
 }
 
@@ -185,22 +198,50 @@ function parseQuestions(raw, expectedCount) {
 // GENERATE FOR ONE SECTION
 // ============================================================
 
-async function generateSection({ examName, sectionName, questionCount, language, signal }) {
+async function generateSection({ examName, sectionName, questionCount, language, signal, send, sectionIndex }) {
   let lastError = null;
+  const questions = [];
 
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      const prompt = buildPrompt(examName, sectionName, questionCount, language, lastError?.message);
-      const raw = await callOllama(prompt, signal);
-      const questions = parseQuestions(raw, questionCount);
-      return { success: true, questions };
-    } catch (err) {
-      lastError = err;
-      if (attempt < 3) await sleep(2000);
+  for (let i = 0; i < questionCount; i++) {
+    let successForThisQuestion = false;
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const prompt = buildPrompt(examName, sectionName, 1, language, lastError?.message, i + 1, questionCount, questions);
+        const raw = await callOllama(prompt, signal);
+        const parsed = parseQuestions(raw, 1);
+        
+        if (parsed.length > 0) {
+          questions.push(parsed[0]);
+          successForThisQuestion = true;
+          lastError = null;
+
+          if (send && sectionIndex !== undefined) {
+            const questionsWithSection = questions.map((q) => ({
+              ...q,
+              section: sectionName,
+            }));
+            send({
+              type: 'section_progress',
+              index: sectionIndex,
+              sectionName,
+              questions: questionsWithSection,
+            });
+          }
+          break; // success, move to next question
+        }
+      } catch (err) {
+        lastError = err;
+        if (attempt < 3) await sleep(2000);
+      }
+    }
+
+    if (!successForThisQuestion) {
+      return { success: false, error: `Failed at question ${i + 1}: ` + (lastError?.message || 'Unknown error'), questions };
     }
   }
 
-  return { success: false, error: lastError?.message || 'Unknown error' };
+  return { success: true, questions };
 }
 
 // ============================================================
@@ -234,6 +275,13 @@ export async function POST(req) {
         } catch (_) {}
       };
 
+      // Keep-alive ping to prevent connection timeout during long generation
+      const pingInterval = setInterval(() => {
+        try {
+          controller.enqueue(encoder.encode(`: ping\n\n`));
+        } catch (_) {}
+      }, 15000);
+
       send({ type: 'start', total: sections.length, examName, patternTitle, language });
 
       const allSectionResults = [];
@@ -255,6 +303,8 @@ export async function POST(req) {
           questionCount: totalQuestions,
           language,
           signal,
+          send,
+          sectionIndex: i,
         });
 
         if (result.success) {
@@ -272,12 +322,18 @@ export async function POST(req) {
             questions: questionsWithSection,
           });
         } else {
-          allSectionResults.push({ sectionName, error: result.error, questions: [] });
+          const partialQ = result.questions || [];
+          const questionsWithSection = partialQ.map((q) => ({
+            ...q,
+            section: sectionName,
+          }));
+          allSectionResults.push({ sectionName, error: result.error, questions: questionsWithSection });
           send({
             type: 'section_error',
             index: i,
             sectionName,
             error: result.error,
+            questions: questionsWithSection,
           });
         }
 
@@ -293,6 +349,7 @@ export async function POST(req) {
         sections: allSectionResults,
       });
 
+      clearInterval(pingInterval);
       controller.close();
     },
   });

@@ -419,6 +419,14 @@ const AdminGenerateTests = () => {
         );
         break;
 
+      case 'section_progress':
+        setSectionStates((prev) =>
+          prev.map((s, i) =>
+            i === event.index ? { ...s, status: STATUS.GENERATING, questions: event.questions || [] } : s
+          )
+        );
+        break;
+
       case 'section_done':
         setSectionStates((prev) =>
           prev.map((s, i) =>
