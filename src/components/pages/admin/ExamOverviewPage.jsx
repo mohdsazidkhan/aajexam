@@ -288,10 +288,10 @@ const ExamOverviewPage = () => {
               {uniqueCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
             </select>
             <div className="hidden lg:block shrink-0">
-              <ViewToggle view={viewMode} onChange={setViewMode} />
+              <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
             </div>
             <div className="lg:hidden shrink-0">
-              <ViewToggle view={viewMode} onChange={setViewMode} />
+              <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
             </div>
           </div>
         </div>
