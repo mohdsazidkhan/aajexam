@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 import {
   Layers,
   GraduationCap,
@@ -14,14 +15,13 @@ import {
   ChevronDown,
   ChevronRight,
   Eye,
-  CheckCircle,
-  XCircle,
   AlertCircle
 } from 'lucide-react';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import Card from '../../ui/Card';
 import Loading from '../../Loading';
+import ViewToggle from '../../ViewToggle';
 
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
@@ -47,16 +47,110 @@ const StatCard = ({ title, count, icon: Icon, color }) => (
   </Card>
 );
 
+const ExamDetails = ({ exam }) => (
+  <div className="p-6 flex flex-col gap-6 bg-slate-50/50 dark:bg-slate-900/30 border-t border-slate-200 dark:border-white/10">
+
+    {/* Patterns */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><LayoutDashboard className="w-3 h-3" /> Patterns ({exam.counts.patterns})</h4>
+      {exam.patterns.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {exam.patterns.map(p => (
+            <span key={p._id} className="text-xs px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg">{p.title}</span>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+
+    {/* Subjects */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BookOpen className="w-3 h-3" /> Subjects ({exam.counts.subjects})</h4>
+      {exam.subjects.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+          {exam.subjects.map(s => (
+            <div key={s._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
+              <span className="truncate" title={s.name}>{s.name}</span>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+
+    {/* Topics */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Hash className="w-3 h-3" /> Topics ({exam.counts.topics})</h4>
+      {exam.topics.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+          {exam.topics.map(t => (
+            <div key={t._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
+              <span className="truncate" title={t.name}>{t.name}</span>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+
+    {/* Quizzes */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BrainCircuit className="w-3 h-3" /> Quizzes ({exam.counts.quizzes})</h4>
+      {exam.quizzes.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+          {exam.quizzes.map(q => (
+            <div key={q._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
+              <span className="truncate mr-2" title={q.title}>{q.title}</span>
+              <span className="text-slate-400 font-medium shrink-0">{q.totalQuestions} Qs</span>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+
+    {/* PYQs */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><FileText className="w-3 h-3" /> PYQs ({exam.counts.pyqs})</h4>
+      {exam.pyqs.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+          {exam.pyqs.map(p => (
+            <div key={p._id} className="text-[11px] px-3 py-2 bg-rose-50/50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-lg flex items-center justify-between">
+              <span className="truncate mr-2 flex items-center gap-1.5" title={p.title}>
+                <span className="px-1 py-0.5 bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400 rounded text-[9px] uppercase font-bold shrink-0">PYQ</span>
+                {p.title}
+              </span>
+              <span className="text-slate-400 font-medium shrink-0">{p.totalQuestions} Qs</span>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+
+    {/* Practice Tests */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Target className="w-3 h-3" /> Practice Tests ({exam.counts.practiceTests})</h4>
+      {exam.practiceTests.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+          {exam.practiceTests.map(m => (
+            <div key={m._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
+              <span className="truncate mr-2" title={m.title}>{m.title}</span>
+              <span className="text-slate-400 font-medium shrink-0">{m.totalQuestions} Qs</span>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
+  </div>
+);
+
 const ExamOverviewPage = () => {
   const { router } = useSSR();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({ overallStats: {}, examHierarchy: [] });
   const [error, setError] = useState(null);
 
-  // Filters
+  // Filters & Views
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [expandedRows, setExpandedRows] = useState(new Set());
+  const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
 
   const fetchData = async () => {
     try {
@@ -146,7 +240,6 @@ const ExamOverviewPage = () => {
 
       {/* Header */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-4 my-2 lg:my-4">
-
         <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-2 lg:mb-0 uppercase leading-none">
           Exam <span className="text-primary-600">Overview</span>
         </h1>
@@ -170,10 +263,10 @@ const ExamOverviewPage = () => {
         <StatCard title="Practice Tests" count={overallStats.practiceTests} icon={Target} color="orange" />
       </div>
 
-      {/* Main Content - Table */}
-      <Card variant="white" className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden shadow-sm p-0">
+      {/* Main Content Area */}
+      <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden shadow-sm">
 
-        {/* Table Filters */}
+        {/* Toolbar */}
         <div className="p-4 border-b border-slate-200 dark:border-white/10 flex flex-col md:flex-row gap-4 items-center justify-between bg-slate-50 dark:bg-slate-800/50">
           <div className="relative w-full md:w-96">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -189,200 +282,258 @@ const ExamOverviewPage = () => {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="w-full md:w-48 px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none"
+              className="flex-1 md:flex-none md:w-48 px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none"
             >
               <option value="ALL">All Categories</option>
               {uniqueCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
             </select>
+            <div className="hidden lg:block shrink-0">
+              <ViewToggle view={viewMode} onChange={setViewMode} />
+            </div>
+            <div className="lg:hidden shrink-0">
+              <ViewToggle view={viewMode} onChange={setViewMode} />
+            </div>
           </div>
         </div>
 
-        {/* Table Header */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-slate-50 dark:bg-slate-800/50 text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-white/10">
-                <th className="p-4 w-12 text-center"></th>
-                <th className="p-4 min-w-[200px]">Exam Name</th>
-                <th className="p-4">Category</th>
-                <th className="p-4 text-center">Patterns</th>
-                <th className="p-4 text-center">Subjects</th>
-                <th className="p-4 text-center">Topics</th>
-                <th className="p-4 text-center">Quizzes</th>
-                <th className="p-4 text-center">PYQs</th>
-                <th className="p-4 text-center">Mocks</th>
-                <th className="p-4 text-center">Status</th>
-                <th className="p-4 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredExams.length === 0 ? (
-                <tr>
-                  <td colSpan="11" className="p-8 text-center text-slate-500">No exams found matching your criteria.</td>
+        {/* Content Render Based on View Mode */}
+
+        {/* TABLE VIEW */}
+        {viewMode === 'table' && (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50 dark:bg-slate-800/50 text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-white/10">
+                  <th className="p-4 w-12 text-center"></th>
+                  <th className="p-4 min-w-[200px]">Exam Name</th>
+                  <th className="p-4">Category</th>
+                  <th className="p-4 text-center">Patterns</th>
+                  <th className="p-4 text-center">Subjects</th>
+                  <th className="p-4 text-center">Topics</th>
+                  <th className="p-4 text-center">Quizzes</th>
+                  <th className="p-4 text-center">PYQs</th>
+                  <th className="p-4 text-center">Mocks</th>
+                  <th className="p-4 text-center">Status</th>
+                  <th className="p-4 text-center">Action</th>
                 </tr>
-              ) : (
-                filteredExams.map((exam) => {
-                  const isExpanded = expandedRows.has(exam._id);
-                  return (
-                    <React.Fragment key={exam._id}>
-                      <tr className={`border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors ${isExpanded ? 'bg-slate-50 dark:bg-slate-800/30' : ''}`}>
-                        <td className="p-4 text-center">
-                          <button onClick={() => toggleRow(exam._id)} className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors">
-                            {isExpanded ? <ChevronDown className="w-5 h-5 text-slate-400" /> : <ChevronRight className="w-5 h-5 text-slate-400" />}
-                          </button>
-                        </td>
-                        <td className="p-4 font-bold text-slate-900 dark:text-white">
-                          <div className="flex flex-col">
-                            <span>{exam.name}</span>
-                            <span className="text-[10px] font-normal text-slate-500">{exam.code}</span>
-                          </div>
-                        </td>
-                        <td className="p-4 text-sm text-slate-600 dark:text-slate-300">
-                          {exam.category?.name || '-'}
-                        </td>
-                        <td className="p-4 text-center font-semibold text-cyan-600 dark:text-cyan-400">{exam.counts.patterns}</td>
-                        <td className="p-4 text-center font-semibold text-emerald-600 dark:text-emerald-400">{exam.counts.subjects}</td>
-                        <td className="p-4 text-center font-semibold text-teal-600 dark:text-teal-400">{exam.counts.topics}</td>
-                        <td className="p-4 text-center font-semibold text-purple-600 dark:text-purple-400">{exam.counts.quizzes}</td>
-                        <td className="p-4 text-center font-semibold text-rose-600 dark:text-rose-400">{exam.counts.pyqs}</td>
-                        <td className="p-4 text-center font-semibold text-orange-600 dark:text-orange-400">{exam.counts.practiceTests}</td>
-                        <td className="p-4 text-center">
-                          {exam.isActive ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase">
-                              Active
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[10px] font-bold uppercase">
-                              Inactive
-                            </span>
+              </thead>
+              <tbody>
+                {filteredExams.length === 0 ? (
+                  <tr>
+                    <td colSpan="11" className="p-8 text-center text-slate-500">No exams found matching your criteria.</td>
+                  </tr>
+                ) : (
+                  filteredExams.map((exam) => {
+                    const isExpanded = expandedRows.has(exam._id);
+                    return (
+                      <React.Fragment key={exam._id}>
+                        <tr className={`border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors ${isExpanded ? 'bg-slate-50 dark:bg-slate-800/30' : ''}`}>
+                          <td className="p-4 text-center">
+                            <button onClick={() => toggleRow(exam._id)} className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors">
+                              {isExpanded ? <ChevronDown className="w-5 h-5 text-slate-400" /> : <ChevronRight className="w-5 h-5 text-slate-400" />}
+                            </button>
+                          </td>
+                          <td className="p-4 font-bold text-slate-900 dark:text-white">
+                            <div className="flex flex-col">
+                              <span>{exam.name}</span>
+                              <span className="text-[10px] font-normal text-slate-500">{exam.code}</span>
+                            </div>
+                          </td>
+                          <td className="p-4 text-sm text-slate-600 dark:text-slate-300">
+                            {exam.category?.name || '-'}
+                          </td>
+                          <td className="p-4 text-center font-semibold text-cyan-600 dark:text-cyan-400">{exam.counts.patterns}</td>
+                          <td className="p-4 text-center font-semibold text-emerald-600 dark:text-emerald-400">{exam.counts.subjects}</td>
+                          <td className="p-4 text-center font-semibold text-teal-600 dark:text-teal-400">{exam.counts.topics}</td>
+                          <td className="p-4 text-center font-semibold text-purple-600 dark:text-purple-400">{exam.counts.quizzes}</td>
+                          <td className="p-4 text-center font-semibold text-rose-600 dark:text-rose-400">{exam.counts.pyqs}</td>
+                          <td className="p-4 text-center font-semibold text-orange-600 dark:text-orange-400">{exam.counts.practiceTests}</td>
+                          <td className="p-4 text-center">
+                            {exam.isActive ? (
+                              <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase">
+                                Active
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[10px] font-bold uppercase">
+                                Inactive
+                              </span>
+                            )}
+                          </td>
+                          <td className="p-4 text-center">
+                            <button
+                              onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)}
+                              className="p-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
+                              data-tip="Manage Patterns"
+                            >
+                              <Eye className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <tr>
+                              <td colSpan="11" className="p-0 border-b border-slate-200 dark:border-white/10">
+                                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                                  <ExamDetails exam={exam} />
+                                </motion.div>
+                              </td>
+                            </tr>
                           )}
-                        </td>
-                        <td className="p-4 text-center">
-                          <button
-                            onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)}
-                            className="p-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
-                            data-tip="Manage Patterns"
-                          >
-                            <Eye className="w-4 h-4" />
-                          </button>
-                        </td>
-                      </tr>
+                        </AnimatePresence>
+                      </React.Fragment>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
 
-                      {/* Expanded Row Details */}
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <tr>
-                            <td colSpan="11" className="p-0 border-b border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-slate-900/30">
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="p-6 flex flex-col gap-6">
-                                  
-                                  {/* Patterns */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><LayoutDashboard className="w-3 h-3" /> Patterns ({exam.counts.patterns})</h4>
-                                    {exam.patterns.length > 0 ? (
-                                      <div className="flex flex-wrap gap-2">
-                                        {exam.patterns.map(p => (
-                                          <span key={p._id} className="text-xs px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg">{p.title}</span>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
+        {/* LIST VIEW */}
+        {viewMode === 'list' && (
+          <div className="p-4 flex flex-col gap-3">
+            {filteredExams.length === 0 ? (
+              <div className="p-8 text-center text-slate-500">No exams found matching your criteria.</div>
+            ) : (
+              filteredExams.map(exam => {
+                const isExpanded = expandedRows.has(exam._id);
+                return (
+                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
+                    <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+                          <GraduationCap className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            {exam.name}
+                            {exam.isActive ? (
+                              <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[9px] font-bold uppercase">Active</span>
+                            ) : (
+                              <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[9px] font-bold uppercase">Inactive</span>
+                            )}
+                          </h3>
+                          <p className="text-xs text-slate-500 font-medium mt-0.5">{exam.code} • {exam.category?.name || 'Uncategorized'}</p>
+                        </div>
+                      </div>
 
-                                  {/* Subjects */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BookOpen className="w-3 h-3" /> Subjects ({exam.counts.subjects})</h4>
-                                    {exam.subjects.length > 0 ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
-                                        {exam.subjects.map(s => (
-                                          <div key={s._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
-                                            <span className="truncate" title={s.name}>{s.name}</span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
+                      <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+                        <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Pat</div>
+                          <div className="text-sm font-bold text-cyan-600">{exam.counts.patterns}</div>
+                        </div>
+                        <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Sub</div>
+                          <div className="text-sm font-bold text-emerald-600">{exam.counts.subjects}</div>
+                        </div>
+                        <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
+                          <div className="text-sm font-bold text-teal-600">{exam.counts.topics}</div>
+                        </div>
+                        <div className="text-center px-3 shrink-0">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Items</div>
+                          <div className="text-sm font-bold text-purple-600">{exam.counts.quizzes + exam.counts.pyqs + exam.counts.practiceTests}</div>
+                        </div>
+                      </div>
 
-                                  {/* Topics */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Hash className="w-3 h-3" /> Topics ({exam.counts.topics})</h4>
-                                    {exam.topics.length > 0 ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
-                                        {exam.topics.map(t => (
-                                          <div key={t._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
-                                            <span className="truncate" title={t.name}>{t.name}</span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
+                      <div className="flex items-center gap-2 mt-2 md:mt-0 shrink-0">
+                        <button onClick={() => toggleRow(exam._id)} className="px-3 py-1.5 text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg transition-colors flex items-center gap-1">
+                          {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                          {isExpanded ? 'Hide' : 'Details'}
+                        </button>
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="px-3 py-1.5 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center gap-1">
+                          <Eye className="w-3 h-3" /> Manage
+                        </button>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                          <ExamDetails exam={exam} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
 
-                                  {/* Quizzes */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BrainCircuit className="w-3 h-3" /> Quizzes ({exam.counts.quizzes})</h4>
-                                    {exam.quizzes.length > 0 ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
-                                        {exam.quizzes.map(q => (
-                                          <div key={q._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
-                                            <span className="truncate mr-2" title={q.title}>{q.title}</span>
-                                            <span className="text-slate-400 font-medium shrink-0">{q.totalQuestions} Qs</span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
-
-                                  {/* PYQs */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><FileText className="w-3 h-3" /> PYQs ({exam.counts.pyqs})</h4>
-                                    {exam.pyqs.length > 0 ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
-                                        {exam.pyqs.map(p => (
-                                          <div key={p._id} className="text-[11px] px-3 py-2 bg-rose-50/50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-lg flex items-center justify-between">
-                                            <span className="truncate mr-2 flex items-center gap-1.5" title={p.title}>
-                                              <span className="px-1 py-0.5 bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400 rounded text-[9px] uppercase font-bold shrink-0">PYQ</span>
-                                              {p.title}
-                                            </span>
-                                            <span className="text-slate-400 font-medium shrink-0">{p.totalQuestions} Qs</span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
-
-                                  {/* Practice Tests */}
-                                  <div>
-                                    <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Target className="w-3 h-3" /> Practice Tests ({exam.counts.practiceTests})</h4>
-                                    {exam.practiceTests.length > 0 ? (
-                                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
-                                        {exam.practiceTests.map(m => (
-                                          <div key={m._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
-                                            <span className="truncate mr-2" title={m.title}>{m.title}</span>
-                                            <span className="text-slate-400 font-medium shrink-0">{m.totalQuestions} Qs</span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    ) : <span className="text-xs text-slate-400">None</span>}
-                                  </div>
-                                </div>
-                              </motion.div>
-                            </td>
-                          </tr>
+        {/* GRID VIEW */}
+        {viewMode === 'grid' && (
+          <div className="p-0 lg:p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredExams.length === 0 ? (
+              <div className="col-span-full p-8 text-center text-slate-500">No exams found matching your criteria.</div>
+            ) : (
+              filteredExams.map(exam => {
+                const isExpanded = expandedRows.has(exam._id);
+                return (
+                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
+                    <div className="p-5 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h3 className="font-bold text-slate-900 dark:text-white text-lg leading-tight mb-1">{exam.name}</h3>
+                          <p className="text-xs text-slate-500 font-medium">{exam.code} • {exam.category?.name || 'Uncategorized'}</p>
+                        </div>
+                        {exam.isActive ? (
+                          <span className="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase shrink-0">Active</span>
+                        ) : (
+                          <span className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[10px] font-bold uppercase shrink-0">Inactive</span>
                         )}
-                      </AnimatePresence>
-                    </React.Fragment>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+                      </div>
 
+                      <div className="grid grid-cols-3 gap-2 mb-6 mt-auto">
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Patterns</div>
+                          <div className="text-lg font-bold text-cyan-600 leading-none">{exam.counts.patterns}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Subjects</div>
+                          <div className="text-lg font-bold text-emerald-600 leading-none">{exam.counts.subjects}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Topics</div>
+                          <div className="text-lg font-bold text-teal-600 leading-none">{exam.counts.topics}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Quizzes</div>
+                          <div className="text-lg font-bold text-purple-600 leading-none">{exam.counts.quizzes}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">PYQs</div>
+                          <div className="text-lg font-bold text-rose-600 leading-none">{exam.counts.pyqs}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Mocks</div>
+                          <div className="text-lg font-bold text-orange-600 leading-none">{exam.counts.practiceTests}</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button onClick={() => toggleRow(exam._id)} className="flex-1 py-2 text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg transition-colors flex items-center justify-center gap-1">
+                          {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                          {isExpanded ? 'Hide' : 'Details'}
+                        </button>
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="flex-1 py-2 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center justify-center gap-1">
+                          <Eye className="w-3 h-3" /> Manage
+                        </button>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                          <ExamDetails exam={exam} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
+      </Card>
     </div>
   );
 };
