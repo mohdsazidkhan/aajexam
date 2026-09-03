@@ -60,7 +60,7 @@ const Sidebar = () => {
 
   const isActiveRoute = (path) => {
     if (router?.pathname === path) return true;
-    if (path === '/admin/dashboard' || path === '/admin/govt-exams' || path === '/admin/reels') return false;
+    if (path === '/admin/dashboard' || path === '/admin/exam-overview' || path === '/admin/govt-exams' || path === '/admin/reels') return false;
     return router?.pathname?.startsWith(path + '/');
   };
 
@@ -76,6 +76,7 @@ const Sidebar = () => {
     {
       title: 'EXAMS',
       items: [
+        { path: '/admin/exam-overview', icon: LayoutDashboard, label: 'Exam Overview', key: 'exam-overview' },
         { path: '/admin/govt-exams', icon: ShieldCheck, label: 'Categories', key: 'govt-exams-categories' },
         { path: '/admin/govt-exams/exams', icon: GraduationCap, label: 'Exams', key: 'govt-exams-exams' },
         { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Patterns', key: 'govt-exams-patterns' },
