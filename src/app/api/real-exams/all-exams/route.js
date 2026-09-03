@@ -11,7 +11,7 @@ export async function GET() {
         await dbConnect();
 
         const [exams, practiceTestCounts, quizCounts] = await Promise.all([
-            Exam.find({ isActive: true })
+            Exam.find({ isActive: true, actualExam: { $ne: false } })
                 .populate('category', 'name type')
                 .sort({ name: 1 })
                 .lean(),

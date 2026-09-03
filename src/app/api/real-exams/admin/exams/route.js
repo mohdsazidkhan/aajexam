@@ -10,7 +10,7 @@ export async function GET(req) {
         if (!auth.authenticated || !admin(auth.user)) return NextResponse.json({ message: 'Forbidden' }, { status: 403 });
         await dbConnect();
 
-        const exams = await Exam.find()
+        const exams = await Exam.find({ actualExam: { $ne: false } })
             .populate('category', 'name type')
             .sort({ createdAt: -1 })
             .lean();

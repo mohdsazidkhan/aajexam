@@ -11,9 +11,9 @@ export async function GET(request) {
         const limit = parseInt(searchParams.get('limit')) || 9; // Show 9 per page
         const skip = (page - 1) * limit;
 
-        const totalExams = await Exam.countDocuments({ isActive: true });
+        const totalExams = await Exam.countDocuments({ isActive: true, actualExam: { $ne: false } });
 
-        const exams = await Exam.find({ isActive: true })
+        const exams = await Exam.find({ isActive: true, actualExam: { $ne: false } })
             .populate('category', 'name')
             .select('name code logo description')
             .skip(skip)

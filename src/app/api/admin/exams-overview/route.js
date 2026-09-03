@@ -30,7 +30,7 @@ export async function GET(req) {
             mocksCount
         ] = await Promise.all([
             ExamCategory.countDocuments(),
-            Exam.countDocuments(),
+            Exam.countDocuments({ actualExam: { $ne: false } }),
             ExamPattern.countDocuments(),
             Subject.countDocuments(),
             Topic.countDocuments(),
@@ -63,7 +63,7 @@ export async function GET(req) {
             allPracticeTests
         ] = await Promise.all([
             ExamCategory.find().lean(),
-            Exam.find().lean(),
+            Exam.find({ actualExam: { $ne: false } }).lean(),
             ExamPattern.find().lean(),
             Subject.find().lean(),
             Topic.find().lean(),
