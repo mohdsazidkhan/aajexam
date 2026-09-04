@@ -24,7 +24,7 @@ import { motion } from 'framer-motion';
 
 import config from '../lib/config/appConfig';
 import Card from './ui/Card';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope, FaPinterest } from 'react-icons/fa';
 import { isAdmin } from '../lib/utils/adminUtils';
 
 const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
@@ -48,13 +48,15 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL || '#' },
-    { icon: Twitter, url: process.env.NEXT_PUBLIC_TWITTER_URL || '#' },
     { icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#' },
+    { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL || '#' },
+    { icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL || '#' },
     { icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL || '#' },
     { icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL || '#' },
+    { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL || '#' },
     { icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL || '#' },
     { icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL || '#' },
+    { icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL || '#' },
   ];
 
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');

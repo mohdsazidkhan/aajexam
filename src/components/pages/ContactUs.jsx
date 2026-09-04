@@ -23,6 +23,7 @@ import {
    ShieldCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaPinterest } from 'react-icons/fa';
 
 import MobileAppWrapper from '../MobileAppWrapper';
 import Card from '../ui/Card';
@@ -63,10 +64,15 @@ const ContactUs = ({ contactInfo = {
    };
 
    const socialLinks = [
-      { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL, color: 'blue-600' },
-      { icon: Twitter, url: process.env.NEXT_PUBLIC_TWITTER_URL, color: 'sky-500' },
       { icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL, color: 'pink-600' },
+      { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL, color: 'blue-600' },
+      { icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL, color: 'slate-800' },
       { icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL, color: 'red-600' },
+      { icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL, color: 'blue-700' },
+      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'emerald-500' },
+      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL, color: 'indigo-500' },
+      { icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL, color: 'sky-500' },
+      { icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL, color: 'red-500' },
    ];
 
    return (
