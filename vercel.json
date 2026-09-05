@@ -1,22 +1,6 @@
 {
   "crons": [
     {
-      "path": "/api/cron/daily-reset",
-      "schedule": "30 16 * * *"
-    },
-    {
-      "path": "/api/cron/weekly-reset",
-      "schedule": "30 16 * * 0"
-    },
-    {
-      "path": "/api/cron/monthly-reset",
-      "schedule": "30 16 28-31 * *"
-    },
-    {
-      "path": "/api/cron/daily-challenge",
-      "schedule": "30 18 * * *"
-    },
-    {
       "path": "/api/cron/inactivity-reminder",
       "schedule": "30 4 * * *"
     }
