@@ -7,6 +7,8 @@ import Subject from '@/models/Subject';
 import Topic from '@/models/Topic';
 import Quiz from '@/models/Quiz';
 import PracticeTest from '@/models/PracticeTest';
+import Question from '@/models/Question';
+import Blog from '@/models/Blog';
 import { protect, admin } from '@/middleware/auth';
 
 export async function GET(req) {
@@ -27,7 +29,9 @@ export async function GET(req) {
             topicsCount,
             quizzesCount,
             pyqsCount,
-            mocksCount
+            mocksCount,
+            questionsCount,
+            blogsCount
         ] = await Promise.all([
             ExamCategory.countDocuments(),
             Exam.countDocuments({ actualExam: { $ne: false } }),
@@ -36,7 +40,9 @@ export async function GET(req) {
             Topic.countDocuments(),
             Quiz.countDocuments(),
             PracticeTest.countDocuments({ isPYQ: true }),
-            PracticeTest.countDocuments({ isPYQ: false })
+            PracticeTest.countDocuments({ isPYQ: false }),
+            Question.countDocuments(),
+            Blog.countDocuments()
         ]);
 
         const overallStats = {
@@ -47,7 +53,9 @@ export async function GET(req) {
             topics: topicsCount,
             quizzes: quizzesCount,
             pyqs: pyqsCount,
-            practiceTests: mocksCount
+            practiceTests: mocksCount,
+            questions: questionsCount,
+            blogs: blogsCount
         };
 
         // 2. Main Content - Exam List Hierarchy
@@ -60,7 +68,8 @@ export async function GET(req) {
             allSubjects,
             allTopics,
             allQuizzes,
-            allPracticeTests
+            allPracticeTests,
+            allBlogs
         ] = await Promise.all([
             ExamCategory.find().lean(),
             Exam.find({ actualExam: { $ne: false } }).lean(),
@@ -68,7 +77,8 @@ export async function GET(req) {
             Subject.find().lean(),
             Topic.find().lean(),
             Quiz.find().lean(),
-            PracticeTest.find().lean()
+            PracticeTest.find().lean(),
+            Blog.find().lean()
         ]);
 
         // Helper mappings
@@ -143,6 +153,15 @@ export async function GET(req) {
             }
         });
 
+        const examBlogsMap = {}; // examId -> blogs[]
+        allBlogs.forEach(blog => {
+            const examId = blog.exam?.toString();
+            if (examId) {
+                if (!examBlogsMap[examId]) examBlogsMap[examId] = [];
+                examBlogsMap[examId].push(blog);
+            }
+        });
+
         // Assemble hierarchy
         const examHierarchy = allExams.map(exam => {
             const examIdStr = exam._id.toString();
@@ -154,6 +173,7 @@ export async function GET(req) {
             const quizzes = examQuizzesMap[examIdStr] || [];
             const pyqs = examPYQsMap[examIdStr] || [];
             const mocks = examMocksMap[examIdStr] || [];
+            const blogs = examBlogsMap[examIdStr] || [];
 
             return {
                 _id: examIdStr,
@@ -168,7 +188,8 @@ export async function GET(req) {
                     topics: topics.length,
                     quizzes: quizzes.length,
                     pyqs: pyqs.length,
-                    practiceTests: mocks.length
+                    practiceTests: mocks.length,
+                    blogs: blogs.length
                 },
 
                 // Detailed lists for the expandable section
@@ -211,6 +232,13 @@ export async function GET(req) {
                     title: m.title,
                     totalQuestions: m.questions?.length || 0,
                     duration: m.duration
+                })),
+                
+                blogs: blogs.map(b => ({
+                    _id: b._id,
+                    title: b.title,
+                    status: b.status,
+                    views: b.views
                 }))
             };
         });

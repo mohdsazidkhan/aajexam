@@ -15,7 +15,9 @@ import {
   ChevronDown,
   ChevronRight,
   Eye,
-  AlertCircle
+  AlertCircle,
+  HelpCircle,
+  Newspaper
 } from 'lucide-react';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
@@ -137,6 +139,24 @@ const ExamDetails = ({ exam }) => (
         </div>
       ) : <span className="text-xs text-slate-400">None</span>}
     </div>
+
+    {/* Blogs */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Newspaper className="w-3 h-3" /> Blogs ({exam.counts.blogs})</h4>
+      {exam.blogs?.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+          {exam.blogs.map(b => (
+            <div key={b._id} className="text-[11px] px-3 py-2 bg-amber-50/50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 rounded-lg flex flex-col justify-center">
+              <span className="truncate font-medium mb-1" title={b.title}>{b.title}</span>
+              <div className="flex items-center justify-between">
+                <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-green-600' : 'text-amber-600'}`}>{b.status}</span>
+                <span className="text-slate-400 text-[9px]">{b.views || 0} views</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : <span className="text-xs text-slate-400">None</span>}
+    </div>
   </div>
 );
 
@@ -252,7 +272,7 @@ const ExamOverviewPage = () => {
       </div>
 
       {/* Overall Statistics */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
         <StatCard title="Exam Categories" count={overallStats.categories} icon={Layers} color="indigo" />
         <StatCard title="Exams" count={overallStats.exams} icon={GraduationCap} color="blue" />
         <StatCard title="Exam Patterns" count={overallStats.patterns} icon={LayoutDashboard} color="cyan" />
@@ -261,6 +281,8 @@ const ExamOverviewPage = () => {
         <StatCard title="Quizzes" count={overallStats.quizzes} icon={BrainCircuit} color="purple" />
         <StatCard title="PYQs" count={overallStats.pyqs} icon={FileText} color="rose" />
         <StatCard title="Practice Tests" count={overallStats.practiceTests} icon={Target} color="orange" />
+        <StatCard title="Total Questions" count={overallStats.questions} icon={HelpCircle} color="pink" />
+        <StatCard title="Total Blogs" count={overallStats.blogs} icon={Newspaper} color="amber" />
       </div>
 
       {/* Main Content Area */}
@@ -313,6 +335,7 @@ const ExamOverviewPage = () => {
                   <th className="p-4 text-center">Quizzes</th>
                   <th className="p-4 text-center">PYQs</th>
                   <th className="p-4 text-center">Mocks</th>
+                  <th className="p-4 text-center">Blogs</th>
                   <th className="p-4 text-center">Status</th>
                   <th className="p-4 text-center">Action</th>
                 </tr>
@@ -348,6 +371,7 @@ const ExamOverviewPage = () => {
                           <td className="p-4 text-center font-semibold text-purple-600 dark:text-purple-400">{exam.counts.quizzes}</td>
                           <td className="p-4 text-center font-semibold text-rose-600 dark:text-rose-400">{exam.counts.pyqs}</td>
                           <td className="p-4 text-center font-semibold text-orange-600 dark:text-orange-400">{exam.counts.practiceTests}</td>
+                          <td className="p-4 text-center font-semibold text-amber-600 dark:text-amber-400">{exam.counts.blogs}</td>
                           <td className="p-4 text-center">
                             {exam.isActive ? (
                               <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase">
@@ -430,6 +454,10 @@ const ExamOverviewPage = () => {
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
                           <div className="text-sm font-bold text-teal-600">{exam.counts.topics}</div>
                         </div>
+                        <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Blogs</div>
+                          <div className="text-sm font-bold text-amber-600">{exam.counts.blogs}</div>
+                        </div>
                         <div className="text-center px-3 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Items</div>
                           <div className="text-sm font-bold text-purple-600">{exam.counts.quizzes + exam.counts.pyqs + exam.counts.practiceTests}</div>
@@ -507,6 +535,10 @@ const ExamOverviewPage = () => {
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Mocks</div>
                           <div className="text-lg font-bold text-orange-600 leading-none">{exam.counts.practiceTests}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Blogs</div>
+                          <div className="text-lg font-bold text-amber-600 leading-none">{exam.counts.blogs}</div>
                         </div>
                       </div>
 
