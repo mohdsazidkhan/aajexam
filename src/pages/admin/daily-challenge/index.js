@@ -42,33 +42,38 @@ const AdminDailyChallenge = () => {
   const autoGenerateMonth = async () => {
     setBulkGenerating(true);
     const daysInMonth = new Date(bulkYear, bulkMonth + 1, 0).getDate();
-    setBulkProgress({ total: daysInMonth, current: 0, success: 0, skipped: 0, failed: 0, currentDate: '' });
+    setBulkProgress({ total: daysInMonth, current: 0, success: 0, skipped: 0, failed: 0, currentDate: 'Checking Database...' });
     
     try {
       let successCount = 0;
       let skippedCount = 0;
       let failedCount = 0;
 
+      // 1. First check which days already exist in the DB
+      const checkRes = await API.request(`/api/admin/daily-challenge/check-month?year=${bulkYear}&month=${bulkMonth}`);
+      const existingDays = checkRes?.data || [];
+
+      // 2. Loop and generate only for missing days
       for (let day = 1; day <= daysInMonth; day++) {
         const targetDate = new Date(bulkYear, bulkMonth, day);
-        // Format as YYYY-MM-DD local time
         const dateString = new Date(targetDate.getTime() - targetDate.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-
-        setBulkProgress(prev => ({ ...prev, currentDate: targetDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) }));
         
-        try {
-          const res = await API.request('/api/admin/daily-challenge/auto-generate', {
-            method: 'POST', body: JSON.stringify({ date: dateString, count: bulkCount })
-          });
-          
-          if (res?.success) {
-            successCount++;
-          } else {
-            if (res?.message?.includes('already exists')) skippedCount++;
+        setBulkProgress(prev => ({ ...prev, currentDate: targetDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) }));
+
+        if (existingDays.includes(day)) {
+          skippedCount++;
+        } else {
+          try {
+            const res = await API.request('/api/admin/daily-challenge/auto-generate', {
+              method: 'POST', body: JSON.stringify({ date: dateString, count: bulkCount })
+            });
+            if (res?.success) successCount++;
+            else failedCount++;
+          } catch (e) {
+            // Check if the error is our custom already exists error (fallback)
+            if (e.message && e.message.includes('already exists')) skippedCount++;
             else failedCount++;
           }
-        } catch (e) {
-          failedCount++;
         }
         
         setBulkProgress(prev => ({ 
