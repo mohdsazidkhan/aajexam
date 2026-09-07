@@ -61,17 +61,24 @@ export async function getStaticProps({ params }) {
 		// Public route, but not found
 		return { notFound: true, revalidate: 60 };
 	}
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 	const titleBase = 'AajExam Platform';
 	const name = profile?.name || username;
 	const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
 	const description = profile?.bio || `${name}'s profile on AajExam.`;
 	const image = profile?.profilePicture || '/logo.png';
 	const keywords = `${name}, profile, exams`;
-	const url = baseUrl ? `${baseUrl}/profile/${encodeURIComponent(username)}` : undefined;
+	const url = `${baseUrl}/profile/${encodeURIComponent(username || '')}`;
+
+	const safeProps = JSON.parse(
+		JSON.stringify(
+			{ username: username || '', profile, seo: { title, description, keywords, image, url } },
+			(_, v) => (v === undefined ? null : v)
+		)
+	);
 
 	return {
-		props: { username, profile, seo: { title, description, keywords, image, url } },
+		props: safeProps,
 		revalidate: 60
 	};
 }

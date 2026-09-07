@@ -100,30 +100,37 @@ export async function getStaticProps({ params }) {
     const image = resolveImageUrl(blogDoc.featuredImage) || resolveImageUrl('/logo.png');
 
     const optimizedBlog = {
-      _id: blogDoc._id.toString(),
-      title: blogDoc.title,
-      content: blogDoc.content,
+      _id: blogDoc._id ? blogDoc._id.toString() : '',
+      title: blogDoc.title || '',
+      content: blogDoc.content || '',
       excerpt: blogDoc.excerpt || null,
       publishedAt: blogDoc.publishedAt ? blogDoc.publishedAt.toString() : null,
       createdAt: blogDoc.createdAt ? blogDoc.createdAt.toString() : null,
-      featuredImage: blogDoc.featuredImage,
-      featuredImageAlt: blogDoc.featuredImageAlt,
+      featuredImage: blogDoc.featuredImage || null,
+      featuredImageAlt: blogDoc.featuredImageAlt || null,
       views: blogDoc.views || 0,
       likes: blogDoc.likes || 0,
       readingTime: blogDoc.readingTime || 5,
-      isFeatured: blogDoc.isFeatured,
-      isPinned: blogDoc.isPinned,
-      tags: blogDoc.tags || [],
-      exam: blogDoc.exam ? { _id: blogDoc.exam._id.toString(), name: blogDoc.exam.name, code: blogDoc.exam.code } : null,
-      author: blogDoc.author ? { name: blogDoc.author.name } : { name: 'AajExam Team' }
+      isFeatured: Boolean(blogDoc.isFeatured),
+      isPinned: Boolean(blogDoc.isPinned),
+      tags: Array.isArray(blogDoc.tags) ? blogDoc.tags : [],
+      exam: blogDoc.exam ? { _id: blogDoc.exam._id ? blogDoc.exam._id.toString() : '', name: blogDoc.exam.name || '', code: blogDoc.exam.code || '' } : null,
+      author: blogDoc.author ? { name: blogDoc.author.name || 'AajExam Team' } : { name: 'AajExam Team' }
     };
 
+    const safeProps = JSON.parse(
+      JSON.stringify(
+        {
+          blog: optimizedBlog,
+          slug: slug || '',
+          seo: { title, description, image, url: `${baseUrl}/blog/${slug || ''}` }
+        },
+        (_, v) => (v === undefined ? null : v)
+      )
+    );
+
     return {
-      props: {
-        blog: optimizedBlog,
-        slug,
-        seo: { title, description, image, url: `${baseUrl}/blog/${slug}` }
-      },
+      props: safeProps,
       revalidate: 60
     };
   } catch (e) {

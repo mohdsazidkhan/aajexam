@@ -366,11 +366,11 @@ export async function getStaticProps({ params }) {
     const user = await User.findOne({ username: username.toLowerCase() }).select('name username bio profilePicture isPublicProfile').lean();
     if (user) {
       profile = {
-        name: user.name,
-        username: user.username,
-        bio: user.bio,
-        profilePicture: user.profilePicture,
-        isPublicProfile: user.isPublicProfile
+        name: user.name || '',
+        username: user.username || '',
+        bio: user.bio || null,
+        profilePicture: user.profilePicture || null,
+        isPublicProfile: Boolean(user.isPublicProfile)
       };
     }
   } catch (e) {
@@ -378,17 +378,24 @@ export async function getStaticProps({ params }) {
   }
   if (!profile) return { notFound: true, revalidate: 60 };
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
   const titleBase = 'AajExam';
   const name = profile?.name || username;
   const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
   const description = profile?.bio || `${name}'s profile on AajExam.`;
   const image = profile?.profilePicture || '/logo.png';
   const keywords = `${name}, profile, exams`;
-  const url = baseUrl ? `${baseUrl}/u/${encodeURIComponent(username)}` : undefined;
+  const url = `${baseUrl}/u/${encodeURIComponent(username || '')}`;
+
+  const safeProps = JSON.parse(
+    JSON.stringify(
+      { username: username || '', profile, seo: { title, description, keywords, image, url } },
+      (_, v) => (v === undefined ? null : v)
+    )
+  );
 
   return {
-    props: { username, seo: { title, description, keywords, image, url } },
+    props: safeProps,
     revalidate: 60
   };
 }
