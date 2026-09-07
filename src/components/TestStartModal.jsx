@@ -71,7 +71,7 @@ const TestStartModal = ({
                     {(test.isLastYear || test.isFree || (test.accessLevel || '').toUpperCase() === 'FREE') ? "FREE PAPER" : "PRO ONLY PAPERS"}
                   </span>
                 </div>
-              ) : (test.accessLevel === 'pro' || test.type === 'full_mock') && (
+              ) : ((test.accessLevel || '').toUpperCase() === 'PRO' || test.type === 'full_mock') && (
                 <div className="flex flex-col items-center gap-2 mb-2">
                    <div className="flex items-center gap-2">
                      <ProBadge size="sm" />

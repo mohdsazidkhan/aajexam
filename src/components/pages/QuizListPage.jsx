@@ -167,7 +167,7 @@ const QuizListPage = () => {
                   {quiz.topic?.name && (
                     <span className="text-xs font-bold text-slate-500 dark:text-slate-400">{quiz.topic.name}</span>
                   )}
-                  {quiz.accessLevel === 'pro' && <ProBadge size="xs" />}
+                  {(quiz.accessLevel || '').toUpperCase() === 'PRO' && <ProBadge size="xs" />}
                 </div>
 
                 {/* Stat chips */}

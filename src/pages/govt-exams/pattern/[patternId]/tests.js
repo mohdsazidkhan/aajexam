@@ -85,7 +85,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       return;
     }
     // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
-    const isPro = user?.subscriptionStatus === 'pro' || user?.role === 'admin';
+    const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
     let isLocked = false;
     if (!isPro) {
       if (test.isPYQ) {
@@ -163,8 +163,8 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         <div className="space-y-4">
           {tests.map((test, idx) => {
             const isCompleted = test.userAttempt?.status === 'Completed';
-            const isPro = user?.subscriptionStatus === 'pro' || user?.role === 'admin';
-            
+            const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
+
             // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
             let isLocked = false;
             if (!isPro) {

@@ -44,11 +44,11 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
   }, [lookupId]);
 
   const currentUser = getCurrentUser();
-  const isPro = currentUser?.subscriptionStatus === 'pro' || currentUser?.role === 'admin';
+  const isPro = (currentUser?.subscriptionStatus || '').toUpperCase() === 'PRO' || currentUser?.role === 'admin';
 
   // Determine if this quiz is locked for the user
   const isLocked = !isPro && (
-    (quiz?.accessLevel === 'pro' && !(quiz.type === 'full_mock' && (currentUser?.fullMockAttemptCount || 0) === 0)) ||
+    ((quiz?.accessLevel || '').toUpperCase() === 'PRO' && !(quiz.type === 'full_mock' && (currentUser?.fullMockAttemptCount || 0) === 0)) ||
     (quiz?.type === 'full_mock' && (currentUser?.fullMockAttemptCount || 0) >= 1) ||
     (quiz?.type === 'subject_test' && (currentUser?.dailySubjectTestCount || 0) >= 2 && new Date(currentUser?.lastTestResetDate || 0).toDateString() === new Date().toDateString())
   );
@@ -125,7 +125,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             </div>
             <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
               {quiz.title}
-              {quiz.accessLevel === 'pro' && <ProBadge />}
+              {(quiz.accessLevel || '').toUpperCase() === 'PRO' && <ProBadge />}
             </h1>
           </div>
           {quiz.description && (
