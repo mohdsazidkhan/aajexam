@@ -69,7 +69,8 @@ export async function GET(req) {
             allTopics,
             allQuizzes,
             allPracticeTests,
-            allBlogs
+            allBlogs,
+            examQuestionCounts
         ] = await Promise.all([
             ExamCategory.find().lean(),
             Exam.find({ actualExam: { $ne: false } }).lean(),
@@ -78,7 +79,10 @@ export async function GET(req) {
             Topic.find().lean(),
             Quiz.find().lean(),
             PracticeTest.find().lean(),
-            Blog.find().lean()
+            Blog.find().lean(),
+            Question.aggregate([
+                { $group: { _id: '$exam', count: { $sum: 1 } } }
+            ])
         ]);
 
         // Helper mappings
@@ -86,6 +90,20 @@ export async function GET(req) {
             acc[cat._id.toString()] = cat;
             return acc;
         }, {});
+
+        const examQuestionsMap = {};
+        examQuestionCounts.forEach(item => {
+            if (item._id) {
+                const idStr = item._id.toString();
+                examQuestionsMap[idStr] = (examQuestionsMap[idStr] || 0) + item.count;
+            }
+        });
+
+        // Add embedded practice test questions to overall statistics
+        const totalPracticeTestQuestions = allPracticeTests.reduce((acc, pt) => acc + (pt.questions?.length || 0), 0);
+        overallStats.questions = questionsCount + totalPracticeTestQuestions;
+        overallStats.practiceTestQuestions = totalPracticeTestQuestions;
+        overallStats.questionBankQuestions = questionsCount;
 
         const examPatternsMap = {}; // examId -> patterns[]
         allPatterns.forEach(pattern => {
@@ -175,6 +193,12 @@ export async function GET(req) {
             const mocks = examMocksMap[examIdStr] || [];
             const blogs = examBlogsMap[examIdStr] || [];
 
+            // Questions calculations (Mocks + PYQs + Question Bank)
+            const mockQuestionsCount = mocks.reduce((acc, m) => acc + (m.questions?.length || 0), 0);
+            const pyqQuestionsCount = pyqs.reduce((acc, p) => acc + (p.questions?.length || 0), 0);
+            const qBankQuestionsCount = examQuestionsMap[examIdStr] || 0;
+            const totalExamQuestions = mockQuestionsCount + pyqQuestionsCount + qBankQuestionsCount;
+
             return {
                 _id: examIdStr,
                 name: exam.name,
@@ -189,6 +213,10 @@ export async function GET(req) {
                     quizzes: quizzes.length,
                     pyqs: pyqs.length,
                     practiceTests: mocks.length,
+                    questions: totalExamQuestions,
+                    mockQuestions: mockQuestionsCount,
+                    pyqQuestions: pyqQuestionsCount,
+                    qBankQuestions: qBankQuestionsCount,
                     blogs: blogs.length
                 },
 

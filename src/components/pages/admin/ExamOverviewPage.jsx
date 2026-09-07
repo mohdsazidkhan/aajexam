@@ -140,6 +140,31 @@ const ExamDetails = ({ exam }) => (
       ) : <span className="text-xs text-slate-400">None</span>}
     </div>
 
+    {/* Questions */}
+    <div>
+      <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><HelpCircle className="w-3 h-3" /> Questions ({formatNumber(exam.counts.questions)})</h4>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg p-4">
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Mock Tests</span>
+          <span className="text-sm font-bold text-orange-600 dark:text-orange-400 mt-0.5">{formatNumber(exam.counts.mockQuestions)} Qs</span>
+          <span className="text-[10px] text-slate-500">{exam.counts.practiceTests} Practice Tests</span>
+        </div>
+        <div className="flex flex-col border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-white/10 pt-2 sm:pt-0 sm:pl-3">
+          <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">PYQ Papers</span>
+          <span className="text-sm font-bold text-rose-600 dark:text-rose-400 mt-0.5">{formatNumber(exam.counts.pyqQuestions)} Qs</span>
+          <span className="text-[10px] text-slate-500">{exam.counts.pyqs} Previous Year Papers</span>
+        </div>
+        <div className="flex flex-col border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-white/10 pt-2 sm:pt-0 sm:pl-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Question Bank</span>
+            <a href="/admin/quiz/questions" className="text-[10px] text-primary-600 hover:underline font-bold flex items-center gap-0.5">Manage <ChevronRight className="w-2.5 h-2.5" /></a>
+          </div>
+          <span className="text-sm font-bold text-pink-600 dark:text-pink-400 mt-0.5">{formatNumber(exam.counts.qBankQuestions)} Qs</span>
+          <span className="text-[10px] text-slate-500">Standalone Quiz Bank</span>
+        </div>
+      </div>
+    </div>
+
     {/* Blogs */}
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Newspaper className="w-3 h-3" /> Blogs ({exam.counts.blogs})</h4>
@@ -335,6 +360,7 @@ const ExamOverviewPage = () => {
                   <th className="p-4 text-center">Quizzes</th>
                   <th className="p-4 text-center">PYQs</th>
                   <th className="p-4 text-center">Mocks</th>
+                  <th className="p-4 text-center">Questions</th>
                   <th className="p-4 text-center">Blogs</th>
                   <th className="p-4 text-center">Status</th>
                   <th className="p-4 text-center">Action</th>
@@ -343,7 +369,7 @@ const ExamOverviewPage = () => {
               <tbody>
                 {filteredExams.length === 0 ? (
                   <tr>
-                    <td colSpan="11" className="p-8 text-center text-slate-500">No exams found matching your criteria.</td>
+                    <td colSpan="13" className="p-8 text-center text-slate-500">No exams found matching your criteria.</td>
                   </tr>
                 ) : (
                   filteredExams.map((exam) => {
@@ -371,6 +397,14 @@ const ExamOverviewPage = () => {
                           <td className="p-4 text-center font-semibold text-purple-600 dark:text-purple-400">{exam.counts.quizzes}</td>
                           <td className="p-4 text-center font-semibold text-rose-600 dark:text-rose-400">{exam.counts.pyqs}</td>
                           <td className="p-4 text-center font-semibold text-orange-600 dark:text-orange-400">{exam.counts.practiceTests}</td>
+                          <td className="p-4 text-center">
+                            <div className="flex flex-col items-center cursor-help" title={`Total: ${formatNumber(exam.counts.questions)} (Mocks: ${formatNumber(exam.counts.mockQuestions)} | PYQs: ${formatNumber(exam.counts.pyqQuestions)} | Bank: ${formatNumber(exam.counts.qBankQuestions)})`}>
+                              <span className="font-bold text-pink-600 dark:text-pink-400 leading-tight">{formatNumber(exam.counts.questions)}</span>
+                              <span className="text-[9px] text-slate-400 dark:text-slate-500 font-normal leading-none mt-0.5 whitespace-nowrap">
+                                {formatNumber(exam.counts.mockQuestions + exam.counts.pyqQuestions)} test • {formatNumber(exam.counts.qBankQuestions)} bank
+                              </span>
+                            </div>
+                          </td>
                           <td className="p-4 text-center font-semibold text-amber-600 dark:text-amber-400">{exam.counts.blogs}</td>
                           <td className="p-4 text-center">
                             {exam.isActive ? (
@@ -396,7 +430,7 @@ const ExamOverviewPage = () => {
                         <AnimatePresence>
                           {isExpanded && (
                             <tr>
-                              <td colSpan="11" className="p-0 border-b border-slate-200 dark:border-white/10">
+                              <td colSpan="13" className="p-0 border-b border-slate-200 dark:border-white/10">
                                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                                   <ExamDetails exam={exam} />
                                 </motion.div>
@@ -453,6 +487,11 @@ const ExamOverviewPage = () => {
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
                           <div className="text-sm font-bold text-teal-600">{exam.counts.topics}</div>
+                        </div>
+                        <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0 cursor-help" title={`Total: ${formatNumber(exam.counts.questions)} (Mocks: ${formatNumber(exam.counts.mockQuestions)} | PYQs: ${formatNumber(exam.counts.pyqQuestions)} | Bank: ${formatNumber(exam.counts.qBankQuestions)})`}>
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Questions</div>
+                          <div className="text-sm font-bold text-pink-600">{formatNumber(exam.counts.questions)}</div>
+                          <div className="text-[9px] text-slate-400 font-medium whitespace-nowrap">{formatNumber(exam.counts.mockQuestions + exam.counts.pyqQuestions)}t • {formatNumber(exam.counts.qBankQuestions)}b</div>
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Blogs</div>
@@ -511,7 +550,7 @@ const ExamOverviewPage = () => {
                         )}
                       </div>
 
-                      <div className="grid grid-cols-3 gap-2 mb-6 mt-auto">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 mt-auto">
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Patterns</div>
                           <div className="text-lg font-bold text-cyan-600 leading-none">{exam.counts.patterns}</div>
@@ -535,6 +574,11 @@ const ExamOverviewPage = () => {
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Mocks</div>
                           <div className="text-lg font-bold text-orange-600 leading-none">{exam.counts.practiceTests}</div>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5 cursor-help flex flex-col justify-center" title={`Total: ${formatNumber(exam.counts.questions)} (Mocks: ${formatNumber(exam.counts.mockQuestions)} | PYQs: ${formatNumber(exam.counts.pyqQuestions)} | Bank: ${formatNumber(exam.counts.qBankQuestions)})`}>
+                          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Questions</div>
+                          <div className="text-lg font-bold text-pink-600 leading-none">{formatNumber(exam.counts.questions)}</div>
+                          <div className="text-[9px] text-slate-400 mt-1 truncate">{formatNumber(exam.counts.mockQuestions + exam.counts.pyqQuestions)} test • {formatNumber(exam.counts.qBankQuestions)} bank</div>
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Blogs</div>
