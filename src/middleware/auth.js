@@ -19,6 +19,10 @@ export const protect = async (req) => {
             return { authenticated: false, message: 'Not authorized, user not found' };
         }
 
+        if (['suspended', 'banned'].includes(user.status)) {
+            return { authenticated: false, message: `Your account is currently ${user.status.toUpperCase()}. Please contact support.` };
+        }
+
         return { authenticated: true, user };
     } catch (error) {
         console.error('Auth middleware error:', error);
