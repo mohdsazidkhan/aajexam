@@ -38,16 +38,8 @@ const subscriptionSchema = new mongoose.Schema({
   metadata: { type: mongoose.Schema.Types.Mixed },
   cancelledAt: { type: Date },
   cancelledBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  cancellationReason: { type: String },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
-});
-
-// Update the updatedAt field before saving
-subscriptionSchema.pre('save', function (next) {
-  this.updatedAt = new Date();
-  next();
-});
+  cancellationReason: { type: String }
+}, { timestamps: true });
 
 const Subscription = mongoose.models.Subscription || mongoose.model('Subscription', subscriptionSchema);
 export default Subscription;

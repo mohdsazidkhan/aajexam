@@ -16,7 +16,6 @@ const paymentOrderSchema = new mongoose.Schema({
   payuHash: { type: String },
   payuStatus: { type: String },
   payuResponse: { type: mongoose.Schema.Types.Mixed },
-  placeholder: { type: mongoose.Schema.Types.Mixed }, // metadata -> placeholder to avoid conflict if any
   metadata: { type: mongoose.Schema.Types.Mixed },
   notes: { type: String },
   refundId: { type: String },
