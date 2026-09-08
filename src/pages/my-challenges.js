@@ -50,7 +50,11 @@ const MyChallengesPage = () => {
 
    return (
       <div className="min-h-screen pb-24">
-         <Head><title>My Challenges - AajExam</title></Head>
+         <Head>
+            <title>My Challenges - AajExam</title>
+            {/* Private dashboard — never index, even if the robots.txt rule changes. */}
+            <meta name="robots" content="noindex,nofollow" />
+         </Head>
 
          <div className="container mx-auto py-4 lg:py-8 space-y-6 px-4">
             <SubscriptionGuard message="Upgrade to PRO to view and track your multiplayer challenges.">

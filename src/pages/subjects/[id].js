@@ -227,7 +227,7 @@ export async function getServerSideProps({ params, res }) {
     const topicDocs = await Topic.find({ subject: subject._id, isActive: true, slug: { $exists: true, $ne: null } })
       .select('name slug')
       .sort({ order: 1, name: 1 })
-      .limit(40)
+      .limit(150)
       .lean();
     const topics = topicDocs.map((t) => ({ name: t.name, slug: t.slug }));
 

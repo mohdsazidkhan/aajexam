@@ -15,15 +15,25 @@ const escapeXml = (s) => String(s || '').replace(/[<>&'"]/g, (c) => ({
     '"': '&quot;'
 }[c]));
 
-const xmlUrl = ({ loc, lastmod, changefreq, priority }) => `
+const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
+    // <lastmod> is only emitted when we genuinely know when the record changed.
+    // Stamping "now" on every URL every crawl makes Google distrust the field
+    // sitewide, which slows re-crawling of the pages that really did change.
+    const stamp = lastmod ? new Date(lastmod) : null;
+    const lastmodTag = stamp && !Number.isNaN(stamp.getTime())
+        ? `
+       <lastmod>${stamp.toISOString()}</lastmod>`
+        : '';
+
+    return `
    <url>
-       <loc>${escapeXml(loc)}</loc>
-       <lastmod>${(lastmod ? new Date(lastmod) : new Date()).toISOString()}</lastmod>
+       <loc>${escapeXml(loc)}</loc>${lastmodTag}
        <changefreq>${changefreq || 'weekly'}</changefreq>
        <priority>${priority ?? '0.7'}</priority>
    </url>`;
+};
 
-function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [] }) {
+function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -80,7 +90,10 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         // /pyq/<examSlug> — per-exam PYQ archive index
         pyqExamIndexes.filter(e => e?.slug).map(e => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${e.slug}`, lastmod: e.updatedAt, changefreq: 'weekly', priority: '0.85' })).join(''),
         // /pyq/<examSlug>/<paperSlug> — individual PYQ paper landing pages
-        pyqPapers.filter(p => p?.slug && p?.examSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${p.examSlug}/${p.slug}`, lastmod: p.updatedAt || p.publishedAt || p.createdAt, changefreq: 'monthly', priority: '0.9' })).join('')
+        pyqPapers.filter(p => p?.slug && p?.examSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${p.examSlug}/${p.slug}`, lastmod: p.updatedAt || p.publishedAt || p.createdAt, changefreq: 'monthly', priority: '0.9' })).join(''),
+        // /practice/<examSlug>/<subjectSlug> — consolidated subject-wise PYQ banks.
+        // These replace the thousands of noindexed 10-question quiz slices.
+        practiceSeries.filter(p => p?.examSlug && p?.subjectSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}`, changefreq: 'weekly', priority: '0.85' })).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -90,7 +103,7 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
 
 function SiteMap() {}
 
-const safeFind = async (importer, projection, filter = {}, limit = 5000, sort = {}) => {
+const safeFind = async (importer, projection, filter = {}, limit = 25000, sort = {}) => {
     try {
         const Model = (await importer()).default;
         return await Model.find(filter).select(projection).sort(sort).limit(limit).lean();
@@ -123,32 +136,69 @@ export async function getServerSideProps({ res }) {
             safeFind(() => import('../models/CurrentAffair'), '_id slug updatedAt date createdAt', {}, 5000, { date: -1 }),
             safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', {}, 5000),
             safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', {}, 5000),
-            safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 }),
+            safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt',
+                // The auto-sliced quiz series carries noindexOverride, so submitting
+                // it would just pad the sitemap with URLs Google is told not to index.
+                { status: 'published', noindexOverride: { $ne: true } }, 25000, { publishedAt: -1 }),
             // PYQ papers — populate examPattern.exam for slug, scope to PYQ docs with slugs
             (async () => {
                 try {
                     const PracticeTest = (await import('../models/PracticeTest')).default;
                     await import('../models/ExamPattern');
                     const docs = await PracticeTest.find({ isPYQ: true, slug: { $exists: true, $ne: null } })
-                        .select('slug updatedAt publishedAt createdAt examPattern')
+                        .select('slug pyqYear updatedAt publishedAt createdAt examPattern')
                         .populate({ path: 'examPattern', select: 'exam', populate: { path: 'exam', select: 'slug isActive' } })
-                        .limit(5000)
-                        .sort({ pyqYear: -1, publishedAt: -1 })
+                        .limit(25000)
                         .lean();
+                    // Sorting on { pyqYear, publishedAt } in Mongo blew the 32MB
+                    // in-memory sort limit (no compound index covers that pair),
+                    // which silently dropped every PYQ URL from the sitemap.
+                    // The result set is small, so order it in JS instead.
                     return docs
                         .filter(d => d?.examPattern?.exam?.slug && d.examPattern.exam.isActive !== false)
                         .map(d => ({
                             slug: d.slug,
                             examSlug: d.examPattern.exam.slug,
+                            pyqYear: d.pyqYear || 0,
                             updatedAt: d.updatedAt,
                             publishedAt: d.publishedAt,
                             createdAt: d.createdAt,
-                        }));
+                        }))
+                        .sort((a, b) => (b.pyqYear - a.pyqYear)
+                            || (new Date(b.publishedAt || b.createdAt || 0) - new Date(a.publishedAt || a.createdAt || 0)));
                 } catch (e) {
+                    // Never swallow this silently: a throw here drops every
+                    // /pyq/<exam>/<paper> URL from the sitemap without a trace.
+                    console.error('Sitemap: PYQ section failed:', e);
                     return [];
                 }
             })(),
         ]);
+
+        // Consolidated /practice/<exam>/<subject> pages — only the series with
+        // enough questions to stand on their own get submitted.
+        let practiceSeries = [];
+        try {
+            const Quiz = (await import('../models/Quiz')).default;
+            const Subject = (await import('../models/Subject')).default;
+            const groups = await Quiz.aggregate([
+                { $match: { type: 'subject_test', status: 'published' } },
+                { $unwind: '$applicableExams' },
+                { $group: { _id: { exam: '$applicableExams', subject: '$subject' }, questions: { $sum: { $size: { $ifNull: ['$questions', []] } } } } },
+                { $match: { questions: { $gte: 50 } } },
+            ]);
+            const [seriesExams, seriesSubjects] = await Promise.all([
+                Exam.find({ _id: { $in: groups.map(g => g._id.exam) }, isActive: true }).select('slug').lean(),
+                Subject.find({ _id: { $in: groups.map(g => g._id.subject) } }).select('slug').lean(),
+            ]);
+            const examSlugs = new Map(seriesExams.map(e => [String(e._id), e.slug]));
+            const subjectSlugs = new Map(seriesSubjects.map(x => [String(x._id), x.slug]));
+            practiceSeries = groups
+                .map(g => ({ examSlug: examSlugs.get(String(g._id.exam)), subjectSlug: subjectSlugs.get(String(g._id.subject)) }))
+                .filter(p => p.examSlug && p.subjectSlug);
+        } catch (e) {
+            console.error('Sitemap: practice series section failed:', e);
+        }
 
         // Derive per-exam PYQ index URLs from distinct exam slugs in pyqPapers
         const pyqExamIndexMap = new Map();
@@ -161,7 +211,7 @@ export async function getServerSideProps({ res }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes });
+        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');

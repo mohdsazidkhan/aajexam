@@ -17,6 +17,7 @@ const Seo = ({
   image,
   type = 'website',
   noIndex = false,
+  noFollow = false,
   keywords,
   canonical,
   publishedTime,
@@ -53,12 +54,15 @@ const Seo = ({
       <meta name="format-detection" content="telephone=no" />
       <meta name="author" content={author || config.APP_AUTHOR} />
 
+      {/* A noindex page should still be crawled for its links unless it is
+          genuinely private — `nofollow` would strand the pages it points to.
+          Callers that really want a dead end pass noFollow. */}
       {noIndex
-        ? <meta name="robots" content="noindex,nofollow" />
+        ? <meta name="robots" content={noFollow ? 'noindex,nofollow' : 'noindex,follow'} />
         : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
       }
-      <meta name="googlebot" content={noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'} />
-      <meta name="bingbot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
+      <meta name="googlebot" content={noIndex ? (noFollow ? 'noindex,nofollow' : 'noindex,follow') : 'index,follow,max-image-preview:large,max-snippet:-1'} />
+      <meta name="bingbot" content={noIndex ? (noFollow ? 'noindex,nofollow' : 'noindex,follow') : 'index,follow'} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

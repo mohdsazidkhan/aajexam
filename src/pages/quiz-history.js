@@ -55,7 +55,11 @@ const QuizHistoryPage = () => {
 
    return (
       <div className="min-h-screen pb-24">
-         <Head><title>Quiz History - AajExam</title></Head>
+         <Head>
+            <title>Quiz History - AajExam</title>
+            {/* Private dashboard — never index, even if the robots.txt rule changes. */}
+            <meta name="robots" content="noindex,nofollow" />
+         </Head>
 
          <div className="container mx-auto py-4 lg:py-8 space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view your detailed quiz attempt history and performance insights.">

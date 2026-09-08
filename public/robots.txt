@@ -25,6 +25,7 @@ Disallow: /rewards
 Disallow: /bookmarks
 Disallow: /my-questions
 Disallow: /my-reels
+Disallow: /my-challenges
 Disallow: /my-analytics
 Disallow: /payment-history
 Disallow: /readiness

@@ -127,6 +127,23 @@ export default function TopicDetail({
             </section>
           )}
 
+          {/* Practice quizzes — server-rendered so quiz pages get real inbound
+              links instead of existing only in the sitemap. */}
+          {relatedQuizzes.length > 0 && (
+            <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                {topicName} Practice Quizzes
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {relatedQuizzes.map((q) => (
+                  <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-snug">{q.title}</div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Sibling topics — internal linking */}
           {siblingTopics.length > 0 && (
             <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
@@ -220,7 +237,7 @@ export async function getServerSideProps({ params, res }) {
     const relatedQuizDocs = await Quiz.find({ topic: topic._id, status: 'published', slug: { $exists: true, $ne: null } })
       .select('title slug')
       .sort({ publishedAt: -1, createdAt: -1 })
-      .limit(12)
+      .limit(60)
       .lean();
     const relatedQuizzes = relatedQuizDocs.map((q) => ({ title: q.title, slug: q.slug }));
 

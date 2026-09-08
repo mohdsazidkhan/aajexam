@@ -94,7 +94,29 @@ export const generateQuizSchema = (quiz) => {
         },
         "timeRequired": quiz.timeLimit ? `PT${quiz.timeLimit}M` : undefined,
         "educationalUse": "Practice",
-        "interactivityType": "active"
+        "interactivityType": "active",
+        // The questions are the page's real content; expressing them as
+        // hasPart lets search engines see that rather than just the wrapper.
+        "hasPart": Array.isArray(quiz.questions) && quiz.questions.length > 0
+            ? quiz.questions.slice(0, 25).map((q) => {
+                const correct = (q.options || []).find((o) => o.isCorrect);
+                return {
+                    "@type": "Question",
+                    "eduQuestionType": "Multiple choice",
+                    "text": q.questionText,
+                    ...(correct ? {
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": correct.text,
+                            ...(q.explanation ? { "encodingFormat": "text/plain", "comment": q.explanation } : {})
+                        }
+                    } : {}),
+                    "suggestedAnswer": (q.options || [])
+                        .filter((o) => !o.isCorrect)
+                        .map((o) => ({ "@type": "Answer", "text": o.text }))
+                };
+            })
+            : undefined
     };
 };
 

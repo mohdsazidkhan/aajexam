@@ -9,12 +9,27 @@ import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
 import { useSelector } from 'react-redux';
 import { Eye, Heart, Clock, Star, Pin, ArrowLeft, Share2 } from 'lucide-react';
 import { FaWhatsapp, FaTelegramPlane, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { optimizedImage } from '../../utils/imageUrl';
 
-const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
+
+/**
+ * Blog bodies are authored as HTML. The old renderer turned every newline
+ * into a <br />, so the line breaks between block tags rendered as blank
+ * gaps. Collapse tag-to-tag whitespace and only convert newlines that are
+ * genuinely inside text.
+ */
+const renderContent = (html) => {
+  if (!html) return '';
+  return html
+    .replace(/>[ \t]*\r?\n[ \t\r\n]*</g, '><')
+    .replace(/\r?\n/g, ' ');
+};
+
+const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ssrRelatedBlogs = [], hasPyq = false }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [blog, setBlog] = useState(initialBlog);
-  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  const [relatedBlogs, setRelatedBlogs] = useState(ssrRelatedBlogs);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [liked, setLiked] = useState(false);
@@ -27,7 +42,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
         API.incrementBlogViews(initialBlog._id).catch(() => {});
         setBlog(prev => prev ? { ...prev, views: (prev.views || 0) + 1 } : prev);
       }
-      if (initialBlog.exam) {
+      if (ssrRelatedBlogs.length === 0 && initialBlog.exam) {
         fetchRelatedBlogs(initialBlog.exam._id || initialBlog.exam);
       }
     }
@@ -99,11 +114,11 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
         {/* Breadcrumb */}
         <nav className="mb-6">
           <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <li><Link href="/home" className="hover:text-primary-600 dark:hover:text-primary-400">Home</Link></li>
+            <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">Home</Link></li>
             <li>•</li>
             <li><Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-400">Blog</Link></li>
             <li>•</li>
-            <li className="text-gray-900 dark:text-white truncate max-w-[200px]">{blog.title}</li>
+            <li className="text-gray-900 dark:text-white truncate max-w-[200px] md:max-w-none md:overflow-visible md:text-clip md:whitespace-normal">{blog.title}</li>
           </ol>
         </nav>
 
@@ -143,14 +158,15 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
 
         {/* Featured Image */}
         <div className="mb-8">
-          <img src={blog.featuredImage || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
+          <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
+            width={1200} height={630} fetchPriority="high" decoding="async"
             className="w-full h-48 md:h-72 lg:h-96 object-cover rounded-2xl shadow-lg" />
         </div>
 
         {/* Content */}
         <article className="prose prose-lg max-w-none mb-8">
           <div className="text-gray-900 dark:text-white leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: blog.content.replace(/\n/g, '<br />') }} />
+            dangerouslySetInnerHTML={{ __html: renderContent(blog.content) }} />
         </article>
 
         {/* Actions */}
@@ -183,13 +199,46 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
           {blog.exam && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500 dark:text-gray-400">Exam:</span>
-              <Link href={`/blog?exam=${blog.exam._id}`}
+              <Link href={blog.exam.slug ? `/govt-exams/exam/${blog.exam.slug}` : '/govt-exams'}
                 className="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 text-sm px-3 py-1 rounded-full font-bold hover:bg-primary-100 dark:hover:bg-primary-800/30">
                 {blog.exam.name}
               </Link>
             </div>
           )}
         </div>
+
+        {/* Next steps — contextual internal links */}
+        <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 bg-primary-50/60 dark:bg-primary-900/10 p-6">
+          <h2 className="text-lg lg:text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
+            Prepare for {blog.exam?.name || 'this exam'} on AajExam
+          </h2>
+          <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+            Reading the notification is step one. Start free practice with topic-wise quizzes,
+            previous-year papers and full-length mock tests built for this exam.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {blog.exam?.slug && (
+              <Link href={`/govt-exams/exam/${blog.exam.slug}`}
+                className="bg-primary-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
+                {blog.exam.name} syllabus & pattern
+              </Link>
+            )}
+            {hasPyq && blog.exam?.slug && (
+              <Link href={`/pyq/${blog.exam.slug}`}
+                className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                Previous year question papers
+              </Link>
+            )}
+            <Link href="/quizzes"
+              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              Free practice quizzes
+            </Link>
+            <Link href="/govt-exams"
+              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              All government exams
+            </Link>
+          </div>
+        </section>
 
         {/* Tags */}
         {blog.tags && blog.tags.length > 0 && (
@@ -210,10 +259,11 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug }) => {
           <div className="mb-8">
             <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Related Blogs</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 3).map((related) => (
+              {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 6).map((related) => (
                 <Link key={related._id} href={`/blog/${related.slug}`}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden border border-gray-200 dark:border-gray-700">
-                  <img src={related.featuredImage || '/default_banner.png'} alt={related.title}
+                  <img src={optimizedImage(related.featuredImage, 480) || '/default_banner.png'} alt={related.title}
+                    width={480} height={256} loading="lazy" decoding="async"
                     className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
                   <div className="p-4">
                     <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-2 line-clamp-2">

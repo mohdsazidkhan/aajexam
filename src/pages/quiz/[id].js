@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Seo from '../../components/Seo';
+import QuestionList from '../../components/seo/QuestionList';
 import {
   generateBreadcrumbSchema,
   generateQuizSchema,
@@ -16,6 +17,8 @@ const QuizPreviewPage = dynamic(() => import('../../components/pages/QuizPreview
 export default function QuizPreview({
   resolvedId,
   quiz,
+  questions = [],
+  seriesHref = null,
   relatedQuizzes = [],
   aboutText = '',
   faqs = [],
@@ -27,8 +30,16 @@ export default function QuizPreview({
   const canonical = `/quiz/${quiz?.slug || resolvedId}`;
 
   const seoTitle = `${quizTitle} – Free Online Quiz with Solutions | AajExam`;
-  const seoDescription = (quiz?.description ||
-    `Attempt the ${quizTitle} quiz on AajExam. ${quiz?.totalQuestions || ''} MCQs with detailed step-by-step solutions for SSC, UPSC, Banking, Railway and State PSC exam preparation.`).slice(0, 160);
+  // Stored descriptions repeat across a whole quiz series, so lead with the
+  // first question — that is what actually makes each page distinct.
+  const firstQuestion = questions[0]?.questionText || '';
+  const baseDescription = quiz?.description
+    || `Attempt the ${quizTitle} quiz on AajExam with detailed step-by-step solutions for SSC, UPSC, Banking, Railway and State PSC exam preparation.`;
+  const seoDescription = (
+    firstQuestion
+      ? `${questions.length} MCQs with solutions, starting with: "${firstQuestion}" ${baseDescription}`
+      : baseDescription
+  ).slice(0, 158).trim();
 
   const breadcrumbItems = [
     { name: 'Home', url: '/' },
@@ -45,6 +56,7 @@ export default function QuizPreview({
       educationalDescription: quiz?.description,
       categoryName: subjectName,
       timeLimit: quiz?.duration,
+      questions,
     }),
     generateBreadcrumbSchema(breadcrumbItems),
     faqs.length > 0 && generateFAQSchema(faqs),
@@ -143,6 +155,25 @@ export default function QuizPreview({
               </div>
             </section>
           )}
+
+          {seriesHref && (
+            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 bg-primary-50/60 dark:bg-primary-900/10 p-5">
+              <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                This is one set from a larger bank.{' '}
+                <Link href={seriesHref.href} className="text-primary-700 dark:text-primary-400 underline">
+                  See all {seriesHref.examName} {subjectName} previous year questions
+                </Link>
+                .
+              </p>
+            </section>
+          )}
+
+          {/* Questions with solutions — server-rendered */}
+          <QuestionList
+            questions={questions}
+            title={`${quizTitle} — Questions with Solutions`}
+            intro={`All ${questions.length} questions from this quiz with the correct answer and explanation. Attempt them yourself first, then open each solution to check your reasoning.`}
+          />
 
           {/* Interactive preview */}
           <QuizPreviewPage resolvedId={resolvedId} initialQuiz={quiz} />
@@ -249,7 +280,7 @@ export async function getServerSideProps({ params, res }) {
     }
 
     const quiz = await Quiz.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment })
-      .select('_id title slug description duration totalMarks difficulty subject topic')
+      .select('_id title slug description duration totalMarks difficulty subject topic questions noindexOverride type applicableExams')
       .populate('subject', 'name slug')
       .populate('topic', 'name slug')
       .lean();
@@ -272,6 +303,28 @@ export async function getServerSideProps({ params, res }) {
       : [];
     const relatedQuizzes = relatedDocs.map((q) => ({ title: q.title, slug: q.slug }));
 
+    // The questions are the only unique content this page has. They used to be
+    // loaded client-side inside the attempt flow, so crawlers saw none of it.
+    let questions = [];
+    if (Array.isArray(quiz.questions) && quiz.questions.length > 0) {
+      const Question = (await import('../../models/Question')).default;
+      const questionDocs = await Question.find({ _id: { $in: quiz.questions }, isActive: true })
+        .select('questionText options explanation image difficulty')
+        .limit(50)
+        .lean();
+      // Preserve the order the quiz defines rather than Mongo's natural order.
+      const order = new Map(quiz.questions.map((id, i) => [String(id), i]));
+      questions = questionDocs
+        .sort((a, b) => (order.get(String(a._id)) ?? 0) - (order.get(String(b._id)) ?? 0))
+        .map((q) => ({
+          _id: String(q._id),
+          questionText: q.questionText || '',
+          options: (q.options || []).map((o) => ({ text: o.text || '', isCorrect: !!o.isCorrect })),
+          explanation: q.explanation || '',
+          image: q.image || '',
+        }));
+    }
+
     const subjectName = quiz.subject?.name || '';
     const topicName = quiz.topic?.name || '';
     const aboutText = buildQuizAbout({ quiz, subjectName, topicName, relatedCount: relatedQuizzes.length });
@@ -288,6 +341,17 @@ export async function getServerSideProps({ params, res }) {
       }
     );
 
+    // For the auto-sliced series, the consolidated /practice page is the URL
+    // that is meant to rank — link to it so readers and crawlers find it.
+    let seriesHref = null;
+    if (quiz.type === 'subject_test' && quiz.subject?.slug && Array.isArray(quiz.applicableExams) && quiz.applicableExams.length > 0) {
+      const Exam = (await import('../../models/Exam')).default;
+      const seriesExam = await Exam.findOne({ _id: quiz.applicableExams[0] }).select('slug name').lean();
+      if (seriesExam?.slug) {
+        seriesHref = { href: `/practice/${seriesExam.slug}/${quiz.subject.slug}`, examName: seriesExam.name || '' };
+      }
+    }
+
     if (res) {
       res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
     }
@@ -295,7 +359,9 @@ export async function getServerSideProps({ params, res }) {
     return {
       props: {
         resolvedId: String(quiz._id),
-        quiz: JSON.parse(JSON.stringify(quiz)),
+        quiz: JSON.parse(JSON.stringify({ ...quiz, questions: undefined })),
+        questions,
+        seriesHref,
         relatedQuizzes,
         aboutText,
         faqs,
