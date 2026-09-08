@@ -28,7 +28,7 @@ export async function GET(req) {
         const blogs = await Blog.find(query)
             .populate('author', 'name email')
             .populate('exam', 'name code')
-            .sort({ isPinned: -1, publishedAt: -1, createdAt: -1 })
+            .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit)
             .lean();
