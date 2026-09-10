@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
-import Loading from '../../../components/Loading';
+import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
 import AdminRoute from '../../../components/AdminRoute';
 
 const AdminStreakPage = () => {
@@ -53,7 +53,7 @@ const AdminStreakPage = () => {
           </div>
 
           {loading ? (
-            <div className="min-h-[40vh] flex items-center justify-center"><Loading size="lg" /></div>
+            <AdminTableSkeleton />
           ) : (
             <div className="grid gap-4">
               {leaderboard.length === 0 ? (

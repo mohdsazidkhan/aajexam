@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Seo from '../../../components/Seo';
+import { QuizAttemptSkeleton } from '../../../components/skeletons/PrivateSkeletons';
 
 const AttemptQuizPage = dynamic(() => import('../../../components/pages/AttemptQuizPage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <QuizAttemptSkeleton />
 });
 
 export default function AttemptQuiz() {

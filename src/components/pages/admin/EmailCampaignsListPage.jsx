@@ -7,6 +7,7 @@ import Link from 'next/link';
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { buildEmailHtml, personalize } from '../../../utils/emailTemplate';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const STATUS_STYLES = {
   draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
@@ -170,7 +171,7 @@ const EmailCampaignsListPage = () => {
     </div>
   );
 
-  if (!isMounted) return <div className="p-8">Loading...</div>;
+  if (!isMounted) return <div className="p-4 lg:p-8"><AdminTableSkeleton /></div>;
 
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
@@ -224,7 +225,7 @@ const EmailCampaignsListPage = () => {
 
           {/* --- Content --- */}
           {loading ? (
-            <div className="p-10 text-center text-slate-500">Loading campaigns…</div>
+            <AdminTableSkeleton />
           ) : campaigns.length === 0 ? (
             <div className="p-10 text-center bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
               <p className="text-slate-500 dark:text-slate-400 mb-4">

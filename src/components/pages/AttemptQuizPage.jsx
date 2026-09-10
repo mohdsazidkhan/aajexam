@@ -26,7 +26,7 @@ const speedBadge = (sec) => {
 };
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
-import Loading from '../Loading';
+import { QuizAttemptSkeleton } from '../skeletons/PrivateSkeletons';
 import LanguageToggle from '../LanguageToggle';
 import useQuestionTranslation from '../../hooks/useQuestionTranslation';
 
@@ -367,11 +367,7 @@ const AttemptQuizPage = () => {
   }
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center">
-        <Loading size="lg" />
-      </div>
-    );
+    return <QuizAttemptSkeleton />;
   }
 
   if (!quiz || !quiz.questions?.length) {

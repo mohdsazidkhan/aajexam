@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import API from '../../../lib/api';
 import CustomEditor from '../../CustomEditor';
-import Loading from '../../Loading';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-toastify';
@@ -13,6 +12,7 @@ import { ArrowLeft, Save } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import Sidebar from "../../Sidebar";
+import { AdminFormSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminBlogForm = () => {
   const router = useRouter();
@@ -160,7 +160,7 @@ const AdminBlogForm = () => {
         <Sidebar />
         <div className="adminContent w-full mx-auto p-4">
           <div className="flex items-center justify-center h-64">
-            <Loading size="md" color="yellow" message="Loading blog..." />
+            <AdminFormSkeleton />
           </div>
         </div>
       </div>

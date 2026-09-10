@@ -6,6 +6,7 @@ import Seo from '../components/Seo';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
+import { ExamCardSkeleton } from '../components/skeletons/PublicSkeletons';
 
 export default function GovtExamsPreparation({ initialData }) {
     const router = useRouter();
@@ -68,8 +69,10 @@ export default function GovtExamsPreparation({ initialData }) {
                     </div>
 
                     {loading ? (
-                        <div className="flex justify-center py-20">
-                            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary-600"></div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                            {Array.from({ length: 6 }).map((_, i) => (
+                                <ExamCardSkeleton key={i} />
+                            ))}
                         </div>
                     ) : (
                         <>

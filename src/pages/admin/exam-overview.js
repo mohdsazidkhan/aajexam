@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { AdminDashboardSkeleton } from '../../components/skeletons/AdminSkeletons';
 
 const ExamOverviewPage = dynamic(() => import('../../components/pages/admin/ExamOverviewPage'), {
   ssr: false,
-  loading: () => <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  loading: () => <AdminDashboardSkeleton />
 });
 
 export default function ExamOverview() {

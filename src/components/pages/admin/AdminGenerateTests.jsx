@@ -12,9 +12,9 @@ import {
 import API from '../../../lib/api';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
-import Loading from '../../Loading';
 import Sidebar from '../../Sidebar';
 import { toast } from 'react-toastify';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 // ─────────────────────────────────────────────
 // STATUS CONSTANTS
@@ -569,7 +569,7 @@ const AdminGenerateTests = () => {
     setGenerating(false);
   };
 
-  if (loadingInit) return <Loading />;
+  if (loadingInit) return <AdminTableSkeleton />;
 
   const totalGenerated = sectionStates.reduce((acc, s) => acc + s.questions.length, 0);
   const totalExpected = selectedPattern?.sections.reduce((acc, s) => acc + (s.totalQuestions || 0), 0) || 0;

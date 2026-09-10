@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 import {
   Flame, ArrowLeft, HelpCircle, BookOpen, Zap, Newspaper, BarChart3,
   Plus, Trash2, Save, Music, Clock, Play, Pause, Search, Volume2, VolumeX
@@ -268,7 +268,7 @@ const AdminReelEdit = () => {
     return (
       <div className="flex min-h-screen">
           <main className="flex-1 transition-all duration-300">
-            <div className="p-6 flex items-center justify-center min-h-screen"><Loading /></div>
+            <div className="p-6 flex items-center justify-center min-h-screen"><AdminTableSkeleton /></div>
           </main>
         </div>
     );

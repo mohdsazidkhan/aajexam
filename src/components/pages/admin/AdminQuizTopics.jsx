@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import Loading from "../../Loading";
 import { Edit3, Trash2, Plus, Search, X, Layers } from "lucide-react";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminQuizTopics = () => {
   const { isMounted } = useSSR();
@@ -78,7 +78,7 @@ const AdminQuizTopics = () => {
         </select>
       </div>
 
-      {loading ? <Loading /> : (
+      {loading ? <AdminTableSkeleton /> : (
         <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-slate-50 dark:bg-slate-900">

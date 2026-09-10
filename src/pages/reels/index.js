@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { ReelFeedSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const ReelsFeed = dynamic(() => import('../../components/pages/ReelsFeed'), {
   ssr: false,
-  loading: () => <div className="flex justify-center items-center h-screen bg-slate-950"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div></div>
+  loading: () => <ReelFeedSkeleton />
 });
 
 export default function ReelsPage() {

@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
-import Loading from '../../Loading';
 import API from '../../../lib/api';
 import {
     Plus, Trash2, Edit3, Filter, Search, RotateCcw, IndianRupee,
@@ -12,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 const AdminExpenses = () => {
@@ -266,7 +266,7 @@ const AdminExpenses = () => {
                 {/* List Table */}
                 <AnimatePresence mode="wait">
                     {loading ? (
-                        <div className="p-32 flex justify-center"><Loading size="md" color="yellow" message="Loading expenses..." /></div>
+                        <div className="p-32 flex justify-center"><AdminTableSkeleton /></div>
                     ) : expenses.length === 0 ? (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-2xl">
                             <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

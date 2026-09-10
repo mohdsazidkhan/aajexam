@@ -74,7 +74,7 @@ const GridCardSkeleton = () => (
 );
 
 // ─── Exam card skeleton (for govt-exams grid) ─────────────────────────────────
-const ExamCardSkeleton = () => (
+export const ExamCardSkeleton = () => (
   <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 space-y-3">
     <div className="flex items-start gap-3">
       <Sh className="w-12 h-12 rounded-xl shrink-0" />
@@ -157,6 +157,21 @@ const BlogDetailSkeleton = () => (
         <Sh className="h-3 w-4/5 rounded-lg" />
       </div>
     ))}
+  </div>
+);
+
+// ─── Auth form skeleton (login / register) ────────────────────────────────────
+export const AuthFormSkeleton = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950 px-4">
+    <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
+      <Sh className="h-8 w-40 mx-auto rounded-xl" />
+      <Sh className="h-3 w-56 mx-auto rounded-lg" />
+      <div className="space-y-4 pt-4">
+        <Sh className="h-12 w-full rounded-2xl" />
+        <Sh className="h-12 w-full rounded-2xl" />
+        <Sh className="h-12 w-full rounded-full" />
+      </div>
+    </div>
   </div>
 );
 

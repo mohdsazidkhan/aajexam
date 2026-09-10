@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import Loading from './Loading';
+import { ListSkeleton } from './skeletons/PrivateSkeletons';
 // MobileAppWrapper import removed
 import UnifiedFooter from './UnifiedFooter';
 
@@ -87,10 +87,7 @@ const FollowingList = ({ username: usernameProp }) => {
         {/* Content */}
         <div >
           {loading ? (
-            <div className="flex flex-col items-center justify-center py-24">
-              <div className="w-16 h-16 border-4 border-slate-100 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin mb-6"></div>
-              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">Syncing Following List...</p>
-            </div>
+            <ListSkeleton rows={8} />
           ) : error ? (
             <div className="text-center py-24 bg-rose-100 dark:bg-rose-900/20 rounded-[2.5rem] border-2 border-rose-200/50 dark:border-rose-900/30">
               <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest">{error}</p>

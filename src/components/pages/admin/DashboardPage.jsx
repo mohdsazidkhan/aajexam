@@ -36,11 +36,11 @@ import {
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Loading from '../../Loading';
 import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import { getUserRole } from '../../../lib/utils/authUtils';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 const formatINR = (n) => `₹${(n || 0).toLocaleString('en-IN')}`;
 
@@ -155,7 +155,7 @@ const DashboardPage = () => {
     return (
       <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
         <div className="flex items-center justify-center h-64">
-          <Loading size="md" color="yellow" message="Loading..." />
+          <AdminDashboardSkeleton />
         </div>
       </div>
     );

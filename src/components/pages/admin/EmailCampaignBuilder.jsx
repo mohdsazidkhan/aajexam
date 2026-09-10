@@ -7,6 +7,7 @@ import API from '../../../lib/api';
 import Link from 'next/link';
 import { useSSR } from '../../../hooks/useSSR';
 import { buildEmailHtml, personalize } from '../../../utils/emailTemplate';
+import { AdminFormSkeleton } from '../../skeletons/AdminSkeletons';
 
 // Normalize a campaign (either a raw DB doc or a /process progress object)
 // into one consistent shape for the UI.
@@ -326,7 +327,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     : 0;
   const activeStep = stepIndex(campaign);
 
-  if (!isMounted || isLoading) return <div className="p-8 text-slate-500">Loading campaign…</div>;
+  if (!isMounted || isLoading) return <div className="p-4 lg:p-8"><AdminFormSkeleton fields={6} /></div>;
 
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">

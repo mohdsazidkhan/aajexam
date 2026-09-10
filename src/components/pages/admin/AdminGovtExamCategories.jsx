@@ -8,10 +8,10 @@ import Link from "next/link";
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import ViewToggle from "../../ViewToggle";
-import Loading from "../../Loading";
 import Button from "../../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import Sidebar from "../../Sidebar";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 import {
   Shield,
@@ -198,7 +198,7 @@ const AdminGovtExamCategories = () => {
         <AnimatePresence mode="wait">
           {loading && categories.length === 0 ? (
             <div className="flex justify-center py-10 lg:py-20 ">
-              <Loading size="lg" color="blue" message="Loading categories..." />
+              <AdminTableSkeleton />
             </div>
           ) : categories.length === 0 ? (
             <motion.div

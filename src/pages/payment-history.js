@@ -22,7 +22,6 @@ import MobileAppWrapper from '../components/MobileAppWrapper';
 import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
-import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 

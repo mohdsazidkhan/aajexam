@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { AdminTableSkeleton } from '../../components/skeletons/AdminSkeletons';
 
 const UserDetailsPage = dynamic(() => import('../../components/pages/admin/UserDetailsPage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <AdminTableSkeleton />
 });
 
 export default function UserDetailsPageRoute() {

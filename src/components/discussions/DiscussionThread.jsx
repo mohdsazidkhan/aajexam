@@ -8,6 +8,7 @@ import {
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
+import { CommentSkeleton } from '../skeletons/PrivateSkeletons';
 
 const timeAgo = (date) => {
   if (!date) return '';
@@ -314,7 +315,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
             </div>
           )}
 
-          {loading && <p className="text-xs text-slate-400 py-2">Loading…</p>}
+          {loading && <CommentSkeleton rows={3} />}
           {!loading && items.length === 0 && (
             <p className="text-xs text-slate-400 py-2">No discussions yet. Be the first to share a trick or ask a doubt.</p>
           )}

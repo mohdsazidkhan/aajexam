@@ -12,9 +12,9 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getCurrentUser } from '../../../utils/authUtils';
 import Pagination from '../../Pagination';
-import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import Button from '../../ui/Button';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminUserWallets = () => {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -182,7 +182,7 @@ const AdminUserWallets = () => {
 
         {loading ? (
           <div className="flex items-center justify-center h-96">
-            <Loading size="md" color="yellow" message="Loading wallets..." />
+            <AdminTableSkeleton />
           </div>
         ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl">

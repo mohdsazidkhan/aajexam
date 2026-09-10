@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import FollowButton from './FollowButton';
-import Loading from './Loading';
+import { ProfileSkeleton } from './skeletons/PrivateSkeletons';
+import Skeleton from './Skeleton';
 // MobileAppWrapper import removed
 import UnifiedFooter from './UnifiedFooter';
 
@@ -79,8 +80,8 @@ const PublicProfile = ({ username }) => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
-        <Loading size="md" color="gray" message="Loading profile..." />
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 px-4">
+        <ProfileSkeleton />
       </div>
     );
   }
@@ -280,9 +281,13 @@ const PublicProfile = ({ username }) => {
           )}
           {/* User Contributions Summary */}
           {loadingContributions ? (
-            <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-xl p-12 text-center">
-              <div className="w-12 h-12 border-4 border-slate-100 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin mx-auto"></div>
-              <p className="mt-4 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Loading contributions...</p>
+            <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-xl p-8">
+              <Skeleton height="14px" width="180px" borderRadius="0.5rem" className="mb-8" />
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <Skeleton key={i} height="88px" borderRadius="1rem" />
+                ))}
+              </div>
             </div>
           ) : contributions && (contributions.categories.total > 0 || contributions.subcategories.total > 0 || contributions.quizzes.total > 0 || contributions.userQuestions?.total > 0) && (
             <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-xl p-8">

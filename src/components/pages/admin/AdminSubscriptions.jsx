@@ -12,10 +12,10 @@ import {
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 // â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
@@ -388,7 +388,7 @@ const AdminSubscriptions = () => {
     return (
       <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30">
         <div className="flex items-center justify-center py-12">
-          <Loading size="md" color="yellow" message="" />
+          <AdminTableSkeleton />
         </div>
       </div>
     );

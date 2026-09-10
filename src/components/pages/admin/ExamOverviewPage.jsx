@@ -22,8 +22,8 @@ import {
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import Card from '../../ui/Card';
-import Loading from '../../Loading';
 import ViewToggle from '../../ViewToggle';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
@@ -262,7 +262,7 @@ const ExamOverviewPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[80vh]">
-        <Loading size="lg" message="Loading ecosystem..." />
+        <AdminDashboardSkeleton />
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { AdminFormSkeleton } from '../../../components/skeletons/AdminSkeletons';
 
 const EmailCampaignBuilder = dynamic(() => import('../../../components/pages/admin/EmailCampaignBuilder'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <AdminFormSkeleton />
 });
 
 export default function NewEmailCampaign() {

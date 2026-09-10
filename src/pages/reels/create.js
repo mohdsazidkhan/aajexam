@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { FormSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const ReelCreate = dynamic(() => import('../../components/pages/ReelCreate'), {
   ssr: false,
-  loading: () => <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div></div>
+  loading: () => <div className="px-4 py-6"><FormSkeleton fields={3} /></div>
 });
 
 export default function ReelCreatePage() {

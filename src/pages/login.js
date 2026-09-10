@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Seo from '../components/Seo';
+import { AuthFormSkeleton } from '../components/skeletons/PublicSkeletons';
 
 const LoginPage = dynamic(() => import('../components/pages/LoginPage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <AuthFormSkeleton />
 });
 
 export default function Login() {

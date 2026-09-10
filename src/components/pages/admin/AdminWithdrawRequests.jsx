@@ -13,7 +13,6 @@ import {
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import Pagination from '../../Pagination';
 import ResponsiveTable from '../../ResponsiveTable';
 import SearchFilter from '../../SearchFilter';
@@ -24,6 +23,7 @@ import { toast } from 'react-toastify';
 import Sidebar from "../../Sidebar";
 
 import { getCurrentUser } from '../../../utils/authUtils';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminWithdrawRequests = () => {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -229,7 +229,7 @@ const AdminWithdrawRequests = () => {
         {/* Table / List */}
         <AnimatePresence mode="wait">
           {loading ? (
-            <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Loading withdrawal requests..." /></div>
+            <div className="flex items-center justify-center py-32"><AdminTableSkeleton /></div>
           ) : items.length === 0 ? (
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
               <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

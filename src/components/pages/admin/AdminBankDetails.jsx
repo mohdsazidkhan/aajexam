@@ -14,10 +14,10 @@ import {
   TrendingUp, Activity, Hash, Info, Zap, Settings, ArrowRight
 } from "lucide-react";
 import useDebounce from "../../../hooks/useDebounce";
-import Loading from "../../Loading";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 const PAGE_LIMIT = 10;
@@ -467,7 +467,7 @@ export default function AdminBankDetails() {
       {/* Content */}
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loading size="lg" color="yellow" message="Loading bank details..." />
+          <AdminTableSkeleton />
         </div>
       ) : error ? (
         <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">

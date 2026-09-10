@@ -30,7 +30,7 @@ import {
 } from 'lucide-react';
 import useDebounce from '../../../hooks/useDebounce';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -112,16 +112,8 @@ export default function AdminContacts() {
 
   if (loading && contacts.length === 0) {
     return (
-      <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
-          <div className="relative">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              className="w-28 h-28 border-4 border-primary-500/10 border-t-primary-500 rounded-full shadow-2xl"
-            />
-            <MessageSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-primary-500" />
-          </div>
-          <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading messages...</div>
+      <div className="min-h-screen p-3 lg:p-8">
+        <AdminTableSkeleton />
       </div>
     );
   }

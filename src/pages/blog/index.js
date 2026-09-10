@@ -2,10 +2,11 @@ import dynamic from 'next/dynamic';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
+import { BlogListSkeleton } from '../../components/skeletons/PublicSkeletons';
 
 const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   ssr: false,
-  loading: () => <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div></div>
+  loading: () => <BlogListSkeleton />
 });
 
 export default function Blog({ groups = [], allPosts = [] }) {

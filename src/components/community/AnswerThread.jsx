@@ -9,6 +9,7 @@ import {
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
+import { CommentSkeleton } from '../skeletons/PrivateSkeletons';
 
 const timeAgo = (date) => {
   if (!date) return '';
@@ -318,7 +319,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
         </div>
       )}
 
-      {loading && <p className="text-sm text-slate-400 py-3 text-center">Loading…</p>}
+      {loading && <CommentSkeleton rows={3} />}
       {!loading && items.length === 0 && (
         <p className="text-sm text-slate-400 py-6 text-center">No answers yet. Be the first to help!</p>
       )}

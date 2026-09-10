@@ -21,7 +21,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
-import Loading from './Loading';
+import { AdminTableSkeleton } from './skeletons/AdminSkeletons';
 
 /**
  * Premium Responsive Table Component
@@ -302,7 +302,7 @@ const ResponsiveTable = ({
       <AnimatePresence mode="wait">
         {loading ? (
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Loading size="lg" message="Accessing Archive..." />
+            <AdminTableSkeleton />
           </motion.div>
         ) : data.length === 0 ? (
           <motion.div

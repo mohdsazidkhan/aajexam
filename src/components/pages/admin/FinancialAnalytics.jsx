@@ -25,9 +25,9 @@ import {
 } from "lucide-react";
 
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 ChartJS.register(
   CategoryScale,
@@ -217,7 +217,7 @@ const FinancialAnalytics = () => {
           <AnimatePresence mode="wait">
             {loading ? (
                <div className="flex items-center justify-center py-32">
-                 <Loading size="md" color="emerald" message="Loading revenue data..." />
+                 <AdminDashboardSkeleton />
                </div>
             ) : error ? (
               <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">

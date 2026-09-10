@@ -16,10 +16,10 @@ import SearchFilter from "../../SearchFilter";
 import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
 import useDebounce from "../../../hooks/useDebounce";
-import Loading from "../../Loading";
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import Link from 'next/link';
+import { AdminDetailSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 const PAGE_LIMIT = 10;
@@ -164,7 +164,7 @@ export default function UserDetailsPage() {
         {/* Content */}
         <AnimatePresence mode="wait">
           {loading ? (
-            <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Loading students..." /></div>
+            <div className="flex items-center justify-center py-32"><AdminDetailSkeleton /></div>
           ) : error ? (
             <div className="text-center py-32">
               <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>

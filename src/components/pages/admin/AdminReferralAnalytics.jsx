@@ -25,7 +25,7 @@ import {
     ShieldCheck,
     Hash
 } from 'lucide-react';
-import Loading from '../../Loading';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 import { isMobile } from 'react-device-detect';
 import Button from '../../ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -158,16 +158,8 @@ const AdminReferralAnalytics = () => {
 
     if (loading && analytics.length === 0) {
         return (
-            <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
-                <div className="relative">
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="w-28 h-28 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full shadow-2xl"
-                    />
-                    <TrendingUp className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
-                </div>
-                <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral analytics...</div>
+            <div className="min-h-screen p-3 lg:p-8">
+                <AdminDashboardSkeleton />
             </div>
         );
     }

@@ -8,6 +8,7 @@ import SearchFilter from '../../SearchFilter';
 import useDebounce from '../../../hooks/useDebounce';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 import {
   ShieldAlert, AlertTriangle, Users, Banknote, Filter, Activity,
   ChevronDown, ChevronUp, Fingerprint, ShieldCheck
@@ -134,11 +135,7 @@ export default function ReferralFraudDashboard() {
 
           {/* Loading */}
           {loading && rows.length === 0 ? (
-            <div className="min-h-[40vh] flex flex-col items-center justify-center">
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
-                className="w-20 h-20 border-4 border-rose-500/10 border-t-rose-500 rounded-full" />
-              <div className="mt-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] animate-pulse">Scanning referral graph...</div>
-            </div>
+            <AdminTableSkeleton />
           ) : rows.length === 0 ? (
             <div className="min-h-[30vh] flex flex-col items-center justify-center text-center">
               <ShieldCheck className="w-14 h-14 text-emerald-500 mb-4" />

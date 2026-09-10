@@ -51,8 +51,15 @@ export default function FlashcardDeck() {
 
     if (loading) {
         return (
-            <div className="fixed inset-0 bg-slate-900 flex items-center justify-center z-50">
-                <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin" />
+            <div className="fixed inset-0 bg-slate-900 flex flex-col items-center justify-center z-50 px-6 gap-6 animate-pulse">
+                <div className="absolute top-6 left-6 w-8 h-8 bg-slate-800 rounded-full" />
+                <div className="absolute top-6 right-6 w-8 h-8 bg-slate-800 rounded-full" />
+                <div className="w-full max-w-sm aspect-[3/4] bg-slate-800 rounded-[2rem]" />
+                <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                        <div key={i} className="w-2 h-2 bg-slate-700 rounded-full" />
+                    ))}
+                </div>
             </div>
         );
     }

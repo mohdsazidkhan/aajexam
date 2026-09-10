@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
-import Loading from '../../../components/Loading';
+import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
 import AdminRoute from '../../../components/AdminRoute';
 
 const AdminDailyChallenge = () => {
@@ -94,7 +94,7 @@ const AdminDailyChallenge = () => {
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return <AdminTableSkeleton />;
 
   return (
     <AdminRoute>

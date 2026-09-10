@@ -10,7 +10,6 @@ import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
 import FollowButton from '../../components/FollowButton';
-import Loading from '../../components/Loading';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {

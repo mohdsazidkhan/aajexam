@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import Loading from "../../Loading";
 import { Edit3, Trash2, Plus, Search, X, BookMarked, Database } from "lucide-react";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminQuizSubjects = () => {
   const { isMounted } = useSSR();
@@ -72,7 +72,7 @@ const AdminQuizSubjects = () => {
         <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm" />
       </div>
 
-      {loading ? <Loading /> : (
+      {loading ? <AdminTableSkeleton /> : (
         <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-slate-50 dark:bg-slate-900">

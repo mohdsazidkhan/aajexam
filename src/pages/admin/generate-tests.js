@@ -1,11 +1,12 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { AdminTableSkeleton } from '../../components/skeletons/AdminSkeletons';
 
 const AdminGenerateTestsComponent = dynamic(
   () => import('../../components/pages/admin/AdminGenerateTests'),
   {
     ssr: false,
-    loading: () => <div style={{ padding: 20, color: '#64748b' }}>Loading…</div>,
+    loading: () => <AdminTableSkeleton />,
   }
 );
 

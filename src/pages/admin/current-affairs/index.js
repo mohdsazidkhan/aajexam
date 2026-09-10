@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
-import Loading from '../../../components/Loading';
+import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
 import AdminRoute from '../../../components/AdminRoute';
 
 const categories = ['national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment', 'other'];
@@ -38,7 +38,7 @@ const AdminCurrentAffairs = () => {
   const handleEdit = (a) => { setEditId(a._id); setForm({ date: a.date?.split('T')[0], category: a.category, title: a.title, content: a.content, keyPoints: (a.keyPoints || []).join('\n'), tags: (a.tags || []).join(', ') }); setShowForm(true); };
   const handleDelete = async (id) => { if (!confirm('Delete?')) return; try { await API.request(`/api/admin/current-affairs/${id}`, { method: 'DELETE' }); toast.success('Deleted'); fetchData(); } catch (e) { } };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+  if (loading) return <AdminTableSkeleton />;
 
   const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 

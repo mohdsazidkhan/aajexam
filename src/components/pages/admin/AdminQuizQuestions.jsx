@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import Loading from "../../Loading";
 import { Edit3, Trash2, Plus, Search, X, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminQuizQuestions = () => {
   const { isMounted } = useSSR();
@@ -129,7 +129,7 @@ const AdminQuizQuestions = () => {
         </div>
       </div>
 
-      {loading ? <Loading /> : (
+      {loading ? <AdminTableSkeleton /> : (
         <div className="space-y-3">
           {questions.map((q, idx) => (
             <div key={q._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">

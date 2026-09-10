@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Loading from '../../Loading';
 import { motion } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 
 import { Flame, Eye, Heart, MessageCircle, BarChart3, CheckCircle2, TrendingUp } from 'lucide-react';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 const StatCard = ({ icon: Icon, label, value, color, delay = 0 }) => (
   <motion.div
@@ -55,7 +55,7 @@ const AdminReelAnalytics = () => {
               <BarChart3 className="w-6 h-6 sm:w-7 sm:h-7 text-blue-500" /> Reel Analytics
             </h1>
 
-            {loading ? <Loading /> : data ? (
+            {loading ? <AdminDashboardSkeleton /> : data ? (
               <div className="space-y-5 sm:space-y-8">
 
                 {/* Overview Stats */}

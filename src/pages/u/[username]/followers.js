@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import axios from 'axios';
-import Loading from '../../../components/Loading';
+import { ListSkeleton } from '../../../components/skeletons/PrivateSkeletons';
 import MobileAppWrapper from '../../../components/MobileAppWrapper';
 
 export default function FollowersListPage() {
@@ -78,9 +78,7 @@ export default function FollowersListPage() {
         {/* Content */}
         <div >
           {loading ? (
-            <div className="flex items-center justify-center py-20">
-              <Loading size="md" color="gray" message="Finding users..." />
-            </div>
+            <ListSkeleton rows={8} />
           ) : followers.length === 0 ? (
             <div className="text-center py-20 bg-slate-50 dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
               <div className="text-4xl mb-4">👥</div>

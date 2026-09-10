@@ -5,7 +5,6 @@ import Link from "next/link";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { getCurrentUser } from "../../../utils/authUtils";
-import Loading from "../../Loading";
 import {
   Edit3,
   Trash2,
@@ -33,6 +32,7 @@ import {
   FileText
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminGovtExamPatterns = () => {
   const [loading, setLoading] = useState(false);
@@ -266,7 +266,7 @@ const AdminGovtExamPatterns = () => {
     {/* Content */}
     <AnimatePresence mode="wait">
       {loading ? (
-        <div className="flex items-center justify-center py-24"><Loading size="md" color="yellow" message="Loading patterns..." /></div>
+        <div className="flex items-center justify-center py-24"><AdminTableSkeleton /></div>
       ) : patterns.length === 0 ? (
         <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
           <Boxes className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

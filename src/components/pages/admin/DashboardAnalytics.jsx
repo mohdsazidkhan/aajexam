@@ -30,9 +30,9 @@ import Link from 'next/link';
 import ViewToggle from '../../ViewToggle';
 import { isMobile } from 'react-device-detect';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
@@ -396,7 +396,7 @@ const DashboardAnalytics = () => {
     </div>
   );
 
-  if (loading) return <Loading fullScreen={true} size="lg" color="yellow" message="" />;
+  if (loading) return <AdminDashboardSkeleton />;
 
   if (error) return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-red-700">

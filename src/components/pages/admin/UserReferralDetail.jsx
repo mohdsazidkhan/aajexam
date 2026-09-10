@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../../Pagination";
 import API from '../../../lib/api';
-import Loading from "../../Loading";
+import { AdminDetailSkeleton } from "../../skeletons/AdminSkeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -117,16 +117,8 @@ export default function UserReferralDetail() {
 
     if (loading) {
         return (
-            <div className="min-h-screen  flex flex-col items-center justify-center p-3 lg:p-8">
-                <div className="relative">
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="w-28 h-28 border-4 border-emerald-500/10 border-t-emerald-500 rounded-full shadow-2xl"
-                    />
-                    <Wallet className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-emerald-500" />
-                </div>
-                <div className="mt-4 lg:mt-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] animate-pulse">Loading referral details...</div>
+            <div className="min-h-screen p-3 lg:p-8">
+                <AdminDetailSkeleton />
             </div>
         );
     }

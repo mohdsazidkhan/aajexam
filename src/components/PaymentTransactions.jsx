@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { FaFilter, FaDownload, FaEye, FaEyeSlash, FaChevronLeft, FaChevronRight, FaRupeeSign, FaCheckCircle, FaTimesCircle, FaClock, FaExclamationTriangle, FaCreditCard, FaReceipt, FaTag, FaCalendar, FaGlobe, FaSearch, FaTimes } from 'react-icons/fa';
 import API from '../lib/api';
-import Loading from './Loading';
+import { ListSkeleton } from './skeletons/PrivateSkeletons';
 
 const PaymentTransactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -198,9 +198,7 @@ const PaymentTransactions = () => {
   if (loading) {
     return (
       <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30">
-        <div className="flex items-center justify-center py-12">
-          <Loading size="md" color="yellow" message="" />
-        </div>
+        <ListSkeleton rows={4} />
       </div>
     );
   }

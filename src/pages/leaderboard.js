@@ -332,8 +332,10 @@ const LeaderboardPage = () => {
 
             {/* Podium */}
             {loading ? (
-              <div className="h-36 flex items-center justify-center">
-                <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+              <div className="h-36 flex items-end justify-center gap-4 animate-pulse">
+                <div className="w-16 h-24 bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-32 bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-20 bg-white/20 rounded-t-2xl" />
               </div>
             ) : top3.length > 0 ? (
               <Podium top3={top3} currentUserId={currentUserId} />

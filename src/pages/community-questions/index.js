@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
+import { ListSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const CommunityQuestionsPage = dynamic(() => import('../../components/pages/CommunityQuestionsPage'), {
   ssr: false,
-  loading: () => <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div></div>
+  loading: () => <div className="px-4 py-4"><ListSkeleton rows={6} /></div>
 });
 
 export default function CommunityQuestions() {

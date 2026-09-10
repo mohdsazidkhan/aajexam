@@ -44,7 +44,7 @@ import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { isAuthenticated } from '../../lib/auth';
 import TestStartModal from "../TestStartModal";
-import Loading from '../Loading';
+import { ListSkeleton } from '../skeletons/PrivateSkeletons';
 import Button from '../ui/Button';
 import { UserPlus, UserCheck, Loader2 } from 'lucide-react';
 
@@ -366,7 +366,7 @@ const SearchPage = () => {
                <div className="py-3 lg:py-6">
 
                   {loading ? (
-                     <div className="py-12 flex justify-center"><Loading size="lg" /></div>
+                     <div className="px-4"><ListSkeleton rows={6} /></div>
                   ) : activeTab === 'all' ? (
                      /* ══════ ALL TAB — Sectioned Layout ══════ */
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
@@ -1058,7 +1058,11 @@ const SearchPage = () => {
             {!hasSearched && (
                <>
                   {trendingLoading ? (
-                     <div className="py-12 flex justify-center"><Loading size="md" /></div>
+                     <div className="grid grid-cols-3 gap-px lg:gap-0.5">
+                        {Array.from({ length: 9 }).map((_, i) => (
+                           <div key={i} className="aspect-[9/16] bg-slate-200 dark:bg-slate-800 animate-pulse" />
+                        ))}
+                     </div>
                   ) : trendingReels.length > 0 ? (
                      <div className="grid grid-cols-3 gap-px lg:gap-0.5 bg-slate-200 dark:bg-slate-800">
                         {trendingReels.map((reel, idx) => {

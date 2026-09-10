@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
-import Loading from '../../Loading';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 import API from '../../../lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
@@ -169,27 +169,8 @@ const AdminUserAnalyticsDetail = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="flex flex-col items-center justify-center py-32 space-y-4 lg:space-y-8"
                         >
-                            <div className="relative">
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                    className="w-24 h-24 border-4 border-primary-500/20 rounded-lg lg:rounded-[2rem]"
-                                />
-                                <motion.div
-                                    animate={{ rotate: -360 }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                    className="absolute inset-0 border-t-4 border-primary-500 rounded-lg lg:rounded-[2rem]"
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Cpu className="w-8 h-8 text-primary-500 animate-pulse" />
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Loading analytics...</div>
-                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-2">Fetching user data...</div>
-                            </div>
+                            <AdminDashboardSkeleton />
                         </motion.div>
                     ) : error ? (
                         <motion.div

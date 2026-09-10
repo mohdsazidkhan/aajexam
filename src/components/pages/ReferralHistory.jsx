@@ -23,7 +23,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
 import API from '../../lib/api';
-import Loading from "../Loading";
+import { ListSkeleton } from "../skeletons/PrivateSkeletons";
 import { useSSR } from '../../hooks/useSSR';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
@@ -182,7 +182,7 @@ export default function ReferralHistory() {
 
                   <AnimatePresence mode="wait">
                      {loading ? (
-                        <div className="py-24 flex justify-center"><Loading size="lg" /></div>
+                        <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
                         <Card className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[4rem]">
                            <Users className="w-16 h-16 text-slate-200 mx-auto" />

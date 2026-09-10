@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import { SubscriptionSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const SubscriptionPage = dynamic(() => import('../components/pages/SubscriptionPage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <SubscriptionSkeleton />
 });
 
 export default function Subscription() {

@@ -5,8 +5,8 @@ import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
-import Loading from "../../Loading";
 import { motion, AnimatePresence } from "framer-motion";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 import {
   BarChart3,
   Search,
@@ -321,7 +321,7 @@ const AdminGovtExamResults = () => {
           {/* Results Display */}
           <AnimatePresence mode="wait">
             {loading ? (
-              <div className="flex items-center justify-center py-32"><Loading size="md" color="yellow" message="Loading results..." /></div>
+              <div className="flex items-center justify-center py-32"><AdminTableSkeleton /></div>
             ) : attempts.length === 0 ? (
               <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                 <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

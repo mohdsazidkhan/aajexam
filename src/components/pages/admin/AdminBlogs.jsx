@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
 import { getCurrentUser } from '../../../utils/authUtils';
@@ -12,6 +11,7 @@ import { toast } from 'react-toastify';
 import { Plus, Eye, Heart, Pin, Star, Trash2, Edit3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Sidebar from "../../Sidebar";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminBlogs = () => {
   const { isMounted, router } = useSSR();
@@ -383,7 +383,7 @@ const AdminBlogs = () => {
         {/* Content */}
         {loading ? (
           <div className="flex items-center justify-center h-64">
-            <Loading size="md" color="yellow" message="Loading blogs..." />
+            <AdminTableSkeleton />
           </div>
         ) : blogs.length === 0 ? (
           <div className="text-center py-12">

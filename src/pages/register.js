@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Seo from '../components/Seo';
+import { AuthFormSkeleton } from '../components/skeletons/PublicSkeletons';
 
 const RegisterPage = dynamic(() => import('../components/pages/RegisterPage'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <AuthFormSkeleton />
 });
 
 export default function Register() {

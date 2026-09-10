@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import API from '../../../lib/api';
 import { toast } from "react-toastify";
-import Loading from '../../Loading';
 import { getCurrentUser } from "../../../utils/authUtils";
 import Pagination from '../../Pagination';
 import Button from '../../ui/Button';
@@ -18,6 +17,7 @@ import {
   Music, Timer
 } from 'lucide-react';
 import ViewToggle from '../../ViewToggle';
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const TYPE_COLORS = {
   question: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
@@ -215,7 +215,7 @@ const AdminReels = () => {
             <AnimatePresence mode="wait">
               {loading ? (
                 <div key="loading" className="py-20 flex flex-col items-center gap-4">
-                  <Loading size="lg" />
+                  <AdminTableSkeleton />
                   <p className="text-xs font-black text-slate-400 uppercase tracking-widest animate-pulse">Syncing Archive...</p>
                 </div>
               ) : items.length === 0 ? (

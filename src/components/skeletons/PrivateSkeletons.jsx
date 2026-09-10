@@ -139,6 +139,89 @@ export const SubscriptionSkeleton = () => (
   </div>
 );
 
+export const QuizAttemptSkeleton = () => (
+  <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-outfit">
+    {/* Top bar: progress + timer */}
+    <div className="bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-700 p-4 flex items-center justify-between gap-4">
+      <Sh className="h-3 w-24 rounded-full" />
+      <Sh className="h-2.5 flex-1 max-w-md rounded-full" />
+      <Sh className="h-8 w-16 rounded-xl shrink-0" />
+    </div>
+
+    <div className="max-w-3xl mx-auto p-4 lg:p-8 space-y-6">
+      {/* Question card */}
+      <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 space-y-6">
+        <Sh className="h-3 w-20 rounded-full" />
+        <Sh className="h-6 w-full rounded-xl" />
+        <Sh className="h-6 w-2/3 rounded-xl" />
+
+        {/* Options */}
+        <div className="space-y-3 pt-4">
+          {[1, 2, 3, 4].map((i) => (
+            <Sh key={i} className="h-14 w-full rounded-2xl" />
+          ))}
+        </div>
+      </div>
+
+      {/* Nav buttons */}
+      <div className="flex justify-between gap-4">
+        <Sh className="h-12 w-28 rounded-full" />
+        <Sh className="h-12 w-28 rounded-full" />
+      </div>
+    </div>
+  </div>
+);
+
+export const CommentSkeleton = ({ rows = 3 }) => (
+  <div className="space-y-3 py-3">
+    {Array.from({ length: rows }).map((_, i) => (
+      <div key={i} className="flex gap-3">
+        <Sh className="w-8 h-8 rounded-full shrink-0" />
+        <div className="flex-1 space-y-2 py-0.5">
+          <Sh className="h-2.5 w-24 rounded-full" />
+          <Sh className="h-3 w-full max-w-xs rounded-md" />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+export const ReelFeedSkeleton = () => (
+  <div className="h-full flex flex-col items-center justify-center bg-slate-950 px-6" style={{ height: '100dvh' }}>
+    <div className="w-full max-w-sm space-y-4 animate-pulse">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-10 h-10 rounded-full bg-slate-800" />
+        <div className="space-y-2 flex-1">
+          <div className="h-3 bg-slate-800 rounded-full w-24" />
+          <div className="h-2 bg-slate-800/60 rounded-full w-16" />
+        </div>
+      </div>
+      <div className="h-4 bg-slate-800 rounded-full w-3/4" />
+      <div className="h-4 bg-slate-800 rounded-full w-1/2" />
+      <div className="space-y-3 mt-6">
+        <div className="h-12 bg-slate-800/50 rounded-2xl" />
+        <div className="h-12 bg-slate-800/50 rounded-2xl" />
+        <div className="h-12 bg-slate-800/50 rounded-2xl" />
+        <div className="h-12 bg-slate-800/50 rounded-2xl" />
+      </div>
+    </div>
+    <p className="text-xs font-bold text-white/30 uppercase tracking-widest mt-8">Loading reels...</p>
+  </div>
+);
+
+export const FormSkeleton = ({ fields = 4 }) => (
+  <div className="max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 space-y-5 font-outfit">
+    <Sh className="h-7 w-56 rounded-xl" />
+    {Array.from({ length: fields }).map((_, i) => (
+      <div key={i} className="space-y-2">
+        <Sh className="h-3 w-24 rounded-md" />
+        <Sh className="h-12 w-full rounded-2xl" />
+      </div>
+    ))}
+    <Sh className="h-12 w-40 rounded-full" />
+  </div>
+);
+
 export const DetailSkeleton = () => (
   <div className="space-y-6 lg:space-y-8 font-outfit w-full">
     {/* Header / Banner */}

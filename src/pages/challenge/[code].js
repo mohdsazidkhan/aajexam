@@ -40,8 +40,17 @@ export default function ChallengePage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
-                <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+            <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-24 font-outfit">
+                <div className="max-w-xl mx-auto px-4 py-8 animate-pulse">
+                    <div className="h-5 w-32 bg-slate-200 dark:bg-slate-800 rounded-full mb-6" />
+                    <div className="bg-slate-200 dark:bg-slate-800 rounded-[2rem] p-8 flex flex-col items-center gap-4">
+                        <div className="w-20 h-20 bg-slate-300 dark:bg-slate-700 rounded-2xl" />
+                        <div className="h-6 w-64 bg-slate-300 dark:bg-slate-700 rounded-lg" />
+                        <div className="h-4 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg" />
+                        <div className="h-16 w-40 bg-slate-300 dark:bg-slate-700 rounded-xl" />
+                        <div className="h-14 w-full bg-slate-300 dark:bg-slate-700 rounded-2xl" />
+                    </div>
+                </div>
             </div>
         );
     }

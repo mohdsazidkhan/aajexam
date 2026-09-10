@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import API from '../../../lib/api';
 import Card from '../../ui/Card';
-import Loading from '../../Loading';
+import { AdminFormSkeleton } from '../../skeletons/AdminSkeletons';
 
 const SHIFTS = ['', 'Morning', 'Afternoon', 'Evening', 'Shift 1', 'Shift 2', 'Shift 3'];
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
@@ -238,7 +238,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
         } finally { setSaving(false); }
     };
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center"><Loading size="md" /></div>;
+    if (loading) return <div className="min-h-screen flex items-center justify-center"><AdminFormSkeleton /></div>;
 
     return (
         <div className="min-h-screen pb-24">

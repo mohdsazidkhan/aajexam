@@ -2,10 +2,11 @@ import dynamic from 'next/dynamic';
 import Seo from '../../components/Seo';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
+import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const PublicProfile = dynamic(() => import('../../components/PublicProfile'), {
   ssr: false,
-  loading: () => <div>Loading...</div>
+  loading: () => <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 px-4"><ProfileSkeleton /></div>
 });
 
 export default function PublicProfilePage({ username, profile, seo }) {

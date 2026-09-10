@@ -12,10 +12,10 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../../lib/api';
-import Loading from '../../Loading';
 import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
+import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 
 const AdminPaymentTransactions = () => {
@@ -215,7 +215,7 @@ const AdminPaymentTransactions = () => {
 
   if (loading && transactions.length === 0) {
     return (<div className="adminContent w-full flex items-center justify-center">
-      <Loading size="md" color="yellow" message="Loading Transactions..." />
+      <AdminTableSkeleton />
     </div>
     );
   }

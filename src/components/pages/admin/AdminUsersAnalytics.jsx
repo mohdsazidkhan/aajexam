@@ -11,8 +11,8 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
-import Loading from '../../Loading';
 import API from '../../../lib/api';
+import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminUsersAnalytics = () => {
     const { isMounted } = useSSR();
@@ -169,7 +169,7 @@ const AdminUsersAnalytics = () => {
 
                     <AnimatePresence mode="wait">
                         {loading ? (
-                             <div className="flex items-center justify-center py-32"><Loading size="md" color="blue" message="Loading user analytics..." /></div>
+                             <div className="flex items-center justify-center py-32"><AdminDashboardSkeleton /></div>
                         ) : error ? (
                             <div className="text-center py-32">
                                 <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 inline-block text-rose-500 text-2xl lg:text-6xl">!</div>
