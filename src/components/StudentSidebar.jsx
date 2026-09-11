@@ -94,6 +94,7 @@ const StudentSidebar = () => {
       title: 'MAIN',
       items: [
         { path: '/home', icon: Home, label: 'Home' },
+        { path: '/features', icon: Sparkles, label: 'Features' },
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels' },
         { path: '/reels/create', icon: PlusCircle, label: 'Create Reel' },
@@ -148,7 +149,6 @@ const StudentSidebar = () => {
       title: 'ACCOUNT',
       items: [
         { path: '/profile', icon: User, label: 'Profile' },
-        { path: '/features', icon: Sparkles, label: 'Features' },
         { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
         { path: '/settings', icon: Settings, label: 'Settings' },
       ]
