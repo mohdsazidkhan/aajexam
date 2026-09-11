@@ -15,7 +15,11 @@ export async function POST(req, { params }) {
 		const { id } = await params;
 		const { optionIndex } = await req.json();
 
-		const reel = await Reel.findById(id);
+		// Reel lookup and the existing-vote check are independent — fetch concurrently.
+		const [reel, existing] = await Promise.all([
+			Reel.findById(id),
+			ReelInteraction.findOne({ userId: auth.user._id, reelId: id })
+		]);
 		if (!reel || reel.type !== 'poll') {
 			return NextResponse.json({ success: false, message: 'Poll reel not found' }, { status: 404 });
 		}
@@ -23,9 +27,6 @@ export async function POST(req, { params }) {
 		if (optionIndex < 0 || optionIndex >= reel.pollOptions.length) {
 			return NextResponse.json({ success: false, message: 'Invalid option index' }, { status: 400 });
 		}
-
-		// Check if already voted
-		const existing = await ReelInteraction.findOne({ userId: auth.user._id, reelId: id });
 		if (existing?.votedOptionIndex >= 0) {
 			return NextResponse.json({
 				success: true,

@@ -9,7 +9,8 @@ export async function GET() {
 
         const subjects = await Subject.find({ isActive: true })
             .select('name description icon order')
-            .sort({ order: 1, name: 1 });
+            .sort({ order: 1, name: 1 })
+            .lean();
 
         return NextResponse.json({ success: true, data: subjects });
     } catch (error) {

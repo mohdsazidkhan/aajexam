@@ -13,15 +13,16 @@ export async function GET(req, { params }) {
 
         const query = { status: 'published', exam: examId };
 
-        const blogs = await Blog.find(query)
-            .populate('author', 'name email')
-            .populate('exam', 'name code')
-            .sort({ publishedAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .lean();
-
-        const total = await Blog.countDocuments(query);
+        const [blogs, total] = await Promise.all([
+            Blog.find(query)
+                .populate('author', 'name email')
+                .populate('exam', 'name code')
+                .sort({ publishedAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            Blog.countDocuments(query)
+        ]);
         const totalPages = Math.ceil(total / limit);
 
         return NextResponse.json({

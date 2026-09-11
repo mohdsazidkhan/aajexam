@@ -16,12 +16,14 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
-        const notifications = await Notification.find({})
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit);
-
-        const total = await Notification.countDocuments({});
+        const [notifications, total] = await Promise.all([
+            Notification.find({})
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            Notification.countDocuments({})
+        ]);
 
         return NextResponse.json({
             notifications,

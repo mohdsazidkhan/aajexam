@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
         const { username } = await params;
         const auth = await protect(req);
 
-        const user = await User.findOne({ username: username.toLowerCase() }).select('-password -googleId');
+        const user = await User.findOne({ username: username.toLowerCase() }).select('-password -googleId').lean();
         if (!user) return errorResponse('User not found', 404);
 
         if (!auth.authenticated || auth.user.id !== user._id.toString()) {

@@ -10,7 +10,8 @@ export async function GET(req, { params }) {
         const { id } = await params;
         const mentor = await MentorProfile.findById(id)
             .populate('amaThreads.askedBy', 'name username profilePicture')
-            .select('amaThreads');
+            .select('amaThreads')
+            .lean();
 
         if (!mentor) return NextResponse.json({ message: 'Mentor not found' }, { status: 404 });
 

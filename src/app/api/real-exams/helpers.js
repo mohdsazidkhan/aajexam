@@ -90,7 +90,8 @@ export async function recomputeRanksForTest(testId, targetAttemptId = null) {
     try {
         const allAttempts = await UserTestAttempt.find({ practiceTest: testId, status: 'Completed' })
             .select('_id score accuracy totalTime submittedAt')
-            .sort({ score: -1, accuracy: -1, totalTime: 1, submittedAt: 1 });
+            .sort({ score: -1, accuracy: -1, totalTime: 1, submittedAt: 1 })
+            .lean();
         const totalAttempts = allAttempts.length;
         if (totalAttempts === 0) return { rank: null, percentile: null };
         const bulkOps = [];

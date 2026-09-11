@@ -29,7 +29,8 @@ export async function GET(req) {
                 .select('title slug noteType subject topic difficulty views bookmarks tags createdAt')
                 .sort({ views: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             StudyNote.countDocuments(query)
         ]);
 

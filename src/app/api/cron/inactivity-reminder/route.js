@@ -30,7 +30,7 @@ export async function GET(req) {
                 $lte: sevenDaysAgoEnd
             },
             email: { $exists: true, $ne: null }
-        }).select('name email');
+        }).select('name email').lean();
 
         let emailsSent = 0;
 

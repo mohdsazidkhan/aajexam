@@ -24,7 +24,8 @@ export async function GET(req, { params }) {
             .populate({
                 path: 'answers.question',
                 select: 'questionText options explanation difficulty image'
-            });
+            })
+            .lean();
 
         if (!attempt) return NextResponse.json({ message: 'Attempt not found' }, { status: 404 });
 

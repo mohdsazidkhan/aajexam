@@ -20,14 +20,18 @@ export async function POST(req, { params }) {
 			return NextResponse.json({ success: false, message: 'Valid option index required (0-3)' }, { status: 400 });
 		}
 
-		const reel = await Reel.findById(id);
+		// Reel lookup and the existing-interaction check are independent — fetch concurrently.
+		const [reel, existingInteraction] = await Promise.all([
+			Reel.findById(id),
+			ReelInteraction.findOne({ userId: auth.user._id, reelId: id })
+		]);
 		if (!reel || reel.type !== 'question') {
 			return NextResponse.json({ success: false, message: 'Question reel not found' }, { status: 404 });
 		}
 
 		const isCorrect = selectedOptionIndex === reel.correctAnswerIndex;
 
-		let interaction = await ReelInteraction.findOne({ userId: auth.user._id, reelId: id });
+		let interaction = existingInteraction;
 
 		if (interaction?.answered) {
 			return NextResponse.json({

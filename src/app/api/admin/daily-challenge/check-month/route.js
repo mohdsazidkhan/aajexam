@@ -24,7 +24,7 @@ export async function GET(req) {
 
         const existingChallenges = await DailyChallenge.find({
             date: { $gte: startDate, $lte: endDate }
-        }).select('date');
+        }).select('date').lean();
 
         // Extract just the day numbers (1-31)
         const existingDays = existingChallenges.map(c => new Date(c.date).getDate());

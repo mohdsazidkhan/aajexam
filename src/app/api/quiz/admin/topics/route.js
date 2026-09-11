@@ -15,7 +15,7 @@ export async function GET(req) {
         const filter = {};
         if (subject) filter.subject = subject;
 
-        const topics = await Topic.find(filter).populate('subject', 'name').sort({ order: 1, name: 1 });
+        const topics = await Topic.find(filter).populate('subject', 'name').sort({ order: 1, name: 1 }).lean();
         return NextResponse.json({ success: true, data: topics });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

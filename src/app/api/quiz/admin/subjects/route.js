@@ -15,7 +15,7 @@ export async function GET(req) {
         const filter = {};
         if (search) filter.name = { $regex: search, $options: 'i' };
 
-        const subjects = await Subject.find(filter).sort({ order: 1, name: 1 });
+        const subjects = await Subject.find(filter).sort({ order: 1, name: 1 }).lean();
         return NextResponse.json({ success: true, data: subjects });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

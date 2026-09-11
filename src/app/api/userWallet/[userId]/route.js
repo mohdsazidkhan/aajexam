@@ -22,12 +22,12 @@ export async function GET(req, { params }) {
             { userId },
             { $setOnInsert: { balance: 0, totalEarned: 0 } },
             { upsert: true, new: true }
-        );
+        ).lean();
 
         const pendingRequest = await WithdrawRequest.findOne({
             userId,
             status: 'pending'
-        });
+        }).select('amount requestedAt status').lean();
 
         return NextResponse.json({
             success: true,

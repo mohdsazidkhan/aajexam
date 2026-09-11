@@ -30,26 +30,28 @@ export async function GET(req, { params }) {
         const limit = parseInt(searchParams.get('limit')) || 10;
         const skip = (page - 1) * limit;
 
-        const attempts = await UserTestAttempt.find({
-            user: userId,
-            status: 'Completed'
-        })
-            .populate('practiceTest', 'title totalMarks duration')
-            .populate({
-                path: 'practiceTest',
-                populate: {
-                    path: 'examPattern',
-                    select: 'title'
-                }
+        const [attempts, total] = await Promise.all([
+            UserTestAttempt.find({
+                user: userId,
+                status: 'Completed'
             })
-            .sort({ submittedAt: -1 })
-            .skip(skip)
-            .limit(limit);
-
-        const total = await UserTestAttempt.countDocuments({
-            user: userId,
-            status: 'Completed'
-        });
+                .populate('practiceTest', 'title totalMarks duration')
+                .populate({
+                    path: 'practiceTest',
+                    populate: {
+                        path: 'examPattern',
+                        select: 'title'
+                    }
+                })
+                .sort({ submittedAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            UserTestAttempt.countDocuments({
+                user: userId,
+                status: 'Completed'
+            })
+        ]);
 
         return NextResponse.json({
             success: true,

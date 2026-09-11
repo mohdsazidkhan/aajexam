@@ -23,7 +23,8 @@ export async function GET(req) {
 
         const plans = await StudyPlan.find({ user: auth.user._id })
             .populate('exam', 'name code')
-            .sort({ createdAt: -1 });
+            .sort({ createdAt: -1 })
+            .lean();
 
         return NextResponse.json({ success: true, data: plans });
     } catch (error) {

@@ -14,25 +14,37 @@ import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 
+const PAGE_SIZE = 20;
+
 const MyChallengesPage = () => {
    const [challenges, setChallenges] = useState([]);
    const [loading, setLoading] = useState(true);
+   const [loadingMore, setLoadingMore] = useState(false);
+   const [page, setPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
    const [copiedId, setCopiedId] = useState(null);
    const router = useRouter();
 
-   const fetchChallenges = async () => {
+   const fetchChallenges = async (pageNum = 1, append = false) => {
       try {
-         setLoading(true);
-         const res = await API.request('/api/challenge/my-challenges');
+         if (append) setLoadingMore(true); else setLoading(true);
+         const res = await API.request(`/api/challenge/my-challenges?page=${pageNum}&limit=${PAGE_SIZE}`);
          if (res?.success) {
-            setChallenges(res.data || []);
+            setChallenges((prev) => append ? [...prev, ...(res.data || [])] : (res.data || []));
+            setTotalPages(res.pagination?.totalPages || 1);
+            setPage(pageNum);
          }
       } catch (e) {
          toast.error("Could not load your challenges");
-      } finally { setLoading(false); }
+      } finally {
+         setLoading(false);
+         setLoadingMore(false);
+      }
    };
 
-   useEffect(() => { fetchChallenges(); }, []);
+   const handleLoadMore = () => fetchChallenges(page + 1, true);
+
+   useEffect(() => { fetchChallenges(1); }, []);
 
    const handleCopy = (code) => {
       const link = `${window.location.origin}/challenge/${code}`;
@@ -160,6 +172,18 @@ const MyChallengesPage = () => {
                            </motion.div>
                         );
                      })}
+                  </div>
+               )}
+
+               {page < totalPages && (
+                  <div className="flex justify-center pt-4">
+                     <button
+                        onClick={handleLoadMore}
+                        disabled={loadingMore}
+                        className="px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                     >
+                        {loadingMore ? 'Loading…' : 'Load More'}
+                     </button>
                   </div>
                )}
             </SubscriptionGuard>

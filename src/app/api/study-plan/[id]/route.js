@@ -11,7 +11,7 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { id } = await params;
 
-        const plan = await StudyPlan.findOne({ _id: id, user: auth.user._id }).populate('exam', 'name code');
+        const plan = await StudyPlan.findOne({ _id: id, user: auth.user._id }).populate('exam', 'name code').lean();
         if (!plan) return NextResponse.json({ message: 'Plan not found' }, { status: 404 });
 
         return NextResponse.json({ success: true, data: plan });

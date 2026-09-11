@@ -11,7 +11,7 @@ export async function POST(req) {
         await dbConnect();
 
         // Check if already applied
-        const existing = await MentorProfile.findOne({ user: auth.user._id });
+        const existing = await MentorProfile.findOne({ user: auth.user._id }).lean();
         if (existing) {
             return NextResponse.json({ message: 'Already applied', data: existing }, { status: 400 });
         }

@@ -16,18 +16,39 @@ export async function GET(req) {
         const startOfMonth = new Date(year, month - 1, 1);
         const endOfMonth = new Date(year, month, 0, 23, 59, 59, 999);
 
-        // Fetch exam news that have important dates falling in this month
-        const news = await ExamNews.find({
-            status: 'published',
-            'importantDates.date': {
-                $gte: startOfMonth,
-                $lte: endOfMonth,
-            }
-        })
-            .populate('exam', 'name code')
-            .select('title slug type examName exam importantDates isPinned')
-            .sort({ isPinned: -1, 'importantDates.date': 1 })
-            .limit(200);
+        // Fetch exam news that have important dates falling in this month, and the
+        // upcoming-30-days sidebar list in parallel — they're independent queries.
+        const upcomingStart = new Date();
+        upcomingStart.setHours(0, 0, 0, 0);
+        const upcomingEnd = new Date();
+        upcomingEnd.setDate(upcomingEnd.getDate() + 30);
+
+        const [news, upcomingNews] = await Promise.all([
+            ExamNews.find({
+                status: 'published',
+                'importantDates.date': {
+                    $gte: startOfMonth,
+                    $lte: endOfMonth,
+                }
+            })
+                .populate('exam', 'name code')
+                .select('title slug type examName exam importantDates isPinned')
+                .sort({ isPinned: -1, 'importantDates.date': 1 })
+                .limit(200)
+                .lean(),
+            ExamNews.find({
+                status: 'published',
+                'importantDates.date': {
+                    $gte: upcomingStart,
+                    $lte: upcomingEnd,
+                }
+            })
+                .populate('exam', 'name code')
+                .select('title slug type examName exam importantDates isPinned')
+                .sort({ 'importantDates.date': 1 })
+                .limit(50)
+                .lean()
+        ]);
 
         // Flatten importantDates into individual calendar events, filter to this month only
         const events = [];
@@ -61,24 +82,7 @@ export async function GET(req) {
             grouped[ev.date].push(rest);
         }
 
-        // Also fetch upcoming events (next 30 days from today) for sidebar
-        const upcomingStart = new Date();
-        upcomingStart.setHours(0, 0, 0, 0);
-        const upcomingEnd = new Date();
-        upcomingEnd.setDate(upcomingEnd.getDate() + 30);
-
-        const upcomingNews = await ExamNews.find({
-            status: 'published',
-            'importantDates.date': {
-                $gte: upcomingStart,
-                $lte: upcomingEnd,
-            }
-        })
-            .populate('exam', 'name code')
-            .select('title slug type examName exam importantDates isPinned')
-            .sort({ 'importantDates.date': 1 })
-            .limit(50);
-
+        // upcomingNews was already fetched in parallel with `news` above.
         const upcoming = [];
         for (const item of upcomingNews) {
             for (const d of (item.importantDates || [])) {

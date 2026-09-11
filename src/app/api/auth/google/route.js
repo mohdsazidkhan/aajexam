@@ -89,19 +89,20 @@ export async function POST(req) {
 
         if (!user) {
             // New User Registration via Google
-            const newReferralCode = await getUniqueReferralCode();
-            let referredBy = null;
-
-            if (referralCode) {
-                const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
-                if (referrer) {
-                    referredBy = referrer._id;
+            // These three are independent of each other — run concurrently.
+            const [newReferralCode, username, referredBy] = await Promise.all([
+                getUniqueReferralCode(),
+                generateUniqueUsername(email),
+                (async () => {
+                    if (!referralCode) return null;
+                    const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
+                    if (!referrer) return null;
                     referrer.referralCount = (referrer.referralCount || 0) + 1;
                     await referrer.save();
-                }
-            }
+                    return referrer._id;
+                })()
+            ]);
 
-            const username = await generateUniqueUsername(email);
             user = new User({
                 name, email, googleId, profilePicture: picture, username,
                 role: 'student', subscriptionStatus: 'PRO', referralCode: newReferralCode,

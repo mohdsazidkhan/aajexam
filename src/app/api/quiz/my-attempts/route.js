@@ -32,7 +32,8 @@ export async function GET(req) {
                 .select('-answers')
                 .sort({ createdAt: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             QuizAttempt.countDocuments(filter)
         ]);
 

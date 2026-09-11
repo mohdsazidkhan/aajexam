@@ -7,11 +7,11 @@ export async function GET(req, { params }) {
     try {
         await dbConnect();
         const { id } = await params;
-        const affair = await CurrentAffair.findById(id);
+        const affair = await CurrentAffair.findById(id).lean();
         if (!affair) return NextResponse.json({ message: 'Not found' }, { status: 404 });
 
         affair.views += 1;
-        await affair.save();
+        CurrentAffair.updateOne({ _id: affair._id }, { $inc: { views: 1 } }).catch((e) => console.error('View increment failed:', e));
 
         return NextResponse.json({ success: true, data: affair });
     } catch (error) {

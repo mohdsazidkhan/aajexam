@@ -18,7 +18,7 @@ export async function POST(req) {
             return NextResponse.json({ message: 'Email is required' }, { status: 400 });
         }
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).select('_id name').lean();
         if (!user) {
             // For security, don't reveal if user exists.
             return NextResponse.json({

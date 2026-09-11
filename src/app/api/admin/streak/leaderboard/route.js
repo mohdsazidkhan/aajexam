@@ -20,7 +20,8 @@ export async function GET(req) {
       .populate('user', 'name username profilePicture')
       .select(`${sortField} totalActiveDays freezesAvailable longestStreak`)
       .sort({ [sortField]: -1 })
-      .limit(limit);
+      .limit(limit)
+      .lean();
 
     return NextResponse.json({ success: true, data: leaderboard });
   } catch (error) {

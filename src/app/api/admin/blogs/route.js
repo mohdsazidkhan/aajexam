@@ -34,14 +34,18 @@ export async function GET(req) {
             ];
         }
 
-        const blogs = await Blog.find(query)
-            .populate('author', 'name email role')
-            .populate('exam', 'name code')
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit);
-
-        const total = await Blog.countDocuments(query);
+        // Blog has toJSON/toObject virtuals — cannot use .lean() here without
+        // dropping those computed fields, but the count is independent of the
+        // page fetch, so at least run them concurrently.
+        const [blogs, total] = await Promise.all([
+            Blog.find(query)
+                .populate('author', 'name email role')
+                .populate('exam', 'name code')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit),
+            Blog.countDocuments(query)
+        ]);
         const totalPages = Math.ceil(total / limit);
 
         return NextResponse.json({

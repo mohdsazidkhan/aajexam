@@ -6,7 +6,7 @@ export async function GET(req, { params }) {
     try {
         await dbConnect();
         const { username } = await params;
-        const user = await User.findOne({ username: username.toLowerCase() });
+        const user = await User.findOne({ username: username.toLowerCase() }).select('_id').lean();
         if (!user) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
         return NextResponse.json({

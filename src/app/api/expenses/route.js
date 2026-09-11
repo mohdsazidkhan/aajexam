@@ -36,7 +36,8 @@ export async function GET(req) {
                 .populate('createdBy', 'name email')
                 .sort({ date: -1 })
                 .skip(skip)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             Expense.countDocuments(query)
         ]);
 

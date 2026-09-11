@@ -15,14 +15,15 @@ export async function GET(req, { params }) {
 
         const isObjectId = mongoose.Types.ObjectId.isValid(id) && (new String(id).length === 24);
         const query = isObjectId ? { _id: id } : { slug: id };
-        const quiz = await Quiz.findOne(query).select('_id');
+        const quiz = await Quiz.findOne(query).select('_id').lean();
         if (!quiz) return NextResponse.json({ message: 'Quiz not found' }, { status: 404 });
 
         const leaderboard = await QuizAttempt.find({ quiz: quiz._id, status: 'Completed' })
             .populate('user', 'name username profilePicture')
             .select('user score accuracy totalTime rank percentile percentage submittedAt')
             .sort({ score: -1, accuracy: -1, totalTime: 1 })
-            .limit(limit);
+            .limit(limit)
+            .lean();
 
         return NextResponse.json({ success: true, data: leaderboard });
     } catch (error) {

@@ -29,7 +29,8 @@ export async function GET(req) {
                 .select('title category date keyPoints tags views questions.length')
                 .sort({ date: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             CurrentAffair.countDocuments(query)
         ]);
 

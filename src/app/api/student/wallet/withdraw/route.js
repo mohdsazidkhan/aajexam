@@ -22,13 +22,13 @@ export async function POST(req) {
 
         if (!amount || amount <= 0) return NextResponse.json({ success: false, message: 'Invalid amount' }, { status: 400 });
 
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).select('walletBalance').lean();
         if (!user) return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
 
         if (amount < MIN_WITHDRAW_AMOUNT) return NextResponse.json({ success: false, message: `Min withdrawal ₹${MIN_WITHDRAW_AMOUNT}` }, { status: 400 });
         if ((user.walletBalance || 0) < amount) return NextResponse.json({ success: false, message: 'Insufficient balance' }, { status: 400 });
 
-        const existingPending = await WithdrawRequest.findOne({ userId, status: 'pending' });
+        const existingPending = await WithdrawRequest.findOne({ userId, status: 'pending' }).select('_id').lean();
         if (existingPending) return NextResponse.json({ success: false, message: 'Pending request exists' }, { status: 400 });
 
         const withdrawRequest = await WithdrawRequest.create({

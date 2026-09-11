@@ -20,7 +20,7 @@ export async function POST(req) {
         // Check if challenge already exists for this date
         const existing = await DailyChallenge.findOne({
             date: { $gte: targetDate, $lt: new Date(targetDate.getTime() + 86400000) }
-        });
+        }).lean();
         if (existing) return NextResponse.json({ message: 'Challenge already exists for this date', data: existing }, { status: 400 });
 
         // Pick random questions

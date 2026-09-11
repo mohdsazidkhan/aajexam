@@ -29,7 +29,7 @@ export async function PUT(req) {
         const existingUser = await User.findOne({
             username: username.toLowerCase(),
             _id: { $ne: userId }
-        });
+        }).select('_id').lean();
 
         if (existingUser) {
             return NextResponse.json({ success: false, message: 'Username already taken' }, { status: 400 });

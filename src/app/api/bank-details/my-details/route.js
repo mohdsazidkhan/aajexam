@@ -9,7 +9,7 @@ export async function GET(req) {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
-        const bankDetail = await BankDetail.findOne({ user: auth.user.id });
+        const bankDetail = await BankDetail.findOne({ user: auth.user.id }).lean();
         return NextResponse.json({ success: true, bankDetail });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

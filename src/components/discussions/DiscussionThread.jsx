@@ -195,6 +195,9 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [sort, setSort] = useState('top');
   const [newComment, setNewComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -204,16 +207,32 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
     if (!questionId) return;
     setLoading(true);
     try {
-      const res = await API.getDiscussions({ questionId, sort: nextSort, limit: 50 });
+      const res = await API.getDiscussions({ questionId, sort: nextSort, limit: 50, page: 1 });
       if (res?.success) {
         setItems(res.discussions || []);
         setTotal(res.pagination?.total || 0);
+        setPage(1);
+        setTotalPages(res.pagination?.totalPages || 1);
       }
       setLoaded(true);
     } finally {
       setLoading(false);
     }
   }, [questionId, sort]);
+
+  const loadMore = async () => {
+    if (page >= totalPages) return;
+    setLoadingMore(true);
+    try {
+      const res = await API.getDiscussions({ questionId, sort, limit: 50, page: page + 1 });
+      if (res?.success) {
+        setItems(prev => [...prev, ...(res.discussions || [])]);
+        setPage(page + 1);
+      }
+    } finally {
+      setLoadingMore(false);
+    }
+  };
 
   useEffect(() => {
     if (open && !loaded) load();
@@ -333,6 +352,18 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
               />
             ))}
           </div>
+
+          {page < totalPages && (
+            <div className="flex justify-center pt-2">
+              <button
+                onClick={loadMore}
+                disabled={loadingMore}
+                className="px-4 py-1.5 text-[11px] font-bold text-primary-600 hover:text-primary-700 disabled:opacity-50"
+              >
+                {loadingMore ? 'Loading…' : 'Load more comments'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

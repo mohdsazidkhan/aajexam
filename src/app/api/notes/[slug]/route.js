@@ -11,12 +11,15 @@ export async function GET(req, { params }) {
             .populate('subject', 'name')
             .populate('topic', 'name')
             .populate('exam', 'name code')
-            .populate('contributor', 'name username');
+            .populate('contributor', 'name username')
+            .lean();
 
         if (!note) return NextResponse.json({ message: 'Note not found' }, { status: 404 });
 
         note.views += 1;
-        await note.save();
+        // Fire-and-forget: the response already reflects the incremented count,
+        // no need to block the response on the write completing.
+        StudyNote.updateOne({ _id: note._id }, { $inc: { views: 1 } }).catch((e) => console.error('View increment failed:', e));
 
         return NextResponse.json({ success: true, data: note });
     } catch (error) {

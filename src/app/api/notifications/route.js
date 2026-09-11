@@ -19,7 +19,7 @@ export async function GET(req) {
         if (unread) filter.isRead = false;
 
         const [items, total] = await Promise.all([
-            Notification.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
+            Notification.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
             Notification.countDocuments(filter)
         ]);
 

@@ -11,7 +11,7 @@ export async function GET(req, { params }) {
         const transactions = await WalletTransaction.find({
             user: id,
             type: { $in: ['subscription_payment', 'subscription_purchase', 'subscription_renewal'] }
-        }).sort({ createdAt: -1 });
+        }).sort({ createdAt: -1 }).lean();
 
         const transformed = transactions.map(tx => ({
             planName: tx.description?.includes('Basic') ? 'Basic' :

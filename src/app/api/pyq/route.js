@@ -17,7 +17,7 @@ export async function GET(req) {
 
         let patternFilter = {};
         if (examId) {
-            const patterns = await ExamPattern.find({ exam: examId }).select('_id');
+            const patterns = await ExamPattern.find({ exam: examId }).select('_id').lean();
             patternFilter.examPattern = { $in: patterns.map(p => p._id) };
         }
 
@@ -30,7 +30,8 @@ export async function GET(req) {
                 .select('title totalMarks duration accessLevel isPYQ pyqYear pyqShift pyqExamName questions.length publishedAt')
                 .sort({ pyqYear: -1, pyqShift: 1 })
                 .skip(skip)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             PracticeTest.countDocuments(query)
         ]);
 

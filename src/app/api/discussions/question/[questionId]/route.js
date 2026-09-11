@@ -14,6 +14,10 @@ export async function GET(req, { params }) {
     void Exam; void Subject; void Topic;
 
     const { questionId } = await params;
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get('page')) || 1;
+    const limit = parseInt(searchParams.get('limit')) || 20;
+    const skip = (page - 1) * limit;
 
     const question = await Question.findById(questionId)
       .populate('exam', 'name code')
@@ -25,15 +29,22 @@ export async function GET(req, { params }) {
       return errorResponse('Question not found', 404);
     }
 
-    const roots = await QuestionDiscussion.find({
+    const rootFilter = {
       question: questionId,
       parent: null,
       status: 'approved',
       deletedAt: null
-    })
-      .populate('author', 'name username profilePicture')
-      .sort({ isPinned: -1, upvotes: -1, createdAt: -1 })
-      .lean();
+    };
+
+    const [roots, totalRoots] = await Promise.all([
+      QuestionDiscussion.find(rootFilter)
+        .populate('author', 'name username profilePicture')
+        .sort({ isPinned: -1, upvotes: -1, createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      QuestionDiscussion.countDocuments(rootFilter)
+    ]);
 
     const rootIds = roots.map(r => r._id);
     const replies = rootIds.length
@@ -58,7 +69,12 @@ export async function GET(req, { params }) {
       replies: byRoot[String(r._id)] || []
     }));
 
-    return successResponse({ question, discussions, total: roots.length });
+    return successResponse({
+      question,
+      discussions,
+      total: totalRoots,
+      pagination: { page, limit, total: totalRoots, totalPages: Math.ceil(totalRoots / limit) }
+    });
   } catch (err) {
     return errorResponse(err);
   }

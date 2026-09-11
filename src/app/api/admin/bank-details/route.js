@@ -21,7 +21,8 @@ export async function GET(req) {
                 .populate('user', 'name email phone')
                 .sort({ createdAt: -1 })
                 .skip(skip)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             BankDetail.countDocuments()
         ]);
 

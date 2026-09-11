@@ -36,13 +36,15 @@ export async function GET(req) {
             };
         }
 
-        const students = await User.find({ ...query, role: 'student' })
-            .select('name email phone walletBalance referralCount referralEarnings status subscriptionStatus createdAt')
-            .sort({ [sortField]: sortOrder })
-            .skip(skip)
-            .limit(limit);
-
-        const total = await User.countDocuments({ ...query, role: 'student' });
+        const [students, total] = await Promise.all([
+            User.find({ ...query, role: 'student' })
+                .select('name email phone walletBalance referralCount referralEarnings status subscriptionStatus createdAt')
+                .sort({ [sortField]: sortOrder })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            User.countDocuments({ ...query, role: 'student' })
+        ]);
         const totalPages = Math.ceil(total / limit);
 
         return NextResponse.json({

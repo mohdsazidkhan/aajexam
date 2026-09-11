@@ -13,7 +13,7 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
 
         const [news, total] = await Promise.all([
-            ExamNews.find().populate('exam', 'name code').sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit),
+            ExamNews.find().populate('exam', 'name code').sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
             ExamNews.countDocuments()
         ]);
 

@@ -77,7 +77,8 @@ export async function GET(req) {
                 .populate('user', 'name email phone')
                 .sort(sortOptions)
                 .skip(skip)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             PaymentOrder.countDocuments(filterQuery)
         ]);
 

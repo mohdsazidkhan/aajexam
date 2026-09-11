@@ -14,7 +14,7 @@ export async function GET() {
         const affairs = await CurrentAffair.find({
             date: { $gte: today, $lt: tomorrow },
             status: 'published'
-        }).sort({ category: 1 });
+        }).sort({ category: 1 }).lean();
 
         // Group by category
         const grouped = {};

@@ -82,7 +82,8 @@ export async function GET(req) {
                 .select('name email phone subscriptionStatus subscriptionExpiry createdAt')
                 .sort(sortOptions)
                 .skip(skip)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             User.countDocuments(filterQuery)
         ]);
 

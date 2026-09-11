@@ -25,7 +25,7 @@ export async function POST(req) {
         }
 
         // Verify the attempt belongs to the user and is completed
-        const attempt = await QuizAttempt.findOne({ _id: attemptId, user: user._id, status: 'Completed' });
+        const attempt = await QuizAttempt.findOne({ _id: attemptId, user: user._id, status: 'Completed' }).select('_id').lean();
         
         if (!attempt) {
             return NextResponse.json({ success: false, message: 'Valid completed quiz attempt not found' }, { status: 404 });

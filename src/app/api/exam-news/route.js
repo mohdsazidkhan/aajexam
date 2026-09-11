@@ -23,7 +23,8 @@ export async function GET(req) {
                 .populate('exam', 'name code')
                 .sort({ isPinned: -1, createdAt: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             ExamNews.countDocuments(query)
         ]);
 

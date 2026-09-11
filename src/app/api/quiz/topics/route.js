@@ -13,7 +13,8 @@ export async function GET(req) {
 
         const topics = await Topic.find({ subject, isActive: true })
             .select('name description order')
-            .sort({ order: 1, name: 1 });
+            .sort({ order: 1, name: 1 })
+            .lean();
 
         return NextResponse.json({ success: true, data: topics });
     } catch (error) {

@@ -16,7 +16,7 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
 
         const [challenges, total] = await Promise.all([
-            DailyChallenge.find().sort({ date: -1 }).skip((page - 1) * limit).limit(limit),
+            DailyChallenge.find().sort({ date: -1 }).skip((page - 1) * limit).limit(limit).lean(),
             DailyChallenge.countDocuments()
         ]);
 

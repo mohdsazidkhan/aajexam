@@ -30,7 +30,7 @@ export async function GET(req) {
         const query = { username: username.toLowerCase() };
         if (userId) query._id = { $ne: userId };
 
-        const existingUser = await User.findOne(query);
+        const existingUser = await User.findOne(query).select('_id').lean();
 
         return NextResponse.json({
             success: true,

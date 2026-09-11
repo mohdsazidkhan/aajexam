@@ -13,7 +13,8 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { id } = await params;
         const test = await PracticeTest.findOne({ _id: id, isPYQ: true })
-            .populate({ path: 'examPattern', populate: { path: 'exam', select: 'name code' } });
+            .populate({ path: 'examPattern', populate: { path: 'exam', select: 'name code' } })
+            .lean();
 
         if (!test) return NextResponse.json({ message: 'PYQ not found' }, { status: 404 });
         return NextResponse.json({ success: true, data: test });

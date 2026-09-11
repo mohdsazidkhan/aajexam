@@ -26,14 +26,17 @@ export async function GET(req) {
             return NextResponse.json({ error: 'User not found' }, { status: 401 });
         }
 
-        const user = await User.findById(userId).select('-password').populate('currentSubscription');
+        // User needs to stay a hydrated Mongoose doc (uses the
+        // getProfileCompletionDetails() instance method below); bank details
+        // are an independent read, so fetch both concurrently.
+        const [user, bankDetail] = await Promise.all([
+            User.findById(userId).select('-password').populate('currentSubscription'),
+            BankDetail.findOne({ user: userId }).lean()
+        ]);
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
         // Get profile completion details
         const profileCompletion = user.getProfileCompletionDetails();
-
-        // Get bank details for the user (same as aajexam-backend)
-        const bankDetail = await BankDetail.findOne({ user: userId });
 
         const isPro = user.subscriptionStatus === 'PRO';
         const walletBalance = user.walletBalance || 0;

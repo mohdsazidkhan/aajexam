@@ -21,25 +21,30 @@ export async function GET(req) {
         if (type && type !== 'all') query['metadata.referralType'] = type;
 
         const [transactions, total, user] = await Promise.all([
-            WalletTransaction.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+            WalletTransaction.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
             WalletTransaction.countDocuments(query),
-            User.findById(userId).select('name email referralCode referredBy walletBalance referralCount')
+            User.findById(userId).select('name email referralCode referredBy walletBalance referralCount').lean()
         ]);
 
-        const transactionsWithDetails = await Promise.all(
-            transactions.map(async (tx) => {
-                const invitee = tx.metadata?.inviteeUserId ? await User.findById(tx.metadata.inviteeUserId).select('name email') : null;
-                return {
-                    _id: tx._id,
-                    invitee: invitee ? { _id: invitee._id, name: invitee.name, email: invitee.email } : null,
-                    rewardType: tx.metadata?.referralType || 'unknown',
-                    amount: tx.amount,
-                    description: tx.description,
-                    date: tx.createdAt,
-                    balance: tx.balance
-                };
-            })
-        );
+        // Batch-fetch all invitees in one query instead of one query per transaction.
+        const inviteeIds = [...new Set(transactions.map(tx => tx.metadata?.inviteeUserId).filter(Boolean).map(String))];
+        const invitees = inviteeIds.length
+            ? await User.find({ _id: { $in: inviteeIds } }).select('name email').lean()
+            : [];
+        const inviteeMap = new Map(invitees.map(u => [u._id.toString(), u]));
+
+        const transactionsWithDetails = transactions.map((tx) => {
+            const invitee = tx.metadata?.inviteeUserId ? inviteeMap.get(String(tx.metadata.inviteeUserId)) : null;
+            return {
+                _id: tx._id,
+                invitee: invitee ? { _id: invitee._id, name: invitee.name, email: invitee.email } : null,
+                rewardType: tx.metadata?.referralType || 'unknown',
+                amount: tx.amount,
+                description: tx.description,
+                date: tx.createdAt,
+                balance: tx.balance
+            };
+        });
 
         return NextResponse.json({
             success: true,

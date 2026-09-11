@@ -16,6 +16,10 @@ export async function GET(req, { params }) {
 
         // Ensure parameters are resolved
         const { id: userId } = await params;
+        const { searchParams } = new URL(req.url);
+        const page = parseInt(searchParams.get('page')) || 1;
+        const limit = parseInt(searchParams.get('limit')) || 20;
+        const skip = (page - 1) * limit;
 
         // We implement getMutualFollowers in-line if the static method isn't fully ported to aajexam yet
         // Mutual strategy: users that I follow, who also follow me (this is getMutualFollowers(currentUserId))
@@ -26,8 +30,10 @@ export async function GET(req, { params }) {
         if (typeof Follow.getMutualFollowers === 'function') {
             mutualIds = await Follow.getMutualFollowers(currentUserId);
         } else {
-            const following = await Follow.find({ follower: currentUserId, status: 'active' }).distinct('following');
-            const followers = await Follow.find({ following: currentUserId, status: 'active' }).distinct('follower');
+            const [following, followers] = await Promise.all([
+                Follow.find({ follower: currentUserId, status: 'active' }).distinct('following'),
+                Follow.find({ following: currentUserId, status: 'active' }).distinct('follower')
+            ]);
 
             const followingStrs = following.map(id => id.toString());
             const followersStrs = followers.map(id => id.toString());
@@ -35,18 +41,22 @@ export async function GET(req, { params }) {
             mutualIds = followingStrs.filter(id => followersStrs.includes(id));
         }
 
-        const targetFollowerIds = await Follow.find({ following: userId }).select('follower');
+        const targetFollowerIds = await Follow.find({ following: userId }).select('follower').lean();
         const targetFollowerIdStrings = targetFollowerIds.map(f => f.follower.toString());
 
         const mutual = mutualIds.filter(id => targetFollowerIdStrings.includes(id.toString()));
+        const total = mutual.length;
+        const pagedMutualIds = mutual.slice(skip, skip + limit);
 
-        const mutualUsers = await User.find({ _id: { $in: mutual } })
-            .select('name username profilePicture');
+        const mutualUsers = await User.find({ _id: { $in: pagedMutualIds } })
+            .select('name username profilePicture')
+            .lean();
 
         return NextResponse.json({
             success: true,
             mutualFollowers: mutualUsers,
-            count: mutualUsers.length
+            count: total,
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit) }
         });
 
     } catch (err) {

@@ -33,7 +33,8 @@ export async function GET(req) {
                 .select('examsCleared specialization rating totalRatings helpedStudents tips')
                 .sort({ rating: -1, helpedStudents: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             MentorProfile.countDocuments(query)
         ]);
 

@@ -22,7 +22,8 @@ export async function GET(req) {
                 .populate('user', 'name email username')
                 .sort({ createdAt: -1 })
                 .skip((page - 1) * limit)
-                .limit(limit),
+                .limit(limit)
+                .lean(),
             MentorProfile.countDocuments(query)
         ]);
 

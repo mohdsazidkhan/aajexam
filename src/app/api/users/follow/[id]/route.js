@@ -15,11 +15,11 @@ export async function POST(req, { params }) {
 
         if (followerId === id) return NextResponse.json({ message: 'You cannot follow yourself' }, { status: 400 });
 
-        const userToFollow = await User.findById(id);
+        const userToFollow = await User.findById(id).select('status').lean();
         if (!userToFollow) return NextResponse.json({ message: 'User not found' }, { status: 404 });
         if (userToFollow.status !== 'active') return NextResponse.json({ message: 'Cannot follow this user' }, { status: 400 });
 
-        const existingFollow = await Follow.findOne({ follower: followerId, following: id });
+        const existingFollow = await Follow.findOne({ follower: followerId, following: id }).select('_id').lean();
         if (existingFollow) return NextResponse.json({ message: 'Already following' }, { status: 400 });
 
         await Follow.create({ follower: followerId, following: id });

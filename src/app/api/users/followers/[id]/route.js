@@ -12,11 +12,12 @@ export async function GET(req, { params }) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
-        const followers = await Follow.find({ following: id, status: 'active' })
-            .populate('follower', 'name username profilePicture followersCount followingCount')
-            .skip(skip).limit(limit).sort({ createdAt: -1 });
-
-        const total = await Follow.countDocuments({ following: id, status: 'active' });
+        const [followers, total] = await Promise.all([
+            Follow.find({ following: id, status: 'active' })
+                .populate('follower', 'name username profilePicture followersCount followingCount')
+                .skip(skip).limit(limit).sort({ createdAt: -1 }).lean(),
+            Follow.countDocuments({ following: id, status: 'active' })
+        ]);
 
         return NextResponse.json({
             success: true,

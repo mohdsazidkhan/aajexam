@@ -23,13 +23,15 @@ export async function GET(req) {
         }
         if (!isNaN(page) && !isNaN(limit)) {
             const skip = (page - 1) * limit;
-            const students = await User.find(query)
-                .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
-                .sort({ createdAt: -1 })
-                .skip(skip)
-                .limit(limit);
-
-            const total = await User.countDocuments(query);
+            const [students, total] = await Promise.all([
+                User.find(query)
+                    .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
+                    .sort({ createdAt: -1 })
+                    .skip(skip)
+                    .limit(limit)
+                    .lean(),
+                User.countDocuments(query)
+            ]);
             const totalPages = Math.ceil(total / limit);
 
             return NextResponse.json({
@@ -40,7 +42,8 @@ export async function GET(req) {
         } else {
             const students = await User.find(query)
                 .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
-                .sort({ createdAt: -1 });
+                .sort({ createdAt: -1 })
+                .lean();
 
             return NextResponse.json({ success: true, students });
         }

@@ -12,17 +12,14 @@ export async function POST(req, { params }) {
 
         if (!auth.authenticated) return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
 
-        const attempt = await UserTestAttempt.findOne({
-            _id: attemptId,
-            user: auth.user.id,
-            practiceTest: testId,
-            status: 'InProgress'
-        });
+        // Single atomic update instead of find + save — same effect, one round trip.
+        const attempt = await UserTestAttempt.findOneAndUpdate(
+            { _id: attemptId, user: auth.user.id, practiceTest: testId, status: 'InProgress' },
+            { $set: { answers } },
+            { runValidators: true, select: '_id' }
+        ).lean();
 
         if (!attempt) return NextResponse.json({ success: false, message: 'Attempt not found' }, { status: 404 });
-
-        attempt.answers = answers;
-        await attempt.save();
 
         return NextResponse.json({ success: true, message: 'Answers saved', data: { attemptId: attempt._id, answersCount: answers.length } });
     } catch (error) {

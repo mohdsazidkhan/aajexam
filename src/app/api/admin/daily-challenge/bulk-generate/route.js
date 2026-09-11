@@ -33,7 +33,7 @@ export async function POST(req) {
             // Check if challenge already exists for this date
             const existing = await DailyChallenge.findOne({
                 date: { $gte: targetDate, $lt: new Date(targetDate.getTime() + 86400000) }
-            });
+            }).select('_id').lean();
 
             if (existing) {
                 skippedCount++;

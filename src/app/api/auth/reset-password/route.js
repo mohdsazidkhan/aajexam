@@ -20,7 +20,7 @@ export async function POST(req) {
         const user = await User.findOne({
             resetPasswordToken: token,
             resetPasswordExpires: { $gt: Date.now() }
-        });
+        }).select('_id').lean();
 
         if (!user) {
             return NextResponse.json({ message: 'Password reset token is invalid or has expired' }, { status: 400 });

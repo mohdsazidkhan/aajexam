@@ -17,7 +17,8 @@ export async function GET(req) {
         const userId = searchParams.get('userId');
         if (userId) {
             const user = await User.findById(userId)
-                .select('name email phone username role subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt');
+                .select('name email phone username role subscriptionStatus socialLinks referralCode referredBy referralCount walletBalance referralRewards createdAt')
+                .lean();
 
             if (!user) {
                 return NextResponse.json({
@@ -28,7 +29,7 @@ export async function GET(req) {
 
             return NextResponse.json({
                 success: true,
-                user: user.toObject()
+                user
             });
         }
 
@@ -48,21 +49,21 @@ export async function GET(req) {
             ];
         }
 
-        const users = await User.find(query)
-            .select('name email phone username role subscriptionStatus socialLinks createdAt')
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit);
-
-        const mappedUsers = users.map((user) => user.toObject());
-
-        const total = await User.countDocuments(query);
+        const [users, total] = await Promise.all([
+            User.find(query)
+                .select('name email phone username role subscriptionStatus socialLinks createdAt')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            User.countDocuments(query)
+        ]);
         const totalPages = Math.ceil(total / limit);
 
         return NextResponse.json({
             success: true,
             data: {
-                users: mappedUsers,
+                users,
                 pagination: {
                     page,
                     limit,

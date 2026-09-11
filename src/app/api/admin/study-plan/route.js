@@ -22,7 +22,8 @@ export async function GET(req) {
         .populate('exam', 'name code')
         .sort({ createdAt: -1 })
         .skip(skip)
-        .limit(limit),
+        .limit(limit)
+        .lean(),
       StudyPlan.countDocuments()
     ]);
 

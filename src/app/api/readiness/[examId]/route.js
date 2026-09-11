@@ -26,27 +26,32 @@ export async function GET(req, { params }) {
             }, { status: 403 });
         }
 
-        // Get quiz attempts for this exam (curated via applicableExams)
-        const quizzes = await Quiz.find({ applicableExams: examId }).select('_id subject');
-        const quizIds = quizzes.map(q => q._id);
-
-        const quizAttempts = await QuizAttempt.find({
-            user: userId,
-            quiz: { $in: quizIds },
-            status: 'Completed'
-        }).populate('quiz', 'subject totalMarks');
-
-        // Get practice test attempts for this exam
-        const patterns = await ExamPattern.find({ exam: examId }).select('_id');
-        const patternIds = patterns.map(p => p._id);
-        const practiceTests = await PracticeTest.find({ examPattern: { $in: patternIds } }).select('_id');
-        const testIds = practiceTests.map(t => t._id);
-
-        const testAttempts = await UserTestAttempt.find({
-            user: userId,
-            practiceTest: { $in: testIds },
-            status: 'Completed'
-        });
+        // Quiz-attempt chain and practice-test-attempt chain are independent of
+        // each other, so run them concurrently instead of one after another.
+        const [quizAttempts, testAttempts] = await Promise.all([
+            (async () => {
+                // Get quiz attempts for this exam (curated via applicableExams)
+                const quizzes = await Quiz.find({ applicableExams: examId }).select('_id subject').lean();
+                const quizIds = quizzes.map(q => q._id);
+                return QuizAttempt.find({
+                    user: userId,
+                    quiz: { $in: quizIds },
+                    status: 'Completed'
+                }).populate('quiz', 'subject totalMarks').lean();
+            })(),
+            (async () => {
+                // Get practice test attempts for this exam
+                const patterns = await ExamPattern.find({ exam: examId }).select('_id').lean();
+                const patternIds = patterns.map(p => p._id);
+                const practiceTests = await PracticeTest.find({ examPattern: { $in: patternIds } }).select('_id').lean();
+                const testIds = practiceTests.map(t => t._id);
+                return UserTestAttempt.find({
+                    user: userId,
+                    practiceTest: { $in: testIds },
+                    status: 'Completed'
+                }).lean();
+            })()
+        ]);
 
         // Calculate subject-wise accuracy
         const subjectStats = {};

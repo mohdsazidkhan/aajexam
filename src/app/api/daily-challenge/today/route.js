@@ -16,7 +16,7 @@ export async function GET(req) {
         const challenge = await DailyChallenge.findOne({
             date: { $gte: today, $lt: tomorrow },
             status: 'published'
-        });
+        }).lean();
 
         if (!challenge) {
             return NextResponse.json({ success: true, data: null, message: 'No challenge today' });
@@ -31,7 +31,7 @@ export async function GET(req) {
             const attempt = await DailyChallengeAttempt.findOne({
                 user: auth.user._id,
                 challenge: challenge._id
-            });
+            }).lean();
             if (attempt) {
                 attempted = true;
                 attemptData = attempt;
@@ -39,7 +39,7 @@ export async function GET(req) {
         }
 
         // Hide correct answers if not attempted
-        const challengeData = challenge.toObject();
+        const challengeData = { ...challenge };
         if (!attempted) {
             challengeData.questions = challengeData.questions.map(q => ({
                 ...q,

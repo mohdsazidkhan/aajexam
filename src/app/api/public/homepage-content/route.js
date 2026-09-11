@@ -5,7 +5,7 @@ import HomePage from '@/models/HomePage';
 export async function GET() {
     try {
         await dbConnect();
-        const content = await HomePage.findOne({ isActive: true }).sort({ version: -1 });
+        const content = await HomePage.findOne({ isActive: true }).sort({ version: -1 }).lean();
 
         const defaultData = {
             platformPurpose: "AajExam is India's premier online platform for government exam preparation...",

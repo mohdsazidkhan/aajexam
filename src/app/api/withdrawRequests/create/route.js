@@ -35,14 +35,14 @@ export async function POST(req) {
             { userId },
             { $setOnInsert: { balance: 0, totalEarned: 0 } },
             { upsert: true, new: true }
-        );
+        ).select('balance').lean();
 
         if (wallet.balance < amount) {
             return NextResponse.json({ success: false, message: 'Insufficient balance' }, { status: 400 });
         }
 
         // Check for pending request
-        const existing = await WithdrawRequest.findOne({ userId, status: 'pending' });
+        const existing = await WithdrawRequest.findOne({ userId, status: 'pending' }).select('_id').lean();
         if (existing) {
             return NextResponse.json({ success: false, message: 'You already have a pending withdrawal request' }, { status: 400 });
         }

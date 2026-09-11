@@ -12,13 +12,13 @@ export async function GET(req, { params }) {
             return NextResponse.json({ success: false, message: 'Transaction ID is required' }, { status: 400 });
         }
 
-        const paymentOrder = await PaymentOrder.findOne({ payuTransactionId: txnid });
+        const paymentOrder = await PaymentOrder.findOne({ payuTransactionId: txnid }).lean();
 
         if (!paymentOrder) {
             return NextResponse.json({ success: false, message: 'Payment order not found' }, { status: 404 });
         }
 
-        const user = await User.findById(paymentOrder.user);
+        const user = await User.findById(paymentOrder.user).select('name email phone').lean();
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         }

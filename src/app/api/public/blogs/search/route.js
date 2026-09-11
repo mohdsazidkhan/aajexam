@@ -24,15 +24,16 @@ export async function GET(req) {
             ]
         };
 
-        const blogs = await Blog.find(query)
-            .populate('author', 'name email')
-            .populate('exam', 'name code')
-            .sort({ publishedAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .lean();
-
-        const total = await Blog.countDocuments(query);
+        const [blogs, total] = await Promise.all([
+            Blog.find(query)
+                .populate('author', 'name email')
+                .populate('exam', 'name code')
+                .sort({ publishedAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            Blog.countDocuments(query)
+        ]);
 
         return NextResponse.json({
             success: true,

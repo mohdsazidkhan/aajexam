@@ -86,17 +86,24 @@ export async function POST(req) {
             return NextResponse.json({ message: 'All fields are required: name, email, phone, password' }, { status: 400 });
         }
 
-        if (await User.findOne({ email })) {
+        // Email/phone existence checks are independent of each other — run concurrently.
+        const [existingEmail, existingPhone] = await Promise.all([
+            User.findOne({ email }).select('_id').lean(),
+            User.findOne({ phone }).select('_id').lean()
+        ]);
+        if (existingEmail) {
             return NextResponse.json({ message: 'Email already exists. Please use a different email address.' }, { status: 400 });
         }
-
-        if (await User.findOne({ phone })) {
+        if (existingPhone) {
             return NextResponse.json({ message: 'Phone number already exists. Please use a different phone number.' }, { status: 400 });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const referralCode = await getUniqueReferralCode();
-        const username = await generateUniqueUsername(email);
+        // Hashing and the two uniqueness-check loops are all independent — run concurrently.
+        const [hashedPassword, referralCode, username] = await Promise.all([
+            bcrypt.hash(password, 10),
+            getUniqueReferralCode(),
+            generateUniqueUsername(email)
+        ]);
 
         const user = new User({
             name, email, phone, password: hashedPassword, username, role,

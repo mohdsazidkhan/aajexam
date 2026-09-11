@@ -38,18 +38,30 @@ export async function GET(req) {
                     { name: { $regex: search, $options: 'i' } },
                     { email: { $regex: search, $options: 'i' } }
                 ]
-            }).select('_id');
+            }).select('_id').lean();
             const userIds = users.map(u => u._id);
             query.user = { $in: userIds };
         }
 
-        const [transactionsRaw, total] = await Promise.all([
+        // transactions/total/summary are independent of each other — fetch concurrently.
+        const [transactionsRaw, total, summaryAggr] = await Promise.all([
             WalletTransaction.find(query)
                 .sort({ processedAt: -1 })
                 .skip(skip)
                 .limit(limit)
-                .populate('user', 'name email referralCode'),
-            WalletTransaction.countDocuments(query)
+                .populate('user', 'name email referralCode')
+                .lean(),
+            WalletTransaction.countDocuments(query),
+            WalletTransaction.aggregate([
+                { $match: { category: 'bonus', 'metadata.referralType': { $exists: true } } },
+                {
+                    $group: {
+                        _id: '$metadata.referralType',
+                        totalAmount: { $sum: '$amount' },
+                        count: { $sum: 1 }
+                    }
+                }
+            ])
         ]);
 
         // Manually populate invitees from metadata
@@ -58,7 +70,8 @@ export async function GET(req) {
             .filter(id => id);
 
         const invitees = await User.find({ _id: { $in: inviteeIds } })
-            .select('name email');
+            .select('name email')
+            .lean();
 
         const inviteeMap = invitees.reduce((acc, user) => {
             acc[user._id.toString()] = user;
@@ -75,18 +88,6 @@ export async function GET(req) {
             balance: tx.balance,
             description: tx.description
         }));
-
-        // Calculate summary
-        const summaryAggr = await WalletTransaction.aggregate([
-            { $match: { category: 'bonus', 'metadata.referralType': { $exists: true } } },
-            {
-                $group: {
-                    _id: '$metadata.referralType',
-                    totalAmount: { $sum: '$amount' },
-                    count: { $sum: 1 }
-                }
-            }
-        ]);
 
         const summary = {
             totalRewards: summaryAggr.reduce((sum, item) => sum + item.totalAmount, 0),

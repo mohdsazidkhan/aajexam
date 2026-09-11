@@ -14,11 +14,13 @@ export async function GET(req) {
         if (!query || query.length < 2) return NextResponse.json({ message: 'Query too short' }, { status: 400 });
 
         const searchRegex = new RegExp(query.trim(), 'i');
-        const users = await User.find({ $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' })
-            .select('name username profilePicture followersCount followingCount bio')
-            .skip(skip).limit(limit).sort({ followersCount: -1 });
-
-        const total = await User.countDocuments({ $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' });
+        const filter = { $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' };
+        const [users, total] = await Promise.all([
+            User.find(filter)
+                .select('name username profilePicture followersCount followingCount bio')
+                .skip(skip).limit(limit).sort({ followersCount: -1 }).lean(),
+            User.countDocuments(filter)
+        ]);
 
         return NextResponse.json({
             success: true,

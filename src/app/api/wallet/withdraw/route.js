@@ -26,7 +26,7 @@ export async function POST(req) {
             return NextResponse.json({ success: false, message: 'Invalid amount' }, { status: 400 });
         }
 
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).select('walletBalance').lean();
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         }
@@ -51,7 +51,7 @@ export async function POST(req) {
         const existingPendingRequest = await WithdrawRequest.findOne({
             userId: user._id,
             status: 'pending'
-        });
+        }).select('_id').lean();
 
         if (existingPendingRequest) {
             return NextResponse.json({
