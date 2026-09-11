@@ -16,6 +16,7 @@ import {
   GraduationCap,
   Gamepad2,
   FolderOpen,
+  Sparkles,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -43,6 +44,7 @@ const PublicNavbar = () => {
 
   const navLinks = [
     { label: 'Home', title: 'Home', href: '/', icon: Compass },
+    { label: 'Features', title: 'Features', href: '/features', icon: Sparkles },
     { label: 'Exams', title: 'Exams', href: '/exams', icon: GraduationCap },
     { label: 'Quizzes', title: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
     { label: 'Subjects', title: 'Subjects', href: '/subjects', icon: BookOpen },

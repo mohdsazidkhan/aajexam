@@ -38,6 +38,7 @@ import {
   RotateCcw,
   MessageCircle,
   Sparkles,
+  ClipboardList,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -69,6 +70,7 @@ const Sidebar = () => {
       title: 'MAIN',
       items: [
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
+        { path: '/features', icon: ClipboardList, label: 'Features (Free vs PRO)', key: 'features' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
         { path: '/admin/email-campaigns', icon: Mail, label: 'Email Campaigns', key: 'emails-campaigns' },
       ]
