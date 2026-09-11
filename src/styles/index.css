@@ -258,3 +258,32 @@
   }
 }
 
+/* ── Global corner-radius standard ── */
+/* Forces every rounded element (buttons, cards, tables, inputs/fields, badges,
+   avatars, pills, decorative shapes — anything using a `rounded-*` utility,
+   including arbitrary values like rounded-[2.5rem]) to a single flat radius:
+   8px on web, 4px on mobile (below Tailwind's `lg` breakpoint, 1024px). */
+[class*="rounded"],
+button,
+input,
+select,
+textarea,
+table,
+th,
+td {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 1023.98px) {
+  [class*="rounded"],
+  button,
+  input,
+  select,
+  textarea,
+  table,
+  th,
+  td {
+    border-radius: 4px !important;
+  }
+}
+

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import { Edit3, Trash2, Plus, Search, X, BookMarked, Database } from "lucide-react";
+import { Edit3, Trash2, Plus, Search, X, BookMarked } from "lucide-react";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminQuizSubjects = () => {
@@ -13,7 +13,6 @@ const AdminQuizSubjects = () => {
   const [showModal, setShowModal] = useState(false);
   const [editing, setEditing] = useState(null);
   const [search, setSearch] = useState("");
-  const [seeding, setSeeding] = useState(false);
   const [form, setForm] = useState({ name: "", description: "", icon: "", order: 0 });
 
   useEffect(() => { fetchData(); }, []);
@@ -62,7 +61,6 @@ const AdminQuizSubjects = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BookMarked className="w-6 h-6 text-primary-500" /> Subjects</h1>
         <div className="flex gap-2">
-          <button onClick={async () => { if (!confirm('Seed all subjects & topics? (existing will be kept, no duplicates)')) return; setSeeding(true); try { const res = await API.seedSubjectsTopics(); if (res?.success) { toast.success(`Done! ${res.stats.subjectsCreated} subjects, ${res.stats.topicsCreated} topics`); fetchData(); } else toast.error(res?.message || 'Failed'); } catch (e) { toast.error('Seed failed'); } finally { setSeeding(false); } }} disabled={seeding} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-amber-600 disabled:opacity-50"><Database className="w-4 h-4" /> {seeding ? 'Seeding...' : 'Seed All Exams'}</button>
           <button onClick={openCreate} className="flex items-center gap-2 bg-primary-500 text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Add Subject</button>
         </div>
       </div>
