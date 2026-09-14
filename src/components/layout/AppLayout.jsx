@@ -96,7 +96,14 @@ const AppLayout = ({ children }) => {
           )}
         </AnimatePresence>
         {showAppNav && !isUserAdmin && <StudentSidebar />}
-        <div className="lg:pt-20">
+        <div
+          style={{
+            marginLeft: shouldShiftContent ? '240px' : '0px',
+            width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
+            transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
+          }}
+          className="lg:pt-20"
+        >
           {children}
         </div>
         {showAppNav && !isUserAdmin && <StudentBottomNav />}

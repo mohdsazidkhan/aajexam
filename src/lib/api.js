@@ -331,6 +331,27 @@ class ApiService {
     return this.request(`/api/search?${searchQuery}`);
   }
 
+  // Web-only: tab-scoped search with real pagination (type='all' | 'exam' | 'subject' | 'topic' |
+  // 'quiz' | 'test' | 'reel' | 'blog' | 'currentAffair' | 'note' | 'examNews' | 'feature')
+  async searchWeb({ query = '', type = 'all', page = 1, limit = 24 }) {
+    const searchQuery = new URLSearchParams({ query, type, page, limit }).toString();
+    return this.request(`/api/web/search?${searchQuery}`);
+  }
+
+  // Web-only: per-user recent search keywords (shown as suggestions on search-input focus)
+  async getSearchHistory() {
+    return this.request('/api/web/search/history');
+  }
+
+  async saveSearchHistory(term) {
+    return this.request('/api/web/search/history', { method: 'POST', body: JSON.stringify({ term }) });
+  }
+
+  // Web-only: batched follow-status lookup (one call for N user ids instead of N calls)
+  async getFollowStatuses(ids) {
+    return this.request('/api/web/users/follow-status', { method: 'POST', body: JSON.stringify({ ids }) });
+  }
+
   // ===== SUBSCRIPTION ENDPOINTS =====
   async getSubscriptionStatus(userId) {
     return this.request(`/api/subscription/status/${userId}`);
