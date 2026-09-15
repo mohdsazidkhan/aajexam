@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import {
   Trophy, CheckCircle, XCircle, Brain, ArrowLeft, Crown, Home, BrainCircuit, Share2, Users, Clock, Zap, AlertCircle
 } from 'lucide-react';
-import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
+import { QuizResultSkeleton } from '../skeletons/PrivateSkeletons';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Loading from '../Loading';
@@ -65,7 +65,7 @@ const QuizResultDetail = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24 font-outfit">
-      <div className="max-w-4xl mx-auto px-4 py-6"><DetailSkeleton /></div>
+      <div className="max-w-4xl mx-auto px-4 py-6"><QuizResultSkeleton /></div>
     </div>
   );
   if (!attempt) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Result not found</p></div>;

@@ -9,7 +9,7 @@ import Loading from '../components/Loading';
 import DiscussionThread from '../components/discussions/DiscussionThread';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
-import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
+import { ChallengeSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const DailyChallengePage = () => {
   const [challenge, setChallenge] = useState(null);
@@ -87,7 +87,7 @@ const DailyChallengePage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><ChallengeSkeleton /></div>
     </div>
   );
 

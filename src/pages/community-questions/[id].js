@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { QAThreadSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const CommunityQuestionDetailPage = dynamic(
   () => import('../../components/pages/CommunityQuestionDetailPage'),
-  { ssr: false, loading: () => <div className="max-w-4xl mx-auto px-4 py-6"><DetailSkeleton /></div> }
+  { ssr: false, loading: () => <div className="max-w-4xl mx-auto px-4 py-6"><QAThreadSkeleton /></div> }
 );
 
 export default function CommunityQuestionDetail() {

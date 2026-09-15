@@ -7,7 +7,7 @@ import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
-import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
+import { RevisionSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 const SOURCE_TABS = [
   { key: 'all', label: 'All', icon: Layers },
@@ -64,7 +64,7 @@ const RevisionPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><GridSkeleton count={8} /></div>
+      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><RevisionSkeleton /></div>
     </div>
   );
 

@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import API from '../../lib/api';
 import Card from '../ui/Card';
-import { DetailSkeleton } from '../skeletons/PrivateSkeletons';
+import { QAThreadSkeleton } from '../skeletons/PrivateSkeletons';
 import AnswerThread from '../community/AnswerThread';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 
@@ -57,7 +57,7 @@ export default function CommunityQuestionDetailPage() {
     } finally { setLiking(false); }
   };
 
-  if (loading) return <div className="max-w-4xl mx-auto px-4 py-6"><DetailSkeleton /></div>;
+  if (loading) return <div className="max-w-4xl mx-auto px-4 py-6"><QAThreadSkeleton /></div>;
   if (!question) return (
     <div className="min-h-screen flex items-center justify-center">
       <p className="text-slate-500">Question not found</p>

@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
-import { DashboardSkeleton } from '../skeletons/PrivateSkeletons';
+import { QuizResultSkeleton } from '../skeletons/PrivateSkeletons';
 import DiscussionThread from '../discussions/DiscussionThread';
 
 // Format seconds → "45s" or "1m 23s"
@@ -54,7 +54,7 @@ const QuizResultPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20 font-outfit">
-        <div className="container mx-auto px-4 py-8"><DashboardSkeleton /></div>
+        <div className="container mx-auto px-4 py-8"><QuizResultSkeleton /></div>
       </div>
     );
   }
