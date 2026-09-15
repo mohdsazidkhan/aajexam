@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  ChevronRight, Users, RefreshCw, Globe, ChevronDown
+  ChevronRight, ChevronLeft, Users, RefreshCw, Globe, ChevronDown, MapPin, Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -81,8 +81,8 @@ const Podium = ({ top3, currentUserId }) => {
             {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 animate-bounce" />}
             <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
             {isMe && <span className="text-[9px] font-black uppercase bg-indigo-500 text-white px-1.5 py-0.5 rounded-full">You</span>}
-            <div className="text-center max-w-[72px] sm:max-w-[88px]">
-              <p className={`text-[11px] sm:text-xs font-black truncate ${isMe ? 'text-blue-300' : 'text-white'}`}>
+            <div className="text-center max-w-[76px] sm:max-w-[96px]">
+              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-blue-300' : 'text-white'}`}>
                 {entry.name || entry.username || 'User'}
               </p>
               <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}% avg</p>
@@ -97,46 +97,106 @@ const Podium = ({ top3, currentUserId }) => {
   );
 };
 
-// ─── List Row ─────────────────────────────────────────────────────────────────
+// ─── Shared table column template (desktop only; mobile uses a stacked card) ──
+const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_20px]';
+
+// ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 const LeaderboardRow = ({ entry, index, currentUserId }) => {
   const rc = rankConfig[entry.rank];
   const isMe = String(entry.userId) === String(currentUserId);
   const isTop3 = entry.rank <= 3;
 
+  const rankBadge = (
+    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
+      ${isTop3 ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
+      {entry.rank}
+    </div>
+  );
+
+  const identity = (
+    <div className="min-w-0">
+      <div className="flex items-center gap-1.5 flex-wrap">
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-blue-600 dark:text-blue-400' : 'text-content-primary'}`}>
+          {entry.name || entry.username || 'Anonymous'}
+        </p>
+        {isMe && <span className="text-[9px] font-black uppercase bg-blue-500 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
+        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
+      </div>
+      <div className="flex items-center gap-1.5 flex-wrap">
+        {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
+        {entry.city && (
+          <span className="text-[10px] font-bold text-content-muted/80 truncate flex items-center gap-0.5">
+            <MapPin className="w-2.5 h-2.5" />{entry.city}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(index * 0.025, 0.5) }}>
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
-        <div className={`flex items-center gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+        {/* ── Desktop: table row ── */}
+        <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
           ${isMe ? 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 border-b-blue-400 dark:border-b-blue-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-            ${isTop3 ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
-            {entry.rank}
+          {rankBadge}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Avatar entry={entry} size="md" />
+            {identity}
           </div>
-          <Avatar entry={entry} size="md" />
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-blue-600 dark:text-blue-400' : 'text-content-primary'}`}>
-                {entry.name || entry.username || 'Anonymous'}
-              </p>
-              {isMe && <span className="text-[9px] font-black uppercase bg-blue-500 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
-              {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
-            </div>
-            <div className="flex items-center gap-2.5 mt-0.5 flex-wrap">
-              <span className="text-[10px] font-bold text-content-muted flex items-center gap-1">
-                <Target className="w-3 h-3" />{entry.totalExams} exams
-              </span>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Target className="w-3 h-3 text-content-muted" />{entry.totalExams}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalMarks ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalCorrect ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
+          <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+          <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+        </div>
+
+        {/* ── Mobile: stacked card — every stat carries its own heading ── */}
+        <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+          ${isMe ? 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 border-b-blue-400 dark:border-b-blue-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          <div className="flex items-center gap-3">
+            {rankBadge}
+            <Avatar entry={entry} size="md" />
+            <div className="flex-1 min-w-0">
+              {identity}
               {entry.currentStreak > 0 && (
-                <span className="text-[10px] font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1">
+                <span className="text-[10px] font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1 mt-0.5">
                   <Flame className="w-3 h-3" />{entry.currentStreak} day streak
                 </span>
               )}
             </div>
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
-          <div className="text-right flex-shrink-0">
-            <p className={`text-base font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgPercentage}%</p>
-            <p className="text-[10px] font-bold text-content-muted">{entry.avgAccuracy}% acc</p>
+          <div className="grid grid-cols-3 gap-2 pl-[52px]">
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Exams</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalExams}</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Marks</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalMarks ?? 0}</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Correct</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalCorrect ?? 0}</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Score</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalScore ?? 0}</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Accuracy</p>
+              <p className={`text-sm font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Avg Score</p>
+              <p className="text-sm font-black text-content-primary">{entry.avgPercentage}%</p>
+            </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 hidden sm:block" />
         </div>
       </Link>
     </motion.div>
@@ -147,16 +207,18 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 const MyRankCard = ({ entry }) => {
   if (!entry) return null;
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1">
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 flex items-center gap-3 shadow-duo-primary bg-blue-500 border-blue-600 dark:bg-blue-600 dark:border-blue-700">
-        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">#{entry.rank}</div>
-        <Avatar entry={entry} size="md" />
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-black text-white truncate">Your Rank</p>
-          <p className="text-[10px] font-bold text-white/70">{entry.totalExams} exams · {entry.avgPercentage}% avg score</p>
-        </div>
-        <div className="text-right flex-shrink-0">
-          <p className="text-xl font-black text-white">#{entry.rank}</p>
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1 mt-4">
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-duo-primary bg-blue-500 border-blue-600 dark:bg-blue-600 dark:border-blue-700">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">#{entry.rank}</div>
+          <Avatar entry={entry} size="md" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-black text-white truncate">Your Rank</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalExams} exams · {entry.avgAccuracy}% accuracy · {entry.avgPercentage}% avg score</p>
+          </div>
+          <div className="text-right flex-shrink-0">
+            <p className="text-xl font-black text-white">#{entry.rank}</p>
+          </div>
         </div>
       </Card>
     </motion.div>
@@ -168,9 +230,13 @@ const AllIndiaRankPage = () => {
   const [exams, setExams] = useState([]);
   const [selectedExamId, setSelectedExamId] = useState('');
   const [data, setData] = useState([]);
+  const [totalAttempts, setTotalAttempts] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  
+  const [page, setPage] = useState(1);
+  const ROWS_PER_PAGE = 10;
+
   const currentUser = typeof window !== 'undefined' ? getCurrentUser() : null;
   const currentUserId = currentUser?._id || currentUser?.id;
 
@@ -196,7 +262,11 @@ const AllIndiaRankPage = () => {
       else setLoading(true);
       const url = `/api/air?limit=50${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
       const res = await API.request(url);
-      if (res?.success) setData(res.data || []);
+      if (res?.success) {
+        setData(res.data || []);
+        setTotalAttempts(res.totalAttempts || 0);
+        setTotalUsers(res.totalUsers || 0);
+      }
     } catch (e) {
       console.error('AIR fetch error:', e);
     } finally {
@@ -206,9 +276,12 @@ const AllIndiaRankPage = () => {
   }, [selectedExamId]);
 
   useEffect(() => { fetchAIR(); }, [fetchAIR]);
+  useEffect(() => { setPage(1); }, [selectedExamId]);
 
   const top3 = data.slice(0, 3);
-  const rest = data.slice(3);
+  // Top 3 show on the podium AND at the top of the table below (per user's choice).
+  const totalPages = Math.max(1, Math.ceil(data.length / ROWS_PER_PAGE));
+  const pagedRest = data.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
   const myEntry = data.find(e => String(e.userId) === String(currentUserId));
 
   return (
@@ -224,20 +297,24 @@ const AllIndiaRankPage = () => {
         <SubscriptionGuard message="All India Rank (AIR) is a PRO feature. Upgrade to see where you stand globally and by exam!">
           <div className="space-y-5 lg:space-y-8">
             
-            {/* ── Hero Banner ── */}
-            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-blue-600/20 dark:border-blue-900/30">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-600 to-indigo-700 dark:from-blue-900 dark:via-cyan-900 dark:to-slate-900" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            {/* ── Hero Banner — gold-accented premium treatment, distinct from the free Leaderboard page ── */}
+            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-amber-500/30 dark:border-amber-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" />
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-500/10 via-transparent to-transparent" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none blur-2xl" />
 
               <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
                 
-                {/* AIR Badge */}
+                {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-white/15 border border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-3"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 via-yellow-400/20 to-amber-500/20 border border-amber-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-amber-200 text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 >
-                  <Globe className="w-3.5 h-3.5 text-blue-300" /> PRO EXCLUSIVE
+                  <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
+                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                  </motion.span>
+                  PRO Exclusive
                 </motion.div>
                 
                 <motion.h1
@@ -303,9 +380,10 @@ const AllIndiaRankPage = () => {
 
             {/* ── Quick Stats ── */}
             {!loading && data.length > 0 && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                 {[
-                  { label: 'Ranked Users', value: `${data.length}+`, icon: Users, color: 'text-blue-500 dark:text-blue-400' },
+                  { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-blue-500 dark:text-blue-400' },
+                  { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-amber-500 dark:text-amber-400' },
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-emerald-500 dark:text-emerald-400' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-orange-500 dark:text-orange-400' },
                 ].map((stat, i) => (
@@ -336,16 +414,41 @@ const AllIndiaRankPage = () => {
             ) : (
               <AnimatePresence mode="wait">
                 <motion.div key={selectedExamId} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-2">
-                  <div className="flex items-center gap-3 px-3.5 pb-1">
-                    <p className="w-8 text-[10px] font-black text-content-muted uppercase text-center">#</p>
-                    <div className="w-10 flex-shrink-0" />
-                    <p className="text-[10px] font-black text-content-muted uppercase flex-1">Player</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase">Accuracy</p>
-                    <div className="w-4 hidden sm:block" />
+                  {/* Column header — desktop table only; mobile list has no header row */}
+                  <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Exams</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Marks</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Correct</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Score</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Accuracy</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center">Avg Score</p>
+                    <div />
                   </div>
-                  {data.map((entry, i) => (
-                    <LeaderboardRow key={entry.userId} entry={entry} index={i} currentUserId={currentUserId} />
+                  {pagedRest.map((entry, i) => (
+                    <LeaderboardRow key={entry.userId} entry={entry} index={(page - 1) * ROWS_PER_PAGE + i} currentUserId={currentUserId} />
                   ))}
+
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-3 pt-4">
+                      <button
+                        onClick={() => setPage(p => Math.max(1, p - 1))}
+                        disabled={page === 1}
+                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span className="text-xs font-black text-content-muted uppercase">Page {page} of {totalPages}</span>
+                      <button
+                        onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                        disabled={page === totalPages}
+                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
                 </motion.div>
               </AnimatePresence>
             )}

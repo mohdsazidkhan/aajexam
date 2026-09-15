@@ -5,6 +5,7 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import Quiz from '@/models/Quiz';
 import PracticeTest from '@/models/PracticeTest';
 import ExamPattern from '@/models/ExamPattern';
+import Subject from '@/models/Subject';
 import User from '@/models/User';
 import { protect } from '@/middleware/auth';
 
@@ -100,15 +101,25 @@ export async function GET(req, { params }) {
         const olderAvg = olderAttempts.length > 0 ? olderAttempts.reduce((s, a) => s + a.accuracy, 0) / olderAttempts.length : 0;
         const trend = recentAvg - olderAvg;
 
+        // subjectAccuracy is keyed by raw Subject _id (or the literal string
+        // 'General' when a quiz has no subject) — resolve real names before
+        // returning them, instead of leaking ObjectIds to the UI.
+        const subjectIds = Object.keys(subjectAccuracy).filter((s) => s !== 'General');
+        const subjectDocs = subjectIds.length > 0
+            ? await Subject.find({ _id: { $in: subjectIds } }).select('name').lean()
+            : [];
+        const subjectNameById = new Map(subjectDocs.map((s) => [String(s._id), s.name]));
+        const resolveSubjectName = (subject) => subjectNameById.get(subject) || (subject === 'General' ? 'General' : subject);
+
         // Weak subjects (below 50%)
         const weakSubjects = Object.entries(subjectAccuracy)
             .filter(([, acc]) => acc < 50)
-            .map(([subject, accuracy]) => ({ subject, accuracy }));
+            .map(([subject, accuracy]) => ({ subject: resolveSubjectName(subject), accuracy }));
 
         // Strong subjects (above 70%)
         const strongSubjects = Object.entries(subjectAccuracy)
             .filter(([, acc]) => acc >= 70)
-            .map(([subject, accuracy]) => ({ subject, accuracy }));
+            .map(([subject, accuracy]) => ({ subject: resolveSubjectName(subject), accuracy }));
 
         return NextResponse.json({
             success: true,

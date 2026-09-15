@@ -46,14 +46,14 @@ const ReadinessPage = () => {
     <div className="min-h-screen pb-24">
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
       <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
+          <div className="flex justify-between items-center flex-col lg:flex-row">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Target className="w-6 h-6 text-primary-500" /> Exam Readiness</h1>
             <p className="text-sm font-bold text-slate-400">How prepared are you?</p>
           </div>
 
-          <Card className="p-4 lg:p-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <div className="gap-5">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
               className="flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
               <option value="">Select Exam</option>
@@ -63,14 +63,15 @@ const ReadinessPage = () => {
               className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? 'Analyzing...' : 'Analyze'}
             </button>
-          </Card>
+          </div>
+          </div>
 
           {readiness && (
             <div className="space-y-5">
               {/* Main Score */}
               <Card className={`p-8 text-center bg-${readinessColor(readiness.readiness)}-50 dark:bg-${readinessColor(readiness.readiness)}-900/20`}>
                 <p className={`text-6xl font-black text-${readinessColor(readiness.readiness)}-500`}>{readiness.readiness}%</p>
-                <p className="text-sm font-bold text-slate-500 mt-2">Exam Readiness Score</p>
+                <p className="text-sm font-bold text-slate-500">Exam Readiness Score</p>
                 <div className="flex items-center justify-center gap-1 mt-2">
                   {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-emerald-500" /> : <TrendingDown className="w-4 h-4 text-red-500" />}
                   <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-emerald-500' : 'text-red-500'}`}>{readiness.trend > 0 ? '+' : ''}{readiness.trend}% trend</span>
@@ -122,7 +123,6 @@ const ReadinessPage = () => {
             </Card>
           )}
         </SubscriptionGuard>
-      </div>
       </div>
     </div>
   );
