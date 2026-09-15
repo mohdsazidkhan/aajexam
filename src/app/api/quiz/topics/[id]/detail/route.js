@@ -13,6 +13,14 @@ export async function GET(req, { params }) {
             .populate('exams', 'name code')
             .lean();
         if (!topic) return NextResponse.json({ success: false, message: 'Topic not found' }, { status: 404 });
+        // Merged/deactivated duplicate — its quizzes were repointed to mergedInto.
+        if (topic.isActive === false) {
+            return NextResponse.json({
+                success: false,
+                message: 'Topic not found',
+                mergedInto: topic.mergedInto ? String(topic.mergedInto) : undefined,
+            }, { status: 404 });
+        }
 
         // Quizzes for this topic
         const quizzes = await Quiz.find({ topic: id, status: 'published' })
