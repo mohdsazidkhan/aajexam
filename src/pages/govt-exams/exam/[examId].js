@@ -4,7 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
-  ChevronRight, Play, Eye, Lock, Unlock, History
+  ChevronRight, Play, Eye, Lock, Unlock, History,
+  GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -21,6 +22,7 @@ import {
   generateFAQSchema,
   generateItemListSchema
 } from '../../../utils/schema';
+import { EXAM_SEO_FACTS, EXAM_FACTS_SOURCED_DATE } from '../../../lib/data/examSeoFacts';
 
 const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow' }) => {
   const router = useRouter();
@@ -86,6 +88,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const examUrl = `/govt-exams/exam/${exam?.slug || ''}`;
   const examCode = exam?.code ? ` (${exam.code})` : '';
   const examCategory = exam?.category?.name;
+  const facts = exam?.slug ? EXAM_SEO_FACTS[exam.slug] : null;
+  const subjectAreas = facts?.subjectAreas || [];
   const seoTitle = seo?.title || `${examName}${examCode} – Syllabus, Pattern, Free Practice Tests & Previous Year Papers | AajExam`;
   const seoDescription = seo?.description || `${examName}${examCode} preparation hub on AajExam — syllabus, exam pattern, ${practiceTests.length} free practice tests, ${pyqs.length} previous year question papers (PYQs) and ${quizzes.length} topic-wise quizzes with detailed solutions and sectional analysis.`.slice(0, 160);
   const seoKeywords = [
@@ -122,7 +126,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       url: `/govt-exams/test/${t.slug || t._id}/start`
     }))
   }) : null;
-  const faqSchema = generateFAQSchema([
+  const faqItems = [
     {
       question: `How many practice tests are available for ${examName}?`,
       answer: `${practiceTests.length} full-length practice tests and ${pyqs.length} previous year question papers (PYQs) are available for ${examName}${examCode} on AajExam, with detailed solutions and sectional analysis.`
@@ -133,9 +137,20 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     },
     {
       question: `Can I practise ${examName} topic-wise on AajExam?`,
-      answer: `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName}, covering Reasoning, Quantitative Aptitude, English and General Awareness.`
+      answer: subjectAreas.length
+        ? `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName}, covering ${subjectAreas.slice(0, 4).join(', ')}.`
+        : `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName} across all its subjects.`
     }
-  ]);
+  ];
+  if (facts) {
+    faqItems.push(
+      { question: `What is the eligibility for ${examName}?`, answer: facts.qualification },
+      { question: `What is the age limit for ${examName}?`, answer: `${facts.age}. Always confirm this against the latest official notification before applying.` },
+      { question: `What is the ${examName} selection process?`, answer: facts.selection },
+      { question: `What is the ${examName} salary?`, answer: facts.salary }
+    );
+  }
+  const faqSchema = generateFAQSchema(faqItems);
 
   return (
     <div className="space-y-6 animate-fade-in pb-24">
@@ -161,7 +176,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
-          <h1 className="text-xl md:text-2xl lg:text-4xl font-black uppercase tracking-tight">{examName}</h1>
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-black uppercase tracking-tight">{examName} Preparation</h1>
+          <p className="text-primary-100 font-bold text-sm lg:text-base opacity-90">PYQ, Practice Tests &amp; Online Questions</p>
           {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">Code: {exam.code}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
@@ -187,6 +203,60 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           </h2>
           <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm lg:text-base whitespace-pre-line">
             {aboutText}
+          </div>
+        </Card>
+      )}
+
+      {/* Exam Information — eligibility, age limit, selection process, salary */}
+      {facts && (
+        <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+          <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
+            <Info className="w-5 h-5 text-primary-500" />
+            {examName} Exam Information
+          </h2>
+          <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mb-4 uppercase tracking-wide">
+            Sourced {EXAM_FACTS_SOURCED_DATE} — verify against the official notification before relying on this to apply
+          </p>
+          <dl className="grid sm:grid-cols-2 gap-4 text-sm">
+            <div>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">Age Limit</dt>
+              <dd className="font-medium text-content-primary">{facts.age}</dd>
+            </div>
+            <div>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">Eligibility / Qualification</dt>
+              <dd className="font-medium text-content-primary">{facts.qualification}</dd>
+            </div>
+            <div>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">Selection Process</dt>
+              <dd className="font-medium text-content-primary">{facts.selection}</dd>
+            </div>
+            <div>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">Salary</dt>
+              <dd className="font-medium text-content-primary">{facts.salary}</dd>
+            </div>
+          </dl>
+        </Card>
+      )}
+
+      {/* Syllabus & Subjects */}
+      {subjectAreas.length > 0 && (
+        <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+          <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+            <ListChecks className="w-5 h-5 text-primary-500" />
+            {examName} Syllabus &amp; Subjects
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {subjectAreas.map((subject) => (
+              <div key={subject} className="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+                <span className="text-sm font-bold text-content-primary">{subject}</span>
+                <button
+                  onClick={() => setActiveTab('quizzes')}
+                  className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap"
+                >
+                  Practice {subject} Questions →
+                </button>
+              </div>
+            ))}
           </div>
         </Card>
       )}
@@ -315,7 +385,75 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         </div>
       )}
 
+      {/* How to Prepare */}
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+          <GraduationCap className="w-5 h-5 text-primary-500" />
+          How to Prepare for {examName}
+        </h2>
+        <ol className="space-y-2 text-sm font-medium text-content-primary list-decimal list-inside">
+          <li>Understand the {examName} syllabus and exam pattern above.</li>
+          {subjectAreas[0] && <li>Study each subject, starting with {subjectAreas[0]}.</li>}
+          <li>Practice topic-wise questions across every available topic.</li>
+          <li>Solve {examName} previous year papers to learn the real difficulty level.</li>
+          <li>Attempt full-length practice tests under timed conditions.</li>
+          <li>Take short quizzes to revise between full attempts.</li>
+          <li>Review every incorrect answer&apos;s explanation, not just the score.</li>
+          <li>Repeat quizzes for your weakest topics before your next mock.</li>
+        </ol>
+      </Card>
 
+      {/* Related Searches */}
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+          <Search className="w-5 h-5 text-primary-500" />
+          Related Searches
+        </h2>
+        <p className="text-sm font-medium text-content-muted leading-relaxed">
+          {[
+            `What is ${examName}?`,
+            `What is the ${examName} syllabus?`,
+            `What is the ${examName} exam pattern?`,
+            `Where can I practice ${examName} PYQs online?`,
+            `How do I prepare for ${examName}?`,
+            subjectAreas.length ? `Which subjects are in ${examName}?` : null,
+          ].filter(Boolean).join('   ·   ')}
+        </p>
+      </Card>
+
+      {/* FAQ — rendered visibly to match the FAQ structured data above */}
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+          <HelpCircle className="w-5 h-5 text-primary-500" />
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          {faqItems.map((item) => (
+            <div key={item.question} className="border-b border-slate-100 dark:border-slate-800 pb-4 last:border-0 last:pb-0">
+              <p className="text-sm font-black text-content-primary mb-1">{item.question}</p>
+              <p className="text-sm font-medium text-content-muted leading-relaxed">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Contextual registration CTA — only for logged-out visitors */}
+      {!isAuthenticated() && (
+        <Card className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white border-none p-6 lg:p-8">
+          <div className="flex items-start gap-4">
+            <UserPlus className="w-8 h-8 shrink-0" />
+            <div>
+              <h3 className="text-base lg:text-lg font-black uppercase tracking-tight mb-1">Want to save your progress?</h3>
+              <p className="text-sm font-medium text-white/90 mb-4">
+                Create a free AajExam account to save your {examName} practice history, track your accuracy over time, and pick up any test where you left off.
+              </p>
+              <Button variant="secondary" size="sm" onClick={() => router.push('/register')} className="font-black">
+                Create Free Account
+              </Button>
+            </div>
+          </div>
+        </Card>
+      )}
     </div>
   );
 };
